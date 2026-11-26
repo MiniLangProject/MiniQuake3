@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ authorizeAddress
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-authorizefn-authorizefn-src-mq3-server-oob-connect-ml-1044147721"></a>
 ### authorizeFn
@@ -32,7 +32,7 @@ authorizeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-challenges-challenges-src-mq3-server-oob-connect-ml-1066553665"></a>
 ### challenges
@@ -42,7 +42,7 @@ challenges
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-clients-clients-src-mq3-server-oob-connect-ml-1920743669"></a>
 ### clients
@@ -52,7 +52,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-config-config-src-mq3-server-oob-connect-ml-1901119345"></a>
 ### config
@@ -62,7 +62,7 @@ config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-context-context-src-mq3-server-oob-connect-ml-1055606681"></a>
 ### context
@@ -72,7 +72,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-diagnosticfn-diagnosticfn-src-mq3-server-oob-connect-ml-1137351319"></a>
 ### diagnosticFn
@@ -82,7 +82,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-dropfn-dropfn-src-mq3-server-oob-connect-ml-958210943"></a>
 ### dropFn
@@ -92,7 +92,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-gameconnectfn-gameconnectfn-src-mq3-server-oob-connect-ml-213152185"></a>
 ### gameConnectFn
@@ -102,7 +102,7 @@ gameConnectFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-heartbeatfn-heartbeatfn-src-mq3-server-oob-connect-ml-1150304017"></a>
 ### heartbeatFn
@@ -112,7 +112,7 @@ heartbeatFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-lanfn-lanfn-src-mq3-server-oob-connect-ml-1711252337"></a>
 ### lanFn
@@ -122,7 +122,7 @@ lanFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-localfn-localfn-src-mq3-server-oob-connect-ml-807993005"></a>
 ### localFn
@@ -132,7 +132,7 @@ localFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-randfn-randfn-src-mq3-server-oob-connect-ml-2023716931"></a>
 ### randFn
@@ -142,7 +142,7 @@ randFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-sendfn-sendfn-src-mq3-server-oob-connect-ml-1113560081"></a>
 ### sendFn
@@ -152,7 +152,7 @@ sendFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)
 
 <a id="field-field-mq3-server-oob-connect-runtime-time-time-src-mq3-server-oob-connect-ml-1313918463"></a>
 ### time
@@ -162,4 +162,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L27)

@@ -25,7 +25,7 @@ extern function clipboardNative(output as bytes, capacity as i32) from "miniquak
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L23)
 
 <a id="function-function-mq3-platform-win-main-runtime-create-function-create-src-mq3-platform-win-main-runtime-ml-507331032"></a>
 ### create
@@ -35,7 +35,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L47)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-cwdnative-extern-function-cwdnative-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-cwd-returns-i32-src-mq3-platform-win-main-runtime-ml-1875347203"></a>
 ### cwdNative
@@ -50,7 +50,7 @@ extern function cwdNative(output as bytes, capacity as i32) from "miniquake3_win
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L21)
 
 <a id="function-function-mq3-platform-win-main-runtime-decodefilelist-function-decodefilelist-data-size-src-mq3-platform-win-main-runtime-ml-115241125"></a>
 ### decodeFileList
@@ -65,7 +65,7 @@ function decodeFileList(data, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L89)
 
 - [mq3.platform.win_main_runtime.Dll](Type-mq3-platform-win-main-runtime-dll-1708592090.md) — struct
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllattachnative-extern-function-dllattachnative-handle-as-ptr-systemcalls-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-attach-returns-i32-src-mq3-platform-win-main-runtime-ml-2056586367"></a>
@@ -81,7 +81,7 @@ extern function dllAttachNative(handle as ptr, systemCalls as ptr) from "miniqua
 | `systemCalls` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L31)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllloadnative-extern-function-dllloadnative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-load-returns-ptr-src-mq3-platform-win-main-runtime-ml-415310635"></a>
 ### dllLoadNative
@@ -96,7 +96,7 @@ extern function dllLoadNative(path as ptr, length as i32) from "miniquake3_winma
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L29)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllsymbolnative-extern-function-dllsymbolnative-handle-as-ptr-name-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-symbol-returns-ptr-src-mq3-platform-win-main-runtime-ml-832282803"></a>
 ### dllSymbolNative
@@ -111,7 +111,7 @@ extern function dllSymbolNative(handle as ptr, name as ptr) from "miniquake3_win
 | `name` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L30)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-dllunloadnative-extern-function-dllunloadnative-handle-as-ptr-from-miniquake3-winmain-dll-symbol-mq3-winmain-dll-unload-returns-i32-src-mq3-platform-win-main-runtime-ml-1640381653"></a>
 ### dllUnloadNative
@@ -125,7 +125,7 @@ extern function dllUnloadNative(handle as ptr) from "miniquake3_winmain.dll" sym
 | `handle` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L32)
 
 <a id="function-function-mq3-platform-win-main-runtime-emit-function-emit-state-kind-text-value-src-mq3-platform-win-main-runtime-ml-1246652025"></a>
 ### emit
@@ -142,7 +142,7 @@ function emit(state, kind, text, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L53)
 
 - [mq3.platform.win_main_runtime.Event](Type-mq3-platform-win-main-runtime-event-1151323654.md) — struct
 <a id="function-function-mq3-platform-win-main-runtime-joinpath-function-joinpath-base-game-name-src-mq3-platform-win-main-runtime-ml-174494912"></a>
@@ -159,7 +159,7 @@ function joinPath(base, game, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L129)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-listfilesnative-extern-function-listfilesnative-directory-as-ptr-directorylength-as-i32-extension-as-ptr-extensionlength-as-i32-filter-as-ptr-filterlength-as-i32-wantsubs-as-i32-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-list-files-returns-i32-src-mq3-platform-win-main-runtime-ml-821449092"></a>
 ### listFilesNative
@@ -181,7 +181,7 @@ extern function listFilesNative(directory as ptr, directoryLength as i32, extens
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L28)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-lowmemorynative-extern-function-lowmemorynative-from-miniquake3-winmain-dll-symbol-mq3-winmain-low-physical-memory-returns-i32-src-mq3-platform-win-main-runtime-ml-1570351603"></a>
 ### lowMemoryNative
@@ -191,7 +191,7 @@ extern function lowMemoryNative() from "miniquake3_winmain.dll" symbol "mq3_winm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L19)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-max-found-files-const-max-found-files-4096-src-mq3-platform-win-main-runtime-ml-74934640"></a>
 ### MAX_FOUND_FILES
@@ -201,7 +201,7 @@ const MAX_FOUND_FILES = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L9)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-max-qued-events-const-max-qued-events-256-src-mq3-platform-win-main-runtime-ml-519483546"></a>
 ### MAX_QUED_EVENTS
@@ -211,7 +211,7 @@ const MAX_QUED_EVENTS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L10)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-mem-threshold-const-mem-threshold-100663296-src-mq3-platform-win-main-runtime-ml-744323022"></a>
 ### MEM_THRESHOLD
@@ -221,7 +221,7 @@ const MEM_THRESHOLD = 100663296
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L8)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-millisecondsnative-extern-function-millisecondsnative-from-miniquake3-winmain-dll-symbol-mq3-winmain-milliseconds-returns-u32-src-mq3-platform-win-main-runtime-ml-1252643997"></a>
 ### millisecondsNative
@@ -231,7 +231,7 @@ extern function millisecondsNative() from "miniquake3_winmain.dll" symbol "mq3_w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L20)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-mkdirnative-extern-function-mkdirnative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-mkdir-returns-i32-src-mq3-platform-win-main-runtime-ml-154117721"></a>
 ### mkdirNative
@@ -246,7 +246,7 @@ extern function mkdirNative(path as ptr, length as i32) from "miniquake3_winmain
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L22)
 
 <a id="function-function-mq3-platform-win-main-runtime-nativelist-function-nativelist-directory-extension-filter-wantsubs-src-mq3-platform-win-main-runtime-ml-977291299"></a>
 ### nativeList
@@ -263,7 +263,7 @@ function nativeList(directory, extension, filter, wantSubs)
 | `wantSubs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L96)
 
 <a id="function-function-mq3-platform-win-main-runtime-now-function-now-state-src-mq3-platform-win-main-runtime-ml-1451425981"></a>
 ### now
@@ -277,7 +277,7 @@ function now(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L159)
 
 <a id="function-function-mq3-platform-win-main-runtime-popevent-function-popevent-state-src-mq3-platform-win-main-runtime-ml-1051158625"></a>
 ### popEvent
@@ -291,7 +291,7 @@ function popEvent(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L165)
 
 - [mq3.platform.win_main_runtime.Runtime](Type-mq3-platform-win-main-runtime-runtime-1096450402.md) — struct
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-scancdnative-extern-function-scancdnative-output-as-bytes-capacity-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-scan-cd-returns-i32-src-mq3-platform-win-main-runtime-ml-1311117002"></a>
@@ -307,7 +307,7 @@ extern function scanCdNative(output as bytes, capacity as i32) from "miniquake3_
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L24)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-char-const-se-char-2-src-mq3-platform-win-main-runtime-ml-1183054911"></a>
 ### SE_CHAR
@@ -317,7 +317,7 @@ const SE_CHAR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L13)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-console-const-se-console-5-src-mq3-platform-win-main-runtime-ml-376326042"></a>
 ### SE_CONSOLE
@@ -327,7 +327,7 @@ const SE_CONSOLE = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L16)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-joystick-axis-const-se-joystick-axis-4-src-mq3-platform-win-main-runtime-ml-56219933"></a>
 ### SE_JOYSTICK_AXIS
@@ -337,7 +337,7 @@ const SE_JOYSTICK_AXIS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L15)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-key-const-se-key-1-src-mq3-platform-win-main-runtime-ml-90342426"></a>
 ### SE_KEY
@@ -347,7 +347,7 @@ const SE_KEY = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L12)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-mouse-const-se-mouse-3-src-mq3-platform-win-main-runtime-ml-1222589344"></a>
 ### SE_MOUSE
@@ -357,7 +357,7 @@ const SE_MOUSE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L14)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-none-const-se-none-0-src-mq3-platform-win-main-runtime-ml-10255469"></a>
 ### SE_NONE
@@ -367,7 +367,7 @@ const SE_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L11)
 
 <a id="constant-constant-mq3-platform-win-main-runtime-se-packet-const-se-packet-6-src-mq3-platform-win-main-runtime-ml-1690933667"></a>
 ### SE_PACKET
@@ -377,7 +377,7 @@ const SE_PACKET = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L17)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-close-function-spk-close-state-src-mq3-platform-win-main-runtime-ml-1210033455"></a>
 ### Spk_Close
@@ -391,7 +391,7 @@ function Spk_Close(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L59)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-open-function-spk-open-state-name-src-mq3-platform-win-main-runtime-ml-1016680966"></a>
 ### Spk_Open
@@ -406,7 +406,7 @@ function Spk_Open(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L55)
 
 <a id="function-function-mq3-platform-win-main-runtime-spk-printf-function-spk-printf-state-text-src-mq3-platform-win-main-runtime-ml-1691994042"></a>
 ### Spk_Printf
@@ -421,7 +421,7 @@ function Spk_Printf(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L60)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkclosenative-extern-function-spkclosenative-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-close-returns-void-src-mq3-platform-win-main-runtime-ml-1294959200"></a>
 ### spkCloseNative
@@ -431,7 +431,7 @@ extern function spkCloseNative() from "miniquake3_winmain.dll" symbol "mq3_winma
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L27)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkopennative-extern-function-spkopennative-path-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-open-returns-i32-src-mq3-platform-win-main-runtime-ml-1337106103"></a>
 ### spkOpenNative
@@ -446,7 +446,7 @@ extern function spkOpenNative(path as ptr, length as i32) from "miniquake3_winma
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L25)
 
 <a id="extern_function-extern-function-mq3-platform-win-main-runtime-spkwritenative-extern-function-spkwritenative-text-as-ptr-length-as-i32-from-miniquake3-winmain-dll-symbol-mq3-winmain-spk-write-returns-i32-src-mq3-platform-win-main-runtime-ml-613055826"></a>
 ### spkWriteNative
@@ -461,7 +461,7 @@ extern function spkWriteNative(text as ptr, length as i32) from "miniquake3_winm
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L26)
 
 - [mq3.platform.win_main_runtime.Stream](Type-mq3-platform-win-main-runtime-stream-174207922.md) — struct
 - [mq3.platform.win_main_runtime.StreamRead](Type-mq3-platform-win-main-runtime-streamread-1544338586.md) — struct
@@ -478,7 +478,7 @@ function strgtr(s0, s1)
 | `s1` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L108)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-beginprofiling-function-sys-beginprofiling-state-src-mq3-platform-win-main-runtime-ml-870702333"></a>
 ### Sys_BeginProfiling
@@ -492,7 +492,7 @@ function Sys_BeginProfiling(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L66)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-beginstreamedfile-function-sys-beginstreamedfile-state-file-readahead-context-readfn-seekfn-src-mq3-platform-win-main-runtime-ml-46284591"></a>
 ### Sys_BeginStreamedFile
@@ -511,7 +511,7 @@ function Sys_BeginStreamedFile(state, file, readAhead, context, readFn, seekFn)
 | `seekFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L147)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-checkcd-function-sys-checkcd-src-mq3-platform-win-main-runtime-ml-640671266"></a>
 ### Sys_CheckCD
@@ -521,7 +521,7 @@ function Sys_CheckCD()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L121)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-cwd-function-sys-cwd-src-mq3-platform-win-main-runtime-ml-922687696"></a>
 ### Sys_Cwd
@@ -531,7 +531,7 @@ function Sys_Cwd()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L85)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-defaultbasepath-function-sys-defaultbasepath-src-mq3-platform-win-main-runtime-ml-939471538"></a>
 ### Sys_DefaultBasePath
@@ -541,7 +541,7 @@ function Sys_DefaultBasePath()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L87)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-defaultcdpath-function-sys-defaultcdpath-src-mq3-platform-win-main-runtime-ml-205180742"></a>
 ### Sys_DefaultCDPath
@@ -551,7 +551,7 @@ function Sys_DefaultCDPath()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L86)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-endstreamedfile-function-sys-endstreamedfile-state-stream-src-mq3-platform-win-main-runtime-ml-837972185"></a>
 ### Sys_EndStreamedFile
@@ -566,7 +566,7 @@ function Sys_EndStreamedFile(state, stream)
 | `stream` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L151)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-error-function-sys-error-state-text-src-mq3-platform-win-main-runtime-ml-291893230"></a>
 ### Sys_Error
@@ -581,7 +581,7 @@ function Sys_Error(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L68)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-freefilelist-function-sys-freefilelist-list-src-mq3-platform-win-main-runtime-ml-1729190668"></a>
 ### Sys_FreeFileList
@@ -595,7 +595,7 @@ function Sys_FreeFileList(list)
 | `list` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L118)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-getclipboarddata-function-sys-getclipboarddata-src-mq3-platform-win-main-runtime-ml-470076584"></a>
 ### Sys_GetClipboardData
@@ -605,7 +605,7 @@ function Sys_GetClipboardData()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L122)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-getevent-function-sys-getevent-state-src-mq3-platform-win-main-runtime-ml-402022929"></a>
 ### Sys_GetEvent
@@ -619,7 +619,7 @@ function Sys_GetEvent(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L166)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-in-restart-f-function-sys-in-restart-f-state-src-mq3-platform-win-main-runtime-ml-1939687301"></a>
 ### Sys_In_Restart_f
@@ -633,7 +633,7 @@ function Sys_In_Restart_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L174)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-init-function-sys-init-state-platform-major-build-cpuid-currentuser-src-mq3-platform-win-main-runtime-ml-2066092870"></a>
 ### Sys_Init
@@ -652,7 +652,7 @@ function Sys_Init(state, platform, major, build, cpuId, currentUser)
 | `currentUser` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L176)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-initstreamthread-function-sys-initstreamthread-state-src-mq3-platform-win-main-runtime-ml-991337321"></a>
 ### Sys_InitStreamThread
@@ -666,7 +666,7 @@ function Sys_InitStreamThread(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L145)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-listfiles-function-sys-listfiles-directory-extension-filter-wantsubs-src-mq3-platform-win-main-runtime-ml-815686933"></a>
 ### Sys_ListFiles
@@ -683,7 +683,7 @@ function Sys_ListFiles(directory, extension, filter, wantSubs)
 | `wantSubs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L113)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-listfilteredfiles-function-sys-listfilteredfiles-basedir-subdirs-filter-src-mq3-platform-win-main-runtime-ml-187056896"></a>
 ### Sys_ListFilteredFiles
@@ -699,7 +699,7 @@ function Sys_ListFilteredFiles(basedir, subdirs, filter)
 | `filter` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L102)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-loaddll-function-sys-loaddll-state-name-basepath-cdpath-gamedir-systemcalls-src-mq3-platform-win-main-runtime-ml-358240253"></a>
 ### Sys_LoadDll
@@ -718,7 +718,7 @@ function Sys_LoadDll(state, name, basepath, cdpath, gamedir, systemCalls)
 | `systemCalls` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L139)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-lowphysicalmemory-function-sys-lowphysicalmemory-src-mq3-platform-win-main-runtime-ml-1719926140"></a>
 ### Sys_LowPhysicalMemory
@@ -728,7 +728,7 @@ function Sys_LowPhysicalMemory()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L65)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-mkdir-function-sys-mkdir-path-src-mq3-platform-win-main-runtime-ml-1818430721"></a>
 ### Sys_Mkdir
@@ -742,7 +742,7 @@ function Sys_Mkdir(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L84)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-net-restart-f-function-sys-net-restart-f-state-src-mq3-platform-win-main-runtime-ml-195700041"></a>
 ### Sys_Net_Restart_f
@@ -756,7 +756,7 @@ function Sys_Net_Restart_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L175)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-print-function-sys-print-state-message-src-mq3-platform-win-main-runtime-ml-1173935538"></a>
 ### Sys_Print
@@ -771,7 +771,7 @@ function Sys_Print(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L82)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-queevent-function-sys-queevent-state-time-type-value-value2-ptrlength-data-src-mq3-platform-win-main-runtime-ml-1965425374"></a>
 ### Sys_QueEvent
@@ -791,7 +791,7 @@ function Sys_QueEvent(state, time, type, value, value2, ptrLength, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L160)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-quit-function-sys-quit-state-src-mq3-platform-win-main-runtime-ml-362461209"></a>
 ### Sys_Quit
@@ -805,7 +805,7 @@ function Sys_Quit(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L76)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-scanforcd-function-sys-scanforcd-src-mq3-platform-win-main-runtime-ml-1652672946"></a>
 ### Sys_ScanForCD
@@ -815,7 +815,7 @@ function Sys_ScanForCD()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L120)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-shutdownstreamthread-function-sys-shutdownstreamthread-state-src-mq3-platform-win-main-runtime-ml-513516045"></a>
 ### Sys_ShutdownStreamThread
@@ -829,7 +829,7 @@ function Sys_ShutdownStreamThread(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L146)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamedread-function-sys-streamedread-stream-size-count-src-mq3-platform-win-main-runtime-ml-823657380"></a>
 ### Sys_StreamedRead
@@ -845,7 +845,7 @@ function Sys_StreamedRead(stream, size, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L152)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamseek-function-sys-streamseek-stream-offset-origin-src-mq3-platform-win-main-runtime-ml-15878081"></a>
 ### Sys_StreamSeek
@@ -861,7 +861,7 @@ function Sys_StreamSeek(stream, offset, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L156)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-streamthread-function-sys-streamthread-state-src-mq3-platform-win-main-runtime-ml-883851793"></a>
 ### Sys_StreamThread
@@ -875,7 +875,7 @@ function Sys_StreamThread(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L157)
 
 <a id="function-function-mq3-platform-win-main-runtime-sys-unloaddll-function-sys-unloaddll-state-dll-src-mq3-platform-win-main-runtime-ml-1137417385"></a>
 ### Sys_UnloadDll
@@ -890,7 +890,7 @@ function Sys_UnloadDll(state, dll)
 | `dll` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L124)
 
 <a id="function-function-mq3-platform-win-main-runtime-trydll-function-trydll-path-src-mq3-platform-win-main-runtime-ml-794174771"></a>
 ### tryDll
@@ -904,7 +904,7 @@ function tryDll(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L133)
 
 <a id="function-function-mq3-platform-win-main-runtime-winmain-function-winmain-state-commandline-maxframes-src-mq3-platform-win-main-runtime-ml-1267629102"></a>
 ### WinMain
@@ -920,4 +920,4 @@ function WinMain(state, commandLine, maxFrames)
 | `maxFrames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L190)

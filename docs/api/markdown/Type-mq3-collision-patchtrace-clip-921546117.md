@@ -10,7 +10,7 @@ struct Clip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ enter
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L17)
 
 <a id="field-field-mq3-collision-patchtrace-clip-hit-hit-src-mq3-collision-patchtrace-ml-1306973129"></a>
 ### hit
@@ -32,7 +32,7 @@ hit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L19)
 
 <a id="field-field-mq3-collision-patchtrace-clip-leave-leave-src-mq3-collision-patchtrace-ml-312090201"></a>
 ### leave
@@ -42,4 +42,4 @@ leave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchtrace.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchtrace.ml#L18)

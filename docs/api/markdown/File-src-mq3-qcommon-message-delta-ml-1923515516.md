@@ -27,7 +27,7 @@ This is deliberately the original table rather than a derived bits-wide mask: MS
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L44)
 
 <a id="function-function-mq3-qcommon-message-delta-readdelta-function-readdelta-msg-oldv-bits-src-mq3-qcommon-message-delta-ml-1326931842"></a>
 ### readDelta
@@ -43,7 +43,7 @@ function readDelta(msg, oldV, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L27)
 
 <a id="function-function-mq3-qcommon-message-delta-readdeltafloat-function-readdeltafloat-msg-oldv-src-mq3-qcommon-message-delta-ml-256136974"></a>
 ### readDeltaFloat
@@ -58,7 +58,7 @@ function readDeltaFloat(msg, oldV)
 | `oldV` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L37)
 
 <a id="function-function-mq3-qcommon-message-delta-readdeltakey-function-readdeltakey-msg-key-oldv-bits-src-mq3-qcommon-message-delta-ml-1207172771"></a>
 ### readDeltaKey
@@ -75,7 +75,7 @@ function readDeltaKey(msg, key, oldV, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L54)
 
 <a id="function-function-mq3-qcommon-message-delta-readdeltakeyfloat-function-readdeltakeyfloat-msg-key-oldv-src-mq3-qcommon-message-delta-ml-1152147885"></a>
 ### readDeltaKeyFloat
@@ -91,7 +91,7 @@ function readDeltaKeyFloat(msg, key, oldV)
 | `oldV` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L64)
 
 <a id="function-function-mq3-qcommon-message-delta-readdeltausercmd-function-readdeltausercmd-msg-previous-src-mq3-qcommon-message-delta-ml-431531710"></a>
 ### readDeltaUsercmd
@@ -106,7 +106,7 @@ function readDeltaUsercmd(msg, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L97)
 
 <a id="function-function-mq3-qcommon-message-delta-readdeltausercmdkey-function-readdeltausercmdkey-msg-key-previous-src-mq3-qcommon-message-delta-ml-1287439015"></a>
 ### readDeltaUsercmdKey
@@ -122,7 +122,7 @@ function readDeltaUsercmdKey(msg, key, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L129)
 
 <a id="function-function-mq3-qcommon-message-delta-readtime-function-readtime-msg-previous-src-mq3-qcommon-message-delta-ml-644700842"></a>
 ### readTime
@@ -137,7 +137,7 @@ function readTime(msg, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L79)
 
 <a id="function-function-mq3-qcommon-message-delta-samepayload-function-samepayload-previous-current-src-mq3-qcommon-message-delta-ml-2009529520"></a>
 ### samePayload
@@ -152,7 +152,7 @@ function samePayload(previous, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L110)
 
 <a id="function-function-mq3-qcommon-message-delta-usercommand-function-usercommand-servertime-angle0-angle1-angle2-buttons-weapon-forwardmove-rightmove-upmove-src-mq3-qcommon-message-delta-ml-498368130"></a>
 ### userCommand
@@ -174,7 +174,7 @@ function userCommand(serverTime, angle0, angle1, angle2, buttons, weapon, forwar
 | `upmove` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L18)
 
 - [mq3.qcommon.message_delta.UserCommand](Type-mq3-qcommon-message-delta-usercommand-1975432902.md) — struct
 <a id="function-function-mq3-qcommon-message-delta-writedelta-function-writedelta-msg-oldv-newv-bits-src-mq3-qcommon-message-delta-ml-472027750"></a>
@@ -192,7 +192,7 @@ function writeDelta(msg, oldV, newV, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L22)
 
 <a id="function-function-mq3-qcommon-message-delta-writedeltafloat-function-writedeltafloat-msg-oldv-newv-src-mq3-qcommon-message-delta-ml-920023740"></a>
 ### writeDeltaFloat
@@ -208,7 +208,7 @@ function writeDeltaFloat(msg, oldV, newV)
 | `newV` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L32)
 
 <a id="function-function-mq3-qcommon-message-delta-writedeltakey-function-writedeltakey-msg-key-oldv-newv-bits-src-mq3-qcommon-message-delta-ml-1498465007"></a>
 ### writeDeltaKey
@@ -226,7 +226,7 @@ function writeDeltaKey(msg, key, oldV, newV, bits)
 | `bits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L49)
 
 <a id="function-function-mq3-qcommon-message-delta-writedeltakeyfloat-function-writedeltakeyfloat-msg-key-oldv-newv-src-mq3-qcommon-message-delta-ml-1211293559"></a>
 ### writeDeltaKeyFloat
@@ -243,7 +243,7 @@ function writeDeltaKeyFloat(msg, key, oldV, newV)
 | `newV` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L59)
 
 <a id="function-function-mq3-qcommon-message-delta-writedeltausercmd-function-writedeltausercmd-msg-previous-current-src-mq3-qcommon-message-delta-ml-479836271"></a>
 ### writeDeltaUsercmd
@@ -259,7 +259,7 @@ function writeDeltaUsercmd(msg, previous, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L84)
 
 <a id="function-function-mq3-qcommon-message-delta-writedeltausercmdkey-function-writedeltausercmdkey-msg-key-previous-current-src-mq3-qcommon-message-delta-ml-1541067500"></a>
 ### writeDeltaUsercmdKey
@@ -276,7 +276,7 @@ function writeDeltaUsercmdKey(msg, key, previous, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L114)
 
 <a id="function-function-mq3-qcommon-message-delta-writetime-function-writetime-msg-previous-current-src-mq3-qcommon-message-delta-ml-1991314083"></a>
 ### writeTime
@@ -292,4 +292,4 @@ function writeTime(msg, previous, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L69)

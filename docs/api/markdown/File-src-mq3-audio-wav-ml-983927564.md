@@ -22,7 +22,7 @@ function copy(data, offset, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L17)
 
 <a id="function-function-mq3-audio-wav-decode-function-decode-data-src-mq3-audio-wav-ml-1569492630"></a>
 ### decode
@@ -36,7 +36,7 @@ function decode(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L23)
 
 <a id="function-function-mq3-audio-wav-fail-function-fail-message-src-mq3-audio-wav-ml-2133538817"></a>
 ### fail
@@ -50,7 +50,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L11)
 
 <a id="constant-constant-mq3-audio-wav-max-pcm-bytes-const-max-pcm-bytes-67108864-src-mq3-audio-wav-ml-1855906827"></a>
 ### MAX_PCM_BYTES
@@ -60,7 +60,7 @@ const MAX_PCM_BYTES = 67108864
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L5)
 
 <a id="constant-constant-mq3-audio-wav-max-sample-rate-const-max-sample-rate-192000-src-mq3-audio-wav-ml-1176000663"></a>
 ### MAX_SAMPLE_RATE
@@ -70,7 +70,7 @@ const MAX_SAMPLE_RATE = 192000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L7)
 
 <a id="constant-constant-mq3-audio-wav-min-sample-rate-const-min-sample-rate-4000-src-mq3-audio-wav-ml-1816024111"></a>
 ### MIN_SAMPLE_RATE
@@ -80,7 +80,7 @@ const MIN_SAMPLE_RATE = 4000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L6)
 
 - [mq3.audio.wav.Sound](Type-mq3-audio-wav-sound-1863900385.md) — struct
 <a id="function-function-mq3-audio-wav-tag-function-tag-data-offset-a-b-c-d-src-mq3-audio-wav-ml-1312059589"></a>
@@ -100,7 +100,7 @@ function tag(data, offset, a, b, c, d)
 | `d` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L14)
 
 <a id="function-function-mq3-audio-wav-u16-function-u16-data-offset-src-mq3-audio-wav-ml-1423243765"></a>
 ### u16
@@ -115,7 +115,7 @@ function u16(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L12)
 
 <a id="function-function-mq3-audio-wav-u32-function-u32-data-offset-src-mq3-audio-wav-ml-1086806745"></a>
 ### u32
@@ -130,4 +130,4 @@ function u32(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/wav.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/wav.ml#L13)

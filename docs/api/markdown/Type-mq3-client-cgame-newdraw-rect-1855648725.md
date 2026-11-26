@@ -10,7 +10,7 @@ struct Rect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
 
 ## Members
 
@@ -22,7 +22,7 @@ h
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-w-w-src-mq3-client-cgame-newdraw-ml-479593743"></a>
 ### w
@@ -32,7 +32,7 @@ w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-x-x-src-mq3-client-cgame-newdraw-ml-762044203"></a>
 ### x
@@ -42,7 +42,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)
 
 <a id="field-field-mq3-client-cgame-newdraw-rect-y-y-src-mq3-client-cgame-newdraw-ml-1000164495"></a>
 ### y
@@ -52,4 +52,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L128)

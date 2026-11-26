@@ -28,7 +28,7 @@ function advance(state, deltaMilliseconds)
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L80)
 
 <a id="function-function-mq3-client-playable-weapon-configure-function-configure-state-classname-src-mq3-client-playable-weapon-ml-898212118"></a>
 ### configure
@@ -45,7 +45,7 @@ Stock Baseq3 weapon timing and direct-hit damage. The playable app turns Rocket,
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L58)
 
 <a id="function-function-mq3-client-playable-weapon-create-function-create-world-src-mq3-client-playable-weapon-ml-17321782"></a>
 ### create
@@ -59,7 +59,7 @@ function create(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L74)
 
 <a id="function-function-mq3-client-playable-weapon-createwithtrace-function-createwithtrace-tracefn-context-ammo-cooldownmilliseconds-range-automatic-src-mq3-client-playable-weapon-ml-1272842135"></a>
 ### createWithTrace
@@ -78,7 +78,7 @@ function createWithTrace(traceFn, context, ammo, cooldownMilliseconds, range, au
 | `automatic` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L48)
 
 <a id="constant-constant-mq3-client-playable-weapon-default-ammo-const-default-ammo-10-src-mq3-client-playable-weapon-ml-1842450602"></a>
 ### DEFAULT_AMMO
@@ -88,7 +88,7 @@ const DEFAULT_AMMO = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-weapon-default-cooldown-milliseconds-const-default-cooldown-milliseconds-900-src-mq3-client-playable-weapon-ml-474553550"></a>
 ### DEFAULT_COOLDOWN_MILLISECONDS
@@ -98,17 +98,17 @@ const DEFAULT_COOLDOWN_MILLISECONDS = 900
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L12)
 
-<a id="constant-constant-mq3-client-playable-weapon-default-range-const-default-range-8192-src-mq3-client-playable-weapon-ml-1642528651"></a>
+<a id="constant-constant-mq3-client-playable-weapon-default-range-const-default-range-8192-src-mq3-client-playable-weapon-ml-1228929809"></a>
 ### DEFAULT_RANGE
 
 ```ml
-const DEFAULT_RANGE = 8192.
+const DEFAULT_RANGE = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L13)
 
 <a id="function-function-mq3-client-playable-weapon-muzzlepoint-function-muzzlepoint-camera-src-mq3-client-playable-weapon-ml-1839715509"></a>
 ### muzzlePoint
@@ -122,7 +122,7 @@ function muzzlePoint(camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L119)
 
 <a id="function-function-mq3-client-playable-weapon-reload-function-reload-state-amount-src-mq3-client-playable-weapon-ml-93681801"></a>
 ### reload
@@ -137,7 +137,7 @@ function reload(state, amount)
 | `amount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L135)
 
 <a id="function-function-mq3-client-playable-weapon-shootray-function-shootray-state-startpoint-direction-src-mq3-client-playable-weapon-ml-550586722"></a>
 ### shootRay
@@ -153,7 +153,7 @@ function shootRay(state, startPoint, direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L88)
 
 - [mq3.client.playable_weapon.Shot](Type-mq3-client-playable-weapon-shot-1833206318.md) — struct
 <a id="constant-constant-mq3-client-playable-weapon-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-weapon-ml-1593232607"></a>
@@ -164,7 +164,7 @@ const SHOT_MASK = 100663297
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L10)
 
 <a id="function-function-mq3-client-playable-weapon-step-function-step-state-camera-triggerdown-deltamilliseconds-src-mq3-client-playable-weapon-ml-654505108"></a>
 ### step
@@ -181,7 +181,7 @@ function step(state, camera, triggerDown, deltaMilliseconds)
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L129)
 
 <a id="function-function-mq3-client-playable-weapon-stepray-function-stepray-state-startpoint-direction-triggerdown-deltamilliseconds-src-mq3-client-playable-weapon-ml-286465246"></a>
 ### stepRay
@@ -201,7 +201,7 @@ Returns a Shot only when this frame fires. A semi-automatic weapon requires a ne
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L104)
 
 <a id="function-function-mq3-client-playable-weapon-validvector-function-validvector-value-src-mq3-client-playable-weapon-ml-1135230035"></a>
 ### validVector
@@ -215,7 +215,7 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L44)
 
 - [mq3.client.playable_weapon.Weapon](Type-mq3-client-playable-weapon-weapon-233817222.md) — struct
 <a id="function-function-mq3-client-playable-weapon-worldpointtrace-function-worldpointtrace-state-startpoint-endpoint-src-mq3-client-playable-weapon-ml-444912590"></a>
@@ -232,4 +232,4 @@ function worldPointTrace(state, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon.ml#L40)

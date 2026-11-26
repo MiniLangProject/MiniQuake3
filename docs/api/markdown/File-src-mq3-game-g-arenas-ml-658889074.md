@@ -25,7 +25,7 @@ function CelebrateStart(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L10)
 
 <a id="function-function-mq3-game-g-arenas-celebratestop-function-celebratestop-level-player-src-mq3-game-g-arenas-ml-52164537"></a>
 ### CelebrateStop
@@ -40,7 +40,7 @@ function CelebrateStop(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L9)
 
 <a id="function-function-mq3-game-g-arenas-podiumplacementthink-function-podiumplacementthink-level-podium-src-mq3-game-g-arenas-ml-1053627870"></a>
 ### PodiumPlacementThink
@@ -55,7 +55,7 @@ function PodiumPlacementThink(level, podium)
 | `podium` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L11)
 
 <a id="function-function-mq3-game-g-arenas-spawnmodelonvictorypad-function-spawnmodelonvictorypad-level-pad-offset-ent-place-src-mq3-game-g-arenas-ml-700296716"></a>
 ### SpawnModelOnVictoryPad
@@ -73,7 +73,7 @@ function SpawnModelOnVictoryPad(level, pad, offset, ent, place)
 | `place` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L8)
 
 <a id="function-function-mq3-game-g-arenas-spawnmodelsonvictorypads-function-spawnmodelsonvictorypads-level-src-mq3-game-g-arenas-ml-2000729802"></a>
 ### SpawnModelsOnVictoryPads
@@ -87,7 +87,7 @@ function SpawnModelsOnVictoryPads(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L13)
 
 <a id="function-function-mq3-game-g-arenas-spawnpodium-function-spawnpodium-level-src-mq3-game-g-arenas-ml-1315367480"></a>
 ### SpawnPodium
@@ -101,7 +101,7 @@ function SpawnPodium(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L12)
 
 <a id="function-function-mq3-game-g-arenas-svcmd-abortpodium-f-function-svcmd-abortpodium-f-level-argv-src-mq3-game-g-arenas-ml-1582218406"></a>
 ### Svcmd_AbortPodium_f
@@ -116,7 +116,7 @@ function Svcmd_AbortPodium_f(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L14)
 
 <a id="function-function-mq3-game-g-arenas-updatetournamentinfo-function-updatetournamentinfo-level-src-mq3-game-g-arenas-ml-676261822"></a>
 ### UpdateTournamentInfo
@@ -130,4 +130,4 @@ function UpdateTournamentInfo(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_arenas.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_arenas.ml#L7)

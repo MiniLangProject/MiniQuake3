@@ -10,7 +10,7 @@ struct Speaker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ globalSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-noise-noise-src-mq3-client-playable-ambient-sounds-ml-460671910"></a>
 ### noise
@@ -32,7 +32,7 @@ noise
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-origin-origin-src-mq3-client-playable-ambient-sounds-ml-689417110"></a>
 ### origin
@@ -42,7 +42,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-ambient-sounds-speaker-sound-sound-src-mq3-client-playable-ambient-sounds-ml-643532554"></a>
 ### sound
@@ -52,4 +52,4 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L12)

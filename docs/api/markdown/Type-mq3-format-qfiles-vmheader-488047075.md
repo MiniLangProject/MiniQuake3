@@ -12,7 +12,7 @@ struct VmHeader
 Managed mirrors keep the original member order. Variable-sized tails are represented by ordinary arrays and all on-disk decoding remains explicit.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 ## Members
 
@@ -24,7 +24,7 @@ bssLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-codelength-codelength-src-mq3-format-qfiles-ml-1659256333"></a>
 ### codeLength
@@ -34,7 +34,7 @@ codeLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-codeoffset-codeoffset-src-mq3-format-qfiles-ml-1370684271"></a>
 ### codeOffset
@@ -44,7 +44,7 @@ codeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-datalength-datalength-src-mq3-format-qfiles-ml-1172310443"></a>
 ### dataLength
@@ -54,7 +54,7 @@ dataLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-dataoffset-dataoffset-src-mq3-format-qfiles-ml-2012425397"></a>
 ### dataOffset
@@ -64,7 +64,7 @@ dataOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-instructioncount-instructioncount-src-mq3-format-qfiles-ml-741067405"></a>
 ### instructionCount
@@ -74,7 +74,7 @@ instructionCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-litlength-litlength-src-mq3-format-qfiles-ml-1725249903"></a>
 ### litLength
@@ -84,7 +84,7 @@ litLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)
 
 <a id="field-field-mq3-format-qfiles-vmheader-vmmagic-vmmagic-src-mq3-format-qfiles-ml-1019689671"></a>
 ### vmMagic
@@ -94,4 +94,4 @@ vmMagic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L85)

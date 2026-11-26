@@ -10,7 +10,7 @@ struct Reader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ pending
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L38)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reader-registry-registry-src-mq3-botlib-ai-chat-output-ml-575987516"></a>
 ### registry
@@ -32,7 +32,7 @@ registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L38)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reader-source-source-src-mq3-botlib-ai-chat-output-ml-978422764"></a>
 ### source
@@ -42,4 +42,4 @@ source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L38)

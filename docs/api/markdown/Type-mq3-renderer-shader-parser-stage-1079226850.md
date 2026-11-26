@@ -10,7 +10,7 @@ struct Stage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-alphafunc-alphafunc-src-mq3-renderer-shader-parser-ml-783450979"></a>
 ### alphaFunc
@@ -32,7 +32,7 @@ alphaFunc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-alphagen-alphagen-src-mq3-renderer-shader-parser-ml-4506995"></a>
 ### alphaGen
@@ -42,7 +42,7 @@ alphaGen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-alphawave-alphawave-src-mq3-renderer-shader-parser-ml-990449947"></a>
 ### alphaWave
@@ -52,7 +52,7 @@ alphaWave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-animationspeed-animationspeed-src-mq3-renderer-shader-parser-ml-611018825"></a>
 ### animationSpeed
@@ -62,7 +62,7 @@ animationSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-blenddst-blenddst-src-mq3-renderer-shader-parser-ml-913804339"></a>
 ### blendDst
@@ -72,7 +72,7 @@ blendDst
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-blendsrc-blendsrc-src-mq3-renderer-shader-parser-ml-217552089"></a>
 ### blendSrc
@@ -82,7 +82,7 @@ blendSrc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-constantcolor-constantcolor-src-mq3-renderer-shader-parser-ml-1165286631"></a>
 ### constantColor
@@ -92,7 +92,7 @@ constantColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-depthexplicit-depthexplicit-src-mq3-renderer-shader-parser-ml-639375839"></a>
 ### depthExplicit
@@ -102,7 +102,7 @@ depthExplicit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-depthfunc-depthfunc-src-mq3-renderer-shader-parser-ml-1154000519"></a>
 ### depthFunc
@@ -112,7 +112,7 @@ depthFunc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-depthwrite-depthwrite-src-mq3-renderer-shader-parser-ml-817206175"></a>
 ### depthWrite
@@ -122,7 +122,7 @@ depthWrite
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-detail-detail-src-mq3-renderer-shader-parser-ml-1797445389"></a>
 ### detail
@@ -132,7 +132,7 @@ detail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-images-images-src-mq3-renderer-shader-parser-ml-1837192099"></a>
 ### images
@@ -142,7 +142,7 @@ images
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-islightmap-islightmap-src-mq3-renderer-shader-parser-ml-1493055331"></a>
 ### isLightmap
@@ -152,7 +152,7 @@ isLightmap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-mapmode-mapmode-src-mq3-renderer-shader-parser-ml-1771815935"></a>
 ### mapMode
@@ -162,7 +162,7 @@ mapMode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-portalrange-portalrange-src-mq3-renderer-shader-parser-ml-1418867623"></a>
 ### portalRange
@@ -172,7 +172,7 @@ portalRange
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-rgbgen-rgbgen-src-mq3-renderer-shader-parser-ml-321361777"></a>
 ### rgbGen
@@ -182,7 +182,7 @@ rgbGen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-rgbwave-rgbwave-src-mq3-renderer-shader-parser-ml-481603651"></a>
 ### rgbWave
@@ -192,7 +192,7 @@ rgbWave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-statebits-statebits-src-mq3-renderer-shader-parser-ml-933583475"></a>
 ### stateBits
@@ -202,7 +202,7 @@ stateBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-tcgen-tcgen-src-mq3-renderer-shader-parser-ml-2095809531"></a>
 ### tcGen
@@ -212,7 +212,7 @@ tcGen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-tcgenvectors-tcgenvectors-src-mq3-renderer-shader-parser-ml-1128352521"></a>
 ### tcGenVectors
@@ -222,7 +222,7 @@ tcGenVectors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)
 
 <a id="field-field-mq3-renderer-shader-parser-stage-texmods-texmods-src-mq3-renderer-shader-parser-ml-1511335227"></a>
 ### texMods
@@ -232,4 +232,4 @@ texMods
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L40)

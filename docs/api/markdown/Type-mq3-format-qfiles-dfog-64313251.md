@@ -10,7 +10,7 @@ struct Dfog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 ## Members
 
@@ -22,7 +22,7 @@ brushNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-dfog-shader-shader-src-mq3-format-qfiles-ml-94000829"></a>
 ### shader
@@ -32,7 +32,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)
 
 <a id="field-field-mq3-format-qfiles-dfog-visibleside-visibleside-src-mq3-format-qfiles-ml-791810819"></a>
 ### visibleSide
@@ -42,4 +42,4 @@ visibleSide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L113)

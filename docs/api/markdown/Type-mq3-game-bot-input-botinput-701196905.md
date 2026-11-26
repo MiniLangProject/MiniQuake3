@@ -10,7 +10,7 @@ struct BotInput
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L43)
 
 ## Members
 
@@ -22,7 +22,7 @@ actionflags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L48)
 
 <a id="field-field-mq3-game-bot-input-botinput-dir-dir-src-mq3-game-bot-input-ml-922457466"></a>
 ### dir
@@ -32,7 +32,7 @@ dir
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L45)
 
 <a id="field-field-mq3-game-bot-input-botinput-speed-speed-src-mq3-game-bot-input-ml-1433841394"></a>
 ### speed
@@ -42,7 +42,7 @@ speed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L46)
 
 <a id="field-field-mq3-game-bot-input-botinput-thinktime-thinktime-src-mq3-game-bot-input-ml-1836216090"></a>
 ### thinktime
@@ -52,7 +52,7 @@ thinktime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L44)
 
 <a id="field-field-mq3-game-bot-input-botinput-viewangles-viewangles-src-mq3-game-bot-input-ml-1813409528"></a>
 ### viewangles
@@ -62,7 +62,7 @@ viewangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L47)
 
 <a id="field-field-mq3-game-bot-input-botinput-weapon-weapon-src-mq3-game-bot-input-ml-705037910"></a>
 ### weapon
@@ -72,4 +72,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_input.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_input.ml#L49)

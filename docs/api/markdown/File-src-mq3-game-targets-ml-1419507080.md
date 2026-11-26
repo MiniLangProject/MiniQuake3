@@ -35,7 +35,7 @@ function addRemap(level, oldShader, newShader, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L13)
 
 <a id="function-function-mq3-game-targets-alwaysthink-function-alwaysthink-level-ent-src-mq3-game-targets-ml-1663571773"></a>
 ### alwaysThink
@@ -50,7 +50,7 @@ function alwaysThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L117)
 
 <a id="function-function-mq3-game-targets-delaythink-function-delaythink-level-ent-src-mq3-game-targets-ml-700729611"></a>
 ### delayThink
@@ -65,7 +65,7 @@ function delayThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L64)
 
 <a id="function-function-mq3-game-targets-delaytime-function-delaytime-level-ent-src-mq3-game-targets-ml-917739771"></a>
 ### delayTime
@@ -80,7 +80,7 @@ function delayTime(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L58)
 
 <a id="function-function-mq3-game-targets-delayuse-function-delayuse-level-ent-other-activator-src-mq3-game-targets-ml-866201832"></a>
 ### delayUse
@@ -97,7 +97,7 @@ function delayUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L67)
 
 <a id="function-function-mq3-game-targets-locationlinkup-function-locationlinkup-level-ent-src-mq3-game-targets-ml-884236067"></a>
 ### locationLinkup
@@ -112,7 +112,7 @@ function locationLinkup(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L153)
 
 <a id="function-function-mq3-game-targets-multitouch-function-multitouch-level-ent-other-trace-src-mq3-game-targets-ml-317557758"></a>
 ### multiTouch
@@ -129,7 +129,7 @@ function multiTouch(level, ent, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L113)
 
 <a id="function-function-mq3-game-targets-multitrigger-function-multitrigger-level-ent-activator-src-mq3-game-targets-ml-813462460"></a>
 ### multiTrigger
@@ -145,7 +145,7 @@ function multiTrigger(level, ent, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L98)
 
 <a id="function-function-mq3-game-targets-multiuse-function-multiuse-level-ent-other-activator-src-mq3-game-targets-ml-1683051264"></a>
 ### multiUse
@@ -162,7 +162,7 @@ function multiUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L110)
 
 <a id="function-function-mq3-game-targets-multiwait-function-multiwait-level-ent-src-mq3-game-targets-ml-133815775"></a>
 ### multiWait
@@ -177,7 +177,7 @@ function multiWait(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L94)
 
 <a id="function-function-mq3-game-targets-pushuse-function-pushuse-level-ent-other-activator-src-mq3-game-targets-ml-1513291566"></a>
 ### pushUse
@@ -194,7 +194,7 @@ function pushUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L133)
 
 <a id="function-function-mq3-game-targets-relayuse-function-relayuse-level-ent-other-activator-src-mq3-game-targets-ml-1531265884"></a>
 ### relayUse
@@ -211,7 +211,7 @@ function relayUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L78)
 
 <a id="function-function-mq3-game-targets-shaderstate-function-shaderstate-level-src-mq3-game-targets-ml-794820752"></a>
 ### shaderState
@@ -225,7 +225,7 @@ function shaderState(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L27)
 
 <a id="function-function-mq3-game-targets-speakeruse-function-speakeruse-level-ent-other-activator-src-mq3-game-targets-ml-228338356"></a>
 ### speakerUse
@@ -242,7 +242,7 @@ function speakerUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L121)
 
 <a id="function-function-mq3-game-targets-teamallowed-function-teamallowed-ent-activator-src-mq3-game-targets-ml-1996986236"></a>
 ### teamAllowed
@@ -257,7 +257,7 @@ function teamAllowed(ent, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L71)
 
 <a id="function-function-mq3-game-targets-teleporteruse-function-teleporteruse-level-ent-other-activator-src-mq3-game-targets-ml-616924486"></a>
 ### teleporterUse
@@ -274,7 +274,7 @@ function teleporterUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L87)
 
 <a id="function-function-mq3-game-targets-timerthink-function-timerthink-level-ent-src-mq3-game-targets-ml-619784935"></a>
 ### timerThink
@@ -289,7 +289,7 @@ function timerThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L142)
 
 <a id="function-function-mq3-game-targets-timeruse-function-timeruse-level-ent-other-activator-src-mq3-game-targets-ml-632715412"></a>
 ### timerUse
@@ -306,7 +306,7 @@ function timerUse(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L148)
 
 <a id="function-function-mq3-game-targets-usetargets-function-usetargets-level-ent-activator-src-mq3-game-targets-ml-786178704"></a>
 ### useTargets
@@ -322,4 +322,4 @@ function useTargets(level, ent, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/targets.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/targets.ml#L40)

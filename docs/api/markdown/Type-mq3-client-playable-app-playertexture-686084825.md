@@ -10,7 +10,7 @@ struct PlayerTexture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)
 
 <a id="field-field-mq3-client-playable-app-playertexture-imagename-imagename-src-mq3-client-playable-app-ml-1143341125"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)
 
 <a id="field-field-mq3-client-playable-app-playertexture-part-part-src-mq3-client-playable-app-ml-545748875"></a>
 ### part
@@ -42,7 +42,7 @@ part
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)
 
 <a id="field-field-mq3-client-playable-app-playertexture-slot-slot-src-mq3-client-playable-app-ml-1679070045"></a>
 ### slot
@@ -52,7 +52,7 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)
 
 <a id="field-field-mq3-client-playable-app-playertexture-surface-surface-src-mq3-client-playable-app-ml-1684489169"></a>
 ### surface
@@ -62,4 +62,4 @@ surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_app.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_app.ml#L93)

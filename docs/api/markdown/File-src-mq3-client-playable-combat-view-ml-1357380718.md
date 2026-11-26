@@ -26,7 +26,7 @@ function clampNonnegative(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L24)
 
 - [mq3.client.playable_combat_view.CombatLayout](Type-mq3-client-playable-combat-view-combatlayout-1835032184.md) — struct
 - [mq3.client.playable_combat_view.CombatPulse](Type-mq3-client-playable-combat-view-combatpulse-789671119.md) — struct
@@ -39,7 +39,7 @@ const DAMAGE_MARK_MS = 350
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L12)
 
 <a id="function-function-mq3-client-playable-combat-view-draw-function-draw-view-width-height-now-src-mq3-client-playable-combat-view-ml-482320340"></a>
 ### draw
@@ -56,7 +56,7 @@ function draw(view, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L128)
 
 <a id="function-function-mq3-client-playable-combat-view-drawdamagemark-function-drawdamagemark-view-placement-intensity-src-mq3-client-playable-combat-view-ml-1327745281"></a>
 ### drawDamageMark
@@ -72,7 +72,7 @@ function drawDamageMark(view, placement, intensity)
 | `intensity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L116)
 
 <a id="function-function-mq3-client-playable-combat-view-drawfeedback-function-drawfeedback-view-width-height-now-src-mq3-client-playable-combat-view-ml-1329043324"></a>
 ### drawFeedback
@@ -91,7 +91,7 @@ HUD/feedback pass for callers which draw the actual first-person MD3 weapon.
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L144)
 
 <a id="function-function-mq3-client-playable-combat-view-drawhitmark-function-drawhitmark-placement-intensity-src-mq3-client-playable-combat-view-ml-43804948"></a>
 ### drawHitMark
@@ -106,7 +106,7 @@ function drawHitMark(placement, intensity)
 | `intensity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L108)
 
 <a id="function-function-mq3-client-playable-combat-view-drawtransientfeedback-function-drawtransientfeedback-view-width-height-now-src-mq3-client-playable-combat-view-ml-839980806"></a>
 ### drawTransientFeedback
@@ -125,7 +125,7 @@ Crosshair hit and damage feedback layered over the retail Baseq3 HUD.
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L159)
 
 <a id="function-function-mq3-client-playable-combat-view-drawweapon-function-drawweapon-placement-recoil-muzzle-src-mq3-client-playable-combat-view-ml-1152438232"></a>
 ### drawWeapon
@@ -141,7 +141,7 @@ function drawWeapon(placement, recoil, muzzle)
 | `muzzle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L81)
 
 <a id="function-function-mq3-client-playable-combat-view-fire-function-fire-view-now-src-mq3-client-playable-combat-view-ml-49933155"></a>
 ### fire
@@ -156,7 +156,7 @@ function fire(view, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L31)
 
 <a id="constant-constant-mq3-client-playable-combat-view-fire-flash-ms-const-fire-flash-ms-90-src-mq3-client-playable-combat-view-ml-498942254"></a>
 ### FIRE_FLASH_MS
@@ -166,7 +166,7 @@ const FIRE_FLASH_MS = 90
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L9)
 
 <a id="constant-constant-mq3-client-playable-combat-view-hit-mark-ms-const-hit-mark-ms-160-src-mq3-client-playable-combat-view-ml-30200342"></a>
 ### HIT_MARK_MS
@@ -176,7 +176,7 @@ const HIT_MARK_MS = 160
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-combat-view-kill-mark-ms-const-kill-mark-ms-900-src-mq3-client-playable-combat-view-ml-22698664"></a>
 ### KILL_MARK_MS
@@ -186,7 +186,7 @@ const KILL_MARK_MS = 900
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L13)
 
 <a id="function-function-mq3-client-playable-combat-view-layout-function-layout-width-height-src-mq3-client-playable-combat-view-ml-1258685395"></a>
 ### layout
@@ -201,7 +201,7 @@ function layout(width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L69)
 
 <a id="function-function-mq3-client-playable-combat-view-line-function-line-x0-y0-x1-y1-red-green-blue-src-mq3-client-playable-combat-view-ml-1242087762"></a>
 ### line
@@ -221,7 +221,7 @@ function line(x0, y0, x1, y1, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L76)
 
 <a id="function-function-mq3-client-playable-combat-view-pulse-function-pulse-view-now-src-mq3-client-playable-combat-view-ml-1370894261"></a>
 ### pulse
@@ -236,7 +236,7 @@ function pulse(view, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L64)
 
 <a id="constant-constant-mq3-client-playable-combat-view-recoil-ms-const-recoil-ms-180-src-mq3-client-playable-combat-view-ml-373605748"></a>
 ### RECOIL_MS
@@ -246,7 +246,7 @@ const RECOIL_MS = 180
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L10)
 
 <a id="function-function-mq3-client-playable-combat-view-registerdeath-function-registerdeath-view-src-mq3-client-playable-combat-view-ml-370603003"></a>
 ### registerDeath
@@ -260,7 +260,7 @@ function registerDeath(view)
 | `view` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L53)
 
 <a id="function-function-mq3-client-playable-combat-view-registerhit-function-registerhit-view-now-src-mq3-client-playable-combat-view-ml-2056477135"></a>
 ### registerHit
@@ -275,7 +275,7 @@ function registerHit(view, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L36)
 
 <a id="function-function-mq3-client-playable-combat-view-registerkill-function-registerkill-view-now-score-src-mq3-client-playable-combat-view-ml-350839167"></a>
 ### registerKill
@@ -291,7 +291,7 @@ function registerKill(view, now, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L48)
 
 <a id="function-function-mq3-client-playable-combat-view-remaining-function-remaining-now-start-duration-src-mq3-client-playable-combat-view-ml-1331388720"></a>
 ### remaining
@@ -307,7 +307,7 @@ function remaining(now, start, duration)
 | `duration` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L58)
 
 <a id="function-function-mq3-client-playable-combat-view-setscore-function-setscore-view-value-src-mq3-client-playable-combat-view-ml-992597322"></a>
 ### setScore
@@ -322,7 +322,7 @@ function setScore(view, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L26)
 
 <a id="function-function-mq3-client-playable-combat-view-state-function-state-weaponname-src-mq3-client-playable-combat-view-ml-712871985"></a>
 ### state
@@ -336,7 +336,7 @@ function state(weaponName)
 | `weaponName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L19)
 
 <a id="function-function-mq3-client-playable-combat-view-takedamage-function-takedamage-view-now-amount-side-src-mq3-client-playable-combat-view-ml-156668940"></a>
 ### takeDamage
@@ -353,4 +353,4 @@ function takeDamage(view, now, amount, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L41)

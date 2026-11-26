@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)
 
 <a id="field-field-mq3-client-playable-items-state-lasttime-lasttime-src-mq3-client-playable-items-ml-1054606772"></a>
 ### lastTime
@@ -32,7 +32,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)
 
 <a id="field-field-mq3-client-playable-items-state-pickupradius-pickupradius-src-mq3-client-playable-items-ml-1522238518"></a>
 ### pickupRadius
@@ -42,7 +42,7 @@ pickupRadius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)
 
 <a id="field-field-mq3-client-playable-items-state-stats-stats-src-mq3-client-playable-items-ml-233022662"></a>
 ### stats
@@ -52,4 +52,4 @@ stats
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L18)

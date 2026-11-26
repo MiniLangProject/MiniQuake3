@@ -25,7 +25,7 @@ function PM_SlideMove(state, gravity)
 | `gravity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_slidemove_runtime.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_slidemove_runtime.ml#L7)
 
 <a id="function-function-mq3-game-bg-slidemove-runtime-pm-stepslidemove-function-pm-stepslidemove-state-gravity-src-mq3-game-bg-slidemove-runtime-ml-953260251"></a>
 ### PM_StepSlideMove
@@ -40,4 +40,4 @@ function PM_StepSlideMove(state, gravity)
 | `gravity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_slidemove_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_slidemove_runtime.ml#L8)

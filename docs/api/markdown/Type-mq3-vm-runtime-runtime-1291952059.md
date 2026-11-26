@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ current
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-debuglevel-debuglevel-src-mq3-vm-runtime-ml-1576840157"></a>
 ### debugLevel
@@ -32,7 +32,7 @@ debugLevel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-last-last-src-mq3-vm-runtime-ml-806810087"></a>
 ### last
@@ -42,7 +42,7 @@ last
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-services-services-src-mq3-vm-runtime-ml-1881776935"></a>
 ### services
@@ -52,7 +52,7 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-slots-slots-src-mq3-vm-runtime-ml-956168987"></a>
 ### slots
@@ -62,7 +62,7 @@ slots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-syscallcount-syscallcount-src-mq3-vm-runtime-ml-904393607"></a>
 ### syscallCount
@@ -72,7 +72,7 @@ syscallCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)
 
 <a id="field-field-mq3-vm-runtime-runtime-syscalllog-syscalllog-src-mq3-vm-runtime-ml-1320457133"></a>
 ### syscallLog
@@ -82,4 +82,4 @@ syscallLog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L19)

@@ -16,7 +16,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L8)
 
 <a id="function-function-mq3-client-cgame-usercmd-scalemouse-function-scalemouse-state-value-src-mq3-client-cgame-usercmd-ml-1195851312"></a>
 ### scaleMouse
@@ -31,7 +31,7 @@ function scaleMouse(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L19)
 
 <a id="function-function-mq3-client-cgame-usercmd-sensitivity-function-sensitivity-state-src-mq3-client-cgame-usercmd-ml-743805927"></a>
 ### sensitivity
@@ -45,7 +45,7 @@ function sensitivity(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L18)
 
 <a id="function-function-mq3-client-cgame-usercmd-set-function-set-state-weapon-sensitivity-src-mq3-client-cgame-usercmd-ml-103749958"></a>
 ### set
@@ -63,7 +63,7 @@ CL_SetUserCmdValue stores both values verbatim.  The weapon is truncated only wh
 | `sensitivity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L12)
 
 - [mq3.client.cgame_usercmd.State](Type-mq3-client-cgame-usercmd-state-1256089009.md) — struct
 <a id="function-function-mq3-client-cgame-usercmd-weapon-function-weapon-state-src-mq3-client-cgame-usercmd-ml-1461092213"></a>
@@ -78,4 +78,4 @@ function weapon(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L17)

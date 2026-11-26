@@ -24,7 +24,7 @@ const ART_BACK0 = "menu/art/back_0"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-teamorders-art-back1-const-art-back1-menu-art-back-1-src-mq3-client-ui-teamorders-ml-1690832194"></a>
 ### ART_BACK1
@@ -34,7 +34,7 @@ const ART_BACK1 = "menu/art/back_1"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-teamorders-art-frame-const-art-frame-menu-art-addbotframe-src-mq3-client-ui-teamorders-ml-1015141256"></a>
 ### ART_FRAME
@@ -44,7 +44,7 @@ const ART_FRAME = "menu/art/addbotframe"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L11)
 
 <a id="function-function-mq3-client-ui-teamorders-bitmap-function-bitmap-name-id-x-y-flags-w-h-src-mq3-client-ui-teamorders-ml-23330199"></a>
 ### bitmap
@@ -64,7 +64,7 @@ function bitmap(name, id, x, y, flags, w, h)
 | `h` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L86)
 
 <a id="function-function-mq3-client-ui-teamorders-clean-function-clean-text-src-mq3-client-ui-teamorders-ml-633328969"></a>
 ### clean
@@ -78,7 +78,7 @@ function clean(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L31)
 
 <a id="function-function-mq3-client-ui-teamorders-create-function-create-retailactive-src-mq3-client-ui-teamorders-ml-435214601"></a>
 ### create
@@ -92,7 +92,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L28)
 
 <a id="function-function-mq3-client-ui-teamorders-ctfmessages-function-ctfmessages-src-mq3-client-ui-teamorders-ml-1171768500"></a>
 ### ctfMessages
@@ -102,7 +102,7 @@ function ctfMessages()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L25)
 
 <a id="function-function-mq3-client-ui-teamorders-ctforders-function-ctforders-src-mq3-client-ui-teamorders-ml-763334010"></a>
 ### ctfOrders
@@ -112,7 +112,7 @@ function ctfOrders()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L24)
 
 <a id="function-function-mq3-client-ui-teamorders-emit-function-emit-state-boundary-kind-name-text-x-y-number-src-mq3-client-ui-teamorders-ml-52420655"></a>
 ### emit
@@ -133,7 +133,7 @@ function emit(state, boundary, kind, name, text, x, y, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-teamorders-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-teamorders-ml-852458041"></a>
 ### GT_CTF
@@ -143,7 +143,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-teamorders-gt-team-const-gt-team-3-src-mq3-client-ui-teamorders-ml-1173981140"></a>
 ### GT_TEAM
@@ -153,7 +153,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-bots-const-id-list-bots-10-src-mq3-client-ui-teamorders-ml-1424193668"></a>
 ### ID_LIST_BOTS
@@ -163,7 +163,7 @@ const ID_LIST_BOTS = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-ctf-orders-const-id-list-ctf-orders-11-src-mq3-client-ui-teamorders-ml-996547485"></a>
 ### ID_LIST_CTF_ORDERS
@@ -173,7 +173,7 @@ const ID_LIST_CTF_ORDERS = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-teamorders-id-list-team-orders-const-id-list-team-orders-12-src-mq3-client-ui-teamorders-ml-65023630"></a>
 ### ID_LIST_TEAM_ORDERS
@@ -183,7 +183,7 @@ const ID_LIST_TEAM_ORDERS = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L16)
 
 <a id="function-function-mq3-client-ui-teamorders-playerinfo-function-playerinfo-playerinfos-index-src-mq3-client-ui-teamorders-ml-1250004024"></a>
 ### playerInfo
@@ -198,7 +198,7 @@ function playerInfo(playerInfos, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L43)
 
 <a id="function-function-mq3-client-ui-teamorders-replacetarget-function-replacetarget-format-target-src-mq3-client-ui-teamorders-ml-1372215774"></a>
 ### replaceTarget
@@ -213,7 +213,7 @@ function replaceTarget(format, target)
 | `target` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L55)
 
 - [mq3.client.ui_teamorders.State](Type-mq3-client-ui-teamorders-state-2023851947.md) — struct
 <a id="constant-constant-mq3-client-ui-teamorders-team-spectator-const-team-spectator-3-src-mq3-client-ui-teamorders-ml-1944550244"></a>
@@ -224,7 +224,7 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L19)
 
 <a id="function-function-mq3-client-ui-teamorders-teammessages-function-teammessages-src-mq3-client-ui-teamorders-ml-1205892906"></a>
 ### teamMessages
@@ -234,7 +234,7 @@ function teamMessages()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L27)
 
 <a id="function-function-mq3-client-ui-teamorders-teamorders-function-teamorders-src-mq3-client-ui-teamorders-ml-1273397110"></a>
 ### teamOrders
@@ -244,7 +244,7 @@ function teamOrders()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L26)
 
 <a id="function-function-mq3-client-ui-teamorders-truncate-function-truncate-text-maxbytes-src-mq3-client-ui-teamorders-ml-990341900"></a>
 ### truncate
@@ -259,7 +259,7 @@ function truncate(text, maxBytes)
 | `maxBytes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L30)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-function-ui-teamordersmenu-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-2119942771"></a>
 ### UI_TeamOrdersMenu
@@ -278,7 +278,7 @@ UI_TeamOrdersMenu
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L102)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-backevent-function-ui-teamordersmenu-backevent-state-event-src-mq3-client-ui-teamorders-ml-1637606155"></a>
 ### UI_TeamOrdersMenu_BackEvent
@@ -295,7 +295,7 @@ UI_TeamOrdersMenu_BackEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L46)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-buildbotlist-function-ui-teamordersmenu-buildbotlist-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-1917485875"></a>
 ### UI_TeamOrdersMenu_BuildBotList
@@ -314,7 +314,7 @@ UI_TeamOrdersMenu_BuildBotList
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L81)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-cache-function-ui-teamordersmenu-cache-state-src-mq3-client-ui-teamorders-ml-2103296275"></a>
 ### UI_TeamOrdersMenu_Cache
@@ -330,7 +330,7 @@ UI_TeamOrdersMenu_Cache
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L89)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-f-function-ui-teamordersmenu-f-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-531872185"></a>
 ### UI_TeamOrdersMenu_f
@@ -349,7 +349,7 @@ UI_TeamOrdersMenu_f
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L105)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-init-function-ui-teamordersmenu-init-state-serverinfo-clientnum-playerinfos-src-mq3-client-ui-teamorders-ml-371978075"></a>
 ### UI_TeamOrdersMenu_Init
@@ -368,7 +368,7 @@ UI_TeamOrdersMenu_Init
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L92)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-key-function-ui-teamordersmenu-key-state-key-cursorx-cursory-src-mq3-client-ui-teamorders-ml-1620726999"></a>
 ### UI_TeamOrdersMenu_Key
@@ -387,7 +387,7 @@ UI_TeamOrdersMenu_Key
 | `cursory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L66)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-listdraw-function-ui-teamordersmenu-listdraw-state-src-mq3-client-ui-teamorders-ml-692649973"></a>
 ### UI_TeamOrdersMenu_ListDraw
@@ -403,7 +403,7 @@ UI_TeamOrdersMenu_ListDraw
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L76)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-listevent-function-ui-teamordersmenu-listevent-state-event-src-mq3-client-ui-teamorders-ml-1821193677"></a>
 ### UI_TeamOrdersMenu_ListEvent
@@ -420,7 +420,7 @@ UI_TeamOrdersMenu_ListEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L58)
 
 <a id="function-function-mq3-client-ui-teamorders-ui-teamordersmenu-setlist-function-ui-teamordersmenu-setlist-state-id-src-mq3-client-ui-teamorders-ml-330205372"></a>
 ### UI_TeamOrdersMenu_SetList
@@ -437,4 +437,4 @@ UI_TeamOrdersMenu_SetList
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_teamorders.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_teamorders.ml#L51)

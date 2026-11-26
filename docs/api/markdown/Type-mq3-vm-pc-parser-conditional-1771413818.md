@@ -10,7 +10,7 @@ struct Conditional
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-branchtaken-branchtaken-src-mq3-vm-pc-parser-ml-1155402369"></a>
 ### branchTaken
@@ -32,7 +32,7 @@ branchTaken
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-elseseen-elseseen-src-mq3-vm-pc-parser-ml-37273677"></a>
 ### elseSeen
@@ -42,7 +42,7 @@ elseSeen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)
 
 <a id="field-field-mq3-vm-pc-parser-conditional-parentactive-parentactive-src-mq3-vm-pc-parser-ml-1241779533"></a>
 ### parentActive
@@ -52,4 +52,4 @@ parentActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L26)

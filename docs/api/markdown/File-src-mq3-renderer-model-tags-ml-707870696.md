@@ -29,7 +29,7 @@ R_GetTag accepts transiently oversized animation frames and clamps them to the f
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L45)
 
 <a id="function-function-mq3-renderer-model-tags-identityaxis-function-identityaxis-src-mq3-renderer-model-tags-ml-475131076"></a>
 ### identityAxis
@@ -39,7 +39,7 @@ function identityAxis()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L26)
 
 <a id="function-function-mq3-renderer-model-tags-lerptag-function-lerptag-modelvalue-startframe-endframe-frac-name-src-mq3-renderer-model-tags-ml-469679668"></a>
 ### lerpTag
@@ -59,7 +59,7 @@ R_LerpTag uses frac for the end tag and (1-frac) for the start tag, then normali
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L70)
 
 <a id="function-function-mq3-renderer-model-tags-md3-function-md3-frames-mins-maxs-src-mq3-renderer-model-tags-ml-366502300"></a>
 ### md3
@@ -75,7 +75,7 @@ function md3(frames, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L18)
 
 - [mq3.renderer.model_tags.Md3](Type-mq3-renderer-model-tags-md3-182646194.md) — struct
 <a id="function-function-mq3-renderer-model-tags-missingorientation-function-missingorientation-src-mq3-renderer-model-tags-ml-591855432"></a>
@@ -86,7 +86,7 @@ function missingOrientation()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L64)
 
 <a id="function-function-mq3-renderer-model-tags-model-function-model-brushbounds-md3value-src-mq3-renderer-model-tags-ml-987131124"></a>
 ### model
@@ -101,7 +101,7 @@ function model(brushBounds, md3Value)
 | `md3Value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L22)
 
 - [mq3.renderer.model_tags.Model](Type-mq3-renderer-model-tags-model-1330836601.md) — struct
 <a id="function-function-mq3-renderer-model-tags-modelbounds-function-modelbounds-modelvalue-src-mq3-renderer-model-tags-ml-570943922"></a>
@@ -116,7 +116,7 @@ function modelBounds(modelValue)
 | `modelValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L90)
 
 <a id="function-function-mq3-renderer-model-tags-normalize-function-normalize-value-src-mq3-renderer-model-tags-ml-2006409615"></a>
 ### normalize
@@ -130,7 +130,7 @@ function normalize(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L58)
 
 - [mq3.renderer.model_tags.Orientation](Type-mq3-renderer-model-tags-orientation-257182758.md) — struct
 <a id="function-function-mq3-renderer-model-tags-tag-function-tag-name-origin-axis-src-mq3-renderer-model-tags-ml-1504637808"></a>
@@ -147,7 +147,7 @@ function tag(name, origin, axis)
 | `axis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L14)
 
 - [mq3.renderer.model_tags.Tag](Type-mq3-renderer-model-tags-tag-240708516.md) — struct
 <a id="function-function-mq3-renderer-model-tags-validatetag-function-validatetag-value-src-mq3-renderer-model-tags-ml-1678396033"></a>
@@ -162,7 +162,7 @@ function validateTag(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L38)
 
 <a id="function-function-mq3-renderer-model-tags-validaxis-function-validaxis-value-src-mq3-renderer-model-tags-ml-735402655"></a>
 ### validAxis
@@ -176,7 +176,7 @@ function validAxis(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L34)
 
 <a id="function-function-mq3-renderer-model-tags-validvector-function-validvector-value-src-mq3-renderer-model-tags-ml-486669695"></a>
 ### validVector
@@ -190,4 +190,4 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_tags.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_tags.ml#L30)

@@ -10,7 +10,7 @@ struct Listener
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L24)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-entity-entity-src-mq3-audio-qvm-playback-ml-1669137397"></a>
 ### entity
@@ -32,7 +32,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L24)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-inwater-inwater-src-mq3-audio-qvm-playback-ml-377522583"></a>
 ### inWater
@@ -42,7 +42,7 @@ inWater
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L24)
 
 <a id="field-field-mq3-audio-qvm-playback-listener-origin-origin-src-mq3-audio-qvm-playback-ml-272919087"></a>
 ### origin
@@ -52,4 +52,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L24)

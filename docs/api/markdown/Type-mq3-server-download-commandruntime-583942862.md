@@ -12,7 +12,7 @@ struct CommandRuntime
 Adapter for the four download builtins in SV_ExecuteClientCommand.  Keeping it next to the window state makes the reliable command path and the snapshot writer operate on the same live download cursor.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)
 
 ## Members
 
@@ -24,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)
 
 <a id="field-field-mq3-server-download-commandruntime-downloadhost-downloadhost-src-mq3-server-download-ml-176770682"></a>
 ### downloadHost
@@ -34,7 +34,7 @@ downloadHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)
 
 <a id="field-field-mq3-server-download-commandruntime-sendgamestatefn-sendgamestatefn-src-mq3-server-download-ml-1802074142"></a>
 ### sendGamestateFn
@@ -44,7 +44,7 @@ sendGamestateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)
 
 <a id="field-field-mq3-server-download-commandruntime-serverstate-serverstate-src-mq3-server-download-ml-367855382"></a>
 ### serverState
@@ -54,7 +54,7 @@ serverState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)
 
 <a id="field-field-mq3-server-download-commandruntime-state-state-src-mq3-server-download-ml-1675617254"></a>
 ### state
@@ -64,4 +64,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L27)

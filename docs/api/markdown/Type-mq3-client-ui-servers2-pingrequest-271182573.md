@@ -10,7 +10,7 @@ struct PingRequest
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L59)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L59)
 
 <a id="field-field-mq3-client-ui-servers2-pingrequest-start-start-src-mq3-client-ui-servers2-ml-702475552"></a>
 ### start
@@ -32,4 +32,4 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L59)

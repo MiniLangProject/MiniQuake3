@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-arch-arch-src-mq3-platform-win-main-runtime-ml-467596693"></a>
 ### arch
@@ -32,7 +32,7 @@ arch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-clockfn-clockfn-src-mq3-platform-win-main-runtime-ml-896338513"></a>
 ### clockFn
@@ -42,7 +42,7 @@ clockFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-commandline-commandline-src-mq3-platform-win-main-runtime-ml-1666131369"></a>
 ### commandLine
@@ -52,7 +52,7 @@ commandLine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-commonframefn-commonframefn-src-mq3-platform-win-main-runtime-ml-1295206137"></a>
 ### commonFrameFn
@@ -62,7 +62,7 @@ commonFrameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-commoninitfn-commoninitfn-src-mq3-platform-win-main-runtime-ml-1839600351"></a>
 ### commonInitFn
@@ -72,7 +72,7 @@ commonInitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-consolefn-consolefn-src-mq3-platform-win-main-runtime-ml-245612569"></a>
 ### consoleFn
@@ -82,7 +82,7 @@ consoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-consolevisible-consolevisible-src-mq3-platform-win-main-runtime-ml-486726547"></a>
 ### consoleVisible
@@ -92,7 +92,7 @@ consoleVisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-context-context-src-mq3-platform-win-main-runtime-ml-1025905129"></a>
 ### context
@@ -102,7 +102,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-cpuid-cpuid-src-mq3-platform-win-main-runtime-ml-1915929573"></a>
 ### cpuId
@@ -112,7 +112,7 @@ cpuId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-cpustring-cpustring-src-mq3-platform-win-main-runtime-ml-1543520121"></a>
 ### cpuString
@@ -122,7 +122,7 @@ cpuString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-createconsolefn-createconsolefn-src-mq3-platform-win-main-runtime-ml-744020045"></a>
 ### createConsoleFn
@@ -132,7 +132,7 @@ createConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-destroyconsolefn-destroyconsolefn-src-mq3-platform-win-main-runtime-ml-275461507"></a>
 ### destroyConsoleFn
@@ -142,7 +142,7 @@ destroyConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-dlls-dlls-src-mq3-platform-win-main-runtime-ml-852084183"></a>
 ### dlls
@@ -152,7 +152,7 @@ dlls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-errorconsolefn-errorconsolefn-src-mq3-platform-win-main-runtime-ml-1517855415"></a>
 ### errorConsoleFn
@@ -162,7 +162,7 @@ errorConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-errortext-errortext-src-mq3-platform-win-main-runtime-ml-1866492305"></a>
 ### errorText
@@ -172,7 +172,7 @@ errorText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-events-events-src-mq3-platform-win-main-runtime-ml-1128416431"></a>
 ### events
@@ -182,7 +182,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-fatal-fatal-src-mq3-platform-win-main-runtime-ml-1426954537"></a>
 ### fatal
@@ -192,7 +192,7 @@ fatal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-framecount-framecount-src-mq3-platform-win-main-runtime-ml-1382489489"></a>
 ### frameCount
@@ -202,7 +202,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-head-head-src-mq3-platform-win-main-runtime-ml-1374183081"></a>
 ### head
@@ -212,7 +212,7 @@ head
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-initialized-initialized-src-mq3-platform-win-main-runtime-ml-1657923705"></a>
 ### initialized
@@ -222,7 +222,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-inputframefn-inputframefn-src-mq3-platform-win-main-runtime-ml-760379031"></a>
 ### inputFrameFn
@@ -232,7 +232,7 @@ inputFrameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-inputinitfn-inputinitfn-src-mq3-platform-win-main-runtime-ml-1867249049"></a>
 ### inputInitFn
@@ -242,7 +242,7 @@ inputInitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-inputshutdownfn-inputshutdownfn-src-mq3-platform-win-main-runtime-ml-2036499657"></a>
 ### inputShutdownFn
@@ -252,7 +252,7 @@ inputShutdownFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-inputstarted-inputstarted-src-mq3-platform-win-main-runtime-ml-685664491"></a>
 ### inputStarted
@@ -262,7 +262,7 @@ inputStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-networkinitfn-networkinitfn-src-mq3-platform-win-main-runtime-ml-2113781265"></a>
 ### networkInitFn
@@ -272,7 +272,7 @@ networkInitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-networkrestartfn-networkrestartfn-src-mq3-platform-win-main-runtime-ml-764770339"></a>
 ### networkRestartFn
@@ -282,7 +282,7 @@ networkRestartFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L43)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-networkstarted-networkstarted-src-mq3-platform-win-main-runtime-ml-1934324859"></a>
 ### networkStarted
@@ -292,7 +292,7 @@ networkStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-overflows-overflows-src-mq3-platform-win-main-runtime-ml-346727281"></a>
 ### overflows
@@ -302,7 +302,7 @@ overflows
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-packetfn-packetfn-src-mq3-platform-win-main-runtime-ml-1179475077"></a>
 ### packetFn
@@ -312,7 +312,7 @@ packetFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-printed-printed-src-mq3-platform-win-main-runtime-ml-2098864201"></a>
 ### printed
@@ -322,7 +322,7 @@ printed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-pumpfn-pumpfn-src-mq3-platform-win-main-runtime-ml-279245161"></a>
 ### pumpFn
@@ -332,7 +332,7 @@ pumpFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L42)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-quitcode-quitcode-src-mq3-platform-win-main-runtime-ml-1491370865"></a>
 ### quitCode
@@ -342,7 +342,7 @@ quitCode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-showconsolefn-showconsolefn-src-mq3-platform-win-main-runtime-ml-174801497"></a>
 ### showConsoleFn
@@ -352,7 +352,7 @@ showConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-sleepfn-sleepfn-src-mq3-platform-win-main-runtime-ml-32633361"></a>
 ### sleepFn
@@ -362,7 +362,7 @@ sleepFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L44)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-streams-streams-src-mq3-platform-win-main-runtime-ml-310663189"></a>
 ### streams
@@ -372,7 +372,7 @@ streams
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-streamstarted-streamstarted-src-mq3-platform-win-main-runtime-ml-26311829"></a>
 ### streamStarted
@@ -382,7 +382,7 @@ streamStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-tail-tail-src-mq3-platform-win-main-runtime-ml-590752537"></a>
 ### tail
@@ -392,7 +392,7 @@ tail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L39)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-totalmsec-totalmsec-src-mq3-platform-win-main-runtime-ml-648894073"></a>
 ### totalMsec
@@ -402,7 +402,7 @@ totalMsec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L41)
 
 <a id="field-field-mq3-platform-win-main-runtime-runtime-username-username-src-mq3-platform-win-main-runtime-ml-1827627025"></a>
 ### username
@@ -412,4 +412,4 @@ username
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L40)

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-context-context-src-mq3-botlib-ai-chat-output-ml-1625534722"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-filereads-filereads-src-mq3-botlib-ai-chat-output-ml-2004187990"></a>
 ### fileReads
@@ -42,7 +42,7 @@ fileReads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-loaded-loaded-src-mq3-botlib-ai-chat-output-ml-669656204"></a>
 ### loaded
@@ -52,7 +52,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-profiles-profiles-src-mq3-botlib-ai-chat-output-ml-998170106"></a>
 ### profiles
@@ -62,7 +62,7 @@ profiles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-randomfn-randomfn-src-mq3-botlib-ai-chat-output-ml-761153840"></a>
 ### randomFn
@@ -72,7 +72,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-randomlists-randomlists-src-mq3-botlib-ai-chat-output-ml-634272958"></a>
 ### randomLists
@@ -82,7 +82,7 @@ randomLists
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-readfn-readfn-src-mq3-botlib-ai-chat-output-ml-277947090"></a>
 ### readFn
@@ -92,7 +92,7 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-replies-replies-src-mq3-botlib-ai-chat-output-ml-1357086690"></a>
 ### replies
@@ -102,7 +102,7 @@ replies
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-strings-strings-src-mq3-botlib-ai-chat-output-ml-738664330"></a>
 ### strings
@@ -112,7 +112,7 @@ strings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)
 
 <a id="field-field-mq3-botlib-ai-chat-output-state-timefn-timefn-src-mq3-botlib-ai-chat-output-ml-1429620504"></a>
 ### timeFn
@@ -122,4 +122,4 @@ timeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L40)

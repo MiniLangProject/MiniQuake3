@@ -27,7 +27,7 @@ function addUnique(names, skin)
 | `skin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L94)
 
 - [mq3.renderer.player_skins.Binding](Type-mq3-renderer-player-skins-binding-1155315162.md) — struct
 <a id="function-function-mq3-renderer-player-skins-fail-function-fail-message-src-mq3-renderer-player-skins-ml-1246416311"></a>
@@ -42,7 +42,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L19)
 
 <a id="function-function-mq3-renderer-player-skins-load-function-load-archive-path-src-mq3-renderer-player-skins-ml-1369817137"></a>
 ### load
@@ -57,7 +57,7 @@ function load(archive, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L68)
 
 <a id="function-function-mq3-renderer-player-skins-loadresolved-function-loadresolved-archive-path-shaderindex-src-mq3-renderer-player-skins-ml-380292910"></a>
 ### loadResolved
@@ -73,7 +73,7 @@ function loadResolved(archive, path, shaderIndex)
 | `shaderIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L89)
 
 <a id="function-function-mq3-renderer-player-skins-loadsargedefault-function-loadsargedefault-archive-src-mq3-renderer-player-skins-ml-1467851746"></a>
 ### loadSargeDefault
@@ -87,7 +87,7 @@ function loadSargeDefault(archive)
 | `archive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L103)
 
 - [mq3.renderer.player_skins.Mapping](Type-mq3-renderer-player-skins-mapping-1412834829.md) — struct
 <a id="constant-constant-mq3-renderer-player-skins-max-qpath-const-max-qpath-64-src-mq3-renderer-player-skins-ml-1582895865"></a>
@@ -98,7 +98,7 @@ const MAX_QPATH = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L8)
 
 <a id="function-function-mq3-renderer-player-skins-parse-function-parse-text-src-mq3-renderer-player-skins-ml-355326699"></a>
 ### parse
@@ -112,7 +112,7 @@ function parse(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L51)
 
 <a id="function-function-mq3-renderer-player-skins-parseline-function-parseline-data-first-last-linenumber-mappings-tags-src-mq3-renderer-player-skins-ml-649129437"></a>
 ### parseLine
@@ -131,7 +131,7 @@ function parseLine(data, first, last, lineNumber, mappings, tags)
 | `tags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L27)
 
 <a id="function-function-mq3-renderer-player-skins-resolve-function-resolve-archive-skin-shaderindex-src-mq3-renderer-player-skins-ml-1104093404"></a>
 ### resolve
@@ -147,7 +147,7 @@ function resolve(archive, skin, shaderIndex)
 | `shaderIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L75)
 
 - [mq3.renderer.player_skins.ResolvedSkin](Type-mq3-renderer-player-skins-resolvedskin-455522992.md) — struct
 <a id="constant-constant-mq3-renderer-player-skins-sarge-head-const-sarge-head-models-players-sarge-head-default-skin-src-mq3-renderer-player-skins-ml-536444845"></a>
@@ -158,7 +158,7 @@ const SARGE_HEAD = "models/players/sarge/head_default.skin"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L11)
 
 <a id="constant-constant-mq3-renderer-player-skins-sarge-lower-const-sarge-lower-models-players-sarge-lower-default-skin-src-mq3-renderer-player-skins-ml-355355752"></a>
 ### SARGE_LOWER
@@ -168,7 +168,7 @@ const SARGE_LOWER = "models/players/sarge/lower_default.skin"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L9)
 
 <a id="constant-constant-mq3-renderer-player-skins-sarge-upper-const-sarge-upper-models-players-sarge-upper-default-skin-src-mq3-renderer-player-skins-ml-395690911"></a>
 ### SARGE_UPPER
@@ -178,7 +178,7 @@ const SARGE_UPPER = "models/players/sarge/upper_default.skin"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L10)
 
 - [mq3.renderer.player_skins.SargeDefault](Type-mq3-renderer-player-skins-sargedefault-1698247702.md) — struct
 - [mq3.renderer.player_skins.Skin](Type-mq3-renderer-player-skins-skin-223438000.md) — struct
@@ -196,4 +196,4 @@ function textRange(data, first, last)
 | `last` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L21)

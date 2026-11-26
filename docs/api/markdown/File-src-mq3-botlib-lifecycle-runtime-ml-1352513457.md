@@ -21,7 +21,7 @@ const BLERR_INVALIDENTITYNUMBER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L10)
 
 <a id="constant-constant-mq3-botlib-lifecycle-runtime-blerr-librarynotsetup-const-blerr-librarynotsetup-1-src-mq3-botlib-lifecycle-runtime-ml-1004667460"></a>
 ### BLERR_LIBRARYNOTSETUP
@@ -31,7 +31,7 @@ const BLERR_LIBRARYNOTSETUP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L9)
 
 <a id="constant-constant-mq3-botlib-lifecycle-runtime-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-lifecycle-runtime-ml-1303065883"></a>
 ### BLERR_NOERROR
@@ -41,7 +41,7 @@ const BLERR_NOERROR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L8)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-create-function-create-src-mq3-botlib-lifecycle-runtime-ml-870927670"></a>
 ### create
@@ -51,7 +51,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L14)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-integervariable-function-integervariable-state-name-fallback-src-mq3-botlib-lifecycle-runtime-ml-2037091256"></a>
 ### integerVariable
@@ -67,7 +67,7 @@ function integerVariable(state, name, fallback)
 | `fallback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L31)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-loadmap-function-loadmap-state-mapname-src-mq3-botlib-lifecycle-runtime-ml-587696076"></a>
 ### loadMap
@@ -82,7 +82,7 @@ function loadMap(state, mapName)
 | `mapName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L53)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-setup-function-setup-state-src-mq3-botlib-lifecycle-runtime-ml-1557795449"></a>
 ### setup
@@ -96,7 +96,7 @@ function setup(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L36)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-shutdown-function-shutdown-state-src-mq3-botlib-lifecycle-runtime-ml-601336231"></a>
 ### shutdown
@@ -110,7 +110,7 @@ function shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L45)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-startframe-function-startframe-state-time-src-mq3-botlib-lifecycle-runtime-ml-1918970480"></a>
 ### startFrame
@@ -125,7 +125,7 @@ function startFrame(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L49)
 
 - [mq3.botlib.lifecycle_runtime.State](Type-mq3-botlib-lifecycle-runtime-state-889245960.md) — struct
 <a id="function-function-mq3-botlib-lifecycle-runtime-updateentity-function-updateentity-state-entity-present-src-mq3-botlib-lifecycle-runtime-ml-1106690493"></a>
@@ -142,7 +142,7 @@ function updateEntity(state, entity, present)
 | `present` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L58)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varchanged-function-varchanged-state-name-src-mq3-botlib-lifecycle-runtime-ml-175641138"></a>
 ### varChanged
@@ -157,7 +157,7 @@ function varChanged(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L29)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-vardefault-function-vardefault-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-1461882287"></a>
 ### varDefault
@@ -173,7 +173,7 @@ function varDefault(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L26)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varget-function-varget-state-name-src-mq3-botlib-lifecycle-runtime-ml-855526846"></a>
 ### varGet
@@ -188,7 +188,7 @@ function varGet(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L22)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-vargetvalue-function-vargetvalue-state-name-src-mq3-botlib-lifecycle-runtime-ml-944485354"></a>
 ### varGetValue
@@ -203,7 +203,7 @@ function varGetValue(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L25)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-variableindex-function-variableindex-state-name-src-mq3-botlib-lifecycle-runtime-ml-1773160874"></a>
 ### variableIndex
@@ -218,7 +218,7 @@ function variableIndex(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L15)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varset-function-varset-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-446558523"></a>
 ### varSet
@@ -234,7 +234,7 @@ function varSet(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L18)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varsetnotmodified-function-varsetnotmodified-state-name-src-mq3-botlib-lifecycle-runtime-ml-25094044"></a>
 ### varSetNotModified
@@ -249,7 +249,7 @@ function varSetNotModified(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L30)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varstring-function-varstring-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-1187307455"></a>
 ### varString
@@ -265,7 +265,7 @@ function varString(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L27)
 
 <a id="function-function-mq3-botlib-lifecycle-runtime-varvalue-function-varvalue-state-name-value-src-mq3-botlib-lifecycle-runtime-ml-112179903"></a>
 ### varValue
@@ -281,4 +281,4 @@ function varValue(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lifecycle_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lifecycle_runtime.ml#L28)

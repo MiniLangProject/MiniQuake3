@@ -27,7 +27,7 @@ function build(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L43)
 
 - [mq3.renderer.shader_index.Entry](Type-mq3-renderer-shader-index-entry-1144026993.md) — struct
 <a id="function-function-mq3-renderer-shader-index-find-function-find-index-name-src-mq3-renderer-shader-index-ml-509731407"></a>
@@ -43,7 +43,7 @@ function find(index, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L59)
 
 <a id="function-function-mq3-renderer-shader-index-hashvalue-function-hashvalue-name-size-src-mq3-renderer-shader-index-ml-837057394"></a>
 ### hashValue
@@ -58,7 +58,7 @@ function hashValue(name, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L15)
 
 - [mq3.renderer.shader_index.Index](Type-mq3-renderer-shader-index-index-1539757693.md) — struct
 <a id="constant-constant-mq3-renderer-shader-index-max-shadertext-hash-const-max-shadertext-hash-2048-src-mq3-renderer-shader-index-ml-429604045"></a>
@@ -69,7 +69,7 @@ const MAX_SHADERTEXT_HASH = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L10)
 
 <a id="function-function-mq3-renderer-shader-index-skipbracedsection-function-skipbracedsection-state-src-mq3-renderer-shader-index-ml-434617231"></a>
 ### skipBracedSection
@@ -83,4 +83,4 @@ function skipBracedSection(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L29)

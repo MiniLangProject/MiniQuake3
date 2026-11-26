@@ -30,7 +30,7 @@ function dispatch(runtime, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-move-syscalls-init-move-size-const-init-move-size-68-src-mq3-botlib-ai-move-syscalls-ml-1051044427"></a>
 ### INIT_MOVE_SIZE
@@ -40,7 +40,7 @@ const INIT_MOVE_SIZE = 68
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-move-syscalls-move-result-size-const-move-result-size-52-src-mq3-botlib-ai-move-syscalls-ml-1759370002"></a>
 ### MOVE_RESULT_SIZE
@@ -50,7 +50,7 @@ const MOVE_RESULT_SIZE = 52
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-move-syscalls-readinitmove-function-readinitmove-vm-address-src-mq3-botlib-ai-move-syscalls-ml-83025603"></a>
 ### readInitMove
@@ -65,7 +65,7 @@ function readInitMove(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-move-syscalls-writemoveresult-function-writemoveresult-vm-address-value-src-mq3-botlib-ai-move-syscalls-ml-559726452"></a>
 ### writeMoveResult
@@ -81,7 +81,7 @@ function writeMoveResult(vm, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-move-syscalls-writemovevector-function-writemovevector-data-address-value-src-mq3-botlib-ai-move-syscalls-ml-1278603157"></a>
 ### writeMoveVector
@@ -97,4 +97,4 @@ function writeMoveVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_syscalls.ml#L13)

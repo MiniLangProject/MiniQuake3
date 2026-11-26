@@ -10,7 +10,7 @@ struct DrawView
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ mode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L30)
 
 <a id="field-field-mq3-client-cl-console-drawview-notify-notify-src-mq3-client-cl-console-ml-256419894"></a>
 ### notify
@@ -32,7 +32,7 @@ notify
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L30)
 
 <a id="field-field-mq3-client-cl-console-drawview-solid-solid-src-mq3-client-cl-console-ml-1585872016"></a>
 ### solid
@@ -42,4 +42,4 @@ solid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L30)

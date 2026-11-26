@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ cvars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-initialized-initialized-src-mq3-platform-win-net-runtime-ml-780403261"></a>
 ### initialized
@@ -32,7 +32,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-ipxsocket-ipxsocket-src-mq3-platform-win-net-runtime-ml-533595581"></a>
 ### ipxSocket
@@ -42,7 +42,7 @@ ipxSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-localips-localips-src-mq3-platform-win-net-runtime-ml-457715655"></a>
 ### localIPs
@@ -52,7 +52,7 @@ localIPs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-logs-logs-src-mq3-platform-win-net-runtime-ml-729109879"></a>
 ### logs
@@ -62,7 +62,7 @@ logs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-networkingenabled-networkingenabled-src-mq3-platform-win-net-runtime-ml-2132992549"></a>
 ### networkingEnabled
@@ -72,7 +72,7 @@ networkingEnabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-recvfromcount-recvfromcount-src-mq3-platform-win-net-runtime-ml-367561417"></a>
 ### recvfromCount
@@ -82,7 +82,7 @@ recvfromCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-socket-socket-src-mq3-platform-win-net-runtime-ml-1674919287"></a>
 ### socket
@@ -92,7 +92,7 @@ socket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-socksrelay-socksrelay-src-mq3-platform-win-net-runtime-ml-184529941"></a>
 ### socksRelay
@@ -102,7 +102,7 @@ socksRelay
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-sockssocket-sockssocket-src-mq3-platform-win-net-runtime-ml-952924369"></a>
 ### socksSocket
@@ -112,7 +112,7 @@ socksSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)
 
 <a id="field-field-mq3-platform-win-net-runtime-runtime-usingsocks-usingsocks-src-mq3-platform-win-net-runtime-ml-792334891"></a>
 ### usingSocks
@@ -122,4 +122,4 @@ usingSocks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_net_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_net_runtime.ml#L23)

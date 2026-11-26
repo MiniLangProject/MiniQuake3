@@ -10,7 +10,7 @@ struct Lump
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)
 
 ## Members
 
@@ -22,7 +22,7 @@ fileLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)
 
 <a id="field-field-mq3-format-aas-lump-fileoffset-fileoffset-src-mq3-format-aas-ml-663497253"></a>
 ### fileOffset
@@ -32,4 +32,4 @@ fileOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L125)

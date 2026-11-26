@@ -25,7 +25,7 @@ function check(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L25)
 
 <a id="function-function-mq3-server-timeouts-client-function-client-state-lastpackettime-timeoutcount-src-mq3-server-timeouts-ml-482447898"></a>
 ### client
@@ -41,7 +41,7 @@ function client(state, lastPacketTime, timeoutCount)
 | `timeoutCount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L14)
 
 - [mq3.server.timeouts.Client](Type-mq3-server-timeouts-client-2043009170.md) — struct
 <a id="constant-constant-mq3-server-timeouts-cs-active-const-cs-active-4-src-mq3-server-timeouts-ml-946476765"></a>
@@ -52,7 +52,7 @@ const CS_ACTIVE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L11)
 
 <a id="constant-constant-mq3-server-timeouts-cs-connected-const-cs-connected-2-src-mq3-server-timeouts-ml-1700153481"></a>
 ### CS_CONNECTED
@@ -62,7 +62,7 @@ const CS_CONNECTED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L9)
 
 <a id="constant-constant-mq3-server-timeouts-cs-free-const-cs-free-0-src-mq3-server-timeouts-ml-1636662057"></a>
 ### CS_FREE
@@ -72,7 +72,7 @@ const CS_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L7)
 
 <a id="constant-constant-mq3-server-timeouts-cs-primed-const-cs-primed-3-src-mq3-server-timeouts-ml-1513582798"></a>
 ### CS_PRIMED
@@ -82,7 +82,7 @@ const CS_PRIMED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L10)
 
 <a id="constant-constant-mq3-server-timeouts-cs-zombie-const-cs-zombie-1-src-mq3-server-timeouts-ml-1058533072"></a>
 ### CS_ZOMBIE
@@ -92,7 +92,7 @@ const CS_ZOMBIE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L8)
 
 <a id="function-function-mq3-server-timeouts-runtime-function-runtime-clients-src-mq3-server-timeouts-ml-1842352188"></a>
 ### runtime
@@ -106,7 +106,7 @@ function runtime(clients)
 | `clients` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L17)
 
 - [mq3.server.timeouts.Runtime](Type-mq3-server-timeouts-runtime-1330395935.md) — struct
 <a id="function-function-mq3-server-timeouts-services-function-services-src-mq3-server-timeouts-ml-1850656174"></a>
@@ -117,6 +117,6 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/timeouts.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/timeouts.ml#L23)
 
 - [mq3.server.timeouts.Services](Type-mq3-server-timeouts-services-141417729.md) — struct

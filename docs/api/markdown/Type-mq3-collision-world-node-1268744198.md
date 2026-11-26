@@ -10,7 +10,7 @@ struct Node
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L32)
 
 <a id="field-field-mq3-collision-world-node-children-children-src-mq3-collision-world-ml-666683477"></a>
 ### children
@@ -32,7 +32,7 @@ children
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L33)
 
 <a id="field-field-mq3-collision-world-node-plane-plane-src-mq3-collision-world-ml-2097012479"></a>
 ### plane
@@ -42,4 +42,4 @@ plane
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L31)

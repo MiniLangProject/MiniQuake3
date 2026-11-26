@@ -10,7 +10,7 @@ struct FogPlan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ colors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-fogplan-depthequal-depthequal-src-mq3-renderer-tr-shade-runtime-ml-874054470"></a>
 ### depthEqual
@@ -32,7 +32,7 @@ depthEqual
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-fogplan-indexes-indexes-src-mq3-renderer-tr-shade-runtime-ml-151843664"></a>
 ### indexes
@@ -42,7 +42,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-fogplan-uvs-uvs-src-mq3-renderer-tr-shade-runtime-ml-567119792"></a>
 ### uvs
@@ -52,4 +52,4 @@ uvs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L24)

@@ -25,7 +25,7 @@ function G_Alloc(level, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L9)
 
 <a id="function-function-mq3-game-g-mem-g-initmemory-function-g-initmemory-level-src-mq3-game-g-mem-ml-1103109070"></a>
 ### G_InitMemory
@@ -39,7 +39,7 @@ function G_InitMemory(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L10)
 
 <a id="constant-constant-mq3-game-g-mem-poolsize-const-poolsize-262144-src-mq3-game-g-mem-ml-978704872"></a>
 ### POOLSIZE
@@ -49,7 +49,7 @@ const POOLSIZE = 262144
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L7)
 
 <a id="function-function-mq3-game-g-mem-svcmd-gamemem-f-function-svcmd-gamemem-f-level-src-mq3-game-g-mem-ml-1222398686"></a>
 ### Svcmd_GameMem_f
@@ -63,4 +63,4 @@ function Svcmd_GameMem_f(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_mem.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_mem.ml#L11)

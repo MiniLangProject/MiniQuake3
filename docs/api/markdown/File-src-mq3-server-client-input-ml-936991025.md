@@ -31,7 +31,7 @@ These signatures match client_message.Services and can be installed directly in 
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L45)
 
 <a id="function-function-mq3-server-client-input-create-function-create-commandhost-dispatchhost-moveserver-movehost-serverstate-src-mq3-server-client-input-ml-13658252"></a>
 ### create
@@ -49,7 +49,7 @@ function create(commandHost, dispatchHost, moveServer, moveHost, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L31)
 
 <a id="function-function-mq3-server-client-input-createclient-function-createclient-src-mq3-server-client-input-ml-1209894494"></a>
 ### createClient
@@ -59,7 +59,7 @@ function createClient()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L19)
 
 <a id="function-function-mq3-server-client-input-executetext-function-executetext-commandhost-clientstate-text-clientok-src-mq3-server-client-input-ml-1851392709"></a>
 ### executeText
@@ -76,7 +76,7 @@ function executeText(commandHost, clientState, text, clientOk)
 | `clientOk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L26)
 
 - [mq3.server.client_input.Runtime](Type-mq3-server-client-input-runtime-753799615.md) — struct
 <a id="function-function-mq3-server-client-input-settime-function-settime-runtime-time-src-mq3-server-client-input-ml-573087527"></a>
@@ -92,7 +92,7 @@ function setTime(runtime, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L38)
 
 <a id="function-function-mq3-server-client-input-usermovefn-function-usermovefn-messagehost-clientstate-msg-isdelta-src-mq3-server-client-input-ml-1558293192"></a>
 ### userMoveFn
@@ -109,4 +109,4 @@ function userMoveFn(messageHost, clientState, msg, isDelta)
 | `isDelta` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L50)

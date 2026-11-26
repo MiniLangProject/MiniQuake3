@@ -10,7 +10,7 @@ struct Point
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ depth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
 
 <a id="field-field-mq3-client-playable-menu-point-x-x-src-mq3-client-playable-menu-ml-660664269"></a>
 ### x
@@ -32,7 +32,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)
 
 <a id="field-field-mq3-client-playable-menu-point-y-y-src-mq3-client-playable-menu-ml-1740943697"></a>
 ### y
@@ -42,4 +42,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L19)

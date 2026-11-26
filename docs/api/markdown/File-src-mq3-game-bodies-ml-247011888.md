@@ -37,7 +37,7 @@ function bounce(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L97)
 
 <a id="function-function-mq3-game-bodies-copytoqueue-function-copytoqueue-level-ent-src-mq3-game-bodies-ml-1802435609"></a>
 ### copyToQueue
@@ -52,7 +52,7 @@ function copyToQueue(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L71)
 
 <a id="function-function-mq3-game-bodies-die-function-die-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-bodies-ml-1278382099"></a>
 ### die
@@ -71,7 +71,7 @@ function die(level, self, inflictor, attacker, damage, meansOfDeath)
 | `meansOfDeath` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L49)
 
 <a id="function-function-mq3-game-bodies-gib-function-gib-level-self-killer-src-mq3-game-bodies-ml-1680785247"></a>
 ### gib
@@ -87,7 +87,7 @@ function gib(level, self, killer)
 | `killer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L39)
 
 <a id="function-function-mq3-game-bodies-initqueue-function-initqueue-level-src-mq3-game-bodies-ml-2120058292"></a>
 ### initQueue
@@ -101,7 +101,7 @@ function initQueue(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L54)
 
 <a id="function-function-mq3-game-bodies-lookatkiller-function-lookatkiller-level-self-inflictor-attacker-src-mq3-game-bodies-ml-1830717165"></a>
 ### lookAtKiller
@@ -118,7 +118,7 @@ function lookAtKiller(level, self, inflictor, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L26)
 
 <a id="function-function-mq3-game-bodies-run-function-run-level-ent-src-mq3-game-bodies-ml-1004141553"></a>
 ### run
@@ -133,7 +133,7 @@ function run(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L115)
 
 <a id="function-function-mq3-game-bodies-sink-function-sink-level-ent-src-mq3-game-bodies-ml-861259595"></a>
 ### sink
@@ -148,7 +148,7 @@ function sink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L66)
 
 <a id="function-function-mq3-game-bodies-vectoryaw-function-vectoryaw-vector-src-mq3-game-bodies-ml-1820394903"></a>
 ### vectorYaw
@@ -162,4 +162,4 @@ function vectorYaw(vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bodies.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bodies.ml#L17)

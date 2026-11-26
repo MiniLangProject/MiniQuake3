@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-client-client-src-mq3-client-cgame-newdraw-ml-1820174865"></a>
 ### client
@@ -32,7 +32,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-color-color-src-mq3-client-cgame-newdraw-ml-1122911511"></a>
 ### color
@@ -42,7 +42,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-dispatched-dispatched-src-mq3-client-cgame-newdraw-ml-588826641"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-kind-kind-src-mq3-client-cgame-newdraw-ml-991735055"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-model-model-src-mq3-client-cgame-newdraw-ml-137435155"></a>
 ### model
@@ -72,7 +72,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-rect-rect-src-mq3-client-cgame-newdraw-ml-1123769047"></a>
 ### rect
@@ -82,7 +82,7 @@ rect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-shader-shader-src-mq3-client-cgame-newdraw-ml-2107784981"></a>
 ### shader
@@ -92,7 +92,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-text-text-src-mq3-client-cgame-newdraw-ml-1803029817"></a>
 ### text
@@ -102,7 +102,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)
 
 <a id="field-field-mq3-client-cgame-newdraw-action-value-value-src-mq3-client-cgame-newdraw-ml-1510593223"></a>
 ### value
@@ -112,4 +112,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_newdraw.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_newdraw.ml#L132)

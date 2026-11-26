@@ -10,7 +10,7 @@ struct SetColorCommand
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)
 
 <a id="field-field-mq3-renderer-tr-local-setcolorcommand-commandid-commandid-src-mq3-renderer-tr-local-ml-479998925"></a>
 ### commandId
@@ -32,4 +32,4 @@ commandId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_local.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_local.ml#L56)

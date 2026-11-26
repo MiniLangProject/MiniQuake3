@@ -27,7 +27,7 @@ function entities(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L108)
 
 <a id="function-function-mq3-format-bsp-fail-function-fail-message-src-mq3-format-bsp-ml-1497269251"></a>
 ### fail
@@ -41,7 +41,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L16)
 
 <a id="function-function-mq3-format-bsp-load-function-load-data-src-mq3-format-bsp-ml-956873278"></a>
 ### load
@@ -55,7 +55,7 @@ function load(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L25)
 
 <a id="function-function-mq3-format-bsp-range-function-range-first-count-limit-src-mq3-format-bsp-ml-987993176"></a>
 ### range
@@ -71,4 +71,4 @@ function range(first, count, limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/bsp.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/bsp.ml#L20)

@@ -28,7 +28,7 @@ function activeFlare(state, surface)
 | `surface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L27)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-allocate-function-allocate-state-surface-src-mq3-renderer-tr-flares-runtime-ml-320287386"></a>
 ### allocate
@@ -43,7 +43,7 @@ function allocate(state, surface)
 | `surface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L30)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-colorbyte-function-colorbyte-value-src-mq3-renderer-tr-flares-runtime-ml-1741583931"></a>
 ### colorByte
@@ -57,7 +57,7 @@ function colorByte(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L50)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-create-function-create-projection-area-fogcatalog-src-mq3-renderer-tr-flares-runtime-ml-125099955"></a>
 ### create
@@ -73,7 +73,7 @@ function create(projection, area, fogCatalog)
 | `fogCatalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-emptyflare-function-emptyflare-slot-src-mq3-renderer-tr-flares-runtime-ml-1947585210"></a>
 ### emptyFlare
@@ -87,7 +87,7 @@ function emptyFlare(slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L19)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-fail-function-fail-message-src-mq3-renderer-tr-flares-runtime-ml-883384895"></a>
 ### fail
@@ -101,7 +101,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L18)
 
 - [mq3.renderer.tr_flares_runtime.Flare](Type-mq3-renderer-tr-flares-runtime-flare-1198172528.md) — struct
 - [mq3.renderer.tr_flares_runtime.Light](Type-mq3-renderer-tr-flares-runtime-light-831865728.md) — struct
@@ -113,7 +113,7 @@ const MAX_FLARES = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L12)
 
 - [mq3.renderer.tr_flares_runtime.Quad](Type-mq3-renderer-tr-flares-runtime-quad-612020883.md) — struct
 <a id="function-function-mq3-renderer-tr-flares-runtime-r-clearflares-function-r-clearflares-state-src-mq3-renderer-tr-flares-runtime-ml-2071742699"></a>
@@ -128,7 +128,7 @@ function R_ClearFlares(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L23)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-rb-adddlightflares-function-rb-adddlightflares-state-lights-src-mq3-renderer-tr-flares-runtime-ml-818236546"></a>
 ### RB_AddDlightFlares
@@ -143,7 +143,7 @@ function RB_AddDlightFlares(state, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L43)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-rb-addflare-function-rb-addflare-state-surface-fognum-point-color-normal-src-mq3-renderer-tr-flares-runtime-ml-1759373928"></a>
 ### RB_AddFlare
@@ -162,7 +162,7 @@ function RB_AddFlare(state, surface, fogNum, point, color, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L33)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-rb-renderflare-function-rb-renderflare-state-flare-src-mq3-renderer-tr-flares-runtime-ml-980327179"></a>
 ### RB_RenderFlare
@@ -177,7 +177,7 @@ function RB_RenderFlare(state, flare)
 | `flare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L51)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-rb-renderflares-function-rb-renderflares-state-depthvalues-src-mq3-renderer-tr-flares-runtime-ml-2125314450"></a>
 ### RB_RenderFlares
@@ -192,7 +192,7 @@ function RB_RenderFlares(state, depthValues)
 | `depthValues` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L61)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-rb-testflare-function-rb-testflare-state-flare-surfacedepth-src-mq3-renderer-tr-flares-runtime-ml-1854833679"></a>
 ### RB_TestFlare
@@ -208,7 +208,7 @@ function RB_TestFlare(state, flare, surfaceDepth)
 | `surfaceDepth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L47)
 
 <a id="function-function-mq3-renderer-tr-flares-runtime-removeactive-function-removeactive-state-index-src-mq3-renderer-tr-flares-runtime-ml-2138146215"></a>
 ### removeActive
@@ -223,6 +223,6 @@ function removeActive(state, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L58)
 
 - [mq3.renderer.tr_flares_runtime.State](Type-mq3-renderer-tr-flares-runtime-state-1496113281.md) — struct

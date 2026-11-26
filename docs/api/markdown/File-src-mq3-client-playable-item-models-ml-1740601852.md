@@ -36,7 +36,7 @@ function bindingForSurface(asset, surfaceIndex)
 | `surfaceIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L213)
 
 - [mq3.client.playable_item_models.CachedSurface](Type-mq3-client-playable-item-models-cachedsurface-1441569629.md) — struct
 <a id="function-function-mq3-client-playable-item-models-cachemodeltriangles-function-cachemodeltriangles-model-src-mq3-client-playable-item-models-ml-621162801"></a>
@@ -51,7 +51,7 @@ function cacheModelTriangles(model)
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L154)
 
 - [mq3.client.playable_item_models.Catalog](Type-mq3-client-playable-item-models-catalog-1063629371.md) — struct
 <a id="function-function-mq3-client-playable-item-models-containsclassname-function-containsclassname-catalog-classname-src-mq3-client-playable-item-models-ml-864121746"></a>
@@ -67,27 +67,27 @@ function containsClassname(catalog, classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L149)
 
-<a id="constant-constant-mq3-client-playable-item-models-default-bob-amplitude-const-default-bob-amplitude-4-src-mq3-client-playable-item-models-ml-1470164087"></a>
+<a id="constant-constant-mq3-client-playable-item-models-default-bob-amplitude-const-default-bob-amplitude-4-src-mq3-client-playable-item-models-ml-1978469185"></a>
 ### DEFAULT_BOB_AMPLITUDE
 
 ```ml
-const DEFAULT_BOB_AMPLITUDE = 4.
+const DEFAULT_BOB_AMPLITUDE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L15)
 
-<a id="constant-constant-mq3-client-playable-item-models-default-spin-degrees-per-second-const-default-spin-degrees-per-second-100-src-mq3-client-playable-item-models-ml-988126236"></a>
+<a id="constant-constant-mq3-client-playable-item-models-default-spin-degrees-per-second-const-default-spin-degrees-per-second-100-src-mq3-client-playable-item-models-ml-1166353544"></a>
 ### DEFAULT_SPIN_DEGREES_PER_SECOND
 
 ```ml
-const DEFAULT_SPIN_DEGREES_PER_SECOND = 100.
+const DEFAULT_SPIN_DEGREES_PER_SECOND = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L16)
 
 <a id="function-function-mq3-client-playable-item-models-definition-function-definition-classname-src-mq3-client-playable-item-models-ml-1504508215"></a>
 ### definition
@@ -103,7 +103,7 @@ Baseq3 bg_itemlist world_model[0] paths. These are the actual MD3 pickups in pak
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L39)
 
 - [mq3.client.playable_item_models.Definition](Type-mq3-client-playable-item-models-definition-1759347693.md) — struct
 <a id="function-function-mq3-client-playable-item-models-fail-function-fail-message-src-mq3-client-playable-item-models-ml-2033179375"></a>
@@ -118,7 +118,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L31)
 
 <a id="function-function-mq3-client-playable-item-models-find-function-find-catalog-classname-src-mq3-client-playable-item-models-ml-1971496970"></a>
 ### find
@@ -133,7 +133,7 @@ function find(catalog, classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L207)
 
 <a id="function-function-mq3-client-playable-item-models-identityaxis-function-identityaxis-src-mq3-client-playable-item-models-ml-1220977248"></a>
 ### identityAxis
@@ -143,7 +143,7 @@ function identityAxis()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L89)
 
 <a id="function-function-mq3-client-playable-item-models-identitytransform-function-identitytransform-src-mq3-client-playable-item-models-ml-669273956"></a>
 ### identityTransform
@@ -153,7 +153,7 @@ function identityTransform()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L91)
 
 <a id="function-function-mq3-client-playable-item-models-imagestem-function-imagestem-name-src-mq3-client-playable-item-models-ml-312363663"></a>
 ### imageStem
@@ -167,7 +167,7 @@ function imageStem(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L120)
 
 <a id="function-function-mq3-client-playable-item-models-item-function-item-classname-category-path-scale-heightoffset-src-mq3-client-playable-item-models-ml-1611980642"></a>
 ### item
@@ -185,7 +185,7 @@ function item(classname, category, path, scale, heightOffset)
 | `heightOffset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L33)
 
 <a id="function-function-mq3-client-playable-item-models-itemtransform-function-itemtransform-asset-origin-itemindex-now-src-mq3-client-playable-item-models-ml-600519947"></a>
 ### itemTransform
@@ -202,7 +202,7 @@ function itemTransform(asset, origin, itemIndex, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L258)
 
 <a id="function-function-mq3-client-playable-item-models-loadcatalog-function-loadcatalog-archive-classnames-firsttextureslot-maxtextureslots-maxmodels-src-mq3-client-playable-item-models-ml-810287419"></a>
 ### loadCatalog
@@ -222,7 +222,7 @@ Loads each unique recognized classname once. The returned texture list owns stab
 | `maxModels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L188)
 
 <a id="function-function-mq3-client-playable-item-models-loaddefinition-function-loaddefinition-archive-catalog-def-src-mq3-client-playable-item-models-ml-1287684788"></a>
 ### loadDefinition
@@ -238,7 +238,7 @@ function loadDefinition(archive, catalog, def)
 | `def` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L170)
 
 <a id="constant-constant-mq3-client-playable-item-models-max-catalog-models-const-max-catalog-models-64-src-mq3-client-playable-item-models-ml-952049731"></a>
 ### MAX_CATALOG_MODELS
@@ -248,7 +248,7 @@ const MAX_CATALOG_MODELS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-item-models-max-catalog-textures-const-max-catalog-textures-96-src-mq3-client-playable-item-models-ml-1531555868"></a>
 ### MAX_CATALOG_TEXTURES
@@ -258,17 +258,17 @@ const MAX_CATALOG_TEXTURES = 96
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L18)
 
-<a id="constant-constant-mq3-client-playable-item-models-pi-const-pi-3-14159265358979-src-mq3-client-playable-item-models-ml-137730720"></a>
+<a id="constant-constant-mq3-client-playable-item-models-pi-const-pi-3-141593-src-mq3-client-playable-item-models-ml-1565835699"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L19)
 
 <a id="function-function-mq3-client-playable-item-models-renderasset-function-renderasset-asset-value-maxtriangles-src-mq3-client-playable-item-models-ml-1776559574"></a>
 ### renderAsset
@@ -284,7 +284,7 @@ function renderAsset(asset, value, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L219)
 
 <a id="function-function-mq3-client-playable-item-models-renderitem-function-renderitem-asset-origin-itemindex-now-maxtriangles-src-mq3-client-playable-item-models-ml-5070254"></a>
 ### renderItem
@@ -302,7 +302,7 @@ function renderItem(asset, origin, itemIndex, now, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L267)
 
 <a id="function-function-mq3-client-playable-item-models-renderitems-function-renderitems-catalog-itemvalues-now-maxitems-maxtrianglesperitem-maxtriangles-src-mq3-client-playable-item-models-ml-2035623974"></a>
 ### renderItems
@@ -323,7 +323,7 @@ Applies both per-item and whole-frame budgets to playable_items.Item values.
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L273)
 
 <a id="function-function-mq3-client-playable-item-models-resolvebinding-function-resolvebinding-archive-catalog-surface-surfaceindex-skin-src-mq3-client-playable-item-models-ml-1562859464"></a>
 ### resolveBinding
@@ -341,7 +341,7 @@ function resolveBinding(archive, catalog, surface, surfaceIndex, skin)
 | `skin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L127)
 
 <a id="function-function-mq3-client-playable-item-models-surfaceshader-function-surfaceshader-surface-skin-src-mq3-client-playable-item-models-ml-1568465778"></a>
 ### surfaceShader
@@ -356,7 +356,7 @@ function surfaceShader(surface, skin)
 | `skin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L105)
 
 - [mq3.client.playable_item_models.Texture](Type-mq3-client-playable-item-models-texture-2097774111.md) — struct
 <a id="function-function-mq3-client-playable-item-models-texturebyname-function-texturebyname-catalog-name-src-mq3-client-playable-item-models-ml-118018094"></a>
@@ -372,7 +372,7 @@ function textureByName(catalog, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L115)
 
 <a id="function-function-mq3-client-playable-item-models-transform-function-transform-origin-axis-scale-src-mq3-client-playable-item-models-ml-296271207"></a>
 ### transform
@@ -388,7 +388,7 @@ function transform(origin, axis, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L90)
 
 - [mq3.client.playable_item_models.Transform](Type-mq3-client-playable-item-models-transform-683847984.md) — struct
 - [mq3.client.playable_item_models.Triangle](Type-mq3-client-playable-item-models-triangle-556282752.md) — struct
@@ -404,7 +404,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L92)
 
 <a id="function-function-mq3-client-playable-item-models-validatetransform-function-validatetransform-value-src-mq3-client-playable-item-models-ml-716572937"></a>
 ### validateTransform
@@ -418,7 +418,7 @@ function validateTransform(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L94)
 
 <a id="function-function-mq3-client-playable-item-models-yawaxis-function-yawaxis-degrees-src-mq3-client-playable-item-models-ml-1952780153"></a>
 ### yawAxis
@@ -432,4 +432,4 @@ function yawAxis(degrees)
 | `degrees` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L100)

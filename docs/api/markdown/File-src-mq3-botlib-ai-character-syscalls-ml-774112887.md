@@ -29,7 +29,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_character_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_character_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-character-syscalls-farg-function-farg-vm-base-index-src-mq3-botlib-ai-character-syscalls-ml-1476361772"></a>
 ### farg
@@ -45,4 +45,4 @@ function farg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_character_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_character_syscalls.ml#L9)

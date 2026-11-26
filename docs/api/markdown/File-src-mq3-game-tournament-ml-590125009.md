@@ -28,7 +28,7 @@ function addPlayer(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L11)
 
 <a id="function-function-mq3-game-tournament-adjustscores-function-adjustscores-level-src-mq3-game-tournament-ml-2020151254"></a>
 ### adjustScores
@@ -42,7 +42,7 @@ function adjustScores(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L42)
 
 <a id="function-function-mq3-game-tournament-check-function-check-level-src-mq3-game-tournament-ml-500497606"></a>
 ### check
@@ -56,7 +56,7 @@ function check(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L84)
 
 <a id="function-function-mq3-game-tournament-rankedslot-function-rankedslot-level-index-src-mq3-game-tournament-ml-476136828"></a>
 ### rankedSlot
@@ -71,7 +71,7 @@ function rankedSlot(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L25)
 
 <a id="function-function-mq3-game-tournament-removeloser-function-removeloser-level-src-mq3-game-tournament-ml-1583491424"></a>
 ### removeLoser
@@ -85,7 +85,7 @@ function removeLoser(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L36)
 
 <a id="function-function-mq3-game-tournament-removeranked-function-removeranked-level-index-src-mq3-game-tournament-ml-1726826956"></a>
 ### removeRanked
@@ -100,7 +100,7 @@ function removeRanked(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L30)
 
 <a id="function-function-mq3-game-tournament-removewinner-function-removewinner-level-src-mq3-game-tournament-ml-962020266"></a>
 ### removeWinner
@@ -114,7 +114,7 @@ function removeWinner(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L39)
 
 <a id="function-function-mq3-game-tournament-restart-function-restart-level-src-mq3-game-tournament-ml-1258596064"></a>
 ### restart
@@ -128,7 +128,7 @@ function restart(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L76)
 
 <a id="function-function-mq3-game-tournament-setwarmup-function-setwarmup-level-value-writelog-src-mq3-game-tournament-ml-554457554"></a>
 ### setWarmup
@@ -144,7 +144,7 @@ function setWarmup(level, value, writeLog)
 | `writeLog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L67)
 
 <a id="function-function-mq3-game-tournament-teamcount-function-teamcount-level-ignoreclientnum-team-src-mq3-game-tournament-ml-1994846166"></a>
 ### teamCount
@@ -160,4 +160,4 @@ function teamCount(level, ignoreClientNum, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/tournament.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/tournament.ml#L54)

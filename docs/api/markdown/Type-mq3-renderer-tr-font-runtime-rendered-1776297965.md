@@ -10,7 +10,7 @@ struct Rendered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ bitmap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-rendered-glyph-glyph-src-mq3-renderer-tr-font-runtime-ml-1166136980"></a>
 ### glyph
@@ -32,4 +32,4 @@ glyph
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L20)

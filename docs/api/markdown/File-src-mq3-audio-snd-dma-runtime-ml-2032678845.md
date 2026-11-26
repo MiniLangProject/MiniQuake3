@@ -28,7 +28,7 @@ function copy3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L27)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-create-function-create-host-outputrate-src-mq3-audio-snd-dma-runtime-ml-600227689"></a>
 ### create
@@ -43,7 +43,7 @@ function create(host, outputRate)
 | `outputRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L21)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-diagnostic-function-diagnostic-state-text-src-mq3-audio-snd-dma-runtime-ml-523144964"></a>
 ### diagnostic
@@ -58,7 +58,7 @@ function diagnostic(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L28)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-fgetlittlelong-function-fgetlittlelong-data-offset-src-mq3-audio-snd-dma-runtime-ml-1199503175"></a>
 ### FGetLittleLong
@@ -73,7 +73,7 @@ function FGetLittleLong(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L30)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-fgetlittleshort-function-fgetlittleshort-data-offset-src-mq3-audio-snd-dma-runtime-ml-46414071"></a>
 ### FGetLittleShort
@@ -88,7 +88,7 @@ function FGetLittleShort(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L31)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-identityaxis-function-identityaxis-src-mq3-audio-snd-dma-runtime-ml-722236480"></a>
 ### identityAxis
@@ -98,7 +98,7 @@ function identityAxis()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L20)
 
 - [mq3.audio.snd_dma_runtime.Loop](Type-mq3-audio-snd-dma-runtime-loop-633949621.md) — struct
 <a id="function-function-mq3-audio-snd-dma-runtime-lower-function-lower-value-src-mq3-audio-snd-dma-runtime-ml-30976109"></a>
@@ -113,7 +113,7 @@ function lower(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L25)
 
 <a id="constant-constant-mq3-audio-snd-dma-runtime-max-gentities-const-max-gentities-1024-src-mq3-audio-snd-dma-runtime-ml-278505084"></a>
 ### MAX_GENTITIES
@@ -123,7 +123,7 @@ const MAX_GENTITIES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L11)
 
 <a id="constant-constant-mq3-audio-snd-dma-runtime-max-qpath-const-max-qpath-64-src-mq3-audio-snd-dma-runtime-ml-410983707"></a>
 ### MAX_QPATH
@@ -133,7 +133,7 @@ const MAX_QPATH = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L13)
 
 <a id="constant-constant-mq3-audio-snd-dma-runtime-max-sfx-const-max-sfx-4096-src-mq3-audio-snd-dma-runtime-ml-1335007656"></a>
 ### MAX_SFX
@@ -143,7 +143,7 @@ const MAX_SFX = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L12)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-addloopingsound-function-s-addloopingsound-state-entity-origin-velocity-handle-src-mq3-audio-snd-dma-runtime-ml-1074142203"></a>
 ### S_AddLoopingSound
@@ -161,7 +161,7 @@ function S_AddLoopingSound(state, entity, origin, velocity, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L62)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-addloopsounds-function-s-addloopsounds-state-src-mq3-audio-snd-dma-runtime-ml-1237206617"></a>
 ### S_AddLoopSounds
@@ -175,7 +175,7 @@ function S_AddLoopSounds(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L65)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-addrealloopingsound-function-s-addrealloopingsound-state-entity-origin-velocity-handle-src-mq3-audio-snd-dma-runtime-ml-305990699"></a>
 ### S_AddRealLoopingSound
@@ -193,7 +193,7 @@ function S_AddRealLoopingSound(state, entity, origin, velocity, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L63)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-beginregistration-function-s-beginregistration-state-src-mq3-audio-snd-dma-runtime-ml-33701011"></a>
 ### S_BeginRegistration
@@ -207,7 +207,7 @@ function S_BeginRegistration(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L45)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-byteswaprawsamples-function-s-byteswaprawsamples-samples-width-soundchannels-data-src-mq3-audio-snd-dma-runtime-ml-1471168222"></a>
 ### S_ByteSwapRawSamples
@@ -224,7 +224,7 @@ function S_ByteSwapRawSamples(samples, width, soundChannels, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L71)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-channelfree-function-s-channelfree-state-slot-src-mq3-audio-snd-dma-runtime-ml-1253356513"></a>
 ### S_ChannelFree
@@ -239,7 +239,7 @@ function S_ChannelFree(state, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L51)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-channelmalloc-function-s-channelmalloc-state-entity-handle-entitychannel-src-mq3-audio-snd-dma-runtime-ml-1648672284"></a>
 ### S_ChannelMalloc
@@ -256,7 +256,7 @@ function S_ChannelMalloc(state, entity, handle, entityChannel)
 | `entityChannel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L50)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-channelsetup-function-s-channelsetup-state-src-mq3-audio-snd-dma-runtime-ml-319257263"></a>
 ### S_ChannelSetup
@@ -270,7 +270,7 @@ function S_ChannelSetup(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L49)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-channelsetupresult-function-s-channelsetupresult-state-src-mq3-audio-snd-dma-runtime-ml-1878059071"></a>
 ### S_ChannelSetupResult
@@ -284,7 +284,7 @@ function S_ChannelSetupResult(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L52)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-clearloopingsounds-function-s-clearloopingsounds-state-killall-src-mq3-audio-snd-dma-runtime-ml-474918136"></a>
 ### S_ClearLoopingSounds
@@ -299,7 +299,7 @@ function S_ClearLoopingSounds(state, killAll)
 | `killAll` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L57)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-clearsoundbuffer-function-s-clearsoundbuffer-state-src-mq3-audio-snd-dma-runtime-ml-128035391"></a>
 ### S_ClearSoundBuffer
@@ -313,7 +313,7 @@ function S_ClearSoundBuffer(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L73)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-defaultsound-function-s-defaultsound-sound-src-mq3-audio-snd-dma-runtime-ml-1156804485"></a>
 ### S_DefaultSound
@@ -327,7 +327,7 @@ function S_DefaultSound(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L38)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-disablesounds-function-s-disablesounds-state-src-mq3-audio-snd-dma-runtime-ml-746862871"></a>
 ### S_DisableSounds
@@ -341,7 +341,7 @@ function S_DisableSounds(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L48)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-findname-function-s-findname-state-name-src-mq3-audio-snd-dma-runtime-ml-116318116"></a>
 ### S_FindName
@@ -356,7 +356,7 @@ function S_FindName(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L33)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-findwavchunk-function-s-findwavchunk-data-offset-chunk-src-mq3-audio-snd-dma-runtime-ml-1361978670"></a>
 ### S_FindWavChunk
@@ -372,7 +372,7 @@ function S_FindWavChunk(data, offset, chunk)
 | `chunk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L78)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-freeoldestsound-function-s-freeoldestsound-state-src-mq3-audio-snd-dma-runtime-ml-1838252507"></a>
 ### S_FreeOldestSound
@@ -386,7 +386,7 @@ function S_FreeOldestSound(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L43)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-getrawsamplepointer-function-s-getrawsamplepointer-state-src-mq3-audio-snd-dma-runtime-ml-186607305"></a>
 ### S_GetRawSamplePointer
@@ -400,7 +400,7 @@ function S_GetRawSamplePointer(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L70)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-getsoundtime-function-s-getsoundtime-state-src-mq3-audio-snd-dma-runtime-ml-1608390107"></a>
 ### S_GetSoundtime
@@ -414,7 +414,7 @@ function S_GetSoundtime(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L69)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-hashsfxname-function-s-hashsfxname-name-src-mq3-audio-snd-dma-runtime-ml-793160779"></a>
 ### S_HashSFXName
@@ -428,7 +428,7 @@ function S_HashSFXName(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L32)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-init-function-s-init-state-src-mq3-audio-snd-dma-runtime-ml-1570856655"></a>
 ### S_Init
@@ -442,7 +442,7 @@ function S_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L46)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-memoryload-function-s-memoryload-state-sound-src-mq3-audio-snd-dma-runtime-ml-1149268888"></a>
 ### S_memoryLoad
@@ -457,7 +457,7 @@ function S_memoryLoad(state, sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L39)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-music-f-function-s-music-f-state-intro-trackloop-src-mq3-audio-snd-dma-runtime-ml-223702572"></a>
 ### S_Music_f
@@ -473,7 +473,7 @@ function S_Music_f(state, intro, trackLoop)
 | `trackLoop` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L83)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-play-f-function-s-play-f-state-names-src-mq3-audio-snd-dma-runtime-ml-1142794983"></a>
 ### S_Play_f
@@ -488,7 +488,7 @@ function S_Play_f(state, names)
 | `names` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L82)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-rawsamples-function-s-rawsamples-state-samples-rate-width-soundchannels-data-volume-src-mq3-audio-snd-dma-runtime-ml-565745515"></a>
 ### S_RawSamples
@@ -508,7 +508,7 @@ function S_RawSamples(state, samples, rate, width, soundChannels, data, volume)
 | `volume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L72)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-registersound-function-s-registersound-state-name-compressed-src-mq3-audio-snd-dma-runtime-ml-814715617"></a>
 ### S_RegisterSound
@@ -524,7 +524,7 @@ function S_RegisterSound(state, name, compressed)
 | `compressed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L44)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-respatialize-function-s-respatialize-state-entity-head-axis-inwater-src-mq3-audio-snd-dma-runtime-ml-385518741"></a>
 ### S_Respatialize
@@ -542,7 +542,7 @@ function S_Respatialize(state, entity, head, axis, inWater)
 | `inWater` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L67)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-scanchannelstarts-function-s-scanchannelstarts-state-src-mq3-audio-snd-dma-runtime-ml-2085054321"></a>
 ### S_ScanChannelStarts
@@ -556,7 +556,7 @@ function S_ScanChannelStarts(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L68)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-shutdown-function-s-shutdown-state-src-mq3-audio-snd-dma-runtime-ml-825125651"></a>
 ### S_Shutdown
@@ -570,7 +570,7 @@ function S_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L47)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-soundinfo-f-function-s-soundinfo-f-state-src-mq3-audio-snd-dma-runtime-ml-1482407447"></a>
 ### S_SoundInfo_f
@@ -584,7 +584,7 @@ function S_SoundInfo_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L84)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-soundlist-f-function-s-soundlist-f-state-src-mq3-audio-snd-dma-runtime-ml-1891669959"></a>
 ### S_SoundList_f
@@ -598,7 +598,7 @@ function S_SoundList_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L85)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-spatializeorigin-function-s-spatializeorigin-state-origin-mastervolume-src-mq3-audio-snd-dma-runtime-ml-1899183937"></a>
 ### S_SpatializeOrigin
@@ -614,7 +614,7 @@ function S_SpatializeOrigin(state, origin, masterVolume)
 | `masterVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L66)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-startbackgroundtrack-function-s-startbackgroundtrack-state-intro-trackloop-src-mq3-audio-snd-dma-runtime-ml-1959179184"></a>
 ### S_StartBackgroundTrack
@@ -630,7 +630,7 @@ function S_StartBackgroundTrack(state, intro, trackLoop)
 | `trackLoop` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L79)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-startlocalsound-function-s-startlocalsound-state-handle-channel-src-mq3-audio-snd-dma-runtime-ml-763973598"></a>
 ### S_StartLocalSound
@@ -646,7 +646,7 @@ function S_StartLocalSound(state, handle, channel)
 | `channel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L55)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-startsound-function-s-startsound-state-origin-entity-entitychannel-handle-src-mq3-audio-snd-dma-runtime-ml-750757244"></a>
 ### S_StartSound
@@ -664,7 +664,7 @@ function S_StartSound(state, origin, entity, entityChannel, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L54)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-stopallsounds-function-s-stopallsounds-state-src-mq3-audio-snd-dma-runtime-ml-1871560233"></a>
 ### S_StopAllSounds
@@ -678,7 +678,7 @@ function S_StopAllSounds(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L74)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-stopbackgroundtrack-function-s-stopbackgroundtrack-state-src-mq3-audio-snd-dma-runtime-ml-800389261"></a>
 ### S_StopBackgroundTrack
@@ -692,7 +692,7 @@ function S_StopBackgroundTrack(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L80)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-stoploopingsound-function-s-stoploopingsound-state-entity-src-mq3-audio-snd-dma-runtime-ml-107695732"></a>
 ### S_StopLoopingSound
@@ -707,7 +707,7 @@ function S_StopLoopingSound(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L64)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-update-function-s-update-state-entity-head-axis-inwater-milliseconds-src-mq3-audio-snd-dma-runtime-ml-1199038547"></a>
 ### S_Update
@@ -726,7 +726,7 @@ function S_Update(state, entity, head, axis, inWater, milliseconds)
 | `milliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L76)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-update-function-s-update-state-milliseconds-src-mq3-audio-snd-dma-runtime-ml-1285921985"></a>
 ### S_Update_
@@ -741,7 +741,7 @@ function S_Update_(state, milliseconds)
 | `milliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L75)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-updatebackgroundtrack-function-s-updatebackgroundtrack-state-src-mq3-audio-snd-dma-runtime-ml-1169575191"></a>
 ### S_UpdateBackgroundTrack
@@ -755,7 +755,7 @@ function S_UpdateBackgroundTrack(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L81)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-s-updateentityposition-function-s-updateentityposition-state-entity-origin-src-mq3-audio-snd-dma-runtime-ml-1039432194"></a>
 ### S_UpdateEntityPosition
@@ -771,7 +771,7 @@ function S_UpdateEntityPosition(state, entity, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L56)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-same-function-same-a-b-src-mq3-audio-snd-dma-runtime-ml-1991320427"></a>
 ### same
@@ -786,7 +786,7 @@ function same(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L26)
 
 <a id="function-function-mq3-audio-snd-dma-runtime-services-function-services-src-mq3-audio-snd-dma-runtime-ml-1526253764"></a>
 ### services
@@ -796,7 +796,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L19)
 
 - [mq3.audio.snd_dma_runtime.Services](Type-mq3-audio-snd-dma-runtime-services-1492600771.md) — struct
 <a id="function-function-mq3-audio-snd-dma-runtime-setloop-function-setloop-state-entity-origin-velocity-handle-realloop-src-mq3-audio-snd-dma-runtime-ml-919558621"></a>
@@ -816,7 +816,7 @@ function setLoop(state, entity, origin, velocity, handle, realLoop)
 | `realLoop` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L58)
 
 - [mq3.audio.snd_dma_runtime.Sfx](Type-mq3-audio-snd-dma-runtime-sfx-663027514.md) — struct
 - [mq3.audio.snd_dma_runtime.State](Type-mq3-audio-snd-dma-runtime-state-3570768.md) — struct

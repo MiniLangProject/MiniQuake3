@@ -10,7 +10,7 @@ struct SetupMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupmenu-assets-assets-src-mq3-client-ui-setup-ml-2121801413"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupmenu-commands-commands-src-mq3-client-ui-setup-ml-173571587"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupmenu-fullscreen-fullscreen-src-mq3-client-ui-setup-ml-319455133"></a>
 ### fullscreen
@@ -52,7 +52,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupmenu-items-items-src-mq3-client-ui-setup-ml-1487104507"></a>
 ### items
@@ -62,7 +62,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)
 
 <a id="field-field-mq3-client-ui-setup-setupmenu-wraparound-wraparound-src-mq3-client-ui-setup-ml-1052020885"></a>
 ### wrapAround
@@ -72,4 +72,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_setup.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_setup.ml#L14)

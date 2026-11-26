@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ closeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 <a id="field-field-mq3-server-download-services-context-context-src-mq3-server-download-ml-751595571"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 <a id="field-field-mq3-server-download-services-dropfn-dropfn-src-mq3-server-download-ml-527157897"></a>
 ### dropFn
@@ -42,7 +42,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 <a id="field-field-mq3-server-download-services-idpakfn-idpakfn-src-mq3-server-download-ml-1799718403"></a>
 ### idPakFn
@@ -52,7 +52,7 @@ idPakFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 <a id="field-field-mq3-server-download-services-openfn-openfn-src-mq3-server-download-ml-1410818355"></a>
 ### openFn
@@ -62,7 +62,7 @@ openFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)
 
 <a id="field-field-mq3-server-download-services-readfn-readfn-src-mq3-server-download-ml-1954192651"></a>
 ### readFn
@@ -72,4 +72,4 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L21)

@@ -10,7 +10,7 @@ struct Heap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstReaches
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 <a id="field-field-mq3-botlib-aas-routing-heap-positions-positions-src-mq3-botlib-aas-routing-ml-860511851"></a>
 ### positions
@@ -32,7 +32,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 <a id="field-field-mq3-botlib-aas-routing-heap-reaches-reaches-src-mq3-botlib-aas-routing-ml-308526351"></a>
 ### reaches
@@ -42,7 +42,7 @@ reaches
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 <a id="field-field-mq3-botlib-aas-routing-heap-size-size-src-mq3-botlib-aas-routing-ml-1694686061"></a>
 ### size
@@ -52,7 +52,7 @@ size
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)
 
 <a id="field-field-mq3-botlib-aas-routing-heap-times-times-src-mq3-botlib-aas-routing-ml-1157114679"></a>
 ### times
@@ -62,4 +62,4 @@ times
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L74)

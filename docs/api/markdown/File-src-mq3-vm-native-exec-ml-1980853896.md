@@ -30,7 +30,7 @@ extern function beginNative(control as ptr, count as i32, original as i32, botto
 | `breaks` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L7)
 
 <a id="function-function-mq3-vm-native-exec-call-function-call-vm-args-src-mq3-vm-native-exec-ml-276052838"></a>
 ### call
@@ -45,7 +45,7 @@ function call(vm, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L16)
 
 <a id="constant-constant-mq3-vm-native-exec-control-bytes-const-control-bytes-1080-src-mq3-vm-native-exec-ml-486636992"></a>
 ### CONTROL_BYTES
@@ -55,7 +55,7 @@ const CONTROL_BYTES = 1080
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L9)
 
 <a id="function-function-mq3-vm-native-exec-fail-function-fail-text-src-mq3-vm-native-exec-ml-360682263"></a>
 ### fail
@@ -69,7 +69,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L10)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-plansizenative-extern-function-plansizenative-image-as-ptr-count-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-plan-size-returns-i32-src-mq3-vm-native-exec-ml-535154572"></a>
 ### planSizeNative
@@ -84,7 +84,7 @@ extern function planSizeNative(image as ptr, count as i32) from "miniquake3_qvm.
 | `count` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L5)
 
 <a id="function-function-mq3-vm-native-exec-prepare-function-prepare-image-src-mq3-vm-native-exec-ml-1914730287"></a>
 ### prepare
@@ -98,7 +98,7 @@ function prepare(image)
 | `image` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L11)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-preparenative-extern-function-preparenative-image-as-ptr-count-as-i32-plan-as-ptr-capacity-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-prepare-returns-i32-src-mq3-vm-native-exec-ml-931716567"></a>
 ### prepareNative
@@ -115,7 +115,7 @@ extern function prepareNative(image as ptr, count as i32, plan as ptr, capacity 
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L6)
 
 <a id="function-function-mq3-vm-native-exec-restorestack-function-restorestack-vm-saved-src-mq3-vm-native-exec-ml-318707870"></a>
 ### restoreStack
@@ -130,7 +130,7 @@ function restoreStack(vm, saved)
 | `saved` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L15)
 
 <a id="extern_function-extern-function-mq3-vm-native-exec-runnative-extern-function-runnative-plan-as-ptr-planbytes-as-i32-data-as-ptr-databytes-as-i32-control-as-ptr-controlbytes-as-i32-value-as-i32-resume-as-i32-from-miniquake3-qvm-dll-symbol-mq3-qvm-run-returns-i32-src-mq3-vm-native-exec-ml-1364553667"></a>
 ### runNative
@@ -151,4 +151,4 @@ extern function runNative(plan as ptr, planBytes as i32, data as ptr, dataBytes 
 | `resume` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/native_exec.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/native_exec.ml#L8)

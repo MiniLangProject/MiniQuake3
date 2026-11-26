@@ -10,7 +10,7 @@ struct Prepared
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ area
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L9)
 
 <a id="field-field-mq3-renderer-qvm-viewport-prepared-projection-projection-src-mq3-renderer-qvm-viewport-ml-1993664372"></a>
 ### projection
@@ -32,4 +32,4 @@ projection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L9)

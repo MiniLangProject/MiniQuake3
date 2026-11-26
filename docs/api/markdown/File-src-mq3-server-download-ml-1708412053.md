@@ -30,7 +30,7 @@ function acknowledge(state, serverState, host, block)
 | `block` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L130)
 
 <a id="function-function-mq3-server-download-begindownload-function-begindownload-state-host-name-src-mq3-server-download-ml-155499394"></a>
 ### beginDownload
@@ -46,7 +46,7 @@ function beginDownload(state, host, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L44)
 
 <a id="function-function-mq3-server-download-blockcount-function-blockcount-state-maxrate-src-mq3-server-download-ml-1423307661"></a>
 ### blockCount
@@ -61,7 +61,7 @@ function blockCount(state, maxRate)
 | `maxRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L95)
 
 <a id="function-function-mq3-server-download-close-function-close-state-host-src-mq3-server-download-ml-1756497127"></a>
 ### close
@@ -76,7 +76,7 @@ function close(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L32)
 
 <a id="function-function-mq3-server-download-commandruntime-function-commandruntime-state-serverstate-downloadhost-sendgamestatefn-context-src-mq3-server-download-ml-1045979583"></a>
 ### commandRuntime
@@ -94,7 +94,7 @@ function commandRuntime(state, serverState, downloadHost, sendGamestateFn, conte
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L28)
 
 - [mq3.server.download.CommandRuntime](Type-mq3-server-download-commandruntime-583942862.md) — struct
 <a id="function-function-mq3-server-download-create-function-create-name-rate-snapshotmsec-src-mq3-server-download-ml-1849929887"></a>
@@ -111,7 +111,7 @@ function create(name, rate, snapshotMsec)
 | `snapshotMsec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L16)
 
 <a id="function-function-mq3-server-download-dispatchcommand-function-dispatchcommand-dispatchhost-clientstate-name-parser-src-mq3-server-download-ml-1464656290"></a>
 ### dispatchCommand
@@ -130,7 +130,7 @@ Signature-compatible with client_command_dispatch.Services.downloadFn.
 | `parser` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L61)
 
 <a id="function-function-mq3-server-download-donedownload-function-donedownload-runtime-clientstate-src-mq3-server-download-ml-1528579450"></a>
 ### doneDownload
@@ -145,7 +145,7 @@ function doneDownload(runtime, clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L54)
 
 <a id="function-function-mq3-server-download-failuretext-function-failuretext-state-serverstate-idpack-missionpack-src-mq3-server-download-ml-2096731120"></a>
 ### failureText
@@ -162,7 +162,7 @@ function failureText(state, serverState, idPack, missionPack)
 | `missionPack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L71)
 
 <a id="constant-constant-mq3-server-download-max-download-blksize-const-max-download-blksize-2048-src-mq3-server-download-ml-463438019"></a>
 ### MAX_DOWNLOAD_BLKSIZE
@@ -172,7 +172,7 @@ const MAX_DOWNLOAD_BLKSIZE = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L11)
 
 <a id="constant-constant-mq3-server-download-max-download-window-const-max-download-window-8-src-mq3-server-download-ml-694569361"></a>
 ### MAX_DOWNLOAD_WINDOW
@@ -182,7 +182,7 @@ const MAX_DOWNLOAD_WINDOW = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L10)
 
 <a id="constant-constant-mq3-server-download-max-qpath-const-max-qpath-64-src-mq3-server-download-ml-1708417873"></a>
 ### MAX_QPATH
@@ -192,7 +192,7 @@ const MAX_QPATH = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L13)
 
 <a id="function-function-mq3-server-download-openifneeded-function-openifneeded-state-serverstate-host-msg-src-mq3-server-download-ml-762905714"></a>
 ### openIfNeeded
@@ -209,7 +209,7 @@ function openIfNeeded(state, serverState, host, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L83)
 
 <a id="function-function-mq3-server-download-qpath-function-qpath-name-src-mq3-server-download-ml-2078477661"></a>
 ### qpath
@@ -223,7 +223,7 @@ function qpath(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L39)
 
 <a id="function-function-mq3-server-download-server-function-server-time-allowdownload-pure-maxrate-src-mq3-server-download-ml-1273670238"></a>
 ### server
@@ -240,7 +240,7 @@ function server(time, allowDownload, pure, maxRate)
 | `maxRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L20)
 
 - [mq3.server.download.Server](Type-mq3-server-download-server-1977836046.md) — struct
 <a id="function-function-mq3-server-download-services-function-services-idpakfn-openfn-readfn-closefn-dropfn-context-src-mq3-server-download-ml-364164795"></a>
@@ -260,7 +260,7 @@ function services(idPakFn, openFn, readFn, closeFn, dropFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L22)
 
 - [mq3.server.download.Services](Type-mq3-server-download-services-2065249425.md) — struct
 - [mq3.server.download.State](Type-mq3-server-download-state-1637242474.md) — struct
@@ -277,7 +277,7 @@ function stopDownload(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L49)
 
 <a id="constant-constant-mq3-server-download-svc-download-const-svc-download-6-src-mq3-server-download-ml-386795511"></a>
 ### SVC_DOWNLOAD
@@ -287,7 +287,7 @@ const SVC_DOWNLOAD = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L12)
 
 <a id="function-function-mq3-server-download-writetoclient-function-writetoclient-state-serverstate-host-msg-src-mq3-server-download-ml-479279476"></a>
 ### writeToClient
@@ -304,4 +304,4 @@ function writeToClient(state, serverState, host, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L104)

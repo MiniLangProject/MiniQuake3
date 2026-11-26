@@ -10,7 +10,7 @@ struct ConfigHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ bindingState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L18)
 
 <a id="field-field-mq3-client-desktop-session-confighost-context-context-src-mq3-client-desktop-session-ml-309829661"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L18)
 
 <a id="field-field-mq3-client-desktop-session-confighost-dataroot-dataroot-src-mq3-client-desktop-session-ml-2040239901"></a>
 ### dataRoot
@@ -42,4 +42,4 @@ dataRoot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L18)

@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
 
 <a id="field-field-mq3-client-ui-sp-arena-services-executetextfn-executetextfn-src-mq3-client-ui-sp-arena-ml-1941196925"></a>
 ### executeTextFn
@@ -32,7 +32,7 @@ executeTextFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
 
 <a id="field-field-mq3-client-ui-sp-arena-services-numtiersfn-numtiersfn-src-mq3-client-ui-sp-arena-ml-638975647"></a>
 ### numTiersFn
@@ -42,7 +42,7 @@ numTiersFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
 
 <a id="field-field-mq3-client-ui-sp-arena-services-setvaluefn-setvaluefn-src-mq3-client-ui-sp-arena-ml-1024843047"></a>
 ### setValueFn
@@ -52,7 +52,7 @@ setValueFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)
 
 <a id="field-field-mq3-client-ui-sp-arena-services-variablevaluefn-variablevaluefn-src-mq3-client-ui-sp-arena-ml-471370945"></a>
 ### variableValueFn
@@ -62,4 +62,4 @@ variableValueFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L13)

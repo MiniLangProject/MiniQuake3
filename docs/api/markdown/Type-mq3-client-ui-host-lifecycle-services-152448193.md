@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ catcherFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-cgamefn-cgamefn-src-mq3-client-ui-host-lifecycle-ml-2127020737"></a>
 ### cgameFn
@@ -32,7 +32,7 @@ cgameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-cinematicfn-cinematicfn-src-mq3-client-ui-host-lifecycle-ml-742587181"></a>
 ### cinematicFn
@@ -42,7 +42,7 @@ cinematicFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-connectfn-connectfn-src-mq3-client-ui-host-lifecycle-ml-170359453"></a>
 ### connectFn
@@ -52,7 +52,7 @@ connectFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-context-context-src-mq3-client-ui-host-lifecycle-ml-1359824693"></a>
 ### context
@@ -62,7 +62,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-fullscreenfn-fullscreenfn-src-mq3-client-ui-host-lifecycle-ml-2076608175"></a>
 ### fullscreenFn
@@ -72,7 +72,7 @@ fullscreenFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-menufn-menufn-src-mq3-client-ui-host-lifecycle-ml-1824215747"></a>
 ### menuFn
@@ -82,7 +82,7 @@ menuFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-services-refreshfn-refreshfn-src-mq3-client-ui-host-lifecycle-ml-988377693"></a>
 ### refreshFn
@@ -92,4 +92,4 @@ refreshFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L24)

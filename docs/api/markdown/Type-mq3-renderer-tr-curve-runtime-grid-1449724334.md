@@ -10,7 +10,7 @@ struct Grid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ freed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-height-height-src-mq3-renderer-tr-curve-runtime-ml-1177540295"></a>
 ### height
@@ -32,7 +32,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-heightloderror-heightloderror-src-mq3-renderer-tr-curve-runtime-ml-1075988049"></a>
 ### heightLodError
@@ -42,7 +42,7 @@ heightLodError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-localorigin-localorigin-src-mq3-renderer-tr-curve-runtime-ml-1346140933"></a>
 ### localOrigin
@@ -52,7 +52,7 @@ localOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-lodorigin-lodorigin-src-mq3-renderer-tr-curve-runtime-ml-1600448681"></a>
 ### lodOrigin
@@ -62,7 +62,7 @@ lodOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-lodradius-lodradius-src-mq3-renderer-tr-curve-runtime-ml-284459665"></a>
 ### lodRadius
@@ -72,7 +72,7 @@ lodRadius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-meshbounds-meshbounds-src-mq3-renderer-tr-curve-runtime-ml-645819549"></a>
 ### meshBounds
@@ -82,7 +82,7 @@ meshBounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-meshradius-meshradius-src-mq3-renderer-tr-curve-runtime-ml-1447796503"></a>
 ### meshRadius
@@ -92,7 +92,7 @@ meshRadius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-surfacetype-surfacetype-src-mq3-renderer-tr-curve-runtime-ml-814305401"></a>
 ### surfaceType
@@ -102,7 +102,7 @@ surfaceType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-verts-verts-src-mq3-renderer-tr-curve-runtime-ml-1528666497"></a>
 ### verts
@@ -112,7 +112,7 @@ verts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-width-width-src-mq3-renderer-tr-curve-runtime-ml-259840777"></a>
 ### width
@@ -122,7 +122,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)
 
 <a id="field-field-mq3-renderer-tr-curve-runtime-grid-widthloderror-widthloderror-src-mq3-renderer-tr-curve-runtime-ml-2038839473"></a>
 ### widthLodError
@@ -132,4 +132,4 @@ widthLodError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L12)

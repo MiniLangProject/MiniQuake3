@@ -10,7 +10,7 @@ struct FrameResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ msec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L24)
 
 <a id="field-field-mq3-platform-desktop-frame-host-frameresult-number-number-src-mq3-platform-desktop-frame-host-ml-20505579"></a>
 ### number
@@ -32,7 +32,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L24)
 
 <a id="field-field-mq3-platform-desktop-frame-host-frameresult-packets-packets-src-mq3-platform-desktop-frame-host-ml-57533609"></a>
 ### packets
@@ -42,7 +42,7 @@ packets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L24)
 
 <a id="field-field-mq3-platform-desktop-frame-host-frameresult-time-time-src-mq3-platform-desktop-frame-host-ml-1009674495"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L24)

@@ -10,7 +10,7 @@ struct Clock
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L16)
 
 <a id="field-field-mq3-platform-win-shared-runtime-clock-timebase-timebase-src-mq3-platform-win-shared-runtime-ml-764798779"></a>
 ### timeBase
@@ -32,4 +32,4 @@ timeBase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L16)

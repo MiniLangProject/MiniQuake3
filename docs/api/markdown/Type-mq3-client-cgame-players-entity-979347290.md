@@ -10,7 +10,7 @@ struct Entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 ## Members
 
@@ -22,7 +22,7 @@ angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-clientnum-clientnum-src-mq3-client-cgame-players-ml-847266990"></a>
 ### clientNum
@@ -32,7 +32,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-dusttrailtime-dusttrailtime-src-mq3-client-cgame-players-ml-1511474038"></a>
 ### dustTrailTime
@@ -42,7 +42,7 @@ dustTrailTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-eflags-eflags-src-mq3-client-cgame-players-ml-1460959810"></a>
 ### eFlags
@@ -52,7 +52,7 @@ eFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-flag-flag-src-mq3-client-cgame-players-ml-1521991298"></a>
 ### flag
@@ -62,7 +62,7 @@ flag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-generic1-generic1-src-mq3-client-cgame-players-ml-1388496558"></a>
 ### generic1
@@ -72,7 +72,7 @@ generic1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-legs-legs-src-mq3-client-cgame-players-ml-1065893140"></a>
 ### legs
@@ -82,7 +82,7 @@ legs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-legsanim-legsanim-src-mq3-client-cgame-players-ml-1292139026"></a>
 ### legsAnim
@@ -92,7 +92,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-number-number-src-mq3-client-cgame-players-ml-16471420"></a>
 ### number
@@ -102,7 +102,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-origin-origin-src-mq3-client-cgame-players-ml-1931802002"></a>
 ### origin
@@ -112,7 +112,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-paindirection-paindirection-src-mq3-client-cgame-players-ml-1358368934"></a>
 ### painDirection
@@ -122,7 +122,7 @@ painDirection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-paintime-paintime-src-mq3-client-cgame-players-ml-1417177056"></a>
 ### painTime
@@ -132,7 +132,7 @@ painTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-powerups-powerups-src-mq3-client-cgame-players-ml-1685156848"></a>
 ### powerups
@@ -142,7 +142,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-torso-torso-src-mq3-client-cgame-players-ml-107411550"></a>
 ### torso
@@ -152,7 +152,7 @@ torso
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-torsoanim-torsoanim-src-mq3-client-cgame-players-ml-1677406594"></a>
 ### torsoAnim
@@ -162,7 +162,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-trailtime-trailtime-src-mq3-client-cgame-players-ml-606452498"></a>
 ### trailTime
@@ -172,7 +172,7 @@ trailTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)
 
 <a id="field-field-mq3-client-cgame-players-entity-velocity-velocity-src-mq3-client-cgame-players-ml-1712037356"></a>
 ### velocity
@@ -182,4 +182,4 @@ velocity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L61)

@@ -10,7 +10,7 @@ struct ClipWindow
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ normalized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L16)
 
 <a id="field-field-mq3-renderer-view-math-clipwindow-window-window-src-mq3-renderer-view-math-ml-801054411"></a>
 ### window
@@ -32,4 +32,4 @@ window
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L16)

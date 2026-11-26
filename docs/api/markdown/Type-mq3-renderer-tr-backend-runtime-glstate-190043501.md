@@ -10,7 +10,7 @@ struct GLState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ alphaTest
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-blendenabled-blendenabled-src-mq3-renderer-tr-backend-runtime-ml-427009165"></a>
 ### blendEnabled
@@ -32,7 +32,7 @@ blendEnabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-depthequal-depthequal-src-mq3-renderer-tr-backend-runtime-ml-1530354447"></a>
 ### depthEqual
@@ -42,7 +42,7 @@ depthEqual
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-depthtest-depthtest-src-mq3-renderer-tr-backend-runtime-ml-1301511349"></a>
 ### depthTest
@@ -52,7 +52,7 @@ depthTest
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-depthwrite-depthwrite-src-mq3-renderer-tr-backend-runtime-ml-451871717"></a>
 ### depthWrite
@@ -62,7 +62,7 @@ depthWrite
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-dstblend-dstblend-src-mq3-renderer-tr-backend-runtime-ml-1734242349"></a>
 ### dstBlend
@@ -72,7 +72,7 @@ dstBlend
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-faceculling-faceculling-src-mq3-renderer-tr-backend-runtime-ml-501800501"></a>
 ### faceCulling
@@ -82,7 +82,7 @@ faceCulling
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-mirror-mirror-src-mq3-renderer-tr-backend-runtime-ml-973034647"></a>
 ### mirror
@@ -92,7 +92,7 @@ mirror
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-srcblend-srcblend-src-mq3-renderer-tr-backend-runtime-ml-1833277471"></a>
 ### srcBlend
@@ -102,7 +102,7 @@ srcBlend
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-statebits-statebits-src-mq3-renderer-tr-backend-runtime-ml-1378415413"></a>
 ### stateBits
@@ -112,7 +112,7 @@ stateBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-texenv-texenv-src-mq3-renderer-tr-backend-runtime-ml-398579677"></a>
 ### texEnv
@@ -122,7 +122,7 @@ texEnv
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-glstate-wireframe-wireframe-src-mq3-renderer-tr-backend-runtime-ml-1980429925"></a>
 ### wireframe
@@ -132,4 +132,4 @@ wireframe
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L38)

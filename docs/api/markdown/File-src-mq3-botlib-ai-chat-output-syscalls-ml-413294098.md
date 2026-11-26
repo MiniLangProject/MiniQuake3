@@ -28,7 +28,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-optionalstring-function-optionalstring-vm-pointer-src-mq3-botlib-ai-chat-output-syscalls-ml-994288460"></a>
 ### optionalString
@@ -43,7 +43,7 @@ function optionalString(vm, pointer)
 | `pointer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L8)
 
 <a id="function-function-mq3-botlib-ai-chat-output-syscalls-variables-function-variables-vm-base-start-src-mq3-botlib-ai-chat-output-syscalls-ml-348445676"></a>
 ### variables
@@ -59,4 +59,4 @@ function variables(vm, base, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output_syscalls.ml#L9)

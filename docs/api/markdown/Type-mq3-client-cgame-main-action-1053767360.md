@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-dispatched-dispatched-src-mq3-client-cgame-main-ml-1246481349"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-flags-flags-src-mq3-client-cgame-main-ml-1920909527"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-kind-kind-src-mq3-client-cgame-main-ml-547119199"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-name-name-src-mq3-client-cgame-main-ml-1712391613"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-number-number-src-mq3-client-cgame-main-ml-1619523017"></a>
 ### number
@@ -72,7 +72,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-value-value-src-mq3-client-cgame-main-ml-1228170755"></a>
 ### value
@@ -82,7 +82,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)
 
 <a id="field-field-mq3-client-cgame-main-action-value2-value2-src-mq3-client-cgame-main-ml-12939209"></a>
 ### value2
@@ -92,4 +92,4 @@ value2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L41)

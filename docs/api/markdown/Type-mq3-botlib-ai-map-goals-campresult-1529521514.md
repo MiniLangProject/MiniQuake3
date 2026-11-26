@@ -10,7 +10,7 @@ struct CampResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ goal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-map-goals-campresult-next-next-src-mq3-botlib-ai-map-goals-ml-562579971"></a>
 ### next
@@ -32,4 +32,4 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L19)

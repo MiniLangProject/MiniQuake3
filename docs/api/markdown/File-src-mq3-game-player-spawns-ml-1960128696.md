@@ -33,7 +33,7 @@ function ctf(level, team, teamstate, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L127)
 
 <a id="function-function-mq3-game-player-spawns-distancefrom-function-distancefrom-spot-point-src-mq3-game-player-spawns-ml-374925736"></a>
 ### distanceFrom
@@ -48,7 +48,7 @@ function distanceFrom(spot, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L30)
 
 <a id="function-function-mq3-game-player-spawns-findclass-function-findclass-level-after-name-src-mq3-game-player-spawns-ml-272860753"></a>
 ### findClass
@@ -64,7 +64,7 @@ function findClass(level, after, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L11)
 
 <a id="function-function-mq3-game-player-spawns-findintermission-function-findintermission-level-src-mq3-game-player-spawns-ml-668410224"></a>
 ### findIntermission
@@ -78,7 +78,7 @@ function findIntermission(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L132)
 
 <a id="function-function-mq3-game-player-spawns-furthest-function-furthest-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-250756977"></a>
 ### furthest
@@ -95,7 +95,7 @@ function furthest(level, avoid, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L67)
 
 <a id="function-function-mq3-game-player-spawns-initial-function-initial-level-origin-angles-src-mq3-game-player-spawns-ml-2123626330"></a>
 ### initial
@@ -111,7 +111,7 @@ function initial(level, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L97)
 
 <a id="function-function-mq3-game-player-spawns-nearest-function-nearest-level-point-src-mq3-game-player-spawns-ml-512531602"></a>
 ### nearest
@@ -126,7 +126,7 @@ function nearest(level, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L37)
 
 <a id="function-function-mq3-game-player-spawns-randomdeathmatch-function-randomdeathmatch-level-src-mq3-game-player-spawns-ml-1819014716"></a>
 ### randomDeathmatch
@@ -140,7 +140,7 @@ function randomDeathmatch(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L47)
 
 <a id="function-function-mq3-game-player-spawns-randomteam-function-randomteam-level-teamstate-team-src-mq3-game-player-spawns-ml-820015881"></a>
 ### randomTeam
@@ -156,7 +156,7 @@ function randomTeam(level, teamstate, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L108)
 
 <a id="function-function-mq3-game-player-spawns-selectspawn-function-selectspawn-level-avoid-origin-angles-src-mq3-game-player-spawns-ml-2078758599"></a>
 ### selectSpawn
@@ -173,7 +173,7 @@ function selectSpawn(level, avoid, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L94)
 
 <a id="function-function-mq3-game-player-spawns-spawnresult-function-spawnresult-spot-origin-angles-src-mq3-game-player-spawns-ml-81563016"></a>
 ### spawnResult
@@ -189,7 +189,7 @@ function spawnResult(spot, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L59)
 
 <a id="function-function-mq3-game-player-spawns-spectator-function-spectator-level-origin-angles-src-mq3-game-player-spawns-ml-1068794004"></a>
 ### spectator
@@ -205,7 +205,7 @@ function spectator(level, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L151)
 
 <a id="function-function-mq3-game-player-spawns-wouldtelefrag-function-wouldtelefrag-level-spot-src-mq3-game-player-spawns-ml-798618798"></a>
 ### wouldTelefrag
@@ -220,4 +220,4 @@ function wouldTelefrag(level, spot)
 | `spot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/player_spawns.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/player_spawns.ml#L20)

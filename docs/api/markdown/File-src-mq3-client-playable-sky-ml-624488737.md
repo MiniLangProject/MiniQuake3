@@ -18,6 +18,20 @@ Reachable from entry: **yes**
 
 ## Declarations
 
+<a id="extern_function-extern-function-mq3-client-playable-sky-acos-extern-function-acos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-client-playable-sky-ml-1211113756"></a>
+### acos
+
+```ml
+extern function acos(value as double) from "ucrtbase.dll" returns double
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `value` | `double` | — |  |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L16)
+
 <a id="function-function-mq3-client-playable-sky-additiveimage-function-additiveimage-source-src-mq3-client-playable-sky-ml-2137856641"></a>
 ### additiveImage
 
@@ -30,7 +44,7 @@ function additiveImage(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L44)
 
 <a id="function-function-mq3-client-playable-sky-appendtriangle-function-appendtriangle-batch-layer-a-b-c-src-mq3-client-playable-sky-ml-173698599"></a>
 ### appendTriangle
@@ -48,7 +62,7 @@ function appendTriangle(batch, layer, a, b, c)
 | `c` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L171)
 
 <a id="function-function-mq3-client-playable-sky-basegrid-function-basegrid-camera-width-height-src-mq3-client-playable-sky-ml-1852744162"></a>
 ### baseGrid
@@ -64,7 +78,7 @@ function baseGrid(camera, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L160)
 
 <a id="function-function-mq3-client-playable-sky-basegridprepared-function-basegridprepared-basis-left-top-width-height-src-mq3-client-playable-sky-ml-1629450305"></a>
 ### baseGridPrepared
@@ -82,7 +96,7 @@ function baseGridPrepared(basis, left, top, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L159)
 
 <a id="function-function-mq3-client-playable-sky-baseuv-function-baseuv-camera-width-height-x-y-src-mq3-client-playable-sky-ml-299950465"></a>
 ### baseUv
@@ -100,7 +114,7 @@ function baseUv(camera, width, height, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L134)
 
 <a id="function-function-mq3-client-playable-sky-baseuvprepared-function-baseuvprepared-basis-focal-width-height-x-y-src-mq3-client-playable-sky-ml-1075941345"></a>
 ### baseUvPrepared
@@ -119,7 +133,7 @@ function baseUvPrepared(basis, focal, width, height, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L132)
 
 <a id="function-function-mq3-client-playable-sky-buildbatch-function-buildbatch-catalog-camera-width-height-nowmilliseconds-src-mq3-client-playable-sky-ml-1611899343"></a>
 ### buildBatch
@@ -137,7 +151,7 @@ function buildBatch(catalog, camera, width, height, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L196)
 
 <a id="function-function-mq3-client-playable-sky-buildbatchprepared-function-buildbatchprepared-catalog-basis-left-top-width-height-nowmilliseconds-src-mq3-client-playable-sky-ml-383625834"></a>
 ### buildBatchPrepared
@@ -157,10 +171,51 @@ function buildBatchPrepared(catalog, basis, left, top, width, height, nowMillise
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L176)
 
 - [mq3.client.playable_sky.CachedView](Type-mq3-client-playable-sky-cachedview-1579855338.md) — struct
 - [mq3.client.playable_sky.Catalog](Type-mq3-client-playable-sky-catalog-2147099612.md) — struct
+<a id="function-function-mq3-client-playable-sky-cloudgridprepared-function-cloudgridprepared-basis-left-top-width-height-cloudheight-src-mq3-client-playable-sky-ml-335020307"></a>
+### cloudGridPrepared
+
+```ml
+function cloudGridPrepared(basis, left, top, width, height, cloudHeight)
+```
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `basis` | `dynamic` | — |  |
+| `left` | `dynamic` | — |  |
+| `top` | `dynamic` | — |  |
+| `width` | `dynamic` | — |  |
+| `height` | `dynamic` | — |  |
+| `cloudHeight` | `dynamic` | — |  |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L146)
+
+<a id="function-function-mq3-client-playable-sky-clouduvprepared-function-clouduvprepared-basis-focal-width-height-x-y-cloudheight-src-mq3-client-playable-sky-ml-19416289"></a>
+### cloudUvPrepared
+
+```ml
+function cloudUvPrepared(basis, focal, width, height, x, y, cloudHeight)
+```
+
+Quake III's R_InitSkyTexCoords intersects each ray with a cloud sphere centered 4096 units below the viewer, then uses acos of its X/Y normal. Unlike yaw/pitch, this is continuous at the zenith.
+
+| Parameter | Type | Default | Description |
+| --- | --- | --- | --- |
+| `basis` | `dynamic` | — |  |
+| `focal` | `dynamic` | — |  |
+| `width` | `dynamic` | — |  |
+| `height` | `dynamic` | — |  |
+| `x` | `dynamic` | — |  |
+| `y` | `dynamic` | — |  |
+| `cloudHeight` | `dynamic` | — |  |
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L125)
+
 <a id="function-function-mq3-client-playable-sky-copybasis-function-copybasis-value-src-mq3-client-playable-sky-ml-1451784339"></a>
 ### copyBasis
 
@@ -173,7 +228,7 @@ function copyBasis(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L202)
 
 <a id="function-function-mq3-client-playable-sky-direction-function-direction-camera-width-height-x-y-src-mq3-client-playable-sky-ml-1458572975"></a>
 ### direction
@@ -191,7 +246,7 @@ function direction(camera, width, height, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L117)
 
 <a id="function-function-mq3-client-playable-sky-directionprepared-function-directionprepared-basis-focal-width-height-x-y-src-mq3-client-playable-sky-ml-2087014917"></a>
 ### directionPrepared
@@ -210,7 +265,7 @@ function directionPrepared(basis, focal, width, height, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L111)
 
 <a id="function-function-mq3-client-playable-sky-draw-function-draw-catalog-camera-width-height-nowmilliseconds-src-mq3-client-playable-sky-ml-1875670287"></a>
 ### draw
@@ -228,7 +283,7 @@ function draw(catalog, camera, width, height, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L257)
 
 <a id="function-function-mq3-client-playable-sky-drawlayer-function-drawlayer-layer-camera-width-height-nowmilliseconds-layerindex-src-mq3-client-playable-sky-ml-220321872"></a>
 ### drawLayer
@@ -247,7 +302,7 @@ function drawLayer(layer, camera, width, height, nowMilliseconds, layerIndex)
 | `layerIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L240)
 
 <a id="extern_function-extern-function-mq3-client-playable-sky-drawskylayernative-extern-function-drawskylayernative-records-as-ptr-capacity-as-i32-firsttriangle-as-i32-trianglecount-as-i32-additive-as-i32-from-playable-window-dll-symbol-playable-window-draw-sky-layer-returns-i32-src-mq3-client-playable-sky-ml-1132978482"></a>
 ### drawSkyLayerNative
@@ -265,7 +320,7 @@ extern function drawSkyLayerNative(records as ptr, capacity as i32, firstTriangl
 | `additive` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L15)
 
 <a id="function-function-mq3-client-playable-sky-drawtriangle-function-drawtriangle-layer-a-b-c-src-mq3-client-playable-sky-ml-456704905"></a>
 ### drawTriangle
@@ -282,7 +337,7 @@ function drawTriangle(layer, a, b, c)
 | `c` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L167)
 
 <a id="function-function-mq3-client-playable-sky-drawviewport-function-drawviewport-catalog-basis-area-nowmilliseconds-src-mq3-client-playable-sky-ml-927603488"></a>
 ### drawViewport
@@ -299,7 +354,7 @@ function drawViewport(catalog, basis, area, nowMilliseconds)
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L276)
 
 <a id="function-function-mq3-client-playable-sky-fail-function-fail-message-src-mq3-client-playable-sky-ml-264272003"></a>
 ### fail
@@ -313,7 +368,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L32)
 
 <a id="constant-constant-mq3-client-playable-sky-grid-columns-const-grid-columns-12-src-mq3-client-playable-sky-ml-236733188"></a>
 ### GRID_COLUMNS
@@ -323,7 +378,7 @@ const GRID_COLUMNS = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L20)
 
 <a id="constant-constant-mq3-client-playable-sky-grid-rows-const-grid-rows-8-src-mq3-client-playable-sky-ml-661725661"></a>
 ### GRID_ROWS
@@ -333,7 +388,7 @@ const GRID_ROWS = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L21)
 
 <a id="function-function-mq3-client-playable-sky-hassurfaceparm-function-hassurfaceparm-shader-wanted-src-mq3-client-playable-sky-ml-2015224748"></a>
 ### hasSurfaceParm
@@ -348,7 +403,7 @@ function hasSurfaceParm(shader, wanted)
 | `wanted` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L34)
 
 <a id="function-function-mq3-client-playable-sky-isskyshader-function-isskyshader-name-src-mq3-client-playable-sky-ml-339427785"></a>
 ### isSkyShader
@@ -362,7 +417,7 @@ function isSkyShader(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L33)
 
 <a id="function-function-mq3-client-playable-sky-isskyshaderindexed-function-isskyshaderindexed-index-name-src-mq3-client-playable-sky-ml-604029587"></a>
 ### isSkyShaderIndexed
@@ -377,7 +432,7 @@ function isSkyShaderIndexed(index, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L39)
 
 - [mq3.client.playable_sky.Layer](Type-mq3-client-playable-sky-layer-276908874.md) — struct
 <a id="function-function-mq3-client-playable-sky-layerfromstage-function-layerfromstage-archive-stage-slot-src-mq3-client-playable-sky-ml-1532831010"></a>
@@ -394,7 +449,7 @@ function layerFromStage(archive, stage, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L54)
 
 <a id="function-function-mq3-client-playable-sky-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-sky-ml-1207551233"></a>
 ### load
@@ -410,7 +465,7 @@ function load(archive, firstTextureSlot, maxTextureSlots)
 | `maxTextureSlots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L93)
 
 <a id="function-function-mq3-client-playable-sky-loadindexed-function-loadindexed-archive-index-shadername-firsttextureslot-maxtextureslots-src-mq3-client-playable-sky-ml-1968758591"></a>
 ### loadIndexed
@@ -428,7 +483,7 @@ function loadIndexed(archive, index, shaderName, firstTextureSlot, maxTextureSlo
 | `maxTextureSlots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L71)
 
 <a id="function-function-mq3-client-playable-sky-loadmap-function-loadmap-archive-map-index-firsttextureslot-maxtextureslots-src-mq3-client-playable-sky-ml-1890559575"></a>
 ### loadMap
@@ -446,7 +501,7 @@ function loadMap(archive, map, index, firstTextureSlot, maxTextureSlots)
 | `maxTextureSlots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L85)
 
 <a id="function-function-mq3-client-playable-sky-mappedvertex-function-mappedvertex-source-layer-seconds-depth-src-mq3-client-playable-sky-ml-1489163800"></a>
 ### mappedVertex
@@ -463,7 +518,7 @@ function mappedVertex(source, layer, seconds, depth)
 | `depth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L162)
 
 <a id="constant-constant-mq3-client-playable-sky-max-cached-views-const-max-cached-views-8-src-mq3-client-playable-sky-ml-1183835771"></a>
 ### MAX_CACHED_VIEWS
@@ -473,7 +528,7 @@ const MAX_CACHED_VIEWS = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L23)
 
 <a id="function-function-mq3-client-playable-sky-release-function-release-catalog-src-mq3-client-playable-sky-ml-1896610609"></a>
 ### release
@@ -487,7 +542,7 @@ function release(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L106)
 
 <a id="constant-constant-mq3-client-playable-sky-required-textures-const-required-textures-2-src-mq3-client-playable-sky-ml-1243639279"></a>
 ### REQUIRED_TEXTURES
@@ -497,7 +552,7 @@ const REQUIRED_TEXTURES = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L19)
 
 <a id="function-function-mq3-client-playable-sky-retainedbatchprepared-function-retainedbatchprepared-catalog-basis-left-top-width-height-nowmilliseconds-src-mq3-client-playable-sky-ml-275249644"></a>
 ### retainedBatchPrepared
@@ -519,7 +574,7 @@ Preserve MiniLang's camera/ray math exactly, retaining its double UVs until the 
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L208)
 
 <a id="function-function-mq3-client-playable-sky-retainedbatchrefdef-function-retainedbatchrefdef-catalog-axes-left-top-width-height-nowmilliseconds-src-mq3-client-playable-sky-ml-510302867"></a>
 ### retainedBatchRefdef
@@ -541,7 +596,7 @@ Only refdef callers carry a LEFT vector. Standalone camera/prepared APIs already
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L273)
 
 <a id="function-function-mq3-client-playable-sky-samebasis-function-samebasis-left-right-src-mq3-client-playable-sky-ml-707949049"></a>
 ### sameBasis
@@ -556,7 +611,7 @@ function sameBasis(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L198)
 
 <a id="constant-constant-mq3-client-playable-sky-shader-name-const-shader-name-textures-skies-tim-hell-src-mq3-client-playable-sky-ml-628692390"></a>
 ### SHADER_NAME
@@ -566,17 +621,17 @@ const SHADER_NAME = "textures/skies/tim_hell"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L18)
 
-<a id="constant-constant-mq3-client-playable-sky-sky-depth-const-sky-depth-1000000-src-mq3-client-playable-sky-ml-2067028878"></a>
+<a id="constant-constant-mq3-client-playable-sky-sky-depth-const-sky-depth-1000000-src-mq3-client-playable-sky-ml-654785292"></a>
 ### SKY_DEPTH
 
 ```ml
-const SKY_DEPTH = 1000000.
+const SKY_DEPTH = 1000000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L22)
 
 <a id="constant-constant-mq3-client-playable-sky-source-vertex-bytes-const-source-vertex-bytes-32-src-mq3-client-playable-sky-ml-2067220048"></a>
 ### SOURCE_VERTEX_BYTES
@@ -586,7 +641,7 @@ const SOURCE_VERTEX_BYTES = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L24)
 
 <a id="extern_function-extern-function-mq3-client-playable-sky-storeskyvertexnative-extern-function-storeskyvertexnative-source-as-ptr-capacity-as-i32-index-as-i32-x-as-double-y-as-double-u-as-double-v-as-double-from-playable-window-dll-symbol-playable-window-store-sky-vertex-returns-i32-src-mq3-client-playable-sky-ml-647891068"></a>
 ### storeSkyVertexNative
@@ -606,7 +661,7 @@ extern function storeSkyVertexNative(source as ptr, capacity as i32, index as i3
 | `v` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L13)
 
 <a id="function-function-mq3-client-playable-sky-submitlayers-function-submitlayers-catalog-batch-src-mq3-client-playable-sky-ml-985914795"></a>
 ### submitLayers
@@ -621,22 +676,7 @@ function submitLayers(catalog, batch)
 | `batch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L259)
-
-<a id="function-function-mq3-client-playable-sky-unwrap-function-unwrap-reference-value-src-mq3-client-playable-sky-ml-871794340"></a>
-### unwrap
-
-```ml
-function unwrap(reference, value)
-```
-
-| Parameter | Type | Default | Description |
-| --- | --- | --- | --- |
-| `reference` | `dynamic` | — |  |
-| `value` | `dynamic` | — |  |
-
-
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L262)
 
 <a id="extern_function-extern-function-mq3-client-playable-sky-updateskylayernative-extern-function-updateskylayernative-records-as-ptr-capacity-as-i32-firsttriangle-as-i32-source-as-ptr-sourcebytes-as-i32-columns-as-i32-rows-as-i32-slot-as-i32-scaleu-as-double-scalev-as-double-scrollu-as-double-scrollv-as-double-nowmilliseconds-as-double-depth-as-double-from-playable-window-dll-symbol-playable-window-update-sky-layer-returns-i32-src-mq3-client-playable-sky-ml-1282041420"></a>
 ### updateSkyLayerNative
@@ -663,7 +703,7 @@ extern function updateSkyLayerNative(records as ptr, capacity as i32, firstTrian
 | `depth` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L14)
 
 <a id="function-function-mq3-client-playable-sky-upload-function-upload-catalog-src-mq3-client-playable-sky-ml-1025607951"></a>
 ### upload
@@ -677,7 +717,7 @@ function upload(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L98)
 
 <a id="function-function-mq3-client-playable-sky-vertex-function-vertex-camera-width-height-x-y-layer-nowmilliseconds-depth-src-mq3-client-playable-sky-ml-894823759"></a>
 ### vertex
@@ -698,7 +738,7 @@ function vertex(camera, width, height, x, y, layer, nowMilliseconds, depth)
 | `depth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L139)
 
 - [mq3.client.playable_sky.Vertex](Type-mq3-client-playable-sky-vertex-2077306707.md) — struct
 - [mq3.client.playable_sky.ViewCache](Type-mq3-client-playable-sky-viewcache-1549416326.md) — struct

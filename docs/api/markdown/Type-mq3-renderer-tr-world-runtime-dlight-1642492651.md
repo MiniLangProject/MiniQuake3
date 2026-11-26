@@ -10,7 +10,7 @@ struct Dlight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-dlight-radius-radius-src-mq3-renderer-tr-world-runtime-ml-1112456875"></a>
 ### radius
@@ -32,4 +32,4 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L17)

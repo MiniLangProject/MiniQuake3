@@ -29,7 +29,7 @@ function accelerate(velocity, frametime, wishdir, wishspeed, acceleration)
 | `acceleration` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L65)
 
 <a id="function-function-mq3-botlib-aas-client-movement-add-function-add-a-b-src-mq3-botlib-aas-client-movement-ml-1646781965"></a>
 ### add
@@ -44,7 +44,7 @@ function add(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L47)
 
 <a id="function-function-mq3-botlib-aas-client-movement-applyfriction-function-applyfriction-velocity-friction-stopspeed-frametime-src-mq3-botlib-aas-client-movement-ml-1546429386"></a>
 ### applyFriction
@@ -61,7 +61,7 @@ function applyFriction(velocity, friction, stopspeed, frametime)
 | `frametime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L70)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-clusterportal-const-areacontents-clusterportal-8-src-mq3-botlib-aas-client-movement-ml-1811196485"></a>
 ### AREACONTENTS_CLUSTERPORTAL
@@ -71,7 +71,7 @@ const AREACONTENTS_CLUSTERPORTAL = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L16)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-jumppad-const-areacontents-jumppad-128-src-mq3-botlib-aas-client-movement-ml-1230745218"></a>
 ### AREACONTENTS_JUMPPAD
@@ -81,7 +81,7 @@ const AREACONTENTS_JUMPPAD = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L18)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-lava-const-areacontents-lava-2-src-mq3-botlib-aas-client-movement-ml-1882553625"></a>
 ### AREACONTENTS_LAVA
@@ -91,7 +91,7 @@ const AREACONTENTS_LAVA = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L14)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-slime-const-areacontents-slime-4-src-mq3-botlib-aas-client-movement-ml-1933532761"></a>
 ### AREACONTENTS_SLIME
@@ -101,7 +101,7 @@ const AREACONTENTS_SLIME = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L15)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-teleporter-const-areacontents-teleporter-64-src-mq3-botlib-aas-client-movement-ml-265606995"></a>
 ### AREACONTENTS_TELEPORTER
@@ -111,7 +111,7 @@ const AREACONTENTS_TELEPORTER = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L17)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-areacontents-water-const-areacontents-water-1-src-mq3-botlib-aas-client-movement-ml-1015623792"></a>
 ### AREACONTENTS_WATER
@@ -121,7 +121,7 @@ const AREACONTENTS_WATER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L13)
 
 - [mq3.botlib.aas_client_movement.AreaTrace](Type-mq3-botlib-aas-client-movement-areatrace-1425299197.md) — struct
 <a id="function-function-mq3-botlib-aas-client-movement-callareacontents-function-callareacontents-s-area-src-mq3-botlib-aas-client-movement-ml-1099261200"></a>
@@ -137,7 +137,7 @@ function callAreaContents(s, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L59)
 
 <a id="function-function-mq3-botlib-aas-client-movement-calltrace-function-calltrace-s-start-finish-presence-passentity-src-mq3-botlib-aas-client-movement-ml-1307358145"></a>
 ### callTrace
@@ -155,7 +155,7 @@ function callTrace(s, start, finish, presence, passEntity)
 | `passEntity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L55)
 
 <a id="function-function-mq3-botlib-aas-client-movement-calltraceareas-function-calltraceareas-s-start-finish-src-mq3-botlib-aas-client-movement-ml-1057466590"></a>
 ### callTraceAreas
@@ -171,7 +171,7 @@ function callTraceAreas(s, start, finish)
 | `finish` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L60)
 
 <a id="function-function-mq3-botlib-aas-client-movement-cliptobbox-function-cliptobbox-start-finish-presence-mins-maxs-src-mq3-botlib-aas-client-movement-ml-1382210904"></a>
 ### clipToBBox
@@ -189,7 +189,7 @@ function clipToBBox(start, finish, presence, mins, maxs)
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L79)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-contents-lava-const-contents-lava-8-src-mq3-botlib-aas-client-movement-ml-1206897427"></a>
 ### CONTENTS_LAVA
@@ -199,7 +199,7 @@ const CONTENTS_LAVA = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L10)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-contents-slime-const-contents-slime-16-src-mq3-botlib-aas-client-movement-ml-781055658"></a>
 ### CONTENTS_SLIME
@@ -209,7 +209,7 @@ const CONTENTS_SLIME = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-contents-solid-const-contents-solid-1-src-mq3-botlib-aas-client-movement-ml-773981070"></a>
 ### CONTENTS_SOLID
@@ -219,7 +219,7 @@ const CONTENTS_SOLID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L9)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-contents-water-const-contents-water-32-src-mq3-botlib-aas-client-movement-ml-2125360158"></a>
 ### CONTENTS_WATER
@@ -229,7 +229,7 @@ const CONTENTS_WATER = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L12)
 
 <a id="function-function-mq3-botlib-aas-client-movement-copy-function-copy-v-src-mq3-botlib-aas-client-movement-ml-722481330"></a>
 ### copy
@@ -243,7 +243,7 @@ function copy(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L44)
 
 <a id="function-function-mq3-botlib-aas-client-movement-dot-function-dot-a-b-src-mq3-botlib-aas-client-movement-ml-430374977"></a>
 ### dot
@@ -258,7 +258,7 @@ function dot(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L46)
 
 <a id="function-function-mq3-botlib-aas-client-movement-fail-function-fail-message-src-mq3-botlib-aas-client-movement-ml-1724212401"></a>
 ### fail
@@ -272,7 +272,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L43)
 
 <a id="function-function-mq3-botlib-aas-client-movement-length-function-length-v-src-mq3-botlib-aas-client-movement-ml-1709830326"></a>
 ### length
@@ -286,7 +286,7 @@ function length(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L51)
 
 <a id="function-function-mq3-botlib-aas-client-movement-ma-function-ma-a-value-b-src-mq3-botlib-aas-client-movement-ml-1146934318"></a>
 ### ma
@@ -302,7 +302,7 @@ function ma(a, value, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L50)
 
 - [mq3.botlib.aas_client_movement.Movement](Type-mq3-botlib-aas-client-movement-movement-381824432.md) — struct
 <a id="function-function-mq3-botlib-aas-client-movement-normalize-function-normalize-v-src-mq3-botlib-aas-client-movement-ml-561161676"></a>
@@ -317,7 +317,7 @@ function normalize(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L52)
 
 <a id="function-function-mq3-botlib-aas-client-movement-onground-function-onground-s-origin-presence-passentity-maxsteepness-src-mq3-botlib-aas-client-movement-ml-83464762"></a>
 ### onGround
@@ -335,7 +335,7 @@ function onGround(s, origin, presence, passEntity, maxSteepness)
 | `maxSteepness` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L75)
 
 <a id="function-function-mq3-botlib-aas-client-movement-pointarea-function-pointarea-s-point-src-mq3-botlib-aas-client-movement-ml-1839856683"></a>
 ### pointArea
@@ -350,7 +350,7 @@ function pointArea(s, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L57)
 
 <a id="function-function-mq3-botlib-aas-client-movement-pointcontents-function-pointcontents-s-point-src-mq3-botlib-aas-client-movement-ml-1667568253"></a>
 ### pointContents
@@ -365,7 +365,7 @@ function pointContents(s, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L56)
 
 <a id="function-function-mq3-botlib-aas-client-movement-pointpresence-function-pointpresence-s-point-src-mq3-botlib-aas-client-movement-ml-1953059447"></a>
 ### pointPresence
@@ -380,7 +380,7 @@ function pointPresence(s, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L58)
 
 <a id="function-function-mq3-botlib-aas-client-movement-predict-function-predict-s-entnum-origin-presence-onground-velocity-cmdmove-cmdframes-maxframes-frametime-stopevents-stoparea-visualize-src-mq3-botlib-aas-client-movement-ml-1937713491"></a>
 ### predict
@@ -406,7 +406,7 @@ function predict(s, entnum, origin, presence, onground, velocity, cmdmove, cmdfr
 | `visualize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L170)
 
 <a id="function-function-mq3-botlib-aas-client-movement-predictwithbbox-function-predictwithbbox-s-entnum-origin-presence-onground-velocity-cmdmove-cmdframes-maxframes-frametime-stopevents-stoparea-mins-maxs-visualize-src-mq3-botlib-aas-client-movement-ml-1313482919"></a>
 ### predictWithBBox
@@ -434,7 +434,7 @@ function predictWithBBox(s, entnum, origin, presence, onground, velocity, cmdmov
 | `visualize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L100)
 
 <a id="function-function-mq3-botlib-aas-client-movement-result-function-result-success-origin-velocity-frametime-presence-event-contents-frames-trace-s-src-mq3-botlib-aas-client-movement-ml-1739020989"></a>
 ### result
@@ -457,7 +457,7 @@ function result(success, origin, velocity, frametime, presence, event, contents,
 | `s` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L92)
 
 <a id="function-function-mq3-botlib-aas-client-movement-scale-function-scale-a-value-src-mq3-botlib-aas-client-movement-ml-1058685530"></a>
 ### scale
@@ -472,7 +472,7 @@ function scale(a, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L49)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-enterarea-const-se-enterarea-512-src-mq3-botlib-aas-client-movement-ml-1005566857"></a>
 ### SE_ENTERAREA
@@ -482,7 +482,7 @@ const SE_ENTERAREA = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L30)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-enterlava-const-se-enterlava-16-src-mq3-botlib-aas-client-movement-ml-477735594"></a>
 ### SE_ENTERLAVA
@@ -492,7 +492,7 @@ const SE_ENTERLAVA = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L25)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-enterslime-const-se-enterslime-8-src-mq3-botlib-aas-client-movement-ml-225594287"></a>
 ### SE_ENTERSLIME
@@ -502,7 +502,7 @@ const SE_ENTERSLIME = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L24)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-enterwater-const-se-enterwater-4-src-mq3-botlib-aas-client-movement-ml-1378136983"></a>
 ### SE_ENTERWATER
@@ -512,7 +512,7 @@ const SE_ENTERWATER = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L23)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-gap-const-se-gap-64-src-mq3-botlib-aas-client-movement-ml-602717491"></a>
 ### SE_GAP
@@ -522,7 +522,7 @@ const SE_GAP = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L27)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-hitboundingbox-const-se-hitboundingbox-2048-src-mq3-botlib-aas-client-movement-ml-1959395987"></a>
 ### SE_HITBOUNDINGBOX
@@ -532,7 +532,7 @@ const SE_HITBOUNDINGBOX = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L33)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-hitground-const-se-hitground-1-src-mq3-botlib-aas-client-movement-ml-1544433340"></a>
 ### SE_HITGROUND
@@ -542,7 +542,7 @@ const SE_HITGROUND = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L21)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-hitgroundarea-const-se-hitgroundarea-1024-src-mq3-botlib-aas-client-movement-ml-1337690424"></a>
 ### SE_HITGROUNDAREA
@@ -552,7 +552,7 @@ const SE_HITGROUNDAREA = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L31)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-hitgrounddamage-const-se-hitgrounddamage-32-src-mq3-botlib-aas-client-movement-ml-1114495570"></a>
 ### SE_HITGROUNDDAMAGE
@@ -562,7 +562,7 @@ const SE_HITGROUNDDAMAGE = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L26)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-leaveground-const-se-leaveground-2-src-mq3-botlib-aas-client-movement-ml-1884836589"></a>
 ### SE_LEAVEGROUND
@@ -572,7 +572,7 @@ const SE_LEAVEGROUND = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L22)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-none-const-se-none-0-src-mq3-botlib-aas-client-movement-ml-1956650919"></a>
 ### SE_NONE
@@ -582,7 +582,7 @@ const SE_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L20)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-touchclusterportal-const-se-touchclusterportal-4096-src-mq3-botlib-aas-client-movement-ml-1538159722"></a>
 ### SE_TOUCHCLUSTERPORTAL
@@ -592,7 +592,7 @@ const SE_TOUCHCLUSTERPORTAL = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L32)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-touchjumppad-const-se-touchjumppad-128-src-mq3-botlib-aas-client-movement-ml-1142975398"></a>
 ### SE_TOUCHJUMPPAD
@@ -602,7 +602,7 @@ const SE_TOUCHJUMPPAD = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L28)
 
 <a id="constant-constant-mq3-botlib-aas-client-movement-se-touchteleporter-const-se-touchteleporter-256-src-mq3-botlib-aas-client-movement-ml-181160528"></a>
 ### SE_TOUCHTELEPORTER
@@ -612,7 +612,7 @@ const SE_TOUCHTELEPORTER = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L29)
 
 <a id="function-function-mq3-botlib-aas-client-movement-services-function-services-context-src-mq3-botlib-aas-client-movement-ml-621644697"></a>
 ### services
@@ -626,7 +626,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L42)
 
 - [mq3.botlib.aas_client_movement.Services](Type-mq3-botlib-aas-client-movement-services-1882790045.md) — struct
 <a id="function-function-mq3-botlib-aas-client-movement-settings-function-settings-src-mq3-botlib-aas-client-movement-ml-1540414970"></a>
@@ -637,7 +637,7 @@ function settings()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L41)
 
 - [mq3.botlib.aas_client_movement.Settings](Type-mq3-botlib-aas-client-movement-settings-1777184160.md) — struct
 <a id="function-function-mq3-botlib-aas-client-movement-stopped-function-stopped-s-origin-velocity-frametime-presence-event-contents-frame-trace-area-src-mq3-botlib-aas-client-movement-ml-1437583332"></a>
@@ -661,7 +661,7 @@ function stopped(s, origin, velocity, frametime, presence, event, contents, fram
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L96)
 
 <a id="function-function-mq3-botlib-aas-client-movement-sub-function-sub-a-b-src-mq3-botlib-aas-client-movement-ml-1937452215"></a>
 ### sub
@@ -676,7 +676,7 @@ function sub(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L48)
 
 <a id="function-function-mq3-botlib-aas-client-movement-swimming-function-swimming-s-origin-src-mq3-botlib-aas-client-movement-ml-1975132065"></a>
 ### swimming
@@ -691,7 +691,7 @@ function swimming(s, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L62)
 
 - [mq3.botlib.aas_client_movement.Trace](Type-mq3-botlib-aas-client-movement-trace-1657013622.md) — struct
 <a id="function-function-mq3-botlib-aas-client-movement-zerotrace-function-zerotrace-src-mq3-botlib-aas-client-movement-ml-554723212"></a>
@@ -702,4 +702,4 @@ function zeroTrace()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L45)

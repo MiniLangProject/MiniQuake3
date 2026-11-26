@@ -33,7 +33,7 @@ function finish(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L23)
 
 <a id="function-function-mq3-game-shooters-registeritem-function-registeritem-level-index-src-mq3-game-shooters-ml-301716100"></a>
 ### registerItem
@@ -48,7 +48,7 @@ function registerItem(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L13)
 
 <a id="function-function-mq3-game-shooters-use-function-use-level-ent-other-activator-src-mq3-game-shooters-ml-848764082"></a>
 ### use
@@ -65,7 +65,7 @@ function use(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L27)
 
 <a id="function-function-mq3-game-shooters-weaponitem-function-weaponitem-weapon-src-mq3-game-shooters-ml-214364138"></a>
 ### weaponItem
@@ -79,4 +79,4 @@ function weaponItem(weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/shooters.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/shooters.ml#L16)

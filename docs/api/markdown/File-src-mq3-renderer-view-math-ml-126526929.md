@@ -23,7 +23,7 @@ const CULL_CLIP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L11)
 
 <a id="constant-constant-mq3-renderer-view-math-cull-in-const-cull-in-0-src-mq3-renderer-view-math-ml-1220791251"></a>
 ### CULL_IN
@@ -33,7 +33,7 @@ const CULL_IN = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L10)
 
 <a id="constant-constant-mq3-renderer-view-math-cull-out-const-cull-out-2-src-mq3-renderer-view-math-ml-1811835061"></a>
 ### CULL_OUT
@@ -43,7 +43,7 @@ const CULL_OUT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L12)
 
 <a id="function-function-mq3-renderer-view-math-culllocalbox-function-culllocalbox-bounds-value-frustum-nocull-src-mq3-renderer-view-math-ml-2041496011"></a>
 ### cullLocalBox
@@ -60,7 +60,7 @@ function cullLocalBox(bounds, value, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L110)
 
 <a id="function-function-mq3-renderer-view-math-culllocalpointandradius-function-culllocalpointandradius-point-radius-value-frustum-nocull-src-mq3-renderer-view-math-ml-873582862"></a>
 ### cullLocalPointAndRadius
@@ -78,7 +78,7 @@ function cullLocalPointAndRadius(point, radius, value, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L105)
 
 <a id="function-function-mq3-renderer-view-math-cullpointandradius-function-cullpointandradius-point-radius-frustum-nocull-src-mq3-renderer-view-math-ml-371780749"></a>
 ### cullPointAndRadius
@@ -95,7 +95,7 @@ function cullPointAndRadius(point, radius, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L90)
 
 <a id="function-function-mq3-renderer-view-math-localnormaltoworld-function-localnormaltoworld-local-value-src-mq3-renderer-view-math-ml-428252802"></a>
 ### localNormalToWorld
@@ -110,7 +110,7 @@ function localNormalToWorld(local, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L39)
 
 <a id="function-function-mq3-renderer-view-math-localpointtoworld-function-localpointtoworld-local-value-src-mq3-renderer-view-math-ml-2069206878"></a>
 ### localPointToWorld
@@ -125,7 +125,7 @@ function localPointToWorld(local, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L50)
 
 <a id="function-function-mq3-renderer-view-math-matrixvector4-function-matrixvector4-source-matrix-src-mq3-renderer-view-math-ml-703450354"></a>
 ### matrixVector4
@@ -140,7 +140,7 @@ function matrixVector4(source, matrix)
 | `matrix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L63)
 
 <a id="function-function-mq3-renderer-view-math-orientation-function-orientation-origin-axis-src-mq3-renderer-view-math-ml-385764019"></a>
 ### orientation
@@ -155,7 +155,7 @@ function orientation(origin, axis)
 | `axis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L19)
 
 - [mq3.renderer.view_math.Orientation](Type-mq3-renderer-view-math-orientation-1941990111.md) — struct
 <a id="function-function-mq3-renderer-view-math-plane-function-plane-normal-dist-src-mq3-renderer-view-math-ml-209118715"></a>
@@ -171,7 +171,7 @@ function plane(normal, dist)
 | `dist` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L18)
 
 - [mq3.renderer.view_math.Plane](Type-mq3-renderer-view-math-plane-284088611.md) — struct
 <a id="function-function-mq3-renderer-view-math-setupfrustum-function-setupfrustum-origin-axis-fovx-fovy-src-mq3-renderer-view-math-ml-1424550098"></a>
@@ -191,7 +191,7 @@ R_SetupFrustum constructs the four side planes from the current refdef. Quake's 
 | `fovY` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L137)
 
 <a id="function-function-mq3-renderer-view-math-transformcliptowindow-function-transformcliptowindow-clip-viewportwidth-viewportheight-src-mq3-renderer-view-math-ml-557816541"></a>
 ### transformClipToWindow
@@ -207,7 +207,7 @@ function transformClipToWindow(clip, viewportWidth, viewportHeight)
 | `viewportHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L79)
 
 <a id="function-function-mq3-renderer-view-math-transformmodeltoclip-function-transformmodeltoclip-source-modelmatrix-projectionmatrix-src-mq3-renderer-view-math-ml-2025318329"></a>
 ### transformModelToClip
@@ -223,7 +223,7 @@ function transformModelToClip(source, modelMatrix, projectionMatrix)
 | `projectionMatrix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L72)
 
 <a id="function-function-mq3-renderer-view-math-valid3-function-valid3-value-src-mq3-renderer-view-math-ml-1362406791"></a>
 ### valid3
@@ -237,7 +237,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L20)
 
 <a id="function-function-mq3-renderer-view-math-valid4-function-valid4-value-src-mq3-renderer-view-math-ml-1804441623"></a>
 ### valid4
@@ -251,7 +251,7 @@ function valid4(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L21)
 
 <a id="function-function-mq3-renderer-view-math-validatefrustum-function-validatefrustum-frustum-src-mq3-renderer-view-math-ml-1624148410"></a>
 ### validateFrustum
@@ -265,7 +265,7 @@ function validateFrustum(frustum)
 | `frustum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L31)
 
 <a id="function-function-mq3-renderer-view-math-validateorientation-function-validateorientation-value-src-mq3-renderer-view-math-ml-2120474111"></a>
 ### validateOrientation
@@ -279,7 +279,7 @@ function validateOrientation(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L23)
 
 <a id="function-function-mq3-renderer-view-math-worldtolocal-function-worldtolocal-world-value-src-mq3-renderer-view-math-ml-1321034873"></a>
 ### worldToLocal
@@ -296,4 +296,4 @@ Baseq3's R_WorldToLocal projects the supplied vector onto the axes. The caller s
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/view_math.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/view_math.ml#L57)

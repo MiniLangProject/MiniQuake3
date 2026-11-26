@@ -10,7 +10,7 @@ struct World
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ clusterBytes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-nodes-nodes-src-mq3-renderer-tr-world-runtime-ml-1641774349"></a>
 ### nodes
@@ -32,7 +32,7 @@ nodes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-novis-novis-src-mq3-renderer-tr-world-runtime-ml-236017485"></a>
 ### novis
@@ -42,7 +42,7 @@ novis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-numclusters-numclusters-src-mq3-renderer-tr-world-runtime-ml-2103449217"></a>
 ### numClusters
@@ -52,7 +52,7 @@ numClusters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-planes-planes-src-mq3-renderer-tr-world-runtime-ml-200261595"></a>
 ### planes
@@ -62,7 +62,7 @@ planes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-surfaces-surfaces-src-mq3-renderer-tr-world-runtime-ml-411977317"></a>
 ### surfaces
@@ -72,7 +72,7 @@ surfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-viewcluster-viewcluster-src-mq3-renderer-tr-world-runtime-ml-1274992153"></a>
 ### viewCluster
@@ -82,7 +82,7 @@ viewCluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-vis-vis-src-mq3-renderer-tr-world-runtime-ml-622753117"></a>
 ### vis
@@ -92,7 +92,7 @@ vis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-world-viscount-viscount-src-mq3-renderer-tr-world-runtime-ml-308421055"></a>
 ### visCount
@@ -102,4 +102,4 @@ visCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L20)

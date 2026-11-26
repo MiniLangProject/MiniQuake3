@@ -12,7 +12,7 @@ struct EnemyAnimationState
 Standalone hostile-preview animation controller. One-shot sequences keep their final frame in the returned sample and change state for the next call.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 ## Members
 
@@ -24,7 +24,7 @@ deathVariant
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-lowerlerp-lowerlerp-src-mq3-format-player-animation-ml-986150928"></a>
 ### lowerLerp
@@ -34,7 +34,7 @@ lowerLerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-mode-mode-src-mq3-format-player-animation-ml-888598834"></a>
 ### mode
@@ -44,7 +44,7 @@ mode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-resumemode-resumemode-src-mq3-format-player-animation-ml-1728483880"></a>
 ### resumeMode
@@ -54,7 +54,7 @@ resumeMode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-startedat-startedat-src-mq3-format-player-animation-ml-724420472"></a>
 ### startedAt
@@ -64,7 +64,7 @@ startedAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-transitioncount-transitioncount-src-mq3-format-player-animation-ml-945659720"></a>
 ### transitionCount
@@ -74,7 +74,7 @@ transitionCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)
 
 <a id="field-field-mq3-format-player-animation-enemyanimationstate-upperlerp-upperlerp-src-mq3-format-player-animation-ml-1030543876"></a>
 ### upperLerp
@@ -84,4 +84,4 @@ upperLerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L194)

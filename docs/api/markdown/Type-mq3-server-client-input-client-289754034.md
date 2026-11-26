@@ -10,7 +10,7 @@ struct Client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ deltaMessage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L14)
 
 <a id="field-field-mq3-server-client-input-client-downloadname-downloadname-src-mq3-server-client-input-ml-1472534340"></a>
 ### downloadName
@@ -32,7 +32,7 @@ downloadName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L12)
 
 <a id="field-field-mq3-server-client-input-client-frames-frames-src-mq3-server-client-input-ml-1970447586"></a>
 ### frames
@@ -42,7 +42,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L14)
 
 <a id="field-field-mq3-server-client-input-client-gamestatemessagenum-gamestatemessagenum-src-mq3-server-client-input-ml-370709194"></a>
 ### gamestateMessageNum
@@ -52,7 +52,7 @@ gamestateMessageNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L12)
 
 <a id="field-field-mq3-server-client-input-client-gotcp-gotcp-src-mq3-server-client-input-ml-1268383070"></a>
 ### gotCP
@@ -62,7 +62,7 @@ gotCP
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L14)
 
 <a id="field-field-mq3-server-client-input-client-lastclientcommand-lastclientcommand-src-mq3-server-client-input-ml-244192498"></a>
 ### lastClientCommand
@@ -72,7 +72,7 @@ lastClientCommand
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L13)
 
 <a id="field-field-mq3-server-client-input-client-lastclientcommandstring-lastclientcommandstring-src-mq3-server-client-input-ml-1384792710"></a>
 ### lastClientCommandString
@@ -82,7 +82,7 @@ lastClientCommandString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L12)
 
 <a id="field-field-mq3-server-client-input-client-lastusercmd-lastusercmd-src-mq3-server-client-input-ml-1851107778"></a>
 ### lastUsercmd
@@ -92,7 +92,7 @@ lastUsercmd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L14)
 
 <a id="field-field-mq3-server-client-input-client-messageacknowledge-messageacknowledge-src-mq3-server-client-input-ml-529214044"></a>
 ### messageAcknowledge
@@ -102,7 +102,7 @@ messageAcknowledge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L11)
 
 <a id="field-field-mq3-server-client-input-client-name-name-src-mq3-server-client-input-ml-2043654392"></a>
 ### name
@@ -112,7 +112,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L10)
 
 <a id="field-field-mq3-server-client-input-client-nextreliabletime-nextreliabletime-src-mq3-server-client-input-ml-952446602"></a>
 ### nextReliableTime
@@ -122,7 +122,7 @@ nextReliableTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L13)
 
 <a id="field-field-mq3-server-client-input-client-pureauthentic-pureauthentic-src-mq3-server-client-input-ml-741449826"></a>
 ### pureAuthentic
@@ -132,7 +132,7 @@ pureAuthentic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L14)
 
 <a id="field-field-mq3-server-client-input-client-reliableacknowledge-reliableacknowledge-src-mq3-server-client-input-ml-666280842"></a>
 ### reliableAcknowledge
@@ -142,7 +142,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L11)
 
 <a id="field-field-mq3-server-client-input-client-reliablecommands-reliablecommands-src-mq3-server-client-input-ml-529907934"></a>
 ### reliableCommands
@@ -152,7 +152,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L13)
 
 <a id="field-field-mq3-server-client-input-client-reliablesequence-reliablesequence-src-mq3-server-client-input-ml-577620976"></a>
 ### reliableSequence
@@ -162,7 +162,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L11)
 
 <a id="field-field-mq3-server-client-input-client-state-state-src-mq3-server-client-input-ml-658968574"></a>
 ### state
@@ -172,4 +172,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_input.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_input.ml#L10)

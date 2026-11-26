@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-backvisible-backvisible-src-mq3-client-ui-cdkey-ml-2049568638"></a>
 ### backVisible
@@ -32,7 +32,7 @@ backVisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-buffer-buffer-src-mq3-client-ui-cdkey-ml-416717122"></a>
 ### buffer
@@ -42,7 +42,7 @@ buffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-cached-cached-src-mq3-client-ui-cdkey-ml-1079607482"></a>
 ### cached
@@ -52,7 +52,7 @@ cached
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-cursor-cursor-src-mq3-client-ui-cdkey-ml-581491598"></a>
 ### cursor
@@ -62,7 +62,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-focus-focus-src-mq3-client-ui-cdkey-ml-1827998910"></a>
 ### focus
@@ -72,7 +72,7 @@ focus
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-menudepth-menudepth-src-mq3-client-ui-cdkey-ml-1387135818"></a>
 ### menuDepth
@@ -82,7 +82,7 @@ menuDepth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-menuevents-menuevents-src-mq3-client-ui-cdkey-ml-882176354"></a>
 ### menuEvents
@@ -92,7 +92,7 @@ menuEvents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-overstrike-overstrike-src-mq3-client-ui-cdkey-ml-286515534"></a>
 ### overstrike
@@ -102,7 +102,7 @@ overstrike
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-pushed-pushed-src-mq3-client-ui-cdkey-ml-644459704"></a>
 ### pushed
@@ -112,7 +112,7 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-retailactive-retailactive-src-mq3-client-ui-cdkey-ml-1873675668"></a>
 ### retailActive
@@ -122,7 +122,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)
 
 <a id="field-field-mq3-client-ui-cdkey-state-verified-verified-src-mq3-client-ui-cdkey-ml-1356847142"></a>
 ### verified
@@ -132,4 +132,4 @@ verified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L20)

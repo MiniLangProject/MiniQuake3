@@ -10,7 +10,7 @@ struct RenderEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-backlerp-backlerp-src-mq3-client-ui-players-ml-1215866704"></a>
 ### backlerp
@@ -32,7 +32,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-frame-frame-src-mq3-client-ui-players-ml-323132136"></a>
 ### frame
@@ -42,7 +42,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-kind-kind-src-mq3-client-ui-players-ml-1736811144"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-model-model-src-mq3-client-ui-players-ml-342040468"></a>
 ### model
@@ -62,7 +62,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-oldframe-oldframe-src-mq3-client-ui-players-ml-259266524"></a>
 ### oldframe
@@ -72,7 +72,7 @@ oldframe
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-origin-origin-src-mq3-client-ui-players-ml-607743864"></a>
 ### origin
@@ -82,7 +82,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-radius-radius-src-mq3-client-ui-players-ml-1997082272"></a>
 ### radius
@@ -92,7 +92,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-renderfx-renderfx-src-mq3-client-ui-players-ml-1413549736"></a>
 ### renderfx
@@ -102,7 +102,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-shader-shader-src-mq3-client-ui-players-ml-1954993290"></a>
 ### shader
@@ -112,7 +112,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-skin-skin-src-mq3-client-ui-players-ml-877061934"></a>
 ### skin
@@ -122,7 +122,7 @@ skin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)
 
 <a id="field-field-mq3-client-ui-players-renderentity-tag-tag-src-mq3-client-ui-players-ml-903949328"></a>
 ### tag
@@ -132,4 +132,4 @@ tag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_players.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_players.ml#L56)

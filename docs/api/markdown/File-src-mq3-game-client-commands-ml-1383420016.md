@@ -34,4 +34,4 @@ function command(level, clientNum, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_commands.ml#L15)

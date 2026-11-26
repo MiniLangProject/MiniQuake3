@@ -10,7 +10,7 @@ struct FreeTypeBackend
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-createimagefn-createimagefn-src-mq3-renderer-tr-font-runtime-ml-1202590647"></a>
 ### createImageFn
@@ -32,7 +32,7 @@ createImageFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-outputroot-outputroot-src-mq3-renderer-tr-font-runtime-ml-19894301"></a>
 ### outputRoot
@@ -42,7 +42,7 @@ outputRoot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-rasterizefn-rasterizefn-src-mq3-renderer-tr-font-runtime-ml-1609210395"></a>
 ### rasterizeFn
@@ -52,7 +52,7 @@ rasterizeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-freetypebackend-savefontdata-savefontdata-src-mq3-renderer-tr-font-runtime-ml-2091417567"></a>
 ### saveFontData
@@ -62,4 +62,4 @@ saveFontData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L23)

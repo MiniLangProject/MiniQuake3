@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-item-models-ml-1174341722"></a>
 ### firstTextureSlot
@@ -32,7 +32,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-maxtextureslots-maxtextureslots-src-mq3-client-playable-item-models-ml-609731716"></a>
 ### maxTextureSlots
@@ -42,7 +42,7 @@ maxTextureSlots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-scriptcount-scriptcount-src-mq3-client-playable-item-models-ml-384147492"></a>
 ### scriptCount
@@ -52,7 +52,7 @@ scriptCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-shaderindex-shaderindex-src-mq3-client-playable-item-models-ml-646720168"></a>
 ### shaderIndex
@@ -62,7 +62,7 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-skipped-skipped-src-mq3-client-playable-item-models-ml-1851845420"></a>
 ### skipped
@@ -72,7 +72,7 @@ skipped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-item-models-catalog-textures-textures-src-mq3-client-playable-item-models-ml-1342773044"></a>
 ### textures
@@ -82,4 +82,4 @@ textures
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L26)

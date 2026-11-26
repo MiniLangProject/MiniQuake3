@@ -22,7 +22,7 @@ const ALTERNATIVE_GOAL_SIZE = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-dispatch-function-dispatch-state-router-vm-base-op-src-mq3-botlib-aas-route-extra-syscalls-ml-958813099"></a>
 ### dispatch
@@ -40,7 +40,7 @@ function dispatch(state, router, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L39)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-dispatchcached-function-dispatchcached-state-router-cache-vm-base-op-src-mq3-botlib-aas-route-extra-syscalls-ml-1263350555"></a>
 ### dispatchCached
@@ -59,7 +59,7 @@ function dispatchCached(state, router, cache, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L26)
 
 <a id="constant-constant-mq3-botlib-aas-route-extra-syscalls-predict-route-size-const-predict-route-size-36-src-mq3-botlib-aas-route-extra-syscalls-ml-1655132544"></a>
 ### PREDICT_ROUTE_SIZE
@@ -69,7 +69,7 @@ const PREDICT_ROUTE_SIZE = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-readpredictroute-function-readpredictroute-vm-address-src-mq3-botlib-aas-route-extra-syscalls-ml-301445635"></a>
 ### readPredictRoute
@@ -84,7 +84,7 @@ function readPredictRoute(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L14)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-writealternativegoals-function-writealternativegoals-vm-address-values-maximum-src-mq3-botlib-aas-route-extra-syscalls-ml-1491914231"></a>
 ### writeAlternativeGoals
@@ -101,7 +101,7 @@ function writeAlternativeGoals(vm, address, values, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L21)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-writepredictroute-function-writepredictroute-vm-address-value-src-mq3-botlib-aas-route-extra-syscalls-ml-1046895008"></a>
 ### writePredictRoute
@@ -117,7 +117,7 @@ function writePredictRoute(vm, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-writeu16-function-writeu16-data-address-value-src-mq3-botlib-aas-route-extra-syscalls-ml-1220806107"></a>
 ### writeU16
@@ -133,7 +133,7 @@ function writeU16(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L13)
 
 <a id="function-function-mq3-botlib-aas-route-extra-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-route-extra-syscalls-ml-1975953999"></a>
 ### writeVector
@@ -149,4 +149,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extra_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extra_syscalls.ml#L12)

@@ -23,7 +23,7 @@ function artList()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L21)
 
 <a id="function-function-mq3-client-ui-playermodel-bitmap-function-bitmap-name-id-x-y-flags-w-h-src-mq3-client-ui-playermodel-ml-606258743"></a>
 ### bitmap
@@ -43,7 +43,7 @@ function bitmap(name, id, x, y, flags, w, h)
 | `h` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L82)
 
 <a id="function-function-mq3-client-ui-playermodel-clean-function-clean-text-src-mq3-client-ui-playermodel-ml-2015112541"></a>
 ### clean
@@ -57,7 +57,7 @@ function clean(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L28)
 
 <a id="function-function-mq3-client-ui-playermodel-create-function-create-source-src-mq3-client-ui-playermodel-ml-1040469489"></a>
 ### create
@@ -71,7 +71,7 @@ function create(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L22)
 
 <a id="function-function-mq3-client-ui-playermodel-current-function-current-value-src-mq3-client-ui-playermodel-ml-2100150727"></a>
 ### current
@@ -85,7 +85,7 @@ function current(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L56)
 
 <a id="function-function-mq3-client-ui-playermodel-emit-function-emit-value-boundary-kind-name-detail-number-retailactive-src-mq3-client-ui-playermodel-ml-1442539583"></a>
 ### emit
@@ -105,7 +105,7 @@ function emit(value, boundary, kind, name, detail, number, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L23)
 
 <a id="function-function-mq3-client-ui-playermodel-ends-function-ends-text-suffix-src-mq3-client-ui-playermodel-ml-957445254"></a>
 ### ends
@@ -120,7 +120,7 @@ function ends(text, suffix)
 | `suffix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L26)
 
 <a id="function-function-mq3-client-ui-playermodel-iconparts-function-iconparts-path-src-mq3-client-ui-playermodel-ml-1361138669"></a>
 ### iconParts
@@ -134,7 +134,7 @@ function iconParts(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L39)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-back-const-id-back-102-src-mq3-client-ui-playermodel-ml-1794712502"></a>
 ### ID_BACK
@@ -144,7 +144,7 @@ const ID_BACK = 102
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-nextpage-const-id-nextpage-101-src-mq3-client-ui-playermodel-ml-1267214409"></a>
 ### ID_NEXTPAGE
@@ -154,7 +154,7 @@ const ID_NEXTPAGE = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-playermodel-id-prevpage-const-id-prevpage-100-src-mq3-client-ui-playermodel-ml-343637632"></a>
 ### ID_PREVPAGE
@@ -164,7 +164,7 @@ const ID_PREVPAGE = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-playermodel-low-memory-const-low-memory-5242880-src-mq3-client-ui-playermodel-ml-1170759310"></a>
 ### LOW_MEMORY
@@ -174,7 +174,7 @@ const LOW_MEMORY = 5242880
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L11)
 
 <a id="function-function-mq3-client-ui-playermodel-lower-function-lower-text-src-mq3-client-ui-playermodel-ml-542426369"></a>
 ### lower
@@ -188,7 +188,7 @@ function lower(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-playermodel-max-modelsperpage-const-max-modelsperpage-16-src-mq3-client-ui-playermodel-ml-1067335200"></a>
 ### MAX_MODELSPERPAGE
@@ -198,7 +198,7 @@ const MAX_MODELSPERPAGE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-playermodel-max-playermodels-const-max-playermodels-256-src-mq3-client-ui-playermodel-ml-39560624"></a>
 ### MAX_PLAYERMODELS
@@ -208,7 +208,7 @@ const MAX_PLAYERMODELS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-playermodel-playergrid-cols-const-playergrid-cols-4-src-mq3-client-ui-playermodel-ml-1157085249"></a>
 ### PLAYERGRID_COLS
@@ -218,7 +218,7 @@ const PLAYERGRID_COLS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-playermodel-playergrid-rows-const-playergrid-rows-4-src-mq3-client-ui-playermodel-ml-1568520065"></a>
 ### PLAYERGRID_ROWS
@@ -228,7 +228,7 @@ const PLAYERGRID_ROWS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L13)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-buildlist-function-playermodel-buildlist-value-files-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-1176503616"></a>
 ### PlayerModel_BuildList
@@ -247,7 +247,7 @@ PlayerModel_BuildList
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L72)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-cache-function-playermodel-cache-value-files-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-547573308"></a>
 ### PlayerModel_Cache
@@ -266,7 +266,7 @@ PlayerModel_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L92)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-drawplayer-function-playermodel-drawplayer-value-realtime-frametime-retailactive-src-mq3-client-ui-playermodel-ml-666708217"></a>
 ### PlayerModel_DrawPlayer
@@ -285,7 +285,7 @@ PlayerModel_DrawPlayer
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L70)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menuevent-function-playermodel-menuevent-value-id-event-retailactive-src-mq3-client-ui-playermodel-ml-1837097769"></a>
 ### PlayerModel_MenuEvent
@@ -304,7 +304,7 @@ PlayerModel_MenuEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L55)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menuinit-function-playermodel-menuinit-value-files-playername-model-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-880164951"></a>
 ### PlayerModel_MenuInit
@@ -325,7 +325,7 @@ PlayerModel_MenuInit
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L84)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-menukey-function-playermodel-menukey-value-key-cursorx-cursory-retailactive-src-mq3-client-ui-playermodel-ml-216643776"></a>
 ### PlayerModel_MenuKey
@@ -345,7 +345,7 @@ PlayerModel_MenuKey
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L58)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-picevent-function-playermodel-picevent-value-id-event-memoryremaining-src-mq3-client-ui-playermodel-ml-1855853749"></a>
 ### PlayerModel_PicEvent
@@ -364,7 +364,7 @@ PlayerModel_PicEvent
 | `memoryRemaining` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L66)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-savechanges-function-playermodel-savechanges-value-retailactive-src-mq3-client-ui-playermodel-ml-2078331382"></a>
 ### PlayerModel_SaveChanges
@@ -381,7 +381,7 @@ PlayerModel_SaveChanges
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L53)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-setmenuitems-function-playermodel-setmenuitems-value-playername-model-src-mq3-client-ui-playermodel-ml-848512848"></a>
 ### PlayerModel_SetMenuItems
@@ -399,7 +399,7 @@ PlayerModel_SetMenuItems
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L79)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-updategrid-function-playermodel-updategrid-value-src-mq3-client-ui-playermodel-ml-68009257"></a>
 ### PlayerModel_UpdateGrid
@@ -415,7 +415,7 @@ PlayerModel_UpdateGrid
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L45)
 
 <a id="function-function-mq3-client-ui-playermodel-playermodel-updatemodel-function-playermodel-updatemodel-value-src-mq3-client-ui-playermodel-ml-465509883"></a>
 ### PlayerModel_UpdateModel
@@ -431,7 +431,7 @@ PlayerModel_UpdateModel
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L51)
 
 <a id="function-function-mq3-client-ui-playermodel-setlabels-function-setlabels-value-path-src-mq3-client-ui-playermodel-ml-1493643124"></a>
 ### setLabels
@@ -446,7 +446,7 @@ function setLabels(value, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L40)
 
 <a id="function-function-mq3-client-ui-playermodel-starts-function-starts-text-prefix-src-mq3-client-ui-playermodel-ml-1110555387"></a>
 ### starts
@@ -461,7 +461,7 @@ function starts(text, prefix)
 | `prefix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L25)
 
 - [mq3.client.ui_playermodel.State](Type-mq3-client-ui-playermodel-state-996669413.md) — struct
 <a id="function-function-mq3-client-ui-playermodel-truncate-function-truncate-text-max-src-mq3-client-ui-playermodel-ml-1215525847"></a>
@@ -477,7 +477,7 @@ function truncate(text, max)
 | `max` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L27)
 
 <a id="function-function-mq3-client-ui-playermodel-ui-playermodelmenu-function-ui-playermodelmenu-value-files-playername-model-buildscript-retailactive-src-mq3-client-ui-playermodel-ml-764329235"></a>
 ### UI_PlayerModelMenu
@@ -498,4 +498,4 @@ UI_PlayerModelMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L94)

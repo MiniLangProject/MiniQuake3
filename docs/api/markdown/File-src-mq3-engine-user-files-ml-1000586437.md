@@ -28,7 +28,7 @@ function atomicWrite(store, name, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L45)
 
 <a id="function-function-mq3-engine-user-files-close-function-close-store-number-src-mq3-engine-user-files-ml-1485099860"></a>
 ### close
@@ -43,7 +43,7 @@ function close(store, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L121)
 
 <a id="function-function-mq3-engine-user-files-closeall-function-closeall-store-src-mq3-engine-user-files-ml-144059629"></a>
 ### closeAll
@@ -57,7 +57,7 @@ function closeAll(store)
 | `store` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L126)
 
 <a id="function-function-mq3-engine-user-files-create-function-create-archive-root-src-mq3-engine-user-files-ml-1586101958"></a>
 ### create
@@ -72,7 +72,7 @@ function create(archive, root)
 | `root` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L26)
 
 - [mq3.engine.user_files.Cursor](Type-mq3-engine-user-files-cursor-546505287.md) — struct
 <a id="function-function-mq3-engine-user-files-defaultroot-function-defaultroot-src-mq3-engine-user-files-ml-913274532"></a>
@@ -83,7 +83,7 @@ function defaultRoot()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L21)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-defaultrootnative-extern-function-defaultrootnative-output-as-bytes-capacity-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-default-root-returns-i32-src-mq3-engine-user-files-ml-1342553966"></a>
 ### defaultRootNative
@@ -98,7 +98,7 @@ extern function defaultRootNative(output as bytes, capacity as i32) from "miniqu
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L12)
 
 <a id="function-function-mq3-engine-user-files-flush-function-flush-store-number-src-mq3-engine-user-files-ml-1019294644"></a>
 ### flush
@@ -113,7 +113,7 @@ function flush(store, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L87)
 
 <a id="constant-constant-mq3-engine-user-files-max-bytes-const-max-bytes-67108864-src-mq3-engine-user-files-ml-855725439"></a>
 ### MAX_BYTES
@@ -123,7 +123,7 @@ const MAX_BYTES = 67108864
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L9)
 
 <a id="constant-constant-mq3-engine-user-files-max-handles-const-max-handles-64-src-mq3-engine-user-files-ml-1491690861"></a>
 ### MAX_HANDLES
@@ -133,7 +133,7 @@ const MAX_HANDLES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L8)
 
 <a id="function-function-mq3-engine-user-files-open-function-open-store-name-mode-src-mq3-engine-user-files-ml-351031033"></a>
 ### open
@@ -149,7 +149,7 @@ function open(store, name, mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L50)
 
 <a id="function-function-mq3-engine-user-files-read-function-read-store-number-count-src-mq3-engine-user-files-ml-932991637"></a>
 ### read
@@ -165,7 +165,7 @@ function read(store, number, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L80)
 
 <a id="function-function-mq3-engine-user-files-readall-function-readall-store-name-src-mq3-engine-user-files-ml-1949964224"></a>
 ### readAll
@@ -180,7 +180,7 @@ function readAll(store, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L40)
 
 <a id="function-function-mq3-engine-user-files-readuser-function-readuser-store-name-src-mq3-engine-user-files-ml-956862378"></a>
 ### readUser
@@ -197,7 +197,7 @@ An absent user file is void; invalid/inaccessible files are errors, not archive 
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L29)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-resolvenative-extern-function-resolvenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-output-as-bytes-capacity-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-resolve-returns-i32-src-mq3-engine-user-files-ml-1271444584"></a>
 ### resolveNative
@@ -216,7 +216,7 @@ extern function resolveNative(root as ptr, rootLength as i32, name as ptr, nameL
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L13)
 
 <a id="function-function-mq3-engine-user-files-samepath-function-samepath-store-first-second-src-mq3-engine-user-files-ml-1640249123"></a>
 ### samePath
@@ -232,7 +232,7 @@ function samePath(store, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L17)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-samepathnative-extern-function-samepathnative-root-as-ptr-rootlength-as-i32-first-as-ptr-firstlength-as-i32-second-as-ptr-secondlength-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-same-path-returns-i32-src-mq3-engine-user-files-ml-1342273876"></a>
 ### samePathNative
@@ -251,7 +251,7 @@ extern function samePathNative(root as ptr, rootLength as i32, first as ptr, fir
 | `secondLength` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L16)
 
 <a id="function-function-mq3-engine-user-files-seek-function-seek-store-number-offset-origin-src-mq3-engine-user-files-ml-1903187069"></a>
 ### seek
@@ -268,7 +268,7 @@ function seek(store, number, offset, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L114)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-sizenative-extern-function-sizenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-size-returns-i32-src-mq3-engine-user-files-ml-216785429"></a>
 ### sizeNative
@@ -285,7 +285,7 @@ extern function sizeNative(root as ptr, rootLength as i32, name as ptr, nameLeng
 | `nameLength` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L15)
 
 - [mq3.engine.user_files.Store](Type-mq3-engine-user-files-store-856467318.md) — struct
 <a id="function-function-mq3-engine-user-files-valid-function-valid-store-number-src-mq3-engine-user-files-ml-238142512"></a>
@@ -301,7 +301,7 @@ function valid(store, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L79)
 
 <a id="function-function-mq3-engine-user-files-write-function-write-store-number-data-src-mq3-engine-user-files-ml-125801434"></a>
 ### write
@@ -317,7 +317,7 @@ function write(store, number, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L93)
 
 <a id="extern_function-extern-function-mq3-engine-user-files-writenative-extern-function-writenative-root-as-ptr-rootlength-as-i32-name-as-ptr-namelength-as-i32-data-as-ptr-length-as-i32-from-miniquake3-userfiles-dll-symbol-mq3-user-write-atomic-returns-i32-src-mq3-engine-user-files-ml-1543964437"></a>
 ### writeNative
@@ -336,4 +336,4 @@ extern function writeNative(root as ptr, rootLength as i32, name as ptr, nameLen
 | `length` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/user_files.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/user_files.ml#L14)

@@ -29,7 +29,7 @@ function apply(state, host, systemInfo)
 | `systemInfo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L28)
 
 - [mq3.client.system_info.Binding](Type-mq3-client-system-info-binding-1433800738.md) — struct
 <a id="function-function-mq3-client-system-info-create-function-create-src-mq3-client-system-info-ml-122528206"></a>
@@ -40,7 +40,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L14)
 
 <a id="function-function-mq3-client-system-info-gamestatechanged-function-gamestatechanged-gamestate-src-mq3-client-system-info-ml-1956102561"></a>
 ### gamestateChanged
@@ -54,7 +54,7 @@ function gamestateChanged(gameState)
 | `gameState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L47)
 
 <a id="function-function-mq3-client-system-info-install-function-install-gamestate-state-host-src-mq3-client-system-info-ml-673591242"></a>
 ### install
@@ -70,7 +70,7 @@ function install(gameState, state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L53)
 
 <a id="function-function-mq3-client-system-info-pairs-function-pairs-systeminfo-src-mq3-client-system-info-ml-1618875903"></a>
 ### pairs
@@ -84,7 +84,7 @@ function pairs(systemInfo)
 | `systemInfo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L17)
 
 <a id="function-function-mq3-client-system-info-services-function-services-src-mq3-client-system-info-ml-354141090"></a>
 ### services
@@ -94,7 +94,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L15)
 
 - [mq3.client.system_info.Services](Type-mq3-client-system-info-services-378977525.md) — struct
 - [mq3.client.system_info.State](Type-mq3-client-system-info-state-965689014.md) — struct

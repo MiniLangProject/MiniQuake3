@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ addCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L30)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-clearnotifyfn-clearnotifyfn-src-mq3-client-cl-cgame-runtime-ml-665268063"></a>
 ### clearNotifyFn
@@ -32,7 +32,7 @@ clearNotifyFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L35)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-closeconsolefn-closeconsolefn-src-mq3-client-cl-cgame-runtime-ml-1793893769"></a>
 ### closeConsoleFn
@@ -42,7 +42,7 @@ closeConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-context-context-src-mq3-client-cl-cgame-runtime-ml-1630134339"></a>
 ### context
@@ -52,7 +52,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L29)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-debugfn-debugfn-src-mq3-client-cl-cgame-runtime-ml-1453437595"></a>
 ### debugFn
@@ -62,7 +62,7 @@ debugFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L34)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-errorfn-errorfn-src-mq3-client-cl-cgame-runtime-ml-835197339"></a>
 ### errorFn
@@ -72,7 +72,7 @@ errorFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L31)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-loadmapfn-loadmapfn-src-mq3-client-cl-cgame-runtime-ml-1100771227"></a>
 ### loadMapFn
@@ -82,7 +82,7 @@ loadMapFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L32)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-queueconsolefn-queueconsolefn-src-mq3-client-cl-cgame-runtime-ml-715638619"></a>
 ### queueConsoleFn
@@ -92,7 +92,7 @@ queueConsoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-serverrunning-serverrunning-src-mq3-client-cl-cgame-runtime-ml-1455909027"></a>
 ### serverRunning
@@ -102,7 +102,7 @@ serverRunning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L38)
 
 <a id="field-field-mq3-client-cl-cgame-runtime-services-systeminfofn-systeminfofn-src-mq3-client-cl-cgame-runtime-ml-1323951041"></a>
 ### systemInfoFn
@@ -112,4 +112,4 @@ systemInfoFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L33)

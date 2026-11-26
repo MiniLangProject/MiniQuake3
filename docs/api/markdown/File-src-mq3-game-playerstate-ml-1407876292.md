@@ -20,7 +20,7 @@ const BYTE_SIZE = 468
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L7)
 
 <a id="function-function-mq3-game-playerstate-copy-function-copy-source-src-mq3-game-playerstate-ml-145962029"></a>
 ### copy
@@ -34,7 +34,7 @@ function copy(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L60)
 
 <a id="function-function-mq3-game-playerstate-create-function-create-src-mq3-game-playerstate-ml-677961258"></a>
 ### create
@@ -44,7 +44,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L56)
 
 <a id="function-function-mq3-game-playerstate-load-function-load-data-offset-src-mq3-game-playerstate-ml-432057859"></a>
 ### load
@@ -59,7 +59,7 @@ function load(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L110)
 
 - [mq3.game.playerstate.PlayerState](Type-mq3-game-playerstate-playerstate-825163064.md) — struct
 <a id="function-function-mq3-game-playerstate-words-function-words-ps-src-mq3-game-playerstate-ml-1763832683"></a>
@@ -74,4 +74,4 @@ function words(ps)
 | `ps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/playerstate.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/playerstate.ml#L161)

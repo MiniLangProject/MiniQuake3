@@ -10,7 +10,7 @@ struct Projectile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ expiresAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-id-id-src-mq3-client-playable-player-projectiles-ml-170683784"></a>
 ### id
@@ -32,7 +32,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-origin-origin-src-mq3-client-playable-player-projectiles-ml-81566198"></a>
 ### origin
@@ -42,7 +42,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-profile-profile-src-mq3-client-playable-player-projectiles-ml-1259552894"></a>
 ### profile
@@ -52,7 +52,7 @@ profile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-spawnedat-spawnedat-src-mq3-client-playable-player-projectiles-ml-2052467770"></a>
 ### spawnedAt
@@ -62,7 +62,7 @@ spawnedAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-stopped-stopped-src-mq3-client-playable-player-projectiles-ml-2074975818"></a>
 ### stopped
@@ -72,7 +72,7 @@ stopped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-projectiles-projectile-velocity-velocity-src-mq3-client-playable-player-projectiles-ml-2011710752"></a>
 ### velocity
@@ -82,4 +82,4 @@ velocity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L22)

@@ -10,7 +10,7 @@ struct Weight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)
 
 <a id="field-field-mq3-botlib-ai-item-weights-weight-separators-separators-src-mq3-botlib-ai-item-weights-ml-1091675989"></a>
 ### separators
@@ -32,4 +32,4 @@ separators
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L23)

@@ -10,7 +10,7 @@ struct Quad
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-fognum-fognum-src-mq3-renderer-tr-flares-runtime-ml-373230990"></a>
 ### fogNum
@@ -32,7 +32,7 @@ fogNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-indexes-indexes-src-mq3-renderer-tr-flares-runtime-ml-1373150358"></a>
 ### indexes
@@ -42,7 +42,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-positions-positions-src-mq3-renderer-tr-flares-runtime-ml-453397794"></a>
 ### positions
@@ -52,7 +52,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-flares-runtime-quad-texcoords-texcoords-src-mq3-renderer-tr-flares-runtime-ml-1836347378"></a>
 ### texCoords
@@ -62,4 +62,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_flares_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_flares_runtime.ml#L15)

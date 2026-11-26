@@ -10,7 +10,7 @@ struct Vec3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L14)
 
 <a id="field-field-mq3-splines-headers-vec3-y-y-src-mq3-splines-headers-ml-1219846538"></a>
 ### y
@@ -32,7 +32,7 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L14)
 
 <a id="field-field-mq3-splines-headers-vec3-z-z-src-mq3-splines-headers-ml-1553568134"></a>
 ### z
@@ -42,4 +42,4 @@ z
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L14)

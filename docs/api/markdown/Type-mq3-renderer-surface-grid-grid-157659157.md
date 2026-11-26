@@ -10,7 +10,7 @@ struct Grid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-grid-heightloderror-heightloderror-src-mq3-renderer-surface-grid-ml-990024887"></a>
 ### heightLodError
@@ -32,7 +32,7 @@ heightLodError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-grid-verts-verts-src-mq3-renderer-surface-grid-ml-1317394011"></a>
 ### verts
@@ -42,7 +42,7 @@ verts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-grid-width-width-src-mq3-renderer-surface-grid-ml-1220928379"></a>
 ### width
@@ -52,7 +52,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)
 
 <a id="field-field-mq3-renderer-surface-grid-grid-widthloderror-widthloderror-src-mq3-renderer-surface-grid-ml-1726704139"></a>
 ### widthLodError
@@ -62,4 +62,4 @@ widthLodError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L9)

@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
 
 <a id="field-field-mq3-client-cgame-main-result-handled-handled-src-mq3-client-cgame-main-ml-254258710"></a>
 ### handled
@@ -32,7 +32,7 @@ handled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)
 
 <a id="field-field-mq3-client-cgame-main-result-value-value-src-mq3-client-cgame-main-ml-1929763002"></a>
 ### value
@@ -42,4 +42,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L42)

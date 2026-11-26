@@ -10,7 +10,7 @@ struct SharedEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)
 
 ## Members
 
@@ -22,7 +22,7 @@ linked
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)
 
 <a id="field-field-mq3-server-init-runtime-sharedentity-state-state-src-mq3-server-init-runtime-ml-2066645947"></a>
 ### state
@@ -32,4 +32,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L35)

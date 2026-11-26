@@ -10,7 +10,7 @@ struct Asset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ bindings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-bobamplitude-bobamplitude-src-mq3-client-playable-item-models-ml-1983861465"></a>
 ### bobAmplitude
@@ -32,7 +32,7 @@ bobAmplitude
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-category-category-src-mq3-client-playable-item-models-ml-979409989"></a>
 ### category
@@ -42,7 +42,7 @@ category
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-classname-classname-src-mq3-client-playable-item-models-ml-1415003917"></a>
 ### classname
@@ -52,7 +52,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-heightoffset-heightoffset-src-mq3-client-playable-item-models-ml-464768289"></a>
 ### heightOffset
@@ -62,7 +62,7 @@ heightOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-model-model-src-mq3-client-playable-item-models-ml-1138587913"></a>
 ### model
@@ -72,7 +72,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-modelpath-modelpath-src-mq3-client-playable-item-models-ml-1713982897"></a>
 ### modelPath
@@ -82,7 +82,7 @@ modelPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-scale-scale-src-mq3-client-playable-item-models-ml-1419223945"></a>
 ### scale
@@ -92,7 +92,7 @@ scale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-skinpath-skinpath-src-mq3-client-playable-item-models-ml-1137088905"></a>
 ### skinPath
@@ -102,7 +102,7 @@ skinPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-sourcetriangles-sourcetriangles-src-mq3-client-playable-item-models-ml-1092637785"></a>
 ### sourceTriangles
@@ -112,7 +112,7 @@ sourceTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)
 
 <a id="field-field-mq3-client-playable-item-models-asset-spindegreespersecond-spindegreespersecond-src-mq3-client-playable-item-models-ml-945494613"></a>
 ### spinDegreesPerSecond
@@ -122,4 +122,4 @@ spinDegreesPerSecond
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L25)

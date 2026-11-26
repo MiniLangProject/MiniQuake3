@@ -31,7 +31,7 @@ function action(state, boundary, kind, name, value, number, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L17)
 
 - [mq3.renderer.tr_init.Action](Type-mq3-renderer-tr-init-action-1714829674.md) — struct
 <a id="function-function-mq3-renderer-tr-init-assertcvarrange-function-assertcvarrange-state-cv-minvalue-maxvalue-integral-retailactive-src-mq3-renderer-tr-init-ml-434167377"></a>
@@ -53,7 +53,7 @@ AssertCvarRange
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L23)
 
 <a id="extern_function-extern-function-mq3-renderer-tr-init-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-renderer-tr-init-ml-210131682"></a>
 ### atoi
@@ -67,7 +67,7 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 | `text` | `cstr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L19)
 
 - [mq3.renderer.tr_init.Config](Type-mq3-renderer-tr-init-config-2068563774.md) — struct
 <a id="function-function-mq3-renderer-tr-init-create-function-create-src-mq3-renderer-tr-init-ml-1682292170"></a>
@@ -78,7 +78,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L16)
 
 <a id="function-function-mq3-renderer-tr-init-cvar-function-cvar-name-value-flags-src-mq3-renderer-tr-init-ml-1406122867"></a>
 ### cvar
@@ -94,7 +94,7 @@ function cvar(name, value, flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L18)
 
 - [mq3.renderer.tr_init.Cvar](Type-mq3-renderer-tr-init-cvar-84215842.md) — struct
 <a id="function-function-mq3-renderer-tr-init-cvarpairs-function-cvarpairs-src-mq3-renderer-tr-init-ml-1398337668"></a>
@@ -105,7 +105,7 @@ function cvarPairs()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L58)
 
 <a id="function-function-mq3-renderer-tr-init-endregistration-function-endregistration-state-lowmemory-retailactive-src-mq3-renderer-tr-init-ml-687383031"></a>
 ### endRegistration
@@ -123,7 +123,7 @@ RE_EndRegistration
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L66)
 
 <a id="function-function-mq3-renderer-tr-init-findcvar-function-findcvar-state-name-src-mq3-renderer-tr-init-ml-1991401804"></a>
 ### findCvar
@@ -138,7 +138,7 @@ function findCvar(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L20)
 
 <a id="function-function-mq3-renderer-tr-init-fourdigits-function-fourdigits-number-src-mq3-renderer-tr-init-ml-152215309"></a>
 ### fourDigits
@@ -152,7 +152,7 @@ function fourDigits(number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L42)
 
 <a id="function-function-mq3-renderer-tr-init-getmodeinfo-function-getmodeinfo-mode-customwidth-customheight-customaspect-src-mq3-renderer-tr-init-ml-73809573"></a>
 ### getModeInfo
@@ -171,7 +171,7 @@ R_GetModeInfo
 | `customAspect` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L30)
 
 <a id="function-function-mq3-renderer-tr-init-getrefapi-function-getrefapi-state-apiversion-retailactive-src-mq3-renderer-tr-init-ml-567462864"></a>
 ### getRefAPI
@@ -189,7 +189,7 @@ GetRefAPI
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L71)
 
 <a id="function-function-mq3-renderer-tr-init-gfxinfo-function-gfxinfo-state-retailactive-src-mq3-renderer-tr-init-ml-969130648"></a>
 ### gfxInfo
@@ -206,7 +206,7 @@ GfxInfo_f
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L57)
 
 <a id="function-function-mq3-renderer-tr-init-glcheckerrors-function-glcheckerrors-state-ignoreerrors-retailactive-src-mq3-renderer-tr-init-ml-1204588825"></a>
 ### glCheckErrors
@@ -224,7 +224,7 @@ GL_CheckErrors
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L27)
 
 <a id="function-function-mq3-renderer-tr-init-glsetdefaultstate-function-glsetdefaultstate-state-retailactive-src-mq3-renderer-tr-init-ml-2121225896"></a>
 ### glSetDefaultState
@@ -241,7 +241,7 @@ GL_SetDefaultState
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L55)
 
 <a id="function-function-mq3-renderer-tr-init-init-function-init-state-retailactive-src-mq3-renderer-tr-init-ml-170789482"></a>
 ### init
@@ -258,7 +258,7 @@ R_Init
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L62)
 
 <a id="function-function-mq3-renderer-tr-init-initopengl-function-initopengl-state-retailactive-src-mq3-renderer-tr-init-ml-425344894"></a>
 ### initOpenGL
@@ -275,7 +275,7 @@ InitOpenGL
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L25)
 
 <a id="function-function-mq3-renderer-tr-init-levelshot-function-levelshot-state-mapname-retailactive-src-mq3-renderer-tr-init-ml-1718230855"></a>
 ### levelShot
@@ -293,7 +293,7 @@ R_LevelShot
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L49)
 
 - [mq3.renderer.tr_init.Mode](Type-mq3-renderer-tr-init-mode-1938199907.md) — struct
 <a id="function-function-mq3-renderer-tr-init-modelist-function-modelist-state-retailactive-src-mq3-renderer-tr-init-ml-1854707354"></a>
@@ -311,7 +311,7 @@ R_ModeList_f
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L32)
 
 <a id="function-function-mq3-renderer-tr-init-modes-function-modes-src-mq3-renderer-tr-init-ml-2081032950"></a>
 ### modes
@@ -321,7 +321,7 @@ function modes()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L28)
 
 <a id="function-function-mq3-renderer-tr-init-nextscreenshot-function-nextscreenshot-state-jpeg-existing-src-mq3-renderer-tr-init-ml-1772491472"></a>
 ### nextScreenshot
@@ -337,7 +337,7 @@ function nextScreenshot(state, jpeg, existing)
 | `existing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L47)
 
 <a id="function-function-mq3-renderer-tr-init-rbtakescreenshot-function-rbtakescreenshot-state-x-y-width-height-name-retailactive-src-mq3-renderer-tr-init-ml-782640655"></a>
 ### rbTakeScreenshot
@@ -357,7 +357,7 @@ function rbTakeScreenshot(state, x, y, width, height, name, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L39)
 
 <a id="function-function-mq3-renderer-tr-init-rbtakescreenshotjpeg-function-rbtakescreenshotjpeg-state-x-y-width-height-name-retailactive-src-mq3-renderer-tr-init-ml-2023939871"></a>
 ### rbTakeScreenshotJpeg
@@ -379,7 +379,7 @@ RB_TakeScreenshotJPEG
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L38)
 
 <a id="constant-constant-mq3-renderer-tr-init-ref-api-version-const-ref-api-version-trpublic-ref-api-version-src-mq3-renderer-tr-init-ml-1244570913"></a>
 ### REF_API_VERSION
@@ -389,7 +389,7 @@ const REF_API_VERSION = trPublic.REF_API_VERSION
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L9)
 
 <a id="function-function-mq3-renderer-tr-init-register-function-register-state-retailactive-src-mq3-renderer-tr-init-ml-804130258"></a>
 ### register
@@ -406,7 +406,7 @@ R_Register
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L60)
 
 <a id="function-function-mq3-renderer-tr-init-renderererror-function-renderererror-state-text-retailactive-src-mq3-renderer-tr-init-ml-441870525"></a>
 ### rendererError
@@ -422,7 +422,7 @@ function rendererError(state, text, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L69)
 
 <a id="function-function-mq3-renderer-tr-init-rendererprint-function-rendererprint-state-text-retailactive-src-mq3-renderer-tr-init-ml-1199327379"></a>
 ### rendererPrint
@@ -440,7 +440,7 @@ Error-/Print-Grenzen
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L68)
 
 <a id="function-function-mq3-renderer-tr-init-screenshot-function-screenshot-state-args-existing-retailactive-src-mq3-renderer-tr-init-ml-88907850"></a>
 ### screenShot
@@ -459,7 +459,7 @@ R_ScreenShot_f
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L51)
 
 <a id="function-function-mq3-renderer-tr-init-screenshotfilename-function-screenshotfilename-number-src-mq3-renderer-tr-init-ml-1408760617"></a>
 ### screenshotFilename
@@ -475,7 +475,7 @@ R_ScreenshotFilename
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L44)
 
 <a id="function-function-mq3-renderer-tr-init-screenshotfilenamejpeg-function-screenshotfilenamejpeg-number-src-mq3-renderer-tr-init-ml-1600162389"></a>
 ### screenshotFilenameJpeg
@@ -491,7 +491,7 @@ R_ScreenshotFilenameJPEG
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L46)
 
 <a id="function-function-mq3-renderer-tr-init-screenshotjpeg-function-screenshotjpeg-state-args-existing-retailactive-src-mq3-renderer-tr-init-ml-1270151902"></a>
 ### screenShotJpeg
@@ -510,7 +510,7 @@ R_ScreenShotJPEG_f
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L53)
 
 <a id="function-function-mq3-renderer-tr-init-shutdown-function-shutdown-state-destroywindow-retailactive-src-mq3-renderer-tr-init-ml-1871029158"></a>
 ### shutdown
@@ -528,7 +528,7 @@ RE_Shutdown
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L64)
 
 - [mq3.renderer.tr_init.State](Type-mq3-renderer-tr-init-state-1325716581.md) — struct
 <a id="function-function-mq3-renderer-tr-init-takescreenshot-function-takescreenshot-state-x-y-width-height-name-jpeg-retailactive-src-mq3-renderer-tr-init-ml-1283934357"></a>
@@ -552,7 +552,7 @@ R_TakeScreenshot
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L41)
 
 <a id="function-function-mq3-renderer-tr-init-takescreenshotcmd-function-takescreenshotcmd-state-x-y-width-height-name-jpeg-retailactive-src-mq3-renderer-tr-init-ml-354097027"></a>
 ### takeScreenshotCmd
@@ -575,7 +575,7 @@ RB_TakeScreenshotCmd
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L36)
 
 <a id="function-function-mq3-renderer-tr-init-tga-function-tga-width-height-rgb-src-mq3-renderer-tr-init-ml-984178704"></a>
 ### tga
@@ -593,4 +593,4 @@ tga
 | `rgb` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L34)

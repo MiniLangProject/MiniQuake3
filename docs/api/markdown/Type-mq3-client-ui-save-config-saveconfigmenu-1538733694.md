@@ -10,7 +10,7 @@ struct SaveConfigMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-assets-assets-src-mq3-client-ui-save-config-ml-1290254027"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-commands-commands-src-mq3-client-ui-save-config-ml-1726728477"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-fullscreen-fullscreen-src-mq3-client-ui-save-config-ml-1057760923"></a>
 ### fullscreen
@@ -52,7 +52,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-maxchars-maxchars-src-mq3-client-ui-save-config-ml-799893319"></a>
 ### maxchars
@@ -62,7 +62,7 @@ maxchars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-name-name-src-mq3-client-ui-save-config-ml-1699875703"></a>
 ### name
@@ -72,7 +72,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-widthinchars-widthinchars-src-mq3-client-ui-save-config-ml-620066109"></a>
 ### widthInChars
@@ -82,7 +82,7 @@ widthInChars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)
 
 <a id="field-field-mq3-client-ui-save-config-saveconfigmenu-wraparound-wraparound-src-mq3-client-ui-save-config-ml-189294907"></a>
 ### wrapAround
@@ -92,4 +92,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_save_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_save_config.ml#L7)

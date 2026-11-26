@@ -31,7 +31,7 @@ R_ComputeFogNum from tr_mesh.c.  Fog zero is the renderer's no-fog slot; real BS
 | `noWorldModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L89)
 
 <a id="function-function-mq3-renderer-md3-entity-computelod-function-computelod-numlods-mins-maxs-origin-vieworigin-viewforward-projection-lodscale-lodbias-src-mq3-renderer-md3-entity-ml-1562511117"></a>
 ### computeLod
@@ -55,7 +55,7 @@ R_ComputeLOD. A single-level model still applies r_lodbias and clamps it, matchi
 | `lodBias` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L65)
 
 <a id="function-function-mq3-renderer-md3-entity-cremainder-function-cremainder-value-divisor-src-mq3-renderer-md3-entity-ml-2125227319"></a>
 ### cRemainder
@@ -70,7 +70,7 @@ function cRemainder(value, divisor)
 | `divisor` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L18)
 
 <a id="function-function-mq3-renderer-md3-entity-cullmodel-function-cullmodel-frames-frame-oldframe-origin-axis-nonnormalizedaxes-frustum-nocull-src-mq3-renderer-md3-entity-ml-903558504"></a>
 ### cullModel
@@ -91,7 +91,7 @@ function cullModel(frames, frame, oldFrame, origin, axis, nonNormalizedAxes, fru
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L119)
 
 <a id="function-function-mq3-renderer-md3-entity-cullmodeldecision-function-cullmodeldecision-sameframe-nonnormalizedaxes-newsphere-oldsphere-boxcull-src-mq3-renderer-md3-entity-ml-2131912006"></a>
 ### cullModelDecision
@@ -111,7 +111,7 @@ Control-flow core of R_CullModel.  The sphere tests can produce an early definit
 | `boxCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L108)
 
 <a id="function-function-mq3-renderer-md3-entity-fail-function-fail-message-src-mq3-renderer-md3-entity-ml-988801831"></a>
 ### fail
@@ -125,7 +125,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L16)
 
 - [mq3.renderer.md3_entity.Frames](Type-mq3-renderer-md3-entity-frames-278773139.md) — struct
 <a id="function-function-mq3-renderer-md3-entity-lodprojection-function-lodprojection-fovy-znear-src-mq3-renderer-md3-entity-ml-323326406"></a>
@@ -143,7 +143,7 @@ R_SetupProjection fields used by ProjectRadius.  This keeps the original float s
 | `zNear` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L143)
 
 <a id="function-function-mq3-renderer-md3-entity-normalizeframes-function-normalizeframes-numframes-frame-oldframe-renderfx-src-mq3-renderer-md3-entity-ml-705795903"></a>
 ### normalizeFrames
@@ -162,7 +162,7 @@ R_AddMD3Surfaces first wraps continuous animation frames, then repairs both fram
 | `renderfx` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L22)
 
 <a id="function-function-mq3-renderer-md3-entity-projectradius-function-projectradius-radius-location-vieworigin-viewforward-projection-src-mq3-renderer-md3-entity-ml-2123797363"></a>
 ### projectRadius
@@ -182,7 +182,7 @@ ProjectRadius uses the renderer's current view orientation and projection matrix
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L48)
 
 <a id="function-function-mq3-renderer-md3-entity-radiusfrombounds-function-radiusfrombounds-mins-maxs-src-mq3-renderer-md3-entity-ml-1295622536"></a>
 ### radiusFromBounds
@@ -199,7 +199,7 @@ RadiusFromBounds from q_shared.c. It selects the most distant corner from the or
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L35)
 
 <a id="constant-constant-mq3-renderer-md3-entity-rf-wrap-frames-const-rf-wrap-frames-512-src-mq3-renderer-md3-entity-ml-448931"></a>
 ### RF_WRAP_FRAMES
@@ -209,7 +209,7 @@ const RF_WRAP_FRAMES = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L12)
 
 <a id="extern_function-extern-function-mq3-renderer-md3-entity-tan-extern-function-tan-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-renderer-md3-entity-ml-419240756"></a>
 ### tan
@@ -223,7 +223,7 @@ extern function tan(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L10)
 
 <a id="function-function-mq3-renderer-md3-entity-valid3-function-valid3-value-src-mq3-renderer-md3-entity-ml-1826189869"></a>
 ### valid3
@@ -237,4 +237,4 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_entity.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_entity.ml#L17)

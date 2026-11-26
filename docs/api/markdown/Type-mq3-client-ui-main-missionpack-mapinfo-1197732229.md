@@ -10,7 +10,7 @@ struct MapInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-cinematic-cinematic-src-mq3-client-ui-main-missionpack-ml-853289185"></a>
 ### cinematic
@@ -32,7 +32,7 @@ cinematic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-imagename-imagename-src-mq3-client-ui-main-missionpack-ml-1942418685"></a>
 ### imageName
@@ -42,7 +42,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-levelshot-levelshot-src-mq3-client-ui-main-missionpack-ml-1008484541"></a>
 ### levelShot
@@ -52,7 +52,7 @@ levelShot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-maploadname-maploadname-src-mq3-client-ui-main-missionpack-ml-1300451073"></a>
 ### mapLoadName
@@ -62,7 +62,7 @@ mapLoadName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-mapname-mapname-src-mq3-client-ui-main-missionpack-ml-1294531717"></a>
 ### mapName
@@ -72,7 +72,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-opponentname-opponentname-src-mq3-client-ui-main-missionpack-ml-1135984621"></a>
 ### opponentName
@@ -82,7 +82,7 @@ opponentName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-teammembers-teammembers-src-mq3-client-ui-main-missionpack-ml-242618377"></a>
 ### teamMembers
@@ -92,7 +92,7 @@ teamMembers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-timetobeat-timetobeat-src-mq3-client-ui-main-missionpack-ml-1194017341"></a>
 ### timeToBeat
@@ -102,7 +102,7 @@ timeToBeat
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)
 
 <a id="field-field-mq3-client-ui-main-missionpack-mapinfo-typebits-typebits-src-mq3-client-ui-main-missionpack-ml-877741045"></a>
 ### typeBits
@@ -112,4 +112,4 @@ typeBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L65)

@@ -30,7 +30,7 @@ function areasConnected(host, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L18)
 
 <a id="function-function-mq3-server-snapshot-runtime-buildclientframe-function-buildclientframe-runtime-level-clientnum-zombie-src-mq3-server-snapshot-runtime-ml-1805398137"></a>
 ### buildClientFrame
@@ -47,7 +47,7 @@ function buildClientFrame(runtime, level, clientNum, zombie)
 | `zombie` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L60)
 
 <a id="function-function-mq3-server-snapshot-runtime-clusterpvs-function-clusterpvs-host-cluster-src-mq3-server-snapshot-runtime-ml-611282676"></a>
 ### clusterPvs
@@ -62,7 +62,7 @@ function clusterPvs(host, cluster)
 | `cluster` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L17)
 
 <a id="function-function-mq3-server-snapshot-runtime-create-function-create-level-ringcapacity-src-mq3-server-snapshot-runtime-ml-1022973948"></a>
 ### create
@@ -77,7 +77,7 @@ function create(level, ringCapacity)
 | `ringCapacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L30)
 
 <a id="function-function-mq3-server-snapshot-runtime-hostservices-function-hostservices-scene-src-mq3-server-snapshot-runtime-ml-116480152"></a>
 ### hostServices
@@ -91,7 +91,7 @@ function hostServices(scene)
 | `scene` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L20)
 
 <a id="function-function-mq3-server-snapshot-runtime-leafarea-function-leafarea-host-leaf-src-mq3-server-snapshot-runtime-ml-1334794538"></a>
 ### leafArea
@@ -106,7 +106,7 @@ function leafArea(host, leaf)
 | `leaf` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L14)
 
 <a id="function-function-mq3-server-snapshot-runtime-leafcluster-function-leafcluster-host-leaf-src-mq3-server-snapshot-runtime-ml-865727918"></a>
 ### leafCluster
@@ -121,7 +121,7 @@ function leafCluster(host, leaf)
 | `leaf` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L15)
 
 <a id="function-function-mq3-server-snapshot-runtime-mappedentity-function-mappedentity-gameentity-src-mq3-server-snapshot-runtime-ml-1106855025"></a>
 ### mappedEntity
@@ -135,7 +135,7 @@ function mappedEntity(gameEntity)
 | `gameEntity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L25)
 
 <a id="function-function-mq3-server-snapshot-runtime-pointleaf-function-pointleaf-host-origin-src-mq3-server-snapshot-runtime-ml-251596936"></a>
 ### pointLeaf
@@ -150,7 +150,7 @@ function pointLeaf(host, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L13)
 
 - [mq3.server.snapshot_runtime.Runtime](Type-mq3-server-snapshot-runtime-runtime-335203544.md) — struct
 <a id="function-function-mq3-server-snapshot-runtime-synclevel-function-synclevel-runtime-level-src-mq3-server-snapshot-runtime-ml-529200892"></a>
@@ -168,7 +168,7 @@ Refresh game-owned state and spatial metadata while preserving the server's per-
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L41)
 
 <a id="function-function-mq3-server-snapshot-runtime-writeareabits-function-writeareabits-host-bits-area-src-mq3-server-snapshot-runtime-ml-2079956811"></a>
 ### writeAreaBits
@@ -184,4 +184,4 @@ function writeAreaBits(host, bits, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L16)

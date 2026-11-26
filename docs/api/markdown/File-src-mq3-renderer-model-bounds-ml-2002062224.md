@@ -22,7 +22,7 @@ The original renderer returns the first MD3 frame's bounds. The aggregate bounds
 | `model` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_bounds.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_bounds.ml#L18)
 
 <a id="function-function-mq3-renderer-model-bounds-vectorcopy-function-vectorcopy-value-src-mq3-renderer-model-bounds-ml-1150883753"></a>
 ### vectorCopy
@@ -36,7 +36,7 @@ function vectorCopy(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_bounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_bounds.ml#L10)
 
 <a id="function-function-mq3-renderer-model-bounds-zero-function-zero-src-mq3-renderer-model-bounds-ml-558363144"></a>
 ### zero
@@ -46,4 +46,4 @@ function zero()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/model_bounds.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/model_bounds.ml#L6)

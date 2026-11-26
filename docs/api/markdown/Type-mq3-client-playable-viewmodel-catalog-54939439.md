@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ attachments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L28)
 
 <a id="field-field-mq3-client-playable-viewmodel-catalog-skipped-skipped-src-mq3-client-playable-viewmodel-ml-1491404956"></a>
 ### skipped
@@ -32,4 +32,4 @@ skipped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L28)

@@ -10,7 +10,7 @@ struct Memory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L79)
 
 ## Members
 
@@ -22,7 +22,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L79)
 
 <a id="field-field-mq3-client-ui-shared-memory-outofmemory-outofmemory-src-mq3-client-ui-shared-ml-624918306"></a>
 ### outOfMemory
@@ -32,7 +32,7 @@ outOfMemory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L79)
 
 <a id="field-field-mq3-client-ui-shared-memory-strings-strings-src-mq3-client-ui-shared-ml-1372123330"></a>
 ### strings
@@ -42,7 +42,7 @@ strings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L79)
 
 <a id="field-field-mq3-client-ui-shared-memory-used-used-src-mq3-client-ui-shared-ml-1798651736"></a>
 ### used
@@ -52,4 +52,4 @@ used
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L79)

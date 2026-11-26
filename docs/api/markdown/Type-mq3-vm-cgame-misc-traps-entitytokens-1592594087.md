@@ -10,7 +10,7 @@ struct EntityTokens
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ parser
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L15)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-entitytokens-source-source-src-mq3-vm-cgame-misc-traps-ml-570170820"></a>
 ### source
@@ -32,4 +32,4 @@ source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L15)

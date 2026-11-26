@@ -10,7 +10,7 @@ struct LevelItemRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ aas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-aasentities-aasentities-src-mq3-botlib-ai-level-items-ml-740367716"></a>
 ### aasEntities
@@ -32,7 +32,7 @@ aasEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-bspentities-bspentities-src-mq3-botlib-ai-level-items-ml-927145896"></a>
 ### bspEntities
@@ -42,7 +42,7 @@ bspEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-callbackcontext-callbackcontext-src-mq3-botlib-ai-level-items-ml-2144778872"></a>
 ### callbackContext
@@ -52,7 +52,7 @@ callbackContext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-gametype-gametype-src-mq3-botlib-ai-level-items-ml-1867219080"></a>
 ### gameType
@@ -62,7 +62,7 @@ gameType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-initialized-initialized-src-mq3-botlib-ai-level-items-ml-2089377336"></a>
 ### initialized
@@ -72,7 +72,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-itemruntime-itemruntime-src-mq3-botlib-ai-level-items-ml-1961052008"></a>
 ### itemRuntime
@@ -82,7 +82,7 @@ itemRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-levelitems-levelitems-src-mq3-botlib-ai-level-items-ml-2020394836"></a>
 ### levelItems
@@ -92,7 +92,7 @@ levelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-maxlevelitems-maxlevelitems-src-mq3-botlib-ai-level-items-ml-856539400"></a>
 ### maxLevelItems
@@ -102,7 +102,7 @@ maxLevelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-numlevelitems-numlevelitems-src-mq3-botlib-ai-level-items-ml-466569800"></a>
 ### numLevelItems
@@ -112,7 +112,7 @@ numLevelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-level-items-levelitemruntime-placefn-placefn-src-mq3-botlib-ai-level-items-ml-768870300"></a>
 ### placeFn
@@ -122,4 +122,4 @@ placeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L26)

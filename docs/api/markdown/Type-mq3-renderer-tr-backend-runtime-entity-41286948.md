@@ -10,7 +10,7 @@ struct Entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L40)
 
 ## Members
 
@@ -22,7 +22,7 @@ modelMatrix
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L40)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-needdlights-needdlights-src-mq3-renderer-tr-backend-runtime-ml-119714654"></a>
 ### needDlights
@@ -32,7 +32,7 @@ needDlights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L40)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-renderfx-renderfx-src-mq3-renderer-tr-backend-runtime-ml-751819606"></a>
 ### renderfx
@@ -42,7 +42,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L40)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-entity-shadertime-shadertime-src-mq3-renderer-tr-backend-runtime-ml-258617234"></a>
 ### shaderTime
@@ -52,4 +52,4 @@ shaderTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L40)

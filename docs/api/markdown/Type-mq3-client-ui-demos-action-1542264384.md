@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 <a id="field-field-mq3-client-ui-demos-action-dispatched-dispatched-src-mq3-client-ui-demos-ml-1598820173"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 <a id="field-field-mq3-client-ui-demos-action-kind-kind-src-mq3-client-ui-demos-ml-1794650099"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 <a id="field-field-mq3-client-ui-demos-action-name-name-src-mq3-client-ui-demos-ml-896799781"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 <a id="field-field-mq3-client-ui-demos-action-text-text-src-mq3-client-ui-demos-ml-390958277"></a>
 ### text
@@ -62,7 +62,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)
 
 <a id="field-field-mq3-client-ui-demos-action-value-value-src-mq3-client-ui-demos-ml-2140160551"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_demos.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_demos.ml#L27)

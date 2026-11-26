@@ -10,7 +10,7 @@ struct Cached
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ chatName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L30)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-cached-filename-filename-src-mq3-botlib-ai-chat-profiles-ml-245894813"></a>
 ### filename
@@ -32,7 +32,7 @@ filename
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L30)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-cached-profile-profile-src-mq3-botlib-ai-chat-profiles-ml-1685316235"></a>
 ### profile
@@ -42,4 +42,4 @@ profile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L30)

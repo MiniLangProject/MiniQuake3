@@ -10,7 +10,7 @@ struct SoundServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ registerFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L10)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-startbackgroundfn-startbackgroundfn-src-mq3-vm-syscall-ui-media-ml-1734230076"></a>
 ### startBackgroundFn
@@ -32,7 +32,7 @@ startBackgroundFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L10)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-startlocalfn-startlocalfn-src-mq3-vm-syscall-ui-media-ml-1565405882"></a>
 ### startLocalFn
@@ -42,7 +42,7 @@ startLocalFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L10)
 
 <a id="field-field-mq3-vm-syscall-ui-media-soundservices-stopbackgroundfn-stopbackgroundfn-src-mq3-vm-syscall-ui-media-ml-400329536"></a>
 ### stopBackgroundFn
@@ -52,4 +52,4 @@ stopBackgroundFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L10)

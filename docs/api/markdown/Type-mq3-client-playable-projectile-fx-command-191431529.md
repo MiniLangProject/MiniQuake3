@@ -10,7 +10,7 @@ struct Command
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ blue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-center-center-src-mq3-client-playable-projectile-fx-ml-1409276672"></a>
 ### center
@@ -32,7 +32,7 @@ center
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-green-green-src-mq3-client-playable-projectile-fx-ml-171230670"></a>
 ### green
@@ -42,7 +42,7 @@ green
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-kind-kind-src-mq3-client-playable-projectile-fx-ml-1172664370"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-radius-radius-src-mq3-client-playable-projectile-fx-ml-42088474"></a>
 ### radius
@@ -62,7 +62,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)
 
 <a id="field-field-mq3-client-playable-projectile-fx-command-red-red-src-mq3-client-playable-projectile-fx-ml-1224440282"></a>
 ### red
@@ -72,4 +72,4 @@ red
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L29)

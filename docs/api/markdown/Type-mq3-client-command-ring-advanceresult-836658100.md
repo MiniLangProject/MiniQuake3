@@ -10,7 +10,7 @@ struct AdvanceResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ commandNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-created-created-src-mq3-client-command-ring-ml-774292116"></a>
 ### created
@@ -32,7 +32,7 @@ created
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-framemsec-framemsec-src-mq3-client-command-ring-ml-15936400"></a>
 ### frameMsec
@@ -42,7 +42,7 @@ frameMsec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-oldframetime-oldframetime-src-mq3-client-command-ring-ml-459028618"></a>
 ### oldFrameTime
@@ -52,7 +52,7 @@ oldFrameTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)
 
 <a id="field-field-mq3-client-command-ring-advanceresult-slot-slot-src-mq3-client-command-ring-ml-912844624"></a>
 ### slot
@@ -62,4 +62,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/command_ring.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/command_ring.ml#L12)

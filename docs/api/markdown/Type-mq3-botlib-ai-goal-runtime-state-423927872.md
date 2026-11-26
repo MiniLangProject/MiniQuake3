@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ aas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-aasentities-aasentities-src-mq3-botlib-ai-goal-runtime-ml-1480397458"></a>
 ### aasEntities
@@ -32,7 +32,7 @@ aasEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-bspentities-bspentities-src-mq3-botlib-ai-goal-runtime-ml-221023502"></a>
 ### bspEntities
@@ -42,7 +42,7 @@ bspEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-freelevelitems-freelevelitems-src-mq3-botlib-ai-goal-runtime-ml-843755250"></a>
 ### freeLevelItems
@@ -52,7 +52,7 @@ freeLevelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-gametype-gametype-src-mq3-botlib-ai-goal-runtime-ml-412559614"></a>
 ### gameType
@@ -62,7 +62,7 @@ gameType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-goals-goals-src-mq3-botlib-ai-goal-runtime-ml-1624512538"></a>
 ### goals
@@ -72,7 +72,7 @@ goals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-host-host-src-mq3-botlib-ai-goal-runtime-ml-718043278"></a>
 ### host
@@ -82,7 +82,7 @@ host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-itemweights-itemweights-src-mq3-botlib-ai-goal-runtime-ml-1229445378"></a>
 ### itemWeights
@@ -92,7 +92,7 @@ itemWeights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-levelitems-levelitems-src-mq3-botlib-ai-goal-runtime-ml-1951474702"></a>
 ### levelItems
@@ -102,7 +102,7 @@ levelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-mapgoals-mapgoals-src-mq3-botlib-ai-goal-runtime-ml-1559735102"></a>
 ### mapGoals
@@ -112,7 +112,7 @@ mapGoals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-placefn-placefn-src-mq3-botlib-ai-goal-runtime-ml-52566730"></a>
 ### placeFn
@@ -122,7 +122,7 @@ placeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-pools-pools-src-mq3-botlib-ai-goal-runtime-ml-1902048606"></a>
 ### pools
@@ -132,7 +132,7 @@ pools
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-selection-selection-src-mq3-botlib-ai-goal-runtime-ml-1397100614"></a>
 ### selection
@@ -142,7 +142,7 @@ selection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-state-setup-setup-src-mq3-botlib-ai-goal-runtime-ml-1879517306"></a>
 ### setup
@@ -152,4 +152,4 @@ setup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L17)

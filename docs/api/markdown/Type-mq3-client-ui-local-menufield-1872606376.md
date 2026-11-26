@@ -10,7 +10,7 @@ struct MenuField
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ field
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)
 
 <a id="field-field-mq3-client-ui-local-menufield-generic-generic-src-mq3-client-ui-local-ml-1019808738"></a>
 ### generic
@@ -32,4 +32,4 @@ generic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L63)

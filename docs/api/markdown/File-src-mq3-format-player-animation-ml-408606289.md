@@ -32,7 +32,7 @@ function animation(firstFrame, numFrames, loopFrames, frameLerp, reversed)
 | `reversed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L39)
 
 - [mq3.format.player_animation.Animation](Type-mq3-format-player-animation-animation-435129777.md) — struct
 <a id="constant-constant-mq3-format-player-animation-both-dead1-const-both-dead1-1-src-mq3-format-player-animation-ml-1455504048"></a>
@@ -43,7 +43,7 @@ const BOTH_DEAD1 = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L13)
 
 <a id="constant-constant-mq3-format-player-animation-both-death1-const-both-death1-0-src-mq3-format-player-animation-ml-1061722717"></a>
 ### BOTH_DEATH1
@@ -53,7 +53,7 @@ const BOTH_DEATH1 = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L12)
 
 <a id="function-function-mq3-format-player-animation-clearlerpframe-function-clearlerpframe-config-state-animationnumber-now-src-mq3-format-player-animation-ml-586975118"></a>
 ### clearLerpFrame
@@ -70,7 +70,7 @@ function clearLerpFrame(config, state, animationNumber, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L82)
 
 <a id="function-function-mq3-format-player-animation-clone-function-clone-value-reversed-src-mq3-format-player-animation-ml-248296993"></a>
 ### clone
@@ -85,7 +85,7 @@ function clone(value, reversed)
 | `reversed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L42)
 
 - [mq3.format.player_animation.Config](Type-mq3-format-player-animation-config-1151437643.md) — struct
 <a id="function-function-mq3-format-player-animation-enemyadvancefinished-function-enemyadvancefinished-state-now-lower-upper-src-mq3-format-player-animation-ml-989339258"></a>
@@ -103,7 +103,7 @@ function enemyAdvanceFinished(state, now, lower, upper)
 | `upper` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L265)
 
 - [mq3.format.player_animation.EnemyAnimationSample](Type-mq3-format-player-animation-enemyanimationsample-870130061.md) — struct
 - [mq3.format.player_animation.EnemyAnimationSelection](Type-mq3-format-player-animation-enemyanimationselection-160737163.md) — struct
@@ -121,7 +121,7 @@ function enemyAttack(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L223)
 
 <a id="function-function-mq3-format-player-animation-enemybegin-function-enemybegin-state-mode-now-src-mq3-format-player-animation-ml-1406389656"></a>
 ### enemyBegin
@@ -137,7 +137,7 @@ function enemyBegin(state, mode, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L208)
 
 <a id="function-function-mq3-format-player-animation-enemycreate-function-enemycreate-now-src-mq3-format-player-animation-ml-146043684"></a>
 ### enemyCreate
@@ -151,7 +151,7 @@ function enemyCreate(now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L203)
 
 <a id="function-function-mq3-format-player-animation-enemydie-function-enemydie-state-now-variant-src-mq3-format-player-animation-ml-784573588"></a>
 ### enemyDie
@@ -167,7 +167,7 @@ function enemyDie(state, now, variant)
 | `variant` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L235)
 
 <a id="function-function-mq3-format-player-animation-enemyfail-function-enemyfail-message-src-mq3-format-player-animation-ml-1509410411"></a>
 ### enemyFail
@@ -181,7 +181,7 @@ function enemyFail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L198)
 
 <a id="function-function-mq3-format-player-animation-enemyislocomotion-function-enemyislocomotion-mode-src-mq3-format-player-animation-ml-47003027"></a>
 ### enemyIsLocomotion
@@ -195,7 +195,7 @@ function enemyIsLocomotion(mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L199)
 
 <a id="function-function-mq3-format-player-animation-enemyisterminal-function-enemyisterminal-mode-src-mq3-format-player-animation-ml-1333589229"></a>
 ### enemyIsTerminal
@@ -209,7 +209,7 @@ function enemyIsTerminal(mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L200)
 
 <a id="function-function-mq3-format-player-animation-enemylocomote-function-enemylocomote-state-mode-now-src-mq3-format-player-animation-ml-398345300"></a>
 ### enemyLocomote
@@ -225,7 +225,7 @@ function enemyLocomote(state, mode, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L216)
 
 <a id="function-function-mq3-format-player-animation-enemylocomotionlower-function-enemylocomotionlower-mode-src-mq3-format-player-animation-ml-930216373"></a>
 ### enemyLocomotionLower
@@ -239,7 +239,7 @@ function enemyLocomotionLower(mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L246)
 
 <a id="function-function-mq3-format-player-animation-enemypain-function-enemypain-state-now-src-mq3-format-player-animation-ml-311969101"></a>
 ### enemyPain
@@ -254,7 +254,7 @@ function enemyPain(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L229)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L229)
 
 <a id="function-function-mq3-format-player-animation-enemyrespawn-function-enemyrespawn-state-now-src-mq3-format-player-animation-ml-2122400029"></a>
 ### enemyRespawn
@@ -269,7 +269,7 @@ function enemyRespawn(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L240)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L240)
 
 <a id="function-function-mq3-format-player-animation-enemysample-function-enemysample-config-state-now-src-mq3-format-player-animation-ml-638197879"></a>
 ### enemySample
@@ -285,7 +285,7 @@ function enemySample(config, state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L276)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L276)
 
 <a id="function-function-mq3-format-player-animation-enemyselect-function-enemyselect-state-src-mq3-format-player-animation-ml-1760480641"></a>
 ### enemySelect
@@ -301,7 +301,7 @@ Baseq3 has no player pain row; TORSO_GESTURE is used as the preview flinch.
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L253)
 
 <a id="function-function-mq3-format-player-animation-enemyvalidmode-function-enemyvalidmode-mode-src-mq3-format-player-animation-ml-366836973"></a>
 ### enemyValidMode
@@ -315,7 +315,7 @@ function enemyValidMode(mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L201)
 
 <a id="function-function-mq3-format-player-animation-fail-function-fail-message-src-mq3-format-player-animation-ml-1375043675"></a>
 ### fail
@@ -329,7 +329,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L38)
 
 <a id="constant-constant-mq3-format-player-animation-flag-run-const-flag-run-33-src-mq3-format-player-animation-ml-1808242463"></a>
 ### FLAG_RUN
@@ -339,7 +339,7 @@ const FLAG_RUN = 33
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L27)
 
 <a id="constant-constant-mq3-format-player-animation-flag-stand-const-flag-stand-34-src-mq3-format-player-animation-ml-122054270"></a>
 ### FLAG_STAND
@@ -349,7 +349,7 @@ const FLAG_STAND = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L28)
 
 <a id="constant-constant-mq3-format-player-animation-flag-stand2run-const-flag-stand2run-35-src-mq3-format-player-animation-ml-1151806457"></a>
 ### FLAG_STAND2RUN
@@ -359,7 +359,7 @@ const FLAG_STAND2RUN = 35
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L29)
 
 <a id="function-function-mq3-format-player-animation-frameat-function-frameat-value-ordinal-src-mq3-format-player-animation-ml-264236488"></a>
 ### frameAt
@@ -374,7 +374,7 @@ function frameAt(value, ordinal)
 | `ordinal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L140)
 
 - [mq3.format.player_animation.FrameSample](Type-mq3-format-player-animation-framesample-1730049312.md) — struct
 <a id="constant-constant-mq3-format-player-animation-legs-backcr-const-legs-backcr-31-src-mq3-format-player-animation-ml-1137744803"></a>
@@ -385,7 +385,7 @@ const LEGS_BACKCR = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L25)
 
 <a id="constant-constant-mq3-format-player-animation-legs-backwalk-const-legs-backwalk-32-src-mq3-format-player-animation-ml-312103252"></a>
 ### LEGS_BACKWALK
@@ -395,7 +395,7 @@ const LEGS_BACKWALK = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L26)
 
 <a id="constant-constant-mq3-format-player-animation-legs-idle-const-legs-idle-22-src-mq3-format-player-animation-ml-2098176295"></a>
 ### LEGS_IDLE
@@ -405,7 +405,7 @@ const LEGS_IDLE = 22
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L21)
 
 <a id="constant-constant-mq3-format-player-animation-legs-run-const-legs-run-15-src-mq3-format-player-animation-ml-76757389"></a>
 ### LEGS_RUN
@@ -415,7 +415,7 @@ const LEGS_RUN = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L20)
 
 <a id="constant-constant-mq3-format-player-animation-legs-walk-const-legs-walk-14-src-mq3-format-player-animation-ml-1734911524"></a>
 ### LEGS_WALK
@@ -425,7 +425,7 @@ const LEGS_WALK = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L19)
 
 <a id="constant-constant-mq3-format-player-animation-legs-walkcr-const-legs-walkcr-13-src-mq3-format-player-animation-ml-1400095387"></a>
 ### LEGS_WALKCR
@@ -435,7 +435,7 @@ const LEGS_WALKCR = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L18)
 
 <a id="function-function-mq3-format-player-animation-lerpframe-function-lerpframe-src-mq3-format-player-animation-ml-1255183898"></a>
 ### lerpFrame
@@ -447,7 +447,7 @@ function lerpFrame()
 Stateful CG_SetLerpFrameAnimation / CG_RunLerpFrame.  Unlike sample(), this preserves the original initial-lerp, animation-toggle and hitch-clamp state across rendered frames.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L49)
 
 - [mq3.format.player_animation.LerpFrame](Type-mq3-format-player-animation-lerpframe-665651353.md) — struct
 <a id="constant-constant-mq3-format-player-animation-max-animations-const-max-animations-31-src-mq3-format-player-animation-ml-157199561"></a>
@@ -458,7 +458,7 @@ const MAX_ANIMATIONS = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L24)
 
 <a id="constant-constant-mq3-format-player-animation-max-totalanimations-const-max-totalanimations-36-src-mq3-format-player-animation-ml-1714581028"></a>
 ### MAX_TOTALANIMATIONS
@@ -468,7 +468,7 @@ const MAX_TOTALANIMATIONS = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L30)
 
 <a id="function-function-mq3-format-player-animation-numberstarts-function-numberstarts-token-src-mq3-format-player-animation-ml-1830539961"></a>
 ### numberStarts
@@ -482,7 +482,7 @@ function numberStarts(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L87)
 
 <a id="function-function-mq3-format-player-animation-ordinalat-function-ordinalat-value-ordinal-src-mq3-format-player-animation-ml-83760520"></a>
 ### ordinalAt
@@ -497,7 +497,7 @@ function ordinalAt(value, ordinal)
 | `ordinal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L147)
 
 <a id="function-function-mq3-format-player-animation-parse-function-parse-text-src-mq3-format-player-animation-ml-1275333111"></a>
 ### parse
@@ -513,7 +513,7 @@ Matches CG_ParseAnimationFile, including optional directives, the lower.md3 fram
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L94)
 
 - [mq3.format.player_animation.PlayerSample](Type-mq3-format-player-animation-playersample-29064846.md) — struct
 <a id="function-function-mq3-format-player-animation-render-function-render-model-surfaceindex-value-maxtriangles-src-mq3-format-player-animation-ml-1424259868"></a>
@@ -531,7 +531,7 @@ function render(model, surfaceIndex, value, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L182)
 
 <a id="function-function-mq3-format-player-animation-renderat-function-renderat-model-surfaceindex-config-animationindex-elapsedms-maxtriangles-src-mq3-format-player-animation-ml-1187064141"></a>
 ### renderAt
@@ -550,7 +550,7 @@ function renderAt(model, surfaceIndex, config, animationIndex, elapsedMs, maxTri
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L187)
 
 <a id="function-function-mq3-format-player-animation-runlerpframe-function-runlerpframe-config-state-newanimation-speedscale-now-enabled-src-mq3-format-player-animation-ml-1103453197"></a>
 ### runLerpFrame
@@ -569,7 +569,7 @@ function runLerpFrame(config, state, newAnimation, speedScale, now, enabled)
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L56)
 
 <a id="function-function-mq3-format-player-animation-sample-function-sample-value-elapsedms-src-mq3-format-player-animation-ml-1234279601"></a>
 ### sample
@@ -586,7 +586,7 @@ Samples a sequence at elapsed milliseconds. backlerp is the weight of oldFrame e
 | `elapsedMs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L156)
 
 <a id="function-function-mq3-format-player-animation-sampleanimation-function-sampleanimation-config-index-elapsedms-src-mq3-format-player-animation-ml-2125934120"></a>
 ### sampleAnimation
@@ -602,7 +602,7 @@ function sampleAnimation(config, index, elapsedMs)
 | `elapsedMs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L171)
 
 <a id="function-function-mq3-format-player-animation-sampleplayer-function-sampleplayer-config-loweranimation-upperanimation-elapsedms-src-mq3-format-player-animation-ml-2081302715"></a>
 ### samplePlayer
@@ -619,7 +619,7 @@ function samplePlayer(config, lowerAnimation, upperAnimation, elapsedMs)
 | `elapsedMs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L176)
 
 <a id="function-function-mq3-format-player-animation-setlerpframeanimation-function-setlerpframeanimation-config-state-newanimation-src-mq3-format-player-animation-ml-1590960187"></a>
 ### setLerpFrameAnimation
@@ -635,7 +635,7 @@ function setLerpFrameAnimation(config, state, newAnimation)
 | `newAnimation` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L50)
 
 <a id="constant-constant-mq3-format-player-animation-torso-attack-const-torso-attack-7-src-mq3-format-player-animation-ml-1204017428"></a>
 ### TORSO_ATTACK
@@ -645,7 +645,7 @@ const TORSO_ATTACK = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L15)
 
 <a id="constant-constant-mq3-format-player-animation-torso-gesture-const-torso-gesture-6-src-mq3-format-player-animation-ml-853609995"></a>
 ### TORSO_GESTURE
@@ -655,7 +655,7 @@ const TORSO_GESTURE = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L14)
 
 <a id="constant-constant-mq3-format-player-animation-torso-getflag-const-torso-getflag-25-src-mq3-format-player-animation-ml-12525420"></a>
 ### TORSO_GETFLAG
@@ -665,7 +665,7 @@ const TORSO_GETFLAG = 25
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L22)
 
 <a id="constant-constant-mq3-format-player-animation-torso-negative-const-torso-negative-30-src-mq3-format-player-animation-ml-142449586"></a>
 ### TORSO_NEGATIVE
@@ -675,7 +675,7 @@ const TORSO_NEGATIVE = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L23)
 
 <a id="constant-constant-mq3-format-player-animation-torso-raise-const-torso-raise-10-src-mq3-format-player-animation-ml-1825865640"></a>
 ### TORSO_RAISE
@@ -685,7 +685,7 @@ const TORSO_RAISE = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L16)
 
 <a id="constant-constant-mq3-format-player-animation-torso-stand-const-torso-stand-11-src-mq3-format-player-animation-ml-1619710493"></a>
 ### TORSO_STAND
@@ -695,4 +695,4 @@ const TORSO_STAND = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L17)

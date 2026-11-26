@@ -31,7 +31,7 @@ function chatClient(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L22)
 
 <a id="function-function-mq3-game-chat-commands-chatclientlimit-function-chatclientlimit-level-src-mq3-game-chat-commands-ml-1920074454"></a>
 ### chatClientLimit
@@ -45,7 +45,7 @@ function chatClientLimit(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L30)
 
 <a id="function-function-mq3-game-chat-commands-chatformattedcopy-function-chatformattedcopy-level-text-capacity-src-mq3-game-chat-commands-ml-1992924257"></a>
 ### chatFormattedCopy
@@ -61,7 +61,7 @@ function chatFormattedCopy(level, text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L46)
 
 <a id="function-function-mq3-game-chat-commands-chatgametype-function-chatgametype-level-src-mq3-game-chat-commands-ml-1199592538"></a>
 ### chatGametype
@@ -75,7 +75,7 @@ function chatGametype(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L26)
 
 <a id="function-function-mq3-game-chat-commands-chatlog-function-chatlog-level-text-src-mq3-game-chat-commands-ml-373871719"></a>
 ### chatLog
@@ -90,7 +90,7 @@ function chatLog(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L38)
 
 <a id="function-function-mq3-game-chat-commands-chatprint-function-chatprint-level-text-src-mq3-game-chat-commands-ml-1897474657"></a>
 ### chatPrint
@@ -105,7 +105,7 @@ function chatPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L42)
 
 <a id="function-function-mq3-game-chat-commands-chatservercommand-function-chatservercommand-level-slot-text-src-mq3-game-chat-commands-ml-861444847"></a>
 ### chatServerCommand
@@ -121,7 +121,7 @@ function chatServerCommand(level, slot, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L34)
 
 <a id="function-function-mq3-game-chat-commands-chatvoiceonly-function-chatvoiceonly-value-src-mq3-game-chat-commands-ml-3612887"></a>
 ### chatVoiceOnly
@@ -135,7 +135,7 @@ function chatVoiceOnly(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L112)
 
 <a id="constant-constant-mq3-game-chat-commands-color-cyan-const-color-cyan-53-src-mq3-game-chat-commands-ml-732598489"></a>
 ### COLOR_CYAN
@@ -145,7 +145,7 @@ const COLOR_CYAN = 53
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L19)
 
 <a id="constant-constant-mq3-game-chat-commands-color-green-const-color-green-50-src-mq3-game-chat-commands-ml-464110644"></a>
 ### COLOR_GREEN
@@ -155,7 +155,7 @@ const COLOR_GREEN = 50
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L18)
 
 <a id="constant-constant-mq3-game-chat-commands-color-magenta-const-color-magenta-54-src-mq3-game-chat-commands-ml-130499204"></a>
 ### COLOR_MAGENTA
@@ -165,7 +165,7 @@ const COLOR_MAGENTA = 54
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L20)
 
 <a id="function-function-mq3-game-chat-commands-gamecommand-function-gamecommand-level-ent-argv-src-mq3-game-chat-commands-ml-752290839"></a>
 ### gameCommand
@@ -181,7 +181,7 @@ function gameCommand(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L193)
 
 <a id="function-function-mq3-game-chat-commands-say-function-say-level-ent-target-mode-chattext-src-mq3-game-chat-commands-ml-1044532284"></a>
 ### say
@@ -199,7 +199,7 @@ function say(level, ent, target, mode, chatText)
 | `chatText` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L62)
 
 <a id="constant-constant-mq3-game-chat-commands-say-all-const-say-all-0-src-mq3-game-chat-commands-ml-956398927"></a>
 ### SAY_ALL
@@ -209,7 +209,7 @@ const SAY_ALL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L14)
 
 <a id="constant-constant-mq3-game-chat-commands-say-team-const-say-team-1-src-mq3-game-chat-commands-ml-1463949804"></a>
 ### SAY_TEAM
@@ -219,7 +219,7 @@ const SAY_TEAM = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L15)
 
 <a id="constant-constant-mq3-game-chat-commands-say-tell-const-say-tell-2-src-mq3-game-chat-commands-ml-240468365"></a>
 ### SAY_TELL
@@ -229,7 +229,7 @@ const SAY_TELL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L16)
 
 <a id="function-function-mq3-game-chat-commands-saycommand-function-saycommand-level-ent-argv-mode-arg0-src-mq3-game-chat-commands-ml-571437576"></a>
 ### sayCommand
@@ -247,7 +247,7 @@ function sayCommand(level, ent, argv, mode, arg0)
 | `arg0` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L94)
 
 <a id="function-function-mq3-game-chat-commands-sayto-function-sayto-level-ent-other-mode-color-name-message-src-mq3-game-chat-commands-ml-144419241"></a>
 ### sayTo
@@ -267,7 +267,7 @@ function sayTo(level, ent, other, mode, color, name, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L52)
 
 <a id="constant-constant-mq3-game-chat-commands-svf-bot-const-svf-bot-8-src-mq3-game-chat-commands-ml-1444810447"></a>
 ### SVF_BOT
@@ -277,7 +277,7 @@ const SVF_BOT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L17)
 
 <a id="function-function-mq3-game-chat-commands-tellcommand-function-tellcommand-level-ent-argv-src-mq3-game-chat-commands-ml-1542796633"></a>
 ### tellCommand
@@ -293,7 +293,7 @@ function tellCommand(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L100)
 
 <a id="function-function-mq3-game-chat-commands-voice-function-voice-level-ent-target-mode-id-voiceonly-src-mq3-game-chat-commands-ml-274338416"></a>
 ### voice
@@ -312,7 +312,7 @@ function voice(level, ent, target, mode, id, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L129)
 
 <a id="function-function-mq3-game-chat-commands-voicecommand-function-voicecommand-level-ent-argv-mode-arg0-voiceonly-src-mq3-game-chat-commands-ml-514798186"></a>
 ### voiceCommand
@@ -331,7 +331,7 @@ function voiceCommand(level, ent, argv, mode, arg0, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L140)
 
 <a id="function-function-mq3-game-chat-commands-voicetaunt-function-voicetaunt-level-ent-src-mq3-game-chat-commands-ml-43043627"></a>
 ### voiceTaunt
@@ -346,7 +346,7 @@ function voiceTaunt(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L158)
 
 <a id="function-function-mq3-game-chat-commands-voicetellcommand-function-voicetellcommand-level-ent-argv-voiceonly-src-mq3-game-chat-commands-ml-2094996945"></a>
 ### voiceTellCommand
@@ -363,7 +363,7 @@ function voiceTellCommand(level, ent, argv, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L146)
 
 <a id="function-function-mq3-game-chat-commands-voiceto-function-voiceto-level-ent-other-mode-id-voiceonly-src-mq3-game-chat-commands-ml-2069680053"></a>
 ### voiceTo
@@ -382,7 +382,7 @@ function voiceTo(level, ent, other, mode, id, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L118)
 
 <a id="function-function-mq3-game-chat-commands-where-function-where-level-ent-src-mq3-game-chat-commands-ml-1327730689"></a>
 ### where
@@ -397,4 +397,4 @@ function where(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/chat_commands.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/chat_commands.ml#L202)

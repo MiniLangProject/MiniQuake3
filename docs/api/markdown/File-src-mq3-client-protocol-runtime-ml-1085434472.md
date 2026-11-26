@@ -27,7 +27,7 @@ function create(downloadServices)
 | `downloadServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/protocol_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L38)
 
 <a id="function-function-mq3-client-protocol-runtime-downloadcommand-function-downloadcommand-dispatcher-msg-src-mq3-client-protocol-runtime-ml-1132138684"></a>
 ### downloadCommand
@@ -42,7 +42,7 @@ function downloadCommand(dispatcher, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/protocol_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L32)
 
 <a id="function-function-mq3-client-protocol-runtime-gamestatecommand-function-gamestatecommand-dispatcher-msg-src-mq3-client-protocol-runtime-ml-1708327414"></a>
 ### gamestateCommand
@@ -57,7 +57,7 @@ function gamestateCommand(dispatcher, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/protocol_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L18)
 
 <a id="function-function-mq3-client-protocol-runtime-parse-function-parse-runtime-msg-src-mq3-client-protocol-runtime-ml-962627107"></a>
 ### parse
@@ -72,6 +72,6 @@ function parse(runtime, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/protocol_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/protocol_runtime.ml#L45)
 
 - [mq3.client.protocol_runtime.Runtime](Type-mq3-client-protocol-runtime-runtime-2050442980.md) — struct

@@ -26,7 +26,7 @@ function emit(commandState, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L8)
 
 <a id="function-function-mq3-qcommon-cvar-commands-flaggedset-function-flaggedset-commandstate-registry-flag-usage-src-mq3-qcommon-cvar-commands-ml-646480600"></a>
 ### flaggedSet
@@ -43,7 +43,7 @@ function flaggedSet(commandState, registry, flag, usage)
 | `usage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L39)
 
 <a id="function-function-mq3-qcommon-cvar-commands-flagtext-function-flagtext-flags-src-mq3-qcommon-cvar-commands-ml-715333445"></a>
 ### flagText
@@ -57,7 +57,7 @@ function flagText(flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L50)
 
 <a id="function-function-mq3-qcommon-cvar-commands-install-function-install-registry-commandstate-src-mq3-qcommon-cvar-commands-ml-1821431659"></a>
 ### install
@@ -72,7 +72,7 @@ function install(registry, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L75)
 
 <a id="function-function-mq3-qcommon-cvar-commands-listcallback-function-listcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-822750745"></a>
 ### listCallback
@@ -87,7 +87,7 @@ function listCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L60)
 
 <a id="function-function-mq3-qcommon-cvar-commands-resetcallback-function-resetcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1038471749"></a>
 ### resetCallback
@@ -102,7 +102,7 @@ function resetCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L46)
 
 <a id="function-function-mq3-qcommon-cvar-commands-restartcallback-function-restartcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1678590181"></a>
 ### restartCallback
@@ -117,7 +117,7 @@ function restartCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L70)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setarchivecallback-function-setarchivecallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-470931961"></a>
 ### setArchiveCallback
@@ -132,7 +132,7 @@ function setArchiveCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L45)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setcallback-function-setcallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-675265859"></a>
 ### setCallback
@@ -147,7 +147,7 @@ function setCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L27)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setservercallback-function-setservercallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-632275277"></a>
 ### setServerCallback
@@ -162,7 +162,7 @@ function setServerCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L44)
 
 <a id="function-function-mq3-qcommon-cvar-commands-setusercallback-function-setusercallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1378146197"></a>
 ### setUserCallback
@@ -177,7 +177,7 @@ function setUserCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L43)
 
 <a id="function-function-mq3-qcommon-cvar-commands-togglecallback-function-togglecallback-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1809536481"></a>
 ### toggleCallback
@@ -192,7 +192,7 @@ function toggleCallback(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L21)
 
 <a id="function-function-mq3-qcommon-cvar-commands-valuecommand-function-valuecommand-commandstate-registry-src-mq3-qcommon-cvar-commands-ml-1932293221"></a>
 ### valueCommand
@@ -207,4 +207,4 @@ function valueCommand(commandState, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar_commands.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar_commands.ml#L10)

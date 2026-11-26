@@ -10,7 +10,7 @@ struct Surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L21)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-surface-surfacetype-surfacetype-src-mq3-renderer-tr-light-runtime-ml-180765592"></a>
 ### surfaceType
@@ -32,4 +32,4 @@ surfaceType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L21)

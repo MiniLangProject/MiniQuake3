@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)
 
 <a id="field-field-mq3-game-rankings-action-kind-kind-src-mq3-game-rankings-ml-272760741"></a>
 ### kind
@@ -32,7 +32,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)
 
 <a id="field-field-mq3-game-rankings-action-text-text-src-mq3-game-rankings-ml-2068102107"></a>
 ### text
@@ -42,7 +42,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)
 
 <a id="field-field-mq3-game-rankings-action-value-value-src-mq3-game-rankings-ml-1692647269"></a>
 ### value
@@ -52,4 +52,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L138)

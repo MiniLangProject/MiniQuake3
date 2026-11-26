@@ -28,7 +28,7 @@ Cmd_AddCommand("writeconfig", Com_WriteConfig_f).  The command registry owns the
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L83)
 
 <a id="function-function-mq3-qcommon-config-persistence-configfilename-function-configfilename-name-src-mq3-qcommon-config-persistence-ml-955712517"></a>
 ### configFilename
@@ -44,7 +44,7 @@ Q_strncpyz followed by COM_DefaultExtension, both constrained by MAX_QPATH.
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L38)
 
 <a id="function-function-mq3-qcommon-config-persistence-configtext-function-configtext-state-src-mq3-qcommon-config-persistence-ml-606273295"></a>
 ### configText
@@ -58,7 +58,7 @@ function configText(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L47)
 
 <a id="function-function-mq3-qcommon-config-persistence-copytext-function-copytext-text-capacity-src-mq3-qcommon-config-persistence-ml-171674637"></a>
 ### copyText
@@ -73,7 +73,7 @@ function copyText(text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L31)
 
 <a id="function-function-mq3-qcommon-config-persistence-create-function-create-registry-host-src-mq3-qcommon-config-persistence-ml-744492971"></a>
 ### create
@@ -88,7 +88,7 @@ function create(registry, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L24)
 
 <a id="function-function-mq3-qcommon-config-persistence-emit-function-emit-state-text-src-mq3-qcommon-config-persistence-ml-863908682"></a>
 ### emit
@@ -103,7 +103,7 @@ function emit(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L26)
 
 <a id="function-function-mq3-qcommon-config-persistence-installcommand-function-installcommand-state-commandstate-src-mq3-qcommon-config-persistence-ml-1293915345"></a>
 ### installCommand
@@ -118,7 +118,7 @@ function installCommand(state, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L88)
 
 <a id="constant-constant-mq3-qcommon-config-persistence-max-qpath-const-max-qpath-64-src-mq3-qcommon-config-persistence-ml-2035076225"></a>
 ### MAX_QPATH
@@ -128,7 +128,7 @@ const MAX_QPATH = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L8)
 
 <a id="function-function-mq3-qcommon-config-persistence-services-function-services-src-mq3-qcommon-config-persistence-ml-1785922456"></a>
 ### services
@@ -138,7 +138,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L23)
 
 - [mq3.qcommon.config_persistence.Services](Type-mq3-qcommon-config-persistence-services-1094447434.md) — struct
 - [mq3.qcommon.config_persistence.State](Type-mq3-qcommon-config-persistence-state-1217751323.md) — struct
@@ -155,7 +155,7 @@ function writeConfigCommand(state, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L74)
 
 <a id="function-function-mq3-qcommon-config-persistence-writeconfigtofile-function-writeconfigtofile-state-filename-src-mq3-qcommon-config-persistence-ml-130085284"></a>
 ### writeConfigToFile
@@ -170,7 +170,7 @@ function writeConfigToFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L56)
 
 <a id="function-function-mq3-qcommon-config-persistence-writeconfiguration-function-writeconfiguration-state-src-mq3-qcommon-config-persistence-ml-2108295299"></a>
 ### writeConfiguration
@@ -186,4 +186,4 @@ Com_WriteConfiguration: archive dirtiness is consumed before attempting the writ
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L67)

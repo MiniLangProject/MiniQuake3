@@ -10,7 +10,7 @@ struct RenderAction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ alpha
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-boundary-boundary-src-mq3-client-cgame-particles-ml-139129587"></a>
 ### boundary
@@ -32,7 +32,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-color-color-src-mq3-client-cgame-particles-ml-1228500783"></a>
 ### color
@@ -42,7 +42,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-dispatched-dispatched-src-mq3-client-cgame-particles-ml-1504392389"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-frame-frame-src-mq3-client-cgame-particles-ml-718277631"></a>
 ### frame
@@ -62,7 +62,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-height-height-src-mq3-client-cgame-particles-ml-492449497"></a>
 ### height
@@ -72,7 +72,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-kind-kind-src-mq3-client-cgame-particles-ml-423678163"></a>
 ### kind
@@ -82,7 +82,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-origin-origin-src-mq3-client-cgame-particles-ml-1123970787"></a>
 ### origin
@@ -92,7 +92,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-particle-particle-src-mq3-client-cgame-particles-ml-1907301523"></a>
 ### particle
@@ -102,7 +102,7 @@ particle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-shader-shader-src-mq3-client-cgame-particles-ml-875847649"></a>
 ### shader
@@ -112,7 +112,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-texcoords-texcoords-src-mq3-client-cgame-particles-ml-675202799"></a>
 ### texcoords
@@ -122,7 +122,7 @@ texcoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-vertexcount-vertexcount-src-mq3-client-cgame-particles-ml-1341776423"></a>
 ### vertexCount
@@ -132,7 +132,7 @@ vertexCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-vertices-vertices-src-mq3-client-cgame-particles-ml-1969436437"></a>
 ### vertices
@@ -142,7 +142,7 @@ vertices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)
 
 <a id="field-field-mq3-client-cgame-particles-renderaction-width-width-src-mq3-client-cgame-particles-ml-642367639"></a>
 ### width
@@ -152,4 +152,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L39)

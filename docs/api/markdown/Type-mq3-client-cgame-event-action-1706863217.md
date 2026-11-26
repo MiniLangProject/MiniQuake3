@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-channel-channel-src-mq3-client-cgame-event-ml-487121827"></a>
 ### channel
@@ -32,7 +32,7 @@ channel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-dispatched-dispatched-src-mq3-client-cgame-event-ml-1805181937"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-entity-entity-src-mq3-client-cgame-event-ml-1746320185"></a>
 ### entity
@@ -52,7 +52,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-kind-kind-src-mq3-client-cgame-event-ml-901197807"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-origin-origin-src-mq3-client-cgame-event-ml-2038795831"></a>
 ### origin
@@ -72,7 +72,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-origin2-origin2-src-mq3-client-cgame-event-ml-1972005231"></a>
 ### origin2
@@ -82,7 +82,7 @@ origin2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-other-other-src-mq3-client-cgame-event-ml-7644931"></a>
 ### other
@@ -92,7 +92,7 @@ other
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-parm-parm-src-mq3-client-cgame-event-ml-1708003395"></a>
 ### parm
@@ -102,7 +102,7 @@ parm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-text-text-src-mq3-client-cgame-event-ml-1548196857"></a>
 ### text
@@ -112,7 +112,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)
 
 <a id="field-field-mq3-client-cgame-event-action-weapon-weapon-src-mq3-client-cgame-event-ml-850449891"></a>
 ### weapon
@@ -122,4 +122,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L22)

@@ -10,7 +10,7 @@ struct FieldDef
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ floatmax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-floatmin-floatmin-src-mq3-botlib-l-struct-ml-1670553004"></a>
 ### floatmin
@@ -32,7 +32,7 @@ floatmin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-maxarray-maxarray-src-mq3-botlib-l-struct-ml-1268097658"></a>
 ### maxarray
@@ -42,7 +42,7 @@ maxarray
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-name-name-src-mq3-botlib-l-struct-ml-434998914"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-offset-offset-src-mq3-botlib-l-struct-ml-1187120358"></a>
 ### offset
@@ -62,7 +62,7 @@ offset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-substruct-substruct-src-mq3-botlib-l-struct-ml-927045628"></a>
 ### substruct
@@ -72,7 +72,7 @@ substruct
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)
 
 <a id="field-field-mq3-botlib-l-struct-fielddef-type-type-src-mq3-botlib-l-struct-ml-486651892"></a>
 ### type
@@ -82,4 +82,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L21)

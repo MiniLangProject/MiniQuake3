@@ -35,7 +35,7 @@ function CL_AddCgameCommand(state, cmdName)
 | `cmdName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L128)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-adjusttimedelta-function-cl-adjusttimedelta-state-src-mq3-client-cl-cgame-runtime-ml-1071581913"></a>
 ### CL_AdjustTimeDelta
@@ -49,7 +49,7 @@ function CL_AdjustTimeDelta(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L191)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgameerror-function-cl-cgameerror-state-text-src-mq3-client-cl-cgame-runtime-ml-2106570848"></a>
 ### CL_CgameError
@@ -64,7 +64,7 @@ function CL_CgameError(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L129)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgamerendering-function-cl-cgamerendering-state-stereo-src-mq3-client-cl-cgame-runtime-ml-815099127"></a>
 ### CL_CGameRendering
@@ -79,7 +79,7 @@ function CL_CGameRendering(state, stereo)
 | `stereo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L187)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cgamesystemcalls-function-cl-cgamesystemcalls-state-base-src-mq3-client-cl-cgame-runtime-ml-70939966"></a>
 ### CL_CgameSystemCalls
@@ -94,7 +94,7 @@ function CL_CgameSystemCalls(state, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L178)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-cm-loadmap-function-cl-cm-loadmap-state-mapname-src-mq3-client-cl-cgame-runtime-ml-872321206"></a>
 ### CL_CM_LoadMap
@@ -109,7 +109,7 @@ function CL_CM_LoadMap(state, mapname)
 | `mapname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L172)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-configstringmodified-function-cl-configstringmodified-state-index-value-src-mq3-client-cl-cgame-runtime-ml-1235629768"></a>
 ### CL_ConfigstringModified
@@ -125,7 +125,7 @@ function CL_ConfigstringModified(state, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L147)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-firstsnapshot-function-cl-firstsnapshot-state-src-mq3-client-cl-cgame-runtime-ml-1726194637"></a>
 ### CL_FirstSnapshot
@@ -139,7 +139,7 @@ function CL_FirstSnapshot(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L192)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-gamecommand-function-cl-gamecommand-state-src-mq3-client-cl-cgame-runtime-ml-1403197937"></a>
 ### CL_GameCommand
@@ -153,7 +153,7 @@ function CL_GameCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L186)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getcurrentcmdnumber-function-cl-getcurrentcmdnumber-state-src-mq3-client-cl-cgame-runtime-ml-898207197"></a>
 ### CL_GetCurrentCmdNumber
@@ -167,7 +167,7 @@ function CL_GetCurrentCmdNumber(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L94)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getcurrentsnapshotnumber-function-cl-getcurrentsnapshotnumber-state-src-mq3-client-cl-cgame-runtime-ml-1545689277"></a>
 ### CL_GetCurrentSnapshotNumber
@@ -181,7 +181,7 @@ function CL_GetCurrentSnapshotNumber(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L102)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getgamestate-function-cl-getgamestate-state-src-mq3-client-cl-cgame-runtime-ml-858766159"></a>
 ### CL_GetGameState
@@ -195,7 +195,7 @@ function CL_GetGameState(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L79)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getglconfig-function-cl-getglconfig-state-src-mq3-client-cl-cgame-runtime-ml-848016633"></a>
 ### CL_GetGlconfig
@@ -209,7 +209,7 @@ function CL_GetGlconfig(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L80)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getparseentitystate-function-cl-getparseentitystate-state-parseentitynumber-src-mq3-client-cl-cgame-runtime-ml-1701638340"></a>
 ### CL_GetParseEntityState
@@ -224,7 +224,7 @@ function CL_GetParseEntityState(state, parseEntityNumber)
 | `parseEntityNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L96)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getservercommand-function-cl-getservercommand-state-servercommandnumber-src-mq3-client-cl-cgame-runtime-ml-1698996452"></a>
 ### CL_GetServerCommand
@@ -239,7 +239,7 @@ function CL_GetServerCommand(state, serverCommandNumber)
 | `serverCommandNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L165)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getsnapshot-function-cl-getsnapshot-state-snapshotnumber-src-mq3-client-cl-cgame-runtime-ml-1928416"></a>
 ### CL_GetSnapshot
@@ -254,7 +254,7 @@ function CL_GetSnapshot(state, snapshotNumber)
 | `snapshotNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L117)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-getusercmd-function-cl-getusercmd-state-cmdnumber-src-mq3-client-cl-cgame-runtime-ml-510619590"></a>
 ### CL_GetUserCmd
@@ -269,7 +269,7 @@ function CL_GetUserCmd(state, cmdNumber)
 | `cmdNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L88)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-initcgame-function-cl-initcgame-state-src-mq3-client-cl-cgame-runtime-ml-473607661"></a>
 ### CL_InitCGame
@@ -283,7 +283,7 @@ function CL_InitCGame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L182)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-setcgametime-function-cl-setcgametime-state-src-mq3-client-cl-cgame-runtime-ml-517417929"></a>
 ### CL_SetCGameTime
@@ -297,7 +297,7 @@ function CL_SetCGameTime(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L193)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-setusercmdvalue-function-cl-setusercmdvalue-state-usercmdvalue-sensitivityscale-src-mq3-client-cl-cgame-runtime-ml-2121790548"></a>
 ### CL_SetUserCmdValue
@@ -313,7 +313,7 @@ function CL_SetUserCmdValue(state, userCmdValue, sensitivityScale)
 | `sensitivityScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L127)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-cl-shutdowncgame-function-cl-shutdowncgame-state-src-mq3-client-cl-cgame-runtime-ml-891191309"></a>
 ### CL_ShutdownCGame
@@ -327,7 +327,7 @@ function CL_ShutdownCGame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L176)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-cmd-backup-const-cmd-backup-64-src-mq3-client-cl-cgame-runtime-ml-1056211241"></a>
 ### CMD_BACKUP
@@ -337,7 +337,7 @@ const CMD_BACKUP = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L20)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-copydata-function-copydata-value-src-mq3-client-cl-cgame-runtime-ml-638219329"></a>
 ### copyData
@@ -351,7 +351,7 @@ function copyData(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L66)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-create-function-create-host-vmstate-timingstate-syscallhost-syscallvm-src-mq3-client-cl-cgame-runtime-ml-568123128"></a>
 ### create
@@ -369,7 +369,7 @@ function create(host, vmState, timingState, syscallHost, syscallVm)
 | `syscallVm` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L72)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-cs-systeminfo-const-cs-systeminfo-1-src-mq3-client-cl-cgame-runtime-ml-493024408"></a>
 ### CS_SYSTEMINFO
@@ -379,7 +379,7 @@ const CS_SYSTEMINFO = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L26)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-defaultgamestate-function-defaultgamestate-src-mq3-client-cl-cgame-runtime-ml-1337913882"></a>
 ### defaultGameState
@@ -389,7 +389,7 @@ function defaultGameState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L70)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-encodesnapshot-function-encodesnapshot-snapshots-value-output-src-mq3-client-cl-cgame-runtime-ml-2138111045"></a>
 ### encodeSnapshot
@@ -405,7 +405,7 @@ function encodeSnapshot(snapshots, value, output)
 | `output` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L107)
 
 - [mq3.client.cl_cgame_runtime.EntityResult](Type-mq3-client-cl-cgame-runtime-entityresult-75123767.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-fail-function-fail-message-src-mq3-client-cl-cgame-runtime-ml-683619787"></a>
@@ -420,7 +420,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L64)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-floatasint-function-floatasint-value-src-mq3-client-cl-cgame-runtime-ml-773324149"></a>
 ### FloatAsInt
@@ -434,7 +434,7 @@ function FloatAsInt(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L177)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-configstrings-const-max-configstrings-1024-src-mq3-client-cl-cgame-runtime-ml-2133110194"></a>
 ### MAX_CONFIGSTRINGS
@@ -444,7 +444,7 @@ const MAX_CONFIGSTRINGS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L24)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-entities-in-snapshot-const-max-entities-in-snapshot-256-src-mq3-client-cl-cgame-runtime-ml-722545178"></a>
 ### MAX_ENTITIES_IN_SNAPSHOT
@@ -454,7 +454,7 @@ const MAX_ENTITIES_IN_SNAPSHOT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L23)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-gamestate-chars-const-max-gamestate-chars-16000-src-mq3-client-cl-cgame-runtime-ml-1839155974"></a>
 ### MAX_GAMESTATE_CHARS
@@ -464,7 +464,7 @@ const MAX_GAMESTATE_CHARS = 16000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L25)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-max-parse-entities-const-max-parse-entities-2048-src-mq3-client-cl-cgame-runtime-ml-1754286235"></a>
 ### MAX_PARSE_ENTITIES
@@ -474,7 +474,7 @@ const MAX_PARSE_ENTITIES = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L22)
 
 <a id="constant-constant-mq3-client-cl-cgame-runtime-packet-backup-const-packet-backup-32-src-mq3-client-cl-cgame-runtime-ml-1308431776"></a>
 ### PACKET_BACKUP
@@ -484,7 +484,7 @@ const PACKET_BACKUP = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L21)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-packgamestate-function-packgamestate-state-src-mq3-client-cl-cgame-runtime-ml-1397593309"></a>
 ### packGameState
@@ -498,7 +498,7 @@ function packGameState(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L134)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-rebuildgamestate-function-rebuildgamestate-state-index-value-src-mq3-client-cl-cgame-runtime-ml-58510184"></a>
 ### rebuildGameState
@@ -514,7 +514,7 @@ function rebuildGameState(state, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L142)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-services-function-services-src-mq3-client-cl-cgame-runtime-ml-695559202"></a>
 ### services
@@ -524,7 +524,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L65)
 
 - [mq3.client.cl_cgame_runtime.Services](Type-mq3-client-cl-cgame-runtime-services-364554929.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-snapshotbytes-function-snapshotbytes-state-value-src-mq3-client-cl-cgame-runtime-ml-59239514"></a>
@@ -540,7 +540,7 @@ function snapshotBytes(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L114)
 
 - [mq3.client.cl_cgame_runtime.State](Type-mq3-client-cl-cgame-runtime-state-717532426.md) — struct
 <a id="function-function-mq3-client-cl-cgame-runtime-streamclearcommands-function-streamclearcommands-state-src-mq3-client-cl-cgame-runtime-ml-888827079"></a>
@@ -555,7 +555,7 @@ function streamClearCommands(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L152)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamclearnotify-function-streamclearnotify-state-src-mq3-client-cl-cgame-runtime-ml-1925827725"></a>
 ### streamClearNotify
@@ -569,7 +569,7 @@ function streamClearNotify(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L153)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamcloseconsole-function-streamcloseconsole-state-src-mq3-client-cl-cgame-runtime-ml-972541553"></a>
 ### streamCloseConsole
@@ -583,7 +583,7 @@ function streamCloseConsole(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L157)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamconfig-function-streamconfig-state-index-value-src-mq3-client-cl-cgame-runtime-ml-2112751240"></a>
 ### streamConfig
@@ -599,7 +599,7 @@ function streamConfig(state, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L148)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-streamqueueconsole-function-streamqueueconsole-state-text-src-mq3-client-cl-cgame-runtime-ml-22057198"></a>
 ### streamQueueConsole
@@ -614,7 +614,7 @@ function streamQueueConsole(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L161)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallcommandnumber-function-syscallcommandnumber-state-src-mq3-client-cl-cgame-runtime-ml-832738517"></a>
 ### syscallCommandNumber
@@ -628,7 +628,7 @@ function syscallCommandNumber(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L200)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallgamestate-function-syscallgamestate-state-src-mq3-client-cl-cgame-runtime-ml-421962221"></a>
 ### syscallGameState
@@ -642,7 +642,7 @@ function syscallGameState(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L195)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallglconfig-function-syscallglconfig-state-src-mq3-client-cl-cgame-runtime-ml-409763469"></a>
 ### syscallGlconfig
@@ -656,7 +656,7 @@ function syscallGlconfig(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L196)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallservercommand-function-syscallservercommand-state-number-src-mq3-client-cl-cgame-runtime-ml-572492448"></a>
 ### syscallServerCommand
@@ -671,7 +671,7 @@ function syscallServerCommand(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L199)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsetusercmd-function-syscallsetusercmd-state-value-sensitivity-src-mq3-client-cl-cgame-runtime-ml-101994233"></a>
 ### syscallSetUserCmd
@@ -687,7 +687,7 @@ function syscallSetUserCmd(state, value, sensitivity)
 | `sensitivity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L202)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsnapshot-function-syscallsnapshot-state-number-src-mq3-client-cl-cgame-runtime-ml-1561507286"></a>
 ### syscallSnapshot
@@ -702,7 +702,7 @@ function syscallSnapshot(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L198)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallsnapshotnumber-function-syscallsnapshotnumber-state-src-mq3-client-cl-cgame-runtime-ml-899102133"></a>
 ### syscallSnapshotNumber
@@ -716,7 +716,7 @@ function syscallSnapshotNumber(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L197)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-syscallusercmd-function-syscallusercmd-state-number-src-mq3-client-cl-cgame-runtime-ml-1416995660"></a>
 ### syscallUserCmd
@@ -731,7 +731,7 @@ function syscallUserCmd(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L201)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-usercmdbytes-function-usercmdbytes-command-src-mq3-client-cl-cgame-runtime-ml-874934473"></a>
 ### usercmdBytes
@@ -745,7 +745,7 @@ function usercmdBytes(command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L82)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-wiresyscalls-function-wiresyscalls-state-host-machine-src-mq3-client-cl-cgame-runtime-ml-573712430"></a>
 ### wireSyscalls
@@ -761,7 +761,7 @@ function wireSyscalls(state, host, machine)
 | `machine` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L203)
 
 <a id="function-function-mq3-client-cl-cgame-runtime-writewords-function-writewords-output-offset-words-src-mq3-client-cl-cgame-runtime-ml-1533018715"></a>
 ### writeWords
@@ -777,4 +777,4 @@ function writeWords(output, offset, words)
 | `words` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cgame_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cgame_runtime.ml#L106)

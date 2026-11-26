@@ -31,7 +31,7 @@ CG_AddMarks
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L114)
 
 <a id="function-function-mq3-client-cgame-marks-addparticles-function-addparticles-state-time-vieworg-vforward-vright-vup-src-mq3-client-cgame-marks-ml-1072273167"></a>
 ### addParticles
@@ -50,7 +50,7 @@ function addParticles(state, time, vieworg, vforward, vright, vup)
 | `vup` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L131)
 
 <a id="function-function-mq3-client-cgame-marks-addparticleshrapnel-function-addparticleshrapnel-state-localentity-src-mq3-client-cgame-marks-ml-1563252627"></a>
 ### addParticleShrapnel
@@ -65,7 +65,7 @@ function addParticleShrapnel(state, localEntity)
 | `localEntity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L138)
 
 <a id="function-function-mq3-client-cgame-marks-addparticletoscene-function-addparticletoscene-state-p-origin-alpha-src-mq3-client-cgame-marks-ml-101499437"></a>
 ### addParticleToScene
@@ -82,7 +82,7 @@ function addParticleToScene(state, p, origin, alpha)
 | `alpha` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L130)
 
 <a id="function-function-mq3-client-cgame-marks-allocmark-function-allocmark-state-src-mq3-client-cgame-marks-ml-1527259403"></a>
 ### allocMark
@@ -98,7 +98,7 @@ CG_AllocMark -- just like Baseq3 this always succeeds.  When the pool is full ev
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L61)
 
 <a id="function-function-mq3-client-cgame-marks-bloodpool-function-bloodpool-state-shader-trace-tracefn-context-src-mq3-client-cgame-marks-ml-1700783901"></a>
 ### bloodPool
@@ -116,7 +116,7 @@ function bloodPool(state, shader, trace, traceFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L147)
 
 - [mq3.client.cgame_marks.Boundary](Type-mq3-client-cgame-marks-boundary-1491397383.md) — struct
 <a id="function-function-mq3-client-cgame-marks-bytecolor-function-bytecolor-value-src-mq3-client-cgame-marks-ml-104551261"></a>
@@ -131,7 +131,7 @@ function byteColor(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L81)
 
 <a id="function-function-mq3-client-cgame-marks-clearparticles-function-clearparticles-state-src-mq3-client-cgame-marks-ml-775067747"></a>
 ### clearParticles
@@ -147,7 +147,7 @@ The remaining 23 candidates belong to the appended cg_particles.c body. Keep one
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L129)
 
 <a id="function-function-mq3-client-cgame-marks-copy3-function-copy3-value-src-mq3-client-cgame-marks-ml-1641606555"></a>
 ### copy3
@@ -161,7 +161,7 @@ function copy3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L31)
 
 <a id="function-function-mq3-client-cgame-marks-create-function-create-capacity-retailactive-src-mq3-client-cgame-marks-ml-2039578677"></a>
 ### create
@@ -176,7 +176,7 @@ function create(capacity, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L33)
 
 - [mq3.client.cgame_marks.Fragment](Type-mq3-client-cgame-marks-fragment-1382444093.md) — struct
 <a id="function-function-mq3-client-cgame-marks-freemarkpoly-function-freemarkpoly-state-mark-src-mq3-client-cgame-marks-ml-1714804136"></a>
@@ -194,7 +194,7 @@ CG_FreeMarkPoly
 | `mark` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L54)
 
 <a id="function-function-mq3-client-cgame-marks-freshmark-function-freshmark-id-src-mq3-client-cgame-marks-ml-458698295"></a>
 ### freshMark
@@ -208,7 +208,7 @@ function freshMark(id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L32)
 
 <a id="function-function-mq3-client-cgame-marks-impactmark-function-impactmark-state-shader-origin-direction-orientation-red-green-blue-alpha-alphafade-radius-temporary-fragments-src-mq3-client-cgame-marks-ml-1463865227"></a>
 ### impactMark
@@ -236,7 +236,7 @@ CG_ImpactMark.  fragments carries trap_CM_MarkFragments output.  Passing void ke
 | `fragments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L97)
 
 <a id="function-function-mq3-client-cgame-marks-initmarkpolys-function-initmarkpolys-state-src-mq3-client-cgame-marks-ml-444193391"></a>
 ### initMarkPolys
@@ -252,7 +252,7 @@ CG_InitMarkPolys
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L40)
 
 <a id="function-function-mq3-client-cgame-marks-makevertex-function-makevertex-point-origin-axis1-axis2-scale-color-src-mq3-client-cgame-marks-ml-1559299856"></a>
 ### makeVertex
@@ -271,7 +271,7 @@ function makeVertex(point, origin, axis1, axis2, scale, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L82)
 
 - [mq3.client.cgame_marks.Mark](Type-mq3-client-cgame-marks-mark-33007360.md) — struct
 <a id="constant-constant-mq3-client-cgame-marks-mark-fade-time-const-mark-fade-time-1000-src-mq3-client-cgame-marks-ml-342881778"></a>
@@ -282,7 +282,7 @@ const MARK_FADE_TIME = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L19)
 
 <a id="constant-constant-mq3-client-cgame-marks-mark-total-time-const-mark-total-time-10000-src-mq3-client-cgame-marks-ml-685360688"></a>
 ### MARK_TOTAL_TIME
@@ -292,7 +292,7 @@ const MARK_TOTAL_TIME = 10000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-marks-max-mark-fragments-const-max-mark-fragments-128-src-mq3-client-cgame-marks-ml-1763756896"></a>
 ### MAX_MARK_FRAGMENTS
@@ -302,7 +302,7 @@ const MAX_MARK_FRAGMENTS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L15)
 
 <a id="constant-constant-mq3-client-cgame-marks-max-mark-points-const-max-mark-points-384-src-mq3-client-cgame-marks-ml-638936342"></a>
 ### MAX_MARK_POINTS
@@ -312,7 +312,7 @@ const MAX_MARK_POINTS = 384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L16)
 
 <a id="constant-constant-mq3-client-cgame-marks-max-mark-polys-const-max-mark-polys-cgabi-max-mark-polys-src-mq3-client-cgame-marks-ml-117461503"></a>
 ### MAX_MARK_POLYS
@@ -322,7 +322,7 @@ const MAX_MARK_POLYS = cgabi.MAX_MARK_POLYS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L14)
 
 <a id="constant-constant-mq3-client-cgame-marks-max-verts-on-poly-const-max-verts-on-poly-cgabi-max-verts-on-poly-src-mq3-client-cgame-marks-ml-1960360427"></a>
 ### MAX_VERTS_ON_POLY
@@ -332,7 +332,7 @@ const MAX_VERTS_ON_POLY = cgabi.MAX_VERTS_ON_POLY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L17)
 
 <a id="function-function-mq3-client-cgame-marks-newparticlearea-function-newparticlearea-state-text-shader-src-mq3-client-cgame-marks-ml-1125337903"></a>
 ### newParticleArea
@@ -348,7 +348,7 @@ function newParticleArea(state, text, shader)
 | `shader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L139)
 
 <a id="function-function-mq3-client-cgame-marks-oilslickremove-function-oilslickremove-state-cent-src-mq3-client-cgame-marks-ml-1020912709"></a>
 ### oilSlickRemove
@@ -363,7 +363,7 @@ function oilSlickRemove(state, cent)
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L145)
 
 <a id="function-function-mq3-client-cgame-marks-originalquad-function-originalquad-origin-axis1-axis2-radius-src-mq3-client-cgame-marks-ml-1688219129"></a>
 ### originalQuad
@@ -380,7 +380,7 @@ function originalQuad(origin, axis1, axis2, radius)
 | `radius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L90)
 
 <a id="function-function-mq3-client-cgame-marks-particlebleed-function-particlebleed-state-shader-start-direction-fleshentitynum-duration-src-mq3-client-cgame-marks-ml-1270466370"></a>
 ### particleBleed
@@ -399,7 +399,7 @@ function particleBleed(state, shader, start, direction, fleshEntityNum, duration
 | `duration` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L142)
 
 <a id="function-function-mq3-client-cgame-marks-particlebloodcloud-function-particlebloodcloud-state-cent-origin-direction-smokeshader-src-mq3-client-cgame-marks-ml-639547170"></a>
 ### particleBloodCloud
@@ -417,7 +417,7 @@ function particleBloodCloud(state, cent, origin, direction, smokeShader)
 | `smokeShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L148)
 
 <a id="function-function-mq3-client-cgame-marks-particlebubble-function-particlebubble-state-shader-origin-origin2-turb-range-snum-src-mq3-client-cgame-marks-ml-1418627243"></a>
 ### particleBubble
@@ -437,7 +437,7 @@ function particleBubble(state, shader, origin, origin2, turb, range, snum)
 | `snum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L134)
 
 <a id="function-function-mq3-client-cgame-marks-particlebulletdebris-function-particlebulletdebris-state-origin-velocity-duration-tracershader-src-mq3-client-cgame-marks-ml-2008561960"></a>
 ### particleBulletDebris
@@ -455,7 +455,7 @@ function particleBulletDebris(state, origin, velocity, duration, tracerShader)
 | `tracerShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L136)
 
 <a id="function-function-mq3-client-cgame-marks-particledust-function-particledust-state-cent-origin-direction-smokeshader-src-mq3-client-cgame-marks-ml-1363676746"></a>
 ### particleDust
@@ -473,7 +473,7 @@ function particleDust(state, cent, origin, direction, smokeShader)
 | `smokeShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L150)
 
 <a id="function-function-mq3-client-cgame-marks-particleexplosion-function-particleexplosion-state-animname-origin-velocity-duration-sizestart-sizeend-src-mq3-client-cgame-marks-ml-600413485"></a>
 ### particleExplosion
@@ -493,7 +493,7 @@ function particleExplosion(state, animName, origin, velocity, duration, sizeStar
 | `sizeEnd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L137)
 
 <a id="function-function-mq3-client-cgame-marks-particleimpactsmokepuff-function-particleimpactsmokepuff-state-shader-origin-src-mq3-client-cgame-marks-ml-39665358"></a>
 ### particleImpactSmokePuff
@@ -509,7 +509,7 @@ function particleImpactSmokePuff(state, shader, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L141)
 
 <a id="function-function-mq3-client-cgame-marks-particlemisc-function-particlemisc-state-shader-origin-size-duration-alpha-src-mq3-client-cgame-marks-ml-601614461"></a>
 ### particleMisc
@@ -528,7 +528,7 @@ function particleMisc(state, shader, origin, size, duration, alpha)
 | `alpha` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L151)
 
 <a id="function-function-mq3-client-cgame-marks-particleoilparticle-function-particleoilparticle-state-shader-cent-src-mq3-client-cgame-marks-ml-439724222"></a>
 ### particleOilParticle
@@ -544,7 +544,7 @@ function particleOilParticle(state, shader, cent)
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L143)
 
 <a id="function-function-mq3-client-cgame-marks-particleoilslick-function-particleoilslick-state-shader-cent-src-mq3-client-cgame-marks-ml-1770145438"></a>
 ### particleOilSlick
@@ -560,7 +560,7 @@ function particleOilSlick(state, shader, cent)
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L144)
 
 <a id="function-function-mq3-client-cgame-marks-particlesmoke-function-particlesmoke-state-shader-cent-src-mq3-client-cgame-marks-ml-24332660"></a>
 ### particleSmoke
@@ -576,7 +576,7 @@ function particleSmoke(state, shader, cent)
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L135)
 
 <a id="function-function-mq3-client-cgame-marks-particlesnow-function-particlesnow-state-shader-origin-origin2-turb-range-snum-src-mq3-client-cgame-marks-ml-1384390771"></a>
 ### particleSnow
@@ -596,7 +596,7 @@ function particleSnow(state, shader, origin, origin2, turb, range, snum)
 | `snum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L133)
 
 <a id="function-function-mq3-client-cgame-marks-particlesnowflurry-function-particlesnowflurry-state-shader-cent-src-mq3-client-cgame-marks-ml-1398724186"></a>
 ### particleSnowFlurry
@@ -612,7 +612,7 @@ function particleSnowFlurry(state, shader, cent)
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L132)
 
 <a id="function-function-mq3-client-cgame-marks-particlesparks-function-particlesparks-state-origin-velocity-duration-x-y-speed-tracershader-src-mq3-client-cgame-marks-ml-1074479072"></a>
 ### particleSparks
@@ -633,7 +633,7 @@ function particleSparks(state, origin, velocity, duration, x, y, speed, tracerSh
 | `tracerShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L149)
 
 <a id="function-function-mq3-client-cgame-marks-perpendicular-function-perpendicular-normal-src-mq3-client-cgame-marks-ml-2041478783"></a>
 ### perpendicular
@@ -647,17 +647,17 @@ function perpendicular(normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L72)
 
-<a id="constant-constant-mq3-client-cgame-marks-pi-const-pi-3-14159265358979-src-mq3-client-cgame-marks-ml-1387992238"></a>
+<a id="constant-constant-mq3-client-cgame-marks-pi-const-pi-3-141593-src-mq3-client-cgame-marks-ml-1226751147"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L20)
 
 <a id="function-function-mq3-client-cgame-marks-pushboundary-function-pushboundary-state-kind-shader-points-projection-vertices-temporary-src-mq3-client-cgame-marks-ml-520064652"></a>
 ### pushBoundary
@@ -677,7 +677,7 @@ function pushBoundary(state, kind, shader, points, projection, vertices, tempora
 | `temporary` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L86)
 
 <a id="function-function-mq3-client-cgame-marks-removeid-function-removeid-values-id-src-mq3-client-cgame-marks-ml-962294783"></a>
 ### removeId
@@ -692,7 +692,7 @@ function removeId(values, id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L46)
 
 <a id="function-function-mq3-client-cgame-marks-resetmark-function-resetmark-mark-src-mq3-client-cgame-marks-ml-1340764093"></a>
 ### resetMark
@@ -706,7 +706,7 @@ function resetMark(mark)
 | `mark` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L49)
 
 <a id="function-function-mq3-client-cgame-marks-rotatearound-function-rotatearound-axis-point-degrees-src-mq3-client-cgame-marks-ml-2128439048"></a>
 ### rotateAround
@@ -722,7 +722,7 @@ function rotateAround(axis, point, degrees)
 | `degrees` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L77)
 
 <a id="function-function-mq3-client-cgame-marks-snowlink-function-snowlink-state-id-particleon-src-mq3-client-cgame-marks-ml-753203685"></a>
 ### snowLink
@@ -738,7 +738,7 @@ function snowLink(state, id, particleOn)
 | `particleOn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L140)
 
 - [mq3.client.cgame_marks.State](Type-mq3-client-cgame-marks-state-2119626966.md) — struct
 <a id="function-function-mq3-client-cgame-marks-validbloodpool-function-validbloodpool-start-tracefn-context-src-mq3-client-cgame-marks-ml-1432160332"></a>
@@ -755,7 +755,7 @@ function validBloodPool(start, traceFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L146)
 
 - [mq3.client.cgame_marks.Vertex](Type-mq3-client-cgame-marks-vertex-192929799.md) — struct
 <a id="function-function-mq3-client-cgame-marks-zero3-function-zero3-src-mq3-client-cgame-marks-ml-427725364"></a>
@@ -766,4 +766,4 @@ function zero3()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L30)

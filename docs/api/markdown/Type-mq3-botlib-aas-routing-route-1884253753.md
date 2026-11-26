@@ -10,7 +10,7 @@ struct Route
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 ## Members
 
@@ -22,7 +22,7 @@ reachNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)
 
 <a id="field-field-mq3-botlib-aas-routing-route-traveltime-traveltime-src-mq3-botlib-aas-routing-ml-1834464334"></a>
 ### travelTime
@@ -32,4 +32,4 @@ travelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing.ml#L73)

@@ -30,7 +30,7 @@ function action(text, id, x, y, flags, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L20)
 
 - [mq3.client.ui_login.Action](Type-mq3-client-ui-login-action-2008815967.md) — struct
 <a id="function-function-mq3-client-ui-login-create-function-create-retailactive-src-mq3-client-ui-login-ml-257190167"></a>
@@ -45,7 +45,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L16)
 
 <a id="function-function-mq3-client-ui-login-emit-function-emit-state-boundary-kind-name-text-text2-src-mq3-client-ui-login-ml-110559878"></a>
 ### emit
@@ -64,7 +64,7 @@ function emit(state, boundary, kind, name, text, text2)
 | `text2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L17)
 
 <a id="function-function-mq3-client-ui-login-field-function-field-id-x-y-src-mq3-client-ui-login-ml-928259504"></a>
 ### field
@@ -80,7 +80,7 @@ function field(id, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-login-id-cancel-const-id-cancel-105-src-mq3-client-ui-login-ml-1970332693"></a>
 ### ID_CANCEL
@@ -90,7 +90,7 @@ const ID_CANCEL = 105
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-login-id-login-const-id-login-104-src-mq3-client-ui-login-ml-792094188"></a>
 ### ID_LOGIN
@@ -100,7 +100,7 @@ const ID_LOGIN = 104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-login-id-name-const-id-name-100-src-mq3-client-ui-login-ml-1940119360"></a>
 ### ID_NAME
@@ -110,7 +110,7 @@ const ID_NAME = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-login-id-name-box-const-id-name-box-101-src-mq3-client-ui-login-ml-2018323777"></a>
 ### ID_NAME_BOX
@@ -120,7 +120,7 @@ const ID_NAME_BOX = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-login-id-password-const-id-password-102-src-mq3-client-ui-login-ml-571442042"></a>
 ### ID_PASSWORD
@@ -130,7 +130,7 @@ const ID_PASSWORD = 102
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-login-id-password-box-const-id-password-box-103-src-mq3-client-ui-login-ml-120075327"></a>
 ### ID_PASSWORD_BOX
@@ -140,7 +140,7 @@ const ID_PASSWORD_BOX = 103
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L11)
 
 <a id="function-function-mq3-client-ui-login-label-function-label-text-id-y-src-mq3-client-ui-login-ml-1997640101"></a>
 ### label
@@ -156,7 +156,7 @@ function label(text, id, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L19)
 
 <a id="function-function-mq3-client-ui-login-login-cache-function-login-cache-state-src-mq3-client-ui-login-ml-1809301881"></a>
 ### Login_Cache
@@ -172,7 +172,7 @@ Login_Cache
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-login-login-frame-const-login-frame-menu-art-cut-frame-src-mq3-client-ui-login-ml-1652091207"></a>
 ### LOGIN_FRAME
@@ -182,7 +182,7 @@ const LOGIN_FRAME = "menu/art/cut_frame"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L7)
 
 <a id="function-function-mq3-client-ui-login-login-menuevent-function-login-menuevent-state-id-event-src-mq3-client-ui-login-ml-706314968"></a>
 ### Login_MenuEvent
@@ -200,7 +200,7 @@ Login_MenuEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L22)
 
 <a id="function-function-mq3-client-ui-login-login-menuinit-function-login-menuinit-state-src-mq3-client-ui-login-ml-1252515985"></a>
 ### Login_MenuInit
@@ -216,7 +216,7 @@ Login_MenuInit
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L28)
 
 - [mq3.client.ui_login.State](Type-mq3-client-ui-login-state-1861023702.md) — struct
 <a id="function-function-mq3-client-ui-login-ui-loginmenu-function-ui-loginmenu-state-src-mq3-client-ui-login-ml-834644809"></a>
@@ -233,4 +233,4 @@ UI_LoginMenu
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_login.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_login.ml#L32)

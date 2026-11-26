@@ -20,7 +20,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L19)
 
 <a id="function-function-mq3-renderer-noise-floornumber-function-floornumber-value-src-mq3-renderer-noise-ml-952893949"></a>
 ### floorNumber
@@ -34,7 +34,7 @@ function floorNumber(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L34)
 
 <a id="function-function-mq3-renderer-noise-get4f-function-get4f-noise-x-y-z-t-src-mq3-renderer-noise-ml-292125253"></a>
 ### get4f
@@ -52,7 +52,7 @@ function get4f(noise, x, y, z, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L41)
 
 <a id="function-function-mq3-renderer-noise-lerp-function-lerp-a-b-weight-src-mq3-renderer-noise-ml-1586873295"></a>
 ### lerp
@@ -68,7 +68,7 @@ function lerp(a, b, weight)
 | `weight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L33)
 
 <a id="function-function-mq3-renderer-noise-msvcrand-function-msvcrand-state-src-mq3-renderer-noise-ml-1752170887"></a>
 ### msvcRand
@@ -84,7 +84,7 @@ Baseq3's Windows build obtains rand() from the Microsoft C runtime.  Keep that 1
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L14)
 
 - [mq3.renderer.noise.Noise](Type-mq3-renderer-noise-noise-244049745.md) — struct
 <a id="constant-constant-mq3-renderer-noise-noise-mask-const-noise-mask-255-src-mq3-renderer-noise-ml-377580903"></a>
@@ -95,7 +95,7 @@ const NOISE_MASK = 255
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L8)
 
 <a id="constant-constant-mq3-renderer-noise-noise-size-const-noise-size-256-src-mq3-renderer-noise-ml-820531424"></a>
 ### NOISE_SIZE
@@ -105,7 +105,7 @@ const NOISE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L7)
 
 <a id="function-function-mq3-renderer-noise-noiseslice-function-noiseslice-noise-ix-iy-iz-it-fx-fy-fz-src-mq3-renderer-noise-ml-2007826616"></a>
 ### noiseSlice
@@ -126,7 +126,7 @@ function noiseSlice(noise, ix, iy, iz, it, fx, fy, fz)
 | `fz` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L36)
 
 <a id="function-function-mq3-renderer-noise-perm-function-perm-noise-value-src-mq3-renderer-noise-ml-1970121531"></a>
 ### perm
@@ -141,7 +141,7 @@ function perm(noise, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L28)
 
 <a id="function-function-mq3-renderer-noise-valueat-function-valueat-noise-x-y-z-t-src-mq3-renderer-noise-ml-903823197"></a>
 ### valueAt
@@ -159,4 +159,4 @@ function valueAt(noise, x, y, z, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/noise.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/noise.ml#L29)

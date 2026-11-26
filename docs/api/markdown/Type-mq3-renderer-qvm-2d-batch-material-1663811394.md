@@ -10,7 +10,7 @@ struct Material
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ clampTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-material-nomipmaps-nomipmaps-src-mq3-renderer-qvm-2d-batch-ml-11811092"></a>
 ### noMipMaps
@@ -32,7 +32,7 @@ noMipMaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-material-shaderhandle-shaderhandle-src-mq3-renderer-qvm-2d-batch-ml-1345983490"></a>
 ### shaderHandle
@@ -42,7 +42,7 @@ shaderHandle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-material-shadername-shadername-src-mq3-renderer-qvm-2d-batch-ml-1682713384"></a>
 ### shaderName
@@ -52,7 +52,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-material-stages-stages-src-mq3-renderer-qvm-2d-batch-ml-1378547702"></a>
 ### stages
@@ -62,7 +62,7 @@ stages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-material-timeoffset-timeoffset-src-mq3-renderer-qvm-2d-batch-ml-621555808"></a>
 ### timeOffset
@@ -72,4 +72,4 @@ timeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L23)

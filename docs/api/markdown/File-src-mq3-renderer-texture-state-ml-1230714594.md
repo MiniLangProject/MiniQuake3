@@ -21,7 +21,7 @@ function bind(state, requested)
 | `requested` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L50)
 
 <a id="function-function-mq3-renderer-texture-state-bindmultitexture-function-bindmultitexture-state-image0-env0-image1-env1-src-mq3-renderer-texture-state-ml-847371181"></a>
 ### bindMultitexture
@@ -39,7 +39,7 @@ function bindMultitexture(state, image0, env0, image1, env1)
 | `env1` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L63)
 
 <a id="function-function-mq3-renderer-texture-state-create-function-create-host-defaultimage-src-mq3-renderer-texture-state-ml-814002454"></a>
 ### create
@@ -54,7 +54,7 @@ function create(host, defaultImage)
 | `defaultImage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L18)
 
 <a id="function-function-mq3-renderer-texture-state-emitlog-function-emitlog-state-message-src-mq3-renderer-texture-state-ml-455318900"></a>
 ### emitLog
@@ -69,7 +69,7 @@ function emitLog(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L24)
 
 <a id="function-function-mq3-renderer-texture-state-fail-function-fail-message-src-mq3-renderer-texture-state-ml-1596140763"></a>
 ### fail
@@ -83,7 +83,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L14)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture0-arb-const-gl-texture0-arb-33984-src-mq3-renderer-texture-state-ml-1734616596"></a>
 ### GL_TEXTURE0_ARB
@@ -93,7 +93,7 @@ const GL_TEXTURE0_ARB = 33984
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L7)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture1-arb-const-gl-texture1-arb-33985-src-mq3-renderer-texture-state-ml-2030731451"></a>
 ### GL_TEXTURE1_ARB
@@ -103,7 +103,7 @@ const GL_TEXTURE1_ARB = 33985
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L8)
 
 <a id="constant-constant-mq3-renderer-texture-state-gl-texture-2d-const-gl-texture-2d-3553-src-mq3-renderer-texture-state-ml-1473559641"></a>
 ### GL_TEXTURE_2D
@@ -113,7 +113,7 @@ const GL_TEXTURE_2D = 3553
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L6)
 
 <a id="function-function-mq3-renderer-texture-state-image-function-image-texnum-src-mq3-renderer-texture-state-ml-1971539513"></a>
 ### image
@@ -127,7 +127,7 @@ function image(texnum)
 | `texnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L16)
 
 - [mq3.renderer.texture_state.Image](Type-mq3-renderer-texture-state-image-1196657097.md) — struct
 <a id="function-function-mq3-renderer-texture-state-requestedimage-function-requestedimage-state-requested-src-mq3-renderer-texture-state-ml-2028756463"></a>
@@ -143,7 +143,7 @@ function requestedImage(state, requested)
 | `requested` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L44)
 
 <a id="function-function-mq3-renderer-texture-state-selecttexture-function-selecttexture-state-unit-src-mq3-renderer-texture-state-ml-1620181749"></a>
 ### selectTexture
@@ -158,7 +158,7 @@ function selectTexture(state, unit)
 | `unit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L28)
 
 <a id="function-function-mq3-renderer-texture-state-services-function-services-src-mq3-renderer-texture-state-ml-388774650"></a>
 ### services
@@ -168,7 +168,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L15)
 
 - [mq3.renderer.texture_state.Services](Type-mq3-renderer-texture-state-services-1901593252.md) — struct
 - [mq3.renderer.texture_state.State](Type-mq3-renderer-texture-state-state-1178098449.md) — struct

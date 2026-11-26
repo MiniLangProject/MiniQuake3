@@ -10,7 +10,7 @@ struct DisplayMode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L130)
 
 ## Members
 
@@ -22,7 +22,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L130)
 
 <a id="field-field-mq3-platform-playable-window-displaymode-height-height-src-mq3-platform-playable-window-ml-289485122"></a>
 ### height
@@ -32,7 +32,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L130)
 
 <a id="field-field-mq3-platform-playable-window-displaymode-width-width-src-mq3-platform-playable-window-ml-914381136"></a>
 ### width
@@ -42,4 +42,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_window.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_window.ml#L130)

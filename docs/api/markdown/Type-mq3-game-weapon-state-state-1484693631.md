@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ forward
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L8)
 
 <a id="field-field-mq3-game-weapon-state-state-kamikazegeneration-kamikazegeneration-src-mq3-game-weapon-state-ml-1778353136"></a>
 ### kamikazeGeneration
@@ -32,7 +32,7 @@ kamikazeGeneration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L14)
 
 <a id="field-field-mq3-game-weapon-state-state-kamikazeshockgeneration-kamikazeshockgeneration-src-mq3-game-weapon-state-ml-1046961434"></a>
 ### kamikazeShockGeneration
@@ -42,7 +42,7 @@ kamikazeShockGeneration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L15)
 
 <a id="field-field-mq3-game-weapon-state-state-kamikazeshocktime-kamikazeshocktime-src-mq3-game-weapon-state-ml-361440470"></a>
 ### kamikazeShockTime
@@ -52,7 +52,7 @@ kamikazeShockTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L13)
 
 <a id="field-field-mq3-game-weapon-state-state-kamikazetime-kamikazetime-src-mq3-game-weapon-state-ml-1613489006"></a>
 ### kamikazeTime
@@ -62,7 +62,7 @@ kamikazeTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L12)
 
 <a id="field-field-mq3-game-weapon-state-state-muzzle-muzzle-src-mq3-game-weapon-state-ml-1638967496"></a>
 ### muzzle
@@ -72,7 +72,7 @@ muzzle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L11)
 
 <a id="field-field-mq3-game-weapon-state-state-quadfactor-quadfactor-src-mq3-game-weapon-state-ml-1785986094"></a>
 ### quadFactor
@@ -82,7 +82,7 @@ quadFactor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L7)
 
 <a id="field-field-mq3-game-weapon-state-state-right-right-src-mq3-game-weapon-state-ml-1378488790"></a>
 ### right
@@ -92,7 +92,7 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L9)
 
 <a id="field-field-mq3-game-weapon-state-state-up-up-src-mq3-game-weapon-state-ml-1411306332"></a>
 ### up
@@ -102,4 +102,4 @@ up
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L10)

@@ -10,7 +10,7 @@ struct ConsoleLine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ glyphs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L27)
 
 <a id="field-field-mq3-client-cl-console-consoleline-line-line-src-mq3-client-cl-console-ml-935707016"></a>
 ### line
@@ -32,7 +32,7 @@ line
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L27)
 
 <a id="field-field-mq3-client-cl-console-consoleline-text-text-src-mq3-client-cl-console-ml-2016423826"></a>
 ### text
@@ -42,4 +42,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L27)

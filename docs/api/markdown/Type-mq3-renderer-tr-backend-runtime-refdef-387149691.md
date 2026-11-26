@@ -10,7 +10,7 @@ struct Refdef
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-entities-entities-src-mq3-renderer-tr-backend-runtime-ml-921967761"></a>
 ### entities
@@ -32,7 +32,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-floattime-floattime-src-mq3-renderer-tr-backend-runtime-ml-106959795"></a>
 ### floatTime
@@ -42,7 +42,7 @@ floatTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-rdflags-rdflags-src-mq3-renderer-tr-backend-runtime-ml-597359715"></a>
 ### rdflags
@@ -52,7 +52,7 @@ rdflags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-refdef-time-time-src-mq3-renderer-tr-backend-runtime-ml-19336081"></a>
 ### time
@@ -62,4 +62,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L41)

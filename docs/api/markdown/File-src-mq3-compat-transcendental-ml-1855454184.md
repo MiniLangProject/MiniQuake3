@@ -21,7 +21,7 @@ extern function atan2(y as double, x as double) from "ucrtbase.dll" returns doub
 | `x` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L8)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-cos-extern-function-cos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-457032284"></a>
 ### cos
@@ -35,7 +35,7 @@ extern function cos(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L6)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-sin-extern-function-sin-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-1975410708"></a>
 ### sin
@@ -49,7 +49,7 @@ extern function sin(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L5)
 
 <a id="extern_function-extern-function-mq3-compat-transcendental-sqrt-extern-function-sqrt-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-compat-transcendental-ml-1962844888"></a>
 ### sqrt
@@ -63,4 +63,4 @@ extern function sqrt(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/transcendental.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/transcendental.ml#L7)

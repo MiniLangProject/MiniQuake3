@@ -10,7 +10,7 @@ struct BotLevelItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-flags-flags-src-mq3-botlib-ai-level-items-ml-1674656143"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalareanum-goalareanum-src-mq3-botlib-ai-level-items-ml-1323968279"></a>
 ### goalAreaNum
@@ -42,7 +42,7 @@ goalAreaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-goalorigin-goalorigin-src-mq3-botlib-ai-level-items-ml-1009353353"></a>
 ### goalOrigin
@@ -52,7 +52,7 @@ goalOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-iteminfo-iteminfo-src-mq3-botlib-ai-level-items-ml-562194209"></a>
 ### itemInfo
@@ -62,7 +62,7 @@ itemInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-number-number-src-mq3-botlib-ai-level-items-ml-1090180813"></a>
 ### number
@@ -72,7 +72,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-origin-origin-src-mq3-botlib-ai-level-items-ml-1703051031"></a>
 ### origin
@@ -82,7 +82,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-timeout-timeout-src-mq3-botlib-ai-level-items-ml-1141266571"></a>
 ### timeout
@@ -92,7 +92,7 @@ timeout
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)
 
 <a id="field-field-mq3-botlib-ai-level-items-botlevelitem-weight-weight-src-mq3-botlib-ai-level-items-ml-1090971755"></a>
 ### weight
@@ -102,4 +102,4 @@ weight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L25)

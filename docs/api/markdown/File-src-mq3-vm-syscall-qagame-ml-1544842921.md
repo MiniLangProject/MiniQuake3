@@ -29,7 +29,7 @@ function arg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L49)
 
 <a id="function-function-mq3-vm-syscall-qagame-brushmodel-function-brushmodel-vm-base-host-src-mq3-vm-syscall-qagame-ml-1956602340"></a>
 ### brushModel
@@ -45,7 +45,7 @@ function brushModel(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L91)
 
 <a id="function-function-mq3-vm-syscall-qagame-callback-function-callback-host-src-mq3-vm-syscall-qagame-ml-2146510780"></a>
 ### callback
@@ -59,7 +59,7 @@ function callback(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L204)
 
 <a id="function-function-mq3-vm-syscall-qagame-debugpolygoncreate-function-debugpolygoncreate-vm-base-host-src-mq3-vm-syscall-qagame-ml-817040"></a>
 ### debugPolygonCreate
@@ -75,7 +75,7 @@ function debugPolygonCreate(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L138)
 
 <a id="function-function-mq3-vm-syscall-qagame-dispatch-function-dispatch-host-vm-base-src-mq3-vm-syscall-qagame-ml-85348628"></a>
 ### dispatch
@@ -91,7 +91,7 @@ function dispatch(host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L197)
 
 <a id="function-function-mq3-vm-syscall-qagame-dispatchspecific-function-dispatchspecific-vm-base-host-op-src-mq3-vm-syscall-qagame-ml-12328851"></a>
 ### dispatchSpecific
@@ -108,7 +108,7 @@ function dispatchSpecific(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L157)
 
 <a id="function-function-mq3-vm-syscall-qagame-entitylink-function-entitylink-vm-base-host-islink-src-mq3-vm-syscall-qagame-ml-447516740"></a>
 ### entityLink
@@ -125,7 +125,7 @@ function entityLink(vm, base, host, isLink)
 | `isLink` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L108)
 
 <a id="function-function-mq3-vm-syscall-qagame-entitytoken-function-entitytoken-vm-base-host-src-mq3-vm-syscall-qagame-ml-1249798624"></a>
 ### entityToken
@@ -141,7 +141,7 @@ function entityToken(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L114)
 
 <a id="function-function-mq3-vm-syscall-qagame-filelist-function-filelist-vm-base-host-src-mq3-vm-syscall-qagame-ml-1309192768"></a>
 ### fileList
@@ -157,7 +157,7 @@ function fileList(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L123)
 
 <a id="function-function-mq3-vm-syscall-qagame-indexedoutput-function-indexedoutput-vm-base-host-callback-name-src-mq3-vm-syscall-qagame-ml-1865226884"></a>
 ### indexedOutput
@@ -175,7 +175,7 @@ function indexedOutput(vm, base, host, callback, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L78)
 
 <a id="function-function-mq3-vm-syscall-qagame-inpvs-function-inpvs-vm-base-host-ignoreportals-src-mq3-vm-syscall-qagame-ml-53662335"></a>
 ### inPvs
@@ -192,7 +192,7 @@ function inPvs(vm, base, host, ignorePortals)
 | `ignorePortals` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L97)
 
 <a id="function-function-mq3-vm-syscall-qagame-locategamedata-function-locategamedata-vm-base-host-src-mq3-vm-syscall-qagame-ml-700143552"></a>
 ### locateGameData
@@ -208,7 +208,7 @@ function locateGameData(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L60)
 
 <a id="function-function-mq3-vm-syscall-qagame-opaque-function-opaque-vm-value-label-src-mq3-vm-syscall-qagame-ml-1204426150"></a>
 ### opaque
@@ -224,7 +224,7 @@ function opaque(vm, value, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L51)
 
 <a id="function-function-mq3-vm-syscall-qagame-portalstate-function-portalstate-vm-base-host-src-mq3-vm-syscall-qagame-ml-1569823322"></a>
 ### portalState
@@ -240,7 +240,7 @@ function portalState(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L103)
 
 <a id="constant-constant-mq3-vm-syscall-qagame-qtime-size-const-qtime-size-36-src-mq3-vm-syscall-qagame-ml-37612602"></a>
 ### QTIME_SIZE
@@ -250,7 +250,7 @@ const QTIME_SIZE = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L10)
 
 <a id="function-function-mq3-vm-syscall-qagame-realtime-function-realtime-vm-base-host-src-mq3-vm-syscall-qagame-ml-1009759860"></a>
 ### realTime
@@ -266,7 +266,7 @@ function realTime(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L149)
 
 <a id="function-function-mq3-vm-syscall-qagame-serverinfo-function-serverinfo-vm-base-host-src-mq3-vm-syscall-qagame-ml-820174848"></a>
 ### serverInfo
@@ -282,7 +282,7 @@ function serverInfo(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L85)
 
 <a id="function-function-mq3-vm-syscall-qagame-services-function-services-shared-context-src-mq3-vm-syscall-qagame-ml-129315272"></a>
 ### services
@@ -297,7 +297,7 @@ function services(shared, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L43)
 
 - [mq3.vm.syscall_qagame.Services](Type-mq3-vm-syscall-qagame-services-610565517.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-stringcall-function-stringcall-vm-base-host-callback-name-withclient-src-mq3-vm-syscall-qagame-ml-1929098247"></a>
@@ -317,7 +317,7 @@ function stringCall(vm, base, host, callback, name, withClient)
 | `withClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L71)
 
 - [mq3.vm.syscall_qagame.TokenResult](Type-mq3-vm-syscall-qagame-tokenresult-549605699.md) — struct
 <a id="function-function-mq3-vm-syscall-qagame-unavailable-function-unavailable-name-src-mq3-vm-syscall-qagame-ml-797689625"></a>
@@ -332,7 +332,7 @@ function unavailable(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L47)
 
 <a id="function-function-mq3-vm-syscall-qagame-vector-function-vector-vm-value-label-src-mq3-vm-syscall-qagame-ml-1429486430"></a>
 ### vector
@@ -348,4 +348,4 @@ function vector(vm, value, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_qagame.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_qagame.ml#L55)

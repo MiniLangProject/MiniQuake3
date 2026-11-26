@@ -23,28 +23,28 @@ const ATTACK_COOLDOWN_MILLISECONDS = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L12)
 
-<a id="constant-constant-mq3-client-playable-enemy-ai-attack-range-const-attack-range-900-src-mq3-client-playable-enemy-ai-ml-819212148"></a>
+<a id="constant-constant-mq3-client-playable-enemy-ai-attack-range-const-attack-range-900-src-mq3-client-playable-enemy-ai-ml-166177134"></a>
 ### ATTACK_RANGE
 
 ```ml
-const ATTACK_RANGE = 900.
+const ATTACK_RANGE = 900
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L13)
 
 - [mq3.client.playable_enemy_ai.Brain](Type-mq3-client-playable-enemy-ai-brain-1780529749.md) — struct
-<a id="constant-constant-mq3-client-playable-enemy-ai-chase-distance-const-chase-distance-280-src-mq3-client-playable-enemy-ai-ml-1733332579"></a>
+<a id="constant-constant-mq3-client-playable-enemy-ai-chase-distance-const-chase-distance-280-src-mq3-client-playable-enemy-ai-ml-41389183"></a>
 ### CHASE_DISTANCE
 
 ```ml
-const CHASE_DISTANCE = 280.
+const CHASE_DISTANCE = 280
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-default-damage-const-default-damage-7-src-mq3-client-playable-enemy-ai-ml-380889318"></a>
 ### DEFAULT_DAMAGE
@@ -54,7 +54,7 @@ const DEFAULT_DAMAGE = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L18)
 
 - [mq3.client.playable_enemy_ai.Event](Type-mq3-client-playable-enemy-ai-event-91712061.md) — struct
 <a id="function-function-mq3-client-playable-enemy-ai-fail-function-fail-message-src-mq3-client-playable-enemy-ai-ml-1183821461"></a>
@@ -69,7 +69,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L24)
 
 <a id="function-function-mq3-client-playable-enemy-ai-horizontaldirection-function-horizontaldirection-frompoint-topoint-src-mq3-client-playable-enemy-ai-ml-750622701"></a>
 ### horizontalDirection
@@ -84,7 +84,7 @@ function horizontalDirection(fromPoint, toPoint)
 | `toPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L47)
 
 <a id="function-function-mq3-client-playable-enemy-ai-linevisible-function-linevisible-tracefn-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-1187773159"></a>
 ### lineVisible
@@ -101,17 +101,17 @@ function lineVisible(traceFn, context, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L42)
 
-<a id="constant-constant-mq3-client-playable-enemy-ai-move-speed-const-move-speed-105-src-mq3-client-playable-enemy-ai-ml-494080711"></a>
+<a id="constant-constant-mq3-client-playable-enemy-ai-move-speed-const-move-speed-105-src-mq3-client-playable-enemy-ai-ml-732794515"></a>
 ### MOVE_SPEED
 
 ```ml
-const MOVE_SPEED = 105.
+const MOVE_SPEED = 105
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L15)
 
 <a id="function-function-mq3-client-playable-enemy-ai-movetarget-function-movetarget-target-brain-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-274391639"></a>
 ### moveTarget
@@ -129,17 +129,17 @@ function moveTarget(target, brain, playerPosition, now, deltaMilliseconds)
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L54)
 
-<a id="constant-constant-mq3-client-playable-enemy-ai-patrol-radius-const-patrol-radius-30-src-mq3-client-playable-enemy-ai-ml-976783916"></a>
+<a id="constant-constant-mq3-client-playable-enemy-ai-patrol-radius-const-patrol-radius-30-src-mq3-client-playable-enemy-ai-ml-424119334"></a>
 ### PATROL_RADIUS
 
 ```ml
-const PATROL_RADIUS = 30.
+const PATROL_RADIUS = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-sight-mask-const-sight-mask-100663297-src-mq3-client-playable-enemy-ai-ml-753285539"></a>
 ### SIGHT_MASK
@@ -149,7 +149,7 @@ const SIGHT_MASK = 100663297
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L10)
 
 <a id="function-function-mq3-client-playable-enemy-ai-state-function-state-targetstate-now-src-mq3-client-playable-enemy-ai-ml-1284813214"></a>
 ### state
@@ -166,7 +166,7 @@ A separate state object keeps AI timing out of playable_targets' combat data.
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L28)
 
 - [mq3.client.playable_enemy_ai.State](Type-mq3-client-playable-enemy-ai-state-2024476272.md) — struct
 <a id="function-function-mq3-client-playable-enemy-ai-step-function-step-world-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-863388020"></a>
@@ -188,7 +188,7 @@ Public BSP-world entry point: sight is a zero-sized CM_BoxTrace.
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L107)
 
 <a id="function-function-mq3-client-playable-enemy-ai-stepwithtrace-function-stepwithtrace-tracefn-context-ai-targetstate-playerposition-now-deltamilliseconds-src-mq3-client-playable-enemy-ai-ml-2088443336"></a>
 ### stepWithTrace
@@ -210,17 +210,17 @@ Injectable trace entry point used by contracts. Events are rebuilt per frame.
 | `deltaMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L74)
 
-<a id="constant-constant-mq3-client-playable-enemy-ai-strafe-speed-const-strafe-speed-72-src-mq3-client-playable-enemy-ai-ml-68549014"></a>
+<a id="constant-constant-mq3-client-playable-enemy-ai-strafe-speed-const-strafe-speed-72-src-mq3-client-playable-enemy-ai-ml-722084112"></a>
 ### STRAFE_SPEED
 
 ```ml
-const STRAFE_SPEED = 72.
+const STRAFE_SPEED = 72
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-enemy-ai-think-milliseconds-const-think-milliseconds-100-src-mq3-client-playable-enemy-ai-ml-2049696872"></a>
 ### THINK_MILLISECONDS
@@ -230,7 +230,7 @@ const THINK_MILLISECONDS = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L11)
 
 <a id="function-function-mq3-client-playable-enemy-ai-validvector-function-validvector-value-src-mq3-client-playable-enemy-ai-ml-915887837"></a>
 ### validVector
@@ -244,7 +244,7 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L25)
 
 <a id="function-function-mq3-client-playable-enemy-ai-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-ai-ml-395437554"></a>
 ### worldPointTrace
@@ -260,4 +260,4 @@ function worldPointTrace(context, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L38)

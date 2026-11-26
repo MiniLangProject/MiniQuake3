@@ -10,7 +10,7 @@ struct SkinRecord
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-skinrecord-skin-skin-src-mq3-renderer-tr-image-runtime-ml-448394927"></a>
 ### skin
@@ -32,7 +32,7 @@ skin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L20)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-skinrecord-surfaces-surfaces-src-mq3-renderer-tr-image-runtime-ml-804534741"></a>
 ### surfaces
@@ -42,4 +42,4 @@ surfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L20)

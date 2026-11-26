@@ -10,7 +10,7 @@ struct Define
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ functionLike
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L25)
 
 <a id="field-field-mq3-vm-pc-parser-define-name-name-src-mq3-vm-pc-parser-ml-580665868"></a>
 ### name
@@ -32,7 +32,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L25)
 
 <a id="field-field-mq3-vm-pc-parser-define-parameters-parameters-src-mq3-vm-pc-parser-ml-1256120846"></a>
 ### parameters
@@ -42,7 +42,7 @@ parameters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L25)
 
 <a id="field-field-mq3-vm-pc-parser-define-tokens-tokens-src-mq3-vm-pc-parser-ml-524640530"></a>
 ### tokens
@@ -52,4 +52,4 @@ tokens
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L25)

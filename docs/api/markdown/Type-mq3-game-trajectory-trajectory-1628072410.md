@@ -10,7 +10,7 @@ struct Trajectory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ trBase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L13)
 
 <a id="field-field-mq3-game-trajectory-trajectory-trdelta-trdelta-src-mq3-game-trajectory-ml-44573968"></a>
 ### trDelta
@@ -32,7 +32,7 @@ trDelta
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L14)
 
 <a id="field-field-mq3-game-trajectory-trajectory-trduration-trduration-src-mq3-game-trajectory-ml-59991172"></a>
 ### trDuration
@@ -42,7 +42,7 @@ trDuration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L12)
 
 <a id="field-field-mq3-game-trajectory-trajectory-trtime-trtime-src-mq3-game-trajectory-ml-147500990"></a>
 ### trTime
@@ -52,7 +52,7 @@ trTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L11)
 
 <a id="field-field-mq3-game-trajectory-trajectory-trtype-trtype-src-mq3-game-trajectory-ml-1670478924"></a>
 ### trType
@@ -62,4 +62,4 @@ trType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/trajectory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/trajectory.ml#L10)

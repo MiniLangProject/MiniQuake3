@@ -10,7 +10,7 @@ struct Registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ activeTexture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)
 
 <a id="field-field-mq3-renderer-image-registry-registry-buckets-buckets-src-mq3-renderer-image-registry-ml-1675029128"></a>
 ### buckets
@@ -32,7 +32,7 @@ buckets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)
 
 <a id="field-field-mq3-renderer-image-registry-registry-config-config-src-mq3-renderer-image-registry-ml-119404008"></a>
 ### config
@@ -42,7 +42,7 @@ config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)
 
 <a id="field-field-mq3-renderer-image-registry-registry-images-images-src-mq3-renderer-image-registry-ml-1706153172"></a>
 ### images
@@ -52,7 +52,7 @@ images
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)
 
 <a id="field-field-mq3-renderer-image-registry-registry-services-services-src-mq3-renderer-image-registry-ml-1743179848"></a>
 ### services
@@ -62,4 +62,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L26)

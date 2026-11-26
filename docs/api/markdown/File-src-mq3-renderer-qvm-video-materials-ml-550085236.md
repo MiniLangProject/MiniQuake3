@@ -30,7 +30,7 @@ Catalog is intentionally structural: both qvm_scene_materials.Catalog and qvm_2d
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L45)
 
 - [mq3.renderer.qvm_video_materials.Binding](Type-mq3-renderer-qvm-video-materials-binding-1368471411.md) — struct
 <a id="function-function-mq3-renderer-qvm-video-materials-bindingfor-function-bindingfor-state-path-src-mq3-renderer-qvm-video-materials-ml-1828604228"></a>
@@ -46,7 +46,7 @@ function bindingFor(state, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L21)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-bindstage-function-bindstage-state-stage-now-src-mq3-renderer-qvm-video-materials-ml-1848578709"></a>
 ### bindStage
@@ -62,7 +62,7 @@ function bindStage(state, stage, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L25)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-bindstages-function-bindstages-state-stages-now-src-mq3-renderer-qvm-video-materials-ml-119984940"></a>
 ### bindStages
@@ -78,7 +78,7 @@ function bindStages(state, stages, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L39)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-close-function-close-state-src-mq3-renderer-qvm-video-materials-ml-514153837"></a>
 ### close
@@ -92,7 +92,7 @@ function close(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L74)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-create-function-create-cinematicstate-firstscratchslot-scratchslotcount-src-mq3-renderer-qvm-video-materials-ml-793977623"></a>
 ### create
@@ -108,7 +108,7 @@ function create(cinematicState, firstScratchSlot, scratchSlotCount)
 | `scratchSlotCount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L17)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-fail-function-fail-message-src-mq3-renderer-qvm-video-materials-ml-56022007"></a>
 ### fail
@@ -122,7 +122,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L16)
 
 <a id="constant-constant-mq3-renderer-qvm-video-materials-scratch-height-const-scratch-height-256-src-mq3-renderer-qvm-video-materials-ml-1501043290"></a>
 ### SCRATCH_HEIGHT
@@ -132,7 +132,7 @@ const SCRATCH_HEIGHT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L10)
 
 <a id="constant-constant-mq3-renderer-qvm-video-materials-scratch-width-const-scratch-width-256-src-mq3-renderer-qvm-video-materials-ml-651760916"></a>
 ### SCRATCH_WIDTH
@@ -142,7 +142,7 @@ const SCRATCH_WIDTH = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L9)
 
 <a id="function-function-mq3-renderer-qvm-video-materials-scratchpixels-function-scratchpixels-frame-src-mq3-renderer-qvm-video-materials-ml-904312751"></a>
 ### scratchPixels
@@ -156,7 +156,7 @@ function scratchPixels(frame)
 | `frame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L50)
 
 - [mq3.renderer.qvm_video_materials.State](Type-mq3-renderer-qvm-video-materials-state-845008115.md) — struct
 <a id="function-function-mq3-renderer-qvm-video-materials-update-function-update-state-now-src-mq3-renderer-qvm-video-materials-ml-1174890167"></a>
@@ -172,6 +172,6 @@ function update(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L64)
 
 - [mq3.renderer.qvm_video_materials.Upload](Type-mq3-renderer-qvm-video-materials-upload-1782071811.md) — struct

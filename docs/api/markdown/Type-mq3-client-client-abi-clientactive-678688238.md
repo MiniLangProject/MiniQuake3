@@ -10,7 +10,7 @@ struct ClientActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ cgameSensitivity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-cgameusercmdvalue-cgameusercmdvalue-src-mq3-client-client-abi-ml-1885692728"></a>
 ### cgameUserCmdValue
@@ -32,7 +32,7 @@ cgameUserCmdValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-cmdnumber-cmdnumber-src-mq3-client-client-abi-ml-1995040284"></a>
 ### cmdNumber
@@ -42,7 +42,7 @@ cmdNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-cmds-cmds-src-mq3-client-client-abi-ml-762609082"></a>
 ### cmds
@@ -52,7 +52,7 @@ cmds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-entitybaselines-entitybaselines-src-mq3-client-client-abi-ml-970727376"></a>
 ### entityBaselines
@@ -62,7 +62,7 @@ entityBaselines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-extrapolatedsnapshot-extrapolatedsnapshot-src-mq3-client-client-abi-ml-885728774"></a>
 ### extrapolatedSnapshot
@@ -72,7 +72,7 @@ extrapolatedSnapshot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-gamestate-gamestate-src-mq3-client-client-abi-ml-466482780"></a>
 ### gameState
@@ -82,7 +82,7 @@ gameState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-joystickaxis-joystickaxis-src-mq3-client-client-abi-ml-441179974"></a>
 ### joystickAxis
@@ -92,7 +92,7 @@ joystickAxis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-mapname-mapname-src-mq3-client-client-abi-ml-1780850344"></a>
 ### mapname
@@ -102,7 +102,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-mousedx-mousedx-src-mq3-client-client-abi-ml-1157978556"></a>
 ### mouseDx
@@ -112,7 +112,7 @@ mouseDx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-mousedy-mousedy-src-mq3-client-client-abi-ml-406087448"></a>
 ### mouseDy
@@ -122,7 +122,7 @@ mouseDy
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-mouseindex-mouseindex-src-mq3-client-client-abi-ml-1801929522"></a>
 ### mouseIndex
@@ -132,7 +132,7 @@ mouseIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-newsnapshots-newsnapshots-src-mq3-client-client-abi-ml-1765492182"></a>
 ### newSnapshots
@@ -142,7 +142,7 @@ newSnapshots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-oldframeservertime-oldframeservertime-src-mq3-client-client-abi-ml-1049338512"></a>
 ### oldFrameServerTime
@@ -152,7 +152,7 @@ oldFrameServerTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-oldservertime-oldservertime-src-mq3-client-client-abi-ml-1133406876"></a>
 ### oldServerTime
@@ -162,7 +162,7 @@ oldServerTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-outpackets-outpackets-src-mq3-client-client-abi-ml-454686630"></a>
 ### outPackets
@@ -172,7 +172,7 @@ outPackets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-parseentities-parseentities-src-mq3-client-client-abi-ml-35205136"></a>
 ### parseEntities
@@ -182,7 +182,7 @@ parseEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-parseentitiesnum-parseentitiesnum-src-mq3-client-client-abi-ml-1474251656"></a>
 ### parseEntitiesNum
@@ -192,7 +192,7 @@ parseEntitiesNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-serverid-serverid-src-mq3-client-client-abi-ml-1725194288"></a>
 ### serverId
@@ -202,7 +202,7 @@ serverId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-servertime-servertime-src-mq3-client-client-abi-ml-71400496"></a>
 ### serverTime
@@ -212,7 +212,7 @@ serverTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-servertimedelta-servertimedelta-src-mq3-client-client-abi-ml-1001838576"></a>
 ### serverTimeDelta
@@ -222,7 +222,7 @@ serverTimeDelta
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-snap-snap-src-mq3-client-client-abi-ml-393834460"></a>
 ### snap
@@ -232,7 +232,7 @@ snap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-snapshots-snapshots-src-mq3-client-client-abi-ml-739045992"></a>
 ### snapshots
@@ -242,7 +242,7 @@ snapshots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-timeoutcount-timeoutcount-src-mq3-client-client-abi-ml-1677568128"></a>
 ### timeoutcount
@@ -252,7 +252,7 @@ timeoutcount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)
 
 <a id="field-field-mq3-client-client-abi-clientactive-viewangles-viewangles-src-mq3-client-client-abi-ml-1413162318"></a>
 ### viewangles
@@ -262,4 +262,4 @@ viewangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L9)

@@ -10,7 +10,7 @@ struct Datagram
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L24)
 
 <a id="field-field-mq3-platform-udp-datagram-endpoint-endpoint-src-mq3-platform-udp-ml-576944124"></a>
 ### endpoint
@@ -32,7 +32,7 @@ endpoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L24)
 
 <a id="field-field-mq3-platform-udp-datagram-received-received-src-mq3-platform-udp-ml-1201836832"></a>
 ### received
@@ -42,4 +42,4 @@ received
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/udp.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/udp.ml#L24)

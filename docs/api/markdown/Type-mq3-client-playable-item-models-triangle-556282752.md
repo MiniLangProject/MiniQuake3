@@ -10,7 +10,7 @@ struct Triangle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-imagename-imagename-src-mq3-client-playable-item-models-ml-938232741"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-lightorigin-lightorigin-src-mq3-client-playable-item-models-ml-1024236389"></a>
 ### lightOrigin
@@ -42,7 +42,7 @@ lightOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-normals-normals-src-mq3-client-playable-item-models-ml-2081421293"></a>
 ### normals
@@ -52,7 +52,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-positions-positions-src-mq3-client-playable-item-models-ml-952238873"></a>
 ### positions
@@ -62,7 +62,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-shadername-shadername-src-mq3-client-playable-item-models-ml-1004909101"></a>
 ### shaderName
@@ -72,7 +72,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-surfaceindex-surfaceindex-src-mq3-client-playable-item-models-ml-1737832011"></a>
 ### surfaceIndex
@@ -82,7 +82,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-texcoords-texcoords-src-mq3-client-playable-item-models-ml-382083153"></a>
 ### texCoords
@@ -92,7 +92,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)
 
 <a id="field-field-mq3-client-playable-item-models-triangle-textureslot-textureslot-src-mq3-client-playable-item-models-ml-1695490261"></a>
 ### textureSlot
@@ -102,4 +102,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L28)

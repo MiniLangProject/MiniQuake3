@@ -41,7 +41,7 @@ const AWARD_MASK = 231496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L34)
 
 <a id="constant-constant-mq3-game-client-active-button-attack-const-button-attack-1-src-mq3-game-client-active-ml-891113766"></a>
 ### BUTTON_ATTACK
@@ -51,7 +51,7 @@ const BUTTON_ATTACK = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L28)
 
 <a id="constant-constant-mq3-game-client-active-button-gesture-const-button-gesture-8-src-mq3-game-client-active-ml-982936047"></a>
 ### BUTTON_GESTURE
@@ -61,7 +61,7 @@ const BUTTON_GESTURE = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L31)
 
 <a id="constant-constant-mq3-game-client-active-button-talk-const-button-talk-2-src-mq3-game-client-active-ml-520809367"></a>
 ### BUTTON_TALK
@@ -71,7 +71,7 @@ const BUTTON_TALK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L29)
 
 <a id="constant-constant-mq3-game-client-active-button-use-holdable-const-button-use-holdable-4-src-mq3-game-client-active-ml-1627713997"></a>
 ### BUTTON_USE_HOLDABLE
@@ -81,7 +81,7 @@ const BUTTON_USE_HOLDABLE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L30)
 
 <a id="function-function-mq3-game-client-active-clientevents-function-clientevents-level-ent-oldeventsequence-src-mq3-game-client-active-ml-519273269"></a>
 ### clientEvents
@@ -97,7 +97,7 @@ function clientEvents(level, ent, oldEventSequence)
 | `oldEventSequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L152)
 
 <a id="function-function-mq3-game-client-active-command-function-command-client-src-mq3-game-client-active-ml-1825057625"></a>
 ### command
@@ -111,7 +111,7 @@ function command(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L59)
 
 <a id="function-function-mq3-game-client-active-configuremove-function-configuremove-level-ent-cmd-src-mq3-game-client-active-ml-2051820087"></a>
 ### configureMove
@@ -127,7 +127,7 @@ function configureMove(level, ent, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L191)
 
 <a id="constant-constant-mq3-game-client-active-contents-body-const-contents-body-headers-contents-body-src-mq3-game-client-active-ml-1834261942"></a>
 ### CONTENTS_BODY
@@ -137,7 +137,7 @@ const CONTENTS_BODY = headers.CONTENTS_BODY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L37)
 
 <a id="constant-constant-mq3-game-client-active-contents-botclip-const-contents-botclip-headers-contents-botclip-src-mq3-game-client-active-ml-267128645"></a>
 ### CONTENTS_BOTCLIP
@@ -147,7 +147,7 @@ const CONTENTS_BOTCLIP = headers.CONTENTS_BOTCLIP
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L38)
 
 <a id="constant-constant-mq3-game-client-active-df-no-falling-const-df-no-falling-8-src-mq3-game-client-active-ml-1522598429"></a>
 ### DF_NO_FALLING
@@ -157,7 +157,7 @@ const DF_NO_FALLING = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L40)
 
 <a id="constant-constant-mq3-game-client-active-df-no-footsteps-const-df-no-footsteps-32-src-mq3-game-client-active-ml-1856824772"></a>
 ### DF_NO_FOOTSTEPS
@@ -167,7 +167,7 @@ const DF_NO_FOOTSTEPS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L41)
 
 <a id="function-function-mq3-game-client-active-droppedflag-function-droppedflag-level-ent-powerup-item-src-mq3-game-client-active-ml-1347638024"></a>
 ### droppedFlag
@@ -184,7 +184,7 @@ function droppedFlag(level, ent, powerup, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L142)
 
 <a id="constant-constant-mq3-game-client-active-ef-firing-const-ef-firing-256-src-mq3-game-client-active-ml-2018815044"></a>
 ### EF_FIRING
@@ -194,7 +194,7 @@ const EF_FIRING = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L32)
 
 <a id="constant-constant-mq3-game-client-active-ef-talk-const-ef-talk-4096-src-mq3-game-client-active-ml-535921598"></a>
 ### EF_TALK
@@ -204,7 +204,7 @@ const EF_TALK = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L33)
 
 <a id="constant-constant-mq3-game-client-active-fl-force-gesture-const-fl-force-gesture-32768-src-mq3-game-client-active-ml-1199874623"></a>
 ### FL_FORCE_GESTURE
@@ -214,7 +214,7 @@ const FL_FORCE_GESTURE = 32768
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L35)
 
 <a id="constant-constant-mq3-game-client-active-gt-harvester-const-gt-harvester-7-src-mq3-game-client-active-ml-1495214450"></a>
 ### GT_HARVESTER
@@ -224,7 +224,7 @@ const GT_HARVESTER = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L46)
 
 <a id="function-function-mq3-game-client-active-impacts-function-impacts-level-ent-p-src-mq3-game-client-active-ml-1540312835"></a>
 ### impacts
@@ -240,7 +240,7 @@ function impacts(level, ent, p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L125)
 
 <a id="function-function-mq3-game-client-active-inactivitytimer-function-inactivitytimer-level-client-slot-src-mq3-game-client-active-ml-1281027879"></a>
 ### inactivityTimer
@@ -256,7 +256,7 @@ function inactivityTimer(level, client, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L70)
 
 <a id="function-function-mq3-game-client-active-intermissionthink-function-intermissionthink-client-src-mq3-game-client-active-ml-1078590035"></a>
 ### intermissionThink
@@ -270,7 +270,7 @@ function intermissionThink(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L63)
 
 <a id="constant-constant-mq3-game-client-active-mask-playersolid-const-mask-playersolid-33619969-src-mq3-game-client-active-ml-2115738373"></a>
 ### MASK_PLAYERSOLID
@@ -280,7 +280,7 @@ const MASK_PLAYERSOLID = 33619969
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L39)
 
 <a id="function-function-mq3-game-client-active-missionpack-function-missionpack-level-src-mq3-game-client-active-ml-624338406"></a>
 ### missionpack
@@ -294,7 +294,7 @@ function missionpack(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L48)
 
 <a id="function-function-mq3-game-client-active-persistenttag-function-persistenttag-level-client-src-mq3-game-client-active-ml-1665602147"></a>
 ### persistentTag
@@ -309,7 +309,7 @@ function persistentTag(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L52)
 
 <a id="constant-constant-mq3-game-client-active-pmf-invulexpand-const-pmf-invulexpand-16384-src-mq3-game-client-active-ml-1668016441"></a>
 ### PMF_INVULEXPAND
@@ -319,7 +319,7 @@ const PMF_INVULEXPAND = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L45)
 
 <a id="function-function-mq3-game-client-active-realthink-function-realthink-level-ent-src-mq3-game-client-active-ml-1823520583"></a>
 ### realThink
@@ -334,7 +334,7 @@ function realThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L234)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L234)
 
 <a id="function-function-mq3-game-client-active-runclient-function-runclient-level-ent-src-mq3-game-client-active-ml-508576171"></a>
 ### runClient
@@ -349,7 +349,7 @@ function runClient(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L322)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L322)
 
 <a id="constant-constant-mq3-game-client-active-spectator-follow-const-spectator-follow-2-src-mq3-game-client-active-ml-1446589147"></a>
 ### SPECTATOR_FOLLOW
@@ -359,7 +359,7 @@ const SPECTATOR_FOLLOW = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L42)
 
 <a id="constant-constant-mq3-game-client-active-spectator-scoreboard-const-spectator-scoreboard-3-src-mq3-game-client-active-ml-1952050222"></a>
 ### SPECTATOR_SCOREBOARD
@@ -369,7 +369,7 @@ const SPECTATOR_SCOREBOARD = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L43)
 
 <a id="function-function-mq3-game-client-active-spectatorthink-function-spectatorthink-level-ent-cmd-src-mq3-game-client-active-ml-1494162125"></a>
 ### spectatorThink
@@ -385,7 +385,7 @@ function spectatorThink(level, ent, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L219)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L219)
 
 <a id="constant-constant-mq3-game-client-active-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-client-active-ml-1399983428"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -395,7 +395,7 @@ const STAT_PERSISTANT_POWERUP = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L44)
 
 <a id="function-function-mq3-game-client-active-stuckinotherclient-function-stuckinotherclient-level-ent-src-mq3-game-client-active-ml-570327575"></a>
 ### stuckInOtherClient
@@ -410,7 +410,7 @@ function stuckInOtherClient(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L207)
 
 <a id="constant-constant-mq3-game-client-active-svf-bot-const-svf-bot-8-src-mq3-game-client-active-ml-1665417617"></a>
 ### SVF_BOT
@@ -420,7 +420,7 @@ const SVF_BOT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L36)
 
 <a id="function-function-mq3-game-client-active-think-function-think-level-clientnum-src-mq3-game-client-active-ml-298440747"></a>
 ### think
@@ -435,7 +435,7 @@ function think(level, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L314)
 
 <a id="function-function-mq3-game-client-active-timeractions-function-timeractions-level-ent-msec-src-mq3-game-client-active-ml-150807335"></a>
 ### timerActions
@@ -451,4 +451,4 @@ function timerActions(level, ent, msec)
 | `msec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_active.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_active.ml#L89)

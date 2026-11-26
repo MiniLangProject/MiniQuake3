@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ againstLadderFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-barrierjumpfn-barrierjumpfn-src-mq3-botlib-ai-move-runtime-ml-1157971289"></a>
 ### barrierJumpFn
@@ -32,7 +32,7 @@ barrierJumpFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-blocktracefn-blocktracefn-src-mq3-botlib-ai-move-runtime-ml-2115424453"></a>
 ### blockTraceFn
@@ -42,7 +42,7 @@ blockTraceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-clienttracefn-clienttracefn-src-mq3-botlib-ai-move-runtime-ml-595061785"></a>
 ### clientTraceFn
@@ -52,7 +52,7 @@ clientTraceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-context-context-src-mq3-botlib-ai-move-runtime-ml-1162629153"></a>
 ### context
@@ -62,7 +62,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-elementaryactions-elementaryactions-src-mq3-botlib-ai-move-runtime-ml-1637218077"></a>
 ### elementaryActions
@@ -72,7 +72,7 @@ elementaryActions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-elevatorstatefn-elevatorstatefn-src-mq3-botlib-ai-move-runtime-ml-371273529"></a>
 ### elevatorStateFn
@@ -82,7 +82,7 @@ elevatorStateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-entitymodelfn-entitymodelfn-src-mq3-botlib-ai-move-runtime-ml-1069848521"></a>
 ### entityModelFn
@@ -92,7 +92,7 @@ entityModelFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-funcbobstatefn-funcbobstatefn-src-mq3-botlib-ai-move-runtime-ml-1476814137"></a>
 ### funcBobStateFn
@@ -102,7 +102,7 @@ funcBobStateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-gapdistancefn-gapdistancefn-src-mq3-botlib-ai-move-runtime-ml-1821399921"></a>
 ### gapDistanceFn
@@ -112,7 +112,7 @@ gapDistanceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-grappleconfigfn-grappleconfigfn-src-mq3-botlib-ai-move-runtime-ml-1155133237"></a>
 ### grappleConfigFn
@@ -122,7 +122,7 @@ grappleConfigFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-grapplestatefn-grapplestatefn-src-mq3-botlib-ai-move-runtime-ml-241283273"></a>
 ### grappleStateFn
@@ -132,7 +132,7 @@ grappleStateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-grappletracefn-grappletracefn-src-mq3-botlib-ai-move-runtime-ml-1759015913"></a>
 ### grappleTraceFn
@@ -142,7 +142,7 @@ grappleTraceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-gravityfn-gravityfn-src-mq3-botlib-ai-move-runtime-ml-1053817177"></a>
 ### gravityFn
@@ -152,7 +152,7 @@ gravityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-groundtracefn-groundtracefn-src-mq3-botlib-ai-move-runtime-ml-76226481"></a>
 ### groundTraceFn
@@ -162,7 +162,7 @@ groundTraceFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-horizontalvelocityforjumpfn-horizontalvelocityforjumpfn-src-mq3-botlib-ai-move-runtime-ml-1652859201"></a>
 ### horizontalVelocityForJumpFn
@@ -172,7 +172,7 @@ horizontalVelocityForJumpFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-jumprunstartfn-jumprunstartfn-src-mq3-botlib-ai-move-runtime-ml-1380598139"></a>
 ### jumpRunStartFn
@@ -182,7 +182,7 @@ jumpRunStartFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-modelreachabilityfn-modelreachabilityfn-src-mq3-botlib-ai-move-runtime-ml-4726913"></a>
 ### modelReachabilityFn
@@ -192,7 +192,7 @@ modelReachabilityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-modeltypefn-modeltypefn-src-mq3-botlib-ai-move-runtime-ml-199912045"></a>
 ### modelTypeFn
@@ -202,7 +202,7 @@ modelTypeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-nextreachabilityfn-nextreachabilityfn-src-mq3-botlib-ai-move-runtime-ml-622369229"></a>
 ### nextReachabilityFn
@@ -212,7 +212,7 @@ nextReachabilityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-ongroundfn-ongroundfn-src-mq3-botlib-ai-move-runtime-ml-23916357"></a>
 ### onGroundFn
@@ -222,7 +222,7 @@ onGroundFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-pointcontentsfn-pointcontentsfn-src-mq3-botlib-ai-move-runtime-ml-507439893"></a>
 ### pointContentsFn
@@ -232,7 +232,7 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-randomfn-randomfn-src-mq3-botlib-ai-move-runtime-ml-2078611927"></a>
 ### randomFn
@@ -242,7 +242,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-routereachabilityfn-routereachabilityfn-src-mq3-botlib-ai-move-runtime-ml-497106377"></a>
 ### routeReachabilityFn
@@ -252,7 +252,7 @@ routeReachabilityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-routetraveltimefn-routetraveltimefn-src-mq3-botlib-ai-move-runtime-ml-2121745001"></a>
 ### routeTravelTimeFn
@@ -262,7 +262,7 @@ routeTravelTimeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-swimmingfn-swimmingfn-src-mq3-botlib-ai-move-runtime-ml-309951851"></a>
 ### swimmingFn
@@ -272,7 +272,7 @@ swimmingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-services-walkdirectionfn-walkdirectionfn-src-mq3-botlib-ai-move-runtime-ml-943710249"></a>
 ### walkDirectionFn
@@ -282,4 +282,4 @@ walkDirectionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L63)

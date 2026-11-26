@@ -10,7 +10,7 @@ struct BotState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-active-active-src-mq3-client-ui-start-server-ml-1834364075"></a>
 ### active
@@ -32,7 +32,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-alreadyselected-alreadyselected-src-mq3-client-ui-start-server-ml-2037366951"></a>
 ### alreadySelected
@@ -42,7 +42,7 @@ alreadySelected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-bots-bots-src-mq3-client-ui-start-server-ml-1140067643"></a>
 ### bots
@@ -52,7 +52,7 @@ bots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-icons-icons-src-mq3-client-ui-start-server-ml-2135068155"></a>
 ### icons
@@ -62,7 +62,7 @@ icons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-modelpage-modelpage-src-mq3-client-ui-start-server-ml-870418315"></a>
 ### modelPage
@@ -72,7 +72,7 @@ modelPage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-names-names-src-mq3-client-ui-start-server-ml-1130384603"></a>
 ### names
@@ -82,7 +82,7 @@ names
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-numpages-numpages-src-mq3-client-ui-start-server-ml-1054268467"></a>
 ### numPages
@@ -92,7 +92,7 @@ numPages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-selected-selected-src-mq3-client-ui-start-server-ml-335867093"></a>
 ### selected
@@ -102,7 +102,7 @@ selected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)
 
 <a id="field-field-mq3-client-ui-start-server-botstate-sorted-sorted-src-mq3-client-ui-start-server-ml-808093333"></a>
 ### sorted
@@ -112,4 +112,4 @@ sorted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L20)

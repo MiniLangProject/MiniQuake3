@@ -27,7 +27,7 @@ function BotShutdownWeights(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L121)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-botshutdownweights-function-botshutdownweights-state-src-mq3-botlib-ai-weight-runtime-ml-1108068881"></a>
 ### botShutdownWeights
@@ -41,7 +41,7 @@ function botShutdownWeights(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L110)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-centeredrandom-function-centeredrandom-state-src-mq3-botlib-ai-weight-runtime-ml-2078709889"></a>
 ### centeredRandom
@@ -55,7 +55,7 @@ function centeredRandom(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L15)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-create-function-create-context-readfn-writefn-randomfn-src-mq3-botlib-ai-weight-runtime-ml-633327789"></a>
 ### create
@@ -72,7 +72,7 @@ function create(context, readFn, writeFn, randomFn)
 | `randomFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L13)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-evolvefuzzyseperator-r-function-evolvefuzzyseperator-r-state-separators-src-mq3-botlib-ai-weight-runtime-ml-1393018745"></a>
 ### evolveFuzzySeperator_r
@@ -89,7 +89,7 @@ Evolution, scaling and interbreeding ----------------------------------
 | `separators` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L60)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-evolveweightconfig-function-evolveweightconfig-state-config-src-mq3-botlib-ai-weight-runtime-ml-489820867"></a>
 ### EvolveWeightConfig
@@ -104,7 +104,7 @@ function EvolveWeightConfig(state, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L119)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-evolveweightconfig-function-evolveweightconfig-state-config-src-mq3-botlib-ai-weight-runtime-ml-735301507"></a>
 ### evolveWeightConfig
@@ -119,7 +119,7 @@ function evolveWeightConfig(state, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L67)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-findfuzzyweight-function-findfuzzyweight-config-name-src-mq3-botlib-ai-weight-runtime-ml-122523159"></a>
 ### FindFuzzyWeight
@@ -136,7 +136,7 @@ Exact be_ai_weight.h spellings for native-header consumers.  State-bearing opera
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L114)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-findfuzzyweight-function-findfuzzyweight-config-name-src-mq3-botlib-ai-weight-runtime-ml-819118871"></a>
 ### findFuzzyWeight
@@ -153,7 +153,7 @@ Runtime evaluation -----------------------------------------------------
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L37)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-freefuzzyseperators-r-function-freefuzzyseperators-r-separators-src-mq3-botlib-ai-weight-runtime-ml-987802612"></a>
 ### freeFuzzySeperators_r
@@ -167,7 +167,7 @@ function freeFuzzySeperators_r(separators)
 | `separators` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L30)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-freeweightconfig-function-freeweightconfig-state-config-src-mq3-botlib-ai-weight-runtime-ml-412673707"></a>
 ### freeWeightConfig
@@ -182,7 +182,7 @@ function freeWeightConfig(state, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L34)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-freeweightconfig2-function-freeweightconfig2-config-src-mq3-botlib-ai-weight-runtime-ml-1229961192"></a>
 ### freeWeightConfig2
@@ -196,7 +196,7 @@ function freeWeightConfig2(config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L33)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweight-function-fuzzyweight-inventory-config-weightnumber-src-mq3-botlib-ai-weight-runtime-ml-1236932467"></a>
 ### FuzzyWeight
@@ -212,7 +212,7 @@ function FuzzyWeight(inventory, config, weightNumber)
 | `weightNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L115)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweight-function-fuzzyweight-inventory-config-weightnumber-src-mq3-botlib-ai-weight-runtime-ml-509851315"></a>
 ### fuzzyWeight
@@ -228,7 +228,7 @@ function fuzzyWeight(inventory, config, weightNumber)
 | `weightNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L56)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweight-r-function-fuzzyweight-r-inventory-separators-src-mq3-botlib-ai-weight-runtime-ml-1115934044"></a>
 ### fuzzyWeight_r
@@ -243,7 +243,7 @@ function fuzzyWeight_r(inventory, separators)
 | `separators` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L38)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweightundecided-function-fuzzyweightundecided-state-inventory-config-weightnumber-src-mq3-botlib-ai-weight-runtime-ml-676698598"></a>
 ### FuzzyWeightUndecided
@@ -260,7 +260,7 @@ function FuzzyWeightUndecided(state, inventory, config, weightNumber)
 | `weightNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L116)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweightundecided-function-fuzzyweightundecided-state-inventory-config-weightnumber-src-mq3-botlib-ai-weight-runtime-ml-240941606"></a>
 ### fuzzyWeightUndecided
@@ -277,7 +277,7 @@ function fuzzyWeightUndecided(state, inventory, config, weightNumber)
 | `weightNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L57)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-fuzzyweightundecided-r-function-fuzzyweightundecided-r-state-inventory-separators-src-mq3-botlib-ai-weight-runtime-ml-1801111635"></a>
 ### fuzzyWeightUndecided_r
@@ -293,7 +293,7 @@ function fuzzyWeightUndecided_r(state, inventory, separators)
 | `separators` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L55)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-indent-function-indent-count-src-mq3-botlib-ai-weight-runtime-ml-1831707559"></a>
 ### indent
@@ -309,7 +309,7 @@ The C writer is enclosed in #if 0 in the released source.  Keep its exact text f
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L94)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-interbreedfuzzyseperator-r-function-interbreedfuzzyseperator-r-first-second-result-src-mq3-botlib-ai-weight-runtime-ml-1028194835"></a>
 ### interbreedFuzzySeperator_r
@@ -325,7 +325,7 @@ function interbreedFuzzySeperator_r(first, second, result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L80)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-interbreedweightconfigs-function-interbreedweightconfigs-first-second-result-src-mq3-botlib-ai-weight-runtime-ml-1830579529"></a>
 ### InterbreedWeightConfigs
@@ -341,7 +341,7 @@ function InterbreedWeightConfigs(first, second, result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L120)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-interbreedweightconfigs-function-interbreedweightconfigs-first-second-result-src-mq3-botlib-ai-weight-runtime-ml-255702665"></a>
 ### interbreedWeightConfigs
@@ -357,7 +357,7 @@ function interbreedWeightConfigs(first, second, result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L88)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-numbertext-function-numbertext-value-src-mq3-botlib-ai-weight-runtime-ml-1170991973"></a>
 ### numberText
@@ -371,7 +371,7 @@ function numberText(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L95)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-parserfail-function-parserfail-message-src-mq3-botlib-ai-weight-runtime-ml-500152603"></a>
 ### parserFail
@@ -387,7 +387,7 @@ Parser and ownership ----------------------------------------------------
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-randomvalue-function-randomvalue-state-src-mq3-botlib-ai-weight-runtime-ml-1393340761"></a>
 ### randomValue
@@ -401,7 +401,7 @@ function randomValue(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-readfuzzyseperators-r-function-readfuzzyseperators-r-reader-src-mq3-botlib-ai-weight-runtime-ml-701110777"></a>
 ### readFuzzySeperators_r
@@ -415,7 +415,7 @@ function readFuzzySeperators_r(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-readfuzzyweight-function-readfuzzyweight-reader-src-mq3-botlib-ai-weight-runtime-ml-1464972299"></a>
 ### readFuzzyWeight
@@ -429,7 +429,7 @@ function readFuzzyWeight(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L23)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-readvalue-function-readvalue-reader-src-mq3-botlib-ai-weight-runtime-ml-1072181501"></a>
 ### readValue
@@ -443,7 +443,7 @@ function readValue(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L22)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-readweightconfig-function-readweightconfig-state-filename-src-mq3-botlib-ai-weight-runtime-ml-1636603234"></a>
 ### readWeightConfig
@@ -458,7 +458,7 @@ function readWeightConfig(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scalebalancerange-function-scalebalancerange-config-scale-src-mq3-botlib-ai-weight-runtime-ml-1366864596"></a>
 ### ScaleBalanceRange
@@ -473,7 +473,7 @@ function ScaleBalanceRange(config, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L118)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scalefuzzybalancerange-function-scalefuzzybalancerange-config-scale-src-mq3-botlib-ai-weight-runtime-ml-1225001694"></a>
 ### scaleFuzzyBalanceRange
@@ -488,7 +488,7 @@ function scaleFuzzyBalanceRange(config, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L77)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scalefuzzyseperator-r-function-scalefuzzyseperator-r-separators-scale-src-mq3-botlib-ai-weight-runtime-ml-211697640"></a>
 ### scaleFuzzySeperator_r
@@ -503,7 +503,7 @@ function scaleFuzzySeperator_r(separators, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scalefuzzyseperatorbalancerange-r-function-scalefuzzyseperatorbalancerange-r-separators-scale-src-mq3-botlib-ai-weight-runtime-ml-24999286"></a>
 ### scaleFuzzySeperatorBalanceRange_r
@@ -518,7 +518,7 @@ function scaleFuzzySeperatorBalanceRange_r(separators, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L74)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scaleweight-function-scaleweight-config-name-scale-src-mq3-botlib-ai-weight-runtime-ml-820378109"></a>
 ### ScaleWeight
@@ -534,7 +534,7 @@ function ScaleWeight(config, name, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L117)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-scaleweight-function-scaleweight-config-name-scale-src-mq3-botlib-ai-weight-runtime-ml-558020733"></a>
 ### scaleWeight
@@ -550,7 +550,7 @@ function scaleWeight(config, name, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L71)
 
 - [mq3.botlib.ai_weight_runtime.State](Type-mq3-botlib-ai-weight-runtime-state-2107027319.md) — struct
 <a id="function-function-mq3-botlib-ai-weight-runtime-undecidedat-function-undecidedat-state-inventory-separators-index-src-mq3-botlib-ai-weight-runtime-ml-787995993"></a>
@@ -568,7 +568,7 @@ function undecidedAt(state, inventory, separators, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L39)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-valuefromfirst-function-valuefromfirst-reader-token-src-mq3-botlib-ai-weight-runtime-ml-1603101678"></a>
 ### valueFromFirst
@@ -583,7 +583,7 @@ function valueFromFirst(reader, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L19)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-weightconfigtext-function-weightconfigtext-config-src-mq3-botlib-ai-weight-runtime-ml-1875913668"></a>
 ### weightConfigText
@@ -597,7 +597,7 @@ function weightConfigText(config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L106)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-writefuzzyseperators-r-function-writefuzzyseperators-r-separators-indentlevel-src-mq3-botlib-ai-weight-runtime-ml-576152054"></a>
 ### writeFuzzySeperators_r
@@ -612,7 +612,7 @@ function writeFuzzySeperators_r(separators, indentLevel)
 | `indentLevel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L99)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-writefuzzyweight-function-writefuzzyweight-separator-src-mq3-botlib-ai-weight-runtime-ml-655754859"></a>
 ### writeFuzzyWeight
@@ -626,7 +626,7 @@ function writeFuzzyWeight(separator)
 | `separator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L96)
 
 <a id="function-function-mq3-botlib-ai-weight-runtime-writeweightconfig-function-writeweightconfig-state-filename-config-src-mq3-botlib-ai-weight-runtime-ml-1686428534"></a>
 ### writeWeightConfig
@@ -642,4 +642,4 @@ function writeWeightConfig(state, filename, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L109)

@@ -10,7 +10,7 @@ struct Screen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ archive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-assets-assets-src-mq3-client-map-loading-ml-1702580615"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-catalog-catalog-src-mq3-client-map-loading-ml-282046761"></a>
 ### catalog
@@ -42,7 +42,7 @@ catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-indexmillis-indexmillis-src-mq3-client-map-loading-ml-1105138193"></a>
 ### indexMillis
@@ -52,7 +52,7 @@ indexMillis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-kinds-kinds-src-mq3-client-map-loading-ml-176597533"></a>
 ### kinds
@@ -62,7 +62,7 @@ kinds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-loadinginfo-loadinginfo-src-mq3-client-map-loading-ml-965824001"></a>
 ### loadingInfo
@@ -72,7 +72,7 @@ loadingInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-localgame-localgame-src-mq3-client-map-loading-ml-239597693"></a>
 ### localGame
@@ -82,7 +82,7 @@ localGame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-mapname-mapname-src-mq3-client-map-loading-ml-1762376793"></a>
 ### mapName
@@ -92,7 +92,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-scripts-scripts-src-mq3-client-map-loading-ml-18610785"></a>
 ### scripts
@@ -102,7 +102,7 @@ scripts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-servername-servername-src-mq3-client-map-loading-ml-248060345"></a>
 ### serverName
@@ -112,7 +112,7 @@ serverName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)
 
 <a id="field-field-mq3-client-map-loading-screen-startedat-startedat-src-mq3-client-map-loading-ml-1027748577"></a>
 ### startedAt
@@ -122,4 +122,4 @@ startedAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L23)

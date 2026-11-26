@@ -10,7 +10,7 @@ struct SharedEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_public.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 ## Members
 
@@ -22,7 +22,7 @@ r
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_public.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)
 
 <a id="field-field-mq3-game-g-public-sharedentity-s-s-src-mq3-game-g-public-ml-1024671281"></a>
 ### s
@@ -32,4 +32,4 @@ s
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_public.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_public.ml#L32)

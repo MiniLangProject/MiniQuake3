@@ -10,7 +10,7 @@ struct Cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstPortal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numareas-numareas-src-mq3-botlib-aas-clustering-ml-1175566627"></a>
 ### numAreas
@@ -32,7 +32,7 @@ numAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numportals-numportals-src-mq3-botlib-aas-clustering-ml-1030718153"></a>
 ### numPortals
@@ -42,7 +42,7 @@ numPortals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)
 
 <a id="field-field-mq3-botlib-aas-clustering-cluster-numreachabilityareas-numreachabilityareas-src-mq3-botlib-aas-clustering-ml-1056664957"></a>
 ### numReachabilityAreas
@@ -52,4 +52,4 @@ numReachabilityAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L27)

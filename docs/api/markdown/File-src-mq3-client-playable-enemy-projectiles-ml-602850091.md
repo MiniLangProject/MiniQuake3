@@ -33,7 +33,7 @@ Slab intersection against player-local bounds expanded by projectile radius.
 | `radius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L86)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-activecount-function-activecount-state-src-mq3-client-playable-enemy-projectiles-ml-1153554995"></a>
 ### activeCount
@@ -47,7 +47,7 @@ function activeCount(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L180)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-appendimpact-function-appendimpact-state-projectile-kind-point-normal-damage-now-src-mq3-client-playable-enemy-projectiles-ml-1551299616"></a>
 ### appendImpact
@@ -67,7 +67,7 @@ function appendImpact(state, projectile, kind, point, normal, damage, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L128)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-copypoint-function-copypoint-value-src-mq3-client-playable-enemy-projectiles-ml-1820404403"></a>
 ### copyPoint
@@ -81,7 +81,7 @@ function copyPoint(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L23)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-create-function-create-now-speed-lifetime-radius-playershape-playermins-playermaxs-playerradius-src-mq3-client-playable-enemy-projectiles-ml-1317490981"></a>
 ### create
@@ -102,7 +102,7 @@ function create(now, speed, lifetime, radius, playerShape, playerMins, playerMax
 | `playerRadius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L25)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-createaabb-function-createaabb-now-src-mq3-client-playable-enemy-projectiles-ml-490045420"></a>
 ### createAabb
@@ -116,7 +116,7 @@ function createAabb(now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L33)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-createsphere-function-createsphere-now-radius-src-mq3-client-playable-enemy-projectiles-ml-250640238"></a>
 ### createSphere
@@ -131,7 +131,7 @@ function createSphere(now, radius)
 | `radius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L37)
 
 <a id="constant-constant-mq3-client-playable-enemy-projectiles-default-lifetime-milliseconds-const-default-lifetime-milliseconds-2500-src-mq3-client-playable-enemy-projectiles-ml-1698364544"></a>
 ### DEFAULT_LIFETIME_MILLISECONDS
@@ -141,27 +141,27 @@ const DEFAULT_LIFETIME_MILLISECONDS = 2500
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L11)
 
-<a id="constant-constant-mq3-client-playable-enemy-projectiles-default-radius-const-default-radius-3-src-mq3-client-playable-enemy-projectiles-ml-1300923078"></a>
+<a id="constant-constant-mq3-client-playable-enemy-projectiles-default-radius-const-default-radius-3-src-mq3-client-playable-enemy-projectiles-ml-1300086032"></a>
 ### DEFAULT_RADIUS
 
 ```ml
-const DEFAULT_RADIUS = 3.
+const DEFAULT_RADIUS = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L12)
 
-<a id="constant-constant-mq3-client-playable-enemy-projectiles-default-speed-const-default-speed-420-src-mq3-client-playable-enemy-projectiles-ml-1402049495"></a>
+<a id="constant-constant-mq3-client-playable-enemy-projectiles-default-speed-const-default-speed-420-src-mq3-client-playable-enemy-projectiles-ml-1538453179"></a>
 ### DEFAULT_SPEED
 
 ```ml
-const DEFAULT_SPEED = 420.
+const DEFAULT_SPEED = 420
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L10)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-fail-function-fail-message-src-mq3-client-playable-enemy-projectiles-ml-870617967"></a>
 ### fail
@@ -175,7 +175,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L21)
 
 - [mq3.client.playable_enemy_projectiles.Impact](Type-mq3-client-playable-enemy-projectiles-impact-1402023825.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-projectiles-player-aabb-const-player-aabb-0-src-mq3-client-playable-enemy-projectiles-ml-73291609"></a>
@@ -186,7 +186,7 @@ const PLAYER_AABB = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-enemy-projectiles-player-sphere-const-player-sphere-1-src-mq3-client-playable-enemy-projectiles-ml-1500105352"></a>
 ### PLAYER_SPHERE
@@ -196,7 +196,7 @@ const PLAYER_SPHERE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L14)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-playerfraction-function-playerfraction-state-projectile-startpoint-endpoint-playerposition-src-mq3-client-playable-enemy-projectiles-ml-1284336855"></a>
 ### playerFraction
@@ -214,7 +214,7 @@ function playerFraction(state, projectile, startPoint, endPoint, playerPosition)
 | `playerPosition` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L119)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-pointonsegment-function-pointonsegment-startpoint-endpoint-fraction-src-mq3-client-playable-enemy-projectiles-ml-912468539"></a>
 ### pointOnSegment
@@ -230,7 +230,7 @@ function pointOnSegment(startPoint, endPoint, fraction)
 | `fraction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L124)
 
 - [mq3.client.playable_enemy_projectiles.Projectile](Type-mq3-client-playable-enemy-projectiles-projectile-1757864664.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-projectiles-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-enemy-projectiles-ml-929107223"></a>
@@ -241,7 +241,7 @@ const SHOT_MASK = 100663297
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L9)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-spawnattacks-function-spawnattacks-state-ai-targetstate-playerposition-now-src-mq3-client-playable-enemy-projectiles-ml-697863151"></a>
 ### spawnAttacks
@@ -259,7 +259,7 @@ function spawnAttacks(state, ai, targetState, playerPosition, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L81)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-spawnattacksfrommuzzles-function-spawnattacksfrommuzzles-state-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-projectiles-ml-887784835"></a>
 ### spawnAttacksFromMuzzles
@@ -280,7 +280,7 @@ Consume one AI event batch once. Repeating this call at the same timestamp is id
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L58)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-spawnone-function-spawnone-state-attacker-origin-target-damage-side-now-src-mq3-client-playable-enemy-projectiles-ml-1734255047"></a>
 ### spawnOne
@@ -300,7 +300,7 @@ function spawnOne(state, attacker, origin, target, damage, side, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L45)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-spherefraction-function-spherefraction-startpoint-endpoint-center-radius-src-mq3-client-playable-enemy-projectiles-ml-625253018"></a>
 ### sphereFraction
@@ -317,7 +317,7 @@ function sphereFraction(startPoint, endPoint, center, radius)
 | `radius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L106)
 
 - [mq3.client.playable_enemy_projectiles.State](Type-mq3-client-playable-enemy-projectiles-state-1196398108.md) — struct
 - [mq3.client.playable_enemy_projectiles.Trail](Type-mq3-client-playable-enemy-projectiles-trail-771065137.md) — struct
@@ -336,7 +336,7 @@ function update(world, state, playerPosition, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L175)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-updatewithtrace-function-updatewithtrace-tracefn-context-state-playerposition-now-src-mq3-client-playable-enemy-projectiles-ml-618342459"></a>
 ### updateWithTrace
@@ -356,7 +356,7 @@ traceFn must perform a BSP point trace and return { trace.fraction, trace.normal
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L136)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-validvector-function-validvector-value-src-mq3-client-playable-enemy-projectiles-ml-1002332359"></a>
 ### validVector
@@ -370,7 +370,7 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L22)
 
 <a id="function-function-mq3-client-playable-enemy-projectiles-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-projectiles-ml-768021682"></a>
 ### worldPointTrace
@@ -386,4 +386,4 @@ function worldPointTrace(context, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L41)

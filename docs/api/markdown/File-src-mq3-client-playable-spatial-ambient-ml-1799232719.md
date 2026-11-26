@@ -21,7 +21,7 @@ const CHUNK_FRAMES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L9)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-create-function-create-catalog-src-mq3-client-playable-spatial-ambient-ml-8725623"></a>
 ### create
@@ -35,7 +35,7 @@ function create(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-spatial-ambient-output-rate-const-output-rate-22050-src-mq3-client-playable-spatial-ambient-ml-372507770"></a>
 ### OUTPUT_RATE
@@ -45,7 +45,7 @@ const OUTPUT_RATE = 22050
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L8)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-pump-function-pump-runtime-listenerorigin-listenerright-src-mq3-client-playable-spatial-ambient-ml-379720670"></a>
 ### pump
@@ -61,7 +61,7 @@ function pump(runtime, listenerOrigin, listenerRight)
 | `listenerRight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L30)
 
 - [mq3.client.playable_spatial_ambient.Runtime](Type-mq3-client-playable-spatial-ambient-runtime-1789148433.md) — struct
 <a id="function-function-mq3-client-playable-spatial-ambient-shutdown-function-shutdown-runtime-src-mq3-client-playable-spatial-ambient-ml-871534464"></a>
@@ -76,7 +76,7 @@ function shutdown(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L42)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-start-function-start-runtime-src-mq3-client-playable-spatial-ambient-ml-756160296"></a>
 ### start
@@ -90,7 +90,7 @@ function start(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L24)
 
 <a id="function-function-mq3-client-playable-spatial-ambient-stop-function-stop-runtime-src-mq3-client-playable-spatial-ambient-ml-687035268"></a>
 ### stop
@@ -104,4 +104,4 @@ function stop(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_spatial_ambient.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_spatial_ambient.ml#L38)

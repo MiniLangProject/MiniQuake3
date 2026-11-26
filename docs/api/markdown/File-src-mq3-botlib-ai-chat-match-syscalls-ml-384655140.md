@@ -29,7 +29,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L23)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-readmatch-function-readmatch-vm-address-src-mq3-botlib-ai-chat-match-syscalls-ml-1007464697"></a>
 ### readMatch
@@ -44,7 +44,7 @@ function readMatch(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L17)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-signedbyte-function-signedbyte-value-src-mq3-botlib-ai-chat-match-syscalls-ml-676905953"></a>
 ### signedByte
@@ -58,7 +58,7 @@ function signedByte(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-chat-match-syscalls-writematch-function-writematch-vm-address-match-src-mq3-botlib-ai-chat-match-syscalls-ml-312164104"></a>
 ### writeMatch
@@ -74,4 +74,4 @@ function writeMatch(vm, address, match)
 | `match` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_match_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_match_syscalls.ml#L10)

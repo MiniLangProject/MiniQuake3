@@ -12,7 +12,7 @@ struct Services
 sendFn(context,sock,address,packet) owns the actual UDP socket. resolveFn returns a netchan.Address and is only needed for DNS names.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_queries.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
 
 ## Members
 
@@ -24,7 +24,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_queries.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-queries-services-resolvefn-resolvefn-src-mq3-client-ui-lan-queries-ml-1855641213"></a>
 ### resolveFn
@@ -34,7 +34,7 @@ resolveFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_queries.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-queries-services-sendfn-sendfn-src-mq3-client-ui-lan-queries-ml-602511877"></a>
 ### sendFn
@@ -44,4 +44,4 @@ sendFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_queries.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_queries.ml#L22)

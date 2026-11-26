@@ -37,7 +37,7 @@ function ComputeColors(stage, vertexColors, entityColor, positions, viewOrigin, 
 | `fogAdjustment` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L117)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-computetexcoords-function-computetexcoords-stage-basecoords-lightmapcoords-positions-normals-vieworigin-entitytranslate-nowmilliseconds-fog-forward-src-mq3-renderer-tr-shade-runtime-ml-732385324"></a>
 ### ComputeTexCoords
@@ -60,7 +60,7 @@ function ComputeTexCoords(stage, baseCoords, lightmapCoords, positions, normals,
 | `forward` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L127)
 
 - [mq3.renderer.tr_shade_runtime.DebugPlan](Type-mq3-renderer-tr-shade-runtime-debugplan-116266896.md) — struct
 - [mq3.renderer.tr_shade_runtime.DlightPass](Type-mq3-renderer-tr-shade-runtime-dlightpass-334056377.md) — struct
@@ -79,7 +79,7 @@ function DrawMultitextured(input, stage, lightmapOnly, portal)
 | `portal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L87)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-drawnormals-function-drawnormals-positions-normals-src-mq3-renderer-tr-shade-runtime-ml-925628900"></a>
 ### DrawNormals
@@ -94,7 +94,7 @@ function DrawNormals(positions, normals)
 | `normals` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L74)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-drawtris-function-drawtris-indexes-src-mq3-renderer-tr-shade-runtime-ml-1535947316"></a>
 ### DrawTris
@@ -108,7 +108,7 @@ function DrawTris(indexes)
 | `indexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L73)
 
 - [mq3.renderer.tr_shade_runtime.ElementPlan](Type-mq3-renderer-tr-shade-runtime-elementplan-2106441323.md) — struct
 - [mq3.renderer.tr_shade_runtime.EndCounters](Type-mq3-renderer-tr-shade-runtime-endcounters-1607153664.md) — struct
@@ -125,7 +125,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L28)
 
 - [mq3.renderer.tr_shade_runtime.FogPlan](Type-mq3-renderer-tr-shade-runtime-fogplan-2135218659.md) — struct
 - [mq3.renderer.tr_shade_runtime.MultiPlan](Type-mq3-renderer-tr-shade-runtime-multiplan-584797842.md) — struct
@@ -146,7 +146,7 @@ Exact CPU half of ProjectDlightTexture. The productive draw path below uses play
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L97)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-projectdlighttexturedraw-function-projectdlighttexturedraw-batch-catalog-lights-projection-src-mq3-renderer-tr-shade-runtime-ml-1263201959"></a>
 ### ProjectDlightTextureDraw
@@ -163,7 +163,7 @@ function ProjectDlightTextureDraw(batch, catalog, lights, projection)
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L108)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-r-arrayelementdiscrete-function-r-arrayelementdiscrete-index-positions-colors-texture0-texture1-currenttmu-src-mq3-renderer-tr-shade-runtime-ml-1917650694"></a>
 ### R_ArrayElementDiscrete
@@ -184,7 +184,7 @@ R_ArrayElementDiscrete emits the currently selected texture-coordinate set, pack
 | `currentTmu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L32)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-r-bindanimatedimage-function-r-bindanimatedimage-isvideo-slots-animationspeed-shadertime-src-mq3-renderer-tr-shade-runtime-ml-1126322477"></a>
 ### R_BindAnimatedImage
@@ -201,7 +201,7 @@ function R_BindAnimatedImage(isVideo, slots, animationSpeed, shaderTime)
 | `shaderTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L66)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-r-drawelements-function-r-drawelements-indexes-primitives-compiledarrays-src-mq3-renderer-tr-shade-runtime-ml-1848368063"></a>
 ### R_DrawElements
@@ -217,7 +217,7 @@ function R_DrawElements(indexes, primitives, compiledArrays)
 | `compiledArrays` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L59)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-r-drawstripelements-function-r-drawstripelements-indexes-src-mq3-renderer-tr-shade-runtime-ml-1432368720"></a>
 ### R_DrawStripElements
@@ -233,7 +233,7 @@ Preserve the original alternating winding test. Each returned list is one GL_TRI
 | `indexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L40)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-beginsurface-function-rb-beginsurface-shader-fognum-floattime-src-mq3-renderer-tr-shade-runtime-ml-151994110"></a>
 ### RB_BeginSurface
@@ -249,7 +249,7 @@ function RB_BeginSurface(shader, fogNum, floatTime)
 | `floatTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L80)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-endsurface-function-rb-endsurface-surface-indexes-positions-normals-counters-debugsort-shadow-iteratorresult-showtris-shownormals-src-mq3-renderer-tr-shade-runtime-ml-849655512"></a>
 ### RB_EndSurface
@@ -272,7 +272,7 @@ function RB_EndSurface(surface, indexes, positions, normals, counters, debugSort
 | `showNormals` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L151)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-fogpass-function-rb-fogpass-positions-indexes-fog-vieworigin-forward-depthequal-src-mq3-renderer-tr-shade-runtime-ml-1690216243"></a>
 ### RB_FogPass
@@ -291,7 +291,7 @@ function RB_FogPass(positions, indexes, fog, viewOrigin, forward, depthEqual)
 | `depthEqual` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L110)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-fogpassdraw-function-rb-fogpassdraw-batch-catalog-projection-src-mq3-renderer-tr-shade-runtime-ml-1434804018"></a>
 ### RB_FogPassDraw
@@ -307,7 +307,7 @@ function RB_FogPassDraw(batch, catalog, projection)
 | `projection` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L115)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-iteratestagesgeneric-function-rb-iteratestagesgeneric-batch-projection-nowmilliseconds-lights-src-mq3-renderer-tr-shade-runtime-ml-670483398"></a>
 ### RB_IterateStagesGeneric
@@ -326,7 +326,7 @@ The retained renderer creates one StagePass per original shader stage. These ent
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L146)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-stageiteratorgeneric-function-rb-stageiteratorgeneric-batch-projection-nowmilliseconds-lights-src-mq3-renderer-tr-shade-runtime-ml-848612208"></a>
 ### RB_StageIteratorGeneric
@@ -343,7 +343,7 @@ function RB_StageIteratorGeneric(batch, projection, nowMilliseconds, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L147)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-stageiteratorlightmappedmultitexture-function-rb-stageiteratorlightmappedmultitexture-batch-projection-nowmilliseconds-lights-src-mq3-renderer-tr-shade-runtime-ml-735482312"></a>
 ### RB_StageIteratorLightmappedMultitexture
@@ -360,7 +360,7 @@ function RB_StageIteratorLightmappedMultitexture(batch, projection, nowMilliseco
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L149)
 
 <a id="function-function-mq3-renderer-tr-shade-runtime-rb-stageiteratorvertexlittexture-function-rb-stageiteratorvertexlittexture-batch-projection-nowmilliseconds-lights-src-mq3-renderer-tr-shade-runtime-ml-55882452"></a>
 ### RB_StageIteratorVertexLitTexture
@@ -377,18 +377,18 @@ function RB_StageIteratorVertexLitTexture(batch, projection, nowMilliseconds, li
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L148)
 
 - [mq3.renderer.tr_shade_runtime.ShaderState](Type-mq3-renderer-tr-shade-runtime-shaderstate-448111234.md) — struct
-<a id="constant-constant-mq3-renderer-tr-shade-runtime-ss-opaque-const-ss-opaque-3-src-mq3-renderer-tr-shade-runtime-ml-549419242"></a>
+<a id="constant-constant-mq3-renderer-tr-shade-runtime-ss-opaque-const-ss-opaque-3-src-mq3-renderer-tr-shade-runtime-ml-1877026478"></a>
 ### SS_OPAQUE
 
 ```ml
-const SS_OPAQUE = 3.
+const SS_OPAQUE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L14)
 
 - [mq3.renderer.tr_shade_runtime.StripResult](Type-mq3-renderer-tr-shade-runtime-stripresult-1980259551.md) — struct
 <a id="constant-constant-mq3-renderer-tr-shade-runtime-surf-nodlight-const-surf-nodlight-1024-src-mq3-renderer-tr-shade-runtime-ml-1337237680"></a>
@@ -399,7 +399,7 @@ const SURF_NODLIGHT = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L13)
 
 <a id="constant-constant-mq3-renderer-tr-shade-runtime-surf-sky-const-surf-sky-4-src-mq3-renderer-tr-shade-runtime-ml-761462231"></a>
 ### SURF_SKY
@@ -409,6 +409,6 @@ const SURF_SKY = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L12)
 
 - [mq3.renderer.tr_shade_runtime.SurfaceState](Type-mq3-renderer-tr-shade-runtime-surfacestate-118560060.md) — struct

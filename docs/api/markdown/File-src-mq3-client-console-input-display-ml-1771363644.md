@@ -29,7 +29,7 @@ function bounded(value, low, high)
 | `high` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input_display.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L13)
 
 <a id="function-function-mq3-client-console-input-display-draw-function-draw-media-state-width-height-now-src-mq3-client-console-input-display-ml-2078644314"></a>
 ### draw
@@ -47,7 +47,7 @@ function draw(media, state, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input_display.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L31)
 
 <a id="function-function-mq3-client-console-input-display-fieldtext-function-fieldtext-edit-prompt-now-src-mq3-client-console-input-display-ml-1626068566"></a>
 ### fieldText
@@ -63,7 +63,7 @@ function fieldText(edit, prompt, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input_display.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L14)
 
 <a id="function-function-mq3-client-console-input-display-present-function-present-state-now-src-mq3-client-console-input-display-ml-1929212121"></a>
 ### present
@@ -78,6 +78,6 @@ function present(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input_display.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input_display.ml#L22)
 
 - [mq3.client.console_input_display.Presentation](Type-mq3-client-console-input-display-presentation-2062669794.md) — struct

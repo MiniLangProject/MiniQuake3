@@ -10,7 +10,7 @@ struct AreaTrace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ areas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L37)
 
 <a id="field-field-mq3-botlib-aas-client-movement-areatrace-points-points-src-mq3-botlib-aas-client-movement-ml-889010919"></a>
 ### points
@@ -32,4 +32,4 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L37)

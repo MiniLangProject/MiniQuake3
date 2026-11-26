@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ accepted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)
 
 <a id="field-field-mq3-server-oob-connect-result-challengeindex-challengeindex-src-mq3-server-oob-connect-ml-2072797934"></a>
 ### challengeIndex
@@ -32,7 +32,7 @@ challengeIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)
 
 <a id="field-field-mq3-server-oob-connect-result-reason-reason-src-mq3-server-oob-connect-ml-1909117676"></a>
 ### reason
@@ -42,7 +42,7 @@ reason
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)
 
 <a id="field-field-mq3-server-oob-connect-result-slot-slot-src-mq3-server-oob-connect-ml-1852389180"></a>
 ### slot
@@ -52,7 +52,7 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)
 
 <a id="field-field-mq3-server-oob-connect-result-userinfo-userinfo-src-mq3-server-oob-connect-ml-1399383246"></a>
 ### userinfo
@@ -62,4 +62,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L34)

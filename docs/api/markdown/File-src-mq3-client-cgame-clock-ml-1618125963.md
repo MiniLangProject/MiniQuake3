@@ -27,7 +27,7 @@ function create(realtime, snapshotNumber, snapshotServerTime)
 | `snapshotServerTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L13)
 
 <a id="function-function-mq3-client-cgame-clock-fail-function-fail-message-src-mq3-client-cgame-clock-ml-1249441597"></a>
 ### fail
@@ -41,7 +41,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L11)
 
 <a id="function-function-mq3-client-cgame-clock-frame-function-frame-clock-realtime-src-mq3-client-cgame-clock-ml-1929941099"></a>
 ### frame
@@ -56,7 +56,7 @@ function frame(clock, realtime)
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L46)
 
 - [mq3.client.cgame_clock.FrameTime](Type-mq3-client-cgame-clock-frametime-890492891.md) — struct
 <a id="function-function-mq3-client-cgame-clock-publishsnapshot-function-publishsnapshot-clock-snapshotnumber-servertime-snapflags-src-mq3-client-cgame-clock-ml-900447888"></a>
@@ -74,7 +74,7 @@ function publishSnapshot(clock, snapshotNumber, serverTime, snapFlags)
 | `snapFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L22)
 
 <a id="function-function-mq3-client-cgame-clock-setpaused-function-setpaused-clock-serverpaused-clientpaused-serverrunning-src-mq3-client-cgame-clock-ml-1490183122"></a>
 ### setPaused
@@ -91,7 +91,7 @@ function setPaused(clock, serverPaused, clientPaused, serverRunning)
 | `serverRunning` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L40)
 
 <a id="function-function-mq3-client-cgame-clock-settimenudge-function-settimenudge-clock-value-src-mq3-client-cgame-clock-ml-1306256899"></a>
 ### setTimeNudge
@@ -106,4 +106,4 @@ function setTimeNudge(clock, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L35)

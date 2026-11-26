@@ -10,7 +10,7 @@ struct Field
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L34)
 
 <a id="field-field-mq3-client-console-input-field-scroll-scroll-src-mq3-client-console-input-ml-125185393"></a>
 ### scroll
@@ -32,7 +32,7 @@ scroll
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L34)
 
 <a id="field-field-mq3-client-console-input-field-text-text-src-mq3-client-console-input-ml-1303856593"></a>
 ### text
@@ -42,7 +42,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L34)
 
 <a id="field-field-mq3-client-console-input-field-widthinchars-widthinchars-src-mq3-client-console-input-ml-739995987"></a>
 ### widthInChars
@@ -52,4 +52,4 @@ widthInChars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/console_input.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/console_input.ml#L34)

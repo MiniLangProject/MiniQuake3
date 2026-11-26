@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-destination-destination-src-mq3-botlib-aas-reachability-ml-488709601"></a>
 ### destination
@@ -32,7 +32,7 @@ destination
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-detail-detail-src-mq3-botlib-aas-reachability-ml-1189206527"></a>
 ### detail
@@ -42,7 +42,7 @@ detail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-dispatched-dispatched-src-mq3-botlib-aas-reachability-ml-525415535"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-kind-kind-src-mq3-botlib-aas-reachability-ml-1637541165"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)
 
 <a id="field-field-mq3-botlib-aas-reachability-action-source-source-src-mq3-botlib-aas-reachability-ml-2086859047"></a>
 ### source
@@ -72,4 +72,4 @@ source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_reachability.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_reachability.ml#L43)

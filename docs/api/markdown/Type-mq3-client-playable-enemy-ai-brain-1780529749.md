@@ -10,7 +10,7 @@ struct Brain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ lastSeen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 <a id="field-field-mq3-client-playable-enemy-ai-brain-mode-mode-src-mq3-client-playable-enemy-ai-ml-610600525"></a>
 ### mode
@@ -32,7 +32,7 @@ mode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 <a id="field-field-mq3-client-playable-enemy-ai-brain-nextattack-nextattack-src-mq3-client-playable-enemy-ai-ml-267316041"></a>
 ### nextAttack
@@ -42,7 +42,7 @@ nextAttack
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 <a id="field-field-mq3-client-playable-enemy-ai-brain-nextthink-nextthink-src-mq3-client-playable-enemy-ai-ml-769137099"></a>
 ### nextThink
@@ -52,7 +52,7 @@ nextThink
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 <a id="field-field-mq3-client-playable-enemy-ai-brain-strafeside-strafeside-src-mq3-client-playable-enemy-ai-ml-1133001539"></a>
 ### strafeSide
@@ -62,7 +62,7 @@ strafeSide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)
 
 <a id="field-field-mq3-client-playable-enemy-ai-brain-visible-visible-src-mq3-client-playable-enemy-ai-ml-354367811"></a>
 ### visible
@@ -72,4 +72,4 @@ visible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L20)

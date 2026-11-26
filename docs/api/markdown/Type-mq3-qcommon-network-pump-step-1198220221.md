@@ -10,7 +10,7 @@ struct Step
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-step-data-data-src-mq3-qcommon-network-pump-ml-1065803577"></a>
 ### data
@@ -32,7 +32,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-step-processed-processed-src-mq3-qcommon-network-pump-ml-1750512949"></a>
 ### processed
@@ -42,7 +42,7 @@ processed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)
 
 <a id="field-field-mq3-qcommon-network-pump-step-side-side-src-mq3-qcommon-network-pump-ml-1340236535"></a>
 ### side
@@ -52,4 +52,4 @@ side
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L10)

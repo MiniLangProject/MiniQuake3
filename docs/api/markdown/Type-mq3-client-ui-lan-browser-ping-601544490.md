@@ -10,7 +10,7 @@ struct Ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-ping-info-info-src-mq3-client-ui-lan-browser-ml-805725645"></a>
 ### info
@@ -32,7 +32,7 @@ info
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)
 
 <a id="field-field-mq3-client-ui-lan-browser-ping-time-time-src-mq3-client-ui-lan-browser-ml-780910031"></a>
 ### time
@@ -42,4 +42,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L22)

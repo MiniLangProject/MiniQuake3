@@ -25,7 +25,7 @@ function builtinIndex(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L15)
 
 <a id="function-function-mq3-server-client-command-dispatch-builtinnames-function-builtinnames-src-mq3-server-client-command-dispatch-ml-1231020014"></a>
 ### builtinNames
@@ -35,7 +35,7 @@ function builtinNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L13)
 
 <a id="function-function-mq3-server-client-command-dispatch-execute-function-execute-host-clientstate-text-clientok-serverstate-src-mq3-server-client-command-dispatch-ml-834217692"></a>
 ### execute
@@ -53,7 +53,7 @@ function execute(host, clientState, text, clientOk, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L21)
 
 <a id="function-function-mq3-server-client-command-dispatch-services-function-services-src-mq3-server-client-command-dispatch-ml-115334554"></a>
 ### services
@@ -63,7 +63,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L11)
 
 - [mq3.server.client_command_dispatch.Services](Type-mq3-server-client-command-dispatch-services-1762339519.md) — struct
 <a id="constant-constant-mq3-server-client-command-dispatch-ss-game-const-ss-game-2-src-mq3-server-client-command-dispatch-ml-447169141"></a>
@@ -74,4 +74,4 @@ const SS_GAME = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command_dispatch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command_dispatch.ml#L8)

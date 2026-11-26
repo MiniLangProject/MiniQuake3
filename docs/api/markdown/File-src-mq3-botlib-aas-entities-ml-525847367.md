@@ -26,7 +26,7 @@ function AAS_BestReachableEntityArea(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L104)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entitybspdata-function-aas-entitybspdata-state-entnum-src-mq3-botlib-aas-entities-ml-603940314"></a>
 ### AAS_EntityBSPData
@@ -41,7 +41,7 @@ function AAS_EntityBSPData(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L89)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entityinfo-function-aas-entityinfo-state-entnum-src-mq3-botlib-aas-entities-ml-653752022"></a>
 ### AAS_EntityInfo
@@ -56,7 +56,7 @@ function AAS_EntityInfo(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L78)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entitymodelindex-function-aas-entitymodelindex-state-entnum-src-mq3-botlib-aas-entities-ml-1398818938"></a>
 ### AAS_EntityModelindex
@@ -71,7 +71,7 @@ function AAS_EntityModelindex(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L80)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entitymodelnum-function-aas-entitymodelnum-state-entnum-src-mq3-botlib-aas-entities-ml-650143034"></a>
 ### AAS_EntityModelNum
@@ -86,7 +86,7 @@ function AAS_EntityModelNum(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L82)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entityorigin-function-aas-entityorigin-state-entnum-src-mq3-botlib-aas-entities-ml-1241279066"></a>
 ### AAS_EntityOrigin
@@ -101,7 +101,7 @@ function AAS_EntityOrigin(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L79)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entitysize-function-aas-entitysize-state-entnum-src-mq3-botlib-aas-entities-ml-958537090"></a>
 ### AAS_EntitySize
@@ -116,7 +116,7 @@ function AAS_EntitySize(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L88)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-entitytype-function-aas-entitytype-state-entnum-src-mq3-botlib-aas-entities-ml-999019194"></a>
 ### AAS_EntityType
@@ -131,7 +131,7 @@ function AAS_EntityType(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L81)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-invalidateentities-function-aas-invalidateentities-state-src-mq3-botlib-aas-entities-ml-517835949"></a>
 ### AAS_InvalidateEntities
@@ -145,7 +145,7 @@ function AAS_InvalidateEntities(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L93)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-nearestentity-function-aas-nearestentity-state-origin-modelindex-src-mq3-botlib-aas-entities-ml-1036063566"></a>
 ### AAS_NearestEntity
@@ -161,7 +161,7 @@ function AAS_NearestEntity(state, origin, modelindex)
 | `modelindex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L99)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-nextentity-function-aas-nextentity-state-entnum-src-mq3-botlib-aas-entities-ml-1581803626"></a>
 ### AAS_NextEntity
@@ -176,7 +176,7 @@ function AAS_NextEntity(state, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L108)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-originofmoverwithmodelnum-function-aas-originofmoverwithmodelnum-state-modelnum-src-mq3-botlib-aas-entities-ml-1023323540"></a>
 ### AAS_OriginOfMoverWithModelNum
@@ -191,7 +191,7 @@ function AAS_OriginOfMoverWithModelNum(state, modelnum)
 | `modelnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L83)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-resetentitylinks-function-aas-resetentitylinks-state-src-mq3-botlib-aas-entities-ml-781537781"></a>
 ### AAS_ResetEntityLinks
@@ -205,7 +205,7 @@ function AAS_ResetEntityLinks(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L92)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-unlinkinvalidentities-function-aas-unlinkinvalidentities-state-src-mq3-botlib-aas-entities-ml-2120248275"></a>
 ### AAS_UnlinkInvalidEntities
@@ -219,7 +219,7 @@ function AAS_UnlinkInvalidEntities(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L96)
 
 <a id="function-function-mq3-botlib-aas-entities-aas-updateentity-function-aas-updateentity-state-entnum-value-bspbounds-src-mq3-botlib-aas-entities-ml-867841873"></a>
 ### AAS_UpdateEntity
@@ -238,7 +238,7 @@ Exact be_aas_entity.c ownership surface.  These functions deliberately use the p
 | `bspBounds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L77)
 
 <a id="function-function-mq3-botlib-aas-entities-bindruntime-function-bindruntime-state-runtime-src-mq3-botlib-aas-entities-ml-1515742107"></a>
 ### bindRuntime
@@ -253,7 +253,7 @@ function bindRuntime(state, runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L30)
 
 - [mq3.botlib.aas_entities.BspData](Type-mq3-botlib-aas-entities-bspdata-210972280.md) — struct
 <a id="function-function-mq3-botlib-aas-entities-create-function-create-maxentities-src-mq3-botlib-aas-entities-ml-1792814709"></a>
@@ -268,7 +268,7 @@ function create(maxEntities)
 | `maxEntities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L24)
 
 <a id="function-function-mq3-botlib-aas-entities-emptyinfo-function-emptyinfo-src-mq3-botlib-aas-entities-ml-1038105468"></a>
 ### emptyInfo
@@ -278,7 +278,7 @@ function emptyInfo()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L22)
 
 - [mq3.botlib.aas_entities.EntityInfo](Type-mq3-botlib-aas-entities-entityinfo-384620320.md) — struct
 <a id="constant-constant-mq3-botlib-aas-entities-entitynum-world-const-entitynum-world-1022-src-mq3-botlib-aas-entities-ml-139914000"></a>
@@ -289,7 +289,7 @@ const ENTITYNUM_WORLD = 1022
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L12)
 
 - [mq3.botlib.aas_entities.EntityState](Type-mq3-botlib-aas-entities-entitystate-1005246113.md) — struct
 <a id="constant-constant-mq3-botlib-aas-entities-et-mover-const-et-mover-4-src-mq3-botlib-aas-entities-ml-1210706893"></a>
@@ -300,7 +300,7 @@ const ET_MOVER = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-entities-info-function-info-state-number-src-mq3-botlib-aas-entities-ml-182735016"></a>
 ### info
@@ -315,7 +315,7 @@ function info(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L68)
 
 <a id="constant-constant-mq3-botlib-aas-entities-presence-normal-const-presence-normal-2-src-mq3-botlib-aas-entities-ml-1214756979"></a>
 ### PRESENCE_NORMAL
@@ -325,7 +325,7 @@ const PRESENCE_NORMAL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-entities-solid-bbox-const-solid-bbox-2-src-mq3-botlib-aas-entities-ml-804270667"></a>
 ### SOLID_BBOX
@@ -335,7 +335,7 @@ const SOLID_BBOX = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L10)
 
 <a id="constant-constant-mq3-botlib-aas-entities-solid-bsp-const-solid-bsp-3-src-mq3-botlib-aas-entities-ml-1677679586"></a>
 ### SOLID_BSP
@@ -345,7 +345,7 @@ const SOLID_BSP = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L9)
 
 <a id="function-function-mq3-botlib-aas-entities-startframe-function-startframe-state-time-src-mq3-botlib-aas-entities-ml-1866880860"></a>
 ### startFrame
@@ -360,7 +360,7 @@ function startFrame(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L33)
 
 - [mq3.botlib.aas_entities.State](Type-mq3-botlib-aas-entities-state-761540788.md) — struct
 <a id="function-function-mq3-botlib-aas-entities-unlink-function-unlink-state-number-src-mq3-botlib-aas-entities-ml-1189623696"></a>
@@ -376,7 +376,7 @@ function unlink(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L31)
 
 <a id="function-function-mq3-botlib-aas-entities-update-function-update-state-number-value-bspbounds-src-mq3-botlib-aas-entities-ml-430629615"></a>
 ### update
@@ -393,7 +393,7 @@ function update(state, number, value, bspBounds)
 | `bspBounds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L43)
 
 <a id="function-function-mq3-botlib-aas-entities-vector-function-vector-value-src-mq3-botlib-aas-entities-ml-2129282001"></a>
 ### vector
@@ -407,7 +407,7 @@ function vector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L20)
 
 <a id="function-function-mq3-botlib-aas-entities-zeros-function-zeros-src-mq3-botlib-aas-entities-ml-265422364"></a>
 ### zeros
@@ -417,4 +417,4 @@ function zeros()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L21)

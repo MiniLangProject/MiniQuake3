@@ -10,7 +10,7 @@ struct DebugPolygonResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ outline
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpolygonresult-solid-solid-src-mq3-renderer-tr-main-runtime-ml-1986114183"></a>
 ### solid
@@ -32,4 +32,4 @@ solid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L33)

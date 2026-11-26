@@ -26,7 +26,7 @@ function bindCommand(commandState, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L17)
 
 <a id="function-function-mq3-client-key-bindings-config-bindingtext-function-bindingtext-state-src-mq3-client-key-bindings-config-ml-1637938541"></a>
 ### bindingText
@@ -40,7 +40,7 @@ function bindingText(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L12)
 
 <a id="function-function-mq3-client-key-bindings-config-bindlistcommand-function-bindlistcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-1343701727"></a>
 ### bindListCommand
@@ -55,7 +55,7 @@ function bindListCommand(commandState, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L29)
 
 <a id="function-function-mq3-client-key-bindings-config-create-function-create-keystate-src-mq3-client-key-bindings-config-ml-248479834"></a>
 ### create
@@ -69,7 +69,7 @@ function create(keyState)
 | `keyState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L10)
 
 <a id="function-function-mq3-client-key-bindings-config-emit-function-emit-state-text-src-mq3-client-key-bindings-config-ml-996470888"></a>
 ### emit
@@ -84,7 +84,7 @@ function emit(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L11)
 
 <a id="function-function-mq3-client-key-bindings-config-install-function-install-state-commandstate-src-mq3-client-key-bindings-config-ml-1141463753"></a>
 ### install
@@ -99,7 +99,7 @@ function install(state, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L30)
 
 <a id="function-function-mq3-client-key-bindings-config-loadtext-function-loadtext-state-commandstate-text-src-mq3-client-key-bindings-config-ml-211702170"></a>
 ### loadText
@@ -115,7 +115,7 @@ function loadText(state, commandState, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L38)
 
 - [mq3.client.key_bindings_config.State](Type-mq3-client-key-bindings-config-state-863210453.md) — struct
 <a id="function-function-mq3-client-key-bindings-config-unbindallcommand-function-unbindallcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-533885235"></a>
@@ -131,7 +131,7 @@ function unbindAllCommand(commandState, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L28)
 
 <a id="function-function-mq3-client-key-bindings-config-unbindcommand-function-unbindcommand-commandstate-state-src-mq3-client-key-bindings-config-ml-1663979853"></a>
 ### unbindCommand
@@ -146,4 +146,4 @@ function unbindCommand(commandState, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_bindings_config.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_bindings_config.ml#L23)

@@ -10,7 +10,7 @@ struct Master
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L31)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L31)
 
 <a id="field-field-mq3-server-main-runtime-master-modified-modified-src-mq3-server-main-runtime-ml-1712689383"></a>
 ### modified
@@ -32,7 +32,7 @@ modified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L31)
 
 <a id="field-field-mq3-server-main-runtime-master-name-name-src-mq3-server-main-runtime-ml-1671176807"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L31)
 
 <a id="field-field-mq3-server-main-runtime-master-value-value-src-mq3-server-main-runtime-ml-426941657"></a>
 ### value
@@ -52,4 +52,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L31)

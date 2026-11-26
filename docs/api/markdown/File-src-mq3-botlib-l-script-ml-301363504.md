@@ -26,7 +26,7 @@ function at(script, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L99)
 
 <a id="function-function-mq3-botlib-l-script-chartext-function-chartext-value-src-mq3-botlib-l-script-ml-488443753"></a>
 ### charText
@@ -40,7 +40,7 @@ function charText(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L100)
 
 <a id="function-function-mq3-botlib-l-script-compressfile-function-compressfile-data-src-mq3-botlib-l-script-ml-875211960"></a>
 ### compressFile
@@ -54,7 +54,7 @@ function compressFile(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L286)
 
 <a id="function-function-mq3-botlib-l-script-copyinto-function-copyinto-target-value-src-mq3-botlib-l-script-ml-1192114962"></a>
 ### copyInto
@@ -69,7 +69,7 @@ function copyInto(target, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L251)
 
 <a id="function-function-mq3-botlib-l-script-copytoken-function-copytoken-value-src-mq3-botlib-l-script-ml-1257101177"></a>
 ### copyToken
@@ -83,7 +83,7 @@ function copyToken(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L98)
 
 <a id="function-function-mq3-botlib-l-script-create-function-create-hostvalue-src-mq3-botlib-l-script-ml-49508975"></a>
 ### create
@@ -97,7 +97,7 @@ function create(hostValue)
 | `hostValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L93)
 
 <a id="function-function-mq3-botlib-l-script-defaultpunctuations-function-defaultpunctuations-src-mq3-botlib-l-script-ml-1624285704"></a>
 ### defaultPunctuations
@@ -107,7 +107,7 @@ function defaultPunctuations()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L94)
 
 <a id="function-function-mq3-botlib-l-script-emit-function-emit-script-kind-message-src-mq3-botlib-l-script-ml-56374848"></a>
 ### emit
@@ -123,7 +123,7 @@ function emit(script, kind, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L102)
 
 <a id="function-function-mq3-botlib-l-script-emptytoken-function-emptytoken-src-mq3-botlib-l-script-ml-841022056"></a>
 ### emptyToken
@@ -133,7 +133,7 @@ function emptyToken()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L97)
 
 <a id="function-function-mq3-botlib-l-script-endofscript-function-endofscript-script-src-mq3-botlib-l-script-ml-2016831029"></a>
 ### EndOfScript
@@ -147,7 +147,7 @@ function EndOfScript(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L272)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L272)
 
 <a id="function-function-mq3-botlib-l-script-filelength-function-filelength-fp-src-mq3-botlib-l-script-ml-1039112058"></a>
 ### FileLength
@@ -161,7 +161,7 @@ function FileLength(fp)
 | `fp` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L278)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L278)
 
 <a id="function-function-mq3-botlib-l-script-freescript-function-freescript-script-src-mq3-botlib-l-script-ml-195151739"></a>
 ### FreeScript
@@ -175,7 +175,7 @@ function FreeScript(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L305)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L305)
 
 <a id="function-function-mq3-botlib-l-script-frompctoken-function-frompctoken-token-src-mq3-botlib-l-script-ml-1520122517"></a>
 ### FromPCToken
@@ -189,7 +189,7 @@ function FromPCToken(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L312)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L312)
 
 <a id="function-function-mq3-botlib-l-script-getscriptflags-function-getscriptflags-script-src-mq3-botlib-l-script-ml-1584259319"></a>
 ### GetScriptFlags
@@ -203,7 +203,7 @@ function GetScriptFlags(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L270)
 
 <a id="function-function-mq3-botlib-l-script-hexdigit-function-hexdigit-value-src-mq3-botlib-l-script-ml-1050930673"></a>
 ### hexDigit
@@ -217,7 +217,7 @@ function hexDigit(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L148)
 
 <a id="function-function-mq3-botlib-l-script-host-function-host-src-mq3-botlib-l-script-ml-831872952"></a>
 ### host
@@ -227,7 +227,7 @@ function host()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L92)
 
 <a id="function-function-mq3-botlib-l-script-integervalue-function-integervalue-text-base-start-src-mq3-botlib-l-script-ml-407538994"></a>
 ### integerValue
@@ -243,7 +243,7 @@ function integerValue(text, base, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L194)
 
 <a id="function-function-mq3-botlib-l-script-loadscriptfile-function-loadscriptfile-runtime-filename-src-mq3-botlib-l-script-ml-345165157"></a>
 ### LoadScriptFile
@@ -258,7 +258,7 @@ function LoadScriptFile(runtime, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L302)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L302)
 
 <a id="function-function-mq3-botlib-l-script-loadscriptmemory-function-loadscriptmemory-runtime-ptr-length-name-src-mq3-botlib-l-script-ml-913416225"></a>
 ### LoadScriptMemory
@@ -275,7 +275,7 @@ function LoadScriptMemory(runtime, ptr, length, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L283)
 
 <a id="constant-constant-mq3-botlib-l-script-max-token-const-max-token-1024-src-mq3-botlib-l-script-ml-433368068"></a>
 ### MAX_TOKEN
@@ -285,7 +285,7 @@ const MAX_TOKEN = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L10)
 
 <a id="function-function-mq3-botlib-l-script-numbervalue-function-numbervalue-string-subtype-intvalue-floatvalue-src-mq3-botlib-l-script-ml-38871664"></a>
 ### NumberValue
@@ -302,7 +302,7 @@ function NumberValue(string, subtype, intvalue, floatvalue)
 | `floatvalue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L197)
 
 <a id="function-function-mq3-botlib-l-script-numlinescrossed-function-numlinescrossed-script-src-mq3-botlib-l-script-ml-610219647"></a>
 ### NumLinesCrossed
@@ -316,7 +316,7 @@ function NumLinesCrossed(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L273)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L273)
 
 <a id="constant-constant-mq3-botlib-l-script-p-add-const-p-add-29-src-mq3-botlib-l-script-ml-1953423282"></a>
 ### P_ADD
@@ -326,7 +326,7 @@ const P_ADD = 29
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L61)
 
 <a id="constant-constant-mq3-botlib-l-script-p-add-assign-const-p-add-assign-14-src-mq3-botlib-l-script-ml-1952081980"></a>
 ### P_ADD_ASSIGN
@@ -336,7 +336,7 @@ const P_ADD_ASSIGN = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L46)
 
 <a id="constant-constant-mq3-botlib-l-script-p-assign-const-p-assign-31-src-mq3-botlib-l-script-ml-552842819"></a>
 ### P_ASSIGN
@@ -346,7 +346,7 @@ const P_ASSIGN = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L63)
 
 <a id="constant-constant-mq3-botlib-l-script-p-backslash-const-p-backslash-50-src-mq3-botlib-l-script-ml-1717148102"></a>
 ### P_BACKSLASH
@@ -356,7 +356,7 @@ const P_BACKSLASH = 50
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L82)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-and-const-p-bin-and-32-src-mq3-botlib-l-script-ml-1087344586"></a>
 ### P_BIN_AND
@@ -366,7 +366,7 @@ const P_BIN_AND = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L64)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-and-assign-const-p-bin-and-assign-18-src-mq3-botlib-l-script-ml-394371136"></a>
 ### P_BIN_AND_ASSIGN
@@ -376,7 +376,7 @@ const P_BIN_AND_ASSIGN = 18
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L50)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-not-const-p-bin-not-35-src-mq3-botlib-l-script-ml-1606430529"></a>
 ### P_BIN_NOT
@@ -386,7 +386,7 @@ const P_BIN_NOT = 35
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L67)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-or-const-p-bin-or-33-src-mq3-botlib-l-script-ml-1869753165"></a>
 ### P_BIN_OR
@@ -396,7 +396,7 @@ const P_BIN_OR = 33
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L65)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-or-assign-const-p-bin-or-assign-19-src-mq3-botlib-l-script-ml-2038824971"></a>
 ### P_BIN_OR_ASSIGN
@@ -406,7 +406,7 @@ const P_BIN_OR_ASSIGN = 19
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L51)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-xor-const-p-bin-xor-34-src-mq3-botlib-l-script-ml-122590816"></a>
 ### P_BIN_XOR
@@ -416,7 +416,7 @@ const P_BIN_XOR = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L66)
 
 <a id="constant-constant-mq3-botlib-l-script-p-bin-xor-assign-const-p-bin-xor-assign-20-src-mq3-botlib-l-script-ml-1819815589"></a>
 ### P_BIN_XOR_ASSIGN
@@ -426,7 +426,7 @@ const P_BIN_XOR_ASSIGN = 20
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L52)
 
 <a id="constant-constant-mq3-botlib-l-script-p-braceclose-const-p-braceclose-47-src-mq3-botlib-l-script-ml-184302844"></a>
 ### P_BRACECLOSE
@@ -436,7 +436,7 @@ const P_BRACECLOSE = 47
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L79)
 
 <a id="constant-constant-mq3-botlib-l-script-p-braceopen-const-p-braceopen-46-src-mq3-botlib-l-script-ml-829899155"></a>
 ### P_BRACEOPEN
@@ -446,7 +446,7 @@ const P_BRACEOPEN = 46
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L78)
 
 <a id="constant-constant-mq3-botlib-l-script-p-colon-const-p-colon-42-src-mq3-botlib-l-script-ml-195675243"></a>
 ### P_COLON
@@ -456,7 +456,7 @@ const P_COLON = 42
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L74)
 
 <a id="constant-constant-mq3-botlib-l-script-p-comma-const-p-comma-40-src-mq3-botlib-l-script-ml-510063105"></a>
 ### P_COMMA
@@ -466,7 +466,7 @@ const P_COMMA = 40
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L72)
 
 <a id="constant-constant-mq3-botlib-l-script-p-cpp1-const-p-cpp1-24-src-mq3-botlib-l-script-ml-757193815"></a>
 ### P_CPP1
@@ -476,7 +476,7 @@ const P_CPP1 = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L56)
 
 <a id="constant-constant-mq3-botlib-l-script-p-cpp2-const-p-cpp2-25-src-mq3-botlib-l-script-ml-298662064"></a>
 ### P_CPP2
@@ -486,7 +486,7 @@ const P_CPP2 = 25
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L57)
 
 <a id="constant-constant-mq3-botlib-l-script-p-dec-const-p-dec-17-src-mq3-botlib-l-script-ml-1133920073"></a>
 ### P_DEC
@@ -496,7 +496,7 @@ const P_DEC = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L49)
 
 <a id="constant-constant-mq3-botlib-l-script-p-div-const-p-div-27-src-mq3-botlib-l-script-ml-1886859176"></a>
 ### P_DIV
@@ -506,7 +506,7 @@ const P_DIV = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L59)
 
 <a id="constant-constant-mq3-botlib-l-script-p-div-assign-const-p-div-assign-12-src-mq3-botlib-l-script-ml-326120262"></a>
 ### P_DIV_ASSIGN
@@ -516,7 +516,7 @@ const P_DIV_ASSIGN = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L44)
 
 <a id="constant-constant-mq3-botlib-l-script-p-dollar-const-p-dollar-52-src-mq3-botlib-l-script-ml-1085876760"></a>
 ### P_DOLLAR
@@ -526,7 +526,7 @@ const P_DOLLAR = 52
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L84)
 
 <a id="constant-constant-mq3-botlib-l-script-p-inc-const-p-inc-16-src-mq3-botlib-l-script-ml-1038660988"></a>
 ### P_INC
@@ -536,7 +536,7 @@ const P_INC = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L48)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-and-const-p-logic-and-5-src-mq3-botlib-l-script-ml-1175574256"></a>
 ### P_LOGIC_AND
@@ -546,7 +546,7 @@ const P_LOGIC_AND = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L37)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-eq-const-p-logic-eq-9-src-mq3-botlib-l-script-ml-1637041562"></a>
 ### P_LOGIC_EQ
@@ -556,7 +556,7 @@ const P_LOGIC_EQ = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L41)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-geq-const-p-logic-geq-7-src-mq3-botlib-l-script-ml-2024986062"></a>
 ### P_LOGIC_GEQ
@@ -566,7 +566,7 @@ const P_LOGIC_GEQ = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L39)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-greater-const-p-logic-greater-37-src-mq3-botlib-l-script-ml-393279579"></a>
 ### P_LOGIC_GREATER
@@ -576,7 +576,7 @@ const P_LOGIC_GREATER = 37
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L69)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-leq-const-p-logic-leq-8-src-mq3-botlib-l-script-ml-1345280749"></a>
 ### P_LOGIC_LEQ
@@ -586,7 +586,7 @@ const P_LOGIC_LEQ = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L40)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-less-const-p-logic-less-38-src-mq3-botlib-l-script-ml-545944756"></a>
 ### P_LOGIC_LESS
@@ -596,7 +596,7 @@ const P_LOGIC_LESS = 38
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L70)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-not-const-p-logic-not-36-src-mq3-botlib-l-script-ml-2127251778"></a>
 ### P_LOGIC_NOT
@@ -606,7 +606,7 @@ const P_LOGIC_NOT = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L68)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-or-const-p-logic-or-6-src-mq3-botlib-l-script-ml-1603749087"></a>
 ### P_LOGIC_OR
@@ -616,7 +616,7 @@ const P_LOGIC_OR = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L38)
 
 <a id="constant-constant-mq3-botlib-l-script-p-logic-uneq-const-p-logic-uneq-10-src-mq3-botlib-l-script-ml-1414828238"></a>
 ### P_LOGIC_UNEQ
@@ -626,7 +626,7 @@ const P_LOGIC_UNEQ = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L42)
 
 <a id="constant-constant-mq3-botlib-l-script-p-lshift-const-p-lshift-22-src-mq3-botlib-l-script-ml-1099778989"></a>
 ### P_LSHIFT
@@ -636,7 +636,7 @@ const P_LSHIFT = 22
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L54)
 
 <a id="constant-constant-mq3-botlib-l-script-p-lshift-assign-const-p-lshift-assign-2-src-mq3-botlib-l-script-ml-247398243"></a>
 ### P_LSHIFT_ASSIGN
@@ -646,7 +646,7 @@ const P_LSHIFT_ASSIGN = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L34)
 
 <a id="constant-constant-mq3-botlib-l-script-p-mod-const-p-mod-28-src-mq3-botlib-l-script-ml-1239430547"></a>
 ### P_MOD
@@ -656,7 +656,7 @@ const P_MOD = 28
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L60)
 
 <a id="constant-constant-mq3-botlib-l-script-p-mod-assign-const-p-mod-assign-13-src-mq3-botlib-l-script-ml-1967949909"></a>
 ### P_MOD_ASSIGN
@@ -666,7 +666,7 @@ const P_MOD_ASSIGN = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L45)
 
 <a id="constant-constant-mq3-botlib-l-script-p-mul-const-p-mul-26-src-mq3-botlib-l-script-ml-1532238121"></a>
 ### P_MUL
@@ -676,7 +676,7 @@ const P_MUL = 26
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L58)
 
 <a id="constant-constant-mq3-botlib-l-script-p-mul-assign-const-p-mul-assign-11-src-mq3-botlib-l-script-ml-183008439"></a>
 ### P_MUL_ASSIGN
@@ -686,7 +686,7 @@ const P_MUL_ASSIGN = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L43)
 
 <a id="constant-constant-mq3-botlib-l-script-p-parenthesesclose-const-p-parenthesesclose-45-src-mq3-botlib-l-script-ml-431984344"></a>
 ### P_PARENTHESESCLOSE
@@ -696,7 +696,7 @@ const P_PARENTHESESCLOSE = 45
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L77)
 
 <a id="constant-constant-mq3-botlib-l-script-p-parenthesesopen-const-p-parenthesesopen-44-src-mq3-botlib-l-script-ml-2134339789"></a>
 ### P_PARENTHESESOPEN
@@ -706,7 +706,7 @@ const P_PARENTHESESOPEN = 44
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L76)
 
 <a id="constant-constant-mq3-botlib-l-script-p-parms-const-p-parms-3-src-mq3-botlib-l-script-ml-511406050"></a>
 ### P_PARMS
@@ -716,7 +716,7 @@ const P_PARMS = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L35)
 
 <a id="constant-constant-mq3-botlib-l-script-p-pointerref-const-p-pointerref-23-src-mq3-botlib-l-script-ml-317832848"></a>
 ### P_POINTERREF
@@ -726,7 +726,7 @@ const P_POINTERREF = 23
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L55)
 
 <a id="constant-constant-mq3-botlib-l-script-p-precomp-const-p-precomp-51-src-mq3-botlib-l-script-ml-2017018983"></a>
 ### P_PRECOMP
@@ -736,7 +736,7 @@ const P_PRECOMP = 51
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L83)
 
 <a id="constant-constant-mq3-botlib-l-script-p-precompmerge-const-p-precompmerge-4-src-mq3-botlib-l-script-ml-1628282573"></a>
 ### P_PRECOMPMERGE
@@ -746,7 +746,7 @@ const P_PRECOMPMERGE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L36)
 
 <a id="constant-constant-mq3-botlib-l-script-p-questionmark-const-p-questionmark-43-src-mq3-botlib-l-script-ml-1511488828"></a>
 ### P_QUESTIONMARK
@@ -756,7 +756,7 @@ const P_QUESTIONMARK = 43
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L75)
 
 <a id="constant-constant-mq3-botlib-l-script-p-ref-const-p-ref-39-src-mq3-botlib-l-script-ml-951186357"></a>
 ### P_REF
@@ -766,7 +766,7 @@ const P_REF = 39
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L71)
 
 <a id="constant-constant-mq3-botlib-l-script-p-rshift-const-p-rshift-21-src-mq3-botlib-l-script-ml-1515681910"></a>
 ### P_RSHIFT
@@ -776,7 +776,7 @@ const P_RSHIFT = 21
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L53)
 
 <a id="constant-constant-mq3-botlib-l-script-p-rshift-assign-const-p-rshift-assign-1-src-mq3-botlib-l-script-ml-428366892"></a>
 ### P_RSHIFT_ASSIGN
@@ -786,7 +786,7 @@ const P_RSHIFT_ASSIGN = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L33)
 
 <a id="constant-constant-mq3-botlib-l-script-p-semicolon-const-p-semicolon-41-src-mq3-botlib-l-script-ml-1702255680"></a>
 ### P_SEMICOLON
@@ -796,7 +796,7 @@ const P_SEMICOLON = 41
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L73)
 
 <a id="constant-constant-mq3-botlib-l-script-p-sqbracketclose-const-p-sqbracketclose-49-src-mq3-botlib-l-script-ml-30499004"></a>
 ### P_SQBRACKETCLOSE
@@ -806,7 +806,7 @@ const P_SQBRACKETCLOSE = 49
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L81)
 
 <a id="constant-constant-mq3-botlib-l-script-p-sqbracketopen-const-p-sqbracketopen-48-src-mq3-botlib-l-script-ml-154558517"></a>
 ### P_SQBRACKETOPEN
@@ -816,7 +816,7 @@ const P_SQBRACKETOPEN = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L80)
 
 <a id="constant-constant-mq3-botlib-l-script-p-sub-const-p-sub-30-src-mq3-botlib-l-script-ml-1373546876"></a>
 ### P_SUB
@@ -826,7 +826,7 @@ const P_SUB = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L62)
 
 <a id="constant-constant-mq3-botlib-l-script-p-sub-assign-const-p-sub-assign-15-src-mq3-botlib-l-script-ml-678066763"></a>
 ### P_SUB_ASSIGN
@@ -836,7 +836,7 @@ const P_SUB_ASSIGN = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L47)
 
 <a id="function-function-mq3-botlib-l-script-ps-checktokenstring-function-ps-checktokenstring-script-string-src-mq3-botlib-l-script-ml-871791630"></a>
 ### PS_CheckTokenString
@@ -851,7 +851,7 @@ function PS_CheckTokenString(script, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L259)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L259)
 
 <a id="function-function-mq3-botlib-l-script-ps-checktokentype-function-ps-checktokentype-script-type-subtype-token-src-mq3-botlib-l-script-ml-517003050"></a>
 ### PS_CheckTokenType
@@ -868,7 +868,7 @@ function PS_CheckTokenType(script, type, subtype, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L260)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L260)
 
 <a id="function-function-mq3-botlib-l-script-ps-createpunctuationtable-function-ps-createpunctuationtable-script-punctuations-src-mq3-botlib-l-script-ml-2081850234"></a>
 ### PS_CreatePunctuationTable
@@ -883,7 +883,7 @@ function PS_CreatePunctuationTable(script, punctuations)
 | `punctuations` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L112)
 
 <a id="function-function-mq3-botlib-l-script-ps-expectanytoken-function-ps-expectanytoken-script-token-src-mq3-botlib-l-script-ml-1853938804"></a>
 ### PS_ExpectAnyToken
@@ -898,7 +898,7 @@ function PS_ExpectAnyToken(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L258)
 
 <a id="function-function-mq3-botlib-l-script-ps-expecttokenstring-function-ps-expecttokenstring-script-string-src-mq3-botlib-l-script-ml-811989166"></a>
 ### PS_ExpectTokenString
@@ -913,7 +913,7 @@ function PS_ExpectTokenString(script, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L250)
 
 <a id="function-function-mq3-botlib-l-script-ps-expecttokentype-function-ps-expecttokentype-script-type-subtype-token-src-mq3-botlib-l-script-ml-187878548"></a>
 ### PS_ExpectTokenType
@@ -930,7 +930,7 @@ function PS_ExpectTokenType(script, type, subtype, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L252)
 
 <a id="function-function-mq3-botlib-l-script-ps-nextwhitespacechar-function-ps-nextwhitespacechar-script-src-mq3-botlib-l-script-ml-1398219511"></a>
 ### PS_NextWhiteSpaceChar
@@ -944,7 +944,7 @@ function PS_NextWhiteSpaceChar(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L264)
 
 <a id="function-function-mq3-botlib-l-script-ps-readescapecharacter-function-ps-readescapecharacter-script-ch-src-mq3-botlib-l-script-ml-955775172"></a>
 ### PS_ReadEscapeCharacter
@@ -959,7 +959,7 @@ function PS_ReadEscapeCharacter(script, ch)
 | `ch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L149)
 
 <a id="function-function-mq3-botlib-l-script-ps-readliteral-function-ps-readliteral-script-token-src-mq3-botlib-l-script-ml-1035443264"></a>
 ### PS_ReadLiteral
@@ -974,7 +974,7 @@ function PS_ReadLiteral(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L183)
 
 <a id="function-function-mq3-botlib-l-script-ps-readname-function-ps-readname-script-token-src-mq3-botlib-l-script-ml-75446998"></a>
 ### PS_ReadName
@@ -989,7 +989,7 @@ function PS_ReadName(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L189)
 
 <a id="function-function-mq3-botlib-l-script-ps-readnumber-function-ps-readnumber-script-token-src-mq3-botlib-l-script-ml-1519460594"></a>
 ### PS_ReadNumber
@@ -1004,7 +1004,7 @@ function PS_ReadNumber(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L206)
 
 <a id="function-function-mq3-botlib-l-script-ps-readprimitive-function-ps-readprimitive-script-token-src-mq3-botlib-l-script-ml-2087161344"></a>
 ### PS_ReadPrimitive
@@ -1019,7 +1019,7 @@ function PS_ReadPrimitive(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L230)
 
 <a id="function-function-mq3-botlib-l-script-ps-readpunctuation-function-ps-readpunctuation-script-token-src-mq3-botlib-l-script-ml-298715280"></a>
 ### PS_ReadPunctuation
@@ -1034,7 +1034,7 @@ function PS_ReadPunctuation(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L223)
 
 <a id="function-function-mq3-botlib-l-script-ps-readstring-function-ps-readstring-script-token-quote-src-mq3-botlib-l-script-ml-2134538774"></a>
 ### PS_ReadString
@@ -1050,7 +1050,7 @@ function PS_ReadString(script, token, quote)
 | `quote` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L163)
 
 <a id="function-function-mq3-botlib-l-script-ps-readtoken-function-ps-readtoken-script-token-src-mq3-botlib-l-script-ml-2107774492"></a>
 ### PS_ReadToken
@@ -1065,7 +1065,7 @@ function PS_ReadToken(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L235)
 
 <a id="function-function-mq3-botlib-l-script-ps-readwhitespace-function-ps-readwhitespace-script-src-mq3-botlib-l-script-ml-447738149"></a>
 ### PS_ReadWhiteSpace
@@ -1079,7 +1079,7 @@ function PS_ReadWhiteSpace(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L128)
 
 <a id="function-function-mq3-botlib-l-script-ps-setbasefolder-function-ps-setbasefolder-runtime-path-src-mq3-botlib-l-script-ml-1100006199"></a>
 ### PS_SetBaseFolder
@@ -1094,7 +1094,7 @@ function PS_SetBaseFolder(runtime, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L306)
 
 <a id="function-function-mq3-botlib-l-script-ps-skipuntilstring-function-ps-skipuntilstring-script-string-src-mq3-botlib-l-script-ml-1454040790"></a>
 ### PS_SkipUntilString
@@ -1109,7 +1109,7 @@ function PS_SkipUntilString(script, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L261)
 
 <a id="function-function-mq3-botlib-l-script-ps-unreadlasttoken-function-ps-unreadlasttoken-script-src-mq3-botlib-l-script-ml-2086702391"></a>
 ### PS_UnreadLastToken
@@ -1123,7 +1123,7 @@ function PS_UnreadLastToken(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L262)
 
 <a id="function-function-mq3-botlib-l-script-ps-unreadtoken-function-ps-unreadtoken-script-token-src-mq3-botlib-l-script-ml-1387882280"></a>
 ### PS_UnreadToken
@@ -1138,7 +1138,7 @@ function PS_UnreadToken(script, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L263)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L263)
 
 - [mq3.botlib.l_script.Punctuation](Type-mq3-botlib-l-script-punctuation-1360470796.md) — struct
 <a id="function-function-mq3-botlib-l-script-punctuationfromnum-function-punctuationfromnum-script-num-src-mq3-botlib-l-script-ml-1583308925"></a>
@@ -1154,7 +1154,7 @@ function PunctuationFromNum(script, num)
 | `num` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L126)
 
 <a id="function-function-mq3-botlib-l-script-readsignedfloat-function-readsignedfloat-script-src-mq3-botlib-l-script-ml-1656420999"></a>
 ### ReadSignedFloat
@@ -1168,7 +1168,7 @@ function ReadSignedFloat(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L267)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L267)
 
 <a id="function-function-mq3-botlib-l-script-readsignedint-function-readsignedint-script-src-mq3-botlib-l-script-ml-1282859889"></a>
 ### ReadSignedInt
@@ -1182,7 +1182,7 @@ function ReadSignedInt(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L268)
 
 <a id="function-function-mq3-botlib-l-script-resetscript-function-resetscript-script-src-mq3-botlib-l-script-ml-475908347"></a>
 ### ResetScript
@@ -1196,7 +1196,7 @@ function ResetScript(script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L271)
 
 - [mq3.botlib.l_script.Runtime](Type-mq3-botlib-l-script-runtime-1157087200.md) — struct
 <a id="constant-constant-mq3-botlib-l-script-scfl-nobinarynumbers-const-scfl-nobinarynumbers-32-src-mq3-botlib-l-script-ml-1448255746"></a>
@@ -1207,7 +1207,7 @@ const SCFL_NOBINARYNUMBERS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L16)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-noerrors-const-scfl-noerrors-1-src-mq3-botlib-l-script-ml-1551570188"></a>
 ### SCFL_NOERRORS
@@ -1217,7 +1217,7 @@ const SCFL_NOERRORS = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L11)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-nonumbervalues-const-scfl-nonumbervalues-64-src-mq3-botlib-l-script-ml-715523827"></a>
 ### SCFL_NONUMBERVALUES
@@ -1227,7 +1227,7 @@ const SCFL_NONUMBERVALUES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L17)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-nostringescapechars-const-scfl-nostringescapechars-8-src-mq3-botlib-l-script-ml-1297941085"></a>
 ### SCFL_NOSTRINGESCAPECHARS
@@ -1237,7 +1237,7 @@ const SCFL_NOSTRINGESCAPECHARS = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L14)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-nostringwhitespaces-const-scfl-nostringwhitespaces-4-src-mq3-botlib-l-script-ml-2039984517"></a>
 ### SCFL_NOSTRINGWHITESPACES
@@ -1247,7 +1247,7 @@ const SCFL_NOSTRINGWHITESPACES = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L13)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-nowarnings-const-scfl-nowarnings-2-src-mq3-botlib-l-script-ml-1749217339"></a>
 ### SCFL_NOWARNINGS
@@ -1257,7 +1257,7 @@ const SCFL_NOWARNINGS = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L12)
 
 <a id="constant-constant-mq3-botlib-l-script-scfl-primitive-const-scfl-primitive-16-src-mq3-botlib-l-script-ml-439530110"></a>
 ### SCFL_PRIMITIVE
@@ -1267,7 +1267,7 @@ const SCFL_PRIMITIVE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L15)
 
 - [mq3.botlib.l_script.Script](Type-mq3-botlib-l-script-script-1635807543.md) — struct
 <a id="function-function-mq3-botlib-l-script-scripterror-function-scripterror-script-str-src-mq3-botlib-l-script-ml-1845000096"></a>
@@ -1283,7 +1283,7 @@ function ScriptError(script, str)
 | `str` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L109)
 
 <a id="function-function-mq3-botlib-l-script-scriptfromsource-function-scriptfromsource-runtime-source-src-mq3-botlib-l-script-ml-1037722225"></a>
 ### scriptFromSource
@@ -1298,7 +1298,7 @@ function scriptFromSource(runtime, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L280)
 
 - [mq3.botlib.l_script.ScriptHost](Type-mq3-botlib-l-script-scripthost-1666266081.md) — struct
 <a id="function-function-mq3-botlib-l-script-scriptskipto-function-scriptskipto-script-value-src-mq3-botlib-l-script-ml-1402119080"></a>
@@ -1314,7 +1314,7 @@ function ScriptSkipTo(script, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L274)
 
 <a id="function-function-mq3-botlib-l-script-scriptwarning-function-scriptwarning-script-str-src-mq3-botlib-l-script-ml-73129304"></a>
 ### ScriptWarning
@@ -1329,7 +1329,7 @@ function ScriptWarning(script, str)
 | `str` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L110)
 
 <a id="function-function-mq3-botlib-l-script-setscriptflags-function-setscriptflags-script-flags-src-mq3-botlib-l-script-ml-776058114"></a>
 ### SetScriptFlags
@@ -1344,7 +1344,7 @@ function SetScriptFlags(script, flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L269)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L269)
 
 <a id="function-function-mq3-botlib-l-script-setscriptpunctuations-function-setscriptpunctuations-script-p-src-mq3-botlib-l-script-ml-141938221"></a>
 ### SetScriptPunctuations
@@ -1359,7 +1359,7 @@ function SetScriptPunctuations(script, p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L125)
 
 <a id="function-function-mq3-botlib-l-script-span-function-span-script-start-count-src-mq3-botlib-l-script-ml-1282407396"></a>
 ### span
@@ -1375,7 +1375,7 @@ function span(script, start, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L101)
 
 <a id="function-function-mq3-botlib-l-script-stripdoublequotes-function-stripdoublequotes-string-src-mq3-botlib-l-script-ml-974980057"></a>
 ### StripDoubleQuotes
@@ -1389,7 +1389,7 @@ function StripDoubleQuotes(string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L265)
 
 <a id="function-function-mq3-botlib-l-script-stripsinglequotes-function-stripsinglequotes-string-src-mq3-botlib-l-script-ml-2025893099"></a>
 ### StripSingleQuotes
@@ -1403,7 +1403,7 @@ function StripSingleQuotes(string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L266)
 
 - [mq3.botlib.l_script.Token](Type-mq3-botlib-l-script-token-222951337.md) — struct
 <a id="function-function-mq3-botlib-l-script-topctoken-function-topctoken-token-src-mq3-botlib-l-script-ml-1553049111"></a>
@@ -1418,7 +1418,7 @@ function ToPCToken(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L311)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-binary-const-tt-binary-1024-src-mq3-botlib-l-script-ml-398524424"></a>
 ### TT_BINARY
@@ -1428,7 +1428,7 @@ const TT_BINARY = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L27)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-decimal-const-tt-decimal-8-src-mq3-botlib-l-script-ml-1419937379"></a>
 ### TT_DECIMAL
@@ -1438,7 +1438,7 @@ const TT_DECIMAL = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L24)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-float-const-tt-float-2048-src-mq3-botlib-l-script-ml-754257303"></a>
 ### TT_FLOAT
@@ -1448,7 +1448,7 @@ const TT_FLOAT = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L28)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-hex-const-tt-hex-256-src-mq3-botlib-l-script-ml-89601552"></a>
 ### TT_HEX
@@ -1458,7 +1458,7 @@ const TT_HEX = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L25)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-integer-const-tt-integer-4096-src-mq3-botlib-l-script-ml-1931116620"></a>
 ### TT_INTEGER
@@ -1468,7 +1468,7 @@ const TT_INTEGER = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L29)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-literal-const-tt-literal-2-src-mq3-botlib-l-script-ml-1973102573"></a>
 ### TT_LITERAL
@@ -1478,7 +1478,7 @@ const TT_LITERAL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L20)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-long-const-tt-long-8192-src-mq3-botlib-l-script-ml-37527265"></a>
 ### TT_LONG
@@ -1488,7 +1488,7 @@ const TT_LONG = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L30)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-name-const-tt-name-4-src-mq3-botlib-l-script-ml-614410197"></a>
 ### TT_NAME
@@ -1498,7 +1498,7 @@ const TT_NAME = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L22)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-number-const-tt-number-3-src-mq3-botlib-l-script-ml-1900268746"></a>
 ### TT_NUMBER
@@ -1508,7 +1508,7 @@ const TT_NUMBER = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L21)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-octal-const-tt-octal-512-src-mq3-botlib-l-script-ml-266099883"></a>
 ### TT_OCTAL
@@ -1518,7 +1518,7 @@ const TT_OCTAL = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L26)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-punctuation-const-tt-punctuation-5-src-mq3-botlib-l-script-ml-1253610976"></a>
 ### TT_PUNCTUATION
@@ -1528,7 +1528,7 @@ const TT_PUNCTUATION = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L23)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-string-const-tt-string-1-src-mq3-botlib-l-script-ml-1211792556"></a>
 ### TT_STRING
@@ -1538,7 +1538,7 @@ const TT_STRING = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L19)
 
 <a id="constant-constant-mq3-botlib-l-script-tt-unsigned-const-tt-unsigned-16384-src-mq3-botlib-l-script-ml-1442025713"></a>
 ### TT_UNSIGNED
@@ -1548,7 +1548,7 @@ const TT_UNSIGNED = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L31)
 
 <a id="function-function-mq3-botlib-l-script-wrappcsource-function-wrappcsource-runtime-source-src-mq3-botlib-l-script-ml-1921587321"></a>
 ### WrapPCSource
@@ -1565,4 +1565,4 @@ Explicit adapters used when a productive pc_parser source must be consumed throu
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L310)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L310)

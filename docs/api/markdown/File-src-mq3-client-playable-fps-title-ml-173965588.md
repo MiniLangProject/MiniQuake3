@@ -25,7 +25,7 @@ function create(mapName, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L18)
 
 <a id="function-function-mq3-client-playable-fps-title-fail-function-fail-message-src-mq3-client-playable-fps-title-ml-1271069423"></a>
 ### fail
@@ -39,7 +39,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L10)
 
 <a id="function-function-mq3-client-playable-fps-title-frame-function-frame-state-now-src-mq3-client-playable-fps-title-ml-443779021"></a>
 ### frame
@@ -56,7 +56,7 @@ Call exactly once after each presented frame. A string return value means the na
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L26)
 
 <a id="function-function-mq3-client-playable-fps-title-initialtitle-function-initialtitle-state-src-mq3-client-playable-fps-title-ml-1235990061"></a>
 ### initialTitle
@@ -70,7 +70,7 @@ function initialTitle(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L46)
 
 - [mq3.client.playable_fps_title.State](Type-mq3-client-playable-fps-title-state-931417205.md) — struct
 <a id="function-function-mq3-client-playable-fps-title-title-function-title-mapname-fps-src-mq3-client-playable-fps-title-ml-724630776"></a>
@@ -86,7 +86,7 @@ function title(mapName, fps)
 | `fps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-fps-title-update-interval-milliseconds-const-update-interval-milliseconds-500-src-mq3-client-playable-fps-title-ml-688857202"></a>
 ### UPDATE_INTERVAL_MILLISECONDS
@@ -96,4 +96,4 @@ const UPDATE_INTERVAL_MILLISECONDS = 500
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L6)

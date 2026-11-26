@@ -10,7 +10,7 @@ struct Submission
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ batches
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-dlightbits-dlightbits-src-mq3-renderer-surface-grid-ml-1743988423"></a>
 ### dlightBits
@@ -32,7 +32,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-flushes-flushes-src-mq3-renderer-surface-grid-ml-2059230799"></a>
 ### flushes
@@ -42,7 +42,7 @@ flushes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-heighttable-heighttable-src-mq3-renderer-surface-grid-ml-603594147"></a>
 ### heightTable
@@ -52,7 +52,7 @@ heightTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-numindexes-numindexes-src-mq3-renderer-surface-grid-ml-2019923759"></a>
 ### numIndexes
@@ -62,7 +62,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-numvertexes-numvertexes-src-mq3-renderer-surface-grid-ml-2048715895"></a>
 ### numVertexes
@@ -72,7 +72,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-grid-submission-widthtable-widthtable-src-mq3-renderer-surface-grid-ml-640887223"></a>
 ### widthTable
@@ -82,4 +82,4 @@ widthTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L11)

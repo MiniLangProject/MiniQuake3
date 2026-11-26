@@ -25,7 +25,7 @@ function distanceSquared(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_loop_doppler.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L11)
 
 - [mq3.audio.snd_loop_doppler.Doppler](Type-mq3-audio-snd-loop-doppler-doppler-1792889869.md) — struct
 <a id="function-function-mq3-audio-snd-loop-doppler-update-function-update-listenerorigin-origin-velocity-previousscale-consecutive-enabled-src-mq3-audio-snd-loop-doppler-ml-1829418103"></a>
@@ -45,7 +45,7 @@ function update(listenerOrigin, origin, velocity, previousScale, consecutive, en
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_loop_doppler.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L16)
 
 <a id="function-function-mq3-audio-snd-loop-doppler-validvector-function-validvector-value-src-mq3-audio-snd-loop-doppler-ml-1452154107"></a>
 ### validVector
@@ -59,4 +59,4 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_loop_doppler.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_doppler.ml#L10)

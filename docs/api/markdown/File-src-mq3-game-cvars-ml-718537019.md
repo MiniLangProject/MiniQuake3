@@ -26,7 +26,7 @@ function attach(level, buildDate)
 | `buildDate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L26)
 
 <a id="function-function-mq3-game-cvars-modulestate-function-modulestate-level-src-mq3-game-cvars-ml-1952350476"></a>
 ### moduleState
@@ -40,7 +40,7 @@ function moduleState(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L48)
 
 <a id="function-function-mq3-game-cvars-observecvar-function-observecvar-state-kind-index-key-value-src-mq3-game-cvars-ml-920422813"></a>
 ### observeCvar
@@ -58,7 +58,7 @@ function observeCvar(state, kind, index, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L52)
 
 <a id="function-function-mq3-game-cvars-rebind-function-rebind-level-state-src-mq3-game-cvars-ml-1205747123"></a>
 ### rebind
@@ -73,7 +73,7 @@ function rebind(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L38)
 
 <a id="function-function-mq3-game-cvars-register-function-register-level-src-mq3-game-cvars-ml-1715765482"></a>
 ### register
@@ -87,7 +87,7 @@ function register(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L167)
 
 <a id="function-function-mq3-game-cvars-remapteamshaders-function-remapteamshaders-level-src-mq3-game-cvars-ml-457204498"></a>
 ### remapTeamShaders
@@ -101,7 +101,7 @@ function remapTeamShaders(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L163)
 
 - [mq3.game.cvars.Row](Type-mq3-game-cvars-row-1047596923.md) — struct
 <a id="function-function-mq3-game-cvars-set-function-set-level-key-value-src-mq3-game-cvars-ml-821160706"></a>
@@ -118,7 +118,7 @@ function set(level, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L56)
 
 - [mq3.game.cvars.State](Type-mq3-game-cvars-state-907703542.md) — struct
 <a id="function-function-mq3-game-cvars-syncvalue-function-syncvalue-level-row-src-mq3-game-cvars-ml-613341856"></a>
@@ -134,7 +134,7 @@ function syncValue(level, row)
 | `row` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L60)
 
 <a id="function-function-mq3-game-cvars-update-function-update-level-src-mq3-game-cvars-ml-1323711670"></a>
 ### update
@@ -148,4 +148,4 @@ function update(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvars.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvars.ml#L185)

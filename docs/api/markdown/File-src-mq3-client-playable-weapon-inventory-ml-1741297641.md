@@ -22,7 +22,7 @@ function addAmmo(state, weapon, amount)
 | `amount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L114)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-ammodefinition-function-ammodefinition-classname-src-mq3-client-playable-weapon-inventory-ml-811584685"></a>
 ### ammoDefinition
@@ -36,7 +36,7 @@ function ammoDefinition(classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L71)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-ammofor-function-ammofor-state-weapon-src-mq3-client-playable-weapon-inventory-ml-197871569"></a>
 ### ammoFor
@@ -51,7 +51,7 @@ function ammoFor(state, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L109)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-consume-function-consume-state-weapon-amount-src-mq3-client-playable-weapon-inventory-ml-1628882199"></a>
 ### consume
@@ -67,7 +67,7 @@ function consume(state, weapon, amount)
 | `amount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L153)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-create-function-create-teammode-src-mq3-client-playable-weapon-inventory-ml-1962703304"></a>
 ### create
@@ -81,7 +81,7 @@ function create(teamMode)
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L91)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-cycle-function-cycle-state-direction-src-mq3-client-playable-weapon-inventory-ml-651272292"></a>
 ### cycle
@@ -96,7 +96,7 @@ function cycle(state, direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L185)
 
 - [mq3.client.playable_weapon_inventory.Definition](Type-mq3-client-playable-weapon-inventory-definition-1326086658.md) — struct
 <a id="function-function-mq3-client-playable-weapon-inventory-definitions-function-definitions-src-mq3-client-playable-weapon-inventory-ml-1713173734"></a>
@@ -109,7 +109,7 @@ function definitions()
 Quantities and giTag relationships are the stock baseq3 bg_itemlist entries.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L38)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-fail-function-fail-message-src-mq3-client-playable-weapon-inventory-ml-1208877513"></a>
 ### fail
@@ -123,7 +123,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L35)
 
 - [mq3.client.playable_weapon_inventory.Inventory](Type-mq3-client-playable-weapon-inventory-inventory-682321681.md) — struct
 <a id="function-function-mq3-client-playable-weapon-inventory-isweaponname-function-isweaponname-def-name-src-mq3-client-playable-weapon-inventory-ml-1336910872"></a>
@@ -139,7 +139,7 @@ function isWeaponName(def, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L51)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-max-ammo-const-max-ammo-200-src-mq3-client-playable-weapon-inventory-ml-942891629"></a>
 ### MAX_AMMO
@@ -149,7 +149,7 @@ const MAX_AMMO = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L6)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-max-weapons-const-max-weapons-16-src-mq3-client-playable-weapon-inventory-ml-26848938"></a>
 ### MAX_WEAPONS
@@ -159,7 +159,7 @@ const MAX_WEAPONS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L5)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-nextweapon-function-nextweapon-state-src-mq3-client-playable-weapon-inventory-ml-1498966847"></a>
 ### nextWeapon
@@ -173,7 +173,7 @@ function nextWeapon(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L201)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-outofammochange-function-outofammochange-state-src-mq3-client-playable-weapon-inventory-ml-1564473573"></a>
 ### outOfAmmoChange
@@ -189,7 +189,7 @@ Exact CG_OutOfAmmoChange preference: highest numbered selectable weapon, includi
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L206)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-owns-function-owns-state-weapon-src-mq3-client-playable-weapon-inventory-ml-1976522235"></a>
 ### owns
@@ -204,7 +204,7 @@ function owns(state, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L104)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-pickupammo-function-pickupammo-state-classname-countoverride-src-mq3-client-playable-weapon-inventory-ml-223730701"></a>
 ### pickupAmmo
@@ -220,7 +220,7 @@ function pickupAmmo(state, classname, countOverride)
 | `countOverride` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L144)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-pickupweapon-function-pickupweapon-state-name-countoverride-dropped-teammode-src-mq3-client-playable-weapon-inventory-ml-480872637"></a>
 ### pickupWeapon
@@ -240,7 +240,7 @@ countOverride follows g_items.c: zero uses bg_itemlist, a negative weapon count 
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L126)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-previousweapon-function-previousweapon-state-src-mq3-client-playable-weapon-inventory-ml-938204015"></a>
 ### previousWeapon
@@ -254,7 +254,7 @@ function previousWeapon(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L202)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-resetbaseloadout-function-resetbaseloadout-state-teammode-src-mq3-client-playable-weapon-inventory-ml-1395871973"></a>
 ### resetBaseLoadout
@@ -269,7 +269,7 @@ function resetBaseLoadout(state, teamMode)
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L80)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-respawn-function-respawn-state-teammode-src-mq3-client-playable-weapon-inventory-ml-2066500501"></a>
 ### respawn
@@ -286,7 +286,7 @@ Like ClientSpawn, transient weapons and ammo are reset while persistent spawn bo
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L98)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-select-function-select-state-weapon-src-mq3-client-playable-weapon-inventory-ml-217602331"></a>
 ### select
@@ -303,7 +303,7 @@ CG_Weapon_f allows direct selection of an owned weapon even when empty.
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L168)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-selectable-function-selectable-state-weapon-src-mq3-client-playable-weapon-inventory-ml-1108207903"></a>
 ### selectable
@@ -318,7 +318,7 @@ function selectable(state, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L162)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-selectdigit-function-selectdigit-state-digit-src-mq3-client-playable-weapon-inventory-ml-1977319434"></a>
 ### selectDigit
@@ -335,7 +335,7 @@ Baseq3's `weapon N` command maps number keys directly to weapon ids. It permits 
 | `digit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L178)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-validstate-function-validstate-state-src-mq3-client-playable-weapon-inventory-ml-1032645815"></a>
 ### validState
@@ -349,7 +349,7 @@ function validState(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L77)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-validweaponid-function-validweaponid-weapon-src-mq3-client-playable-weapon-inventory-ml-1463094960"></a>
 ### validWeaponId
@@ -363,7 +363,7 @@ function validWeaponId(weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L78)
 
 <a id="function-function-mq3-client-playable-weapon-inventory-weapondefinition-function-weapondefinition-value-src-mq3-client-playable-weapon-inventory-ml-813317983"></a>
 ### weaponDefinition
@@ -377,7 +377,7 @@ function weaponDefinition(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L61)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-bfg-const-wp-bfg-9-src-mq3-client-playable-weapon-inventory-ml-1682689068"></a>
 ### WP_BFG
@@ -387,7 +387,7 @@ const WP_BFG = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L16)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-gauntlet-const-wp-gauntlet-1-src-mq3-client-playable-weapon-inventory-ml-1787869096"></a>
 ### WP_GAUNTLET
@@ -397,7 +397,7 @@ const WP_GAUNTLET = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L8)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-grappling-hook-const-wp-grappling-hook-10-src-mq3-client-playable-weapon-inventory-ml-1930596120"></a>
 ### WP_GRAPPLING_HOOK
@@ -407,7 +407,7 @@ const WP_GRAPPLING_HOOK = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-grenade-launcher-const-wp-grenade-launcher-4-src-mq3-client-playable-weapon-inventory-ml-1118437323"></a>
 ### WP_GRENADE_LAUNCHER
@@ -417,7 +417,7 @@ const WP_GRENADE_LAUNCHER = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-lightning-const-wp-lightning-6-src-mq3-client-playable-weapon-inventory-ml-1365231255"></a>
 ### WP_LIGHTNING
@@ -427,7 +427,7 @@ const WP_LIGHTNING = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-machinegun-const-wp-machinegun-2-src-mq3-client-playable-weapon-inventory-ml-1339744777"></a>
 ### WP_MACHINEGUN
@@ -437,7 +437,7 @@ const WP_MACHINEGUN = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L9)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-none-const-wp-none-0-src-mq3-client-playable-weapon-inventory-ml-2082962511"></a>
 ### WP_NONE
@@ -447,7 +447,7 @@ const WP_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L7)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-plasmagun-const-wp-plasmagun-8-src-mq3-client-playable-weapon-inventory-ml-907566501"></a>
 ### WP_PLASMAGUN
@@ -457,7 +457,7 @@ const WP_PLASMAGUN = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-railgun-const-wp-railgun-7-src-mq3-client-playable-weapon-inventory-ml-624997540"></a>
 ### WP_RAILGUN
@@ -467,7 +467,7 @@ const WP_RAILGUN = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-rocket-launcher-const-wp-rocket-launcher-5-src-mq3-client-playable-weapon-inventory-ml-94196820"></a>
 ### WP_ROCKET_LAUNCHER
@@ -477,7 +477,7 @@ const WP_ROCKET_LAUNCHER = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-weapon-inventory-wp-shotgun-const-wp-shotgun-3-src-mq3-client-playable-weapon-inventory-ml-1095946956"></a>
 ### WP_SHOTGUN
@@ -487,4 +487,4 @@ const WP_SHOTGUN = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_inventory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_inventory.ml#L10)

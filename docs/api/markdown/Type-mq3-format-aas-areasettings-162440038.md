@@ -10,7 +10,7 @@ struct AreaSettings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 ## Members
 
@@ -22,7 +22,7 @@ cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-clusterareanum-clusterareanum-src-mq3-format-aas-ml-162957895"></a>
 ### clusterAreaNum
@@ -32,7 +32,7 @@ clusterAreaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-contents-contents-src-mq3-format-aas-ml-1298242425"></a>
 ### contents
@@ -42,7 +42,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-firstreachablearea-firstreachablearea-src-mq3-format-aas-ml-1335604441"></a>
 ### firstReachableArea
@@ -52,7 +52,7 @@ firstReachableArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-flags-flags-src-mq3-format-aas-ml-1175603209"></a>
 ### flags
@@ -62,7 +62,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-numreachableareas-numreachableareas-src-mq3-format-aas-ml-455500681"></a>
 ### numReachableAreas
@@ -72,7 +72,7 @@ numReachableAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)
 
 <a id="field-field-mq3-format-aas-areasettings-presencetype-presencetype-src-mq3-format-aas-ml-1413703663"></a>
 ### presenceType
@@ -82,4 +82,4 @@ presenceType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L120)

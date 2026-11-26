@@ -10,7 +10,7 @@ struct Binding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L12)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-binding-path-path-src-mq3-renderer-qvm-video-materials-ml-1052595770"></a>
 ### path
@@ -32,7 +32,7 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L12)
 
 <a id="field-field-mq3-renderer-qvm-video-materials-binding-slot-slot-src-mq3-renderer-qvm-video-materials-ml-636422348"></a>
 ### slot
@@ -42,4 +42,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_video_materials.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_video_materials.ml#L12)

@@ -10,7 +10,7 @@ struct Stream
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L10)
 
 <a id="field-field-mq3-audio-snd-wavelet-runtime-stream-data-data-src-mq3-audio-snd-wavelet-runtime-ml-2115321873"></a>
 ### data
@@ -32,4 +32,4 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_wavelet_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_wavelet_runtime.ml#L10)

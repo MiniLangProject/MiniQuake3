@@ -10,7 +10,7 @@ struct Metrics
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horiadvance-horiadvance-src-mq3-renderer-tr-font-runtime-ml-1300085916"></a>
 ### horiAdvance
@@ -32,7 +32,7 @@ horiAdvance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horibearingx-horibearingx-src-mq3-renderer-tr-font-runtime-ml-1049235360"></a>
 ### horiBearingX
@@ -42,7 +42,7 @@ horiBearingX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-horibearingy-horibearingy-src-mq3-renderer-tr-font-runtime-ml-633231210"></a>
 ### horiBearingY
@@ -52,7 +52,7 @@ horiBearingY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-font-runtime-metrics-width-width-src-mq3-renderer-tr-font-runtime-ml-137370600"></a>
 ### width
@@ -62,4 +62,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_font_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_font_runtime.ml#L16)

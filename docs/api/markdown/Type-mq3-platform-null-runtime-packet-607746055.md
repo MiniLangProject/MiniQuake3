@@ -10,7 +10,7 @@ struct Packet
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L7)
 
 <a id="field-field-mq3-platform-null-runtime-packet-destination-destination-src-mq3-platform-null-runtime-ml-1046660139"></a>
 ### destination
@@ -32,4 +32,4 @@ destination
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L7)

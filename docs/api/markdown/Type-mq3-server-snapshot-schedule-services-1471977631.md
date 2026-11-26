@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L15)
 
 <a id="field-field-mq3-server-snapshot-schedule-services-sendclientsnapshotfn-sendclientsnapshotfn-src-mq3-server-snapshot-schedule-ml-700994255"></a>
 ### sendClientSnapshotFn
@@ -32,7 +32,7 @@ sendClientSnapshotFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L15)
 
 <a id="field-field-mq3-server-snapshot-schedule-services-transmitnextfragmentfn-transmitnextfragmentfn-src-mq3-server-snapshot-schedule-ml-1852591963"></a>
 ### transmitNextFragmentFn
@@ -42,4 +42,4 @@ transmitNextFragmentFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L15)

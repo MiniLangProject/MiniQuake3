@@ -10,7 +10,7 @@ struct Package
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ archive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L20)
 
 <a id="field-field-mq3-client-remote-pure-package-purechecksum-purechecksum-src-mq3-client-remote-pure-ml-1796583867"></a>
 ### pureChecksum
@@ -32,4 +32,4 @@ pureChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L20)

@@ -10,7 +10,7 @@ struct EntityNumbers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L25)
 
 <a id="field-field-mq3-server-snapshot-build-entitynumbers-values-values-src-mq3-server-snapshot-build-ml-1013143664"></a>
 ### values
@@ -32,4 +32,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L25)

@@ -10,7 +10,7 @@ struct Bot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ arriveTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L59)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-attackawaytime-attackawaytime-src-mq3-game-bot-voice-commands-ml-548034552"></a>
 ### attackawayTime
@@ -32,7 +32,7 @@ attackawayTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L54)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-client-client-src-mq3-game-bot-voice-commands-ml-716926888"></a>
 ### client
@@ -42,7 +42,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L42)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-cs-cs-src-mq3-game-bot-voice-commands-ml-1443744882"></a>
 ### cs
@@ -52,7 +52,7 @@ cs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L43)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-decisionmaker-decisionmaker-src-mq3-game-bot-voice-commands-ml-1268777610"></a>
 ### decisionmaker
@@ -62,7 +62,7 @@ decisionmaker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L46)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-defendawaytime-defendawaytime-src-mq3-game-bot-voice-commands-ml-1141669956"></a>
 ### defendawayTime
@@ -72,7 +72,7 @@ defendawayTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L55)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-formationdist-formationdist-src-mq3-game-bot-voice-commands-ml-1978976266"></a>
 ### formationDist
@@ -82,7 +82,7 @@ formationDist
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L61)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-harvestawaytime-harvestawaytime-src-mq3-game-bot-voice-commands-ml-1422117778"></a>
 ### harvestawayTime
@@ -92,7 +92,7 @@ harvestawayTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L53)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-lastgoalltgtype-lastgoalltgtype-src-mq3-game-bot-voice-commands-ml-697623658"></a>
 ### lastgoalLtgtype
@@ -102,7 +102,7 @@ lastgoalLtgtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L57)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-leadtime-leadtime-src-mq3-game-bot-voice-commands-ml-51425760"></a>
 ### leadTime
@@ -112,7 +112,7 @@ leadTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L56)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-ltgtype-ltgtype-src-mq3-game-bot-voice-commands-ml-1428113382"></a>
 ### ltgtype
@@ -122,7 +122,7 @@ ltgtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L50)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-ordered-ordered-src-mq3-game-bot-voice-commands-ml-134072482"></a>
 ### ordered
@@ -132,7 +132,7 @@ ordered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L47)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-ordertime-ordertime-src-mq3-game-bot-voice-commands-ml-1521322122"></a>
 ### orderTime
@@ -142,7 +142,7 @@ orderTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L48)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-rushbaseawaytime-rushbaseawaytime-src-mq3-game-bot-voice-commands-ml-1945657754"></a>
 ### rushbaseawayTime
@@ -152,7 +152,7 @@ rushbaseawayTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L62)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-team-team-src-mq3-game-bot-voice-commands-ml-626326304"></a>
 ### team
@@ -162,7 +162,7 @@ team
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L44)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teamgoal-teamgoal-src-mq3-game-bot-voice-commands-ml-801079122"></a>
 ### teamgoal
@@ -172,7 +172,7 @@ teamgoal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L52)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teamgoaltime-teamgoaltime-src-mq3-game-bot-voice-commands-ml-672113468"></a>
 ### teamgoalTime
@@ -182,7 +182,7 @@ teamgoalTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L51)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teamleader-teamleader-src-mq3-game-bot-voice-commands-ml-1469005394"></a>
 ### teamleader
@@ -192,7 +192,7 @@ teamleader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L45)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teammate-teammate-src-mq3-game-bot-voice-commands-ml-1262165502"></a>
 ### teammate
@@ -202,7 +202,7 @@ teammate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L58)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teammatevisibletime-teammatevisibletime-src-mq3-game-bot-voice-commands-ml-385496958"></a>
 ### teammatevisibleTime
@@ -212,7 +212,7 @@ teammatevisibleTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L60)
 
 <a id="field-field-mq3-game-bot-voice-commands-bot-teammessagetime-teammessagetime-src-mq3-game-bot-voice-commands-ml-1798577030"></a>
 ### teammessageTime
@@ -222,4 +222,4 @@ teammessageTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L49)

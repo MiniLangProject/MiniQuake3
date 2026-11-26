@@ -10,7 +10,7 @@ struct ItemInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-inventoryindex-inventoryindex-src-mq3-botlib-ai-item-weights-ml-529414254"></a>
 ### inventoryIndex
@@ -32,7 +32,7 @@ inventoryIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-maxs-maxs-src-mq3-botlib-ai-item-weights-ml-569238792"></a>
 ### maxs
@@ -42,7 +42,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-mins-mins-src-mq3-botlib-ai-item-weights-ml-1820221332"></a>
 ### mins
@@ -52,7 +52,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-model-model-src-mq3-botlib-ai-item-weights-ml-198836270"></a>
 ### model
@@ -62,7 +62,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-modelindex-modelindex-src-mq3-botlib-ai-item-weights-ml-568682100"></a>
 ### modelIndex
@@ -72,7 +72,7 @@ modelIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-name-name-src-mq3-botlib-ai-item-weights-ml-1538813028"></a>
 ### name
@@ -82,7 +82,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-number-number-src-mq3-botlib-ai-item-weights-ml-1715246952"></a>
 ### number
@@ -92,7 +92,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-respawntime-respawntime-src-mq3-botlib-ai-item-weights-ml-1756732658"></a>
 ### respawnTime
@@ -102,7 +102,7 @@ respawnTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-item-weights-iteminfo-type-type-src-mq3-botlib-ai-item-weights-ml-2067866046"></a>
 ### type
@@ -112,4 +112,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L21)

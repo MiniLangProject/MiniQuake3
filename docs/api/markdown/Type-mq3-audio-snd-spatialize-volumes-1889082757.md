@@ -10,7 +10,7 @@ struct Volumes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ attenuation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 <a id="field-field-mq3-audio-snd-spatialize-volumes-distance-distance-src-mq3-audio-snd-spatialize-ml-445296214"></a>
 ### distance
@@ -32,7 +32,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 <a id="field-field-mq3-audio-snd-spatialize-volumes-dot-dot-src-mq3-audio-snd-spatialize-ml-1808691668"></a>
 ### dot
@@ -42,7 +42,7 @@ dot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 <a id="field-field-mq3-audio-snd-spatialize-volumes-left-left-src-mq3-audio-snd-spatialize-ml-528683822"></a>
 ### left
@@ -52,7 +52,7 @@ left
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)
 
 <a id="field-field-mq3-audio-snd-spatialize-volumes-right-right-src-mq3-audio-snd-spatialize-ml-1283055236"></a>
 ### right
@@ -62,4 +62,4 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_spatialize.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_spatialize.ml#L11)

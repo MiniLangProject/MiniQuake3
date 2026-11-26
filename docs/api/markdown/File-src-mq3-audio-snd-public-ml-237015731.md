@@ -16,7 +16,7 @@ function declarationNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L5)
 
 <a id="function-function-mq3-audio-snd-public-soundcommandkind-function-soundcommandkind-name-src-mq3-audio-snd-public-ml-1413523957"></a>
 ### soundCommandKind
@@ -30,7 +30,7 @@ function soundCommandKind(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L8)
 
 <a id="function-function-mq3-audio-snd-public-validentity-function-validentity-entity-src-mq3-audio-snd-public-ml-2113154263"></a>
 ### validEntity
@@ -44,7 +44,7 @@ function validEntity(entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L7)
 
 <a id="function-function-mq3-audio-snd-public-validrawformat-function-validrawformat-rate-width-channels-src-mq3-audio-snd-public-ml-719935388"></a>
 ### validRawFormat
@@ -60,4 +60,4 @@ function validRawFormat(rate, width, channels)
 | `channels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_public.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_public.ml#L6)

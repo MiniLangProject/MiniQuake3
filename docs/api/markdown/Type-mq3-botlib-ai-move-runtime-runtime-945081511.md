@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)
 
 ## Members
 
@@ -22,7 +22,7 @@ aas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-pools-pools-src-mq3-botlib-ai-move-runtime-ml-589321279"></a>
 ### pools
@@ -32,7 +32,7 @@ pools
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-router-router-src-mq3-botlib-ai-move-runtime-ml-1174718501"></a>
 ### router
@@ -42,7 +42,7 @@ router
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)
 
 <a id="field-field-mq3-botlib-ai-move-runtime-runtime-services-services-src-mq3-botlib-ai-move-runtime-ml-26271975"></a>
 ### services
@@ -52,4 +52,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_move_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_move_runtime.ml#L64)

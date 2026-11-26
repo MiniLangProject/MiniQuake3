@@ -23,7 +23,7 @@ const DEFAULT_SND_VOLUME = 204
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L10)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-fail-function-fail-message-src-mq3-audio-snd-paint-pipeline-ml-1247256611"></a>
 ### fail
@@ -37,7 +37,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L12)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-monosamples-function-monosamples-sound-src-mq3-audio-snd-paint-pipeline-ml-1885301663"></a>
 ### monoSamples
@@ -51,7 +51,7 @@ function monoSamples(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L18)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-nextpoweroftwo-function-nextpoweroftwo-value-src-mq3-audio-snd-paint-pipeline-ml-1379531725"></a>
 ### nextPowerOfTwo
@@ -65,7 +65,7 @@ function nextPowerOfTwo(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L125)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintloop-function-paintloop-paint-sound-paintedtime-count-bufferoffset-leftvolume-rightvolume-sndvolume-src-mq3-audio-snd-paint-pipeline-ml-822086161"></a>
 ### paintLoop
@@ -86,7 +86,7 @@ function paintLoop(paint, sound, paintedTime, count, bufferOffset, leftVolume, r
 | `sndVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L50)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintmonoloopdoppler-function-paintmonoloopdoppler-paint-samples-frames-paintedtime-count-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-paint-pipeline-ml-1945456588"></a>
 ### paintMonoLoopDoppler
@@ -111,7 +111,7 @@ function paintMonoLoopDoppler(paint, samples, frames, paintedTime, count, buffer
 | `oldDopplerScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L105)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintmonooneshot-function-paintmonooneshot-paint-samples-frames-sampleoffset-count-bufferoffset-leftvolume-rightvolume-sndvolume-src-mq3-audio-snd-paint-pipeline-ml-1337657182"></a>
 ### paintMonoOneShot
@@ -133,7 +133,7 @@ function paintMonoOneShot(paint, samples, frames, sampleOffset, count, bufferOff
 | `sndVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L42)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintoneshot-function-paintoneshot-paint-sound-sampleoffset-count-bufferoffset-leftvolume-rightvolume-sndvolume-src-mq3-audio-snd-paint-pipeline-ml-541846340"></a>
 ### paintOneShot
@@ -154,7 +154,7 @@ function paintOneShot(paint, sound, sampleOffset, count, bufferOffset, leftVolum
 | `sndVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L33)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintraw-function-paintraw-paint-left-right-bufferoffset-count-volume-src-mq3-audio-snd-paint-pipeline-ml-1759908197"></a>
 ### paintRaw
@@ -173,7 +173,7 @@ function paintRaw(paint, left, right, bufferOffset, count, volume)
 | `volume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L116)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintsfxloop-function-paintsfxloop-paint-sound-compressed-paintedtime-count-bufferoffset-leftvolume-rightvolume-sndvolume-src-mq3-audio-snd-paint-pipeline-ml-1722702750"></a>
 ### paintSfxLoop
@@ -195,7 +195,7 @@ function paintSfxLoop(paint, sound, compressed, paintedTime, count, bufferOffset
 | `sndVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L74)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintsfxloopdoppler-function-paintsfxloopdoppler-paint-sound-compressed-paintedtime-count-bufferoffset-leftvolume-rightvolume-sndvolume-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-paint-pipeline-ml-82153631"></a>
 ### paintSfxLoopDoppler
@@ -220,7 +220,7 @@ function paintSfxLoopDoppler(paint, sound, compressed, paintedTime, count, buffe
 | `oldDopplerScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L86)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-paintsfxoneshot-function-paintsfxoneshot-paint-sound-compressed-sampleoffset-count-bufferoffset-leftvolume-rightvolume-sndvolume-src-mq3-audio-snd-paint-pipeline-ml-173582515"></a>
 ### paintSfxOneShot
@@ -242,7 +242,7 @@ function paintSfxOneShot(paint, sound, compressed, sampleOffset, count, bufferOf
 | `sndVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L67)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-signed16-function-signed16-data-offset-src-mq3-audio-snd-paint-pipeline-ml-1870672989"></a>
 ### signed16
@@ -257,7 +257,7 @@ function signed16(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L14)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-soundframes-function-soundframes-sound-compressed-src-mq3-audio-snd-paint-pipeline-ml-1293288218"></a>
 ### soundFrames
@@ -272,7 +272,7 @@ function soundFrames(sound, compressed)
 | `compressed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L62)
 
 <a id="function-function-mq3-audio-snd-paint-pipeline-transfer16-function-transfer16-paint-frames-src-mq3-audio-snd-paint-pipeline-ml-1903807576"></a>
 ### transfer16
@@ -287,4 +287,4 @@ function transfer16(paint, frames)
 | `frames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_paint_pipeline.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_paint_pipeline.ml#L129)

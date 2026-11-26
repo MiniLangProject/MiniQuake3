@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L25)
 
 <a id="field-field-mq3-client-cl-console-services-crosshairplayerfn-crosshairplayerfn-src-mq3-client-cl-console-ml-198940877"></a>
 ### crosshairPlayerFn
@@ -32,7 +32,7 @@ crosshairPlayerFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L25)
 
 <a id="field-field-mq3-client-cl-console-services-lastattackerfn-lastattackerfn-src-mq3-client-cl-console-ml-1613484019"></a>
 ### lastAttackerFn
@@ -42,7 +42,7 @@ lastAttackerFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L25)
 
 <a id="field-field-mq3-client-cl-console-services-startdemoloopfn-startdemoloopfn-src-mq3-client-cl-console-ml-1978232077"></a>
 ### startDemoLoopFn
@@ -52,4 +52,4 @@ startDemoLoopFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L25)

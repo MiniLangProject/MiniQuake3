@@ -10,7 +10,7 @@ struct FaceSurface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L8)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-indexes-indexes-src-mq3-renderer-surface-mesh-ml-1703149093"></a>
 ### indexes
@@ -32,7 +32,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L8)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-normal-normal-src-mq3-renderer-surface-mesh-ml-302969583"></a>
 ### normal
@@ -42,7 +42,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L8)
 
 <a id="field-field-mq3-renderer-surface-mesh-facesurface-points-points-src-mq3-renderer-surface-mesh-ml-1233188127"></a>
 ### points
@@ -52,4 +52,4 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L8)

@@ -10,7 +10,7 @@ struct DebugPolygon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L23)
 
 <a id="field-field-mq3-botlib-server-imports-debugpolygon-inuse-inuse-src-mq3-botlib-server-imports-ml-368818112"></a>
 ### inuse
@@ -32,7 +32,7 @@ inuse
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L23)
 
 <a id="field-field-mq3-botlib-server-imports-debugpolygon-points-points-src-mq3-botlib-server-imports-ml-1514280338"></a>
 ### points
@@ -42,4 +42,4 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L23)

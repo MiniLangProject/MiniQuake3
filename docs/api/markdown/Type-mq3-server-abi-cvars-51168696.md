@@ -10,7 +10,7 @@ struct Cvars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 ## Members
 
@@ -22,7 +22,7 @@ allowDownload
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-floodprotect-floodprotect-src-mq3-server-abi-ml-1030442946"></a>
 ### floodProtect
@@ -32,7 +32,7 @@ floodProtect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-fps-fps-src-mq3-server-abi-ml-1845915736"></a>
 ### fps
@@ -42,7 +42,7 @@ fps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-gametype-gametype-src-mq3-server-abi-ml-1018056524"></a>
 ### gametype
@@ -52,7 +52,7 @@ gametype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-hostname-hostname-src-mq3-server-abi-ml-1177527946"></a>
 ### hostname
@@ -62,7 +62,7 @@ hostname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-killserver-killserver-src-mq3-server-abi-ml-612777538"></a>
 ### killserver
@@ -72,7 +72,7 @@ killserver
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-lanforcerate-lanforcerate-src-mq3-server-abi-ml-944280336"></a>
 ### lanForceRate
@@ -82,7 +82,7 @@ lanForceRate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-mapchecksum-mapchecksum-src-mq3-server-abi-ml-1348861188"></a>
 ### mapChecksum
@@ -92,7 +92,7 @@ mapChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-mapname-mapname-src-mq3-server-abi-ml-66405300"></a>
 ### mapname
@@ -102,7 +102,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-masters-masters-src-mq3-server-abi-ml-261934916"></a>
 ### masters
@@ -112,7 +112,7 @@ masters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-maxclients-maxclients-src-mq3-server-abi-ml-1985876380"></a>
 ### maxclients
@@ -122,7 +122,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-maxping-maxping-src-mq3-server-abi-ml-363546268"></a>
 ### maxPing
@@ -132,7 +132,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-maxrate-maxrate-src-mq3-server-abi-ml-1334319640"></a>
 ### maxRate
@@ -142,7 +142,7 @@ maxRate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-minping-minping-src-mq3-server-abi-ml-2103471032"></a>
 ### minPing
@@ -152,7 +152,7 @@ minPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-padpackets-padpackets-src-mq3-server-abi-ml-1859172868"></a>
 ### padPackets
@@ -162,7 +162,7 @@ padPackets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-privateclients-privateclients-src-mq3-server-abi-ml-884560682"></a>
 ### privateClients
@@ -172,7 +172,7 @@ privateClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-privatepassword-privatepassword-src-mq3-server-abi-ml-605858524"></a>
 ### privatePassword
@@ -182,7 +182,7 @@ privatePassword
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-pure-pure-src-mq3-server-abi-ml-1801546812"></a>
 ### pure
@@ -192,7 +192,7 @@ pure
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-rconpassword-rconpassword-src-mq3-server-abi-ml-1437870354"></a>
 ### rconPassword
@@ -202,7 +202,7 @@ rconPassword
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-reconnectlimit-reconnectlimit-src-mq3-server-abi-ml-600765840"></a>
 ### reconnectlimit
@@ -212,7 +212,7 @@ reconnectlimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-serverid-serverid-src-mq3-server-abi-ml-1774085212"></a>
 ### serverid
@@ -222,7 +222,7 @@ serverid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-showloss-showloss-src-mq3-server-abi-ml-1311928972"></a>
 ### showloss
@@ -232,7 +232,7 @@ showloss
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-strictauth-strictauth-src-mq3-server-abi-ml-1462512034"></a>
 ### strictAuth
@@ -242,7 +242,7 @@ strictAuth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-timeout-timeout-src-mq3-server-abi-ml-843255480"></a>
 ### timeout
@@ -252,7 +252,7 @@ timeout
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)
 
 <a id="field-field-mq3-server-abi-cvars-zombietime-zombietime-src-mq3-server-abi-ml-1188159074"></a>
 ### zombietime
@@ -262,4 +262,4 @@ zombietime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L111)

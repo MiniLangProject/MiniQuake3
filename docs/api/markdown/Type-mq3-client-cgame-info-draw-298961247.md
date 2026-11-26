@@ -10,7 +10,7 @@ struct Draw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ asset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-height-height-src-mq3-client-cgame-info-ml-806122535"></a>
 ### height
@@ -32,7 +32,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-kind-kind-src-mq3-client-cgame-info-ml-1191082189"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-text-text-src-mq3-client-cgame-info-ml-1603546607"></a>
 ### text
@@ -52,7 +52,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-width-width-src-mq3-client-cgame-info-ml-596196557"></a>
 ### width
@@ -62,7 +62,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-x-x-src-mq3-client-cgame-info-ml-373546241"></a>
 ### x
@@ -72,7 +72,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)
 
 <a id="field-field-mq3-client-cgame-info-draw-y-y-src-mq3-client-cgame-info-ml-2145411605"></a>
 ### y
@@ -82,4 +82,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L17)

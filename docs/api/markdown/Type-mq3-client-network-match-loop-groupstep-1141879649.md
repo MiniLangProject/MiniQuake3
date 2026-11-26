@@ -10,7 +10,7 @@ struct GroupStep
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ processed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)
 
 <a id="field-field-mq3-client-network-match-loop-groupstep-runtimeindex-runtimeindex-src-mq3-client-network-match-loop-ml-1344483734"></a>
 ### runtimeIndex
@@ -32,7 +32,7 @@ runtimeIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)
 
 <a id="field-field-mq3-client-network-match-loop-groupstep-step-step-src-mq3-client-network-match-loop-ml-1913438518"></a>
 ### step
@@ -42,4 +42,4 @@ step
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L21)

@@ -10,7 +10,7 @@ struct PortalCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-generation-generation-src-mq3-botlib-aas-routing-cache-ml-314991655"></a>
 ### generation
@@ -32,7 +32,7 @@ generation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-goalareanum-goalareanum-src-mq3-botlib-aas-routing-cache-ml-2124360455"></a>
 ### goalAreaNum
@@ -42,7 +42,7 @@ goalAreaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-reachabilities-reachabilities-src-mq3-botlib-aas-routing-cache-ml-1931482297"></a>
 ### reachabilities
@@ -52,7 +52,7 @@ reachabilities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-serial-serial-src-mq3-botlib-aas-routing-cache-ml-1359065159"></a>
 ### serial
@@ -62,7 +62,7 @@ serial
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-travelflags-travelflags-src-mq3-botlib-aas-routing-cache-ml-1205924143"></a>
 ### travelFlags
@@ -72,7 +72,7 @@ travelFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalcache-traveltimes-traveltimes-src-mq3-botlib-aas-routing-cache-ml-519577015"></a>
 ### travelTimes
@@ -82,4 +82,4 @@ travelTimes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L30)

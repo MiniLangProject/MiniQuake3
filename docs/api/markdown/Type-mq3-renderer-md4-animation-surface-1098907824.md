@@ -10,7 +10,7 @@ struct Surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 <a id="field-field-mq3-renderer-md4-animation-surface-triangles-triangles-src-mq3-renderer-md4-animation-ml-539099760"></a>
 ### triangles
@@ -32,7 +32,7 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)
 
 <a id="field-field-mq3-renderer-md4-animation-surface-vertices-vertices-src-mq3-renderer-md4-animation-ml-1842084874"></a>
 ### vertices
@@ -42,4 +42,4 @@ vertices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L11)

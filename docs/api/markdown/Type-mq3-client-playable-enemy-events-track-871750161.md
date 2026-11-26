@@ -10,7 +10,7 @@ struct Track
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-events-track-actionsince-actionsince-src-mq3-client-playable-enemy-events-ml-1773854330"></a>
 ### actionSince
@@ -32,7 +32,7 @@ actionSince
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-events-track-alive-alive-src-mq3-client-playable-enemy-events-ml-2042915402"></a>
 ### alive
@@ -42,7 +42,7 @@ alive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-events-track-health-health-src-mq3-client-playable-enemy-events-ml-2047893878"></a>
 ### health
@@ -52,7 +52,7 @@ health
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)
 
 <a id="field-field-mq3-client-playable-enemy-events-track-origin-origin-src-mq3-client-playable-enemy-events-ml-224414622"></a>
 ### origin
@@ -62,4 +62,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L17)

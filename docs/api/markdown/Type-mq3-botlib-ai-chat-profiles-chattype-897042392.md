@@ -10,7 +10,7 @@ struct ChatType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ messages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L28)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-chattype-name-name-src-mq3-botlib-ai-chat-profiles-ml-1985375409"></a>
 ### name
@@ -32,4 +32,4 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L28)

@@ -39,7 +39,7 @@ function cheatsOk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L27)
 
 <a id="function-function-mq3-game-utility-commands-give-function-give-level-ent-argv-src-mq3-game-utility-commands-ml-1727088847"></a>
 ### give
@@ -55,7 +55,7 @@ function give(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L54)
 
 <a id="function-function-mq3-game-utility-commands-god-function-god-level-ent-src-mq3-game-utility-commands-ml-99440033"></a>
 ### god
@@ -70,7 +70,7 @@ function god(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L100)
 
 <a id="function-function-mq3-game-utility-commands-kill-function-kill-level-ent-src-mq3-game-utility-commands-ml-855012329"></a>
 ### kill
@@ -85,7 +85,7 @@ function kill(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L149)
 
 <a id="function-function-mq3-game-utility-commands-levelshot-function-levelshot-level-ent-src-mq3-game-utility-commands-ml-1389349949"></a>
 ### levelshot
@@ -100,7 +100,7 @@ function levelshot(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L123)
 
 <a id="function-function-mq3-game-utility-commands-noclip-function-noclip-level-ent-src-mq3-game-utility-commands-ml-886016401"></a>
 ### noclip
@@ -115,7 +115,7 @@ function noclip(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L114)
 
 <a id="function-function-mq3-game-utility-commands-notarget-function-notarget-level-ent-src-mq3-game-utility-commands-ml-1274736257"></a>
 ### notarget
@@ -130,7 +130,7 @@ function notarget(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L107)
 
 <a id="function-function-mq3-game-utility-commands-setviewpos-function-setviewpos-level-ent-argv-src-mq3-game-utility-commands-ml-2049844847"></a>
 ### setViewpos
@@ -146,7 +146,7 @@ function setViewpos(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L156)
 
 <a id="function-function-mq3-game-utility-commands-stats-function-stats-level-ent-src-mq3-game-utility-commands-ml-80388627"></a>
 ### stats
@@ -161,7 +161,7 @@ function stats(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L168)
 
 <a id="function-function-mq3-game-utility-commands-teamtask-function-teamtask-level-ent-argv-src-mq3-game-utility-commands-ml-886612863"></a>
 ### teamTask
@@ -177,7 +177,7 @@ function teamTask(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L136)
 
 <a id="function-function-mq3-game-utility-commands-utilityfinditem-function-utilityfinditem-name-src-mq3-game-utility-commands-ml-1772081585"></a>
 ### utilityFindItem
@@ -191,7 +191,7 @@ function utilityFindItem(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L38)
 
 <a id="function-function-mq3-game-utility-commands-utilityinfodiagnostic-function-utilityinfodiagnostic-level-message-src-mq3-game-utility-commands-ml-295682813"></a>
 ### utilityInfoDiagnostic
@@ -206,7 +206,7 @@ function utilityInfoDiagnostic(level, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L131)
 
 <a id="function-function-mq3-game-utility-commands-utilitysend-function-utilitysend-level-ent-message-src-mq3-game-utility-commands-ml-1418839774"></a>
 ### utilitySend
@@ -222,4 +222,4 @@ function utilitySend(level, ent, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/utility_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/utility_commands.ml#L21)

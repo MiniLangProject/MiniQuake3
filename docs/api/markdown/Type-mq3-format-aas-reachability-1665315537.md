@@ -10,7 +10,7 @@ struct Reachability
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-edgenum-edgenum-src-mq3-format-aas-ml-1673484050"></a>
 ### edgeNum
@@ -32,7 +32,7 @@ edgeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-facenum-facenum-src-mq3-format-aas-ml-862931874"></a>
 ### faceNum
@@ -42,7 +42,7 @@ faceNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-finish-finish-src-mq3-format-aas-ml-987964260"></a>
 ### finish
@@ -52,7 +52,7 @@ finish
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-start-start-src-mq3-format-aas-ml-1316519190"></a>
 ### start
@@ -62,7 +62,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-traveltime-traveltime-src-mq3-format-aas-ml-1881489840"></a>
 ### travelTime
@@ -72,7 +72,7 @@ travelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)
 
 <a id="field-field-mq3-format-aas-reachability-traveltype-traveltype-src-mq3-format-aas-ml-408034862"></a>
 ### travelType
@@ -82,4 +82,4 @@ travelType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L121)

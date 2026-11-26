@@ -10,7 +10,7 @@ struct Loader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L27)
 
 <a id="field-field-mq3-botlib-ai-characters-loader-readfn-readfn-src-mq3-botlib-ai-characters-ml-2035601818"></a>
 ### readFn
@@ -32,4 +32,4 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L27)

@@ -29,7 +29,7 @@ function broadcastTeamChange(level, client, oldTeam)
 | `oldTeam` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L43)
 
 <a id="function-function-mq3-game-session-cvartext-function-cvartext-level-name-src-mq3-game-session-ml-1669105197"></a>
 ### cvarText
@@ -44,7 +44,7 @@ function cvarText(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L17)
 
 <a id="function-function-mq3-game-session-getsessiontext-function-getsessiontext-level-name-src-mq3-game-session-ml-464192361"></a>
 ### getSessionText
@@ -59,7 +59,7 @@ function getSessionText(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L23)
 
 <a id="function-function-mq3-game-session-initclient-function-initclient-level-client-userinfo-src-mq3-game-session-ml-470181232"></a>
 ### initClient
@@ -75,7 +75,7 @@ function initClient(level, client, userinfo)
 | `userinfo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L53)
 
 <a id="function-function-mq3-game-session-initworld-function-initworld-level-src-mq3-game-session-ml-1238483728"></a>
 ### initWorld
@@ -89,7 +89,7 @@ function initWorld(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L74)
 
 <a id="function-function-mq3-game-session-readclient-function-readclient-level-client-src-mq3-game-session-ml-2120922973"></a>
 ### readClient
@@ -104,7 +104,7 @@ function readClient(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L37)
 
 <a id="function-function-mq3-game-session-sessionslot-function-sessionslot-level-client-src-mq3-game-session-ml-1527144545"></a>
 ### sessionSlot
@@ -119,7 +119,7 @@ function sessionSlot(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L10)
 
 <a id="function-function-mq3-game-session-setsessiontext-function-setsessiontext-level-name-text-src-mq3-game-session-ml-724693788"></a>
 ### setSessionText
@@ -135,7 +135,7 @@ function setSessionText(level, name, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L27)
 
 <a id="function-function-mq3-game-session-writeclient-function-writeclient-level-client-src-mq3-game-session-ml-784239229"></a>
 ### writeClient
@@ -150,7 +150,7 @@ function writeClient(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L31)
 
 <a id="function-function-mq3-game-session-writeworld-function-writeworld-level-src-mq3-game-session-ml-495531296"></a>
 ### writeWorld
@@ -164,4 +164,4 @@ function writeWorld(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/session.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/session.ml#L84)

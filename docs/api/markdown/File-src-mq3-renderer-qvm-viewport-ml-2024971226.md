@@ -28,7 +28,7 @@ function edge(value, sourceSize, targetSize)
 | `targetSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L12)
 
 <a id="function-function-mq3-renderer-qvm-viewport-fail-function-fail-message-src-mq3-renderer-qvm-viewport-ml-758355279"></a>
 ### fail
@@ -42,7 +42,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L11)
 
 <a id="function-function-mq3-renderer-qvm-viewport-prepare-function-prepare-refdef-sourcewidth-sourceheight-targetwidth-targetheight-src-mq3-renderer-qvm-viewport-ml-625616116"></a>
 ### prepare
@@ -60,7 +60,7 @@ function prepare(refdef, sourceWidth, sourceHeight, targetWidth, targetHeight)
 | `targetHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L19)
 
 - [mq3.renderer.qvm_viewport.Prepared](Type-mq3-renderer-qvm-viewport-prepared-444055731.md) — struct
 <a id="function-function-mq3-renderer-qvm-viewport-validvector-function-validvector-value-src-mq3-renderer-qvm-viewport-ml-1724720243"></a>
@@ -75,4 +75,4 @@ function validVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_viewport.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_viewport.ml#L17)

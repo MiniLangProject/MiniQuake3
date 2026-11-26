@@ -10,7 +10,7 @@ struct HudState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ ammo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)
 
 <a id="field-field-mq3-client-playable-hud-hudstate-armor-armor-src-mq3-client-playable-hud-ml-133966429"></a>
 ### armor
@@ -32,7 +32,7 @@ armor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)
 
 <a id="field-field-mq3-client-playable-hud-hudstate-health-health-src-mq3-client-playable-hud-ml-1749266741"></a>
 ### health
@@ -42,7 +42,7 @@ health
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)
 
 <a id="field-field-mq3-client-playable-hud-hudstate-helptext-helptext-src-mq3-client-playable-hud-ml-43248129"></a>
 ### helpText
@@ -52,7 +52,7 @@ helpText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)
 
 <a id="field-field-mq3-client-playable-hud-hudstate-status-status-src-mq3-client-playable-hud-ml-955147269"></a>
 ### status
@@ -62,4 +62,4 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L12)

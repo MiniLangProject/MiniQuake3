@@ -10,7 +10,7 @@ struct Profile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ blue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-flyinglight-flyinglight-src-mq3-client-playable-projectile-fx-ml-26166526"></a>
 ### flyingLight
@@ -32,7 +32,7 @@ flyingLight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-green-green-src-mq3-client-playable-projectile-fx-ml-1398510074"></a>
 ### green
@@ -42,7 +42,7 @@ green
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-impactlifetime-impactlifetime-src-mq3-client-playable-projectile-fx-ml-663575440"></a>
 ### impactLifetime
@@ -52,7 +52,7 @@ impactLifetime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-impactlight-impactlight-src-mq3-client-playable-projectile-fx-ml-306116762"></a>
 ### impactLight
@@ -62,7 +62,7 @@ impactLight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-lifetime-lifetime-src-mq3-client-playable-projectile-fx-ml-1532197460"></a>
 ### lifetime
@@ -72,7 +72,7 @@ lifetime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-radius-radius-src-mq3-client-playable-projectile-fx-ml-1594434438"></a>
 ### radius
@@ -82,7 +82,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-red-red-src-mq3-client-playable-projectile-fx-ml-2100225958"></a>
 ### red
@@ -92,7 +92,7 @@ red
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)
 
 <a id="field-field-mq3-client-playable-projectile-fx-profile-smoke-smoke-src-mq3-client-playable-projectile-fx-ml-620128818"></a>
 ### smoke
@@ -102,4 +102,4 @@ smoke
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_fx.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_fx.ml#L25)

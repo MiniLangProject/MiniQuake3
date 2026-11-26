@@ -28,7 +28,7 @@ Baselines are supplied by the server host as entityState records. Keeping this l
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L52)
 
 <a id="function-function-mq3-server-snapshot-delta-deltaframevalid-function-deltaframevalid-deltamessage-outgoingsequence-clientactive-oldframe-nextsnapshotentities-capacity-src-mq3-server-snapshot-delta-ml-1224473833"></a>
 ### deltaFrameValid
@@ -49,7 +49,7 @@ The host supplies the frame indexed by deltaMessage. This predicate mirrors the 
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L34)
 
 <a id="function-function-mq3-server-snapshot-delta-emitpacketentities-function-emitpacketentities-msg-oldframe-newframe-snapshotentities-capacity-baselines-src-mq3-server-snapshot-delta-ml-485420501"></a>
 ### emitPacketEntities
@@ -70,7 +70,7 @@ Exact SV_EmitPacketEntities two-way sorted merge. `oldFrame` may be void for a n
 | `baselines` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L62)
 
 <a id="constant-constant-mq3-server-snapshot-delta-entity-sentinel-const-entity-sentinel-9999-src-mq3-server-snapshot-delta-ml-1946878713"></a>
 ### ENTITY_SENTINEL
@@ -80,7 +80,7 @@ const ENTITY_SENTINEL = 9999
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L8)
 
 <a id="function-function-mq3-server-snapshot-delta-entityat-function-entityat-snapshotentities-capacity-absoluteindex-src-mq3-server-snapshot-delta-ml-1627907102"></a>
 ### entityAt
@@ -98,7 +98,7 @@ Snapshot-ring ownership remains with the server host. This helper applies Baseq3
 | `absoluteIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L43)
 
 <a id="function-function-mq3-server-snapshot-delta-frame-function-frame-firstentity-numentities-src-mq3-server-snapshot-delta-ml-561384462"></a>
 ### frame
@@ -113,7 +113,7 @@ function frame(firstEntity, numEntities)
 | `numEntities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L17)
 
 <a id="constant-constant-mq3-server-snapshot-delta-packet-backup-const-packet-backup-32-src-mq3-server-snapshot-delta-ml-998081418"></a>
 ### PACKET_BACKUP
@@ -123,7 +123,7 @@ const PACKET_BACKUP = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L10)
 
 <a id="function-function-mq3-server-snapshot-delta-packetframe-function-packetframe-firstentity-numentities-areabits-playerstate-src-mq3-server-snapshot-delta-ml-1583591499"></a>
 ### packetFrame
@@ -140,7 +140,7 @@ function packetFrame(firstEntity, numEntities, areaBits, playerState)
 | `playerState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L28)
 
 - [mq3.server.snapshot_delta.PacketFrame](Type-mq3-server-snapshot-delta-packetframe-960146415.md) — struct
 - [mq3.server.snapshot_delta.SnapshotFrame](Type-mq3-server-snapshot-delta-snapshotframe-272320763.md) — struct
@@ -152,7 +152,7 @@ const SVC_SNAPSHOT = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L9)
 
 <a id="function-function-mq3-server-snapshot-delta-writesnapshotpayload-function-writesnapshotpayload-msg-oldframe-newframe-snapshotentities-capacity-baselines-servertime-lastframe-snapflags-src-mq3-server-snapshot-delta-ml-441911843"></a>
 ### writeSnapshotPayload
@@ -176,4 +176,4 @@ Snapshot payload beginning at svc_snapshot. The outer sequencing, flags and padd
 | `snapFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_delta.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_delta.ml#L96)

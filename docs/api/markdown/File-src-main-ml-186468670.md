@@ -128,7 +128,7 @@ function formatVector(vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L108)
 
 <a id="function-function-main-function-main-args-src-main-ml-776500952"></a>
 ### main
@@ -142,7 +142,7 @@ function main(args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L129)
 
 <a id="function-function-mapnamefrompath-function-mapnamefrompath-path-src-main-ml-1759387674"></a>
 ### mapNameFromPath
@@ -156,7 +156,7 @@ function mapNameFromPath(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L121)
 
 <a id="function-function-printtrace-function-printtrace-result-src-main-ml-1040741020"></a>
 ### printTrace
@@ -170,4 +170,4 @@ function printTrace(result)
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/main.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/main.ml#L112)

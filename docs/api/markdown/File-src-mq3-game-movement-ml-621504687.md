@@ -29,7 +29,7 @@ function accelerate(state, wishdir, wishspeed, accel)
 | `accel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L100)
 
 <a id="function-function-mq3-game-movement-addevent-function-addevent-state-event-src-mq3-game-movement-ml-217927101"></a>
 ### addEvent
@@ -44,7 +44,7 @@ function addEvent(state, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L60)
 
 <a id="function-function-mq3-game-movement-addtouchent-function-addtouchent-state-entity-src-mq3-game-movement-ml-1890416392"></a>
 ### addTouchEnt
@@ -59,7 +59,7 @@ function addTouchEnt(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L51)
 
 <a id="function-function-mq3-game-movement-clipvelocity-function-clipvelocity-velocity-normal-overbounce-src-mq3-game-movement-ml-1294174308"></a>
 ### clipVelocity
@@ -75,7 +75,7 @@ function clipVelocity(velocity, normal, overbounce)
 | `overbounce` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L68)
 
 <a id="function-function-mq3-game-movement-cmdscale-function-cmdscale-state-forward-right-up-src-mq3-game-movement-ml-1793007649"></a>
 ### cmdScale
@@ -92,7 +92,7 @@ function cmdScale(state, forward, right, up)
 | `up` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L110)
 
 - [mq3.game.movement.Collision](Type-mq3-game-movement-collision-582373361.md) — struct
 <a id="function-function-mq3-game-movement-copy-function-copy-v-src-mq3-game-movement-ml-1543934706"></a>
@@ -107,7 +107,7 @@ function copy(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L47)
 
 <a id="function-function-mq3-game-movement-create-function-create-tracefn-context-src-mq3-game-movement-ml-1081605290"></a>
 ### create
@@ -122,7 +122,7 @@ function create(traceFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L43)
 
 <a id="function-function-mq3-game-movement-friction-function-friction-state-src-mq3-game-movement-ml-843375885"></a>
 ### friction
@@ -136,7 +136,7 @@ function friction(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L74)
 
 - [mq3.game.movement.Movement](Type-mq3-game-movement-movement-782007670.md) — struct
 <a id="function-function-mq3-game-movement-slidemove-function-slidemove-state-gravity-src-mq3-game-movement-ml-35594123"></a>
@@ -152,7 +152,7 @@ function slideMove(state, gravity)
 | `gravity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L125)
 
 <a id="function-function-mq3-game-movement-stepslidemove-function-stepslidemove-state-gravity-src-mq3-game-movement-ml-1481808387"></a>
 ### stepSlideMove
@@ -167,4 +167,4 @@ function stepSlideMove(state, gravity)
 | `gravity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L205)

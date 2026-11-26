@@ -10,7 +10,7 @@ struct Registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L45)
 
 <a id="field-field-mq3-qcommon-cvar-registry-modifiedflags-modifiedflags-src-mq3-qcommon-cvar-ml-384652272"></a>
 ### modifiedFlags
@@ -32,7 +32,7 @@ modifiedFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L43)
 
 <a id="field-field-mq3-qcommon-cvar-registry-numindexes-numindexes-src-mq3-qcommon-cvar-ml-1303432136"></a>
 ### numIndexes
@@ -42,7 +42,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L44)
 
 <a id="field-field-mq3-qcommon-cvar-registry-variables-variables-src-mq3-qcommon-cvar-ml-1117855412"></a>
 ### variables
@@ -52,4 +52,4 @@ variables
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L42)

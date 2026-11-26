@@ -12,7 +12,7 @@ struct Services
 The opaque runtime references let a platform host bind the already ported network_ingress, protocol_runtime and demo runtimes. The callbacks retain the original engine boundaries: SendCmd owns client netchan output, resend owns connectionless negotiation and setCGameTime owns snapshot/demo advancement.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L33)
 
 ## Members
 
@@ -24,7 +24,7 @@ cinematicFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-commandtextfn-commandtextfn-src-mq3-client-frame-ml-1216163609"></a>
 ### commandTextFn
@@ -34,7 +34,7 @@ commandTextFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-consolefn-consolefn-src-mq3-client-frame-ml-472486905"></a>
 ### consoleFn
@@ -44,7 +44,7 @@ consoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-context-context-src-mq3-client-frame-ml-617609833"></a>
 ### context
@@ -54,7 +54,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-debuggraphfn-debuggraphfn-src-mq3-client-frame-ml-806646419"></a>
 ### debugGraphFn
@@ -64,7 +64,7 @@ debugGraphFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-demoruntime-demoruntime-src-mq3-client-frame-ml-1812836185"></a>
 ### demoRuntime
@@ -74,7 +74,7 @@ demoRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-diagnosticfn-diagnosticfn-src-mq3-client-frame-ml-357941891"></a>
 ### diagnosticFn
@@ -84,7 +84,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-disconnectfn-disconnectfn-src-mq3-client-frame-ml-2039624465"></a>
 ### disconnectFn
@@ -94,7 +94,7 @@ disconnectFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-infostringfn-infostringfn-src-mq3-client-frame-ml-1691301911"></a>
 ### infoStringFn
@@ -104,7 +104,7 @@ infoStringFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-menufn-menufn-src-mq3-client-frame-ml-1461188263"></a>
 ### menuFn
@@ -114,7 +114,7 @@ menuFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-networkruntime-networkruntime-src-mq3-client-frame-ml-216821921"></a>
 ### networkRuntime
@@ -124,7 +124,7 @@ networkRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-protocolruntime-protocolruntime-src-mq3-client-frame-ml-22522493"></a>
 ### protocolRuntime
@@ -134,7 +134,7 @@ protocolRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-reliablefn-reliablefn-src-mq3-client-frame-ml-46849825"></a>
 ### reliableFn
@@ -144,7 +144,7 @@ reliableFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)
 
 <a id="field-field-mq3-client-frame-services-resendfn-resendfn-src-mq3-client-frame-ml-1838269551"></a>
 ### resendFn
@@ -154,7 +154,7 @@ resendFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-screenfn-screenfn-src-mq3-client-frame-ml-439891381"></a>
 ### screenFn
@@ -164,7 +164,7 @@ screenFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-sendcmdfn-sendcmdfn-src-mq3-client-frame-ml-750206897"></a>
 ### sendCmdFn
@@ -174,7 +174,7 @@ sendCmdFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-sendruntime-sendruntime-src-mq3-client-frame-ml-1376693209"></a>
 ### sendRuntime
@@ -184,7 +184,7 @@ sendRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-sendservices-sendservices-src-mq3-client-frame-ml-2120808369"></a>
 ### sendServices
@@ -194,7 +194,7 @@ sendServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L36)
 
 <a id="field-field-mq3-client-frame-services-setcgametimefn-setcgametimefn-src-mq3-client-frame-ml-1545123937"></a>
 ### setCGameTimeFn
@@ -204,7 +204,7 @@ setCGameTimeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-soundfn-soundfn-src-mq3-client-frame-ml-42474657"></a>
 ### soundFn
@@ -214,7 +214,7 @@ soundFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L35)
 
 <a id="field-field-mq3-client-frame-services-stopsoundsfn-stopsoundsfn-src-mq3-client-frame-ml-1189826557"></a>
 ### stopSoundsFn
@@ -224,4 +224,4 @@ stopSoundsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L34)

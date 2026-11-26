@@ -10,7 +10,7 @@ struct Record
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ completed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)
 
 <a id="field-field-mq3-client-demo-record-nextoffset-nextoffset-src-mq3-client-demo-ml-2061480530"></a>
 ### nextOffset
@@ -32,7 +32,7 @@ nextOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)
 
 <a id="field-field-mq3-client-demo-record-payload-payload-src-mq3-client-demo-ml-91898690"></a>
 ### payload
@@ -42,7 +42,7 @@ payload
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)
 
 <a id="field-field-mq3-client-demo-record-sequence-sequence-src-mq3-client-demo-ml-1706559832"></a>
 ### sequence
@@ -52,7 +52,7 @@ sequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)
 
 <a id="field-field-mq3-client-demo-record-truncated-truncated-src-mq3-client-demo-ml-182080202"></a>
 ### truncated
@@ -62,4 +62,4 @@ truncated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L17)

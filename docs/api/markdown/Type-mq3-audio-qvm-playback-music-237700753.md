@@ -10,7 +10,7 @@ struct Music
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-music-cursor-cursor-src-mq3-audio-qvm-playback-ml-409599328"></a>
 ### cursor
@@ -32,7 +32,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-music-inintro-inintro-src-mq3-audio-qvm-playback-ml-1997450888"></a>
 ### inIntro
@@ -42,7 +42,7 @@ inIntro
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-music-introsound-introsound-src-mq3-audio-qvm-playback-ml-1553746950"></a>
 ### introSound
@@ -52,7 +52,7 @@ introSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)
 
 <a id="field-field-mq3-audio-qvm-playback-music-loopsound-loopsound-src-mq3-audio-qvm-playback-ml-771197480"></a>
 ### loopSound
@@ -62,4 +62,4 @@ loopSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L27)

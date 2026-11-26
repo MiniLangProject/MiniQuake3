@@ -32,7 +32,7 @@ function AddBotToSpawnQueue(level, state, clientNum, delay)
 | `delay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L54)
 
 <a id="constant-constant-mq3-game-g-bot-exec-append-const-exec-append-2-src-mq3-game-g-bot-ml-1171093705"></a>
 ### EXEC_APPEND
@@ -42,7 +42,7 @@ const EXEC_APPEND = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L16)
 
 <a id="function-function-mq3-game-g-bot-g-addbot-function-g-addbot-level-state-name-skill-team-delay-altname-src-mq3-game-g-bot-ml-1615760839"></a>
 ### G_AddBot
@@ -62,7 +62,7 @@ function G_AddBot(level, state, name, skill, team, delay, altname)
 | `altname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L58)
 
 <a id="function-function-mq3-game-g-bot-g-addrandombot-function-g-addrandombot-level-state-team-src-mq3-game-g-bot-ml-1534982356"></a>
 ### G_AddRandomBot
@@ -78,7 +78,7 @@ function G_AddRandomBot(level, state, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L48)
 
 <a id="function-function-mq3-game-g-bot-g-botconnect-function-g-botconnect-level-state-clientnum-restart-src-mq3-game-g-bot-ml-1395161799"></a>
 ### G_BotConnect
@@ -95,7 +95,7 @@ function G_BotConnect(level, state, clientNum, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L56)
 
 <a id="function-function-mq3-game-g-bot-g-checkbotspawn-function-g-checkbotspawn-level-state-src-mq3-game-g-bot-ml-1281254331"></a>
 ### G_CheckBotSpawn
@@ -110,7 +110,7 @@ function G_CheckBotSpawn(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L53)
 
 <a id="function-function-mq3-game-g-bot-g-checkminimumplayers-function-g-checkminimumplayers-level-state-src-mq3-game-g-bot-ml-1954748795"></a>
 ### G_CheckMinimumPlayers
@@ -125,7 +125,7 @@ function G_CheckMinimumPlayers(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L52)
 
 <a id="function-function-mq3-game-g-bot-g-countbotplayers-function-g-countbotplayers-level-state-team-src-mq3-game-g-bot-ml-2045679224"></a>
 ### G_CountBotPlayers
@@ -141,7 +141,7 @@ function G_CountBotPlayers(level, state, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L51)
 
 <a id="function-function-mq3-game-g-bot-g-counthumanplayers-function-g-counthumanplayers-level-team-src-mq3-game-g-bot-ml-1435536597"></a>
 ### G_CountHumanPlayers
@@ -156,7 +156,7 @@ function G_CountHumanPlayers(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L50)
 
 <a id="function-function-mq3-game-g-bot-g-getarenainfobymap-function-g-getarenainfobymap-state-map-src-mq3-game-g-bot-ml-1620071901"></a>
 ### G_GetArenaInfoByMap
@@ -171,7 +171,7 @@ function G_GetArenaInfoByMap(state, map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L29)
 
 <a id="function-function-mq3-game-g-bot-g-getbotinfobyname-function-g-getbotinfobyname-state-name-src-mq3-game-g-bot-ml-523730402"></a>
 ### G_GetBotInfoByName
@@ -186,7 +186,7 @@ function G_GetBotInfoByName(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L33)
 
 <a id="function-function-mq3-game-g-bot-g-getbotinfobynumber-function-g-getbotinfobynumber-state-num-src-mq3-game-g-bot-ml-892898615"></a>
 ### G_GetBotInfoByNumber
@@ -201,7 +201,7 @@ function G_GetBotInfoByNumber(state, num)
 | `num` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L32)
 
 <a id="function-function-mq3-game-g-bot-g-initbots-function-g-initbots-level-state-restart-mapname-botenable-botsfile-arenasfile-src-mq3-game-g-bot-ml-1729334231"></a>
 ### G_InitBots
@@ -221,7 +221,7 @@ function G_InitBots(level, state, restart, mapname, botEnable, botsFile, arenasF
 | `arenasFile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L69)
 
 <a id="function-function-mq3-game-g-bot-g-loadarenas-function-g-loadarenas-state-arenasfile-src-mq3-game-g-bot-ml-266316441"></a>
 ### G_LoadArenas
@@ -236,7 +236,7 @@ function G_LoadArenas(state, arenasFile)
 | `arenasFile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L28)
 
 <a id="function-function-mq3-game-g-bot-g-loadarenasfromfile-function-g-loadarenasfromfile-state-filename-src-mq3-game-g-bot-ml-2043826804"></a>
 ### G_LoadArenasFromFile
@@ -251,7 +251,7 @@ function G_LoadArenasFromFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L27)
 
 <a id="function-function-mq3-game-g-bot-g-loadbots-function-g-loadbots-state-botenable-botsfile-src-mq3-game-g-bot-ml-1344246141"></a>
 ### G_LoadBots
@@ -267,7 +267,7 @@ function G_LoadBots(state, botEnable, botsFile)
 | `botsFile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L31)
 
 <a id="function-function-mq3-game-g-bot-g-loadbotsfromfile-function-g-loadbotsfromfile-state-filename-src-mq3-game-g-bot-ml-2131974176"></a>
 ### G_LoadBotsFromFile
@@ -282,7 +282,7 @@ function G_LoadBotsFromFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L30)
 
 <a id="function-function-mq3-game-g-bot-g-parseinfos-function-g-parseinfos-state-buf-max-src-mq3-game-g-bot-ml-558908072"></a>
 ### G_ParseInfos
@@ -298,7 +298,7 @@ function G_ParseInfos(state, buf, max)
 | `max` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L26)
 
 <a id="function-function-mq3-game-g-bot-g-removequeuedbotbegin-function-g-removequeuedbotbegin-state-clientnum-src-mq3-game-g-bot-ml-1766479324"></a>
 ### G_RemoveQueuedBotBegin
@@ -313,7 +313,7 @@ function G_RemoveQueuedBotBegin(state, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L55)
 
 <a id="function-function-mq3-game-g-bot-g-removerandombot-function-g-removerandombot-level-state-team-src-mq3-game-g-bot-ml-656751656"></a>
 ### G_RemoveRandomBot
@@ -329,7 +329,7 @@ function G_RemoveRandomBot(level, state, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L49)
 
 <a id="function-function-mq3-game-g-bot-g-spawnbots-function-g-spawnbots-level-state-botlist-basedelay-src-mq3-game-g-bot-ml-1506109632"></a>
 ### G_SpawnBots
@@ -346,7 +346,7 @@ function G_SpawnBots(level, state, botList, baseDelay)
 | `baseDelay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L67)
 
 <a id="function-function-mq3-game-g-bot-playerintrosound-function-playerintrosound-level-modelandskin-src-mq3-game-g-bot-ml-548189087"></a>
 ### PlayerIntroSound
@@ -361,7 +361,7 @@ function PlayerIntroSound(level, modelAndSkin)
 | `modelAndSkin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L35)
 
 <a id="function-function-mq3-game-g-bot-svcmd-addbot-f-function-svcmd-addbot-f-level-state-argv-src-mq3-game-g-bot-ml-1340016129"></a>
 ### Svcmd_AddBot_f
@@ -377,7 +377,7 @@ function Svcmd_AddBot_f(level, state, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L61)
 
 <a id="function-function-mq3-game-g-bot-svcmd-botlist-f-function-svcmd-botlist-f-level-state-src-mq3-game-g-bot-ml-1651102971"></a>
 ### Svcmd_BotList_f
@@ -392,7 +392,7 @@ function Svcmd_BotList_f(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L66)
 
 <a id="function-function-mq3-game-g-bot-trap-cvar-variablevalue-function-trap-cvar-variablevalue-level-var-name-src-mq3-game-g-bot-ml-1888003737"></a>
 ### trap_Cvar_VariableValue
@@ -407,4 +407,4 @@ function trap_Cvar_VariableValue(level, var_name)
 | `var_name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_bot.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_bot.ml#L18)

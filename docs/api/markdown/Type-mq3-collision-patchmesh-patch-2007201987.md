@@ -10,7 +10,7 @@ struct Patch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L26)
 
 <a id="field-field-mq3-collision-patchmesh-patch-facets-facets-src-mq3-collision-patchmesh-ml-1942888197"></a>
 ### facets
@@ -32,7 +32,7 @@ facets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L25)
 
 <a id="field-field-mq3-collision-patchmesh-patch-planecache-planecache-src-mq3-collision-patchmesh-ml-527427453"></a>
 ### planeCache
@@ -42,7 +42,7 @@ planeCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L27)
 
 <a id="field-field-mq3-collision-patchmesh-patch-planes-planes-src-mq3-collision-patchmesh-ml-1493809119"></a>
 ### planes
@@ -52,4 +52,4 @@ planes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L24)

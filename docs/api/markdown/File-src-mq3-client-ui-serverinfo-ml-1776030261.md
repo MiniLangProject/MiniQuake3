@@ -32,7 +32,7 @@ function bitmap(name, id, x, y, flags, w, h)
 | `h` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L48)
 
 <a id="function-function-mq3-client-ui-serverinfo-create-function-create-retailactive-src-mq3-client-ui-serverinfo-ml-717389117"></a>
 ### create
@@ -46,7 +46,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L20)
 
 <a id="function-function-mq3-client-ui-serverinfo-digitaddress-function-digitaddress-value-src-mq3-client-ui-serverinfo-ml-1638263035"></a>
 ### digitAddress
@@ -60,7 +60,7 @@ function digitAddress(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L23)
 
 <a id="function-function-mq3-client-ui-serverinfo-emit-function-emit-state-boundary-kind-name-text-x-y-number-src-mq3-client-ui-serverinfo-ml-2027722389"></a>
 ### emit
@@ -81,7 +81,7 @@ function emit(state, boundary, kind, name, text, x, y, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L21)
 
 <a id="function-function-mq3-client-ui-serverinfo-favorites-add-function-favorites-add-state-src-mq3-client-ui-serverinfo-ml-1715188321"></a>
 ### Favorites_Add
@@ -97,7 +97,7 @@ Favorites_Add
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-id-add-const-id-add-100-src-mq3-client-ui-serverinfo-ml-1464151984"></a>
 ### ID_ADD
@@ -107,7 +107,7 @@ const ID_ADD = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-id-back-const-id-back-101-src-mq3-client-ui-serverinfo-ml-466637475"></a>
 ### ID_BACK
@@ -117,7 +117,7 @@ const ID_BACK = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L14)
 
 <a id="function-function-mq3-client-ui-serverinfo-infopairs-function-infopairs-text-src-mq3-client-ui-serverinfo-ml-357555049"></a>
 ### infoPairs
@@ -131,7 +131,7 @@ function infoPairs(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-max-favoriteservers-const-max-favoriteservers-16-src-mq3-client-ui-serverinfo-ml-912398238"></a>
 ### MAX_FAVORITESERVERS
@@ -141,7 +141,7 @@ const MAX_FAVORITESERVERS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L15)
 
 <a id="function-function-mq3-client-ui-serverinfo-same-function-same-a-b-src-mq3-client-ui-serverinfo-ml-1370120315"></a>
 ### same
@@ -156,7 +156,7 @@ function same(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-back0-const-serverinfo-back0-menu-art-back-0-src-mq3-client-ui-serverinfo-ml-30461817"></a>
 ### SERVERINFO_BACK0
@@ -166,7 +166,7 @@ const SERVERINFO_BACK0 = "menu/art/back_0"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-back1-const-serverinfo-back1-menu-art-back-1-src-mq3-client-ui-serverinfo-ml-1991637338"></a>
 ### SERVERINFO_BACK1
@@ -176,7 +176,7 @@ const SERVERINFO_BACK1 = "menu/art/back_1"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L12)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-cache-function-serverinfo-cache-state-src-mq3-client-ui-serverinfo-ml-435293031"></a>
 ### ServerInfo_Cache
@@ -192,7 +192,7 @@ ServerInfo_Cache
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L46)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-event-function-serverinfo-event-state-id-event-src-mq3-client-ui-serverinfo-ml-1452128182"></a>
 ### ServerInfo_Event
@@ -210,7 +210,7 @@ ServerInfo_Event
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-framel-const-serverinfo-framel-menu-art-frame2-l-src-mq3-client-ui-serverinfo-ml-1343847279"></a>
 ### SERVERINFO_FRAMEL
@@ -220,7 +220,7 @@ const SERVERINFO_FRAMEL = "menu/art/frame2_l"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-serverinfo-serverinfo-framer-const-serverinfo-framer-menu-art-frame1-r-src-mq3-client-ui-serverinfo-ml-314678214"></a>
 ### SERVERINFO_FRAMER
@@ -230,7 +230,7 @@ const SERVERINFO_FRAMER = "menu/art/frame1_r"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L10)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-menudraw-function-serverinfo-menudraw-state-realtime-src-mq3-client-ui-serverinfo-ml-1549688922"></a>
 ### ServerInfo_MenuDraw
@@ -247,7 +247,7 @@ ServerInfo_MenuDraw
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L38)
 
 <a id="function-function-mq3-client-ui-serverinfo-serverinfo-menukey-function-serverinfo-menukey-state-key-cursorx-cursory-src-mq3-client-ui-serverinfo-ml-1910452143"></a>
 ### ServerInfo_MenuKey
@@ -266,7 +266,7 @@ ServerInfo_MenuKey
 | `cursory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L43)
 
 - [mq3.client.ui_serverinfo.State](Type-mq3-client-ui-serverinfo-state-17572200.md) — struct
 <a id="function-function-mq3-client-ui-serverinfo-ui-serverinfomenu-function-ui-serverinfomenu-state-serverinfo-svrunning-currentaddress-favorites-src-mq3-client-ui-serverinfo-ml-882246256"></a>
@@ -287,4 +287,4 @@ UI_ServerInfoMenu
 | `favorites` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_serverinfo.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_serverinfo.ml#L51)

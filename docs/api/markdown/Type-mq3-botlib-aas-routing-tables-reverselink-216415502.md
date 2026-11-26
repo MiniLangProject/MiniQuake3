@@ -10,7 +10,7 @@ struct ReverseLink
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L11)
 
 <a id="field-field-mq3-botlib-aas-routing-tables-reverselink-linknum-linknum-src-mq3-botlib-aas-routing-tables-ml-2113389831"></a>
 ### linkNum
@@ -32,4 +32,4 @@ linkNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_tables.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_tables.ml#L11)

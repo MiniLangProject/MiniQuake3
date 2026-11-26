@@ -34,7 +34,7 @@ function addTeamScore(level, origin, team, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L49)
 
 <a id="constant-constant-mq3-game-team-missionpack-award-mask-const-award-mask-231496-src-mq3-game-team-missionpack-ml-1358015478"></a>
 ### AWARD_MASK
@@ -44,7 +44,7 @@ const AWARD_MASK = 231496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L24)
 
 <a id="function-function-mq3-game-team-missionpack-capturesound-function-capturesound-level-ent-team-src-mq3-game-team-missionpack-ml-975873140"></a>
 ### captureSound
@@ -60,7 +60,7 @@ function captureSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L63)
 
 <a id="function-function-mq3-game-team-missionpack-checkobeliskattack-function-checkobeliskattack-level-obelisk-attacker-src-mq3-game-team-missionpack-ml-862334278"></a>
 ### CheckObeliskAttack
@@ -76,7 +76,7 @@ function CheckObeliskAttack(level, obelisk, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L165)
 
 <a id="constant-constant-mq3-game-team-missionpack-contents-solid-const-contents-solid-headers-contents-solid-src-mq3-game-team-missionpack-ml-1709821883"></a>
 ### CONTENTS_SOLID
@@ -86,7 +86,7 @@ const CONTENTS_SOLID = headers.CONTENTS_SOLID
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L18)
 
 <a id="constant-constant-mq3-game-team-missionpack-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-team-missionpack-ml-395642144"></a>
 ### CONTENTS_TRIGGER
@@ -96,7 +96,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L19)
 
 <a id="constant-constant-mq3-game-team-missionpack-ctf-capture-bonus-const-ctf-capture-bonus-headers-ctf-capture-bonus-src-mq3-game-team-missionpack-ml-1853113443"></a>
 ### CTF_CAPTURE_BONUS
@@ -106,7 +106,7 @@ const CTF_CAPTURE_BONUS = headers.CTF_CAPTURE_BONUS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L25)
 
 <a id="constant-constant-mq3-game-team-missionpack-entitynum-none-const-entitynum-none-1023-src-mq3-game-team-missionpack-ml-1844737083"></a>
 ### ENTITYNUM_NONE
@@ -116,7 +116,7 @@ const ENTITYNUM_NONE = 1023
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L21)
 
 <a id="constant-constant-mq3-game-team-missionpack-fl-no-knockback-const-fl-no-knockback-2048-src-mq3-game-team-missionpack-ml-686434945"></a>
 ### FL_NO_KNOCKBACK
@@ -126,7 +126,7 @@ const FL_NO_KNOCKBACK = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L22)
 
 <a id="function-function-mq3-game-team-missionpack-forcegesture-function-forcegesture-level-team-src-mq3-game-team-missionpack-ml-1905848643"></a>
 ### forceGesture
@@ -141,7 +141,7 @@ function forceGesture(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L42)
 
 <a id="function-function-mq3-game-team-missionpack-gametype-function-gametype-level-src-mq3-game-team-missionpack-ml-1328048686"></a>
 ### gametype
@@ -155,7 +155,7 @@ function gametype(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L29)
 
 <a id="constant-constant-mq3-game-team-missionpack-gt-1fctf-const-gt-1fctf-5-src-mq3-game-team-missionpack-ml-1461599434"></a>
 ### GT_1FCTF
@@ -165,7 +165,7 @@ const GT_1FCTF = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L15)
 
 <a id="constant-constant-mq3-game-team-missionpack-gt-harvester-const-gt-harvester-7-src-mq3-game-team-missionpack-ml-1043277572"></a>
 ### GT_HARVESTER
@@ -175,7 +175,7 @@ const GT_HARVESTER = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L17)
 
 <a id="constant-constant-mq3-game-team-missionpack-gt-obelisk-const-gt-obelisk-6-src-mq3-game-team-missionpack-ml-1433903727"></a>
 ### GT_OBELISK
@@ -185,7 +185,7 @@ const GT_OBELISK = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L16)
 
 <a id="constant-constant-mq3-game-team-missionpack-gt-team-const-gt-team-3-src-mq3-game-team-missionpack-ml-210553646"></a>
 ### GT_TEAM
@@ -195,7 +195,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L14)
 
 <a id="constant-constant-mq3-game-team-missionpack-mask-solid-const-mask-solid-1-src-mq3-game-team-missionpack-ml-948979066"></a>
 ### MASK_SOLID
@@ -205,7 +205,7 @@ const MASK_SOLID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L20)
 
 <a id="function-function-mq3-game-team-missionpack-message-function-message-level-text-src-mq3-game-team-missionpack-ml-1301500235"></a>
 ### message
@@ -220,7 +220,7 @@ function message(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L38)
 
 <a id="function-function-mq3-game-team-missionpack-obeliskdie-function-obeliskdie-level-self-inflictor-attacker-damage-mod-src-mq3-game-team-missionpack-ml-45390208"></a>
 ### ObeliskDie
@@ -239,7 +239,7 @@ function ObeliskDie(level, self, inflictor, attacker, damage, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L89)
 
 <a id="function-function-mq3-game-team-missionpack-obeliskpain-function-obeliskpain-level-self-attacker-damage-src-mq3-game-team-missionpack-ml-2145119540"></a>
 ### ObeliskPain
@@ -256,7 +256,7 @@ function ObeliskPain(level, self, attacker, damage)
 | `damage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L114)
 
 <a id="function-function-mq3-game-team-missionpack-obeliskregen-function-obeliskregen-level-self-src-mq3-game-team-missionpack-ml-1946889856"></a>
 ### ObeliskRegen
@@ -271,7 +271,7 @@ function ObeliskRegen(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L72)
 
 <a id="function-function-mq3-game-team-missionpack-obeliskrespawn-function-obeliskrespawn-level-self-src-mq3-game-team-missionpack-ml-1965274600"></a>
 ### ObeliskRespawn
@@ -286,7 +286,7 @@ function ObeliskRespawn(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L83)
 
 <a id="function-function-mq3-game-team-missionpack-obelisktouch-function-obelisktouch-level-self-other-trace-src-mq3-game-team-missionpack-ml-1290522259"></a>
 ### ObeliskTouch
@@ -303,7 +303,7 @@ function ObeliskTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L102)
 
 <a id="function-function-mq3-game-team-missionpack-otherteam-function-otherteam-team-src-mq3-game-team-missionpack-ml-2100319329"></a>
 ### otherTeam
@@ -317,7 +317,7 @@ function otherTeam(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L33)
 
 <a id="constant-constant-mq3-game-team-missionpack-overload-attack-base-sound-time-const-overload-attack-base-sound-time-headers-overload-attack-base-sound-time-src-mq3-game-team-missionpack-ml-660576172"></a>
 ### OVERLOAD_ATTACK_BASE_SOUND_TIME
@@ -327,7 +327,7 @@ const OVERLOAD_ATTACK_BASE_SOUND_TIME = headers.OVERLOAD_ATTACK_BASE_SOUND_TIME
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L27)
 
 <a id="constant-constant-mq3-game-team-missionpack-reward-sprite-time-const-reward-sprite-time-2000-src-mq3-game-team-missionpack-ml-1617690521"></a>
 ### REWARD_SPRITE_TIME
@@ -337,7 +337,7 @@ const REWARD_SPRITE_TIME = 2000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L26)
 
 <a id="function-function-mq3-game-team-missionpack-sp-team-blueobelisk-function-sp-team-blueobelisk-level-ent-src-mq3-game-team-missionpack-ml-2106041371"></a>
 ### SP_team_blueobelisk
@@ -352,7 +352,7 @@ function SP_team_blueobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L155)
 
 <a id="function-function-mq3-game-team-missionpack-sp-team-neutralobelisk-function-sp-team-neutralobelisk-level-ent-src-mq3-game-team-missionpack-ml-1388089829"></a>
 ### SP_team_neutralobelisk
@@ -367,7 +367,7 @@ function SP_team_neutralobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L156)
 
 <a id="function-function-mq3-game-team-missionpack-sp-team-redobelisk-function-sp-team-redobelisk-level-ent-src-mq3-game-team-missionpack-ml-131335157"></a>
 ### SP_team_redobelisk
@@ -382,7 +382,7 @@ function SP_team_redobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L154)
 
 <a id="function-function-mq3-game-team-missionpack-spawnobelisk-function-spawnobelisk-level-origin-team-spawnflags-src-mq3-game-team-missionpack-ml-1877147923"></a>
 ### SpawnObelisk
@@ -399,7 +399,7 @@ function SpawnObelisk(level, origin, team, spawnflags)
 | `spawnflags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L122)
 
 <a id="constant-constant-mq3-game-team-missionpack-svf-broadcast-const-svf-broadcast-32-src-mq3-game-team-missionpack-ml-1927212892"></a>
 ### SVF_BROADCAST
@@ -409,7 +409,7 @@ const SVF_BROADCAST = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L23)
 
 <a id="function-function-mq3-game-team-missionpack-teamobelisk-function-teamobelisk-level-ent-team-src-mq3-game-team-missionpack-ml-273859328"></a>
 ### teamObelisk
@@ -425,4 +425,4 @@ function teamObelisk(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_missionpack.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_missionpack.ml#L144)

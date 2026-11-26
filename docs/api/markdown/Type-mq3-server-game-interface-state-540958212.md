@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-gameclients-gameclients-src-mq3-server-game-interface-ml-1324479126"></a>
 ### gameClients
@@ -32,7 +32,7 @@ gameClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-gameclientsize-gameclientsize-src-mq3-server-game-interface-ml-174553422"></a>
 ### gameClientSize
@@ -42,7 +42,7 @@ gameClientSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-gentities-gentities-src-mq3-server-game-interface-ml-1294067078"></a>
 ### gentities
@@ -52,7 +52,7 @@ gentities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-gentitysize-gentitysize-src-mq3-server-game-interface-ml-846778770"></a>
 ### gentitySize
@@ -62,7 +62,7 @@ gentitySize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-maxclients-maxclients-src-mq3-server-game-interface-ml-1419575334"></a>
 ### maxClients
@@ -72,7 +72,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-numentities-numentities-src-mq3-server-game-interface-ml-1111329770"></a>
 ### numEntities
@@ -82,7 +82,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-serverinfo-serverinfo-src-mq3-server-game-interface-ml-1094254548"></a>
 ### serverInfo
@@ -92,7 +92,7 @@ serverInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-serverstate-serverstate-src-mq3-server-game-interface-ml-2066131602"></a>
 ### serverState
@@ -102,7 +102,7 @@ serverState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)
 
 <a id="field-field-mq3-server-game-interface-state-sventities-sventities-src-mq3-server-game-interface-ml-1302885734"></a>
 ### svEntities
@@ -112,4 +112,4 @@ svEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L16)

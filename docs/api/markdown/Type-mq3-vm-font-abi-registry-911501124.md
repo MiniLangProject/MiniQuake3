@@ -10,7 +10,7 @@ struct Registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ archive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L19)
 
 <a id="field-field-mq3-vm-font-abi-registry-fonts-fonts-src-mq3-vm-font-abi-ml-1252907846"></a>
 ### fonts
@@ -32,4 +32,4 @@ fonts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/font_abi.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/font_abi.ml#L19)

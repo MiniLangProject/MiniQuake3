@@ -26,7 +26,7 @@ function AddIP(level, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L11)
 
 <a id="function-function-mq3-game-g-svcmds-clientforstring-function-clientforstring-level-text-src-mq3-game-g-svcmds-ml-793502435"></a>
 ### ClientForString
@@ -41,7 +41,7 @@ function ClientForString(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L16)
 
 <a id="function-function-mq3-game-g-svcmds-consolecommand-function-consolecommand-level-argv-src-mq3-game-g-svcmds-ml-907843480"></a>
 ### ConsoleCommand
@@ -56,7 +56,7 @@ function ConsoleCommand(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L18)
 
 <a id="function-function-mq3-game-g-svcmds-g-filterpacket-function-g-filterpacket-level-address-src-mq3-game-g-svcmds-ml-179687034"></a>
 ### G_FilterPacket
@@ -71,7 +71,7 @@ function G_FilterPacket(level, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L10)
 
 <a id="function-function-mq3-game-g-svcmds-g-processipbans-function-g-processipbans-level-src-mq3-game-g-svcmds-ml-674433882"></a>
 ### G_ProcessIPBans
@@ -85,7 +85,7 @@ function G_ProcessIPBans(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L12)
 
 <a id="function-function-mq3-game-g-svcmds-stringtofilter-function-stringtofilter-level-text-filter-src-mq3-game-g-svcmds-ml-1020005275"></a>
 ### StringToFilter
@@ -101,7 +101,7 @@ function StringToFilter(level, text, filter)
 | `filter` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L8)
 
 <a id="function-function-mq3-game-g-svcmds-svcmd-addip-f-function-svcmd-addip-f-level-argv-src-mq3-game-g-svcmds-ml-1267327690"></a>
 ### Svcmd_AddIP_f
@@ -116,7 +116,7 @@ function Svcmd_AddIP_f(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L13)
 
 <a id="function-function-mq3-game-g-svcmds-svcmd-entitylist-f-function-svcmd-entitylist-f-level-src-mq3-game-g-svcmds-ml-1111883474"></a>
 ### Svcmd_EntityList_f
@@ -130,7 +130,7 @@ function Svcmd_EntityList_f(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L15)
 
 <a id="function-function-mq3-game-g-svcmds-svcmd-forceteam-f-function-svcmd-forceteam-f-level-argv-src-mq3-game-g-svcmds-ml-1440453538"></a>
 ### Svcmd_ForceTeam_f
@@ -145,7 +145,7 @@ function Svcmd_ForceTeam_f(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L17)
 
 <a id="function-function-mq3-game-g-svcmds-svcmd-removeip-f-function-svcmd-removeip-f-level-argv-src-mq3-game-g-svcmds-ml-740534072"></a>
 ### Svcmd_RemoveIP_f
@@ -160,7 +160,7 @@ function Svcmd_RemoveIP_f(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L14)
 
 <a id="function-function-mq3-game-g-svcmds-updateipbans-function-updateipbans-level-src-mq3-game-g-svcmds-ml-325881778"></a>
 ### UpdateIPBans
@@ -174,4 +174,4 @@ function UpdateIPBans(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_svcmds.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_svcmds.ml#L9)

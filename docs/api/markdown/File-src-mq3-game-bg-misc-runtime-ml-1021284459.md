@@ -33,7 +33,7 @@ function BG_AddPredictableEventToPlayerstate(event, parm, ps)
 | `ps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L73)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-canitembegrabbed-function-bg-canitembegrabbed-gametype-ent-ps-src-mq3-game-bg-misc-runtime-ml-1032948388"></a>
 ### BG_CanItemBeGrabbed
@@ -49,7 +49,7 @@ function BG_CanItemBeGrabbed(gametype, ent, ps)
 | `ps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L80)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-evaluatetrajectory-function-bg-evaluatetrajectory-tr-attime-src-mq3-game-bg-misc-runtime-ml-409656176"></a>
 ### BG_EvaluateTrajectory
@@ -64,7 +64,7 @@ function BG_EvaluateTrajectory(tr, atTime)
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L81)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-evaluatetrajectorydelta-function-bg-evaluatetrajectorydelta-tr-attime-src-mq3-game-bg-misc-runtime-ml-1187858548"></a>
 ### BG_EvaluateTrajectoryDelta
@@ -79,7 +79,7 @@ function BG_EvaluateTrajectoryDelta(tr, atTime)
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L82)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditem-function-bg-finditem-pickupname-missionpack-src-mq3-game-bg-misc-runtime-ml-1818610354"></a>
 ### BG_FindItem
@@ -94,7 +94,7 @@ function BG_FindItem(pickupName, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L65)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforholdable-function-bg-finditemforholdable-holdable-missionpack-src-mq3-game-bg-misc-runtime-ml-1475369892"></a>
 ### BG_FindItemForHoldable
@@ -109,7 +109,7 @@ function BG_FindItemForHoldable(holdable, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L51)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforpowerup-function-bg-finditemforpowerup-powerup-missionpack-src-mq3-game-bg-misc-runtime-ml-841053173"></a>
 ### BG_FindItemForPowerup
@@ -124,7 +124,7 @@ function BG_FindItemForPowerup(powerup, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L43)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-finditemforweapon-function-bg-finditemforweapon-weapon-missionpack-src-mq3-game-bg-misc-runtime-ml-464824589"></a>
 ### BG_FindItemForWeapon
@@ -139,7 +139,7 @@ function BG_FindItemForWeapon(weapon, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L58)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playerstatetoentitystate-function-bg-playerstatetoentitystate-ps-state-snap-src-mq3-game-bg-misc-runtime-ml-2055416120"></a>
 ### BG_PlayerStateToEntityState
@@ -155,7 +155,7 @@ function BG_PlayerStateToEntityState(ps, state, snap)
 | `snap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L83)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playerstatetoentitystateextrapolate-function-bg-playerstatetoentitystateextrapolate-ps-state-time-snap-src-mq3-game-bg-misc-runtime-ml-268610709"></a>
 ### BG_PlayerStateToEntityStateExtraPolate
@@ -172,7 +172,7 @@ function BG_PlayerStateToEntityStateExtraPolate(ps, state, time, snap)
 | `snap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L84)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-playertouchesitem-function-bg-playertouchesitem-ps-item-attime-src-mq3-game-bg-misc-runtime-ml-2007886104"></a>
 ### BG_PlayerTouchesItem
@@ -188,7 +188,7 @@ function BG_PlayerTouchesItem(ps, item, atTime)
 | `atTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L85)
 
 <a id="function-function-mq3-game-bg-misc-runtime-bg-touchjumppad-function-bg-touchjumppad-ps-item-src-mq3-game-bg-misc-runtime-ml-137969032"></a>
 ### BG_TouchJumpPad
@@ -203,7 +203,7 @@ function BG_TouchJumpPad(ps, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L86)
 
 <a id="function-function-mq3-game-bg-misc-runtime-itemlimit-function-itemlimit-missionpack-src-mq3-game-bg-misc-runtime-ml-1179471973"></a>
 ### itemLimit
@@ -217,7 +217,7 @@ function itemLimit(missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L14)
 
 <a id="function-function-mq3-game-bg-misc-runtime-pickupnames-function-pickupnames-missionpack-src-mq3-game-bg-misc-runtime-ml-291806533"></a>
 ### pickupNames
@@ -231,7 +231,7 @@ function pickupNames(missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L29)
 
 <a id="function-function-mq3-game-bg-misc-runtime-resolveditemtag-function-resolveditemtag-index-missionpack-src-mq3-game-bg-misc-runtime-ml-1114484141"></a>
 ### resolvedItemTag
@@ -246,7 +246,7 @@ function resolvedItemTag(index, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L24)
 
 <a id="function-function-mq3-game-bg-misc-runtime-resolveditemtype-function-resolveditemtype-index-missionpack-src-mq3-game-bg-misc-runtime-ml-1781793147"></a>
 ### resolvedItemType
@@ -261,4 +261,4 @@ function resolvedItemType(index, missionpack)
 | `missionpack` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_misc_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_misc_runtime.ml#L19)

@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-color-color-src-mq3-client-ui-atoms-ml-1088209083"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-dispatched-dispatched-src-mq3-client-ui-atoms-ml-1298620225"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-kind-kind-src-mq3-client-ui-atoms-ml-189973887"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-name-name-src-mq3-client-ui-atoms-ml-1091945849"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-text-text-src-mq3-client-ui-atoms-ml-1080986145"></a>
 ### text
@@ -72,7 +72,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)
 
 <a id="field-field-mq3-client-ui-atoms-action-values-values-src-mq3-client-ui-atoms-ml-2107379103"></a>
 ### values
@@ -82,4 +82,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_atoms.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_atoms.ml#L36)

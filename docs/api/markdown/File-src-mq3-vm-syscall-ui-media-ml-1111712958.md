@@ -26,7 +26,7 @@ function arg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L20)
 
 <a id="function-function-mq3-vm-syscall-ui-media-callback-function-callback-host-src-mq3-vm-syscall-ui-media-ml-1964382310"></a>
 ### callback
@@ -40,7 +40,7 @@ function callback(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L107)
 
 <a id="constant-constant-mq3-vm-syscall-ui-media-cdkey-chars-const-cdkey-chars-16-src-mq3-vm-syscall-ui-media-ml-1456779388"></a>
 ### CDKEY_CHARS
@@ -50,7 +50,7 @@ const CDKEY_CHARS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L8)
 
 <a id="function-function-mq3-vm-syscall-ui-media-cinematicservices-function-cinematicservices-src-mq3-vm-syscall-ui-media-ml-384474442"></a>
 ### cinematicServices
@@ -60,7 +60,7 @@ function cinematicServices()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L16)
 
 - [mq3.vm.syscall_ui_media.CinematicServices](Type-mq3-vm-syscall-ui-media-cinematicservices-294348599.md) — struct
 <a id="function-function-mq3-vm-syscall-ui-media-dispatch-function-dispatch-host-vm-base-src-mq3-vm-syscall-ui-media-ml-1180042506"></a>
@@ -77,7 +77,7 @@ function dispatch(host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L83)
 
 <a id="function-function-mq3-vm-syscall-ui-media-getcdkey-function-getcdkey-vm-base-host-src-mq3-vm-syscall-ui-media-ml-2058804454"></a>
 ### getCdKey
@@ -93,7 +93,7 @@ function getCdKey(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L59)
 
 <a id="function-function-mq3-vm-syscall-ui-media-platformservices-function-platformservices-src-mq3-vm-syscall-ui-media-ml-985825828"></a>
 ### platformServices
@@ -103,7 +103,7 @@ function platformServices()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L17)
 
 - [mq3.vm.syscall_ui_media.PlatformServices](Type-mq3-vm-syscall-ui-media-platformservices-853685373.md) — struct
 <a id="function-function-mq3-vm-syscall-ui-media-playcinematic-function-playcinematic-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1422613596"></a>
@@ -120,7 +120,7 @@ function playCinematic(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L44)
 
 <a id="constant-constant-mq3-vm-syscall-ui-media-qtime-size-const-qtime-size-36-src-mq3-vm-syscall-ui-media-ml-844951296"></a>
 ### QTIME_SIZE
@@ -130,7 +130,7 @@ const QTIME_SIZE = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L7)
 
 <a id="function-function-mq3-vm-syscall-ui-media-realtime-function-realtime-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1896840274"></a>
 ### realTime
@@ -146,7 +146,7 @@ function realTime(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L37)
 
 <a id="function-function-mq3-vm-syscall-ui-media-registersound-function-registersound-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1937664170"></a>
 ### registerSound
@@ -162,7 +162,7 @@ function registerSound(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L22)
 
 <a id="function-function-mq3-vm-syscall-ui-media-remapshader-function-remapshader-vm-base-host-src-mq3-vm-syscall-ui-media-ml-211718562"></a>
 ### remapShader
@@ -178,7 +178,7 @@ function remapShader(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L54)
 
 <a id="function-function-mq3-vm-syscall-ui-media-services-function-services-context-src-mq3-vm-syscall-ui-media-ml-1268546915"></a>
 ### services
@@ -192,7 +192,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L18)
 
 - [mq3.vm.syscall_ui_media.Services](Type-mq3-vm-syscall-ui-media-services-852465026.md) — struct
 <a id="function-function-mq3-vm-syscall-ui-media-setcdkey-function-setcdkey-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1522019862"></a>
@@ -209,7 +209,7 @@ function setCdKey(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L69)
 
 <a id="function-function-mq3-vm-syscall-ui-media-setextents-function-setextents-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1865803738"></a>
 ### setExtents
@@ -225,7 +225,7 @@ function setExtents(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L49)
 
 <a id="function-function-mq3-vm-syscall-ui-media-soundservices-function-soundservices-src-mq3-vm-syscall-ui-media-ml-2053217950"></a>
 ### soundServices
@@ -235,7 +235,7 @@ function soundServices()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L15)
 
 - [mq3.vm.syscall_ui_media.SoundServices](Type-mq3-vm-syscall-ui-media-soundservices-1573489229.md) — struct
 <a id="function-function-mq3-vm-syscall-ui-media-startbackground-function-startbackground-vm-base-host-src-mq3-vm-syscall-ui-media-ml-287935202"></a>
@@ -252,7 +252,7 @@ function startBackground(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L32)
 
 <a id="function-function-mq3-vm-syscall-ui-media-startlocalsound-function-startlocalsound-vm-base-host-src-mq3-vm-syscall-ui-media-ml-828958910"></a>
 ### startLocalSound
@@ -268,7 +268,7 @@ function startLocalSound(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L27)
 
 <a id="function-function-mq3-vm-syscall-ui-media-unavailable-function-unavailable-name-src-mq3-vm-syscall-ui-media-ml-1588143715"></a>
 ### unavailable
@@ -282,7 +282,7 @@ function unavailable(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L19)
 
 <a id="function-function-mq3-vm-syscall-ui-media-verifycdkey-function-verifycdkey-vm-base-host-src-mq3-vm-syscall-ui-media-ml-1254290068"></a>
 ### verifyCdKey
@@ -298,4 +298,4 @@ function verifyCdKey(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui_media.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui_media.ml#L75)

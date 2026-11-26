@@ -10,7 +10,7 @@ struct CollapseResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ blend
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-shader-runtime-collapseresult-collapsed-collapsed-src-mq3-renderer-shader-runtime-ml-751485593"></a>
 ### collapsed
@@ -32,7 +32,7 @@ collapsed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-shader-runtime-collapseresult-environment-environment-src-mq3-renderer-shader-runtime-ml-1022403093"></a>
 ### environment
@@ -42,7 +42,7 @@ environment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-shader-runtime-collapseresult-first-first-src-mq3-renderer-shader-runtime-ml-1880622849"></a>
 ### first
@@ -52,7 +52,7 @@ first
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)
 
 <a id="field-field-mq3-renderer-shader-runtime-collapseresult-second-second-src-mq3-renderer-shader-runtime-ml-90858537"></a>
 ### second
@@ -62,4 +62,4 @@ second
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L26)

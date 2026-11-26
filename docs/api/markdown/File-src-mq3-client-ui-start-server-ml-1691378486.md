@@ -32,7 +32,7 @@ BotAlreadySelected
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-start-server-bots-per-page-const-bots-per-page-16-src-mq3-client-ui-start-server-ml-1920905954"></a>
 ### BOTS_PER_PAGE
@@ -42,7 +42,7 @@ const BOTS_PER_PAGE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L14)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbackevent-function-botselectbackevent-state-activated-retailactive-src-mq3-client-ui-start-server-ml-564280901"></a>
 ### botSelectBackEvent
@@ -60,7 +60,7 @@ UI_BotSelectMenu_BackEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L92)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbotevent-function-botselectbotevent-state-index-activated-src-mq3-client-ui-start-server-ml-1653408672"></a>
 ### botSelectBotEvent
@@ -78,7 +78,7 @@ UI_BotSelectMenu_BotEvent
 | `activated` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L90)
 
 <a id="function-function-mq3-client-ui-start-server-botselectbuildlist-function-botselectbuildlist-state-bots-src-mq3-client-ui-start-server-ml-1434928179"></a>
 ### botSelectBuildList
@@ -95,7 +95,7 @@ UI_BotSelectMenu_BuildList
 | `bots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L78)
 
 <a id="function-function-mq3-client-ui-start-server-botselectcache-function-botselectcache-state-retailactive-src-mq3-client-ui-start-server-ml-1269244714"></a>
 ### botSelectCache
@@ -112,7 +112,7 @@ UI_BotSelectMenu_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L96)
 
 <a id="function-function-mq3-client-ui-start-server-botselectdefault-function-botselectdefault-state-name-src-mq3-client-ui-start-server-ml-1852028380"></a>
 ### botSelectDefault
@@ -129,7 +129,7 @@ UI_BotSelectMenu_Default
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L84)
 
 <a id="function-function-mq3-client-ui-start-server-botselectinit-function-botselectinit-state-value-bots-selected-src-mq3-client-ui-start-server-ml-1675394279"></a>
 ### botSelectInit
@@ -148,7 +148,7 @@ UI_BotSelectMenu_Init
 | `selected` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L98)
 
 <a id="function-function-mq3-client-ui-start-server-botselectleftevent-function-botselectleftevent-state-value-activated-src-mq3-client-ui-start-server-ml-1531069433"></a>
 ### botSelectLeftEvent
@@ -166,7 +166,7 @@ UI_BotSelectMenu_LeftEvent
 | `activated` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L86)
 
 <a id="function-function-mq3-client-ui-start-server-botselectrightevent-function-botselectrightevent-state-value-activated-src-mq3-client-ui-start-server-ml-56280203"></a>
 ### botSelectRightEvent
@@ -184,7 +184,7 @@ UI_BotSelectMenu_RightEvent
 | `activated` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L88)
 
 <a id="function-function-mq3-client-ui-start-server-botselectselectevent-function-botselectselectevent-state-value-activated-retailactive-src-mq3-client-ui-start-server-ml-1186996870"></a>
 ### botSelectSelectEvent
@@ -203,7 +203,7 @@ UI_BotSelectMenu_SelectEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L94)
 
 <a id="function-function-mq3-client-ui-start-server-botselectupdategrid-function-botselectupdategrid-state-value-src-mq3-client-ui-start-server-ml-1247085780"></a>
 ### botSelectUpdateGrid
@@ -220,7 +220,7 @@ UI_BotSelectMenu_UpdateGrid
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L82)
 
 <a id="function-function-mq3-client-ui-start-server-botsortcompare-function-botsortcompare-a-b-src-mq3-client-ui-start-server-ml-1630197159"></a>
 ### botSortCompare
@@ -237,7 +237,7 @@ UI_BotSelectMenu_SortCompare
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L76)
 
 <a id="function-function-mq3-client-ui-start-server-botstate-function-botstate-src-mq3-client-ui-start-server-ml-1694716830"></a>
 ### botState
@@ -247,7 +247,7 @@ function botState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L23)
 
 - [mq3.client.ui_start_server.BotState](Type-mq3-client-ui-start-server-botstate-448919066.md) — struct
 <a id="function-function-mq3-client-ui-start-server-clamp-function-clamp-value-low-high-src-mq3-client-ui-start-server-ml-1390054851"></a>
@@ -264,7 +264,7 @@ function clamp(value, low, high)
 | `high` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L48)
 
 <a id="function-function-mq3-client-ui-start-server-emit-function-emit-actions-boundary-kind-name-value-number-retailactive-src-mq3-client-ui-start-server-ml-1214547961"></a>
 ### emit
@@ -284,7 +284,7 @@ function emit(actions, boundary, kind, name, value, number, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L24)
 
 <a id="function-function-mq3-client-ui-start-server-gametypebits-function-gametypebits-text-src-mq3-client-ui-start-server-ml-866165391"></a>
 ### gametypeBits
@@ -300,7 +300,7 @@ GametypeBits
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-start-server-ml-124563005"></a>
 ### GT_CTF
@@ -310,7 +310,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-start-server-ml-1387121249"></a>
 ### GT_FFA
@@ -320,7 +320,7 @@ const GT_FFA = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L7)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-start-server-ml-451616657"></a>
 ### GT_SINGLE_PLAYER
@@ -330,7 +330,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-team-const-gt-team-3-src-mq3-client-ui-start-server-ml-423586784"></a>
 ### GT_TEAM
@@ -340,7 +340,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-start-server-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-start-server-ml-189917802"></a>
 ### GT_TOURNAMENT
@@ -350,7 +350,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-start-server-maps-per-page-const-maps-per-page-4-src-mq3-client-ui-start-server-ml-1473917485"></a>
 ### MAPS_PER_PAGE
@@ -360,7 +360,7 @@ const MAPS_PER_PAGE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L13)
 
 <a id="function-function-mq3-client-ui-start-server-ntrunc-function-ntrunc-value-src-mq3-client-ui-start-server-ml-1943877157"></a>
 ### ntrunc
@@ -374,7 +374,7 @@ function ntrunc(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L31)
 
 <a id="function-function-mq3-client-ui-start-server-options-function-options-src-mq3-client-ui-start-server-ml-882400766"></a>
 ### options
@@ -384,7 +384,7 @@ function options()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L22)
 
 - [mq3.client.ui_start_server.Options](Type-mq3-client-ui-start-server-options-1771769706.md) — struct
 <a id="constant-constant-mq3-client-ui-start-server-player-slots-const-player-slots-12-src-mq3-client-ui-start-server-ml-555162890"></a>
@@ -395,7 +395,7 @@ const PLAYER_SLOTS = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L12)
 
 <a id="function-function-mq3-client-ui-start-server-playernamedraw-function-playernamedraw-value-index-focused-retailactive-src-mq3-client-ui-start-server-ml-353289897"></a>
 ### playerNameDraw
@@ -414,7 +414,7 @@ PlayerName_Draw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L68)
 
 <a id="function-function-mq3-client-ui-start-server-remapgametype-function-remapgametype-index-src-mq3-client-ui-start-server-ml-892855352"></a>
 ### remapGametype
@@ -428,7 +428,7 @@ function remapGametype(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L28)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionscache-function-serveroptionscache-value-retailactive-src-mq3-client-ui-start-server-ml-859055806"></a>
 ### serverOptionsCache
@@ -445,7 +445,7 @@ ServerOptions_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L72)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsevent-function-serveroptionsevent-value-id-activated-retailactive-src-mq3-client-ui-start-server-ml-620892408"></a>
 ### serverOptionsEvent
@@ -464,7 +464,7 @@ ServerOptions_Event
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L56)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsinitbotnames-function-serveroptionsinitbotnames-value-arena-bots-src-mq3-client-ui-start-server-ml-1050053124"></a>
 ### serverOptionsInitBotNames
@@ -482,7 +482,7 @@ ServerOptions_InitBotNames
 | `bots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L64)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsinitplayeritems-function-serveroptionsinitplayeritems-value-playername-src-mq3-client-ui-start-server-ml-1903605691"></a>
 ### serverOptionsInitPlayerItems
@@ -499,7 +499,7 @@ ServerOptions_InitPlayerItems
 | `playerName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L52)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionslevelshotdraw-function-serveroptionslevelshotdraw-value-retailactive-src-mq3-client-ui-start-server-ml-752743210"></a>
 ### serverOptionsLevelshotDraw
@@ -516,7 +516,7 @@ ServerOptions_LevelshotDraw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L62)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsmenuinit-function-serveroptionsmenuinit-value-multiplayer-gametype-mapname-playername-arena-bots-src-mq3-client-ui-start-server-ml-681174561"></a>
 ### serverOptionsMenuInit
@@ -538,7 +538,7 @@ ServerOptions_MenuInit
 | `bots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L70)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsplayernameevent-function-serveroptionsplayernameevent-value-index-activated-retailactive-src-mq3-client-ui-start-server-ml-759716343"></a>
 ### serverOptionsPlayerNameEvent
@@ -557,7 +557,7 @@ ServerOptions_PlayerNameEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L58)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionssetmenuitems-function-serveroptionssetmenuitems-value-mapname-playername-arena-bots-src-mq3-client-ui-start-server-ml-764136673"></a>
 ### serverOptionsSetMenuItems
@@ -577,7 +577,7 @@ ServerOptions_SetMenuItems
 | `bots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L66)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionssetplayeritems-function-serveroptionssetplayeritems-value-src-mq3-client-ui-start-server-ml-1084077533"></a>
 ### serverOptionsSetPlayerItems
@@ -593,7 +593,7 @@ ServerOptions_SetPlayerItems
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L54)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsstart-function-serveroptionsstart-value-retailactive-src-mq3-client-ui-start-server-ml-1990947234"></a>
 ### serverOptionsStart
@@ -610,7 +610,7 @@ ServerOptions_Start
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L50)
 
 <a id="function-function-mq3-client-ui-start-server-serveroptionsstatusbar-function-serveroptionsstatusbar-src-mq3-client-ui-start-server-ml-1673773142"></a>
 ### serverOptionsStatusBar
@@ -622,7 +622,7 @@ function serverOptionsStatusBar()
 ServerOptions_StatusBar
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L60)
 
 <a id="function-function-mq3-client-ui-start-server-serverplayericon-function-serverplayericon-modelandskin-skinexists-src-mq3-client-ui-start-server-ml-326829980"></a>
 ### serverPlayerIcon
@@ -639,7 +639,7 @@ ServerPlayerIcon
 | `skinExists` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L80)
 
 <a id="function-function-mq3-client-ui-start-server-startservercache-function-startservercache-state-arenas-buildscript-retailactive-src-mq3-client-ui-start-server-ml-1935638113"></a>
 ### startServerCache
@@ -658,7 +658,7 @@ StartServer_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L43)
 
 <a id="function-function-mq3-client-ui-start-server-startservergametypeevent-function-startservergametypeevent-state-arenas-index-activated-src-mq3-client-ui-start-server-ml-1199711508"></a>
 ### startServerGametypeEvent
@@ -677,7 +677,7 @@ StartServer_GametypeEvent
 | `activated` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L35)
 
 <a id="function-function-mq3-client-ui-start-server-startserverlevelshotdraw-function-startserverlevelshotdraw-state-slot-available-retailactive-src-mq3-client-ui-start-server-ml-757127333"></a>
 ### startServerLevelshotDraw
@@ -696,7 +696,7 @@ StartServer_LevelshotDraw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L39)
 
 <a id="function-function-mq3-client-ui-start-server-startservermapevent-function-startservermapevent-state-slot-activated-src-mq3-client-ui-start-server-ml-35606688"></a>
 ### startServerMapEvent
@@ -714,7 +714,7 @@ StartServer_MapEvent
 | `activated` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L33)
 
 <a id="function-function-mq3-client-ui-start-server-startservermenuevent-function-startservermenuevent-state-id-activated-retailactive-src-mq3-client-ui-start-server-ml-632429604"></a>
 ### startServerMenuEvent
@@ -733,7 +733,7 @@ StartServer_MenuEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L37)
 
 <a id="function-function-mq3-client-ui-start-server-startservermenuinit-function-startservermenuinit-state-arenas-src-mq3-client-ui-start-server-ml-1448285273"></a>
 ### startServerMenuInit
@@ -750,7 +750,7 @@ StartServer_MenuInit
 | `arenas` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L41)
 
 <a id="function-function-mq3-client-ui-start-server-startserverupdate-function-startserverupdate-state-src-mq3-client-ui-start-server-ml-513220597"></a>
 ### startServerUpdate
@@ -766,7 +766,7 @@ StartServer_Update
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L30)
 
 <a id="function-function-mq3-client-ui-start-server-startstate-function-startstate-src-mq3-client-ui-start-server-ml-1785673514"></a>
 ### startState
@@ -776,7 +776,7 @@ function startState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L21)
 
 - [mq3.client.ui_start_server.StartState](Type-mq3-client-ui-start-server-startstate-1227913597.md) — struct
 <a id="function-function-mq3-client-ui-start-server-uibotselectmenu-function-uibotselectmenu-state-value-bots-selected-retailactive-src-mq3-client-ui-start-server-ml-2000382258"></a>
@@ -797,7 +797,7 @@ UI_BotSelectMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L100)
 
 <a id="function-function-mq3-client-ui-start-server-uiserveroptionsmenu-function-uiserveroptionsmenu-value-multiplayer-retailactive-src-mq3-client-ui-start-server-ml-1737352852"></a>
 ### uiServerOptionsMenu
@@ -815,7 +815,7 @@ UI_ServerOptionsMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L74)
 
 <a id="function-function-mq3-client-ui-start-server-uistartservermenu-function-uistartservermenu-state-arenas-multiplayer-retailactive-src-mq3-client-ui-start-server-ml-1738304804"></a>
 ### uiStartServerMenu
@@ -834,7 +834,7 @@ UI_StartServerMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L45)
 
 <a id="function-function-mq3-client-ui-start-server-words-function-words-text-src-mq3-client-ui-start-server-ml-1177162833"></a>
 ### words
@@ -848,4 +848,4 @@ function words(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_start_server.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_start_server.ml#L25)

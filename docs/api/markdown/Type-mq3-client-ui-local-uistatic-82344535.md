@@ -10,7 +10,7 @@ struct UIStatic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 ## Members
 
@@ -22,7 +22,7 @@ activemenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-bias-bias-src-mq3-client-ui-local-ml-1958813581"></a>
 ### bias
@@ -32,7 +32,7 @@ bias
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charset-charset-src-mq3-client-ui-local-ml-1476406107"></a>
 ### charset
@@ -42,7 +42,7 @@ charset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetprop-charsetprop-src-mq3-client-ui-local-ml-1153035939"></a>
 ### charsetProp
@@ -52,7 +52,7 @@ charsetProp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetpropb-charsetpropb-src-mq3-client-ui-local-ml-547232037"></a>
 ### charsetPropB
@@ -62,7 +62,7 @@ charsetPropB
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-charsetpropglow-charsetpropglow-src-mq3-client-ui-local-ml-1578784839"></a>
 ### charsetPropGlow
@@ -72,7 +72,7 @@ charsetPropGlow
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursor-cursor-src-mq3-client-ui-local-ml-741681671"></a>
 ### cursor
@@ -82,7 +82,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursorx-cursorx-src-mq3-client-ui-local-ml-927601543"></a>
 ### cursorx
@@ -92,7 +92,7 @@ cursorx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-cursory-cursory-src-mq3-client-ui-local-ml-2071858603"></a>
 ### cursory
@@ -102,7 +102,7 @@ cursory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-debug-debug-src-mq3-client-ui-local-ml-35025827"></a>
 ### debug
@@ -112,7 +112,7 @@ debug
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-demoversion-demoversion-src-mq3-client-ui-local-ml-614669403"></a>
 ### demoversion
@@ -122,7 +122,7 @@ demoversion
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-firstdraw-firstdraw-src-mq3-client-ui-local-ml-22222395"></a>
 ### firstdraw
@@ -132,7 +132,7 @@ firstdraw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-frametime-frametime-src-mq3-client-ui-local-ml-554511711"></a>
 ### frametime
@@ -142,7 +142,7 @@ frametime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-glconfig-glconfig-src-mq3-client-ui-local-ml-781822141"></a>
 ### glconfig
@@ -152,7 +152,7 @@ glconfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menubacknologoshader-menubacknologoshader-src-mq3-client-ui-local-ml-448866933"></a>
 ### menuBackNoLogoShader
@@ -162,7 +162,7 @@ menuBackNoLogoShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menubackshader-menubackshader-src-mq3-client-ui-local-ml-581595233"></a>
 ### menuBackShader
@@ -172,7 +172,7 @@ menuBackShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-menusp-menusp-src-mq3-client-ui-local-ml-492527815"></a>
 ### menusp
@@ -182,7 +182,7 @@ menusp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-rb-off-rb-off-src-mq3-client-ui-local-ml-650055147"></a>
 ### rb_off
@@ -192,7 +192,7 @@ rb_off
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-rb-on-rb-on-src-mq3-client-ui-local-ml-1082609539"></a>
 ### rb_on
@@ -202,7 +202,7 @@ rb_on
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-realtime-realtime-src-mq3-client-ui-local-ml-1702348281"></a>
 ### realtime
@@ -212,7 +212,7 @@ realtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-scale-scale-src-mq3-client-ui-local-ml-1306799199"></a>
 ### scale
@@ -222,7 +222,7 @@ scale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-stack-stack-src-mq3-client-ui-local-ml-415449763"></a>
 ### stack
@@ -232,7 +232,7 @@ stack
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)
 
 <a id="field-field-mq3-client-ui-local-uistatic-whiteshader-whiteshader-src-mq3-client-ui-local-ml-415495515"></a>
 ### whiteShader
@@ -242,4 +242,4 @@ whiteShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L72)

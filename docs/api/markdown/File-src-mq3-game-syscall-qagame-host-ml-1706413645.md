@@ -28,7 +28,7 @@ function bind(services, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L29)
 
 <a id="function-function-mq3-game-syscall-qagame-host-context-function-context-services-vm-base-src-mq3-game-syscall-qagame-host-ml-480638576"></a>
 ### context
@@ -44,7 +44,7 @@ function context(services, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L12)
 
 - [mq3.game.syscall_qagame_host.Context](Type-mq3-game-syscall-qagame-host-context-942569630.md) — struct
 <a id="function-function-mq3-game-syscall-qagame-host-invoke-function-invoke-value-opcode-arguments-src-mq3-game-syscall-qagame-host-ml-2096303493"></a>
@@ -61,4 +61,4 @@ function invoke(value, opcode, arguments)
 | `arguments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscall_qagame_host.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscall_qagame_host.ml#L18)

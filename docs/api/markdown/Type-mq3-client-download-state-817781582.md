@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ download
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 <a id="field-field-mq3-client-download-state-downloadblock-downloadblock-src-mq3-client-download-ml-835676730"></a>
 ### downloadBlock
@@ -32,7 +32,7 @@ downloadBlock
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 <a id="field-field-mq3-client-download-state-downloadcount-downloadcount-src-mq3-client-download-ml-1336061778"></a>
 ### downloadCount
@@ -42,7 +42,7 @@ downloadCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 <a id="field-field-mq3-client-download-state-downloadname-downloadname-src-mq3-client-download-ml-464304636"></a>
 ### downloadName
@@ -52,7 +52,7 @@ downloadName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 <a id="field-field-mq3-client-download-state-downloadsize-downloadsize-src-mq3-client-download-ml-309773812"></a>
 ### downloadSize
@@ -62,7 +62,7 @@ downloadSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)
 
 <a id="field-field-mq3-client-download-state-downloadtempname-downloadtempname-src-mq3-client-download-ml-669374232"></a>
 ### downloadTempName
@@ -72,4 +72,4 @@ downloadTempName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L8)

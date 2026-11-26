@@ -10,7 +10,7 @@ struct Deform
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ bulgeHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-bulgespeed-bulgespeed-src-mq3-renderer-shader-parser-ml-1114282188"></a>
 ### bulgeSpeed
@@ -32,7 +32,7 @@ bulgeSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-bulgewidth-bulgewidth-src-mq3-renderer-shader-parser-ml-1844770326"></a>
 ### bulgeWidth
@@ -42,7 +42,7 @@ bulgeWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-kind-kind-src-mq3-renderer-shader-parser-ml-122449624"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-spread-spread-src-mq3-renderer-shader-parser-ml-962353510"></a>
 ### spread
@@ -62,7 +62,7 @@ spread
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-vector-vector-src-mq3-renderer-shader-parser-ml-1502394298"></a>
 ### vector
@@ -72,7 +72,7 @@ vector
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)
 
 <a id="field-field-mq3-renderer-shader-parser-deform-wave-wave-src-mq3-renderer-shader-parser-ml-732183806"></a>
 ### wave
@@ -82,4 +82,4 @@ wave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L39)

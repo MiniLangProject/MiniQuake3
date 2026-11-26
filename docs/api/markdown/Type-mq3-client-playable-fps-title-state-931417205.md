@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ currentTitle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-framecount-framecount-src-mq3-client-playable-fps-title-ml-2115875738"></a>
 ### frameCount
@@ -32,7 +32,7 @@ frameCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-initialized-initialized-src-mq3-client-playable-fps-title-ml-1606437378"></a>
 ### initialized
@@ -42,7 +42,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-lasttime-lasttime-src-mq3-client-playable-fps-title-ml-2088226284"></a>
 ### lastTime
@@ -52,7 +52,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-mapname-mapname-src-mq3-client-playable-fps-title-ml-1526099994"></a>
 ### mapName
@@ -62,7 +62,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-samplestart-samplestart-src-mq3-client-playable-fps-title-ml-1550706482"></a>
 ### sampleStart
@@ -72,7 +72,7 @@ sampleStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)
 
 <a id="field-field-mq3-client-playable-fps-title-state-smoothedfps-smoothedfps-src-mq3-client-playable-fps-title-ml-1578243714"></a>
 ### smoothedFps
@@ -82,4 +82,4 @@ smoothedFps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_fps_title.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_fps_title.ml#L8)

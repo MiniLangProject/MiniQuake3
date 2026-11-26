@@ -35,7 +35,7 @@ function pushTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L13)
 
 <a id="function-function-mq3-game-triggers-teleportertouch-function-teleportertouch-level-self-other-trace-src-mq3-game-triggers-ml-77343593"></a>
 ### teleporterTouch
@@ -52,7 +52,7 @@ function teleporterTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L17)
 
 <a id="function-function-mq3-game-triggers-touch-function-touch-level-ent-src-mq3-game-triggers-ml-187947799"></a>
 ### touch
@@ -67,4 +67,4 @@ function touch(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/triggers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/triggers.ml#L25)

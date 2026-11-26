@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L22)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-clientendpoint-clientendpoint-src-mq3-platform-desktop-frame-host-ml-1889451625"></a>
 ### clientEndpoint
@@ -32,7 +32,7 @@ clientEndpoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-clientsocket-clientsocket-src-mq3-platform-desktop-frame-host-ml-1062178737"></a>
 ### clientSocket
@@ -42,7 +42,7 @@ clientSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-config-config-src-mq3-platform-desktop-frame-host-ml-1888198041"></a>
 ### config
@@ -52,7 +52,7 @@ config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-framenumber-framenumber-src-mq3-platform-desktop-frame-host-ml-1935964269"></a>
 ### frameNumber
@@ -62,7 +62,7 @@ frameNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L22)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-packetcount-packetcount-src-mq3-platform-desktop-frame-host-ml-1486756921"></a>
 ### packetCount
@@ -72,7 +72,7 @@ packetCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L22)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-pump-pump-src-mq3-platform-desktop-frame-host-ml-837793369"></a>
 ### pump
@@ -82,7 +82,7 @@ pump
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-serverendpoint-serverendpoint-src-mq3-platform-desktop-frame-host-ml-2063455321"></a>
 ### serverEndpoint
@@ -92,7 +92,7 @@ serverEndpoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-serversocket-serversocket-src-mq3-platform-desktop-frame-host-ml-818647049"></a>
 ### serverSocket
@@ -102,7 +102,7 @@ serverSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-services-services-src-mq3-platform-desktop-frame-host-ml-1713200033"></a>
 ### services
@@ -112,7 +112,7 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L21)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-time-time-src-mq3-platform-desktop-frame-host-ml-5525447"></a>
 ### time
@@ -122,7 +122,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L22)
 
 <a id="field-field-mq3-platform-desktop-frame-host-runtime-udpstarted-udpstarted-src-mq3-platform-desktop-frame-host-ml-746778341"></a>
 ### udpStarted
@@ -132,4 +132,4 @@ udpStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L22)

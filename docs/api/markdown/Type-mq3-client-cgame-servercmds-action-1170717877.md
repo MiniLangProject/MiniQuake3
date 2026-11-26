@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 <a id="field-field-mq3-client-cgame-servercmds-action-dispatched-dispatched-src-mq3-client-cgame-servercmds-ml-849526995"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 <a id="field-field-mq3-client-cgame-servercmds-action-kind-kind-src-mq3-client-cgame-servercmds-ml-936039597"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 <a id="field-field-mq3-client-cgame-servercmds-action-number-number-src-mq3-client-cgame-servercmds-ml-850659811"></a>
 ### number
@@ -52,7 +52,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 <a id="field-field-mq3-client-cgame-servercmds-action-value-value-src-mq3-client-cgame-servercmds-ml-766058357"></a>
 ### value
@@ -62,7 +62,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)
 
 <a id="field-field-mq3-client-cgame-servercmds-action-value2-value2-src-mq3-client-cgame-servercmds-ml-1647331855"></a>
 ### value2
@@ -72,4 +72,4 @@ value2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L65)

@@ -35,7 +35,7 @@ function bfg(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L116)
 
 <a id="function-function-mq3-game-weapons-bounceprojectile-function-bounceprojectile-start-impact-dir-endout-src-mq3-game-weapons-ml-2082710700"></a>
 ### bounceProjectile
@@ -52,7 +52,7 @@ function bounceProjectile(start, impact, dir, endout)
 | `endout` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L52)
 
 <a id="function-function-mq3-game-weapons-calcmuzzlepoint-function-calcmuzzlepoint-ent-forward-right-up-output-src-mq3-game-weapons-ml-1316326524"></a>
 ### calcMuzzlePoint
@@ -70,7 +70,7 @@ function calcMuzzlePoint(ent, forward, right, up, output)
 | `output` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L34)
 
 <a id="function-function-mq3-game-weapons-calcmuzzlepointorigin-function-calcmuzzlepointorigin-ent-origin-forward-right-up-output-src-mq3-game-weapons-ml-923559486"></a>
 ### calcMuzzlePointOrigin
@@ -89,7 +89,7 @@ function calcMuzzlePointOrigin(ent, origin, forward, right, up, output)
 | `output` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L47)
 
 <a id="function-function-mq3-game-weapons-checkgauntlet-function-checkgauntlet-level-ent-src-mq3-game-weapons-ml-833972343"></a>
 ### checkGauntlet
@@ -104,7 +104,7 @@ function checkGauntlet(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L67)
 
 <a id="function-function-mq3-game-weapons-fire-function-fire-level-ent-src-mq3-game-weapons-ml-1399069775"></a>
 ### fire
@@ -119,7 +119,7 @@ function fire(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L130)
 
 <a id="function-function-mq3-game-weapons-gauntlet-function-gauntlet-level-ent-src-mq3-game-weapons-ml-513973947"></a>
 ### gauntlet
@@ -134,7 +134,7 @@ function gauntlet(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L62)
 
 <a id="function-function-mq3-game-weapons-grapple-function-grapple-level-ent-src-mq3-game-weapons-ml-1996687401"></a>
 ### grapple
@@ -149,7 +149,7 @@ function grapple(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L122)
 
 <a id="function-function-mq3-game-weapons-grenade-function-grenade-level-ent-src-mq3-game-weapons-ml-686986183"></a>
 ### grenade
@@ -164,7 +164,7 @@ function grenade(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L97)
 
 <a id="function-function-mq3-game-weapons-plasma-function-plasma-level-ent-src-mq3-game-weapons-ml-1920326259"></a>
 ### plasma
@@ -179,7 +179,7 @@ function plasma(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L110)
 
 <a id="function-function-mq3-game-weapons-rocket-function-rocket-level-ent-src-mq3-game-weapons-ml-1155687471"></a>
 ### rocket
@@ -194,7 +194,7 @@ function rocket(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L104)
 
 <a id="function-function-mq3-game-weapons-weaponaim-function-weaponaim-state-angles-src-mq3-game-weapons-ml-1122322505"></a>
 ### weaponAim
@@ -209,7 +209,7 @@ function weaponAim(state, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L22)
 
 <a id="function-function-mq3-game-weapons-weaponclient-function-weaponclient-ent-src-mq3-game-weapons-ml-485236891"></a>
 ### weaponClient
@@ -223,7 +223,7 @@ function weaponClient(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L17)
 
 <a id="function-function-mq3-game-weapons-weaponscalemissile-function-weaponscalemissile-state-missile-src-mq3-game-weapons-ml-339648111"></a>
 ### weaponScaleMissile
@@ -238,4 +238,4 @@ function weaponScaleMissile(state, missile)
 | `missile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapons.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapons.ml#L91)

@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-color-color-src-mq3-botlib-aas-debug-ml-822143935"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-dispatched-dispatched-src-mq3-botlib-aas-debug-ml-2022434785"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-id-id-src-mq3-botlib-aas-debug-ml-1310384569"></a>
 ### id
@@ -52,7 +52,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-kind-kind-src-mq3-botlib-aas-debug-ml-1242844295"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-points-points-src-mq3-botlib-aas-debug-ml-36505113"></a>
 ### points
@@ -72,7 +72,7 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)
 
 <a id="field-field-mq3-botlib-aas-debug-action-values-values-src-mq3-botlib-aas-debug-ml-1900303727"></a>
 ### values
@@ -82,4 +82,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L39)

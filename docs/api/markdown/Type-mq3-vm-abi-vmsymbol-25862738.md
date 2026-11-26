@@ -10,7 +10,7 @@ struct VmSymbol
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L71)
 
 ## Members
 
@@ -22,7 +22,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L71)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-profilecount-profilecount-src-mq3-vm-abi-ml-1681995588"></a>
 ### profileCount
@@ -32,7 +32,7 @@ profileCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L71)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-symname-symname-src-mq3-vm-abi-ml-955280368"></a>
 ### symName
@@ -42,7 +42,7 @@ symName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L71)
 
 <a id="field-field-mq3-vm-abi-vmsymbol-symvalue-symvalue-src-mq3-vm-abi-ml-617376740"></a>
 ### symValue
@@ -52,4 +52,4 @@ symValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L71)

@@ -10,7 +10,7 @@ struct FormatArg
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ integer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L15)
 
 <a id="field-field-mq3-botlib-log-formatarg-kind-kind-src-mq3-botlib-log-ml-425631716"></a>
 ### kind
@@ -32,7 +32,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L15)
 
 <a id="field-field-mq3-botlib-log-formatarg-real-real-src-mq3-botlib-log-ml-434862144"></a>
 ### real
@@ -42,7 +42,7 @@ real
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L15)
 
 <a id="field-field-mq3-botlib-log-formatarg-text-text-src-mq3-botlib-log-ml-761397150"></a>
 ### text
@@ -52,4 +52,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L15)

@@ -10,7 +10,7 @@ struct LocalEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 ## Members
 
@@ -22,7 +22,7 @@ angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-bouncefactor-bouncefactor-src-mq3-client-cg-local-ml-1228978279"></a>
 ### bounceFactor
@@ -32,7 +32,7 @@ bounceFactor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-color-color-src-mq3-client-cg-local-ml-75437229"></a>
 ### color
@@ -42,7 +42,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-endtime-endtime-src-mq3-client-cg-local-ml-617939845"></a>
 ### endTime
@@ -52,7 +52,7 @@ endTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-fadeintime-fadeintime-src-mq3-client-cg-local-ml-725263321"></a>
 ### fadeInTime
@@ -62,7 +62,7 @@ fadeInTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-lebouncesoundtype-lebouncesoundtype-src-mq3-client-cg-local-ml-2014427433"></a>
 ### leBounceSoundType
@@ -72,7 +72,7 @@ leBounceSoundType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-leflags-leflags-src-mq3-client-cg-local-ml-1273566561"></a>
 ### leFlags
@@ -82,7 +82,7 @@ leFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-lemarktype-lemarktype-src-mq3-client-cg-local-ml-1077256317"></a>
 ### leMarkType
@@ -92,7 +92,7 @@ leMarkType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-letype-letype-src-mq3-client-cg-local-ml-1527765571"></a>
 ### leType
@@ -102,7 +102,7 @@ leType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-liferate-liferate-src-mq3-client-cg-local-ml-930545201"></a>
 ### lifeRate
@@ -112,7 +112,7 @@ lifeRate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-light-light-src-mq3-client-cg-local-ml-631127533"></a>
 ### light
@@ -122,7 +122,7 @@ light
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-lightcolor-lightcolor-src-mq3-client-cg-local-ml-535039471"></a>
 ### lightColor
@@ -132,7 +132,7 @@ lightColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-next-next-src-mq3-client-cg-local-ml-1128138771"></a>
 ### next
@@ -142,7 +142,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-pos-pos-src-mq3-client-cg-local-ml-692274497"></a>
 ### pos
@@ -152,7 +152,7 @@ pos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-prev-prev-src-mq3-client-cg-local-ml-2064117451"></a>
 ### prev
@@ -162,7 +162,7 @@ prev
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-radius-radius-src-mq3-client-cg-local-ml-1571972989"></a>
 ### radius
@@ -172,7 +172,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-refentity-refentity-src-mq3-client-cg-local-ml-752110057"></a>
 ### refEntity
@@ -182,7 +182,7 @@ refEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)
 
 <a id="field-field-mq3-client-cg-local-localentity-starttime-starttime-src-mq3-client-cg-local-ml-2054674749"></a>
 ### startTime
@@ -192,4 +192,4 @@ startTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L100)

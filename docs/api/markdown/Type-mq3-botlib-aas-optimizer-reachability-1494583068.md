@@ -10,7 +10,7 @@ struct Reachability
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-edgenum-edgenum-src-mq3-botlib-aas-optimizer-ml-1224161246"></a>
 ### edgeNum
@@ -32,7 +32,7 @@ edgeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-facenum-facenum-src-mq3-botlib-aas-optimizer-ml-595224446"></a>
 ### faceNum
@@ -42,7 +42,7 @@ faceNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-finish-finish-src-mq3-botlib-aas-optimizer-ml-175828172"></a>
 ### finish
@@ -52,7 +52,7 @@ finish
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-start-start-src-mq3-botlib-aas-optimizer-ml-1513993394"></a>
 ### start
@@ -62,7 +62,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-traveltime-traveltime-src-mq3-botlib-aas-optimizer-ml-161743724"></a>
 ### travelTime
@@ -72,7 +72,7 @@ travelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-optimizer-reachability-traveltype-traveltype-src-mq3-botlib-aas-optimizer-ml-1868912518"></a>
 ### travelType
@@ -82,4 +82,4 @@ travelType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L17)

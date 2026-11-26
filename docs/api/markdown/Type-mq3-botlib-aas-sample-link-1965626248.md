@@ -10,7 +10,7 @@ struct Link
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ allocated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L22)
 
 <a id="field-field-mq3-botlib-aas-sample-link-areanum-areanum-src-mq3-botlib-aas-sample-ml-713087809"></a>
 ### areaNum
@@ -32,7 +32,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L22)
 
 <a id="field-field-mq3-botlib-aas-sample-link-entnum-entnum-src-mq3-botlib-aas-sample-ml-1924860239"></a>
 ### entNum
@@ -42,7 +42,7 @@ entNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L22)
 
 <a id="field-field-mq3-botlib-aas-sample-link-id-id-src-mq3-botlib-aas-sample-ml-809745847"></a>
 ### id
@@ -52,4 +52,4 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L22)

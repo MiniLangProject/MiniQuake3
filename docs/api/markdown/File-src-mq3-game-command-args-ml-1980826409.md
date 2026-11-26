@@ -26,7 +26,7 @@ function argument(argv, index, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/command_args.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/command_args.ml#L7)
 
 <a id="function-function-mq3-game-command-args-concat-function-concat-argv-start-src-mq3-game-command-args-ml-122410886"></a>
 ### concat
@@ -41,4 +41,4 @@ function concat(argv, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/command_args.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/command_args.ml#L12)

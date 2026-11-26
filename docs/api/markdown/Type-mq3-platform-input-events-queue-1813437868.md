@@ -10,7 +10,7 @@ struct Queue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ clockContext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 <a id="field-field-mq3-platform-input-events-queue-clockfn-clockfn-src-mq3-platform-input-events-ml-860835104"></a>
 ### clockFn
@@ -32,7 +32,7 @@ clockFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 <a id="field-field-mq3-platform-input-events-queue-events-events-src-mq3-platform-input-events-ml-2041666334"></a>
 ### events
@@ -42,7 +42,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 <a id="field-field-mq3-platform-input-events-queue-head-head-src-mq3-platform-input-events-ml-2050778912"></a>
 ### head
@@ -52,7 +52,7 @@ head
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 <a id="field-field-mq3-platform-input-events-queue-overflows-overflows-src-mq3-platform-input-events-ml-625584952"></a>
 ### overflows
@@ -62,7 +62,7 @@ overflows
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)
 
 <a id="field-field-mq3-platform-input-events-queue-tail-tail-src-mq3-platform-input-events-ml-1132078112"></a>
 ### tail
@@ -72,4 +72,4 @@ tail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L19)

@@ -10,7 +10,7 @@ struct Image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ frameUsed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L10)
 
 <a id="field-field-mq3-renderer-texture-state-image-texnum-texnum-src-mq3-renderer-texture-state-ml-16477314"></a>
 ### texnum
@@ -32,4 +32,4 @@ texnum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L10)

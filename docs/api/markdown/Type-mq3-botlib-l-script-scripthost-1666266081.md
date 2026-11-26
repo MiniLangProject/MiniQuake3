@@ -10,7 +10,7 @@ struct ScriptHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L88)
 
 ## Members
 
@@ -22,7 +22,7 @@ actionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L88)
 
 <a id="field-field-mq3-botlib-l-script-scripthost-context-context-src-mq3-botlib-l-script-ml-1990319670"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L88)
 
 <a id="field-field-mq3-botlib-l-script-scripthost-loadfn-loadfn-src-mq3-botlib-l-script-ml-1099080270"></a>
 ### loadFn
@@ -42,4 +42,4 @@ loadFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L88)

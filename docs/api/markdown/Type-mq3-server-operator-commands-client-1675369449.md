@@ -10,7 +10,7 @@ struct Client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-addresstype-addresstype-src-mq3-server-operator-commands-ml-1705089630"></a>
 ### addressType
@@ -32,7 +32,7 @@ addressType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-denied-denied-src-mq3-server-operator-commands-ml-645657820"></a>
 ### denied
@@ -42,7 +42,7 @@ denied
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-ip-ip-src-mq3-server-operator-commands-ml-1203614304"></a>
 ### ip
@@ -52,7 +52,7 @@ ip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-lastpackettime-lastpackettime-src-mq3-server-operator-commands-ml-1360685332"></a>
 ### lastPacketTime
@@ -62,7 +62,7 @@ lastPacketTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-lastusercmd-lastusercmd-src-mq3-server-operator-commands-ml-1281527138"></a>
 ### lastUsercmd
@@ -72,7 +72,7 @@ lastUsercmd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-name-name-src-mq3-server-operator-commands-ml-89677364"></a>
 ### name
@@ -82,7 +82,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-ping-ping-src-mq3-server-operator-commands-ml-1400786394"></a>
 ### ping
@@ -92,7 +92,7 @@ ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-qport-qport-src-mq3-server-operator-commands-ml-696863882"></a>
 ### qport
@@ -102,7 +102,7 @@ qport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-rate-rate-src-mq3-server-operator-commands-ml-1367043514"></a>
 ### rate
@@ -112,7 +112,7 @@ rate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-score-score-src-mq3-server-operator-commands-ml-1874456674"></a>
 ### score
@@ -122,7 +122,7 @@ score
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-state-state-src-mq3-server-operator-commands-ml-274536766"></a>
 ### state
@@ -132,7 +132,7 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)
 
 <a id="field-field-mq3-server-operator-commands-client-userinfo-userinfo-src-mq3-server-operator-commands-ml-638461700"></a>
 ### userinfo
@@ -142,4 +142,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/operator_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/operator_commands.ml#L28)

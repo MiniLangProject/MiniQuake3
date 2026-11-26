@@ -25,7 +25,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L12)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-fire-function-fire-world-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-584943640"></a>
 ### fire
@@ -44,7 +44,7 @@ function fire(world, ai, targetState, playerPosition, muzzleOrigins, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L46)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-firewithtrace-function-firewithtrace-tracefn-context-ai-targetstate-playerposition-muzzleorigins-now-src-mq3-client-playable-enemy-hitscan-ml-2082619288"></a>
 ### fireWithTrace
@@ -66,7 +66,7 @@ The AI has already selected its target. This final muzzle-to-player trace is rep
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L22)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-point-function-point-value-src-mq3-client-playable-enemy-hitscan-ml-1155821765"></a>
 ### point
@@ -80,7 +80,7 @@ function point(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L14)
 
 - [mq3.client.playable_enemy_hitscan.Shot](Type-mq3-client-playable-enemy-hitscan-shot-2051138919.md) — struct
 <a id="constant-constant-mq3-client-playable-enemy-hitscan-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-enemy-hitscan-ml-748115703"></a>
@@ -91,7 +91,7 @@ const SHOT_MASK = 100663297
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L8)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-validpoint-function-validpoint-value-src-mq3-client-playable-enemy-hitscan-ml-457868573"></a>
 ### validPoint
@@ -105,7 +105,7 @@ function validPoint(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L13)
 
 <a id="function-function-mq3-client-playable-enemy-hitscan-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-enemy-hitscan-ml-700371026"></a>
 ### worldPointTrace
@@ -121,4 +121,4 @@ function worldPointTrace(context, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L16)

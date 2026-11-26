@@ -10,7 +10,7 @@ struct Punctuation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)
 
 ## Members
 
@@ -22,7 +22,7 @@ n
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)
 
 <a id="field-field-mq3-botlib-l-script-punctuation-p-p-src-mq3-botlib-l-script-ml-353375777"></a>
 ### p
@@ -32,4 +32,4 @@ p
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_script.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_script.ml#L86)

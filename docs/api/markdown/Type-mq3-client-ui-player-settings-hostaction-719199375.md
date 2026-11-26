@@ -10,7 +10,7 @@ struct HostAction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-dispatched-dispatched-src-mq3-client-ui-player-settings-ml-542684197"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-height-height-src-mq3-client-ui-player-settings-ml-113733525"></a>
 ### height
@@ -42,7 +42,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-kind-kind-src-mq3-client-ui-player-settings-ml-337576231"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-name-name-src-mq3-client-ui-player-settings-ml-420167025"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-number-number-src-mq3-client-ui-player-settings-ml-1367837165"></a>
 ### number
@@ -72,7 +72,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-text-text-src-mq3-client-ui-player-settings-ml-596641309"></a>
 ### text
@@ -82,7 +82,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-width-width-src-mq3-client-ui-player-settings-ml-207495463"></a>
 ### width
@@ -92,7 +92,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-x-x-src-mq3-client-ui-player-settings-ml-2096691699"></a>
 ### x
@@ -102,7 +102,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)
 
 <a id="field-field-mq3-client-ui-player-settings-hostaction-y-y-src-mq3-client-ui-player-settings-ml-1051062703"></a>
 ### y
@@ -112,4 +112,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L18)

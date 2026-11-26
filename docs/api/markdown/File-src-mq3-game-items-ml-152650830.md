@@ -45,7 +45,7 @@ function addAmmo(ent, weapon, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L242)
 
 <a id="function-function-mq3-game-items-addteamscore-function-addteamscore-level-origin-team-score-src-mq3-game-items-ml-1650219801"></a>
 ### addTeamScore
@@ -62,7 +62,7 @@ function addTeamScore(level, origin, team, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L285)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L285)
 
 <a id="constant-constant-mq3-game-items-award-mask-const-award-mask-231496-src-mq3-game-items-ml-1748135906"></a>
 ### AWARD_MASK
@@ -72,7 +72,7 @@ const AWARD_MASK = 231496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L31)
 
 <a id="function-function-mq3-game-items-bounce-function-bounce-level-ent-hit-src-mq3-game-items-ml-1467144814"></a>
 ### bounce
@@ -88,7 +88,7 @@ function bounce(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L590)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L590)
 
 <a id="function-function-mq3-game-items-cangrab-function-cangrab-gametype-ent-state-src-mq3-game-items-ml-570626090"></a>
 ### canGrab
@@ -104,7 +104,7 @@ function canGrab(gametype, ent, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L151)
 
 <a id="function-function-mq3-game-items-captureflagsound-function-captureflagsound-level-ent-team-src-mq3-game-items-ml-1710861568"></a>
 ### captureFlagSound
@@ -120,7 +120,7 @@ function captureFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L319)
 
 <a id="function-function-mq3-game-items-centeredrandom-function-centeredrandom-level-src-mq3-game-items-ml-1464189536"></a>
 ### centeredRandom
@@ -134,7 +134,7 @@ function centeredRandom(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L72)
 
 <a id="function-function-mq3-game-items-checkdropped-function-checkdropped-level-dropped-src-mq3-game-items-ml-437498442"></a>
 ### checkDropped
@@ -149,7 +149,7 @@ function checkDropped(level, dropped)
 | `dropped` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L433)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L433)
 
 <a id="function-function-mq3-game-items-checkteamitems-function-checkteamitems-level-src-mq3-game-items-ml-883833716"></a>
 ### checkTeamItems
@@ -163,7 +163,7 @@ function checkTeamItems(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L128)
 
 <a id="function-function-mq3-game-items-clearregistered-function-clearregistered-level-src-mq3-game-items-ml-1511988234"></a>
 ### clearRegistered
@@ -177,7 +177,7 @@ function clearRegistered(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L89)
 
 <a id="function-function-mq3-game-items-drop-function-drop-level-ent-item-angle-src-mq3-game-items-ml-2047254707"></a>
 ### drop
@@ -194,7 +194,7 @@ function drop(level, ent, item, angle)
 | `angle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L584)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L584)
 
 <a id="function-function-mq3-game-items-droppedflagthink-function-droppedflagthink-level-ent-src-mq3-game-items-ml-940351711"></a>
 ### droppedFlagThink
@@ -209,7 +209,7 @@ function droppedFlagThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L563)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L563)
 
 <a id="function-function-mq3-game-items-findclass-function-findclass-level-after-name-src-mq3-game-items-ml-777522933"></a>
 ### findClass
@@ -225,7 +225,7 @@ function findClass(level, after, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L514)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L514)
 
 <a id="function-function-mq3-game-items-finishspawning-function-finishspawning-level-ent-src-mq3-game-items-ml-1275622787"></a>
 ### finishSpawning
@@ -240,7 +240,7 @@ function finishSpawning(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L469)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L469)
 
 <a id="constant-constant-mq3-game-items-fl-dropped-item-const-fl-dropped-item-4096-src-mq3-game-items-ml-1275240674"></a>
 ### FL_DROPPED_ITEM
@@ -250,7 +250,7 @@ const FL_DROPPED_ITEM = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L26)
 
 <a id="constant-constant-mq3-game-items-fl-force-gesture-const-fl-force-gesture-32768-src-mq3-game-items-ml-1412434183"></a>
 ### FL_FORCE_GESTURE
@@ -260,7 +260,7 @@ const FL_FORCE_GESTURE = 32768
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L27)
 
 <a id="constant-constant-mq3-game-items-flag-atbase-const-flag-atbase-0-src-mq3-game-items-ml-1903841837"></a>
 ### FLAG_ATBASE
@@ -270,7 +270,7 @@ const FLAG_ATBASE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L28)
 
 <a id="constant-constant-mq3-game-items-flag-dropped-const-flag-dropped-4-src-mq3-game-items-ml-625112733"></a>
 ### FLAG_DROPPED
@@ -280,7 +280,7 @@ const FLAG_DROPPED = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L30)
 
 <a id="constant-constant-mq3-game-items-flag-taken-const-flag-taken-1-src-mq3-game-items-ml-542537512"></a>
 ### FLAG_TAKEN
@@ -290,7 +290,7 @@ const FLAG_TAKEN = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L29)
 
 <a id="function-function-mq3-game-items-forcegesture-function-forcegesture-level-team-src-mq3-game-items-ml-1416868247"></a>
 ### forceGesture
@@ -305,7 +305,7 @@ function forceGesture(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L299)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L299)
 
 <a id="function-function-mq3-game-items-initteamgame-function-initteamgame-level-src-mq3-game-items-ml-104231560"></a>
 ### initTeamGame
@@ -319,7 +319,7 @@ function initTeamGame(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L112)
 
 <a id="function-function-mq3-game-items-iteminitializationprint-function-iteminitializationprint-level-text-src-mq3-game-items-ml-772366405"></a>
 ### itemInitializationPrint
@@ -334,7 +334,7 @@ function itemInitializationPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L98)
 
 <a id="function-function-mq3-game-items-itemname-function-itemname-index-src-mq3-game-items-ml-1693447782"></a>
 ### itemName
@@ -348,7 +348,7 @@ function itemName(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L40)
 
 <a id="function-function-mq3-game-items-itemquantity-function-itemquantity-index-src-mq3-game-items-ml-1153289734"></a>
 ### itemQuantity
@@ -362,7 +362,7 @@ function itemQuantity(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L49)
 
 <a id="function-function-mq3-game-items-itemtag-function-itemtag-index-src-mq3-game-items-ml-2137092172"></a>
 ### itemTag
@@ -376,7 +376,7 @@ function itemTag(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L46)
 
 <a id="function-function-mq3-game-items-itemtype-function-itemtype-index-src-mq3-game-items-ml-1816840130"></a>
 ### itemType
@@ -390,7 +390,7 @@ function itemType(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L43)
 
 <a id="function-function-mq3-game-items-launch-function-launch-level-item-origin-velocity-src-mq3-game-items-ml-118364562"></a>
 ### launch
@@ -407,7 +407,7 @@ function launch(level, item, origin, velocity)
 | `velocity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L569)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L569)
 
 <a id="function-function-mq3-game-items-missionpack-function-missionpack-level-src-mq3-game-items-ml-1351554606"></a>
 ### missionpack
@@ -421,7 +421,7 @@ function missionpack(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L52)
 
 <a id="function-function-mq3-game-items-modeitemname-function-modeitemname-level-index-src-mq3-game-items-ml-1108544"></a>
 ### modeItemName
@@ -436,7 +436,7 @@ function modeItemName(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L60)
 
 <a id="function-function-mq3-game-items-modeitemquantity-function-modeitemquantity-level-index-src-mq3-game-items-ml-920410420"></a>
 ### modeItemQuantity
@@ -451,7 +451,7 @@ function modeItemQuantity(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L69)
 
 <a id="function-function-mq3-game-items-modeitemtag-function-modeitemtag-level-index-src-mq3-game-items-ml-295452176"></a>
 ### modeItemTag
@@ -466,7 +466,7 @@ function modeItemTag(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L66)
 
 <a id="function-function-mq3-game-items-modeitemtype-function-modeitemtype-level-index-src-mq3-game-items-ml-1114185736"></a>
 ### modeItemType
@@ -481,7 +481,7 @@ function modeItemType(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L63)
 
 <a id="function-function-mq3-game-items-pickupammo-function-pickupammo-level-ent-other-src-mq3-game-items-ml-803528847"></a>
 ### pickupAmmo
@@ -497,7 +497,7 @@ function pickupAmmo(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L247)
 
 <a id="function-function-mq3-game-items-pickuparmor-function-pickuparmor-level-ent-other-src-mq3-game-items-ml-166727021"></a>
 ### pickupArmor
@@ -513,7 +513,7 @@ function pickupArmor(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L275)
 
 <a id="function-function-mq3-game-items-pickuphealth-function-pickuphealth-level-ent-other-src-mq3-game-items-ml-483808959"></a>
 ### pickupHealth
@@ -529,7 +529,7 @@ function pickupHealth(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L265)
 
 <a id="function-function-mq3-game-items-pickupholdable-function-pickupholdable-level-ent-other-src-mq3-game-items-ml-1524125111"></a>
 ### pickupHoldable
@@ -545,7 +545,7 @@ function pickupHoldable(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L237)
 
 <a id="function-function-mq3-game-items-pickuppersistantpowerup-function-pickuppersistantpowerup-level-ent-other-src-mq3-game-items-ml-670138089"></a>
 ### pickupPersistantPowerup
@@ -561,7 +561,7 @@ function pickupPersistantPowerup(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L203)
 
 <a id="function-function-mq3-game-items-pickuppowerup-function-pickuppowerup-level-ent-other-src-mq3-game-items-ml-172727803"></a>
 ### pickupPowerup
@@ -577,7 +577,7 @@ function pickupPowerup(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L218)
 
 <a id="function-function-mq3-game-items-pickupteam-function-pickupteam-level-ent-other-src-mq3-game-items-ml-2094974231"></a>
 ### pickupTeam
@@ -593,7 +593,7 @@ function pickupTeam(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L370)
 
 <a id="function-function-mq3-game-items-pickupweapon-function-pickupweapon-level-ent-other-src-mq3-game-items-ml-1038016751"></a>
 ### pickupWeapon
@@ -609,7 +609,7 @@ function pickupWeapon(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L251)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L251)
 
 <a id="function-function-mq3-game-items-predictableevent-function-predictableevent-level-ent-event-parm-src-mq3-game-items-ml-286193555"></a>
 ### predictableEvent
@@ -626,7 +626,7 @@ function predictableEvent(level, ent, event, parm)
 | `parm` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L146)
 
 <a id="function-function-mq3-game-items-register-function-register-level-item-src-mq3-game-items-ml-1052804565"></a>
 ### register
@@ -641,7 +641,7 @@ function register(level, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L76)
 
 <a id="function-function-mq3-game-items-requireitem-function-requireitem-index-src-mq3-game-items-ml-786196190"></a>
 ### requireItem
@@ -655,7 +655,7 @@ function requireItem(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L36)
 
 <a id="function-function-mq3-game-items-requiremodeitem-function-requiremodeitem-level-index-src-mq3-game-items-ml-173365034"></a>
 ### requireModeItem
@@ -670,7 +670,7 @@ function requireModeItem(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L55)
 
 <a id="function-function-mq3-game-items-resetflag-function-resetflag-level-team-src-mq3-game-items-ml-1924854209"></a>
 ### resetFlag
@@ -685,7 +685,7 @@ function resetFlag(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L523)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L523)
 
 <a id="function-function-mq3-game-items-resetflags-function-resetflags-level-src-mq3-game-items-ml-1321949576"></a>
 ### resetFlags
@@ -699,7 +699,7 @@ function resetFlags(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L325)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L325)
 
 <a id="function-function-mq3-game-items-respawn-function-respawn-level-ent-src-mq3-game-items-ml-731508059"></a>
 ### respawn
@@ -714,7 +714,7 @@ function respawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L440)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L440)
 
 <a id="function-function-mq3-game-items-returnflag-function-returnflag-level-team-src-mq3-game-items-ml-841478751"></a>
 ### returnFlag
@@ -729,7 +729,7 @@ function returnFlag(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L549)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L549)
 
 <a id="function-function-mq3-game-items-returnflagsound-function-returnflagsound-level-ent-team-src-mq3-game-items-ml-1434628518"></a>
 ### returnFlagSound
@@ -745,7 +745,7 @@ function returnFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L539)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L539)
 
 <a id="function-function-mq3-game-items-run-function-run-level-ent-src-mq3-game-items-ml-222478425"></a>
 ### run
@@ -760,7 +760,7 @@ function run(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L608)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L608)
 
 <a id="function-function-mq3-game-items-saveregistered-function-saveregistered-level-src-mq3-game-items-ml-1905839832"></a>
 ### saveRegistered
@@ -774,7 +774,7 @@ function saveRegistered(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L102)
 
 <a id="function-function-mq3-game-items-setflagstatus-function-setflagstatus-level-team-status-src-mq3-game-items-ml-69767377"></a>
 ### setFlagStatus
@@ -790,7 +790,7 @@ function setFlagStatus(level, team, status)
 | `status` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L412)
 
 <a id="function-function-mq3-game-items-spawnitem-function-spawnitem-level-ent-item-src-mq3-game-items-ml-914186626"></a>
 ### spawnItem
@@ -806,7 +806,7 @@ function spawnItem(level, ent, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L500)
 
 <a id="function-function-mq3-game-items-takeflagsound-function-takeflagsound-level-ent-team-src-mq3-game-items-ml-974912188"></a>
 ### takeFlagSound
@@ -822,7 +822,7 @@ function takeFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L306)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L306)
 
 <a id="function-function-mq3-game-items-teamfree-function-teamfree-level-ent-src-mq3-game-items-ml-1771347227"></a>
 ### teamFree
@@ -837,7 +837,7 @@ function teamFree(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L556)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L556)
 
 <a id="function-function-mq3-game-items-teammessage-function-teammessage-level-recipient-text-src-mq3-game-items-ml-1477040340"></a>
 ### teamMessage
@@ -853,7 +853,7 @@ function teamMessage(level, recipient, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L281)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L281)
 
 <a id="function-function-mq3-game-items-touch-function-touch-level-ent-other-trace-src-mq3-game-items-ml-1643932484"></a>
 ### touch
@@ -870,7 +870,7 @@ function touch(level, ent, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L378)
 
 <a id="function-function-mq3-game-items-touchenemyflag-function-touchenemyflag-level-ent-other-team-src-mq3-game-items-ml-1658598564"></a>
 ### touchEnemyFlag
@@ -887,7 +887,7 @@ function touchEnemyFlag(level, ent, other, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L363)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L363)
 
 <a id="function-function-mq3-game-items-touchourflag-function-touchourflag-level-ent-other-team-src-mq3-game-items-ml-1065943288"></a>
 ### touchOurFlag
@@ -904,7 +904,7 @@ function touchOurFlag(level, ent, other, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L329)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L329)
 
 <a id="function-function-mq3-game-items-use-function-use-level-ent-other-activator-src-mq3-game-items-ml-457893442"></a>
 ### use
@@ -921,7 +921,7 @@ function use(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L466)
 
 <a id="function-function-mq3-game-items-userhandicap-function-userhandicap-level-other-src-mq3-game-items-ml-291227894"></a>
 ### userHandicap
@@ -936,7 +936,7 @@ function userHandicap(level, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L195)
 
 <a id="function-function-mq3-game-items-validitem-function-validitem-index-src-mq3-game-items-ml-1734051572"></a>
 ### validItem
@@ -950,4 +950,4 @@ function validItem(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/items.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/items.ml#L33)

@@ -10,7 +10,7 @@ struct ImageLayout
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ codeLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L29)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-codeoffset-codeoffset-src-mq3-vm-interpreter-ml-1838560244"></a>
 ### codeOffset
@@ -32,7 +32,7 @@ codeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L28)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-count-count-src-mq3-vm-interpreter-ml-1510960048"></a>
 ### count
@@ -42,7 +42,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L27)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-datalength-datalength-src-mq3-vm-interpreter-ml-1533455760"></a>
 ### dataLength
@@ -52,7 +52,7 @@ dataLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L31)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-dataoffset-dataoffset-src-mq3-vm-interpreter-ml-487248010"></a>
 ### dataOffset
@@ -62,7 +62,7 @@ dataOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L30)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-litlength-litlength-src-mq3-vm-interpreter-ml-2025819288"></a>
 ### litLength
@@ -72,7 +72,7 @@ litLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L32)
 
 <a id="field-field-mq3-vm-interpreter-imagelayout-memorysize-memorysize-src-mq3-vm-interpreter-ml-387586932"></a>
 ### memorySize
@@ -82,4 +82,4 @@ memorySize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L33)

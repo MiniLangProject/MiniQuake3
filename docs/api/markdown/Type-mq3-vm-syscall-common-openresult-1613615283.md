@@ -10,7 +10,7 @@ struct OpenResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L35)
 
 ## Members
 
@@ -22,7 +22,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L35)
 
 <a id="field-field-mq3-vm-syscall-common-openresult-length-length-src-mq3-vm-syscall-common-ml-962767786"></a>
 ### length
@@ -32,4 +32,4 @@ length
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_common.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_common.ml#L35)

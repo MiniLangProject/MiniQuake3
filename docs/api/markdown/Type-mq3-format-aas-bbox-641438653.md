@@ -10,7 +10,7 @@ struct BBox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)
 
 <a id="field-field-mq3-format-aas-bbox-maxs-maxs-src-mq3-format-aas-ml-1933369148"></a>
 ### maxs
@@ -32,7 +32,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)
 
 <a id="field-field-mq3-format-aas-bbox-mins-mins-src-mq3-format-aas-ml-1577484008"></a>
 ### mins
@@ -42,7 +42,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)
 
 <a id="field-field-mq3-format-aas-bbox-presencetype-presencetype-src-mq3-format-aas-ml-1143237792"></a>
 ### presenceType
@@ -52,4 +52,4 @@ presenceType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L116)

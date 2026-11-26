@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)
 
 <a id="field-field-mq3-client-send-cmd-services-createcommandfn-createcommandfn-src-mq3-client-send-cmd-ml-123099009"></a>
 ### createCommandFn
@@ -32,7 +32,7 @@ createCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)
 
 <a id="field-field-mq3-client-send-cmd-services-cvarfn-cvarfn-src-mq3-client-send-cmd-ml-1762434093"></a>
 ### cvarFn
@@ -42,7 +42,7 @@ cvarFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)
 
 <a id="field-field-mq3-client-send-cmd-services-diagnosticfn-diagnosticfn-src-mq3-client-send-cmd-ml-1735689355"></a>
 ### diagnosticFn
@@ -52,7 +52,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)
 
 <a id="field-field-mq3-client-send-cmd-services-transmitfn-transmitfn-src-mq3-client-send-cmd-ml-1533685981"></a>
 ### transmitFn
@@ -62,4 +62,4 @@ transmitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L36)

@@ -25,7 +25,7 @@ function alloc(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L38)
 
 <a id="function-function-mq3-botlib-lib-variables-changed-function-changed-state-name-src-mq3-botlib-lib-variables-ml-439557298"></a>
 ### changed
@@ -40,7 +40,7 @@ function changed(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L47)
 
 <a id="function-function-mq3-botlib-lib-variables-dealloc-function-dealloc-state-variable-src-mq3-botlib-lib-variables-ml-806165723"></a>
 ### deAlloc
@@ -55,7 +55,7 @@ function deAlloc(state, variable)
 | `variable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L50)
 
 <a id="function-function-mq3-botlib-lib-variables-deallocall-function-deallocall-state-src-mq3-botlib-lib-variables-ml-1993312387"></a>
 ### deAllocAll
@@ -69,7 +69,7 @@ function deAllocAll(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L55)
 
 <a id="function-function-mq3-botlib-lib-variables-get-function-get-state-name-src-mq3-botlib-lib-variables-ml-384705282"></a>
 ### get
@@ -84,7 +84,7 @@ function get(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L34)
 
 <a id="function-function-mq3-botlib-lib-variables-getstring-function-getstring-state-name-src-mq3-botlib-lib-variables-ml-450342252"></a>
 ### getString
@@ -99,7 +99,7 @@ function getString(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L35)
 
 <a id="function-function-mq3-botlib-lib-variables-getvalue-function-getvalue-state-name-src-mq3-botlib-lib-variables-ml-1746523466"></a>
 ### getValue
@@ -114,7 +114,7 @@ function getValue(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L36)
 
 <a id="function-function-mq3-botlib-lib-variables-indexof-function-indexof-state-name-src-mq3-botlib-lib-variables-ml-2056149184"></a>
 ### indexOf
@@ -129,7 +129,7 @@ function indexOf(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L28)
 
 <a id="function-function-mq3-botlib-lib-variables-set-function-set-state-name-text-src-mq3-botlib-lib-variables-ml-699321651"></a>
 ### set
@@ -145,7 +145,7 @@ function set(state, name, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L39)
 
 <a id="function-function-mq3-botlib-lib-variables-setnotmodified-function-setnotmodified-state-name-src-mq3-botlib-lib-variables-ml-1394669058"></a>
 ### setNotModified
@@ -160,7 +160,7 @@ function setNotModified(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L48)
 
 <a id="function-function-mq3-botlib-lib-variables-stringvalue-function-stringvalue-text-src-mq3-botlib-lib-variables-ml-1255129415"></a>
 ### stringValue
@@ -174,7 +174,7 @@ function stringValue(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L9)
 
 <a id="function-function-mq3-botlib-lib-variables-variable-function-variable-state-name-defaultvalue-src-mq3-botlib-lib-variables-ml-708917940"></a>
 ### variable
@@ -190,7 +190,7 @@ function variable(state, name, defaultValue)
 | `defaultValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L44)
 
 - [mq3.botlib.lib_variables.Variable](Type-mq3-botlib-lib-variables-variable-28576369.md) — struct
 <a id="function-function-mq3-botlib-lib-variables-variablestring-function-variablestring-state-name-defaultvalue-src-mq3-botlib-lib-variables-ml-1138149464"></a>
@@ -207,7 +207,7 @@ function variableString(state, name, defaultValue)
 | `defaultValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L45)
 
 <a id="function-function-mq3-botlib-lib-variables-variablevalue-function-variablevalue-state-name-defaultvalue-src-mq3-botlib-lib-variables-ml-1468100834"></a>
 ### variableValue
@@ -223,4 +223,4 @@ function variableValue(state, name, defaultValue)
 | `defaultValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/lib_variables.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/lib_variables.ml#L46)

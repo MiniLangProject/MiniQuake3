@@ -10,7 +10,7 @@ struct Boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-color-color-src-mq3-client-cgame-weapons-ml-1432172803"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-dispatched-dispatched-src-mq3-client-cgame-weapons-ml-76577629"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-entity-entity-src-mq3-client-cgame-weapons-ml-984906801"></a>
 ### entity
@@ -52,7 +52,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-finish-finish-src-mq3-client-cgame-weapons-ml-1091852293"></a>
 ### finish
@@ -62,7 +62,7 @@ finish
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-kind-kind-src-mq3-client-cgame-weapons-ml-1895066103"></a>
 ### kind
@@ -72,7 +72,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-light-light-src-mq3-client-cgame-weapons-ml-1176718651"></a>
 ### light
@@ -82,7 +82,7 @@ light
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-model-model-src-mq3-client-cgame-weapons-ml-284491111"></a>
 ### model
@@ -92,7 +92,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-origin-origin-src-mq3-client-cgame-weapons-ml-685657575"></a>
 ### origin
@@ -102,7 +102,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-radius-radius-src-mq3-client-cgame-weapons-ml-1394784983"></a>
 ### radius
@@ -112,7 +112,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-shader-shader-src-mq3-client-cgame-weapons-ml-1173223113"></a>
 ### shader
@@ -122,7 +122,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-sound-sound-src-mq3-client-cgame-weapons-ml-711803651"></a>
 ### sound
@@ -132,7 +132,7 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-value-value-src-mq3-client-cgame-weapons-ml-1629006323"></a>
 ### value
@@ -142,7 +142,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-velocity-velocity-src-mq3-client-cgame-weapons-ml-640505593"></a>
 ### velocity
@@ -152,7 +152,7 @@ velocity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)
 
 <a id="field-field-mq3-client-cgame-weapons-boundary-weapon-weapon-src-mq3-client-cgame-weapons-ml-1296750503"></a>
 ### weapon
@@ -162,4 +162,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L52)

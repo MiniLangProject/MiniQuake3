@@ -10,7 +10,7 @@ struct Menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 ## Members
 
@@ -22,7 +22,7 @@ cursorItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-disablecolor-disablecolor-src-mq3-client-ui-shared-ml-1913644040"></a>
 ### disableColor
@@ -32,7 +32,7 @@ disableColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-fadeamount-fadeamount-src-mq3-client-ui-shared-ml-1833039882"></a>
 ### fadeAmount
@@ -42,7 +42,7 @@ fadeAmount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-fadeclamp-fadeclamp-src-mq3-client-ui-shared-ml-1341337650"></a>
 ### fadeClamp
@@ -52,7 +52,7 @@ fadeClamp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-fadecycle-fadecycle-src-mq3-client-ui-shared-ml-259347134"></a>
 ### fadeCycle
@@ -62,7 +62,7 @@ fadeCycle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-focuscolor-focuscolor-src-mq3-client-ui-shared-ml-704834948"></a>
 ### focusColor
@@ -72,7 +72,7 @@ focusColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-font-font-src-mq3-client-ui-shared-ml-529064616"></a>
 ### font
@@ -82,7 +82,7 @@ font
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-fullscreen-fullscreen-src-mq3-client-ui-shared-ml-421441884"></a>
 ### fullScreen
@@ -92,7 +92,7 @@ fullScreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-items-items-src-mq3-client-ui-shared-ml-389235670"></a>
 ### items
@@ -102,7 +102,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-onclose-onclose-src-mq3-client-ui-shared-ml-1359022838"></a>
 ### onClose
@@ -112,7 +112,7 @@ onClose
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-onesc-onesc-src-mq3-client-ui-shared-ml-730180986"></a>
 ### onESC
@@ -122,7 +122,7 @@ onESC
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-onopen-onopen-src-mq3-client-ui-shared-ml-1624280128"></a>
 ### onOpen
@@ -132,7 +132,7 @@ onOpen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-outofbounds-outofbounds-src-mq3-client-ui-shared-ml-1293806838"></a>
 ### outOfBounds
@@ -142,7 +142,7 @@ outOfBounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-ownerdraw-ownerdraw-src-mq3-client-ui-shared-ml-1720146182"></a>
 ### ownerDraw
@@ -152,7 +152,7 @@ ownerDraw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-ownerdrawflags-ownerdrawflags-src-mq3-client-ui-shared-ml-243993778"></a>
 ### ownerDrawFlags
@@ -162,7 +162,7 @@ ownerDrawFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-popup-popup-src-mq3-client-ui-shared-ml-360054826"></a>
 ### popup
@@ -172,7 +172,7 @@ popup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-properties-properties-src-mq3-client-ui-shared-ml-29904804"></a>
 ### properties
@@ -182,7 +182,7 @@ properties
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-soundloop-soundloop-src-mq3-client-ui-shared-ml-1837374482"></a>
 ### soundLoop
@@ -192,7 +192,7 @@ soundLoop
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)
 
 <a id="field-field-mq3-client-ui-shared-menu-window-window-src-mq3-client-ui-shared-ml-566590918"></a>
 ### window
@@ -202,4 +202,4 @@ window
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L83)

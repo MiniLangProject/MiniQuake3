@@ -20,7 +20,7 @@ const BIG_INFO_STRING = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L9)
 
 <a id="function-function-mq3-client-server-command-stream-create-function-create-commandstate-configstrings-src-mq3-client-server-command-stream-ml-1444738370"></a>
 ### create
@@ -35,7 +35,7 @@ function create(commandState, configstrings)
 | `configstrings` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L35)
 
 <a id="constant-constant-mq3-client-server-command-stream-cs-systeminfo-const-cs-systeminfo-1-src-mq3-client-server-command-stream-ml-88308008"></a>
 ### CS_SYSTEMINFO
@@ -45,7 +45,7 @@ const CS_SYSTEMINFO = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L11)
 
 <a id="function-function-mq3-client-server-command-stream-get-function-get-state-host-number-src-mq3-client-server-command-stream-ml-1604669394"></a>
 ### get
@@ -61,7 +61,7 @@ function get(state, host, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L69)
 
 <a id="constant-constant-mq3-client-server-command-stream-max-configstrings-const-max-configstrings-1024-src-mq3-client-server-command-stream-ml-1424815438"></a>
 ### MAX_CONFIGSTRINGS
@@ -71,7 +71,7 @@ const MAX_CONFIGSTRINGS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L10)
 
 <a id="constant-constant-mq3-client-server-command-stream-max-reliable-commands-const-max-reliable-commands-64-src-mq3-client-server-command-stream-ml-2060510799"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -81,7 +81,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L8)
 
 <a id="function-function-mq3-client-server-command-stream-queue-function-queue-state-text-src-mq3-client-server-command-stream-ml-1667189820"></a>
 ### queue
@@ -96,7 +96,7 @@ function queue(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L42)
 
 <a id="function-function-mq3-client-server-command-stream-services-function-services-src-mq3-client-server-command-stream-ml-35372526"></a>
 ### services
@@ -106,7 +106,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L34)
 
 - [mq3.client.server_command_stream.Services](Type-mq3-client-server-command-stream-services-921509293.md) — struct
 <a id="function-function-mq3-client-server-command-stream-setsequence-function-setsequence-state-sequence-commands-src-mq3-client-server-command-stream-ml-926277336"></a>
@@ -123,7 +123,7 @@ function setSequence(state, sequence, commands)
 | `commands` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L49)
 
 - [mq3.client.server_command_stream.State](Type-mq3-client-server-command-stream-state-1716556974.md) — struct
 <a id="function-function-mq3-client-server-command-stream-toolong-function-toolong-prefix-value-extra-src-mq3-client-server-command-stream-ml-564194421"></a>
@@ -140,7 +140,7 @@ function tooLong(prefix, value, extra)
 | `extra` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L65)
 
 <a id="function-function-mq3-client-server-command-stream-updateconfigstring-function-updateconfigstring-state-host-src-mq3-client-server-command-stream-ml-2004200445"></a>
 ### updateConfigstring
@@ -155,4 +155,4 @@ function updateConfigstring(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_command_stream.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_command_stream.ml#L56)

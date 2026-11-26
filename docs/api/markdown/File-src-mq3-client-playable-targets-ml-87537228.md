@@ -28,7 +28,7 @@ function activeCount(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L56)
 
 <a id="function-function-mq3-client-playable-targets-applydefaultshot-function-applydefaultshot-state-shot-now-src-mq3-client-playable-targets-ml-467187407"></a>
 ### applyDefaultShot
@@ -44,7 +44,7 @@ function applyDefaultShot(state, shot, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L112)
 
 <a id="function-function-mq3-client-playable-targets-applyshot-function-applyshot-state-shot-damage-now-src-mq3-client-playable-targets-ml-1090787728"></a>
 ### applyShot
@@ -63,7 +63,7 @@ The Shot endpoint already contains the BSP world hit, so targets behind a wall c
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L87)
 
 <a id="constant-constant-mq3-client-playable-targets-default-damage-const-default-damage-34-src-mq3-client-playable-targets-ml-2042600152"></a>
 ### DEFAULT_DAMAGE
@@ -73,7 +73,7 @@ const DEFAULT_DAMAGE = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L12)
 
 <a id="constant-constant-mq3-client-playable-targets-default-health-const-default-health-100-src-mq3-client-playable-targets-ml-1849089210"></a>
 ### DEFAULT_HEALTH
@@ -83,47 +83,47 @@ const DEFAULT_HEALTH = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L11)
 
-<a id="constant-constant-mq3-client-playable-targets-default-max-z-const-default-max-z-32-src-mq3-client-playable-targets-ml-2046798846"></a>
+<a id="constant-constant-mq3-client-playable-targets-default-max-z-const-default-max-z-32-src-mq3-client-playable-targets-ml-220775498"></a>
 ### DEFAULT_MAX_Z
 
 ```ml
-const DEFAULT_MAX_Z = 32.
+const DEFAULT_MAX_Z = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L15)
 
-<a id="constant-constant-mq3-client-playable-targets-default-min-z-const-default-min-z-24-src-mq3-client-playable-targets-ml-1568373042"></a>
+<a id="constant-constant-mq3-client-playable-targets-default-min-z-const-default-min-z-24-src-mq3-client-playable-targets-ml-1022808558"></a>
 ### DEFAULT_MIN_Z
 
 ```ml
-const DEFAULT_MIN_Z = -24.
+const DEFAULT_MIN_Z = -24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L14)
 
-<a id="constant-constant-mq3-client-playable-targets-default-patrol-radius-const-default-patrol-radius-24-src-mq3-client-playable-targets-ml-1843126601"></a>
+<a id="constant-constant-mq3-client-playable-targets-default-patrol-radius-const-default-patrol-radius-24-src-mq3-client-playable-targets-ml-1185464435"></a>
 ### DEFAULT_PATROL_RADIUS
 
 ```ml
-const DEFAULT_PATROL_RADIUS = 24.
+const DEFAULT_PATROL_RADIUS = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L17)
 
-<a id="constant-constant-mq3-client-playable-targets-default-radius-const-default-radius-15-src-mq3-client-playable-targets-ml-2141369355"></a>
+<a id="constant-constant-mq3-client-playable-targets-default-radius-const-default-radius-15-src-mq3-client-playable-targets-ml-1660248597"></a>
 ### DEFAULT_RADIUS
 
 ```ml
-const DEFAULT_RADIUS = 15.
+const DEFAULT_RADIUS = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-targets-default-respawn-milliseconds-const-default-respawn-milliseconds-3000-src-mq3-client-playable-targets-ml-1676292644"></a>
 ### DEFAULT_RESPAWN_MILLISECONDS
@@ -133,7 +133,7 @@ const DEFAULT_RESPAWN_MILLISECONDS = 3000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L16)
 
 <a id="function-function-mq3-client-playable-targets-fail-function-fail-message-src-mq3-client-playable-targets-ml-1040443375"></a>
 ### fail
@@ -147,7 +147,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L23)
 
 <a id="function-function-mq3-client-playable-targets-field-function-field-fields-key-src-mq3-client-playable-targets-ml-969172396"></a>
 ### field
@@ -162,7 +162,7 @@ function field(fields, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L25)
 
 <a id="function-function-mq3-client-playable-targets-fromentities-function-fromentities-entities-playerspawnindex-src-mq3-client-playable-targets-ml-1037707139"></a>
 ### fromEntities
@@ -177,7 +177,7 @@ function fromEntities(entities, playerSpawnIndex)
 | `playerSpawnIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L33)
 
 - [mq3.client.playable_targets.Hit](Type-mq3-client-playable-targets-hit-1354902781.md) — struct
 <a id="function-function-mq3-client-playable-targets-load-function-load-map-playerspawnindex-src-mq3-client-playable-targets-ml-368232594"></a>
@@ -193,7 +193,7 @@ function load(map, playerSpawnIndex)
 | `playerSpawnIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L51)
 
 <a id="function-function-mq3-client-playable-targets-segmentfraction-function-segmentfraction-startpoint-endpoint-target-radius-minz-maxz-src-mq3-client-playable-targets-ml-691799380"></a>
 ### segmentFraction
@@ -214,7 +214,7 @@ Returns the normalized entry fraction for a segment/AABB hit, or -1 on miss.
 | `maxZ` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L63)
 
 - [mq3.client.playable_targets.State](Type-mq3-client-playable-targets-state-348587645.md) — struct
 - [mq3.client.playable_targets.Target](Type-mq3-client-playable-targets-target-163499649.md) — struct
@@ -233,4 +233,4 @@ Absolute-time motion makes previews and contract captures reproducible.
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L117)

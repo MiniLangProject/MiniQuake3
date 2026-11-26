@@ -10,7 +10,7 @@ struct RenderServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ addCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addentitiesfn-addentitiesfn-src-mq3-renderer-tr-main-runtime-ml-2073092637"></a>
 ### addEntitiesFn
@@ -32,7 +32,7 @@ addEntitiesFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addpolygonsfn-addpolygonsfn-src-mq3-renderer-tr-main-runtime-ml-545982537"></a>
 ### addPolygonsFn
@@ -42,7 +42,7 @@ addPolygonsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-addworldfn-addworldfn-src-mq3-renderer-tr-main-runtime-ml-202836871"></a>
 ### addWorldFn
@@ -52,7 +52,7 @@ addWorldFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-context-context-src-mq3-renderer-tr-main-runtime-ml-837560629"></a>
 ### context
@@ -62,7 +62,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-debugfn-debugfn-src-mq3-renderer-tr-main-runtime-ml-1154484845"></a>
 ### debugFn
@@ -72,7 +72,7 @@ debugFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-renderservices-setupprojectionfn-setupprojectionfn-src-mq3-renderer-tr-main-runtime-ml-429503073"></a>
 ### setupProjectionFn
@@ -82,4 +82,4 @@ setupProjectionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L34)

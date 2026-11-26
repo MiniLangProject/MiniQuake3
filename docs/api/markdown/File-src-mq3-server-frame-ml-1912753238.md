@@ -29,7 +29,7 @@ function call0(fn, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L26)
 
 <a id="constant-constant-mq3-server-frame-cs-serverinfo-const-cs-serverinfo-0-src-mq3-server-frame-ml-402189561"></a>
 ### CS_SERVERINFO
@@ -39,7 +39,7 @@ const CS_SERVERINFO = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L13)
 
 <a id="constant-constant-mq3-server-frame-cs-systeminfo-const-cs-systeminfo-1-src-mq3-server-frame-ml-397464762"></a>
 ### CS_SYSTEMINFO
@@ -49,7 +49,7 @@ const CS_SYSTEMINFO = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L14)
 
 <a id="constant-constant-mq3-server-frame-cvar-serverinfo-const-cvar-serverinfo-4-src-mq3-server-frame-ml-137631489"></a>
 ### CVAR_SERVERINFO
@@ -59,7 +59,7 @@ const CVAR_SERVERINFO = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L11)
 
 <a id="constant-constant-mq3-server-frame-cvar-systeminfo-const-cvar-systeminfo-8-src-mq3-server-frame-ml-1080884573"></a>
 ### CVAR_SYSTEMINFO
@@ -69,7 +69,7 @@ const CVAR_SYSTEMINFO = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L12)
 
 <a id="function-function-mq3-server-frame-cvarset-function-cvarset-host-name-value-src-mq3-server-frame-ml-526066864"></a>
 ### cvarSet
@@ -85,7 +85,7 @@ function cvarSet(host, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L27)
 
 <a id="function-function-mq3-server-frame-run-function-run-state-msec-host-src-mq3-server-frame-ml-716877157"></a>
 ### run
@@ -103,7 +103,7 @@ Runs one outer server frame. All platform/VM effects are explicit services; ping
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L31)
 
 <a id="function-function-mq3-server-frame-runtime-function-runtime-src-mq3-server-frame-ml-832790798"></a>
 ### runtime
@@ -113,7 +113,7 @@ function runtime()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L17)
 
 - [mq3.server.frame.Runtime](Type-mq3-server-frame-runtime-733694840.md) — struct
 <a id="function-function-mq3-server-frame-services-function-services-src-mq3-server-frame-ml-408716694"></a>
@@ -124,6 +124,6 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/frame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/frame.ml#L22)
 
 - [mq3.server.frame.Services](Type-mq3-server-frame-services-969691596.md) — struct

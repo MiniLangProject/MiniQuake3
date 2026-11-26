@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-ammo-ammo-src-mq3-client-cgame-weapons-ml-1122490840"></a>
 ### ammo
@@ -32,7 +32,7 @@ ammo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-brasstime-brasstime-src-mq3-client-cgame-weapons-ml-1276850632"></a>
 ### brassTime
@@ -42,7 +42,7 @@ brassTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-drawgun-drawgun-src-mq3-client-cgame-weapons-ml-2008718640"></a>
 ### drawGun
@@ -52,7 +52,7 @@ drawGun
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-emitted-emitted-src-mq3-client-cgame-weapons-ml-1159411528"></a>
 ### emitted
@@ -62,7 +62,7 @@ emitted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-errors-errors-src-mq3-client-cgame-weapons-ml-183780830"></a>
 ### errors
@@ -72,7 +72,7 @@ errors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-follow-follow-src-mq3-client-cgame-weapons-ml-354328038"></a>
 ### follow
@@ -82,7 +82,7 @@ follow
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-fov-fov-src-mq3-client-cgame-weapons-ml-1849143856"></a>
 ### fov
@@ -92,7 +92,7 @@ fov
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-gunx-gunx-src-mq3-client-cgame-weapons-ml-320390796"></a>
 ### gunX
@@ -102,7 +102,7 @@ gunX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-guny-guny-src-mq3-client-cgame-weapons-ml-738449030"></a>
 ### gunY
@@ -112,7 +112,7 @@ gunY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-gunz-gunz-src-mq3-client-cgame-weapons-ml-793424344"></a>
 ### gunZ
@@ -122,7 +122,7 @@ gunZ
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-health-health-src-mq3-client-cgame-weapons-ml-1154944468"></a>
 ### health
@@ -132,7 +132,7 @@ health
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-itempickuptime-itempickuptime-src-mq3-client-cgame-weapons-ml-1650814276"></a>
 ### itemPickupTime
@@ -142,7 +142,7 @@ itemPickupTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-items-items-src-mq3-client-cgame-weapons-ml-289565300"></a>
 ### items
@@ -152,7 +152,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-noprojectiletrail-noprojectiletrail-src-mq3-client-cgame-weapons-ml-1784585492"></a>
 ### noProjectileTrail
@@ -162,7 +162,7 @@ noProjectileTrail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-oldplasma-oldplasma-src-mq3-client-cgame-weapons-ml-1895442516"></a>
 ### oldPlasma
@@ -172,7 +172,7 @@ oldPlasma
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-oldrail-oldrail-src-mq3-client-cgame-weapons-ml-2069937724"></a>
 ### oldRail
@@ -182,7 +182,7 @@ oldRail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-oldrocket-oldrocket-src-mq3-client-cgame-weapons-ml-1882282812"></a>
 ### oldRocket
@@ -192,7 +192,7 @@ oldRocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-owned-owned-src-mq3-client-cgame-weapons-ml-2069872912"></a>
 ### owned
@@ -202,7 +202,7 @@ owned
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-railtrailtime-railtrailtime-src-mq3-client-cgame-weapons-ml-1349215892"></a>
 ### railTrailTime
@@ -212,7 +212,7 @@ railTrailTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-random-random-src-mq3-client-cgame-weapons-ml-483553570"></a>
 ### random
@@ -222,7 +222,7 @@ random
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-randomat-randomat-src-mq3-client-cgame-weapons-ml-1687197952"></a>
 ### randomAt
@@ -232,7 +232,7 @@ randomAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-randomints-randomints-src-mq3-client-cgame-weapons-ml-2121657174"></a>
 ### randomInts
@@ -242,7 +242,7 @@ randomInts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-renderingthirdperson-renderingthirdperson-src-mq3-client-cgame-weapons-ml-2136276664"></a>
 ### renderingThirdPerson
@@ -252,7 +252,7 @@ renderingThirdPerson
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-suppressed-suppressed-src-mq3-client-cgame-weapons-ml-2017801060"></a>
 ### suppressed
@@ -262,7 +262,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-testgun-testgun-src-mq3-client-cgame-weapons-ml-1020734800"></a>
 ### testGun
@@ -272,7 +272,7 @@ testGun
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-time-time-src-mq3-client-cgame-weapons-ml-913094286"></a>
 ### time
@@ -282,7 +282,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-tracerchance-tracerchance-src-mq3-client-cgame-weapons-ml-643863190"></a>
 ### tracerChance
@@ -292,7 +292,7 @@ tracerChance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-tracerlength-tracerlength-src-mq3-client-cgame-weapons-ml-1884795582"></a>
 ### tracerLength
@@ -302,7 +302,7 @@ tracerLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-tracerwidth-tracerwidth-src-mq3-client-cgame-weapons-ml-1679549328"></a>
 ### tracerWidth
@@ -312,7 +312,7 @@ tracerWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-truelightning-truelightning-src-mq3-client-cgame-weapons-ml-1829311232"></a>
 ### trueLightning
@@ -322,7 +322,7 @@ trueLightning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-weapons-weapons-src-mq3-client-cgame-weapons-ml-1760583796"></a>
 ### weapons
@@ -332,7 +332,7 @@ weapons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-weaponselect-weaponselect-src-mq3-client-cgame-weapons-ml-1802715744"></a>
 ### weaponSelect
@@ -342,7 +342,7 @@ weaponSelect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)
 
 <a id="field-field-mq3-client-cgame-weapons-state-weaponselecttime-weaponselecttime-src-mq3-client-cgame-weapons-ml-1242831562"></a>
 ### weaponSelectTime
@@ -352,4 +352,4 @@ weaponSelectTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L57)

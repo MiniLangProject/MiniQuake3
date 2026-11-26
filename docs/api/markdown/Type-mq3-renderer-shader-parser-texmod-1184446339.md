@@ -10,7 +10,7 @@ struct TexMod
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L38)
 
 <a id="field-field-mq3-renderer-shader-parser-texmod-values-values-src-mq3-renderer-shader-parser-ml-230014362"></a>
 ### values
@@ -32,7 +32,7 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L38)
 
 <a id="field-field-mq3-renderer-shader-parser-texmod-wave-wave-src-mq3-renderer-shader-parser-ml-193639880"></a>
 ### wave
@@ -42,4 +42,4 @@ wave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L38)

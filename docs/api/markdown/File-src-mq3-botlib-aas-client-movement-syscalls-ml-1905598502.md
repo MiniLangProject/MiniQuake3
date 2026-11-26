@@ -22,7 +22,7 @@ const AAS_CLIENTMOVE_SIZE = 84
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L9)
 
 <a id="function-function-mq3-botlib-aas-client-movement-syscalls-dispatch-function-dispatch-services-vm-base-src-mq3-botlib-aas-client-movement-syscalls-ml-2129030112"></a>
 ### dispatch
@@ -38,7 +38,7 @@ function dispatch(services, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-client-movement-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-client-movement-syscalls-ml-1333138845"></a>
 ### writeVector
@@ -54,4 +54,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement_syscalls.ml#L10)

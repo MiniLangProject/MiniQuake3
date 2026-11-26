@@ -10,7 +10,7 @@ struct Client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 ## Members
 
@@ -22,7 +22,7 @@ botSkill
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-handicap-handicap-src-mq3-client-cgame-main-ml-589278516"></a>
 ### handicap
@@ -32,7 +32,7 @@ handicap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-infovalid-infovalid-src-mq3-client-cgame-main-ml-1847957412"></a>
 ### infoValid
@@ -42,7 +42,7 @@ infoValid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-losses-losses-src-mq3-client-cgame-main-ml-1694821542"></a>
 ### losses
@@ -52,7 +52,7 @@ losses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-name-name-src-mq3-client-cgame-main-ml-364899486"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-powerups-powerups-src-mq3-client-cgame-main-ml-2085722274"></a>
 ### powerups
@@ -72,7 +72,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-score-score-src-mq3-client-cgame-main-ml-1413037324"></a>
 ### score
@@ -82,7 +82,7 @@ score
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-team-team-src-mq3-client-cgame-main-ml-750952818"></a>
 ### team
@@ -92,7 +92,7 @@ team
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-teamleader-teamleader-src-mq3-client-cgame-main-ml-1750156316"></a>
 ### teamLeader
@@ -102,7 +102,7 @@ teamLeader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-teamtask-teamtask-src-mq3-client-cgame-main-ml-696274964"></a>
 ### teamTask
@@ -112,7 +112,7 @@ teamTask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)
 
 <a id="field-field-mq3-client-cgame-main-client-wins-wins-src-mq3-client-cgame-main-ml-1283288714"></a>
 ### wins
@@ -122,4 +122,4 @@ wins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L45)

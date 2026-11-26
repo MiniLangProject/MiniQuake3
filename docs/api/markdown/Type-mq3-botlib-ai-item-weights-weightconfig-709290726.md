@@ -10,7 +10,7 @@ struct WeightConfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ filename
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)
 
 <a id="field-field-mq3-botlib-ai-item-weights-weightconfig-weights-weights-src-mq3-botlib-ai-item-weights-ml-1744127419"></a>
 ### weights
@@ -32,4 +32,4 @@ weights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L24)

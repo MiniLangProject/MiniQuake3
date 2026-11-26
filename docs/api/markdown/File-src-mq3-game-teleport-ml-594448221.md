@@ -31,7 +31,7 @@ function killBox(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L20)
 
 <a id="function-function-mq3-game-teleport-player-function-player-level-ent-origin-angles-src-mq3-game-teleport-ml-286361135"></a>
 ### player
@@ -48,7 +48,7 @@ function player(level, ent, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L33)
 
 <a id="function-function-mq3-game-teleport-setclientviewangle-function-setclientviewangle-ent-angles-src-mq3-game-teleport-ml-1408772677"></a>
 ### setClientViewAngle
@@ -63,4 +63,4 @@ function setClientViewAngle(ent, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/teleport.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/teleport.ml#L11)

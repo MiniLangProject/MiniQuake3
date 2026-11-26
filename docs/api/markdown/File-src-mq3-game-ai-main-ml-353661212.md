@@ -33,7 +33,7 @@ function AngleDifference(ang1, ang2)
 | `ang2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L125)
 
 - [mq3.game.ai_main.AreaInfo](Type-mq3-game-ai-main-areainfo-1884411907.md) — struct
 <a id="function-function-mq3-game-ai-main-botai-function-botai-services-client-thinktime-src-mq3-game-ai-main-ml-527853988"></a>
@@ -50,7 +50,7 @@ function BotAI(services, client, thinktime)
 | `thinktime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L124)
 
 <a id="function-function-mq3-game-ai-main-botai-botinitialchat-function-botai-botinitialchat-services-bot-type-variables-src-mq3-game-ai-main-ml-959737884"></a>
 ### BotAI_BotInitialChat
@@ -67,7 +67,7 @@ function BotAI_BotInitialChat(services, bot, type, variables)
 | `variables` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L95)
 
 <a id="function-function-mq3-game-ai-main-botai-getclientstate-function-botai-getclientstate-services-clientnum-src-mq3-game-ai-main-ml-699008065"></a>
 ### BotAI_GetClientState
@@ -82,7 +82,7 @@ function BotAI_GetClientState(services, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L92)
 
 <a id="function-function-mq3-game-ai-main-botai-getentitystate-function-botai-getentitystate-services-entitynum-src-mq3-game-ai-main-ml-1615327505"></a>
 ### BotAI_GetEntityState
@@ -97,7 +97,7 @@ function BotAI_GetEntityState(services, entityNum)
 | `entityNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L93)
 
 <a id="function-function-mq3-game-ai-main-botai-getsnapshotentity-function-botai-getsnapshotentity-services-clientnum-sequence-src-mq3-game-ai-main-ml-1031611912"></a>
 ### BotAI_GetSnapshotEntity
@@ -113,7 +113,7 @@ function BotAI_GetSnapshotEntity(services, clientNum, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L94)
 
 <a id="function-function-mq3-game-ai-main-botai-print-function-botai-print-services-type-message-src-mq3-game-ai-main-ml-590258897"></a>
 ### BotAI_Print
@@ -131,7 +131,7 @@ Botlib import boundaries from the first section of ai_main.c.
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L81)
 
 <a id="function-function-mq3-game-ai-main-botai-trace-function-botai-trace-services-start-mins-maxs-traceend-passent-contentmask-src-mq3-game-ai-main-ml-2040512769"></a>
 ### BotAI_Trace
@@ -151,7 +151,7 @@ function BotAI_Trace(services, start, mins, maxs, traceEnd, passent, contentmask
 | `contentmask` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L87)
 
 <a id="function-function-mq3-game-ai-main-botailoadmap-function-botailoadmap-services-restart-src-mq3-game-ai-main-ml-1396857543"></a>
 ### BotAILoadMap
@@ -166,7 +166,7 @@ function BotAILoadMap(services, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L135)
 
 <a id="function-function-mq3-game-ai-main-botairegularupdate-function-botairegularupdate-services-src-mq3-game-ai-main-ml-381298474"></a>
 ### BotAIRegularUpdate
@@ -180,7 +180,7 @@ function BotAIRegularUpdate(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L130)
 
 <a id="function-function-mq3-game-ai-main-botaisetup-function-botaisetup-services-restart-src-mq3-game-ai-main-ml-1478174923"></a>
 ### BotAISetup
@@ -195,7 +195,7 @@ function BotAISetup(services, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L133)
 
 <a id="function-function-mq3-game-ai-main-botaisetupclient-function-botaisetupclient-services-client-settings-restart-src-mq3-game-ai-main-ml-1704612377"></a>
 ### BotAISetupClient
@@ -212,7 +212,7 @@ function BotAISetupClient(services, client, settings, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L137)
 
 <a id="function-function-mq3-game-ai-main-botaishutdown-function-botaishutdown-services-restart-src-mq3-game-ai-main-ml-2062204781"></a>
 ### BotAIShutdown
@@ -227,7 +227,7 @@ function BotAIShutdown(services, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L136)
 
 <a id="function-function-mq3-game-ai-main-botaishutdownclient-function-botaishutdownclient-services-client-restart-src-mq3-game-ai-main-ml-953518476"></a>
 ### BotAIShutdownClient
@@ -243,7 +243,7 @@ function BotAIShutdownClient(services, client, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L138)
 
 <a id="function-function-mq3-game-ai-main-botaistartframe-function-botaistartframe-services-level-time-src-mq3-game-ai-main-ml-2028619667"></a>
 ### BotAIStartFrame
@@ -259,7 +259,7 @@ function BotAIStartFrame(services, level, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L131)
 
 <a id="function-function-mq3-game-ai-main-botchangeviewangle-function-botchangeviewangle-angle-ideal-speed-src-mq3-game-ai-main-ml-1410348535"></a>
 ### BotChangeViewAngle
@@ -275,7 +275,7 @@ function BotChangeViewAngle(angle, ideal, speed)
 | `speed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L126)
 
 <a id="function-function-mq3-game-ai-main-botchangeviewangles-function-botchangeviewangles-services-bot-thinktime-src-mq3-game-ai-main-ml-1309017736"></a>
 ### BotChangeViewAngles
@@ -291,7 +291,7 @@ function BotChangeViewAngles(services, bot, thinktime)
 | `thinktime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L127)
 
 <a id="function-function-mq3-game-ai-main-botentityinfo-function-botentityinfo-services-entnum-src-mq3-game-ai-main-ml-1954135459"></a>
 ### BotEntityInfo
@@ -306,7 +306,7 @@ function BotEntityInfo(services, entnum)
 | `entnum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L159)
 
 <a id="function-function-mq3-game-ai-main-botinitlibrary-function-botinitlibrary-services-src-mq3-game-ai-main-ml-238076514"></a>
 ### BotInitLibrary
@@ -320,7 +320,7 @@ function BotInitLibrary(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L132)
 
 <a id="function-function-mq3-game-ai-main-botinputtousercommand-function-botinputtousercommand-botinput-command-deltaangles-time-src-mq3-game-ai-main-ml-1714495859"></a>
 ### BotInputToUserCommand
@@ -337,7 +337,7 @@ function BotInputToUserCommand(botInput, command, deltaAngles, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L128)
 
 <a id="function-function-mq3-game-ai-main-botinterbreedbots-function-botinterbreedbots-services-src-mq3-game-ai-main-ml-1542150176"></a>
 ### BotInterbreedBots
@@ -351,7 +351,7 @@ function BotInterbreedBots(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L139)
 
 <a id="function-function-mq3-game-ai-main-botinterbreedendmatch-function-botinterbreedendmatch-services-src-mq3-game-ai-main-ml-1484010156"></a>
 ### BotInterbreedEndMatch
@@ -365,7 +365,7 @@ function BotInterbreedEndMatch(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L141)
 
 <a id="function-function-mq3-game-ai-main-botinterbreeding-function-botinterbreeding-services-src-mq3-game-ai-main-ml-1720303926"></a>
 ### BotInterbreeding
@@ -379,7 +379,7 @@ function BotInterbreeding(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L143)
 
 <a id="function-function-mq3-game-ai-main-botreadsessiondata-function-botreadsessiondata-services-bot-src-mq3-game-ai-main-ml-1913668769"></a>
 ### BotReadSessionData
@@ -394,7 +394,7 @@ function BotReadSessionData(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L191)
 
 <a id="function-function-mq3-game-ai-main-botreportstatus-function-botreportstatus-services-bot-src-mq3-game-ai-main-ml-1538987827"></a>
 ### BotReportStatus
@@ -409,7 +409,7 @@ function BotReportStatus(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L120)
 
 <a id="function-function-mq3-game-ai-main-botresetstate-function-botresetstate-services-bot-src-mq3-game-ai-main-ml-1457707039"></a>
 ### BotResetState
@@ -424,7 +424,7 @@ function BotResetState(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L134)
 
 <a id="function-function-mq3-game-ai-main-botschedulebotthink-function-botschedulebotthink-services-src-mq3-game-ai-main-ml-1226473316"></a>
 ### BotScheduleBotThink
@@ -438,7 +438,7 @@ function BotScheduleBotThink(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L169)
 
 <a id="function-function-mq3-game-ai-main-botsetinfoconfigstring-function-botsetinfoconfigstring-services-bot-src-mq3-game-ai-main-ml-950538673"></a>
 ### BotSetInfoConfigString
@@ -453,7 +453,7 @@ function BotSetInfoConfigString(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L121)
 
 <a id="function-function-mq3-game-ai-main-botteamleader-function-botteamleader-services-bot-src-mq3-game-ai-main-ml-1896558375"></a>
 ### BotTeamLeader
@@ -468,7 +468,7 @@ function BotTeamLeader(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L164)
 
 <a id="function-function-mq3-game-ai-main-botteamplayreport-function-botteamplayreport-services-src-mq3-game-ai-main-ml-1342412478"></a>
 ### BotTeamplayReport
@@ -482,7 +482,7 @@ function BotTeamplayReport(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L123)
 
 <a id="function-function-mq3-game-ai-main-bottestaas-function-bottestaas-services-origin-src-mq3-game-ai-main-ml-1959558512"></a>
 ### BotTestAAS
@@ -497,7 +497,7 @@ function BotTestAAS(services, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L102)
 
 <a id="function-function-mq3-game-ai-main-botupdateinfoconfigstrings-function-botupdateinfoconfigstrings-services-src-mq3-game-ai-main-ml-1156270866"></a>
 ### BotUpdateInfoConfigStrings
@@ -511,7 +511,7 @@ function BotUpdateInfoConfigStrings(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L122)
 
 <a id="function-function-mq3-game-ai-main-botupdateinput-function-botupdateinput-services-bot-command-time-elapsed-src-mq3-game-ai-main-ml-307541313"></a>
 ### BotUpdateInput
@@ -529,7 +529,7 @@ function BotUpdateInput(services, bot, command, time, elapsed)
 | `elapsed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L129)
 
 <a id="function-function-mq3-game-ai-main-botwriteinterbreeded-function-botwriteinterbreeded-services-filename-src-mq3-game-ai-main-ml-1469777757"></a>
 ### BotWriteInterbreeded
@@ -544,7 +544,7 @@ function BotWriteInterbreeded(services, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L140)
 
 <a id="function-function-mq3-game-ai-main-botwritesessiondata-function-botwritesessiondata-services-bot-src-mq3-game-ai-main-ml-1370959397"></a>
 ### BotWriteSessionData
@@ -559,7 +559,7 @@ function BotWriteSessionData(services, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L188)
 
 <a id="function-function-mq3-game-ai-main-bridgebotlibvar-function-bridgebotlibvar-clientservices-name-value-src-mq3-game-ai-main-ml-1305280593"></a>
 ### bridgeBotLibVar
@@ -575,7 +575,7 @@ function bridgeBotLibVar(clientServices, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L59)
 
 <a id="function-function-mq3-game-ai-main-bridgeinterbreeding-function-bridgeinterbreeding-frameservices-src-mq3-game-ai-main-ml-494468247"></a>
 ### bridgeInterbreeding
@@ -589,7 +589,7 @@ function bridgeInterbreeding(frameServices)
 | `frameServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L55)
 
 <a id="function-function-mq3-game-ai-main-bridgereadsession-function-bridgereadsession-clientservices-bot-src-mq3-game-ai-main-ml-353735140"></a>
 ### bridgeReadSession
@@ -604,7 +604,7 @@ function bridgeReadSession(clientServices, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L57)
 
 <a id="function-function-mq3-game-ai-main-bridgeschedulefromclient-function-bridgeschedulefromclient-clientservices-src-mq3-game-ai-main-ml-1023998207"></a>
 ### bridgeScheduleFromClient
@@ -618,7 +618,7 @@ function bridgeScheduleFromClient(clientServices)
 | `clientServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L56)
 
 <a id="function-function-mq3-game-ai-main-bridgeschedulefromframe-function-bridgeschedulefromframe-frameservices-src-mq3-game-ai-main-ml-1563276015"></a>
 ### bridgeScheduleFromFrame
@@ -632,7 +632,7 @@ function bridgeScheduleFromFrame(frameServices)
 | `frameServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L54)
 
 <a id="function-function-mq3-game-ai-main-bridgeshutdownclient-function-bridgeshutdownclient-state-client-restart-src-mq3-game-ai-main-ml-536097169"></a>
 ### bridgeShutdownClient
@@ -648,7 +648,7 @@ function bridgeShutdownClient(state, client, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L53)
 
 <a id="function-function-mq3-game-ai-main-bridgewritesession-function-bridgewritesession-clientservices-bot-src-mq3-game-ai-main-ml-602323970"></a>
 ### bridgeWriteSession
@@ -663,7 +663,7 @@ function bridgeWriteSession(clientServices, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L58)
 
 <a id="function-function-mq3-game-ai-main-create-function-create-state-src-mq3-game-ai-main-ml-696305625"></a>
 ### create
@@ -677,7 +677,7 @@ function create(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L60)
 
 <a id="function-function-mq3-game-ai-main-emit-function-emit-services-boundary-kind-subject-detail-number-src-mq3-game-ai-main-ml-1682409038"></a>
 ### emit
@@ -696,7 +696,7 @@ function emit(services, boundary, kind, subject, detail, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L71)
 
 <a id="function-function-mq3-game-ai-main-emptygoal-function-emptygoal-src-mq3-game-ai-main-ml-1760544178"></a>
 ### emptyGoal
@@ -706,7 +706,7 @@ function emptyGoal()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L51)
 
 <a id="function-function-mq3-game-ai-main-emptysession-function-emptysession-src-mq3-game-ai-main-ml-1111248182"></a>
 ### emptySession
@@ -716,7 +716,7 @@ function emptySession()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L52)
 
 <a id="constant-constant-mq3-game-ai-main-gt-tournament-const-gt-tournament-1-src-mq3-game-ai-main-ml-1247335022"></a>
 ### GT_TOURNAMENT
@@ -726,7 +726,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L19)
 
 <a id="constant-constant-mq3-game-ai-main-max-matchvariables-const-max-matchvariables-8-src-mq3-game-ai-main-ml-1407797493"></a>
 ### MAX_MATCHVARIABLES
@@ -736,7 +736,7 @@ const MAX_MATCHVARIABLES = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L20)
 
 <a id="function-function-mq3-game-ai-main-need-function-need-callback-label-src-mq3-game-ai-main-ml-1895061179"></a>
 ### need
@@ -751,7 +751,7 @@ function need(callback, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L74)
 
 <a id="function-function-mq3-game-ai-main-numbots-function-numbots-services-src-mq3-game-ai-main-ml-1320024698"></a>
 ### NumBots
@@ -765,7 +765,7 @@ function NumBots(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L163)
 
 <a id="function-function-mq3-game-ai-main-parsesession-function-parsesession-text-src-mq3-game-ai-main-ml-1082290591"></a>
 ### parseSession
@@ -779,7 +779,7 @@ function parseSession(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L182)
 
 <a id="constant-constant-mq3-game-ai-main-prt-error-const-prt-error-3-src-mq3-game-ai-main-ml-106342300"></a>
 ### PRT_ERROR
@@ -789,7 +789,7 @@ const PRT_ERROR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L16)
 
 <a id="constant-constant-mq3-game-ai-main-prt-exit-const-prt-exit-5-src-mq3-game-ai-main-ml-815796502"></a>
 ### PRT_EXIT
@@ -799,7 +799,7 @@ const PRT_EXIT = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L18)
 
 <a id="constant-constant-mq3-game-ai-main-prt-fatal-const-prt-fatal-4-src-mq3-game-ai-main-ml-904340421"></a>
 ### PRT_FATAL
@@ -809,7 +809,7 @@ const PRT_FATAL = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L17)
 
 <a id="constant-constant-mq3-game-ai-main-prt-message-const-prt-message-1-src-mq3-game-ai-main-ml-512457578"></a>
 ### PRT_MESSAGE
@@ -819,7 +819,7 @@ const PRT_MESSAGE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L14)
 
 <a id="constant-constant-mq3-game-ai-main-prt-warning-const-prt-warning-2-src-mq3-game-ai-main-ml-750203571"></a>
 ### PRT_WARNING
@@ -829,7 +829,7 @@ const PRT_WARNING = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L15)
 
 <a id="function-function-mq3-game-ai-main-removecolorescapesequences-function-removecolorescapesequences-text-src-mq3-game-ai-main-ml-2104052531"></a>
 ### RemoveColorEscapeSequences
@@ -845,7 +845,7 @@ Direct native ownership delegates to the already isolated ai_main sections.
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L119)
 
 - [mq3.game.ai_main.Services](Type-mq3-game-ai-main-services-1097772398.md) — struct
 - [mq3.game.ai_main.SessionData](Type-mq3-game-ai-main-sessiondata-1269821510.md) — struct
@@ -862,7 +862,7 @@ function sessionText(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L178)
 
 <a id="function-function-mq3-game-ai-main-validbot-function-validbot-services-client-src-mq3-game-ai-main-ml-1800200291"></a>
 ### validBot
@@ -877,4 +877,4 @@ function validBot(services, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L75)

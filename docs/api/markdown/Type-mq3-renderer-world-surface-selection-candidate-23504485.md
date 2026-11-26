@@ -10,7 +10,7 @@ struct Candidate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 ## Members
 
@@ -22,7 +22,7 @@ distanceSquared
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-candidate-faceindex-faceindex-src-mq3-renderer-world-surface-selection-ml-879933192"></a>
 ### faceIndex
@@ -32,7 +32,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-candidate-importance-importance-src-mq3-renderer-world-surface-selection-ml-2117090076"></a>
 ### importance
@@ -42,7 +42,7 @@ importance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)
 
 <a id="field-field-mq3-renderer-world-surface-selection-candidate-trianglecount-trianglecount-src-mq3-renderer-world-surface-selection-ml-254197404"></a>
 ### triangleCount
@@ -52,4 +52,4 @@ triangleCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_surface_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_surface_selection.ml#L31)

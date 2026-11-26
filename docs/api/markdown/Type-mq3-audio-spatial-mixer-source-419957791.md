@@ -10,7 +10,7 @@ struct Source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-enabled-enabled-src-mq3-audio-spatial-mixer-ml-2041248512"></a>
 ### enabled
@@ -32,7 +32,7 @@ enabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-globalsound-globalsound-src-mq3-audio-spatial-mixer-ml-1392993152"></a>
 ### globalSound
@@ -42,7 +42,7 @@ globalSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-id-id-src-mq3-audio-spatial-mixer-ml-2078145654"></a>
 ### id
@@ -52,7 +52,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-key-key-src-mq3-audio-spatial-mixer-ml-167852140"></a>
 ### key
@@ -62,7 +62,7 @@ key
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-origin-origin-src-mq3-audio-spatial-mixer-ml-1938474612"></a>
 ### origin
@@ -72,7 +72,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-sound-sound-src-mq3-audio-spatial-mixer-ml-1285754644"></a>
 ### sound
@@ -82,7 +82,7 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)
 
 <a id="field-field-mq3-audio-spatial-mixer-source-volume-volume-src-mq3-audio-spatial-mixer-ml-1196033516"></a>
 ### volume
@@ -92,4 +92,4 @@ volume
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L15)

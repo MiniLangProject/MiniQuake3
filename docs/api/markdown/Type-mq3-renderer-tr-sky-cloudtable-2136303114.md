@@ -10,7 +10,7 @@ struct CloudTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ coords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-sky-cloudtable-factors-factors-src-mq3-renderer-tr-sky-ml-21895382"></a>
 ### factors
@@ -32,4 +32,4 @@ factors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L22)

@@ -30,7 +30,7 @@ function convert(ps, s, snap, extrapolate, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L15)
 
 <a id="function-function-mq3-game-snapshot-extrapolate-function-extrapolate-ps-s-time-snap-src-mq3-game-snapshot-ml-1481170021"></a>
 ### extrapolate
@@ -47,7 +47,7 @@ function extrapolate(ps, s, time, snap)
 | `snap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L46)
 
 <a id="function-function-mq3-game-snapshot-fromplayer-function-fromplayer-ps-s-snap-src-mq3-game-snapshot-ml-1398061538"></a>
 ### fromPlayer
@@ -63,7 +63,7 @@ function fromPlayer(ps, s, snap)
 | `snap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L43)
 
 <a id="function-function-mq3-game-snapshot-snapvector-function-snapvector-v-src-mq3-game-snapshot-ml-916038790"></a>
 ### snapVector
@@ -77,4 +77,4 @@ function snapVector(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/snapshot.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/snapshot.ml#L8)

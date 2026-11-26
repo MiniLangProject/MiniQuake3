@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-commandfixfn-commandfixfn-src-mq3-renderer-shader-runtime-ml-187325278"></a>
 ### commandFixFn
@@ -32,7 +32,7 @@ commandFixFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-context-context-src-mq3-renderer-shader-runtime-ml-1051222762"></a>
 ### context
@@ -42,7 +42,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-detailtextures-detailtextures-src-mq3-renderer-shader-runtime-ml-119292764"></a>
 ### detailTextures
@@ -52,7 +52,7 @@ detailTextures
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-ignorefastpath-ignorefastpath-src-mq3-renderer-shader-runtime-ml-351703124"></a>
 ### ignoreFastPath
@@ -62,7 +62,7 @@ ignoreFastPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-index-index-src-mq3-renderer-shader-runtime-ml-1252783238"></a>
 ### index
@@ -72,7 +72,7 @@ index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-initialized-initialized-src-mq3-renderer-shader-runtime-ml-652559842"></a>
 ### initialized
@@ -82,7 +82,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-kinds-kinds-src-mq3-renderer-shader-runtime-ml-1264554022"></a>
 ### kinds
@@ -92,7 +92,7 @@ kinds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-loadimagefn-loadimagefn-src-mq3-renderer-shader-runtime-ml-49234958"></a>
 ### loadImageFn
@@ -102,7 +102,7 @@ loadImageFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-multitexture-multitexture-src-mq3-renderer-shader-runtime-ml-821653746"></a>
 ### multitexture
@@ -112,7 +112,7 @@ multitexture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-numlightmaps-numlightmaps-src-mq3-renderer-shader-runtime-ml-1871156708"></a>
 ### numLightmaps
@@ -122,7 +122,7 @@ numLightmaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-remaps-remaps-src-mq3-renderer-shader-runtime-ml-1705629058"></a>
 ### remaps
@@ -132,7 +132,7 @@ remaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-shaders-shaders-src-mq3-renderer-shader-runtime-ml-903055306"></a>
 ### shaders
@@ -142,7 +142,7 @@ shaders
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-sorted-sorted-src-mq3-renderer-shader-runtime-ml-37444404"></a>
 ### sorted
@@ -152,7 +152,7 @@ sorted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-text-text-src-mq3-renderer-shader-runtime-ml-1962492316"></a>
 ### text
@@ -162,7 +162,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-textureenvadd-textureenvadd-src-mq3-renderer-shader-runtime-ml-1178381526"></a>
 ### textureEnvAdd
@@ -172,7 +172,7 @@ textureEnvAdd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-vertexlight-vertexlight-src-mq3-renderer-shader-runtime-ml-1957388066"></a>
 ### vertexLight
@@ -182,7 +182,7 @@ vertexLight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-shader-runtime-state-warnings-warnings-src-mq3-renderer-shader-runtime-ml-89604328"></a>
 ### warnings
@@ -192,4 +192,4 @@ warnings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_runtime.ml#L28)

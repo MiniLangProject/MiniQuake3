@@ -10,7 +10,7 @@ struct Attachment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L27)
 
 <a id="field-field-mq3-client-playable-viewmodel-attachment-frames-frames-src-mq3-client-playable-viewmodel-ml-151501086"></a>
 ### frames
@@ -32,7 +32,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L27)
 
 <a id="field-field-mq3-client-playable-viewmodel-attachment-path-path-src-mq3-client-playable-viewmodel-ml-1714699568"></a>
 ### path
@@ -42,4 +42,4 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L27)

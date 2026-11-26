@@ -10,7 +10,7 @@ struct FrontCounters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ boxMd3Clip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxmd3in-boxmd3in-src-mq3-renderer-tr-cmds-runtime-ml-2105565103"></a>
 ### boxMd3In
@@ -32,7 +32,7 @@ boxMd3In
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxmd3out-boxmd3out-src-mq3-renderer-tr-cmds-runtime-ml-1076766451"></a>
 ### boxMd3Out
@@ -42,7 +42,7 @@ boxMd3Out
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchclip-boxpatchclip-src-mq3-renderer-tr-cmds-runtime-ml-617951937"></a>
 ### boxPatchClip
@@ -52,7 +52,7 @@ boxPatchClip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchin-boxpatchin-src-mq3-renderer-tr-cmds-runtime-ml-1292399143"></a>
 ### boxPatchIn
@@ -62,7 +62,7 @@ boxPatchIn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-boxpatchout-boxpatchout-src-mq3-renderer-tr-cmds-runtime-ml-212158455"></a>
 ### boxPatchOut
@@ -72,7 +72,7 @@ boxPatchOut
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-dlightsurfaces-dlightsurfaces-src-mq3-renderer-tr-cmds-runtime-ml-1262727299"></a>
 ### dlightSurfaces
@@ -82,7 +82,7 @@ dlightSurfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-dlightsurfacesculled-dlightsurfacesculled-src-mq3-renderer-tr-cmds-runtime-ml-1340832105"></a>
 ### dlightSurfacesCulled
@@ -92,7 +92,7 @@ dlightSurfacesCulled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-leafs-leafs-src-mq3-renderer-tr-cmds-runtime-ml-176001227"></a>
 ### leafs
@@ -102,7 +102,7 @@ leafs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3clip-spheremd3clip-src-mq3-renderer-tr-cmds-runtime-ml-1506137527"></a>
 ### sphereMd3Clip
@@ -112,7 +112,7 @@ sphereMd3Clip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3in-spheremd3in-src-mq3-renderer-tr-cmds-runtime-ml-1887219247"></a>
 ### sphereMd3In
@@ -122,7 +122,7 @@ sphereMd3In
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spheremd3out-spheremd3out-src-mq3-renderer-tr-cmds-runtime-ml-1734769609"></a>
 ### sphereMd3Out
@@ -132,7 +132,7 @@ sphereMd3Out
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchclip-spherepatchclip-src-mq3-renderer-tr-cmds-runtime-ml-827061275"></a>
 ### spherePatchClip
@@ -142,7 +142,7 @@ spherePatchClip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchin-spherepatchin-src-mq3-renderer-tr-cmds-runtime-ml-193033223"></a>
 ### spherePatchIn
@@ -152,7 +152,7 @@ spherePatchIn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-spherepatchout-spherepatchout-src-mq3-renderer-tr-cmds-runtime-ml-721949565"></a>
 ### spherePatchOut
@@ -162,7 +162,7 @@ spherePatchOut
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)
 
 <a id="field-field-mq3-renderer-tr-cmds-runtime-frontcounters-zfar-zfar-src-mq3-renderer-tr-cmds-runtime-ml-640029805"></a>
 ### zFar
@@ -172,4 +172,4 @@ zFar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L15)

@@ -10,7 +10,7 @@ struct Controls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ back
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-down-down-src-mq3-client-playable-viewer-ml-630803419"></a>
 ### down
@@ -32,7 +32,7 @@ down
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-forward-forward-src-mq3-client-playable-viewer-ml-477708603"></a>
 ### forward
@@ -42,7 +42,7 @@ forward
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-left-left-src-mq3-client-playable-viewer-ml-1764853957"></a>
 ### left
@@ -52,7 +52,7 @@ left
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-mousex-mousex-src-mq3-client-playable-viewer-ml-998332737"></a>
 ### mouseX
@@ -62,7 +62,7 @@ mouseX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-mousey-mousey-src-mq3-client-playable-viewer-ml-1909044107"></a>
 ### mouseY
@@ -72,7 +72,7 @@ mouseY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-right-right-src-mq3-client-playable-viewer-ml-2053597075"></a>
 ### right
@@ -82,7 +82,7 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)
 
 <a id="field-field-mq3-client-playable-viewer-controls-up-up-src-mq3-client-playable-viewer-ml-565008721"></a>
 ### up
@@ -92,4 +92,4 @@ up
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L15)

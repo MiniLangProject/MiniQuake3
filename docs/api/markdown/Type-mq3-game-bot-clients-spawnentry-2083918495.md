@@ -10,7 +10,7 @@ struct SpawnEntry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L15)
 
 <a id="field-field-mq3-game-bot-clients-spawnentry-spawntime-spawntime-src-mq3-game-bot-clients-ml-1655196008"></a>
 ### spawnTime
@@ -32,4 +32,4 @@ spawnTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_clients.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_clients.ml#L16)

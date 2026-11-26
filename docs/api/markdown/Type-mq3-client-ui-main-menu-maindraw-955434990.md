@@ -10,7 +10,7 @@ struct MainDraw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-bannermodel-bannermodel-src-mq3-client-ui-main-menu-ml-995494562"></a>
 ### bannerModel
@@ -32,7 +32,7 @@ bannerModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-demoversion-demoversion-src-mq3-client-ui-main-menu-ml-1595049846"></a>
 ### demoVersion
@@ -42,7 +42,7 @@ demoVersion
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-errormessage-errormessage-src-mq3-client-ui-main-menu-ml-1714780304"></a>
 ### errorMessage
@@ -52,7 +52,7 @@ errorMessage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)
 
 <a id="field-field-mq3-client-ui-main-menu-maindraw-yaw-yaw-src-mq3-client-ui-main-menu-ml-1426532182"></a>
 ### yaw
@@ -62,4 +62,4 @@ yaw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L20)

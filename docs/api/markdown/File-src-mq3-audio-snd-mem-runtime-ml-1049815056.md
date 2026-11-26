@@ -22,7 +22,7 @@ const BUFFER_BYTES = 2052
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L10)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-bytesequal-function-bytesequal-data-offset-text-src-mq3-audio-snd-mem-runtime-ml-995615882"></a>
 ### bytesEqual
@@ -38,7 +38,7 @@ function bytesEqual(data, offset, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L68)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-chunkname-function-chunkname-data-offset-src-mq3-audio-snd-mem-runtime-ml-1401230809"></a>
 ### chunkName
@@ -53,7 +53,7 @@ function chunkName(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L55)
 
 - [mq3.audio.snd_mem_runtime.ChunkReader](Type-mq3-audio-snd-mem-runtime-chunkreader-1639699504.md) — struct
 <a id="function-function-mq3-audio-snd-mem-runtime-create-function-create-dmaspeed-host-src-mq3-audio-snd-mem-runtime-ml-1408311421"></a>
@@ -69,7 +69,7 @@ function create(dmaSpeed, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L26)
 
 <a id="constant-constant-mq3-audio-snd-mem-runtime-default-sound-megs-const-default-sound-megs-8-src-mq3-audio-snd-mem-runtime-ml-1480699965"></a>
 ### DEFAULT_SOUND_MEGS
@@ -79,7 +79,7 @@ const DEFAULT_SOUND_MEGS = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L11)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-emit-function-emit-state-message-src-mq3-audio-snd-mem-runtime-ml-1077832022"></a>
 ### emit
@@ -94,7 +94,7 @@ function emit(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L22)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-emptyinfo-function-emptyinfo-src-mq3-audio-snd-mem-runtime-ml-819248612"></a>
 ### emptyInfo
@@ -104,7 +104,7 @@ function emptyInfo()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L24)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-fail-function-fail-message-src-mq3-audio-snd-mem-runtime-ml-221038041"></a>
 ### fail
@@ -118,7 +118,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L21)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-findchunk-function-findchunk-value-name-src-mq3-audio-snd-mem-runtime-ml-11741236"></a>
 ### FindChunk
@@ -133,7 +133,7 @@ function FindChunk(value, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L67)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-findnextchunk-function-findnextchunk-value-name-src-mq3-audio-snd-mem-runtime-ml-1379877482"></a>
 ### FindNextChunk
@@ -148,7 +148,7 @@ function FindNextChunk(value, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L56)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-getlittlelong-function-getlittlelong-value-src-mq3-audio-snd-mem-runtime-ml-855426547"></a>
 ### GetLittleLong
@@ -162,7 +162,7 @@ function GetLittleLong(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L51)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-getlittleshort-function-getlittleshort-value-src-mq3-audio-snd-mem-runtime-ml-1690598291"></a>
 ### GetLittleShort
@@ -176,7 +176,7 @@ function GetLittleShort(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L47)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-getwavinfo-function-getwavinfo-name-wav-wavlength-src-mq3-audio-snd-mem-runtime-ml-1717444269"></a>
 ### GetWavinfo
@@ -192,7 +192,7 @@ function GetWavinfo(name, wav, wavlength)
 | `wavlength` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L69)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-newbuffer-function-newbuffer-src-mq3-audio-snd-mem-runtime-ml-275247434"></a>
 ### newBuffer
@@ -202,7 +202,7 @@ function newBuffer()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L25)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-reader-function-reader-data-src-mq3-audio-snd-mem-runtime-ml-1085692890"></a>
 ### reader
@@ -216,7 +216,7 @@ function reader(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L23)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-releasefile-function-releasefile-state-data-src-mq3-audio-snd-mem-runtime-ml-1065413697"></a>
 ### releaseFile
@@ -231,7 +231,7 @@ function releaseFile(state, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L100)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-resamplesfx-function-resamplesfx-state-sfx-inrate-inwidth-data-compressed-src-mq3-audio-snd-mem-runtime-ml-326467509"></a>
 ### ResampleSfx
@@ -250,7 +250,7 @@ function ResampleSfx(state, sfx, inrate, inwidth, data, compressed)
 | `compressed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L89)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-resamplesfxraw-function-resamplesfxraw-state-inrate-inwidth-samples-data-src-mq3-audio-snd-mem-runtime-ml-1093945282"></a>
 ### ResampleSfxRaw
@@ -268,7 +268,7 @@ function ResampleSfxRaw(state, inrate, inwidth, samples, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L84)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-s-displayfreememory-function-s-displayfreememory-state-src-mq3-audio-snd-mem-runtime-ml-48054969"></a>
 ### S_DisplayFreeMemory
@@ -282,7 +282,7 @@ function S_DisplayFreeMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L45)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-s-loadsound-function-s-loadsound-state-sfx-src-mq3-audio-snd-mem-runtime-ml-1212648036"></a>
 ### S_LoadSound
@@ -297,7 +297,7 @@ function S_LoadSound(state, sfx)
 | `sfx` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L101)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-services-function-services-src-mq3-audio-snd-mem-runtime-ml-143860290"></a>
 ### services
@@ -307,7 +307,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L20)
 
 - [mq3.audio.snd_mem_runtime.Services](Type-mq3-audio-snd-mem-runtime-services-1718217382.md) — struct
 - [mq3.audio.snd_mem_runtime.Sfx](Type-mq3-audio-snd-mem-runtime-sfx-1804539885.md) — struct
@@ -319,7 +319,7 @@ const SND_CHUNK_SIZE = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L9)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-snd-free-function-snd-free-state-value-src-mq3-audio-snd-mem-runtime-ml-1980006360"></a>
 ### SND_free
@@ -334,7 +334,7 @@ function SND_free(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L35)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-snd-malloc-function-snd-malloc-state-src-mq3-audio-snd-mem-runtime-ml-226779263"></a>
 ### SND_malloc
@@ -348,7 +348,7 @@ function SND_malloc(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L39)
 
 <a id="function-function-mq3-audio-snd-mem-runtime-snd-setup-function-snd-setup-state-soundmegs-src-mq3-audio-snd-mem-runtime-ml-1787618176"></a>
 ### SND_setup
@@ -363,7 +363,7 @@ function SND_setup(state, soundMegs)
 | `soundMegs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L28)
 
 - [mq3.audio.snd_mem_runtime.State](Type-mq3-audio-snd-mem-runtime-state-1723131423.md) — struct
 - [mq3.audio.snd_mem_runtime.WavInfo](Type-mq3-audio-snd-mem-runtime-wavinfo-790698128.md) — struct
@@ -382,4 +382,4 @@ function writeChunkSample(chunk, index, source, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L88)

@@ -25,7 +25,7 @@ function buildItems(hasTeamArena)
 | `hasTeamArena` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L75)
 
 <a id="function-function-mq3-client-ui-main-menu-cache-function-cache-src-mq3-client-ui-main-menu-ml-1352930134"></a>
 ### cache
@@ -37,7 +37,7 @@ function cache()
 MainMenu_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L45)
 
 <a id="function-function-mq3-client-ui-main-menu-draw-function-draw-menu-realtime-demoversion-src-mq3-client-ui-main-menu-ml-309414607"></a>
 ### draw
@@ -55,7 +55,7 @@ Main_MenuDraw
 | `demoVersion` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L55)
 
 <a id="function-function-mq3-client-ui-main-menu-errormessagekey-function-errormessagekey-menu-key-src-mq3-client-ui-main-menu-ml-1105459774"></a>
 ### errorMessageKey
@@ -72,7 +72,7 @@ ErrorMessage_Key
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L48)
 
 <a id="function-function-mq3-client-ui-main-menu-event-function-event-menu-id-eventcode-src-mq3-client-ui-main-menu-ml-1915617543"></a>
 ### event
@@ -90,7 +90,7 @@ Main_MenuEvent
 | `eventCode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L31)
 
 <a id="function-function-mq3-client-ui-main-menu-exitaction-function-exitaction-menu-result-src-mq3-client-ui-main-menu-ml-136962796"></a>
 ### exitAction
@@ -107,7 +107,7 @@ MainMenu_ExitAction
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-cinematics-const-id-cinematics-14-src-mq3-client-ui-main-menu-ml-269963088"></a>
 ### ID_CINEMATICS
@@ -117,7 +117,7 @@ const ID_CINEMATICS = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-demos-const-id-demos-13-src-mq3-client-ui-main-menu-ml-157587561"></a>
 ### ID_DEMOS
@@ -127,7 +127,7 @@ const ID_DEMOS = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-exit-const-id-exit-17-src-mq3-client-ui-main-menu-ml-515579703"></a>
 ### ID_EXIT
@@ -137,7 +137,7 @@ const ID_EXIT = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-mods-const-id-mods-16-src-mq3-client-ui-main-menu-ml-633528998"></a>
 ### ID_MODS
@@ -147,7 +147,7 @@ const ID_MODS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-multiplayer-const-id-multiplayer-11-src-mq3-client-ui-main-menu-ml-332393563"></a>
 ### ID_MULTIPLAYER
@@ -157,7 +157,7 @@ const ID_MULTIPLAYER = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-setup-const-id-setup-12-src-mq3-client-ui-main-menu-ml-1222594662"></a>
 ### ID_SETUP
@@ -167,7 +167,7 @@ const ID_SETUP = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-singleplayer-const-id-singleplayer-10-src-mq3-client-ui-main-menu-ml-823484376"></a>
 ### ID_SINGLEPLAYER
@@ -177,7 +177,7 @@ const ID_SINGLEPLAYER = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-main-menu-id-teamarena-const-id-teamarena-15-src-mq3-client-ui-main-menu-ml-1891882747"></a>
 ### ID_TEAMARENA
@@ -187,7 +187,7 @@ const ID_TEAMARENA = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-main-menu-main-banner-model-const-main-banner-model-models-mapobjects-banner-banner5-md3-src-mq3-client-ui-main-menu-ml-1662818513"></a>
 ### MAIN_BANNER_MODEL
@@ -197,7 +197,7 @@ const MAIN_BANNER_MODEL = "models/mapobjects/banner/banner5.md3"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L17)
 
 - [mq3.client.ui_main_menu.MainDraw](Type-mq3-client-ui-main-menu-maindraw-955434990.md) — struct
 - [mq3.client.ui_main_menu.MainItem](Type-mq3-client-ui-main-menu-mainitem-1955101891.md) — struct
@@ -220,7 +220,7 @@ UI_MainMenu
 | `modNames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L89)
 
 <a id="constant-constant-mq3-client-ui-main-menu-qm-activated-const-qm-activated-3-src-mq3-client-ui-main-menu-ml-1782790464"></a>
 ### QM_ACTIVATED
@@ -230,7 +230,7 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L8)
 
 <a id="function-function-mq3-client-ui-main-menu-teamarenaexists-function-teamarenaexists-modnames-src-mq3-client-ui-main-menu-ml-108645962"></a>
 ### teamArenaExists
@@ -246,4 +246,4 @@ UI_TeamArenaExists
 | `modNames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L66)

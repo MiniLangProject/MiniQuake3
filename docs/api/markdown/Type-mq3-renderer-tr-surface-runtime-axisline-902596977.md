@@ -10,7 +10,7 @@ struct AxisLine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-axisline-finish-finish-src-mq3-renderer-tr-surface-runtime-ml-336169494"></a>
 ### finish
@@ -32,7 +32,7 @@ finish
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-axisline-start-start-src-mq3-renderer-tr-surface-runtime-ml-881830240"></a>
 ### start
@@ -42,4 +42,4 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L24)

@@ -10,7 +10,7 @@ struct Address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L6)
 
 <a id="field-field-mq3-platform-null-runtime-address-port-port-src-mq3-platform-null-runtime-ml-660158991"></a>
 ### port
@@ -32,7 +32,7 @@ port
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L6)
 
 <a id="field-field-mq3-platform-null-runtime-address-type-type-src-mq3-platform-null-runtime-ml-1750079377"></a>
 ### type
@@ -42,4 +42,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L6)

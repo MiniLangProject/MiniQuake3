@@ -10,7 +10,7 @@ struct MoveResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 ## Members
 
@@ -22,7 +22,7 @@ failure
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-flags-flags-src-mq3-game-bot-combat-ai-ml-21953981"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-idealviewangles-idealviewangles-src-mq3-game-bot-combat-ai-ml-290602961"></a>
 ### idealViewangles
@@ -42,7 +42,7 @@ idealViewangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-movedir-movedir-src-mq3-game-bot-combat-ai-ml-2072049049"></a>
 ### movedir
@@ -52,7 +52,7 @@ movedir
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)
 
 <a id="field-field-mq3-game-bot-combat-ai-moveresult-weapon-weapon-src-mq3-game-bot-combat-ai-ml-596007197"></a>
 ### weapon
@@ -62,4 +62,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L66)

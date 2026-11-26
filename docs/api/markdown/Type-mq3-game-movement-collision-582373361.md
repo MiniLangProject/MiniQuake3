@@ -10,7 +10,7 @@ struct Collision
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L12)
 
 <a id="field-field-mq3-game-movement-collision-entitynum-entitynum-src-mq3-game-movement-ml-1700588125"></a>
 ### entityNum
@@ -32,7 +32,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L13)
 
 <a id="field-field-mq3-game-movement-collision-trace-trace-src-mq3-game-movement-ml-522791009"></a>
 ### trace
@@ -42,4 +42,4 @@ trace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/movement.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/movement.ml#L11)

@@ -10,7 +10,7 @@ struct SkySide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L21)
 
 <a id="field-field-mq3-renderer-tr-sky-skyside-image-image-src-mq3-renderer-tr-sky-ml-543944491"></a>
 ### image
@@ -32,7 +32,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L21)
 
 <a id="field-field-mq3-renderer-tr-sky-skyside-mesh-mesh-src-mq3-renderer-tr-sky-ml-994031009"></a>
 ### mesh
@@ -42,4 +42,4 @@ mesh
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L21)

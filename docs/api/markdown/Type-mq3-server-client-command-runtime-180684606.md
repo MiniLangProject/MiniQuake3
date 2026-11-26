@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientRunning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-context-context-src-mq3-server-client-command-ml-1424879849"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-diagnosticfn-diagnosticfn-src-mq3-server-client-command-ml-1300173287"></a>
 ### diagnosticFn
@@ -42,7 +42,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-dropfn-dropfn-src-mq3-server-client-command-ml-92711591"></a>
 ### dropFn
@@ -52,7 +52,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-executefn-executefn-src-mq3-server-client-command-ml-1093105773"></a>
 ### executeFn
@@ -62,7 +62,7 @@ executeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-floodprotect-floodprotect-src-mq3-server-client-command-ml-58229287"></a>
 ### floodProtect
@@ -72,7 +72,7 @@ floodProtect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)
 
 <a id="field-field-mq3-server-client-command-runtime-time-time-src-mq3-server-client-command-ml-923546727"></a>
 ### time
@@ -82,4 +82,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L10)

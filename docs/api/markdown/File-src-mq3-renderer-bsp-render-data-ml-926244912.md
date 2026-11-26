@@ -26,7 +26,7 @@ function all(map, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L334)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L334)
 
 <a id="function-function-mq3-renderer-bsp-render-data-appendpatchgrid-function-appendpatchgrid-triangles-control-width-columns-rows-textureindex-lightmapindex-fogindex-faceindex-maxtriangles-src-mq3-renderer-bsp-render-data-ml-1636775139"></a>
 ### appendPatchGrid
@@ -49,7 +49,7 @@ function appendPatchGrid(triangles, control, width, columns, rows, textureIndex,
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L243)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L243)
 
 <a id="function-function-mq3-renderer-bsp-render-data-bezierarray-function-bezierarray-a-b-c-t-src-mq3-renderer-bsp-render-data-ml-1411237674"></a>
 ### bezierArray
@@ -66,7 +66,7 @@ function bezierArray(a, b, c, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L50)
 
 <a id="function-function-mq3-renderer-bsp-render-data-bezierscalar-function-bezierscalar-a-b-c-t-src-mq3-renderer-bsp-render-data-ml-1910230622"></a>
 ### bezierScalar
@@ -83,7 +83,7 @@ function bezierScalar(a, b, c, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L47)
 
 <a id="function-function-mq3-renderer-bsp-render-data-beziervertex-function-beziervertex-a-b-c-t-src-mq3-renderer-bsp-render-data-ml-317096254"></a>
 ### bezierVertex
@@ -100,7 +100,7 @@ function bezierVertex(a, b, c, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L59)
 
 <a id="function-function-mq3-renderer-bsp-render-data-colorshiftlighting-function-colorshiftlighting-red-green-blue-shift-src-mq3-renderer-bsp-render-data-ml-289252768"></a>
 ### colorShiftLighting
@@ -119,7 +119,7 @@ R_ColorShiftLightingBytes. The dependency-free software renderer has no hardware
 | `shift` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L349)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L349)
 
 <a id="function-function-mq3-renderer-bsp-render-data-compactgrid-function-compactgrid-control-width-height-widtherrors-heighterrors-src-mq3-renderer-bsp-render-data-ml-1676068329"></a>
 ### compactGrid
@@ -137,7 +137,7 @@ function compactGrid(control, width, height, widthErrors, heightErrors)
 | `heightErrors` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L151)
 
 <a id="function-function-mq3-renderer-bsp-render-data-crossnormal-function-crossnormal-a-b-src-mq3-renderer-bsp-render-data-ml-2048625313"></a>
 ### crossNormal
@@ -152,7 +152,7 @@ function crossNormal(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L175)
 
 <a id="function-function-mq3-renderer-bsp-render-data-curvelineerror-function-curvelineerror-a-b-c-src-mq3-renderer-bsp-render-data-ml-607112714"></a>
 ### curveLineError
@@ -168,17 +168,17 @@ function curveLineError(a, b, c)
 | `c` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L79)
 
-<a id="constant-constant-mq3-renderer-bsp-render-data-default-patch-error-const-default-patch-error-4-src-mq3-renderer-bsp-render-data-ml-2113110351"></a>
+<a id="constant-constant-mq3-renderer-bsp-render-data-default-patch-error-const-default-patch-error-4-src-mq3-renderer-bsp-render-data-ml-260928637"></a>
 ### DEFAULT_PATCH_ERROR
 
 ```ml
-const DEFAULT_PATCH_ERROR = 4.
+const DEFAULT_PATCH_ERROR = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L11)
 
 <a id="function-function-mq3-renderer-bsp-render-data-extract-function-extract-map-faceindexes-maxtriangles-src-mq3-renderer-bsp-render-data-ml-588815430"></a>
 ### extract
@@ -194,7 +194,7 @@ function extract(map, faceIndexes, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L332)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L332)
 
 <a id="function-function-mq3-renderer-bsp-render-data-extractmode-function-extractmode-map-faceindexes-maxtriangles-patcherror-sharefacevertices-src-mq3-renderer-bsp-render-data-ml-1352722803"></a>
 ### extractMode
@@ -212,7 +212,7 @@ function extractMode(map, faceIndexes, maxTriangles, patchError, shareFaceVertic
 | `shareFaceVertices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L271)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L271)
 
 <a id="function-function-mq3-renderer-bsp-render-data-extractretainedwithpatcherror-function-extractretainedwithpatcherror-map-faceindexes-maxtriangles-patcherror-src-mq3-renderer-bsp-render-data-ml-21571746"></a>
 ### extractRetainedWithPatchError
@@ -231,7 +231,7 @@ Internal retained-world path. Consumers must treat shared face vertices as immut
 | `patchError` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L265)
 
 <a id="function-function-mq3-renderer-bsp-render-data-extractwithpatcherror-function-extractwithpatcherror-map-faceindexes-maxtriangles-patcherror-src-mq3-renderer-bsp-render-data-ml-91689942"></a>
 ### extractWithPatchError
@@ -250,7 +250,7 @@ Face and meshvert order is retained. Repeated face indexes are ignored after the
 | `patchError` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L262)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L262)
 
 <a id="function-function-mq3-renderer-bsp-render-data-f32-function-f32-map-offset-src-mq3-renderer-bsp-render-data-ml-1377212699"></a>
 ### f32
@@ -265,7 +265,7 @@ function f32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L37)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-face-stride-const-face-stride-104-src-mq3-renderer-bsp-render-data-ml-1441625570"></a>
 ### FACE_STRIDE
@@ -275,7 +275,7 @@ const FACE_STRIDE = 104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L15)
 
 <a id="function-function-mq3-renderer-bsp-render-data-fail-function-fail-text-src-mq3-renderer-bsp-render-data-ml-1948408871"></a>
 ### fail
@@ -289,7 +289,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L24)
 
 <a id="function-function-mq3-renderer-bsp-render-data-gridindexes-function-gridindexes-size-src-mq3-renderer-bsp-render-data-ml-1708313453"></a>
 ### gridIndexes
@@ -303,7 +303,7 @@ function gridIndexes(size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L254)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L254)
 
 <a id="function-function-mq3-renderer-bsp-render-data-halfarray-function-halfarray-a-b-src-mq3-renderer-bsp-render-data-ml-1954376071"></a>
 ### halfArray
@@ -318,7 +318,7 @@ function halfArray(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L66)
 
 <a id="function-function-mq3-renderer-bsp-render-data-halfvertex-function-halfvertex-a-b-src-mq3-renderer-bsp-render-data-ml-24667251"></a>
 ### halfVertex
@@ -333,7 +333,7 @@ function halfVertex(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L71)
 
 <a id="function-function-mq3-renderer-bsp-render-data-i32-function-i32-map-offset-src-mq3-renderer-bsp-render-data-ml-25538777"></a>
 ### i32
@@ -348,7 +348,7 @@ function i32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L34)
 
 <a id="function-function-mq3-renderer-bsp-render-data-lerp-function-lerp-a-b-t-src-mq3-renderer-bsp-render-data-ml-1082931877"></a>
 ### lerp
@@ -364,7 +364,7 @@ function lerp(a, b, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L46)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-lightmap-height-const-lightmap-height-128-src-mq3-renderer-bsp-render-data-ml-2045693900"></a>
 ### LIGHTMAP_HEIGHT
@@ -374,7 +374,7 @@ const LIGHTMAP_HEIGHT = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L17)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-lightmap-rgb-size-const-lightmap-rgb-size-49152-src-mq3-renderer-bsp-render-data-ml-1659834812"></a>
 ### LIGHTMAP_RGB_SIZE
@@ -384,7 +384,7 @@ const LIGHTMAP_RGB_SIZE = 49152
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L18)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-lightmap-width-const-lightmap-width-128-src-mq3-renderer-bsp-render-data-ml-773267512"></a>
 ### LIGHTMAP_WIDTH
@@ -394,7 +394,7 @@ const LIGHTMAP_WIDTH = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L16)
 
 <a id="function-function-mq3-renderer-bsp-render-data-lightmaprgb-function-lightmaprgb-map-index-src-mq3-renderer-bsp-render-data-ml-964587562"></a>
 ### lightmapRgb
@@ -409,7 +409,7 @@ function lightmapRgb(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L340)
 
 <a id="function-function-mq3-renderer-bsp-render-data-lightmaprgba-function-lightmaprgba-map-index-src-mq3-renderer-bsp-render-data-ml-790816292"></a>
 ### lightmapRgba
@@ -424,7 +424,7 @@ function lightmapRgba(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L364)
 
 <a id="function-function-mq3-renderer-bsp-render-data-lightmaprgbashift-function-lightmaprgbashift-map-index-mapoverbrightbits-rendereroverbrightbits-src-mq3-renderer-bsp-render-data-ml-956378315"></a>
 ### lightmapRgbaShift
@@ -441,7 +441,7 @@ function lightmapRgbaShift(map, index, mapOverbrightBits, rendererOverbrightBits
 | `rendererOverbrightBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L355)
 
 <a id="function-function-mq3-renderer-bsp-render-data-makegridnormals-function-makegridnormals-control-width-height-src-mq3-renderer-bsp-render-data-ml-75461350"></a>
 ### makeGridNormals
@@ -459,7 +459,7 @@ MakeMeshNormals, including Baseq3's seam wrapping and up-to-three-point search t
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L186)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-max-grid-size-const-max-grid-size-65-src-mq3-renderer-bsp-render-data-ml-1617700204"></a>
 ### MAX_GRID_SIZE
@@ -469,7 +469,7 @@ const MAX_GRID_SIZE = 65
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L12)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-max-patch-size-const-max-patch-size-32-src-mq3-renderer-bsp-render-data-ml-502433352"></a>
 ### MAX_PATCH_SIZE
@@ -479,7 +479,7 @@ const MAX_PATCH_SIZE = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L13)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-mst-patch-const-mst-patch-2-src-mq3-renderer-bsp-render-data-ml-1785455815"></a>
 ### MST_PATCH
@@ -489,7 +489,7 @@ const MST_PATCH = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L9)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-mst-planar-const-mst-planar-1-src-mq3-renderer-bsp-render-data-ml-1252468554"></a>
 ### MST_PLANAR
@@ -499,7 +499,7 @@ const MST_PLANAR = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L8)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-mst-triangle-soup-const-mst-triangle-soup-3-src-mq3-renderer-bsp-render-data-ml-44719656"></a>
 ### MST_TRIANGLE_SOUP
@@ -509,7 +509,7 @@ const MST_TRIANGLE_SOUP = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L10)
 
 <a id="function-function-mq3-renderer-bsp-render-data-normaldirection-function-normaldirection-target-base-src-mq3-renderer-bsp-render-data-ml-1286729962"></a>
 ### normalDirection
@@ -524,7 +524,7 @@ function normalDirection(target, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L169)
 
 <a id="function-function-mq3-renderer-bsp-render-data-normalized-function-normalized-value-src-mq3-renderer-bsp-render-data-ml-501463929"></a>
 ### normalized
@@ -538,7 +538,7 @@ function normalized(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L55)
 
 <a id="function-function-mq3-renderer-bsp-render-data-patchgrid-function-patchgrid-map-faceoffset-errorlimit-src-mq3-renderer-bsp-render-data-ml-2001681573"></a>
 ### patchGrid
@@ -554,7 +554,7 @@ function patchGrid(map, faceOffset, errorLimit)
 | `errorLimit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L235)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L235)
 
 <a id="function-function-mq3-renderer-bsp-render-data-patchnodraw-function-patchnodraw-map-textureindex-src-mq3-renderer-bsp-render-data-ml-1884458505"></a>
 ### patchNoDraw
@@ -569,7 +569,7 @@ function patchNoDraw(map, textureIndex)
 | `textureIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L266)
 
 <a id="function-function-mq3-renderer-bsp-render-data-putgridpointsoncurve-function-putgridpointsoncurve-control-width-height-src-mq3-renderer-bsp-render-data-ml-1979862478"></a>
 ### putGridPointsOnCurve
@@ -585,7 +585,7 @@ function putGridPointsOnCurve(control, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L128)
 
 <a id="function-function-mq3-renderer-bsp-render-data-recordrange-function-recordrange-map-lump-index-stride-src-mq3-renderer-bsp-render-data-ml-1296811741"></a>
 ### recordRange
@@ -602,7 +602,7 @@ function recordRange(map, lump, index, stride)
 | `stride` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L28)
 
 - [mq3.renderer.bsp_render_data.RenderData](Type-mq3-renderer-bsp-render-data-renderdata-337074974.md) — struct
 - [mq3.renderer.bsp_render_data.RenderTriangle](Type-mq3-renderer-bsp-render-data-rendertriangle-2037589918.md) — struct
@@ -620,7 +620,7 @@ function retainedGridAxis(size, errors)
 | `errors` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L137)
 
 <a id="function-function-mq3-renderer-bsp-render-data-subdividehorizontal-function-subdividehorizontal-control-width-height-errorlimit-src-mq3-renderer-bsp-render-data-ml-25964919"></a>
 ### subdivideHorizontal
@@ -639,7 +639,7 @@ Baseq3 R_SubdividePatchToGrid checks perpendicular distance to the chord, insert
 | `errorLimit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L101)
 
 <a id="function-function-mq3-renderer-bsp-render-data-subdividepatch-function-subdividepatch-control-width-height-errorlimit-src-mq3-renderer-bsp-render-data-ml-87135389"></a>
 ### subdividePatch
@@ -656,7 +656,7 @@ function subdividePatch(control, width, height, errorLimit)
 | `errorLimit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L232)
 
 <a id="function-function-mq3-renderer-bsp-render-data-subdividepatchwitherrors-function-subdividepatchwitherrors-control-width-height-errorlimit-src-mq3-renderer-bsp-render-data-ml-1103887289"></a>
 ### subdividePatchWithErrors
@@ -673,7 +673,7 @@ function subdividePatchWithErrors(control, width, height, errorLimit)
 | `errorLimit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L224)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L224)
 
 <a id="function-function-mq3-renderer-bsp-render-data-transposegrid-function-transposegrid-control-width-height-src-mq3-renderer-bsp-render-data-ml-1110757900"></a>
 ### transposeGrid
@@ -689,7 +689,7 @@ function transposeGrid(control, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L92)
 
 <a id="function-function-mq3-renderer-bsp-render-data-validmap-function-validmap-map-src-mq3-renderer-bsp-render-data-ml-1374775720"></a>
 ### validMap
@@ -703,7 +703,7 @@ function validMap(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L25)
 
 <a id="function-function-mq3-renderer-bsp-render-data-vertex-function-vertex-map-index-src-mq3-renderer-bsp-render-data-ml-956943024"></a>
 ### vertex
@@ -718,7 +718,7 @@ function vertex(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L40)
 
 <a id="constant-constant-mq3-renderer-bsp-render-data-vertex-stride-const-vertex-stride-44-src-mq3-renderer-bsp-render-data-ml-691701117"></a>
 ### VERTEX_STRIDE
@@ -728,7 +728,7 @@ const VERTEX_STRIDE = 44
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L14)
 
 <a id="function-function-mq3-renderer-bsp-render-data-vertexwithnormal-function-vertexwithnormal-value-normal-src-mq3-renderer-bsp-render-data-ml-830247524"></a>
 ### vertexWithNormal
@@ -743,4 +743,4 @@ function vertexWithNormal(value, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_render_data.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_render_data.ml#L180)

@@ -25,7 +25,7 @@ function logDivide(value, divisor)
 | `divisor` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/logging.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L7)
 
 <a id="function-function-mq3-game-logging-write-function-write-level-payload-src-mq3-game-logging-ml-833326284"></a>
 ### write
@@ -40,4 +40,4 @@ function write(level, payload)
 | `payload` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/logging.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/logging.ml#L11)

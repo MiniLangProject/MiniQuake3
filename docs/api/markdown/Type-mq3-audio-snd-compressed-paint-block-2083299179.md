@@ -10,7 +10,7 @@ struct Block
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L14)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-index-index-src-mq3-audio-snd-compressed-paint-ml-566716486"></a>
 ### index
@@ -32,7 +32,7 @@ index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L14)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-sample-sample-src-mq3-audio-snd-compressed-paint-ml-1152489850"></a>
 ### sample
@@ -42,7 +42,7 @@ sample
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L14)
 
 <a id="field-field-mq3-audio-snd-compressed-paint-block-size-size-src-mq3-audio-snd-compressed-paint-ml-1982796496"></a>
 ### size
@@ -52,4 +52,4 @@ size
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L14)

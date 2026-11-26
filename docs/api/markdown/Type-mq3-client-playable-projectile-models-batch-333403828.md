@@ -10,7 +10,7 @@ struct Batch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ fallbackSnapshots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)
 
 <a id="field-field-mq3-client-playable-projectile-models-batch-triangles-triangles-src-mq3-client-playable-projectile-models-ml-837278041"></a>
 ### triangles
@@ -32,4 +32,4 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L26)

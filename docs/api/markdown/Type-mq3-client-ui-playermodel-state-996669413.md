@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-back-back-src-mq3-client-ui-playermodel-ml-171899416"></a>
 ### back
@@ -32,7 +32,7 @@ back
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-cvarwrites-cvarwrites-src-mq3-client-ui-playermodel-ml-682834370"></a>
 ### cvarWrites
@@ -42,7 +42,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-drawrows-drawrows-src-mq3-client-ui-playermodel-ml-1171718544"></a>
 ### drawRows
@@ -52,7 +52,7 @@ drawRows
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-left-left-src-mq3-client-ui-playermodel-ml-968439176"></a>
 ### left
@@ -62,7 +62,7 @@ left
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-memoryremaining-memoryremaining-src-mq3-client-ui-playermodel-ml-1748450178"></a>
 ### memoryRemaining
@@ -72,7 +72,7 @@ memoryRemaining
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-menu-menu-src-mq3-client-ui-playermodel-ml-1004810428"></a>
 ### menu
@@ -82,7 +82,7 @@ menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-modelname-modelname-src-mq3-client-ui-playermodel-ml-206318822"></a>
 ### modelname
@@ -92,7 +92,7 @@ modelname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-modelnames-modelnames-src-mq3-client-ui-playermodel-ml-1965252752"></a>
 ### modelnames
@@ -102,7 +102,7 @@ modelnames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-modelpage-modelpage-src-mq3-client-ui-playermodel-ml-46632902"></a>
 ### modelpage
@@ -112,7 +112,7 @@ modelpage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-modelskin-modelskin-src-mq3-client-ui-playermodel-ml-240506726"></a>
 ### modelskin
@@ -122,7 +122,7 @@ modelskin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-nummodels-nummodels-src-mq3-client-ui-playermodel-ml-841956030"></a>
 ### nummodels
@@ -132,7 +132,7 @@ nummodels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-numpages-numpages-src-mq3-client-ui-playermodel-ml-1744756934"></a>
 ### numpages
@@ -142,7 +142,7 @@ numpages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-picbuttons-picbuttons-src-mq3-client-ui-playermodel-ml-1397102508"></a>
 ### picbuttons
@@ -152,7 +152,7 @@ picbuttons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-pics-pics-src-mq3-client-ui-playermodel-ml-1335565420"></a>
 ### pics
@@ -162,7 +162,7 @@ pics
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-player-player-src-mq3-client-ui-playermodel-ml-238512716"></a>
 ### player
@@ -172,7 +172,7 @@ player
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-playerinfo-playerinfo-src-mq3-client-ui-playermodel-ml-614195924"></a>
 ### playerinfo
@@ -182,7 +182,7 @@ playerinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-playername-playername-src-mq3-client-ui-playermodel-ml-273172626"></a>
 ### playername
@@ -192,7 +192,7 @@ playername
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-popped-popped-src-mq3-client-ui-playermodel-ml-168833686"></a>
 ### popped
@@ -202,7 +202,7 @@ popped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-pushed-pushed-src-mq3-client-ui-playermodel-ml-1975236760"></a>
 ### pushed
@@ -212,7 +212,7 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-right-right-src-mq3-client-ui-playermodel-ml-906934958"></a>
 ### right
@@ -222,7 +222,7 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-selectedmodel-selectedmodel-src-mq3-client-ui-playermodel-ml-1151502134"></a>
 ### selectedmodel
@@ -232,7 +232,7 @@ selectedmodel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-skinname-skinname-src-mq3-client-ui-playermodel-ml-235586738"></a>
 ### skinname
@@ -242,7 +242,7 @@ skinname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)
 
 <a id="field-field-mq3-client-ui-playermodel-state-source-source-src-mq3-client-ui-playermodel-ml-74947208"></a>
 ### source
@@ -252,4 +252,4 @@ source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_playermodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_playermodel.ml#L20)

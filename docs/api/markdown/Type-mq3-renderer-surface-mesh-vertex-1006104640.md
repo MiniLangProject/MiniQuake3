@@ -10,7 +10,7 @@ struct Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-lightmap-lightmap-src-mq3-renderer-surface-mesh-ml-2100535523"></a>
 ### lightmap
@@ -32,7 +32,7 @@ lightmap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-normal-normal-src-mq3-renderer-surface-mesh-ml-438813421"></a>
 ### normal
@@ -42,7 +42,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-st-st-src-mq3-renderer-surface-mesh-ml-229953417"></a>
 ### st
@@ -52,7 +52,7 @@ st
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)
 
 <a id="field-field-mq3-renderer-surface-mesh-vertex-xyz-xyz-src-mq3-renderer-surface-mesh-ml-2147196263"></a>
 ### xyz
@@ -62,4 +62,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_mesh.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_mesh.ml#L6)

@@ -10,7 +10,7 @@ struct Bot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L64)
 
 ## Members
 
@@ -22,7 +22,7 @@ botdeathtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-botsuicide-botsuicide-src-mq3-game-bot-chat-ml-1100711508"></a>
 ### botsuicide
@@ -32,7 +32,7 @@ botsuicide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-character-character-src-mq3-game-bot-chat-ml-1051916814"></a>
 ### character
@@ -42,7 +42,7 @@ character
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-chatto-chatto-src-mq3-game-bot-chat-ml-925640472"></a>
 ### chatto
@@ -52,7 +52,7 @@ chatto
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-client-client-src-mq3-game-bot-chat-ml-1869423188"></a>
 ### client
@@ -62,7 +62,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-cs-cs-src-mq3-game-bot-chat-ml-30908654"></a>
 ### cs
@@ -72,7 +72,7 @@ cs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-dead-dead-src-mq3-game-bot-chat-ml-1302277510"></a>
 ### dead
@@ -82,7 +82,7 @@ dead
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-enemy-enemy-src-mq3-game-bot-chat-ml-1576898206"></a>
 ### enemy
@@ -92,7 +92,7 @@ enemy
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-enemydeathtype-enemydeathtype-src-mq3-game-bot-chat-ml-124300562"></a>
 ### enemydeathtype
@@ -102,7 +102,7 @@ enemydeathtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-entitynum-entitynum-src-mq3-game-bot-chat-ml-1289645318"></a>
 ### entitynum
@@ -112,7 +112,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-eye-eye-src-mq3-game-bot-chat-ml-232706130"></a>
 ### eye
@@ -122,7 +122,7 @@ eye
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-inventory-inventory-src-mq3-game-bot-chat-ml-1602803206"></a>
 ### inventory
@@ -132,7 +132,7 @@ inventory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-lastchattime-lastchattime-src-mq3-game-bot-chat-ml-28238780"></a>
 ### lastchatTime
@@ -142,7 +142,7 @@ lastchatTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-lasthurtclient-lasthurtclient-src-mq3-game-bot-chat-ml-895556214"></a>
 ### lasthurtClient
@@ -152,7 +152,7 @@ lasthurtClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L67)
 
 <a id="field-field-mq3-game-bot-chat-bot-lasthurtmod-lasthurtmod-src-mq3-game-bot-chat-ml-91206618"></a>
 ### lasthurtMod
@@ -162,7 +162,7 @@ lasthurtMod
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L67)
 
 <a id="field-field-mq3-game-bot-chat-bot-lastkilledby-lastkilledby-src-mq3-game-bot-chat-ml-1882790202"></a>
 ### lastkilledby
@@ -172,7 +172,7 @@ lastkilledby
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-lastkilledplayer-lastkilledplayer-src-mq3-game-bot-chat-ml-587785834"></a>
 ### lastkilledplayer
@@ -182,7 +182,7 @@ lastkilledplayer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)
 
 <a id="field-field-mq3-game-bot-chat-bot-ltgtype-ltgtype-src-mq3-game-bot-chat-ml-1807790550"></a>
 ### ltgtype
@@ -192,7 +192,7 @@ ltgtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L67)
 
 <a id="field-field-mq3-game-bot-chat-bot-observer-observer-src-mq3-game-bot-chat-ml-619505238"></a>
 ### observer
@@ -202,7 +202,7 @@ observer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-origin-origin-src-mq3-game-bot-chat-ml-661921382"></a>
 ### origin
@@ -212,7 +212,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-score-score-src-mq3-game-bot-chat-ml-689826242"></a>
 ### score
@@ -222,7 +222,7 @@ score
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L65)
 
 <a id="field-field-mq3-game-bot-chat-bot-thinktime-thinktime-src-mq3-game-bot-chat-ml-276487158"></a>
 ### thinktime
@@ -232,7 +232,7 @@ thinktime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L67)
 
 <a id="field-field-mq3-game-bot-chat-bot-viewangles-viewangles-src-mq3-game-bot-chat-ml-137933344"></a>
 ### viewangles
@@ -242,4 +242,4 @@ viewangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L66)

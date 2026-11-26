@@ -10,7 +10,7 @@ struct FrameTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ draw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)
 
 <a id="field-field-mq3-client-cgame-clock-frametime-servertime-servertime-src-mq3-client-cgame-clock-ml-626682711"></a>
 ### serverTime
@@ -32,4 +32,4 @@ serverTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L9)

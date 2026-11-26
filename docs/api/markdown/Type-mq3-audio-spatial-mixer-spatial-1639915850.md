@@ -10,7 +10,7 @@ struct Spatial
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ attenuation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L18)
 
 <a id="field-field-mq3-audio-spatial-mixer-spatial-distance-distance-src-mq3-audio-spatial-mixer-ml-2141720645"></a>
 ### distance
@@ -32,7 +32,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L18)
 
 <a id="field-field-mq3-audio-spatial-mixer-spatial-left-left-src-mq3-audio-spatial-mixer-ml-453157493"></a>
 ### left
@@ -42,7 +42,7 @@ left
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L18)
 
 <a id="field-field-mq3-audio-spatial-mixer-spatial-right-right-src-mq3-audio-spatial-mixer-ml-1501195651"></a>
 ### right
@@ -52,4 +52,4 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L18)

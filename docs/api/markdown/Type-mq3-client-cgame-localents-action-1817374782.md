@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-color-color-src-mq3-client-cgame-localents-ml-1036138107"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-data-data-src-mq3-client-cgame-localents-ml-571676523"></a>
 ### data
@@ -42,7 +42,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-dispatched-dispatched-src-mq3-client-cgame-localents-ml-598611845"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-entity-entity-src-mq3-client-cgame-localents-ml-440676153"></a>
 ### entity
@@ -62,7 +62,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-kind-kind-src-mq3-client-cgame-localents-ml-1666120175"></a>
 ### kind
@@ -72,7 +72,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-normal-normal-src-mq3-client-cgame-localents-ml-552047857"></a>
 ### normal
@@ -82,7 +82,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-origin-origin-src-mq3-client-cgame-localents-ml-1820529823"></a>
 ### origin
@@ -92,7 +92,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)
 
 <a id="field-field-mq3-client-cgame-localents-action-scalar-scalar-src-mq3-client-cgame-localents-ml-1010522951"></a>
 ### scalar
@@ -102,4 +102,4 @@ scalar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_localents.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_localents.ml#L60)

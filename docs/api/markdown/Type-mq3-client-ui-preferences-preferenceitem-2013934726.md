@@ -10,7 +10,7 @@ struct PreferenceItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L18)
 
 <a id="field-field-mq3-client-ui-preferences-preferenceitem-kind-kind-src-mq3-client-ui-preferences-ml-1085397467"></a>
 ### kind
@@ -32,7 +32,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L18)
 
 <a id="field-field-mq3-client-ui-preferences-preferenceitem-label-label-src-mq3-client-ui-preferences-ml-1396313339"></a>
 ### label
@@ -42,7 +42,7 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L18)
 
 <a id="field-field-mq3-client-ui-preferences-preferenceitem-y-y-src-mq3-client-ui-preferences-ml-779406855"></a>
 ### y
@@ -52,4 +52,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_preferences.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_preferences.ml#L18)

@@ -10,7 +10,7 @@ struct MainItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-label-label-src-mq3-client-ui-main-menu-ml-1341413589"></a>
 ### label
@@ -32,7 +32,7 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)
 
 <a id="field-field-mq3-client-ui-main-menu-mainitem-y-y-src-mq3-client-ui-main-menu-ml-495293817"></a>
 ### y
@@ -42,4 +42,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_menu.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_menu.ml#L19)

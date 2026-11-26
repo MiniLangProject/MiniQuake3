@@ -29,7 +29,7 @@ _atof
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L69)
 
 <a id="function-function-mq3-game-bg-lib-atoi-function-atoi-string-start-src-mq3-game-bg-lib-ml-1631861051"></a>
 ### _atoi
@@ -46,7 +46,7 @@ _atoi
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L77)
 
 <a id="function-function-mq3-game-bg-lib-abs-function-abs-value-src-mq3-game-bg-lib-ml-1872703981"></a>
 ### abs
@@ -62,7 +62,7 @@ abs
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L81)
 
 <a id="function-function-mq3-game-bg-lib-acos-function-acos-value-src-mq3-game-bg-lib-ml-1575332957"></a>
 ### acos
@@ -78,7 +78,7 @@ acos (#if 0)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L139)
 
 <a id="function-function-mq3-game-bg-lib-addfloat-function-addfloat-value-width-precision-src-mq3-game-bg-lib-ml-1748049809"></a>
 ### AddFloat
@@ -96,7 +96,7 @@ AddFloat
 | `precision` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L106)
 
 <a id="function-function-mq3-game-bg-lib-addint-function-addint-value-width-flags-src-mq3-game-bg-lib-ml-1188426714"></a>
 ### AddInt
@@ -114,7 +114,7 @@ AddInt
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L102)
 
 <a id="function-function-mq3-game-bg-lib-addstring-function-addstring-value-width-precision-src-mq3-game-bg-lib-ml-790898869"></a>
 ### AddString
@@ -132,7 +132,7 @@ AddString
 | `precision` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L110)
 
 <a id="constant-constant-mq3-game-bg-lib-alt-const-alt-1-src-mq3-game-bg-lib-ml-657902556"></a>
 ### ALT
@@ -142,7 +142,7 @@ const ALT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L10)
 
 <a id="function-function-mq3-game-bg-lib-atan2-function-atan2-y-x-src-mq3-game-bg-lib-ml-607065923"></a>
 ### atan2
@@ -159,7 +159,7 @@ atan2 (#if 0)
 | `x` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L141)
 
 <a id="function-function-mq3-game-bg-lib-atof-function-atof-string-src-mq3-game-bg-lib-ml-1198863647"></a>
 ### atof
@@ -175,7 +175,7 @@ atof
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L63)
 
 <a id="function-function-mq3-game-bg-lib-atoi-function-atoi-string-src-mq3-game-bg-lib-ml-2122508375"></a>
 ### atoi
@@ -191,7 +191,7 @@ atoi
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L75)
 
 <a id="function-function-mq3-game-bg-lib-bytestring-function-bytestring-value-src-mq3-game-bg-lib-ml-1164141689"></a>
 ### byteString
@@ -205,7 +205,7 @@ function byteString(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L34)
 
 <a id="function-function-mq3-game-bg-lib-character-function-character-code-src-mq3-game-bg-lib-ml-2429021"></a>
 ### character
@@ -219,7 +219,7 @@ function character(code)
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L35)
 
 <a id="function-function-mq3-game-bg-lib-clength-function-clength-value-src-mq3-game-bg-lib-ml-1438328399"></a>
 ### cLength
@@ -233,7 +233,7 @@ function cLength(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L32)
 
 <a id="function-function-mq3-game-bg-lib-clonebytes-function-clonebytes-value-src-mq3-game-bg-lib-ml-711832757"></a>
 ### cloneBytes
@@ -247,7 +247,7 @@ function cloneBytes(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L33)
 
 <a id="function-function-mq3-game-bg-lib-cos-function-cos-value-src-mq3-game-bg-lib-ml-564942783"></a>
 ### cos
@@ -263,7 +263,7 @@ cos (#if 0)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L135)
 
 <a id="function-function-mq3-game-bg-lib-create-acostable-function-create-acostable-src-mq3-game-bg-lib-ml-486439470"></a>
 ### create_acostable
@@ -275,7 +275,7 @@ function create_acostable()
 create_acostable (#if 0 and additionally block-commented in the original)
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L137)
 
 <a id="function-function-mq3-game-bg-lib-digit-function-digit-code-src-mq3-game-bg-lib-ml-1432819285"></a>
 ### digit
@@ -289,7 +289,7 @@ function digit(code)
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L61)
 
 <a id="function-function-mq3-game-bg-lib-disabledif0symbols-function-disabledif0symbols-src-mq3-game-bg-lib-ml-543217150"></a>
 ### disabledIf0Symbols
@@ -301,7 +301,7 @@ function disabledIf0Symbols()
 These original symbols are compiled out by #if 0 in bg_lib.c.  They are retained below for source completeness, but are never selected by Q3_VM.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L23)
 
 <a id="function-function-mq3-game-bg-lib-exchange-function-exchange-values-left-right-src-mq3-game-bg-lib-ml-1705206955"></a>
 ### exchange
@@ -317,7 +317,7 @@ function exchange(values, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L89)
 
 <a id="function-function-mq3-game-bg-lib-fabs-function-fabs-value-src-mq3-game-bg-lib-ml-1924977677"></a>
 ### fabs
@@ -333,7 +333,7 @@ fabs
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L83)
 
 <a id="function-function-mq3-game-bg-lib-floor-function-floor-value-src-mq3-game-bg-lib-ml-276490525"></a>
 ### floor
@@ -349,7 +349,7 @@ The following are complete callable translations of the original #if 0 block. fl
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L123)
 
 - [mq3.game.bg_lib.FormatResult](Type-mq3-game-bg-lib-formatresult-502298023.md) — struct
 <a id="constant-constant-mq3-game-bg-lib-fpt-const-fpt-256-src-mq3-game-bg-lib-ml-1411498314"></a>
@@ -360,7 +360,7 @@ const FPT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L18)
 
 <a id="constant-constant-mq3-game-bg-lib-hexprefix-const-hexprefix-2-src-mq3-game-bg-lib-ml-1473124395"></a>
 ### HEXPREFIX
@@ -370,7 +370,7 @@ const HEXPREFIX = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L11)
 
 <a id="function-function-mq3-game-bg-lib-insertionsort-function-insertionsort-values-low-count-compare-src-mq3-game-bg-lib-ml-1783675180"></a>
 ### insertionSort
@@ -387,7 +387,7 @@ function insertionSort(values, low, count, compare)
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L91)
 
 <a id="constant-constant-mq3-game-bg-lib-ladjust-const-ladjust-4-src-mq3-game-bg-lib-ml-1603511945"></a>
 ### LADJUST
@@ -397,7 +397,7 @@ const LADJUST = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L12)
 
 <a id="constant-constant-mq3-game-bg-lib-longdbl-const-longdbl-8-src-mq3-game-bg-lib-ml-693181309"></a>
 ### LONGDBL
@@ -407,7 +407,7 @@ const LONGDBL = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L13)
 
 <a id="constant-constant-mq3-game-bg-lib-longint-const-longint-16-src-mq3-game-bg-lib-ml-363235706"></a>
 ### LONGINT
@@ -417,7 +417,7 @@ const LONGINT = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L14)
 
 <a id="function-function-mq3-game-bg-lib-medianindex-function-medianindex-values-a-b-c-compare-src-mq3-game-bg-lib-ml-1980510831"></a>
 ### medianIndex
@@ -435,7 +435,7 @@ function medianIndex(values, a, b, c, compare)
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L90)
 
 <a id="function-function-mq3-game-bg-lib-memcpy-function-memcpy-destination-destinationoffset-source-sourceoffset-count-src-mq3-game-bg-lib-ml-1491972983"></a>
 ### memcpy
@@ -455,7 +455,7 @@ memcpy (#if 0; original copies backwards)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L127)
 
 <a id="function-function-mq3-game-bg-lib-memmove-function-memmove-destination-destinationoffset-source-sourceoffset-count-src-mq3-game-bg-lib-ml-418617295"></a>
 ### memmove
@@ -475,7 +475,7 @@ memmove; offsets make pointer aliasing explicit in the safe runtime.
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L55)
 
 <a id="function-function-mq3-game-bg-lib-memset-function-memset-destination-offset-code-count-src-mq3-game-bg-lib-ml-1440411403"></a>
 ### memset
@@ -494,18 +494,18 @@ memset (#if 0)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L125)
 
 - [mq3.game.bg_lib.ParseResult](Type-mq3-game-bg-lib-parseresult-66941153.md) — struct
-<a id="constant-constant-mq3-game-bg-lib-pi-const-pi-3-14159265358979-src-mq3-game-bg-lib-ml-522877610"></a>
+<a id="constant-constant-mq3-game-bg-lib-pi-const-pi-3-141593-src-mq3-game-bg-lib-ml-1789542649"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L19)
 
 <a id="function-function-mq3-game-bg-lib-qsort-function-qsort-values-count-compare-src-mq3-game-bg-lib-ml-1939276320"></a>
 ### qsort
@@ -523,7 +523,7 @@ qsort -- native typed-array equivalent of the original byte/element API.
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L98)
 
 <a id="constant-constant-mq3-game-bg-lib-quadint-const-quadint-32-src-mq3-game-bg-lib-ml-534716956"></a>
 ### QUADINT
@@ -533,7 +533,7 @@ const QUADINT = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L15)
 
 <a id="function-function-mq3-game-bg-lib-quicksortrange-function-quicksortrange-values-low-count-compare-src-mq3-game-bg-lib-ml-1969136386"></a>
 ### quickSortRange
@@ -550,7 +550,7 @@ function quickSortRange(values, low, count, compare)
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L92)
 
 <a id="function-function-mq3-game-bg-lib-rand-function-rand-state-src-mq3-game-bg-lib-ml-316222029"></a>
 ### rand
@@ -564,7 +564,7 @@ function rand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L87)
 
 <a id="function-function-mq3-game-bg-lib-randomstate-function-randomstate-seed-src-mq3-game-bg-lib-ml-619777079"></a>
 ### randomState
@@ -578,7 +578,7 @@ function randomState(seed)
 | `seed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L30)
 
 - [mq3.game.bg_lib.RandomState](Type-mq3-game-bg-lib-randomstate-910087475.md) — struct
 <a id="function-function-mq3-game-bg-lib-rawbytes-function-rawbytes-value-src-mq3-game-bg-lib-ml-1460956097"></a>
@@ -593,7 +593,7 @@ function rawBytes(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L31)
 
 <a id="function-function-mq3-game-bg-lib-repeat-function-repeat-code-count-src-mq3-game-bg-lib-ml-1555632704"></a>
 ### repeat
@@ -608,7 +608,7 @@ function repeat(code, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L100)
 
 - [mq3.game.bg_lib.ScanResult](Type-mq3-game-bg-lib-scanresult-1906985509.md) — struct
 <a id="constant-constant-mq3-game-bg-lib-shortint-const-shortint-64-src-mq3-game-bg-lib-ml-420995253"></a>
@@ -619,7 +619,7 @@ const SHORTINT = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L16)
 
 <a id="function-function-mq3-game-bg-lib-sin-function-sin-value-src-mq3-game-bg-lib-ml-1652571389"></a>
 ### sin
@@ -635,7 +635,7 @@ sin (#if 0)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L133)
 
 <a id="function-function-mq3-game-bg-lib-skipspace-function-skipspace-data-index-src-mq3-game-bg-lib-ml-319558238"></a>
 ### skipSpace
@@ -650,7 +650,7 @@ function skipSpace(data, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L60)
 
 <a id="function-function-mq3-game-bg-lib-sqrt-function-sqrt-value-src-mq3-game-bg-lib-ml-2007968365"></a>
 ### sqrt
@@ -666,7 +666,7 @@ sqrt (#if 0)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L131)
 
 <a id="function-function-mq3-game-bg-lib-srand-function-srand-state-seed-src-mq3-game-bg-lib-ml-1993693056"></a>
 ### srand
@@ -683,7 +683,7 @@ srand / rand use the original 32-bit LCG.
 | `seed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L86)
 
 <a id="function-function-mq3-game-bg-lib-sscanf-function-sscanf-buffer-format-src-mq3-game-bg-lib-ml-1370913923"></a>
 ### sscanf
@@ -700,7 +700,7 @@ sscanf preserves the original implementation's count bug (always zero).
 | `format` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L117)
 
 <a id="function-function-mq3-game-bg-lib-strcat-function-strcat-destination-source-src-mq3-game-bg-lib-ml-2125590225"></a>
 ### strcat
@@ -717,7 +717,7 @@ strcat
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L40)
 
 <a id="function-function-mq3-game-bg-lib-strchr-function-strchr-string-code-src-mq3-game-bg-lib-ml-735218474"></a>
 ### strchr
@@ -734,7 +734,7 @@ strchr -- a C pointer result is represented by its byte offset, or -1.
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L46)
 
 <a id="function-function-mq3-game-bg-lib-strcmp-function-strcmp-left-right-src-mq3-game-bg-lib-ml-693601433"></a>
 ### strcmp
@@ -751,7 +751,7 @@ strcmp
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L44)
 
 <a id="function-function-mq3-game-bg-lib-strcpy-function-strcpy-destination-source-src-mq3-game-bg-lib-ml-441109805"></a>
 ### strcpy
@@ -768,7 +768,7 @@ strcpy
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L42)
 
 <a id="function-function-mq3-game-bg-lib-strlen-function-strlen-string-src-mq3-game-bg-lib-ml-316385435"></a>
 ### strlen
@@ -784,7 +784,7 @@ strlen
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L38)
 
 <a id="function-function-mq3-game-bg-lib-strncpy-function-strncpy-destination-offset-source-count-src-mq3-game-bg-lib-ml-1581703933"></a>
 ### strncpy
@@ -803,7 +803,7 @@ strncpy (#if 0)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L129)
 
 <a id="function-function-mq3-game-bg-lib-strstr-function-strstr-string-needle-src-mq3-game-bg-lib-ml-1209791564"></a>
 ### strstr
@@ -820,7 +820,7 @@ strstr -- a C pointer result is represented by its byte offset, or -1.
 | `needle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L48)
 
 <a id="function-function-mq3-game-bg-lib-tan-function-tan-value-src-mq3-game-bg-lib-ml-1058256667"></a>
 ### tan
@@ -836,7 +836,7 @@ tan is active in Q3_VM and uses the active sine/cosine intrinsics.
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L143)
 
 <a id="function-function-mq3-game-bg-lib-tolower-function-tolower-code-src-mq3-game-bg-lib-ml-288371263"></a>
 ### tolower
@@ -852,7 +852,7 @@ tolower
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L50)
 
 <a id="function-function-mq3-game-bg-lib-toupper-function-toupper-code-src-mq3-game-bg-lib-ml-403715033"></a>
 ### toupper
@@ -868,7 +868,7 @@ toupper
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L52)
 
 <a id="function-function-mq3-game-bg-lib-vsprintf-function-vsprintf-format-arguments-src-mq3-game-bg-lib-ml-138561993"></a>
 ### vsprintf
@@ -885,7 +885,7 @@ vsprintf uses an array as the typed va_list boundary.
 | `arguments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L113)
 
 <a id="constant-constant-mq3-game-bg-lib-zeropad-const-zeropad-128-src-mq3-game-bg-lib-ml-467259274"></a>
 ### ZEROPAD
@@ -895,4 +895,4 @@ const ZEROPAD = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L17)

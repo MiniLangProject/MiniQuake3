@@ -10,7 +10,7 @@ struct Pose
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-bobcycle-bobcycle-src-mq3-client-playable-viewmodel-ml-2075409752"></a>
 ### bobCycle
@@ -32,7 +32,7 @@ bobCycle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-bobfraction-bobfraction-src-mq3-client-playable-viewmodel-ml-817104146"></a>
 ### bobFraction
@@ -42,7 +42,7 @@ bobFraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-fovoffset-fovoffset-src-mq3-client-playable-viewmodel-ml-735456162"></a>
 ### fovOffset
@@ -52,7 +52,7 @@ fovOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-origin-origin-src-mq3-client-playable-viewmodel-ml-1164204898"></a>
 ### origin
@@ -62,7 +62,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-scale-scale-src-mq3-client-playable-viewmodel-ml-504660718"></a>
 ### scale
@@ -72,7 +72,7 @@ scale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)
 
 <a id="field-field-mq3-client-playable-viewmodel-pose-xyspeed-xyspeed-src-mq3-client-playable-viewmodel-ml-269320046"></a>
 ### xySpeed
@@ -82,4 +82,4 @@ xySpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L26)

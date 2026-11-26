@@ -32,7 +32,7 @@ function argument(argv, index, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L35)
 
 <a id="function-function-mq3-game-vote-commands-boundedtext-function-boundedtext-text-capacity-src-mq3-game-vote-commands-ml-302313827"></a>
 ### boundedText
@@ -47,7 +47,7 @@ function boundedText(text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L16)
 
 <a id="function-function-mq3-game-vote-commands-callteamvote-function-callteamvote-level-ent-argv-src-mq3-game-vote-commands-ml-241544485"></a>
 ### callTeamVote
@@ -63,7 +63,7 @@ function callTeamVote(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L154)
 
 <a id="function-function-mq3-game-vote-commands-callvote-function-callvote-level-ent-argv-src-mq3-game-vote-commands-ml-250711341"></a>
 ### callVote
@@ -79,7 +79,7 @@ function callVote(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L60)
 
 <a id="function-function-mq3-game-vote-commands-castteamvote-function-castteamvote-level-ent-argv-src-mq3-game-vote-commands-ml-1980208501"></a>
 ### castTeamVote
@@ -95,7 +95,7 @@ function castTeamVote(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L208)
 
 <a id="function-function-mq3-game-vote-commands-castvote-function-castvote-level-ent-argv-src-mq3-game-vote-commands-ml-1423905733"></a>
 ### castVote
@@ -111,7 +111,7 @@ function castVote(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L117)
 
 <a id="function-function-mq3-game-vote-commands-cleanname-function-cleanname-text-src-mq3-game-vote-commands-ml-687753811"></a>
 ### cleanName
@@ -125,7 +125,7 @@ function cleanName(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L142)
 
 <a id="constant-constant-mq3-game-vote-commands-ef-teamvoted-const-ef-teamvoted-524288-src-mq3-game-vote-commands-ml-1797066632"></a>
 ### EF_TEAMVOTED
@@ -135,7 +135,7 @@ const EF_TEAMVOTED = 524288
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L14)
 
 <a id="constant-constant-mq3-game-vote-commands-ef-voted-const-ef-voted-16384-src-mq3-game-vote-commands-ml-980455761"></a>
 ### EF_VOTED
@@ -145,7 +145,7 @@ const EF_VOTED = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L13)
 
 <a id="function-function-mq3-game-vote-commands-formattedtext-function-formattedtext-level-text-capacity-src-mq3-game-vote-commands-ml-1682942493"></a>
 ### formattedText
@@ -161,7 +161,7 @@ function formattedText(level, text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L25)
 
 <a id="function-function-mq3-game-vote-commands-invalidstring-function-invalidstring-first-second-src-mq3-game-vote-commands-ml-2081787534"></a>
 ### invalidString
@@ -176,7 +176,7 @@ function invalidString(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L57)
 
 <a id="function-function-mq3-game-vote-commands-isyes-function-isyes-argv-src-mq3-game-vote-commands-ml-59008562"></a>
 ### isYes
@@ -190,7 +190,7 @@ function isYes(argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L110)
 
 <a id="function-function-mq3-game-vote-commands-nextmap-function-nextmap-level-src-mq3-game-vote-commands-ml-631797420"></a>
 ### nextMap
@@ -204,7 +204,7 @@ function nextMap(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L51)
 
 <a id="function-function-mq3-game-vote-commands-notice-function-notice-level-ent-text-src-mq3-game-vote-commands-ml-1982185522"></a>
 ### notice
@@ -220,7 +220,7 @@ function notice(level, ent, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L44)
 
 <a id="function-function-mq3-game-vote-commands-teamarguments-function-teamarguments-argv-src-mq3-game-vote-commands-ml-378623810"></a>
 ### teamArguments
@@ -234,7 +234,7 @@ function teamArguments(argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L130)
 
 <a id="function-function-mq3-game-vote-commands-voteclient-function-voteclient-level-ent-src-mq3-game-vote-commands-ml-1850731495"></a>
 ### voteClient
@@ -249,7 +249,7 @@ function voteClient(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L39)
 
 <a id="function-function-mq3-game-vote-commands-voteconfig-function-voteconfig-level-index-value-src-mq3-game-vote-commands-ml-1179185729"></a>
 ### voteConfig
@@ -265,4 +265,4 @@ function voteConfig(level, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/vote_commands.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/vote_commands.ml#L47)

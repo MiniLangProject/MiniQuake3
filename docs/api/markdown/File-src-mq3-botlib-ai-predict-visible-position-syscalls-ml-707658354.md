@@ -30,7 +30,7 @@ function dispatch(runtime, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-predict-visible-position-syscalls-ml-1654829189"></a>
 ### writeVector
@@ -46,4 +46,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position_syscalls.ml#L10)

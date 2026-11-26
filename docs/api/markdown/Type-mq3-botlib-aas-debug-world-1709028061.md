@@ -10,7 +10,7 @@ struct World
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-areas-areas-src-mq3-botlib-aas-debug-ml-861210743"></a>
 ### areas
@@ -32,7 +32,7 @@ areas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-areasettings-areasettings-src-mq3-botlib-aas-debug-ml-2097309687"></a>
 ### areaSettings
@@ -42,7 +42,7 @@ areaSettings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-edgeindex-edgeindex-src-mq3-botlib-aas-debug-ml-102572575"></a>
 ### edgeIndex
@@ -52,7 +52,7 @@ edgeIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-edges-edges-src-mq3-botlib-aas-debug-ml-992014479"></a>
 ### edges
@@ -62,7 +62,7 @@ edges
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-faceindex-faceindex-src-mq3-botlib-aas-debug-ml-1052979103"></a>
 ### faceIndex
@@ -72,7 +72,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-faces-faces-src-mq3-botlib-aas-debug-ml-932756535"></a>
 ### faces
@@ -82,7 +82,7 @@ faces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-loaded-loaded-src-mq3-botlib-aas-debug-ml-834856985"></a>
 ### loaded
@@ -92,7 +92,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-planes-planes-src-mq3-botlib-aas-debug-ml-1699956573"></a>
 ### planes
@@ -102,7 +102,7 @@ planes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-pointarea-pointarea-src-mq3-botlib-aas-debug-ml-789745571"></a>
 ### pointArea
@@ -112,7 +112,7 @@ pointArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-reachabilities-reachabilities-src-mq3-botlib-aas-debug-ml-820588605"></a>
 ### reachabilities
@@ -122,7 +122,7 @@ reachabilities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-retailactive-retailactive-src-mq3-botlib-aas-debug-ml-231577569"></a>
 ### retailActive
@@ -132,7 +132,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)
 
 <a id="field-field-mq3-botlib-aas-debug-world-vertexes-vertexes-src-mq3-botlib-aas-debug-ml-1106098663"></a>
 ### vertexes
@@ -142,4 +142,4 @@ vertexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L46)

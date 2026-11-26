@@ -10,7 +10,7 @@ struct Definition
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ blue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-continuous-continuous-src-mq3-client-playable-muzzle-flash-ml-1078431150"></a>
 ### continuous
@@ -32,7 +32,7 @@ continuous
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-flashclass-flashclass-src-mq3-client-playable-muzzle-flash-ml-2004394816"></a>
 ### flashClass
@@ -42,7 +42,7 @@ flashClass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-green-green-src-mq3-client-playable-muzzle-flash-ml-1395735088"></a>
 ### green
@@ -52,7 +52,7 @@ green
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-modelpath-modelpath-src-mq3-client-playable-muzzle-flash-ml-1348457680"></a>
 ### modelPath
@@ -62,7 +62,7 @@ modelPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-red-red-src-mq3-client-playable-muzzle-flash-ml-878568540"></a>
 ### red
@@ -72,7 +72,7 @@ red
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-definition-weaponclass-weaponclass-src-mq3-client-playable-muzzle-flash-ml-1485784416"></a>
 ### weaponClass
@@ -82,4 +82,4 @@ weaponClass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L11)

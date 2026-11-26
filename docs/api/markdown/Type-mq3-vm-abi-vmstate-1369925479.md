@@ -12,7 +12,7 @@ struct VmState
 vm_s is pointer-heavy in C. The port keeps equivalent ownership and state fields as managed values while retaining the two assembler-visible offsets.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 ## Members
 
@@ -24,7 +24,7 @@ breakCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-breakfunction-breakfunction-src-mq3-vm-abi-ml-1829634589"></a>
 ### breakFunction
@@ -34,7 +34,7 @@ breakFunction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-calllevel-calllevel-src-mq3-vm-abi-ml-685436921"></a>
 ### callLevel
@@ -44,7 +44,7 @@ callLevel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-codebase-codebase-src-mq3-vm-abi-ml-85774025"></a>
 ### codeBase
@@ -54,7 +54,7 @@ codeBase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-codelength-codelength-src-mq3-vm-abi-ml-747942651"></a>
 ### codeLength
@@ -64,7 +64,7 @@ codeLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-compiled-compiled-src-mq3-vm-abi-ml-2107136759"></a>
 ### compiled
@@ -74,7 +74,7 @@ compiled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-currentlyinterpreting-currentlyinterpreting-src-mq3-vm-abi-ml-436063857"></a>
 ### currentlyInterpreting
@@ -84,7 +84,7 @@ currentlyInterpreting
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-database-database-src-mq3-vm-abi-ml-1827339987"></a>
 ### dataBase
@@ -94,7 +94,7 @@ dataBase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-datamask-datamask-src-mq3-vm-abi-ml-617460145"></a>
 ### dataMask
@@ -104,7 +104,7 @@ dataMask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-dllhandle-dllhandle-src-mq3-vm-abi-ml-2137795145"></a>
 ### dllHandle
@@ -114,7 +114,7 @@ dllHandle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-entrypoint-entrypoint-src-mq3-vm-abi-ml-1412090157"></a>
 ### entryPoint
@@ -124,7 +124,7 @@ entryPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-fqpath-fqpath-src-mq3-vm-abi-ml-168700129"></a>
 ### fqpath
@@ -134,7 +134,7 @@ fqpath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-instructionpointers-instructionpointers-src-mq3-vm-abi-ml-2008628825"></a>
 ### instructionPointers
@@ -144,7 +144,7 @@ instructionPointers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-instructionpointerslength-instructionpointerslength-src-mq3-vm-abi-ml-546684185"></a>
 ### instructionPointersLength
@@ -154,7 +154,7 @@ instructionPointersLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-name-name-src-mq3-vm-abi-ml-1671797951"></a>
 ### name
@@ -164,7 +164,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-numsymbols-numsymbols-src-mq3-vm-abi-ml-493871575"></a>
 ### numSymbols
@@ -174,7 +174,7 @@ numSymbols
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-programstack-programstack-src-mq3-vm-abi-ml-1671776985"></a>
 ### programStack
@@ -184,7 +184,7 @@ programStack
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-stackbottom-stackbottom-src-mq3-vm-abi-ml-2100314209"></a>
 ### stackBottom
@@ -194,7 +194,7 @@ stackBottom
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-symbols-symbols-src-mq3-vm-abi-ml-1641124813"></a>
 ### symbols
@@ -204,7 +204,7 @@ symbols
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)
 
 <a id="field-field-mq3-vm-abi-vmstate-systemcall-systemcall-src-mq3-vm-abi-ml-586793459"></a>
 ### systemCall
@@ -214,4 +214,4 @@ systemCall
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/abi.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/abi.ml#L75)

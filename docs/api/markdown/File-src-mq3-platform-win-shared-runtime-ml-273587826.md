@@ -30,7 +30,7 @@ CPUID exposes the four values win_shared consumes. Vendor text is irrelevant to 
 | `func` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L25)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-amd-3dnow-const-cpuid-amd-3dnow-48-src-mq3-platform-win-shared-runtime-ml-1820271321"></a>
 ### CPUID_AMD_3DNOW
@@ -40,7 +40,7 @@ const CPUID_AMD_3DNOW = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L13)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-generic-const-cpuid-generic-0-src-mq3-platform-win-shared-runtime-ml-1653998173"></a>
 ### CPUID_GENERIC
@@ -50,7 +50,7 @@ const CPUID_GENERIC = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L8)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-intel-katmai-const-cpuid-intel-katmai-35-src-mq3-platform-win-shared-runtime-ml-562102775"></a>
 ### CPUID_INTEL_KATMAI
@@ -60,7 +60,7 @@ const CPUID_INTEL_KATMAI = 35
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L12)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-intel-mmx-const-cpuid-intel-mmx-34-src-mq3-platform-win-shared-runtime-ml-170654072"></a>
 ### CPUID_INTEL_MMX
@@ -70,7 +70,7 @@ const CPUID_INTEL_MMX = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L11)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-intel-pentium-const-cpuid-intel-pentium-33-src-mq3-platform-win-shared-runtime-ml-1611243559"></a>
 ### CPUID_INTEL_PENTIUM
@@ -80,7 +80,7 @@ const CPUID_INTEL_PENTIUM = 33
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L10)
 
 <a id="constant-constant-mq3-platform-win-shared-runtime-cpuid-intel-unsupported-const-cpuid-intel-unsupported-32-src-mq3-platform-win-shared-runtime-ml-126975710"></a>
 ### CPUID_INTEL_UNSUPPORTED
@@ -90,7 +90,7 @@ const CPUID_INTEL_UNSUPPORTED = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L9)
 
 <a id="function-function-mq3-platform-win-shared-runtime-createclock-function-createclock-src-mq3-platform-win-shared-runtime-ml-1358269056"></a>
 ### createClock
@@ -100,7 +100,7 @@ function createClock()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L21)
 
 <a id="function-function-mq3-platform-win-shared-runtime-createcpu-function-createcpu-maximum-extendedmaximum-featureedx-extendedfeatureedx-cpuidsupported-src-mq3-platform-win-shared-runtime-ml-1255312377"></a>
 ### createCpu
@@ -118,7 +118,7 @@ function createCpu(maximum, extendedMaximum, featureEDX, extendedFeatureEDX, cpu
 | `cpuidSupported` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L18)
 
 <a id="function-function-mq3-platform-win-shared-runtime-fastftol-function-fastftol-value-src-mq3-platform-win-shared-runtime-ml-1323924333"></a>
 ### fastftol
@@ -132,7 +132,7 @@ function fastftol(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L53)
 
 <a id="function-function-mq3-platform-win-shared-runtime-is3dnow-function-is3dnow-cpu-src-mq3-platform-win-shared-runtime-ml-1065058872"></a>
 ### Is3DNOW
@@ -146,7 +146,7 @@ function Is3DNOW(cpu)
 | `cpu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L35)
 
 <a id="function-function-mq3-platform-win-shared-runtime-iskni-function-iskni-cpu-src-mq3-platform-win-shared-runtime-ml-2143977430"></a>
 ### IsKNI
@@ -160,7 +160,7 @@ function IsKNI(cpu)
 | `cpu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L34)
 
 <a id="function-function-mq3-platform-win-shared-runtime-ismmx-function-ismmx-cpu-src-mq3-platform-win-shared-runtime-ml-103230986"></a>
 ### IsMMX
@@ -174,7 +174,7 @@ function IsMMX(cpu)
 | `cpu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L33)
 
 <a id="function-function-mq3-platform-win-shared-runtime-ispentium-function-ispentium-cpu-src-mq3-platform-win-shared-runtime-ml-872722914"></a>
 ### IsPentium
@@ -188,7 +188,7 @@ function IsPentium(cpu)
 | `cpu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L32)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-defaulthomepath-function-sys-defaulthomepath-src-mq3-platform-win-shared-runtime-ml-41155898"></a>
 ### Sys_DefaultHomePath
@@ -198,7 +198,7 @@ function Sys_DefaultHomePath()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L61)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-defaultinstallpath-function-sys-defaultinstallpath-currentworkingdirectory-src-mq3-platform-win-shared-runtime-ml-1283941711"></a>
 ### Sys_DefaultInstallPath
@@ -212,7 +212,7 @@ function Sys_DefaultInstallPath(currentWorkingDirectory)
 | `currentWorkingDirectory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L62)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-getcurrentuser-function-sys-getcurrentuser-username-src-mq3-platform-win-shared-runtime-ml-574785076"></a>
 ### Sys_GetCurrentUser
@@ -226,7 +226,7 @@ function Sys_GetCurrentUser(userName)
 | `userName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L57)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-getprocessorid-function-sys-getprocessorid-cpu-architecture-src-mq3-platform-win-shared-runtime-ml-926161505"></a>
 ### Sys_GetProcessorId
@@ -241,7 +241,7 @@ function Sys_GetProcessorId(cpu, architecture)
 | `architecture` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L39)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-milliseconds-function-sys-milliseconds-clock-timegettime-src-mq3-platform-win-shared-runtime-ml-371462504"></a>
 ### Sys_Milliseconds
@@ -256,7 +256,7 @@ function Sys_Milliseconds(clock, timeGetTime)
 | `timeGetTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L48)
 
 <a id="function-function-mq3-platform-win-shared-runtime-sys-snapvector-function-sys-snapvector-vector-src-mq3-platform-win-shared-runtime-ml-1341064999"></a>
 ### Sys_SnapVector
@@ -270,4 +270,4 @@ function Sys_SnapVector(vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L56)

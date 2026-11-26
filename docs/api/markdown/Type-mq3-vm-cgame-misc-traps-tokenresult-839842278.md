@@ -10,7 +10,7 @@ struct TokenResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ found
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)
 
 <a id="field-field-mq3-vm-cgame-misc-traps-tokenresult-text-text-src-mq3-vm-cgame-misc-traps-ml-2016654683"></a>
 ### text
@@ -32,4 +32,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_misc_traps.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_misc_traps.ml#L16)

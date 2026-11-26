@@ -10,7 +10,7 @@ struct StageResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ clouds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-depthmax-depthmax-src-mq3-renderer-tr-sky-ml-1030315290"></a>
 ### depthMax
@@ -32,7 +32,7 @@ depthMax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-depthmin-depthmin-src-mq3-renderer-tr-sky-ml-308098414"></a>
 ### depthMin
@@ -42,7 +42,7 @@ depthMin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-skybox-skybox-src-mq3-renderer-tr-sky-ml-1791152220"></a>
 ### skybox
@@ -52,7 +52,7 @@ skybox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-skyrendered-skyrendered-src-mq3-renderer-tr-sky-ml-1986158048"></a>
 ### skyRendered
@@ -62,7 +62,7 @@ skyRendered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-sky-stageresult-sun-sun-src-mq3-renderer-tr-sky-ml-580876372"></a>
 ### sun
@@ -72,4 +72,4 @@ sun
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L24)

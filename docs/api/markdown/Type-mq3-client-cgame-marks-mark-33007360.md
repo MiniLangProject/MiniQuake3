@@ -10,7 +10,7 @@ struct Mark
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-alphafade-alphafade-src-mq3-client-cgame-marks-ml-16358728"></a>
 ### alphaFade
@@ -32,7 +32,7 @@ alphaFade
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-color-color-src-mq3-client-cgame-marks-ml-408513092"></a>
 ### color
@@ -42,7 +42,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-id-id-src-mq3-client-cgame-marks-ml-1156251322"></a>
 ### id
@@ -52,7 +52,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-shader-shader-src-mq3-client-cgame-marks-ml-1128186126"></a>
 ### shader
@@ -62,7 +62,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-time-time-src-mq3-client-cgame-marks-ml-1245758794"></a>
 ### time
@@ -72,7 +72,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)
 
 <a id="field-field-mq3-client-cgame-marks-mark-verts-verts-src-mq3-client-cgame-marks-ml-787544996"></a>
 ### verts
@@ -82,4 +82,4 @@ verts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L24)

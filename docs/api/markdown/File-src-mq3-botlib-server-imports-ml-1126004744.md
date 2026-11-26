@@ -29,7 +29,7 @@ function BotClientCommand(state, clientNum, command, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L125)
 
 <a id="function-function-mq3-botlib-server-imports-botdrawdebugpolygons-function-botdrawdebugpolygons-state-host-src-mq3-botlib-server-imports-ml-1687427799"></a>
 ### BotDrawDebugPolygons
@@ -44,7 +44,7 @@ function BotDrawDebugPolygons(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L119)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-bspentitydata-function-botimport-bspentitydata-host-src-mq3-botlib-server-imports-ml-1173033800"></a>
 ### BotImport_BSPEntityData
@@ -58,7 +58,7 @@ function BotImport_BSPEntityData(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L76)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-bspmodelminsmaxsorigin-function-botimport-bspmodelminsmaxsorigin-modelnum-angles-host-src-mq3-botlib-server-imports-ml-668612013"></a>
 ### BotImport_BSPModelMinsMaxsOrigin
@@ -74,7 +74,7 @@ function BotImport_BSPModelMinsMaxsOrigin(modelnum, angles, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L77)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debuglinecreate-function-botimport-debuglinecreate-state-src-mq3-botlib-server-imports-ml-859566565"></a>
 ### BotImport_DebugLineCreate
@@ -88,7 +88,7 @@ function BotImport_DebugLineCreate(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L109)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debuglinedelete-function-botimport-debuglinedelete-state-line-src-mq3-botlib-server-imports-ml-1472626137"></a>
 ### BotImport_DebugLineDelete
@@ -103,7 +103,7 @@ function BotImport_DebugLineDelete(state, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L110)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debuglineshow-function-botimport-debuglineshow-state-line-start-finish-color-src-mq3-botlib-server-imports-ml-1120583259"></a>
 ### BotImport_DebugLineShow
@@ -121,7 +121,7 @@ function BotImport_DebugLineShow(state, line, start, finish, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L111)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debugpolygoncreate-function-botimport-debugpolygoncreate-state-color-numpoints-points-src-mq3-botlib-server-imports-ml-281384548"></a>
 ### BotImport_DebugPolygonCreate
@@ -138,7 +138,7 @@ function BotImport_DebugPolygonCreate(state, color, numPoints, points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L96)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debugpolygondelete-function-botimport-debugpolygondelete-state-id-src-mq3-botlib-server-imports-ml-2092133156"></a>
 ### BotImport_DebugPolygonDelete
@@ -153,7 +153,7 @@ function BotImport_DebugPolygonDelete(state, id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L108)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-debugpolygonshow-function-botimport-debugpolygonshow-state-id-color-numpoints-points-src-mq3-botlib-server-imports-ml-1543872057"></a>
 ### BotImport_DebugPolygonShow
@@ -171,7 +171,7 @@ function BotImport_DebugPolygonShow(state, id, color, numPoints, points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L103)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-entitytrace-function-botimport-entitytrace-start-mins-maxs-finish-entnum-contentmask-host-src-mq3-botlib-server-imports-ml-426200115"></a>
 ### BotImport_EntityTrace
@@ -191,7 +191,7 @@ function BotImport_EntityTrace(start, mins, maxs, finish, entnum, contentmask, h
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L70)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-freememory-function-botimport-freememory-pointer-host-src-mq3-botlib-server-imports-ml-1770199487"></a>
 ### BotImport_FreeMemory
@@ -206,7 +206,7 @@ function BotImport_FreeMemory(pointer, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L87)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-getmemory-function-botimport-getmemory-size-host-src-mq3-botlib-server-imports-ml-1501756959"></a>
 ### BotImport_GetMemory
@@ -221,7 +221,7 @@ function BotImport_GetMemory(size, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L86)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-hunkalloc-function-botimport-hunkalloc-size-host-src-mq3-botlib-server-imports-ml-1709562295"></a>
 ### BotImport_HunkAlloc
@@ -236,7 +236,7 @@ function BotImport_HunkAlloc(size, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L88)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-inpvs-function-botimport-inpvs-p1-p2-host-src-mq3-botlib-server-imports-ml-203611717"></a>
 ### BotImport_inPVS
@@ -252,7 +252,7 @@ function BotImport_inPVS(p1, p2, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L75)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-pointcontents-function-botimport-pointcontents-point-host-src-mq3-botlib-server-imports-ml-1103991258"></a>
 ### BotImport_PointContents
@@ -267,7 +267,7 @@ function BotImport_PointContents(point, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L74)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-print-function-botimport-print-type-text-host-src-mq3-botlib-server-imports-ml-489157885"></a>
 ### BotImport_Print
@@ -283,7 +283,7 @@ function BotImport_Print(type, text, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L49)
 
 <a id="function-function-mq3-botlib-server-imports-botimport-trace-function-botimport-trace-start-mins-maxs-finish-passent-contentmask-host-src-mq3-botlib-server-imports-ml-1610111428"></a>
 ### BotImport_Trace
@@ -303,7 +303,7 @@ function BotImport_Trace(start, mins, maxs, finish, passent, contentmask, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L66)
 
 - [mq3.botlib.server_imports.BspTrace](Type-mq3-botlib-server-imports-bsptrace-471967370.md) — struct
 <a id="constant-constant-mq3-botlib-server-imports-button-attack-const-button-attack-1-src-mq3-botlib-server-imports-ml-365059660"></a>
@@ -314,7 +314,7 @@ const BUTTON_ATTACK = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L13)
 
 <a id="function-function-mq3-botlib-server-imports-client-function-client-src-mq3-botlib-server-imports-ml-1086865932"></a>
 ### client
@@ -324,7 +324,7 @@ function client()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L22)
 
 - [mq3.botlib.server_imports.Client](Type-mq3-botlib-server-imports-client-934323811.md) — struct
 <a id="function-function-mq3-botlib-server-imports-converttrace-function-converttrace-value-src-mq3-botlib-server-imports-ml-838529561"></a>
@@ -339,7 +339,7 @@ function convertTrace(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L62)
 
 <a id="function-function-mq3-botlib-server-imports-copypoints-function-copypoints-points-src-mq3-botlib-server-imports-ml-158370691"></a>
 ### copyPoints
@@ -353,7 +353,7 @@ function copyPoints(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L95)
 
 <a id="function-function-mq3-botlib-server-imports-create-function-create-maxclients-maxdebugpolys-src-mq3-botlib-server-imports-ml-593143086"></a>
 ### create
@@ -368,7 +368,7 @@ function create(maxClients, maxDebugPolys)
 | `maxDebugPolys` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L26)
 
 <a id="constant-constant-mq3-botlib-server-imports-cs-active-const-cs-active-4-src-mq3-botlib-server-imports-ml-1212112185"></a>
 ### CS_ACTIVE
@@ -378,7 +378,7 @@ const CS_ACTIVE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L10)
 
 <a id="constant-constant-mq3-botlib-server-imports-cs-free-const-cs-free-0-src-mq3-botlib-server-imports-ml-1332374157"></a>
 ### CS_FREE
@@ -388,7 +388,7 @@ const CS_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L9)
 
 <a id="constant-constant-mq3-botlib-server-imports-cvar-cheat-const-cvar-cheat-512-src-mq3-botlib-server-imports-ml-990904503"></a>
 ### CVAR_CHEAT
@@ -398,7 +398,7 @@ const CVAR_CHEAT = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L19)
 
 <a id="function-function-mq3-botlib-server-imports-cvardefinitions-function-cvardefinitions-src-mq3-botlib-server-imports-ml-2070394976"></a>
 ### cvarDefinitions
@@ -408,7 +408,7 @@ function cvarDefinitions()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L141)
 
 - [mq3.botlib.server_imports.DebugPolygon](Type-mq3-botlib-server-imports-debugpolygon-214112003.md) — struct
 <a id="function-function-mq3-botlib-server-imports-entityinpvs-function-entityinpvs-serverbridge-client-entitynum-src-mq3-botlib-server-imports-ml-123354604"></a>
@@ -425,7 +425,7 @@ function EntityInPVS(serverBridge, client, entityNum)
 | `entityNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L158)
 
 <a id="constant-constant-mq3-botlib-server-imports-na-bot-const-na-bot-0-src-mq3-botlib-server-imports-ml-2130299105"></a>
 ### NA_BOT
@@ -435,7 +435,7 @@ const NA_BOT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L11)
 
 <a id="function-function-mq3-botlib-server-imports-polygon-function-polygon-src-mq3-botlib-server-imports-ml-1040926848"></a>
 ### polygon
@@ -445,7 +445,7 @@ function polygon()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L24)
 
 <a id="constant-constant-mq3-botlib-server-imports-prt-error-const-prt-error-3-src-mq3-botlib-server-imports-ml-445862042"></a>
 ### PRT_ERROR
@@ -455,7 +455,7 @@ const PRT_ERROR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L16)
 
 <a id="constant-constant-mq3-botlib-server-imports-prt-exit-const-prt-exit-5-src-mq3-botlib-server-imports-ml-1638874468"></a>
 ### PRT_EXIT
@@ -465,7 +465,7 @@ const PRT_EXIT = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L18)
 
 <a id="constant-constant-mq3-botlib-server-imports-prt-fatal-const-prt-fatal-4-src-mq3-botlib-server-imports-ml-72632125"></a>
 ### PRT_FATAL
@@ -475,7 +475,7 @@ const PRT_FATAL = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L17)
 
 <a id="constant-constant-mq3-botlib-server-imports-prt-message-const-prt-message-1-src-mq3-botlib-server-imports-ml-1945284976"></a>
 ### PRT_MESSAGE
@@ -485,7 +485,7 @@ const PRT_MESSAGE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L14)
 
 <a id="constant-constant-mq3-botlib-server-imports-prt-warning-const-prt-warning-2-src-mq3-botlib-server-imports-ml-1119016251"></a>
 ### PRT_WARNING
@@ -495,7 +495,7 @@ const PRT_WARNING = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L15)
 
 <a id="function-function-mq3-botlib-server-imports-services-function-services-context-src-mq3-botlib-server-imports-ml-1332162371"></a>
 ### services
@@ -509,7 +509,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L34)
 
 - [mq3.botlib.server_imports.Services](Type-mq3-botlib-server-imports-services-1272614492.md) — struct
 - [mq3.botlib.server_imports.State](Type-mq3-botlib-server-imports-state-1846213001.md) — struct
@@ -525,7 +525,7 @@ function SV_BotAllocateClient(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L36)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botdispatch-function-sv-botdispatch-serverbridge-vm-base-op-src-mq3-botlib-server-imports-ml-1903239749"></a>
 ### SV_BotDispatch
@@ -544,7 +544,7 @@ Keep the QVM trap boundary in the sv_bot port as well: the productive local serv
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L157)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botframe-function-sv-botframe-state-time-host-src-mq3-botlib-server-imports-ml-2090784898"></a>
 ### SV_BotFrame
@@ -560,7 +560,7 @@ function SV_BotFrame(state, time, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L129)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botfreeclient-function-sv-botfreeclient-state-clientnum-src-mq3-botlib-server-imports-ml-1931130890"></a>
 ### SV_BotFreeClient
@@ -575,7 +575,7 @@ function SV_BotFreeClient(state, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L44)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botgetconsolemessage-function-sv-botgetconsolemessage-serverbridge-client-src-mq3-botlib-server-imports-ml-425952807"></a>
 ### SV_BotGetConsoleMessage
@@ -590,7 +590,7 @@ function SV_BotGetConsoleMessage(serverBridge, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L152)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botgetsnapshotentity-function-sv-botgetsnapshotentity-serverbridge-client-sequence-src-mq3-botlib-server-imports-ml-493302652"></a>
 ### SV_BotGetSnapshotEntity
@@ -606,7 +606,7 @@ function SV_BotGetSnapshotEntity(serverBridge, client, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L153)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botinitbotlib-function-sv-botinitbotlib-state-maxdebugpolys-host-src-mq3-botlib-server-imports-ml-2033209049"></a>
 ### SV_BotInitBotLib
@@ -622,7 +622,7 @@ function SV_BotInitBotLib(state, maxDebugPolys, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L145)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botinitcvars-function-sv-botinitcvars-host-src-mq3-botlib-server-imports-ml-1528451210"></a>
 ### SV_BotInitCvars
@@ -636,7 +636,7 @@ function SV_BotInitCvars(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L144)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botlibsetup-function-sv-botlibsetup-state-host-src-mq3-botlib-server-imports-ml-668305911"></a>
 ### SV_BotLibSetup
@@ -651,7 +651,7 @@ function SV_BotLibSetup(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L134)
 
 <a id="function-function-mq3-botlib-server-imports-sv-botlibshutdown-function-sv-botlibshutdown-state-host-src-mq3-botlib-server-imports-ml-1492304883"></a>
 ### SV_BotLibShutdown
@@ -666,7 +666,7 @@ function SV_BotLibShutdown(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L139)
 
 <a id="constant-constant-mq3-botlib-server-imports-svf-bot-const-svf-bot-8-src-mq3-botlib-server-imports-ml-1043181493"></a>
 ### SVF_BOT
@@ -676,7 +676,7 @@ const SVF_BOT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L12)
 
 <a id="function-function-mq3-botlib-server-imports-validpolygon-function-validpolygon-state-id-src-mq3-botlib-server-imports-ml-356765948"></a>
 ### validPolygon
@@ -691,4 +691,4 @@ function validPolygon(state, id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L94)

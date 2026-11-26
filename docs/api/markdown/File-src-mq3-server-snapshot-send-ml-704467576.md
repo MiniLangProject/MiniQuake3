@@ -23,7 +23,7 @@ function client()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L52)
 
 - [mq3.server.snapshot_send.Client](Type-mq3-server-snapshot-send-client-1694397985.md) — struct
 <a id="constant-constant-mq3-server-snapshot-send-cs-active-const-cs-active-4-src-mq3-server-snapshot-send-ml-1969973901"></a>
@@ -34,7 +34,7 @@ const CS_ACTIVE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L13)
 
 <a id="function-function-mq3-server-snapshot-send-currentframe-function-currentframe-clientstate-src-mq3-server-snapshot-send-ml-768425822"></a>
 ### currentFrame
@@ -48,7 +48,7 @@ function currentFrame(clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L78)
 
 <a id="function-function-mq3-server-snapshot-send-deltabase-function-deltabase-clientstate-serverstate-src-mq3-server-snapshot-send-ml-1018972932"></a>
 ### deltaBase
@@ -63,7 +63,7 @@ function deltaBase(clientState, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L85)
 
 <a id="function-function-mq3-server-snapshot-send-frame-function-frame-firstentity-numentities-areabits-playerstate-src-mq3-server-snapshot-send-ml-1906574303"></a>
 ### frame
@@ -80,7 +80,7 @@ function frame(firstEntity, numEntities, areaBits, playerState)
 | `playerState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L30)
 
 <a id="constant-constant-mq3-server-snapshot-send-header-rate-bytes-const-header-rate-bytes-48-src-mq3-server-snapshot-send-ml-1049322973"></a>
 ### HEADER_RATE_BYTES
@@ -90,7 +90,7 @@ const HEADER_RATE_BYTES = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L18)
 
 <a id="constant-constant-mq3-server-snapshot-send-max-msglen-const-max-msglen-16384-src-mq3-server-snapshot-send-ml-870632349"></a>
 ### MAX_MSGLEN
@@ -100,7 +100,7 @@ const MAX_MSGLEN = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L10)
 
 <a id="constant-constant-mq3-server-snapshot-send-packet-backup-const-packet-backup-32-src-mq3-server-snapshot-send-ml-85810832"></a>
 ### PACKET_BACKUP
@@ -110,7 +110,7 @@ const PACKET_BACKUP = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L11)
 
 <a id="constant-constant-mq3-server-snapshot-send-packet-mask-const-packet-mask-31-src-mq3-server-snapshot-send-ml-564952257"></a>
 ### PACKET_MASK
@@ -120,7 +120,7 @@ const PACKET_MASK = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L12)
 
 <a id="function-function-mq3-server-snapshot-send-packetbytes-function-packetbytes-msg-src-mq3-server-snapshot-send-ml-1140571955"></a>
 ### packetBytes
@@ -134,7 +134,7 @@ function packetBytes(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L119)
 
 <a id="function-function-mq3-server-snapshot-send-ratemsec-function-ratemsec-clientstate-messagesize-maxrate-src-mq3-server-snapshot-send-ml-13010948"></a>
 ### rateMsec
@@ -150,7 +150,7 @@ function rateMsec(clientState, messageSize, maxRate)
 | `maxRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L108)
 
 <a id="function-function-mq3-server-snapshot-send-sendclientsnapshot-function-sendclientsnapshot-clientstate-serverstate-host-src-mq3-server-snapshot-send-ml-579026312"></a>
 ### sendClientSnapshot
@@ -166,7 +166,7 @@ function sendClientSnapshot(clientState, serverState, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L144)
 
 - [mq3.server.snapshot_send.SendFrame](Type-mq3-server-snapshot-send-sendframe-1281752461.md) — struct
 <a id="function-function-mq3-server-snapshot-send-sendmessagetoclient-function-sendmessagetoclient-clientstate-serverstate-host-msg-src-mq3-server-snapshot-send-ml-1542293521"></a>
@@ -186,7 +186,7 @@ SV_SendMessageToClient plus the svc_EOF written by SV_Netchan_Transmit. `transmi
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L127)
 
 <a id="function-function-mq3-server-snapshot-send-server-function-server-time-snapshotentities-snapshotcapacity-baselines-src-mq3-server-snapshot-send-ml-139928184"></a>
 ### server
@@ -203,7 +203,7 @@ function server(time, snapshotEntities, snapshotCapacity, baselines)
 | `baselines` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L68)
 
 - [mq3.server.snapshot_send.Server](Type-mq3-server-snapshot-send-server-1636242949.md) — struct
 <a id="function-function-mq3-server-snapshot-send-services-function-services-buildsnapshotfn-writedownloadfn-transmitfn-localaddressfn-lanaddressfn-context-src-mq3-server-snapshot-send-ml-1513017604"></a>
@@ -223,7 +223,7 @@ function services(buildSnapshotFn, writeDownloadFn, transmitFn, localAddressFn, 
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L74)
 
 - [mq3.server.snapshot_send.Services](Type-mq3-server-snapshot-send-services-347662494.md) — struct
 <a id="constant-constant-mq3-server-snapshot-send-snapflag-not-active-const-snapflag-not-active-2-src-mq3-server-snapshot-send-ml-1556559247"></a>
@@ -234,7 +234,7 @@ const SNAPFLAG_NOT_ACTIVE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L15)
 
 <a id="constant-constant-mq3-server-snapshot-send-snapflag-rate-delayed-const-snapflag-rate-delayed-1-src-mq3-server-snapshot-send-ml-1939360838"></a>
 ### SNAPFLAG_RATE_DELAYED
@@ -244,7 +244,7 @@ const SNAPFLAG_RATE_DELAYED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L14)
 
 <a id="function-function-mq3-server-snapshot-send-snapshotflags-function-snapshotflags-clientstate-serverstate-src-mq3-server-snapshot-send-ml-1143984664"></a>
 ### snapshotFlags
@@ -259,7 +259,7 @@ function snapshotFlags(clientState, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L94)
 
 <a id="constant-constant-mq3-server-snapshot-send-svc-eof-const-svc-eof-8-src-mq3-server-snapshot-send-ml-444305329"></a>
 ### SVC_EOF
@@ -269,7 +269,7 @@ const SVC_EOF = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L17)
 
 <a id="constant-constant-mq3-server-snapshot-send-svc-nop-const-svc-nop-1-src-mq3-server-snapshot-send-ml-1496603170"></a>
 ### SVC_NOP
@@ -279,7 +279,7 @@ const SVC_NOP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L16)
 
 <a id="function-function-mq3-server-snapshot-send-writesnapshottoclient-function-writesnapshottoclient-clientstate-serverstate-msg-src-mq3-server-snapshot-send-ml-2065672671"></a>
 ### writeSnapshotToClient
@@ -295,4 +295,4 @@ function writeSnapshotToClient(clientState, serverState, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_send.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_send.ml#L101)

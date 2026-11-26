@@ -10,7 +10,7 @@ struct GoalState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ avoidGoals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-avoidgoaltimes-avoidgoaltimes-src-mq3-botlib-ai-resource-pools-ml-569179463"></a>
 ### avoidGoalTimes
@@ -32,7 +32,7 @@ avoidGoalTimes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-client-client-src-mq3-botlib-ai-resource-pools-ml-336139437"></a>
 ### client
@@ -42,7 +42,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-goalstack-goalstack-src-mq3-botlib-ai-resource-pools-ml-1256688067"></a>
 ### goalStack
@@ -52,7 +52,7 @@ goalStack
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-goalstacktop-goalstacktop-src-mq3-botlib-ai-resource-pools-ml-1851680023"></a>
 ### goalStackTop
@@ -62,7 +62,7 @@ goalStackTop
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-itemweightconfig-itemweightconfig-src-mq3-botlib-ai-resource-pools-ml-716625637"></a>
 ### itemWeightConfig
@@ -72,7 +72,7 @@ itemWeightConfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-itemweightindex-itemweightindex-src-mq3-botlib-ai-resource-pools-ml-1242308523"></a>
 ### itemWeightIndex
@@ -82,7 +82,7 @@ itemWeightIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-goalstate-lastreachabilityarea-lastreachabilityarea-src-mq3-botlib-ai-resource-pools-ml-270603879"></a>
 ### lastReachabilityArea
@@ -92,4 +92,4 @@ lastReachabilityArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L33)

@@ -10,7 +10,7 @@ struct Hit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ awardedScore
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 <a id="field-field-mq3-client-playable-targets-hit-damage-damage-src-mq3-client-playable-targets-ml-658832"></a>
 ### damage
@@ -32,7 +32,7 @@ damage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 <a id="field-field-mq3-client-playable-targets-hit-distance-distance-src-mq3-client-playable-targets-ml-1041548688"></a>
 ### distance
@@ -42,7 +42,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 <a id="field-field-mq3-client-playable-targets-hit-killed-killed-src-mq3-client-playable-targets-ml-702127392"></a>
 ### killed
@@ -52,7 +52,7 @@ killed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 <a id="field-field-mq3-client-playable-targets-hit-point-point-src-mq3-client-playable-targets-ml-369639318"></a>
 ### point
@@ -62,7 +62,7 @@ point
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)
 
 <a id="field-field-mq3-client-playable-targets-hit-targetindex-targetindex-src-mq3-client-playable-targets-ml-549329034"></a>
 ### targetIndex
@@ -72,4 +72,4 @@ targetIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_targets.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_targets.ml#L21)

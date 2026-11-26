@@ -31,7 +31,7 @@ function dispatch(stringsState, profileState, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-chat-string-syscalls-mutate-function-mutate-vm-address-value-label-src-mq3-botlib-ai-chat-string-syscalls-ml-319469836"></a>
 ### mutate
@@ -48,4 +48,4 @@ function mutate(vm, address, value, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_string_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_string_syscalls.ml#L10)

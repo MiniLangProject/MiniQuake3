@@ -10,7 +10,7 @@ struct Clock
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ snapshotNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)
 
 <a id="field-field-mq3-client-cgame-clock-clock-state-state-src-mq3-client-cgame-clock-ml-222510781"></a>
 ### state
@@ -32,4 +32,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_clock.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_clock.ml#L8)

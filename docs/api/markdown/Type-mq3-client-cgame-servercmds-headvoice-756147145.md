@@ -10,7 +10,7 @@ struct HeadVoice
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ headmodel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L63)
 
 <a id="field-field-mq3-client-cgame-servercmds-headvoice-voicechatnum-voicechatnum-src-mq3-client-cgame-servercmds-ml-834287225"></a>
 ### voiceChatNum
@@ -32,4 +32,4 @@ voiceChatNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L63)

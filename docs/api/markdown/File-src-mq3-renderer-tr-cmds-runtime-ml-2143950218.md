@@ -20,7 +20,7 @@ function backCounters()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L22)
 
 - [mq3.renderer.tr_cmds_runtime.BackCounters](Type-mq3-renderer-tr-cmds-runtime-backcounters-878105578.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-clearcounters-function-clearcounters-state-src-mq3-renderer-tr-cmds-runtime-ml-1519482705"></a>
@@ -35,7 +35,7 @@ function clearCounters(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L35)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-configureoverdraw-function-configureoverdraw-state-src-mq3-renderer-tr-cmds-runtime-ml-2099892329"></a>
 ### configureOverdraw
@@ -49,7 +49,7 @@ function configureOverdraw(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L103)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-create-function-create-queue-backendstate-configuration-host-src-mq3-renderer-tr-cmds-runtime-ml-1016866612"></a>
 ### create
@@ -66,7 +66,7 @@ function create(queue, backendState, configuration, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-draw-surfs-bytes-const-draw-surfs-bytes-32-src-mq3-renderer-tr-cmds-runtime-ml-45844450"></a>
 ### DRAW_SURFS_BYTES
@@ -76,7 +76,7 @@ const DRAW_SURFS_BYTES = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L13)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-emit-function-emit-state-kind-value-src-mq3-renderer-tr-cmds-runtime-ml-1356997922"></a>
 ### emit
@@ -92,7 +92,7 @@ function emit(state, kind, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L33)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-executebatch-function-executebatch-state-src-mq3-renderer-tr-cmds-runtime-ml-1183747961"></a>
 ### executeBatch
@@ -106,7 +106,7 @@ function executeBatch(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L66)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-fail-function-fail-message-src-mq3-renderer-tr-cmds-runtime-ml-420679059"></a>
 ### fail
@@ -120,7 +120,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L32)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-frontcounters-function-frontcounters-src-mq3-renderer-tr-cmds-runtime-ml-890505214"></a>
 ### frontCounters
@@ -130,7 +130,7 @@ function frontCounters()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L21)
 
 - [mq3.renderer.tr_cmds_runtime.FrontCounters](Type-mq3-renderer-tr-cmds-runtime-frontcounters-977270382.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-adddrawsurfcmd-function-r-adddrawsurfcmd-state-drawsurfs-numdrawsurfs-refdef-viewparms-src-mq3-renderer-tr-cmds-runtime-ml-1017614705"></a>
@@ -149,7 +149,7 @@ function R_AddDrawSurfCmd(state, drawSurfs, numDrawSurfs, refdef, viewParms)
 | `viewParms` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L96)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-getcommandbuffer-function-r-getcommandbuffer-state-bytes-src-mq3-renderer-tr-cmds-runtime-ml-566043910"></a>
 ### R_GetCommandBuffer
@@ -164,7 +164,7 @@ function R_GetCommandBuffer(state, bytes)
 | `bytes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L95)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-initcommandbuffers-function-r-initcommandbuffers-state-src-mq3-renderer-tr-cmds-runtime-ml-159808589"></a>
 ### R_InitCommandBuffers
@@ -178,7 +178,7 @@ function R_InitCommandBuffers(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L50)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-issuerendercommands-function-r-issuerendercommands-state-runperformancecounters-src-mq3-renderer-tr-cmds-runtime-ml-586684389"></a>
 ### R_IssueRenderCommands
@@ -193,7 +193,7 @@ function R_IssueRenderCommands(state, runPerformanceCounters)
 | `runPerformanceCounters` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L70)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-performancecounters-function-r-performancecounters-state-src-mq3-renderer-tr-cmds-runtime-ml-1502401213"></a>
 ### R_PerformanceCounters
@@ -207,7 +207,7 @@ function R_PerformanceCounters(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L36)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-shutdowncommandbuffers-function-r-shutdowncommandbuffers-state-src-mq3-renderer-tr-cmds-runtime-ml-1695518441"></a>
 ### R_ShutdownCommandBuffers
@@ -221,7 +221,7 @@ function R_ShutdownCommandBuffers(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L60)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-r-syncrenderthread-function-r-syncrenderthread-state-src-mq3-renderer-tr-cmds-runtime-ml-1012056805"></a>
 ### R_SyncRenderThread
@@ -235,7 +235,7 @@ function R_SyncRenderThread(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L88)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-beginframe-function-re-beginframe-state-stereoframe-src-mq3-renderer-tr-cmds-runtime-ml-328991232"></a>
 ### RE_BeginFrame
@@ -250,7 +250,7 @@ function RE_BeginFrame(state, stereoFrame)
 | `stereoFrame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L115)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-endframe-function-re-endframe-state-src-mq3-renderer-tr-cmds-runtime-ml-1236738521"></a>
 ### RE_EndFrame
@@ -264,7 +264,7 @@ function RE_EndFrame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L132)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-setcolor-function-re-setcolor-state-rgba-src-mq3-renderer-tr-cmds-runtime-ml-1621964701"></a>
 ### RE_SetColor
@@ -279,7 +279,7 @@ function RE_SetColor(state, rgba)
 | `rgba` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L100)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-re-stretchpic-function-re-stretchpic-state-x-y-w-h-s1-t1-s2-t2-shader-src-mq3-renderer-tr-cmds-runtime-ml-165668916"></a>
 ### RE_StretchPic
@@ -302,7 +302,7 @@ function RE_StretchPic(state, x, y, w, h, s1, t1, s2, t2, shader)
 | `shader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L101)
 
 <a id="function-function-mq3-renderer-tr-cmds-runtime-services-function-services-src-mq3-renderer-tr-cmds-runtime-ml-1282015870"></a>
 ### services
@@ -312,7 +312,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L24)
 
 - [mq3.renderer.tr_cmds_runtime.Services](Type-mq3-renderer-tr-cmds-runtime-services-2141671456.md) — struct
 <a id="function-function-mq3-renderer-tr-cmds-runtime-settings-function-settings-src-mq3-renderer-tr-cmds-runtime-ml-217141690"></a>
@@ -323,7 +323,7 @@ function settings()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L23)
 
 - [mq3.renderer.tr_cmds_runtime.Settings](Type-mq3-renderer-tr-cmds-runtime-settings-272563117.md) — struct
 - [mq3.renderer.tr_cmds_runtime.State](Type-mq3-renderer-tr-cmds-runtime-state-1273923861.md) — struct
@@ -335,7 +335,7 @@ const STEREO_CENTER = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L10)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-stereo-left-const-stereo-left-1-src-mq3-renderer-tr-cmds-runtime-ml-1160974322"></a>
 ### STEREO_LEFT
@@ -345,7 +345,7 @@ const STEREO_LEFT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L11)
 
 <a id="constant-constant-mq3-renderer-tr-cmds-runtime-stereo-right-const-stereo-right-2-src-mq3-renderer-tr-cmds-runtime-ml-2078498975"></a>
 ### STEREO_RIGHT
@@ -355,4 +355,4 @@ const STEREO_RIGHT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_cmds_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_cmds_runtime.ml#L12)

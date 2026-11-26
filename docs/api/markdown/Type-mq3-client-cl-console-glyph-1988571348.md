@@ -10,7 +10,7 @@ struct Glyph
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ ch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L26)
 
 <a id="field-field-mq3-client-cl-console-glyph-color-color-src-mq3-client-cl-console-ml-1773872779"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L26)
 
 <a id="field-field-mq3-client-cl-console-glyph-x-x-src-mq3-client-cl-console-ml-2070631863"></a>
 ### x
@@ -42,7 +42,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L26)
 
 <a id="field-field-mq3-client-cl-console-glyph-y-y-src-mq3-client-cl-console-ml-612353379"></a>
 ### y
@@ -52,4 +52,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_console.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_console.ml#L26)

@@ -10,7 +10,7 @@ struct Trace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 ## Members
 
@@ -22,7 +22,7 @@ allsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 <a id="field-field-mq3-client-cgame-players-trace-endpos-endpos-src-mq3-client-cgame-players-ml-1459580376"></a>
 ### endpos
@@ -32,7 +32,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 <a id="field-field-mq3-client-cgame-players-trace-fraction-fraction-src-mq3-client-cgame-players-ml-1058646870"></a>
 ### fraction
@@ -42,7 +42,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 <a id="field-field-mq3-client-cgame-players-trace-normal-normal-src-mq3-client-cgame-players-ml-1457929856"></a>
 ### normal
@@ -52,7 +52,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 <a id="field-field-mq3-client-cgame-players-trace-startsolid-startsolid-src-mq3-client-cgame-players-ml-287360644"></a>
 ### startsolid
@@ -62,7 +62,7 @@ startsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)
 
 <a id="field-field-mq3-client-cgame-players-trace-surfaceflags-surfaceflags-src-mq3-client-cgame-players-ml-1205933238"></a>
 ### surfaceFlags
@@ -72,4 +72,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L62)

@@ -10,7 +10,7 @@ struct World
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-areas-areas-src-mq3-botlib-aas-optimizer-ml-914645231"></a>
 ### areas
@@ -32,7 +32,7 @@ areas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-edgeindex-edgeindex-src-mq3-botlib-aas-optimizer-ml-483922007"></a>
 ### edgeIndex
@@ -42,7 +42,7 @@ edgeIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-edges-edges-src-mq3-botlib-aas-optimizer-ml-1499930695"></a>
 ### edges
@@ -52,7 +52,7 @@ edges
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-faceindex-faceindex-src-mq3-botlib-aas-optimizer-ml-307132343"></a>
 ### faceIndex
@@ -62,7 +62,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-faces-faces-src-mq3-botlib-aas-optimizer-ml-569848815"></a>
 ### faces
@@ -72,7 +72,7 @@ faces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-loaded-loaded-src-mq3-botlib-aas-optimizer-ml-1499023309"></a>
 ### loaded
@@ -82,7 +82,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-mapname-mapname-src-mq3-botlib-aas-optimizer-ml-836056087"></a>
 ### mapName
@@ -92,7 +92,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-reachability-reachability-src-mq3-botlib-aas-optimizer-ml-1003738921"></a>
 ### reachability
@@ -102,7 +102,7 @@ reachability
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-retailactive-retailactive-src-mq3-botlib-aas-optimizer-ml-1347517541"></a>
 ### retailActive
@@ -112,7 +112,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-time-time-src-mq3-botlib-aas-optimizer-ml-655470297"></a>
 ### time
@@ -122,7 +122,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)
 
 <a id="field-field-mq3-botlib-aas-optimizer-world-vertexes-vertexes-src-mq3-botlib-aas-optimizer-ml-212062415"></a>
 ### vertexes
@@ -132,4 +132,4 @@ vertexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L19)

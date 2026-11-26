@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-dispatched-dispatched-src-mq3-botlib-log-ml-1866712525"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-filename-filename-src-mq3-botlib-log-ml-1618180685"></a>
 ### filename
@@ -42,7 +42,7 @@ filename
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-handle-handle-src-mq3-botlib-log-ml-1657398631"></a>
 ### handle
@@ -52,7 +52,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-kind-kind-src-mq3-botlib-log-ml-2018009575"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-severity-severity-src-mq3-botlib-log-ml-1793459445"></a>
 ### severity
@@ -72,7 +72,7 @@ severity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)
 
 <a id="field-field-mq3-botlib-log-action-text-text-src-mq3-botlib-log-ml-346887149"></a>
 ### text
@@ -82,4 +82,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L16)

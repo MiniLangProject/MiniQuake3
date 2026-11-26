@@ -37,7 +37,7 @@ function action(state, kind, p, shader, vertices, origin, width, height, alpha, 
 | `frame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L89)
 
 <a id="function-function-mq3-client-cgame-particles-addparticles-function-addparticles-state-time-vieworg-vforward-vright-vup-src-mq3-client-cgame-particles-ml-1111548353"></a>
 ### addParticles
@@ -58,7 +58,7 @@ CG_AddParticles
 | `vup` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L168)
 
 <a id="function-function-mq3-client-cgame-particles-addparticleshrapnel-function-addparticleshrapnel-state-localentity-src-mq3-client-cgame-particles-ml-313489419"></a>
 ### addParticleShrapnel
@@ -75,7 +75,7 @@ CG_AddParticleShrapnel is deliberately empty in the original source.
 | `localEntity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L217)
 
 <a id="function-function-mq3-client-cgame-particles-addparticletoscene-function-addparticletoscene-state-p-origin-alpha-src-mq3-client-cgame-particles-ml-1182825143"></a>
 ### addParticleToScene
@@ -94,7 +94,7 @@ CG_AddParticleToScene
 | `alpha` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L122)
 
 <a id="function-function-mq3-client-cgame-particles-allocparticle-function-allocparticle-state-src-mq3-client-cgame-particles-ml-2120871599"></a>
 ### allocParticle
@@ -108,7 +108,7 @@ function allocParticle(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L78)
 
 <a id="function-function-mq3-client-cgame-particles-animationframename-function-animationframename-p-ratio-src-mq3-client-cgame-particles-ml-19997595"></a>
 ### animationFrameName
@@ -123,7 +123,7 @@ function animationFrameName(p, ratio)
 | `ratio` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L106)
 
 <a id="function-function-mq3-client-cgame-particles-animationindex-function-animationindex-name-src-mq3-client-cgame-particles-ml-1568520515"></a>
 ### animationIndex
@@ -137,7 +137,7 @@ function animationIndex(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L210)
 
 <a id="function-function-mq3-client-cgame-particles-bloodpool-function-bloodpool-state-shader-trace-tracefn-context-src-mq3-client-cgame-particles-ml-1874841769"></a>
 ### bloodPool
@@ -157,7 +157,7 @@ CG_BloodPool
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L264)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L264)
 
 <a id="constant-constant-mq3-client-cgame-particles-bloodred-const-bloodred-2-src-mq3-client-cgame-particles-ml-1899455819"></a>
 ### BLOODRED
@@ -167,7 +167,7 @@ const BLOODRED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L13)
 
 <a id="function-function-mq3-client-cgame-particles-clearparticles-function-clearparticles-state-src-mq3-client-cgame-particles-ml-190702261"></a>
 ### clearParticles
@@ -183,7 +183,7 @@ CG_ClearParticles
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L70)
 
 <a id="constant-constant-mq3-client-cgame-particles-contents-solid-const-contents-solid-1-src-mq3-client-cgame-particles-ml-910144840"></a>
 ### CONTENTS_SOLID
@@ -193,7 +193,7 @@ const CONTENTS_SOLID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L35)
 
 <a id="function-function-mq3-client-cgame-particles-copy3-function-copy3-value-src-mq3-client-cgame-particles-ml-586115425"></a>
 ### copy3
@@ -207,7 +207,7 @@ function copy3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L43)
 
 <a id="function-function-mq3-client-cgame-particles-crandom-function-crandom-state-src-mq3-client-cgame-particles-ml-113074069"></a>
 ### crandom
@@ -221,7 +221,7 @@ function crandom(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L63)
 
 <a id="function-function-mq3-client-cgame-particles-create-function-create-capacity-retailactive-src-mq3-client-cgame-particles-ml-407427933"></a>
 ### create
@@ -236,7 +236,7 @@ function create(capacity, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L52)
 
 <a id="function-function-mq3-client-cgame-particles-directionunit-function-directionunit-direction-src-mq3-client-cgame-particles-ml-1075650551"></a>
 ### directionUnit
@@ -250,7 +250,7 @@ function directionUnit(direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L268)
 
 <a id="function-function-mq3-client-cgame-particles-distance-function-distance-a-b-src-mq3-client-cgame-particles-ml-1448647299"></a>
 ### distance
@@ -265,7 +265,7 @@ function distance(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L105)
 
 <a id="constant-constant-mq3-client-cgame-particles-emisivefade-const-emisivefade-3-src-mq3-client-cgame-particles-ml-1461307648"></a>
 ### EMISIVEFADE
@@ -275,7 +275,7 @@ const EMISIVEFADE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L14)
 
 <a id="function-function-mq3-client-cgame-particles-expiresbytime-function-expiresbytime-p-src-mq3-client-cgame-particles-ml-996960326"></a>
 ### expiresByTime
@@ -289,7 +289,7 @@ function expiresByTime(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L163)
 
 <a id="function-function-mq3-client-cgame-particles-flatquad-function-flatquad-origin-width-height-roll-src-mq3-client-cgame-particles-ml-124995796"></a>
 ### flatQuad
@@ -306,7 +306,7 @@ function flatQuad(origin, width, height, roll)
 | `roll` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L101)
 
 <a id="function-function-mq3-client-cgame-particles-freeparticle-function-freeparticle-state-p-src-mq3-client-cgame-particles-ml-75909135"></a>
 ### freeParticle
@@ -321,7 +321,7 @@ function freeParticle(state, p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L84)
 
 <a id="constant-constant-mq3-client-cgame-particles-grey75-const-grey75-4-src-mq3-client-cgame-particles-ml-564289601"></a>
 ### GREY75
@@ -331,7 +331,7 @@ const GREY75 = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L15)
 
 <a id="constant-constant-mq3-client-cgame-particles-max-entities-const-max-entities-1024-src-mq3-client-cgame-particles-ml-1629179304"></a>
 ### MAX_ENTITIES
@@ -341,7 +341,7 @@ const MAX_ENTITIES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-particles-max-particles-const-max-particles-8192-src-mq3-client-cgame-particles-ml-1687593329"></a>
 ### MAX_PARTICLES
@@ -351,7 +351,7 @@ const MAX_PARTICLES = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L33)
 
 <a id="function-function-mq3-client-cgame-particles-newparticle-function-newparticle-id-src-mq3-client-cgame-particles-ml-194421421"></a>
 ### newParticle
@@ -365,7 +365,7 @@ function newParticle(id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L48)
 
 <a id="function-function-mq3-client-cgame-particles-newparticlearea-function-newparticlearea-state-text-shader-src-mq3-client-cgame-particles-ml-1547800361"></a>
 ### newParticleArea
@@ -383,7 +383,7 @@ CG_NewParticleArea
 | `shader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L220)
 
 <a id="function-function-mq3-client-cgame-particles-oilslickremove-function-oilslickremove-state-cent-src-mq3-client-cgame-particles-ml-1287651795"></a>
 ### oilSlickRemove
@@ -400,7 +400,7 @@ CG_OilSlickRemove
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L253)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L253)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-anim-const-p-anim-6-src-mq3-client-cgame-particles-ml-323807521"></a>
 ### P_ANIM
@@ -410,7 +410,7 @@ const P_ANIM = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-bat-const-p-bat-7-src-mq3-client-cgame-particles-ml-290883428"></a>
 ### P_BAT
@@ -420,7 +420,7 @@ const P_BAT = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-bleed-const-p-bleed-8-src-mq3-client-cgame-particles-ml-1568018093"></a>
 ### P_BLEED
@@ -430,7 +430,7 @@ const P_BLEED = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-bubble-const-p-bubble-13-src-mq3-client-cgame-particles-ml-339603057"></a>
 ### P_BUBBLE
@@ -440,7 +440,7 @@ const P_BUBBLE = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-bubble-turbulent-const-p-bubble-turbulent-14-src-mq3-client-cgame-particles-ml-596553264"></a>
 ### P_BUBBLE_TURBULENT
@@ -450,7 +450,7 @@ const P_BUBBLE_TURBULENT = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L30)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-flat-const-p-flat-2-src-mq3-client-cgame-particles-ml-1221923105"></a>
 ### P_FLAT
@@ -460,7 +460,7 @@ const P_FLAT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-flat-scaleup-const-p-flat-scaleup-9-src-mq3-client-cgame-particles-ml-1358357564"></a>
 ### P_FLAT_SCALEUP
@@ -470,7 +470,7 @@ const P_FLAT_SCALEUP = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L25)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-flat-scaleup-fade-const-p-flat-scaleup-fade-10-src-mq3-client-cgame-particles-ml-464067216"></a>
 ### P_FLAT_SCALEUP_FADE
@@ -480,7 +480,7 @@ const P_FLAT_SCALEUP_FADE = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-none-const-p-none-0-src-mq3-client-cgame-particles-ml-39202481"></a>
 ### P_NONE
@@ -490,7 +490,7 @@ const P_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L16)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-rotate-const-p-rotate-4-src-mq3-client-cgame-particles-ml-1220006039"></a>
 ### P_ROTATE
@@ -500,7 +500,7 @@ const P_ROTATE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L20)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-smoke-const-p-smoke-3-src-mq3-client-cgame-particles-ml-114407600"></a>
 ### P_SMOKE
@@ -510,7 +510,7 @@ const P_SMOKE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L19)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-smoke-impact-const-p-smoke-impact-12-src-mq3-client-cgame-particles-ml-1361827350"></a>
 ### P_SMOKE_IMPACT
@@ -520,7 +520,7 @@ const P_SMOKE_IMPACT = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L28)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-sprite-const-p-sprite-15-src-mq3-client-cgame-particles-ml-977376725"></a>
 ### P_SPRITE
@@ -530,7 +530,7 @@ const P_SPRITE = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-weather-const-p-weather-1-src-mq3-client-cgame-particles-ml-1387169122"></a>
 ### P_WEATHER
@@ -540,7 +540,7 @@ const P_WEATHER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-weather-flurry-const-p-weather-flurry-11-src-mq3-client-cgame-particles-ml-1491966633"></a>
 ### P_WEATHER_FLURRY
@@ -550,7 +550,7 @@ const P_WEATHER_FLURRY = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-particles-p-weather-turbulent-const-p-weather-turbulent-5-src-mq3-client-cgame-particles-ml-258556390"></a>
 ### P_WEATHER_TURBULENT
@@ -560,18 +560,18 @@ const P_WEATHER_TURBULENT = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L21)
 
 - [mq3.client.cgame_particles.Particle](Type-mq3-client-cgame-particles-particle-817852400.md) — struct
-<a id="constant-constant-mq3-client-cgame-particles-particle-gravity-const-particle-gravity-40-src-mq3-client-cgame-particles-ml-681597667"></a>
+<a id="constant-constant-mq3-client-cgame-particles-particle-gravity-const-particle-gravity-40-src-mq3-client-cgame-particles-ml-48242909"></a>
 ### PARTICLE_GRAVITY
 
 ```ml
-const PARTICLE_GRAVITY = 40.
+const PARTICLE_GRAVITY = 40
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L32)
 
 <a id="function-function-mq3-client-cgame-particles-particlebleed-function-particlebleed-state-shader-start-direction-fleshentitynum-duration-src-mq3-client-cgame-particles-ml-1918130028"></a>
 ### particleBleed
@@ -592,7 +592,7 @@ CG_Particle_Bleed
 | `duration` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L237)
 
 <a id="function-function-mq3-client-cgame-particles-particlebloodcloud-function-particlebloodcloud-state-cent-origin-direction-smokeshader-src-mq3-client-cgame-particles-ml-2076348444"></a>
 ### particleBloodCloud
@@ -612,7 +612,7 @@ CG_ParticleBloodCloud
 | `smokeShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L270)
 
 <a id="function-function-mq3-client-cgame-particles-particlebubble-function-particlebubble-state-shader-origin-origin2-turb-range-snum-src-mq3-client-cgame-particles-ml-14752625"></a>
 ### particleBubble
@@ -634,7 +634,7 @@ CG_ParticleBubble
 | `snum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L196)
 
 <a id="function-function-mq3-client-cgame-particles-particlebulletdebris-function-particlebulletdebris-state-origin-velocity-duration-tracershader-src-mq3-client-cgame-particles-ml-737008094"></a>
 ### particleBulletDebris
@@ -654,7 +654,7 @@ CG_ParticleBulletDebris
 | `tracerShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L206)
 
 <a id="function-function-mq3-client-cgame-particles-particledust-function-particledust-state-cent-origin-direction-smokeshader-src-mq3-client-cgame-particles-ml-642576508"></a>
 ### particleDust
@@ -674,7 +674,7 @@ CG_ParticleDust; preserves the original VectorClear after gravity setup.
 | `smokeShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L280)
 
 <a id="function-function-mq3-client-cgame-particles-particleexplosion-function-particleexplosion-state-animname-origin-velocity-duration-sizestart-sizeend-src-mq3-client-cgame-particles-ml-1414660167"></a>
 ### particleExplosion
@@ -696,7 +696,7 @@ CG_ParticleExplosion
 | `sizeEnd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L212)
 
 <a id="function-function-mq3-client-cgame-particles-particleimpactsmokepuff-function-particleimpactsmokepuff-state-shader-origin-src-mq3-client-cgame-particles-ml-62465828"></a>
 ### particleImpactSmokePuff
@@ -714,7 +714,7 @@ CG_ParticleImpactSmokePuff
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L232)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L232)
 
 <a id="function-function-mq3-client-cgame-particles-particlemisc-function-particlemisc-state-shader-origin-size-duration-alpha-src-mq3-client-cgame-particles-ml-1475223461"></a>
 ### particleMisc
@@ -735,7 +735,7 @@ CG_ParticleMisc. The original ignores alpha and only frees negative-duration spr
 | `alpha` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L286)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L286)
 
 <a id="function-function-mq3-client-cgame-particles-particleoilparticle-function-particleoilparticle-state-shader-cent-src-mq3-client-cgame-particles-ml-2098305652"></a>
 ### particleOilParticle
@@ -753,7 +753,7 @@ CG_Particle_OilParticle
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L242)
 
 <a id="function-function-mq3-client-cgame-particles-particleoilslick-function-particleoilslick-state-shader-cent-src-mq3-client-cgame-particles-ml-1957166616"></a>
 ### particleOilSlick
@@ -771,7 +771,7 @@ CG_Particle_OilSlick
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L247)
 
 <a id="function-function-mq3-client-cgame-particles-particlesmoke-function-particlesmoke-state-shader-cent-src-mq3-client-cgame-particles-ml-700507094"></a>
 ### particleSmoke
@@ -789,7 +789,7 @@ CG_ParticleSmoke
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L201)
 
 <a id="function-function-mq3-client-cgame-particles-particlesnow-function-particlesnow-state-shader-origin-origin2-turb-range-snum-src-mq3-client-cgame-particles-ml-338778137"></a>
 ### particleSnow
@@ -811,7 +811,7 @@ CG_ParticleSnow
 | `snum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L191)
 
 <a id="function-function-mq3-client-cgame-particles-particlesnowflurry-function-particlesnowflurry-state-shader-cent-src-mq3-client-cgame-particles-ml-960220956"></a>
 ### particleSnowFlurry
@@ -829,7 +829,7 @@ CG_ParticleSnowFlurry
 | `cent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L185)
 
 <a id="function-function-mq3-client-cgame-particles-particlesparks-function-particlesparks-state-origin-velocity-duration-x-y-speed-tracershader-src-mq3-client-cgame-particles-ml-1593207896"></a>
 ### particleSparks
@@ -852,17 +852,17 @@ CG_ParticleSparks
 | `tracerShader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L275)
 
-<a id="constant-constant-mq3-client-cgame-particles-pi-const-pi-3-14159265358979-src-mq3-client-cgame-particles-ml-1931667258"></a>
+<a id="constant-constant-mq3-client-cgame-particles-pi-const-pi-3-141593-src-mq3-client-cgame-particles-ml-1050529819"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L36)
 
 <a id="function-function-mq3-client-cgame-particles-quad-function-quad-origin-width-height-right-up-src-mq3-client-cgame-particles-ml-1137208014"></a>
 ### quad
@@ -880,7 +880,7 @@ function quad(origin, width, height, right, up)
 | `up` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L98)
 
 <a id="function-function-mq3-client-cgame-particles-randint-function-randint-state-src-mq3-client-cgame-particles-ml-625493121"></a>
 ### randInt
@@ -894,7 +894,7 @@ function randInt(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L58)
 
 <a id="function-function-mq3-client-cgame-particles-randomfloat-function-randomfloat-state-src-mq3-client-cgame-particles-ml-272369155"></a>
 ### randomFloat
@@ -908,7 +908,7 @@ function randomFloat(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L62)
 
 - [mq3.client.cgame_particles.RenderAction](Type-mq3-client-cgame-particles-renderaction-1138860224.md) — struct
 <a id="function-function-mq3-client-cgame-particles-renderfamily-function-renderfamily-type-src-mq3-client-cgame-particles-ml-767345878"></a>
@@ -923,7 +923,7 @@ function renderFamily(type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L110)
 
 <a id="function-function-mq3-client-cgame-particles-resetparticle-function-resetparticle-p-src-mq3-client-cgame-particles-ml-1844249096"></a>
 ### resetParticle
@@ -937,7 +937,7 @@ function resetParticle(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L65)
 
 <a id="function-function-mq3-client-cgame-particles-rotatebasis-function-rotatebasis-right-up-degrees-src-mq3-client-cgame-particles-ml-1660385856"></a>
 ### rotateBasis
@@ -953,7 +953,7 @@ function rotateBasis(right, up, degrees)
 | `degrees` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L95)
 
 <a id="function-function-mq3-client-cgame-particles-setrandomints-function-setrandomints-state-values-src-mq3-client-cgame-particles-ml-154608153"></a>
 ### setRandomInts
@@ -968,7 +968,7 @@ function setRandomInts(state, values)
 | `values` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L57)
 
 <a id="function-function-mq3-client-cgame-particles-shaderanimcounts-function-shaderanimcounts-src-mq3-client-cgame-particles-ml-1985238202"></a>
 ### shaderAnimCounts
@@ -978,7 +978,7 @@ function shaderAnimCounts()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L45)
 
 <a id="function-function-mq3-client-cgame-particles-shaderanimnames-function-shaderanimnames-src-mq3-client-cgame-particles-ml-117802246"></a>
 ### shaderAnimNames
@@ -988,7 +988,7 @@ function shaderAnimNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L44)
 
 <a id="function-function-mq3-client-cgame-particles-shaderanimratios-function-shaderanimratios-src-mq3-client-cgame-particles-ml-1814611534"></a>
 ### shaderAnimRatios
@@ -998,7 +998,7 @@ function shaderAnimRatios()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L46)
 
 <a id="function-function-mq3-client-cgame-particles-snowlink-function-snowlink-state-id-particleon-src-mq3-client-cgame-particles-ml-725948611"></a>
 ### snowLink
@@ -1016,7 +1016,7 @@ CG_SnowLink
 | `particleOn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L227)
 
 <a id="function-function-mq3-client-cgame-particles-spawnbase-function-spawnbase-state-shader-src-mq3-client-cgame-particles-ml-1723251518"></a>
 ### spawnBase
@@ -1031,7 +1031,7 @@ function spawnBase(state, shader)
 | `shader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L180)
 
 - [mq3.client.cgame_particles.State](Type-mq3-client-cgame-particles-state-1124640035.md) — struct
 <a id="function-function-mq3-client-cgame-particles-validbloodpool-function-validbloodpool-start-tracefn-context-src-mq3-client-cgame-particles-ml-396425298"></a>
@@ -1050,7 +1050,7 @@ ValidBloodPool. traceFn(context,start,finish) returns entityNum/startsolid/fract
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L258)
 
 <a id="function-function-mq3-client-cgame-particles-zero3-function-zero3-src-mq3-client-cgame-particles-ml-565007072"></a>
 ### zero3
@@ -1060,4 +1060,4 @@ function zero3()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_particles.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_particles.ml#L42)

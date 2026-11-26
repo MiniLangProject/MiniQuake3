@@ -28,7 +28,7 @@ function clearChat(state, chatHandle)
 | `chatHandle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L61)
 
 <a id="function-function-mq3-botlib-ai-console-messages-configure-function-configure-state-capacity-src-mq3-botlib-ai-console-messages-ml-1177892843"></a>
 ### configure
@@ -45,7 +45,7 @@ Mirrors InitConsoleMessageHeap: discard the previous heap and rebuild the free l
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L67)
 
 <a id="function-function-mq3-botlib-ai-console-messages-configurefrombotlib-function-configurefrombotlib-state-botlib-src-mq3-botlib-ai-console-messages-ml-1323219711"></a>
 ### configureFromBotlib
@@ -60,7 +60,7 @@ function configureFromBotlib(state, botlib)
 | `botlib` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L73)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-console-message-size-const-console-message-size-276-src-mq3-botlib-ai-console-messages-ml-605386616"></a>
 ### CONSOLE_MESSAGE_SIZE
@@ -70,7 +70,7 @@ const CONSOLE_MESSAGE_SIZE = 276
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-console-messages-count-function-count-state-chathandle-src-mq3-botlib-ai-console-messages-ml-1243645661"></a>
 ### count
@@ -85,7 +85,7 @@ function count(state, chatHandle)
 | `chatHandle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L60)
 
 <a id="function-function-mq3-botlib-ai-console-messages-create-function-create-pools-src-mq3-botlib-ai-console-messages-ml-425385777"></a>
 ### create
@@ -99,7 +99,7 @@ function create(pools)
 | `pools` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L30)
 
 <a id="function-function-mq3-botlib-ai-console-messages-createwithcapacity-function-createwithcapacity-pools-capacity-src-mq3-botlib-ai-console-messages-ml-1118252317"></a>
 ### createWithCapacity
@@ -114,7 +114,7 @@ function createWithCapacity(pools, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L26)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-default-max-messages-const-default-max-messages-1024-src-mq3-botlib-ai-console-messages-ml-486882666"></a>
 ### DEFAULT_MAX_MESSAGES
@@ -126,7 +126,7 @@ const DEFAULT_MAX_MESSAGES = 1024
 be_ai_chat.c obtains this from LibVarValue("max_messages", "1024").
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-console-messages-dispatch-function-dispatch-state-vm-base-op-src-mq3-botlib-ai-console-messages-ml-1389323878"></a>
 ### dispatch
@@ -143,7 +143,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L82)
 
 <a id="function-function-mq3-botlib-ai-console-messages-freeslot-function-freeslot-state-slot-src-mq3-botlib-ai-console-messages-ml-192318547"></a>
 ### freeSlot
@@ -158,7 +158,7 @@ function freeSlot(state, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L47)
 
 <a id="function-function-mq3-botlib-ai-console-messages-initialfreeslots-function-initialfreeslots-capacity-src-mq3-botlib-ai-console-messages-ml-1786819814"></a>
 ### initialFreeSlots
@@ -172,7 +172,7 @@ function initialFreeSlots(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L25)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-max-console-messages-const-max-console-messages-default-max-messages-src-mq3-botlib-ai-console-messages-ml-1637020300"></a>
 ### MAX_CONSOLE_MESSAGES
@@ -184,7 +184,7 @@ const MAX_CONSOLE_MESSAGES = DEFAULT_MAX_MESSAGES
 Compatibility name for callers that used the old fixed-capacity constant.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-console-messages-ml-1294418460"></a>
 ### MAX_MESSAGE_SIZE
@@ -194,7 +194,7 @@ const MAX_MESSAGE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L19)
 
 - [mq3.botlib.ai_console_messages.Message](Type-mq3-botlib-ai-console-messages-message-1967758676.md) — struct
 <a id="function-function-mq3-botlib-ai-console-messages-messagedata-function-messagedata-text-src-mq3-botlib-ai-console-messages-ml-239628377"></a>
@@ -209,7 +209,7 @@ function messageData(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L36)
 
 <a id="function-function-mq3-botlib-ai-console-messages-messagetext-function-messagetext-message-src-mq3-botlib-ai-console-messages-ml-111530553"></a>
 ### messageText
@@ -223,7 +223,7 @@ function messageText(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L39)
 
 <a id="function-function-mq3-botlib-ai-console-messages-next-function-next-state-chathandle-src-mq3-botlib-ai-console-messages-ml-287140515"></a>
 ### next
@@ -238,7 +238,7 @@ function next(state, chatHandle)
 | `chatHandle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L55)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-op-next-console-message-const-op-next-console-message-511-src-mq3-botlib-ai-console-messages-ml-103311418"></a>
 ### OP_NEXT_CONSOLE_MESSAGE
@@ -248,7 +248,7 @@ const OP_NEXT_CONSOLE_MESSAGE = 511
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-op-num-console-message-const-op-num-console-message-512-src-mq3-botlib-ai-console-messages-ml-2100225305"></a>
 ### OP_NUM_CONSOLE_MESSAGE
@@ -258,7 +258,7 @@ const OP_NUM_CONSOLE_MESSAGE = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-op-queue-console-message-const-op-queue-console-message-509-src-mq3-botlib-ai-console-messages-ml-316455071"></a>
 ### OP_QUEUE_CONSOLE_MESSAGE
@@ -268,7 +268,7 @@ const OP_QUEUE_CONSOLE_MESSAGE = 509
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-console-messages-op-remove-console-message-const-op-remove-console-message-510-src-mq3-botlib-ai-console-messages-ml-1779772065"></a>
 ### OP_REMOVE_CONSOLE_MESSAGE
@@ -278,7 +278,7 @@ const OP_REMOVE_CONSOLE_MESSAGE = 510
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-console-messages-popfree-function-popfree-state-src-mq3-botlib-ai-console-messages-ml-198366801"></a>
 ### popFree
@@ -292,7 +292,7 @@ function popFree(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L32)
 
 <a id="function-function-mq3-botlib-ai-console-messages-queue-function-queue-state-chathandle-type-text-src-mq3-botlib-ai-console-messages-ml-338788756"></a>
 ### queue
@@ -309,7 +309,7 @@ function queue(state, chatHandle, type, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L42)
 
 <a id="function-function-mq3-botlib-ai-console-messages-remove-function-remove-state-chathandle-messagehandle-src-mq3-botlib-ai-console-messages-ml-228334528"></a>
 ### remove
@@ -325,7 +325,7 @@ function remove(state, chatHandle, messageHandle)
 | `messageHandle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L50)
 
 <a id="function-function-mq3-botlib-ai-console-messages-settime-function-settime-state-time-src-mq3-botlib-ai-console-messages-ml-757691086"></a>
 ### setTime
@@ -340,7 +340,7 @@ function setTime(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L31)
 
 <a id="function-function-mq3-botlib-ai-console-messages-shutdown-function-shutdown-state-src-mq3-botlib-ai-console-messages-ml-2006973811"></a>
 ### shutdown
@@ -354,7 +354,7 @@ function shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L76)
 
 - [mq3.botlib.ai_console_messages.State](Type-mq3-botlib-ai-console-messages-state-1558838342.md) — struct
 <a id="function-function-mq3-botlib-ai-console-messages-writemessage-function-writemessage-vm-address-message-src-mq3-botlib-ai-console-messages-ml-828863536"></a>
@@ -371,4 +371,4 @@ function writeMessage(vm, address, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_console_messages.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_console_messages.ml#L79)

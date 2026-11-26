@@ -10,7 +10,7 @@ struct World
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-arealinked-arealinked-src-mq3-botlib-aas-sample-ml-1675733893"></a>
 ### areaLinked
@@ -32,7 +32,7 @@ areaLinked
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-freeids-freeids-src-mq3-botlib-aas-sample-ml-431410097"></a>
 ### freeIds
@@ -42,7 +42,7 @@ freeIds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-heap-heap-src-mq3-botlib-aas-sample-ml-558353189"></a>
 ### heap
@@ -52,7 +52,7 @@ heap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-linkedentities-linkedentities-src-mq3-botlib-aas-sample-ml-1175665701"></a>
 ### linkedEntities
@@ -62,7 +62,7 @@ linkedEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-links-links-src-mq3-botlib-aas-sample-ml-1492923469"></a>
 ### links
@@ -72,7 +72,7 @@ links
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-map-map-src-mq3-botlib-aas-sample-ml-33430685"></a>
 ### map
@@ -82,7 +82,7 @@ map
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-numfree-numfree-src-mq3-botlib-aas-sample-ml-833070133"></a>
 ### numFree
@@ -92,7 +92,7 @@ numFree
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-retailactive-retailactive-src-mq3-botlib-aas-sample-ml-1877514995"></a>
 ### retailActive
@@ -102,7 +102,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-runtime-runtime-src-mq3-botlib-aas-sample-ml-1571680197"></a>
 ### runtime
@@ -112,7 +112,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)
 
 <a id="field-field-mq3-botlib-aas-sample-world-services-services-src-mq3-botlib-aas-sample-ml-496551237"></a>
 ### services
@@ -122,4 +122,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L24)

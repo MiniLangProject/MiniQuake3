@@ -10,7 +10,7 @@ struct RenderView
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L170)
 
 ## Members
 
@@ -22,7 +22,7 @@ refdef
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L170)
 
 <a id="field-field-mq3-engine-local-qvm-match-renderview-scene-scene-src-mq3-engine-local-qvm-match-ml-1017915644"></a>
 ### scene
@@ -32,4 +32,4 @@ scene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L170)

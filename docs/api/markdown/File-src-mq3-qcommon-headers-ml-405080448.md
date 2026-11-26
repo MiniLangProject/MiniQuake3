@@ -16,7 +16,7 @@ const AUTHORIZE_SERVER_NAME = "authorize.quake3arena.com"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L36)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-forward-const-axis-forward-1-src-mq3-qcommon-headers-ml-1952829026"></a>
 ### AXIS_FORWARD
@@ -26,7 +26,7 @@ const AXIS_FORWARD = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L99)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-pitch-const-axis-pitch-5-src-mq3-qcommon-headers-ml-1906619336"></a>
 ### AXIS_PITCH
@@ -36,7 +36,7 @@ const AXIS_PITCH = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L103)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-roll-const-axis-roll-3-src-mq3-qcommon-headers-ml-1632421432"></a>
 ### AXIS_ROLL
@@ -46,7 +46,7 @@ const AXIS_ROLL = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L101)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-side-const-axis-side-0-src-mq3-qcommon-headers-ml-1336001823"></a>
 ### AXIS_SIDE
@@ -56,7 +56,7 @@ const AXIS_SIDE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L98)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-up-const-axis-up-2-src-mq3-qcommon-headers-ml-821913301"></a>
 ### AXIS_UP
@@ -66,7 +66,7 @@ const AXIS_UP = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L100)
 
 <a id="constant-constant-mq3-qcommon-headers-axis-yaw-const-axis-yaw-4-src-mq3-qcommon-headers-ml-855905123"></a>
 ### AXIS_YAW
@@ -76,7 +76,7 @@ const AXIS_YAW = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L102)
 
 <a id="constant-constant-mq3-qcommon-headers-basegame-const-basegame-baseq3-src-mq3-qcommon-headers-ml-1462301430"></a>
 ### BASEGAME
@@ -86,7 +86,7 @@ const BASEGAME = "baseq3"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L48)
 
 <a id="constant-constant-mq3-qcommon-headers-box-model-handle-const-box-model-handle-255-src-mq3-qcommon-headers-ml-1291268877"></a>
 ### BOX_MODEL_HANDLE
@@ -96,7 +96,7 @@ const BOX_MODEL_HANDLE = 255
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L7)
 
 <a id="constant-constant-mq3-qcommon-headers-capsule-model-handle-const-capsule-model-handle-254-src-mq3-qcommon-headers-ml-335673600"></a>
 ### CAPSULE_MODEL_HANDLE
@@ -106,7 +106,7 @@ const CAPSULE_MODEL_HANDLE = 254
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L8)
 
 <a id="constant-constant-mq3-qcommon-headers-cl-decode-start-const-cl-decode-start-4-src-mq3-qcommon-headers-ml-679237107"></a>
 ### CL_DECODE_START
@@ -116,7 +116,7 @@ const CL_DECODE_START = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L64)
 
 <a id="constant-constant-mq3-qcommon-headers-cl-encode-start-const-cl-encode-start-12-src-mq3-qcommon-headers-ml-1304159610"></a>
 ### CL_ENCODE_START
@@ -126,7 +126,7 @@ const CL_ENCODE_START = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L63)
 
 <a id="constant-constant-mq3-qcommon-headers-clip-epsilon-const-clip-epsilon-0-1-src-mq3-qcommon-headers-ml-684962640"></a>
 ### CLIP_EPSILON
@@ -136,7 +136,7 @@ const CLIP_EPSILON = 0.1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L21)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalfieldnames-function-cmlocalfieldnames-src-mq3-qcommon-headers-ml-1364770340"></a>
 ### cmlocalFieldNames
@@ -146,7 +146,7 @@ function cmlocalFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L129)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalfunctionnames-function-cmlocalfunctionnames-src-mq3-qcommon-headers-ml-1498691682"></a>
 ### cmlocalFunctionNames
@@ -156,7 +156,7 @@ function cmlocalFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L127)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalglobalnames-function-cmlocalglobalnames-src-mq3-qcommon-headers-ml-1233706826"></a>
 ### cmlocalGlobalNames
@@ -166,7 +166,7 @@ function cmlocalGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L128)
 
 <a id="function-function-mq3-qcommon-headers-cmlocalmacronames-function-cmlocalmacronames-src-mq3-qcommon-headers-ml-1843590856"></a>
 ### cmlocalMacroNames
@@ -176,7 +176,7 @@ function cmlocalMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L125)
 
 <a id="function-function-mq3-qcommon-headers-cmlocaltypenames-function-cmlocaltypenames-src-mq3-qcommon-headers-ml-561555678"></a>
 ### cmlocalTypeNames
@@ -186,7 +186,7 @@ function cmlocalTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L126)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchfieldnames-function-cmpatchfieldnames-src-mq3-qcommon-headers-ml-313193486"></a>
 ### cmpatchFieldNames
@@ -196,7 +196,7 @@ function cmpatchFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L135)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchfunctionnames-function-cmpatchfunctionnames-src-mq3-qcommon-headers-ml-589128942"></a>
 ### cmpatchFunctionNames
@@ -206,7 +206,7 @@ function cmpatchFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L133)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchglobalnames-function-cmpatchglobalnames-src-mq3-qcommon-headers-ml-95006114"></a>
 ### cmpatchGlobalNames
@@ -216,7 +216,7 @@ function cmpatchGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L134)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchmacronames-function-cmpatchmacronames-src-mq3-qcommon-headers-ml-805500158"></a>
 ### cmpatchMacroNames
@@ -226,7 +226,7 @@ function cmpatchMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L131)
 
 <a id="function-function-mq3-qcommon-headers-cmpatchtypenames-function-cmpatchtypenames-src-mq3-qcommon-headers-ml-1794261422"></a>
 ### cmpatchTypeNames
@@ -236,7 +236,7 @@ function cmpatchTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L132)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibfieldnames-function-cmpolylibfieldnames-src-mq3-qcommon-headers-ml-1447197320"></a>
 ### cmpolylibFieldNames
@@ -246,7 +246,7 @@ function cmpolylibFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L141)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibfunctionnames-function-cmpolylibfunctionnames-src-mq3-qcommon-headers-ml-1038321674"></a>
 ### cmpolylibFunctionNames
@@ -256,7 +256,7 @@ function cmpolylibFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L139)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibglobalnames-function-cmpolylibglobalnames-src-mq3-qcommon-headers-ml-1483566494"></a>
 ### cmpolylibGlobalNames
@@ -266,7 +266,7 @@ function cmpolylibGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L140)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibmacronames-function-cmpolylibmacronames-src-mq3-qcommon-headers-ml-2046443340"></a>
 ### cmpolylibMacroNames
@@ -276,7 +276,7 @@ function cmpolylibMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L137)
 
 <a id="function-function-mq3-qcommon-headers-cmpolylibtypenames-function-cmpolylibtypenames-src-mq3-qcommon-headers-ml-1318799202"></a>
 ### cmpolylibTypeNames
@@ -286,7 +286,7 @@ function cmpolylibTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L138)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicfieldnames-function-cmpublicfieldnames-src-mq3-qcommon-headers-ml-428680614"></a>
 ### cmpublicFieldNames
@@ -296,7 +296,7 @@ function cmpublicFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L147)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicfunctionnames-function-cmpublicfunctionnames-src-mq3-qcommon-headers-ml-1667045624"></a>
 ### cmpublicFunctionNames
@@ -306,7 +306,7 @@ function cmpublicFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L145)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicglobalnames-function-cmpublicglobalnames-src-mq3-qcommon-headers-ml-857906766"></a>
 ### cmpublicGlobalNames
@@ -316,7 +316,7 @@ function cmpublicGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L146)
 
 <a id="function-function-mq3-qcommon-headers-cmpublicmacronames-function-cmpublicmacronames-src-mq3-qcommon-headers-ml-1354846970"></a>
 ### cmpublicMacroNames
@@ -326,7 +326,7 @@ function cmpublicMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L143)
 
 <a id="function-function-mq3-qcommon-headers-cmpublictypenames-function-cmpublictypenames-src-mq3-qcommon-headers-ml-421178636"></a>
 ### cmpublicTypeNames
@@ -336,7 +336,7 @@ function cmpublicTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L144)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-amd-3dnow-const-cpuid-amd-3dnow-48-src-mq3-qcommon-headers-ml-1507624491"></a>
 ### CPUID_AMD_3DNOW
@@ -346,7 +346,7 @@ const CPUID_AMD_3DNOW = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L56)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-axp-const-cpuid-axp-16-src-mq3-qcommon-headers-ml-1206367102"></a>
 ### CPUID_AXP
@@ -356,7 +356,7 @@ const CPUID_AXP = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L51)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-generic-const-cpuid-generic-0-src-mq3-qcommon-headers-ml-952501471"></a>
 ### CPUID_GENERIC
@@ -366,7 +366,7 @@ const CPUID_GENERIC = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L50)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-intel-katmai-const-cpuid-intel-katmai-35-src-mq3-qcommon-headers-ml-853415053"></a>
 ### CPUID_INTEL_KATMAI
@@ -376,7 +376,7 @@ const CPUID_INTEL_KATMAI = 35
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L55)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-intel-mmx-const-cpuid-intel-mmx-34-src-mq3-qcommon-headers-ml-2082572214"></a>
 ### CPUID_INTEL_MMX
@@ -386,7 +386,7 @@ const CPUID_INTEL_MMX = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L54)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-intel-pentium-const-cpuid-intel-pentium-33-src-mq3-qcommon-headers-ml-985145237"></a>
 ### CPUID_INTEL_PENTIUM
@@ -396,7 +396,7 @@ const CPUID_INTEL_PENTIUM = 33
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L53)
 
 <a id="constant-constant-mq3-qcommon-headers-cpuid-intel-unsupported-const-cpuid-intel-unsupported-32-src-mq3-qcommon-headers-ml-2077841520"></a>
 ### CPUID_INTEL_UNSUPPORTED
@@ -406,7 +406,7 @@ const CPUID_INTEL_UNSUPPORTED = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L52)
 
 <a id="function-function-mq3-qcommon-headers-enumnames-function-enumnames-src-mq3-qcommon-headers-ml-475516276"></a>
 ### enumNames
@@ -416,7 +416,7 @@ function enumNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L164)
 
 <a id="function-function-mq3-qcommon-headers-fieldnames-function-fieldnames-src-mq3-qcommon-headers-ml-654966062"></a>
 ### fieldNames
@@ -426,7 +426,7 @@ function fieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L167)
 
 <a id="constant-constant-mq3-qcommon-headers-fs-cgame-ref-const-fs-cgame-ref-4-src-mq3-qcommon-headers-ml-442733163"></a>
 ### FS_CGAME_REF
@@ -436,7 +436,7 @@ const FS_CGAME_REF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L44)
 
 <a id="constant-constant-mq3-qcommon-headers-fs-general-ref-const-fs-general-ref-1-src-mq3-qcommon-headers-ml-1777809828"></a>
 ### FS_GENERAL_REF
@@ -446,7 +446,7 @@ const FS_GENERAL_REF = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L42)
 
 <a id="constant-constant-mq3-qcommon-headers-fs-qagame-ref-const-fs-qagame-ref-8-src-mq3-qcommon-headers-ml-2095583687"></a>
 ### FS_QAGAME_REF
@@ -456,7 +456,7 @@ const FS_QAGAME_REF = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L45)
 
 <a id="constant-constant-mq3-qcommon-headers-fs-ui-ref-const-fs-ui-ref-2-src-mq3-qcommon-headers-ml-448401737"></a>
 ### FS_UI_REF
@@ -466,7 +466,7 @@ const FS_UI_REF = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L43)
 
 <a id="function-function-mq3-qcommon-headers-functionnames-function-functionnames-src-mq3-qcommon-headers-ml-284466554"></a>
 ### functionNames
@@ -476,7 +476,7 @@ function functionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L165)
 
 <a id="function-function-mq3-qcommon-headers-globalnames-function-globalnames-src-mq3-qcommon-headers-ml-369867820"></a>
 ### globalNames
@@ -486,7 +486,7 @@ function globalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L166)
 
 <a id="function-function-mq3-qcommon-headers-headercounts-function-headercounts-src-mq3-qcommon-headers-ml-510587890"></a>
 ### headerCounts
@@ -496,7 +496,7 @@ function headerCounts()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L173)
 
 <a id="constant-constant-mq3-qcommon-headers-hmax-const-hmax-256-src-mq3-qcommon-headers-ml-51674810"></a>
 ### HMAX
@@ -506,7 +506,7 @@ const HMAX = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L58)
 
 <a id="constant-constant-mq3-qcommon-headers-internal-node-const-internal-node-257-src-mq3-qcommon-headers-ml-1296652749"></a>
 ### INTERNAL_NODE
@@ -516,7 +516,7 @@ const INTERNAL_NODE = 257
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L60)
 
 <a id="function-function-mq3-qcommon-headers-macronames-function-macronames-src-mq3-qcommon-headers-ml-1927420590"></a>
 ### macroNames
@@ -526,7 +526,7 @@ function macroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L162)
 
 <a id="constant-constant-mq3-qcommon-headers-master-server-name-const-master-server-name-master-quake3arena-com-src-mq3-qcommon-headers-ml-685183335"></a>
 ### MASTER_SERVER_NAME
@@ -536,7 +536,7 @@ const MASTER_SERVER_NAME = "master.quake3arena.com"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L35)
 
 <a id="constant-constant-mq3-qcommon-headers-max-download-blksize-const-max-download-blksize-2048-src-mq3-qcommon-headers-ml-1149443011"></a>
 ### MAX_DOWNLOAD_BLKSIZE
@@ -546,7 +546,7 @@ const MAX_DOWNLOAD_BLKSIZE = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L32)
 
 <a id="constant-constant-mq3-qcommon-headers-max-download-window-const-max-download-window-8-src-mq3-qcommon-headers-ml-1229585183"></a>
 ### MAX_DOWNLOAD_WINDOW
@@ -556,7 +556,7 @@ const MAX_DOWNLOAD_WINDOW = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L31)
 
 <a id="constant-constant-mq3-qcommon-headers-max-edit-line-const-max-edit-line-256-src-mq3-qcommon-headers-ml-1295695624"></a>
 ### MAX_EDIT_LINE
@@ -566,7 +566,7 @@ const MAX_EDIT_LINE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L49)
 
 <a id="constant-constant-mq3-qcommon-headers-max-facets-const-max-facets-1024-src-mq3-qcommon-headers-ml-553106266"></a>
 ### MAX_FACETS
@@ -576,7 +576,7 @@ const MAX_FACETS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L10)
 
 <a id="constant-constant-mq3-qcommon-headers-max-file-handles-const-max-file-handles-64-src-mq3-qcommon-headers-ml-48267249"></a>
 ### MAX_FILE_HANDLES
@@ -586,7 +586,7 @@ const MAX_FILE_HANDLES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L47)
 
 <a id="constant-constant-mq3-qcommon-headers-max-grid-size-const-max-grid-size-129-src-mq3-qcommon-headers-ml-1549447165"></a>
 ### MAX_GRID_SIZE
@@ -596,7 +596,7 @@ const MAX_GRID_SIZE = 129
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L12)
 
 <a id="constant-constant-mq3-qcommon-headers-max-joystick-axis-const-max-joystick-axis-6-src-mq3-qcommon-headers-ml-398341705"></a>
 ### MAX_JOYSTICK_AXIS
@@ -606,7 +606,7 @@ const MAX_JOYSTICK_AXIS = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L104)
 
 <a id="constant-constant-mq3-qcommon-headers-max-map-bounds-const-max-map-bounds-65535-src-mq3-qcommon-headers-ml-227728923"></a>
 ### MAX_MAP_BOUNDS
@@ -616,7 +616,7 @@ const MAX_MAP_BOUNDS = 65535
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L22)
 
 <a id="constant-constant-mq3-qcommon-headers-max-msglen-const-max-msglen-16384-src-mq3-qcommon-headers-ml-941447619"></a>
 ### MAX_MSGLEN
@@ -626,7 +626,7 @@ const MAX_MSGLEN = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L30)
 
 <a id="constant-constant-mq3-qcommon-headers-max-packet-usercmds-const-max-packet-usercmds-32-src-mq3-qcommon-headers-ml-381665828"></a>
 ### MAX_PACKET_USERCMDS
@@ -636,7 +636,7 @@ const MAX_PACKET_USERCMDS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L27)
 
 <a id="constant-constant-mq3-qcommon-headers-max-patch-planes-const-max-patch-planes-2048-src-mq3-qcommon-headers-ml-754042733"></a>
 ### MAX_PATCH_PLANES
@@ -646,7 +646,7 @@ const MAX_PATCH_PLANES = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L11)
 
 <a id="constant-constant-mq3-qcommon-headers-max-points-on-winding-const-max-points-on-winding-64-src-mq3-qcommon-headers-ml-1205762025"></a>
 ### MAX_POINTS_ON_WINDING
@@ -656,7 +656,7 @@ const MAX_POINTS_ON_WINDING = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L16)
 
 <a id="constant-constant-mq3-qcommon-headers-max-reliable-commands-const-max-reliable-commands-64-src-mq3-qcommon-headers-ml-1445607729"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -666,7 +666,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L29)
 
 <a id="constant-constant-mq3-qcommon-headers-max-submodels-const-max-submodels-256-src-mq3-qcommon-headers-ml-901561996"></a>
 ### MAX_SUBMODELS
@@ -676,7 +676,7 @@ const MAX_SUBMODELS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L6)
 
 <a id="constant-constant-mq3-qcommon-headers-maxprintmsg-const-maxprintmsg-4096-src-mq3-qcommon-headers-ml-1193451142"></a>
 ### MAXPRINTMSG
@@ -686,7 +686,7 @@ const MAXPRINTMSG = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L57)
 
 <a id="constant-constant-mq3-qcommon-headers-na-bad-const-na-bad-1-src-mq3-qcommon-headers-ml-706886546"></a>
 ### NA_BAD
@@ -696,7 +696,7 @@ const NA_BAD = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L67)
 
 <a id="constant-constant-mq3-qcommon-headers-na-bot-const-na-bot-0-src-mq3-qcommon-headers-ml-2075830867"></a>
 ### NA_BOT
@@ -706,7 +706,7 @@ const NA_BOT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L66)
 
 <a id="constant-constant-mq3-qcommon-headers-na-broadcast-const-na-broadcast-3-src-mq3-qcommon-headers-ml-1238997368"></a>
 ### NA_BROADCAST
@@ -716,7 +716,7 @@ const NA_BROADCAST = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L69)
 
 <a id="constant-constant-mq3-qcommon-headers-na-broadcast-ipx-const-na-broadcast-ipx-6-src-mq3-qcommon-headers-ml-1468800913"></a>
 ### NA_BROADCAST_IPX
@@ -726,7 +726,7 @@ const NA_BROADCAST_IPX = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L72)
 
 <a id="constant-constant-mq3-qcommon-headers-na-ip-const-na-ip-4-src-mq3-qcommon-headers-ml-98030875"></a>
 ### NA_IP
@@ -736,7 +736,7 @@ const NA_IP = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L70)
 
 <a id="constant-constant-mq3-qcommon-headers-na-ipx-const-na-ipx-5-src-mq3-qcommon-headers-ml-1770865590"></a>
 ### NA_IPX
@@ -746,7 +746,7 @@ const NA_IPX = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L71)
 
 <a id="constant-constant-mq3-qcommon-headers-na-loopback-const-na-loopback-2-src-mq3-qcommon-headers-ml-503209321"></a>
 ### NA_LOOPBACK
@@ -756,7 +756,7 @@ const NA_LOOPBACK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L68)
 
 <a id="constant-constant-mq3-qcommon-headers-ns-client-const-ns-client-0-src-mq3-qcommon-headers-ml-370994019"></a>
 ### NS_CLIENT
@@ -766,7 +766,7 @@ const NS_CLIENT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L73)
 
 <a id="constant-constant-mq3-qcommon-headers-ns-server-const-ns-server-1-src-mq3-qcommon-headers-ml-2118982014"></a>
 ### NS_SERVER
@@ -776,7 +776,7 @@ const NS_SERVER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L74)
 
 <a id="constant-constant-mq3-qcommon-headers-num-id-paks-const-num-id-paks-9-src-mq3-qcommon-headers-ml-1492715758"></a>
 ### NUM_ID_PAKS
@@ -786,7 +786,7 @@ const NUM_ID_PAKS = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L46)
 
 <a id="constant-constant-mq3-qcommon-headers-num-server-ports-const-num-server-ports-4-src-mq3-qcommon-headers-ml-1690361187"></a>
 ### NUM_SERVER_PORTS
@@ -796,7 +796,7 @@ const NUM_SERVER_PORTS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L41)
 
 <a id="constant-constant-mq3-qcommon-headers-nyt-const-nyt-256-src-mq3-qcommon-headers-ml-1552799760"></a>
 ### NYT
@@ -806,7 +806,7 @@ const NYT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L59)
 
 <a id="constant-constant-mq3-qcommon-headers-on-epsilon-const-on-epsilon-0-1-src-mq3-qcommon-headers-ml-550396774"></a>
 ### ON_EPSILON
@@ -816,7 +816,7 @@ const ON_EPSILON = 0.1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L23)
 
 <a id="constant-constant-mq3-qcommon-headers-packet-backup-const-packet-backup-32-src-mq3-qcommon-headers-ml-639921056"></a>
 ### PACKET_BACKUP
@@ -826,7 +826,7 @@ const PACKET_BACKUP = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L25)
 
 <a id="constant-constant-mq3-qcommon-headers-packet-mask-const-packet-mask-31-src-mq3-qcommon-headers-ml-743379759"></a>
 ### PACKET_MASK
@@ -836,7 +836,7 @@ const PACKET_MASK = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L26)
 
 <a id="constant-constant-mq3-qcommon-headers-plane-tri-epsilon-const-plane-tri-epsilon-0-1-src-mq3-qcommon-headers-ml-546390072"></a>
 ### PLANE_TRI_EPSILON
@@ -846,7 +846,7 @@ const PLANE_TRI_EPSILON = 0.1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L14)
 
 <a id="constant-constant-mq3-qcommon-headers-port-any-const-port-any-1-src-mq3-qcommon-headers-ml-2050915431"></a>
 ### PORT_ANY
@@ -856,7 +856,7 @@ const PORT_ANY = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L28)
 
 <a id="constant-constant-mq3-qcommon-headers-port-authorize-const-port-authorize-27952-src-mq3-qcommon-headers-ml-2019571380"></a>
 ### PORT_AUTHORIZE
@@ -866,7 +866,7 @@ const PORT_AUTHORIZE = 27952
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L39)
 
 <a id="constant-constant-mq3-qcommon-headers-port-master-const-port-master-27950-src-mq3-qcommon-headers-ml-1579172478"></a>
 ### PORT_MASTER
@@ -876,7 +876,7 @@ const PORT_MASTER = 27950
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L37)
 
 <a id="constant-constant-mq3-qcommon-headers-port-server-const-port-server-27960-src-mq3-qcommon-headers-ml-1413569147"></a>
 ### PORT_SERVER
@@ -886,7 +886,7 @@ const PORT_SERVER = 27960
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L40)
 
 <a id="constant-constant-mq3-qcommon-headers-port-update-const-port-update-27951-src-mq3-qcommon-headers-ml-854263671"></a>
 ### PORT_UPDATE
@@ -896,7 +896,7 @@ const PORT_UPDATE = 27951
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L38)
 
 <a id="constant-constant-mq3-qcommon-headers-protocol-version-const-protocol-version-68-src-mq3-qcommon-headers-ml-128646813"></a>
 ### PROTOCOL_VERSION
@@ -906,7 +906,7 @@ const PROTOCOL_VERSION = 68
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L33)
 
 <a id="function-function-mq3-qcommon-headers-qcommonenumnames-function-qcommonenumnames-src-mq3-qcommon-headers-ml-541248282"></a>
 ### qcommonEnumNames
@@ -916,7 +916,7 @@ function qcommonEnumNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L151)
 
 <a id="function-function-mq3-qcommon-headers-qcommonfieldnames-function-qcommonfieldnames-src-mq3-qcommon-headers-ml-472542190"></a>
 ### qcommonFieldNames
@@ -926,7 +926,7 @@ function qcommonFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L154)
 
 <a id="function-function-mq3-qcommon-headers-qcommonfunctionnames-function-qcommonfunctionnames-src-mq3-qcommon-headers-ml-550811174"></a>
 ### qcommonFunctionNames
@@ -936,7 +936,7 @@ function qcommonFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L152)
 
 <a id="function-function-mq3-qcommon-headers-qcommonglobalnames-function-qcommonglobalnames-src-mq3-qcommon-headers-ml-88454814"></a>
 ### qcommonGlobalNames
@@ -946,7 +946,7 @@ function qcommonGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L153)
 
 <a id="function-function-mq3-qcommon-headers-qcommonmacronames-function-qcommonmacronames-src-mq3-qcommon-headers-ml-1068576206"></a>
 ### qcommonMacroNames
@@ -956,7 +956,7 @@ function qcommonMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L149)
 
 <a id="function-function-mq3-qcommon-headers-qcommontypenames-function-qcommontypenames-src-mq3-qcommon-headers-ml-31545350"></a>
 ### qcommonTypeNames
@@ -966,7 +966,7 @@ function qcommonTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L150)
 
 <a id="function-function-mq3-qcommon-headers-reliableslot-function-reliableslot-sequence-src-mq3-qcommon-headers-ml-407043951"></a>
 ### reliableSlot
@@ -980,7 +980,7 @@ function reliableSlot(sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L169)
 
 <a id="constant-constant-mq3-qcommon-headers-se-char-const-se-char-2-src-mq3-qcommon-headers-ml-132384981"></a>
 ### SE_CHAR
@@ -990,7 +990,7 @@ const SE_CHAR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L107)
 
 <a id="constant-constant-mq3-qcommon-headers-se-console-const-se-console-5-src-mq3-qcommon-headers-ml-376649188"></a>
 ### SE_CONSOLE
@@ -1000,7 +1000,7 @@ const SE_CONSOLE = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L110)
 
 <a id="constant-constant-mq3-qcommon-headers-se-joystick-axis-const-se-joystick-axis-4-src-mq3-qcommon-headers-ml-1481763875"></a>
 ### SE_JOYSTICK_AXIS
@@ -1010,7 +1010,7 @@ const SE_JOYSTICK_AXIS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L109)
 
 <a id="constant-constant-mq3-qcommon-headers-se-key-const-se-key-1-src-mq3-qcommon-headers-ml-530263780"></a>
 ### SE_KEY
@@ -1020,7 +1020,7 @@ const SE_KEY = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L106)
 
 <a id="constant-constant-mq3-qcommon-headers-se-mouse-const-se-mouse-3-src-mq3-qcommon-headers-ml-594214682"></a>
 ### SE_MOUSE
@@ -1030,7 +1030,7 @@ const SE_MOUSE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L108)
 
 <a id="constant-constant-mq3-qcommon-headers-se-none-const-se-none-0-src-mq3-qcommon-headers-ml-181389427"></a>
 ### SE_NONE
@@ -1040,7 +1040,7 @@ const SE_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L105)
 
 <a id="constant-constant-mq3-qcommon-headers-se-packet-const-se-packet-6-src-mq3-qcommon-headers-ml-1854640169"></a>
 ### SE_PACKET
@@ -1050,7 +1050,7 @@ const SE_PACKET = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L111)
 
 <a id="constant-constant-mq3-qcommon-headers-side-back-const-side-back-1-src-mq3-qcommon-headers-ml-134591222"></a>
 ### SIDE_BACK
@@ -1060,7 +1060,7 @@ const SIDE_BACK = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L18)
 
 <a id="constant-constant-mq3-qcommon-headers-side-cross-const-side-cross-3-src-mq3-qcommon-headers-ml-243116806"></a>
 ### SIDE_CROSS
@@ -1070,7 +1070,7 @@ const SIDE_CROSS = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L20)
 
 <a id="constant-constant-mq3-qcommon-headers-side-front-const-side-front-0-src-mq3-qcommon-headers-ml-1359399171"></a>
 ### SIDE_FRONT
@@ -1080,7 +1080,7 @@ const SIDE_FRONT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L17)
 
 <a id="constant-constant-mq3-qcommon-headers-side-on-const-side-on-2-src-mq3-qcommon-headers-ml-1247414901"></a>
 ### SIDE_ON
@@ -1090,7 +1090,7 @@ const SIDE_ON = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L19)
 
 <a id="constant-constant-mq3-qcommon-headers-subdivide-distance-const-subdivide-distance-16-src-mq3-qcommon-headers-ml-2136936686"></a>
 ### SUBDIVIDE_DISTANCE
@@ -1100,7 +1100,7 @@ const SUBDIVIDE_DISTANCE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L13)
 
 <a id="constant-constant-mq3-qcommon-headers-surface-clip-epsilon-const-surface-clip-epsilon-0-125-src-mq3-qcommon-headers-ml-1707981271"></a>
 ### SURFACE_CLIP_EPSILON
@@ -1110,7 +1110,7 @@ const SURFACE_CLIP_EPSILON = 0.125
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L9)
 
 <a id="constant-constant-mq3-qcommon-headers-sv-decode-start-const-sv-decode-start-12-src-mq3-qcommon-headers-ml-8477554"></a>
 ### SV_DECODE_START
@@ -1120,7 +1120,7 @@ const SV_DECODE_START = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L62)
 
 <a id="constant-constant-mq3-qcommon-headers-sv-encode-start-const-sv-encode-start-4-src-mq3-qcommon-headers-ml-358057983"></a>
 ### SV_ENCODE_START
@@ -1130,7 +1130,7 @@ const SV_ENCODE_START = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L61)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-botlib-const-tag-botlib-2-src-mq3-qcommon-headers-ml-1467839925"></a>
 ### TAG_BOTLIB
@@ -1140,7 +1140,7 @@ const TAG_BOTLIB = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L94)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-free-const-tag-free-0-src-mq3-qcommon-headers-ml-2059627827"></a>
 ### TAG_FREE
@@ -1150,7 +1150,7 @@ const TAG_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L92)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-general-const-tag-general-1-src-mq3-qcommon-headers-ml-358026294"></a>
 ### TAG_GENERAL
@@ -1160,7 +1160,7 @@ const TAG_GENERAL = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L93)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-renderer-const-tag-renderer-3-src-mq3-qcommon-headers-ml-1717168326"></a>
 ### TAG_RENDERER
@@ -1170,7 +1170,7 @@ const TAG_RENDERER = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L95)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-small-const-tag-small-4-src-mq3-qcommon-headers-ml-1461501571"></a>
 ### TAG_SMALL
@@ -1180,7 +1180,7 @@ const TAG_SMALL = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L96)
 
 <a id="constant-constant-mq3-qcommon-headers-tag-static-const-tag-static-5-src-mq3-qcommon-headers-ml-1494755954"></a>
 ### TAG_STATIC
@@ -1190,7 +1190,7 @@ const TAG_STATIC = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L97)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-anglevectors-const-trap-anglevectors-108-src-mq3-qcommon-headers-ml-321228626"></a>
 ### TRAP_ANGLEVECTORS
@@ -1200,7 +1200,7 @@ const TRAP_ANGLEVECTORS = 108
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L86)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-atan2-const-trap-atan2-105-src-mq3-qcommon-headers-ml-442554825"></a>
 ### TRAP_ATAN2
@@ -1210,7 +1210,7 @@ const TRAP_ATAN2 = 105
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L83)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-ceil-const-trap-ceil-111-src-mq3-qcommon-headers-ml-1246804452"></a>
 ### TRAP_CEIL
@@ -1220,7 +1220,7 @@ const TRAP_CEIL = 111
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L89)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-cos-const-trap-cos-104-src-mq3-qcommon-headers-ml-1970056702"></a>
 ### TRAP_COS
@@ -1230,7 +1230,7 @@ const TRAP_COS = 104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L82)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-floor-const-trap-floor-110-src-mq3-qcommon-headers-ml-364952615"></a>
 ### TRAP_FLOOR
@@ -1240,7 +1240,7 @@ const TRAP_FLOOR = 110
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L88)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-matrixmultiply-const-trap-matrixmultiply-107-src-mq3-qcommon-headers-ml-996427417"></a>
 ### TRAP_MATRIXMULTIPLY
@@ -1250,7 +1250,7 @@ const TRAP_MATRIXMULTIPLY = 107
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L85)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-memcpy-const-trap-memcpy-101-src-mq3-qcommon-headers-ml-1521127183"></a>
 ### TRAP_MEMCPY
@@ -1260,7 +1260,7 @@ const TRAP_MEMCPY = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L79)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-memset-const-trap-memset-100-src-mq3-qcommon-headers-ml-2003292022"></a>
 ### TRAP_MEMSET
@@ -1270,7 +1270,7 @@ const TRAP_MEMSET = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L78)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-perpendicularvector-const-trap-perpendicularvector-109-src-mq3-qcommon-headers-ml-450665147"></a>
 ### TRAP_PERPENDICULARVECTOR
@@ -1280,7 +1280,7 @@ const TRAP_PERPENDICULARVECTOR = 109
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L87)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-sin-const-trap-sin-103-src-mq3-qcommon-headers-ml-1965764787"></a>
 ### TRAP_SIN
@@ -1290,7 +1290,7 @@ const TRAP_SIN = 103
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L81)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-sqrt-const-trap-sqrt-106-src-mq3-qcommon-headers-ml-847925752"></a>
 ### TRAP_SQRT
@@ -1300,7 +1300,7 @@ const TRAP_SQRT = 106
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L84)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-strncpy-const-trap-strncpy-102-src-mq3-qcommon-headers-ml-284047548"></a>
 ### TRAP_STRNCPY
@@ -1310,7 +1310,7 @@ const TRAP_STRNCPY = 102
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L80)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-testprintfloat-const-trap-testprintfloat-113-src-mq3-qcommon-headers-ml-382717482"></a>
 ### TRAP_TESTPRINTFLOAT
@@ -1320,7 +1320,7 @@ const TRAP_TESTPRINTFLOAT = 113
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L91)
 
 <a id="constant-constant-mq3-qcommon-headers-trap-testprintint-const-trap-testprintint-112-src-mq3-qcommon-headers-ml-990736619"></a>
 ### TRAP_TESTPRINTINT
@@ -1330,7 +1330,7 @@ const TRAP_TESTPRINTINT = 112
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L90)
 
 <a id="function-function-mq3-qcommon-headers-typenames-function-typenames-src-mq3-qcommon-headers-ml-1247014406"></a>
 ### typeNames
@@ -1340,7 +1340,7 @@ function typeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L163)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-badzipfile-const-unz-badzipfile-103-src-mq3-qcommon-headers-ml-1207521912"></a>
 ### UNZ_BADZIPFILE
@@ -1350,7 +1350,7 @@ const UNZ_BADZIPFILE = -103
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L118)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-casesensitive-const-unz-casesensitive-1-src-mq3-qcommon-headers-ml-523763822"></a>
 ### UNZ_CASESENSITIVE
@@ -1360,7 +1360,7 @@ const UNZ_CASESENSITIVE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L121)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-crcerror-const-unz-crcerror-105-src-mq3-qcommon-headers-ml-206839158"></a>
 ### UNZ_CRCERROR
@@ -1370,7 +1370,7 @@ const UNZ_CRCERROR = -105
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L120)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-end-of-list-of-file-const-unz-end-of-list-of-file-100-src-mq3-qcommon-headers-ml-73939769"></a>
 ### UNZ_END_OF_LIST_OF_FILE
@@ -1380,7 +1380,7 @@ const UNZ_END_OF_LIST_OF_FILE = -100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L114)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-eof-const-unz-eof-0-src-mq3-qcommon-headers-ml-558514111"></a>
 ### UNZ_EOF
@@ -1390,7 +1390,7 @@ const UNZ_EOF = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L116)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-errno-const-unz-errno-1-src-mq3-qcommon-headers-ml-1788953501"></a>
 ### UNZ_ERRNO
@@ -1400,7 +1400,7 @@ const UNZ_ERRNO = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L115)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-internalerror-const-unz-internalerror-104-src-mq3-qcommon-headers-ml-1751932509"></a>
 ### UNZ_INTERNALERROR
@@ -1410,7 +1410,7 @@ const UNZ_INTERNALERROR = -104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L119)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-notcasesensitive-const-unz-notcasesensitive-2-src-mq3-qcommon-headers-ml-279493117"></a>
 ### UNZ_NOTCASESENSITIVE
@@ -1420,7 +1420,7 @@ const UNZ_NOTCASESENSITIVE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L122)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-ok-const-unz-ok-0-src-mq3-qcommon-headers-ml-405119429"></a>
 ### UNZ_OK
@@ -1430,7 +1430,7 @@ const UNZ_OK = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L113)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-osdefaultcase-const-unz-osdefaultcase-0-src-mq3-qcommon-headers-ml-608940487"></a>
 ### UNZ_OSDEFAULTCASE
@@ -1440,7 +1440,7 @@ const UNZ_OSDEFAULTCASE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L123)
 
 <a id="constant-constant-mq3-qcommon-headers-unz-paramerror-const-unz-paramerror-102-src-mq3-qcommon-headers-ml-1517762811"></a>
 ### UNZ_PARAMERROR
@@ -1450,7 +1450,7 @@ const UNZ_PARAMERROR = -102
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L117)
 
 <a id="function-function-mq3-qcommon-headers-unzipfieldnames-function-unzipfieldnames-src-mq3-qcommon-headers-ml-1103720782"></a>
 ### unzipFieldNames
@@ -1460,7 +1460,7 @@ function unzipFieldNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L160)
 
 <a id="function-function-mq3-qcommon-headers-unzipfunctionnames-function-unzipfunctionnames-src-mq3-qcommon-headers-ml-1536203326"></a>
 ### unzipFunctionNames
@@ -1470,7 +1470,7 @@ function unzipFunctionNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L158)
 
 <a id="function-function-mq3-qcommon-headers-unzipglobalnames-function-unzipglobalnames-src-mq3-qcommon-headers-ml-311101082"></a>
 ### unzipGlobalNames
@@ -1480,7 +1480,7 @@ function unzipGlobalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L159)
 
 <a id="function-function-mq3-qcommon-headers-unzipmacronames-function-unzipmacronames-src-mq3-qcommon-headers-ml-205587022"></a>
 ### unzipMacroNames
@@ -1490,7 +1490,7 @@ function unzipMacroNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L156)
 
 <a id="function-function-mq3-qcommon-headers-unziptypenames-function-unziptypenames-src-mq3-qcommon-headers-ml-2023462990"></a>
 ### unzipTypeNames
@@ -1500,7 +1500,7 @@ function unzipTypeNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L157)
 
 <a id="constant-constant-mq3-qcommon-headers-update-server-name-const-update-server-name-update-quake3arena-com-src-mq3-qcommon-headers-ml-1733998850"></a>
 ### UPDATE_SERVER_NAME
@@ -1510,7 +1510,7 @@ const UPDATE_SERVER_NAME = "update.quake3arena.com"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L34)
 
 <a id="function-function-mq3-qcommon-headers-validdownloadblock-function-validdownloadblock-size-src-mq3-qcommon-headers-ml-843540931"></a>
 ### validDownloadBlock
@@ -1524,7 +1524,7 @@ function validDownloadBlock(size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L171)
 
 <a id="function-function-mq3-qcommon-headers-validinlinemodel-function-validinlinemodel-index-count-src-mq3-qcommon-headers-ml-1539401049"></a>
 ### validInlineModel
@@ -1539,7 +1539,7 @@ function validInlineModel(index, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L168)
 
 <a id="function-function-mq3-qcommon-headers-validmessagesize-function-validmessagesize-size-src-mq3-qcommon-headers-ml-1442141983"></a>
 ### validMessageSize
@@ -1553,7 +1553,7 @@ function validMessageSize(size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L170)
 
 <a id="function-function-mq3-qcommon-headers-validunzipresult-function-validunzipresult-code-src-mq3-qcommon-headers-ml-1211921455"></a>
 ### validUnzipResult
@@ -1567,7 +1567,7 @@ function validUnzipResult(code)
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L172)
 
 <a id="constant-constant-mq3-qcommon-headers-vmi-bytecode-const-vmi-bytecode-1-src-mq3-qcommon-headers-ml-59925860"></a>
 ### VMI_BYTECODE
@@ -1577,7 +1577,7 @@ const VMI_BYTECODE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L76)
 
 <a id="constant-constant-mq3-qcommon-headers-vmi-compiled-const-vmi-compiled-2-src-mq3-qcommon-headers-ml-1312157383"></a>
 ### VMI_COMPILED
@@ -1587,7 +1587,7 @@ const VMI_COMPILED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L77)
 
 <a id="constant-constant-mq3-qcommon-headers-vmi-native-const-vmi-native-0-src-mq3-qcommon-headers-ml-1854747049"></a>
 ### VMI_NATIVE
@@ -1597,7 +1597,7 @@ const VMI_NATIVE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L75)
 
 <a id="constant-constant-mq3-qcommon-headers-wrap-point-epsilon-const-wrap-point-epsilon-0-1-src-mq3-qcommon-headers-ml-791423438"></a>
 ### WRAP_POINT_EPSILON
@@ -1607,4 +1607,4 @@ const WRAP_POINT_EPSILON = 0.1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/headers.ml#L15)

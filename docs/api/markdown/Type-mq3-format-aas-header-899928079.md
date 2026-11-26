@@ -10,7 +10,7 @@ struct Header
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)
 
 ## Members
 
@@ -22,7 +22,7 @@ bspChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)
 
 <a id="field-field-mq3-format-aas-header-ident-ident-src-mq3-format-aas-ml-403972168"></a>
 ### ident
@@ -32,7 +32,7 @@ ident
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)
 
 <a id="field-field-mq3-format-aas-header-lumps-lumps-src-mq3-format-aas-ml-1435177988"></a>
 ### lumps
@@ -42,7 +42,7 @@ lumps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)
 
 <a id="field-field-mq3-format-aas-header-version-version-src-mq3-format-aas-ml-1673431932"></a>
 ### version
@@ -52,4 +52,4 @@ version
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L126)

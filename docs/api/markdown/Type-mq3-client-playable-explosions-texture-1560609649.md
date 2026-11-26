@@ -10,7 +10,7 @@ struct Texture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L21)
 
 <a id="field-field-mq3-client-playable-explosions-texture-name-name-src-mq3-client-playable-explosions-ml-2124335024"></a>
 ### name
@@ -32,7 +32,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L21)
 
 <a id="field-field-mq3-client-playable-explosions-texture-slot-slot-src-mq3-client-playable-explosions-ml-1993713430"></a>
 ### slot
@@ -42,4 +42,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L21)

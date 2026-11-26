@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-continuereachabilityfn-continuereachabilityfn-src-mq3-botlib-aas-main-ml-997566195"></a>
 ### continueReachabilityFn
@@ -32,7 +32,7 @@ continueReachabilityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-dumpaasfn-dumpaasfn-src-mq3-botlib-aas-main-ml-1706533627"></a>
 ### dumpAasFn
@@ -42,7 +42,7 @@ dumpAasFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-dumpbspfn-dumpbspfn-src-mq3-botlib-aas-main-ml-186605487"></a>
 ### dumpBspFn
@@ -52,7 +52,7 @@ dumpBspFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-freelinkedfn-freelinkedfn-src-mq3-botlib-aas-main-ml-136209533"></a>
 ### freeLinkedFn
@@ -62,7 +62,7 @@ freeLinkedFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-freelinksfn-freelinksfn-src-mq3-botlib-aas-main-ml-651086083"></a>
 ### freeLinksFn
@@ -72,7 +72,7 @@ freeLinksFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-freeroutingfn-freeroutingfn-src-mq3-botlib-aas-main-ml-233084347"></a>
 ### freeRoutingFn
@@ -82,7 +82,7 @@ freeRoutingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initalternativefn-initalternativefn-src-mq3-botlib-aas-main-ml-769728251"></a>
 ### initAlternativeFn
@@ -92,7 +92,7 @@ initAlternativeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initclusteringfn-initclusteringfn-src-mq3-botlib-aas-main-ml-382480867"></a>
 ### initClusteringFn
@@ -102,7 +102,7 @@ initClusteringFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initlinkedfn-initlinkedfn-src-mq3-botlib-aas-main-ml-1776982801"></a>
 ### initLinkedFn
@@ -112,7 +112,7 @@ initLinkedFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initlinkheapfn-initlinkheapfn-src-mq3-botlib-aas-main-ml-653414115"></a>
 ### initLinkHeapFn
@@ -122,7 +122,7 @@ initLinkHeapFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initreachabilityfn-initreachabilityfn-src-mq3-botlib-aas-main-ml-1160561237"></a>
 ### initReachabilityFn
@@ -132,7 +132,7 @@ initReachabilityFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initroutingfn-initroutingfn-src-mq3-botlib-aas-main-ml-1987992335"></a>
 ### initRoutingFn
@@ -142,7 +142,7 @@ initRoutingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-initsettingsfn-initsettingsfn-src-mq3-botlib-aas-main-ml-1430333301"></a>
 ### initSettingsFn
@@ -152,7 +152,7 @@ initSettingsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-printfn-printfn-src-mq3-botlib-aas-main-ml-1001082331"></a>
 ### printFn
@@ -162,7 +162,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)
 
 <a id="field-field-mq3-botlib-aas-main-services-shutdownalternativefn-shutdownalternativefn-src-mq3-botlib-aas-main-ml-796231403"></a>
 ### shutdownAlternativeFn
@@ -172,4 +172,4 @@ shutdownAlternativeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L17)

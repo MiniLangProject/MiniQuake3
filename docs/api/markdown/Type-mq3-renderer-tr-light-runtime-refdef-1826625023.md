@@ -10,7 +10,7 @@ struct Refdef
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L24)
 
 <a id="field-field-mq3-renderer-tr-light-runtime-refdef-rdflags-rdflags-src-mq3-renderer-tr-light-runtime-ml-1187962675"></a>
 ### rdflags
@@ -32,4 +32,4 @@ rdflags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_light_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_light_runtime.ml#L24)

@@ -33,7 +33,7 @@ function action(kind, x, y, width, height, text, shader, color, value, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L46)
 
 - [mq3.client.cgame_draw.Action](Type-mq3-client-cgame-draw-action-1204758205.md) — struct
 <a id="function-function-mq3-client-cgame-draw-addlagometerframeinfo-function-addlagometerframeinfo-value-src-mq3-client-cgame-draw-ml-376739945"></a>
@@ -50,7 +50,7 @@ CG_AddLagometerFrameInfo
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L162)
 
 <a id="function-function-mq3-client-cgame-draw-addlagometersnapshotinfo-function-addlagometersnapshotinfo-value-ping-flags-present-src-mq3-client-cgame-draw-ml-1341373943"></a>
 ### addLagometerSnapshotInfo
@@ -69,7 +69,7 @@ CG_AddLagometerSnapshotInfo
 | `present` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L164)
 
 <a id="constant-constant-mq3-client-cgame-draw-attacker-head-time-const-attacker-head-time-10000-src-mq3-client-cgame-draw-ml-1964275422"></a>
 ### ATTACKER_HEAD_TIME
@@ -79,7 +79,7 @@ const ATTACKER_HEAD_TIME = 10000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-draw-bigchar-height-const-bigchar-height-16-src-mq3-client-cgame-draw-ml-1709975204"></a>
 ### BIGCHAR_HEIGHT
@@ -89,7 +89,7 @@ const BIGCHAR_HEIGHT = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-draw-bigchar-width-const-bigchar-width-16-src-mq3-client-cgame-draw-ml-1710069878"></a>
 ### BIGCHAR_WIDTH
@@ -99,7 +99,7 @@ const BIGCHAR_WIDTH = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L28)
 
 <a id="function-function-mq3-client-cgame-draw-centerprint-function-centerprint-value-text-y-charwidth-src-mq3-client-cgame-draw-ml-52624607"></a>
 ### centerPrint
@@ -118,7 +118,7 @@ CG_CenterPrint
 | `charWidth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L171)
 
 <a id="function-function-mq3-client-cgame-draw-clamp-function-clamp-value-low-high-src-mq3-client-cgame-draw-ml-1641474921"></a>
 ### clamp
@@ -134,7 +134,7 @@ function clamp(value, low, high)
 | `high` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L56)
 
 <a id="function-function-mq3-client-cgame-draw-clear-function-clear-value-src-mq3-client-cgame-draw-ml-1117025595"></a>
 ### clear
@@ -148,7 +148,7 @@ function clear(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L54)
 
 <a id="function-function-mq3-client-cgame-draw-client-function-client-name-team-src-mq3-client-cgame-draw-ml-1656745088"></a>
 ### client
@@ -163,7 +163,7 @@ function client(name, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L48)
 
 - [mq3.client.cgame_draw.Client](Type-mq3-client-cgame-draw-client-255942216.md) — struct
 <a id="function-function-mq3-client-cgame-draw-colorhealth-function-colorhealth-health-armor-src-mq3-client-cgame-draw-ml-537516291"></a>
@@ -179,7 +179,7 @@ function colorHealth(health, armor)
 | `armor` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L57)
 
 <a id="function-function-mq3-client-cgame-draw-draw2dframe-function-draw2dframe-value-trace-retailactive-src-mq3-client-cgame-draw-ml-1778631291"></a>
 ### draw2DFrame
@@ -197,7 +197,7 @@ CG_Draw2D
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L201)
 
 <a id="function-function-mq3-client-cgame-draw-draw3dmodel-function-draw3dmodel-value-x-y-w-h-model-skin-origin-angles-retailactive-src-mq3-client-cgame-draw-ml-1807334442"></a>
 ### draw3DModel
@@ -222,7 +222,7 @@ CG_Draw3DModel
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L108)
 
 <a id="function-function-mq3-client-cgame-draw-drawactive-function-drawactive-value-stereoview-hassnapshot-trace-retailactive-src-mq3-client-cgame-draw-ml-1103714308"></a>
 ### drawActive
@@ -242,7 +242,7 @@ CG_DrawActive
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L214)
 
 <a id="function-function-mq3-client-cgame-draw-drawammowarning-function-drawammowarning-value-enabled-retailactive-src-mq3-client-cgame-draw-ml-2077451729"></a>
 ### drawAmmoWarning
@@ -260,7 +260,7 @@ CG_DrawAmmoWarning
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L193)
 
 <a id="function-function-mq3-client-cgame-draw-drawattacker-function-drawattacker-value-y-retailactive-src-mq3-client-cgame-draw-ml-539271779"></a>
 ### drawAttacker
@@ -278,7 +278,7 @@ CG_DrawAttacker
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L125)
 
 <a id="function-function-mq3-client-cgame-draw-drawcenterstring-function-drawcenterstring-value-centertime-retailactive-src-mq3-client-cgame-draw-ml-261518048"></a>
 ### drawCenterString
@@ -296,7 +296,7 @@ CG_DrawCenterString
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L173)
 
 <a id="function-function-mq3-client-cgame-draw-drawcrosshair-function-drawcrosshair-value-retailactive-src-mq3-client-cgame-draw-ml-1329456004"></a>
 ### drawCrosshair
@@ -313,7 +313,7 @@ CG_DrawCrosshair
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L175)
 
 <a id="function-function-mq3-client-cgame-draw-drawcrosshairnames-function-drawcrosshairnames-value-trace-retailactive-src-mq3-client-cgame-draw-ml-1778584617"></a>
 ### drawCrosshairNames
@@ -331,7 +331,7 @@ CG_DrawCrosshairNames
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L179)
 
 <a id="function-function-mq3-client-cgame-draw-drawdisconnect-function-drawdisconnect-value-commandtime-currentcmdtime-retailactive-src-mq3-client-cgame-draw-ml-513330022"></a>
 ### drawDisconnect
@@ -350,7 +350,7 @@ CG_DrawDisconnect
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L166)
 
 <a id="function-function-mq3-client-cgame-draw-drawfield-function-drawfield-value-x-y-width-number-retailactive-src-mq3-client-cgame-draw-ml-521484224"></a>
 ### drawField
@@ -371,7 +371,7 @@ CG_DrawField
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L103)
 
 <a id="function-function-mq3-client-cgame-draw-drawflagmodel-function-drawflagmodel-value-x-y-w-h-team-force2d-retailactive-src-mq3-client-cgame-draw-ml-1748405440"></a>
 ### drawFlagModel
@@ -394,7 +394,7 @@ CG_DrawFlagModel
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L112)
 
 <a id="function-function-mq3-client-cgame-draw-drawfollow-function-drawfollow-value-retailactive-src-mq3-client-cgame-draw-ml-1812923680"></a>
 ### drawFollow
@@ -411,7 +411,7 @@ CG_DrawFollow
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L191)
 
 <a id="function-function-mq3-client-cgame-draw-drawfps-function-drawfps-value-y-milliseconds-retailactive-src-mq3-client-cgame-draw-ml-797014159"></a>
 ### drawFPS
@@ -430,7 +430,7 @@ CG_DrawFPS
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L129)
 
 <a id="function-function-mq3-client-cgame-draw-drawhead-function-drawhead-value-x-y-w-h-clientnum-angles-retailactive-src-mq3-client-cgame-draw-ml-355120101"></a>
 ### drawHead
@@ -453,7 +453,7 @@ CG_DrawHead
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L110)
 
 <a id="function-function-mq3-client-cgame-draw-drawholdableitem-function-drawholdableitem-value-icon-retailactive-src-mq3-client-cgame-draw-ml-1767152541"></a>
 ### drawHoldableItem
@@ -471,7 +471,7 @@ CG_DrawHoldableItem
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L155)
 
 <a id="function-function-mq3-client-cgame-draw-drawintermission-function-drawintermission-value-centertime-retailactive-src-mq3-client-cgame-draw-ml-684769160"></a>
 ### drawIntermission
@@ -489,7 +489,7 @@ CG_DrawIntermission
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L189)
 
 <a id="function-function-mq3-client-cgame-draw-drawlagometer-function-drawlagometer-value-enabled-commandtime-currentcmdtime-retailactive-src-mq3-client-cgame-draw-ml-2124869425"></a>
 ### drawLagometer
@@ -509,7 +509,7 @@ CG_DrawLagometer
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L168)
 
 <a id="function-function-mq3-client-cgame-draw-drawlowerleft-function-drawlowerleft-value-itemname-itemicon-pickuptime-retailactive-src-mq3-client-cgame-draw-ml-1003551099"></a>
 ### drawLowerLeft
@@ -529,7 +529,7 @@ CG_DrawLowerLeft
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L151)
 
 <a id="function-function-mq3-client-cgame-draw-drawlowerright-function-drawlowerright-value-score1-score2-retailactive-src-mq3-client-cgame-draw-ml-1472100257"></a>
 ### drawLowerRight
@@ -548,7 +548,7 @@ CG_DrawLowerRight
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L147)
 
 <a id="function-function-mq3-client-cgame-draw-drawpersistantpowerup-function-drawpersistantpowerup-value-icon-retailactive-src-mq3-client-cgame-draw-ml-272182603"></a>
 ### drawPersistantPowerup
@@ -566,7 +566,7 @@ CG_DrawPersistantPowerup
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L157)
 
 <a id="function-function-mq3-client-cgame-draw-drawpic-function-drawpic-value-x-y-w-h-shader-color-retailactive-src-mq3-client-cgame-draw-ml-665871232"></a>
 ### drawPic
@@ -587,7 +587,7 @@ function drawPic(value, x, y, w, h, shader, color, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L60)
 
 <a id="function-function-mq3-client-cgame-draw-drawpickupitem-function-drawpickupitem-value-y-itemname-itemicon-pickuptime-retailactive-src-mq3-client-cgame-draw-ml-2116903660"></a>
 ### drawPickupItem
@@ -608,7 +608,7 @@ CG_DrawPickupItem
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L149)
 
 <a id="function-function-mq3-client-cgame-draw-drawpowerups-function-drawpowerups-value-y-retailactive-src-mq3-client-cgame-draw-ml-1948264811"></a>
 ### drawPowerups
@@ -626,7 +626,7 @@ CG_DrawPowerups
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L145)
 
 <a id="function-function-mq3-client-cgame-draw-drawproxwarning-function-drawproxwarning-value-ticking-proxtick-retailactive-src-mq3-client-cgame-draw-ml-974243677"></a>
 ### drawProxWarning
@@ -645,7 +645,7 @@ CG_DrawProxWarning
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L195)
 
 <a id="function-function-mq3-client-cgame-draw-drawreward-function-drawreward-value-rewardtime-rewardcount-rewardshader-rewardsound-retailactive-src-mq3-client-cgame-draw-ml-1267597860"></a>
 ### drawReward
@@ -666,7 +666,7 @@ CG_DrawReward
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L159)
 
 <a id="function-function-mq3-client-cgame-draw-drawscoreboard-function-drawscoreboard-value-retailactive-src-mq3-client-cgame-draw-ml-1080761028"></a>
 ### drawScoreboard
@@ -683,7 +683,7 @@ CG_DrawScoreboard
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L187)
 
 <a id="function-function-mq3-client-cgame-draw-drawscores-function-drawscores-value-y-score1-score2-retailactive-src-mq3-client-cgame-draw-ml-558466218"></a>
 ### drawScores
@@ -703,7 +703,7 @@ CG_DrawScores
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L143)
 
 <a id="function-function-mq3-client-cgame-draw-drawsnapshot-function-drawsnapshot-value-y-retailactive-src-mq3-client-cgame-draw-ml-1001431087"></a>
 ### drawSnapshot
@@ -721,7 +721,7 @@ CG_DrawSnapshot
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L127)
 
 <a id="function-function-mq3-client-cgame-draw-drawspectator-function-drawspectator-value-retailactive-src-mq3-client-cgame-draw-ml-708669958"></a>
 ### drawSpectator
@@ -738,7 +738,7 @@ CG_DrawSpectator
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L181)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbar-function-drawstatusbar-value-retailactive-src-mq3-client-cgame-draw-ml-665236070"></a>
 ### drawStatusBar
@@ -755,7 +755,7 @@ CG_DrawStatusBar
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L120)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbarflag-function-drawstatusbarflag-value-x-team-retailactive-src-mq3-client-cgame-draw-ml-1102559987"></a>
 ### drawStatusBarFlag
@@ -774,7 +774,7 @@ CG_DrawStatusBarFlag
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L116)
 
 <a id="function-function-mq3-client-cgame-draw-drawstatusbarhead-function-drawstatusbarhead-value-x-damagetime-damagex-retailactive-src-mq3-client-cgame-draw-ml-1834358821"></a>
 ### drawStatusBarHead
@@ -794,7 +794,7 @@ CG_DrawStatusBarHead
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L114)
 
 <a id="function-function-mq3-client-cgame-draw-drawteambackground-function-drawteambackground-value-x-y-w-h-alpha-team-retailactive-src-mq3-client-cgame-draw-ml-69611821"></a>
 ### drawTeamBackground
@@ -817,7 +817,7 @@ CG_DrawTeamBackground
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L118)
 
 <a id="function-function-mq3-client-cgame-draw-drawteaminfo-function-drawteaminfo-value-retailactive-src-mq3-client-cgame-draw-ml-1061803684"></a>
 ### drawTeamInfo
@@ -834,7 +834,7 @@ CG_DrawTeamInfo
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L153)
 
 <a id="function-function-mq3-client-cgame-draw-drawteamoverlay-function-drawteamoverlay-value-y-right-upper-retailactive-src-mq3-client-cgame-draw-ml-424567019"></a>
 ### drawTeamOverlay
@@ -854,7 +854,7 @@ CG_DrawTeamOverlay
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L133)
 
 <a id="function-function-mq3-client-cgame-draw-drawteamvote-function-drawteamvote-value-retailactive-src-mq3-client-cgame-draw-ml-863718204"></a>
 ### drawTeamVote
@@ -871,7 +871,7 @@ CG_DrawTeamVote
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L185)
 
 <a id="function-function-mq3-client-cgame-draw-drawtext-function-drawtext-value-x-y-text-size-color-retailactive-src-mq3-client-cgame-draw-ml-282281068"></a>
 ### drawText
@@ -891,7 +891,7 @@ function drawText(value, x, y, text, size, color, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L59)
 
 <a id="function-function-mq3-client-cgame-draw-drawtimedmenus-function-drawtimedmenus-value-retailactive-src-mq3-client-cgame-draw-ml-506258128"></a>
 ### drawTimedMenus
@@ -908,7 +908,7 @@ CG_DrawTimedMenus
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L199)
 
 <a id="function-function-mq3-client-cgame-draw-drawtimer-function-drawtimer-value-y-retailactive-src-mq3-client-cgame-draw-ml-875145741"></a>
 ### drawTimer
@@ -926,7 +926,7 @@ CG_DrawTimer
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L131)
 
 <a id="function-function-mq3-client-cgame-draw-drawtourneyscoreboard-function-drawtourneyscoreboard-value-retailactive-src-mq3-client-cgame-draw-ml-910785524"></a>
 ### drawTourneyScoreboard
@@ -943,7 +943,7 @@ CG_DrawTourneyScoreboard
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L212)
 
 <a id="function-function-mq3-client-cgame-draw-drawupperright-function-drawupperright-value-milliseconds-retailactive-src-mq3-client-cgame-draw-ml-2126227642"></a>
 ### drawUpperRight
@@ -961,7 +961,7 @@ CG_DrawUpperRight
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L140)
 
 <a id="function-function-mq3-client-cgame-draw-drawvote-function-drawvote-value-retailactive-src-mq3-client-cgame-draw-ml-394075668"></a>
 ### drawVote
@@ -978,7 +978,7 @@ CG_DrawVote
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L183)
 
 <a id="function-function-mq3-client-cgame-draw-drawwarmup-function-drawwarmup-value-retailactive-src-mq3-client-cgame-draw-ml-1906095276"></a>
 ### drawWarmup
@@ -995,7 +995,7 @@ CG_DrawWarmup
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L197)
 
 <a id="constant-constant-mq3-client-cgame-draw-fade-time-const-fade-time-200-src-mq3-client-cgame-draw-ml-1891827379"></a>
 ### FADE_TIME
@@ -1005,7 +1005,7 @@ const FADE_TIME = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L27)
 
 <a id="function-function-mq3-client-cgame-draw-fadealpha-function-fadealpha-value-start-total-src-mq3-client-cgame-draw-ml-784739827"></a>
 ### fadeAlpha
@@ -1021,7 +1021,7 @@ function fadeAlpha(value, start, total)
 | `total` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L58)
 
 <a id="constant-constant-mq3-client-cgame-draw-giant-height-const-giant-height-48-src-mq3-client-cgame-draw-ml-508199019"></a>
 ### GIANT_HEIGHT
@@ -1031,7 +1031,7 @@ const GIANT_HEIGHT = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L31)
 
 <a id="constant-constant-mq3-client-cgame-draw-giant-width-const-giant-width-32-src-mq3-client-cgame-draw-ml-1658261324"></a>
 ### GIANT_WIDTH
@@ -1041,7 +1041,7 @@ const GIANT_WIDTH = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L30)
 
 - [mq3.client.cgame_draw.Glyph](Type-mq3-client-cgame-draw-glyph-2074225799.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-draw-ml-1242809909"></a>
@@ -1052,7 +1052,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L18)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-ffa-const-gt-ffa-0-src-mq3-client-cgame-draw-ml-22151233"></a>
 ### GT_FFA
@@ -1062,7 +1062,7 @@ const GT_FFA = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L14)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-single-player-const-gt-single-player-2-src-mq3-client-cgame-draw-ml-1903452941"></a>
 ### GT_SINGLE_PLAYER
@@ -1072,7 +1072,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L16)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-team-const-gt-team-3-src-mq3-client-cgame-draw-ml-708610706"></a>
 ### GT_TEAM
@@ -1082,7 +1082,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L17)
 
 <a id="constant-constant-mq3-client-cgame-draw-gt-tournament-const-gt-tournament-1-src-mq3-client-cgame-draw-ml-511968384"></a>
 ### GT_TOURNAMENT
@@ -1092,7 +1092,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L15)
 
 <a id="constant-constant-mq3-client-cgame-draw-icon-size-const-icon-size-48-src-mq3-client-cgame-draw-ml-2079988175"></a>
 ### ICON_SIZE
@@ -1102,7 +1102,7 @@ const ICON_SIZE = 48
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L34)
 
 <a id="constant-constant-mq3-client-cgame-draw-item-blob-time-const-item-blob-time-200-src-mq3-client-cgame-draw-ml-964137875"></a>
 ### ITEM_BLOB_TIME
@@ -1112,7 +1112,7 @@ const ITEM_BLOB_TIME = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L35)
 
 <a id="constant-constant-mq3-client-cgame-draw-lag-samples-const-lag-samples-128-src-mq3-client-cgame-draw-ml-1008355790"></a>
 ### LAG_SAMPLES
@@ -1122,7 +1122,7 @@ const LAG_SAMPLES = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L25)
 
 <a id="function-function-mq3-client-cgame-draw-lagometer-function-lagometer-src-mq3-client-cgame-draw-ml-340910942"></a>
 ### lagometer
@@ -1132,7 +1132,7 @@ function lagometer()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L50)
 
 - [mq3.client.cgame_draw.Lagometer](Type-mq3-client-cgame-draw-lagometer-1572914679.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-max-clients-const-max-clients-64-src-mq3-client-cgame-draw-ml-488723977"></a>
@@ -1143,7 +1143,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L23)
 
 <a id="constant-constant-mq3-client-cgame-draw-max-locations-const-max-locations-64-src-mq3-client-cgame-draw-ml-1541394337"></a>
 ### MAX_LOCATIONS
@@ -1153,7 +1153,7 @@ const MAX_LOCATIONS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-draw-pm-intermission-const-pm-intermission-5-src-mq3-client-cgame-draw-ml-1209839204"></a>
 ### PM_INTERMISSION
@@ -1163,7 +1163,7 @@ const PM_INTERMISSION = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L19)
 
 <a id="constant-constant-mq3-client-cgame-draw-pmf-follow-const-pmf-follow-4096-src-mq3-client-cgame-draw-ml-2026695574"></a>
 ### PMF_FOLLOW
@@ -1173,7 +1173,7 @@ const PMF_FOLLOW = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L20)
 
 <a id="constant-constant-mq3-client-cgame-draw-pmf-scoreboard-const-pmf-scoreboard-8192-src-mq3-client-cgame-draw-ml-1707477489"></a>
 ### PMF_SCOREBOARD
@@ -1183,7 +1183,7 @@ const PMF_SCOREBOARD = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L21)
 
 <a id="function-function-mq3-client-cgame-draw-powerup-function-powerup-expires-icon-src-mq3-client-cgame-draw-ml-285432637"></a>
 ### powerup
@@ -1198,7 +1198,7 @@ function powerup(expires, icon)
 | `icon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L49)
 
 - [mq3.client.cgame_draw.Powerup](Type-mq3-client-cgame-draw-powerup-677849029.md) — struct
 <a id="function-function-mq3-client-cgame-draw-printablelength-function-printablelength-text-src-mq3-client-cgame-draw-ml-284129015"></a>
@@ -1213,7 +1213,7 @@ function printableLength(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L55)
 
 <a id="function-function-mq3-client-cgame-draw-publish-function-publish-state-command-retailactive-src-mq3-client-cgame-draw-ml-1104847579"></a>
 ### publish
@@ -1229,7 +1229,7 @@ function publish(state, command, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L47)
 
 <a id="function-function-mq3-client-cgame-draw-scanforcrosshairentity-function-scanforcrosshairentity-value-trace-src-mq3-client-cgame-draw-ml-751014508"></a>
 ### scanForCrosshairEntity
@@ -1246,7 +1246,7 @@ CG_ScanForCrosshairEntity
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L177)
 
 <a id="constant-constant-mq3-client-cgame-draw-snapflag-rate-delayed-const-snapflag-rate-delayed-1-src-mq3-client-cgame-draw-ml-1339160196"></a>
 ### SNAPFLAG_RATE_DELAYED
@@ -1256,7 +1256,7 @@ const SNAPFLAG_RATE_DELAYED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L22)
 
 <a id="function-function-mq3-client-cgame-draw-state-function-state-src-mq3-client-cgame-draw-ml-695311296"></a>
 ### state
@@ -1266,7 +1266,7 @@ function state()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L51)
 
 - [mq3.client.cgame_draw.State](Type-mq3-client-cgame-draw-state-1790363816.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-team-blue-const-team-blue-2-src-mq3-client-cgame-draw-ml-790549327"></a>
@@ -1277,7 +1277,7 @@ const TEAM_BLUE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L12)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-free-const-team-free-0-src-mq3-client-cgame-draw-ml-840232769"></a>
 ### TEAM_FREE
@@ -1287,7 +1287,7 @@ const TEAM_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L10)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-red-const-team-red-1-src-mq3-client-cgame-draw-ml-811640460"></a>
 ### TEAM_RED
@@ -1297,7 +1297,7 @@ const TEAM_RED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L11)
 
 <a id="constant-constant-mq3-client-cgame-draw-team-spectator-const-team-spectator-3-src-mq3-client-cgame-draw-ml-2106377002"></a>
 ### TEAM_SPECTATOR
@@ -1307,7 +1307,7 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L13)
 
 <a id="function-function-mq3-client-cgame-draw-textheight-function-textheight-text-scale-limit-glyphs-glyphscale-src-mq3-client-cgame-draw-ml-1873873651"></a>
 ### textHeight
@@ -1327,7 +1327,7 @@ CG_Text_Height
 | `glyphScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L74)
 
 <a id="function-function-mq3-client-cgame-draw-textpaint-function-textpaint-value-x-y-scale-color-text-adjust-limit-style-glyphs-glyphscale-retailactive-src-mq3-client-cgame-draw-ml-1460931127"></a>
 ### textPaint
@@ -1354,7 +1354,7 @@ CG_Text_Paint
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L87)
 
 <a id="function-function-mq3-client-cgame-draw-textpaintchar-function-textpaintchar-value-x-y-width-height-scale-s-t-s2-t2-shader-retailactive-src-mq3-client-cgame-draw-ml-1417190871"></a>
 ### textPaintChar
@@ -1381,7 +1381,7 @@ CG_Text_PaintChar
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L85)
 
 <a id="function-function-mq3-client-cgame-draw-textwidth-function-textwidth-text-scale-limit-glyphs-glyphscale-src-mq3-client-cgame-draw-ml-687302853"></a>
 ### textWidth
@@ -1401,7 +1401,7 @@ CG_Text_Width
 | `glyphScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L63)
 
 <a id="constant-constant-mq3-client-cgame-draw-tinychar-height-const-tinychar-height-8-src-mq3-client-cgame-draw-ml-395234753"></a>
 ### TINYCHAR_HEIGHT
@@ -1411,7 +1411,7 @@ const TINYCHAR_HEIGHT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-draw-tinychar-width-const-tinychar-width-8-src-mq3-client-cgame-draw-ml-731760785"></a>
 ### TINYCHAR_WIDTH
@@ -1421,7 +1421,7 @@ const TINYCHAR_WIDTH = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L32)
 
 - [mq3.client.cgame_draw.TraceResult](Type-mq3-client-cgame-draw-traceresult-1778805101.md) — struct
 <a id="constant-constant-mq3-client-cgame-draw-vote-time-const-vote-time-30000-src-mq3-client-cgame-draw-ml-327002058"></a>
@@ -1432,4 +1432,4 @@ const VOTE_TIME = 30000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L26)

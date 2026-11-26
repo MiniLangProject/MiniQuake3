@@ -10,7 +10,7 @@ struct RendererServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ clearSceneFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-drawstretchpicfn-drawstretchpicfn-src-mq3-vm-syscall-ui-ml-608110468"></a>
 ### drawStretchPicFn
@@ -32,7 +32,7 @@ drawStretchPicFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-registermodelfn-registermodelfn-src-mq3-vm-syscall-ui-ml-1270419894"></a>
 ### registerModelFn
@@ -42,7 +42,7 @@ registerModelFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-registershadernomipfn-registershadernomipfn-src-mq3-vm-syscall-ui-ml-577461466"></a>
 ### registerShaderNoMipFn
@@ -52,7 +52,7 @@ registerShaderNoMipFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-registerskinfn-registerskinfn-src-mq3-vm-syscall-ui-ml-1750860182"></a>
 ### registerSkinFn
@@ -62,7 +62,7 @@ registerSkinFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-setcolorfn-setcolorfn-src-mq3-vm-syscall-ui-ml-708568780"></a>
 ### setColorFn
@@ -72,7 +72,7 @@ setColorFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)
 
 <a id="field-field-mq3-vm-syscall-ui-rendererservices-updatescreenfn-updatescreenfn-src-mq3-vm-syscall-ui-ml-1913436084"></a>
 ### updateScreenFn
@@ -82,4 +82,4 @@ updateScreenFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L14)

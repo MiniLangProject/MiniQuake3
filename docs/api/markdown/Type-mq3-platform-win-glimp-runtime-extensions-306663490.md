@@ -10,7 +10,7 @@ struct Extensions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ compiledVertexArray
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-extensions-maxactivetextures-maxactivetextures-src-mq3-platform-win-glimp-runtime-ml-1064008175"></a>
 ### maxActiveTextures
@@ -32,7 +32,7 @@ maxActiveTextures
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-extensions-multitexture-multitexture-src-mq3-platform-win-glimp-runtime-ml-191633215"></a>
 ### multitexture
@@ -42,7 +42,7 @@ multitexture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-extensions-swapcontrol-swapcontrol-src-mq3-platform-win-glimp-runtime-ml-1671356027"></a>
 ### swapControl
@@ -52,7 +52,7 @@ swapControl
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-extensions-texturecompression-texturecompression-src-mq3-platform-win-glimp-runtime-ml-532253717"></a>
 ### textureCompression
@@ -62,7 +62,7 @@ textureCompression
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-extensions-textureenvadd-textureenvadd-src-mq3-platform-win-glimp-runtime-ml-1191249067"></a>
 ### textureEnvAdd
@@ -72,4 +72,4 @@ textureEnvAdd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L27)

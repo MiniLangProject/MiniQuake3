@@ -26,7 +26,7 @@ function build(entries, listenerOrigin, listenerAxis)
 | `listenerAxis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_loop_channels.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L12)
 
 - [mq3.audio.snd_loop_channels.Entry](Type-mq3-audio-snd-loop-channels-entry-1333255851.md) — struct
 - [mq3.audio.snd_loop_channels.Group](Type-mq3-audio-snd-loop-channels-group-732355124.md) — struct
@@ -38,4 +38,4 @@ const MAX_CHANNELS = 96
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_loop_channels.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_loop_channels.ml#L7)

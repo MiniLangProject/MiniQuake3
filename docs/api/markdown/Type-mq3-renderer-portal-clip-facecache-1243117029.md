@@ -12,7 +12,7 @@ struct FaceCache
 A face's vertices, including each patch LOD variant, are immutable within its world. Only the selection and the portal plane vary between views.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L49)
 
 ## Members
 
@@ -24,7 +24,7 @@ byFace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L49)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-dist-dist-src-mq3-renderer-portal-clip-ml-1074223300"></a>
 ### dist
@@ -34,7 +34,7 @@ dist
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L49)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-normal-normal-src-mq3-renderer-portal-clip-ml-1462692438"></a>
 ### normal
@@ -44,7 +44,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L49)
 
 <a id="field-field-mq3-renderer-portal-clip-facecache-world-world-src-mq3-renderer-portal-clip-ml-1095998608"></a>
 ### world
@@ -54,4 +54,4 @@ world
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_clip.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_clip.ml#L49)

@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ addTextFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-beginprofilingfn-beginprofilingfn-src-mq3-client-cgame-time-ml-2074149651"></a>
 ### beginProfilingFn
@@ -32,7 +32,7 @@ beginProfilingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-clearactiveactionfn-clearactiveactionfn-src-mq3-client-cgame-time-ml-1861234925"></a>
 ### clearActiveActionFn
@@ -42,7 +42,7 @@ clearActiveActionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-context-context-src-mq3-client-cgame-time-ml-828228621"></a>
 ### context
@@ -52,7 +52,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-diagnosticfn-diagnosticfn-src-mq3-client-cgame-time-ml-1348495071"></a>
 ### diagnosticFn
@@ -62,7 +62,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-millisecondsfn-millisecondsfn-src-mq3-client-cgame-time-ml-250282021"></a>
 ### millisecondsFn
@@ -72,7 +72,7 @@ millisecondsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)
 
 <a id="field-field-mq3-client-cgame-time-services-readdemofn-readdemofn-src-mq3-client-cgame-time-ml-1564292327"></a>
 ### readDemoFn
@@ -82,4 +82,4 @@ readDemoFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_time.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_time.ml#L11)

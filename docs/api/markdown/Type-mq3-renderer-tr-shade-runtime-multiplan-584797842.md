@@ -10,7 +10,7 @@ struct MultiPlan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ environment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-multiplan-indexcount-indexcount-src-mq3-renderer-tr-shade-runtime-ml-1422902177"></a>
 ### indexCount
@@ -32,7 +32,7 @@ indexCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-multiplan-portalfill-portalfill-src-mq3-renderer-tr-shade-runtime-ml-381496341"></a>
 ### portalFill
@@ -42,7 +42,7 @@ portalFill
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-multiplan-texture0-texture0-src-mq3-renderer-tr-shade-runtime-ml-344917449"></a>
 ### texture0
@@ -52,7 +52,7 @@ texture0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-multiplan-texture1-texture1-src-mq3-renderer-tr-shade-runtime-ml-1201265011"></a>
 ### texture1
@@ -62,4 +62,4 @@ texture1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L22)

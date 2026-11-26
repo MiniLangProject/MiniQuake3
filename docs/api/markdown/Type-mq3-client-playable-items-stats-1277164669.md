@@ -10,7 +10,7 @@ struct Stats
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ ammo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-stats-armor-armor-src-mq3-client-playable-items-ml-1405279240"></a>
 ### armor
@@ -32,7 +32,7 @@ armor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-stats-health-health-src-mq3-client-playable-items-ml-1684454784"></a>
 ### health
@@ -42,7 +42,7 @@ health
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)
 
 <a id="field-field-mq3-client-playable-items-stats-weapon-weapon-src-mq3-client-playable-items-ml-601176508"></a>
 ### weapon
@@ -52,4 +52,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L17)

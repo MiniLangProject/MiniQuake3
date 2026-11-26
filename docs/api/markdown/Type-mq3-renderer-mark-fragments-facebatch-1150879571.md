@@ -10,7 +10,7 @@ struct FaceBatch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ faces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L27)
 
 <a id="field-field-mq3-renderer-mark-fragments-facebatch-triangles-triangles-src-mq3-renderer-mark-fragments-ml-921933436"></a>
 ### triangles
@@ -32,4 +32,4 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/mark_fragments.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/mark_fragments.ml#L27)

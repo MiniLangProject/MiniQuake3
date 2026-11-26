@@ -33,5 +33,5 @@ granularity = "package"
 hide_empty = true
 
 [links]
-repository = "https://github.com/n1k0m0/MiniQuake3"
-ref = "main"
+repository = "https://github.com/MiniLangProject/MiniQuake3"
+ref = "master"

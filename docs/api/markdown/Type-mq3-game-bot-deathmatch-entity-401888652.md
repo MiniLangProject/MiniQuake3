@@ -10,7 +10,7 @@ struct Entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-contents-contents-src-mq3-game-bot-deathmatch-ml-398684906"></a>
 ### contents
@@ -32,7 +32,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-etype-etype-src-mq3-game-bot-deathmatch-ml-1267549918"></a>
 ### eType
@@ -42,7 +42,7 @@ eType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-event-event-src-mq3-game-bot-deathmatch-ml-165263266"></a>
 ### event
@@ -52,7 +52,7 @@ event
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-eventparm-eventparm-src-mq3-game-bot-deathmatch-ml-410821418"></a>
 ### eventParm
@@ -62,7 +62,7 @@ eventParm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-eventtime-eventtime-src-mq3-game-bot-deathmatch-ml-1671938674"></a>
 ### eventTime
@@ -72,7 +72,7 @@ eventTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-flags-flags-src-mq3-game-bot-deathmatch-ml-110035138"></a>
 ### flags
@@ -82,7 +82,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-generic1-generic1-src-mq3-game-bot-deathmatch-ml-2081925582"></a>
 ### generic1
@@ -92,7 +92,7 @@ generic1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-maxs-maxs-src-mq3-game-bot-deathmatch-ml-716800752"></a>
 ### maxs
@@ -102,7 +102,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-mins-mins-src-mq3-game-bot-deathmatch-ml-1309065016"></a>
 ### mins
@@ -112,7 +112,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-modelindex-modelindex-src-mq3-game-bot-deathmatch-ml-988931296"></a>
 ### modelindex
@@ -122,7 +122,7 @@ modelindex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-number-number-src-mq3-game-bot-deathmatch-ml-320828968"></a>
 ### number
@@ -132,7 +132,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-origin-origin-src-mq3-game-bot-deathmatch-ml-1218724922"></a>
 ### origin
@@ -142,7 +142,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-otherentitynum-otherentitynum-src-mq3-game-bot-deathmatch-ml-2131984816"></a>
 ### otherEntityNum
@@ -152,7 +152,7 @@ otherEntityNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-otherentitynum2-otherentitynum2-src-mq3-game-bot-deathmatch-ml-1628466330"></a>
 ### otherEntityNum2
@@ -162,7 +162,7 @@ otherEntityNum2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-powerups-powerups-src-mq3-game-bot-deathmatch-ml-468378604"></a>
 ### powerups
@@ -172,7 +172,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-valid-valid-src-mq3-game-bot-deathmatch-ml-2035438058"></a>
 ### valid
@@ -182,7 +182,7 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)
 
 <a id="field-field-mq3-game-bot-deathmatch-entity-weapon-weapon-src-mq3-game-bot-deathmatch-ml-1338727226"></a>
 ### weapon
@@ -192,4 +192,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L51)

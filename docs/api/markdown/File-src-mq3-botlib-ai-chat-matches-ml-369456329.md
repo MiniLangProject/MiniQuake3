@@ -26,7 +26,7 @@ function botPath(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L26)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-clear-function-clear-state-src-mq3-botlib-ai-chat-matches-ml-652726285"></a>
 ### clear
@@ -40,7 +40,7 @@ function clear(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L105)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-create-function-create-context-readfn-src-mq3-botlib-ai-chat-matches-ml-380043725"></a>
 ### create
@@ -55,7 +55,7 @@ function create(context, readFn)
 | `readFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-emptymatch-function-emptymatch-value-src-mq3-botlib-ai-chat-matches-ml-1367188807"></a>
 ### emptyMatch
@@ -69,7 +69,7 @@ function emptyMatch(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-ensureloaded-function-ensureloaded-state-src-mq3-botlib-ai-chat-matches-ml-577849351"></a>
 ### ensureLoaded
@@ -83,7 +83,7 @@ function ensureLoaded(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L104)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-expectinteger-function-expectinteger-registry-source-label-src-mq3-botlib-ai-chat-matches-ml-1757003670"></a>
 ### expectInteger
@@ -99,7 +99,7 @@ function expectInteger(registry, source, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L39)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-expecttext-function-expecttext-registry-source-value-src-mq3-botlib-ai-chat-matches-ml-1811088845"></a>
 ### expectText
@@ -115,7 +115,7 @@ function expectText(registry, source, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L35)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-fail-function-fail-message-src-mq3-botlib-ai-chat-matches-ml-65165713"></a>
 ### fail
@@ -129,7 +129,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L23)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-findmatch-function-findmatch-state-value-context-src-mq3-botlib-ai-chat-matches-ml-70702011"></a>
 ### findMatch
@@ -145,7 +145,7 @@ function findMatch(state, value, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L138)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-load-function-load-state-filename-src-mq3-botlib-ai-chat-matches-ml-878644588"></a>
 ### load
@@ -160,7 +160,7 @@ function load(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L100)
 
 - [mq3.botlib.ai_chat_matches.Loader](Type-mq3-botlib-ai-chat-matches-loader-1375810372.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-matches-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-matches-ml-2024573378"></a>
@@ -176,7 +176,7 @@ function loadText(loader, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L30)
 
 - [mq3.botlib.ai_chat_matches.Match](Type-mq3-botlib-ai-chat-matches-match-1783988752.md) — struct
 <a id="constant-constant-mq3-botlib-ai-chat-matches-match-abi-size-const-match-abi-size-328-src-mq3-botlib-ai-chat-matches-ml-2109965710"></a>
@@ -187,7 +187,7 @@ const MATCH_ABI_SIZE = 328
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L15)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-matchvariable-function-matchvariable-match-variable-size-src-mq3-botlib-ai-chat-matches-ml-414784718"></a>
 ### matchVariable
@@ -203,7 +203,7 @@ function matchVariable(match, variable, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L148)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-max-match-variables-const-max-match-variables-8-src-mq3-botlib-ai-chat-matches-ml-1585129891"></a>
 ### MAX_MATCH_VARIABLES
@@ -213,7 +213,7 @@ const MAX_MATCH_VARIABLES = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-chat-matches-ml-1408856804"></a>
 ### MAX_MESSAGE_SIZE
@@ -223,7 +223,7 @@ const MAX_MESSAGE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-op-find-match-const-op-find-match-518-src-mq3-botlib-ai-chat-matches-ml-2103737613"></a>
 ### OP_FIND_MATCH
@@ -233,7 +233,7 @@ const OP_FIND_MATCH = 518
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-op-match-variable-const-op-match-variable-519-src-mq3-botlib-ai-chat-matches-ml-662446266"></a>
 ### OP_MATCH_VARIABLE
@@ -243,7 +243,7 @@ const OP_MATCH_VARIABLE = 519
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-chat-matches-op-string-contains-const-op-string-contains-517-src-mq3-botlib-ai-chat-matches-ml-1581207192"></a>
 ### OP_STRING_CONTAINS
@@ -253,7 +253,7 @@ const OP_STRING_CONTAINS = 517
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-parse-function-parse-state-filename-src-mq3-botlib-ai-chat-matches-ml-324245374"></a>
 ### parse
@@ -268,7 +268,7 @@ function parse(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L78)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-parsepieces-function-parsepieces-registry-source-firsttoken-src-mq3-botlib-ai-chat-matches-ml-25827569"></a>
 ### parsePieces
@@ -284,7 +284,7 @@ function parsePieces(registry, source, firstToken)
 | `firstToken` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L54)
 
 - [mq3.botlib.ai_chat_matches.Piece](Type-mq3-botlib-ai-chat-matches-piece-1020623727.md) — struct
 - [mq3.botlib.ai_chat_matches.State](Type-mq3-botlib-ai-chat-matches-state-1467600216.md) — struct
@@ -302,7 +302,7 @@ function stringContains(value, needle, caseSensitive)
 | `caseSensitive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L108)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-stringsmatch-function-stringsmatch-pieces-match-src-mq3-botlib-ai-chat-matches-ml-460764268"></a>
 ### stringsMatch
@@ -317,7 +317,7 @@ function stringsMatch(pieces, match)
 | `match` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L116)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-suffix-function-suffix-value-start-src-mq3-botlib-ai-chat-matches-ml-539675639"></a>
 ### suffix
@@ -332,7 +332,7 @@ function suffix(value, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L115)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-take-function-take-registry-source-src-mq3-botlib-ai-chat-matches-ml-457733388"></a>
 ### take
@@ -347,7 +347,7 @@ function take(registry, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L34)
 
 - [mq3.botlib.ai_chat_matches.Template](Type-mq3-botlib-ai-chat-matches-template-825433973.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-matches-trimenters-function-trimenters-value-src-mq3-botlib-ai-chat-matches-ml-1216999263"></a>
@@ -362,7 +362,7 @@ function trimEnters(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L137)
 
 <a id="function-function-mq3-botlib-ai-chat-matches-upper-function-upper-value-src-mq3-botlib-ai-chat-matches-ml-806226135"></a>
 ### upper
@@ -376,4 +376,4 @@ function upper(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L107)

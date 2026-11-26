@@ -16,7 +16,7 @@ const FS_SEEK_CUR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/memory_file_seek.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L6)
 
 <a id="constant-constant-mq3-qcommon-memory-file-seek-fs-seek-end-const-fs-seek-end-1-src-mq3-qcommon-memory-file-seek-ml-645576138"></a>
 ### FS_SEEK_END
@@ -26,7 +26,7 @@ const FS_SEEK_END = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/memory_file_seek.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L7)
 
 <a id="constant-constant-mq3-qcommon-memory-file-seek-fs-seek-set-const-fs-seek-set-2-src-mq3-qcommon-memory-file-seek-ml-1134191915"></a>
 ### FS_SEEK_SET
@@ -36,7 +36,7 @@ const FS_SEEK_SET = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/memory_file_seek.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L8)
 
 <a id="function-function-mq3-qcommon-memory-file-seek-seek-function-seek-files-handle-offset-origin-src-mq3-qcommon-memory-file-seek-ml-548922350"></a>
 ### seek
@@ -53,4 +53,4 @@ function seek(files, handle, offset, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/memory_file_seek.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/memory_file_seek.ml#L10)

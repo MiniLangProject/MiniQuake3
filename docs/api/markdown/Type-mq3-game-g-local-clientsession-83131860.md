@@ -10,7 +10,7 @@ struct ClientSession
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 ## Members
 
@@ -22,7 +22,7 @@ losses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-sessionteam-sessionteam-src-mq3-game-g-local-ml-198051122"></a>
 ### sessionTeam
@@ -32,7 +32,7 @@ sessionTeam
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatorclient-spectatorclient-src-mq3-game-g-local-ml-1740732150"></a>
 ### spectatorClient
@@ -42,7 +42,7 @@ spectatorClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatorstate-spectatorstate-src-mq3-game-g-local-ml-189522694"></a>
 ### spectatorState
@@ -52,7 +52,7 @@ spectatorState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-spectatortime-spectatortime-src-mq3-game-g-local-ml-200402038"></a>
 ### spectatorTime
@@ -62,7 +62,7 @@ spectatorTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-teamleader-teamleader-src-mq3-game-g-local-ml-1490182798"></a>
 ### teamLeader
@@ -72,7 +72,7 @@ teamLeader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)
 
 <a id="field-field-mq3-game-g-local-clientsession-wins-wins-src-mq3-game-g-local-ml-856329464"></a>
 ### wins
@@ -82,4 +82,4 @@ wins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L61)

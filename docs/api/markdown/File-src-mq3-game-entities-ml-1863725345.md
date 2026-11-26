@@ -34,7 +34,7 @@ function bindClient(level, ent, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L351)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L351)
 
 <a id="function-function-mq3-game-entities-blank-function-blank-slot-r-src-mq3-game-entities-ml-1138623842"></a>
 ### blank
@@ -49,7 +49,7 @@ function blank(slot, r)
 | `r` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L337)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L337)
 
 - [mq3.game.entities.Client](Type-mq3-game-entities-client-1102521674.md) — struct
 <a id="function-function-mq3-game-entities-create-function-create-world-src-mq3-game-entities-ml-1553679680"></a>
@@ -64,7 +64,7 @@ function create(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L340)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L340)
 
 <a id="function-function-mq3-game-entities-createclient-function-createclient-state-team-cmdangles-src-mq3-game-entities-ml-977957426"></a>
 ### createClient
@@ -80,7 +80,7 @@ function createClient(state, team, cmdAngles)
 | `cmdAngles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L304)
 
 <a id="function-function-mq3-game-entities-diagnostic-function-diagnostic-level-text-src-mq3-game-entities-ml-569739761"></a>
 ### diagnostic
@@ -95,7 +95,7 @@ function diagnostic(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L436)
 
 <a id="function-function-mq3-game-entities-diagnosticargument-function-diagnosticargument-text-src-mq3-game-entities-ml-622131885"></a>
 ### diagnosticArgument
@@ -109,7 +109,7 @@ function diagnosticArgument(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L441)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L441)
 
 <a id="function-function-mq3-game-entities-entitiesfree-function-entitiesfree-level-src-mq3-game-entities-ml-883391718"></a>
 ### entitiesFree
@@ -123,7 +123,7 @@ function entitiesFree(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L378)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L378)
 
 - [mq3.game.entities.Entity](Type-mq3-game-entities-entity-1824582758.md) — struct
 <a id="function-function-mq3-game-entities-free-function-free-level-ent-src-mq3-game-entities-ml-1602485441"></a>
@@ -139,7 +139,7 @@ function free(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L400)
 
 <a id="function-function-mq3-game-entities-initentity-function-initentity-ent-src-mq3-game-entities-ml-1653673953"></a>
 ### initEntity
@@ -153,7 +153,7 @@ function initEntity(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L360)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L360)
 
 - [mq3.game.entities.Level](Type-mq3-game-entities-level-1198109129.md) — struct
 <a id="function-function-mq3-game-entities-link-function-link-level-ent-src-mq3-game-entities-ml-617438733"></a>
@@ -169,7 +169,7 @@ function link(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L391)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L391)
 
 <a id="function-function-mq3-game-entities-observe-function-observe-level-kind-ent-src-mq3-game-entities-ml-562830299"></a>
 ### observe
@@ -185,7 +185,7 @@ function observe(level, kind, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L356)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L356)
 
 <a id="function-function-mq3-game-entities-picktarget-function-picktarget-level-name-src-mq3-game-entities-ml-1662904713"></a>
 ### pickTarget
@@ -200,7 +200,7 @@ function pickTarget(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L471)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L471)
 
 <a id="function-function-mq3-game-entities-random-function-random-level-src-mq3-game-entities-ml-1367170630"></a>
 ### random
@@ -214,7 +214,7 @@ function random(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L466)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L466)
 
 <a id="function-function-mq3-game-entities-resetclient-function-resetclient-client-src-mq3-game-entities-ml-1828809041"></a>
 ### resetClient
@@ -228,7 +228,7 @@ function resetClient(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L308)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L308)
 
 <a id="function-function-mq3-game-entities-runthink-function-runthink-level-ent-src-mq3-game-entities-ml-1129061705"></a>
 ### runThink
@@ -243,7 +243,7 @@ function runThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L423)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L423)
 
 <a id="function-function-mq3-game-entities-setorigin-function-setorigin-ent-origin-src-mq3-game-entities-ml-2031111583"></a>
 ### setOrigin
@@ -258,7 +258,7 @@ function setOrigin(ent, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L431)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L431)
 
 <a id="function-function-mq3-game-entities-spawn-function-spawn-level-src-mq3-game-entities-ml-1994161584"></a>
 ### spawn
@@ -272,7 +272,7 @@ function spawn(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L364)
 
 <a id="function-function-mq3-game-entities-syncspatial-function-syncspatial-ent-src-mq3-game-entities-ml-1744366203"></a>
 ### syncSpatial
@@ -286,7 +286,7 @@ function syncSpatial(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L386)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L386)
 
 <a id="function-function-mq3-game-entities-tempentity-function-tempentity-level-origin-event-src-mq3-game-entities-ml-471646302"></a>
 ### tempEntity
@@ -302,7 +302,7 @@ function tempEntity(level, origin, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L460)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L460)
 
 <a id="function-function-mq3-game-entities-unlink-function-unlink-level-ent-src-mq3-game-entities-ml-272856193"></a>
 ### unlink
@@ -317,7 +317,7 @@ function unlink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L396)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L396)
 
 <a id="function-function-mq3-game-entities-vtos-function-vtos-level-vector-src-mq3-game-entities-ml-642816193"></a>
 ### vtos
@@ -332,4 +332,4 @@ function vtos(level, vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entities.ml#L449)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entities.ml#L449)

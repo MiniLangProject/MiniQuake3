@@ -10,7 +10,7 @@ struct EntityInput
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ oldOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-origin-origin-src-mq3-renderer-tr-surface-runtime-ml-1078997134"></a>
 ### origin
@@ -32,7 +32,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-radius-radius-src-mq3-renderer-tr-surface-runtime-ml-1805374150"></a>
 ### radius
@@ -42,7 +42,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-retype-retype-src-mq3-renderer-tr-surface-runtime-ml-362135780"></a>
 ### reType
@@ -52,7 +52,7 @@ reType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-rotation-rotation-src-mq3-renderer-tr-surface-runtime-ml-1532368622"></a>
 ### rotation
@@ -62,7 +62,7 @@ rotation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-entityinput-shaderrgba-shaderrgba-src-mq3-renderer-tr-surface-runtime-ml-173030192"></a>
 ### shaderRGBA
@@ -72,4 +72,4 @@ shaderRGBA
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L27)

@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L22)
 
 <a id="field-field-mq3-qcommon-netchan-runtime-qport-qport-src-mq3-qcommon-netchan-ml-2102493835"></a>
 ### qport
@@ -32,7 +32,7 @@ qport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L20)
 
 <a id="field-field-mq3-qcommon-netchan-runtime-sendpacketfn-sendpacketfn-src-mq3-qcommon-netchan-ml-209053175"></a>
 ### sendPacketFn
@@ -42,4 +42,4 @@ sendPacketFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L21)

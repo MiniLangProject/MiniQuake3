@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 ## Members
 
@@ -22,7 +22,7 @@ calls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-driver-driver-src-mq3-platform-win-qgl-runtime-ml-300290186"></a>
 ### driver
@@ -32,7 +32,7 @@ driver
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-loaded-loaded-src-mq3-platform-win-qgl-runtime-ml-605543988"></a>
 ### loaded
@@ -42,7 +42,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logcounter-logcounter-src-mq3-platform-win-qgl-runtime-ml-145709498"></a>
 ### logCounter
@@ -52,7 +52,7 @@ logCounter
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logging-logging-src-mq3-platform-win-qgl-runtime-ml-730964546"></a>
 ### logging
@@ -62,7 +62,7 @@ logging
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-loglines-loglines-src-mq3-platform-win-qgl-runtime-ml-794003488"></a>
 ### logLines
@@ -72,7 +72,7 @@ logLines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)
 
 <a id="field-field-mq3-platform-win-qgl-runtime-state-logopen-logopen-src-mq3-platform-win-qgl-runtime-ml-315071282"></a>
 ### logOpen
@@ -82,4 +82,4 @@ logOpen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_qgl_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_qgl_runtime.ml#L54)

@@ -10,7 +10,7 @@ struct Node
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L122)
 
 ## Members
 
@@ -22,7 +22,7 @@ children
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L122)
 
 <a id="field-field-mq3-format-aas-node-planenum-planenum-src-mq3-format-aas-ml-1835606593"></a>
 ### planeNum
@@ -32,4 +32,4 @@ planeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L122)

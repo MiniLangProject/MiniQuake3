@@ -10,7 +10,7 @@ struct Queue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ commandList
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-queue-commands-commands-src-mq3-renderer-command-queue-ml-1972046374"></a>
 ### commands
@@ -32,7 +32,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-queue-registered-registered-src-mq3-renderer-command-queue-ml-20677730"></a>
 ### registered
@@ -42,7 +42,7 @@ registered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-queue-shadercontext-shadercontext-src-mq3-renderer-command-queue-ml-553993838"></a>
 ### shaderContext
@@ -52,7 +52,7 @@ shaderContext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-queue-shaderfn-shaderfn-src-mq3-renderer-command-queue-ml-239590740"></a>
 ### shaderFn
@@ -62,7 +62,7 @@ shaderFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)
 
 <a id="field-field-mq3-renderer-command-queue-queue-used-used-src-mq3-renderer-command-queue-ml-707292272"></a>
 ### used
@@ -72,4 +72,4 @@ used
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/command_queue.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/command_queue.ml#L24)

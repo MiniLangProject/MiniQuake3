@@ -35,7 +35,7 @@ aas_areainfo_t in the pinned Baseq3 be_aas.h contains four ints followed by mins
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L33)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bboxareas-function-bboxareas-runtime-vm-minsaddress-maxsaddress-areasaddress-maximum-src-mq3-botlib-aas-syscalls-ml-2003160277"></a>
 ### bboxAreas
@@ -54,7 +54,7 @@ function bboxAreas(runtime, vm, minsAddress, maxsAddress, areasAddress, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L19)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bspfloat-function-bspfloat-entities-vm-base-src-mq3-botlib-aas-syscalls-ml-1887293831"></a>
 ### bspFloat
@@ -70,7 +70,7 @@ function bspFloat(entities, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L70)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bspint-function-bspint-entities-vm-base-src-mq3-botlib-aas-syscalls-ml-1244771343"></a>
 ### bspInt
@@ -86,7 +86,7 @@ function bspInt(entities, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L74)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bspstring-function-bspstring-entities-vm-base-src-mq3-botlib-aas-syscalls-ml-1268428919"></a>
 ### bspString
@@ -102,7 +102,7 @@ function bspString(entities, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L59)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bspvalue-function-bspvalue-entities-entity-key-src-mq3-botlib-aas-syscalls-ml-155645431"></a>
 ### bspValue
@@ -118,7 +118,7 @@ function bspValue(entities, entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L56)
 
 <a id="function-function-mq3-botlib-aas-syscalls-bspvector-function-bspvector-entities-vm-base-src-mq3-botlib-aas-syscalls-ml-58488935"></a>
 ### bspVector
@@ -134,7 +134,7 @@ function bspVector(entities, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L65)
 
 <a id="function-function-mq3-botlib-aas-syscalls-dispatch-function-dispatch-runtime-router-entities-vm-base-op-src-mq3-botlib-aas-syscalls-ml-326814161"></a>
 ### dispatch
@@ -153,7 +153,7 @@ function dispatch(runtime, router, entities, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L96)
 
 <a id="function-function-mq3-botlib-aas-syscalls-dispatchcached-function-dispatchcached-runtime-router-routecache-entities-vm-base-op-src-mq3-botlib-aas-syscalls-ml-129273396"></a>
 ### dispatchCached
@@ -173,7 +173,7 @@ function dispatchCached(runtime, router, routeCache, entities, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L79)
 
 <a id="function-function-mq3-botlib-aas-syscalls-entitystate-function-entitystate-entities-src-mq3-botlib-aas-syscalls-ml-1085236867"></a>
 ### entityState
@@ -187,7 +187,7 @@ function entityState(entities)
 | `entities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L54)
 
 <a id="function-function-mq3-botlib-aas-syscalls-nextbspentity-function-nextbspentity-entities-current-src-mq3-botlib-aas-syscalls-ml-1108385734"></a>
 ### nextBspEntity
@@ -202,7 +202,7 @@ function nextBspEntity(entities, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L55)
 
 <a id="function-function-mq3-botlib-aas-syscalls-pointareanum-function-pointareanum-runtime-vm-address-src-mq3-botlib-aas-syscalls-ml-755793999"></a>
 ### pointAreaNum
@@ -218,7 +218,7 @@ function pointAreaNum(runtime, vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L49)
 
 <a id="function-function-mq3-botlib-aas-syscalls-presencetypeboundingbox-function-presencetypeboundingbox-vm-presencetype-minsaddress-maxsaddress-src-mq3-botlib-aas-syscalls-ml-883719276"></a>
 ### presenceTypeBoundingBox
@@ -235,7 +235,7 @@ function presenceTypeBoundingBox(vm, presenceType, minsAddress, maxsAddress)
 | `maxsAddress` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L42)
 
 <a id="function-function-mq3-botlib-aas-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-aas-syscalls-ml-1798033401"></a>
 ### writeVector
@@ -251,4 +251,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_syscalls.ml#L14)

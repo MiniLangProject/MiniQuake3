@@ -27,7 +27,7 @@ function activeCount(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L194)
 
 <a id="constant-constant-mq3-client-playable-items-ammo-cap-const-ammo-cap-200-src-mq3-client-playable-items-ml-134725023"></a>
 ### AMMO_CAP
@@ -37,7 +37,7 @@ const AMMO_CAP = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-items-armor-cap-const-armor-cap-200-src-mq3-client-playable-items-ml-794753919"></a>
 ### ARMOR_CAP
@@ -47,7 +47,7 @@ const ARMOR_CAP = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L13)
 
 <a id="function-function-mq3-client-playable-items-cantake-function-cantake-item-stats-src-mq3-client-playable-items-ml-399150444"></a>
 ### canTake
@@ -62,7 +62,7 @@ function canTake(item, stats)
 | `stats` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L96)
 
 <a id="function-function-mq3-client-playable-items-cantakeinventory-function-cantakeinventory-item-stats-inventory-src-mq3-client-playable-items-ml-2033689450"></a>
 ### canTakeInventory
@@ -80,17 +80,17 @@ The integrated preview keeps Baseq3's independent ammo pools.  The legacy aggreg
 | `inventory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L106)
 
-<a id="constant-constant-mq3-client-playable-items-default-pickup-radius-const-default-pickup-radius-42-src-mq3-client-playable-items-ml-1468375713"></a>
+<a id="constant-constant-mq3-client-playable-items-default-pickup-radius-const-default-pickup-radius-42-src-mq3-client-playable-items-ml-243410395"></a>
 ### DEFAULT_PICKUP_RADIUS
 
 ```ml
-const DEFAULT_PICKUP_RADIUS = 42.
+const DEFAULT_PICKUP_RADIUS = 42
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L10)
 
 <a id="function-function-mq3-client-playable-items-definition-function-definition-classname-src-mq3-client-playable-items-ml-1149955667"></a>
 ### definition
@@ -106,7 +106,7 @@ function definition(classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L33)
 
 <a id="function-function-mq3-client-playable-items-distancesquared-function-distancesquared-a-b-src-mq3-client-playable-items-ml-156251467"></a>
 ### distanceSquared
@@ -121,7 +121,7 @@ function distanceSquared(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L121)
 
 <a id="function-function-mq3-client-playable-items-fail-function-fail-message-src-mq3-client-playable-items-ml-1097930527"></a>
 ### fail
@@ -135,7 +135,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L21)
 
 <a id="function-function-mq3-client-playable-items-field-function-field-fields-key-src-mq3-client-playable-items-ml-1212252796"></a>
 ### field
@@ -150,7 +150,7 @@ function field(fields, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L23)
 
 <a id="function-function-mq3-client-playable-items-fromentities-function-fromentities-entities-pickupradius-src-mq3-client-playable-items-ml-2106058625"></a>
 ### fromEntities
@@ -165,7 +165,7 @@ function fromEntities(entities, pickupRadius)
 | `pickupRadius` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L68)
 
 <a id="constant-constant-mq3-client-playable-items-health-normal-cap-const-health-normal-cap-100-src-mq3-client-playable-items-ml-1151679916"></a>
 ### HEALTH_NORMAL_CAP
@@ -175,7 +175,7 @@ const HEALTH_NORMAL_CAP = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-items-health-overmax-cap-const-health-overmax-cap-200-src-mq3-client-playable-items-ml-856994197"></a>
 ### HEALTH_OVERMAX_CAP
@@ -185,7 +185,7 @@ const HEALTH_OVERMAX_CAP = 200
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L12)
 
 - [mq3.client.playable_items.Item](Type-mq3-client-playable-items-item-1445328517.md) — struct
 <a id="function-function-mq3-client-playable-items-load-function-load-map-src-mq3-client-playable-items-ml-1175186094"></a>
@@ -200,7 +200,7 @@ function load(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L81)
 
 - [mq3.client.playable_items.Pickup](Type-mq3-client-playable-items-pickup-1925681042.md) — struct
 <a id="function-function-mq3-client-playable-items-setstats-function-setstats-state-health-armor-ammo-weapon-src-mq3-client-playable-items-ml-1043651740"></a>
@@ -219,7 +219,7 @@ function setStats(state, health, armor, ammo, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L86)
 
 - [mq3.client.playable_items.State](Type-mq3-client-playable-items-state-1444940859.md) — struct
 - [mq3.client.playable_items.Stats](Type-mq3-client-playable-items-stats-1277164669.md) — struct
@@ -237,7 +237,7 @@ function take(state, index, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L126)
 
 <a id="function-function-mq3-client-playable-items-takeinventory-function-takeinventory-state-index-now-inventory-teammode-src-mq3-client-playable-items-ml-918499855"></a>
 ### takeInventory
@@ -255,7 +255,7 @@ function takeInventory(state, index, now, inventory, teamMode)
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L152)
 
 <a id="function-function-mq3-client-playable-items-update-function-update-state-playerposition-now-src-mq3-client-playable-items-ml-88296977"></a>
 ### update
@@ -271,7 +271,7 @@ function update(state, playerPosition, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L138)
 
 <a id="function-function-mq3-client-playable-items-updateinventory-function-updateinventory-state-playerposition-now-inventory-teammode-src-mq3-client-playable-items-ml-1247885667"></a>
 ### updateInventory
@@ -289,4 +289,4 @@ function updateInventory(state, playerPosition, now, inventory, teamMode)
 | `teamMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_items.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_items.ml#L179)

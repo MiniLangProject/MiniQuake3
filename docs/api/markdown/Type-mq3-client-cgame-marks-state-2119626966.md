@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-active-active-src-mq3-client-cgame-marks-ml-521683874"></a>
 ### active
@@ -32,7 +32,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-addmarks-addmarks-src-mq3-client-cgame-marks-ml-1097514932"></a>
 ### addMarks
@@ -42,7 +42,7 @@ addMarks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-allocated-allocated-src-mq3-client-cgame-marks-ml-1723171478"></a>
 ### allocated
@@ -52,7 +52,7 @@ allocated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-capacity-capacity-src-mq3-client-cgame-marks-ml-1047802254"></a>
 ### capacity
@@ -62,7 +62,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-energymarkshader-energymarkshader-src-mq3-client-cgame-marks-ml-1535982730"></a>
 ### energyMarkShader
@@ -72,7 +72,7 @@ energyMarkShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-errors-errors-src-mq3-client-cgame-marks-ml-1343067960"></a>
 ### errors
@@ -82,7 +82,7 @@ errors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-evicted-evicted-src-mq3-client-cgame-marks-ml-421953842"></a>
 ### evicted
@@ -92,7 +92,7 @@ evicted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-free-free-src-mq3-client-cgame-marks-ml-641146602"></a>
 ### free
@@ -102,7 +102,7 @@ free
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-freed-freed-src-mq3-client-cgame-marks-ml-1816184130"></a>
 ### freed
@@ -112,7 +112,7 @@ freed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-marks-marks-src-mq3-client-cgame-marks-ml-1748540354"></a>
 ### marks
@@ -122,7 +122,7 @@ marks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-projected-projected-src-mq3-client-cgame-marks-ml-961226298"></a>
 ### projected
@@ -132,7 +132,7 @@ projected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-rendered-rendered-src-mq3-client-cgame-marks-ml-79730036"></a>
 ### rendered
@@ -142,7 +142,7 @@ rendered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-retailactive-retailactive-src-mq3-client-cgame-marks-ml-894753148"></a>
 ### retailActive
@@ -152,7 +152,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-suppressed-suppressed-src-mq3-client-cgame-marks-ml-1811456626"></a>
 ### suppressed
@@ -162,7 +162,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)
 
 <a id="field-field-mq3-client-cgame-marks-state-time-time-src-mq3-client-cgame-marks-ml-954579484"></a>
 ### time
@@ -172,4 +172,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_marks.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_marks.ml#L28)

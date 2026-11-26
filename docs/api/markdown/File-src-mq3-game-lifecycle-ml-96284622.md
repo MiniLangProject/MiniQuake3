@@ -50,7 +50,7 @@ function attach(level, buildDate)
 | `buildDate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L319)
 
 <a id="function-function-mq3-game-lifecycle-checkbotspawn-function-checkbotspawn-level-src-mq3-game-lifecycle-ml-5910352"></a>
 ### checkBotSpawn
@@ -64,7 +64,7 @@ function checkBotSpawn(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L198)
 
 <a id="function-function-mq3-game-lifecycle-clearclients-function-clearclients-level-src-mq3-game-lifecycle-ml-457563868"></a>
 ### clearClients
@@ -78,7 +78,7 @@ function clearClients(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L313)
 
 <a id="function-function-mq3-game-lifecycle-clearentities-function-clearentities-level-src-mq3-game-lifecycle-ml-102269176"></a>
 ### clearEntities
@@ -92,7 +92,7 @@ function clearEntities(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L221)
 
 <a id="function-function-mq3-game-lifecycle-clearlevel-function-clearlevel-level-src-mq3-game-lifecycle-ml-102405576"></a>
 ### clearLevel
@@ -106,7 +106,7 @@ function clearLevel(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L201)
 
 <a id="function-function-mq3-game-lifecycle-cvareffect-function-cvareffect-cvarstate-kind-index-key-value-src-mq3-game-lifecycle-ml-1313783875"></a>
 ### cvarEffect
@@ -124,7 +124,7 @@ function cvarEffect(cvarState, kind, index, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L83)
 
 <a id="function-function-mq3-game-lifecycle-defaultbotconnect-function-defaultbotconnect-level-slot-restart-src-mq3-game-lifecycle-ml-991028081"></a>
 ### defaultBotConnect
@@ -140,7 +140,7 @@ function defaultBotConnect(level, slot, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L187)
 
 <a id="function-function-mq3-game-lifecycle-defaultbotshutdownclient-function-defaultbotshutdownclient-level-slot-restart-src-mq3-game-lifecycle-ml-1347082285"></a>
 ### defaultBotShutdownClient
@@ -156,7 +156,7 @@ function defaultBotShutdownClient(level, slot, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L193)
 
 <a id="function-function-mq3-game-lifecycle-defaultinitbots-function-defaultinitbots-level-restart-src-mq3-game-lifecycle-ml-1050292139"></a>
 ### defaultInitBots
@@ -171,7 +171,7 @@ function defaultInitBots(level, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L169)
 
 <a id="function-function-mq3-game-lifecycle-defaultremovequeuedbotbegin-function-defaultremovequeuedbotbegin-level-slot-src-mq3-game-lifecycle-ml-925625176"></a>
 ### defaultRemoveQueuedBotBegin
@@ -186,7 +186,7 @@ function defaultRemoveQueuedBotBegin(level, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L190)
 
 <a id="function-function-mq3-game-lifecycle-entityobserve-function-entityobserve-level-kind-ent-src-mq3-game-lifecycle-ml-2140878675"></a>
 ### entityObserve
@@ -202,7 +202,7 @@ function entityObserve(level, kind, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L95)
 
 <a id="function-function-mq3-game-lifecycle-gameprint-function-gameprint-level-text-src-mq3-game-lifecycle-ml-827805307"></a>
 ### gamePrint
@@ -217,7 +217,7 @@ function gamePrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L65)
 
 <a id="function-function-mq3-game-lifecycle-get-function-get-level-src-mq3-game-lifecycle-ml-1450409996"></a>
 ### get
@@ -231,7 +231,7 @@ function get(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L56)
 
 <a id="function-function-mq3-game-lifecycle-init-function-init-level-leveltime-randomseed-restart-entitytext-src-mq3-game-lifecycle-ml-1486170376"></a>
 ### init
@@ -249,7 +249,7 @@ function init(level, levelTime, randomSeed, restart, entityText)
 | `entityText` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L361)
 
 <a id="function-function-mq3-game-lifecycle-integervalue-function-integervalue-level-name-src-mq3-game-lifecycle-ml-1376039701"></a>
 ### integerValue
@@ -264,7 +264,7 @@ function integerValue(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L76)
 
 <a id="function-function-mq3-game-lifecycle-populationaddcommand-function-populationaddcommand-level-argv-src-mq3-game-lifecycle-ml-2112799042"></a>
 ### populationAddCommand
@@ -279,7 +279,7 @@ function populationAddCommand(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L159)
 
 <a id="function-function-mq3-game-lifecycle-populationallocate-function-populationallocate-level-src-mq3-game-lifecycle-ml-394985472"></a>
 ### populationAllocate
@@ -293,7 +293,7 @@ function populationAllocate(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L154)
 
 <a id="function-function-mq3-game-lifecycle-populationconnect-function-populationconnect-level-slot-firsttime-isbot-src-mq3-game-lifecycle-ml-1127824582"></a>
 ### populationConnect
@@ -310,7 +310,7 @@ function populationConnect(level, slot, firstTime, isBot)
 | `isBot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L151)
 
 <a id="function-function-mq3-game-lifecycle-populationconsole-function-populationconsole-level-mode-text-src-mq3-game-lifecycle-ml-1842504268"></a>
 ### populationConsole
@@ -326,7 +326,7 @@ function populationConsole(level, mode, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L135)
 
 <a id="function-function-mq3-game-lifecycle-populationcvarset-function-populationcvarset-level-key-value-src-mq3-game-lifecycle-ml-422911226"></a>
 ### populationCvarSet
@@ -342,7 +342,7 @@ function populationCvarSet(level, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L143)
 
 <a id="function-function-mq3-game-lifecycle-populationlistcommand-function-populationlistcommand-level-argv-src-mq3-game-lifecycle-ml-1873204558"></a>
 ### populationListCommand
@@ -357,7 +357,7 @@ function populationListCommand(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L166)
 
 <a id="function-function-mq3-game-lifecycle-populationminimum-function-populationminimum-level-src-mq3-game-lifecycle-ml-1735572222"></a>
 ### populationMinimum
@@ -371,7 +371,7 @@ function populationMinimum(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L129)
 
 <a id="function-function-mq3-game-lifecycle-populationprint-function-populationprint-level-text-src-mq3-game-lifecycle-ml-1013114725"></a>
 ### populationPrint
@@ -386,7 +386,7 @@ function populationPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L132)
 
 <a id="function-function-mq3-game-lifecycle-populationserver-function-populationserver-level-slot-text-src-mq3-game-lifecycle-ml-895866421"></a>
 ### populationServer
@@ -402,7 +402,7 @@ function populationServer(level, slot, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L139)
 
 <a id="function-function-mq3-game-lifecycle-populationsetuserinfo-function-populationsetuserinfo-level-slot-value-src-mq3-game-lifecycle-ml-1553682655"></a>
 ### populationSetUserinfo
@@ -418,7 +418,7 @@ function populationSetUserinfo(level, slot, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L147)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotbegin-function-queuedbotbegin-level-slot-src-mq3-game-lifecycle-ml-1405605288"></a>
 ### queuedBotBegin
@@ -433,7 +433,7 @@ function queuedBotBegin(level, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L111)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotdrop-function-queuedbotdrop-level-slot-message-src-mq3-game-lifecycle-ml-946538783"></a>
 ### queuedBotDrop
@@ -449,7 +449,7 @@ function queuedBotDrop(level, slot, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L115)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotprint-function-queuedbotprint-level-text-src-mq3-game-lifecycle-ml-270359101"></a>
 ### queuedBotPrint
@@ -464,7 +464,7 @@ function queuedBotPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L119)
 
 <a id="function-function-mq3-game-lifecycle-queuedbotuserinfo-function-queuedbotuserinfo-level-slot-src-mq3-game-lifecycle-ml-786508046"></a>
 ### queuedBotUserinfo
@@ -479,7 +479,7 @@ function queuedBotUserinfo(level, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L107)
 
 <a id="function-function-mq3-game-lifecycle-registryprint-function-registryprint-level-text-src-mq3-game-lifecycle-ml-1889840205"></a>
 ### registryPrint
@@ -494,7 +494,7 @@ function registryPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L104)
 
 <a id="function-function-mq3-game-lifecycle-resourcebotsetup-function-resourcebotsetup-level-slot-settings-restart-src-mq3-game-lifecycle-ml-906963812"></a>
 ### resourceBotSetup
@@ -511,7 +511,7 @@ function resourceBotSetup(level, slot, settings, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L122)
 
 <a id="function-function-mq3-game-lifecycle-resourcebotshutdown-function-resourcebotshutdown-state-slot-restart-src-mq3-game-lifecycle-ml-2053185676"></a>
 ### resourceBotShutdown
@@ -527,7 +527,7 @@ function resourceBotShutdown(state, slot, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L125)
 
 <a id="function-function-mq3-game-lifecycle-shutdown-function-shutdown-level-restart-src-mq3-game-lifecycle-ml-405171057"></a>
 ### shutdown
@@ -542,7 +542,7 @@ function shutdown(level, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L419)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L419)
 
 <a id="function-function-mq3-game-lifecycle-spawneffect-function-spawneffect-spawner-kind-index-key-value-src-mq3-game-lifecycle-ml-1787822708"></a>
 ### spawnEffect
@@ -560,7 +560,7 @@ function spawnEffect(spawner, kind, index, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L89)
 
 <a id="function-function-mq3-game-lifecycle-startbotframe-function-startbotframe-level-time-src-mq3-game-lifecycle-ml-239923783"></a>
 ### startBotFrame
@@ -575,7 +575,7 @@ function startBotFrame(level, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L60)
 
 - [mq3.game.lifecycle.State](Type-mq3-game-lifecycle-state-475950533.md) — struct
 <a id="function-function-mq3-game-lifecycle-vm-function-vm-level-name-src-mq3-game-lifecycle-ml-1701472661"></a>
@@ -591,4 +591,4 @@ function vm(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/lifecycle.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/lifecycle.ml#L70)

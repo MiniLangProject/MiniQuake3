@@ -36,7 +36,7 @@ function AddRemap(level, oldShader, newShader, timeOffset)
 | `timeOffset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L61)
 
 <a id="function-function-mq3-game-g-utils-buildshaderstateconfig-function-buildshaderstateconfig-level-src-mq3-game-g-utils-ml-2062757494"></a>
 ### BuildShaderStateConfig
@@ -50,7 +50,7 @@ function BuildShaderStateConfig(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L65)
 
 <a id="function-function-mq3-game-g-utils-debugline-function-debugline-start-finish-color-createfn-context-src-mq3-game-g-utils-ml-972891297"></a>
 ### DebugLine
@@ -68,7 +68,7 @@ function DebugLine(start, finish, color, createFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L198)
 
 <a id="function-function-mq3-game-g-utils-g-addevent-function-g-addevent-level-ent-event-eventparm-src-mq3-game-g-utils-ml-1929994329"></a>
 ### G_AddEvent
@@ -85,7 +85,7 @@ function G_AddEvent(level, ent, event, eventParm)
 | `eventParm` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L182)
 
 <a id="function-function-mq3-game-g-utils-g-addpredictableevent-function-g-addpredictableevent-level-ent-event-eventparm-src-mq3-game-g-utils-ml-861888125"></a>
 ### G_AddPredictableEvent
@@ -102,7 +102,7 @@ function G_AddPredictableEvent(level, ent, event, eventParm)
 | `eventParm` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L174)
 
 <a id="function-function-mq3-game-g-utils-g-entitiesfree-function-g-entitiesfree-level-src-mq3-game-g-utils-ml-1604907658"></a>
 ### G_EntitiesFree
@@ -116,7 +116,7 @@ function G_EntitiesFree(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L158)
 
 <a id="function-function-mq3-game-g-utils-g-find-function-g-find-level-cursor-field-match-src-mq3-game-g-utils-ml-2080849275"></a>
 ### G_Find
@@ -133,7 +133,7 @@ function G_Find(level, cursor, field, match)
 | `match` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L101)
 
 <a id="function-function-mq3-game-g-utils-g-findconfigstringindex-function-g-findconfigstringindex-level-name-start-max-create-src-mq3-game-g-utils-ml-1675771825"></a>
 ### G_FindConfigstringIndex
@@ -151,7 +151,7 @@ function G_FindConfigstringIndex(level, name, start, max, create)
 | `create` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L69)
 
 <a id="function-function-mq3-game-g-utils-g-freeentity-function-g-freeentity-level-ent-src-mq3-game-g-utils-ml-1721762751"></a>
 ### G_FreeEntity
@@ -166,7 +166,7 @@ function G_FreeEntity(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L162)
 
 <a id="function-function-mq3-game-g-utils-g-initgentity-function-g-initgentity-ent-src-mq3-game-g-utils-ml-1722090267"></a>
 ### G_InitGentity
@@ -180,7 +180,7 @@ function G_InitGentity(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L150)
 
 <a id="function-function-mq3-game-g-utils-g-killbox-function-g-killbox-level-ent-src-mq3-game-g-utils-ml-1783476369"></a>
 ### G_KillBox
@@ -195,7 +195,7 @@ function G_KillBox(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L170)
 
 <a id="function-function-mq3-game-g-utils-g-modelindex-function-g-modelindex-level-name-src-mq3-game-g-utils-ml-2132885939"></a>
 ### G_ModelIndex
@@ -210,7 +210,7 @@ function G_ModelIndex(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L73)
 
 <a id="function-function-mq3-game-g-utils-g-picktarget-function-g-picktarget-level-targetname-src-mq3-game-g-utils-ml-84911592"></a>
 ### G_PickTarget
@@ -225,7 +225,7 @@ function G_PickTarget(level, targetname)
 | `targetname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L114)
 
 <a id="function-function-mq3-game-g-utils-g-setmovedir-function-g-setmovedir-angles-movedir-src-mq3-game-g-utils-ml-880358044"></a>
 ### G_SetMovedir
@@ -240,7 +240,7 @@ function G_SetMovedir(angles, movedir)
 | `movedir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L132)
 
 <a id="function-function-mq3-game-g-utils-g-setorigin-function-g-setorigin-ent-origin-src-mq3-game-g-utils-ml-282054333"></a>
 ### G_SetOrigin
@@ -255,7 +255,7 @@ function G_SetOrigin(ent, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L194)
 
 <a id="function-function-mq3-game-g-utils-g-sound-function-g-sound-level-ent-channel-soundindex-src-mq3-game-g-utils-ml-17020299"></a>
 ### G_Sound
@@ -272,7 +272,7 @@ function G_Sound(level, ent, channel, soundIndex)
 | `soundIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L190)
 
 <a id="function-function-mq3-game-g-utils-g-soundindex-function-g-soundindex-level-name-src-mq3-game-g-utils-ml-1386850935"></a>
 ### G_SoundIndex
@@ -287,7 +287,7 @@ function G_SoundIndex(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L77)
 
 <a id="function-function-mq3-game-g-utils-g-spawn-function-g-spawn-level-src-mq3-game-g-utils-ml-488110004"></a>
 ### G_Spawn
@@ -301,7 +301,7 @@ function G_Spawn(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L154)
 
 <a id="function-function-mq3-game-g-utils-g-teamcommand-function-g-teamcommand-level-team-cmd-src-mq3-game-g-utils-ml-591989161"></a>
 ### G_TeamCommand
@@ -317,7 +317,7 @@ function G_TeamCommand(level, team, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L81)
 
 <a id="function-function-mq3-game-g-utils-g-tempentity-function-g-tempentity-level-origin-event-src-mq3-game-g-utils-ml-353618446"></a>
 ### G_TempEntity
@@ -333,7 +333,7 @@ function G_TempEntity(level, origin, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L166)
 
 <a id="function-function-mq3-game-g-utils-g-usetargets-function-g-usetargets-level-ent-activator-src-mq3-game-g-utils-ml-208348862"></a>
 ### G_UseTargets
@@ -349,7 +349,7 @@ function G_UseTargets(level, ent, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L118)
 
 <a id="constant-constant-mq3-game-g-utils-maxchoices-const-maxchoices-32-src-mq3-game-g-utils-ml-649767850"></a>
 ### MAXCHOICES
@@ -359,7 +359,7 @@ const MAXCHOICES = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L17)
 
 <a id="function-function-mq3-game-g-utils-namesequal-function-namesequal-first-second-src-mq3-game-g-utils-ml-1677218458"></a>
 ### namesEqual
@@ -374,7 +374,7 @@ function namesEqual(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L29)
 
 <a id="function-function-mq3-game-g-utils-nativetext-function-nativetext-text-src-mq3-game-g-utils-ml-2005247959"></a>
 ### nativeText
@@ -388,7 +388,7 @@ function nativeText(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L19)
 
 <a id="function-function-mq3-game-g-utils-stringfield-function-stringfield-ent-field-src-mq3-game-g-utils-ml-1903649065"></a>
 ### stringField
@@ -403,7 +403,7 @@ function stringField(ent, field)
 | `field` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L46)
 
 <a id="function-function-mq3-game-g-utils-tv-function-tv-x-y-z-src-mq3-game-g-utils-ml-1046810685"></a>
 ### tv
@@ -419,7 +419,7 @@ function tv(x, y, z)
 | `z` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L122)
 
 <a id="function-function-mq3-game-g-utils-vectoyaw-function-vectoyaw-vector-src-mq3-game-g-utils-ml-1205583111"></a>
 ### vectoyaw
@@ -433,7 +433,7 @@ function vectoyaw(vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L140)
 
 <a id="function-function-mq3-game-g-utils-vtos-function-vtos-level-vector-src-mq3-game-g-utils-ml-959688515"></a>
 ### vtos
@@ -448,4 +448,4 @@ function vtos(level, vector)
 | `vector` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_utils.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_utils.ml#L128)

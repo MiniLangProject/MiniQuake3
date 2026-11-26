@@ -10,7 +10,7 @@ struct ConnectionHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ socket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)
 
 <a id="field-field-mq3-client-remote-play-connectionhost-userinfo-userinfo-src-mq3-client-remote-play-ml-320764781"></a>
 ### userinfo
@@ -32,4 +32,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_play.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_play.ml#L27)

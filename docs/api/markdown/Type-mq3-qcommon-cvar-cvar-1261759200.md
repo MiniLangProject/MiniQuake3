@@ -10,7 +10,7 @@ struct Cvar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L33)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-index-index-src-mq3-qcommon-cvar-ml-2010041057"></a>
 ### index
@@ -32,7 +32,7 @@ index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L38)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-integer-integer-src-mq3-qcommon-cvar-ml-521015005"></a>
 ### integer
@@ -42,7 +42,7 @@ integer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L37)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-latchedstring-latchedstring-src-mq3-qcommon-cvar-ml-1472554509"></a>
 ### latchedString
@@ -52,7 +52,7 @@ latchedString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L32)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-modificationcount-modificationcount-src-mq3-qcommon-cvar-ml-273074089"></a>
 ### modificationCount
@@ -62,7 +62,7 @@ modificationCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L35)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-modified-modified-src-mq3-qcommon-cvar-ml-272585063"></a>
 ### modified
@@ -72,7 +72,7 @@ modified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L34)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-name-name-src-mq3-qcommon-cvar-ml-345636179"></a>
 ### name
@@ -82,7 +82,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L29)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-resetstring-resetstring-src-mq3-qcommon-cvar-ml-1144336925"></a>
 ### resetString
@@ -92,7 +92,7 @@ resetString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L31)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-string-string-src-mq3-qcommon-cvar-ml-1765362815"></a>
 ### string
@@ -102,7 +102,7 @@ string
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L30)
 
 <a id="field-field-mq3-qcommon-cvar-cvar-value-value-src-mq3-qcommon-cvar-ml-287049001"></a>
 ### value
@@ -112,4 +112,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/cvar.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/cvar.ml#L36)

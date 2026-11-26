@@ -10,7 +10,7 @@ struct Node
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ code
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L10)
 
 <a id="field-field-mq3-qcommon-huffman-node-head-head-src-mq3-qcommon-huffman-ml-2002769213"></a>
 ### head
@@ -32,7 +32,7 @@ head
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L17)
 
 <a id="field-field-mq3-qcommon-huffman-node-left-left-src-mq3-qcommon-huffman-ml-57343603"></a>
 ### left
@@ -42,7 +42,7 @@ left
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L15)
 
 <a id="field-field-mq3-qcommon-huffman-node-next-next-src-mq3-qcommon-huffman-ml-1216785475"></a>
 ### next
@@ -52,7 +52,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L12)
 
 <a id="field-field-mq3-qcommon-huffman-node-parent-parent-src-mq3-qcommon-huffman-ml-1770627737"></a>
 ### parent
@@ -62,7 +62,7 @@ parent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L14)
 
 <a id="field-field-mq3-qcommon-huffman-node-prev-prev-src-mq3-qcommon-huffman-ml-1617485275"></a>
 ### prev
@@ -72,7 +72,7 @@ prev
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L13)
 
 <a id="field-field-mq3-qcommon-huffman-node-right-right-src-mq3-qcommon-huffman-ml-745428569"></a>
 ### right
@@ -82,7 +82,7 @@ right
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L16)
 
 <a id="field-field-mq3-qcommon-huffman-node-weight-weight-src-mq3-qcommon-huffman-ml-937712713"></a>
 ### weight
@@ -92,4 +92,4 @@ weight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L11)

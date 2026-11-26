@@ -10,7 +10,7 @@ struct Postgame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-awardsearned-awardsearned-src-mq3-client-ui-sppostgame-ml-1578420611"></a>
 ### awardsEarned
@@ -32,7 +32,7 @@ awardsEarned
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-awardslevels-awardslevels-src-mq3-client-ui-sppostgame-ml-2020425907"></a>
 ### awardsLevels
@@ -42,7 +42,7 @@ awardsLevels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-clientnums-clientnums-src-mq3-client-ui-sppostgame-ml-1807693473"></a>
 ### clientNums
@@ -52,7 +52,7 @@ clientNums
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-commands-commands-src-mq3-client-ui-sppostgame-ml-412259513"></a>
 ### commands
@@ -62,7 +62,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-cvarwrites-cvarwrites-src-mq3-client-ui-sppostgame-ml-279152033"></a>
 ### cvarWrites
@@ -72,7 +72,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-demoversion-demoversion-src-mq3-client-ui-sppostgame-ml-1897116305"></a>
 ### demoVersion
@@ -82,7 +82,7 @@ demoVersion
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-drawrows-drawrows-src-mq3-client-ui-sppostgame-ml-1455998763"></a>
 ### drawRows
@@ -92,7 +92,7 @@ drawRows
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-game-game-src-mq3-client-ui-sppostgame-ml-280786757"></a>
 ### game
@@ -102,7 +102,7 @@ game
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-ignorekeystime-ignorekeystime-src-mq3-client-ui-sppostgame-ml-1664961527"></a>
 ### ignoreKeysTime
@@ -112,7 +112,7 @@ ignoreKeysTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-itemagain-itemagain-src-mq3-client-ui-sppostgame-ml-712810785"></a>
 ### itemAgain
@@ -122,7 +122,7 @@ itemAgain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-itemmenu-itemmenu-src-mq3-client-ui-sppostgame-ml-1663008029"></a>
 ### itemMenu
@@ -132,7 +132,7 @@ itemMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-itemnext-itemnext-src-mq3-client-ui-sppostgame-ml-975561349"></a>
 ### itemNext
@@ -142,7 +142,7 @@ itemNext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-keycatcher-keycatcher-src-mq3-client-ui-sppostgame-ml-2030429955"></a>
 ### keyCatcher
@@ -152,7 +152,7 @@ keyCatcher
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-lasttier-lasttier-src-mq3-client-ui-sppostgame-ml-1333149077"></a>
 ### lastTier
@@ -162,7 +162,7 @@ lastTier
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-level-level-src-mq3-client-ui-sppostgame-ml-108670517"></a>
 ### level
@@ -172,7 +172,7 @@ level
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-menu-menu-src-mq3-client-ui-sppostgame-ml-1347018591"></a>
 ### menu
@@ -182,7 +182,7 @@ menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-menudepthreset-menudepthreset-src-mq3-client-ui-sppostgame-ml-1130846143"></a>
 ### menuDepthReset
@@ -192,7 +192,7 @@ menuDepthReset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-numawards-numawards-src-mq3-client-ui-sppostgame-ml-1891749717"></a>
 ### numAwards
@@ -202,7 +202,7 @@ numAwards
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-numclients-numclients-src-mq3-client-ui-sppostgame-ml-613790261"></a>
 ### numClients
@@ -212,7 +212,7 @@ numClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-phase-phase-src-mq3-client-ui-sppostgame-ml-2055754053"></a>
 ### phase
@@ -222,7 +222,7 @@ phase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-placenames-placenames-src-mq3-client-ui-sppostgame-ml-1657903359"></a>
 ### placeNames
@@ -232,7 +232,7 @@ placeNames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-playedsound-playedsound-src-mq3-client-ui-sppostgame-ml-993430133"></a>
 ### playedSound
@@ -242,7 +242,7 @@ playedSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-playerconfigs-playerconfigs-src-mq3-client-ui-sppostgame-ml-962539473"></a>
 ### playerConfigs
@@ -252,7 +252,7 @@ playerConfigs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-popped-popped-src-mq3-client-ui-sppostgame-ml-1696272157"></a>
 ### popped
@@ -262,7 +262,7 @@ popped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-pushed-pushed-src-mq3-client-ui-sppostgame-ml-614577491"></a>
 ### pushed
@@ -272,7 +272,7 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-ranks-ranks-src-mq3-client-ui-sppostgame-ml-1712745853"></a>
 ### ranks
@@ -282,7 +282,7 @@ ranks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-scoreboardenabled-scoreboardenabled-src-mq3-client-ui-sppostgame-ml-268373549"></a>
 ### scoreboardEnabled
@@ -292,7 +292,7 @@ scoreboardEnabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-scoreboardtime-scoreboardtime-src-mq3-client-ui-sppostgame-ml-1175352899"></a>
 ### scoreboardtime
@@ -302,7 +302,7 @@ scoreboardtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-scores-scores-src-mq3-client-ui-sppostgame-ml-2094114099"></a>
 ### scores
@@ -312,7 +312,7 @@ scores
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-serverid-serverid-src-mq3-client-ui-sppostgame-ml-867689153"></a>
 ### serverId
@@ -322,7 +322,7 @@ serverId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-sounds-sounds-src-mq3-client-ui-sppostgame-ml-1076788645"></a>
 ### sounds
@@ -332,7 +332,7 @@ sounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-starts-starts-src-mq3-client-ui-sppostgame-ml-816358955"></a>
 ### starts
@@ -342,7 +342,7 @@ starts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-starttime-starttime-src-mq3-client-ui-sppostgame-ml-641083665"></a>
 ### starttime
@@ -352,7 +352,7 @@ starttime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-winnersound-winnersound-src-mq3-client-ui-sppostgame-ml-675772357"></a>
 ### winnerSound
@@ -362,7 +362,7 @@ winnerSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)
 
 <a id="field-field-mq3-client-ui-sppostgame-postgame-won-won-src-mq3-client-ui-sppostgame-ml-847630569"></a>
 ### won
@@ -372,4 +372,4 @@ won
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L26)

@@ -31,7 +31,7 @@ function blit2_32(buffer, width, height, x, y, pixels)
 | `pixels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L53)
 
 <a id="function-function-mq3-client-cl-cin-runtime-blit4-32-function-blit4-32-buffer-width-height-x-y-pixels-src-mq3-client-cl-cin-runtime-ml-566772815"></a>
 ### blit4_32
@@ -50,7 +50,7 @@ function blit4_32(buffer, width, height, x, y, pixels)
 | `pixels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L54)
 
 <a id="function-function-mq3-client-cl-cin-runtime-blit8-32-function-blit8-32-buffer-width-height-x-y-pixels-src-mq3-client-cl-cin-runtime-ml-643632007"></a>
 ### blit8_32
@@ -69,7 +69,7 @@ function blit8_32(buffer, width, height, x, y, pixels)
 | `pixels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L55)
 
 <a id="function-function-mq3-client-cl-cin-runtime-blitvqquad32fs-function-blitvqquad32fs-decoder-input-destination-previous-x-y-xoff-yoff-src-mq3-client-cl-cin-runtime-ml-1738287479"></a>
 ### blitVQQuad32fs
@@ -90,7 +90,7 @@ function blitVQQuad32fs(decoder, input, destination, previous, x, y, xoff, yoff)
 | `yoff` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L58)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-closeallvideos-function-cin-closeallvideos-state-src-mq3-client-cl-cin-runtime-ml-2035583277"></a>
 ### CIN_CloseAllVideos
@@ -104,7 +104,7 @@ function CIN_CloseAllVideos(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L21)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-drawcinematic-function-cin-drawcinematic-state-handle-src-mq3-client-cl-cin-runtime-ml-1042272519"></a>
 ### CIN_DrawCinematic
@@ -119,7 +119,7 @@ function CIN_DrawCinematic(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L17)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-handleforvideo-function-cin-handleforvideo-state-name-src-mq3-client-cl-cin-runtime-ml-729492714"></a>
 ### CIN_HandleForVideo
@@ -134,7 +134,7 @@ function CIN_HandleForVideo(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L13)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-playcinematic-function-cin-playcinematic-state-name-x-y-width-height-bits-now-src-mq3-client-cl-cin-runtime-ml-226803760"></a>
 ### CIN_PlayCinematic
@@ -155,7 +155,7 @@ function CIN_PlayCinematic(state, name, x, y, width, height, bits, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L14)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-runcinematic-function-cin-runcinematic-state-handle-now-src-mq3-client-cl-cin-runtime-ml-1470213577"></a>
 ### CIN_RunCinematic
@@ -171,7 +171,7 @@ function CIN_RunCinematic(state, handle, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L16)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-setextents-function-cin-setextents-state-handle-x-y-width-height-src-mq3-client-cl-cin-runtime-ml-1428924339"></a>
 ### CIN_SetExtents
@@ -190,7 +190,7 @@ function CIN_SetExtents(state, handle, x, y, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L19)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-setlooping-function-cin-setlooping-state-handle-looping-src-mq3-client-cl-cin-runtime-ml-1800888071"></a>
 ### CIN_SetLooping
@@ -206,7 +206,7 @@ function CIN_SetLooping(state, handle, looping)
 | `looping` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L20)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-stopcinematic-function-cin-stopcinematic-state-handle-src-mq3-client-cl-cin-runtime-ml-1836897487"></a>
 ### CIN_StopCinematic
@@ -221,7 +221,7 @@ function CIN_StopCinematic(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L15)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cin-uploadcinematic-function-cin-uploadcinematic-state-handle-src-mq3-client-cl-cin-runtime-ml-2141892849"></a>
 ### CIN_UploadCinematic
@@ -236,7 +236,7 @@ function CIN_UploadCinematic(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L18)
 
 <a id="function-function-mq3-client-cl-cin-runtime-cl-playcinematic-f-function-cl-playcinematic-f-state-args-now-src-mq3-client-cl-cin-runtime-ml-152167508"></a>
 ### CL_PlayCinematic_f
@@ -252,7 +252,7 @@ function CL_PlayCinematic_f(state, args, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L22)
 
 <a id="function-function-mq3-client-cl-cin-runtime-create-function-create-runtime-src-mq3-client-cl-cin-runtime-ml-314418416"></a>
 ### create
@@ -266,7 +266,7 @@ function create(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L11)
 
 <a id="function-function-mq3-client-cl-cin-runtime-decodecodebook-function-decodecodebook-decoder-movie-chunk-src-mq3-client-cl-cin-runtime-ml-2065010529"></a>
 ### decodeCodeBook
@@ -282,7 +282,7 @@ function decodeCodeBook(decoder, movie, chunk)
 | `chunk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L47)
 
 <a id="function-function-mq3-client-cl-cin-runtime-initroq-function-initroq-data-src-mq3-client-cl-cin-runtime-ml-606205388"></a>
 ### initRoQ
@@ -296,7 +296,7 @@ function initRoQ(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L42)
 
 <a id="function-function-mq3-client-cl-cin-runtime-monosamples-function-monosamples-data-previous-src-mq3-client-cl-cin-runtime-ml-1733188545"></a>
 ### monoSamples
@@ -311,7 +311,7 @@ function monoSamples(data, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L31)
 
 <a id="function-function-mq3-client-cl-cin-runtime-move4-32-function-move4-32-destination-previous-width-height-x-y-vector-xoff-yoff-src-mq3-client-cl-cin-runtime-ml-1782117465"></a>
 ### move4_32
@@ -333,7 +333,7 @@ function move4_32(destination, previous, width, height, x, y, vector, xoff, yoff
 | `yoff` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L56)
 
 <a id="function-function-mq3-client-cl-cin-runtime-move8-32-function-move8-32-destination-previous-width-height-x-y-vector-xoff-yoff-src-mq3-client-cl-cin-runtime-ml-1084509473"></a>
 ### move8_32
@@ -355,7 +355,7 @@ function move8_32(destination, previous, width, height, x, y, vector, xoff, yoff
 | `yoff` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L57)
 
 <a id="function-function-mq3-client-cl-cin-runtime-readquadinfo-function-readquadinfo-decoder-movie-chunk-src-mq3-client-cl-cin-runtime-ml-734819829"></a>
 ### readQuadInfo
@@ -371,7 +371,7 @@ function readQuadInfo(decoder, movie, chunk)
 | `chunk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L46)
 
 <a id="function-function-mq3-client-cl-cin-runtime-recursequad-function-recursequad-quads-x-y-size-minsize-src-mq3-client-cl-cin-runtime-ml-2123266547"></a>
 ### recurseQuad
@@ -389,7 +389,7 @@ function recurseQuad(quads, x, y, size, minSize)
 | `minSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L52)
 
 <a id="function-function-mq3-client-cl-cin-runtime-rlldecodemonotomono-function-rlldecodemonotomono-data-previous-src-mq3-client-cl-cin-runtime-ml-1235143395"></a>
 ### RllDecodeMonoToMono
@@ -404,7 +404,7 @@ function RllDecodeMonoToMono(data, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L37)
 
 <a id="function-function-mq3-client-cl-cin-runtime-rlldecodemonotostereo-function-rlldecodemonotostereo-data-previous-src-mq3-client-cl-cin-runtime-ml-1250107113"></a>
 ### RllDecodeMonoToStereo
@@ -419,7 +419,7 @@ function RllDecodeMonoToStereo(data, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L38)
 
 <a id="function-function-mq3-client-cl-cin-runtime-rlldecodestereotomono-function-rlldecodestereotomono-data-left-right-src-mq3-client-cl-cin-runtime-ml-693575657"></a>
 ### RllDecodeStereoToMono
@@ -435,7 +435,7 @@ function RllDecodeStereoToMono(data, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L40)
 
 <a id="function-function-mq3-client-cl-cin-runtime-rlldecodestereotostereo-function-rlldecodestereotostereo-data-left-right-src-mq3-client-cl-cin-runtime-ml-1604585915"></a>
 ### RllDecodeStereoToStereo
@@ -451,7 +451,7 @@ function RllDecodeStereoToStereo(data, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L39)
 
 <a id="function-function-mq3-client-cl-cin-runtime-rllsetuptable-function-rllsetuptable-src-mq3-client-cl-cin-runtime-ml-828797138"></a>
 ### RllSetupTable
@@ -461,7 +461,7 @@ function RllSetupTable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L30)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roq-genyuvtables-function-roq-genyuvtables-state-src-mq3-client-cl-cin-runtime-ml-1308410345"></a>
 ### ROQ_GenYUVTables
@@ -475,7 +475,7 @@ function ROQ_GenYUVTables(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L27)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roq-init-function-roq-init-movie-src-mq3-client-cl-cin-runtime-ml-1420560812"></a>
 ### RoQ_init
@@ -489,7 +489,7 @@ function RoQ_init(movie)
 | `movie` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L43)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roqfetchinterlaced-function-roqfetchinterlaced-decoder-movie-chunk-src-mq3-client-cl-cin-runtime-ml-2005138029"></a>
 ### RoQFetchInterlaced
@@ -505,7 +505,7 @@ function RoQFetchInterlaced(decoder, movie, chunk)
 | `chunk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L49)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roqinterrupt-function-roqinterrupt-decoder-movie-chunk-src-mq3-client-cl-cin-runtime-ml-275651845"></a>
 ### RoQInterrupt
@@ -521,7 +521,7 @@ function RoQInterrupt(decoder, movie, chunk)
 | `chunk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L48)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roqprepmcomp-function-roqprepmcomp-flags-src-mq3-client-cl-cin-runtime-ml-954416691"></a>
 ### RoQPrepMcomp
@@ -535,7 +535,7 @@ function RoQPrepMcomp(flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L50)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roqreset-function-roqreset-decoder-src-mq3-client-cl-cin-runtime-ml-122352584"></a>
 ### RoQReset
@@ -549,7 +549,7 @@ function RoQReset(decoder)
 | `decoder` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L44)
 
 <a id="function-function-mq3-client-cl-cin-runtime-roqshutdown-function-roqshutdown-state-src-mq3-client-cl-cin-runtime-ml-164186477"></a>
 ### RoQShutdown
@@ -563,7 +563,7 @@ function RoQShutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L45)
 
 <a id="function-function-mq3-client-cl-cin-runtime-scr-drawcinematic-function-scr-drawcinematic-state-src-mq3-client-cl-cin-runtime-ml-1698520017"></a>
 ### SCR_DrawCinematic
@@ -577,7 +577,7 @@ function SCR_DrawCinematic(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L24)
 
 <a id="function-function-mq3-client-cl-cin-runtime-scr-runcinematic-function-scr-runcinematic-state-now-src-mq3-client-cl-cin-runtime-ml-1924238719"></a>
 ### SCR_RunCinematic
@@ -592,7 +592,7 @@ function SCR_RunCinematic(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L23)
 
 <a id="function-function-mq3-client-cl-cin-runtime-scr-stopcinematic-function-scr-stopcinematic-state-src-mq3-client-cl-cin-runtime-ml-686849789"></a>
 ### SCR_StopCinematic
@@ -606,7 +606,7 @@ function SCR_StopCinematic(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L25)
 
 <a id="function-function-mq3-client-cl-cin-runtime-setupquad-function-setupquad-width-height-src-mq3-client-cl-cin-runtime-ml-1422492219"></a>
 ### setupQuad
@@ -621,7 +621,7 @@ function setupQuad(width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L51)
 
 - [mq3.client.cl_cin_runtime.State](Type-mq3-client-cl-cin-runtime-state-1529430935.md) — struct
 <a id="function-function-mq3-client-cl-cin-runtime-stereosamples-function-stereosamples-data-left-right-src-mq3-client-cl-cin-runtime-ml-1922516503"></a>
@@ -638,7 +638,7 @@ function stereoSamples(data, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L34)
 
 <a id="function-function-mq3-client-cl-cin-runtime-yuv-to-rgb-function-yuv-to-rgb-y-u-v-src-mq3-client-cl-cin-runtime-ml-1663630716"></a>
 ### yuv_to_rgb
@@ -654,7 +654,7 @@ function yuv_to_rgb(y, u, v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L28)
 
 <a id="function-function-mq3-client-cl-cin-runtime-yuv-to-rgb24-function-yuv-to-rgb24-y-u-v-src-mq3-client-cl-cin-runtime-ml-1440355100"></a>
 ### yuv_to_rgb24
@@ -670,4 +670,4 @@ function yuv_to_rgb24(y, u, v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L29)

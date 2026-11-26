@@ -27,7 +27,7 @@ function boundClient(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L50)
 
 <a id="function-function-mq3-game-team-status-check-function-check-level-src-mq3-game-team-status-ml-88582312"></a>
 ### check
@@ -41,7 +41,7 @@ function check(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L93)
 
 <a id="function-function-mq3-game-team-status-getlocation-function-getlocation-level-ent-src-mq3-game-team-status-ml-650712465"></a>
 ### getLocation
@@ -56,7 +56,7 @@ function getLocation(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L12)
 
 <a id="function-function-mq3-game-team-status-getlocationmsg-function-getlocationmsg-level-ent-capacity-src-mq3-game-team-status-ml-766372091"></a>
 ### getLocationMsg
@@ -72,7 +72,7 @@ function getLocationMsg(level, ent, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L27)
 
 <a id="function-function-mq3-game-team-status-overlaylimit-function-overlaylimit-level-src-mq3-game-team-status-ml-965036820"></a>
 ### overlayLimit
@@ -86,7 +86,7 @@ function overlayLimit(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L46)
 
 <a id="function-function-mq3-game-team-status-sendinfo-function-sendinfo-level-ent-src-mq3-game-team-status-ml-346757035"></a>
 ### sendInfo
@@ -101,7 +101,7 @@ function sendInfo(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L57)
 
 <a id="function-function-mq3-game-team-status-sortclients-function-sortclients-a-b-src-mq3-game-team-status-ml-1701338567"></a>
 ### sortClients
@@ -116,7 +116,7 @@ function sortClients(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L54)
 
 <a id="constant-constant-mq3-game-team-status-team-location-update-time-const-team-location-update-time-1000-src-mq3-game-team-status-ml-137245256"></a>
 ### TEAM_LOCATION_UPDATE_TIME
@@ -126,7 +126,7 @@ const TEAM_LOCATION_UPDATE_TIME = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L10)
 
 <a id="constant-constant-mq3-game-team-status-team-maxoverlay-const-team-maxoverlay-32-src-mq3-game-team-status-ml-1785622740"></a>
 ### TEAM_MAXOVERLAY
@@ -136,4 +136,4 @@ const TEAM_MAXOVERLAY = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_status.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_status.ml#L9)

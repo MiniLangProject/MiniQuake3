@@ -10,7 +10,7 @@ struct Ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L33)
 
 <a id="field-field-mq3-client-client-main-ping-info-info-src-mq3-client-client-main-ml-180547709"></a>
 ### info
@@ -32,7 +32,7 @@ info
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L33)
 
 <a id="field-field-mq3-client-client-main-ping-start-start-src-mq3-client-client-main-ml-705323613"></a>
 ### start
@@ -42,7 +42,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L33)
 
 <a id="field-field-mq3-client-client-main-ping-time-time-src-mq3-client-client-main-ml-1480406983"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L33)

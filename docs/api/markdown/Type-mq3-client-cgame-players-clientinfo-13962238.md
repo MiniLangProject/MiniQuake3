@@ -10,7 +10,7 @@ struct ClientInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 ## Members
 
@@ -22,7 +22,7 @@ animations
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-blueteam-blueteam-src-mq3-client-cgame-players-ml-1982770384"></a>
 ### blueTeam
@@ -32,7 +32,7 @@ blueTeam
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-breathpufftime-breathpufftime-src-mq3-client-cgame-players-ml-643160794"></a>
 ### breathPuffTime
@@ -42,7 +42,7 @@ breathPuffTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-color1-color1-src-mq3-client-cgame-players-ml-2107002086"></a>
 ### color1
@@ -52,7 +52,7 @@ color1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-color2-color2-src-mq3-client-cgame-players-ml-332754216"></a>
 ### color2
@@ -62,7 +62,7 @@ color2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-deferred-deferred-src-mq3-client-cgame-players-ml-1550359784"></a>
 ### deferred
@@ -72,7 +72,7 @@ deferred
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-fixedlegs-fixedlegs-src-mq3-client-cgame-players-ml-223113094"></a>
 ### fixedlegs
@@ -82,7 +82,7 @@ fixedlegs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-fixedtorso-fixedtorso-src-mq3-client-cgame-players-ml-1081011408"></a>
 ### fixedtorso
@@ -92,7 +92,7 @@ fixedtorso
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-footsteps-footsteps-src-mq3-client-cgame-players-ml-475301302"></a>
 ### footsteps
@@ -102,7 +102,7 @@ footsteps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-gender-gender-src-mq3-client-cgame-players-ml-506621956"></a>
 ### gender
@@ -112,7 +112,7 @@ gender
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-headmodel-headmodel-src-mq3-client-cgame-players-ml-1029158654"></a>
 ### headModel
@@ -122,7 +122,7 @@ headModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-headmodelname-headmodelname-src-mq3-client-cgame-players-ml-2111294078"></a>
 ### headModelName
@@ -132,7 +132,7 @@ headModelName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-headoffset-headoffset-src-mq3-client-cgame-players-ml-1325737180"></a>
 ### headOffset
@@ -142,7 +142,7 @@ headOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-headskin-headskin-src-mq3-client-cgame-players-ml-1802775564"></a>
 ### headSkin
@@ -152,7 +152,7 @@ headSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-headskinname-headskinname-src-mq3-client-cgame-players-ml-798677762"></a>
 ### headSkinName
@@ -162,7 +162,7 @@ headSkinName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-infovalid-infovalid-src-mq3-client-cgame-players-ml-2043662310"></a>
 ### infoValid
@@ -172,7 +172,7 @@ infoValid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-legsmodel-legsmodel-src-mq3-client-cgame-players-ml-2254694"></a>
 ### legsModel
@@ -182,7 +182,7 @@ legsModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-legsskin-legsskin-src-mq3-client-cgame-players-ml-1788930694"></a>
 ### legsSkin
@@ -192,7 +192,7 @@ legsSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-modelicon-modelicon-src-mq3-client-cgame-players-ml-2057202382"></a>
 ### modelIcon
@@ -202,7 +202,7 @@ modelIcon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-modelname-modelname-src-mq3-client-cgame-players-ml-1390518630"></a>
 ### modelName
@@ -212,7 +212,7 @@ modelName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-name-name-src-mq3-client-cgame-players-ml-1395646076"></a>
 ### name
@@ -222,7 +222,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-newanims-newanims-src-mq3-client-cgame-players-ml-1403296954"></a>
 ### newAnims
@@ -232,7 +232,7 @@ newAnims
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-powerups-powerups-src-mq3-client-cgame-players-ml-273354820"></a>
 ### powerups
@@ -242,7 +242,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-redteam-redteam-src-mq3-client-cgame-players-ml-1478597238"></a>
 ### redTeam
@@ -252,7 +252,7 @@ redTeam
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-score-score-src-mq3-client-cgame-players-ml-1476740142"></a>
 ### score
@@ -262,7 +262,7 @@ score
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-skinname-skinname-src-mq3-client-cgame-players-ml-289263334"></a>
 ### skinName
@@ -272,7 +272,7 @@ skinName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-sounds-sounds-src-mq3-client-cgame-players-ml-1535054626"></a>
 ### sounds
@@ -282,7 +282,7 @@ sounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-team-team-src-mq3-client-cgame-players-ml-78014044"></a>
 ### team
@@ -292,7 +292,7 @@ team
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-torsomodel-torsomodel-src-mq3-client-cgame-players-ml-409554022"></a>
 ### torsoModel
@@ -302,7 +302,7 @@ torsoModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)
 
 <a id="field-field-mq3-client-cgame-players-clientinfo-torsoskin-torsoskin-src-mq3-client-cgame-players-ml-982956646"></a>
 ### torsoSkin
@@ -312,4 +312,4 @@ torsoSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L60)

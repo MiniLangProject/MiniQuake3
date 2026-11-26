@@ -33,7 +33,7 @@ function DropPortalDestination(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L50)
 
 <a id="function-function-mq3-game-g-misc-dropportalsource-function-dropportalsource-level-player-src-mq3-game-g-misc-ml-143565687"></a>
 ### DropPortalSource
@@ -48,7 +48,7 @@ function DropPortalSource(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L51)
 
 <a id="function-function-mq3-game-g-misc-initshooter-function-initshooter-level-ent-weapon-src-mq3-game-g-misc-ml-262737391"></a>
 ### InitShooter
@@ -64,7 +64,7 @@ function InitShooter(level, ent, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L32)
 
 <a id="function-function-mq3-game-g-misc-initshooter-finish-function-initshooter-finish-level-ent-src-mq3-game-g-misc-ml-1157559027"></a>
 ### InitShooter_Finish
@@ -79,7 +79,7 @@ function InitShooter_Finish(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L31)
 
 <a id="function-function-mq3-game-g-misc-locatecamera-function-locatecamera-level-ent-src-mq3-game-g-misc-ml-1259599395"></a>
 ### locateCamera
@@ -94,7 +94,7 @@ function locateCamera(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L26)
 
 <a id="function-function-mq3-game-g-misc-portaldie-function-portaldie-level-self-inflictor-attacker-damage-mod-src-mq3-game-g-misc-ml-935123164"></a>
 ### PortalDie
@@ -113,7 +113,7 @@ function PortalDie(level, self, inflictor, attacker, damage, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L45)
 
 <a id="function-function-mq3-game-g-misc-portalenable-function-portalenable-level-self-src-mq3-game-g-misc-ml-882320964"></a>
 ### PortalEnable
@@ -128,7 +128,7 @@ function PortalEnable(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L47)
 
 <a id="function-function-mq3-game-g-misc-portaltouch-function-portaltouch-level-self-other-trace-src-mq3-game-g-misc-ml-179340073"></a>
 ### PortalTouch
@@ -145,7 +145,7 @@ function PortalTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L46)
 
 <a id="function-function-mq3-game-g-misc-sp-info-camp-function-sp-info-camp-level-self-src-mq3-game-g-misc-ml-1799089132"></a>
 ### SP_info_camp
@@ -160,7 +160,7 @@ function SP_info_camp(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L19)
 
 <a id="function-function-mq3-game-g-misc-sp-info-notnull-function-sp-info-notnull-level-self-src-mq3-game-g-misc-ml-1807520362"></a>
 ### SP_info_notnull
@@ -175,7 +175,7 @@ function SP_info_notnull(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L21)
 
 <a id="function-function-mq3-game-g-misc-sp-info-null-function-sp-info-null-level-self-src-mq3-game-g-misc-ml-1104674348"></a>
 ### SP_info_null
@@ -190,7 +190,7 @@ function SP_info_null(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L20)
 
 <a id="function-function-mq3-game-g-misc-sp-light-function-sp-light-level-self-src-mq3-game-g-misc-ml-348666276"></a>
 ### SP_light
@@ -205,7 +205,7 @@ function SP_light(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L22)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-model-function-sp-misc-model-level-ent-src-mq3-game-g-misc-ml-1626153467"></a>
 ### SP_misc_model
@@ -220,7 +220,7 @@ function SP_misc_model(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L24)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-portal-camera-function-sp-misc-portal-camera-level-ent-src-mq3-game-g-misc-ml-1109399809"></a>
 ### SP_misc_portal_camera
@@ -235,7 +235,7 @@ function SP_misc_portal_camera(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L28)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-portal-surface-function-sp-misc-portal-surface-level-ent-src-mq3-game-g-misc-ml-364312011"></a>
 ### SP_misc_portal_surface
@@ -250,7 +250,7 @@ function SP_misc_portal_surface(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L27)
 
 <a id="function-function-mq3-game-g-misc-sp-misc-teleporter-dest-function-sp-misc-teleporter-dest-level-ent-src-mq3-game-g-misc-ml-584507579"></a>
 ### SP_misc_teleporter_dest
@@ -265,7 +265,7 @@ function SP_misc_teleporter_dest(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L23)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-grenade-function-sp-shooter-grenade-level-ent-src-mq3-game-g-misc-ml-1562060383"></a>
 ### SP_shooter_grenade
@@ -280,7 +280,7 @@ function SP_shooter_grenade(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L43)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-plasma-function-sp-shooter-plasma-level-ent-src-mq3-game-g-misc-ml-831234849"></a>
 ### SP_shooter_plasma
@@ -295,7 +295,7 @@ function SP_shooter_plasma(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L42)
 
 <a id="function-function-mq3-game-g-misc-sp-shooter-rocket-function-sp-shooter-rocket-level-ent-src-mq3-game-g-misc-ml-440994653"></a>
 ### SP_shooter_rocket
@@ -310,7 +310,7 @@ function SP_shooter_rocket(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L41)
 
 <a id="function-function-mq3-game-g-misc-teleportplayer-function-teleportplayer-level-player-origin-angles-src-mq3-game-g-misc-ml-1029969885"></a>
 ### TeleportPlayer
@@ -327,7 +327,7 @@ function TeleportPlayer(level, player, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L17)
 
 <a id="function-function-mq3-game-g-misc-use-shooter-function-use-shooter-level-ent-other-activator-src-mq3-game-g-misc-ml-1234446942"></a>
 ### Use_Shooter
@@ -344,7 +344,7 @@ function Use_Shooter(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L30)
 
 <a id="function-function-mq3-game-g-misc-useportalholdable-function-useportalholdable-level-player-src-mq3-game-g-misc-ml-537346467"></a>
 ### UsePortalHoldable
@@ -359,7 +359,7 @@ function UsePortalHoldable(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L52)
 
 <a id="function-function-mq3-game-g-misc-utilities-function-utilities-level-ent-src-mq3-game-g-misc-ml-642879279"></a>
 ### utilities
@@ -376,4 +376,4 @@ function utilities(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_misc.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_misc.ml#L61)

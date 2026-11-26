@@ -28,7 +28,7 @@ function AAS_ContinueInit(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L55)
 
 <a id="function-function-mq3-botlib-aas-main-aas-error-function-aas-error-state-message-src-mq3-botlib-aas-main-ml-1091664122"></a>
 ### AAS_Error
@@ -43,7 +43,7 @@ function AAS_Error(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L28)
 
 <a id="function-function-mq3-botlib-aas-main-aas-indexfrommodel-function-aas-indexfrommodel-state-modelname-src-mq3-botlib-aas-main-ml-1349556571"></a>
 ### AAS_IndexFromModel
@@ -58,7 +58,7 @@ function AAS_IndexFromModel(state, modelname)
 | `modelname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L44)
 
 <a id="function-function-mq3-botlib-aas-main-aas-indexfromstring-function-aas-indexfromstring-state-indexname-stringindex-numindexes-string-src-mq3-botlib-aas-main-ml-956988540"></a>
 ### AAS_IndexFromString
@@ -76,7 +76,7 @@ function AAS_IndexFromString(state, indexname, stringindex, numindexes, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L35)
 
 <a id="function-function-mq3-botlib-aas-main-aas-initialized-function-aas-initialized-state-src-mq3-botlib-aas-main-ml-1320945733"></a>
 ### AAS_Initialized
@@ -90,7 +90,7 @@ function AAS_Initialized(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L53)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loaded-function-aas-loaded-state-src-mq3-botlib-aas-main-ml-851503961"></a>
 ### AAS_Loaded
@@ -104,7 +104,7 @@ function AAS_Loaded(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L52)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loadfiles-function-aas-loadfiles-state-mapname-runtime-src-mq3-botlib-aas-main-ml-1289944340"></a>
 ### AAS_LoadFiles
@@ -120,7 +120,7 @@ function AAS_LoadFiles(state, mapname, runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L69)
 
 <a id="function-function-mq3-botlib-aas-main-aas-loadmap-function-aas-loadmap-state-mapname-runtime-src-mq3-botlib-aas-main-ml-283858186"></a>
 ### AAS_LoadMap
@@ -136,7 +136,7 @@ function AAS_LoadMap(state, mapname, runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L73)
 
 <a id="function-function-mq3-botlib-aas-main-aas-modelfromindex-function-aas-modelfromindex-state-index-src-mq3-botlib-aas-main-ml-1514827861"></a>
 ### AAS_ModelFromIndex
@@ -151,7 +151,7 @@ function AAS_ModelFromIndex(state, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L40)
 
 <a id="function-function-mq3-botlib-aas-main-aas-projectpointontovector-function-aas-projectpointontovector-point-vstart-vend-src-mq3-botlib-aas-main-ml-802019099"></a>
 ### AAS_ProjectPointOntoVector
@@ -167,7 +167,7 @@ function AAS_ProjectPointOntoVector(point, vStart, vEnd)
 | `vEnd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L66)
 
 <a id="function-function-mq3-botlib-aas-main-aas-setinitialized-function-aas-setinitialized-state-src-mq3-botlib-aas-main-ml-1526682069"></a>
 ### AAS_SetInitialized
@@ -181,7 +181,7 @@ function AAS_SetInitialized(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L54)
 
 <a id="function-function-mq3-botlib-aas-main-aas-setup-function-aas-setup-state-src-mq3-botlib-aas-main-ml-939129467"></a>
 ### AAS_Setup
@@ -195,7 +195,7 @@ function AAS_Setup(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L78)
 
 <a id="function-function-mq3-botlib-aas-main-aas-shutdown-function-aas-shutdown-state-src-mq3-botlib-aas-main-ml-1202137357"></a>
 ### AAS_Shutdown
@@ -209,7 +209,7 @@ function AAS_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L81)
 
 <a id="function-function-mq3-botlib-aas-main-aas-startframe-function-aas-startframe-state-time-src-mq3-botlib-aas-main-ml-969516712"></a>
 ### AAS_StartFrame
@@ -224,7 +224,7 @@ function AAS_StartFrame(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L60)
 
 <a id="function-function-mq3-botlib-aas-main-aas-stringfromindex-function-aas-stringfromindex-state-indexname-stringindex-numindexes-index-src-mq3-botlib-aas-main-ml-112488729"></a>
 ### AAS_StringFromIndex
@@ -242,7 +242,7 @@ function AAS_StringFromIndex(state, indexname, stringindex, numindexes, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L29)
 
 <a id="function-function-mq3-botlib-aas-main-aas-time-function-aas-time-state-src-mq3-botlib-aas-main-ml-922919861"></a>
 ### AAS_Time
@@ -256,7 +256,7 @@ function AAS_Time(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L65)
 
 <a id="function-function-mq3-botlib-aas-main-aas-updatestringindexes-function-aas-updatestringindexes-state-numconfigstrings-configstrings-src-mq3-botlib-aas-main-ml-226694741"></a>
 ### AAS_UpdateStringIndexes
@@ -272,7 +272,7 @@ function AAS_UpdateStringIndexes(state, numconfigstrings, configstrings)
 | `configstrings` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L48)
 
 <a id="constant-constant-mq3-botlib-aas-main-blerr-noaasfile-const-blerr-noaasfile-3-src-mq3-botlib-aas-main-ml-1622374066"></a>
 ### BLERR_NOAASFILE
@@ -282,7 +282,7 @@ const BLERR_NOAASFILE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L12)
 
 <a id="constant-constant-mq3-botlib-aas-main-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-aas-main-ml-1798628865"></a>
 ### BLERR_NOERROR
@@ -292,7 +292,7 @@ const BLERR_NOERROR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L11)
 
 <a id="function-function-mq3-botlib-aas-main-create-function-create-maxclients-maxentities-src-mq3-botlib-aas-main-ml-1131172611"></a>
 ### create
@@ -307,7 +307,7 @@ function create(maxclients, maxentities)
 | `maxentities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L21)
 
 <a id="constant-constant-mq3-botlib-aas-main-cs-models-const-cs-models-32-src-mq3-botlib-aas-main-ml-1782773368"></a>
 ### CS_MODELS
@@ -317,7 +317,7 @@ const CS_MODELS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L13)
 
 <a id="function-function-mq3-botlib-aas-main-emit-function-emit-state-kind-text-src-mq3-botlib-aas-main-ml-747201432"></a>
 ### emit
@@ -333,7 +333,7 @@ function emit(state, kind, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L26)
 
 <a id="function-function-mq3-botlib-aas-main-invoke-function-invoke-state-callback-src-mq3-botlib-aas-main-ml-1480696330"></a>
 ### invoke
@@ -348,7 +348,7 @@ function invoke(state, callback)
 | `callback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L25)
 
 <a id="constant-constant-mq3-botlib-aas-main-max-configstrings-const-max-configstrings-1024-src-mq3-botlib-aas-main-ml-1713099878"></a>
 ### MAX_CONFIGSTRINGS
@@ -358,7 +358,7 @@ const MAX_CONFIGSTRINGS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L15)
 
 <a id="constant-constant-mq3-botlib-aas-main-max-models-const-max-models-256-src-mq3-botlib-aas-main-ml-586923814"></a>
 ### MAX_MODELS
@@ -368,7 +368,7 @@ const MAX_MODELS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L14)
 
 <a id="function-function-mq3-botlib-aas-main-services-function-services-context-src-mq3-botlib-aas-main-ml-1624178551"></a>
 ### services
@@ -382,7 +382,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_main.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_main.ml#L20)
 
 - [mq3.botlib.aas_main.Services](Type-mq3-botlib-aas-main-services-380357013.md) — struct
 - [mq3.botlib.aas_main.State](Type-mq3-botlib-aas-main-state-188456918.md) — struct

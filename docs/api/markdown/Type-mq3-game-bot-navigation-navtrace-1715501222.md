@@ -10,7 +10,7 @@ struct NavTrace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L78)
 
 ## Members
 
@@ -22,7 +22,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L78)
 
 <a id="field-field-mq3-game-bot-navigation-navtrace-fraction-fraction-src-mq3-game-bot-navigation-ml-2100490867"></a>
 ### fraction
@@ -32,7 +32,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L78)
 
 <a id="field-field-mq3-game-bot-navigation-navtrace-startsolid-startsolid-src-mq3-game-bot-navigation-ml-1315650293"></a>
 ### startsolid
@@ -42,4 +42,4 @@ startsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L78)

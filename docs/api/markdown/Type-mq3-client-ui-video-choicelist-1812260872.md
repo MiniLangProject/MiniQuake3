@@ -10,7 +10,7 @@ struct ChoiceList
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L26)
 
 <a id="field-field-mq3-client-ui-video-choicelist-values-values-src-mq3-client-ui-video-ml-96866878"></a>
 ### values
@@ -32,4 +32,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_video.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_video.ml#L26)

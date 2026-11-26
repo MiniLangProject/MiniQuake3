@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ bindingTextFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L12)
 
 <a id="field-field-mq3-qcommon-config-persistence-services-context-context-src-mq3-qcommon-config-persistence-ml-304943403"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L14)
 
 <a id="field-field-mq3-qcommon-config-persistence-services-printfn-printfn-src-mq3-qcommon-config-persistence-ml-616648131"></a>
 ### printFn
@@ -42,7 +42,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L13)
 
 <a id="field-field-mq3-qcommon-config-persistence-services-writefn-writefn-src-mq3-qcommon-config-persistence-ml-1950348447"></a>
 ### writeFn
@@ -52,4 +52,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L11)

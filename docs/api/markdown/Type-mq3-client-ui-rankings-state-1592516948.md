@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-createaccount-createaccount-src-mq3-client-ui-rankings-ml-1815168778"></a>
 ### createAccount
@@ -32,7 +32,7 @@ createAccount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-forcedoff-forcedoff-src-mq3-client-ui-rankings-ml-802101902"></a>
 ### forcedOff
@@ -42,7 +42,7 @@ forcedOff
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-frame-frame-src-mq3-client-ui-rankings-ml-1084796842"></a>
 ### frame
@@ -52,7 +52,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-leave-leave-src-mq3-client-ui-rankings-ml-1739050654"></a>
 ### leave
@@ -62,7 +62,7 @@ leave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-login-login-src-mq3-client-ui-rankings-ml-458071686"></a>
 ### login
@@ -72,7 +72,7 @@ login
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-logout-logout-src-mq3-client-ui-rankings-ml-1168866062"></a>
 ### logout
@@ -82,7 +82,7 @@ logout
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-menu-menu-src-mq3-client-ui-rankings-ml-86835916"></a>
 ### menu
@@ -92,7 +92,7 @@ menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-popped-popped-src-mq3-client-ui-rankings-ml-1391054566"></a>
 ### popped
@@ -102,7 +102,7 @@ popped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-pushed-pushed-src-mq3-client-ui-rankings-ml-497347360"></a>
 ### pushed
@@ -112,7 +112,7 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-retailactive-retailactive-src-mq3-client-ui-rankings-ml-762642412"></a>
 ### retailActive
@@ -122,7 +122,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-setup-setup-src-mq3-client-ui-rankings-ml-1479331946"></a>
 ### setup
@@ -132,7 +132,7 @@ setup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-spectate-spectate-src-mq3-client-ui-rankings-ml-367085280"></a>
 ### spectate
@@ -142,7 +142,7 @@ spectate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)
 
 <a id="field-field-mq3-client-ui-rankings-state-status-status-src-mq3-client-ui-rankings-ml-1183304126"></a>
 ### status
@@ -152,4 +152,4 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankings.ml#L29)

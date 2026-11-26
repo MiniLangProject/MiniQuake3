@@ -28,7 +28,7 @@ function commands(binding, key, down, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L30)
 
 <a id="function-function-mq3-client-key-binding-dispatch-emit-function-emit-segment-key-time-down-src-mq3-client-key-binding-dispatch-ml-1243351783"></a>
 ### emit
@@ -45,7 +45,7 @@ function emit(segment, key, time, down)
 | `down` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L10)
 
 <a id="function-function-mq3-client-key-binding-dispatch-segments-function-segments-binding-src-mq3-client-key-binding-dispatch-ml-1121134409"></a>
 ### segments
@@ -59,4 +59,4 @@ function segments(binding)
 | `binding` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/key_binding_dispatch.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/key_binding_dispatch.ml#L18)

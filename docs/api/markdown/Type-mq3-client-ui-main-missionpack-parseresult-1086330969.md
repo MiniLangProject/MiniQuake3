@@ -10,7 +10,7 @@ struct ParseResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L71)
 
 ## Members
 
@@ -22,7 +22,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L71)
 
 <a id="field-field-mq3-client-ui-main-missionpack-parseresult-ok-ok-src-mq3-client-ui-main-missionpack-ml-1926405553"></a>
 ### ok
@@ -32,4 +32,4 @@ ok
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L71)

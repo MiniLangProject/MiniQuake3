@@ -32,7 +32,7 @@ function buildNameBuckets(entries)
 | `entries` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L65)
 
 - [mq3.format.pk3.Entry](Type-mq3-format-pk3-entry-196778127.md) — struct
 <a id="function-function-mq3-format-pk3-fail-function-fail-message-src-mq3-format-pk3-ml-1470314325"></a>
@@ -47,7 +47,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L77)
 
 <a id="function-function-mq3-format-pk3-findentry-function-findentry-archive-name-src-mq3-format-pk3-ml-1248708977"></a>
 ### findEntry
@@ -62,7 +62,7 @@ function findEntry(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L237)
 
 <a id="function-function-mq3-format-pk3-freezenamebuckets-function-freezenamebuckets-builders-src-mq3-format-pk3-ml-1089897880"></a>
 ### freezeNameBuckets
@@ -76,7 +76,7 @@ function freezeNameBuckets(builders)
 | `builders` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L57)
 
 <a id="function-function-mq3-format-pk3-has-function-has-archive-name-src-mq3-format-pk3-ml-1667368471"></a>
 ### has
@@ -91,7 +91,7 @@ function has(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L245)
 
 <a id="function-function-mq3-format-pk3-localinfo-function-localinfo-archive-entry-src-mq3-format-pk3-ml-2137394202"></a>
 ### localInfo
@@ -106,7 +106,7 @@ function localInfo(archive, entry)
 | `entry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L205)
 
 <a id="function-function-mq3-format-pk3-looseentry-function-looseentry-name-path-size-src-mq3-format-pk3-ml-1400599413"></a>
 ### looseEntry
@@ -122,7 +122,7 @@ function looseEntry(name, path, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L187)
 
 <a id="function-function-mq3-format-pk3-mergelayers-function-mergelayers-path-archives-modarchive-src-mq3-format-pk3-ml-233507008"></a>
 ### mergeLayers
@@ -140,7 +140,7 @@ Layers are already in search order. High-numbered PK3s take priority within a ga
 | `modArchive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L146)
 
 <a id="constant-constant-mq3-format-pk3-name-bucket-count-const-name-bucket-count-4096-src-mq3-format-pk3-ml-141245390"></a>
 ### NAME_BUCKET_COUNT
@@ -150,7 +150,7 @@ const NAME_BUCKET_COUNT = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L46)
 
 <a id="function-function-mq3-format-pk3-namehash-function-namehash-name-src-mq3-format-pk3-ml-131796375"></a>
 ### nameHash
@@ -164,7 +164,7 @@ function nameHash(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L48)
 
 <a id="function-function-mq3-format-pk3-open-function-open-path-src-mq3-format-pk3-ml-794783239"></a>
 ### open
@@ -178,7 +178,7 @@ function open(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L86)
 
 <a id="function-function-mq3-format-pk3-openpackages-function-openpackages-basedirectory-requirepak0-src-mq3-format-pk3-ml-115648399"></a>
 ### openPackages
@@ -193,7 +193,7 @@ function openPackages(baseDirectory, requirePak0)
 | `requirePak0` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L166)
 
 <a id="function-function-mq3-format-pk3-openstandard-function-openstandard-basedirectory-src-mq3-format-pk3-ml-999257644"></a>
 ### openStandard
@@ -209,7 +209,7 @@ Mount the standard Baseq3 patch set with the same higher-pak precedence as Quake
 | `baseDirectory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L140)
 
 <a id="function-function-mq3-format-pk3-overlay-function-overlay-root-base-activegame-src-mq3-format-pk3-ml-926630889"></a>
 ### overlay
@@ -225,7 +225,7 @@ function overlay(root, base, activeGame)
 | `activeGame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L195)
 
 <a id="function-function-mq3-format-pk3-pk3nameless-function-pk3nameless-left-right-src-mq3-format-pk3-ml-581024115"></a>
 ### pk3NameLess
@@ -240,7 +240,7 @@ function pk3NameLess(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L199)
 
 <a id="function-function-mq3-format-pk3-read-function-read-archive-name-src-mq3-format-pk3-ml-790368599"></a>
 ### read
@@ -255,7 +255,7 @@ function read(archive, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L246)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L246)
 
 <a id="function-function-mq3-format-pk3-readentry-function-readentry-archive-entry-src-mq3-format-pk3-ml-1659180012"></a>
 ### readEntry
@@ -270,7 +270,7 @@ function readEntry(archive, entry)
 | `entry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L222)
 
 <a id="function-function-mq3-format-pk3-u16-function-u16-data-offset-src-mq3-format-pk3-ml-1956257435"></a>
 ### u16
@@ -285,7 +285,7 @@ function u16(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L81)
 
 <a id="function-function-mq3-format-pk3-withloose-function-withloose-root-packages-looseentries-src-mq3-format-pk3-ml-1724392663"></a>
 ### withLoose
@@ -301,4 +301,4 @@ function withLoose(root, packages, looseEntries)
 | `looseEntries` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/pk3.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/pk3.ml#L190)

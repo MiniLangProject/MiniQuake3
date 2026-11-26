@@ -26,7 +26,7 @@ function checkedPixels(pixels, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L13)
 
 <a id="function-function-mq3-renderer-image-processing-copypixels-function-copypixels-pixels-count-src-mq3-renderer-image-processing-ml-163311812"></a>
 ### copyPixels
@@ -41,7 +41,7 @@ function copyPixels(pixels, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L21)
 
 <a id="function-function-mq3-renderer-image-processing-fail-function-fail-message-src-mq3-renderer-image-processing-ml-2100642975"></a>
 ### fail
@@ -55,7 +55,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L9)
 
 <a id="function-function-mq3-renderer-image-processing-ispoweroftwo-function-ispoweroftwo-value-src-mq3-renderer-image-processing-ml-772254649"></a>
 ### isPowerOfTwo
@@ -69,7 +69,7 @@ function isPowerOfTwo(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L98)
 
 <a id="function-function-mq3-renderer-image-processing-lightscale-function-lightscale-pixels-width-height-onlygamma-devicesupportsgamma-gammatable-intensitytable-src-mq3-renderer-image-processing-ml-338221746"></a>
 ### lightScale
@@ -91,7 +91,7 @@ R_LightScaleTexture with tables supplied by the renderer color-mapping owner.
 | `intensityTable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L53)
 
 <a id="constant-constant-mq3-renderer-image-processing-max-resample-width-const-max-resample-width-2048-src-mq3-renderer-image-processing-ml-1423819327"></a>
 ### MAX_RESAMPLE_WIDTH
@@ -101,7 +101,7 @@ const MAX_RESAMPLE_WIDTH = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L7)
 
 <a id="function-function-mq3-renderer-image-processing-mipmapfiltered-function-mipmapfiltered-pixels-width-height-src-mq3-renderer-image-processing-ml-317123300"></a>
 ### mipMapFiltered
@@ -119,7 +119,7 @@ Proper linear R_MipMap2 filter with the original power-of-two wrapping masks.
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L103)
 
 <a id="function-function-mq3-renderer-image-processing-mipmapsimple-function-mipmapsimple-pixels-width-height-src-mq3-renderer-image-processing-ml-1397981732"></a>
 ### mipMapSimple
@@ -137,7 +137,7 @@ Simple R_MipMap path. The one-dimensional case follows its adjacent-pixel rule.
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L74)
 
 <a id="function-function-mq3-renderer-image-processing-resample-function-resample-pixels-inwidth-inheight-outwidth-outheight-src-mq3-renderer-image-processing-ml-879919253"></a>
 ### resample
@@ -157,4 +157,4 @@ Exact fixed-point sample positions and four-tap average from ResampleTexture.
 | `outHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_processing.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_processing.ml#L28)

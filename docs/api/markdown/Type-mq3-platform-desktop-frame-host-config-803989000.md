@@ -10,7 +10,7 @@ struct Config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientEndpoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-maxframemsec-maxframemsec-src-mq3-platform-desktop-frame-host-ml-52330373"></a>
 ### maxFrameMsec
@@ -32,7 +32,7 @@ maxFrameMsec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-packetbudget-packetbudget-src-mq3-platform-desktop-frame-host-ml-853859569"></a>
 ### packetBudget
@@ -42,7 +42,7 @@ packetBudget
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-packetcapacity-packetcapacity-src-mq3-platform-desktop-frame-host-ml-1024152023"></a>
 ### packetCapacity
@@ -52,7 +52,7 @@ packetCapacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)
 
 <a id="field-field-mq3-platform-desktop-frame-host-config-serverendpoint-serverendpoint-src-mq3-platform-desktop-frame-host-ml-30977955"></a>
 ### serverEndpoint
@@ -62,4 +62,4 @@ serverEndpoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/desktop_frame_host.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/desktop_frame_host.ml#L9)

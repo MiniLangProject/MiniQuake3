@@ -23,7 +23,7 @@ function continueSpan(crc, data, offset, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L32)
 
 <a id="function-function-mq3-botlib-crc16-init-function-init-src-mq3-botlib-crc16-ml-1568837142"></a>
 ### init
@@ -33,7 +33,7 @@ function init()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L16)
 
 <a id="constant-constant-mq3-botlib-crc16-init-value-const-init-value-65535-src-mq3-botlib-crc16-ml-1761703869"></a>
 ### INIT_VALUE
@@ -43,7 +43,7 @@ const INIT_VALUE = 65535
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L5)
 
 <a id="function-function-mq3-botlib-crc16-processbyte-function-processbyte-crc-value-src-mq3-botlib-crc16-ml-846748941"></a>
 ### processByte
@@ -58,7 +58,7 @@ function processByte(crc, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L17)
 
 <a id="function-function-mq3-botlib-crc16-processspan-function-processspan-data-offset-count-src-mq3-botlib-crc16-ml-1478239284"></a>
 ### processSpan
@@ -74,7 +74,7 @@ function processSpan(data, offset, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L20)
 
 <a id="function-function-mq3-botlib-crc16-processstring-function-processstring-text-src-mq3-botlib-crc16-ml-774249215"></a>
 ### processString
@@ -88,7 +88,7 @@ function processString(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L27)
 
 <a id="function-function-mq3-botlib-crc16-tablevalue-function-tablevalue-index-src-mq3-botlib-crc16-ml-2106170528"></a>
 ### tableValue
@@ -102,7 +102,7 @@ function tableValue(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L8)
 
 <a id="function-function-mq3-botlib-crc16-value-function-value-crc-src-mq3-botlib-crc16-ml-2027873332"></a>
 ### value
@@ -116,7 +116,7 @@ function value(crc)
 | `crc` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L18)
 
 <a id="constant-constant-mq3-botlib-crc16-xor-value-const-xor-value-0-src-mq3-botlib-crc16-ml-1631731747"></a>
 ### XOR_VALUE
@@ -126,4 +126,4 @@ const XOR_VALUE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/crc16.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/crc16.ml#L6)

@@ -10,7 +10,7 @@ struct SkillItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)
 
 <a id="field-field-mq3-client-ui-sp-skill-skillitem-id-id-src-mq3-client-ui-sp-skill-ml-75772407"></a>
 ### id
@@ -32,7 +32,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)
 
 <a id="field-field-mq3-client-ui-sp-skill-skillitem-label-label-src-mq3-client-ui-sp-skill-ml-55671017"></a>
 ### label
@@ -42,7 +42,7 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)
 
 <a id="field-field-mq3-client-ui-sp-skill-skillitem-shader-shader-src-mq3-client-ui-sp-skill-ml-1941375779"></a>
 ### shader
@@ -52,7 +52,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)
 
 <a id="field-field-mq3-client-ui-sp-skill-skillitem-y-y-src-mq3-client-ui-sp-skill-ml-1094418893"></a>
 ### y
@@ -62,4 +62,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_skill.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_skill.ml#L16)

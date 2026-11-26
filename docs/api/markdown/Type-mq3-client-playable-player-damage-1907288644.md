@@ -10,7 +10,7 @@ struct Damage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ armor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-health-health-src-mq3-client-playable-player-ml-844601608"></a>
 ### health
@@ -32,7 +32,7 @@ health
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-ignored-ignored-src-mq3-client-playable-player-ml-777001600"></a>
 ### ignored
@@ -42,7 +42,7 @@ ignored
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-killed-killed-src-mq3-client-playable-player-ml-847646714"></a>
 ### killed
@@ -52,7 +52,7 @@ killed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-requested-requested-src-mq3-client-playable-player-ml-1019696352"></a>
 ### requested
@@ -62,7 +62,7 @@ requested
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-saved-saved-src-mq3-client-playable-player-ml-912619532"></a>
 ### saved
@@ -72,7 +72,7 @@ saved
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-damage-taken-taken-src-mq3-client-playable-player-ml-108989692"></a>
 ### taken
@@ -82,4 +82,4 @@ taken
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L21)

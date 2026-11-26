@@ -20,6 +20,6 @@ function get(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/weapon_state.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/weapon_state.ml#L18)
 
 - [mq3.game.weapon_state.State](Type-mq3-game-weapon-state-state-1484693631.md) — struct

@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L31)
 
 ## Members
 
@@ -22,7 +22,7 @@ carryingFlagFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L46)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-clientnamefn-clientnamefn-src-mq3-game-bot-ai-commands-ml-1507560017"></a>
 ### clientNameFn
@@ -32,7 +32,7 @@ clientNameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L42)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-context-context-src-mq3-game-bot-ai-commands-ml-1965900609"></a>
 ### context
@@ -42,7 +42,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L54)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-deathmatchsetupfn-deathmatchsetupfn-src-mq3-game-bot-ai-commands-ml-1994267225"></a>
 ### deathmatchSetupFn
@@ -52,7 +52,7 @@ deathmatchSetupFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L40)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-diagnosticfn-diagnosticfn-src-mq3-game-bot-ai-commands-ml-2054734187"></a>
 ### diagnosticFn
@@ -62,7 +62,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L41)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-easyclientnamefn-easyclientnamefn-src-mq3-game-bot-ai-commands-ml-201236141"></a>
 ### easyClientNameFn
@@ -72,7 +72,7 @@ easyClientNameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L43)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-fightservices-fightservices-src-mq3-game-bot-ai-commands-ml-642574497"></a>
 ### fightServices
@@ -82,7 +82,7 @@ fightServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L51)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-framelevel-framelevel-src-mq3-game-bot-ai-commands-ml-969305967"></a>
 ### frameLevel
@@ -92,7 +92,7 @@ frameLevel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L33)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-gametype-gametype-src-mq3-game-bot-ai-commands-ml-172433529"></a>
 ### gametype
@@ -102,7 +102,7 @@ gametype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L35)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-getclientstatefn-getclientstatefn-src-mq3-game-bot-ai-commands-ml-496740441"></a>
 ### getClientStateFn
@@ -112,7 +112,7 @@ getClientStateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L37)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-getplayerconfigfn-getplayerconfigfn-src-mq3-game-bot-ai-commands-ml-288142081"></a>
 ### getPlayerConfigFn
@@ -122,7 +122,7 @@ getPlayerConfigFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L48)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-goalnamefn-goalnamefn-src-mq3-game-bot-ai-commands-ml-1088314665"></a>
 ### goalNameFn
@@ -132,7 +132,7 @@ goalNameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L44)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-lifecyclestate-lifecyclestate-src-mq3-game-bot-ai-commands-ml-1576674859"></a>
 ### lifecycleState
@@ -142,7 +142,7 @@ lifecycleState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L32)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-maxclients-maxclients-src-mq3-game-bot-ai-commands-ml-2019429153"></a>
 ### maxclients
@@ -152,7 +152,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L34)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-nextservercommandfn-nextservercommandfn-src-mq3-game-bot-ai-commands-ml-2060643409"></a>
 ### nextServerCommandFn
@@ -162,7 +162,7 @@ nextServerCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L38)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-nodestepfn-nodestepfn-src-mq3-game-bot-ai-commands-ml-2009736817"></a>
 ### nodeStepFn
@@ -172,7 +172,7 @@ nodeStepFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L53)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-printfn-printfn-src-mq3-game-bot-ai-commands-ml-1690165217"></a>
 ### printFn
@@ -182,7 +182,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L50)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-queuemessagefn-queuemessagefn-src-mq3-game-bot-ai-commands-ml-573723905"></a>
 ### queueMessageFn
@@ -192,7 +192,7 @@ queueMessageFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L39)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-resetinputfn-resetinputfn-src-mq3-game-bot-ai-commands-ml-1388144195"></a>
 ### resetInputFn
@@ -202,7 +202,7 @@ resetInputFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L36)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-seekservices-seekservices-src-mq3-game-bot-ai-commands-ml-1740523177"></a>
 ### seekServices
@@ -212,7 +212,7 @@ seekServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L52)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-setbotinfofn-setbotinfofn-src-mq3-game-bot-ai-commands-ml-282373503"></a>
 ### setBotInfoFn
@@ -222,7 +222,7 @@ setBotInfoFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L49)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-teamfn-teamfn-src-mq3-game-bot-ai-commands-ml-1205774147"></a>
 ### teamFn
@@ -232,7 +232,7 @@ teamFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L47)
 
 <a id="field-field-mq3-game-bot-ai-commands-services-topgoalnumberfn-topgoalnumberfn-src-mq3-game-bot-ai-commands-ml-1772056825"></a>
 ### topGoalNumberFn
@@ -242,4 +242,4 @@ topGoalNumberFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_commands.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_commands.ml#L45)

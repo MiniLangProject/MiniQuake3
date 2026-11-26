@@ -22,7 +22,7 @@ const ART_ARROWDOWN = "menu/art/arrows_vert_bot"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-arrows-const-art-arrows-menu-art-arrows-vert-0-src-mq3-client-ui-remove-bots-ml-810587772"></a>
 ### ART_ARROWS
@@ -32,7 +32,7 @@ const ART_ARROWS = "menu/art/arrows_vert_0"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-arrowup-const-art-arrowup-menu-art-arrows-vert-top-src-mq3-client-ui-remove-bots-ml-1165472869"></a>
 ### ART_ARROWUP
@@ -42,7 +42,7 @@ const ART_ARROWUP = "menu/art/arrows_vert_top"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-back0-const-art-back0-menu-art-back-0-src-mq3-client-ui-remove-bots-ml-475221855"></a>
 ### ART_BACK0
@@ -52,7 +52,7 @@ const ART_BACK0 = "menu/art/back_0"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-back1-const-art-back1-menu-art-back-1-src-mq3-client-ui-remove-bots-ml-650354444"></a>
 ### ART_BACK1
@@ -62,7 +62,7 @@ const ART_BACK1 = "menu/art/back_1"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-background-const-art-background-menu-art-addbotframe-src-mq3-client-ui-remove-bots-ml-1912749782"></a>
 ### ART_BACKGROUND
@@ -72,7 +72,7 @@ const ART_BACKGROUND = "menu/art/addbotframe"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-delete0-const-art-delete0-menu-art-delete-0-src-mq3-client-ui-remove-bots-ml-1950647091"></a>
 ### ART_DELETE0
@@ -82,7 +82,7 @@ const ART_DELETE0 = "menu/art/delete_0"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-art-delete1-const-art-delete1-menu-art-delete-1-src-mq3-client-ui-remove-bots-ml-20289880"></a>
 ### ART_DELETE1
@@ -92,7 +92,7 @@ const ART_DELETE1 = "menu/art/delete_1"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L19)
 
 <a id="function-function-mq3-client-ui-remove-bots-backevent-function-backevent-state-event-src-mq3-client-ui-remove-bots-ml-1259287283"></a>
 ### backEvent
@@ -109,7 +109,7 @@ UI_RemoveBotsMenu_BackEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L44)
 
 <a id="function-function-mq3-client-ui-remove-bots-botevent-function-botevent-state-id-event-src-mq3-client-ui-remove-bots-ml-967789322"></a>
 ### botEvent
@@ -127,7 +127,7 @@ UI_RemoveBotsMenu_BotEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L42)
 
 <a id="function-function-mq3-client-ui-remove-bots-cache-function-cache-state-src-mq3-client-ui-remove-bots-ml-1387902013"></a>
 ### cache
@@ -143,7 +143,7 @@ UI_RemoveBots_Cache
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L49)
 
 <a id="function-function-mq3-client-ui-remove-bots-clean-function-clean-value-src-mq3-client-ui-remove-bots-ml-1765712615"></a>
 ### clean
@@ -157,7 +157,7 @@ function clean(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L29)
 
 <a id="function-function-mq3-client-ui-remove-bots-create-function-create-retailactive-src-mq3-client-ui-remove-bots-ml-1704023151"></a>
 ### create
@@ -171,7 +171,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L27)
 
 <a id="function-function-mq3-client-ui-remove-bots-deleteevent-function-deleteevent-state-event-src-mq3-client-ui-remove-bots-ml-482823747"></a>
 ### deleteEvent
@@ -188,7 +188,7 @@ UI_RemoveBotsMenu_DeleteEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L40)
 
 <a id="function-function-mq3-client-ui-remove-bots-downevent-function-downevent-state-event-src-mq3-client-ui-remove-bots-ml-433972905"></a>
 ### downEvent
@@ -203,7 +203,7 @@ function downEvent(state, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L47)
 
 <a id="function-function-mq3-client-ui-remove-bots-emit-function-emit-state-kind-name-text-value-src-mq3-client-ui-remove-bots-ml-839624522"></a>
 ### emit
@@ -221,7 +221,7 @@ function emit(state, kind, name, text, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L28)
 
 <a id="function-function-mq3-client-ui-remove-bots-getbots-function-getbots-state-serverinfo-playerinfos-src-mq3-client-ui-remove-bots-ml-1889433770"></a>
 ### getBots
@@ -239,7 +239,7 @@ UI_RemoveBotsMenu_GetBots
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-back-const-id-back-13-src-mq3-client-ui-remove-bots-ml-354287039"></a>
 ### ID_BACK
@@ -249,7 +249,7 @@ const ID_BACK = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-botname0-const-id-botname0-20-src-mq3-client-ui-remove-bots-ml-665892321"></a>
 ### ID_BOTNAME0
@@ -259,7 +259,7 @@ const ID_BOTNAME0 = 20
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-delete-const-id-delete-12-src-mq3-client-ui-remove-bots-ml-1321951626"></a>
 ### ID_DELETE
@@ -269,7 +269,7 @@ const ID_DELETE = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-down-const-id-down-11-src-mq3-client-ui-remove-bots-ml-1866244597"></a>
 ### ID_DOWN
@@ -279,7 +279,7 @@ const ID_DOWN = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-id-up-const-id-up-10-src-mq3-client-ui-remove-bots-ml-210256240"></a>
 ### ID_UP
@@ -289,7 +289,7 @@ const ID_UP = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L10)
 
 <a id="function-function-mq3-client-ui-remove-bots-init-function-init-state-serverinfo-playerinfos-src-mq3-client-ui-remove-bots-ml-1373067018"></a>
 ### init
@@ -307,7 +307,7 @@ UI_RemoveBotsMenu_Init
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L51)
 
 <a id="constant-constant-mq3-client-ui-remove-bots-qm-activated-const-qm-activated-3-src-mq3-client-ui-remove-bots-ml-1405694944"></a>
 ### QM_ACTIVATED
@@ -317,7 +317,7 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L9)
 
 <a id="function-function-mq3-client-ui-remove-bots-removebotsmenu-function-removebotsmenu-state-serverinfo-playerinfos-src-mq3-client-ui-remove-bots-ml-716612914"></a>
 ### removeBotsMenu
@@ -335,7 +335,7 @@ UI_RemoveBotsMenu
 | `playerInfos` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L53)
 
 <a id="function-function-mq3-client-ui-remove-bots-setbotnames-function-setbotnames-state-src-mq3-client-ui-remove-bots-ml-914433547"></a>
 ### setBotNames
@@ -351,7 +351,7 @@ UI_RemoveBotsMenu_SetBotNames
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L36)
 
 - [mq3.client.ui_remove_bots.State](Type-mq3-client-ui-remove-bots-state-1890596504.md) — struct
 <a id="function-function-mq3-client-ui-remove-bots-upevent-function-upevent-state-event-src-mq3-client-ui-remove-bots-ml-59274575"></a>
@@ -369,4 +369,4 @@ UI_RemoveBotsMenu_UpEvent / UI_RemoveBotsMenu_DownEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_remove_bots.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_remove_bots.ml#L46)

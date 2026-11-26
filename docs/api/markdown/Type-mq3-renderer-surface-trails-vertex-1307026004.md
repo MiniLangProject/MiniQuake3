@@ -10,7 +10,7 @@ struct Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-trails-vertex-uv-uv-src-mq3-renderer-surface-trails-ml-829437061"></a>
 ### uv
@@ -32,7 +32,7 @@ uv
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-trails-vertex-xyz-xyz-src-mq3-renderer-surface-trails-ml-1089253363"></a>
 ### xyz
@@ -42,4 +42,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_trails.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_trails.ml#L10)

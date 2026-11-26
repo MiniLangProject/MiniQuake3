@@ -10,7 +10,7 @@ struct ClientInputBridge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 ## Members
 
@@ -22,7 +22,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-clientinputbridge-matchstate-matchstate-src-mq3-client-qvm-preview-app-ml-1457221153"></a>
 ### matchState
@@ -32,7 +32,7 @@ matchState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-clientinputbridge-plan-plan-src-mq3-client-qvm-preview-app-ml-1376539095"></a>
 ### plan
@@ -42,7 +42,7 @@ plan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)
 
 <a id="field-field-mq3-client-qvm-preview-app-clientinputbridge-ui-ui-src-mq3-client-qvm-preview-app-ml-2122105649"></a>
 ### ui
@@ -52,4 +52,4 @@ ui
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_preview_app.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_preview_app.ml#L75)

@@ -10,7 +10,7 @@ struct SearchPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ gameName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L29)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-kind-kind-src-mq3-qcommon-filesystem-ml-372167936"></a>
 ### kind
@@ -32,7 +32,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L26)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-loosefiles-loosefiles-src-mq3-qcommon-filesystem-ml-1740652306"></a>
 ### looseFiles
@@ -42,7 +42,7 @@ looseFiles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L30)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-pak-pak-src-mq3-qcommon-filesystem-ml-557722076"></a>
 ### pak
@@ -52,7 +52,7 @@ pak
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L27)
 
 <a id="field-field-mq3-qcommon-filesystem-searchpath-root-root-src-mq3-qcommon-filesystem-ml-932253128"></a>
 ### root
@@ -62,4 +62,4 @@ root
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/filesystem.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/filesystem.ml#L28)

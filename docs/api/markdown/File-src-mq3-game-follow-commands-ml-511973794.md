@@ -29,7 +29,7 @@ function caller(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L28)
 
 <a id="function-function-mq3-game-follow-commands-clientnumber-function-clientnumber-level-ent-text-src-mq3-game-follow-commands-ml-140410898"></a>
 ### clientNumber
@@ -45,7 +45,7 @@ function clientNumber(level, ent, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L32)
 
 <a id="function-function-mq3-game-follow-commands-cycle-function-cycle-level-ent-direction-src-mq3-game-follow-commands-ml-888054494"></a>
 ### cycle
@@ -61,7 +61,7 @@ function cycle(level, ent, direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L63)
 
 <a id="function-function-mq3-game-follow-commands-follow-function-follow-level-ent-argv-src-mq3-game-follow-commands-ml-766171577"></a>
 ### follow
@@ -77,7 +77,7 @@ function follow(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L49)
 
 <a id="function-function-mq3-game-follow-commands-sanitize-function-sanitize-text-src-mq3-game-follow-commands-ml-472988715"></a>
 ### sanitize
@@ -91,4 +91,4 @@ function sanitize(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/follow_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/follow_commands.ml#L12)

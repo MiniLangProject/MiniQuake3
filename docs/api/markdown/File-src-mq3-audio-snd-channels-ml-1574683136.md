@@ -24,7 +24,7 @@ function activeCount(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L25)
 
 <a id="function-function-mq3-audio-snd-channels-advance-function-advance-state-milliseconds-src-mq3-audio-snd-channels-ml-616922669"></a>
 ### advance
@@ -39,7 +39,7 @@ function advance(state, milliseconds)
 | `milliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L23)
 
 <a id="constant-constant-mq3-audio-snd-channels-chan-announcer-const-chan-announcer-7-src-mq3-audio-snd-channels-ml-1658312664"></a>
 ### CHAN_ANNOUNCER
@@ -49,7 +49,7 @@ const CHAN_ANNOUNCER = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L8)
 
 - [mq3.audio.snd_channels.Channel](Type-mq3-audio-snd-channels-channel-424757083.md) — struct
 <a id="function-function-mq3-audio-snd-channels-create-function-create-src-mq3-audio-snd-channels-ml-1744450608"></a>
@@ -60,7 +60,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L14)
 
 <a id="constant-constant-mq3-audio-snd-channels-max-channels-const-max-channels-sndlocal-max-channels-src-mq3-audio-snd-channels-ml-469506884"></a>
 ### MAX_CHANNELS
@@ -70,7 +70,7 @@ const MAX_CHANNELS = sndLocal.MAX_CHANNELS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L7)
 
 <a id="function-function-mq3-audio-snd-channels-release-function-release-state-slot-src-mq3-audio-snd-channels-ml-829735849"></a>
 ### release
@@ -85,7 +85,7 @@ function release(state, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L29)
 
 <a id="function-function-mq3-audio-snd-channels-setlistener-function-setlistener-state-entity-src-mq3-audio-snd-channels-ml-1322003246"></a>
 ### setListener
@@ -100,7 +100,7 @@ function setListener(state, entity)
 | `entity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L21)
 
 <a id="function-function-mq3-audio-snd-channels-settime-function-settime-state-milliseconds-src-mq3-audio-snd-channels-ml-185905951"></a>
 ### setTime
@@ -115,7 +115,7 @@ function setTime(state, milliseconds)
 | `milliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L22)
 
 <a id="function-function-mq3-audio-snd-channels-start-function-start-state-entity-handle-entchannel-src-mq3-audio-snd-channels-ml-864241112"></a>
 ### start
@@ -132,7 +132,7 @@ function start(state, entity, handle, entchannel)
 | `entchannel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L34)
 
 - [mq3.audio.snd_channels.Start](Type-mq3-audio-snd-channels-start-1995314412.md) — struct
 - [mq3.audio.snd_channels.State](Type-mq3-audio-snd-channels-state-1811746341.md) — struct

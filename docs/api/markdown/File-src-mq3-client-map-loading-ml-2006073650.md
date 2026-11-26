@@ -39,7 +39,7 @@ function addIcon(assetList, kindList, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L70)
 
 <a id="function-function-mq3-client-map-loading-collecticons-function-collecticons-screen-config-assets-kinds-clientnum-src-mq3-client-map-loading-ml-1920454487"></a>
 ### collectIcons
@@ -57,7 +57,7 @@ function collectIcons(screen, config, assets, kinds, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L78)
 
 <a id="function-function-mq3-client-map-loading-configvalue-function-configvalue-config-slot-src-mq3-client-map-loading-ml-811999674"></a>
 ### configValue
@@ -72,7 +72,7 @@ function configValue(config, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L58)
 
 <a id="function-function-mq3-client-map-loading-create-function-create-archive-mapname-servername-localgame-src-mq3-client-map-loading-ml-920644562"></a>
 ### create
@@ -89,7 +89,7 @@ function create(archive, mapName, serverName, localGame)
 | `localGame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L25)
 
 <a id="constant-constant-mq3-client-map-loading-first-texture-const-first-texture-3072-src-mq3-client-map-loading-ml-275960483"></a>
 ### FIRST_TEXTURE
@@ -101,7 +101,7 @@ const FIRST_TEXTURE = 3072
 The map screen releases its textures before the match uploads its HUD.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L21)
 
 <a id="function-function-mq3-client-map-loading-hasimage-function-hasimage-screen-name-src-mq3-client-map-loading-ml-367595499"></a>
 ### hasImage
@@ -116,7 +116,7 @@ function hasImage(screen, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L63)
 
 <a id="function-function-mq3-client-map-loading-layout-function-layout-screen-loadingtext-width-height-config-src-mq3-client-map-loading-ml-1929648182"></a>
 ### layout
@@ -134,7 +134,7 @@ function layout(screen, loadingText, width, height, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L108)
 
 <a id="function-function-mq3-client-map-loading-quad-function-quad-commands-x-y-w-h-s1-t1-s2-t2-handle-src-mq3-client-map-loading-ml-1217876750"></a>
 ### quad
@@ -157,7 +157,7 @@ function quad(commands, x, y, w, h, s1, t1, s2, t2, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L38)
 
 <a id="function-function-mq3-client-map-loading-release-function-release-screen-src-mq3-client-map-loading-ml-292518628"></a>
 ### release
@@ -171,7 +171,7 @@ function release(screen)
 | `screen` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L154)
 
 - [mq3.client.map_loading.Screen](Type-mq3-client-map-loading-screen-1249177996.md) — struct
 <a id="function-function-mq3-client-map-loading-show-function-show-screen-loadingtext-width-height-config-reupload-src-mq3-client-map-loading-ml-1970888018"></a>
@@ -191,7 +191,7 @@ function show(screen, loadingText, width, height, config, reupload)
 | `reupload` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L134)
 
 <a id="function-function-mq3-client-map-loading-textline-function-textline-commands-font-x-y-text-small-src-mq3-client-map-loading-ml-2068984852"></a>
 ### textLine
@@ -210,7 +210,7 @@ function textLine(commands, font, x, y, text, small)
 | `small` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L42)
 
 <a id="constant-constant-mq3-client-map-loading-texture-count-const-texture-count-980-src-mq3-client-map-loading-ml-1223601870"></a>
 ### TEXTURE_COUNT
@@ -220,4 +220,4 @@ const TEXTURE_COUNT = 980
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/map_loading.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/map_loading.ml#L22)

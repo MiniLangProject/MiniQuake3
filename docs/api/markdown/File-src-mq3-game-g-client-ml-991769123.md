@@ -35,7 +35,7 @@ function BodySink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L34)
 
 <a id="function-function-mq3-game-g-client-clientbegin-function-clientbegin-level-clientnum-src-mq3-game-g-client-ml-1558184357"></a>
 ### ClientBegin
@@ -50,7 +50,7 @@ function ClientBegin(level, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L59)
 
 <a id="function-function-mq3-game-g-client-clientcleanname-function-clientcleanname-input-outsize-src-mq3-game-g-client-ml-414627389"></a>
 ### ClientCleanName
@@ -65,7 +65,7 @@ function ClientCleanName(input, outSize)
 | `outSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L56)
 
 <a id="function-function-mq3-game-g-client-clientconnect-function-clientconnect-level-clientnum-firsttime-isbot-src-mq3-game-g-client-ml-1575828959"></a>
 ### ClientConnect
@@ -82,7 +82,7 @@ function ClientConnect(level, clientNum, firstTime, isBot)
 | `isBot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L58)
 
 <a id="function-function-mq3-game-g-client-clientdisconnect-function-clientdisconnect-level-clientnum-src-mq3-game-g-client-ml-1924769177"></a>
 ### ClientDisconnect
@@ -97,7 +97,7 @@ function ClientDisconnect(level, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L61)
 
 <a id="function-function-mq3-game-g-client-clientspawn-function-clientspawn-level-ent-src-mq3-game-g-client-ml-1291618029"></a>
 ### ClientSpawn
@@ -112,7 +112,7 @@ function ClientSpawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L60)
 
 <a id="function-function-mq3-game-g-client-clientuserinfochanged-function-clientuserinfochanged-level-clientnum-src-mq3-game-g-client-ml-1239412533"></a>
 ### ClientUserinfoChanged
@@ -127,7 +127,7 @@ function ClientUserinfoChanged(level, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L57)
 
 <a id="function-function-mq3-game-g-client-copytobodyque-function-copytobodyque-level-ent-src-mq3-game-g-client-ml-1772990187"></a>
 ### CopyToBodyQue
@@ -142,7 +142,7 @@ function CopyToBodyQue(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L35)
 
 <a id="function-function-mq3-game-g-client-initbodyque-function-initbodyque-level-src-mq3-game-g-client-ml-1797263356"></a>
 ### InitBodyQue
@@ -156,7 +156,7 @@ function InitBodyQue(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L33)
 
 <a id="function-function-mq3-game-g-client-pickteam-function-pickteam-level-ignoreclientnum-src-mq3-game-g-client-ml-1416885647"></a>
 ### PickTeam
@@ -171,7 +171,7 @@ function PickTeam(level, ignoreClientNum)
 | `ignoreClientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L41)
 
 <a id="function-function-mq3-game-g-client-respawn-function-respawn-level-ent-src-mq3-game-g-client-ml-655183857"></a>
 ### respawn
@@ -186,7 +186,7 @@ function respawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L37)
 
 <a id="function-function-mq3-game-g-client-selectinitialspawnpoint-function-selectinitialspawnpoint-level-origin-angles-src-mq3-game-g-client-ml-1046500642"></a>
 ### SelectInitialSpawnPoint
@@ -202,7 +202,7 @@ function SelectInitialSpawnPoint(level, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L30)
 
 <a id="function-function-mq3-game-g-client-selectnearestdeathmatchspawnpoint-function-selectnearestdeathmatchspawnpoint-level-point-src-mq3-game-g-client-ml-38176078"></a>
 ### SelectNearestDeathmatchSpawnPoint
@@ -217,7 +217,7 @@ function SelectNearestDeathmatchSpawnPoint(level, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L26)
 
 <a id="function-function-mq3-game-g-client-selectrandomdeathmatchspawnpoint-function-selectrandomdeathmatchspawnpoint-level-src-mq3-game-g-client-ml-818154994"></a>
 ### SelectRandomDeathmatchSpawnPoint
@@ -231,7 +231,7 @@ function SelectRandomDeathmatchSpawnPoint(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L27)
 
 <a id="function-function-mq3-game-g-client-selectrandomfurthestspawnpoint-function-selectrandomfurthestspawnpoint-level-avoidpoint-origin-angles-src-mq3-game-g-client-ml-1306989077"></a>
 ### SelectRandomFurthestSpawnPoint
@@ -248,7 +248,7 @@ function SelectRandomFurthestSpawnPoint(level, avoidPoint, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L28)
 
 <a id="function-function-mq3-game-g-client-selectspawnpoint-function-selectspawnpoint-level-avoidpoint-origin-angles-src-mq3-game-g-client-ml-231952285"></a>
 ### SelectSpawnPoint
@@ -265,7 +265,7 @@ function SelectSpawnPoint(level, avoidPoint, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L29)
 
 <a id="function-function-mq3-game-g-client-selectspectatorspawnpoint-function-selectspectatorspawnpoint-level-origin-angles-src-mq3-game-g-client-ml-416662440"></a>
 ### SelectSpectatorSpawnPoint
@@ -281,7 +281,7 @@ function SelectSpectatorSpawnPoint(level, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L31)
 
 <a id="function-function-mq3-game-g-client-setclientviewangle-function-setclientviewangle-ent-angle-src-mq3-game-g-client-ml-215473286"></a>
 ### SetClientViewAngle
@@ -296,7 +296,7 @@ function SetClientViewAngle(ent, angle)
 | `angle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L36)
 
 <a id="function-function-mq3-game-g-client-skin-function-skin-model-skinname-src-mq3-game-g-client-ml-642272575"></a>
 ### skin
@@ -313,7 +313,7 @@ The original ForceClientSkin helper is commented out in the pinned source, but t
 | `skinName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L46)
 
 <a id="function-function-mq3-game-g-client-sp-info-player-deathmatch-function-sp-info-player-deathmatch-level-ent-src-mq3-game-g-client-ml-1041086517"></a>
 ### SP_info_player_deathmatch
@@ -328,7 +328,7 @@ function SP_info_player_deathmatch(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L18)
 
 <a id="function-function-mq3-game-g-client-sp-info-player-intermission-function-sp-info-player-intermission-level-ent-src-mq3-game-g-client-ml-643827931"></a>
 ### SP_info_player_intermission
@@ -343,7 +343,7 @@ function SP_info_player_intermission(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L23)
 
 <a id="function-function-mq3-game-g-client-sp-info-player-start-function-sp-info-player-start-level-ent-src-mq3-game-g-client-ml-303014645"></a>
 ### SP_info_player_start
@@ -358,7 +358,7 @@ function SP_info_player_start(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L19)
 
 <a id="function-function-mq3-game-g-client-spotwouldtelefrag-function-spotwouldtelefrag-level-spot-src-mq3-game-g-client-ml-360117480"></a>
 ### SpotWouldTelefrag
@@ -373,7 +373,7 @@ function SpotWouldTelefrag(level, spot)
 | `spot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L25)
 
 <a id="function-function-mq3-game-g-client-teamcount-function-teamcount-level-ignoreclientnum-team-src-mq3-game-g-client-ml-1426072030"></a>
 ### TeamCount
@@ -389,7 +389,7 @@ function TeamCount(level, ignoreClientNum, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L39)
 
 <a id="function-function-mq3-game-g-client-teamleader-function-teamleader-level-team-src-mq3-game-g-client-ml-1191121939"></a>
 ### TeamLeader
@@ -404,7 +404,7 @@ function TeamLeader(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L40)
 
 <a id="function-function-mq3-game-g-client-trap-dropclient-function-trap-dropclient-level-clientnum-reason-src-mq3-game-g-client-ml-857819589"></a>
 ### trap_DropClient
@@ -422,4 +422,4 @@ Game logic never calls ClientDisconnect directly when kicking a client. Keep the
 | `reason` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_client.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_client.ml#L66)

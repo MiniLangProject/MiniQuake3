@@ -10,7 +10,7 @@ struct Command
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ callback
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L40)
 
 <a id="field-field-mq3-qcommon-command-buffer-command-callbackcontext-callbackcontext-src-mq3-qcommon-command-buffer-ml-549719238"></a>
 ### callbackContext
@@ -32,7 +32,7 @@ callbackContext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L42)
 
 <a id="field-field-mq3-qcommon-command-buffer-command-contextcallback-contextcallback-src-mq3-qcommon-command-buffer-ml-1894979330"></a>
 ### contextCallback
@@ -42,7 +42,7 @@ contextCallback
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L41)
 
 <a id="field-field-mq3-qcommon-command-buffer-command-name-name-src-mq3-qcommon-command-buffer-ml-1756966260"></a>
 ### name
@@ -52,4 +52,4 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L39)

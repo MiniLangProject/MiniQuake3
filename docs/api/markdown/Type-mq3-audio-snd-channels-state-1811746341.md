@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ channels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
 
 <a id="field-field-mq3-audio-snd-channels-state-freeslots-freeslots-src-mq3-audio-snd-channels-ml-1669444110"></a>
 ### freeSlots
@@ -32,7 +32,7 @@ freeSlots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
 
 <a id="field-field-mq3-audio-snd-channels-state-listener-listener-src-mq3-audio-snd-channels-ml-1756664302"></a>
 ### listener
@@ -42,7 +42,7 @@ listener
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)
 
 <a id="field-field-mq3-audio-snd-channels-state-time-time-src-mq3-audio-snd-channels-ml-570293128"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L11)

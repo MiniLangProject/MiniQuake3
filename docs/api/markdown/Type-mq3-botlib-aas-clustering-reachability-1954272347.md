@@ -10,7 +10,7 @@ struct Reachability
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L25)
 
 <a id="field-field-mq3-botlib-aas-clustering-reachability-traveltype-traveltype-src-mq3-botlib-aas-clustering-ml-2140069788"></a>
 ### travelType
@@ -32,4 +32,4 @@ travelType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L25)

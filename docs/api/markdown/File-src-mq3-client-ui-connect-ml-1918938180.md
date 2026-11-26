@@ -22,7 +22,7 @@ const CA_ACTIVE = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-authorizing-const-ca-authorizing-2-src-mq3-client-ui-connect-ml-1709788335"></a>
 ### CA_AUTHORIZING
@@ -32,7 +32,7 @@ const CA_AUTHORIZING = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-challenging-const-ca-challenging-4-src-mq3-client-ui-connect-ml-1351343729"></a>
 ### CA_CHALLENGING
@@ -42,7 +42,7 @@ const CA_CHALLENGING = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-cinematic-const-ca-cinematic-9-src-mq3-client-ui-connect-ml-982015678"></a>
 ### CA_CINEMATIC
@@ -52,7 +52,7 @@ const CA_CINEMATIC = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-connected-const-ca-connected-5-src-mq3-client-ui-connect-ml-1690203786"></a>
 ### CA_CONNECTED
@@ -62,7 +62,7 @@ const CA_CONNECTED = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-connecting-const-ca-connecting-3-src-mq3-client-ui-connect-ml-2139275574"></a>
 ### CA_CONNECTING
@@ -72,7 +72,7 @@ const CA_CONNECTING = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-disconnected-const-ca-disconnected-1-src-mq3-client-ui-connect-ml-1330630896"></a>
 ### CA_DISCONNECTED
@@ -82,7 +82,7 @@ const CA_DISCONNECTED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-loading-const-ca-loading-6-src-mq3-client-ui-connect-ml-1046266219"></a>
 ### CA_LOADING
@@ -92,7 +92,7 @@ const CA_LOADING = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-primed-const-ca-primed-7-src-mq3-client-ui-connect-ml-1491007330"></a>
 ### CA_PRIMED
@@ -102,7 +102,7 @@ const CA_PRIMED = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-connect-ca-uninitialized-const-ca-uninitialized-0-src-mq3-client-ui-connect-ml-567287199"></a>
 ### CA_UNINITIALIZED
@@ -112,7 +112,7 @@ const CA_UNINITIALIZED = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L9)
 
 <a id="function-function-mq3-client-ui-connect-clientstate-function-clientstate-connstate-connectpacketcount-servername-updateinfostring-messagestring-serverinfo-src-mq3-client-ui-connect-ml-957383471"></a>
 ### clientState
@@ -131,7 +131,7 @@ function clientState(connState, connectPacketCount, servername, updateInfoString
 | `serverInfo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L28)
 
 - [mq3.client.ui_connect.ClientState](Type-mq3-client-ui-connect-clientstate-1978890188.md) — struct
 <a id="function-function-mq3-client-ui-connect-configure-function-configure-state-client-realtime-downloadname-downloadsize-downloadcount-downloadtime-src-mq3-client-ui-connect-ml-1650606181"></a>
@@ -152,7 +152,7 @@ function configure(state, client, realtime, downloadName, downloadSize, download
 | `downloadTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L58)
 
 <a id="function-function-mq3-client-ui-connect-create-function-create-retailactive-src-mq3-client-ui-connect-ml-1496739353"></a>
 ### create
@@ -166,7 +166,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L29)
 
 <a id="function-function-mq3-client-ui-connect-displaydownloadinfo-function-displaydownloadinfo-state-downloadname-src-mq3-client-ui-connect-ml-1102411562"></a>
 ### displayDownloadInfo
@@ -183,7 +183,7 @@ UI_DisplayDownloadInfo
 | `downloadName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-connect-download-left-const-download-left-262-src-mq3-client-ui-connect-ml-1755349219"></a>
 ### DOWNLOAD_LEFT
@@ -193,7 +193,7 @@ const DOWNLOAD_LEFT = 262
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L21)
 
 - [mq3.client.ui_connect.DownloadInfo](Type-mq3-client-ui-connect-downloadinfo-2065230024.md) — struct
 <a id="function-function-mq3-client-ui-connect-drawconnectscreen-function-drawconnectscreen-state-overlay-src-mq3-client-ui-connect-ml-961893839"></a>
@@ -211,7 +211,7 @@ UI_DrawConnectScreen
 | `overlay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L61)
 
 <a id="function-function-mq3-client-ui-connect-drawtext-function-drawtext-state-x-y-text-style-color-src-mq3-client-ui-connect-ml-445524993"></a>
 ### drawText
@@ -230,7 +230,7 @@ function drawText(state, x, y, text, style, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L46)
 
 <a id="function-function-mq3-client-ui-connect-drawwrapped-function-drawwrapped-state-x-y-width-height-text-style-color-src-mq3-client-ui-connect-ml-1283487048"></a>
 ### drawWrapped
@@ -251,7 +251,7 @@ function drawWrapped(state, x, y, width, height, text, style, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L47)
 
 <a id="function-function-mq3-client-ui-connect-emit-function-emit-state-kind-x-y-width-height-text-style-color-asset-value-src-mq3-client-ui-connect-ml-1358673393"></a>
 ### emit
@@ -275,7 +275,7 @@ function emit(state, kind, x, y, width, height, text, style, color, asset, value
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-connect-exec-append-const-exec-append-2-src-mq3-client-ui-connect-ml-121945955"></a>
 ### EXEC_APPEND
@@ -285,7 +285,7 @@ const EXEC_APPEND = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L20)
 
 <a id="function-function-mq3-client-ui-connect-idiv-function-idiv-a-b-src-mq3-client-ui-connect-ml-1838657535"></a>
 ### idiv
@@ -300,7 +300,7 @@ function idiv(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-connect-k-escape-const-k-escape-27-src-mq3-client-ui-connect-ml-356760220"></a>
 ### K_ESCAPE
@@ -310,7 +310,7 @@ const K_ESCAPE = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L19)
 
 <a id="function-function-mq3-client-ui-connect-keyconnect-function-keyconnect-state-key-src-mq3-client-ui-connect-ml-2027778272"></a>
 ### keyConnect
@@ -327,7 +327,7 @@ UI_KeyConnect
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L71)
 
 <a id="function-function-mq3-client-ui-connect-printtime-function-printtime-time-src-mq3-client-ui-connect-ml-1341022905"></a>
 ### printTime
@@ -343,7 +343,7 @@ UI_PrintTime
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L42)
 
 <a id="function-function-mq3-client-ui-connect-readablesize-function-readablesize-value-src-mq3-client-ui-connect-ml-135015465"></a>
 ### readableSize
@@ -359,7 +359,7 @@ UI_ReadableSize
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L37)
 
 <a id="function-function-mq3-client-ui-connect-sessiondrawconnectscreen-function-sessiondrawconnectscreen-context-overlay-src-mq3-client-ui-connect-ml-969316329"></a>
 ### sessionDrawConnectScreen
@@ -376,7 +376,7 @@ Adapter for original_ui_session.Services.connectFn when the shared host context 
 | `overlay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L68)
 
 - [mq3.client.ui_connect.State](Type-mq3-client-ui-connect-state-1587894641.md) — struct
 <a id="function-function-mq3-client-ui-connect-twodigits-function-twodigits-value-src-mq3-client-ui-connect-ml-1162759193"></a>
@@ -391,4 +391,4 @@ function twoDigits(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L34)

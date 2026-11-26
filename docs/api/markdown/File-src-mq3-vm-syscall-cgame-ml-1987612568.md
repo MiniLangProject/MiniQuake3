@@ -29,7 +29,7 @@ function arg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L50)
 
 - [mq3.vm.syscall_cgame.BytesResult](Type-mq3-vm-syscall-cgame-bytesresult-1324674204.md) — struct
 <a id="function-function-mq3-vm-syscall-cgame-callback-function-callback-host-src-mq3-vm-syscall-cgame-ml-2086062176"></a>
@@ -44,7 +44,7 @@ function callback(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L144)
 
 <a id="function-function-mq3-vm-syscall-cgame-currentsnapshotnumber-function-currentsnapshotnumber-vm-base-host-src-mq3-vm-syscall-cgame-ml-1578320780"></a>
 ### currentSnapshotNumber
@@ -60,7 +60,7 @@ function currentSnapshotNumber(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L73)
 
 <a id="function-function-mq3-vm-syscall-cgame-dispatch-function-dispatch-host-vm-base-src-mq3-vm-syscall-cgame-ml-1136731308"></a>
 ### dispatch
@@ -76,7 +76,7 @@ function dispatch(host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L137)
 
 <a id="function-function-mq3-vm-syscall-cgame-dispatchspecific-function-dispatchspecific-vm-base-host-op-src-mq3-vm-syscall-cgame-ml-201136029"></a>
 ### dispatchSpecific
@@ -93,7 +93,7 @@ function dispatchSpecific(vm, base, host, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L102)
 
 <a id="function-function-mq3-vm-syscall-cgame-exactoutput-function-exactoutput-vm-address-data-size-label-src-mq3-vm-syscall-cgame-ml-1694933178"></a>
 ### exactOutput
@@ -111,7 +111,7 @@ function exactOutput(vm, address, data, size, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L52)
 
 <a id="function-function-mq3-vm-syscall-cgame-fixedstate-function-fixedstate-vm-base-host-callback-size-name-src-mq3-vm-syscall-cgame-ml-768185987"></a>
 ### fixedState
@@ -130,7 +130,7 @@ function fixedState(vm, base, host, callback, size, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L68)
 
 <a id="constant-constant-mq3-vm-syscall-cgame-gamestate-size-const-gamestate-size-20100-src-mq3-vm-syscall-cgame-ml-1649345948"></a>
 ### GAMESTATE_SIZE
@@ -140,7 +140,7 @@ const GAMESTATE_SIZE = 20100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L10)
 
 <a id="function-function-mq3-vm-syscall-cgame-getservercommand-function-getservercommand-vm-base-host-src-mq3-vm-syscall-cgame-ml-1211872812"></a>
 ### getServerCommand
@@ -156,7 +156,7 @@ function getServerCommand(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L91)
 
 <a id="constant-constant-mq3-vm-syscall-cgame-glconfig-size-const-glconfig-size-11332-src-mq3-vm-syscall-cgame-ml-617663855"></a>
 ### GLCONFIG_SIZE
@@ -166,7 +166,7 @@ const GLCONFIG_SIZE = 11332
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L13)
 
 <a id="function-function-mq3-vm-syscall-cgame-registerasset-function-registerasset-vm-base-host-callback-name-src-mq3-vm-syscall-cgame-ml-707987810"></a>
 ### registerAsset
@@ -184,7 +184,7 @@ function registerAsset(vm, base, host, callback, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L63)
 
 <a id="function-function-mq3-vm-syscall-cgame-services-function-services-shared-context-src-mq3-vm-syscall-cgame-ml-1801255762"></a>
 ### services
@@ -199,7 +199,7 @@ function services(shared, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L45)
 
 - [mq3.vm.syscall_cgame.Services](Type-mq3-vm-syscall-cgame-services-1633463978.md) — struct
 <a id="function-function-mq3-vm-syscall-cgame-setusercmdvalue-function-setusercmdvalue-vm-base-host-src-mq3-vm-syscall-cgame-ml-1134407664"></a>
@@ -216,7 +216,7 @@ function setUserCmdValue(vm, base, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L97)
 
 <a id="constant-constant-mq3-vm-syscall-cgame-snapshot-size-const-snapshot-size-53772-src-mq3-vm-syscall-cgame-ml-1396102329"></a>
 ### SNAPSHOT_SIZE
@@ -226,7 +226,7 @@ const SNAPSHOT_SIZE = 53772
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L11)
 
 - [mq3.vm.syscall_cgame.SnapshotNumber](Type-mq3-vm-syscall-cgame-snapshotnumber-2061525543.md) — struct
 <a id="function-function-mq3-vm-syscall-cgame-stringevent-function-stringevent-vm-base-host-callback-name-src-mq3-vm-syscall-cgame-ml-1178835182"></a>
@@ -245,7 +245,7 @@ function stringEvent(vm, base, host, callback, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L58)
 
 <a id="function-function-mq3-vm-syscall-cgame-unavailable-function-unavailable-name-src-mq3-vm-syscall-cgame-ml-842356419"></a>
 ### unavailable
@@ -259,7 +259,7 @@ function unavailable(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L49)
 
 <a id="constant-constant-mq3-vm-syscall-cgame-usercmd-size-const-usercmd-size-24-src-mq3-vm-syscall-cgame-ml-160644467"></a>
 ### USERCMD_SIZE
@@ -269,7 +269,7 @@ const USERCMD_SIZE = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L12)
 
 <a id="function-function-mq3-vm-syscall-cgame-variablestate-function-variablestate-vm-base-host-callback-size-name-src-mq3-vm-syscall-cgame-ml-1805670625"></a>
 ### variableState
@@ -288,4 +288,4 @@ function variableState(vm, base, host, callback, size, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_cgame.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_cgame.ml#L83)

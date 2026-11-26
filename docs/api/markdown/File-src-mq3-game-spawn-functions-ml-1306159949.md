@@ -47,7 +47,7 @@ function aimAtTarget(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L50)
 
 <a id="function-function-mq3-game-spawn-functions-dispatch-function-dispatch-level-ent-src-mq3-game-spawn-functions-ml-1143669247"></a>
 ### dispatch
@@ -62,7 +62,7 @@ function dispatch(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L106)
 
 <a id="function-function-mq3-game-spawn-functions-initshooter-function-initshooter-level-ent-weapon-src-mq3-game-spawn-functions-ml-2115834003"></a>
 ### initShooter
@@ -78,7 +78,7 @@ function initShooter(level, ent, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L98)
 
 <a id="function-function-mq3-game-spawn-functions-inittrigger-function-inittrigger-level-ent-src-mq3-game-spawn-functions-ml-1021733195"></a>
 ### initTrigger
@@ -93,7 +93,7 @@ function initTrigger(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L45)
 
 <a id="function-function-mq3-game-spawn-functions-laserstart-function-laserstart-level-self-src-mq3-game-spawn-functions-ml-250016416"></a>
 ### laserStart
@@ -108,7 +108,7 @@ function laserStart(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L76)
 
 <a id="function-function-mq3-game-spawn-functions-movedirvector-function-movedirvector-angles-src-mq3-game-spawn-functions-ml-2133028172"></a>
 ### movedirVector
@@ -122,7 +122,7 @@ function movedirVector(angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L28)
 
 <a id="function-function-mq3-game-spawn-functions-playerdeathmatch-function-playerdeathmatch-level-ent-src-mq3-game-spawn-functions-ml-119639895"></a>
 ### playerDeathmatch
@@ -137,7 +137,7 @@ function playerDeathmatch(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L71)
 
 <a id="function-function-mq3-game-spawn-functions-runthink-function-runthink-level-ent-src-mq3-game-spawn-functions-ml-1003343583"></a>
 ### runThink
@@ -152,7 +152,7 @@ function runThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L68)
 
 <a id="function-function-mq3-game-spawn-functions-setbrushmodel-function-setbrushmodel-level-ent-name-src-mq3-game-spawn-functions-ml-627634548"></a>
 ### setBrushModel
@@ -168,7 +168,7 @@ function setBrushModel(level, ent, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L36)
 
 <a id="function-function-mq3-game-spawn-functions-setmovedir-function-setmovedir-ent-src-mq3-game-spawn-functions-ml-779790167"></a>
 ### setMovedir
@@ -182,4 +182,4 @@ function setMovedir(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/spawn_functions.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/spawn_functions.ml#L31)

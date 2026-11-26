@@ -28,7 +28,7 @@ function canonicalPath(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L22)
 
 - [mq3.audio.qvm_sound_assets.Catalog](Type-mq3-audio-qvm-sound-assets-catalog-1374778137.md) — struct
 <a id="constant-constant-mq3-audio-qvm-sound-assets-chunk-frames-const-chunk-frames-1024-src-mq3-audio-qvm-sound-assets-ml-1138393406"></a>
@@ -41,7 +41,7 @@ const CHUNK_FRAMES = 1024
 Three buffers at 22050 Hz hold at most 139 ms of sampled audio.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L14)
 
 - [mq3.audio.qvm_sound_assets.Clip](Type-mq3-audio-qvm-sound-assets-clip-741452940.md) — struct
 <a id="function-function-mq3-audio-qvm-sound-assets-clipforhandle-function-clipforhandle-catalog-handle-src-mq3-audio-qvm-sound-assets-ml-296920641"></a>
@@ -57,7 +57,7 @@ function clipForHandle(catalog, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L37)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-clipforpath-function-clipforpath-catalog-path-src-mq3-audio-qvm-sound-assets-ml-839609208"></a>
 ### clipForPath
@@ -72,7 +72,7 @@ function clipForPath(catalog, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L45)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-decodeeffectpath-function-decodeeffectpath-archive-handle-path-src-mq3-audio-qvm-sound-assets-ml-1573881201"></a>
 ### decodeEffectPath
@@ -88,7 +88,7 @@ function decodeEffectPath(archive, handle, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L80)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-decodepath-function-decodepath-archive-handle-path-src-mq3-audio-qvm-sound-assets-ml-934384217"></a>
 ### decodePath
@@ -104,7 +104,7 @@ function decodePath(archive, handle, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L71)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-decodeplayereffectpath-function-decodeplayereffectpath-archive-handle-path-playermodel-src-mq3-audio-qvm-sound-assets-ml-1907065265"></a>
 ### decodePlayerEffectPath
@@ -121,7 +121,7 @@ function decodePlayerEffectPath(archive, handle, path, playerModel)
 | `playerModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L75)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-decodeplayerpath-function-decodeplayerpath-archive-handle-path-playermodel-src-mq3-audio-qvm-sound-assets-ml-1445181401"></a>
 ### decodePlayerPath
@@ -138,7 +138,7 @@ function decodePlayerPath(archive, handle, path, playerModel)
 | `playerModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L64)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-decoderetailwav-function-decoderetailwav-data-src-mq3-audio-qvm-sound-assets-ml-375387550"></a>
 ### decodeRetailWav
@@ -152,7 +152,7 @@ function decodeRetailWav(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L52)
 
 <a id="constant-constant-mq3-audio-qvm-sound-assets-effect-output-rate-const-effect-output-rate-22050-src-mq3-audio-qvm-sound-assets-ml-1776001956"></a>
 ### EFFECT_OUTPUT_RATE
@@ -162,7 +162,7 @@ const EFFECT_OUTPUT_RATE = 22050
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L12)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-ensurepath-function-ensurepath-catalog-path-src-mq3-audio-qvm-sound-assets-ml-1394153784"></a>
 ### ensurePath
@@ -177,7 +177,7 @@ function ensurePath(catalog, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L82)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-fail-function-fail-message-src-mq3-audio-qvm-sound-assets-ml-1316305033"></a>
 ### fail
@@ -191,7 +191,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L20)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-load-function-load-archive-assetnames-kinds-src-mq3-audio-qvm-sound-assets-ml-1879341259"></a>
 ### load
@@ -207,7 +207,7 @@ function load(archive, assetNames, kinds)
 | `kinds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L94)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-loadforplayer-function-loadforplayer-archive-assetnames-kinds-playermodel-src-mq3-audio-qvm-sound-assets-ml-433688967"></a>
 ### loadForPlayer
@@ -224,7 +224,7 @@ function loadForPlayer(archive, assetNames, kinds, playerModel)
 | `playerModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L89)
 
 - [mq3.audio.qvm_sound_assets.Missing](Type-mq3-audio-qvm-sound-assets-missing-207760702.md) — struct
 <a id="function-function-mq3-audio-qvm-sound-assets-missingforhandle-function-missingforhandle-catalog-handle-src-mq3-audio-qvm-sound-assets-ml-729406667"></a>
@@ -240,7 +240,7 @@ function missingForHandle(catalog, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L41)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-normalizeeffect-function-normalizeeffect-sound-src-mq3-audio-qvm-sound-assets-ml-350443257"></a>
 ### normalizeEffect
@@ -254,7 +254,7 @@ function normalizeEffect(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L73)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-retailpath-function-retailpath-name-playermodel-src-mq3-audio-qvm-sound-assets-ml-2000819421"></a>
 ### retailPath
@@ -269,7 +269,7 @@ function retailPath(name, playerModel)
 | `playerModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L30)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-sync-function-sync-catalog-assetnames-kinds-src-mq3-audio-qvm-sound-assets-ml-1968122598"></a>
 ### sync
@@ -285,7 +285,7 @@ function sync(catalog, assetNames, kinds)
 | `kinds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L118)
 
 <a id="function-function-mq3-audio-qvm-sound-assets-syncforplayer-function-syncforplayer-catalog-assetnames-kinds-playermodel-src-mq3-audio-qvm-sound-assets-ml-1042627886"></a>
 ### syncForPlayer
@@ -302,4 +302,4 @@ function syncForPlayer(catalog, assetNames, kinds, playerModel)
 | `playerModel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_sound_assets.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_sound_assets.ml#L96)

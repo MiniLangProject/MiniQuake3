@@ -32,7 +32,7 @@ function attachFrameStates(runtimeState, clientFrameState, serverTimeoutClient)
 | `serverTimeoutClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L87)
 
 <a id="function-function-mq3-client-network-match-loop-attachserverclock-function-attachserverclock-runtimestate-callback-context-src-mq3-client-network-match-loop-ml-1973540901"></a>
 ### attachServerClock
@@ -48,7 +48,7 @@ function attachServerClock(runtimeState, callback, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L94)
 
 <a id="function-function-mq3-client-network-match-loop-bridgebuild-function-bridgebuild-host-clientstate-serverstate-src-mq3-client-network-match-loop-ml-32995176"></a>
 ### bridgeBuild
@@ -64,7 +64,7 @@ function bridgeBuild(host, clientState, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L184)
 
 <a id="function-function-mq3-client-network-match-loop-bridgedownload-function-bridgedownload-host-clientstate-msg-src-mq3-client-network-match-loop-ml-1393347675"></a>
 ### bridgeDownload
@@ -80,7 +80,7 @@ function bridgeDownload(host, clientState, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L187)
 
 <a id="function-function-mq3-client-network-match-loop-bridgelan-function-bridgelan-host-clientstate-src-mq3-client-network-match-loop-ml-896968326"></a>
 ### bridgeLan
@@ -95,7 +95,7 @@ function bridgeLan(host, clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L193)
 
 <a id="function-function-mq3-client-network-match-loop-bridgelocal-function-bridgelocal-host-clientstate-src-mq3-client-network-match-loop-ml-1718363122"></a>
 ### bridgeLocal
@@ -110,7 +110,7 @@ function bridgeLocal(host, clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L190)
 
 <a id="function-function-mq3-client-network-match-loop-bridgetransmit-function-bridgetransmit-host-clientstate-payload-src-mq3-client-network-match-loop-ml-364620524"></a>
 ### bridgeTransmit
@@ -126,7 +126,7 @@ function bridgeTransmit(host, clientState, payload)
 | `payload` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L196)
 
 <a id="function-function-mq3-client-network-match-loop-commitframestates-function-commitframestates-runtimestate-src-mq3-client-network-match-loop-ml-1479390013"></a>
 ### commitFrameStates
@@ -140,7 +140,7 @@ function commitFrameStates(runtimeState)
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L76)
 
 <a id="function-function-mq3-client-network-match-loop-commitgroupframestates-function-commitgroupframestates-groupstate-src-mq3-client-network-match-loop-ml-768419824"></a>
 ### commitGroupFrameStates
@@ -154,7 +154,7 @@ function commitGroupFrameStates(groupState)
 | `groupState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L150)
 
 <a id="function-function-mq3-client-network-match-loop-create-function-create-clientsocket-serversocket-capacity-sendstate-sendservices-connection-clientwire-protocolstate-clientingressstate-serveringressstate-packetclient-messageclient-snapshotclient-snapshotstate-serverwireruntime-serverwireclient-src-mq3-client-network-match-loop-ml-325529470"></a>
 ### create
@@ -183,7 +183,7 @@ function create(clientSocket, serverSocket, capacity, sendState, sendServices, c
 | `serverWireClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L26)
 
 <a id="function-function-mq3-client-network-match-loop-creategroup-function-creategroup-runtimes-src-mq3-client-network-match-loop-ml-145175471"></a>
 ### createGroup
@@ -199,7 +199,7 @@ A local listen server owns one UDP socket while every client owns a separate soc
 | `runtimes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L129)
 
 - [mq3.client.network_match_loop.Group](Type-mq3-client-network-match-loop-group-1745111491.md) — struct
 - [mq3.client.network_match_loop.GroupStep](Type-mq3-client-network-match-loop-groupstep-1141879649.md) — struct
@@ -217,7 +217,7 @@ CL_Frame and SV_Frame keep timeout state in their outer client records while pac
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L63)
 
 <a id="function-function-mq3-client-network-match-loop-pump-function-pump-runtimestate-budget-src-mq3-client-network-match-loop-ml-1862212080"></a>
 ### pump
@@ -232,7 +232,7 @@ function pump(runtimeState, budget)
 | `budget` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L111)
 
 <a id="function-function-mq3-client-network-match-loop-pumpgroup-function-pumpgroup-groupstate-budget-src-mq3-client-network-match-loop-ml-313899311"></a>
 ### pumpGroup
@@ -247,7 +247,7 @@ function pumpGroup(groupState, budget)
 | `budget` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L166)
 
 <a id="function-function-mq3-client-network-match-loop-pumpgrouponce-function-pumpgrouponce-groupstate-src-mq3-client-network-match-loop-ml-262934152"></a>
 ### pumpGroupOnce
@@ -261,7 +261,7 @@ function pumpGroupOnce(groupState)
 | `groupState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L155)
 
 <a id="function-function-mq3-client-network-match-loop-pumponce-function-pumponce-runtimestate-src-mq3-client-network-match-loop-ml-1990887729"></a>
 ### pumpOnce
@@ -277,7 +277,7 @@ Process exactly one queued datagram and expose its side/payload metadata. Frame 
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L120)
 
 <a id="function-function-mq3-client-network-match-loop-receiveclient-function-receiveclient-runtimestate-address-data-src-mq3-client-network-match-loop-ml-701614623"></a>
 ### receiveClient
@@ -293,7 +293,7 @@ function receiveClient(runtimeState, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L23)
 
 <a id="function-function-mq3-client-network-match-loop-receiveserver-function-receiveserver-runtimestate-address-data-src-mq3-client-network-match-loop-ml-1373635087"></a>
 ### receiveServer
@@ -309,7 +309,7 @@ function receiveServer(runtimeState, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L24)
 
 - [mq3.client.network_match_loop.Runtime](Type-mq3-client-network-match-loop-runtime-1877533652.md) — struct
 <a id="function-function-mq3-client-network-match-loop-sendclientframe-function-sendclientframe-runtimestate-frametime-src-mq3-client-network-match-loop-ml-1004134675"></a>
@@ -325,7 +325,7 @@ function sendClientFrame(runtimeState, frameTime)
 | `frameTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L106)
 
 <a id="function-function-mq3-client-network-match-loop-sendserversnapshot-function-sendserversnapshot-runtimestate-delegate-src-mq3-client-network-match-loop-ml-814602818"></a>
 ### sendServerSnapshot
@@ -340,7 +340,7 @@ function sendServerSnapshot(runtimeState, delegate)
 | `delegate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L204)
 
 <a id="function-function-mq3-client-network-match-loop-setgrouptime-function-setgrouptime-groupstate-time-src-mq3-client-network-match-loop-ml-1064230377"></a>
 ### setGroupTime
@@ -355,7 +355,7 @@ function setGroupTime(groupState, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L173)
 
 <a id="function-function-mq3-client-network-match-loop-settime-function-settime-runtimestate-time-src-mq3-client-network-match-loop-ml-918315338"></a>
 ### setTime
@@ -370,7 +370,7 @@ function setTime(runtimeState, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L99)
 
 - [mq3.client.network_match_loop.SnapshotBridge](Type-mq3-client-network-match-loop-snapshotbridge-279736737.md) — struct
 <a id="function-function-mq3-client-network-match-loop-snapshotservices-function-snapshotservices-runtimestate-delegate-src-mq3-client-network-match-loop-ml-105779146"></a>
@@ -386,7 +386,7 @@ function snapshotServices(runtimeState, delegate)
 | `delegate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L200)
 
 <a id="function-function-mq3-client-network-match-loop-synchronize-function-synchronize-runtimestate-src-mq3-client-network-match-loop-ml-613438293"></a>
 ### synchronize
@@ -400,7 +400,7 @@ function synchronize(runtimeState)
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L92)
 
 <a id="function-function-mq3-client-network-match-loop-synchronizeclient-function-synchronizeclient-runtimestate-src-mq3-client-network-match-loop-ml-625357107"></a>
 ### synchronizeClient
@@ -414,7 +414,7 @@ function synchronizeClient(runtimeState)
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L32)
 
 <a id="function-function-mq3-client-network-match-loop-synchronizegroup-function-synchronizegroup-groupstate-src-mq3-client-network-match-loop-ml-1788081660"></a>
 ### synchronizeGroup
@@ -428,7 +428,7 @@ function synchronizeGroup(groupState)
 | `groupState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L145)
 
 <a id="function-function-mq3-client-network-match-loop-synchronizeserver-function-synchronizeserver-runtimestate-src-mq3-client-network-match-loop-ml-123517611"></a>
 ### synchronizeServer
@@ -442,4 +442,4 @@ function synchronizeServer(runtimeState)
 | `runtimeState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L48)

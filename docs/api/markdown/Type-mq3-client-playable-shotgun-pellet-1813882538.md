@@ -10,7 +10,7 @@ struct Pellet
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ damage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-distance-distance-src-mq3-client-playable-shotgun-ml-56330777"></a>
 ### distance
@@ -32,7 +32,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-endpoint-endpoint-src-mq3-client-playable-shotgun-ml-896273573"></a>
 ### endPoint
@@ -42,7 +42,7 @@ endPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-fraction-fraction-src-mq3-client-playable-shotgun-ml-1819112799"></a>
 ### fraction
@@ -52,7 +52,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-hit-hit-src-mq3-client-playable-shotgun-ml-1420714431"></a>
 ### hit
@@ -62,7 +62,7 @@ hit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-intended-intended-src-mq3-client-playable-shotgun-ml-448570841"></a>
 ### intended
@@ -72,7 +72,7 @@ intended
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-killed-killed-src-mq3-client-playable-shotgun-ml-1232215065"></a>
 ### killed
@@ -82,7 +82,7 @@ killed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-normal-normal-src-mq3-client-playable-shotgun-ml-1707240449"></a>
 ### normal
@@ -92,7 +92,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-start-start-src-mq3-client-playable-shotgun-ml-2129233263"></a>
 ### start
@@ -102,7 +102,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)
 
 <a id="field-field-mq3-client-playable-shotgun-pellet-targetindex-targetindex-src-mq3-client-playable-shotgun-ml-1208954563"></a>
 ### targetIndex
@@ -112,4 +112,4 @@ targetIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L18)

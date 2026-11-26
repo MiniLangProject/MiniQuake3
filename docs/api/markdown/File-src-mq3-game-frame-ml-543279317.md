@@ -41,7 +41,7 @@ function run(level, levelTime)
 | `levelTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/frame.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L65)
 
 <a id="function-function-mq3-game-frame-runentities-function-runentities-level-src-mq3-game-frame-ml-1513590918"></a>
 ### runEntities
@@ -55,7 +55,7 @@ function runEntities(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/frame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L22)
 
 <a id="function-function-mq3-game-frame-stage-function-stage-level-kind-arg-src-mq3-game-frame-ml-1465696878"></a>
 ### stage
@@ -71,4 +71,4 @@ function stage(level, kind, arg)
 | `arg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/frame.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/frame.ml#L59)

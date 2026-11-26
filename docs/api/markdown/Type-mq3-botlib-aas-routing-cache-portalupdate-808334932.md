@@ -12,7 +12,7 @@ struct PortalUpdate
 Area and portal builders have separate scratch space: portal propagation calls getAreaCache recursively and must not overwrite its own queue.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L87)
 
 ## Members
 
@@ -24,7 +24,7 @@ area
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L87)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalupdate-cluster-cluster-src-mq3-botlib-aas-routing-cache-ml-1298173350"></a>
 ### cluster
@@ -34,7 +34,7 @@ cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L87)
 
 <a id="field-field-mq3-botlib-aas-routing-cache-portalupdate-time-time-src-mq3-botlib-aas-routing-cache-ml-1540446952"></a>
 ### time
@@ -44,4 +44,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_routing_cache.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_routing_cache.ml#L87)

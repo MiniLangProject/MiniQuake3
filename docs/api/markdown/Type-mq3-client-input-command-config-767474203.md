@@ -10,7 +10,7 @@ struct Config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ angleSpeedKey
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-filter-filter-src-mq3-client-input-command-ml-933589515"></a>
 ### filter
@@ -32,7 +32,7 @@ filter
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-forwardspeed-forwardspeed-src-mq3-client-input-command-ml-348441735"></a>
 ### forwardSpeed
@@ -42,7 +42,7 @@ forwardSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-freelook-freelook-src-mq3-client-input-command-ml-49836617"></a>
 ### freelook
@@ -52,7 +52,7 @@ freelook
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-mouseaccel-mouseaccel-src-mq3-client-input-command-ml-569362361"></a>
 ### mouseAccel
@@ -62,7 +62,7 @@ mouseAccel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-mouseforward-mouseforward-src-mq3-client-input-command-ml-776370119"></a>
 ### mouseForward
@@ -72,7 +72,7 @@ mouseForward
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-mousepitch-mousepitch-src-mq3-client-input-command-ml-1998140529"></a>
 ### mousePitch
@@ -82,7 +82,7 @@ mousePitch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-mouseside-mouseside-src-mq3-client-input-command-ml-284325091"></a>
 ### mouseSide
@@ -92,7 +92,7 @@ mouseSide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-mouseyaw-mouseyaw-src-mq3-client-input-command-ml-1018038679"></a>
 ### mouseYaw
@@ -102,7 +102,7 @@ mouseYaw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-pitchspeed-pitchspeed-src-mq3-client-input-command-ml-129291605"></a>
 ### pitchSpeed
@@ -112,7 +112,7 @@ pitchSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-run-run-src-mq3-client-input-command-ml-2082717071"></a>
 ### run
@@ -122,7 +122,7 @@ run
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-sensitivity-sensitivity-src-mq3-client-input-command-ml-966569315"></a>
 ### sensitivity
@@ -132,7 +132,7 @@ sensitivity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-sidespeed-sidespeed-src-mq3-client-input-command-ml-1399986455"></a>
 ### sideSpeed
@@ -142,7 +142,7 @@ sideSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-upspeed-upspeed-src-mq3-client-input-command-ml-2114174723"></a>
 ### upSpeed
@@ -152,7 +152,7 @@ upSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)
 
 <a id="field-field-mq3-client-input-command-config-yawspeed-yawspeed-src-mq3-client-input-command-ml-1627317827"></a>
 ### yawSpeed
@@ -162,4 +162,4 @@ yawSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/input_command.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/input_command.ml#L15)

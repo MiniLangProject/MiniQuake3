@@ -22,7 +22,7 @@ const BLERR_CANNOTLOADWEAPONCONFIG = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-weights-blerr-cannotloadweaponweights-const-blerr-cannotloadweaponweights-11-src-mq3-botlib-ai-weapon-weights-ml-1779889647"></a>
 ### BLERR_CANNOTLOADWEAPONWEIGHTS
@@ -32,7 +32,7 @@ const BLERR_CANNOTLOADWEAPONWEIGHTS = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-weights-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-ai-weapon-weights-ml-1264678151"></a>
 ### BLERR_NOERROR
@@ -42,7 +42,7 @@ const BLERR_NOERROR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-close-function-close-reader-src-mq3-botlib-ai-weapon-weights-ml-146049347"></a>
 ### close
@@ -56,7 +56,7 @@ function close(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-create-function-create-context-readfn-fuzzyruntime-src-mq3-botlib-ai-weapon-weights-ml-2133404849"></a>
 ### create
@@ -72,7 +72,7 @@ function create(context, readFn, fuzzyRuntime)
 | `fuzzyRuntime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L26)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-emptyprojectile-function-emptyprojectile-src-mq3-botlib-ai-weapon-weights-ml-801641958"></a>
 ### emptyProjectile
@@ -82,7 +82,7 @@ function emptyProjectile()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-emptyweapon-function-emptyweapon-src-mq3-botlib-ai-weapon-weights-ml-1817871720"></a>
 ### emptyWeapon
@@ -92,7 +92,7 @@ function emptyWeapon()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-ensureconfig-function-ensureconfig-runtime-src-mq3-botlib-ai-weapon-weights-ml-661625916"></a>
 ### ensureConfig
@@ -106,7 +106,7 @@ function ensureConfig(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L93)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-expect-function-expect-reader-text-src-mq3-botlib-ai-weapon-weights-ml-126287958"></a>
 ### expect
@@ -121,7 +121,7 @@ function expect(reader, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L31)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-fail-function-fail-message-src-mq3-botlib-ai-weapon-weights-ml-120838757"></a>
 ### fail
@@ -135,7 +135,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L23)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-freeweaponweights-function-freeweaponweights-runtime-statepools-handle-src-mq3-botlib-ai-weapon-weights-ml-442698740"></a>
 ### freeWeaponWeights
@@ -151,7 +151,7 @@ function freeWeaponWeights(runtime, statePools, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L95)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-loadtext-function-loadtext-runtime-name-src-mq3-botlib-ai-weapon-weights-ml-1286568753"></a>
 ### loadText
@@ -166,7 +166,7 @@ function loadText(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L27)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-loadweaponweights-function-loadweaponweights-runtime-statepools-handle-filename-src-mq3-botlib-ai-weapon-weights-ml-144912147"></a>
 ### loadWeaponWeights
@@ -183,7 +183,7 @@ function loadWeaponWeights(runtime, statePools, handle, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L96)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-weights-max-projectileinfo-const-max-projectileinfo-32-src-mq3-botlib-ai-weapon-weights-ml-1083535106"></a>
 ### MAX_PROJECTILEINFO
@@ -193,7 +193,7 @@ const MAX_PROJECTILEINFO = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-weights-max-weaponinfo-const-max-weaponinfo-32-src-mq3-botlib-ai-weapon-weights-ml-1265441272"></a>
 ### MAX_WEAPONINFO
@@ -203,7 +203,7 @@ const MAX_WEAPONINFO = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L10)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-weights-op-load-weapon-weights-const-op-load-weapon-weights-560-src-mq3-botlib-ai-weapon-weights-ml-1946901702"></a>
 ### OP_LOAD_WEAPON_WEIGHTS
@@ -213,7 +213,7 @@ const OP_LOAD_WEAPON_WEIGHTS = 560
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L15)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-open-function-open-runtime-name-src-mq3-botlib-ai-weapon-weights-ml-1776484361"></a>
 ### open
@@ -228,7 +228,7 @@ function open(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-parseprojectile-function-parseprojectile-reader-src-mq3-botlib-ai-weapon-weights-ml-1113290395"></a>
 ### parseProjectile
@@ -242,7 +242,7 @@ function parseProjectile(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L34)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-parseweapon-function-parseweapon-reader-src-mq3-botlib-ai-weapon-weights-ml-650688649"></a>
 ### parseWeapon
@@ -256,7 +256,7 @@ function parseWeapon(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L54)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-parseweaponconfig-function-parseweaponconfig-runtime-filename-src-mq3-botlib-ai-weapon-weights-ml-59745805"></a>
 ### parseWeaponConfig
@@ -271,7 +271,7 @@ function parseWeaponConfig(runtime, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L83)
 
 - [mq3.botlib.ai_weapon_weights.Projectile](Type-mq3-botlib-ai-weapon-weights-projectile-2022640914.md) — struct
 <a id="function-function-mq3-botlib-ai-weapon-weights-projectilenamed-function-projectilenamed-projectiles-name-src-mq3-botlib-ai-weapon-weights-ml-1984444821"></a>
@@ -287,7 +287,7 @@ function projectileNamed(projectiles, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L82)
 
 - [mq3.botlib.ai_weapon_weights.Reader](Type-mq3-botlib-ai-weapon-weights-reader-1995034542.md) — struct
 <a id="function-function-mq3-botlib-ai-weapon-weights-readstring-function-readstring-reader-src-mq3-botlib-ai-weapon-weights-ml-1845091947"></a>
@@ -302,7 +302,7 @@ function readString(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L32)
 
 - [mq3.botlib.ai_weapon_weights.Runtime](Type-mq3-botlib-ai-weapon-weights-runtime-1155330563.md) — struct
 <a id="function-function-mq3-botlib-ai-weapon-weights-shutdown-function-shutdown-runtime-src-mq3-botlib-ai-weapon-weights-ml-6190608"></a>
@@ -317,7 +317,7 @@ function shutdown(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L101)
 
 <a id="function-function-mq3-botlib-ai-weapon-weights-take-function-take-reader-src-mq3-botlib-ai-weapon-weights-ml-106913819"></a>
 ### take
@@ -331,7 +331,7 @@ function take(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L30)
 
 - [mq3.botlib.ai_weapon_weights.Weapon](Type-mq3-botlib-ai-weapon-weights-weapon-1941373401.md) — struct
 - [mq3.botlib.ai_weapon_weights.WeaponConfig](Type-mq3-botlib-ai-weapon-weights-weaponconfig-1789585707.md) — struct
@@ -348,4 +348,4 @@ function weaponWeightIndex(profile, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L94)

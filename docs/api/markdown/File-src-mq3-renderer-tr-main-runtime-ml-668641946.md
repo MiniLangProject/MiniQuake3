@@ -33,7 +33,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L37)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-identityaxis-function-identityaxis-src-mq3-renderer-tr-main-runtime-ml-1597661830"></a>
 ### identityAxis
@@ -43,7 +43,7 @@ function identityAxis()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L38)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-identitymatrix-function-identitymatrix-src-mq3-renderer-tr-main-runtime-ml-575293590"></a>
 ### identityMatrix
@@ -53,7 +53,7 @@ function identityMatrix()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L39)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-ismirror-function-ismirror-surface-entities-timemilliseconds-src-mq3-renderer-tr-main-runtime-ml-1111534963"></a>
 ### IsMirror
@@ -69,7 +69,7 @@ function IsMirror(surface, entities, timeMilliseconds)
 | `timeMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L120)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-myglmultmatrix-function-myglmultmatrix-a-b-src-mq3-renderer-tr-main-runtime-ml-542909355"></a>
 ### myGlMultMatrix
@@ -84,7 +84,7 @@ function myGlMultMatrix(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L51)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-orientation-function-orientation-origin-axis-vieworigin-modelmatrix-src-mq3-renderer-tr-main-runtime-ml-2140598502"></a>
 ### orientation
@@ -101,7 +101,7 @@ function orientation(origin, axis, viewOrigin, modelMatrix)
 | `modelMatrix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L40)
 
 - [mq3.renderer.tr_main_runtime.Orientation](Type-mq3-renderer-tr-main-runtime-orientation-1673570470.md) — struct
 - [mq3.renderer.tr_main_runtime.Plane](Type-mq3-renderer-tr-main-runtime-plane-1583899950.md) — struct
@@ -117,7 +117,7 @@ function qsortFast(drawSurfs)
 | `drawSurfs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L158)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-adddrawsurf-function-r-adddrawsurf-queue-surface-shaderindex-entitynum-fogindex-dlightmap-src-mq3-renderer-tr-main-runtime-ml-77695670"></a>
 ### R_AddDrawSurf
@@ -136,7 +136,7 @@ function R_AddDrawSurf(queue, surface, shaderIndex, entityNum, fogIndex, dlightM
 | `dlightMap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L159)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L159)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-addentitysurfaces-function-r-addentitysurfaces-entities-isportal-fogbounds-noworld-drawentities-src-mq3-renderer-tr-main-runtime-ml-471097422"></a>
 ### R_AddEntitySurfaces
@@ -154,7 +154,7 @@ function R_AddEntitySurfaces(entities, isPortal, fogBounds, noworld, drawEntitie
 | `drawEntities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L163)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-culllocalbox-function-r-culllocalbox-bounds-current-frustum-nocull-src-mq3-renderer-tr-main-runtime-ml-1283835151"></a>
 ### R_CullLocalBox
@@ -171,7 +171,7 @@ function R_CullLocalBox(bounds, current, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L42)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-culllocalpointandradius-function-r-culllocalpointandradius-point-radius-current-frustum-nocull-src-mq3-renderer-tr-main-runtime-ml-1958331682"></a>
 ### R_CullLocalPointAndRadius
@@ -189,7 +189,7 @@ function R_CullLocalPointAndRadius(point, radius, current, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L43)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-cullpointandradius-function-r-cullpointandradius-point-radius-frustum-nocull-src-mq3-renderer-tr-main-runtime-ml-101377541"></a>
 ### R_CullPointAndRadius
@@ -206,7 +206,7 @@ function R_CullPointAndRadius(point, radius, frustum, noCull)
 | `noCull` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L44)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-debuggraphics-function-r-debuggraphics-state-enabled-src-mq3-renderer-tr-main-runtime-ml-1239787866"></a>
 ### R_DebugGraphics
@@ -221,7 +221,7 @@ function R_DebugGraphics(state, enabled)
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L193)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-debugpolygon-function-r-debugpolygon-color-points-src-mq3-renderer-tr-main-runtime-ml-1383858694"></a>
 ### R_DebugPolygon
@@ -236,7 +236,7 @@ function R_DebugPolygon(color, points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L187)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-decomposesort-function-r-decomposesort-sortkey-src-mq3-renderer-tr-main-runtime-ml-692729515"></a>
 ### R_DecomposeSort
@@ -250,7 +250,7 @@ function R_DecomposeSort(sortKey)
 | `sortKey` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L160)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-generatedrawsurfs-function-r-generatedrawsurfs-state-src-mq3-renderer-tr-main-runtime-ml-1392304603"></a>
 ### R_GenerateDrawSurfs
@@ -264,7 +264,7 @@ function R_GenerateDrawSurfs(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L178)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-getportalorientations-function-r-getportalorientations-surface-entities-timemilliseconds-src-mq3-renderer-tr-main-runtime-ml-61931259"></a>
 ### R_GetPortalOrientations
@@ -280,7 +280,7 @@ function R_GetPortalOrientations(surface, entities, timeMilliseconds)
 | `timeMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L119)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-localnormaltoworld-function-r-localnormaltoworld-local-current-src-mq3-renderer-tr-main-runtime-ml-1034692002"></a>
 ### R_LocalNormalToWorld
@@ -295,7 +295,7 @@ function R_LocalNormalToWorld(local, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L45)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-localpointtoworld-function-r-localpointtoworld-local-current-src-mq3-renderer-tr-main-runtime-ml-662087452"></a>
 ### R_LocalPointToWorld
@@ -310,7 +310,7 @@ function R_LocalPointToWorld(local, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L46)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-mirrorpoint-function-r-mirrorpoint-input-surface-camera-src-mq3-renderer-tr-main-runtime-ml-620356590"></a>
 ### R_MirrorPoint
@@ -326,7 +326,7 @@ function R_MirrorPoint(input, surface, camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L105)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-mirrorvector-function-r-mirrorvector-input-surface-camera-src-mq3-renderer-tr-main-runtime-ml-388947978"></a>
 ### R_MirrorVector
@@ -342,7 +342,7 @@ function R_MirrorVector(input, surface, camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L106)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-mirrorviewbysurface-function-r-mirrorviewbysurface-surface-entities-timemilliseconds-vieworigin-viewaxis-isportal-noportals-fastsky-src-mq3-renderer-tr-main-runtime-ml-386655165"></a>
 ### R_MirrorViewBySurface
@@ -363,7 +363,7 @@ function R_MirrorViewBySurface(surface, entities, timeMilliseconds, viewOrigin, 
 | `fastSky` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L142)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-planeforsurface-function-r-planeforsurface-surface-src-mq3-renderer-tr-main-runtime-ml-1913967929"></a>
 ### R_PlaneForSurface
@@ -379,7 +379,7 @@ Surface is {kind, plane} for faces or {kind, vertices, indexes} for meshes.
 | `surface` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L109)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-renderview-function-r-renderview-state-parms-src-mq3-renderer-tr-main-runtime-ml-298740398"></a>
 ### R_RenderView
@@ -394,7 +394,7 @@ function R_RenderView(state, parms)
 | `parms` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L199)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L199)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-rotateforentity-function-r-rotateforentity-entity-viewparms-src-mq3-renderer-tr-main-runtime-ml-1755282305"></a>
 ### R_RotateForEntity
@@ -409,7 +409,7 @@ function R_RotateForEntity(entity, viewParms)
 | `viewParms` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L62)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-rotateforviewer-function-r-rotateforviewer-vieworigin-viewaxis-src-mq3-renderer-tr-main-runtime-ml-140020069"></a>
 ### R_RotateForViewer
@@ -424,7 +424,7 @@ function R_RotateForViewer(viewOrigin, viewAxis)
 | `viewAxis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L75)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-setupfrustum-function-r-setupfrustum-origin-axis-fovx-fovy-src-mq3-renderer-tr-main-runtime-ml-1830639646"></a>
 ### R_SetupFrustum
@@ -441,7 +441,7 @@ function R_SetupFrustum(origin, axis, fovX, fovY)
 | `fovY` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L104)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-setupprojection-function-r-setupprojection-fovx-fovy-znear-zfar-src-mq3-renderer-tr-main-runtime-ml-356122686"></a>
 ### R_SetupProjection
@@ -458,7 +458,7 @@ function R_SetupProjection(fovX, fovY, zNear, zFar)
 | `zFar` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L95)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-sortdrawsurfs-function-r-sortdrawsurfs-queue-src-mq3-renderer-tr-main-runtime-ml-1202690451"></a>
 ### R_SortDrawSurfs
@@ -472,7 +472,7 @@ function R_SortDrawSurfs(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L161)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-spritefognum-function-r-spritefognum-origin-radius-fogbounds-noworld-src-mq3-renderer-tr-main-runtime-ml-309997040"></a>
 ### R_SpriteFogNum
@@ -489,7 +489,7 @@ function R_SpriteFogNum(origin, radius, fogBounds, noworld)
 | `noworld` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L147)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-transformcliptowindow-function-r-transformcliptowindow-clip-viewportwidth-viewportheight-src-mq3-renderer-tr-main-runtime-ml-1006570685"></a>
 ### R_TransformClipToWindow
@@ -505,7 +505,7 @@ function R_TransformClipToWindow(clip, viewportWidth, viewportHeight)
 | `viewportHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L49)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-transformmodeltoclip-function-r-transformmodeltoclip-source-modelmatrix-projectionmatrix-src-mq3-renderer-tr-main-runtime-ml-195723387"></a>
 ### R_TransformModelToClip
@@ -521,7 +521,7 @@ function R_TransformModelToClip(source, modelMatrix, projectionMatrix)
 | `projectionMatrix` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L48)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-r-worldtolocal-function-r-worldtolocal-world-current-src-mq3-renderer-tr-main-runtime-ml-1244129433"></a>
 ### R_WorldToLocal
@@ -536,7 +536,7 @@ function R_WorldToLocal(world, current)
 | `current` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L47)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rdf-noworldmodel-const-rdf-noworldmodel-1-src-mq3-renderer-tr-main-runtime-ml-179929702"></a>
 ### RDF_NOWORLDMODEL
@@ -546,7 +546,7 @@ const RDF_NOWORLDMODEL = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L27)
 
 - [mq3.renderer.tr_main_runtime.RenderServices](Type-mq3-renderer-tr-main-runtime-renderservices-1840260692.md) — struct
 - [mq3.renderer.tr_main_runtime.RenderState](Type-mq3-renderer-tr-main-runtime-renderstate-410585153.md) — struct
@@ -558,7 +558,7 @@ const RT_BEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L19)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-lightning-const-rt-lightning-6-src-mq3-renderer-tr-main-runtime-ml-248950203"></a>
 ### RT_LIGHTNING
@@ -568,7 +568,7 @@ const RT_LIGHTNING = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L22)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-model-const-rt-model-0-src-mq3-renderer-tr-main-runtime-ml-408379127"></a>
 ### RT_MODEL
@@ -578,7 +578,7 @@ const RT_MODEL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L16)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-poly-const-rt-poly-1-src-mq3-renderer-tr-main-runtime-ml-142706086"></a>
 ### RT_POLY
@@ -588,7 +588,7 @@ const RT_POLY = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L17)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-portalsurface-const-rt-portalsurface-7-src-mq3-renderer-tr-main-runtime-ml-315874154"></a>
 ### RT_PORTALSURFACE
@@ -598,7 +598,7 @@ const RT_PORTALSURFACE = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-rail-core-const-rt-rail-core-4-src-mq3-renderer-tr-main-runtime-ml-1435003441"></a>
 ### RT_RAIL_CORE
@@ -608,7 +608,7 @@ const RT_RAIL_CORE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L20)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-rail-rings-const-rt-rail-rings-5-src-mq3-renderer-tr-main-runtime-ml-1940179002"></a>
 ### RT_RAIL_RINGS
@@ -618,7 +618,7 @@ const RT_RAIL_RINGS = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-rt-sprite-const-rt-sprite-2-src-mq3-renderer-tr-main-runtime-ml-380671699"></a>
 ### RT_SPRITE
@@ -628,7 +628,7 @@ const RT_SPRITE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L18)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-setfarclip-function-setfarclip-noworld-visbounds-vieworigin-src-mq3-renderer-tr-main-runtime-ml-91190479"></a>
 ### SetFarClip
@@ -644,7 +644,7 @@ function SetFarClip(noworld, visBounds, viewOrigin)
 | `viewOrigin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L84)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-sf-face-const-sf-face-2-src-mq3-renderer-tr-main-runtime-ml-582226751"></a>
 ### SF_FACE
@@ -654,7 +654,7 @@ const SF_FACE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L24)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-sf-poly-const-sf-poly-5-src-mq3-renderer-tr-main-runtime-ml-1488384074"></a>
 ### SF_POLY
@@ -664,7 +664,7 @@ const SF_POLY = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L26)
 
 <a id="constant-constant-mq3-renderer-tr-main-runtime-sf-triangles-const-sf-triangles-4-src-mq3-renderer-tr-main-runtime-ml-320152721"></a>
 ### SF_TRIANGLES
@@ -674,7 +674,7 @@ const SF_TRIANGLES = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L25)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-shortsort-function-shortsort-drawsurfs-src-mq3-renderer-tr-main-runtime-ml-49679015"></a>
 ### shortsort
@@ -688,7 +688,7 @@ function shortsort(drawSurfs)
 | `drawSurfs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L157)
 
 <a id="function-function-mq3-renderer-tr-main-runtime-surfisoffscreen-function-surfisoffscreen-vertices-normals-indexes-modelmatrix-projectionmatrix-vieworigin-portalrange-mirror-smpactive-src-mq3-renderer-tr-main-runtime-ml-1241432312"></a>
 ### SurfIsOffscreen
@@ -710,4 +710,4 @@ function SurfIsOffscreen(vertices, normals, indexes, modelMatrix, projectionMatr
 | `smpActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L122)

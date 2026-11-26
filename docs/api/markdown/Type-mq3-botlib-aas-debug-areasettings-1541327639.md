@@ -10,7 +10,7 @@ struct AreaSettings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L44)
 
 ## Members
 
@@ -22,7 +22,7 @@ cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L44)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-contents-contents-src-mq3-botlib-aas-debug-ml-487217861"></a>
 ### contents
@@ -32,7 +32,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L44)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-firstreachablearea-firstreachablearea-src-mq3-botlib-aas-debug-ml-1619865141"></a>
 ### firstReachableArea
@@ -42,7 +42,7 @@ firstReachableArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L44)
 
 <a id="field-field-mq3-botlib-aas-debug-areasettings-numreachableareas-numreachableareas-src-mq3-botlib-aas-debug-ml-784619317"></a>
 ### numReachableAreas
@@ -52,4 +52,4 @@ numReachableAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L44)

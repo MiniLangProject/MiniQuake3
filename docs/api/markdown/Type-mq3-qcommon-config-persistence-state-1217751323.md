@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ fullyInitialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L20)
 
 <a id="field-field-mq3-qcommon-config-persistence-state-registry-registry-src-mq3-qcommon-config-persistence-ml-540318672"></a>
 ### registry
@@ -32,7 +32,7 @@ registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L18)
 
 <a id="field-field-mq3-qcommon-config-persistence-state-services-services-src-mq3-qcommon-config-persistence-ml-1442456938"></a>
 ### services
@@ -42,4 +42,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/config_persistence.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/config_persistence.ml#L19)

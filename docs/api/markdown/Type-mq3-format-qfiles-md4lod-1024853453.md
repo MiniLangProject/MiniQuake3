@@ -10,7 +10,7 @@ struct Md4Lod
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L102)
 
 ## Members
 
@@ -22,7 +22,7 @@ numSurfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L102)
 
 <a id="field-field-mq3-format-qfiles-md4lod-ofsend-ofsend-src-mq3-format-qfiles-ml-958100291"></a>
 ### ofsEnd
@@ -32,7 +32,7 @@ ofsEnd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L102)
 
 <a id="field-field-mq3-format-qfiles-md4lod-ofssurfaces-ofssurfaces-src-mq3-format-qfiles-ml-411740501"></a>
 ### ofsSurfaces
@@ -42,4 +42,4 @@ ofsSurfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L102)

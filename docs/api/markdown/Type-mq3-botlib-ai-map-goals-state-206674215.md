@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ aas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-bspentities-bspentities-src-mq3-botlib-ai-map-goals-ml-1482199834"></a>
 ### bspEntities
@@ -32,7 +32,7 @@ bspEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-campspots-campspots-src-mq3-botlib-ai-map-goals-ml-913895498"></a>
 ### campSpots
@@ -42,7 +42,7 @@ campSpots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-initialized-initialized-src-mq3-botlib-ai-map-goals-ml-1802588906"></a>
 ### initialized
@@ -52,7 +52,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)
 
 <a id="field-field-mq3-botlib-ai-map-goals-state-locations-locations-src-mq3-botlib-ai-map-goals-ml-1189624022"></a>
 ### locations
@@ -62,4 +62,4 @@ locations
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L18)

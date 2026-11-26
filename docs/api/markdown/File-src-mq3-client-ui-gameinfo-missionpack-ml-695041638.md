@@ -27,7 +27,7 @@ function arenaTypeBits(type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L46)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-contains-function-contains-text-part-src-mq3-client-ui-gameinfo-missionpack-ml-1488198672"></a>
 ### contains
@@ -42,7 +42,7 @@ function contains(text, part)
 | `part` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L34)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-create-function-create-retailactive-src-mq3-client-ui-gameinfo-missionpack-ml-1982330297"></a>
 ### create
@@ -56,7 +56,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L27)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-emit-function-emit-state-boundary-kind-name-text-number-src-mq3-client-ui-gameinfo-missionpack-ml-1673724962"></a>
 ### emit
@@ -75,7 +75,7 @@ function emit(state, boundary, kind, name, text, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-1fctf-const-gt-1fctf-5-src-mq3-client-ui-gameinfo-missionpack-ml-2024253888"></a>
 ### GT_1FCTF
@@ -85,7 +85,7 @@ const GT_1FCTF = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-gameinfo-missionpack-ml-709921389"></a>
 ### GT_CTF
@@ -95,7 +95,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-gameinfo-missionpack-ml-538229641"></a>
 ### GT_FFA
@@ -105,7 +105,7 @@ const GT_FFA = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-harvester-const-gt-harvester-7-src-mq3-client-ui-gameinfo-missionpack-ml-1523922070"></a>
 ### GT_HARVESTER
@@ -115,7 +115,7 @@ const GT_HARVESTER = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-max-game-type-const-gt-max-game-type-8-src-mq3-client-ui-gameinfo-missionpack-ml-101962987"></a>
 ### GT_MAX_GAME_TYPE
@@ -125,7 +125,7 @@ const GT_MAX_GAME_TYPE = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-obelisk-const-gt-obelisk-6-src-mq3-client-ui-gameinfo-missionpack-ml-1405246687"></a>
 ### GT_OBELISK
@@ -135,7 +135,7 @@ const GT_OBELISK = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-gameinfo-missionpack-ml-1506228857"></a>
 ### GT_SINGLE_PLAYER
@@ -145,7 +145,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-team-const-gt-team-3-src-mq3-client-ui-gameinfo-missionpack-ml-600464116"></a>
 ### GT_TEAM
@@ -155,7 +155,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-gameinfo-missionpack-ml-1768391286"></a>
 ### GT_TOURNAMENT
@@ -165,7 +165,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L14)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-mapinfo-function-mapinfo-arena-number-src-mq3-client-ui-gameinfo-missionpack-ml-1085707844"></a>
 ### mapInfo
@@ -180,7 +180,7 @@ function mapInfo(arena, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L57)
 
 - [mq3.client.ui_gameinfo_missionpack.MapInfo](Type-mq3-client-ui-gameinfo-missionpack-mapinfo-1573515734.md) — struct
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-arenas-const-max-arenas-1024-src-mq3-client-ui-gameinfo-missionpack-ml-860444878"></a>
@@ -191,7 +191,7 @@ const MAX_ARENAS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-bots-const-max-bots-1024-src-mq3-client-ui-gameinfo-missionpack-ml-736222906"></a>
 ### MAX_BOTS
@@ -201,7 +201,7 @@ const MAX_BOTS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-gameinfo-missionpack-max-maps-const-max-maps-128-src-mq3-client-ui-gameinfo-missionpack-ml-782444162"></a>
 ### MAX_MAPS
@@ -211,7 +211,7 @@ const MAX_MAPS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L10)
 
 - [mq3.client.ui_gameinfo_missionpack.State](Type-mq3-client-ui-gameinfo-missionpack-state-1482826341.md) — struct
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-sync-function-sync-state-src-mq3-client-ui-gameinfo-missionpack-ml-277824969"></a>
@@ -226,7 +226,7 @@ function sync(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L33)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobyname-function-ui-getbotinfobyname-state-name-src-mq3-client-ui-gameinfo-missionpack-ml-951826564"></a>
 ### UI_GetBotInfoByName
@@ -243,7 +243,7 @@ UI_GetBotInfoByName
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L94)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotinfobynumber-function-ui-getbotinfobynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-164269735"></a>
 ### UI_GetBotInfoByNumber
@@ -260,7 +260,7 @@ UI_GetBotInfoByNumber
 | `num` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L89)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getbotnamebynumber-function-ui-getbotnamebynumber-state-num-src-mq3-client-ui-gameinfo-missionpack-ml-1959370017"></a>
 ### UI_GetBotNameByNumber
@@ -277,7 +277,7 @@ UI_GetBotNameByNumber
 | `num` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L100)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-getnumbots-function-ui-getnumbots-state-src-mq3-client-ui-gameinfo-missionpack-ml-458822243"></a>
 ### UI_GetNumBots
@@ -293,7 +293,7 @@ UI_GetNumBots
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L97)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenas-function-ui-loadarenas-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-547920335"></a>
 ### UI_LoadArenas
@@ -312,7 +312,7 @@ UI_LoadArenas
 | `additionalFiles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L62)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadarenasfromfile-function-ui-loadarenasfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-433373369"></a>
 ### UI_LoadArenasFromFile
@@ -330,7 +330,7 @@ UI_LoadArenasFromFile
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L42)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbots-function-ui-loadbots-state-primaryname-primarytext-additionalfiles-src-mq3-client-ui-gameinfo-missionpack-ml-743312307"></a>
 ### UI_LoadBots
@@ -349,7 +349,7 @@ UI_LoadBots
 | `additionalFiles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L81)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-loadbotsfromfile-function-ui-loadbotsfromfile-state-filename-text-src-mq3-client-ui-gameinfo-missionpack-ml-2143445149"></a>
 ### UI_LoadBotsFromFile
@@ -367,7 +367,7 @@ UI_LoadBotsFromFile
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L76)
 
 <a id="function-function-mq3-client-ui-gameinfo-missionpack-ui-parseinfos-function-ui-parseinfos-state-text-max-src-mq3-client-ui-gameinfo-missionpack-ml-2118742308"></a>
 ### UI_ParseInfos
@@ -385,4 +385,4 @@ UI_ParseInfos
 | `max` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_gameinfo_missionpack.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_gameinfo_missionpack.ml#L37)

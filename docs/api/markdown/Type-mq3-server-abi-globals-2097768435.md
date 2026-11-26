@@ -10,7 +10,7 @@ struct Globals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)
 
 ## Members
 
@@ -22,7 +22,7 @@ cvars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)
 
 <a id="field-field-mq3-server-abi-globals-gvm-gvm-src-mq3-server-abi-ml-1011696875"></a>
 ### gvm
@@ -32,7 +32,7 @@ gvm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)
 
 <a id="field-field-mq3-server-abi-globals-sv-sv-src-mq3-server-abi-ml-1564105893"></a>
 ### sv
@@ -42,7 +42,7 @@ sv
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)
 
 <a id="field-field-mq3-server-abi-globals-svs-svs-src-mq3-server-abi-ml-690951723"></a>
 ### svs
@@ -52,4 +52,4 @@ svs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L113)

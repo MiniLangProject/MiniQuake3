@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ sensitivity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L6)
 
 <a id="field-field-mq3-client-cgame-usercmd-state-weapon-weapon-src-mq3-client-cgame-usercmd-ml-499359596"></a>
 ### weapon
@@ -32,4 +32,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_usercmd.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_usercmd.ml#L6)

@@ -33,7 +33,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L31)
 
 <a id="constant-constant-mq3-game-g-missile-damage-no-knockback-const-damage-no-knockback-4-src-mq3-game-g-missile-ml-564266265"></a>
 ### DAMAGE_NO_KNOCKBACK
@@ -43,7 +43,7 @@ const DAMAGE_NO_KNOCKBACK = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L34)
 
 <a id="constant-constant-mq3-game-g-missile-ef-bounce-half-const-ef-bounce-half-32-src-mq3-game-g-missile-ml-811162282"></a>
 ### EF_BOUNCE_HALF
@@ -53,7 +53,7 @@ const EF_BOUNCE_HALF = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L27)
 
 <a id="constant-constant-mq3-game-g-missile-ef-nodraw-const-ef-nodraw-128-src-mq3-game-g-missile-ml-487458868"></a>
 ### EF_NODRAW
@@ -63,7 +63,7 @@ const EF_NODRAW = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L28)
 
 <a id="constant-constant-mq3-game-g-missile-ef-ticking-const-ef-ticking-2-src-mq3-game-g-missile-ml-1486328767"></a>
 ### EF_TICKING
@@ -73,7 +73,7 @@ const EF_TICKING = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L26)
 
 <a id="constant-constant-mq3-game-g-missile-entitynum-none-const-entitynum-none-1023-src-mq3-game-g-missile-ml-1205474385"></a>
 ### ENTITYNUM_NONE
@@ -83,7 +83,7 @@ const ENTITYNUM_NONE = 1023
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L33)
 
 <a id="function-function-mq3-game-g-missile-fire-bfg-function-fire-bfg-level-self-start-dir-src-mq3-game-g-missile-ml-83546995"></a>
 ### fire_bfg
@@ -100,7 +100,7 @@ function fire_bfg(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L165)
 
 <a id="function-function-mq3-game-g-missile-fire-grapple-function-fire-grapple-level-self-start-dir-src-mq3-game-g-missile-ml-854171595"></a>
 ### fire_grapple
@@ -117,7 +117,7 @@ function fire_grapple(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L167)
 
 <a id="function-function-mq3-game-g-missile-fire-grenade-function-fire-grenade-level-self-start-dir-src-mq3-game-g-missile-ml-962124035"></a>
 ### fire_grenade
@@ -134,7 +134,7 @@ function fire_grenade(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L164)
 
 <a id="function-function-mq3-game-g-missile-fire-nail-function-fire-nail-level-self-start-forward-right-up-src-mq3-game-g-missile-ml-552681064"></a>
 ### fire_nail
@@ -153,7 +153,7 @@ function fire_nail(level, self, start, forward, right, up)
 | `up` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L168)
 
 <a id="function-function-mq3-game-g-missile-fire-plasma-function-fire-plasma-level-self-start-dir-src-mq3-game-g-missile-ml-1000516013"></a>
 ### fire_plasma
@@ -170,7 +170,7 @@ function fire_plasma(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L163)
 
 <a id="function-function-mq3-game-g-missile-fire-prox-function-fire-prox-level-self-start-dir-src-mq3-game-g-missile-ml-1855502207"></a>
 ### fire_prox
@@ -187,7 +187,7 @@ function fire_prox(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L169)
 
 <a id="function-function-mq3-game-g-missile-fire-rocket-function-fire-rocket-level-self-start-dir-src-mq3-game-g-missile-ml-1843225833"></a>
 ### fire_rocket
@@ -204,7 +204,7 @@ function fire_rocket(level, self, start, dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L166)
 
 <a id="function-function-mq3-game-g-missile-g-bouncemissile-function-g-bouncemissile-level-ent-hit-src-mq3-game-g-missile-ml-133320190"></a>
 ### G_BounceMissile
@@ -220,7 +220,7 @@ function G_BounceMissile(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L36)
 
 <a id="function-function-mq3-game-g-missile-g-explodemissile-function-g-explodemissile-level-ent-src-mq3-game-g-missile-ml-51055687"></a>
 ### G_ExplodeMissile
@@ -235,7 +235,7 @@ function G_ExplodeMissile(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L37)
 
 <a id="function-function-mq3-game-g-missile-g-missileimpact-function-g-missileimpact-level-ent-hit-src-mq3-game-g-missile-ml-729818106"></a>
 ### G_MissileImpact
@@ -251,7 +251,7 @@ function G_MissileImpact(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L119)
 
 <a id="function-function-mq3-game-g-missile-g-runmissile-function-g-runmissile-level-ent-src-mq3-game-g-missile-ml-141336767"></a>
 ### G_RunMissile
@@ -266,7 +266,7 @@ function G_RunMissile(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L145)
 
 <a id="function-function-mq3-game-g-missile-gametype-function-gametype-level-src-mq3-game-g-missile-ml-513423556"></a>
 ### gameType
@@ -280,7 +280,7 @@ function gameType(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L50)
 
 <a id="function-function-mq3-game-g-missile-invulnerabilityeffect-function-invulnerabilityeffect-level-target-direction-point-src-mq3-game-g-missile-ml-2016797264"></a>
 ### invulnerabilityEffect
@@ -299,7 +299,7 @@ Exact RaySphereIntersections/G_InvulnerabilityEffect geometry used by the Team A
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L106)
 
 <a id="constant-constant-mq3-game-g-missile-mask-shot-const-mask-shot-100663297-src-mq3-game-g-missile-ml-1269504947"></a>
 ### MASK_SHOT
@@ -309,7 +309,7 @@ const MASK_SHOT = 100663297
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L32)
 
 <a id="constant-constant-mq3-game-g-missile-mod-juiced-const-mod-juiced-28-src-mq3-game-g-missile-ml-2112044359"></a>
 ### MOD_JUICED
@@ -319,7 +319,7 @@ const MOD_JUICED = 28
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L25)
 
 <a id="constant-constant-mq3-game-g-missile-mod-proximity-mine-const-mod-proximity-mine-26-src-mq3-game-g-missile-ml-1953935071"></a>
 ### MOD_PROXIMITY_MINE
@@ -329,7 +329,7 @@ const MOD_PROXIMITY_MINE = 26
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L24)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-activate-function-proximitymine-activate-level-ent-src-mq3-game-g-missile-ml-1143216451"></a>
 ### ProximityMine_Activate
@@ -344,7 +344,7 @@ function ProximityMine_Activate(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L66)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-die-function-proximitymine-die-level-ent-inflictor-attacker-damage-mod-src-mq3-game-g-missile-ml-363952673"></a>
 ### ProximityMine_Die
@@ -363,7 +363,7 @@ function ProximityMine_Die(level, ent, inflictor, attacker, damage, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L45)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-explode-function-proximitymine-explode-level-mine-src-mq3-game-g-missile-ml-1418904909"></a>
 ### ProximityMine_Explode
@@ -378,7 +378,7 @@ function ProximityMine_Explode(level, mine)
 | `mine` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L39)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-explodeonplayer-function-proximitymine-explodeonplayer-level-mine-src-mq3-game-g-missile-ml-1641089697"></a>
 ### ProximityMine_ExplodeOnPlayer
@@ -393,7 +393,7 @@ function ProximityMine_ExplodeOnPlayer(level, mine)
 | `mine` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L77)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-player-function-proximitymine-player-level-mine-player-src-mq3-game-g-missile-ml-877093170"></a>
 ### ProximityMine_Player
@@ -409,7 +409,7 @@ function ProximityMine_Player(level, mine, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L89)
 
 <a id="function-function-mq3-game-g-missile-proximitymine-trigger-function-proximitymine-trigger-level-trigger-other-trace-src-mq3-game-g-missile-ml-169294651"></a>
 ### ProximityMine_Trigger
@@ -426,7 +426,7 @@ function ProximityMine_Trigger(level, trigger, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L55)
 
 <a id="constant-constant-mq3-game-g-missile-svf-noclient-const-svf-noclient-1-src-mq3-game-g-missile-ml-503051952"></a>
 ### SVF_NOCLIENT
@@ -436,7 +436,7 @@ const SVF_NOCLIENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L29)
 
 <a id="constant-constant-mq3-game-g-missile-svf-use-current-origin-const-svf-use-current-origin-128-src-mq3-game-g-missile-ml-1722215418"></a>
 ### SVF_USE_CURRENT_ORIGIN
@@ -446,7 +446,7 @@ const SVF_USE_CURRENT_ORIGIN = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L30)
 
 <a id="constant-constant-mq3-game-g-missile-wp-nailgun-const-wp-nailgun-11-src-mq3-game-g-missile-ml-1883500237"></a>
 ### WP_NAILGUN
@@ -456,7 +456,7 @@ const WP_NAILGUN = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L22)
 
 <a id="constant-constant-mq3-game-g-missile-wp-prox-launcher-const-wp-prox-launcher-12-src-mq3-game-g-missile-ml-90165684"></a>
 ### WP_PROX_LAUNCHER
@@ -466,4 +466,4 @@ const WP_PROX_LAUNCHER = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_missile.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_missile.ml#L23)

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ chunkFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L16)
 
 <a id="field-field-mq3-audio-spatial-mixer-state-outputrate-outputrate-src-mq3-audio-spatial-mixer-ml-76856374"></a>
 ### outputRate
@@ -32,7 +32,7 @@ outputRate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L16)
 
 <a id="field-field-mq3-audio-spatial-mixer-state-sources-sources-src-mq3-audio-spatial-mixer-ml-1838582072"></a>
 ### sources
@@ -42,4 +42,4 @@ sources
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L16)

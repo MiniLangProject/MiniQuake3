@@ -32,7 +32,7 @@ function _copyDWord(destination, constant, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L206)
 
 <a id="extern_function-extern-function-mq3-qcommon-common-acos-extern-function-acos-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-qcommon-common-ml-940443332"></a>
 ### acos
@@ -46,7 +46,7 @@ extern function acos(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L14)
 
 - [mq3.qcommon.common.Allocation](Type-mq3-qcommon-common-allocation-426269833.md) — struct
 <a id="function-function-mq3-qcommon-common-com-addstartupcommands-function-com-addstartupcommands-state-src-mq3-qcommon-common-ml-500948637"></a>
@@ -61,7 +61,7 @@ function Com_AddStartupCommands(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L75)
 
 <a id="function-function-mq3-qcommon-common-com-appendcdkey-function-com-appendcdkey-state-filename-src-mq3-qcommon-common-ml-1843292686"></a>
 ### Com_AppendCDKey
@@ -76,7 +76,7 @@ function Com_AppendCDKey(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L182)
 
 <a id="function-function-mq3-qcommon-common-com-beginredirect-function-com-beginredirect-state-capacity-flushfn-context-src-mq3-qcommon-common-ml-1262307128"></a>
 ### Com_BeginRedirect
@@ -93,7 +93,7 @@ function Com_BeginRedirect(state, capacity, flushFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L53)
 
 <a id="function-function-mq3-qcommon-common-com-crash-f-function-com-crash-f-state-src-mq3-qcommon-common-ml-1860329901"></a>
 ### Com_Crash_f
@@ -107,7 +107,7 @@ function Com_Crash_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L70)
 
 <a id="function-function-mq3-qcommon-common-com-dprintf-function-com-dprintf-state-text-src-mq3-qcommon-common-ml-1299848722"></a>
 ### Com_DPrintf
@@ -122,7 +122,7 @@ function Com_DPrintf(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L60)
 
 <a id="function-function-mq3-qcommon-common-com-endredirect-function-com-endredirect-state-src-mq3-qcommon-common-ml-1556994939"></a>
 ### Com_EndRedirect
@@ -136,7 +136,7 @@ function Com_EndRedirect(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L54)
 
 <a id="function-function-mq3-qcommon-common-com-error-function-com-error-state-code-message-src-mq3-qcommon-common-ml-751490809"></a>
 ### Com_Error
@@ -152,7 +152,7 @@ function Com_Error(state, code, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L61)
 
 <a id="function-function-mq3-qcommon-common-com-error-f-function-com-error-f-state-src-mq3-qcommon-common-ml-1177997583"></a>
 ### Com_Error_f
@@ -166,7 +166,7 @@ function Com_Error_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L68)
 
 <a id="function-function-mq3-qcommon-common-com-eventloop-function-com-eventloop-state-maxevents-src-mq3-qcommon-common-ml-477465252"></a>
 ### Com_EventLoop
@@ -181,7 +181,7 @@ function Com_EventLoop(state, maxEvents)
 | `maxEvents` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L162)
 
 <a id="function-function-mq3-qcommon-common-com-filter-function-com-filter-filter-name-casesensitive-src-mq3-qcommon-common-ml-134727631"></a>
 ### Com_Filter
@@ -197,7 +197,7 @@ function Com_Filter(filter, name, casesensitive)
 | `casesensitive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L85)
 
 <a id="function-function-mq3-qcommon-common-com-filterpath-function-com-filterpath-filter-name-casesensitive-src-mq3-qcommon-common-ml-805807651"></a>
 ### Com_FilterPath
@@ -213,7 +213,7 @@ function Com_FilterPath(filter, name, casesensitive)
 | `casesensitive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L100)
 
 <a id="function-function-mq3-qcommon-common-com-frame-function-com-frame-state-src-mq3-qcommon-common-ml-495495919"></a>
 ### Com_Frame
@@ -227,7 +227,7 @@ function Com_Frame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L195)
 
 <a id="function-function-mq3-qcommon-common-com-freeze-f-function-com-freeze-f-state-seconds-src-mq3-qcommon-common-ml-759930354"></a>
 ### Com_Freeze_f
@@ -242,7 +242,7 @@ function Com_Freeze_f(state, seconds)
 | `seconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L69)
 
 <a id="function-function-mq3-qcommon-common-com-getevent-function-com-getevent-state-src-mq3-qcommon-common-ml-284979893"></a>
 ### Com_GetEvent
@@ -256,7 +256,7 @@ function Com_GetEvent(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L160)
 
 <a id="function-function-mq3-qcommon-common-com-getrealevent-function-com-getrealevent-state-src-mq3-qcommon-common-ml-2083650181"></a>
 ### Com_GetRealEvent
@@ -270,7 +270,7 @@ function Com_GetRealEvent(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L156)
 
 <a id="function-function-mq3-qcommon-common-com-hashkey-function-com-hashkey-text-maxlength-src-mq3-qcommon-common-ml-146329117"></a>
 ### Com_HashKey
@@ -285,7 +285,7 @@ function Com_HashKey(text, maxLength)
 | `maxLength` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L101)
 
 <a id="function-function-mq3-qcommon-common-com-init-function-com-init-state-commandline-src-mq3-qcommon-common-ml-1820424472"></a>
 ### Com_Init
@@ -300,7 +300,7 @@ function Com_Init(state, commandLine)
 | `commandLine` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L184)
 
 <a id="function-function-mq3-qcommon-common-com-inithunkmemory-function-com-inithunkmemory-state-src-mq3-qcommon-common-ml-1991194397"></a>
 ### Com_InitHunkMemory
@@ -314,7 +314,7 @@ function Com_InitHunkMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L130)
 
 <a id="function-function-mq3-qcommon-common-com-initjournaling-function-com-initjournaling-state-mode-path-src-mq3-qcommon-common-ml-390882085"></a>
 ### Com_InitJournaling
@@ -330,7 +330,7 @@ function Com_InitJournaling(state, mode, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L153)
 
 <a id="function-function-mq3-qcommon-common-com-initpushevent-function-com-initpushevent-state-src-mq3-qcommon-common-ml-979329157"></a>
 ### Com_InitPushEvent
@@ -344,7 +344,7 @@ function Com_InitPushEvent(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L154)
 
 <a id="function-function-mq3-qcommon-common-com-initsmallzonememory-function-com-initsmallzonememory-state-src-mq3-qcommon-common-ml-700338781"></a>
 ### Com_InitSmallZoneMemory
@@ -358,7 +358,7 @@ function Com_InitSmallZoneMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L125)
 
 <a id="function-function-mq3-qcommon-common-com-initzonememory-function-com-initzonememory-state-src-mq3-qcommon-common-ml-1354916973"></a>
 ### Com_InitZoneMemory
@@ -372,7 +372,7 @@ function Com_InitZoneMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L126)
 
 <a id="function-function-mq3-qcommon-common-com-memcmp-function-com-memcmp-left-right-count-src-mq3-qcommon-common-ml-1014765392"></a>
 ### Com_Memcmp
@@ -388,7 +388,7 @@ function Com_Memcmp(left, right, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L205)
 
 <a id="function-function-mq3-qcommon-common-com-memcpy-function-com-memcpy-destination-source-count-src-mq3-qcommon-common-ml-1100489764"></a>
 ### Com_Memcpy
@@ -404,7 +404,7 @@ function Com_Memcpy(destination, source, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L203)
 
 <a id="function-function-mq3-qcommon-common-com-meminfo-f-function-com-meminfo-f-state-src-mq3-qcommon-common-ml-1199001085"></a>
 ### Com_Meminfo_f
@@ -418,7 +418,7 @@ function Com_Meminfo_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L127)
 
 <a id="function-function-mq3-qcommon-common-com-memset-function-com-memset-destination-value-count-src-mq3-qcommon-common-ml-1336103902"></a>
 ### Com_Memset
@@ -434,7 +434,7 @@ function Com_Memset(destination, value, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L204)
 
 <a id="function-function-mq3-qcommon-common-com-milliseconds-function-com-milliseconds-state-src-mq3-qcommon-common-ml-152733361"></a>
 ### Com_Milliseconds
@@ -448,7 +448,7 @@ function Com_Milliseconds(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L166)
 
 <a id="function-function-mq3-qcommon-common-com-modifymsec-function-com-modifymsec-state-msec-src-mq3-qcommon-common-ml-2132431737"></a>
 ### Com_ModifyMsec
@@ -463,7 +463,7 @@ function Com_ModifyMsec(state, msec)
 | `msec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L188)
 
 <a id="function-function-mq3-qcommon-common-com-parsecommandline-function-com-parsecommandline-state-text-src-mq3-qcommon-common-ml-522555640"></a>
 ### Com_ParseCommandLine
@@ -478,7 +478,7 @@ function Com_ParseCommandLine(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L72)
 
 <a id="function-function-mq3-qcommon-common-com-prefetch-function-com-prefetch-source-count-type-src-mq3-qcommon-common-ml-143289122"></a>
 ### Com_Prefetch
@@ -494,7 +494,7 @@ function Com_Prefetch(source, count, type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L207)
 
 <a id="function-function-mq3-qcommon-common-com-printf-function-com-printf-state-text-src-mq3-qcommon-common-ml-1708056400"></a>
 ### Com_Printf
@@ -509,7 +509,7 @@ function Com_Printf(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L55)
 
 <a id="function-function-mq3-qcommon-common-com-pushevent-function-com-pushevent-state-event-src-mq3-qcommon-common-ml-1312120113"></a>
 ### Com_PushEvent
@@ -524,7 +524,7 @@ function Com_PushEvent(state, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L155)
 
 <a id="function-function-mq3-qcommon-common-com-quit-f-function-com-quit-f-state-src-mq3-qcommon-common-ml-914238021"></a>
 ### Com_Quit_f
@@ -538,7 +538,7 @@ function Com_Quit_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L67)
 
 <a id="function-function-mq3-qcommon-common-com-readcdkey-function-com-readcdkey-state-filename-src-mq3-qcommon-common-ml-1371921206"></a>
 ### Com_ReadCDKey
@@ -553,7 +553,7 @@ function Com_ReadCDKey(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L181)
 
 <a id="function-function-mq3-qcommon-common-com-realtime-function-com-realtime-state-target-src-mq3-qcommon-common-ml-868237158"></a>
 ### Com_RealTime
@@ -568,7 +568,7 @@ function Com_RealTime(state, target)
 | `target` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L102)
 
 <a id="function-function-mq3-qcommon-common-com-runandtimeserverpacket-function-com-runandtimeserverpacket-state-address-data-src-mq3-qcommon-common-ml-194363597"></a>
 ### Com_RunAndTimeServerPacket
@@ -584,7 +584,7 @@ function Com_RunAndTimeServerPacket(state, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L161)
 
 <a id="function-function-mq3-qcommon-common-com-safemode-function-com-safemode-state-src-mq3-qcommon-common-ml-442002001"></a>
 ### Com_SafeMode
@@ -598,7 +598,7 @@ function Com_SafeMode(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L73)
 
 <a id="function-function-mq3-qcommon-common-com-shutdown-function-com-shutdown-state-src-mq3-qcommon-common-ml-410589181"></a>
 ### Com_Shutdown
@@ -612,7 +612,7 @@ function Com_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L201)
 
 <a id="function-function-mq3-qcommon-common-com-startupvariable-function-com-startupvariable-state-match-src-mq3-qcommon-common-ml-866884860"></a>
 ### Com_StartupVariable
@@ -627,7 +627,7 @@ function Com_StartupVariable(state, match)
 | `match` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L74)
 
 <a id="function-function-mq3-qcommon-common-com-stringcontains-function-com-stringcontains-str1-str2-casesensitive-src-mq3-qcommon-common-ml-1441546563"></a>
 ### Com_StringContains
@@ -643,7 +643,7 @@ function Com_StringContains(str1, str2, casesensitive)
 | `casesensitive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L81)
 
 <a id="function-function-mq3-qcommon-common-com-touchmemory-function-com-touchmemory-state-src-mq3-qcommon-common-ml-1963908433"></a>
 ### Com_TouchMemory
@@ -657,7 +657,7 @@ function Com_TouchMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L128)
 
 <a id="function-function-mq3-qcommon-common-com-writecdkey-function-com-writecdkey-state-filename-key-src-mq3-qcommon-common-ml-1428432017"></a>
 ### Com_WriteCDKey
@@ -673,7 +673,7 @@ function Com_WriteCDKey(state, filename, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L183)
 
 <a id="function-function-mq3-qcommon-common-com-writeconfig-f-function-com-writeconfig-f-state-src-mq3-qcommon-common-ml-1015110469"></a>
 ### Com_WriteConfig_f
@@ -687,7 +687,7 @@ function Com_WriteConfig_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L187)
 
 <a id="function-function-mq3-qcommon-common-com-writeconfigtofile-function-com-writeconfigtofile-state-filename-src-mq3-qcommon-common-ml-1528636406"></a>
 ### Com_WriteConfigToFile
@@ -702,7 +702,7 @@ function Com_WriteConfigToFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L185)
 
 <a id="function-function-mq3-qcommon-common-com-writeconfiguration-function-com-writeconfiguration-state-src-mq3-qcommon-common-ml-1235806657"></a>
 ### Com_WriteConfiguration
@@ -716,7 +716,7 @@ function Com_WriteConfiguration(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L186)
 
 - [mq3.qcommon.common.CommonError](Type-mq3-qcommon-common-commonerror-423548968.md) — struct
 <a id="function-function-mq3-qcommon-common-concatremaining-function-concatremaining-state-source-start-src-mq3-qcommon-common-ml-301874252"></a>
@@ -733,7 +733,7 @@ function ConcatRemaining(state, source, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L215)
 
 <a id="function-function-mq3-qcommon-common-copystring-function-copystring-state-text-src-mq3-qcommon-common-ml-307098868"></a>
 ### CopyString
@@ -748,7 +748,7 @@ function CopyString(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L124)
 
 <a id="function-function-mq3-qcommon-common-create-function-create-host-commandstate-src-mq3-qcommon-common-ml-1874013200"></a>
 ### create
@@ -763,7 +763,7 @@ function create(host, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L44)
 
 <a id="function-function-mq3-qcommon-common-createhunk-function-createhunk-capacity-src-mq3-qcommon-common-ml-1345908444"></a>
 ### createHunk
@@ -777,7 +777,7 @@ function createHunk(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L43)
 
 <a id="function-function-mq3-qcommon-common-createzone-function-createzone-capacity-src-mq3-qcommon-common-ml-1192129176"></a>
 ### createZone
@@ -791,7 +791,7 @@ function createZone(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L42)
 
 <a id="function-function-mq3-qcommon-common-emit-function-emit-state-text-src-mq3-qcommon-common-ml-896776172"></a>
 ### emit
@@ -806,7 +806,7 @@ function emit(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L51)
 
 <a id="constant-constant-mq3-qcommon-common-err-disconnect-const-err-disconnect-3-src-mq3-qcommon-common-ml-1738535026"></a>
 ### ERR_DISCONNECT
@@ -816,7 +816,7 @@ const ERR_DISCONNECT = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L19)
 
 <a id="constant-constant-mq3-qcommon-common-err-drop-const-err-drop-1-src-mq3-qcommon-common-ml-726164074"></a>
 ### ERR_DROP
@@ -826,7 +826,7 @@ const ERR_DROP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L17)
 
 <a id="constant-constant-mq3-qcommon-common-err-fatal-const-err-fatal-0-src-mq3-qcommon-common-ml-1560198233"></a>
 ### ERR_FATAL
@@ -836,7 +836,7 @@ const ERR_FATAL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L16)
 
 <a id="constant-constant-mq3-qcommon-common-err-need-cd-const-err-need-cd-4-src-mq3-qcommon-common-ml-136278545"></a>
 ### ERR_NEED_CD
@@ -846,7 +846,7 @@ const ERR_NEED_CD = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L20)
 
 <a id="constant-constant-mq3-qcommon-common-err-serverdisconnect-const-err-serverdisconnect-2-src-mq3-qcommon-common-ml-1461881603"></a>
 ### ERR_SERVERDISCONNECT
@@ -856,7 +856,7 @@ const ERR_SERVERDISCONNECT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L18)
 
 - [mq3.qcommon.common.Field](Type-mq3-qcommon-common-field-55104153.md) — struct
 <a id="function-function-mq3-qcommon-common-field-clear-function-field-clear-edit-src-mq3-qcommon-common-ml-193387480"></a>
@@ -871,7 +871,7 @@ function Field_Clear(edit)
 | `edit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L210)
 
 <a id="function-function-mq3-qcommon-common-field-completecommand-function-field-completecommand-state-field-commandnames-cvarnames-src-mq3-qcommon-common-ml-105816386"></a>
 ### Field_CompleteCommand
@@ -888,7 +888,7 @@ function Field_CompleteCommand(state, field, commandNames, cvarNames)
 | `cvarNames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L216)
 
 <a id="function-function-mq3-qcommon-common-findallocation-function-findallocation-zone-handle-src-mq3-qcommon-common-ml-1686999376"></a>
 ### findAllocation
@@ -903,7 +903,7 @@ function findAllocation(zone, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L104)
 
 <a id="function-function-mq3-qcommon-common-findmatches-function-findmatches-state-value-src-mq3-qcommon-common-ml-2125535746"></a>
 ### FindMatches
@@ -918,7 +918,7 @@ function FindMatches(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L211)
 
 - [mq3.qcommon.common.Hunk](Type-mq3-qcommon-common-hunk-2027410891.md) — struct
 <a id="function-function-mq3-qcommon-common-hunk-alloc-function-hunk-alloc-state-size-preference-src-mq3-qcommon-common-ml-818829389"></a>
@@ -935,7 +935,7 @@ function Hunk_Alloc(state, size, preference)
 | `preference` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L145)
 
 <a id="function-function-mq3-qcommon-common-hunk-allocatetempmemory-function-hunk-allocatetempmemory-state-size-src-mq3-qcommon-common-ml-1900214428"></a>
 ### Hunk_AllocateTempMemory
@@ -950,7 +950,7 @@ function Hunk_AllocateTempMemory(state, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L146)
 
 <a id="function-function-mq3-qcommon-common-hunk-checkmark-function-hunk-checkmark-state-src-mq3-qcommon-common-ml-1202974997"></a>
 ### Hunk_CheckMark
@@ -964,7 +964,7 @@ function Hunk_CheckMark(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L134)
 
 <a id="function-function-mq3-qcommon-common-hunk-clear-function-hunk-clear-state-src-mq3-qcommon-common-ml-551766005"></a>
 ### Hunk_Clear
@@ -978,7 +978,7 @@ function Hunk_Clear(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L135)
 
 <a id="function-function-mq3-qcommon-common-hunk-cleartempmemory-function-hunk-cleartempmemory-state-src-mq3-qcommon-common-ml-1698618077"></a>
 ### Hunk_ClearTempMemory
@@ -992,7 +992,7 @@ function Hunk_ClearTempMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L148)
 
 <a id="function-function-mq3-qcommon-common-hunk-cleartomark-function-hunk-cleartomark-state-src-mq3-qcommon-common-ml-1093216917"></a>
 ### Hunk_ClearToMark
@@ -1006,7 +1006,7 @@ function Hunk_ClearToMark(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L133)
 
 <a id="function-function-mq3-qcommon-common-hunk-freetempmemory-function-hunk-freetempmemory-state-value-src-mq3-qcommon-common-ml-275366846"></a>
 ### Hunk_FreeTempMemory
@@ -1021,7 +1021,7 @@ function Hunk_FreeTempMemory(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L147)
 
 <a id="constant-constant-mq3-qcommon-common-hunk-high-const-hunk-high-1-src-mq3-qcommon-common-ml-1760851522"></a>
 ### HUNK_HIGH
@@ -1031,7 +1031,7 @@ const HUNK_HIGH = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L29)
 
 <a id="function-function-mq3-qcommon-common-hunk-log-function-hunk-log-state-src-mq3-qcommon-common-ml-1768456489"></a>
 ### Hunk_Log
@@ -1045,7 +1045,7 @@ function Hunk_Log(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L149)
 
 <a id="constant-constant-mq3-qcommon-common-hunk-low-const-hunk-low-0-src-mq3-qcommon-common-ml-1491755985"></a>
 ### HUNK_LOW
@@ -1055,7 +1055,7 @@ const HUNK_LOW = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L28)
 
 <a id="function-function-mq3-qcommon-common-hunk-memoryremaining-function-hunk-memoryremaining-state-src-mq3-qcommon-common-ml-2018993301"></a>
 ### Hunk_MemoryRemaining
@@ -1069,7 +1069,7 @@ function Hunk_MemoryRemaining(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L131)
 
 <a id="function-function-mq3-qcommon-common-hunk-setmark-function-hunk-setmark-state-src-mq3-qcommon-common-ml-1007432429"></a>
 ### Hunk_SetMark
@@ -1083,7 +1083,7 @@ function Hunk_SetMark(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L132)
 
 <a id="function-function-mq3-qcommon-common-hunk-smalllog-function-hunk-smalllog-state-src-mq3-qcommon-common-ml-1294793413"></a>
 ### Hunk_SmallLog
@@ -1097,7 +1097,7 @@ function Hunk_SmallLog(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L150)
 
 <a id="function-function-mq3-qcommon-common-hunk-swapbanks-function-hunk-swapbanks-state-src-mq3-qcommon-common-ml-1606264309"></a>
 ### Hunk_SwapBanks
@@ -1111,7 +1111,7 @@ function Hunk_SwapBanks(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L136)
 
 <a id="function-function-mq3-qcommon-common-hunk-trash-function-hunk-trash-state-src-mq3-qcommon-common-ml-465420717"></a>
 ### Hunk_Trash
@@ -1125,7 +1125,7 @@ function Hunk_Trash(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L151)
 
 <a id="function-function-mq3-qcommon-common-info-print-function-info-print-state-text-src-mq3-qcommon-common-ml-1098671828"></a>
 ### Info_Print
@@ -1140,7 +1140,7 @@ function Info_Print(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L76)
 
 <a id="function-function-mq3-qcommon-common-keyconcatargs-function-keyconcatargs-state-src-mq3-qcommon-common-ml-1176361621"></a>
 ### keyConcatArgs
@@ -1154,7 +1154,7 @@ function keyConcatArgs(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L214)
 
 <a id="function-function-mq3-qcommon-common-lower-function-lower-value-src-mq3-qcommon-common-ml-741304187"></a>
 ### lower
@@ -1168,7 +1168,7 @@ function lower(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L49)
 
 <a id="constant-constant-mq3-qcommon-common-max-edit-line-const-max-edit-line-qcommonheaders-max-edit-line-src-mq3-qcommon-common-ml-1417981251"></a>
 ### MAX_EDIT_LINE
@@ -1178,7 +1178,7 @@ const MAX_EDIT_LINE = qcommonHeaders.MAX_EDIT_LINE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L22)
 
 <a id="constant-constant-mq3-qcommon-common-max-pushed-events-const-max-pushed-events-1024-src-mq3-qcommon-common-ml-1782985328"></a>
 ### MAX_PUSHED_EVENTS
@@ -1188,7 +1188,7 @@ const MAX_PUSHED_EVENTS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L21)
 
 <a id="constant-constant-mq3-qcommon-common-max-token-chars-const-max-token-chars-1024-src-mq3-qcommon-common-ml-607454052"></a>
 ### MAX_TOKEN_CHARS
@@ -1198,7 +1198,7 @@ const MAX_TOKEN_CHARS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L23)
 
 <a id="function-function-mq3-qcommon-common-normalizepath-function-normalizepath-value-src-mq3-qcommon-common-ml-1909128297"></a>
 ### normalizePath
@@ -1212,7 +1212,7 @@ function normalizePath(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L99)
 
 <a id="function-function-mq3-qcommon-common-padkey-function-padkey-src-mq3-qcommon-common-ml-1587054828"></a>
 ### padKey
@@ -1222,7 +1222,7 @@ function padKey()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L168)
 
 <a id="function-function-mq3-qcommon-common-permanent-function-permanent-state-size-preference-src-mq3-qcommon-common-ml-1044129481"></a>
 ### permanent
@@ -1238,7 +1238,7 @@ function permanent(state, size, preference)
 | `preference` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L220)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L220)
 
 <a id="function-function-mq3-qcommon-common-printmatches-function-printmatches-state-value-src-mq3-qcommon-common-ml-1973113118"></a>
 ### PrintMatches
@@ -1253,7 +1253,7 @@ function PrintMatches(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L212)
 
 <a id="function-function-mq3-qcommon-common-q-acos-function-q-acos-value-src-mq3-qcommon-common-ml-1669102049"></a>
 ### Q_acos
@@ -1267,7 +1267,7 @@ function Q_acos(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L208)
 
 <a id="function-function-mq3-qcommon-common-quotearg-function-quotearg-value-src-mq3-qcommon-common-ml-608669241"></a>
 ### quoteArg
@@ -1281,7 +1281,7 @@ function quoteArg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L213)
 
 <a id="function-function-mq3-qcommon-common-readkey-function-readkey-state-filename-src-mq3-qcommon-common-ml-996149572"></a>
 ### readKey
@@ -1296,7 +1296,7 @@ function readKey(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L170)
 
 - [mq3.qcommon.common.Redirect](Type-mq3-qcommon-common-redirect-587251143.md) — struct
 <a id="function-function-mq3-qcommon-common-s-malloc-function-s-malloc-state-size-src-mq3-qcommon-common-ml-1711004594"></a>
@@ -1312,7 +1312,7 @@ function S_Malloc(state, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L115)
 
 <a id="function-function-mq3-qcommon-common-s-mallocdebug-function-s-mallocdebug-state-size-label-file-line-src-mq3-qcommon-common-ml-706434636"></a>
 ### S_MallocDebug
@@ -1330,7 +1330,7 @@ function S_MallocDebug(state, size, label, file, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L114)
 
 <a id="function-function-mq3-qcommon-common-sameprefix-function-sameprefix-left-right-count-casesensitive-src-mq3-qcommon-common-ml-2054127142"></a>
 ### samePrefix
@@ -1347,7 +1347,7 @@ function samePrefix(left, right, count, casesensitive)
 | `casesensitive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L50)
 
 <a id="function-function-mq3-qcommon-common-services-function-services-context-src-mq3-qcommon-common-ml-1923402619"></a>
 ### services
@@ -1361,7 +1361,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L41)
 
 - [mq3.qcommon.common.Services](Type-mq3-qcommon-common-services-1183297755.md) — struct
 - [mq3.qcommon.common.State](Type-mq3-qcommon-common-state-41417224.md) — struct
@@ -1374,7 +1374,7 @@ const TAG_BOTLIB = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L26)
 
 <a id="constant-constant-mq3-qcommon-common-tag-free-const-tag-free-0-src-mq3-qcommon-common-ml-1060078321"></a>
 ### TAG_FREE
@@ -1384,7 +1384,7 @@ const TAG_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L24)
 
 <a id="constant-constant-mq3-qcommon-common-tag-general-const-tag-general-1-src-mq3-qcommon-common-ml-1460866942"></a>
 ### TAG_GENERAL
@@ -1394,7 +1394,7 @@ const TAG_GENERAL = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L25)
 
 <a id="constant-constant-mq3-qcommon-common-tag-renderer-const-tag-renderer-3-src-mq3-qcommon-common-ml-1383579030"></a>
 ### TAG_RENDERER
@@ -1404,7 +1404,7 @@ const TAG_RENDERER = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L27)
 
 <a id="function-function-mq3-qcommon-common-validkey-function-validkey-state-key-src-mq3-qcommon-common-ml-1689131672"></a>
 ### validKey
@@ -1419,7 +1419,7 @@ function validKey(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L169)
 
 <a id="function-function-mq3-qcommon-common-visible-function-visible-text-src-mq3-qcommon-common-ml-1124340281"></a>
 ### visible
@@ -1433,7 +1433,7 @@ function visible(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L48)
 
 <a id="function-function-mq3-qcommon-common-z-availablememory-function-z-availablememory-state-src-mq3-qcommon-common-ml-937293619"></a>
 ### Z_AvailableMemory
@@ -1447,7 +1447,7 @@ function Z_AvailableMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L107)
 
 <a id="function-function-mq3-qcommon-common-z-availablezonememory-function-z-availablezonememory-zone-src-mq3-qcommon-common-ml-1213818792"></a>
 ### Z_AvailableZoneMemory
@@ -1461,7 +1461,7 @@ function Z_AvailableZoneMemory(zone)
 | `zone` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L106)
 
 <a id="function-function-mq3-qcommon-common-z-checkheap-function-z-checkheap-state-src-mq3-qcommon-common-ml-1146204395"></a>
 ### Z_CheckHeap
@@ -1475,7 +1475,7 @@ function Z_CheckHeap(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L121)
 
 <a id="function-function-mq3-qcommon-common-z-clearzone-function-z-clearzone-zone-size-src-mq3-qcommon-common-ml-468800729"></a>
 ### Z_ClearZone
@@ -1490,7 +1490,7 @@ function Z_ClearZone(zone, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L105)
 
 <a id="function-function-mq3-qcommon-common-z-free-function-z-free-state-value-src-mq3-qcommon-common-ml-2061193678"></a>
 ### Z_Free
@@ -1505,7 +1505,7 @@ function Z_Free(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L116)
 
 <a id="function-function-mq3-qcommon-common-z-freetags-function-z-freetags-state-tag-src-mq3-qcommon-common-ml-2037615277"></a>
 ### Z_FreeTags
@@ -1520,7 +1520,7 @@ function Z_FreeTags(state, tag)
 | `tag` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L120)
 
 <a id="function-function-mq3-qcommon-common-z-logheap-function-z-logheap-state-src-mq3-qcommon-common-ml-530650031"></a>
 ### Z_LogHeap
@@ -1534,7 +1534,7 @@ function Z_LogHeap(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L123)
 
 <a id="function-function-mq3-qcommon-common-z-logzoneheap-function-z-logzoneheap-state-zone-name-src-mq3-qcommon-common-ml-1797015232"></a>
 ### Z_LogZoneHeap
@@ -1550,7 +1550,7 @@ function Z_LogZoneHeap(state, zone, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L122)
 
 <a id="function-function-mq3-qcommon-common-z-malloc-function-z-malloc-state-size-src-mq3-qcommon-common-ml-1743034678"></a>
 ### Z_Malloc
@@ -1565,7 +1565,7 @@ function Z_Malloc(state, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L113)
 
 <a id="function-function-mq3-qcommon-common-z-mallocdebug-function-z-mallocdebug-state-size-label-file-line-src-mq3-qcommon-common-ml-989484002"></a>
 ### Z_MallocDebug
@@ -1583,7 +1583,7 @@ function Z_MallocDebug(state, size, label, file, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L112)
 
 <a id="function-function-mq3-qcommon-common-z-tagmalloc-function-z-tagmalloc-state-size-tag-src-mq3-qcommon-common-ml-492338018"></a>
 ### Z_TagMalloc
@@ -1599,7 +1599,7 @@ function Z_TagMalloc(state, size, tag)
 | `tag` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L111)
 
 <a id="function-function-mq3-qcommon-common-z-tagmallocdebug-function-z-tagmallocdebug-state-size-tag-label-file-line-src-mq3-qcommon-common-ml-2025716620"></a>
 ### Z_TagMallocDebug
@@ -1618,6 +1618,6 @@ function Z_TagMallocDebug(state, size, tag, label, file, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L108)
 
 - [mq3.qcommon.common.Zone](Type-mq3-qcommon-common-zone-1187699781.md) — struct

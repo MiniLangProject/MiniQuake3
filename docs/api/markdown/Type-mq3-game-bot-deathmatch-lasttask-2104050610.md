@@ -10,7 +10,7 @@ struct LastTask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
 
 ## Members
 
@@ -22,7 +22,7 @@ decisionmaker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
 
 <a id="field-field-mq3-game-bot-deathmatch-lasttask-ltgtype-ltgtype-src-mq3-game-bot-deathmatch-ml-1155395160"></a>
 ### ltgtype
@@ -32,7 +32,7 @@ ltgtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
 
 <a id="field-field-mq3-game-bot-deathmatch-lasttask-teamgoal-teamgoal-src-mq3-game-bot-deathmatch-ml-625287700"></a>
 ### teamgoal
@@ -42,7 +42,7 @@ teamgoal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
 
 <a id="field-field-mq3-game-bot-deathmatch-lasttask-teammate-teammate-src-mq3-game-bot-deathmatch-ml-670687568"></a>
 ### teammate
@@ -52,7 +52,7 @@ teammate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)
 
 <a id="field-field-mq3-game-bot-deathmatch-lasttask-valid-valid-src-mq3-game-bot-deathmatch-ml-505708724"></a>
 ### valid
@@ -62,4 +62,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L53)

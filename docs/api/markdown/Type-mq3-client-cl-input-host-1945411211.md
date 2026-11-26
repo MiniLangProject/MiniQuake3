@@ -12,7 +12,7 @@ struct Host
 The callbacks are the only VM/host boundary in this module.  Supplying void suppresses the corresponding side effect, which makes deterministic native and headless clients use the same input state machine as the windowed host.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
 
 ## Members
 
@@ -24,7 +24,7 @@ cgameMouseFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
 
 <a id="field-field-mq3-client-cl-input-host-context-context-src-mq3-client-cl-input-ml-1317652041"></a>
 ### context
@@ -34,7 +34,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
 
 <a id="field-field-mq3-client-cl-input-host-debuggraphfn-debuggraphfn-src-mq3-client-cl-input-ml-1972624779"></a>
 ### debugGraphFn
@@ -44,7 +44,7 @@ debugGraphFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
 
 <a id="field-field-mq3-client-cl-input-host-printfn-printfn-src-mq3-client-cl-input-ml-1335469969"></a>
 ### printFn
@@ -54,7 +54,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)
 
 <a id="field-field-mq3-client-cl-input-host-uimousefn-uimousefn-src-mq3-client-cl-input-ml-94167853"></a>
 ### uiMouseFn
@@ -64,4 +64,4 @@ uiMouseFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_input.ml#L17)

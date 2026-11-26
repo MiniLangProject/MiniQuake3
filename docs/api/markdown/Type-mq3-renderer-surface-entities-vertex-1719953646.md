@@ -10,7 +10,7 @@ struct Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-normal-normal-src-mq3-renderer-surface-entities-ml-1972012477"></a>
 ### normal
@@ -32,7 +32,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-tex0-tex0-src-mq3-renderer-surface-entities-ml-1176920305"></a>
 ### tex0
@@ -42,7 +42,7 @@ tex0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-tex1-tex1-src-mq3-renderer-surface-entities-ml-1513306867"></a>
 ### tex1
@@ -52,7 +52,7 @@ tex1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)
 
 <a id="field-field-mq3-renderer-surface-entities-vertex-xyz-xyz-src-mq3-renderer-surface-entities-ml-1493934739"></a>
 ### xyz
@@ -62,4 +62,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L11)

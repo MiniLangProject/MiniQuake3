@@ -34,7 +34,7 @@ function add3(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L46)
 
 <a id="function-function-mq3-client-cgame-ents-addcentity-function-addcentity-state-value-predicted-retailactive-src-mq3-client-cgame-ents-ml-413068543"></a>
 ### addCEntity
@@ -53,7 +53,7 @@ CG_AddCEntity
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L193)
 
 <a id="function-function-mq3-client-cgame-ents-addpacketentities-function-addpacketentities-state-snap-nextsnap-predictedentity-retailactive-src-mq3-client-cgame-ents-ml-1840632352"></a>
 ### addPacketEntities
@@ -73,7 +73,7 @@ CG_AddPacketEntities.  Snapshot entities are observed through private Cent recor
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L217)
 
 <a id="function-function-mq3-client-cgame-ents-adjustpositionformover-function-adjustpositionformover-input-movervalue-fromtime-totime-src-mq3-client-cgame-ents-ml-2130914375"></a>
 ### adjustPositionForMover
@@ -92,7 +92,7 @@ CG_AdjustPositionForMover
 | `toTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L165)
 
 <a id="function-function-mq3-client-cgame-ents-audio-function-audio-state-kind-entity-origin-velocity-sound-emit-src-mq3-client-cgame-ents-ml-1588939537"></a>
 ### audio
@@ -112,7 +112,7 @@ function audio(state, kind, entity, origin, velocity, sound, emit)
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L64)
 
 <a id="function-function-mq3-client-cgame-ents-beam-function-beam-state-value-emit-src-mq3-client-cgame-ents-ml-54085931"></a>
 ### beam
@@ -130,7 +130,7 @@ CG_Beam
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L155)
 
 <a id="function-function-mq3-client-cgame-ents-boundary-function-boundary-state-boundaryname-kind-entity-origin-velocity-rendervalue-sound-value-emit-src-mq3-client-cgame-ents-ml-1589954536"></a>
 ### boundary
@@ -153,7 +153,7 @@ function boundary(state, boundaryName, kind, entity, origin, velocity, renderVal
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L57)
 
 - [mq3.client.cgame_ents.Boundary](Type-mq3-client-cgame-ents-boundary-288664833.md) — struct
 <a id="function-function-mq3-client-cgame-ents-calcentitylerppositions-function-calcentitylerppositions-state-value-predicted-src-mq3-client-cgame-ents-ml-1018692588"></a>
@@ -172,7 +172,7 @@ CG_CalcEntityLerpPositions
 | `predicted` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L180)
 
 <a id="function-function-mq3-client-cgame-ents-cent-function-cent-source-src-mq3-client-cgame-ents-ml-693192503"></a>
 ### cent
@@ -186,7 +186,7 @@ function cent(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L51)
 
 - [mq3.client.cgame_ents.Cent](Type-mq3-client-cgame-ents-cent-1686050009.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-chan-item-const-chan-item-3-src-mq3-client-cgame-ents-ml-2043186250"></a>
@@ -197,7 +197,7 @@ const CHAN_ITEM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L34)
 
 <a id="function-function-mq3-client-cgame-ents-clearboundaries-function-clearboundaries-state-src-mq3-client-cgame-ents-ml-152248115"></a>
 ### clearBoundaries
@@ -211,7 +211,7 @@ function clearBoundaries(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L225)
 
 <a id="function-function-mq3-client-cgame-ents-copy3-function-copy3-value-src-mq3-client-cgame-ents-ml-1002658789"></a>
 ### copy3
@@ -225,7 +225,7 @@ function copy3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L45)
 
 <a id="function-function-mq3-client-cgame-ents-create-function-create-maxentities-src-mq3-client-cgame-ents-ml-1243534461"></a>
 ### create
@@ -239,7 +239,7 @@ function create(maxEntities)
 | `maxEntities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L54)
 
 <a id="function-function-mq3-client-cgame-ents-directionaxis-function-directionaxis-direction-spin-src-mq3-client-cgame-ents-ml-21017057"></a>
 ### directionAxis
@@ -254,7 +254,7 @@ function directionAxis(direction, spin)
 | `spin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L128)
 
 <a id="constant-constant-mq3-client-cgame-ents-ef-nodraw-const-ef-nodraw-128-src-mq3-client-cgame-ents-ml-602685758"></a>
 ### EF_NODRAW
@@ -264,7 +264,7 @@ const EF_NODRAW = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L23)
 
 <a id="function-function-mq3-client-cgame-ents-ensurecent-function-ensurecent-state-source-src-mq3-client-cgame-ents-ml-1866124772"></a>
 ### ensureCent
@@ -279,7 +279,7 @@ function ensureCent(state, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L211)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L211)
 
 <a id="function-function-mq3-client-cgame-ents-entityeffects-function-entityeffects-state-value-emit-src-mq3-client-cgame-ents-ml-2090073313"></a>
 ### entityEffects
@@ -297,7 +297,7 @@ CG_EntityEffects
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L89)
 
 <a id="constant-constant-mq3-client-cgame-ents-entitynum-max-normal-const-entitynum-max-normal-1022-src-mq3-client-cgame-ents-ml-985200602"></a>
 ### ENTITYNUM_MAX_NORMAL
@@ -307,7 +307,7 @@ const ENTITYNUM_MAX_NORMAL = 1022
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L21)
 
 <a id="function-function-mq3-client-cgame-ents-general-function-general-state-value-emit-src-mq3-client-cgame-ents-ml-605395251"></a>
 ### general
@@ -325,7 +325,7 @@ CG_General
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L99)
 
 <a id="function-function-mq3-client-cgame-ents-grapple-function-grapple-state-value-emit-src-mq3-client-cgame-ents-ml-2083297133"></a>
 ### grapple
@@ -343,7 +343,7 @@ CG_Grapple
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L145)
 
 <a id="constant-constant-mq3-client-cgame-ents-gt-ctf-const-gt-ctf-4-src-mq3-client-cgame-ents-ml-711826061"></a>
 ### GT_CTF
@@ -353,7 +353,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L31)
 
 <a id="function-function-mq3-client-cgame-ents-identityaxis-function-identityaxis-src-mq3-client-cgame-ents-ml-581483566"></a>
 ### identityAxis
@@ -363,7 +363,7 @@ function identityAxis()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L44)
 
 <a id="function-function-mq3-client-cgame-ents-interpolateentityposition-function-interpolateentityposition-value-snaptime-nextsnaptime-fraction-src-mq3-client-cgame-ents-ml-1909276544"></a>
 ### interpolateEntityPosition
@@ -382,7 +382,7 @@ CG_InterpolateEntityPosition
 | `fraction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L171)
 
 <a id="function-function-mq3-client-cgame-ents-item-function-item-state-value-emit-src-mq3-client-cgame-ents-ml-434133103"></a>
 ### item
@@ -400,7 +400,7 @@ CG_Item
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L113)
 
 <a id="constant-constant-mq3-client-cgame-ents-item-scaleup-time-const-item-scaleup-time-1000-src-mq3-client-cgame-ents-ml-841356256"></a>
 ### ITEM_SCALEUP_TIME
@@ -410,7 +410,7 @@ const ITEM_SCALEUP_TIME = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L22)
 
 <a id="constant-constant-mq3-client-cgame-ents-max-clients-const-max-clients-64-src-mq3-client-cgame-ents-ml-1665980873"></a>
 ### MAX_CLIENTS
@@ -420,7 +420,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L20)
 
 <a id="function-function-mq3-client-cgame-ents-missile-function-missile-state-value-emit-src-mq3-client-cgame-ents-ml-1225137579"></a>
 ### missile
@@ -438,7 +438,7 @@ CG_Missile
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L134)
 
 <a id="function-function-mq3-client-cgame-ents-mover-function-mover-state-value-emit-src-mq3-client-cgame-ents-ml-1218246397"></a>
 ### mover
@@ -456,7 +456,7 @@ CG_Mover
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L150)
 
 <a id="function-function-mq3-client-cgame-ents-portal-function-portal-state-value-emit-src-mq3-client-cgame-ents-ml-1604856411"></a>
 ### portal
@@ -474,7 +474,7 @@ CG_Portal
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L160)
 
 <a id="function-function-mq3-client-cgame-ents-positionentityontag-function-positionentityontag-entity-parent-model-name-src-mq3-client-cgame-ents-ml-1726209933"></a>
 ### positionEntityOnTag
@@ -493,7 +493,7 @@ CG_PositionEntityOnTag
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L67)
 
 <a id="function-function-mq3-client-cgame-ents-positionrotatedentityontag-function-positionrotatedentityontag-entity-parent-model-name-src-mq3-client-cgame-ents-ml-1685792527"></a>
 ### positionRotatedEntityOnTag
@@ -512,7 +512,7 @@ CG_PositionRotatedEntityOnTag
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L75)
 
 <a id="function-function-mq3-client-cgame-ents-renderentity-function-renderentity-src-mq3-client-cgame-ents-ml-984449182"></a>
 ### renderEntity
@@ -522,7 +522,7 @@ function renderEntity()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L48)
 
 - [mq3.client.cgame_ents.RenderEntity](Type-mq3-client-cgame-ents-renderentity-580160012.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-rf-minlight-const-rf-minlight-1-src-mq3-client-cgame-ents-ml-875634624"></a>
@@ -533,7 +533,7 @@ const RF_MINLIGHT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L25)
 
 <a id="constant-constant-mq3-client-cgame-ents-rf-noshadow-const-rf-noshadow-64-src-mq3-client-cgame-ents-ml-1261167025"></a>
 ### RF_NOSHADOW
@@ -543,7 +543,7 @@ const RF_NOSHADOW = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L26)
 
 <a id="constant-constant-mq3-client-cgame-ents-rf-third-person-const-rf-third-person-2-src-mq3-client-cgame-ents-ml-232339451"></a>
 ### RF_THIRD_PERSON
@@ -553,7 +553,7 @@ const RF_THIRD_PERSON = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L24)
 
 <a id="constant-constant-mq3-client-cgame-ents-rt-beam-const-rt-beam-4-src-mq3-client-cgame-ents-ml-1568151933"></a>
 ### RT_BEAM
@@ -563,7 +563,7 @@ const RT_BEAM = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L29)
 
 <a id="constant-constant-mq3-client-cgame-ents-rt-model-const-rt-model-0-src-mq3-client-cgame-ents-ml-1427133711"></a>
 ### RT_MODEL
@@ -573,7 +573,7 @@ const RT_MODEL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L27)
 
 <a id="constant-constant-mq3-client-cgame-ents-rt-portalsurface-const-rt-portalsurface-6-src-mq3-client-cgame-ents-ml-1941114705"></a>
 ### RT_PORTALSURFACE
@@ -583,7 +583,7 @@ const RT_PORTALSURFACE = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L30)
 
 <a id="constant-constant-mq3-client-cgame-ents-rt-sprite-const-rt-sprite-2-src-mq3-client-cgame-ents-ml-405228643"></a>
 ### RT_SPRITE
@@ -593,7 +593,7 @@ const RT_SPRITE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L28)
 
 <a id="function-function-mq3-client-cgame-ents-scene-function-scene-state-kind-entity-value-emit-src-mq3-client-cgame-ents-ml-929790700"></a>
 ### scene
@@ -611,7 +611,7 @@ function scene(state, kind, entity, value, emit)
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L63)
 
 <a id="function-function-mq3-client-cgame-ents-setentitysoundposition-function-setentitysoundposition-state-value-emit-src-mq3-client-cgame-ents-ml-1746493795"></a>
 ### setEntitySoundPosition
@@ -629,7 +629,7 @@ CG_SetEntitySoundPosition
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L82)
 
 - [mq3.client.cgame_ents.Snapshot](Type-mq3-client-cgame-ents-snapshot-985388967.md) — struct
 <a id="constant-constant-mq3-client-cgame-ents-solid-bmodel-const-solid-bmodel-16777215-src-mq3-client-cgame-ents-ml-980191329"></a>
@@ -640,7 +640,7 @@ const SOLID_BMODEL = 16777215
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L19)
 
 <a id="function-function-mq3-client-cgame-ents-speaker-function-speaker-state-value-emit-src-mq3-client-cgame-ents-ml-1514678849"></a>
 ### speaker
@@ -658,7 +658,7 @@ CG_Speaker
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L104)
 
 - [mq3.client.cgame_ents.State](Type-mq3-client-cgame-ents-state-1099874224.md) — struct
 <a id="function-function-mq3-client-cgame-ents-sub3-function-sub3-first-second-src-mq3-client-cgame-ents-ml-1384735286"></a>
@@ -674,7 +674,7 @@ function sub3(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L47)
 
 <a id="constant-constant-mq3-client-cgame-ents-team-blue-const-team-blue-2-src-mq3-client-cgame-ents-ml-1022799807"></a>
 ### TEAM_BLUE
@@ -684,7 +684,7 @@ const TEAM_BLUE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L33)
 
 <a id="constant-constant-mq3-client-cgame-ents-team-red-const-team-red-1-src-mq3-client-cgame-ents-ml-1858262844"></a>
 ### TEAM_RED
@@ -694,7 +694,7 @@ const TEAM_RED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L32)
 
 <a id="function-function-mq3-client-cgame-ents-teambase-function-teambase-state-value-emit-src-mq3-client-cgame-ents-ml-687795847"></a>
 ### teamBase
@@ -712,7 +712,7 @@ CG_TeamBase (baseq3 branch)
 | `emit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L188)
 
 <a id="function-function-mq3-client-cgame-ents-weaponmidpoint-function-weaponmidpoint-state-weapon-src-mq3-client-cgame-ents-ml-1749170565"></a>
 ### weaponMidpoint
@@ -727,7 +727,7 @@ function weaponMidpoint(state, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L108)
 
 <a id="constant-constant-mq3-client-cgame-ents-wp-num-weapons-const-wp-num-weapons-11-src-mq3-client-cgame-ents-ml-1663284551"></a>
 ### WP_NUM_WEAPONS
@@ -737,7 +737,7 @@ const WP_NUM_WEAPONS = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L36)
 
 <a id="constant-constant-mq3-client-cgame-ents-wp-plasmagun-const-wp-plasmagun-8-src-mq3-client-cgame-ents-ml-402349111"></a>
 ### WP_PLASMAGUN
@@ -747,4 +747,4 @@ const WP_PLASMAGUN = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L35)

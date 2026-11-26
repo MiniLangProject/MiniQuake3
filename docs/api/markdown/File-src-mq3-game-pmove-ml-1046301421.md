@@ -33,7 +33,7 @@ function accelerate(p, dir, speed, accel)
 | `accel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L80)
 
 <a id="function-function-mq3-game-pmove-addevent-function-addevent-p-event-src-mq3-game-pmove-ml-1954529014"></a>
 ### addEvent
@@ -48,7 +48,7 @@ function addEvent(p, event)
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L94)
 
 <a id="function-function-mq3-game-pmove-airmove-function-airmove-p-src-mq3-game-pmove-ml-1133189074"></a>
 ### airMove
@@ -62,7 +62,7 @@ function airMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L222)
 
 <a id="constant-constant-mq3-game-pmove-all-times-const-all-times-352-src-mq3-game-pmove-ml-632968233"></a>
 ### ALL_TIMES
@@ -72,7 +72,7 @@ const ALL_TIMES = 352
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L13)
 
 <a id="function-function-mq3-game-pmove-animate-function-animate-p-src-mq3-game-pmove-ml-1713434970"></a>
 ### animate
@@ -86,7 +86,7 @@ function animate(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L562)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L562)
 
 <a id="function-function-mq3-game-pmove-beginweaponchange-function-beginweaponchange-p-weapon-src-mq3-game-pmove-ml-1346492394"></a>
 ### beginWeaponChange
@@ -101,7 +101,7 @@ function beginWeaponChange(p, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L501)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L501)
 
 <a id="function-function-mq3-game-pmove-checkduck-function-checkduck-p-src-mq3-game-pmove-ml-133061486"></a>
 ### checkDuck
@@ -115,7 +115,7 @@ function checkDuck(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L430)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L430)
 
 <a id="function-function-mq3-game-pmove-checkjump-function-checkjump-p-src-mq3-game-pmove-ml-1830275336"></a>
 ### checkJump
@@ -129,7 +129,7 @@ function checkJump(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L155)
 
 <a id="function-function-mq3-game-pmove-checkstuck-function-checkstuck-p-src-mq3-game-pmove-ml-1461164508"></a>
 ### checkStuck
@@ -143,7 +143,7 @@ function checkStuck(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L374)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L374)
 
 <a id="function-function-mq3-game-pmove-checkwaterjump-function-checkwaterjump-p-src-mq3-game-pmove-ml-1652438776"></a>
 ### checkWaterJump
@@ -157,7 +157,7 @@ function checkWaterJump(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L165)
 
 <a id="function-function-mq3-game-pmove-clearground-function-clearground-p-src-mq3-game-pmove-ml-491287928"></a>
 ### clearGround
@@ -171,7 +171,7 @@ function clearGround(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L353)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L353)
 
 - [mq3.game.pmove.Command](Type-mq3-game-pmove-command-1751700588.md) — struct
 <a id="function-function-mq3-game-pmove-continuelegs-function-continuelegs-p-anim-src-mq3-game-pmove-ml-2108847395"></a>
@@ -187,7 +187,7 @@ function continueLegs(p, anim)
 | `anim` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L111)
 
 <a id="function-function-mq3-game-pmove-continuetorso-function-continuetorso-p-anim-src-mq3-game-pmove-ml-660253583"></a>
 ### continueTorso
@@ -202,7 +202,7 @@ function continueTorso(p, anim)
 | `anim` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L116)
 
 <a id="function-function-mq3-game-pmove-correctallsolid-function-correctallsolid-p-src-mq3-game-pmove-ml-1261807240"></a>
 ### correctAllSolid
@@ -216,7 +216,7 @@ function correctAllSolid(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L357)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L357)
 
 <a id="function-function-mq3-game-pmove-crashland-function-crashland-p-src-mq3-game-pmove-ml-328675112"></a>
 ### crashLand
@@ -230,7 +230,7 @@ function crashLand(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L319)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L319)
 
 <a id="function-function-mq3-game-pmove-create-function-create-ps-tracefn-pointfn-context-src-mq3-game-pmove-ml-77096573"></a>
 ### create
@@ -247,7 +247,7 @@ function create(ps, traceFn, pointFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L53)
 
 <a id="function-function-mq3-game-pmove-deadmove-function-deadmove-p-src-mq3-game-pmove-ml-1603697552"></a>
 ### deadMove
@@ -261,7 +261,7 @@ function deadMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L283)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L283)
 
 <a id="function-function-mq3-game-pmove-droptimers-function-droptimers-p-src-mq3-game-pmove-ml-1543451820"></a>
 ### dropTimers
@@ -275,7 +275,7 @@ function dropTimers(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L568)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L568)
 
 <a id="function-function-mq3-game-pmove-finishweaponchange-function-finishweaponchange-p-src-mq3-game-pmove-ml-454323312"></a>
 ### finishWeaponChange
@@ -289,7 +289,7 @@ function finishWeaponChange(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L508)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L508)
 
 <a id="function-function-mq3-game-pmove-flymove-function-flymove-p-src-mq3-game-pmove-ml-1294450536"></a>
 ### flyMove
@@ -303,7 +303,7 @@ function flyMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L216)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L216)
 
 <a id="function-function-mq3-game-pmove-footstepforsurface-function-footstepforsurface-p-src-mq3-game-pmove-ml-2036289912"></a>
 ### footstepForSurface
@@ -317,7 +317,7 @@ function footstepForSurface(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L314)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L314)
 
 <a id="function-function-mq3-game-pmove-footsteps-function-footsteps-p-src-mq3-game-pmove-ml-880760994"></a>
 ### footsteps
@@ -331,7 +331,7 @@ function footsteps(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L455)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L455)
 
 <a id="function-function-mq3-game-pmove-forcelegs-function-forcelegs-p-anim-src-mq3-game-pmove-ml-1906610087"></a>
 ### forceLegs
@@ -346,7 +346,7 @@ function forceLegs(p, anim)
 | `anim` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L121)
 
 <a id="function-function-mq3-game-pmove-friction-function-friction-p-src-mq3-game-pmove-ml-1833737688"></a>
 ### friction
@@ -360,7 +360,7 @@ function friction(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L76)
 
 <a id="function-function-mq3-game-pmove-grapplemove-function-grapplemove-p-src-mq3-game-pmove-ml-1044153928"></a>
 ### grappleMove
@@ -374,7 +374,7 @@ function grappleMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L236)
 
 <a id="function-function-mq3-game-pmove-groundtrace-function-groundtrace-p-src-mq3-game-pmove-ml-327296616"></a>
 ### groundTrace
@@ -388,7 +388,7 @@ function groundTrace(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L388)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L388)
 
 <a id="function-function-mq3-game-pmove-groundtracemissed-function-groundtracemissed-p-src-mq3-game-pmove-ml-164809258"></a>
 ### groundTraceMissed
@@ -402,7 +402,7 @@ function groundTraceMissed(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L379)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L379)
 
 <a id="function-function-mq3-game-pmove-invulnerabilitymove-function-invulnerabilitymove-p-src-mq3-game-pmove-ml-1226493676"></a>
 ### invulnerabilityMove
@@ -416,7 +416,7 @@ function invulnerabilityMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L210)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L210)
 
 <a id="function-function-mq3-game-pmove-jumpanimation-function-jumpanimation-p-src-mq3-game-pmove-ml-1260564184"></a>
 ### jumpAnimation
@@ -430,7 +430,7 @@ function jumpAnimation(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L146)
 
 <a id="function-function-mq3-game-pmove-kerneltrace-function-kerneltrace-k-start-finish-src-mq3-game-pmove-ml-742067610"></a>
 ### kernelTrace
@@ -446,7 +446,7 @@ function kernelTrace(k, start, finish)
 | `finish` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L48)
 
 <a id="function-function-mq3-game-pmove-move-function-move-p-src-mq3-game-pmove-ml-1508235592"></a>
 ### move
@@ -460,7 +460,7 @@ function move(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L638)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L638)
 
 <a id="function-function-mq3-game-pmove-movementdir-function-movementdir-p-src-mq3-game-pmove-ml-1541720416"></a>
 ### movementDir
@@ -474,7 +474,7 @@ function movementDir(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L127)
 
 <a id="function-function-mq3-game-pmove-noclipmove-function-noclipmove-p-src-mq3-game-pmove-ml-1752206632"></a>
 ### noclipMove
@@ -488,7 +488,7 @@ function noclipMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L292)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L292)
 
 <a id="constant-constant-mq3-game-pmove-overclip-const-overclip-internal-overclip-src-mq3-game-pmove-ml-1282249584"></a>
 ### OVERCLIP
@@ -498,7 +498,7 @@ const OVERCLIP = internal.OVERCLIP
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L14)
 
 - [mq3.game.pmove.PmoveContext](Type-mq3-game-pmove-pmovecontext-1916135903.md) — struct
 <a id="function-function-mq3-game-pmove-scale-function-scale-p-src-mq3-game-pmove-ml-1618783152"></a>
@@ -513,7 +513,7 @@ function scale(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L90)
 
 <a id="function-function-mq3-game-pmove-setgroundtrace-function-setgroundtrace-p-hit-src-mq3-game-pmove-ml-975010301"></a>
 ### setGroundTrace
@@ -528,7 +528,7 @@ function setGroundTrace(p, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L348)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L348)
 
 <a id="function-function-mq3-game-pmove-setwaterlevel-function-setwaterlevel-p-src-mq3-game-pmove-ml-919607510"></a>
 ### setWaterLevel
@@ -542,7 +542,7 @@ function setWaterLevel(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L414)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L414)
 
 <a id="function-function-mq3-game-pmove-single-function-single-p-src-mq3-game-pmove-ml-1762688816"></a>
 ### single
@@ -556,7 +556,7 @@ function single(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L593)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L593)
 
 <a id="function-function-mq3-game-pmove-slide-function-slide-p-gravity-step-src-mq3-game-pmove-ml-622661496"></a>
 ### slide
@@ -572,7 +572,7 @@ function slide(p, gravity, step)
 | `step` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L84)
 
 <a id="function-function-mq3-game-pmove-standtorso-function-standtorso-p-continuing-src-mq3-game-pmove-ml-560869258"></a>
 ### standTorso
@@ -587,7 +587,7 @@ function standTorso(p, continuing)
 | `continuing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L516)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L516)
 
 <a id="function-function-mq3-game-pmove-startlegs-function-startlegs-p-anim-src-mq3-game-pmove-ml-1527557573"></a>
 ### startLegs
@@ -602,7 +602,7 @@ function startLegs(p, anim)
 | `anim` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L106)
 
 <a id="function-function-mq3-game-pmove-starttorso-function-starttorso-p-anim-src-mq3-game-pmove-ml-1404309543"></a>
 ### startTorso
@@ -617,7 +617,7 @@ function startTorso(p, anim)
 | `anim` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L101)
 
 <a id="function-function-mq3-game-pmove-swimmingwish-function-swimmingwish-p-cmdscale-sink-src-mq3-game-pmove-ml-245834447"></a>
 ### swimmingWish
@@ -633,7 +633,7 @@ function swimmingWish(p, cmdscale, sink)
 | `sink` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L183)
 
 <a id="function-function-mq3-game-pmove-synckernel-function-synckernel-p-src-mq3-game-pmove-ml-818470648"></a>
 ### syncKernel
@@ -647,7 +647,7 @@ function syncKernel(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L60)
 
 <a id="function-function-mq3-game-pmove-syncplayer-function-syncplayer-p-src-mq3-game-pmove-ml-1859715896"></a>
 ### syncPlayer
@@ -661,7 +661,7 @@ function syncPlayer(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L70)
 
 <a id="function-function-mq3-game-pmove-torsoanimation-function-torsoanimation-p-src-mq3-game-pmove-ml-1066067380"></a>
 ### torsoAnimation
@@ -675,7 +675,7 @@ function torsoAnimation(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L522)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L522)
 
 <a id="function-function-mq3-game-pmove-updateviewangles-function-updateviewangles-ps-cmd-src-mq3-game-pmove-ml-380882677"></a>
 ### updateViewAngles
@@ -690,7 +690,7 @@ function updateViewAngles(ps, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L579)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L579)
 
 <a id="function-function-mq3-game-pmove-walkmove-function-walkmove-p-src-mq3-game-pmove-ml-205469276"></a>
 ### walkMove
@@ -704,7 +704,7 @@ function walkMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L247)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L247)
 
 <a id="function-function-mq3-game-pmove-waterevents-function-waterevents-p-src-mq3-game-pmove-ml-1810704284"></a>
 ### waterEvents
@@ -718,7 +718,7 @@ function waterEvents(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L492)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L492)
 
 <a id="function-function-mq3-game-pmove-waterjumpmove-function-waterjumpmove-p-src-mq3-game-pmove-ml-766063252"></a>
 ### waterJumpMove
@@ -732,7 +732,7 @@ function waterJumpMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L176)
 
 <a id="function-function-mq3-game-pmove-watermove-function-watermove-p-src-mq3-game-pmove-ml-2033233544"></a>
 ### waterMove
@@ -746,7 +746,7 @@ function waterMove(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L195)
 
 <a id="function-function-mq3-game-pmove-weapon-function-weapon-p-src-mq3-game-pmove-ml-62382976"></a>
 ### weapon
@@ -760,4 +760,4 @@ function weapon(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/pmove.ml#L526)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/pmove.ml#L526)

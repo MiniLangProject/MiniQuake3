@@ -10,7 +10,7 @@ struct Md4Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 ## Members
 
@@ -22,7 +22,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 <a id="field-field-mq3-format-qfiles-md4vertex-numweights-numweights-src-mq3-format-qfiles-ml-937626556"></a>
 ### numWeights
@@ -32,7 +32,7 @@ numWeights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 <a id="field-field-mq3-format-qfiles-md4vertex-texcoords-texcoords-src-mq3-format-qfiles-ml-1448620702"></a>
 ### texCoords
@@ -42,7 +42,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)
 
 <a id="field-field-mq3-format-qfiles-md4vertex-weights-weights-src-mq3-format-qfiles-ml-380423738"></a>
 ### weights
@@ -52,4 +52,4 @@ weights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L97)

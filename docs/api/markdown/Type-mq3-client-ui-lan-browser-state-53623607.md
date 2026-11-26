@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ cachedFavorites
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-cachedglobal-cachedglobal-src-mq3-client-ui-lan-browser-ml-350455084"></a>
 ### cachedGlobal
@@ -32,7 +32,7 @@ cachedGlobal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-cachedmplayer-cachedmplayer-src-mq3-client-ui-lan-browser-ml-1087075330"></a>
 ### cachedMplayer
@@ -42,7 +42,7 @@ cachedMplayer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-favorites-favorites-src-mq3-client-ui-lan-browser-ml-1273054294"></a>
 ### favorites
@@ -52,7 +52,7 @@ favorites
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-globalservers-globalservers-src-mq3-client-ui-lan-browser-ml-1722518594"></a>
 ### globalServers
@@ -62,7 +62,7 @@ globalServers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-local-local-src-mq3-client-ui-lan-browser-ml-2019780790"></a>
 ### local
@@ -72,7 +72,7 @@ local
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-mplayer-mplayer-src-mq3-client-ui-lan-browser-ml-213542758"></a>
 ### mplayer
@@ -82,7 +82,7 @@ mplayer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)
 
 <a id="field-field-mq3-client-ui-lan-browser-state-pings-pings-src-mq3-client-ui-lan-browser-ml-1070427694"></a>
 ### pings
@@ -92,4 +92,4 @@ pings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_browser.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_browser.ml#L23)

@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ command
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L14)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-map-map-src-mq3-client-ui-sp-arena-ml-777466444"></a>
 ### map
@@ -32,7 +32,7 @@ map
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L14)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-maxclientsraised-maxclientsraised-src-mq3-client-ui-sp-arena-ml-1458872796"></a>
 ### maxClientsRaised
@@ -42,7 +42,7 @@ maxClientsRaised
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L14)
 
 <a id="field-field-mq3-client-ui-sp-arena-result-selection-selection-src-mq3-client-ui-sp-arena-ml-609532988"></a>
 ### selection
@@ -52,4 +52,4 @@ selection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_arena.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_arena.ml#L14)

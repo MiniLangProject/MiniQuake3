@@ -10,7 +10,7 @@ struct Texture
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-texture-imagename-imagename-src-mq3-client-playable-item-models-ml-524869440"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-item-models-texture-slot-slot-src-mq3-client-playable-item-models-ml-590792624"></a>
 ### slot
@@ -42,4 +42,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_item_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_item_models.ml#L22)

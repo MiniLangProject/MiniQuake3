@@ -31,7 +31,7 @@ function AAS_AASLinkEntity(world, absmins, absmaxs, entNum)
 | `entNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L129)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-allocaaslink-function-aas-allocaaslink-world-src-mq3-botlib-aas-sample-ml-1031308288"></a>
 ### AAS_AllocAASLink
@@ -45,7 +45,7 @@ function AAS_AllocAASLink(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L46)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-areacluster-function-aas-areacluster-world-areanum-src-mq3-botlib-aas-sample-ml-1722790561"></a>
 ### AAS_AreaCluster
@@ -60,7 +60,7 @@ function AAS_AreaCluster(world, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L61)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-areaentitycollision-function-aas-areaentitycollision-world-areanum-start-finish-presencetype-passent-src-mq3-botlib-aas-sample-ml-379580743"></a>
 ### AAS_AreaEntityCollision
@@ -79,7 +79,7 @@ function AAS_AreaEntityCollision(world, areaNum, start, finish, presenceType, pa
 | `passent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L78)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-areagroundface-function-aas-areagroundface-world-areanum-point-src-mq3-botlib-aas-sample-ml-1914717131"></a>
 ### AAS_AreaGroundFace
@@ -95,7 +95,7 @@ function AAS_AreaGroundFace(world, areaNum, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L116)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-areainfo-function-aas-areainfo-world-areanum-src-mq3-botlib-aas-sample-ml-462061723"></a>
 ### AAS_AreaInfo
@@ -110,7 +110,7 @@ function AAS_AreaInfo(world, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L135)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-areapresencetype-function-aas-areapresencetype-world-areanum-src-mq3-botlib-aas-sample-ml-747169895"></a>
 ### AAS_AreaPresenceType
@@ -125,7 +125,7 @@ function AAS_AreaPresenceType(world, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L62)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-bboxareas-function-aas-bboxareas-world-absmins-absmaxs-maximum-src-mq3-botlib-aas-sample-ml-935754660"></a>
 ### AAS_BBoxAreas
@@ -142,7 +142,7 @@ function AAS_BBoxAreas(world, absmins, absmaxs, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L134)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-boxonplaneside2-function-aas-boxonplaneside2-absmins-absmaxs-plane-src-mq3-botlib-aas-sample-ml-195573688"></a>
 ### AAS_BoxOnPlaneSide2
@@ -158,7 +158,7 @@ function AAS_BoxOnPlaneSide2(absmins, absmaxs, plane)
 | `plane` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L123)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-boxorigindistancefromplane-function-aas-boxorigindistancefromplane-normal-mins-maxs-side-src-mq3-botlib-aas-sample-ml-1554293278"></a>
 ### AAS_BoxOriginDistanceFromPlane
@@ -175,7 +175,7 @@ function AAS_BoxOriginDistanceFromPlane(normal, mins, maxs, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L65)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-deallocaaslink-function-aas-deallocaaslink-world-link-src-mq3-botlib-aas-sample-ml-1601343100"></a>
 ### AAS_DeAllocAASLink
@@ -190,7 +190,7 @@ function AAS_DeAllocAASLink(world, link)
 | `link` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L49)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-faceplane-function-aas-faceplane-world-facenum-src-mq3-botlib-aas-sample-ml-967053397"></a>
 ### AAS_FacePlane
@@ -205,7 +205,7 @@ function AAS_FacePlane(world, faceNum)
 | `faceNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L119)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-freeaaslinkedentities-function-aas-freeaaslinkedentities-world-src-mq3-botlib-aas-sample-ml-266500406"></a>
 ### AAS_FreeAASLinkedEntities
@@ -219,7 +219,7 @@ function AAS_FreeAASLinkedEntities(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L53)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-freeaaslinkheap-function-aas-freeaaslinkheap-world-src-mq3-botlib-aas-sample-ml-546846974"></a>
 ### AAS_FreeAASLinkHeap
@@ -233,7 +233,7 @@ function AAS_FreeAASLinkHeap(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L45)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-initaaslinkedentities-function-aas-initaaslinkedentities-world-src-mq3-botlib-aas-sample-ml-1816262618"></a>
 ### AAS_InitAASLinkedEntities
@@ -247,7 +247,7 @@ function AAS_InitAASLinkedEntities(world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L52)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-initaaslinkheap-function-aas-initaaslinkheap-world-maximum-src-mq3-botlib-aas-sample-ml-1380164496"></a>
 ### AAS_InitAASLinkHeap
@@ -262,7 +262,7 @@ function AAS_InitAASLinkHeap(world, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L42)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-insideface-function-aas-insideface-world-facenum-pnormal-point-epsilon-src-mq3-botlib-aas-sample-ml-106752850"></a>
 ### AAS_InsideFace
@@ -280,7 +280,7 @@ function AAS_InsideFace(world, faceNum, pnormal, point, epsilon)
 | `epsilon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L90)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-linkentityclientbbox-function-aas-linkentityclientbbox-world-absmins-absmaxs-entnum-presencetype-src-mq3-botlib-aas-sample-ml-1879200622"></a>
 ### AAS_LinkEntityClientBBox
@@ -298,7 +298,7 @@ function AAS_LinkEntityClientBBox(world, absmins, absmaxs, entNum, presenceType)
 | `presenceType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L133)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-planefromnum-function-aas-planefromnum-world-planenum-src-mq3-botlib-aas-sample-ml-817315570"></a>
 ### AAS_PlaneFromNum
@@ -313,7 +313,7 @@ function AAS_PlaneFromNum(world, planeNum)
 | `planeNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L136)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-pointareanum-function-aas-pointareanum-world-point-src-mq3-botlib-aas-sample-ml-706207062"></a>
 ### AAS_PointAreaNum
@@ -328,7 +328,7 @@ function AAS_PointAreaNum(world, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L54)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-pointinsideface-function-aas-pointinsideface-world-facenum-point-epsilon-src-mq3-botlib-aas-sample-ml-225770409"></a>
 ### AAS_PointInsideFace
@@ -345,7 +345,7 @@ function AAS_PointInsideFace(world, faceNum, point, epsilon)
 | `epsilon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L93)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-pointpresencetype-function-aas-pointpresencetype-world-point-src-mq3-botlib-aas-sample-ml-17328204"></a>
 ### AAS_PointPresenceType
@@ -360,7 +360,7 @@ function AAS_PointPresenceType(world, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L63)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-pointreachabilityareaindex-function-aas-pointreachabilityareaindex-world-origin-src-mq3-botlib-aas-sample-ml-579561042"></a>
 ### AAS_PointReachabilityAreaIndex
@@ -375,7 +375,7 @@ function AAS_PointReachabilityAreaIndex(world, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L55)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-presencetypeboundingbox-function-aas-presencetypeboundingbox-presencetype-src-mq3-botlib-aas-sample-ml-219601413"></a>
 ### AAS_PresenceTypeBoundingBox
@@ -389,7 +389,7 @@ function AAS_PresenceTypeBoundingBox(presenceType)
 | `presenceType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L38)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-swimlevel-function-aas-swimlevel-world-point-src-mq3-botlib-aas-sample-ml-702193866"></a>
 ### AAS_SwimLevel
@@ -404,7 +404,7 @@ function AAS_SwimLevel(world, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L64)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-traceareas-function-aas-traceareas-world-start-finish-maximum-src-mq3-botlib-aas-sample-ml-253565823"></a>
 ### AAS_TraceAreas
@@ -421,7 +421,7 @@ function AAS_TraceAreas(world, start, finish, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L86)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-traceclientbbox-function-aas-traceclientbbox-world-start-finish-presencetype-passent-src-mq3-botlib-aas-sample-ml-594006574"></a>
 ### AAS_TraceClientBBox
@@ -439,7 +439,7 @@ function AAS_TraceClientBBox(world, start, finish, presenceType, passent)
 | `passent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L82)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-traceendface-function-aas-traceendface-world-trace-src-mq3-botlib-aas-sample-ml-1540330401"></a>
 ### AAS_TraceEndFace
@@ -454,7 +454,7 @@ function AAS_TraceEndFace(world, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L120)
 
 <a id="function-function-mq3-botlib-aas-sample-aas-unlinkfromareas-function-aas-unlinkfromareas-world-links-src-mq3-botlib-aas-sample-ml-45778155"></a>
 ### AAS_UnlinkFromAreas
@@ -469,7 +469,7 @@ function AAS_UnlinkFromAreas(world, links)
 | `links` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L126)
 
 - [mq3.botlib.aas_sample.Action](Type-mq3-botlib-aas-sample-action-201581026.md) — struct
 <a id="function-function-mq3-botlib-aas-sample-againstladder-function-againstladder-rt-origin-src-mq3-botlib-aas-sample-ml-1360716054"></a>
@@ -485,17 +485,17 @@ function againstLadder(rt, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L94)
 
-<a id="constant-constant-mq3-botlib-aas-sample-bbox-normal-epsilon-const-bbox-normal-epsilon-1-e-003-src-mq3-botlib-aas-sample-ml-549183955"></a>
+<a id="constant-constant-mq3-botlib-aas-sample-bbox-normal-epsilon-const-bbox-normal-epsilon-0-001-src-mq3-botlib-aas-sample-ml-205918898"></a>
 ### BBOX_NORMAL_EPSILON
 
 ```ml
-const BBOX_NORMAL_EPSILON = 1.e-003
+const BBOX_NORMAL_EPSILON = 0.001
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L20)
 
 <a id="constant-constant-mq3-botlib-aas-sample-contents-lava-const-contents-lava-8-src-mq3-botlib-aas-sample-ml-274546829"></a>
 ### CONTENTS_LAVA
@@ -505,7 +505,7 @@ const CONTENTS_LAVA = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L17)
 
 <a id="constant-constant-mq3-botlib-aas-sample-contents-slime-const-contents-slime-16-src-mq3-botlib-aas-sample-ml-226121700"></a>
 ### CONTENTS_SLIME
@@ -515,7 +515,7 @@ const CONTENTS_SLIME = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L16)
 
 <a id="constant-constant-mq3-botlib-aas-sample-contents-water-const-contents-water-32-src-mq3-botlib-aas-sample-ml-704627448"></a>
 ### CONTENTS_WATER
@@ -525,7 +525,7 @@ const CONTENTS_WATER = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L15)
 
 <a id="function-function-mq3-botlib-aas-sample-copy3-function-copy3-v-src-mq3-botlib-aas-sample-ml-1083915682"></a>
 ### copy3
@@ -539,7 +539,7 @@ function copy3(v)
 | `v` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L32)
 
 <a id="function-function-mq3-botlib-aas-sample-create-function-create-rt-src-mq3-botlib-aas-sample-ml-292521614"></a>
 ### create
@@ -553,7 +553,7 @@ function create(rt)
 | `rt` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L27)
 
 <a id="function-function-mq3-botlib-aas-sample-cross-function-cross-a-b-src-mq3-botlib-aas-sample-ml-654862555"></a>
 ### cross
@@ -568,7 +568,7 @@ function cross(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L35)
 
 <a id="function-function-mq3-botlib-aas-sample-dot-function-dot-a-b-src-mq3-botlib-aas-sample-ml-1418768425"></a>
 ### dot
@@ -583,7 +583,7 @@ function dot(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L34)
 
 <a id="function-function-mq3-botlib-aas-sample-edgevertices-function-edgevertices-world-signededge-src-mq3-botlib-aas-sample-ml-693662389"></a>
 ### edgeVertices
@@ -598,7 +598,7 @@ function edgeVertices(world, signedEdge)
 | `signedEdge` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L87)
 
 <a id="function-function-mq3-botlib-aas-sample-emit-function-emit-world-kind-subject-detail-src-mq3-botlib-aas-sample-ml-141428107"></a>
 ### emit
@@ -615,7 +615,7 @@ function emit(world, kind, subject, detail)
 | `detail` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L31)
 
 <a id="constant-constant-mq3-botlib-aas-sample-face-ground-const-face-ground-4-src-mq3-botlib-aas-sample-ml-2047953697"></a>
 ### FACE_GROUND
@@ -625,7 +625,7 @@ const FACE_GROUND = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L14)
 
 - [mq3.botlib.aas_sample.Link](Type-mq3-botlib-aas-sample-link-1965626248.md) — struct
 <a id="constant-constant-mq3-botlib-aas-sample-mask-solid-playerclip-const-mask-solid-playerclip-65537-src-mq3-botlib-aas-sample-ml-279313711"></a>
@@ -636,7 +636,7 @@ const MASK_SOLID_PLAYERCLIP = 65537
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L19)
 
 <a id="constant-constant-mq3-botlib-aas-sample-mask-water-const-mask-water-56-src-mq3-botlib-aas-sample-ml-246327378"></a>
 ### MASK_WATER
@@ -646,7 +646,7 @@ const MASK_WATER = 56
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L18)
 
 <a id="constant-constant-mq3-botlib-aas-sample-presence-crouch-const-presence-crouch-4-src-mq3-botlib-aas-sample-ml-738180829"></a>
 ### PRESENCE_CROUCH
@@ -656,7 +656,7 @@ const PRESENCE_CROUCH = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-sample-presence-none-const-presence-none-1-src-mq3-botlib-aas-sample-ml-321193008"></a>
 ### PRESENCE_NONE
@@ -666,7 +666,7 @@ const PRESENCE_NONE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-sample-presence-normal-const-presence-normal-2-src-mq3-botlib-aas-sample-ml-676115063"></a>
 ### PRESENCE_NORMAL
@@ -676,7 +676,7 @@ const PRESENCE_NORMAL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L12)
 
 - [mq3.botlib.aas_sample.Services](Type-mq3-botlib-aas-sample-services-1927989576.md) — struct
 <a id="function-function-mq3-botlib-aas-sample-sub-function-sub-a-b-src-mq3-botlib-aas-sample-ml-1758766607"></a>
@@ -692,7 +692,7 @@ function sub(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L33)
 
 <a id="function-function-mq3-botlib-aas-sample-validarea-function-validarea-world-areanum-src-mq3-botlib-aas-sample-ml-419883217"></a>
 ### validArea
@@ -707,6 +707,6 @@ function validArea(world, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L36)
 
 - [mq3.botlib.aas_sample.World](Type-mq3-botlib-aas-sample-world-1803097932.md) — struct

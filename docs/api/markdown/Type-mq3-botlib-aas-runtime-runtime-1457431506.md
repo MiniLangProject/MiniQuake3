@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ cacheInvalidations
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-disabled-disabled-src-mq3-botlib-aas-runtime-ml-1055457125"></a>
 ### disabled
@@ -32,7 +32,7 @@ disabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-initialized-initialized-src-mq3-botlib-aas-runtime-ml-550450169"></a>
 ### initialized
@@ -42,7 +42,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-map-map-src-mq3-botlib-aas-runtime-ml-606002921"></a>
 ### map
@@ -52,7 +52,7 @@ map
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-nodecache-nodecache-src-mq3-botlib-aas-runtime-ml-489173481"></a>
 ### nodeCache
@@ -62,7 +62,7 @@ nodeCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-planecache-planecache-src-mq3-botlib-aas-runtime-ml-1994228937"></a>
 ### planeCache
@@ -72,7 +72,7 @@ planeCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)
 
 <a id="field-field-mq3-botlib-aas-runtime-runtime-time-time-src-mq3-botlib-aas-runtime-ml-1027724231"></a>
 ### time
@@ -82,4 +82,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L14)

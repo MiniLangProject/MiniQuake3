@@ -10,7 +10,7 @@ struct Mark
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ alphaFade
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-bornat-bornat-src-mq3-client-playable-marks-ml-977360058"></a>
 ### bornAt
@@ -32,7 +32,7 @@ bornAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-key-key-src-mq3-client-playable-marks-ml-80914154"></a>
 ### key
@@ -42,7 +42,7 @@ key
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-kind-kind-src-mq3-client-playable-marks-ml-624312066"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-normal-normal-src-mq3-client-playable-marks-ml-1967269800"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-orientation-orientation-src-mq3-client-playable-marks-ml-651729294"></a>
 ### orientation
@@ -72,7 +72,7 @@ orientation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-origin-origin-src-mq3-client-playable-marks-ml-633058954"></a>
 ### origin
@@ -82,7 +82,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)
 
 <a id="field-field-mq3-client-playable-marks-mark-radius-radius-src-mq3-client-playable-marks-ml-1912094938"></a>
 ### radius
@@ -92,4 +92,4 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_marks.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_marks.ml#L27)

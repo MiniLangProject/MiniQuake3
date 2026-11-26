@@ -10,7 +10,7 @@ struct AlternativeRoutingState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)
 
 ## Members
 
@@ -22,7 +22,7 @@ clusterAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-initialized-initialized-src-mq3-botlib-aas-route-extras-ml-1426269141"></a>
 ### initialized
@@ -32,7 +32,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-numclusterareas-numclusterareas-src-mq3-botlib-aas-route-extras-ml-1687868461"></a>
 ### numClusterAreas
@@ -42,7 +42,7 @@ numClusterAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)
 
 <a id="field-field-mq3-botlib-aas-route-extras-alternativeroutingstate-valid-valid-src-mq3-botlib-aas-route-extras-ml-1130768053"></a>
 ### valid
@@ -52,4 +52,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_route_extras.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_route_extras.ml#L32)

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L41)
 
 <a id="field-field-mq3-client-cgame-vm-state-callcount-callcount-src-mq3-client-cgame-vm-ml-761375338"></a>
 ### callCount
@@ -32,7 +32,7 @@ callCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L47)
 
 <a id="field-field-mq3-client-cgame-vm-state-cgamestarted-cgamestarted-src-mq3-client-cgame-vm-ml-1780499518"></a>
 ### cgameStarted
@@ -42,7 +42,7 @@ cgameStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L42)
 
 <a id="field-field-mq3-client-cgame-vm-state-connectionstate-connectionstate-src-mq3-client-cgame-vm-ml-440515006"></a>
 ### connectionState
@@ -52,7 +52,7 @@ connectionState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L43)
 
 <a id="field-field-mq3-client-cgame-vm-state-host-host-src-mq3-client-cgame-vm-ml-1955044218"></a>
 ### host
@@ -62,7 +62,7 @@ host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L39)
 
 <a id="field-field-mq3-client-cgame-vm-state-keycatchers-keycatchers-src-mq3-client-cgame-vm-ml-1859137598"></a>
 ### keyCatchers
@@ -72,7 +72,7 @@ keyCatchers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L44)
 
 <a id="field-field-mq3-client-cgame-vm-state-lastargs-lastargs-src-mq3-client-cgame-vm-ml-1983778196"></a>
 ### lastArgs
@@ -82,7 +82,7 @@ lastArgs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L49)
 
 <a id="field-field-mq3-client-cgame-vm-state-lastexport-lastexport-src-mq3-client-cgame-vm-ml-851303102"></a>
 ### lastExport
@@ -92,7 +92,7 @@ lastExport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L48)
 
 <a id="field-field-mq3-client-cgame-vm-state-loadmilliseconds-loadmilliseconds-src-mq3-client-cgame-vm-ml-965810594"></a>
 ### loadMilliseconds
@@ -102,7 +102,7 @@ loadMilliseconds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L46)
 
 <a id="field-field-mq3-client-cgame-vm-state-mapname-mapname-src-mq3-client-cgame-vm-ml-1128518022"></a>
 ### mapname
@@ -112,7 +112,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L45)
 
 <a id="field-field-mq3-client-cgame-vm-state-slot-slot-src-mq3-client-cgame-vm-ml-1280616998"></a>
 ### slot
@@ -122,4 +122,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_vm.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_vm.ml#L40)

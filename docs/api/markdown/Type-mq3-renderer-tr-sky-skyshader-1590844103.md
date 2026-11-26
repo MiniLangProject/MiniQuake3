@@ -10,7 +10,7 @@ struct SkyShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ cloudHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-sky-skyshader-outerbox-outerbox-src-mq3-renderer-tr-sky-ml-1440508937"></a>
 ### outerbox
@@ -32,7 +32,7 @@ outerbox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L23)
 
 <a id="field-field-mq3-renderer-tr-sky-skyshader-stages-stages-src-mq3-renderer-tr-sky-ml-384800459"></a>
 ### stages
@@ -42,4 +42,4 @@ stages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L23)

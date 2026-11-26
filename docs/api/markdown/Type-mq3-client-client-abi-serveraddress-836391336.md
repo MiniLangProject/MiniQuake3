@@ -10,7 +10,7 @@ struct ServerAddress
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ ip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L13)
 
 <a id="field-field-mq3-client-client-abi-serveraddress-port-port-src-mq3-client-client-abi-ml-787445484"></a>
 ### port
@@ -32,4 +32,4 @@ port
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L13)

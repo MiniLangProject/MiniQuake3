@@ -10,7 +10,7 @@ struct Snapshot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L50)
 
 ## Members
 
@@ -22,7 +22,7 @@ areamask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L50)
 
 <a id="field-field-mq3-client-cgame-view-snapshot-ps-ps-src-mq3-client-cgame-view-ml-1287807843"></a>
 ### ps
@@ -32,7 +32,7 @@ ps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L50)
 
 <a id="field-field-mq3-client-cgame-view-snapshot-snapflags-snapflags-src-mq3-client-cgame-view-ml-329012469"></a>
 ### snapFlags
@@ -42,4 +42,4 @@ snapFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L50)

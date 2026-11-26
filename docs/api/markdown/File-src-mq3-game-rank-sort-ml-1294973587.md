@@ -22,7 +22,7 @@ function exchange(indices, a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L6)
 
 <a id="function-function-mq3-game-rank-sort-rangesort-function-rangesort-level-indices-low-high-compare-src-mq3-game-rank-sort-ml-1193293874"></a>
 ### rangeSort
@@ -40,7 +40,7 @@ function rangeSort(level, indices, low, high, compare)
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L10)
 
 <a id="function-function-mq3-game-rank-sort-sortindices-function-sortindices-level-indices-count-compare-src-mq3-game-rank-sort-ml-1148496387"></a>
 ### sortIndices
@@ -57,4 +57,4 @@ function sortIndices(level, indices, count, compare)
 | `compare` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rank_sort.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rank_sort.ml#L72)

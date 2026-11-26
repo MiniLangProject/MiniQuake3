@@ -10,7 +10,7 @@ struct Binding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L60)
 
 ## Members
 
@@ -22,7 +22,7 @@ normalChar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L60)
 
 <a id="field-field-mq3-client-original-ui-session-binding-quakekey-quakekey-src-mq3-client-original-ui-session-ml-63344524"></a>
 ### quakeKey
@@ -32,7 +32,7 @@ quakeKey
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L60)
 
 <a id="field-field-mq3-client-original-ui-session-binding-shiftedchar-shiftedchar-src-mq3-client-original-ui-session-ml-2110615100"></a>
 ### shiftedChar
@@ -42,7 +42,7 @@ shiftedChar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L60)
 
 <a id="field-field-mq3-client-original-ui-session-binding-virtualkey-virtualkey-src-mq3-client-original-ui-session-ml-639550284"></a>
 ### virtualKey
@@ -52,4 +52,4 @@ virtualKey
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L60)

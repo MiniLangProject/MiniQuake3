@@ -28,7 +28,7 @@ function argPtr(runtime, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L191)
 
 <a id="function-function-mq3-vm-runtime-call-function-call-runtime-slot-args-src-mq3-vm-runtime-ml-1716349039"></a>
 ### call
@@ -44,7 +44,7 @@ function call(runtime, slot, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L143)
 
 <a id="function-function-mq3-vm-runtime-callcompiled-function-callcompiled-slot-args-src-mq3-vm-runtime-ml-495453561"></a>
 ### callCompiled
@@ -59,7 +59,7 @@ function callCompiled(slot, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L150)
 
 <a id="function-function-mq3-vm-runtime-clear-function-clear-runtime-src-mq3-vm-runtime-ml-1964764874"></a>
 ### clear
@@ -73,7 +73,7 @@ function clear(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L189)
 
 <a id="function-function-mq3-vm-runtime-compile-function-compile-slot-image-syscall-src-mq3-vm-runtime-ml-652648954"></a>
 ### compile
@@ -89,7 +89,7 @@ function compile(slot, image, syscall)
 | `syscall` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L111)
 
 <a id="function-function-mq3-vm-runtime-create-function-create-host-src-mq3-vm-runtime-ml-1221969992"></a>
 ### create
@@ -103,7 +103,7 @@ function create(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L23)
 
 <a id="function-function-mq3-vm-runtime-debug-function-debug-runtime-level-src-mq3-vm-runtime-ml-1953335482"></a>
 ### debug
@@ -118,7 +118,7 @@ function debug(runtime, level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L30)
 
 <a id="function-function-mq3-vm-runtime-dllsyscall-function-dllsyscall-runtime-args-src-mq3-vm-runtime-ml-1402127227"></a>
 ### dllSyscall
@@ -133,7 +133,7 @@ function dllSyscall(runtime, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L152)
 
 <a id="function-function-mq3-vm-runtime-emptyslot-function-emptyslot-src-mq3-vm-runtime-ml-553813852"></a>
 ### emptySlot
@@ -143,7 +143,7 @@ function emptySlot()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L22)
 
 <a id="function-function-mq3-vm-runtime-explicitargptr-function-explicitargptr-runtime-slot-value-src-mq3-vm-runtime-ml-1137133541"></a>
 ### explicitArgPtr
@@ -159,7 +159,7 @@ function explicitArgPtr(runtime, slot, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L195)
 
 <a id="function-function-mq3-vm-runtime-find-function-find-runtime-name-src-mq3-vm-runtime-ml-664371217"></a>
 ### find
@@ -174,7 +174,7 @@ function find(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L99)
 
 <a id="function-function-mq3-vm-runtime-free-function-free-runtime-slot-src-mq3-vm-runtime-ml-859786096"></a>
 ### free
@@ -189,7 +189,7 @@ function free(runtime, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L171)
 
 <a id="function-function-mq3-vm-runtime-freeall-function-freeall-runtime-src-mq3-vm-runtime-ml-1778016054"></a>
 ### freeAll
@@ -203,7 +203,7 @@ function freeAll(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L181)
 
 <a id="function-function-mq3-vm-runtime-info-function-info-runtime-src-mq3-vm-runtime-ml-1354477032"></a>
 ### info
@@ -217,7 +217,7 @@ function info(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L215)
 
 <a id="function-function-mq3-vm-runtime-init-function-init-runtime-src-mq3-vm-runtime-ml-366723248"></a>
 ### init
@@ -231,7 +231,7 @@ function init(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L230)
 
 <a id="function-function-mq3-vm-runtime-load-function-load-runtime-name-syscall-src-mq3-vm-runtime-ml-1204895070"></a>
 ### load
@@ -247,7 +247,7 @@ function load(runtime, name, syscall)
 | `syscall` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L140)
 
 <a id="function-function-mq3-vm-runtime-loadimage-function-loadimage-runtime-name-src-mq3-vm-runtime-ml-801194931"></a>
 ### loadImage
@@ -262,7 +262,7 @@ function loadImage(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L105)
 
 <a id="function-function-mq3-vm-runtime-loadmapsymbols-function-loadmapsymbols-runtime-slot-src-mq3-vm-runtime-ml-1556976408"></a>
 ### loadMapSymbols
@@ -277,7 +277,7 @@ function loadMapSymbols(runtime, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L114)
 
 <a id="function-function-mq3-vm-runtime-loadmode-function-loadmode-runtime-name-syscall-mode-src-mq3-vm-runtime-ml-2090478623"></a>
 ### loadMode
@@ -294,7 +294,7 @@ function loadMode(runtime, name, syscall, mode)
 | `mode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L122)
 
 <a id="function-function-mq3-vm-runtime-loadsymbols-function-loadsymbols-slot-text-developer-src-mq3-vm-runtime-ml-1066745431"></a>
 ### loadSymbols
@@ -310,7 +310,7 @@ function loadSymbols(slot, text, developer)
 | `developer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L80)
 
 <a id="function-function-mq3-vm-runtime-logsyscalls-function-logsyscalls-runtime-argsoffset-args-src-mq3-vm-runtime-ml-1318932305"></a>
 ### logSyscalls
@@ -326,7 +326,7 @@ function logSyscalls(runtime, argsOffset, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L223)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L223)
 
 <a id="constant-constant-mq3-vm-runtime-max-vm-const-max-vm-3-src-mq3-vm-runtime-ml-1171798936"></a>
 ### MAX_VM
@@ -336,7 +336,7 @@ const MAX_VM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L10)
 
 <a id="function-function-mq3-vm-runtime-parsehex-function-parsehex-text-src-mq3-vm-runtime-ml-501224239"></a>
 ### parseHex
@@ -352,7 +352,7 @@ ParseHex intentionally ignores non-hex characters rather than terminating.
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L33)
 
 <a id="function-function-mq3-vm-runtime-profile-function-profile-runtime-src-mq3-vm-runtime-ml-458567638"></a>
 ### profile
@@ -366,7 +366,7 @@ function profile(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L203)
 
 <a id="function-function-mq3-vm-runtime-profilesort-function-profilesort-left-right-src-mq3-vm-runtime-ml-323439001"></a>
 ### profileSort
@@ -381,7 +381,7 @@ function profileSort(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L200)
 
 <a id="function-function-mq3-vm-runtime-restart-function-restart-runtime-slot-src-mq3-vm-runtime-ml-317404674"></a>
 ### restart
@@ -396,7 +396,7 @@ function restart(runtime, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L160)
 
 <a id="function-function-mq3-vm-runtime-restorecurrent-function-restorecurrent-runtime-previous-src-mq3-vm-runtime-ml-910596479"></a>
 ### restoreCurrent
@@ -411,7 +411,7 @@ function restoreCurrent(runtime, previous)
 | `previous` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L142)
 
 - [mq3.vm.runtime.Runtime](Type-mq3-vm-runtime-runtime-1291952059.md) — struct
 <a id="function-function-mq3-vm-runtime-samename-function-samename-left-right-src-mq3-vm-runtime-ml-642979367"></a>
@@ -427,7 +427,7 @@ function sameName(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L98)
 
 <a id="function-function-mq3-vm-runtime-services-function-services-src-mq3-vm-runtime-ml-45030966"></a>
 ### services
@@ -437,7 +437,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L21)
 
 - [mq3.vm.runtime.Services](Type-mq3-vm-runtime-services-861255749.md) — struct
 - [mq3.vm.runtime.Slot](Type-mq3-vm-runtime-slot-1102647489.md) — struct
@@ -449,7 +449,7 @@ const STACK_SIZE = 131072
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L14)
 
 - [mq3.vm.runtime.Symbol](Type-mq3-vm-runtime-symbol-1074374177.md) — struct
 <a id="function-function-mq3-vm-runtime-symbolforcompiledpointer-function-symbolforcompiledpointer-slot-code-src-mq3-vm-runtime-ml-1523936105"></a>
@@ -465,7 +465,7 @@ function symbolForCompiledPointer(slot, code)
 | `code` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L61)
 
 <a id="function-function-mq3-vm-runtime-symboltovalue-function-symboltovalue-slot-name-src-mq3-vm-runtime-ml-1400652383"></a>
 ### symbolToValue
@@ -480,7 +480,7 @@ function symbolToValue(slot, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L56)
 
 <a id="function-function-mq3-vm-runtime-tokens-function-tokens-text-src-mq3-vm-runtime-ml-88495219"></a>
 ### tokens
@@ -494,7 +494,7 @@ function tokens(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L70)
 
 <a id="function-function-mq3-vm-runtime-valuetofunctionsymbol-function-valuetofunctionsymbol-slot-value-src-mq3-vm-runtime-ml-1466433503"></a>
 ### valueToFunctionSymbol
@@ -509,7 +509,7 @@ function valueToFunctionSymbol(slot, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L45)
 
 <a id="function-function-mq3-vm-runtime-valuetosymbol-function-valuetosymbol-slot-value-src-mq3-vm-runtime-ml-480704415"></a>
 ### valueToSymbol
@@ -524,7 +524,7 @@ function valueToSymbol(slot, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L51)
 
 <a id="function-function-mq3-vm-runtime-vm2c-function-vm2c-pointer-length-src-mq3-vm-runtime-ml-873359967"></a>
 ### vm2c
@@ -541,7 +541,7 @@ VM_VM2C is an identity conversion in the shipped engine.
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L29)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-bytecode-const-vmi-bytecode-1-src-mq3-vm-runtime-ml-2059184582"></a>
 ### VMI_BYTECODE
@@ -551,7 +551,7 @@ const VMI_BYTECODE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L12)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-compiled-const-vmi-compiled-2-src-mq3-vm-runtime-ml-1226008259"></a>
 ### VMI_COMPILED
@@ -561,7 +561,7 @@ const VMI_COMPILED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L13)
 
 <a id="constant-constant-mq3-vm-runtime-vmi-native-const-vmi-native-0-src-mq3-vm-runtime-ml-422896281"></a>
 ### VMI_NATIVE
@@ -571,4 +571,4 @@ const VMI_NATIVE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L11)

@@ -7886,82 +7886,86 @@
 | warning | `MD2104` | `src/mq3/client/playable_shotgun.ml:61:1` | missing @param documentation for: traceFn, context, targetState, origin, origin2, seed, now |
 | warning | `MD2104` | `src/mq3/client/playable_shotgun.ml:80:1` | missing @param documentation for: world, targetState, origin, origin2, seed, now |
 | warning | `MD2201` | `src/mq3/client/playable_shotgun.ml:80:1` | public symbol has no documentation: mq3.client.playable_shotgun.fire |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:105:1` | missing @param documentation for: catalog |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:105:1` | public symbol has no documentation: mq3.client.playable_sky.release |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:110:1` | missing @param documentation for: basis, focal, width, height, x, y |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:110:1` | public symbol has no documentation: mq3.client.playable_sky.directionPrepared |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:116:1` | missing @param documentation for: camera, width, height, x, y |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:116:1` | public symbol has no documentation: mq3.client.playable_sky.direction |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:121:1` | missing @param documentation for: basis, focal, width, height, x, y |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:121:1` | public symbol has no documentation: mq3.client.playable_sky.baseUvPrepared |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:127:1` | missing @param documentation for: camera, width, height, x, y |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:127:1` | public symbol has no documentation: mq3.client.playable_sky.baseUv |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:106:1` | missing @param documentation for: catalog |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:106:1` | public symbol has no documentation: mq3.client.playable_sky.release |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:111:1` | missing @param documentation for: basis, focal, width, height, x, y |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:111:1` | public symbol has no documentation: mq3.client.playable_sky.directionPrepared |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:117:1` | missing @param documentation for: camera, width, height, x, y |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:117:1` | public symbol has no documentation: mq3.client.playable_sky.direction |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:125:1` | missing @param documentation for: basis, focal, width, height, x, y, cloudHeight |
 | warning | `MD2104` | `src/mq3/client/playable_sky.ml:13:1` | missing @param documentation for: source, capacity, index, x, y, u, v |
 | warning | `MD2105` | `src/mq3/client/playable_sky.ml:13:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/client/playable_sky.ml:13:1` | public symbol has no documentation: mq3.client.playable_sky.storeSkyVertexNative |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:132:1` | missing @param documentation for: camera, width, height, x, y, layer, nowMilliseconds, depth |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:132:1` | public symbol has no documentation: mq3.client.playable_sky.vertex |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:139:1` | missing @param documentation for: basis, left, top, width, height |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:139:1` | public symbol has no documentation: mq3.client.playable_sky.baseGridPrepared |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:132:1` | missing @param documentation for: basis, focal, width, height, x, y |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:132:1` | public symbol has no documentation: mq3.client.playable_sky.baseUvPrepared |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:134:1` | missing @param documentation for: camera, width, height, x, y |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:134:1` | public symbol has no documentation: mq3.client.playable_sky.baseUv |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:139:1` | missing @param documentation for: camera, width, height, x, y, layer, nowMilliseconds, depth |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:139:1` | public symbol has no documentation: mq3.client.playable_sky.vertex |
 | warning | `MD2104` | `src/mq3/client/playable_sky.ml:14:1` | missing @param documentation for: records, capacity, firstTriangle, source, sourceBytes, columns, rows, slot, scaleU, scaleV, scrollU, scrollV, nowMilliseconds, depth |
 | warning | `MD2105` | `src/mq3/client/playable_sky.ml:14:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/client/playable_sky.ml:14:1` | public symbol has no documentation: mq3.client.playable_sky.updateSkyLayerNative |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:146:1` | missing @param documentation for: basis, left, top, width, height, cloudHeight |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:146:1` | public symbol has no documentation: mq3.client.playable_sky.cloudGridPrepared |
 | warning | `MD2104` | `src/mq3/client/playable_sky.ml:15:1` | missing @param documentation for: records, capacity, firstTriangle, triangleCount, additive |
 | warning | `MD2105` | `src/mq3/client/playable_sky.ml:15:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/client/playable_sky.ml:15:1` | public symbol has no documentation: mq3.client.playable_sky.drawSkyLayerNative |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:152:1` | missing @param documentation for: camera, width, height |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:152:1` | public symbol has no documentation: mq3.client.playable_sky.baseGrid |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:154:1` | missing @param documentation for: source, layer, seconds, depth |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:154:1` | public symbol has no documentation: mq3.client.playable_sky.mappedVertex |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:159:1` | missing @param documentation for: reference, value |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:159:1` | public symbol has no documentation: mq3.client.playable_sky.unwrap |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:163:1` | missing @param documentation for: layer, a, b, c |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:163:1` | public symbol has no documentation: mq3.client.playable_sky.drawTriangle |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:168:1` | missing @param documentation for: batch, layer, a, b, c |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:168:1` | public symbol has no documentation: mq3.client.playable_sky.appendTriangle |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:173:1` | missing @param documentation for: catalog, basis, left, top, width, height, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:173:1` | public symbol has no documentation: mq3.client.playable_sky.buildBatchPrepared |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:193:1` | missing @param documentation for: catalog, camera, width, height, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:193:1` | public symbol has no documentation: mq3.client.playable_sky.buildBatch |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:195:1` | missing @param documentation for: left, right |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:195:1` | public symbol has no documentation: mq3.client.playable_sky.sameBasis |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:199:1` | missing @param documentation for: value |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:199:1` | public symbol has no documentation: mq3.client.playable_sky.copyBasis |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:205:1` | missing @param documentation for: catalog, basis, left, top, width, height, nowMilliseconds |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:237:1` | missing @param documentation for: layer, camera, width, height, nowMilliseconds, layerIndex |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:237:1` | public symbol has no documentation: mq3.client.playable_sky.drawLayer |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:25:1` | public symbol has no documentation: mq3.client.playable_sky.Layer |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:254:1` | missing @param documentation for: catalog, camera, width, height, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:254:1` | public symbol has no documentation: mq3.client.playable_sky.draw |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:259:1` | missing @param documentation for: catalog, batch |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:259:1` | public symbol has no documentation: mq3.client.playable_sky.submitLayers |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:26:1` | public symbol has no documentation: mq3.client.playable_sky.Catalog |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:27:1` | public symbol has no documentation: mq3.client.playable_sky.Vertex |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:270:1` | missing @param documentation for: catalog, axes, left, top, width, height, nowMilliseconds |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:273:1` | missing @param documentation for: catalog, basis, area, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:273:1` | public symbol has no documentation: mq3.client.playable_sky.drawViewport |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:28:1` | public symbol has no documentation: mq3.client.playable_sky.CachedView |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:29:1` | public symbol has no documentation: mq3.client.playable_sky.ViewCache |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:31:1` | missing @param documentation for: message |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:31:1` | public symbol has no documentation: mq3.client.playable_sky.fail |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:32:1` | missing @param documentation for: name |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:32:1` | public symbol has no documentation: mq3.client.playable_sky.isSkyShader |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:33:1` | missing @param documentation for: shader, wanted |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:33:1` | public symbol has no documentation: mq3.client.playable_sky.hasSurfaceParm |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:38:1` | missing @param documentation for: index, name |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:38:1` | public symbol has no documentation: mq3.client.playable_sky.isSkyShaderIndexed |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:43:1` | missing @param documentation for: source |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:43:1` | public symbol has no documentation: mq3.client.playable_sky.additiveImage |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:53:1` | missing @param documentation for: archive, stage, slot |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:53:1` | public symbol has no documentation: mq3.client.playable_sky.layerFromStage |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:70:1` | missing @param documentation for: archive, index, shaderName, firstTextureSlot, maxTextureSlots |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:70:1` | public symbol has no documentation: mq3.client.playable_sky.loadIndexed |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:84:1` | missing @param documentation for: archive, map, index, firstTextureSlot, maxTextureSlots |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:84:1` | public symbol has no documentation: mq3.client.playable_sky.loadMap |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:92:1` | missing @param documentation for: archive, firstTextureSlot, maxTextureSlots |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:92:1` | public symbol has no documentation: mq3.client.playable_sky.load |
-| warning | `MD2104` | `src/mq3/client/playable_sky.ml:97:1` | missing @param documentation for: catalog |
-| warning | `MD2201` | `src/mq3/client/playable_sky.ml:97:1` | public symbol has no documentation: mq3.client.playable_sky.upload |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:159:1` | missing @param documentation for: basis, left, top, width, height |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:159:1` | public symbol has no documentation: mq3.client.playable_sky.baseGridPrepared |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:16:1` | missing @param documentation for: value |
+| warning | `MD2105` | `src/mq3/client/playable_sky.ml:16:1` | missing @returns documentation for return type: double |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:16:1` | public symbol has no documentation: mq3.client.playable_sky.acos |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:160:1` | missing @param documentation for: camera, width, height |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:160:1` | public symbol has no documentation: mq3.client.playable_sky.baseGrid |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:162:1` | missing @param documentation for: source, layer, seconds, depth |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:162:1` | public symbol has no documentation: mq3.client.playable_sky.mappedVertex |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:167:1` | missing @param documentation for: layer, a, b, c |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:167:1` | public symbol has no documentation: mq3.client.playable_sky.drawTriangle |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:171:1` | missing @param documentation for: batch, layer, a, b, c |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:171:1` | public symbol has no documentation: mq3.client.playable_sky.appendTriangle |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:176:1` | missing @param documentation for: catalog, basis, left, top, width, height, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:176:1` | public symbol has no documentation: mq3.client.playable_sky.buildBatchPrepared |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:196:1` | missing @param documentation for: catalog, camera, width, height, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:196:1` | public symbol has no documentation: mq3.client.playable_sky.buildBatch |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:198:1` | missing @param documentation for: left, right |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:198:1` | public symbol has no documentation: mq3.client.playable_sky.sameBasis |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:202:1` | missing @param documentation for: value |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:202:1` | public symbol has no documentation: mq3.client.playable_sky.copyBasis |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:208:1` | missing @param documentation for: catalog, basis, left, top, width, height, nowMilliseconds |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:240:1` | missing @param documentation for: layer, camera, width, height, nowMilliseconds, layerIndex |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:240:1` | public symbol has no documentation: mq3.client.playable_sky.drawLayer |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:257:1` | missing @param documentation for: catalog, camera, width, height, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:257:1` | public symbol has no documentation: mq3.client.playable_sky.draw |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:26:1` | public symbol has no documentation: mq3.client.playable_sky.Layer |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:262:1` | missing @param documentation for: catalog, batch |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:262:1` | public symbol has no documentation: mq3.client.playable_sky.submitLayers |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:27:1` | public symbol has no documentation: mq3.client.playable_sky.Catalog |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:273:1` | missing @param documentation for: catalog, axes, left, top, width, height, nowMilliseconds |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:276:1` | missing @param documentation for: catalog, basis, area, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:276:1` | public symbol has no documentation: mq3.client.playable_sky.drawViewport |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:28:1` | public symbol has no documentation: mq3.client.playable_sky.Vertex |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:29:1` | public symbol has no documentation: mq3.client.playable_sky.CachedView |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:30:1` | public symbol has no documentation: mq3.client.playable_sky.ViewCache |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:32:1` | missing @param documentation for: message |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:32:1` | public symbol has no documentation: mq3.client.playable_sky.fail |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:33:1` | missing @param documentation for: name |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:33:1` | public symbol has no documentation: mq3.client.playable_sky.isSkyShader |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:34:1` | missing @param documentation for: shader, wanted |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:34:1` | public symbol has no documentation: mq3.client.playable_sky.hasSurfaceParm |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:39:1` | missing @param documentation for: index, name |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:39:1` | public symbol has no documentation: mq3.client.playable_sky.isSkyShaderIndexed |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:44:1` | missing @param documentation for: source |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:44:1` | public symbol has no documentation: mq3.client.playable_sky.additiveImage |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:54:1` | missing @param documentation for: archive, stage, slot |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:54:1` | public symbol has no documentation: mq3.client.playable_sky.layerFromStage |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:71:1` | missing @param documentation for: archive, index, shaderName, firstTextureSlot, maxTextureSlots |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:71:1` | public symbol has no documentation: mq3.client.playable_sky.loadIndexed |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:85:1` | missing @param documentation for: archive, map, index, firstTextureSlot, maxTextureSlots |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:85:1` | public symbol has no documentation: mq3.client.playable_sky.loadMap |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:93:1` | missing @param documentation for: archive, firstTextureSlot, maxTextureSlots |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:93:1` | public symbol has no documentation: mq3.client.playable_sky.load |
+| warning | `MD2104` | `src/mq3/client/playable_sky.ml:98:1` | missing @param documentation for: catalog |
+| warning | `MD2201` | `src/mq3/client/playable_sky.ml:98:1` | public symbol has no documentation: mq3.client.playable_sky.upload |
 | warning | `MD2201` | `src/mq3/client/playable_spatial_ambient.ml:11:1` | public symbol has no documentation: mq3.client.playable_spatial_ambient.Runtime |
 | warning | `MD2104` | `src/mq3/client/playable_spatial_ambient.ml:13:1` | missing @param documentation for: catalog |
 | warning | `MD2201` | `src/mq3/client/playable_spatial_ambient.ml:13:1` | public symbol has no documentation: mq3.client.playable_spatial_ambient.create |
@@ -17625,208 +17629,210 @@
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:12:1` | missing @param documentation for: fullscreen, frequency, swapInterval |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:12:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:12:1` | public symbol has no documentation: mq3.platform.playable_window.glConfigureDisplayNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:124:1` | public symbol has no documentation: mq3.platform.playable_window.TriangleBatch |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:125:1` | public symbol has no documentation: mq3.platform.playable_window.Viewport |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:126:1` | public symbol has no documentation: mq3.platform.playable_window.LoadingPoint |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:127:1` | public symbol has no documentation: mq3.platform.playable_window.InputEvent |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:128:1` | public symbol has no documentation: mq3.platform.playable_window.WindowState |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:129:1` | public symbol has no documentation: mq3.platform.playable_window.DisplayMode |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:125:1` | public symbol has no documentation: mq3.platform.playable_window.TriangleBatch |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:126:1` | public symbol has no documentation: mq3.platform.playable_window.Viewport |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:127:1` | public symbol has no documentation: mq3.platform.playable_window.LoadingPoint |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:128:1` | public symbol has no documentation: mq3.platform.playable_window.InputEvent |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:129:1` | public symbol has no documentation: mq3.platform.playable_window.WindowState |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:13:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:13:1` | public symbol has no documentation: mq3.platform.playable_window.glAvailableNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:131:1` | missing @param documentation for: width, height, fullscreen, frequency |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:131:1` | public symbol has no documentation: mq3.platform.playable_window.setMode |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:137:1` | missing @param documentation for: width, height |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:137:1` | public symbol has no documentation: mq3.platform.playable_window.open |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:130:1` | public symbol has no documentation: mq3.platform.playable_window.DisplayMode |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:132:1` | missing @param documentation for: width, height, fullscreen, frequency |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:132:1` | public symbol has no documentation: mq3.platform.playable_window.setMode |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:138:1` | missing @param documentation for: width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:138:1` | public symbol has no documentation: mq3.platform.playable_window.open |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:14:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:14:1` | public symbol has no documentation: mq3.platform.playable_window.glPixelFormatNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:145:1` | missing @param documentation for: width, height, driverName, colorBits, depthBits, stencilBits, stereo, fullscreen, frequency, swapInterval |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:145:1` | public symbol has no documentation: mq3.platform.playable_window.openConfigured |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:146:1` | missing @param documentation for: width, height, driverName, colorBits, depthBits, stencilBits, stereo, fullscreen, frequency, swapInterval |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:146:1` | public symbol has no documentation: mq3.platform.playable_window.openConfigured |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:15:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:15:1` | public symbol has no documentation: mq3.platform.playable_window.glColorBitsNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:157:1` | public symbol has no documentation: mq3.platform.playable_window.glAvailable |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:158:1` | public symbol has no documentation: mq3.platform.playable_window.glConfiguration |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:159:1` | missing @param documentation for: which |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:159:1` | public symbol has no documentation: mq3.platform.playable_window.glInfo |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:158:1` | public symbol has no documentation: mq3.platform.playable_window.glAvailable |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:159:1` | public symbol has no documentation: mq3.platform.playable_window.glConfiguration |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:16:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:16:1` | public symbol has no documentation: mq3.platform.playable_window.glDepthBitsNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:163:1` | missing @param documentation for: name |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:163:1` | public symbol has no documentation: mq3.platform.playable_window.glHasExtension |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:164:1` | missing @param documentation for: interval |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:164:1` | public symbol has no documentation: mq3.platform.playable_window.glSetSwapInterval |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:165:1` | missing @param documentation for: red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:165:1` | public symbol has no documentation: mq3.platform.playable_window.glSetGamma |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:169:1` | public symbol has no documentation: mq3.platform.playable_window.glRestoreGamma |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:160:1` | missing @param documentation for: which |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:160:1` | public symbol has no documentation: mq3.platform.playable_window.glInfo |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:164:1` | missing @param documentation for: name |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:164:1` | public symbol has no documentation: mq3.platform.playable_window.glHasExtension |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:165:1` | missing @param documentation for: interval |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:165:1` | public symbol has no documentation: mq3.platform.playable_window.glSetSwapInterval |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:166:1` | missing @param documentation for: red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:166:1` | public symbol has no documentation: mq3.platform.playable_window.glSetGamma |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:17:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:17:1` | public symbol has no documentation: mq3.platform.playable_window.glStencilBitsNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:170:1` | missing @param documentation for: active |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:170:1` | public symbol has no documentation: mq3.platform.playable_window.glActivate |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:171:1` | missing @param documentation for: comment |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:171:1` | public symbol has no documentation: mq3.platform.playable_window.glLogComment |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:172:1` | public symbol has no documentation: mq3.platform.playable_window.poll |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:173:1` | public symbol has no documentation: mq3.platform.playable_window.shouldClose |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:174:1` | missing @param documentation for: title |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:174:1` | public symbol has no documentation: mq3.platform.playable_window.setTitle |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:170:1` | public symbol has no documentation: mq3.platform.playable_window.glRestoreGamma |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:171:1` | missing @param documentation for: active |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:171:1` | public symbol has no documentation: mq3.platform.playable_window.glActivate |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:172:1` | missing @param documentation for: comment |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:172:1` | public symbol has no documentation: mq3.platform.playable_window.glLogComment |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:173:1` | public symbol has no documentation: mq3.platform.playable_window.poll |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:174:1` | public symbol has no documentation: mq3.platform.playable_window.shouldClose |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:175:1` | missing @param documentation for: title |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:175:1` | public symbol has no documentation: mq3.platform.playable_window.setTitle |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:18:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:18:1` | public symbol has no documentation: mq3.platform.playable_window.glStereoNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:180:1` | missing @param documentation for: progress, status |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:180:1` | public symbol has no documentation: mq3.platform.playable_window.loadingTitle |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:187:1` | missing @param documentation for: progress, status |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:187:1` | public symbol has no documentation: mq3.platform.playable_window.showLoading |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:181:1` | missing @param documentation for: progress, status |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:181:1` | public symbol has no documentation: mq3.platform.playable_window.loadingTitle |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:188:1` | missing @param documentation for: progress, status |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:188:1` | public symbol has no documentation: mq3.platform.playable_window.showLoading |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:19:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:19:1` | public symbol has no documentation: mq3.platform.playable_window.glFullscreenNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:20:1` | missing @param documentation for: which, output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:20:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:20:1` | public symbol has no documentation: mq3.platform.playable_window.glInfoNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:206:1` | missing @param documentation for: key |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:206:1` | public symbol has no documentation: mq3.platform.playable_window.keyDown |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:209:1` | missing @param documentation for: key |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:207:1` | missing @param documentation for: key |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:207:1` | public symbol has no documentation: mq3.platform.playable_window.keyDown |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:21:1` | missing @param documentation for: name, length |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:21:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:21:1` | public symbol has no documentation: mq3.platform.playable_window.glHasExtensionNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:210:1` | missing @param documentation for: data |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:210:1` | public symbol has no documentation: mq3.platform.playable_window.decodeInputEvent |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:214:1` | public symbol has no documentation: mq3.platform.playable_window.nextInputEvent |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:217:1` | missing @param documentation for: maxEvents |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:217:1` | public symbol has no documentation: mq3.platform.playable_window.inputEvents |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:210:1` | missing @param documentation for: key |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:211:1` | missing @param documentation for: data |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:211:1` | public symbol has no documentation: mq3.platform.playable_window.decodeInputEvent |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:215:1` | public symbol has no documentation: mq3.platform.playable_window.nextInputEvent |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:218:1` | missing @param documentation for: maxEvents |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:218:1` | public symbol has no documentation: mq3.platform.playable_window.inputEvents |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:22:1` | missing @param documentation for: interval |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:22:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:22:1` | public symbol has no documentation: mq3.platform.playable_window.glSwapIntervalNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:221:1` | public symbol has no documentation: mq3.platform.playable_window.mouseDelta |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:222:1` | missing @param documentation for: active |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:222:1` | public symbol has no documentation: mq3.platform.playable_window.inputActivate |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:223:1` | public symbol has no documentation: mq3.platform.playable_window.inputClear |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:224:1` | missing @param documentation for: enabled, threshold, ballScale |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:224:1` | public symbol has no documentation: mq3.platform.playable_window.configureJoystick |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:222:1` | public symbol has no documentation: mq3.platform.playable_window.mouseDelta |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:223:1` | missing @param documentation for: active |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:223:1` | public symbol has no documentation: mq3.platform.playable_window.inputActivate |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:224:1` | public symbol has no documentation: mq3.platform.playable_window.inputClear |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:225:1` | missing @param documentation for: enabled, threshold, ballScale |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:225:1` | public symbol has no documentation: mq3.platform.playable_window.configureJoystick |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:23:1` | missing @param documentation for: red, green, blue, count |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:23:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:23:1` | public symbol has no documentation: mq3.platform.playable_window.glSetGammaNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:230:1` | public symbol has no documentation: mq3.platform.playable_window.joystickAvailable |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:231:1` | missing @param documentation for: enabled, device, channel |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:231:1` | public symbol has no documentation: mq3.platform.playable_window.configureMidi |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:236:1` | public symbol has no documentation: mq3.platform.playable_window.midiDeviceCount |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:237:1` | public symbol has no documentation: mq3.platform.playable_window.milliseconds |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:238:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareRenderer |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:239:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareTriangles |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:231:1` | public symbol has no documentation: mq3.platform.playable_window.joystickAvailable |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:232:1` | missing @param documentation for: enabled, device, channel |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:232:1` | public symbol has no documentation: mq3.platform.playable_window.configureMidi |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:237:1` | public symbol has no documentation: mq3.platform.playable_window.midiDeviceCount |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:238:1` | public symbol has no documentation: mq3.platform.playable_window.milliseconds |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:239:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareRenderer |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:24:1` | public symbol has no documentation: mq3.platform.playable_window.glRestoreGammaNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:240:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareDrawCalls |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:241:1` | public symbol has no documentation: mq3.platform.playable_window.takeVideoRestart |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:242:1` | public symbol has no documentation: mq3.platform.playable_window.windowState |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:246:1` | public symbol has no documentation: mq3.platform.playable_window.currentUser |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:247:1` | public symbol has no documentation: mq3.platform.playable_window.currentDirectory |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:248:1` | public symbol has no documentation: mq3.platform.playable_window.executableDirectory |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:249:1` | public symbol has no documentation: mq3.platform.playable_window.processorId |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:240:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareTriangles |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:241:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareDrawCalls |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:242:1` | public symbol has no documentation: mq3.platform.playable_window.takeVideoRestart |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:243:1` | public symbol has no documentation: mq3.platform.playable_window.windowState |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:247:1` | public symbol has no documentation: mq3.platform.playable_window.currentUser |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:248:1` | public symbol has no documentation: mq3.platform.playable_window.currentDirectory |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:249:1` | public symbol has no documentation: mq3.platform.playable_window.executableDirectory |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:25:1` | missing @param documentation for: active |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:25:1` | public symbol has no documentation: mq3.platform.playable_window.glActivateNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:250:1` | missing @param documentation for: red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:250:1` | public symbol has no documentation: mq3.platform.playable_window.beginFrame |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:251:1` | missing @param documentation for: a, b, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:251:1` | public symbol has no documentation: mq3.platform.playable_window.drawLine |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:254:1` | public symbol has no documentation: mq3.platform.playable_window.present |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:255:1` | public symbol has no documentation: mq3.platform.playable_window.presentedNonBlack |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:256:1` | public symbol has no documentation: mq3.platform.playable_window.endFrame |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:257:1` | public symbol has no documentation: mq3.platform.playable_window.shutdown |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:258:1` | missing @param documentation for: depth |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:258:1` | public symbol has no documentation: mq3.platform.playable_window.clearDepth |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:259:1` | missing @param documentation for: x, y |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:259:1` | public symbol has no documentation: mq3.platform.playable_window.sampleDepth |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:250:1` | public symbol has no documentation: mq3.platform.playable_window.processorId |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:251:1` | missing @param documentation for: red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:251:1` | public symbol has no documentation: mq3.platform.playable_window.beginFrame |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:252:1` | missing @param documentation for: a, b, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:252:1` | public symbol has no documentation: mq3.platform.playable_window.drawLine |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:255:1` | public symbol has no documentation: mq3.platform.playable_window.present |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:256:1` | public symbol has no documentation: mq3.platform.playable_window.presentedNonBlack |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:257:1` | public symbol has no documentation: mq3.platform.playable_window.endFrame |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:258:1` | public symbol has no documentation: mq3.platform.playable_window.shutdown |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:259:1` | missing @param documentation for: depth |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:259:1` | public symbol has no documentation: mq3.platform.playable_window.clearDepth |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:26:1` | public symbol has no documentation: mq3.platform.playable_window.glEndFrameNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:260:1` | missing @param documentation for: scale, nearDistance |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:260:1` | public symbol has no documentation: mq3.platform.playable_window.setDepthRange |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:261:1` | missing @param documentation for: area |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:261:1` | public symbol has no documentation: mq3.platform.playable_window.clearStencil |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:262:1` | missing @param documentation for: pass |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:262:1` | public symbol has no documentation: mq3.platform.playable_window.setStencilPass |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:263:1` | missing @param documentation for: area |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:263:1` | public symbol has no documentation: mq3.platform.playable_window.finishStencilShadow |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:264:1` | missing @param documentation for: slot, rgba, width, height |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:264:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTexture |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:268:1` | missing @param documentation for: slot, rgba, width, height, mipmapped |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:268:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureMipmapped |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:260:1` | missing @param documentation for: x, y |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:260:1` | public symbol has no documentation: mq3.platform.playable_window.sampleDepth |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:261:1` | missing @param documentation for: scale, nearDistance |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:261:1` | public symbol has no documentation: mq3.platform.playable_window.setDepthRange |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:262:1` | missing @param documentation for: area |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:262:1` | public symbol has no documentation: mq3.platform.playable_window.clearStencil |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:263:1` | missing @param documentation for: pass |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:263:1` | public symbol has no documentation: mq3.platform.playable_window.setStencilPass |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:264:1` | missing @param documentation for: area |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:264:1` | public symbol has no documentation: mq3.platform.playable_window.finishStencilShadow |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:265:1` | missing @param documentation for: slot, rgba, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:265:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTexture |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:269:1` | missing @param documentation for: slot, rgba, width, height, mipmapped |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:269:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureMipmapped |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:27:1` | missing @param documentation for: comment, length |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:27:1` | public symbol has no documentation: mq3.platform.playable_window.glLogCommentNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:273:1` | missing @param documentation for: slot, rgba, width, height |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:273:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureNoMip |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:274:1` | missing @param documentation for: slot, rgba, width, height, mipmapped, allowPicmip |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:274:1` | public symbol has no documentation: mq3.platform.playable_window.uploadMaterialTexture |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:274:1` | missing @param documentation for: slot, rgba, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:274:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureNoMip |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:275:1` | missing @param documentation for: slot, rgba, width, height, mipmapped, allowPicmip |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:275:1` | public symbol has no documentation: mq3.platform.playable_window.uploadMaterialTexture |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:28:1` | public symbol has no documentation: mq3.platform.playable_window.pollNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:280:1` | missing @param documentation for: picmip, textureMode |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:280:1` | public symbol has no documentation: mq3.platform.playable_window.setTextureSettings |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:286:1` | missing @param documentation for: slot |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:286:1` | public symbol has no documentation: mq3.platform.playable_window.releaseTexture |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:287:1` | missing @param documentation for: textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:287:1` | public symbol has no documentation: mq3.platform.playable_window.drawTriangle |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:281:1` | missing @param documentation for: picmip, textureMode |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:281:1` | public symbol has no documentation: mq3.platform.playable_window.setTextureSettings |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:287:1` | missing @param documentation for: slot |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:287:1` | public symbol has no documentation: mq3.platform.playable_window.releaseTexture |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:288:1` | missing @param documentation for: textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:288:1` | public symbol has no documentation: mq3.platform.playable_window.drawTriangle |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:29:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:29:1` | public symbol has no documentation: mq3.platform.playable_window.shouldCloseNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:291:1` | missing @param documentation for: textureSlot, a, uvA, colorA, b, uvB, colorB, c, uvC, colorC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:291:1` | public symbol has no documentation: mq3.platform.playable_window.drawTriangleColored |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:296:1` | missing @param documentation for: capacity |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:296:1` | public symbol has no documentation: mq3.platform.playable_window.createTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:292:1` | missing @param documentation for: textureSlot, a, uvA, colorA, b, uvB, colorB, c, uvC, colorC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:292:1` | public symbol has no documentation: mq3.platform.playable_window.drawTriangleColored |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:297:1` | missing @param documentation for: capacity |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:297:1` | public symbol has no documentation: mq3.platform.playable_window.createTriangleBatch |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:30:1` | missing @param documentation for: title, length |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:30:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:30:1` | public symbol has no documentation: mq3.platform.playable_window.setTitleNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:300:1` | missing @param documentation for: batch |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:300:1` | public symbol has no documentation: mq3.platform.playable_window.resetTriangleBatch |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:301:1` | missing @param documentation for: batch, textureSlot, positions, texCoords, color |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:301:1` | public symbol has no documentation: mq3.platform.playable_window.appendScreenQuad |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:308:1` | missing @param documentation for: batch, triangleIndex, textureSlot, x, y, width, height, s1, t1, s2, t2, scaleX, scaleY, color |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:308:1` | public symbol has no documentation: mq3.platform.playable_window.writeScreenRect |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:301:1` | missing @param documentation for: batch |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:301:1` | public symbol has no documentation: mq3.platform.playable_window.resetTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:302:1` | missing @param documentation for: batch, textureSlot, positions, texCoords, color |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:302:1` | public symbol has no documentation: mq3.platform.playable_window.appendScreenQuad |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:309:1` | missing @param documentation for: batch, triangleIndex, textureSlot, x, y, width, height, s1, t1, s2, t2, scaleX, scaleY, color |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:309:1` | public symbol has no documentation: mq3.platform.playable_window.writeScreenRect |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:31:1` | missing @param documentation for: key |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:31:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:31:1` | public symbol has no documentation: mq3.platform.playable_window.keyDownNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:314:1` | missing @param documentation for: data, offset, value |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:314:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchI32 |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:315:1` | missing @param documentation for: data, offset, value |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:315:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchF32 |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:316:1` | missing @param documentation for: data, offset, point, baseUV, lightmapUV, light |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:316:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchVertex |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:315:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchI32 |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:316:1` | missing @param documentation for: data, offset, value |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:316:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchF32 |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:317:1` | missing @param documentation for: data, offset, point, baseUV, lightmapUV, light |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:317:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchVertex |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:32:1` | missing @param documentation for: key |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:32:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:32:1` | public symbol has no documentation: mq3.platform.playable_window.inputKeyDownNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:320:1` | missing @param documentation for: data, offset, position, baseUV, lightmapUV, light |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:320:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchPositionVertex |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:324:1` | missing @param documentation for: batch, triangle, vertex, position, uv, color |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:324:1` | public symbol has no documentation: mq3.platform.playable_window.updateStageVertex |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:328:1` | missing @param documentation for: data, offset, color |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:328:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchColor |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:321:1` | missing @param documentation for: data, offset, position, baseUV, lightmapUV, light |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:321:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchPositionVertex |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:325:1` | missing @param documentation for: batch, triangle, vertex, position, uv, color |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:325:1` | public symbol has no documentation: mq3.platform.playable_window.updateStageVertex |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:329:1` | missing @param documentation for: batch, normals, eye |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:329:1` | public symbol has no documentation: mq3.platform.playable_window.updateSpecularPass |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:33:1` | missing @param documentation for: output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:33:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:33:1` | public symbol has no documentation: mq3.platform.playable_window.nextInputEventNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:331:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, colorA, b, baseB, lightmapB, lightB, colorB, c, baseC, lightmapC, lightC, colorC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:331:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatchColored |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:333:1` | missing @param documentation for: data, offset, color |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:333:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchColor |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:336:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, colorA, b, baseB, lightmapB, lightB, colorB, c, baseC, lightmapC, lightC, colorC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:336:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatchColored |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:34:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:34:1` | public symbol has no documentation: mq3.platform.playable_window.mouseXNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:340:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, colorA, b, baseB, lightmapB, lightB, colorB, c, baseC, lightmapC, lightC, colorC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:340:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatchPositionColored |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:349:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, b, baseB, lightmapB, lightB, c, baseC, lightmapC, lightC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:349:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:345:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, colorA, b, baseB, lightmapB, lightB, colorB, c, baseC, lightmapC, lightC, colorC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:345:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatchPositionColored |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:35:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:35:1` | public symbol has no documentation: mq3.platform.playable_window.mouseYNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:352:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, colorA, b, uvB, lightB, colorB, c, uvC, lightC, colorC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:352:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTriangleColored |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:355:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, colorA, b, uvB, lightB, colorB, c, uvC, lightC, colorC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:355:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTrianglePositionColored |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:358:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:358:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTrianglePosition |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:354:1` | missing @param documentation for: batch, baseSlot, lightmapSlot, a, baseA, lightmapA, lightA, b, baseB, lightmapB, lightB, c, baseC, lightmapC, lightC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:354:1` | public symbol has no documentation: mq3.platform.playable_window.appendTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:357:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, colorA, b, uvB, lightB, colorB, c, uvC, lightC, colorC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:357:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTriangleColored |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:36:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:36:1` | public symbol has no documentation: mq3.platform.playable_window.millisecondsNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:361:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:361:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTriangle |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:365:1` | missing @param documentation for: batch |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:365:1` | public symbol has no documentation: mq3.platform.playable_window.submitTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:360:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, colorA, b, uvB, lightB, colorB, c, uvC, lightC, colorC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:360:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTrianglePositionColored |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:363:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:363:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTrianglePosition |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:366:1` | missing @param documentation for: batch, textureSlot, a, uvA, lightA, b, uvB, lightB, c, uvC, lightC, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:366:1` | public symbol has no documentation: mq3.platform.playable_window.appendSingleTextureTriangle |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:37:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:37:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareRendererNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:371:1` | missing @param documentation for: batch, projection |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:371:1` | public symbol has no documentation: mq3.platform.playable_window.submitWorldTriangleBatch |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:379:1` | missing @param documentation for: x, y, width, height |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:379:1` | public symbol has no documentation: mq3.platform.playable_window.validViewportRectangle |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:370:1` | missing @param documentation for: batch |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:370:1` | public symbol has no documentation: mq3.platform.playable_window.submitTriangleBatch |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:376:1` | missing @param documentation for: batch, projection |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:376:1` | public symbol has no documentation: mq3.platform.playable_window.submitWorldTriangleBatch |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:38:1` | missing @returns documentation for return type: u32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:38:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareTrianglesNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:382:1` | missing @param documentation for: x, y, width, height |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:382:1` | public symbol has no documentation: mq3.platform.playable_window.viewport |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:386:1` | missing @param documentation for: batch, projection, area |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:386:1` | public symbol has no documentation: mq3.platform.playable_window.submitWorldTriangleBatchViewport |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:384:1` | missing @param documentation for: x, y, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:384:1` | public symbol has no documentation: mq3.platform.playable_window.validViewportRectangle |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:387:1` | missing @param documentation for: x, y, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:387:1` | public symbol has no documentation: mq3.platform.playable_window.viewport |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:39:1` | missing @returns documentation for return type: u32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:39:1` | public symbol has no documentation: mq3.platform.playable_window.hardwareDrawCallsNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:391:1` | missing @param documentation for: batch, projection, area |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:391:1` | public symbol has no documentation: mq3.platform.playable_window.submitWorldTriangleBatchViewport |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:40:1` | missing @param documentation for: data, count, offset, x, y, z, u, v, lu, lv, light |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:40:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:40:1` | public symbol has no documentation: mq3.platform.playable_window.writeBatchVertexNative |
@@ -17836,98 +17842,101 @@
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:45:1` | missing @param documentation for: data, count, triangle, vertex, x, y, z, u, v, red, green, blue, alpha |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:45:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:45:1` | public symbol has no documentation: mq3.platform.playable_window.updateStageVertexNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:46:1` | missing @param documentation for: data, byteCount, normals, normalBytes, triangles, eyeX, eyeY, eyeZ |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:46:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:46:1` | public symbol has no documentation: mq3.platform.playable_window.takeVideoRestartNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:47:1` | missing @param documentation for: output, capacity |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:46:1` | public symbol has no documentation: mq3.platform.playable_window.updateSpecularPassNative |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:47:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:47:1` | public symbol has no documentation: mq3.platform.playable_window.windowStateNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:47:1` | public symbol has no documentation: mq3.platform.playable_window.takeVideoRestartNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:48:1` | missing @param documentation for: output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:48:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:48:1` | public symbol has no documentation: mq3.platform.playable_window.currentUserNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:48:1` | public symbol has no documentation: mq3.platform.playable_window.windowStateNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:49:1` | missing @param documentation for: output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:49:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:49:1` | public symbol has no documentation: mq3.platform.playable_window.currentDirectoryNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:49:1` | public symbol has no documentation: mq3.platform.playable_window.currentUserNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:50:1` | missing @param documentation for: output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:50:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:50:1` | public symbol has no documentation: mq3.platform.playable_window.executableDirectoryNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:50:1` | public symbol has no documentation: mq3.platform.playable_window.currentDirectoryNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:51:1` | missing @param documentation for: output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:51:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:51:1` | public symbol has no documentation: mq3.platform.playable_window.processorIdNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:51:1` | public symbol has no documentation: mq3.platform.playable_window.executableDirectoryNative |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:52:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:52:1` | public symbol has no documentation: mq3.platform.playable_window.inputInitNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:53:1` | missing @param documentation for: active |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:53:1` | public symbol has no documentation: mq3.platform.playable_window.inputActivateNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:54:1` | public symbol has no documentation: mq3.platform.playable_window.inputFrameNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:55:1` | public symbol has no documentation: mq3.platform.playable_window.inputClearNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:56:1` | missing @param documentation for: enabled, threshold, ballScale |
-| warning | `MD2105` | `src/mq3/platform/playable_window.ml:56:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:56:1` | public symbol has no documentation: mq3.platform.playable_window.joystickConfigureNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:57:1` | missing @param documentation for: enabled, device, channel |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:52:1` | public symbol has no documentation: mq3.platform.playable_window.processorIdNative |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:53:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:53:1` | public symbol has no documentation: mq3.platform.playable_window.inputInitNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:54:1` | missing @param documentation for: active |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:54:1` | public symbol has no documentation: mq3.platform.playable_window.inputActivateNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:55:1` | public symbol has no documentation: mq3.platform.playable_window.inputFrameNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:56:1` | public symbol has no documentation: mq3.platform.playable_window.inputClearNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:57:1` | missing @param documentation for: enabled, threshold, ballScale |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:57:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:57:1` | public symbol has no documentation: mq3.platform.playable_window.midiConfigureNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:57:1` | public symbol has no documentation: mq3.platform.playable_window.joystickConfigureNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:58:1` | missing @param documentation for: enabled, device, channel |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:58:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:58:1` | public symbol has no documentation: mq3.platform.playable_window.joystickAvailableNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:58:1` | public symbol has no documentation: mq3.platform.playable_window.midiConfigureNative |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:59:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:59:1` | public symbol has no documentation: mq3.platform.playable_window.midiDeviceCountNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:60:1` | missing @param documentation for: red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:60:1` | public symbol has no documentation: mq3.platform.playable_window.beginNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:61:1` | missing @param documentation for: x0, y0, x1, y1, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:61:1` | public symbol has no documentation: mq3.platform.playable_window.lineNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:62:1` | public symbol has no documentation: mq3.platform.playable_window.presentNative |
-| warning | `MD2105` | `src/mq3/platform/playable_window.ml:63:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:63:1` | public symbol has no documentation: mq3.platform.playable_window.presentedNonBlackNative |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:64:1` | public symbol has no documentation: mq3.platform.playable_window.shutdownNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:65:1` | missing @param documentation for: depth |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:65:1` | public symbol has no documentation: mq3.platform.playable_window.clearDepthNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:66:1` | missing @param documentation for: x, y |
-| warning | `MD2105` | `src/mq3/platform/playable_window.ml:66:1` | missing @returns documentation for return type: double |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:66:1` | public symbol has no documentation: mq3.platform.playable_window.sampleDepthNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:67:1` | missing @param documentation for: scale, nearDistance |
-| warning | `MD2105` | `src/mq3/platform/playable_window.ml:67:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:67:1` | public symbol has no documentation: mq3.platform.playable_window.setDepthRangeNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:68:1` | missing @param documentation for: x, y, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:59:1` | public symbol has no documentation: mq3.platform.playable_window.joystickAvailableNative |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:60:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:60:1` | public symbol has no documentation: mq3.platform.playable_window.midiDeviceCountNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:61:1` | missing @param documentation for: red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:61:1` | public symbol has no documentation: mq3.platform.playable_window.beginNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:62:1` | missing @param documentation for: x0, y0, x1, y1, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:62:1` | public symbol has no documentation: mq3.platform.playable_window.lineNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:63:1` | public symbol has no documentation: mq3.platform.playable_window.presentNative |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:64:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:64:1` | public symbol has no documentation: mq3.platform.playable_window.presentedNonBlackNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:65:1` | public symbol has no documentation: mq3.platform.playable_window.shutdownNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:66:1` | missing @param documentation for: depth |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:66:1` | public symbol has no documentation: mq3.platform.playable_window.clearDepthNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:67:1` | missing @param documentation for: x, y |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:67:1` | missing @returns documentation for return type: double |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:67:1` | public symbol has no documentation: mq3.platform.playable_window.sampleDepthNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:68:1` | missing @param documentation for: scale, nearDistance |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:68:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:68:1` | public symbol has no documentation: mq3.platform.playable_window.clearStencilNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:69:1` | missing @param documentation for: pass |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:68:1` | public symbol has no documentation: mq3.platform.playable_window.setDepthRangeNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:69:1` | missing @param documentation for: x, y, width, height |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:69:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:69:1` | public symbol has no documentation: mq3.platform.playable_window.setStencilPassNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:69:1` | public symbol has no documentation: mq3.platform.playable_window.clearStencilNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:7:1` | missing @param documentation for: width, height |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:7:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:7:1` | public symbol has no documentation: mq3.platform.playable_window.create |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:70:1` | missing @param documentation for: x, y, width, height |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:70:1` | missing @param documentation for: pass |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:70:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:70:1` | public symbol has no documentation: mq3.platform.playable_window.finishStencilShadowNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:71:1` | missing @param documentation for: slot, rgba, width, height |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:70:1` | public symbol has no documentation: mq3.platform.playable_window.setStencilPassNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:71:1` | missing @param documentation for: x, y, width, height |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:71:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:71:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:72:1` | missing @param documentation for: slot, rgba, width, height, mipmapped |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:71:1` | public symbol has no documentation: mq3.platform.playable_window.finishStencilShadowNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:72:1` | missing @param documentation for: slot, rgba, width, height |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:72:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:72:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureMipmappedNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:73:1` | missing @param documentation for: slot, rgba, width, height, mipmapped, allowPicmip |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:72:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:73:1` | missing @param documentation for: slot, rgba, width, height, mipmapped |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:73:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:73:1` | public symbol has no documentation: mq3.platform.playable_window.uploadMaterialTextureNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:74:1` | missing @param documentation for: picmip, mode |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:74:1` | public symbol has no documentation: mq3.platform.playable_window.setTextureSettingsNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:75:1` | missing @param documentation for: slot |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:75:1` | public symbol has no documentation: mq3.platform.playable_window.releaseTextureNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:76:1` | missing @param documentation for: textureSlot, x0, y0, depth0, u0, v0, light0, x1, y1, depth1, u1, v1, light1, x2, y2, depth2, u2, v2, light2, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:76:1` | public symbol has no documentation: mq3.platform.playable_window.triangleNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:77:1` | missing @param documentation for: textureSlot, x0, y0, depth0, u0, v0, x1, y1, depth1, u1, v1, x2, y2, depth2, u2, v2, red0, green0, blue0, alpha0, red1, green1, blue1, alpha1, red2, green2, blue2, alpha2, red, green, blue |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:77:1` | public symbol has no documentation: mq3.platform.playable_window.triangleColoredNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:78:1` | missing @param documentation for: records, byteCount, triangleCount |
-| warning | `MD2105` | `src/mq3/platform/playable_window.ml:78:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:78:1` | public symbol has no documentation: mq3.platform.playable_window.triangleBatchNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:79:1` | missing @param documentation for: records, byteCount, triangleIndex, textureSlot, x0, y0, d0, u0, v0, x1, y1, d1, u1, v1, x2, y2, d2, u2, v2, x3, y3, d3, u3, v3, red, green, blue, alpha |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:73:1` | public symbol has no documentation: mq3.platform.playable_window.uploadTextureMipmappedNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:74:1` | missing @param documentation for: slot, rgba, width, height, mipmapped, allowPicmip |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:74:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:74:1` | public symbol has no documentation: mq3.platform.playable_window.uploadMaterialTextureNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:75:1` | missing @param documentation for: picmip, mode |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:75:1` | public symbol has no documentation: mq3.platform.playable_window.setTextureSettingsNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:76:1` | missing @param documentation for: slot |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:76:1` | public symbol has no documentation: mq3.platform.playable_window.releaseTextureNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:77:1` | missing @param documentation for: textureSlot, x0, y0, depth0, u0, v0, light0, x1, y1, depth1, u1, v1, light1, x2, y2, depth2, u2, v2, light2, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:77:1` | public symbol has no documentation: mq3.platform.playable_window.triangleNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:78:1` | missing @param documentation for: textureSlot, x0, y0, depth0, u0, v0, x1, y1, depth1, u1, v1, x2, y2, depth2, u2, v2, red0, green0, blue0, alpha0, red1, green1, blue1, alpha1, red2, green2, blue2, alpha2, red, green, blue |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:78:1` | public symbol has no documentation: mq3.platform.playable_window.triangleColoredNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:79:1` | missing @param documentation for: records, byteCount, triangleCount |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:79:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:79:1` | public symbol has no documentation: mq3.platform.playable_window.writeScreenQuadNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:79:1` | public symbol has no documentation: mq3.platform.playable_window.triangleBatchNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:8:1` | missing @param documentation for: width, height, fullscreen, frequency, output, capacity |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:8:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:8:1` | public symbol has no documentation: mq3.platform.playable_window.setModeNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:80:1` | missing @param documentation for: records, byteCount, triangleCount, positionX, positionY, positionZ, rightX, rightY, rightZ, upX, upY, upZ, forwardX, forwardY, forwardZ, halfWidth, halfHeight, focal, nearDistance |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:80:1` | missing @param documentation for: records, byteCount, triangleIndex, textureSlot, x0, y0, d0, u0, v0, x1, y1, d1, u1, v1, x2, y2, d2, u2, v2, x3, y3, d3, u3, v3, red, green, blue, alpha |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:80:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:80:1` | public symbol has no documentation: mq3.platform.playable_window.worldTriangleBatchNative |
-| warning | `MD2104` | `src/mq3/platform/playable_window.ml:81:1` | missing @param documentation for: records, byteCount, triangleCount, viewportX, viewportY, viewportWidth, viewportHeight, positionX, positionY, positionZ, rightX, rightY, rightZ, upX, upY, upZ, forwardX, forwardY, forwardZ, focal, nearDistance |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:80:1` | public symbol has no documentation: mq3.platform.playable_window.writeScreenQuadNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:81:1` | missing @param documentation for: records, byteCount, triangleCount, positionX, positionY, positionZ, rightX, rightY, rightZ, upX, upY, upZ, forwardX, forwardY, forwardZ, halfWidth, halfHeight, focal, nearDistance |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:81:1` | missing @returns documentation for return type: i32 |
-| warning | `MD2201` | `src/mq3/platform/playable_window.ml:81:1` | public symbol has no documentation: mq3.platform.playable_window.worldTriangleBatchViewportNative |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:81:1` | public symbol has no documentation: mq3.platform.playable_window.worldTriangleBatchNative |
+| warning | `MD2104` | `src/mq3/platform/playable_window.ml:82:1` | missing @param documentation for: records, byteCount, triangleCount, viewportX, viewportY, viewportWidth, viewportHeight, positionX, positionY, positionZ, rightX, rightY, rightZ, upX, upY, upZ, forwardX, forwardY, forwardZ, focal, nearDistance |
+| warning | `MD2105` | `src/mq3/platform/playable_window.ml:82:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/platform/playable_window.ml:82:1` | public symbol has no documentation: mq3.platform.playable_window.worldTriangleBatchViewportNative |
 | warning | `MD2104` | `src/mq3/platform/playable_window.ml:9:1` | missing @param documentation for: driver, driverLength, colorBits, depthBits, stencilBits, stereo, fullscreen, frequency, swapInterval |
 | warning | `MD2105` | `src/mq3/platform/playable_window.ml:9:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/platform/playable_window.ml:9:1` | public symbol has no documentation: mq3.platform.playable_window.glConfigureNative |
@@ -20066,40 +20075,31 @@
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:104:1` | public symbol has no documentation: mq3.renderer.mark_fragments.fail |
 | warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:105:1` | missing @param documentation for: a, b |
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:105:1` | public symbol has no documentation: mq3.renderer.mark_fragments.dot |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:106:1` | missing @param documentation for: a, b |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:106:1` | public symbol has no documentation: mq3.renderer.mark_fragments.subtract |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:107:1` | missing @param documentation for: a, b |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:107:1` | public symbol has no documentation: mq3.renderer.mark_fragments.cross |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:108:1` | missing @param documentation for: value |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:108:1` | public symbol has no documentation: mq3.renderer.mark_fragments.normalize |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:112:1` | missing @param documentation for: map, faceIndex, relative |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:112:1` | public symbol has no documentation: mq3.renderer.mark_fragments.faceValue |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:113:1` | missing @param documentation for: map, faceIndex, relative |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:113:1` | public symbol has no documentation: mq3.renderer.mark_fragments.faceFloat |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:114:1` | missing @param documentation for: map, shaderIndex, relative |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:114:1` | public symbol has no documentation: mq3.renderer.mark_fragments.shaderValue |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:116:1` | missing @param documentation for: points, projection, direction |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:116:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectionBounds |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:130:1` | missing @param documentation for: points, projection |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:130:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectionPlanes |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:106:1` | missing @param documentation for: value |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:106:1` | public symbol has no documentation: mq3.renderer.mark_fragments.normalize |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:110:1` | missing @param documentation for: map, faceIndex, relative |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:110:1` | public symbol has no documentation: mq3.renderer.mark_fragments.faceValue |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:111:1` | missing @param documentation for: map, faceIndex, relative |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:111:1` | public symbol has no documentation: mq3.renderer.mark_fragments.faceFloat |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:112:1` | missing @param documentation for: map, shaderIndex, relative |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:112:1` | public symbol has no documentation: mq3.renderer.mark_fragments.shaderValue |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:114:1` | missing @param documentation for: points, projection, direction |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:114:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectionBounds |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:127:1` | missing @param documentation for: points, projection |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:127:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectionPlanes |
 | warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:146:1` | missing @param documentation for: points, plane |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:166:1` | missing @param documentation for: vertices, planes |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:166:1` | public symbol has no documentation: mq3.renderer.mark_fragments.clipTriangle |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:172:1` | missing @param documentation for: vertices, mins, maxs |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:172:1` | public symbol has no documentation: mq3.renderer.mark_fragments.boundsOverlap |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:180:1` | missing @param documentation for: normal, distance, mins, maxs |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:180:1` | public symbol has no documentation: mq3.renderer.mark_fragments.planeCrossesBounds |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:185:1` | missing @param documentation for: map, faceIndex |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:185:1` | public symbol has no documentation: mq3.renderer.mark_fragments.faceNormal |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:186:1` | missing @param documentation for: map, faceIndex, direction, mins, maxs |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:186:1` | public symbol has no documentation: mq3.renderer.mark_fragments.eligibleFace |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:196:1` | missing @param documentation for: map, world, mins, maxs, direction, cache |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:196:1` | public symbol has no documentation: mq3.renderer.mark_fragments.candidateFaces |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:227:1` | missing @param documentation for: map, world, sourcePoints, projection, maxPoints, maxFragments |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:227:1` | public symbol has no documentation: mq3.renderer.mark_fragments.project |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:169:1` | missing @param documentation for: vertices, planes |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:169:1` | public symbol has no documentation: mq3.renderer.mark_fragments.clipTriangle |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:178:1` | missing @param documentation for: first, second, third, mins, maxs |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:187:1` | missing @param documentation for: map, faceIndex, direction, mins, maxs |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:187:1` | public symbol has no documentation: mq3.renderer.mark_fragments.eligibleFace |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:204:1` | missing @param documentation for: map, world, mins, maxs, direction, cache |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:204:1` | public symbol has no documentation: mq3.renderer.mark_fragments.candidateFaces |
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:23:1` | public symbol has no documentation: mq3.renderer.mark_fragments.Plane |
-| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:230:1` | missing @param documentation for: map, world, sourcePoints, projection, maxPoints, maxFragments, cache |
-| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:230:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectWithCache |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:235:1` | missing @param documentation for: map, world, sourcePoints, projection, maxPoints, maxFragments |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:235:1` | public symbol has no documentation: mq3.renderer.mark_fragments.project |
+| warning | `MD2104` | `src/mq3/renderer/mark_fragments.ml:238:1` | missing @param documentation for: map, world, sourcePoints, projection, maxPoints, maxFragments, cache |
+| warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:238:1` | public symbol has no documentation: mq3.renderer.mark_fragments.projectWithCache |
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:24:1` | public symbol has no documentation: mq3.renderer.mark_fragments.Fragment |
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:25:1` | public symbol has no documentation: mq3.renderer.mark_fragments.Result |
 | warning | `MD2201` | `src/mq3/renderer/mark_fragments.ml:26:1` | public symbol has no documentation: mq3.renderer.mark_fragments.GeometryCache |
@@ -20544,74 +20544,78 @@
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:109:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.createVertexCacheWithScratch |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:150:1` | missing @param documentation for: sourceIndexes |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:150:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.createVertexCache |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:151:1` | missing @param documentation for: triangles, material, stage, primary, depthEqual, indexScratch |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:151:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.buildStagePassTriangles |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:151:1` | missing @param documentation for: sourceNormals, packed |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:151:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.packSpecularNormalsInto |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:160:1` | missing @param documentation for: sourceNormals |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:160:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.packedSpecularNormals |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:161:1` | missing @param documentation for: triangles, material, stage, primary, depthEqual, indexScratch |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:161:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.buildStagePassTriangles |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:18:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.Batch |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:181:1` | missing @param documentation for: renderData, material, stage, primary, depthEqual, flags |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:181:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.buildStagePass |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:188:1` | missing @param documentation for: base, renderData, lookup, skyTextureFlags |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:19:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.UvAffine |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:193:1` | missing @param documentation for: renderData, material, stage, primary, depthEqual, flags |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:193:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.buildStagePass |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:20:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.VertexCache |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:208:1` | missing @param documentation for: renderData, catalog, skyTextureFlags |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:200:1` | missing @param documentation for: base, renderData, lookup, skyTextureFlags |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:21:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.VertexIndexScratch |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:22:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.StagePass |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:220:1` | missing @param documentation for: renderData, catalog, skyTextureFlags |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:23:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.MaterialBatch |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:245:1` | missing @param documentation for: pass, renderData |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:25:1` | missing @param documentation for: text |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:25:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.fail |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:257:1` | missing @param documentation for: pass, renderData |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:26:1` | missing @param documentation for: vertex |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:26:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.vertexLight |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:27:1` | missing @param documentation for: triangle, flags |
 | warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:27:1` | missing @returns documentation for return type: bool |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:27:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.isSky |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:271:1` | missing @param documentation for: batch, renderData, catalog, skyTextureFlags |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:271:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.refreshMaterials |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:284:1` | missing @param documentation for: batch, renderData, catalog, skyTextureFlags |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:284:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.refreshMaterials |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:29:1` | missing @param documentation for: triangle |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:29:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.resolvedLightmapSlot |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:30:1` | missing @param documentation for: commands, triangle, baseSlot, useLightmap |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:30:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.appendResolved |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:300:1` | missing @param documentation for: batch, renderData, catalog |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:300:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachFog |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:309:1` | missing @param documentation for: batch, renderData, receiveFlags, catalog |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:309:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachDynamicLights |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:313:1` | missing @param documentation for: batch, renderData, receiveFlags, catalog, origins, axes, bounds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:313:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachDynamicLightsOriented |
-| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:318:1` | missing @returns documentation for return type: UvAffine |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:318:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.identityAffine |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:319:1` | missing @param documentation for: stage, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:319:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.affineFor |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:335:1` | missing @param documentation for: transform, uv |
-| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:335:1` | missing @returns documentation for return type: array |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:335:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.applyAffine |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:336:1` | missing @param documentation for: stage |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:336:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasTurbulence |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:337:1` | missing @param documentation for: stage |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:337:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasEntityTranslate |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:338:1` | missing @param documentation for: deforms, kind |
-| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:338:1` | missing @returns documentation for return type: bool |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:338:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasDeform |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:339:1` | missing @param documentation for: values, wanted |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:339:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.containsPosition |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:340:1` | missing @param documentation for: pass |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:340:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.passHasFog |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:350:1` | missing @param documentation for: pass, fogCatalog |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:365:1` | missing @param documentation for: pass, triangleIndex, leftDir, upDir |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:377:1` | missing @param documentation for: triangleIndex, vertex |
-| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:377:1` | missing @returns documentation for return type: int |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:377:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.autospriteCorner |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:313:1` | missing @param documentation for: batch, renderData, catalog |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:313:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachFog |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:322:1` | missing @param documentation for: batch, renderData, receiveFlags, catalog |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:322:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachDynamicLights |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:326:1` | missing @param documentation for: batch, renderData, receiveFlags, catalog, origins, axes, bounds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:326:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.attachDynamicLightsOriented |
+| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:331:1` | missing @returns documentation for return type: UvAffine |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:331:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.identityAffine |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:332:1` | missing @param documentation for: stage, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:332:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.affineFor |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:348:1` | missing @param documentation for: transform, uv |
+| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:348:1` | missing @returns documentation for return type: array |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:348:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.applyAffine |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:349:1` | missing @param documentation for: stage |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:349:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasTurbulence |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:350:1` | missing @param documentation for: stage |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:350:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasEntityTranslate |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:351:1` | missing @param documentation for: deforms, kind |
+| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:351:1` | missing @returns documentation for return type: bool |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:351:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.hasDeform |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:352:1` | missing @param documentation for: values, wanted |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:352:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.containsPosition |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:353:1` | missing @param documentation for: pass |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:353:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.passHasFog |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:363:1` | missing @param documentation for: pass, fogCatalog |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:378:1` | missing @param documentation for: pass, triangleIndex, leftDir, upDir |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:38:1` | missing @param documentation for: renderData, materialSlots, skyTextureFlags |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:381:1` | missing @param documentation for: triangleIndex, vertex |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:381:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.autospriteUV |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:382:1` | missing @param documentation for: index |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:382:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.edgeVertices |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:388:1` | missing @param documentation for: pass, triangleIndex, forward |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:420:1` | missing @param documentation for: position, normal, uv, deforms, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:420:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.deformedPosition |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:436:1` | missing @param documentation for: position, normal, deforms, nowMilliseconds, noise |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:436:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.deformedNormal |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:452:1` | missing @param documentation for: position, normal, viewOrigin |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:458:1` | missing @param documentation for: pass, viewOrigin, leftDir, upDir, nowMilliseconds, fogCatalog |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:458:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassAxesFog |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:390:1` | missing @param documentation for: triangleIndex, vertex |
+| warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:390:1` | missing @returns documentation for return type: int |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:390:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.autospriteCorner |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:394:1` | missing @param documentation for: triangleIndex, vertex |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:394:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.autospriteUV |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:395:1` | missing @param documentation for: index |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:395:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.edgeVertices |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:401:1` | missing @param documentation for: pass, triangleIndex, forward |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:433:1` | missing @param documentation for: position, normal, uv, deforms, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:433:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.deformedPosition |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:449:1` | missing @param documentation for: position, normal, deforms, nowMilliseconds, noise |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:449:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.deformedNormal |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:465:1` | missing @param documentation for: position, normal, viewOrigin |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:471:1` | missing @param documentation for: pass, viewOrigin, leftDir, upDir, nowMilliseconds, fogCatalog |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:471:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassAxesFog |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:49:1` | missing @param documentation for: batch, projection |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:49:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.draw |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:51:1` | missing @param documentation for: catalog, textureIndex |
@@ -20622,29 +20626,29 @@
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:53:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.dynamicMaterialStage |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:54:1` | missing @param documentation for: material |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:54:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.materialUsesBspLightmap |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:547:1` | missing @param documentation for: pass, viewOrigin, leftDir, upDir, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:547:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassAxes |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:548:1` | missing @param documentation for: pass, viewOrigin, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:548:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassView |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:549:1` | missing @param documentation for: pass, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:549:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePass |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:55:1` | missing @param documentation for: values, wanted |
 | warning | `MD2105` | `src/mq3/renderer/playable_world_batch.ml:55:1` | missing @returns documentation for return type: bool |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:55:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.contains |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:550:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights, area |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:550:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLitTarget |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:56:1` | missing @param documentation for: left, right |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:56:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.materialBefore |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:564:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:564:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLit |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:565:1` | missing @param documentation for: batch, projection, nowMilliseconds |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:565:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterials |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:566:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights, area |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:566:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLitViewport |
-| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:567:1` | missing @param documentation for: batch, projection, nowMilliseconds, area |
-| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:567:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsViewport |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:564:1` | missing @param documentation for: pass, viewOrigin, leftDir, upDir, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:564:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassAxes |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:565:1` | missing @param documentation for: pass, viewOrigin, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:565:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePassView |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:566:1` | missing @param documentation for: pass, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:566:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.updatePass |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:567:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights, area |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:567:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLitTarget |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:57:1` | missing @param documentation for: values |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:57:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.sortedMaterials |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:581:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:581:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLit |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:582:1` | missing @param documentation for: batch, projection, nowMilliseconds |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:582:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterials |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:583:1` | missing @param documentation for: batch, projection, nowMilliseconds, lights, area |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:583:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsLitViewport |
+| warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:584:1` | missing @param documentation for: batch, projection, nowMilliseconds, area |
+| warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:584:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.drawMaterialsViewport |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:61:1` | missing @param documentation for: catalog, firstSlot |
 | warning | `MD2201` | `src/mq3/renderer/playable_world_batch.ml:61:1` | public symbol has no documentation: mq3.renderer.playable_world_batch.uploadMaterialsFrom |
 | warning | `MD2104` | `src/mq3/renderer/playable_world_batch.ml:81:1` | missing @param documentation for: catalog |
@@ -20805,27 +20809,29 @@
 | warning | `MD2201` | `src/mq3/renderer/portal_clip.ml:86:1` | public symbol has no documentation: mq3.renderer.portal_clip.sceneTriangle |
 | warning | `MD2104` | `src/mq3/renderer/portal_clip.ml:89:1` | missing @param documentation for: source, normal, dist |
 | warning | `MD2201` | `src/mq3/renderer/portal_clip.ml:89:1` | public symbol has no documentation: mq3.renderer.portal_clip.clipScene |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:12:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Refdef |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:13:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Surface |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:14:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Plan |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:15:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.WorldBatchCache |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:17:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.worldBatchCache |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:18:1` | missing @param documentation for: cache, faces, normal, dist |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:18:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.cachedWorldBatch |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:24:1` | missing @param documentation for: cache, faces, normal, dist, batch |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:24:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.storeWorldBatch |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:30:1` | missing @param documentation for: message |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:30:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.fail |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:31:1` | missing @param documentation for: a, b |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:31:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.squaredDistance |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:32:1` | missing @param documentation for: triangle, viewOrigin |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:32:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.planeFor |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:41:1` | missing @param documentation for: left, right |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:41:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.before |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:48:1` | missing @param documentation for: renderData, catalog, geometry, sourceRefdef, isPortal |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:76:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.ComposeServices |
-| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:77:1` | missing @param documentation for: services, portal |
-| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:77:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.compose |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:107:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.ComposeServices |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:108:1` | missing @param documentation for: services, portal |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:108:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.compose |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:13:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Refdef |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:14:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Surface |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:15:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.Plan |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:16:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.WorldBatchCache |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:18:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.worldBatchCache |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:19:1` | missing @param documentation for: cache, faces, normal, dist |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:19:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.cachedWorldBatch |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:25:1` | missing @param documentation for: cache, faces, normal, dist, batch |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:25:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.storeWorldBatch |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:31:1` | missing @param documentation for: message |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:31:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.fail |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:32:1` | missing @param documentation for: a, b |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:32:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.squaredDistance |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:33:1` | missing @param documentation for: triangle, viewOrigin |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:33:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.planeFor |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:42:1` | missing @param documentation for: left, right |
+| warning | `MD2201` | `src/mq3/renderer/portal_render_pass.ml:42:1` | public symbol has no documentation: mq3.renderer.portal_render_pass.before |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:49:1` | missing @param documentation for: triangle, refdef, slopeX, slopeY |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:66:1` | missing @param documentation for: triangle, viewOrigin |
+| warning | `MD2104` | `src/mq3/renderer/portal_render_pass.ml:74:1` | missing @param documentation for: renderData, catalog, geometry, sourceRefdef, isPortal |
 | warning | `MD2201` | `src/mq3/renderer/portal_view.ml:13:1` | public symbol has no documentation: mq3.renderer.portal_view.Orientation |
 | warning | `MD2201` | `src/mq3/renderer/portal_view.ml:14:1` | public symbol has no documentation: mq3.renderer.portal_view.View |
 | warning | `MD2104` | `src/mq3/renderer/portal_view.ml:16:1` | missing @param documentation for: message |
@@ -21023,118 +21029,119 @@
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:129:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.modelAt |
 | warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:133:1` | missing @param documentation for: output, value |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:133:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.appendTriangle |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:143:1` | missing @param documentation for: output, worldPositions, texCoords, worldNormals, vertexColors, defaultColor, entityTexCoord, shaderTime, a, b, c, modelHandle, customSkin, shaderHandle, shaderName, surfaceName, entityIndex, surfaceIndex, renderfx, fogIndex, vertexBase |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:143:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.appendIndexedModelTriangle |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:163:1` | missing @param documentation for: model, maxTrianglesPerSurface |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:163:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.modelTriangleCount |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:169:1` | missing @param documentation for: decoded, model, fogCatalog, noWorldModel |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:169:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.modelFogNum |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:174:1` | missing @param documentation for: decoded, asset, refdef, frustum, lodScale, lodBias |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:174:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.selectMd3 |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:188:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, maxTrianglesPerSurface |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:188:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedTriangles |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:202:1` | missing @param documentation for: entities |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:202:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.decodeEntities |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:207:1` | missing @param documentation for: decoded, model, frustum |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:207:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.inlineCulled |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:211:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel, refdef, lodScale, lodBias, shadowMode, plans |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:211:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.plannedDecodedTrianglesModeFogLod |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:232:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel, refdef, lodScale, lodBias, shadowMode |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:232:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesModeFogLod |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:235:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:235:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesModeFog |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:236:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:236:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesMode |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:237:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:237:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTriangles |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:238:1` | missing @param documentation for: source, orientation, color, modelHandle, customSkin, shaderHandle, surfaceName, entityIndex, lighting, renderfx |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:238:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.transformTriangle |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:249:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.createNormalTable |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:250:1` | missing @param documentation for: normalTable, maxEntries |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:250:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.createFrameCache |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:256:1` | missing @param documentation for: cache, modelHandle, model, surfaceIndex, frame, oldFrame, backlerp, normalTable |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:256:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedFrame |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:280:1` | missing @param documentation for: entry |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:280:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.materializeFrame |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:283:1` | missing @param documentation for: cache, decoded, modelCacheKey, surfaceIndex, frameData |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:283:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedTransform |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:311:1` | missing @param documentation for: entry, lighting, alpha |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:311:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedVertexColors |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:320:1` | missing @param documentation for: output, decoded, selection, entityIndex, maxTrianglesPerSurface, cache, normalTable, grid, refdef, shadowMode, fogCatalog, noWorldModel |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:320:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addModelOptimized |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:147:1` | missing @param documentation for: output, poly, a, b, c |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:169:1` | missing @param documentation for: output, worldPositions, texCoords, worldNormals, vertexColors, defaultColor, entityTexCoord, shaderTime, a, b, c, modelHandle, customSkin, shaderHandle, shaderName, surfaceName, entityIndex, surfaceIndex, renderfx, fogIndex, vertexBase |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:169:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.appendIndexedModelTriangle |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:189:1` | missing @param documentation for: model, maxTrianglesPerSurface |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:189:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.modelTriangleCount |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:195:1` | missing @param documentation for: decoded, model, fogCatalog, noWorldModel |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:195:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.modelFogNum |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:200:1` | missing @param documentation for: decoded, asset, refdef, frustum, lodScale, lodBias |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:200:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.selectMd3 |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:214:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, maxTrianglesPerSurface |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:214:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedTriangles |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:228:1` | missing @param documentation for: entities |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:228:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.decodeEntities |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:233:1` | missing @param documentation for: decoded, model, frustum |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:233:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.inlineCulled |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:237:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel, refdef, lodScale, lodBias, shadowMode, plans |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:237:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.plannedDecodedTrianglesModeFogLod |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:258:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel, refdef, lodScale, lodBias, shadowMode |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:258:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesModeFogLod |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:261:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, fogCatalog, noWorldModel |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:261:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesModeFog |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:262:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:262:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTrianglesMode |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:263:1` | missing @param documentation for: decodedEntities, polys, assetKinds, modelAssets, maxTrianglesPerSurface |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:263:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.expectedDecodedTriangles |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:264:1` | missing @param documentation for: source, orientation, color, modelHandle, customSkin, shaderHandle, surfaceName, entityIndex, lighting, renderfx |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:264:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.transformTriangle |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:275:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.createNormalTable |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:276:1` | missing @param documentation for: normalTable, maxEntries |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:276:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.createFrameCache |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:282:1` | missing @param documentation for: cache, modelHandle, model, surfaceIndex, frame, oldFrame, backlerp, normalTable |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:282:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedFrame |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:306:1` | missing @param documentation for: entry |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:306:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.materializeFrame |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:309:1` | missing @param documentation for: cache, decoded, modelCacheKey, surfaceIndex, frameData |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:309:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedTransform |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:337:1` | missing @param documentation for: entry, lighting, alpha |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:337:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.cachedVertexColors |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:346:1` | missing @param documentation for: output, decoded, selection, entityIndex, maxTrianglesPerSurface, cache, normalTable, grid, refdef, shadowMode, fogCatalog, noWorldModel |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:346:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addModelOptimized |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:36:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.Triangle |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:362:1` | missing @param documentation for: output, decoded, wrapped, entityIndex |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:362:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addInlineModel |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:37:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.ShadowTriangle |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:377:1` | missing @param documentation for: output, decoded, refdef, entityIndex |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:377:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addSprite |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:38:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.ShadowEdge |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:388:1` | missing @param documentation for: output, decoded, wrapped, entityIndex |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:388:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addInlineModel |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:39:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.Geometry |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:390:1` | missing @param documentation for: output, decoded, submission, entityIndex |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:390:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addTrailSubmission |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:399:1` | missing @param documentation for: output, decoded, refdef, entityIndex |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:399:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addTrail |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:40:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.InlineModel |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:407:1` | missing @param documentation for: output, decoded, entityIndex |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:407:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addBeam |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:403:1` | missing @param documentation for: output, decoded, refdef, entityIndex |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:403:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addSprite |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:41:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.Md3Selection |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:416:1` | missing @param documentation for: output, polys |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:416:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addPolys |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:416:1` | missing @param documentation for: output, decoded, submission, entityIndex |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:416:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addTrailSubmission |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:42:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.FrameEntry |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:428:1` | missing @param documentation for: decodedEntities, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, shadowMode, fogCatalog, noWorldModel, refdef, lodScale, lodBias |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:428:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.stencilShadowCapacity |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:425:1` | missing @param documentation for: output, decoded, refdef, entityIndex |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:425:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addTrail |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:43:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.TransformEntry |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:439:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode, fogCatalog, noWorldModel, lodScale, lodBias |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:439:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadowFogLod |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:433:1` | missing @param documentation for: output, decoded, entityIndex |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:433:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addBeam |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:44:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.FrameCache |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:442:1` | missing @param documentation for: output, polys |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:442:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.addPolys |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:454:1` | missing @param documentation for: decodedEntities, assetKinds, modelAssets, maxTrianglesPerSurface, isPortal, frustum, shadowMode, fogCatalog, noWorldModel, refdef, lodScale, lodBias |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:454:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.stencilShadowCapacity |
 | warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:46:1` | missing @param documentation for: message |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:46:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.fail |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:469:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode, fogCatalog, noWorldModel |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:469:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadowFog |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:465:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode, fogCatalog, noWorldModel, lodScale, lodBias |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:465:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadowFogLod |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:47:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.normal |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:470:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:470:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadow |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:471:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:471:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseMode |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:472:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:472:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuse |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:473:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:473:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecords |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:474:1` | missing @param documentation for: refdef |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:474:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.refdefFrustum |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:478:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:478:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulled |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:482:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:482:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadows |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:486:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode, fogCatalog |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:486:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadowsFog |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:490:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode, fogCatalog, lodScale, lodBias |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:490:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:494:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:494:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulled |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:498:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:498:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadows |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:502:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode, fogCatalog |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:502:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadowsFog |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:506:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode, fogCatalog, lodScale, lodBias |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:506:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadowsFogLod |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:510:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:510:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLit |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:511:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, normalTable, grid |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:511:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsCachedLit |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:512:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:512:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCache |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:516:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:516:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuse |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:495:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode, fogCatalog, noWorldModel |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:495:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadowFog |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:496:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum, shadowMode |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:496:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseModeShadow |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:497:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous, isPortal, frustum |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:497:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuseMode |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:498:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, previous |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:498:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLitReuse |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:499:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:499:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecords |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:500:1` | missing @param documentation for: refdef |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:500:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.refdefFrustum |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:504:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:504:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulled |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:508:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:508:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadows |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:512:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode, fogCatalog |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:512:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadowsFog |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:516:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous, shadowMode, fogCatalog, lodScale, lodBias |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:516:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod |
 | warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:52:1` | missing @param documentation for: position, shadowPlane, lightDirection, origin, axis |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:520:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, normalTable |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:520:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsCached |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:521:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:521:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecords |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:522:1` | missing @param documentation for: scene, assetKinds, modelAssets, refdef, maxTrianglesPerSurface |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:522:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.build |
-| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:526:1` | missing @param documentation for: geometry, normal, dist, refdef |
-| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:526:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.portalViewForPlane |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:520:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:520:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulled |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:524:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:524:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadows |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:528:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode, fogCatalog |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:528:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadowsFog |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:532:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid, shadowMode, fogCatalog, lodScale, lodBias |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:532:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildPortalRecordsCulledShadowsFogLod |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:536:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, normalTable, grid |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:536:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsFrameCachedLit |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:537:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, normalTable, grid |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:537:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsCachedLit |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:538:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:538:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCache |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:542:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, cache, grid, previous |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:542:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsWithFrameCacheReuse |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:546:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface, normalTable |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:546:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecordsCached |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:547:1` | missing @param documentation for: entities, polys, assetKinds, modelAssets, refdef, maxTrianglesPerSurface |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:547:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.buildRecords |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:548:1` | missing @param documentation for: scene, assetKinds, modelAssets, refdef, maxTrianglesPerSurface |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:548:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.build |
+| warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:552:1` | missing @param documentation for: geometry, normal, dist, refdef |
+| warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:552:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.portalViewForPlane |
 | warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:69:1` | missing @param documentation for: position, shadowPlane, lightDirection |
 | warning | `MD2201` | `src/mq3/renderer/qvm_scene_geometry.ml:69:1` | public symbol has no documentation: mq3.renderer.qvm_scene_geometry.projectionShadowPoint |
 | warning | `MD2104` | `src/mq3/renderer/qvm_scene_geometry.ml:72:1` | missing @param documentation for: lightDirection, axis |
@@ -21225,37 +21232,40 @@
 | warning | `MD2104` | `src/mq3/renderer/qvm_viewport.ml:19:1` | missing @param documentation for: refdef, sourceWidth, sourceHeight, targetWidth, targetHeight |
 | warning | `MD2201` | `src/mq3/renderer/qvm_viewport.ml:19:1` | public symbol has no documentation: mq3.renderer.qvm_viewport.prepare |
 | warning | `MD2201` | `src/mq3/renderer/qvm_viewport.ml:9:1` | public symbol has no documentation: mq3.renderer.qvm_viewport.Prepared |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:103:1` | missing @param documentation for: stream, faces, fogCatalog |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:103:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.stageSources |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:123:1` | missing @param documentation for: state, faces |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:123:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.refreshFog |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:100:1` | missing @param documentation for: stream, packed, count |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:100:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.gather |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:110:1` | missing @param documentation for: stream, faces, fogCatalog |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:110:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.stageSources |
 | warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:13:1` | missing @param documentation for: source, sourceBytes, sourceCount, target, targetBytes, runs, runBytes, selected, selectedBytes, selectedCount |
 | warning | `MD2105` | `src/mq3/renderer/retained_world_batch.ml:13:1` | missing @returns documentation for return type: i32 |
 | warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:13:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.gatherNative |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:133:1` | missing @param documentation for: state, data |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:133:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.refreshLights |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:14:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.Stream |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:142:1` | missing @param documentation for: state, chosen |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:142:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.legacy |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:148:1` | missing @param documentation for: batch |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:148:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.counters |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:15:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.Cache |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:16:1` | missing @param documentation for: text |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:16:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.fail |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:168:1` | missing @param documentation for: state, chosen |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:168:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.select |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:17:1` | missing @param documentation for: world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:17:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.blank |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:20:1` | missing @param documentation for: material |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:20:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.unsupported |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:23:1` | missing @param documentation for: full, commands |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:23:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.stageView |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:31:1` | missing @param documentation for: state, data, commands, pass, mode, lookup |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:31:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.makeStream |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:62:1` | missing @param documentation for: world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:62:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.create |
-| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:98:1` | missing @param documentation for: stream, packed, count |
-| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:98:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.gather |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:130:1` | missing @param documentation for: state, faces |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:130:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.refreshFog |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:14:1` | missing @param documentation for: source, sourceBytes, sourceCount, target, targetBytes, runs, runBytes, selected, selectedBytes, selectedCount |
+| warning | `MD2105` | `src/mq3/renderer/retained_world_batch.ml:14:1` | missing @returns documentation for return type: i32 |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:14:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.gatherSpecularNative |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:140:1` | missing @param documentation for: state, data |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:140:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.refreshLights |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:149:1` | missing @param documentation for: state, chosen |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:149:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.legacy |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:15:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.Stream |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:155:1` | missing @param documentation for: batch |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:155:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.counters |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:16:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.Cache |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:17:1` | missing @param documentation for: text |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:17:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.fail |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:175:1` | missing @param documentation for: state, chosen |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:175:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.select |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:18:1` | missing @param documentation for: world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:18:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.blank |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:21:1` | missing @param documentation for: material |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:21:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.unsupported |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:24:1` | missing @param documentation for: full, commands |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:24:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.stageView |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:33:1` | missing @param documentation for: state, data, commands, pass, mode, lookup |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:33:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.makeStream |
+| warning | `MD2104` | `src/mq3/renderer/retained_world_batch.ml:64:1` | missing @param documentation for: world, catalog, skyFlags, fogCatalog, lightCatalog, receiveFlags |
+| warning | `MD2201` | `src/mq3/renderer/retained_world_batch.ml:64:1` | public symbol has no documentation: mq3.renderer.retained_world_batch.create |
 | warning | `MD2104` | `src/mq3/renderer/scene_queue.ml:103:1` | missing @param documentation for: state, origin, intensity, r, g, b |
 | warning | `MD2201` | `src/mq3/renderer/scene_queue.ml:103:1` | public symbol has no documentation: mq3.renderer.scene_queue.addLight |
 | warning | `MD2104` | `src/mq3/renderer/scene_queue.ml:104:1` | missing @param documentation for: state, origin, intensity, r, g, b |
@@ -21332,10 +21342,10 @@
 | warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:248:1` | public symbol has no documentation: mq3.renderer.shader_parser.skipLine |
 | warning | `MD2104` | `src/mq3/renderer/shader_parser.ml:250:1` | missing @param documentation for: state, name |
 | warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:250:1` | public symbol has no documentation: mq3.renderer.shader_parser.parse |
-| warning | `MD2104` | `src/mq3/renderer/shader_parser.ml:283:1` | missing @param documentation for: text, name |
-| warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:283:1` | public symbol has no documentation: mq3.renderer.shader_parser.parseText |
-| warning | `MD2104` | `src/mq3/renderer/shader_parser.ml:284:1` | missing @param documentation for: index, name |
-| warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:284:1` | public symbol has no documentation: mq3.renderer.shader_parser.parseIndexed |
+| warning | `MD2104` | `src/mq3/renderer/shader_parser.ml:286:1` | missing @param documentation for: text, name |
+| warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:286:1` | public symbol has no documentation: mq3.renderer.shader_parser.parseText |
+| warning | `MD2104` | `src/mq3/renderer/shader_parser.ml:287:1` | missing @param documentation for: index, name |
+| warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:287:1` | public symbol has no documentation: mq3.renderer.shader_parser.parseIndexed |
 | warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:37:1` | public symbol has no documentation: mq3.renderer.shader_parser.Wave |
 | warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:38:1` | public symbol has no documentation: mq3.renderer.shader_parser.TexMod |
 | warning | `MD2201` | `src/mq3/renderer/shader_parser.ml:39:1` | public symbol has no documentation: mq3.renderer.shader_parser.Deform |

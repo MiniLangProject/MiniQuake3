@@ -10,7 +10,7 @@ struct MenuText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menutext-generic-generic-src-mq3-client-ui-local-ml-435229703"></a>
 ### generic
@@ -32,7 +32,7 @@ generic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menutext-string-string-src-mq3-client-ui-local-ml-818388405"></a>
 ### string
@@ -42,7 +42,7 @@ string
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)
 
 <a id="field-field-mq3-client-ui-local-menutext-style-style-src-mq3-client-ui-local-ml-650564523"></a>
 ### style
@@ -52,4 +52,4 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L69)

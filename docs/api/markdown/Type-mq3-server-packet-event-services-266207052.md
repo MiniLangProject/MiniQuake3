@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ connectionlessHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-connectionlessruntime-connectionlessruntime-src-mq3-server-packet-event-ml-767673521"></a>
 ### connectionlessRuntime
@@ -32,7 +32,7 @@ connectionlessRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-context-context-src-mq3-server-packet-event-ml-1338596297"></a>
 ### context
@@ -42,7 +42,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-diagnosticfn-diagnosticfn-src-mq3-server-packet-event-ml-1495102835"></a>
 ### diagnosticFn
@@ -52,7 +52,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-disconnectfn-disconnectfn-src-mq3-server-packet-event-ml-425342577"></a>
 ### disconnectFn
@@ -62,7 +62,7 @@ disconnectFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-executefn-executefn-src-mq3-server-packet-event-ml-437630917"></a>
 ### executeFn
@@ -72,7 +72,7 @@ executeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)
 
 <a id="field-field-mq3-server-packet-event-services-processfn-processfn-src-mq3-server-packet-event-ml-1419703421"></a>
 ### processFn
@@ -82,4 +82,4 @@ processFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L22)

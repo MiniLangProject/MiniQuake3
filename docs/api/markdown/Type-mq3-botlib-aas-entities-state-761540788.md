@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaLinks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-state-entities-entities-src-mq3-botlib-aas-entities-ml-1790516572"></a>
 ### entities
@@ -32,7 +32,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-state-frames-frames-src-mq3-botlib-aas-entities-ml-1422401218"></a>
 ### frames
@@ -42,7 +42,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-state-maxentities-maxentities-src-mq3-botlib-aas-entities-ml-2066726130"></a>
 ### maxEntities
@@ -52,7 +52,7 @@ maxEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-state-runtime-runtime-src-mq3-botlib-aas-entities-ml-172393018"></a>
 ### runtime
@@ -62,7 +62,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)
 
 <a id="field-field-mq3-botlib-aas-entities-state-time-time-src-mq3-botlib-aas-entities-ml-10424068"></a>
 ### time
@@ -72,4 +72,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_entities.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_entities.ml#L18)

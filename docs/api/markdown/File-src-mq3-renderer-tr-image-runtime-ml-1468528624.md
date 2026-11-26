@@ -31,7 +31,7 @@ function cloneByteData(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L30)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-commaparse-function-commaparse-text-offset-src-mq3-renderer-tr-image-runtime-ml-700210584"></a>
 ### CommaParse
@@ -46,7 +46,7 @@ function CommaParse(text, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L98)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-create-function-create-imageregistry-host-src-mq3-renderer-tr-image-runtime-ml-1184426040"></a>
 ### create
@@ -61,7 +61,7 @@ function create(imageRegistry, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L25)
 
 - [mq3.renderer.tr_image_runtime.Destination](Type-mq3-renderer-tr-image-runtime-destination-1695831404.md) — struct
 <a id="function-function-mq3-renderer-tr-image-runtime-empty-output-buffer-function-empty-output-buffer-destination-src-mq3-renderer-tr-image-runtime-ml-1679091156"></a>
@@ -76,7 +76,7 @@ function empty_output_buffer(destination)
 | `destination` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L133)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-fog-table-size-const-fog-table-size-256-src-mq3-renderer-tr-image-runtime-ml-1269088726"></a>
 ### FOG_TABLE_SIZE
@@ -86,7 +86,7 @@ const FOG_TABLE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L17)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-generatehashvalue-function-generatehashvalue-name-src-mq3-renderer-tr-image-runtime-ml-1231286039"></a>
 ### generateHashValue
@@ -100,7 +100,7 @@ function generateHashValue(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L61)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-gl-clamp-const-gl-clamp-10496-src-mq3-renderer-tr-image-runtime-ml-82632549"></a>
 ### GL_CLAMP
@@ -110,7 +110,7 @@ const GL_CLAMP = 10496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L16)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-gl-repeat-const-gl-repeat-10497-src-mq3-renderer-tr-image-runtime-ml-1510563464"></a>
 ### GL_REPEAT
@@ -120,7 +120,7 @@ const GL_REPEAT = 10497
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L15)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-gl-texturemode-function-gl-texturemode-state-name-src-mq3-renderer-tr-image-runtime-ml-1521465782"></a>
 ### GL_TextureMode
@@ -135,7 +135,7 @@ function GL_TextureMode(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L75)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-init-destination-function-init-destination-destination-src-mq3-renderer-tr-image-runtime-ml-713381220"></a>
 ### init_destination
@@ -149,7 +149,7 @@ function init_destination(destination)
 | `destination` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L132)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-jpegdest-function-jpegdest-capacity-src-mq3-renderer-tr-image-runtime-ml-1340045860"></a>
 ### jpegDest
@@ -163,7 +163,7 @@ function jpegDest(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L131)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadbmp-function-loadbmp-data-src-mq3-renderer-tr-image-runtime-ml-1704073002"></a>
 ### LoadBMP
@@ -177,7 +177,7 @@ function LoadBMP(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L34)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadjpg-function-loadjpg-data-src-mq3-renderer-tr-image-runtime-ml-1156702430"></a>
 ### LoadJPG
@@ -191,7 +191,7 @@ function LoadJPG(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L33)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadpcx-function-loadpcx-data-src-mq3-renderer-tr-image-runtime-ml-1317154614"></a>
 ### LoadPCX
@@ -205,7 +205,7 @@ function LoadPCX(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L44)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadpcx32-function-loadpcx32-data-src-mq3-renderer-tr-image-runtime-ml-1681529000"></a>
 ### LoadPCX32
@@ -219,7 +219,7 @@ function LoadPCX32(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L58)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-loadtga-function-loadtga-data-src-mq3-renderer-tr-image-runtime-ml-36450400"></a>
 ### LoadTGA
@@ -233,7 +233,7 @@ function LoadTGA(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L32)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-lower-function-lower-value-src-mq3-renderer-tr-image-runtime-ml-349835263"></a>
 ### lower
@@ -247,7 +247,7 @@ function lower(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L27)
 
 <a id="constant-constant-mq3-renderer-tr-image-runtime-max-skins-const-max-skins-1024-src-mq3-renderer-tr-image-runtime-ml-1570003540"></a>
 ### MAX_SKINS
@@ -257,7 +257,7 @@ const MAX_SKINS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L18)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-blendovertexture-function-r-blendovertexture-data-pixelcount-blend-src-mq3-renderer-tr-image-runtime-ml-935153154"></a>
 ### R_BlendOverTexture
@@ -273,7 +273,7 @@ function R_BlendOverTexture(data, pixelCount, blend)
 | `blend` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L66)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createbuiltinimages-function-r-createbuiltinimages-state-src-mq3-renderer-tr-image-runtime-ml-118926349"></a>
 ### R_CreateBuiltinImages
@@ -287,7 +287,7 @@ function R_CreateBuiltinImages(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L87)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createdefaultimage-function-r-createdefaultimage-state-src-mq3-renderer-tr-image-runtime-ml-280633889"></a>
 ### R_CreateDefaultImage
@@ -301,7 +301,7 @@ function R_CreateDefaultImage(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L84)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createdlightimage-function-r-createdlightimage-state-src-mq3-renderer-tr-image-runtime-ml-1234660053"></a>
 ### R_CreateDlightImage
@@ -315,7 +315,7 @@ function R_CreateDlightImage(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L85)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createfogimage-function-r-createfogimage-state-src-mq3-renderer-tr-image-runtime-ml-1861691221"></a>
 ### R_CreateFogImage
@@ -329,7 +329,7 @@ function R_CreateFogImage(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L86)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-createimage-function-r-createimage-state-name-data-width-height-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-tr-image-runtime-ml-1400085392"></a>
 ### R_CreateImage
@@ -350,7 +350,7 @@ function R_CreateImage(state, name, data, width, height, mipmap, allowPicmip, wr
 | `wrapClampMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L71)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-deletetextures-function-r-deletetextures-state-src-mq3-renderer-tr-image-runtime-ml-594158905"></a>
 ### R_DeleteTextures
@@ -364,7 +364,7 @@ function R_DeleteTextures(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L96)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-findimagefile-function-r-findimagefile-state-name-mipmap-allowpicmip-wrapclampmode-src-mq3-renderer-tr-image-runtime-ml-377599237"></a>
 ### R_FindImageFile
@@ -382,7 +382,7 @@ function R_FindImageFile(state, name, mipmap, allowPicmip, wrapClampMode)
 | `wrapClampMode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L72)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-fogfactor-function-r-fogfactor-state-s-t-src-mq3-renderer-tr-image-runtime-ml-2093600562"></a>
 ### R_FogFactor
@@ -398,7 +398,7 @@ function R_FogFactor(state, s, t)
 | `t` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L83)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-gammacorrect-function-r-gammacorrect-state-data-src-mq3-renderer-tr-image-runtime-ml-516366985"></a>
 ### R_GammaCorrect
@@ -413,7 +413,7 @@ function R_GammaCorrect(state, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L73)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-getskinbyhandle-function-r-getskinbyhandle-state-handle-src-mq3-renderer-tr-image-runtime-ml-1872996497"></a>
 ### R_GetSkinByHandle
@@ -428,7 +428,7 @@ function R_GetSkinByHandle(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L128)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-imagelist-f-function-r-imagelist-f-state-src-mq3-renderer-tr-image-runtime-ml-1044195847"></a>
 ### R_ImageList_f
@@ -442,7 +442,7 @@ function R_ImageList_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L80)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initfogtable-function-r-initfogtable-state-src-mq3-renderer-tr-image-runtime-ml-1641980761"></a>
 ### R_InitFogTable
@@ -456,7 +456,7 @@ function R_InitFogTable(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L82)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initimages-function-r-initimages-state-overbright-gamma-intensity-fullscreen-colorbits-src-mq3-renderer-tr-image-runtime-ml-1707832679"></a>
 ### R_InitImages
@@ -475,7 +475,7 @@ function R_InitImages(state, overbright, gamma, intensity, fullscreen, colorBits
 | `colorBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L95)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-initskins-function-r-initskins-state-src-mq3-renderer-tr-image-runtime-ml-1821072015"></a>
 ### R_InitSkins
@@ -489,7 +489,7 @@ function R_InitSkins(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L118)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-lightscaletexture-function-r-lightscaletexture-state-data-width-height-onlygamma-src-mq3-renderer-tr-image-runtime-ml-1989800379"></a>
 ### R_LightScaleTexture
@@ -507,7 +507,7 @@ function R_LightScaleTexture(state, data, width, height, onlyGamma)
 | `onlyGamma` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L63)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-loadimage-function-r-loadimage-data-name-src-mq3-renderer-tr-image-runtime-ml-1720158919"></a>
 ### R_LoadImage
@@ -522,7 +522,7 @@ function R_LoadImage(data, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L59)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-mipmap-function-r-mipmap-data-width-height-src-mq3-renderer-tr-image-runtime-ml-1557542575"></a>
 ### R_MipMap
@@ -538,7 +538,7 @@ function R_MipMap(data, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L64)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-mipmap2-function-r-mipmap2-data-width-height-src-mq3-renderer-tr-image-runtime-ml-148339529"></a>
 ### R_MipMap2
@@ -554,7 +554,7 @@ function R_MipMap2(data, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L65)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-setcolormappings-function-r-setcolormappings-state-overbright-gamma-intensity-fullscreen-colorbits-src-mq3-renderer-tr-image-runtime-ml-1613485495"></a>
 ### R_SetColorMappings
@@ -573,7 +573,7 @@ function R_SetColorMappings(state, overbright, gamma, intensity, fullscreen, col
 | `colorBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L88)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-skinlist-f-function-r-skinlist-f-state-src-mq3-renderer-tr-image-runtime-ml-1093164057"></a>
 ### R_SkinList_f
@@ -587,7 +587,7 @@ function R_SkinList_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L129)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-r-sumofusedimages-function-r-sumofusedimages-state-framecount-src-mq3-renderer-tr-image-runtime-ml-216058037"></a>
 ### R_SumOfUsedImages
@@ -602,7 +602,7 @@ function R_SumOfUsedImages(state, frameCount)
 | `frameCount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L79)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-re-registerskin-function-re-registerskin-state-name-src-mq3-renderer-tr-image-runtime-ml-1786403602"></a>
 ### RE_RegisterSkin
@@ -617,7 +617,7 @@ function RE_RegisterSkin(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L119)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-resampletexture-function-resampletexture-data-inwidth-inheight-outwidth-outheight-src-mq3-renderer-tr-image-runtime-ml-1350500368"></a>
 ### ResampleTexture
@@ -635,7 +635,7 @@ function ResampleTexture(data, inWidth, inHeight, outWidth, outHeight)
 | `outHeight` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L62)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-savejpg-function-savejpg-state-filename-quality-width-height-pixels-src-mq3-renderer-tr-image-runtime-ml-537509397"></a>
 ### SaveJPG
@@ -654,7 +654,7 @@ function SaveJPG(state, filename, quality, width, height, pixels)
 | `pixels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L135)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-services-function-services-src-mq3-renderer-tr-image-runtime-ml-32781840"></a>
 ### services
@@ -664,7 +664,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L24)
 
 - [mq3.renderer.tr_image_runtime.Services](Type-mq3-renderer-tr-image-runtime-services-1588385876.md) — struct
 - [mq3.renderer.tr_image_runtime.SkinRecord](Type-mq3-renderer-tr-image-runtime-skinrecord-367827300.md) — struct
@@ -682,7 +682,7 @@ function term_destination(destination, used)
 | `used` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L134)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-u16-function-u16-data-at-src-mq3-renderer-tr-image-runtime-ml-999798245"></a>
 ### u16
@@ -697,7 +697,7 @@ function u16(data, at)
 | `at` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L28)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-u32-function-u32-data-at-src-mq3-renderer-tr-image-runtime-ml-358064545"></a>
 ### u32
@@ -712,7 +712,7 @@ function u32(data, at)
 | `at` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L29)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-upload32-function-upload32-state-data-width-height-mipmap-allowpicmip-lightmap-src-mq3-renderer-tr-image-runtime-ml-1976337253"></a>
 ### Upload32
@@ -732,7 +732,7 @@ function Upload32(state, data, width, height, mipmap, allowPicmip, lightMap)
 | `lightMap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L70)
 
 <a id="function-function-mq3-renderer-tr-image-runtime-warn-function-warn-state-text-src-mq3-renderer-tr-image-runtime-ml-1534089878"></a>
 ### warn
@@ -747,4 +747,4 @@ function warn(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L26)

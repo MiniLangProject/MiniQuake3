@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ authorizeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-context-context-src-mq3-server-main-runtime-ml-762227175"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-decompressfn-decompressfn-src-mq3-server-main-runtime-ml-64902453"></a>
 ### decompressFn
@@ -42,7 +42,7 @@ decompressFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-diagnosticfn-diagnosticfn-src-mq3-server-main-runtime-ml-1748609433"></a>
 ### diagnosticFn
@@ -52,7 +52,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-dropfn-dropfn-src-mq3-server-main-runtime-ml-1256870637"></a>
 ### dropFn
@@ -62,7 +62,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-executefn-executefn-src-mq3-server-main-runtime-ml-740677683"></a>
 ### executeFn
@@ -72,7 +72,7 @@ executeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-millisecondsfn-millisecondsfn-src-mq3-server-main-runtime-ml-775513319"></a>
 ### millisecondsFn
@@ -82,7 +82,7 @@ millisecondsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-printfn-printfn-src-mq3-server-main-runtime-ml-1590705391"></a>
 ### printFn
@@ -92,7 +92,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-resolvefn-resolvefn-src-mq3-server-main-runtime-ml-1965820223"></a>
 ### resolveFn
@@ -102,7 +102,7 @@ resolveFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)
 
 <a id="field-field-mq3-server-main-runtime-services-sendfn-sendfn-src-mq3-server-main-runtime-ml-1833195995"></a>
 ### sendFn
@@ -112,4 +112,4 @@ sendFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L39)

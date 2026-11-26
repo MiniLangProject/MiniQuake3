@@ -10,7 +10,7 @@ struct Glyph
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-imageheight-imageheight-src-mq3-client-cgame-draw-ml-1538605591"></a>
 ### imageHeight
@@ -32,7 +32,7 @@ imageHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-imagewidth-imagewidth-src-mq3-client-cgame-draw-ml-308068521"></a>
 ### imageWidth
@@ -42,7 +42,7 @@ imageWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-s-s-src-mq3-client-cgame-draw-ml-463046083"></a>
 ### s
@@ -52,7 +52,7 @@ s
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-s2-s2-src-mq3-client-cgame-draw-ml-2019896701"></a>
 ### s2
@@ -62,7 +62,7 @@ s2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-shader-shader-src-mq3-client-cgame-draw-ml-1351000509"></a>
 ### shader
@@ -72,7 +72,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-t-t-src-mq3-client-cgame-draw-ml-1526177087"></a>
 ### t
@@ -82,7 +82,7 @@ t
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-t2-t2-src-mq3-client-cgame-draw-ml-582838687"></a>
 ### t2
@@ -92,7 +92,7 @@ t2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-top-top-src-mq3-client-cgame-draw-ml-886813607"></a>
 ### top
@@ -102,7 +102,7 @@ top
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)
 
 <a id="field-field-mq3-client-cgame-draw-glyph-xskip-xskip-src-mq3-client-cgame-draw-ml-53514167"></a>
 ### xSkip
@@ -112,4 +112,4 @@ xSkip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L39)

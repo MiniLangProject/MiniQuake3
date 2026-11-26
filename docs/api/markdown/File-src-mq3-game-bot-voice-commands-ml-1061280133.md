@@ -22,7 +22,7 @@ const ACTION_AFFIRMATIVE = 1048576
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L29)
 
 - [mq3.game.bot_voice_commands.Bot](Type-mq3-game-bot-voice-commands-bot-657116126.md) — struct
 <a id="function-function-mq3-game-bot-voice-commands-camp-function-camp-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-424160925"></a>
@@ -43,7 +43,7 @@ BotVoiceChat_Camp
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L170)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-chat-team-const-chat-team-1-src-mq3-game-bot-voice-commands-ml-1144863748"></a>
 ### CHAT_TEAM
@@ -53,7 +53,7 @@ const CHAT_TEAM = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L12)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-chat-tell-const-chat-tell-2-src-mq3-game-bot-voice-commands-ml-762584163"></a>
 ### CHAT_TELL
@@ -63,7 +63,7 @@ const CHAT_TELL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L13)
 
 <a id="function-function-mq3-game-bot-voice-commands-copygoal-function-copygoal-value-src-mq3-game-bot-voice-commands-ml-692633997"></a>
 ### copyGoal
@@ -77,7 +77,7 @@ function copyGoal(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L91)
 
 <a id="function-function-mq3-game-bot-voice-commands-create-function-create-src-mq3-game-bot-voice-commands-ml-235640278"></a>
 ### create
@@ -87,7 +87,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L95)
 
 <a id="function-function-mq3-game-bot-voice-commands-createbot-function-createbot-client-src-mq3-game-bot-voice-commands-ml-248001159"></a>
 ### createBot
@@ -101,27 +101,27 @@ function createBot(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L92)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-ctf-getflag-time-const-ctf-getflag-time-600-src-mq3-game-bot-voice-commands-ml-1178032709"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-ctf-getflag-time-const-ctf-getflag-time-600-src-mq3-game-bot-voice-commands-ml-1960201233"></a>
 ### CTF_GETFLAG_TIME
 
 ```ml
-const CTF_GETFLAG_TIME = 600.
+const CTF_GETFLAG_TIME = 600
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L35)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-ctf-returnflag-time-const-ctf-returnflag-time-180-src-mq3-game-bot-voice-commands-ml-330497038"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-ctf-returnflag-time-const-ctf-returnflag-time-180-src-mq3-game-bot-voice-commands-ml-189433364"></a>
 ### CTF_RETURNFLAG_TIME
 
 ```ml
-const CTF_RETURNFLAG_TIME = 180.
+const CTF_RETURNFLAG_TIME = 180
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L36)
 
 <a id="function-function-mq3-game-bot-voice-commands-defend-function-defend-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-106234109"></a>
 ### defend
@@ -141,7 +141,7 @@ BotVoiceChat_Defend and BotVoiceChat_DefendFlag
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L142)
 
 <a id="function-function-mq3-game-bot-voice-commands-defendflag-function-defendflag-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-815274073"></a>
 ### defendFlag
@@ -159,7 +159,7 @@ function defendFlag(state, bot, client, mode, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L152)
 
 <a id="function-function-mq3-game-bot-voice-commands-dummy-function-dummy-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1268479689"></a>
 ### dummy
@@ -179,7 +179,7 @@ BotVoiceChat_Dummy
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L212)
 
 <a id="function-function-mq3-game-bot-voice-commands-easyname-function-easyname-state-client-src-mq3-game-bot-voice-commands-ml-952925050"></a>
 ### easyName
@@ -194,7 +194,7 @@ function easyName(state, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L167)
 
 <a id="function-function-mq3-game-bot-voice-commands-emit-function-emit-state-kind-client-channel-text-value-retailactive-src-mq3-game-bot-voice-commands-ml-1405194812"></a>
 ### emit
@@ -214,7 +214,7 @@ function emit(state, kind, client, channel, text, value, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L105)
 
 <a id="function-function-mq3-game-bot-voice-commands-emptygoal-function-emptygoal-src-mq3-game-bot-voice-commands-ml-22570122"></a>
 ### emptyGoal
@@ -224,7 +224,7 @@ function emptyGoal()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L90)
 
 <a id="function-function-mq3-game-bot-voice-commands-enterchat-function-enterchat-state-bot-client-channel-retailactive-src-mq3-game-bot-voice-commands-ml-1626851497"></a>
 ### enterChat
@@ -242,7 +242,7 @@ function enterChat(state, bot, client, channel, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L113)
 
 - [mq3.game.bot_voice_commands.EntityInfo](Type-mq3-game-bot-voice-commands-entityinfo-451566370.md) — struct
 <a id="function-function-mq3-game-bot-voice-commands-floattime-function-floattime-state-src-mq3-game-bot-voice-commands-ml-563159315"></a>
@@ -257,7 +257,7 @@ function floatTime(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L101)
 
 <a id="function-function-mq3-game-bot-voice-commands-followflagcarrier-function-followflagcarrier-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1271151539"></a>
 ### followFlagCarrier
@@ -275,7 +275,7 @@ function followFlagCarrier(state, bot, client, mode, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L183)
 
 <a id="function-function-mq3-game-bot-voice-commands-followme-function-followme-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-759568293"></a>
 ### followMe
@@ -295,7 +295,7 @@ BotVoiceChat_FollowMe and BotVoiceChat_FollowFlagCarrier
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L177)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L177)
 
 <a id="function-function-mq3-game-bot-voice-commands-getflag-function-getflag-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-543732957"></a>
 ### getFlag
@@ -315,7 +315,7 @@ BotVoiceChat_GetFlag
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L122)
 
 <a id="function-function-mq3-game-bot-voice-commands-goal-function-goal-entitynum-areanum-origin-mins-maxs-tag-src-mq3-game-bot-voice-commands-ml-1245002892"></a>
 ### goal
@@ -334,7 +334,7 @@ function goal(entitynum, areanum, origin, mins, maxs, tag)
 | `tag` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L89)
 
 - [mq3.game.bot_voice_commands.Goal](Type-mq3-game-bot-voice-commands-goal-597117782.md) — struct
 <a id="constant-constant-mq3-game-bot-voice-commands-gt-1fctf-const-gt-1fctf-5-src-mq3-game-bot-voice-commands-ml-2069129334"></a>
@@ -345,7 +345,7 @@ const GT_1FCTF = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L17)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-gt-ctf-const-gt-ctf-4-src-mq3-game-bot-voice-commands-ml-1880627505"></a>
 ### GT_CTF
@@ -355,7 +355,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L16)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-gt-harvester-const-gt-harvester-7-src-mq3-game-bot-voice-commands-ml-386545428"></a>
 ### GT_HARVESTER
@@ -365,7 +365,7 @@ const GT_HARVESTER = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L19)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-gt-obelisk-const-gt-obelisk-6-src-mq3-game-bot-voice-commands-ml-1629625991"></a>
 ### GT_OBELISK
@@ -375,7 +375,7 @@ const GT_OBELISK = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L18)
 
 - [mq3.game.bot_voice_commands.HostAction](Type-mq3-game-bot-voice-commands-hostaction-538309141.md) — struct
 <a id="function-function-mq3-game-bot-voice-commands-initialchat-function-initialchat-state-bot-chat-arg-retailactive-src-mq3-game-bot-voice-commands-ml-934170665"></a>
@@ -394,7 +394,7 @@ function initialChat(state, bot, chat, arg, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L112)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-attackenemybase-const-ltg-attackenemybase-13-src-mq3-game-bot-voice-commands-ml-1359679239"></a>
 ### LTG_ATTACKENEMYBASE
@@ -404,7 +404,7 @@ const LTG_ATTACKENEMYBASE = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L26)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-camporder-const-ltg-camporder-8-src-mq3-game-bot-voice-commands-ml-1264563405"></a>
 ### LTG_CAMPORDER
@@ -414,7 +414,7 @@ const LTG_CAMPORDER = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L24)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-defendkeyarea-const-ltg-defendkeyarea-3-src-mq3-game-bot-voice-commands-ml-361841134"></a>
 ### LTG_DEFENDKEYAREA
@@ -424,7 +424,7 @@ const LTG_DEFENDKEYAREA = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L21)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-getflag-const-ltg-getflag-4-src-mq3-game-bot-voice-commands-ml-1192454053"></a>
 ### LTG_GETFLAG
@@ -434,7 +434,7 @@ const LTG_GETFLAG = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L22)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-harvest-const-ltg-harvest-12-src-mq3-game-bot-voice-commands-ml-541014806"></a>
 ### LTG_HARVEST
@@ -444,7 +444,7 @@ const LTG_HARVEST = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L25)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-returnflag-const-ltg-returnflag-6-src-mq3-game-bot-voice-commands-ml-829316073"></a>
 ### LTG_RETURNFLAG
@@ -454,7 +454,7 @@ const LTG_RETURNFLAG = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L23)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-ltg-teamaccompany-const-ltg-teamaccompany-2-src-mq3-game-bot-voice-commands-ml-831484095"></a>
 ### LTG_TEAMACCOMPANY
@@ -464,7 +464,7 @@ const LTG_TEAMACCOMPANY = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L20)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-max-clients-const-max-clients-64-src-mq3-game-bot-voice-commands-ml-283780325"></a>
 ### MAX_CLIENTS
@@ -474,7 +474,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L9)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-max-message-size-const-max-message-size-256-src-mq3-game-bot-voice-commands-ml-1576521648"></a>
 ### MAX_MESSAGE_SIZE
@@ -484,7 +484,7 @@ const MAX_MESSAGE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L10)
 
 <a id="function-function-mq3-game-bot-voice-commands-offense-function-offense-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-86890053"></a>
 ### offense
@@ -504,7 +504,7 @@ BotVoiceChat_Offense
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L134)
 
 <a id="function-function-mq3-game-bot-voice-commands-orderedtiming-function-orderedtiming-state-bot-client-ltg-duration-src-mq3-game-bot-voice-commands-ml-1892417132"></a>
 ### orderedTiming
@@ -522,7 +522,7 @@ function orderedTiming(state, bot, client, ltg, duration)
 | `duration` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L115)
 
 <a id="function-function-mq3-game-bot-voice-commands-patrol-function-patrol-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-660792649"></a>
 ### patrol
@@ -542,7 +542,7 @@ BotVoiceChat_Patrol
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L155)
 
 <a id="function-function-mq3-game-bot-voice-commands-remember-function-remember-state-bot-retailactive-src-mq3-game-bot-voice-commands-ml-161386941"></a>
 ### remember
@@ -558,7 +558,7 @@ function remember(state, bot, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L111)
 
 <a id="function-function-mq3-game-bot-voice-commands-resolveclientgoal-function-resolveclientgoal-state-bot-client-src-mq3-game-bot-voice-commands-ml-1736754479"></a>
 ### resolveClientGoal
@@ -574,7 +574,7 @@ function resolveClientGoal(state, bot, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L160)
 
 <a id="function-function-mq3-game-bot-voice-commands-returnflag-function-returnflag-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1085962273"></a>
 ### returnFlag
@@ -594,7 +594,7 @@ BotVoiceChat_ReturnFlag
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L186)
 
 <a id="function-function-mq3-game-bot-voice-commands-sameteam-function-sameteam-bot-client-state-src-mq3-game-bot-voice-commands-ml-682462697"></a>
 ### sameTeam
@@ -610,7 +610,7 @@ function sameTeam(bot, client, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L222)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-say-all-const-say-all-0-src-mq3-game-bot-voice-commands-ml-1627244525"></a>
 ### SAY_ALL
@@ -620,7 +620,7 @@ const SAY_ALL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L11)
 
 <a id="function-function-mq3-game-bot-voice-commands-setclientteam-function-setclientteam-state-client-team-src-mq3-game-bot-voice-commands-ml-890937023"></a>
 ### setClientTeam
@@ -636,7 +636,7 @@ function setClientTeam(state, client, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L250)
 
 <a id="function-function-mq3-game-bot-voice-commands-setstatus-function-setstatus-state-bot-retailactive-src-mq3-game-bot-voice-commands-ml-2124679641"></a>
 ### setStatus
@@ -652,7 +652,7 @@ function setStatus(state, bot, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L110)
 
 <a id="function-function-mq3-game-bot-voice-commands-startleader-function-startleader-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-144006931"></a>
 ### startLeader
@@ -672,7 +672,7 @@ BotVoiceChat_StartLeader, BotVoiceChat_StopLeader, BotVoiceChat_WhoIsLeader
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L192)
 
 - [mq3.game.bot_voice_commands.State](Type-mq3-game-bot-voice-commands-state-1308240726.md) — struct
 <a id="function-function-mq3-game-bot-voice-commands-stopleader-function-stopleader-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1570621033"></a>
@@ -691,27 +691,27 @@ function stopLeader(state, bot, client, mode, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L193)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-team-accompany-time-const-team-accompany-time-600-src-mq3-game-bot-voice-commands-ml-1608482743"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-team-accompany-time-const-team-accompany-time-600-src-mq3-game-bot-voice-commands-ml-1509042859"></a>
 ### TEAM_ACCOMPANY_TIME
 
 ```ml
-const TEAM_ACCOMPANY_TIME = 600.
+const TEAM_ACCOMPANY_TIME = 600
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L30)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-team-attackenemybase-time-const-team-attackenemybase-time-600-src-mq3-game-bot-voice-commands-ml-1089382807"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-team-attackenemybase-time-const-team-attackenemybase-time-600-src-mq3-game-bot-voice-commands-ml-1049397259"></a>
 ### TEAM_ATTACKENEMYBASE_TIME
 
 ```ml
-const TEAM_ATTACKENEMYBASE_TIME = 600.
+const TEAM_ATTACKENEMYBASE_TIME = 600
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L33)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-team-blue-const-team-blue-2-src-mq3-game-bot-voice-commands-ml-326626635"></a>
 ### TEAM_BLUE
@@ -721,37 +721,37 @@ const TEAM_BLUE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L15)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-team-camp-time-const-team-camp-time-600-src-mq3-game-bot-voice-commands-ml-1146349327"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-team-camp-time-const-team-camp-time-600-src-mq3-game-bot-voice-commands-ml-936463939"></a>
 ### TEAM_CAMP_TIME
 
 ```ml
-const TEAM_CAMP_TIME = 600.
+const TEAM_CAMP_TIME = 600
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L32)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-team-defendkeyarea-time-const-team-defendkeyarea-time-600-src-mq3-game-bot-voice-commands-ml-227014907"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-team-defendkeyarea-time-const-team-defendkeyarea-time-600-src-mq3-game-bot-voice-commands-ml-2084698431"></a>
 ### TEAM_DEFENDKEYAREA_TIME
 
 ```ml
-const TEAM_DEFENDKEYAREA_TIME = 600.
+const TEAM_DEFENDKEYAREA_TIME = 600
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L31)
 
-<a id="constant-constant-mq3-game-bot-voice-commands-team-harvest-time-const-team-harvest-time-120-src-mq3-game-bot-voice-commands-ml-1665379100"></a>
+<a id="constant-constant-mq3-game-bot-voice-commands-team-harvest-time-const-team-harvest-time-120-src-mq3-game-bot-voice-commands-ml-1904681106"></a>
 ### TEAM_HARVEST_TIME
 
 ```ml
-const TEAM_HARVEST_TIME = 120.
+const TEAM_HARVEST_TIME = 120
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L34)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-team-red-const-team-red-1-src-mq3-game-bot-voice-commands-ml-844243808"></a>
 ### TEAM_RED
@@ -761,7 +761,7 @@ const TEAM_RED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L14)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-teamtp-attacker-const-teamtp-attacker-2-src-mq3-game-bot-voice-commands-ml-856112871"></a>
 ### TEAMTP_ATTACKER
@@ -771,7 +771,7 @@ const TEAMTP_ATTACKER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L28)
 
 <a id="constant-constant-mq3-game-bot-voice-commands-teamtp-defender-const-teamtp-defender-1-src-mq3-game-bot-voice-commands-ml-1591358444"></a>
 ### TEAMTP_DEFENDER
@@ -781,7 +781,7 @@ const TEAMTP_DEFENDER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L27)
 
 <a id="function-function-mq3-game-bot-voice-commands-tokenslikeoriginal-function-tokenslikeoriginal-text-src-mq3-game-bot-voice-commands-ml-2104170929"></a>
 ### tokensLikeOriginal
@@ -795,7 +795,7 @@ function tokensLikeOriginal(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L214)
 
 <a id="function-function-mq3-game-bot-voice-commands-voicechatcommand-function-voicechatcommand-state-bot-mode-voicechat-retailactive-src-mq3-game-bot-voice-commands-ml-1926281982"></a>
 ### voiceChatCommand
@@ -815,7 +815,7 @@ BotVoiceChatCommand.
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L225)
 
 <a id="function-function-mq3-game-bot-voice-commands-voiceonly-function-voiceonly-state-bot-client-text-retailactive-src-mq3-game-bot-voice-commands-ml-768487605"></a>
 ### voiceOnly
@@ -833,7 +833,7 @@ function voiceOnly(state, bot, client, text, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L114)
 
 <a id="function-function-mq3-game-bot-voice-commands-wantondefense-function-wantondefense-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1921237175"></a>
 ### wantOnDefense
@@ -853,7 +853,7 @@ BotVoiceChat_WantOnDefense and BotVoiceChat_WantOnOffense
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L203)
 
 <a id="function-function-mq3-game-bot-voice-commands-wantonoffense-function-wantonoffense-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-1409855987"></a>
 ### wantOnOffense
@@ -871,7 +871,7 @@ function wantOnOffense(state, bot, client, mode, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L207)
 
 <a id="function-function-mq3-game-bot-voice-commands-whoisleader-function-whoisleader-state-bot-client-mode-retailactive-src-mq3-game-bot-voice-commands-ml-616591811"></a>
 ### whoIsLeader
@@ -889,4 +889,4 @@ function whoIsLeader(state, bot, client, mode, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_voice_commands.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_voice_commands.ml#L196)

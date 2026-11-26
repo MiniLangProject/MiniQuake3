@@ -10,7 +10,7 @@ struct Face
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ backArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-debug-face-firstedge-firstedge-src-mq3-botlib-aas-debug-ml-1283370856"></a>
 ### firstEdge
@@ -32,7 +32,7 @@ firstEdge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-debug-face-flags-flags-src-mq3-botlib-aas-debug-ml-344413188"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-debug-face-frontarea-frontarea-src-mq3-botlib-aas-debug-ml-1655750628"></a>
 ### frontArea
@@ -52,7 +52,7 @@ frontArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-debug-face-numedges-numedges-src-mq3-botlib-aas-debug-ml-669730380"></a>
 ### numEdges
@@ -62,7 +62,7 @@ numEdges
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)
 
 <a id="field-field-mq3-botlib-aas-debug-face-planenum-planenum-src-mq3-botlib-aas-debug-ml-1517798164"></a>
 ### planeNum
@@ -72,4 +72,4 @@ planeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L41)

@@ -10,7 +10,7 @@ struct ClientStatic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ authorizeServer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-cddialog-cddialog-src-mq3-client-client-abi-ml-1994333854"></a>
 ### cddialog
@@ -32,7 +32,7 @@ cddialog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-cgamestarted-cgamestarted-src-mq3-client-client-abi-ml-76959376"></a>
 ### cgameStarted
@@ -42,7 +42,7 @@ cgameStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-charsetshader-charsetshader-src-mq3-client-client-abi-ml-1538351656"></a>
 ### charSetShader
@@ -52,7 +52,7 @@ charSetShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-consoleshader-consoleshader-src-mq3-client-client-abi-ml-272540528"></a>
 ### consoleShader
@@ -62,7 +62,7 @@ consoleShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-favoriteservers-favoriteservers-src-mq3-client-client-abi-ml-214594696"></a>
 ### favoriteServers
@@ -72,7 +72,7 @@ favoriteServers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-framecount-framecount-src-mq3-client-client-abi-ml-1967133836"></a>
 ### framecount
@@ -82,7 +82,7 @@ framecount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-frametime-frametime-src-mq3-client-client-abi-ml-554536196"></a>
 ### frametime
@@ -92,7 +92,7 @@ frametime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-glconfig-glconfig-src-mq3-client-client-abi-ml-1802284030"></a>
 ### glconfig
@@ -102,7 +102,7 @@ glconfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-globalserveraddresses-globalserveraddresses-src-mq3-client-client-abi-ml-1543820768"></a>
 ### globalServerAddresses
@@ -112,7 +112,7 @@ globalServerAddresses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-globalservers-globalservers-src-mq3-client-client-abi-ml-621096000"></a>
 ### globalServers
@@ -122,7 +122,7 @@ globalServers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-keycatchers-keycatchers-src-mq3-client-client-abi-ml-982330980"></a>
 ### keyCatchers
@@ -132,7 +132,7 @@ keyCatchers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-localservers-localservers-src-mq3-client-client-abi-ml-516122582"></a>
 ### localServers
@@ -142,7 +142,7 @@ localServers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-masternum-masternum-src-mq3-client-client-abi-ml-578102412"></a>
 ### masterNum
@@ -152,7 +152,7 @@ masterNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-mplayerservers-mplayerservers-src-mq3-client-client-abi-ml-1736172564"></a>
 ### mplayerServers
@@ -162,7 +162,7 @@ mplayerServers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-numfavoriteservers-numfavoriteservers-src-mq3-client-client-abi-ml-47923088"></a>
 ### numfavoriteservers
@@ -172,7 +172,7 @@ numfavoriteservers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-numglobalserveraddresses-numglobalserveraddresses-src-mq3-client-client-abi-ml-833565400"></a>
 ### numGlobalServerAddresses
@@ -182,7 +182,7 @@ numGlobalServerAddresses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-numglobalservers-numglobalservers-src-mq3-client-client-abi-ml-1012139194"></a>
 ### numglobalservers
@@ -192,7 +192,7 @@ numglobalservers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-numlocalservers-numlocalservers-src-mq3-client-client-abi-ml-1919980024"></a>
 ### numlocalservers
@@ -202,7 +202,7 @@ numlocalservers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-nummplayerservers-nummplayerservers-src-mq3-client-client-abi-ml-1104242292"></a>
 ### nummplayerservers
@@ -212,7 +212,7 @@ nummplayerservers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-pingupdatesource-pingupdatesource-src-mq3-client-client-abi-ml-984723808"></a>
 ### pingUpdateSource
@@ -222,7 +222,7 @@ pingUpdateSource
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-realframetime-realframetime-src-mq3-client-client-abi-ml-1715827472"></a>
 ### realFrametime
@@ -232,7 +232,7 @@ realFrametime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-realtime-realtime-src-mq3-client-client-abi-ml-101840838"></a>
 ### realtime
@@ -242,7 +242,7 @@ realtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-rendererstarted-rendererstarted-src-mq3-client-client-abi-ml-1665258308"></a>
 ### rendererStarted
@@ -252,7 +252,7 @@ rendererStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-servername-servername-src-mq3-client-client-abi-ml-2016383132"></a>
 ### servername
@@ -262,7 +262,7 @@ servername
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-soundregistered-soundregistered-src-mq3-client-client-abi-ml-1432425140"></a>
 ### soundRegistered
@@ -272,7 +272,7 @@ soundRegistered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-soundstarted-soundstarted-src-mq3-client-client-abi-ml-1777698372"></a>
 ### soundStarted
@@ -282,7 +282,7 @@ soundStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-state-state-src-mq3-client-client-abi-ml-1506842152"></a>
 ### state
@@ -292,7 +292,7 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-uistarted-uistarted-src-mq3-client-client-abi-ml-666449964"></a>
 ### uiStarted
@@ -302,7 +302,7 @@ uiStarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-updatechallenge-updatechallenge-src-mq3-client-client-abi-ml-57066964"></a>
 ### updateChallenge
@@ -312,7 +312,7 @@ updateChallenge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-updateinfostring-updateinfostring-src-mq3-client-client-abi-ml-2103762108"></a>
 ### updateInfoString
@@ -322,7 +322,7 @@ updateInfoString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-updateserver-updateserver-src-mq3-client-client-abi-ml-635167132"></a>
 ### updateServer
@@ -332,7 +332,7 @@ updateServer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)
 
 <a id="field-field-mq3-client-client-abi-clientstatic-whiteshader-whiteshader-src-mq3-client-client-abi-ml-2028466064"></a>
 ### whiteShader
@@ -342,4 +342,4 @@ whiteShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L14)

@@ -18,7 +18,7 @@ function cache()
 UI_SoundOptionsMenu_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L24)
 
 <a id="function-function-mq3-client-ui-sound-options-event-function-event-menu-id-eventcode-value-src-mq3-client-ui-sound-options-ml-605962800"></a>
 ### event
@@ -37,7 +37,7 @@ UI_SoundOptionsMenu_Event
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L46)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-back-const-id-back-18-src-mq3-client-ui-sound-options-ml-486695126"></a>
 ### ID_BACK
@@ -47,7 +47,7 @@ const ID_BACK = 18
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-display-const-id-display-11-src-mq3-client-ui-sound-options-ml-1762972869"></a>
 ### ID_DISPLAY
@@ -57,7 +57,7 @@ const ID_DISPLAY = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-effectsvolume-const-id-effectsvolume-14-src-mq3-client-ui-sound-options-ml-1830882252"></a>
 ### ID_EFFECTSVOLUME
@@ -67,7 +67,7 @@ const ID_EFFECTSVOLUME = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-graphics-const-id-graphics-10-src-mq3-client-ui-sound-options-ml-2038290690"></a>
 ### ID_GRAPHICS
@@ -77,7 +77,7 @@ const ID_GRAPHICS = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L7)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-musicvolume-const-id-musicvolume-15-src-mq3-client-ui-sound-options-ml-1000765303"></a>
 ### ID_MUSICVOLUME
@@ -87,7 +87,7 @@ const ID_MUSICVOLUME = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-network-const-id-network-13-src-mq3-client-ui-sound-options-ml-722497259"></a>
 ### ID_NETWORK
@@ -97,7 +97,7 @@ const ID_NETWORK = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-quality-const-id-quality-16-src-mq3-client-ui-sound-options-ml-1572456220"></a>
 ### ID_QUALITY
@@ -107,7 +107,7 @@ const ID_QUALITY = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-sound-options-id-sound-const-id-sound-12-src-mq3-client-ui-sound-options-ml-626659040"></a>
 ### ID_SOUND
@@ -117,7 +117,7 @@ const ID_SOUND = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L9)
 
 <a id="function-function-mq3-client-ui-sound-options-init-function-init-svolume-smusicvolume-scompression-src-mq3-client-ui-sound-options-ml-120410988"></a>
 ### init
@@ -135,7 +135,7 @@ UI_SoundOptionsMenu_Init
 | `sCompression` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L29)
 
 <a id="function-function-mq3-client-ui-sound-options-item-function-item-id-kind-name-x-y-minvalue-maxvalue-value-active-src-mq3-client-ui-sound-options-ml-589524636"></a>
 ### item
@@ -157,7 +157,7 @@ function item(id, kind, name, x, y, minValue, maxValue, value, active)
 | `active` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L19)
 
 - [mq3.client.ui_sound_options.Item](Type-mq3-client-ui-sound-options-item-793859675.md) — struct
 - [mq3.client.ui_sound_options.Menu](Type-mq3-client-ui-sound-options-menu-323770811.md) — struct
@@ -177,7 +177,7 @@ UI_SoundOptionsMenu
 | `sCompression` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L64)
 
 <a id="constant-constant-mq3-client-ui-sound-options-qm-activated-const-qm-activated-3-src-mq3-client-ui-sound-options-ml-2043382004"></a>
 ### QM_ACTIVATED
@@ -187,4 +187,4 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L6)

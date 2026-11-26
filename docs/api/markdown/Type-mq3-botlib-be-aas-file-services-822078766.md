@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-printfn-printfn-src-mq3-botlib-be-aas-file-ml-968128725"></a>
 ### printFn
@@ -32,7 +32,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-readfilefn-readfilefn-src-mq3-botlib-be-aas-file-ml-131844805"></a>
 ### readFileFn
@@ -42,7 +42,7 @@ readFileFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L16)
 
 <a id="field-field-mq3-botlib-be-aas-file-services-writefilefn-writefilefn-src-mq3-botlib-be-aas-file-ml-1493522165"></a>
 ### writeFileFn
@@ -52,4 +52,4 @@ writeFileFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L16)

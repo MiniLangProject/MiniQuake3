@@ -10,7 +10,7 @@ struct TeamInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L66)
 
 ## Members
 
@@ -22,7 +22,7 @@ cinematic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L66)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-imagename-imagename-src-mq3-client-ui-main-missionpack-ml-2022916520"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L66)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-name-name-src-mq3-client-ui-main-missionpack-ml-305420694"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L66)
 
 <a id="field-field-mq3-client-ui-main-missionpack-teaminfo-teammembers-teammembers-src-mq3-client-ui-main-missionpack-ml-1396463716"></a>
 ### teamMembers
@@ -52,4 +52,4 @@ teamMembers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L66)

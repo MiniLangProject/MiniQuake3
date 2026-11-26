@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-inputs-inputs-src-mq3-client-playable-enemy-events-ml-112820342"></a>
 ### inputs
@@ -32,7 +32,7 @@ inputs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-lasttime-lasttime-src-mq3-client-playable-enemy-events-ml-1597622014"></a>
 ### lastTime
@@ -42,7 +42,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-events-state-tracks-tracks-src-mq3-client-playable-enemy-events-ml-69442808"></a>
 ### tracks
@@ -52,4 +52,4 @@ tracks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_events.ml#L18)

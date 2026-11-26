@@ -27,4 +27,4 @@ function inPVS(world, firstPoint, secondPoint)
 | `secondPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/pvs_query.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/pvs_query.ml#L10)

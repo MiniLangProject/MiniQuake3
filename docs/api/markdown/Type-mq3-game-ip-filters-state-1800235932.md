@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ banBuffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L17)
 
 <a id="field-field-mq3-game-ip-filters-state-banvm-banvm-src-mq3-game-ip-filters-ml-789458706"></a>
 ### banVm
@@ -32,7 +32,7 @@ banVm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L18)
 
 <a id="field-field-mq3-game-ip-filters-state-buffercopygeneration-buffercopygeneration-src-mq3-game-ip-filters-ml-693221388"></a>
 ### bufferCopyGeneration
@@ -42,7 +42,7 @@ bufferCopyGeneration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L23)
 
 <a id="field-field-mq3-game-ip-filters-state-bufferversion-bufferversion-src-mq3-game-ip-filters-ml-232205862"></a>
 ### bufferVersion
@@ -52,7 +52,7 @@ bufferVersion
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L21)
 
 <a id="field-field-mq3-game-ip-filters-state-buffervisible-buffervisible-src-mq3-game-ip-filters-ml-1153109746"></a>
 ### bufferVisible
@@ -62,7 +62,7 @@ bufferVisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L22)
 
 <a id="field-field-mq3-game-ip-filters-state-buffervm-buffervm-src-mq3-game-ip-filters-ml-1495363600"></a>
 ### bufferVm
@@ -72,7 +72,7 @@ bufferVm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L20)
 
 <a id="field-field-mq3-game-ip-filters-state-count-count-src-mq3-game-ip-filters-ml-1694357722"></a>
 ### count
@@ -82,7 +82,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L16)
 
 <a id="field-field-mq3-game-ip-filters-state-filterbanvm-filterbanvm-src-mq3-game-ip-filters-ml-471220046"></a>
 ### filterBanVm
@@ -92,7 +92,7 @@ filterBanVm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L19)
 
 <a id="field-field-mq3-game-ip-filters-state-filters-filters-src-mq3-game-ip-filters-ml-1105689798"></a>
 ### filters
@@ -102,4 +102,4 @@ filters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ip_filters.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ip_filters.ml#L15)

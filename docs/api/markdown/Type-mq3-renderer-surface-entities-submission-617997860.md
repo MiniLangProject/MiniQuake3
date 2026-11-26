@@ -10,7 +10,7 @@ struct Submission
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ baseIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-basevertex-basevertex-src-mq3-renderer-surface-entities-ml-242727235"></a>
 ### baseVertex
@@ -32,7 +32,7 @@ baseVertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-flushed-flushed-src-mq3-renderer-surface-entities-ml-1424554289"></a>
 ### flushed
@@ -42,7 +42,7 @@ flushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-indexes-indexes-src-mq3-renderer-surface-entities-ml-2056232561"></a>
 ### indexes
@@ -52,7 +52,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-numindexes-numindexes-src-mq3-renderer-surface-entities-ml-1262927065"></a>
 ### numIndexes
@@ -62,7 +62,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-numvertexes-numvertexes-src-mq3-renderer-surface-entities-ml-1136219097"></a>
 ### numVertexes
@@ -72,7 +72,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)
 
 <a id="field-field-mq3-renderer-surface-entities-submission-vertices-vertices-src-mq3-renderer-surface-entities-ml-87081923"></a>
 ### vertices
@@ -82,4 +82,4 @@ vertices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L12)

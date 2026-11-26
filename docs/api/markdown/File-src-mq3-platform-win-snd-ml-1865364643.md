@@ -21,7 +21,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L17)
 
 - [mq3.platform.win_snd.Dma](Type-mq3-platform-win-snd-dma-1319651473.md) — struct
 <a id="constant-constant-mq3-platform-win-snd-ds-ok-const-ds-ok-0-src-mq3-platform-win-snd-ml-545047775"></a>
@@ -32,7 +32,7 @@ const DS_OK = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L7)
 
 <a id="constant-constant-mq3-platform-win-snd-dserr-bufferlost-const-dserr-bufferlost-1-src-mq3-platform-win-snd-ml-1887160487"></a>
 ### DSERR_BUFFERLOST
@@ -42,7 +42,7 @@ const DSERR_BUFFERLOST = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L8)
 
 <a id="constant-constant-mq3-platform-win-snd-dserr-invalidcall-const-dserr-invalidcall-2-src-mq3-platform-win-snd-ml-1832856686"></a>
 ### DSERR_INVALIDCALL
@@ -52,7 +52,7 @@ const DSERR_INVALIDCALL = -2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L9)
 
 <a id="constant-constant-mq3-platform-win-snd-dserr-invalidparam-const-dserr-invalidparam-3-src-mq3-platform-win-snd-ml-195156217"></a>
 ### DSERR_INVALIDPARAM
@@ -62,7 +62,7 @@ const DSERR_INVALIDPARAM = -3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L10)
 
 <a id="constant-constant-mq3-platform-win-snd-dserr-priolevelneeded-const-dserr-priolevelneeded-4-src-mq3-platform-win-snd-ml-1178081852"></a>
 ### DSERR_PRIOLEVELNEEDED
@@ -72,7 +72,7 @@ const DSERR_PRIOLEVELNEEDED = -4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L11)
 
 <a id="function-function-mq3-platform-win-snd-dsounderror-function-dsounderror-errorcode-src-mq3-platform-win-snd-ml-1144145143"></a>
 ### DSoundError
@@ -88,7 +88,7 @@ DSoundError
 | `errorCode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L25)
 
 <a id="function-function-mq3-platform-win-snd-emit-function-emit-state-kind-size-src-mq3-platform-win-snd-ml-128511746"></a>
 ### emit
@@ -104,7 +104,7 @@ function emit(state, kind, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L20)
 
 <a id="function-function-mq3-platform-win-snd-fail-function-fail-state-text-src-mq3-platform-win-snd-ml-2056765982"></a>
 ### fail
@@ -119,7 +119,7 @@ function fail(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L22)
 
 <a id="function-function-mq3-platform-win-snd-note-function-note-state-text-src-mq3-platform-win-snd-ml-1036505786"></a>
 ### note
@@ -134,7 +134,7 @@ function note(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L21)
 
 <a id="constant-constant-mq3-platform-win-snd-secondary-buffer-size-const-secondary-buffer-size-65536-src-mq3-platform-win-snd-ml-1888402042"></a>
 ### SECONDARY_BUFFER_SIZE
@@ -144,7 +144,7 @@ const SECONDARY_BUFFER_SIZE = 65536
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L6)
 
 <a id="function-function-mq3-platform-win-snd-snddma-activate-function-snddma-activate-state-priorityok-src-mq3-platform-win-snd-ml-2007488443"></a>
 ### SNDDMA_Activate
@@ -161,7 +161,7 @@ SNDDMA_Activate
 | `priorityOk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L107)
 
 <a id="function-function-mq3-platform-win-snd-snddma-beginpainting-function-snddma-beginpainting-state-statusok-restoreok-restartok-lockresults-src-mq3-platform-win-snd-ml-306999995"></a>
 ### SNDDMA_BeginPainting
@@ -181,7 +181,7 @@ SNDDMA_BeginPainting
 | `lockResults` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L85)
 
 <a id="function-function-mq3-platform-win-snd-snddma-getdmapos-function-snddma-getdmapos-state-readcursor-src-mq3-platform-win-snd-ml-297862213"></a>
 ### SNDDMA_GetDMAPos
@@ -198,7 +198,7 @@ SNDDMA_GetDMAPos (the inventory extractor calls this candidate `position`).
 | `readCursor` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L79)
 
 <a id="function-function-mq3-platform-win-snd-snddma-init-function-snddma-init-state-use8available-legacyavailable-priorityok-hardwarebufferok-softwarebufferok-playok-capsok-returnedbufferbytes-src-mq3-platform-win-snd-ml-107340929"></a>
 ### SNDDMA_Init
@@ -222,7 +222,7 @@ SNDDMA_Init
 | `returnedBufferBytes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L72)
 
 <a id="function-function-mq3-platform-win-snd-snddma-initds-function-snddma-initds-state-use8available-legacyavailable-priorityok-hardwarebufferok-softwarebufferok-playok-capsok-returnedbufferbytes-src-mq3-platform-win-snd-ml-1005421347"></a>
 ### SNDDMA_InitDS
@@ -246,7 +246,7 @@ SNDDMA_InitDS. Capability results are supplied by the Win32 host adapter.
 | `returnedBufferBytes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L47)
 
 <a id="function-function-mq3-platform-win-snd-snddma-shutdown-function-snddma-shutdown-state-src-mq3-platform-win-snd-ml-89185051"></a>
 ### SNDDMA_Shutdown
@@ -262,7 +262,7 @@ SNDDMA_Shutdown
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L34)
 
 <a id="function-function-mq3-platform-win-snd-snddma-submit-function-snddma-submit-state-src-mq3-platform-win-snd-ml-1150572223"></a>
 ### SNDDMA_Submit
@@ -278,6 +278,6 @@ SNDDMA_Submit
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_snd.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_snd.ml#L101)
 
 - [mq3.platform.win_snd.State](Type-mq3-platform-win-snd-state-402888614.md) — struct

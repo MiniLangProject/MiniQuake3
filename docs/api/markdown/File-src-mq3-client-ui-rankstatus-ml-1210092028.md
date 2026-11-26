@@ -26,7 +26,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L12)
 
 <a id="function-function-mq3-client-ui-rankstatus-emit-function-emit-state-boundary-kind-name-text-src-mq3-client-ui-rankstatus-ml-1125391529"></a>
 ### emit
@@ -44,7 +44,7 @@ function emit(state, boundary, kind, name, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-id-message-const-id-message-100-src-mq3-client-ui-rankstatus-ml-1717840990"></a>
 ### ID_MESSAGE
@@ -54,7 +54,7 @@ const ID_MESSAGE = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-id-ok-const-id-ok-101-src-mq3-client-ui-rankstatus-ml-1057689869"></a>
 ### ID_OK
@@ -64,7 +64,7 @@ const ID_OK = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L9)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-cache-function-rankstatus-cache-state-src-mq3-client-ui-rankstatus-ml-1214388385"></a>
 ### RankStatus_Cache
@@ -80,7 +80,7 @@ RankStatus_Cache
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-rankstatus-rankstatus-frame-const-rankstatus-frame-menu-art-cut-frame-src-mq3-client-ui-rankstatus-ml-1420861779"></a>
 ### RANKSTATUS_FRAME
@@ -90,7 +90,7 @@ const RANKSTATUS_FRAME = "menu/art/cut_frame"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L7)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-menuevent-function-rankstatus-menuevent-state-id-event-src-mq3-client-ui-rankstatus-ml-2079593546"></a>
 ### RankStatus_MenuEvent
@@ -108,7 +108,7 @@ RankStatus_MenuEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L15)
 
 <a id="function-function-mq3-client-ui-rankstatus-rankstatus-menuinit-function-rankstatus-menuinit-state-src-mq3-client-ui-rankstatus-ml-1972845357"></a>
 ### RankStatus_MenuInit
@@ -124,7 +124,7 @@ RankStatus_MenuInit
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L21)
 
 - [mq3.client.ui_rankstatus.State](Type-mq3-client-ui-rankstatus-state-869481587.md) — struct
 <a id="function-function-mq3-client-ui-rankstatus-statusmessage-function-statusmessage-status-src-mq3-client-ui-rankstatus-ml-316279542"></a>
@@ -139,7 +139,7 @@ function statusMessage(status)
 | `status` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L24)
 
 <a id="function-function-mq3-client-ui-rankstatus-ui-rankstatusmenu-function-ui-rankstatusmenu-state-status-src-mq3-client-ui-rankstatus-ml-1009151591"></a>
 ### UI_RankStatusMenu
@@ -156,4 +156,4 @@ UI_RankStatusMenu
 | `status` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_rankstatus.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_rankstatus.ml#L26)

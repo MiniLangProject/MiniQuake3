@@ -10,7 +10,7 @@ struct LoadConfigMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-assets-assets-src-mq3-client-ui-load-config-ml-551590582"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-commands-commands-src-mq3-client-ui-load-config-ml-1965333836"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-fullscreen-fullscreen-src-mq3-client-ui-load-config-ml-432736710"></a>
 ### fullscreen
@@ -52,7 +52,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-gohidden-gohidden-src-mq3-client-ui-load-config-ml-652668804"></a>
 ### goHidden
@@ -62,7 +62,7 @@ goHidden
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-names-names-src-mq3-client-ui-load-config-ml-1311483732"></a>
 ### names
@@ -72,7 +72,7 @@ names
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-selected-selected-src-mq3-client-ui-load-config-ml-1620268058"></a>
 ### selected
@@ -82,7 +82,7 @@ selected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)
 
 <a id="field-field-mq3-client-ui-load-config-loadconfigmenu-wraparound-wraparound-src-mq3-client-ui-load-config-ml-80722598"></a>
 ### wrapAround
@@ -92,4 +92,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L13)

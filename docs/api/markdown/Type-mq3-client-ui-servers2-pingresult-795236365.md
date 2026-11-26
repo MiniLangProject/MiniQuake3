@@ -10,7 +10,7 @@ struct PingResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L60)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L60)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-infotext-infotext-src-mq3-client-ui-servers2-ml-788962926"></a>
 ### infoText
@@ -32,7 +32,7 @@ infoText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L60)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-slot-slot-src-mq3-client-ui-servers2-ml-534583516"></a>
 ### slot
@@ -42,7 +42,7 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L60)
 
 <a id="field-field-mq3-client-ui-servers2-pingresult-time-time-src-mq3-client-ui-servers2-ml-859724442"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L60)

@@ -10,7 +10,7 @@ struct Redirect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L33)
 
 <a id="field-field-mq3-qcommon-common-redirect-context-context-src-mq3-qcommon-common-ml-1458675299"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L33)
 
 <a id="field-field-mq3-qcommon-common-redirect-flushfn-flushfn-src-mq3-qcommon-common-ml-893611843"></a>
 ### flushFn
@@ -42,7 +42,7 @@ flushFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L33)
 
 <a id="field-field-mq3-qcommon-common-redirect-text-text-src-mq3-qcommon-common-ml-1450971829"></a>
 ### text
@@ -52,4 +52,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L33)

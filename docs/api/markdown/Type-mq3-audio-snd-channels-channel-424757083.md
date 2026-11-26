@@ -10,7 +10,7 @@ struct Channel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-channels-channel-alloctime-alloctime-src-mq3-audio-snd-channels-ml-395457368"></a>
 ### allocTime
@@ -32,7 +32,7 @@ allocTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-channels-channel-entchannel-entchannel-src-mq3-audio-snd-channels-ml-1512357904"></a>
 ### entchannel
@@ -42,7 +42,7 @@ entchannel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-channels-channel-entity-entity-src-mq3-audio-snd-channels-ml-731033610"></a>
 ### entity
@@ -52,7 +52,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)
 
 <a id="field-field-mq3-audio-snd-channels-channel-handle-handle-src-mq3-audio-snd-channels-ml-624372880"></a>
 ### handle
@@ -62,4 +62,4 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_channels.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_channels.ml#L10)

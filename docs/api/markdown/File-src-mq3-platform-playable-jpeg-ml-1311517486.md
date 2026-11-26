@@ -24,7 +24,7 @@ function decode(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L14)
 
 - [mq3.platform.playable_jpeg.Image](Type-mq3-platform-playable-jpeg-image-325562269.md) — struct
 <a id="extern_function-extern-function-mq3-platform-playable-jpeg-jpegdecodenative-extern-function-jpegdecodenative-data-as-ptr-size-as-i32-rgba-as-ptr-capacity-as-i32-from-playable-window-dll-symbol-playable-window-decode-jpeg-returns-i32-src-mq3-platform-playable-jpeg-ml-8959649"></a>
@@ -42,7 +42,7 @@ extern function jpegDecodeNative(data as ptr, size as i32, rgba as ptr, capacity
 | `capacity` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L7)
 
 <a id="extern_function-extern-function-mq3-platform-playable-jpeg-jpeginfonative-extern-function-jpeginfonative-data-as-ptr-size-as-i32-metadata-as-ptr-from-playable-window-dll-symbol-playable-window-jpeg-info-returns-i32-src-mq3-platform-playable-jpeg-ml-1615436334"></a>
 ### jpegInfoNative
@@ -58,7 +58,7 @@ extern function jpegInfoNative(data as ptr, size as i32, metadata as ptr) from "
 | `metadata` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L6)
 
 <a id="constant-constant-mq3-platform-playable-jpeg-max-dimension-const-max-dimension-4096-src-mq3-platform-playable-jpeg-ml-1517182390"></a>
 ### MAX_DIMENSION
@@ -68,7 +68,7 @@ const MAX_DIMENSION = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L9)
 
 <a id="constant-constant-mq3-platform-playable-jpeg-max-pixels-const-max-pixels-16777216-src-mq3-platform-playable-jpeg-ml-1418335596"></a>
 ### MAX_PIXELS
@@ -78,4 +78,4 @@ const MAX_PIXELS = 16777216
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L10)

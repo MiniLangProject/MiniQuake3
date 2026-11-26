@@ -27,7 +27,7 @@ The stale acknowledgement repair used before snapshot construction in SV_Execute
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L45)
 
 <a id="function-function-mq3-server-reliable-commands-add-function-add-client-text-src-mq3-server-reliable-commands-ml-1669790468"></a>
 ### add
@@ -44,7 +44,7 @@ Exact reliable ring insertion rule from SV_AddServerCommand. A false result repr
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L35)
 
 <a id="function-function-mq3-server-reliable-commands-commandat-function-commandat-client-sequence-src-mq3-server-reliable-commands-ml-74566696"></a>
 ### commandAt
@@ -59,7 +59,7 @@ function commandAt(client, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L28)
 
 <a id="function-function-mq3-server-reliable-commands-create-function-create-src-mq3-server-reliable-commands-ml-1179031262"></a>
 ### create
@@ -69,7 +69,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L17)
 
 <a id="constant-constant-mq3-server-reliable-commands-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-reliable-commands-ml-1176494295"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -79,7 +79,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L7)
 
 <a id="function-function-mq3-server-reliable-commands-pending-function-pending-client-src-mq3-server-reliable-commands-ml-2139074633"></a>
 ### pending
@@ -93,7 +93,7 @@ function pending(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L55)
 
 - [mq3.server.reliable_commands.ReliableClient](Type-mq3-server-reliable-commands-reliableclient-823202325.md) — struct
 <a id="function-function-mq3-server-reliable-commands-requirering-function-requirering-client-src-mq3-server-reliable-commands-ml-106160385"></a>
@@ -108,7 +108,7 @@ function requireRing(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L21)
 
 <a id="constant-constant-mq3-server-reliable-commands-svc-server-command-const-svc-server-command-5-src-mq3-server-reliable-commands-ml-1592746956"></a>
 ### SVC_SERVER_COMMAND
@@ -118,7 +118,7 @@ const SVC_SERVER_COMMAND = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L8)
 
 <a id="function-function-mq3-server-reliable-commands-updateservercommandstoclient-function-updateservercommandstoclient-client-msg-src-mq3-server-reliable-commands-ml-1953107754"></a>
 ### updateServerCommandsToClient
@@ -135,4 +135,4 @@ Exact SV_UpdateServerCommandsToClient loop. Each unacknowledged command is embed
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/reliable_commands.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/reliable_commands.ml#L64)

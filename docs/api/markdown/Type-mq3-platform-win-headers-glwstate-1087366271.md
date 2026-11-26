@@ -12,7 +12,7 @@ struct GLWState
 Native handles and callbacks are represented by managed host handles.  The field order mirrors the original records; the constants below retain the original 32-bit ABI used by the released Windows executable.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 ## Members
 
@@ -24,7 +24,7 @@ allowdisplaydepthchange
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-cdsfullscreen-cdsfullscreen-src-mq3-platform-win-headers-ml-1875908012"></a>
 ### cdsFullscreen
@@ -34,7 +34,7 @@ cdsFullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-desktopbitspixel-desktopbitspixel-src-mq3-platform-win-headers-ml-2146742668"></a>
 ### desktopBitsPixel
@@ -44,7 +44,7 @@ desktopBitsPixel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-desktopheight-desktopheight-src-mq3-platform-win-headers-ml-1317176816"></a>
 ### desktopHeight
@@ -54,7 +54,7 @@ desktopHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-desktopwidth-desktopwidth-src-mq3-platform-win-headers-ml-902191932"></a>
 ### desktopWidth
@@ -64,7 +64,7 @@ desktopWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-hdc-hdc-src-mq3-platform-win-headers-ml-1210007488"></a>
 ### hDC
@@ -74,7 +74,7 @@ hDC
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-hglrc-hglrc-src-mq3-platform-win-headers-ml-1744354312"></a>
 ### hGLRC
@@ -84,7 +84,7 @@ hGLRC
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-hinstopengl-hinstopengl-src-mq3-platform-win-headers-ml-1684046724"></a>
 ### hinstOpenGL
@@ -94,7 +94,7 @@ hinstOpenGL
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-log-fp-log-fp-src-mq3-platform-win-headers-ml-1532238854"></a>
 ### log_fp
@@ -104,7 +104,7 @@ log_fp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-pixelformatset-pixelformatset-src-mq3-platform-win-headers-ml-1432805466"></a>
 ### pixelFormatSet
@@ -114,7 +114,7 @@ pixelFormatSet
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)
 
 <a id="field-field-mq3-platform-win-headers-glwstate-wndproc-wndproc-src-mq3-platform-win-headers-ml-1735572600"></a>
 ### wndproc
@@ -124,4 +124,4 @@ wndproc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_headers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_headers.ml#L25)

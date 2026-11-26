@@ -10,7 +10,7 @@ struct Client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ bot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-commands-commands-src-mq3-server-init-runtime-ml-554362704"></a>
 ### commands
@@ -32,7 +32,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-deltamessage-deltamessage-src-mq3-server-init-runtime-ml-2025746742"></a>
 ### deltaMessage
@@ -42,7 +42,7 @@ deltaMessage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-gentitynumber-gentitynumber-src-mq3-server-init-runtime-ml-605521796"></a>
 ### gentityNumber
@@ -52,7 +52,7 @@ gentityNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-loopback-loopback-src-mq3-server-init-runtime-ml-1925235066"></a>
 ### loopback
@@ -62,7 +62,7 @@ loopback
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-name-name-src-mq3-server-init-runtime-ml-1002515862"></a>
 ### name
@@ -72,7 +72,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-nextsnapshottime-nextsnapshottime-src-mq3-server-init-runtime-ml-1350129564"></a>
 ### nextSnapshotTime
@@ -82,7 +82,7 @@ nextSnapshotTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-noserverinfo-noserverinfo-src-mq3-server-init-runtime-ml-110784772"></a>
 ### noServerInfo
@@ -92,7 +92,7 @@ noServerInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-state-state-src-mq3-server-init-runtime-ml-1227230576"></a>
 ### state
@@ -102,7 +102,7 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-tag-tag-src-mq3-server-init-runtime-ml-499711528"></a>
 ### tag
@@ -112,7 +112,7 @@ tag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)
 
 <a id="field-field-mq3-server-init-runtime-client-userinfo-userinfo-src-mq3-server-init-runtime-ml-1830873366"></a>
 ### userinfo
@@ -122,4 +122,4 @@ userinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L30)

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ bspChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-initialized-initialized-src-mq3-botlib-be-aas-file-ml-520345188"></a>
 ### initialized
@@ -32,7 +32,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-lasterror-lasterror-src-mq3-botlib-be-aas-file-ml-1493947540"></a>
 ### lastError
@@ -42,7 +42,7 @@ lastError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-loaded-loaded-src-mq3-botlib-be-aas-file-ml-2028302322"></a>
 ### loaded
@@ -52,7 +52,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-map-map-src-mq3-botlib-be-aas-file-ml-12344132"></a>
 ### map
@@ -62,7 +62,7 @@ map
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-savefile-savefile-src-mq3-botlib-be-aas-file-ml-1897507346"></a>
 ### saveFile
@@ -72,7 +72,7 @@ saveFile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)
 
 <a id="field-field-mq3-botlib-be-aas-file-state-services-services-src-mq3-botlib-be-aas-file-ml-838665396"></a>
 ### services
@@ -82,4 +82,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L17)

@@ -25,7 +25,7 @@ function copy(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L12)
 
 <a id="function-function-mq3-botlib-aas-trace-areas-dot-function-dot-a-b-src-mq3-botlib-aas-trace-areas-ml-803666653"></a>
 ### dot
@@ -40,7 +40,7 @@ function dot(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L13)
 
 - [mq3.botlib.aas_trace_areas.Result](Type-mq3-botlib-aas-trace-areas-result-1579758851.md) — struct
 - [mq3.botlib.aas_trace_areas.Segment](Type-mq3-botlib-aas-trace-areas-segment-148974843.md) — struct
@@ -59,4 +59,4 @@ function trace(runtime, start, finish, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_trace_areas.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_trace_areas.ml#L15)

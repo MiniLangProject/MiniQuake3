@@ -33,37 +33,37 @@ function areaReachability(runtime, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L56)
 
-<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-goal-selection-ml-1191662340"></a>
+<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-goal-selection-ml-319965538"></a>
 ### AVOID_DEFAULT_TIME
 
 ```ml
-const AVOID_DEFAULT_TIME = 30.
+const AVOID_DEFAULT_TIME = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L30)
 
-<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-dropped-time-const-avoid-dropped-time-10-src-mq3-botlib-ai-goal-selection-ml-1369216928"></a>
+<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-dropped-time-const-avoid-dropped-time-10-src-mq3-botlib-ai-goal-selection-ml-997218142"></a>
 ### AVOID_DROPPED_TIME
 
 ```ml
-const AVOID_DROPPED_TIME = 10.
+const AVOID_DROPPED_TIME = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L31)
 
-<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-goal-selection-ml-1348042396"></a>
+<a id="constant-constant-mq3-botlib-ai-goal-selection-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-goal-selection-ml-806889338"></a>
 ### AVOID_MINIMUM_TIME
 
 ```ml
-const AVOID_MINIMUM_TIME = 10.
+const AVOID_MINIMUM_TIME = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-avoidtime-function-avoidtime-info-item-src-mq3-botlib-ai-goal-selection-ml-1238704203"></a>
 ### avoidTime
@@ -78,7 +78,7 @@ function avoidTime(info, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L84)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-chooseltgitem-function-chooseltgitem-runtime-handle-origin-inventory-travelflags-src-mq3-botlib-ai-goal-selection-ml-1688725159"></a>
 ### chooseLTGItem
@@ -96,7 +96,7 @@ function chooseLTGItem(runtime, handle, origin, inventory, travelFlags)
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L115)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-choosenbgitem-function-choosenbgitem-runtime-handle-origin-inventory-travelflags-longtermgoal-maxtime-src-mq3-botlib-ai-goal-selection-ml-1789209457"></a>
 ### chooseNBGItem
@@ -116,7 +116,7 @@ function chooseNBGItem(runtime, handle, origin, inventory, travelFlags, longTerm
 | `maxTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L122)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-contents-solid-const-contents-solid-1-src-mq3-botlib-ai-goal-selection-ml-1837025526"></a>
 ### CONTENTS_SOLID
@@ -126,7 +126,7 @@ const CONTENTS_SOLID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-copyvector-function-copyvector-value-src-mq3-botlib-ai-goal-selection-ml-1486191211"></a>
 ### copyVector
@@ -140,7 +140,7 @@ function copyVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L49)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-create-function-create-items-goals-host-src-mq3-botlib-ai-goal-selection-ml-228282612"></a>
 ### create
@@ -156,7 +156,7 @@ function create(items, goals, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L40)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-currenttime-function-currenttime-runtime-src-mq3-botlib-ai-goal-selection-ml-102381408"></a>
 ### currentTime
@@ -170,17 +170,17 @@ function currentTime(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L72)
 
-<a id="constant-constant-mq3-botlib-ai-goal-selection-default-dropped-weight-const-default-dropped-weight-1000-src-mq3-botlib-ai-goal-selection-ml-561079542"></a>
+<a id="constant-constant-mq3-botlib-ai-goal-selection-default-dropped-weight-const-default-dropped-weight-1000-src-mq3-botlib-ai-goal-selection-ml-1591245924"></a>
 ### DEFAULT_DROPPED_WEIGHT
 
 ```ml
-const DEFAULT_DROPPED_WEIGHT = 1000.
+const DEFAULT_DROPPED_WEIGHT = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L33)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-entityinfo-function-entityinfo-runtime-number-src-mq3-botlib-ai-goal-selection-ml-340284967"></a>
 ### entityInfo
@@ -195,7 +195,7 @@ function entityInfo(runtime, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L64)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-fail-function-fail-message-src-mq3-botlib-ai-goal-selection-ml-1368722537"></a>
 ### fail
@@ -209,7 +209,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L50)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-geneticparentsandchildselection-function-geneticparentsandchildselection-runtime-numranks-ranks-src-mq3-botlib-ai-goal-selection-ml-2081058550"></a>
 ### geneticParentsAndChildSelection
@@ -225,7 +225,7 @@ function geneticParentsAndChildSelection(runtime, numRanks, ranks)
 | `ranks` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L197)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-geneticselection-function-geneticselection-runtime-numranks-rankings-src-mq3-botlib-ai-goal-selection-ml-38895460"></a>
 ### geneticSelection
@@ -241,7 +241,7 @@ function geneticSelection(runtime, numRanks, rankings)
 | `rankings` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L194)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-getlevelitemgoal-function-getlevelitemgoal-runtime-index-name-goal-src-mq3-botlib-ai-goal-selection-ml-1126470074"></a>
 ### getLevelItemGoal
@@ -258,7 +258,7 @@ function getLevelItemGoal(runtime, index, name, goal)
 | `goal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L143)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-gfl-dropped-const-gfl-dropped-4-src-mq3-botlib-ai-goal-selection-ml-986951567"></a>
 ### GFL_DROPPED
@@ -268,7 +268,7 @@ const GFL_DROPPED = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L27)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-gfl-item-const-gfl-item-1-src-mq3-botlib-ai-goal-selection-ml-822714224"></a>
 ### GFL_ITEM
@@ -278,7 +278,7 @@ const GFL_ITEM = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L25)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-gfl-roam-const-gfl-roam-2-src-mq3-botlib-ai-goal-selection-ml-674299605"></a>
 ### GFL_ROAM
@@ -288,7 +288,7 @@ const GFL_ROAM = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L26)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-interbreedgoalfuzzylogic-function-interbreedgoalfuzzylogic-runtime-parent1-parent2-child-src-mq3-botlib-ai-goal-selection-ml-423977395"></a>
 ### interbreedGoalFuzzyLogic
@@ -305,7 +305,7 @@ function interbreedGoalFuzzyLogic(runtime, parent1, parent2, child)
 | `child` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L166)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-interbreedseparators-function-interbreedseparators-runtime-first-second-resultgoal-src-mq3-botlib-ai-goal-selection-ml-1230196846"></a>
 ### interbreedSeparators
@@ -322,7 +322,7 @@ function interbreedSeparators(runtime, first, second, resultGoal)
 | `resultGoal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L152)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-itemconfig-function-itemconfig-runtime-src-mq3-botlib-ai-goal-selection-ml-1764043368"></a>
 ### itemConfig
@@ -336,7 +336,7 @@ function itemConfig(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L73)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-itemgoalinvisbutnotvisible-function-itemgoalinvisbutnotvisible-runtime-viewer-eye-viewangles-goal-src-mq3-botlib-ai-goal-selection-ml-660583961"></a>
 ### itemGoalInVisButNotVisible
@@ -354,7 +354,7 @@ function itemGoalInVisButNotVisible(runtime, viewer, eye, viewAngles, goal)
 | `goal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L135)
 
 - [mq3.botlib.ai_goal_selection.ItemScore](Type-mq3-botlib-ai-goal-selection-itemscore-1002403920.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-itemtime-function-itemtime-runtime-query-area-origin-goal-travelflags-src-mq3-botlib-ai-goal-selection-ml-1844770361"></a>
@@ -374,7 +374,7 @@ function itemTime(runtime, query, area, origin, goal, travelFlags)
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L94)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-makeitemgoal-function-makeitemgoal-info-item-src-mq3-botlib-ai-goal-selection-ml-1003787027"></a>
 ### makeItemGoal
@@ -389,7 +389,7 @@ function makeItemGoal(info, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L80)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-mutategoalfuzzylogic-function-mutategoalfuzzylogic-runtime-handle-range-src-mq3-botlib-ai-goal-selection-ml-1291023343"></a>
 ### mutateGoalFuzzyLogic
@@ -405,7 +405,7 @@ function mutateGoalFuzzyLogic(runtime, handle, range)
 | `range` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L189)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-mutateseparators-function-mutateseparators-runtime-separators-src-mq3-botlib-ai-goal-selection-ml-746849064"></a>
 ### mutateSeparators
@@ -420,7 +420,7 @@ function mutateSeparators(runtime, separators)
 | `separators` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L178)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-choose-ltg-item-const-op-choose-ltg-item-535-src-mq3-botlib-ai-goal-selection-ml-1818655044"></a>
 ### OP_CHOOSE_LTG_ITEM
@@ -430,7 +430,7 @@ const OP_CHOOSE_LTG_ITEM = 535
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-choose-nbg-item-const-op-choose-nbg-item-536-src-mq3-botlib-ai-goal-selection-ml-330414561"></a>
 ### OP_CHOOSE_NBG_ITEM
@@ -440,7 +440,7 @@ const OP_CHOOSE_NBG_ITEM = 536
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L17)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-genetic-parents-and-child-selection-const-op-genetic-parents-and-child-selection-564-src-mq3-botlib-ai-goal-selection-ml-240336554"></a>
 ### OP_GENETIC_PARENTS_AND_CHILD_SELECTION
@@ -450,7 +450,7 @@ const OP_GENETIC_PARENTS_AND_CHILD_SELECTION = 564
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L21)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-get-level-item-goal-const-op-get-level-item-goal-539-src-mq3-botlib-ai-goal-selection-ml-1355757512"></a>
 ### OP_GET_LEVEL_ITEM_GOAL
@@ -460,7 +460,7 @@ const OP_GET_LEVEL_ITEM_GOAL = 539
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L19)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-interbreed-goal-fuzzy-logic-const-op-interbreed-goal-fuzzy-logic-565-src-mq3-botlib-ai-goal-selection-ml-695493283"></a>
 ### OP_INTERBREED_GOAL_FUZZY_LOGIC
@@ -472,7 +472,7 @@ const OP_INTERBREED_GOAL_FUZZY_LOGIC = 565
 Baseq3 g_public.h assigns INTERBREED to 565 and MUTATE to 566.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L23)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-item-goal-in-vis-but-not-visible-const-op-item-goal-in-vis-but-not-visible-538-src-mq3-botlib-ai-goal-selection-ml-25101851"></a>
 ### OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE
@@ -482,7 +482,7 @@ const OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE = 538
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-mutate-goal-fuzzy-logic-const-op-mutate-goal-fuzzy-logic-566-src-mq3-botlib-ai-goal-selection-ml-679821414"></a>
 ### OP_MUTATE_GOAL_FUZZY_LOGIC
@@ -492,7 +492,7 @@ const OP_MUTATE_GOAL_FUZZY_LOGIC = 566
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-op-save-goal-fuzzy-logic-const-op-save-goal-fuzzy-logic-545-src-mq3-botlib-ai-goal-selection-ml-232375863"></a>
 ### OP_SAVE_GOAL_FUZZY_LOGIC
@@ -502,7 +502,7 @@ const OP_SAVE_GOAL_FUZZY_LOGIC = 545
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-originarea-function-originarea-runtime-value-origin-src-mq3-botlib-ai-goal-selection-ml-1478866347"></a>
 ### originArea
@@ -518,7 +518,7 @@ function originArea(runtime, value, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L87)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-permitted-function-permitted-runtime-item-src-mq3-botlib-ai-goal-selection-ml-1581043837"></a>
 ### permitted
@@ -533,7 +533,7 @@ function permitted(runtime, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L77)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-randomfloat-function-randomfloat-runtime-src-mq3-botlib-ai-goal-selection-ml-306190694"></a>
 ### randomFloat
@@ -547,7 +547,7 @@ function randomFloat(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L43)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-reachabilityarea-function-reachabilityarea-runtime-origin-client-src-mq3-botlib-ai-goal-selection-ml-1677872727"></a>
 ### reachabilityArea
@@ -563,7 +563,7 @@ function reachabilityArea(runtime, origin, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L52)
 
 - [mq3.botlib.ai_goal_selection.Runtime](Type-mq3-botlib-ai-goal-selection-runtime-1927224759.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-savegoalfuzzylogic-function-savegoalfuzzylogic-runtime-handle-filename-src-mq3-botlib-ai-goal-selection-ml-83961905"></a>
@@ -580,7 +580,7 @@ function saveGoalFuzzyLogic(runtime, handle, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L173)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-services-function-services-context-src-mq3-botlib-ai-goal-selection-ml-1537340521"></a>
 ### services
@@ -594,7 +594,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L39)
 
 - [mq3.botlib.ai_goal_selection.Services](Type-mq3-botlib-ai-goal-selection-services-114167561.md) — struct
 <a id="function-function-mq3-botlib-ai-goal-selection-setdroppedweight-function-setdroppedweight-runtime-value-src-mq3-botlib-ai-goal-selection-ml-1580900897"></a>
@@ -610,7 +610,7 @@ function setDroppedWeight(runtime, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L41)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-setrandomseed-function-setrandomseed-runtime-value-src-mq3-botlib-ai-goal-selection-ml-491973789"></a>
 ### setRandomSeed
@@ -625,7 +625,7 @@ function setRandomSeed(runtime, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L42)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-startitemquery-function-startitemquery-runtime-area-origin-travelflags-src-mq3-botlib-ai-goal-selection-ml-959622536"></a>
 ### startItemQuery
@@ -642,7 +642,7 @@ function startItemQuery(runtime, area, origin, travelFlags)
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L90)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-goal-selection-ml-1128319967"></a>
 ### supportsTrap
@@ -656,7 +656,7 @@ function supportsTrap(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L200)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L200)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-trace-function-trace-runtime-start-finish-viewer-src-mq3-botlib-ai-goal-selection-ml-1085226891"></a>
 ### trace
@@ -673,7 +673,7 @@ function trace(runtime, start, finish, viewer)
 | `viewer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L68)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-traveltime-function-traveltime-runtime-area-origin-goalarea-travelflags-src-mq3-botlib-ai-goal-selection-ml-2021290786"></a>
 ### travelTime
@@ -691,17 +691,17 @@ function travelTime(runtime, area, origin, goalArea, travelFlags)
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L60)
 
-<a id="constant-constant-mq3-botlib-ai-goal-selection-traveltime-scale-const-traveltime-scale-1-e-002-src-mq3-botlib-ai-goal-selection-ml-638047084"></a>
+<a id="constant-constant-mq3-botlib-ai-goal-selection-traveltime-scale-const-traveltime-scale-0-01-src-mq3-botlib-ai-goal-selection-ml-543899186"></a>
 ### TRAVELTIME_SCALE
 
 ```ml
-const TRAVELTIME_SCALE = 1.e-002
+const TRAVELTIME_SCALE = 0.01
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L32)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-weighted-function-weighted-runtime-handle-value-config-inventory-item-area-origin-travelflags-itemquery-fuzzycache-score-src-mq3-botlib-ai-goal-selection-ml-1769691285"></a>
 ### weighted
@@ -726,4 +726,4 @@ function weighted(runtime, handle, value, config, inventory, item, area, origin,
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L99)

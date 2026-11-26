@@ -10,7 +10,7 @@ struct Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L10)
 
 <a id="field-field-mq3-renderer-md4-animation-vertex-texcoords-texcoords-src-mq3-renderer-md4-animation-ml-730335695"></a>
 ### texCoords
@@ -32,7 +32,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L10)
 
 <a id="field-field-mq3-renderer-md4-animation-vertex-weights-weights-src-mq3-renderer-md4-animation-ml-1336577835"></a>
 ### weights
@@ -42,4 +42,4 @@ weights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L10)

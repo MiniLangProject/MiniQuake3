@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ checksumFeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="field-field-mq3-client-send-cmd-state-clientpaused-clientpaused-src-mq3-client-send-cmd-ml-1939473892"></a>
 ### clientPaused
@@ -32,7 +32,7 @@ clientPaused
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-cmdnumber-cmdnumber-src-mq3-client-send-cmd-ml-1835272574"></a>
 ### cmdNumber
@@ -42,7 +42,7 @@ cmdNumber
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L34)
 
 <a id="field-field-mq3-client-send-cmd-state-codec-codec-src-mq3-client-send-cmd-ml-872554514"></a>
 ### codec
@@ -52,7 +52,7 @@ codec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L34)
 
 <a id="field-field-mq3-client-send-cmd-state-commands-commands-src-mq3-client-send-cmd-ml-899282342"></a>
 ### commands
@@ -62,7 +62,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L34)
 
 <a id="field-field-mq3-client-send-cmd-state-connectionstate-connectionstate-src-mq3-client-send-cmd-ml-607476386"></a>
 ### connectionState
@@ -72,7 +72,7 @@ connectionState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="field-field-mq3-client-send-cmd-state-demoplaying-demoplaying-src-mq3-client-send-cmd-ml-128706454"></a>
 ### demoPlaying
@@ -82,7 +82,7 @@ demoPlaying
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L30)
 
 <a id="field-field-mq3-client-send-cmd-state-demowaiting-demowaiting-src-mq3-client-send-cmd-ml-969861218"></a>
 ### demoWaiting
@@ -92,7 +92,7 @@ demoWaiting
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L30)
 
 <a id="field-field-mq3-client-send-cmd-state-downloadtempname-downloadtempname-src-mq3-client-send-cmd-ml-202800708"></a>
 ### downloadTempName
@@ -102,7 +102,7 @@ downloadTempName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L30)
 
 <a id="field-field-mq3-client-send-cmd-state-framemsec-framemsec-src-mq3-client-send-cmd-ml-591828790"></a>
 ### frameMsec
@@ -112,7 +112,7 @@ frameMsec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="field-field-mq3-client-send-cmd-state-lanaddress-lanaddress-src-mq3-client-send-cmd-ml-210067292"></a>
 ### lanAddress
@@ -122,7 +122,7 @@ lanAddress
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L30)
 
 <a id="field-field-mq3-client-send-cmd-state-lastpacketsenttime-lastpacketsenttime-src-mq3-client-send-cmd-ml-1243239144"></a>
 ### lastPacketSentTime
@@ -132,7 +132,7 @@ lastPacketSentTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="field-field-mq3-client-send-cmd-state-maxpackets-maxpackets-src-mq3-client-send-cmd-ml-1720785684"></a>
 ### maxPackets
@@ -142,7 +142,7 @@ maxPackets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-nodelta-nodelta-src-mq3-client-send-cmd-ml-1579516154"></a>
 ### noDelta
@@ -152,7 +152,7 @@ noDelta
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-oldframetime-oldframetime-src-mq3-client-send-cmd-ml-2336088"></a>
 ### oldFrameTime
@@ -162,7 +162,7 @@ oldFrameTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="field-field-mq3-client-send-cmd-state-outgoingsequence-outgoingsequence-src-mq3-client-send-cmd-ml-1752133516"></a>
 ### outgoingSequence
@@ -172,7 +172,7 @@ outgoingSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="field-field-mq3-client-send-cmd-state-outpackets-outpackets-src-mq3-client-send-cmd-ml-962802704"></a>
 ### outPackets
@@ -182,7 +182,7 @@ outPackets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L34)
 
 <a id="field-field-mq3-client-send-cmd-state-packetdup-packetdup-src-mq3-client-send-cmd-ml-1324394478"></a>
 ### packetDup
@@ -192,7 +192,7 @@ packetDup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-realtime-realtime-src-mq3-client-send-cmd-ml-1699907200"></a>
 ### realtime
@@ -202,7 +202,7 @@ realtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L29)
 
 <a id="field-field-mq3-client-send-cmd-state-reliableacknowledge-reliableacknowledge-src-mq3-client-send-cmd-ml-574533026"></a>
 ### reliableAcknowledge
@@ -212,7 +212,7 @@ reliableAcknowledge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L32)
 
 <a id="field-field-mq3-client-send-cmd-state-reliablecommands-reliablecommands-src-mq3-client-send-cmd-ml-661534586"></a>
 ### reliableCommands
@@ -222,7 +222,7 @@ reliableCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="field-field-mq3-client-send-cmd-state-reliablesequence-reliablesequence-src-mq3-client-send-cmd-ml-1399986700"></a>
 ### reliableSequence
@@ -232,7 +232,7 @@ reliableSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L32)
 
 <a id="field-field-mq3-client-send-cmd-state-remoteaddresstype-remoteaddresstype-src-mq3-client-send-cmd-ml-487401834"></a>
 ### remoteAddressType
@@ -242,7 +242,7 @@ remoteAddressType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L30)
 
 <a id="field-field-mq3-client-send-cmd-state-servercommands-servercommands-src-mq3-client-send-cmd-ml-1937931660"></a>
 ### serverCommands
@@ -252,7 +252,7 @@ serverCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="field-field-mq3-client-send-cmd-state-servercommandsequence-servercommandsequence-src-mq3-client-send-cmd-ml-1623848642"></a>
 ### serverCommandSequence
@@ -262,7 +262,7 @@ serverCommandSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L32)
 
 <a id="field-field-mq3-client-send-cmd-state-serverid-serverid-src-mq3-client-send-cmd-ml-1425966702"></a>
 ### serverId
@@ -272,7 +272,7 @@ serverId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L32)
 
 <a id="field-field-mq3-client-send-cmd-state-servermessagesequence-servermessagesequence-src-mq3-client-send-cmd-ml-302473638"></a>
 ### serverMessageSequence
@@ -282,7 +282,7 @@ serverMessageSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L32)
 
 <a id="field-field-mq3-client-send-cmd-state-serverpaused-serverpaused-src-mq3-client-send-cmd-ml-482723252"></a>
 ### serverPaused
@@ -292,7 +292,7 @@ serverPaused
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-serverrunning-serverrunning-src-mq3-client-send-cmd-ml-146330074"></a>
 ### serverRunning
@@ -302,7 +302,7 @@ serverRunning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L31)
 
 <a id="field-field-mq3-client-send-cmd-state-snapmessagenum-snapmessagenum-src-mq3-client-send-cmd-ml-1986928016"></a>
 ### snapMessageNum
@@ -312,7 +312,7 @@ snapMessageNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)
 
 <a id="field-field-mq3-client-send-cmd-state-snapvalid-snapvalid-src-mq3-client-send-cmd-ml-334622842"></a>
 ### snapValid
@@ -322,4 +322,4 @@ snapValid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L33)

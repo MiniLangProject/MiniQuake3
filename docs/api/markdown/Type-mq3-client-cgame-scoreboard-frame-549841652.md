@@ -10,7 +10,7 @@ struct Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 <a id="field-field-mq3-client-cgame-scoreboard-frame-commands-commands-src-mq3-client-cgame-scoreboard-ml-1529944622"></a>
 ### commands
@@ -32,7 +32,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 <a id="field-field-mq3-client-cgame-scoreboard-frame-deferredloads-deferredloads-src-mq3-client-cgame-scoreboard-ml-1258528186"></a>
 ### deferredLoads
@@ -42,7 +42,7 @@ deferredLoads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 <a id="field-field-mq3-client-cgame-scoreboard-frame-drawn-drawn-src-mq3-client-cgame-scoreboard-ml-1637684762"></a>
 ### drawn
@@ -52,7 +52,7 @@ drawn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 <a id="field-field-mq3-client-cgame-scoreboard-frame-lineheight-lineheight-src-mq3-client-cgame-scoreboard-ml-615141376"></a>
 ### lineHeight
@@ -62,7 +62,7 @@ lineHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)
 
 <a id="field-field-mq3-client-cgame-scoreboard-frame-localclient-localclient-src-mq3-client-cgame-scoreboard-ml-1792270030"></a>
 ### localClient
@@ -72,4 +72,4 @@ localClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_scoreboard.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_scoreboard.ml#L33)

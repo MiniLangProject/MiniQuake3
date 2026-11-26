@@ -10,7 +10,7 @@ struct Parsed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ character
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L29)
 
 <a id="field-field-mq3-botlib-ai-characters-parsed-found-found-src-mq3-botlib-ai-characters-ml-1724001332"></a>
 ### found
@@ -32,4 +32,4 @@ found
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L29)

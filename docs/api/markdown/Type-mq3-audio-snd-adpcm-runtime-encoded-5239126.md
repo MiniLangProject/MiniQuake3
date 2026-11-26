@@ -10,7 +10,7 @@ struct Encoded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L12)
 
 <a id="field-field-mq3-audio-snd-adpcm-runtime-encoded-state-state-src-mq3-audio-snd-adpcm-runtime-ml-164376693"></a>
 ### state
@@ -32,4 +32,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_adpcm_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_adpcm_runtime.ml#L12)

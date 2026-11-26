@@ -30,7 +30,7 @@ The original file embeds zlib 1.1.3. These names own that internal surface; the 
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L140)
 
 <a id="function-function-mq3-format-unzip-asciifold-function-asciifold-value-src-mq3-format-unzip-ml-1966297111"></a>
 ### asciiFold
@@ -44,7 +44,7 @@ function asciiFold(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L32)
 
 <a id="function-function-mq3-format-unzip-comparebytes-function-comparebytes-left-right-fold-src-mq3-format-unzip-ml-85958178"></a>
 ### compareBytes
@@ -60,7 +60,7 @@ function compareBytes(left, right, fold)
 | `fold` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L33)
 
 <a id="function-function-mq3-format-unzip-currententry-function-currententry-handle-src-mq3-format-unzip-ml-1895601868"></a>
 ### currentEntry
@@ -74,7 +74,7 @@ function currentEntry(handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L67)
 
 <a id="function-function-mq3-format-unzip-fileinfo-function-fileinfo-entry-src-mq3-format-unzip-ml-1420560056"></a>
 ### fileInfo
@@ -88,7 +88,7 @@ function fileInfo(entry)
 | `entry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L63)
 
 - [mq3.format.unzip.FileInfo](Type-mq3-format-unzip-fileinfo-684352023.md) — struct
 - [mq3.format.unzip.GlobalInfo](Type-mq3-format-unzip-globalinfo-1271323310.md) — struct
@@ -107,7 +107,7 @@ function inflate(state, data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L148)
 
 <a id="function-function-mq3-format-unzip-inflate-blocks-function-inflate-blocks-state-data-expectedsize-src-mq3-format-unzip-ml-705413792"></a>
 ### inflate_blocks
@@ -123,7 +123,7 @@ function inflate_blocks(state, data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L164)
 
 <a id="function-function-mq3-format-unzip-inflate-blocks-free-function-inflate-blocks-free-state-src-mq3-format-unzip-ml-754007617"></a>
 ### inflate_blocks_free
@@ -137,7 +137,7 @@ function inflate_blocks_free(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L166)
 
 <a id="function-function-mq3-format-unzip-inflate-blocks-new-function-inflate-blocks-new-windowbits-src-mq3-format-unzip-ml-1776779274"></a>
 ### inflate_blocks_new
@@ -151,7 +151,7 @@ function inflate_blocks_new(windowBits)
 | `windowBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L163)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L163)
 
 <a id="function-function-mq3-format-unzip-inflate-blocks-reset-function-inflate-blocks-reset-state-src-mq3-format-unzip-ml-431627995"></a>
 ### inflate_blocks_reset
@@ -165,7 +165,7 @@ function inflate_blocks_reset(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L165)
 
 <a id="function-function-mq3-format-unzip-inflate-blocks-sync-point-function-inflate-blocks-sync-point-state-src-mq3-format-unzip-ml-1803227025"></a>
 ### inflate_blocks_sync_point
@@ -179,7 +179,7 @@ function inflate_blocks_sync_point(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L167)
 
 <a id="function-function-mq3-format-unzip-inflate-codes-function-inflate-codes-state-data-expectedsize-src-mq3-format-unzip-ml-1194662640"></a>
 ### inflate_codes
@@ -195,7 +195,7 @@ function inflate_codes(state, data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L170)
 
 <a id="function-function-mq3-format-unzip-inflate-codes-free-function-inflate-codes-free-state-src-mq3-format-unzip-ml-988890563"></a>
 ### inflate_codes_free
@@ -209,7 +209,7 @@ function inflate_codes_free(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L171)
 
 <a id="function-function-mq3-format-unzip-inflate-codes-new-function-inflate-codes-new-windowbits-src-mq3-format-unzip-ml-40630452"></a>
 ### inflate_codes_new
@@ -223,7 +223,7 @@ function inflate_codes_new(windowBits)
 | `windowBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L169)
 
 <a id="function-function-mq3-format-unzip-inflate-fast-function-inflate-fast-state-data-expectedsize-src-mq3-format-unzip-ml-77695192"></a>
 ### inflate_fast
@@ -239,7 +239,7 @@ function inflate_fast(state, data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L172)
 
 <a id="function-function-mq3-format-unzip-inflate-flush-function-inflate-flush-state-src-mq3-format-unzip-ml-164407927"></a>
 ### inflate_flush
@@ -253,7 +253,7 @@ function inflate_flush(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L173)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L173)
 
 <a id="function-function-mq3-format-unzip-inflate-set-dictionary-function-inflate-set-dictionary-state-dictionary-src-mq3-format-unzip-ml-2035951047"></a>
 ### inflate_set_dictionary
@@ -268,7 +268,7 @@ function inflate_set_dictionary(state, dictionary)
 | `dictionary` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L168)
 
 <a id="function-function-mq3-format-unzip-inflateend-function-inflateend-state-src-mq3-format-unzip-ml-1367941699"></a>
 ### inflateEnd
@@ -282,7 +282,7 @@ function inflateEnd(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L147)
 
 <a id="function-function-mq3-format-unzip-inflateinit2-function-inflateinit2-windowbits-src-mq3-format-unzip-ml-1112166182"></a>
 ### inflateInit2_
@@ -296,7 +296,7 @@ function inflateInit2_(windowBits)
 | `windowBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L144)
 
 <a id="function-function-mq3-format-unzip-inflateinit-function-inflateinit-src-mq3-format-unzip-ml-2045866174"></a>
 ### inflateInit_
@@ -306,7 +306,7 @@ function inflateInit_()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L145)
 
 <a id="function-function-mq3-format-unzip-inflatereset-function-inflatereset-state-src-mq3-format-unzip-ml-434963427"></a>
 ### inflateReset
@@ -320,7 +320,7 @@ function inflateReset(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L146)
 
 <a id="function-function-mq3-format-unzip-inflatesetdictionary-function-inflatesetdictionary-state-dictionary-src-mq3-format-unzip-ml-1405563643"></a>
 ### inflateSetDictionary
@@ -335,7 +335,7 @@ function inflateSetDictionary(state, dictionary)
 | `dictionary` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L152)
 
 - [mq3.format.unzip.InflateState](Type-mq3-format-unzip-inflatestate-2027770121.md) — struct
 <a id="function-function-mq3-format-unzip-inflatesync-function-inflatesync-state-data-src-mq3-format-unzip-ml-1895908119"></a>
@@ -351,7 +351,7 @@ function inflateSync(state, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L153)
 
 <a id="function-function-mq3-format-unzip-inflatesyncpoint-function-inflatesyncpoint-state-src-mq3-format-unzip-ml-42293339"></a>
 ### inflateSyncPoint
@@ -365,7 +365,7 @@ function inflateSyncPoint(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L162)
 
 - [mq3.format.unzip.LocalHeader](Type-mq3-format-unzip-localheader-754130509.md) — struct
 <a id="function-function-mq3-format-unzip-strcmpcasenosensitive-internal-function-strcmpcasenosensitive-internal-left-right-src-mq3-format-unzip-ml-1976691379"></a>
@@ -381,7 +381,7 @@ function strcmpcasenosensitive_internal(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L38)
 
 - [mq3.format.unzip.TmUnz](Type-mq3-format-unzip-tmunz-1379299385.md) — struct
 <a id="constant-constant-mq3-format-unzip-unz-badzipfile-const-unz-badzipfile-qcommonheaders-unz-badzipfile-src-mq3-format-unzip-ml-1234405419"></a>
@@ -392,7 +392,7 @@ const UNZ_BADZIPFILE = qcommonHeaders.UNZ_BADZIPFILE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L13)
 
 <a id="constant-constant-mq3-format-unzip-unz-casesensitive-const-unz-casesensitive-qcommonheaders-unz-casesensitive-src-mq3-format-unzip-ml-495229971"></a>
 ### UNZ_CASESENSITIVE
@@ -402,7 +402,7 @@ const UNZ_CASESENSITIVE = qcommonHeaders.UNZ_CASESENSITIVE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L16)
 
 <a id="constant-constant-mq3-format-unzip-unz-crcerror-const-unz-crcerror-qcommonheaders-unz-crcerror-src-mq3-format-unzip-ml-1238645279"></a>
 ### UNZ_CRCERROR
@@ -412,7 +412,7 @@ const UNZ_CRCERROR = qcommonHeaders.UNZ_CRCERROR
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L15)
 
 <a id="constant-constant-mq3-format-unzip-unz-end-of-list-of-file-const-unz-end-of-list-of-file-qcommonheaders-unz-end-of-list-of-file-src-mq3-format-unzip-ml-1020417312"></a>
 ### UNZ_END_OF_LIST_OF_FILE
@@ -422,7 +422,7 @@ const UNZ_END_OF_LIST_OF_FILE = qcommonHeaders.UNZ_END_OF_LIST_OF_FILE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L10)
 
 <a id="constant-constant-mq3-format-unzip-unz-eof-const-unz-eof-qcommonheaders-unz-eof-src-mq3-format-unzip-ml-1621740749"></a>
 ### UNZ_EOF
@@ -432,7 +432,7 @@ const UNZ_EOF = qcommonHeaders.UNZ_EOF
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L11)
 
 <a id="constant-constant-mq3-format-unzip-unz-internalerror-const-unz-internalerror-qcommonheaders-unz-internalerror-src-mq3-format-unzip-ml-1714250114"></a>
 ### UNZ_INTERNALERROR
@@ -442,7 +442,7 @@ const UNZ_INTERNALERROR = qcommonHeaders.UNZ_INTERNALERROR
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L14)
 
 <a id="constant-constant-mq3-format-unzip-unz-notcasesensitive-const-unz-notcasesensitive-qcommonheaders-unz-notcasesensitive-src-mq3-format-unzip-ml-1029752078"></a>
 ### UNZ_NOTCASESENSITIVE
@@ -452,7 +452,7 @@ const UNZ_NOTCASESENSITIVE = qcommonHeaders.UNZ_NOTCASESENSITIVE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L17)
 
 <a id="constant-constant-mq3-format-unzip-unz-ok-const-unz-ok-qcommonheaders-unz-ok-src-mq3-format-unzip-ml-1746616081"></a>
 ### UNZ_OK
@@ -462,7 +462,7 @@ const UNZ_OK = qcommonHeaders.UNZ_OK
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L9)
 
 <a id="constant-constant-mq3-format-unzip-unz-osdefaultcase-const-unz-osdefaultcase-qcommonheaders-unz-osdefaultcase-src-mq3-format-unzip-ml-1488400192"></a>
 ### UNZ_OSDEFAULTCASE
@@ -472,7 +472,7 @@ const UNZ_OSDEFAULTCASE = qcommonHeaders.UNZ_OSDEFAULTCASE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L18)
 
 <a id="constant-constant-mq3-format-unzip-unz-paramerror-const-unz-paramerror-qcommonheaders-unz-paramerror-src-mq3-format-unzip-ml-112751232"></a>
 ### UNZ_PARAMERROR
@@ -482,7 +482,7 @@ const UNZ_PARAMERROR = qcommonHeaders.UNZ_PARAMERROR
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L12)
 
 <a id="function-function-mq3-format-unzip-unzclose-function-unzclose-file-src-mq3-format-unzip-ml-1737126240"></a>
 ### unzClose
@@ -496,7 +496,7 @@ function unzClose(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L78)
 
 <a id="function-function-mq3-format-unzip-unzclosecurrentfile-function-unzclosecurrentfile-file-src-mq3-format-unzip-ml-1450871040"></a>
 ### unzCloseCurrentFile
@@ -510,7 +510,7 @@ function unzCloseCurrentFile(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L136)
 
 <a id="function-function-mq3-format-unzip-unzeof-function-unzeof-file-src-mq3-format-unzip-ml-1346918836"></a>
 ### unzeof
@@ -524,7 +524,7 @@ function unzeof(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L131)
 
 <a id="function-function-mq3-format-unzip-unzgetcurrentfileinfo-function-unzgetcurrentfileinfo-file-src-mq3-format-unzip-ml-1677447912"></a>
 ### unzGetCurrentFileInfo
@@ -538,7 +538,7 @@ function unzGetCurrentFileInfo(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L85)
 
 <a id="function-function-mq3-format-unzip-unzgetcurrentfileinfoposition-function-unzgetcurrentfileinfoposition-file-src-mq3-format-unzip-ml-249765374"></a>
 ### unzGetCurrentFileInfoPosition
@@ -552,7 +552,7 @@ function unzGetCurrentFileInfoPosition(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L95)
 
 <a id="function-function-mq3-format-unzip-unzgetglobalcomment-function-unzgetglobalcomment-file-size-src-mq3-format-unzip-ml-1227812557"></a>
 ### unzGetGlobalComment
@@ -567,7 +567,7 @@ function unzGetGlobalComment(file, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L80)
 
 <a id="function-function-mq3-format-unzip-unzgetglobalinfo-function-unzgetglobalinfo-file-src-mq3-format-unzip-ml-546663424"></a>
 ### unzGetGlobalInfo
@@ -581,7 +581,7 @@ function unzGetGlobalInfo(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L79)
 
 <a id="function-function-mq3-format-unzip-unzgetlocalextrafield-function-unzgetlocalextrafield-file-length-src-mq3-format-unzip-ml-1260894552"></a>
 ### unzGetLocalExtrafield
@@ -596,7 +596,7 @@ function unzGetLocalExtrafield(file, length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L132)
 
 <a id="function-function-mq3-format-unzip-unzgotofirstfile-function-unzgotofirstfile-file-src-mq3-format-unzip-ml-259877240"></a>
 ### unzGoToFirstFile
@@ -610,7 +610,7 @@ function unzGoToFirstFile(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L86)
 
 <a id="function-function-mq3-format-unzip-unzgotonextfile-function-unzgotonextfile-file-src-mq3-format-unzip-ml-105508902"></a>
 ### unzGoToNextFile
@@ -624,7 +624,7 @@ function unzGoToNextFile(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L91)
 
 <a id="function-function-mq3-format-unzip-unzlocal-checkcurrentfilecoherencyheader-function-unzlocal-checkcurrentfilecoherencyheader-file-src-mq3-format-unzip-ml-1130156092"></a>
 ### unzlocal_CheckCurrentFileCoherencyHeader
@@ -638,7 +638,7 @@ function unzlocal_CheckCurrentFileCoherencyHeader(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L114)
 
 <a id="function-function-mq3-format-unzip-unzlocal-dosdatetotmudate-function-unzlocal-dosdatetotmudate-dosdate-src-mq3-format-unzip-ml-471915090"></a>
 ### unzlocal_DosDateToTmuDate
@@ -652,7 +652,7 @@ function unzlocal_DosDateToTmuDate(dosDate)
 | `dosDate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L59)
 
 <a id="function-function-mq3-format-unzip-unzlocal-getbyte-function-unzlocal-getbyte-data-offset-src-mq3-format-unzip-ml-519270439"></a>
 ### unzlocal_getByte
@@ -667,7 +667,7 @@ function unzlocal_getByte(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L44)
 
 <a id="function-function-mq3-format-unzip-unzlocal-getcurrentfileinfointernal-function-unzlocal-getcurrentfileinfointernal-file-src-mq3-format-unzip-ml-102584230"></a>
 ### unzlocal_GetCurrentFileInfoInternal
@@ -681,7 +681,7 @@ function unzlocal_GetCurrentFileInfoInternal(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L82)
 
 <a id="function-function-mq3-format-unzip-unzlocal-getlong-function-unzlocal-getlong-data-offset-src-mq3-format-unzip-ml-1541038215"></a>
 ### unzlocal_getLong
@@ -696,7 +696,7 @@ function unzlocal_getLong(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L46)
 
 <a id="function-function-mq3-format-unzip-unzlocal-getshort-function-unzlocal-getshort-data-offset-src-mq3-format-unzip-ml-1886301909"></a>
 ### unzlocal_getShort
@@ -711,7 +711,7 @@ function unzlocal_getShort(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L45)
 
 <a id="function-function-mq3-format-unzip-unzlocal-searchcentraldir-function-unzlocal-searchcentraldir-data-src-mq3-format-unzip-ml-240319252"></a>
 ### unzlocal_SearchCentralDir
@@ -725,7 +725,7 @@ function unzlocal_SearchCentralDir(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L48)
 
 <a id="function-function-mq3-format-unzip-unzlocatefile-function-unzlocatefile-file-name-casesensitivity-src-mq3-format-unzip-ml-982736206"></a>
 ### unzLocateFile
@@ -741,7 +741,7 @@ function unzLocateFile(file, name, caseSensitivity)
 | `caseSensitivity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L105)
 
 <a id="function-function-mq3-format-unzip-unzopen-function-unzopen-path-src-mq3-format-unzip-ml-1687224909"></a>
 ### unzOpen
@@ -755,7 +755,7 @@ function unzOpen(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L69)
 
 <a id="function-function-mq3-format-unzip-unzopencurrentfile-function-unzopencurrentfile-file-src-mq3-format-unzip-ml-712009432"></a>
 ### unzOpenCurrentFile
@@ -769,7 +769,7 @@ function unzOpenCurrentFile(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L119)
 
 <a id="function-function-mq3-format-unzip-unzreadcurrentfile-function-unzreadcurrentfile-file-length-src-mq3-format-unzip-ml-988488292"></a>
 ### unzReadCurrentFile
@@ -784,7 +784,7 @@ function unzReadCurrentFile(file, length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L125)
 
 <a id="function-function-mq3-format-unzip-unzreopen-function-unzreopen-path-file-src-mq3-format-unzip-ml-2035372257"></a>
 ### unzReOpen
@@ -799,7 +799,7 @@ function unzReOpen(path, file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L73)
 
 <a id="function-function-mq3-format-unzip-unzsetcurrentfileinfoposition-function-unzsetcurrentfileinfoposition-file-position-src-mq3-format-unzip-ml-663201635"></a>
 ### unzSetCurrentFileInfoPosition
@@ -814,7 +814,7 @@ function unzSetCurrentFileInfoPosition(file, position)
 | `position` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L98)
 
 <a id="function-function-mq3-format-unzip-unzstringfilenamecompare-function-unzstringfilenamecompare-left-right-casesensitivity-src-mq3-format-unzip-ml-1240243270"></a>
 ### unzStringFileNameCompare
@@ -830,7 +830,7 @@ function unzStringFileNameCompare(left, right, caseSensitivity)
 | `caseSensitivity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L39)
 
 <a id="function-function-mq3-format-unzip-unztell-function-unztell-file-src-mq3-format-unzip-ml-703394592"></a>
 ### unztell
@@ -844,7 +844,7 @@ function unztell(file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L130)
 
 <a id="function-function-mq3-format-unzip-valid-function-valid-handle-src-mq3-format-unzip-ml-119803860"></a>
 ### valid
@@ -858,7 +858,7 @@ function valid(handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L66)
 
 <a id="constant-constant-mq3-format-unzip-z-buf-error-const-z-buf-error-5-src-mq3-format-unzip-ml-1663020483"></a>
 ### Z_BUF_ERROR
@@ -868,7 +868,7 @@ const Z_BUF_ERROR = -5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L23)
 
 <a id="constant-constant-mq3-format-unzip-z-data-error-const-z-data-error-3-src-mq3-format-unzip-ml-1377534267"></a>
 ### Z_DATA_ERROR
@@ -878,7 +878,7 @@ const Z_DATA_ERROR = -3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L22)
 
 <a id="constant-constant-mq3-format-unzip-z-ok-const-z-ok-0-src-mq3-format-unzip-ml-372593419"></a>
 ### Z_OK
@@ -888,7 +888,7 @@ const Z_OK = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L19)
 
 <a id="constant-constant-mq3-format-unzip-z-stream-end-const-z-stream-end-1-src-mq3-format-unzip-ml-163605012"></a>
 ### Z_STREAM_END
@@ -898,7 +898,7 @@ const Z_STREAM_END = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L20)
 
 <a id="constant-constant-mq3-format-unzip-z-stream-error-const-z-stream-error-2-src-mq3-format-unzip-ml-2107781852"></a>
 ### Z_STREAM_ERROR
@@ -908,7 +908,7 @@ const Z_STREAM_ERROR = -2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L21)
 
 <a id="function-function-mq3-format-unzip-zcalloc-function-zcalloc-opaque-items-size-src-mq3-format-unzip-ml-1281487880"></a>
 ### zcalloc
@@ -924,7 +924,7 @@ function zcalloc(opaque, items, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L174)
 
 <a id="function-function-mq3-format-unzip-zcfree-function-zcfree-opaque-value-src-mq3-format-unzip-ml-2081970428"></a>
 ### zcfree
@@ -939,4 +939,4 @@ function zcfree(opaque, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L175)

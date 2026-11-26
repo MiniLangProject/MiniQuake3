@@ -32,7 +32,7 @@ function begin(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L42)
 
 <a id="function-function-mq3-game-intermission-exitlevel-function-exitlevel-level-src-mq3-game-intermission-ml-199365878"></a>
 ### exitLevel
@@ -46,7 +46,7 @@ function exitLevel(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L67)
 
 <a id="function-function-mq3-game-intermission-intermissionclientlimit-function-intermissionclientlimit-limit-src-mq3-game-intermission-ml-1941874611"></a>
 ### intermissionClientLimit
@@ -60,7 +60,7 @@ function intermissionClientLimit(limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L16)
 
 <a id="function-function-mq3-game-intermission-intermissionmoveclient-function-intermissionmoveclient-level-ent-src-mq3-game-intermission-ml-728533771"></a>
 ### intermissionMoveClient
@@ -75,7 +75,7 @@ function intermissionMoveClient(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L21)
 
 <a id="function-function-mq3-game-intermission-moveclient-function-moveclient-level-ent-src-mq3-game-intermission-ml-1569945443"></a>
 ### moveClient
@@ -90,4 +90,4 @@ function moveClient(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/intermission.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/intermission.ml#L38)

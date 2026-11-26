@@ -10,7 +10,7 @@ struct Md3Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L88)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L88)
 
 <a id="field-field-mq3-format-qfiles-md3frame-localorigin-localorigin-src-mq3-format-qfiles-ml-1353718394"></a>
 ### localOrigin
@@ -32,7 +32,7 @@ localOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L88)
 
 <a id="field-field-mq3-format-qfiles-md3frame-name-name-src-mq3-format-qfiles-ml-1743867860"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L88)
 
 <a id="field-field-mq3-format-qfiles-md3frame-radius-radius-src-mq3-format-qfiles-ml-1945903746"></a>
 ### radius
@@ -52,4 +52,4 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L88)

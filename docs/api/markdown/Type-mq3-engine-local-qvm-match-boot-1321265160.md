@@ -10,7 +10,7 @@ struct Boot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)
 
 ## Members
 
@@ -22,7 +22,7 @@ cgame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)
 
 <a id="field-field-mq3-engine-local-qvm-match-boot-context-context-src-mq3-engine-local-qvm-match-ml-2081679245"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)
 
 <a id="field-field-mq3-engine-local-qvm-match-boot-game-game-src-mq3-engine-local-qvm-match-ml-1125503077"></a>
 ### game
@@ -42,7 +42,7 @@ game
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)
 
 <a id="field-field-mq3-engine-local-qvm-match-boot-runtime-runtime-src-mq3-engine-local-qvm-match-ml-1020806301"></a>
 ### runtime
@@ -52,7 +52,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)
 
 <a id="field-field-mq3-engine-local-qvm-match-boot-ui-ui-src-mq3-engine-local-qvm-match-ml-1744378949"></a>
 ### ui
@@ -62,4 +62,4 @@ ui
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L172)

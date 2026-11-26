@@ -44,7 +44,7 @@ const CINEMATIC_TEXTURE_SLOT = 4055
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L36)
 
 <a id="function-function-mq3-client-qvm-menu-app-fail-function-fail-message-src-mq3-client-qvm-menu-app-ml-219657267"></a>
 ### fail
@@ -58,7 +58,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L39)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-first-texture-slot-const-first-texture-slot-1-src-mq3-client-qvm-menu-app-ml-1030347800"></a>
 ### FIRST_TEXTURE_SLOT
@@ -68,7 +68,7 @@ const FIRST_TEXTURE_SLOT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L34)
 
 <a id="function-function-mq3-client-qvm-menu-app-loadlocalmatch-function-loadlocalmatch-archive-session-qvmroot-src-mq3-client-qvm-menu-app-ml-199632816"></a>
 ### loadLocalMatch
@@ -84,7 +84,7 @@ function loadLocalMatch(archive, session, qvmRoot)
 | `qvmRoot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L178)
 
 <a id="function-function-mq3-client-qvm-menu-app-loadmap-function-loadmap-archive-dataroot-name-src-mq3-client-qvm-menu-app-ml-1837954293"></a>
 ### loadMap
@@ -100,7 +100,7 @@ function loadMap(archive, dataRoot, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L170)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-max-texture-slots-const-max-texture-slots-300-src-mq3-client-qvm-menu-app-ml-572085514"></a>
 ### MAX_TEXTURE_SLOTS
@@ -110,7 +110,7 @@ const MAX_TEXTURE_SLOTS = 300
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L35)
 
 <a id="function-function-mq3-client-qvm-menu-app-renderstream-function-renderstream-basearchive-archive-installroot-qvmroot-session-source-src-mq3-client-qvm-menu-app-ml-441497051"></a>
 ### renderStream
@@ -129,7 +129,7 @@ function renderStream(baseArchive, archive, installRoot, qvmRoot, session, sourc
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L212)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L212)
 
 <a id="function-function-mq3-client-qvm-menu-app-run-function-run-archive-bootstrapmap-qvmroot-src-mq3-client-qvm-menu-app-ml-1503318232"></a>
 ### run
@@ -145,7 +145,7 @@ function run(archive, bootstrapMap, qvmRoot)
 | `qvmRoot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L257)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L257)
 
 <a id="function-function-mq3-client-qvm-menu-app-runcinematic-function-runcinematic-archive-session-measurepixels-src-mq3-client-qvm-menu-app-ml-1091549707"></a>
 ### runCinematic
@@ -163,7 +163,7 @@ CL_PlayCinematic_f takes ownership of the disconnected screen. When the system R
 | `measurePixels` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L113)
 
 <a id="function-function-mq3-client-qvm-menu-app-runmenu-function-runmenu-archive-bootstrapmap-qvmroot-session-openlevelselect-src-mq3-client-qvm-menu-app-ml-538961304"></a>
 ### runMenu
@@ -181,7 +181,7 @@ function runMenu(archive, bootstrapMap, qvmRoot, session, openLevelSelect)
 | `openLevelSelect` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L41)
 
 <a id="function-function-mq3-client-qvm-menu-app-runstream-function-runstream-basearchive-archive-installroot-qvmroot-session-demoplaying-src-mq3-client-qvm-menu-app-ml-255400437"></a>
 ### runStream
@@ -200,7 +200,7 @@ function runStream(baseArchive, archive, installRoot, qvmRoot, session, demoPlay
 | `demoPlaying` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L237)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L237)
 
 - [mq3.client.qvm_menu_app.ScreenPoint](Type-mq3-client-qvm-menu-app-screenpoint-1566616169.md) — struct
 <a id="constant-constant-mq3-client-qvm-menu-app-source-height-const-source-height-720-src-mq3-client-qvm-menu-app-ml-1893579200"></a>
@@ -211,7 +211,7 @@ const SOURCE_HEIGHT = 720
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L33)
 
 <a id="constant-constant-mq3-client-qvm-menu-app-source-width-const-source-width-1280-src-mq3-client-qvm-menu-app-ml-723930664"></a>
 ### SOURCE_WIDTH
@@ -221,7 +221,7 @@ const SOURCE_WIDTH = 1280
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L32)
 
 <a id="function-function-mq3-client-qvm-menu-app-switchgame-function-switchgame-session-mounted-src-mq3-client-qvm-menu-app-ml-125974246"></a>
 ### switchGame
@@ -236,7 +236,7 @@ function switchGame(session, mounted)
 | `mounted` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L189)
 
 <a id="function-function-mq3-client-qvm-menu-app-waitforserver-function-waitforserver-live-src-mq3-client-qvm-menu-app-ml-2042830486"></a>
 ### waitForServer
@@ -250,4 +250,4 @@ function waitForServer(live)
 | `live` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L198)

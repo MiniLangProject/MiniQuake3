@@ -10,7 +10,7 @@ struct InGameItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ grayed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L22)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-id-id-src-mq3-client-ui-ingame-ml-1575840321"></a>
 ### id
@@ -32,7 +32,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L22)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-label-label-src-mq3-client-ui-ingame-ml-1000823419"></a>
 ### label
@@ -42,7 +42,7 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L22)
 
 <a id="field-field-mq3-client-ui-ingame-ingameitem-y-y-src-mq3-client-ui-ingame-ml-356918511"></a>
 ### y
@@ -52,4 +52,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L22)

@@ -10,7 +10,7 @@ struct Goal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 ## Members
 
@@ -22,7 +22,7 @@ areanum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-entitynum-entitynum-src-mq3-game-bot-command-matches-ml-699717106"></a>
 ### entitynum
@@ -32,7 +32,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-flags-flags-src-mq3-game-bot-command-matches-ml-1874203966"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-maxs-maxs-src-mq3-game-bot-command-matches-ml-7354044"></a>
 ### maxs
@@ -52,7 +52,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-mins-mins-src-mq3-game-bot-command-matches-ml-1547401908"></a>
 ### mins
@@ -62,7 +62,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-name-name-src-mq3-game-bot-command-matches-ml-1221038296"></a>
 ### name
@@ -72,7 +72,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-number-number-src-mq3-game-bot-command-matches-ml-1287077156"></a>
 ### number
@@ -82,7 +82,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)
 
 <a id="field-field-mq3-game-bot-command-matches-goal-origin-origin-src-mq3-game-bot-command-matches-ml-2030780694"></a>
 ### origin
@@ -92,4 +92,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L120)

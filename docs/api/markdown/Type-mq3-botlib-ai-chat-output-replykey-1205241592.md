@@ -10,7 +10,7 @@ struct ReplyKey
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-chat-output-replykey-pieces-pieces-src-mq3-botlib-ai-chat-output-ml-273085988"></a>
 ### pieces
@@ -32,7 +32,7 @@ pieces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-chat-output-replykey-text-text-src-mq3-botlib-ai-chat-output-ml-1810729540"></a>
 ### text
@@ -42,4 +42,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L36)

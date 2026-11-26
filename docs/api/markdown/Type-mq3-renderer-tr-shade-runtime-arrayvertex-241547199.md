@@ -10,7 +10,7 @@ struct ArrayVertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-arrayvertex-position-position-src-mq3-renderer-tr-shade-runtime-ml-369786034"></a>
 ### position
@@ -32,7 +32,7 @@ position
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-arrayvertex-texture0-texture0-src-mq3-renderer-tr-shade-runtime-ml-832732598"></a>
 ### texture0
@@ -42,7 +42,7 @@ texture0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L16)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-arrayvertex-texture1-texture1-src-mq3-renderer-tr-shade-runtime-ml-1418348924"></a>
 ### texture1
@@ -52,4 +52,4 @@ texture1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L16)

@@ -10,7 +10,7 @@ struct VoiceList
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 ## Members
 
@@ -22,7 +22,7 @@ chats
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-gender-gender-src-mq3-client-cgame-servercmds-ml-188061201"></a>
 ### gender
@@ -32,7 +32,7 @@ gender
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)
 
 <a id="field-field-mq3-client-cgame-servercmds-voicelist-name-name-src-mq3-client-cgame-servercmds-ml-667763329"></a>
 ### name
@@ -42,4 +42,4 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L62)

@@ -10,7 +10,7 @@ struct Client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 ## Members
 
@@ -22,7 +22,7 @@ bot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-entertime-entertime-src-mq3-game-rankings-ml-677697350"></a>
 ### enterTime
@@ -32,7 +32,7 @@ enterTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-inuse-inuse-src-mq3-game-rankings-ml-1903705998"></a>
 ### inuse
@@ -42,7 +42,7 @@ inuse
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-matchrating-matchrating-src-mq3-game-rankings-ml-420580054"></a>
 ### matchRating
@@ -52,7 +52,7 @@ matchRating
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-matchtime-matchtime-src-mq3-game-rankings-ml-352736202"></a>
 ### matchTime
@@ -62,7 +62,7 @@ matchTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-name-name-src-mq3-game-rankings-ml-829689360"></a>
 ### name
@@ -72,7 +72,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-present-present-src-mq3-game-rankings-ml-329451310"></a>
 ### present
@@ -82,7 +82,7 @@ present
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-spectatorstate-spectatorstate-src-mq3-game-rankings-ml-100051310"></a>
 ### spectatorState
@@ -92,7 +92,7 @@ spectatorState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-status-status-src-mq3-game-rankings-ml-1130480846"></a>
 ### status
@@ -102,7 +102,7 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-team-team-src-mq3-game-rankings-ml-65559024"></a>
 ### team
@@ -112,7 +112,7 @@ team
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)
 
 <a id="field-field-mq3-game-rankings-client-weaponchangetime-weaponchangetime-src-mq3-game-rankings-ml-384295376"></a>
 ### weaponChangeTime
@@ -122,4 +122,4 @@ weaponChangeTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/rankings.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/rankings.ml#L136)

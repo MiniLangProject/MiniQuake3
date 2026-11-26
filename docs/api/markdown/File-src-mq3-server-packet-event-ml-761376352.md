@@ -29,7 +29,7 @@ function client(state, serverNetchanState)
 | `serverNetchanState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L17)
 
 - [mq3.server.packet_event.Client](Type-mq3-server-packet-event-client-932321139.md) — struct
 <a id="constant-constant-mq3-server-packet-event-cs-free-const-cs-free-0-src-mq3-server-packet-event-ml-922464525"></a>
@@ -40,7 +40,7 @@ const CS_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L11)
 
 <a id="constant-constant-mq3-server-packet-event-cs-zombie-const-cs-zombie-1-src-mq3-server-packet-event-ml-44014732"></a>
 ### CS_ZOMBIE
@@ -50,7 +50,7 @@ const CS_ZOMBIE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L12)
 
 <a id="function-function-mq3-server-packet-event-isoob-function-isoob-msg-src-mq3-server-packet-event-ml-226574741"></a>
 ### isOob
@@ -64,7 +64,7 @@ function isOob(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L34)
 
 <a id="function-function-mq3-server-packet-event-messagebytes-function-messagebytes-msg-src-mq3-server-packet-event-ml-1317571525"></a>
 ### messageBytes
@@ -78,7 +78,7 @@ function messageBytes(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L38)
 
 <a id="constant-constant-mq3-server-packet-event-na-ip-const-na-ip-4-src-mq3-server-packet-event-ml-1874528761"></a>
 ### NA_IP
@@ -88,7 +88,7 @@ const NA_IP = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L14)
 
 <a id="constant-constant-mq3-server-packet-event-na-loopback-const-na-loopback-2-src-mq3-server-packet-event-ml-1717059071"></a>
 ### NA_LOOPBACK
@@ -98,7 +98,7 @@ const NA_LOOPBACK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L13)
 
 <a id="function-function-mq3-server-packet-event-packetevent-function-packetevent-state-host-source-msg-src-mq3-server-packet-event-ml-1343267063"></a>
 ### packetEvent
@@ -115,7 +115,7 @@ function packetEvent(state, host, source, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L53)
 
 <a id="function-function-mq3-server-packet-event-processnetchan-function-processnetchan-host-clientstate-msg-src-mq3-server-packet-event-ml-1413262543"></a>
 ### processNetchan
@@ -133,7 +133,7 @@ Concrete SV_Netchan_Process adapter. Tests can replace processFn with the determ
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L46)
 
 <a id="function-function-mq3-server-packet-event-runtime-function-runtime-clients-src-mq3-server-packet-event-ml-429028052"></a>
 ### runtime
@@ -147,7 +147,7 @@ function runtime(clients)
 | `clients` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L20)
 
 - [mq3.server.packet_event.Runtime](Type-mq3-server-packet-event-runtime-881154040.md) — struct
 <a id="function-function-mq3-server-packet-event-samebase-function-samebase-left-right-src-mq3-server-packet-event-ml-1065065437"></a>
@@ -163,7 +163,7 @@ function sameBase(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L27)
 
 <a id="function-function-mq3-server-packet-event-services-function-services-connectionlessruntime-connectionlesshost-src-mq3-server-packet-event-ml-2041605972"></a>
 ### services
@@ -178,6 +178,6 @@ function services(connectionlessRuntime, connectionlessHost)
 | `connectionlessHost` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L23)
 
 - [mq3.server.packet_event.Services](Type-mq3-server-packet-event-services-266207052.md) — struct

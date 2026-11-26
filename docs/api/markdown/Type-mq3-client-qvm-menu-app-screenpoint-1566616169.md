@@ -10,7 +10,7 @@ struct ScreenPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ depth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L37)
 
 <a id="field-field-mq3-client-qvm-menu-app-screenpoint-x-x-src-mq3-client-qvm-menu-app-ml-881480727"></a>
 ### x
@@ -32,7 +32,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L37)
 
 <a id="field-field-mq3-client-qvm-menu-app-screenpoint-y-y-src-mq3-client-qvm-menu-app-ml-890935803"></a>
 ### y
@@ -42,4 +42,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_menu_app.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_menu_app.ml#L37)

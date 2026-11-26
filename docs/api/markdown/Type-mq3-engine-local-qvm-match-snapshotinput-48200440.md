@@ -10,7 +10,7 @@ struct SnapshotInput
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1217)
 
 ## Members
 
@@ -22,7 +22,7 @@ decodedEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1217)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshotinput-host-host-src-mq3-engine-local-qvm-match-ml-1710234033"></a>
 ### host
@@ -32,7 +32,7 @@ host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1217)
 
 <a id="field-field-mq3-engine-local-qvm-match-snapshotinput-world-world-src-mq3-engine-local-qvm-match-ml-444565093"></a>
 ### world
@@ -42,4 +42,4 @@ world
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L1217)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L1217)

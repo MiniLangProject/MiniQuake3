@@ -25,7 +25,7 @@ function append(state, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L11)
 
 <a id="function-function-mq3-botlib-cache-lru-clear-function-clear-state-src-mq3-botlib-cache-lru-ml-1764260091"></a>
 ### clear
@@ -39,7 +39,7 @@ function clear(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L38)
 
 <a id="function-function-mq3-botlib-cache-lru-create-function-create-capacity-src-mq3-botlib-cache-lru-ml-1126451574"></a>
 ### create
@@ -53,7 +53,7 @@ function create(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L7)
 
 <a id="function-function-mq3-botlib-cache-lru-reserve-function-reserve-state-key-src-mq3-botlib-cache-lru-ml-1080681222"></a>
 ### reserve
@@ -68,7 +68,7 @@ function reserve(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L27)
 
 - [mq3.botlib.cache_lru.State](Type-mq3-botlib-cache-lru-state-1176927479.md) — struct
 <a id="function-function-mq3-botlib-cache-lru-touch-function-touch-state-key-src-mq3-botlib-cache-lru-ml-1748647972"></a>
@@ -84,7 +84,7 @@ function touch(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L23)
 
 <a id="function-function-mq3-botlib-cache-lru-touchslot-function-touchslot-state-slot-src-mq3-botlib-cache-lru-ml-1591503319"></a>
 ### touchSlot
@@ -99,4 +99,4 @@ function touchSlot(state, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L16)

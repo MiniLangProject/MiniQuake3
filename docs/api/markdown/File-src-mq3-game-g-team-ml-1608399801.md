@@ -35,7 +35,7 @@ function AddTeamScore(level, origin, team, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L41)
 
 <a id="function-function-mq3-game-g-team-checkobeliskattack-function-checkobeliskattack-level-obelisk-attacker-src-mq3-game-g-team-ml-699592254"></a>
 ### CheckObeliskAttack
@@ -51,7 +51,7 @@ function CheckObeliskAttack(level, obelisk, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L106)
 
 <a id="function-function-mq3-game-g-team-checkteamstatus-function-checkteamstatus-level-src-mq3-game-g-team-ml-887090556"></a>
 ### CheckTeamStatus
@@ -65,7 +65,7 @@ function CheckTeamStatus(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L92)
 
 <a id="function-function-mq3-game-g-team-obeliskdie-function-obeliskdie-level-self-inflictor-attacker-damage-mod-src-mq3-game-g-team-ml-1120477132"></a>
 ### ObeliskDie
@@ -84,7 +84,7 @@ function ObeliskDie(level, self, inflictor, attacker, damage, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L99)
 
 <a id="function-function-mq3-game-g-team-obeliskpain-function-obeliskpain-level-self-attacker-damage-src-mq3-game-g-team-ml-82032816"></a>
 ### ObeliskPain
@@ -101,7 +101,7 @@ function ObeliskPain(level, self, attacker, damage)
 | `damage` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L101)
 
 <a id="function-function-mq3-game-g-team-obeliskregen-function-obeliskregen-level-self-src-mq3-game-g-team-ml-796299036"></a>
 ### ObeliskRegen
@@ -116,7 +116,7 @@ function ObeliskRegen(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L97)
 
 <a id="function-function-mq3-game-g-team-obeliskrespawn-function-obeliskrespawn-level-self-src-mq3-game-g-team-ml-1587060052"></a>
 ### ObeliskRespawn
@@ -131,7 +131,7 @@ function ObeliskRespawn(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L98)
 
 <a id="function-function-mq3-game-g-team-obelisktouch-function-obelisktouch-level-self-other-trace-src-mq3-game-g-team-ml-1361088511"></a>
 ### ObeliskTouch
@@ -148,7 +148,7 @@ function ObeliskTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L100)
 
 <a id="function-function-mq3-game-g-team-onsameteam-function-onsameteam-level-first-second-src-mq3-game-g-team-ml-146148962"></a>
 ### OnSameTeam
@@ -164,7 +164,7 @@ function OnSameTeam(level, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L42)
 
 <a id="function-function-mq3-game-g-team-otherteam-function-otherteam-team-src-mq3-game-g-team-ml-477509833"></a>
 ### OtherTeam
@@ -178,7 +178,7 @@ function OtherTeam(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L23)
 
 <a id="function-function-mq3-game-g-team-otherteamname-function-otherteamname-team-src-mq3-game-g-team-ml-830822403"></a>
 ### OtherTeamName
@@ -192,7 +192,7 @@ function OtherTeamName(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L25)
 
 <a id="function-function-mq3-game-g-team-pickup-team-function-pickup-team-level-ent-other-src-mq3-game-g-team-ml-732150887"></a>
 ### Pickup_Team
@@ -208,7 +208,7 @@ function Pickup_Team(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L67)
 
 <a id="function-function-mq3-game-g-team-printmsg-function-printmsg-level-ent-text-src-mq3-game-g-team-ml-1279396982"></a>
 ### PrintMsg
@@ -224,7 +224,7 @@ function PrintMsg(level, ent, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L32)
 
 <a id="function-function-mq3-game-g-team-selectctfspawnpoint-function-selectctfspawnpoint-level-team-teamstate-origin-angles-src-mq3-game-g-team-ml-181573511"></a>
 ### SelectCTFSpawnPoint
@@ -242,7 +242,7 @@ function SelectCTFSpawnPoint(level, team, teamstate, origin, angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L89)
 
 <a id="function-function-mq3-game-g-team-selectrandomteamspawnpoint-function-selectrandomteamspawnpoint-level-teamstate-team-src-mq3-game-g-team-ml-215302023"></a>
 ### SelectRandomTeamSpawnPoint
@@ -258,7 +258,7 @@ function SelectRandomTeamSpawnPoint(level, teamstate, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L88)
 
 <a id="function-function-mq3-game-g-team-sortclients-function-sortclients-a-b-src-mq3-game-g-team-ml-454757253"></a>
 ### SortClients
@@ -273,7 +273,7 @@ function SortClients(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L90)
 
 <a id="function-function-mq3-game-g-team-sp-team-blueobelisk-function-sp-team-blueobelisk-level-ent-src-mq3-game-g-team-ml-938153527"></a>
 ### SP_team_blueobelisk
@@ -288,7 +288,7 @@ function SP_team_blueobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L104)
 
 <a id="function-function-mq3-game-g-team-sp-team-ctf-blueplayer-function-sp-team-ctf-blueplayer-level-ent-src-mq3-game-g-team-ml-700647677"></a>
 ### SP_team_CTF_blueplayer
@@ -303,7 +303,7 @@ function SP_team_CTF_blueplayer(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L94)
 
 <a id="function-function-mq3-game-g-team-sp-team-ctf-bluespawn-function-sp-team-ctf-bluespawn-level-ent-src-mq3-game-g-team-ml-522639531"></a>
 ### SP_team_CTF_bluespawn
@@ -318,7 +318,7 @@ function SP_team_CTF_bluespawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L96)
 
 <a id="function-function-mq3-game-g-team-sp-team-ctf-redplayer-function-sp-team-ctf-redplayer-level-ent-src-mq3-game-g-team-ml-116838909"></a>
 ### SP_team_CTF_redplayer
@@ -333,7 +333,7 @@ function SP_team_CTF_redplayer(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L93)
 
 <a id="function-function-mq3-game-g-team-sp-team-ctf-redspawn-function-sp-team-ctf-redspawn-level-ent-src-mq3-game-g-team-ml-1900555769"></a>
 ### SP_team_CTF_redspawn
@@ -348,7 +348,7 @@ function SP_team_CTF_redspawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L95)
 
 <a id="function-function-mq3-game-g-team-sp-team-neutralobelisk-function-sp-team-neutralobelisk-level-ent-src-mq3-game-g-team-ml-1949894317"></a>
 ### SP_team_neutralobelisk
@@ -363,7 +363,7 @@ function SP_team_neutralobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L105)
 
 <a id="function-function-mq3-game-g-team-sp-team-redobelisk-function-sp-team-redobelisk-level-ent-src-mq3-game-g-team-ml-271319117"></a>
 ### SP_team_redobelisk
@@ -378,7 +378,7 @@ function SP_team_redobelisk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L103)
 
 <a id="function-function-mq3-game-g-team-spawnobelisk-function-spawnobelisk-level-origin-team-spawnflags-src-mq3-game-g-team-ml-84482215"></a>
 ### SpawnObelisk
@@ -395,7 +395,7 @@ function SpawnObelisk(level, origin, team, spawnflags)
 | `spawnflags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L102)
 
 <a id="function-function-mq3-game-g-team-team-captureflagsound-function-team-captureflagsound-level-ent-team-src-mq3-game-g-team-ml-2040701126"></a>
 ### Team_CaptureFlagSound
@@ -411,7 +411,7 @@ function Team_CaptureFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L52)
 
 <a id="function-function-mq3-game-g-team-team-checkdroppeditem-function-team-checkdroppeditem-level-dropped-src-mq3-game-g-team-ml-1729625104"></a>
 ### Team_CheckDroppedItem
@@ -426,7 +426,7 @@ function Team_CheckDroppedItem(level, dropped)
 | `dropped` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L44)
 
 <a id="function-function-mq3-game-g-team-team-checkhurtcarrier-function-team-checkhurtcarrier-level-targ-attacker-src-mq3-game-g-team-ml-2062560759"></a>
 ### Team_CheckHurtCarrier
@@ -442,7 +442,7 @@ function Team_CheckHurtCarrier(level, targ, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L47)
 
 <a id="function-function-mq3-game-g-team-team-droppedflagthink-function-team-droppedflagthink-level-ent-src-mq3-game-g-team-ml-1666719705"></a>
 ### Team_DroppedFlagThink
@@ -457,7 +457,7 @@ function Team_DroppedFlagThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L55)
 
 <a id="function-function-mq3-game-g-team-team-forcegesture-function-team-forcegesture-level-team-src-mq3-game-g-team-ml-1389381551"></a>
 ### Team_ForceGesture
@@ -472,7 +472,7 @@ function Team_ForceGesture(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L45)
 
 <a id="function-function-mq3-game-g-team-team-fragbonuses-function-team-fragbonuses-level-targ-inflictor-attacker-src-mq3-game-g-team-ml-268638677"></a>
 ### Team_FragBonuses
@@ -489,7 +489,7 @@ function Team_FragBonuses(level, targ, inflictor, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L46)
 
 <a id="function-function-mq3-game-g-team-team-freeentity-function-team-freeentity-level-ent-src-mq3-game-g-team-ml-348426927"></a>
 ### Team_FreeEntity
@@ -504,7 +504,7 @@ function Team_FreeEntity(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L54)
 
 <a id="function-function-mq3-game-g-team-team-getlocation-function-team-getlocation-level-ent-src-mq3-game-g-team-ml-1437119981"></a>
 ### Team_GetLocation
@@ -519,7 +519,7 @@ function Team_GetLocation(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L86)
 
 <a id="function-function-mq3-game-g-team-team-getlocationmsg-function-team-getlocationmsg-level-ent-capacity-src-mq3-game-g-team-ml-947619917"></a>
 ### Team_GetLocationMsg
@@ -535,7 +535,7 @@ function Team_GetLocationMsg(level, ent, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L87)
 
 <a id="function-function-mq3-game-g-team-team-initgame-function-team-initgame-level-src-mq3-game-g-team-ml-971176018"></a>
 ### Team_InitGame
@@ -549,7 +549,7 @@ function Team_InitGame(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L16)
 
 <a id="function-function-mq3-game-g-team-team-resetflag-function-team-resetflag-level-team-src-mq3-game-g-team-ml-1530454955"></a>
 ### Team_ResetFlag
@@ -564,7 +564,7 @@ function Team_ResetFlag(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L48)
 
 <a id="function-function-mq3-game-g-team-team-resetflags-function-team-resetflags-level-src-mq3-game-g-team-ml-72733550"></a>
 ### Team_ResetFlags
@@ -578,7 +578,7 @@ function Team_ResetFlags(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L49)
 
 <a id="function-function-mq3-game-g-team-team-returnflag-function-team-returnflag-level-team-src-mq3-game-g-team-ml-1564729727"></a>
 ### Team_ReturnFlag
@@ -593,7 +593,7 @@ function Team_ReturnFlag(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L53)
 
 <a id="function-function-mq3-game-g-team-team-returnflagsound-function-team-returnflagsound-level-ent-team-src-mq3-game-g-team-ml-871744560"></a>
 ### Team_ReturnFlagSound
@@ -609,7 +609,7 @@ function Team_ReturnFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L50)
 
 <a id="function-function-mq3-game-g-team-team-setflagstatus-function-team-setflagstatus-level-team-value-src-mq3-game-g-team-ml-1429383286"></a>
 ### Team_SetFlagStatus
@@ -625,7 +625,7 @@ function Team_SetFlagStatus(level, team, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L43)
 
 <a id="function-function-mq3-game-g-team-team-takeflagsound-function-team-takeflagsound-level-ent-team-src-mq3-game-g-team-ml-966102020"></a>
 ### Team_TakeFlagSound
@@ -641,7 +641,7 @@ function Team_TakeFlagSound(level, ent, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L51)
 
 <a id="function-function-mq3-game-g-team-team-touchenemyflag-function-team-touchenemyflag-level-ent-other-team-src-mq3-game-g-team-ml-1986344724"></a>
 ### Team_TouchEnemyFlag
@@ -658,7 +658,7 @@ function Team_TouchEnemyFlag(level, ent, other, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L57)
 
 <a id="function-function-mq3-game-g-team-team-touchourflag-function-team-touchourflag-level-ent-other-team-src-mq3-game-g-team-ml-1263707572"></a>
 ### Team_TouchOurFlag
@@ -675,7 +675,7 @@ function Team_TouchOurFlag(level, ent, other, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L56)
 
 <a id="function-function-mq3-game-g-team-teamcolorstring-function-teamcolorstring-team-src-mq3-game-g-team-ml-147960817"></a>
 ### TeamColorString
@@ -689,7 +689,7 @@ function TeamColorString(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L26)
 
 <a id="function-function-mq3-game-g-team-teamname-function-teamname-team-src-mq3-game-g-team-ml-1508817027"></a>
 ### TeamName
@@ -703,7 +703,7 @@ function TeamName(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L24)
 
 <a id="function-function-mq3-game-g-team-teamplayinfomessage-function-teamplayinfomessage-level-ent-src-mq3-game-g-team-ml-213251429"></a>
 ### TeamplayInfoMessage
@@ -718,4 +718,4 @@ function TeamplayInfoMessage(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_team.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_team.ml#L91)

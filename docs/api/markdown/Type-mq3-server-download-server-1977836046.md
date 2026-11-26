@@ -10,7 +10,7 @@ struct Server
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ allowDownload
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L19)
 
 <a id="field-field-mq3-server-download-server-maxrate-maxrate-src-mq3-server-download-ml-1834890418"></a>
 ### maxRate
@@ -32,7 +32,7 @@ maxRate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L19)
 
 <a id="field-field-mq3-server-download-server-pure-pure-src-mq3-server-download-ml-1168133726"></a>
 ### pure
@@ -42,7 +42,7 @@ pure
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L19)
 
 <a id="field-field-mq3-server-download-server-time-time-src-mq3-server-download-ml-1880479420"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/download.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/download.ml#L19)

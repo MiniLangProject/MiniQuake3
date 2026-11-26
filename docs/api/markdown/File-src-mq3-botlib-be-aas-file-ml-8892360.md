@@ -27,7 +27,7 @@ function AAS_DData(data, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L26)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-dumpaasdata-function-aas-dumpaasdata-state-src-mq3-botlib-be-aas-file-ml-1368224655"></a>
 ### AAS_DumpAASData
@@ -41,7 +41,7 @@ function AAS_DumpAASData(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L35)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-fileinfo-function-aas-fileinfo-state-src-mq3-botlib-be-aas-file-ml-954732157"></a>
 ### AAS_FileInfo
@@ -55,7 +55,7 @@ function AAS_FileInfo(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L38)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-loadaasfile-function-aas-loadaasfile-state-filename-expectedchecksum-src-mq3-botlib-be-aas-file-ml-761478881"></a>
 ### AAS_LoadAASFile
@@ -71,7 +71,7 @@ function AAS_LoadAASFile(state, filename, expectedChecksum)
 | `expectedChecksum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L51)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-loadaaslump-function-aas-loadaaslump-data-offset-length-lastoffset-elementsize-src-mq3-botlib-be-aas-file-ml-1908784155"></a>
 ### AAS_LoadAASLump
@@ -89,7 +89,7 @@ function AAS_LoadAASLump(data, offset, length, lastOffset, elementSize)
 | `elementSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L43)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-swapaasdata-function-aas-swapaasdata-state-src-mq3-botlib-be-aas-file-ml-1310941085"></a>
 ### AAS_SwapAASData
@@ -103,7 +103,7 @@ function AAS_SwapAASData(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L30)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-writeaasfile-function-aas-writeaasfile-state-filename-src-mq3-botlib-be-aas-file-ml-1636430506"></a>
 ### AAS_WriteAASFile
@@ -118,7 +118,7 @@ function AAS_WriteAASFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L70)
 
 <a id="function-function-mq3-botlib-be-aas-file-aas-writeaaslump-function-aas-writeaaslump-output-lumpnum-data-length-src-mq3-botlib-be-aas-file-ml-1023996977"></a>
 ### AAS_WriteAASLump
@@ -135,7 +135,7 @@ function AAS_WriteAASLump(output, lumpNum, data, length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L62)
 
 <a id="constant-constant-mq3-botlib-be-aas-file-blerr-cannotopenaasfile-const-blerr-cannotopenaasfile-4-src-mq3-botlib-be-aas-file-ml-1816462685"></a>
 ### BLERR_CANNOTOPENAASFILE
@@ -145,7 +145,7 @@ const BLERR_CANNOTOPENAASFILE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L11)
 
 <a id="constant-constant-mq3-botlib-be-aas-file-blerr-cannotreadaaslump-const-blerr-cannotreadaaslump-7-src-mq3-botlib-be-aas-file-ml-156678616"></a>
 ### BLERR_CANNOTREADAASLUMP
@@ -155,7 +155,7 @@ const BLERR_CANNOTREADAASLUMP = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L14)
 
 <a id="constant-constant-mq3-botlib-be-aas-file-blerr-noerror-const-blerr-noerror-0-src-mq3-botlib-be-aas-file-ml-1434188293"></a>
 ### BLERR_NOERROR
@@ -165,7 +165,7 @@ const BLERR_NOERROR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L10)
 
 <a id="constant-constant-mq3-botlib-be-aas-file-blerr-wrongaasfileid-const-blerr-wrongaasfileid-5-src-mq3-botlib-be-aas-file-ml-829972274"></a>
 ### BLERR_WRONGAASFILEID
@@ -175,7 +175,7 @@ const BLERR_WRONGAASFILEID = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L12)
 
 <a id="constant-constant-mq3-botlib-be-aas-file-blerr-wrongaasfileversion-const-blerr-wrongaasfileversion-6-src-mq3-botlib-be-aas-file-ml-216687459"></a>
 ### BLERR_WRONGAASFILEVERSION
@@ -185,7 +185,7 @@ const BLERR_WRONGAASFILEVERSION = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L13)
 
 <a id="function-function-mq3-botlib-be-aas-file-create-function-create-host-src-mq3-botlib-be-aas-file-ml-1748124952"></a>
 ### create
@@ -199,7 +199,7 @@ function create(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L23)
 
 <a id="function-function-mq3-botlib-be-aas-file-destinationwrite-function-destinationwrite-state-filename-data-src-mq3-botlib-be-aas-file-ml-408558890"></a>
 ### destinationWrite
@@ -215,7 +215,7 @@ function destinationWrite(state, filename, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L66)
 
 <a id="function-function-mq3-botlib-be-aas-file-emit-function-emit-state-kind-text-src-mq3-botlib-be-aas-file-ml-1603361362"></a>
 ### emit
@@ -231,7 +231,7 @@ function emit(state, kind, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L24)
 
 - [mq3.botlib.be_aas_file.FileInfo](Type-mq3-botlib-be-aas-file-fileinfo-1907240344.md) — struct
 - [mq3.botlib.be_aas_file.LumpLoad](Type-mq3-botlib-be-aas-file-lumpload-637305452.md) — struct
@@ -247,7 +247,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L22)
 
 - [mq3.botlib.be_aas_file.Services](Type-mq3-botlib-be-aas-file-services-822078766.md) — struct
 <a id="function-function-mq3-botlib-be-aas-file-sourcebytes-function-sourcebytes-state-filename-src-mq3-botlib-be-aas-file-ml-1558180374"></a>
@@ -263,7 +263,7 @@ function sourceBytes(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L47)
 
 - [mq3.botlib.be_aas_file.State](Type-mq3-botlib-be-aas-file-state-1430783399.md) — struct
 <a id="function-function-mq3-botlib-be-aas-file-writer-function-writer-checksum-src-mq3-botlib-be-aas-file-ml-1672385499"></a>
@@ -278,6 +278,6 @@ function writer(checksum)
 | `checksum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L61)
 
 - [mq3.botlib.be_aas_file.Writer](Type-mq3-botlib-be-aas-file-writer-1952675629.md) — struct

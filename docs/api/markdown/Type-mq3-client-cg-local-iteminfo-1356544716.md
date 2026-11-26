@@ -10,7 +10,7 @@ struct ItemInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L104)
 
 ## Members
 
@@ -22,7 +22,7 @@ icon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L104)
 
 <a id="field-field-mq3-client-cg-local-iteminfo-models-models-src-mq3-client-cg-local-ml-609227546"></a>
 ### models
@@ -32,7 +32,7 @@ models
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L104)
 
 <a id="field-field-mq3-client-cg-local-iteminfo-registered-registered-src-mq3-client-cg-local-ml-779360414"></a>
 ### registered
@@ -42,4 +42,4 @@ registered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L104)

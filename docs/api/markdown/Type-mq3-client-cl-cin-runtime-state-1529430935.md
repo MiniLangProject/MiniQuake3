@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ currentHandle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-rlltable-rlltable-src-mq3-client-cl-cin-runtime-ml-2041762086"></a>
 ### rllTable
@@ -32,7 +32,7 @@ rllTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-runtime-runtime-src-mq3-client-cl-cin-runtime-ml-1447802218"></a>
 ### runtime
@@ -42,7 +42,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-screendraws-screendraws-src-mq3-client-cl-cin-runtime-ml-1679862550"></a>
 ### screenDraws
@@ -52,7 +52,7 @@ screenDraws
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)
 
 <a id="field-field-mq3-client-cl-cin-runtime-state-yuvtable-yuvtable-src-mq3-client-cl-cin-runtime-ml-869728330"></a>
 ### yuvTable
@@ -62,4 +62,4 @@ yuvTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_cin_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_cin_runtime.ml#L10)

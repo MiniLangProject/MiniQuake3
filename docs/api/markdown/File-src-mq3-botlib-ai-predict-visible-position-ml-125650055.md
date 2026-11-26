@@ -21,7 +21,7 @@ const CONTENTS_SOLID_PLAYERCLIP = 65537
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-copyvector-function-copyvector-value-src-mq3-botlib-ai-predict-visible-position-ml-2094431555"></a>
 ### copyVector
@@ -35,7 +35,7 @@ function copyVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-create-function-create-router-context-tracefn-src-mq3-botlib-ai-predict-visible-position-ml-24007345"></a>
 ### create
@@ -51,7 +51,7 @@ function create(router, context, traceFn)
 | `traceFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L15)
 
 <a id="constant-constant-mq3-botlib-ai-predict-visible-position-max-hops-const-max-hops-20-src-mq3-botlib-ai-predict-visible-position-ml-34502443"></a>
 ### MAX_HOPS
@@ -61,7 +61,7 @@ const MAX_HOPS = 20
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-nextreachability-function-nextreachability-runtime-origin-areanum-lastgoalareanum-lastareanum-goal-travelflags-src-mq3-botlib-ai-predict-visible-position-ml-1484436946"></a>
 ### nextReachability
@@ -81,7 +81,7 @@ function nextReachability(runtime, origin, areaNum, lastGoalAreaNum, lastAreaNum
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L24)
 
 <a id="constant-constant-mq3-botlib-ai-predict-visible-position-op-predict-visible-position-const-op-predict-visible-position-572-src-mq3-botlib-ai-predict-visible-position-ml-1584133457"></a>
 ### OP_PREDICT_VISIBLE_POSITION
@@ -91,7 +91,7 @@ const OP_PREDICT_VISIBLE_POSITION = 572
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-predict-function-predict-runtime-origin-areanum-goal-travelflags-src-mq3-botlib-ai-predict-visible-position-ml-219963169"></a>
 ### predict
@@ -109,7 +109,7 @@ function predict(runtime, origin, areaNum, goal, travelFlags)
 | `travelFlags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L38)
 
 - [mq3.botlib.ai_predict_visible_position.Result](Type-mq3-botlib-ai-predict-visible-position-result-560751592.md) — struct
 - [mq3.botlib.ai_predict_visible_position.Runtime](Type-mq3-botlib-ai-predict-visible-position-runtime-1716822191.md) — struct
@@ -126,7 +126,7 @@ function valid(runtime, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L17)
 
 <a id="function-function-mq3-botlib-ai-predict-visible-position-visible-function-visible-runtime-goal-point-src-mq3-botlib-ai-predict-visible-position-ml-593120151"></a>
 ### visible
@@ -142,4 +142,4 @@ function visible(runtime, goal, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L18)

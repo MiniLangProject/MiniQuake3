@@ -10,7 +10,7 @@ struct Level
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 ## Members
 
@@ -22,7 +22,7 @@ baselines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-checksumfeed-checksumfeed-src-mq3-server-init-runtime-ml-1450855305"></a>
 ### checksumFeed
@@ -32,7 +32,7 @@ checksumFeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-checksumfeedserverid-checksumfeedserverid-src-mq3-server-init-runtime-ml-1999001453"></a>
 ### checksumFeedServerId
@@ -42,7 +42,7 @@ checksumFeedServerId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-configstrings-configstrings-src-mq3-server-init-runtime-ml-1881572587"></a>
 ### configstrings
@@ -52,7 +52,7 @@ configstrings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-entities-entities-src-mq3-server-init-runtime-ml-1480531401"></a>
 ### entities
@@ -62,7 +62,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-mapchecksum-mapchecksum-src-mq3-server-init-runtime-ml-1117698379"></a>
 ### mapChecksum
@@ -72,7 +72,7 @@ mapChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-mapname-mapname-src-mq3-server-init-runtime-ml-1525179323"></a>
 ### mapname
@@ -82,7 +82,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-numentities-numentities-src-mq3-server-init-runtime-ml-591145391"></a>
 ### numEntities
@@ -92,7 +92,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-restartedserverid-restartedserverid-src-mq3-server-init-runtime-ml-923432679"></a>
 ### restartedServerId
@@ -102,7 +102,7 @@ restartedServerId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-restarting-restarting-src-mq3-server-init-runtime-ml-1925379717"></a>
 ### restarting
@@ -112,7 +112,7 @@ restarting
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-serverid-serverid-src-mq3-server-init-runtime-ml-2120968051"></a>
 ### serverId
@@ -122,7 +122,7 @@ serverId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)
 
 <a id="field-field-mq3-server-init-runtime-level-state-state-src-mq3-server-init-runtime-ml-605814975"></a>
 ### state
@@ -132,4 +132,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/init_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/init_runtime.ml#L38)

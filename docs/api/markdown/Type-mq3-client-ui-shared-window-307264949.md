@@ -10,7 +10,7 @@ struct Window
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 ## Members
 
@@ -22,7 +22,7 @@ alpha
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-backcolor-backcolor-src-mq3-client-ui-shared-ml-559684629"></a>
 ### backColor
@@ -32,7 +32,7 @@ backColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-background-background-src-mq3-client-ui-shared-ml-2074783869"></a>
 ### background
@@ -42,7 +42,7 @@ background
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-border-border-src-mq3-client-ui-shared-ml-888957281"></a>
 ### border
@@ -52,7 +52,7 @@ border
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-bordercolor-bordercolor-src-mq3-client-ui-shared-ml-102474053"></a>
 ### borderColor
@@ -62,7 +62,7 @@ borderColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-bordersize-bordersize-src-mq3-client-ui-shared-ml-1652722803"></a>
 ### borderSize
@@ -72,7 +72,7 @@ borderSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-cinematic-cinematic-src-mq3-client-ui-shared-ml-1097020985"></a>
 ### cinematic
@@ -82,7 +82,7 @@ cinematic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-flags-flags-src-mq3-client-ui-shared-ml-2005855293"></a>
 ### flags
@@ -92,7 +92,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-forecolor-forecolor-src-mq3-client-ui-shared-ml-922562301"></a>
 ### foreColor
@@ -102,7 +102,7 @@ foreColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-group-group-src-mq3-client-ui-shared-ml-2040048397"></a>
 ### group
@@ -112,7 +112,7 @@ group
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-name-name-src-mq3-client-ui-shared-ml-1262497287"></a>
 ### name
@@ -122,7 +122,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-nexttime-nexttime-src-mq3-client-ui-shared-ml-2139053525"></a>
 ### nextTime
@@ -132,7 +132,7 @@ nextTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-offsettime-offsettime-src-mq3-client-ui-shared-ml-1317722545"></a>
 ### offsetTime
@@ -142,7 +142,7 @@ offsetTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-outlinecolor-outlinecolor-src-mq3-client-ui-shared-ml-1655047751"></a>
 ### outlineColor
@@ -152,7 +152,7 @@ outlineColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-rect-rect-src-mq3-client-ui-shared-ml-1885998465"></a>
 ### rect
@@ -162,7 +162,7 @@ rect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-rectclient-rectclient-src-mq3-client-ui-shared-ml-2066267955"></a>
 ### rectClient
@@ -172,7 +172,7 @@ rectClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-recteffects-recteffects-src-mq3-client-ui-shared-ml-1255993461"></a>
 ### rectEffects
@@ -182,7 +182,7 @@ rectEffects
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-recteffects2-recteffects2-src-mq3-client-ui-shared-ml-2134348725"></a>
 ### rectEffects2
@@ -192,7 +192,7 @@ rectEffects2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)
 
 <a id="field-field-mq3-client-ui-shared-window-style-style-src-mq3-client-ui-shared-ml-1226178753"></a>
 ### style
@@ -202,4 +202,4 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L80)

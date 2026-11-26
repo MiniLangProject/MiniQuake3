@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
 
 ## Members
 
@@ -22,7 +22,17 @@ cache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
+
+<a id="field-field-mq3-client-playable-sky-catalog-cloudheight-cloudheight-src-mq3-client-playable-sky-ml-1134205836"></a>
+### cloudHeight
+
+```ml
+cloudHeight
+```
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
 
 <a id="field-field-mq3-client-playable-sky-catalog-firsttextureslot-firsttextureslot-src-mq3-client-playable-sky-ml-612725798"></a>
 ### firstTextureSlot
@@ -32,7 +42,7 @@ firstTextureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
 
 <a id="field-field-mq3-client-playable-sky-catalog-layers-layers-src-mq3-client-playable-sky-ml-1179484028"></a>
 ### layers
@@ -42,7 +52,7 @@ layers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
 
 <a id="field-field-mq3-client-playable-sky-catalog-shadername-shadername-src-mq3-client-playable-sky-ml-848150508"></a>
 ### shaderName
@@ -52,7 +62,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)
 
 <a id="field-field-mq3-client-playable-sky-catalog-texturecount-texturecount-src-mq3-client-playable-sky-ml-842769004"></a>
 ### textureCount
@@ -62,4 +72,4 @@ textureCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L27)

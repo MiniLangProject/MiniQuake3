@@ -36,7 +36,7 @@ function commandTeam(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L68)
 
 <a id="function-function-mq3-game-team-changes-setteam-function-setteam-level-ent-request-src-mq3-game-team-changes-ml-634986294"></a>
 ### setTeam
@@ -52,7 +52,7 @@ function setTeam(level, ent, request)
 | `request` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L17)
 
 <a id="function-function-mq3-game-team-changes-stopfollowing-function-stopfollowing-level-ent-src-mq3-game-team-changes-ml-1375538395"></a>
 ### stopFollowing
@@ -67,4 +67,4 @@ function stopFollowing(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_changes.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_changes.ml#L61)

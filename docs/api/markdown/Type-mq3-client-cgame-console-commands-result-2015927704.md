@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ centerPrint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-clientcommands-clientcommands-src-mq3-client-cgame-console-commands-ml-1596514642"></a>
 ### clientCommands
@@ -32,7 +32,7 @@ clientCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-consolecommands-consolecommands-src-mq3-client-cgame-console-commands-ml-337403932"></a>
 ### consoleCommands
@@ -42,7 +42,7 @@ consoleCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-cvarsets-cvarsets-src-mq3-client-cgame-console-commands-ml-1967196146"></a>
 ### cvarSets
@@ -52,7 +52,7 @@ cvarSets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-handled-handled-src-mq3-client-cgame-console-commands-ml-1253357820"></a>
 ### handled
@@ -62,7 +62,7 @@ handled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-menuactions-menuactions-src-mq3-client-cgame-console-commands-ml-1248605852"></a>
 ### menuActions
@@ -72,7 +72,7 @@ menuActions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-prints-prints-src-mq3-client-cgame-console-commands-ml-1769610900"></a>
 ### prints
@@ -82,7 +82,7 @@ prints
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)
 
 <a id="field-field-mq3-client-cgame-console-commands-result-sounds-sounds-src-mq3-client-cgame-console-commands-ml-2033110400"></a>
 ### sounds
@@ -92,4 +92,4 @@ sounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_console_commands.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_console_commands.ml#L24)

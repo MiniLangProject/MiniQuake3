@@ -10,7 +10,7 @@ struct SessionData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ decisionmaker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L25)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-goal-goal-src-mq3-game-ai-main-ml-1443490911"></a>
 ### goal
@@ -32,7 +32,7 @@ goal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L25)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-ltgtype-ltgtype-src-mq3-game-ai-main-ml-708437233"></a>
 ### ltgtype
@@ -42,7 +42,7 @@ ltgtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L25)
 
 <a id="field-field-mq3-game-ai-main-sessiondata-teammate-teammate-src-mq3-game-ai-main-ml-810678009"></a>
 ### teammate
@@ -52,4 +52,4 @@ teammate
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_main.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_main.ml#L25)

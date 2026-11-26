@@ -10,7 +10,7 @@ struct Slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-codelength-codelength-src-mq3-vm-runtime-ml-685465759"></a>
 ### codeLength
@@ -32,7 +32,7 @@ codeLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-compiled-compiled-src-mq3-vm-runtime-ml-843506107"></a>
 ### compiled
@@ -42,7 +42,7 @@ compiled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-compiledplan-compiledplan-src-mq3-vm-runtime-ml-641484569"></a>
 ### compiledPlan
@@ -52,7 +52,7 @@ compiledPlan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-generation-generation-src-mq3-vm-runtime-ml-69316449"></a>
 ### generation
@@ -62,7 +62,7 @@ generation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-image-image-src-mq3-vm-runtime-ml-441424241"></a>
 ### image
@@ -72,7 +72,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-machine-machine-src-mq3-vm-runtime-ml-1987485053"></a>
 ### machine
@@ -82,7 +82,7 @@ machine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-name-name-src-mq3-vm-runtime-ml-322053395"></a>
 ### name
@@ -92,7 +92,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-native-native-src-mq3-vm-runtime-ml-1137427255"></a>
 ### native
@@ -102,7 +102,7 @@ native
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-numsymbols-numsymbols-src-mq3-vm-runtime-ml-1893303115"></a>
 ### numSymbols
@@ -112,7 +112,7 @@ numSymbols
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-symbols-symbols-src-mq3-vm-runtime-ml-1811747077"></a>
 ### symbols
@@ -122,7 +122,7 @@ symbols
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-syscall-syscall-src-mq3-vm-runtime-ml-646542697"></a>
 ### syscall
@@ -132,7 +132,7 @@ syscall
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)
 
 <a id="field-field-mq3-vm-runtime-slot-tablelength-tablelength-src-mq3-vm-runtime-ml-656858493"></a>
 ### tableLength
@@ -142,4 +142,4 @@ tableLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/runtime.ml#L17)

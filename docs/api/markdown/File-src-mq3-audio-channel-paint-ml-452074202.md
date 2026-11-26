@@ -28,7 +28,7 @@ function addScaled(paint, index, data, leftVolume, rightVolume)
 | `rightVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L23)
 
 <a id="function-function-mq3-audio-channel-paint-fail-function-fail-message-src-mq3-audio-channel-paint-ml-1432295113"></a>
 ### fail
@@ -42,7 +42,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L9)
 
 <a id="function-function-mq3-audio-channel-paint-paint16-function-paint16-samples-count-sampleoffset-bufferoffset-leftvol-rightvol-sndvol-doppler-dopplerscale-olddopplerscale-paint-src-mq3-audio-channel-paint-ml-483640766"></a>
 ### paint16
@@ -68,7 +68,7 @@ paint is interleaved [left,right,...]. samples represents the linked 1024 sample
 | `paint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L32)
 
 <a id="constant-constant-mq3-audio-channel-paint-snd-chunk-size-const-snd-chunk-size-1024-src-mq3-audio-channel-paint-ml-1345138142"></a>
 ### SND_CHUNK_SIZE
@@ -78,7 +78,7 @@ const SND_CHUNK_SIZE = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L7)
 
 <a id="function-function-mq3-audio-channel-paint-sourceindex-function-sourceindex-samples-index-src-mq3-audio-channel-paint-ml-706419273"></a>
 ### sourceIndex
@@ -93,7 +93,7 @@ function sourceIndex(samples, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L17)
 
 <a id="function-function-mq3-audio-channel-paint-validsamples-function-validsamples-samples-src-mq3-audio-channel-paint-ml-323786333"></a>
 ### validSamples
@@ -107,4 +107,4 @@ function validSamples(samples)
 | `samples` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/channel_paint.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/channel_paint.ml#L13)

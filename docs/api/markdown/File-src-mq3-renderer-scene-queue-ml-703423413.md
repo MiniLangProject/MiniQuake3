@@ -32,7 +32,7 @@ function addAdditiveLight(state, origin, intensity, r, g, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L104)
 
 <a id="function-function-mq3-renderer-scene-queue-adddynamiclight-function-adddynamiclight-state-origin-intensity-r-g-b-additive-src-mq3-renderer-scene-queue-ml-786351881"></a>
 ### addDynamicLight
@@ -52,7 +52,7 @@ function addDynamicLight(state, origin, intensity, r, g, b, additive)
 | `additive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L98)
 
 <a id="function-function-mq3-renderer-scene-queue-addentity-function-addentity-state-retype-payload-src-mq3-renderer-scene-queue-ml-1584531876"></a>
 ### addEntity
@@ -68,7 +68,7 @@ function addEntity(state, reType, payload)
 | `payload` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L81)
 
 <a id="function-function-mq3-renderer-scene-queue-addlight-function-addlight-state-origin-intensity-r-g-b-src-mq3-renderer-scene-queue-ml-1117335509"></a>
 ### addLight
@@ -87,7 +87,7 @@ function addLight(state, origin, intensity, r, g, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L103)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolys-function-addpolys-state-hshader-numverts-vertices-numpolys-src-mq3-renderer-scene-queue-ml-1651337340"></a>
 ### addPolys
@@ -105,7 +105,7 @@ function addPolys(state, hShader, numVerts, vertices, numPolys)
 | `numPolys` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L76)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolysdecoded-function-addpolysdecoded-state-hshader-numverts-vertices-numpolys-src-mq3-renderer-scene-queue-ml-1481041220"></a>
 ### addPolysDecoded
@@ -125,7 +125,7 @@ The QVM bridge freshly decodes these vertices and transfers ownership to the fra
 | `numPolys` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L79)
 
 <a id="function-function-mq3-renderer-scene-queue-addpolysinternal-function-addpolysinternal-state-hshader-numverts-vertices-numpolys-ownedvertices-src-mq3-renderer-scene-queue-ml-23727340"></a>
 ### addPolysInternal
@@ -144,7 +144,7 @@ function addPolysInternal(state, hShader, numVerts, vertices, numPolys, ownedVer
 | `ownedVertices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L55)
 
 <a id="function-function-mq3-renderer-scene-queue-clearscene-function-clearscene-state-src-mq3-renderer-scene-queue-ml-1444860491"></a>
 ### clearScene
@@ -158,7 +158,7 @@ function clearScene(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L40)
 
 <a id="function-function-mq3-renderer-scene-queue-color4-function-color4-value-src-mq3-renderer-scene-queue-ml-1725243383"></a>
 ### color4
@@ -172,7 +172,7 @@ function color4(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L32)
 
 <a id="function-function-mq3-renderer-scene-queue-create-function-create-maxpolys-maxpolyverts-src-mq3-renderer-scene-queue-ml-1481547801"></a>
 ### create
@@ -187,7 +187,7 @@ function create(maxPolys, maxPolyVerts)
 | `maxPolyVerts` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L25)
 
 - [mq3.renderer.scene_queue.DecodedRefEntity](Type-mq3-renderer-scene-queue-decodedrefentity-1177171883.md) — struct
 <a id="function-function-mq3-renderer-scene-queue-decodeentity-function-decodeentity-value-src-mq3-renderer-scene-queue-ml-702629319"></a>
@@ -202,7 +202,7 @@ function decodeEntity(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L92)
 
 <a id="function-function-mq3-renderer-scene-queue-diagnostic-function-diagnostic-state-text-src-mq3-renderer-scene-queue-ml-1302392970"></a>
 ### diagnostic
@@ -217,7 +217,7 @@ function diagnostic(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L30)
 
 - [mq3.renderer.scene_queue.DLight](Type-mq3-renderer-scene-queue-dlight-1585828387.md) — struct
 <a id="constant-constant-mq3-renderer-scene-queue-entitynum-world-const-entitynum-world-1022-src-mq3-renderer-scene-queue-ml-192279744"></a>
@@ -228,7 +228,7 @@ const ENTITYNUM_WORLD = 1022
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L11)
 
 <a id="function-function-mq3-renderer-scene-queue-finishscene-function-finishscene-state-src-mq3-renderer-scene-queue-ml-610780225"></a>
 ### finishScene
@@ -242,7 +242,7 @@ function finishScene(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L109)
 
 <a id="function-function-mq3-renderer-scene-queue-fogforvertices-function-fogforvertices-state-vertices-src-mq3-renderer-scene-queue-ml-771075434"></a>
 ### fogForVertices
@@ -257,7 +257,7 @@ function fogForVertices(state, vertices)
 | `vertices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L44)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-permedia2-const-glhw-permedia2-trtypes-glhw-permedia2-src-mq3-renderer-scene-queue-ml-999765840"></a>
 ### GLHW_PERMEDIA2
@@ -267,7 +267,7 @@ const GLHW_PERMEDIA2 = trtypes.GLHW_PERMEDIA2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L15)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-ragepro-const-glhw-ragepro-trtypes-glhw-ragepro-src-mq3-renderer-scene-queue-ml-948313399"></a>
 ### GLHW_RAGEPRO
@@ -277,7 +277,7 @@ const GLHW_RAGEPRO = trtypes.GLHW_RAGEPRO
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L14)
 
 <a id="constant-constant-mq3-renderer-scene-queue-glhw-riva128-const-glhw-riva128-trtypes-glhw-riva128-src-mq3-renderer-scene-queue-ml-918874440"></a>
 ### GLHW_RIVA128
@@ -287,7 +287,7 @@ const GLHW_RIVA128 = trtypes.GLHW_RIVA128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L13)
 
 <a id="constant-constant-mq3-renderer-scene-queue-max-dlights-const-max-dlights-trtypes-max-dlights-src-mq3-renderer-scene-queue-ml-1828395978"></a>
 ### MAX_DLIGHTS
@@ -297,7 +297,7 @@ const MAX_DLIGHTS = trtypes.MAX_DLIGHTS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L10)
 
 <a id="function-function-mq3-renderer-scene-queue-payloadvector-function-payloadvector-payload-offset-src-mq3-renderer-scene-queue-ml-2134815585"></a>
 ### payloadVector
@@ -314,7 +314,7 @@ QVM refEntity_t is a fixed 140-byte 32-bit ABI record from tr_types.h.
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L89)
 
 - [mq3.renderer.scene_queue.Poly](Type-mq3-renderer-scene-queue-poly-1534615021.md) — struct
 - [mq3.renderer.scene_queue.PolyVert](Type-mq3-renderer-scene-queue-polyvert-608300714.md) — struct
@@ -327,7 +327,7 @@ const RT_MAX_REF_ENTITY_TYPE = trtypes.RT_MAX_REF_ENTITY_TYPE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L12)
 
 <a id="function-function-mq3-renderer-scene-queue-sceneentities-function-sceneentities-state-src-mq3-renderer-scene-queue-ml-1579397189"></a>
 ### sceneEntities
@@ -341,7 +341,7 @@ function sceneEntities(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L106)
 
 <a id="function-function-mq3-renderer-scene-queue-scenelights-function-scenelights-state-src-mq3-renderer-scene-queue-ml-1043036929"></a>
 ### sceneLights
@@ -355,7 +355,7 @@ function sceneLights(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L107)
 
 <a id="function-function-mq3-renderer-scene-queue-scenepolys-function-scenepolys-state-src-mq3-renderer-scene-queue-ml-558304059"></a>
 ### scenePolys
@@ -369,7 +369,7 @@ function scenePolys(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L108)
 
 - [mq3.renderer.scene_queue.State](Type-mq3-renderer-scene-queue-state-1633405832.md) — struct
 <a id="function-function-mq3-renderer-scene-queue-tex2-function-tex2-value-src-mq3-renderer-scene-queue-ml-461168707"></a>
@@ -384,7 +384,7 @@ function tex2(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L33)
 
 <a id="function-function-mq3-renderer-scene-queue-toggleframe-function-toggleframe-state-src-mq3-renderer-scene-queue-ml-233938633"></a>
 ### toggleFrame
@@ -398,7 +398,7 @@ function toggleFrame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L36)
 
 <a id="function-function-mq3-renderer-scene-queue-vector3-function-vector3-value-label-src-mq3-renderer-scene-queue-ml-780292053"></a>
 ### vector3
@@ -413,7 +413,7 @@ function vector3(value, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L31)
 
 <a id="function-function-mq3-renderer-scene-queue-vertex-function-vertex-value-src-mq3-renderer-scene-queue-ml-807412971"></a>
 ### vertex
@@ -427,6 +427,6 @@ function vertex(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/scene_queue.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/scene_queue.ml#L34)
 
 - [mq3.renderer.scene_queue.View](Type-mq3-renderer-scene-queue-view-289640322.md) — struct

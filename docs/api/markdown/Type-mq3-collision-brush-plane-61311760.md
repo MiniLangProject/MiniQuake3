@@ -10,7 +10,7 @@ struct Plane
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L12)
 
 <a id="field-field-mq3-collision-brush-plane-flags-flags-src-mq3-collision-brush-ml-709441941"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L13)
 
 <a id="field-field-mq3-collision-brush-plane-normal-normal-src-mq3-collision-brush-ml-1693984071"></a>
 ### normal
@@ -42,4 +42,4 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L11)

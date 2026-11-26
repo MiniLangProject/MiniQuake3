@@ -28,7 +28,7 @@ function calculatePing(state, snapshot)
 | `snapshot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L87)
 
 <a id="function-function-mq3-client-snapshot-command-commitentitystate-function-commitentitystate-target-source-src-mq3-client-snapshot-command-ml-267906960"></a>
 ### commitEntityState
@@ -43,7 +43,7 @@ function commitEntityState(target, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L108)
 
 <a id="function-function-mq3-client-snapshot-command-copyareamask-function-copyareamask-source-src-mq3-client-snapshot-command-ml-1801603295"></a>
 ### copyAreaMask
@@ -57,7 +57,7 @@ function copyAreaMask(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L53)
 
 <a id="function-function-mq3-client-snapshot-command-copyentitystate-function-copyentitystate-source-src-mq3-client-snapshot-command-ml-110548049"></a>
 ### copyEntityState
@@ -73,7 +73,7 @@ Parse packet entities against an isolated copy.  A malformed packet must not adv
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L100)
 
 <a id="function-function-mq3-client-snapshot-command-copysnapshot-function-copysnapshot-source-src-mq3-client-snapshot-command-ml-1504396803"></a>
 ### copySnapshot
@@ -87,7 +87,7 @@ function copySnapshot(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L62)
 
 <a id="function-function-mq3-client-snapshot-command-create-function-create-src-mq3-client-snapshot-command-ml-2032507478"></a>
 ### create
@@ -97,7 +97,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L68)
 
 <a id="function-function-mq3-client-snapshot-command-emptysnapshot-function-emptysnapshot-src-mq3-client-snapshot-command-ml-769510300"></a>
 ### emptySnapshot
@@ -107,7 +107,7 @@ function emptySnapshot()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L49)
 
 <a id="constant-constant-mq3-client-snapshot-command-max-map-area-bytes-const-max-map-area-bytes-32-src-mq3-client-snapshot-command-ml-538784588"></a>
 ### MAX_MAP_AREA_BYTES
@@ -117,7 +117,7 @@ const MAX_MAP_AREA_BYTES = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L13)
 
 <a id="constant-constant-mq3-client-snapshot-command-max-parse-entities-const-max-parse-entities-2048-src-mq3-client-snapshot-command-ml-1370360043"></a>
 ### MAX_PARSE_ENTITIES
@@ -127,7 +127,7 @@ const MAX_PARSE_ENTITIES = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L12)
 
 <a id="function-function-mq3-client-snapshot-command-oldframefor-function-oldframefor-state-newsnapshot-src-mq3-client-snapshot-command-ml-343411901"></a>
 ### oldFrameFor
@@ -142,7 +142,7 @@ function oldFrameFor(state, newSnapshot)
 | `newSnapshot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L80)
 
 - [mq3.client.snapshot_command.OutPacket](Type-mq3-client-snapshot-command-outpacket-1875905137.md) — struct
 <a id="constant-constant-mq3-client-snapshot-command-packet-backup-const-packet-backup-32-src-mq3-client-snapshot-command-ml-1921134424"></a>
@@ -153,7 +153,7 @@ const PACKET_BACKUP = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L10)
 
 <a id="constant-constant-mq3-client-snapshot-command-packet-mask-const-packet-mask-31-src-mq3-client-snapshot-command-ml-1207626463"></a>
 ### PACKET_MASK
@@ -163,7 +163,7 @@ const PACKET_MASK = 31
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L11)
 
 <a id="function-function-mq3-client-snapshot-command-pad3-function-pad3-value-src-mq3-client-snapshot-command-ml-69502757"></a>
 ### pad3
@@ -177,7 +177,7 @@ function pad3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L74)
 
 <a id="function-function-mq3-client-snapshot-command-parsesnapshot-function-parsesnapshot-state-msg-src-mq3-client-snapshot-command-ml-855957914"></a>
 ### parseSnapshot
@@ -194,7 +194,7 @@ function parseSnapshot(state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L117)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L117)
 
 <a id="function-function-mq3-client-snapshot-command-shownet-function-shownet-state-msg-text-src-mq3-client-snapshot-command-ml-1833858263"></a>
 ### shownet
@@ -210,7 +210,7 @@ function shownet(state, msg, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/snapshot_command.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/snapshot_command.ml#L75)
 
 - [mq3.client.snapshot_command.Snapshot](Type-mq3-client-snapshot-command-snapshot-208860851.md) — struct
 - [mq3.client.snapshot_command.State](Type-mq3-client-snapshot-command-state-1221162148.md) — struct

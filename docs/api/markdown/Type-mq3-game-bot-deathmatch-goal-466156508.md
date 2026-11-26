@@ -10,7 +10,7 @@ struct Goal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 ## Members
 
@@ -22,7 +22,7 @@ areanum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 <a id="field-field-mq3-game-bot-deathmatch-goal-entitynum-entitynum-src-mq3-game-bot-deathmatch-ml-1970796658"></a>
 ### entitynum
@@ -32,7 +32,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 <a id="field-field-mq3-game-bot-deathmatch-goal-maxs-maxs-src-mq3-game-bot-deathmatch-ml-182164"></a>
 ### maxs
@@ -42,7 +42,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 <a id="field-field-mq3-game-bot-deathmatch-goal-mins-mins-src-mq3-game-bot-deathmatch-ml-1441359164"></a>
 ### mins
@@ -52,7 +52,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 <a id="field-field-mq3-game-bot-deathmatch-goal-number-number-src-mq3-game-bot-deathmatch-ml-802501580"></a>
 ### number
@@ -62,7 +62,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)
 
 <a id="field-field-mq3-game-bot-deathmatch-goal-origin-origin-src-mq3-game-bot-deathmatch-ml-838406190"></a>
 ### origin
@@ -72,4 +72,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L50)

@@ -30,7 +30,7 @@ function add(queue, surface, shaderIndex, entityNum, fogNum, dlightMap)
 | `dlightMap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L45)
 
 <a id="function-function-mq3-renderer-draw-surfs-count-function-count-queue-src-mq3-renderer-draw-surfs-ml-30123153"></a>
 ### count
@@ -44,7 +44,7 @@ function count(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L57)
 
 <a id="function-function-mq3-renderer-draw-surfs-create-function-create-capacity-src-mq3-renderer-draw-surfs-ml-1405911314"></a>
 ### create
@@ -58,7 +58,7 @@ function create(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L25)
 
 <a id="function-function-mq3-renderer-draw-surfs-createdefault-function-createdefault-src-mq3-renderer-draw-surfs-ml-1831083596"></a>
 ### createDefault
@@ -68,7 +68,7 @@ function createDefault()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L30)
 
 <a id="function-function-mq3-renderer-draw-surfs-decompose-function-decompose-sortkey-src-mq3-renderer-draw-surfs-ml-1841597797"></a>
 ### decompose
@@ -82,7 +82,7 @@ function decompose(sortKey)
 | `sortKey` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L40)
 
 - [mq3.renderer.draw_surfs.DrawSurf](Type-mq3-renderer-draw-surfs-drawsurf-1972676811.md) — struct
 <a id="function-function-mq3-renderer-draw-surfs-drawsurfless-function-drawsurfless-left-right-src-mq3-renderer-draw-surfs-ml-81288669"></a>
@@ -98,7 +98,7 @@ function drawSurfLess(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L80)
 
 <a id="function-function-mq3-renderer-draw-surfs-fail-function-fail-message-src-mq3-renderer-draw-surfs-ml-1940509643"></a>
 ### fail
@@ -112,7 +112,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L19)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-max-drawsurfs-const-max-drawsurfs-65536-src-mq3-renderer-draw-surfs-ml-290909658"></a>
 ### MAX_DRAWSURFS
@@ -122,7 +122,7 @@ const MAX_DRAWSURFS = 65536
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L10)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-max-shaders-const-max-shaders-16384-src-mq3-renderer-draw-surfs-ml-903977173"></a>
 ### MAX_SHADERS
@@ -132,7 +132,7 @@ const MAX_SHADERS = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L9)
 
 <a id="function-function-mq3-renderer-draw-surfs-pack-function-pack-shaderindex-entitynum-fognum-dlightmap-src-mq3-renderer-draw-surfs-ml-15751242"></a>
 ### pack
@@ -149,7 +149,7 @@ function pack(shaderIndex, entityNum, fogNum, dlightMap)
 | `dlightMap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L32)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-entitynum-shift-const-qsort-entitynum-shift-7-src-mq3-renderer-draw-surfs-ml-1171204846"></a>
 ### QSORT_ENTITYNUM_SHIFT
@@ -159,7 +159,7 @@ const QSORT_ENTITYNUM_SHIFT = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L12)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-fognum-shift-const-qsort-fognum-shift-2-src-mq3-renderer-draw-surfs-ml-104813111"></a>
 ### QSORT_FOGNUM_SHIFT
@@ -169,7 +169,7 @@ const QSORT_FOGNUM_SHIFT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L13)
 
 <a id="constant-constant-mq3-renderer-draw-surfs-qsort-shadernum-shift-const-qsort-shadernum-shift-17-src-mq3-renderer-draw-surfs-ml-1634426427"></a>
 ### QSORT_SHADERNUM_SHIFT
@@ -179,7 +179,7 @@ const QSORT_SHADERNUM_SHIFT = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L11)
 
 - [mq3.renderer.draw_surfs.Queue](Type-mq3-renderer-draw-surfs-queue-429885024.md) — struct
 - [mq3.renderer.draw_surfs.SortFields](Type-mq3-renderer-draw-surfs-sortfields-1426777600.md) — struct
@@ -195,7 +195,7 @@ function sortQueue(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L85)
 
 <a id="function-function-mq3-renderer-draw-surfs-sortstable-function-sortstable-drawsurfs-src-mq3-renderer-draw-surfs-ml-820256599"></a>
 ### sortStable
@@ -211,7 +211,7 @@ Deterministic stable insertion ordering by the same unsigned packed key. Baseq3 
 | `drawSurfs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L72)
 
 <a id="function-function-mq3-renderer-draw-surfs-validcapacity-function-validcapacity-capacity-src-mq3-renderer-draw-surfs-ml-214236730"></a>
 ### validCapacity
@@ -225,7 +225,7 @@ function validCapacity(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L21)
 
 <a id="function-function-mq3-renderer-draw-surfs-values-function-values-queue-src-mq3-renderer-draw-surfs-ml-1311098351"></a>
 ### values
@@ -239,4 +239,4 @@ function values(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/draw_surfs.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/draw_surfs.ml#L62)

@@ -10,7 +10,7 @@ struct Group
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ nextRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)
 
 <a id="field-field-mq3-client-network-match-loop-group-runtimes-runtimes-src-mq3-client-network-match-loop-ml-1598552518"></a>
 ### runtimes
@@ -32,4 +32,4 @@ runtimes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_match_loop.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_match_loop.ml#L20)

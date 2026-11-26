@@ -10,7 +10,7 @@ struct Draw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 <a id="field-field-mq3-client-ui-credits-draw-proportional-proportional-src-mq3-client-ui-credits-ml-1884300829"></a>
 ### proportional
@@ -32,7 +32,7 @@ proportional
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 <a id="field-field-mq3-client-ui-credits-draw-style-style-src-mq3-client-ui-credits-ml-568745871"></a>
 ### style
@@ -42,7 +42,7 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 <a id="field-field-mq3-client-ui-credits-draw-text-text-src-mq3-client-ui-credits-ml-35579073"></a>
 ### text
@@ -52,7 +52,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 <a id="field-field-mq3-client-ui-credits-draw-x-x-src-mq3-client-ui-credits-ml-202441643"></a>
 ### x
@@ -62,7 +62,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)
 
 <a id="field-field-mq3-client-ui-credits-draw-y-y-src-mq3-client-ui-credits-ml-1312597407"></a>
 ### y
@@ -72,4 +72,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L13)

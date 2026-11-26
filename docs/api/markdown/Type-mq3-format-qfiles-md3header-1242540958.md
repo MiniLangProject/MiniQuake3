@@ -10,7 +10,7 @@ struct Md3Header
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-ident-ident-src-mq3-format-qfiles-ml-1474799768"></a>
 ### ident
@@ -32,7 +32,7 @@ ident
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-name-name-src-mq3-format-qfiles-ml-934119578"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-numframes-numframes-src-mq3-format-qfiles-ml-1374840288"></a>
 ### numFrames
@@ -52,7 +52,7 @@ numFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-numskins-numskins-src-mq3-format-qfiles-ml-53218328"></a>
 ### numSkins
@@ -62,7 +62,7 @@ numSkins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-numsurfaces-numsurfaces-src-mq3-format-qfiles-ml-2025087080"></a>
 ### numSurfaces
@@ -72,7 +72,7 @@ numSurfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-numtags-numtags-src-mq3-format-qfiles-ml-565113040"></a>
 ### numTags
@@ -82,7 +82,7 @@ numTags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofsend-ofsend-src-mq3-format-qfiles-ml-501104318"></a>
 ### ofsEnd
@@ -92,7 +92,7 @@ ofsEnd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofsframes-ofsframes-src-mq3-format-qfiles-ml-895018328"></a>
 ### ofsFrames
@@ -102,7 +102,7 @@ ofsFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofssurfaces-ofssurfaces-src-mq3-format-qfiles-ml-1098422904"></a>
 ### ofsSurfaces
@@ -112,7 +112,7 @@ ofsSurfaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-ofstags-ofstags-src-mq3-format-qfiles-ml-1767661788"></a>
 ### ofsTags
@@ -122,7 +122,7 @@ ofsTags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)
 
 <a id="field-field-mq3-format-qfiles-md3header-version-version-src-mq3-format-qfiles-ml-471886196"></a>
 ### version
@@ -132,4 +132,4 @@ version
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L95)

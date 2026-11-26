@@ -33,7 +33,7 @@ function canDamage(level, targ, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L72)
 
 <a id="extern_function-extern-function-mq3-game-combat-ceil-extern-function-ceil-value-as-double-from-ucrtbase-dll-returns-double-src-mq3-game-combat-ml-1877373054"></a>
 ### ceil
@@ -47,7 +47,7 @@ extern function ceil(value as double) from "ucrtbase.dll" returns double
 | `value` | `double` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L13)
 
 <a id="function-function-mq3-game-combat-checkarmor-function-checkarmor-ent-amount-dflags-src-mq3-game-combat-ml-651209566"></a>
 ### checkArmor
@@ -63,7 +63,7 @@ function checkArmor(ent, amount, dflags)
 | `dflags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L134)
 
 <a id="function-function-mq3-game-combat-checkhurtcarrier-function-checkhurtcarrier-level-targ-attacker-src-mq3-game-combat-ml-475885773"></a>
 ### checkHurtCarrier
@@ -79,7 +79,7 @@ function checkHurtCarrier(level, targ, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L126)
 
 <a id="function-function-mq3-game-combat-damage-function-damage-level-targ-inflictor-attacker-dir-point-amount-dflags-mod-src-mq3-game-combat-ml-1808099025"></a>
 ### damage
@@ -101,7 +101,7 @@ function damage(level, targ, inflictor, attacker, dir, point, amount, dflags, mo
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L144)
 
 <a id="constant-constant-mq3-game-combat-damage-no-armor-const-damage-no-armor-2-src-mq3-game-combat-ml-656562291"></a>
 ### DAMAGE_NO_ARMOR
@@ -111,7 +111,7 @@ const DAMAGE_NO_ARMOR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L15)
 
 <a id="constant-constant-mq3-game-combat-damage-no-knockback-const-damage-no-knockback-4-src-mq3-game-combat-ml-877389469"></a>
 ### DAMAGE_NO_KNOCKBACK
@@ -121,7 +121,7 @@ const DAMAGE_NO_KNOCKBACK = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L16)
 
 <a id="constant-constant-mq3-game-combat-damage-no-protection-const-damage-no-protection-8-src-mq3-game-combat-ml-1377546305"></a>
 ### DAMAGE_NO_PROTECTION
@@ -131,7 +131,7 @@ const DAMAGE_NO_PROTECTION = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L17)
 
 <a id="constant-constant-mq3-game-combat-damage-radius-const-damage-radius-1-src-mq3-game-combat-ml-589993440"></a>
 ### DAMAGE_RADIUS
@@ -141,7 +141,7 @@ const DAMAGE_RADIUS = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L14)
 
 <a id="constant-constant-mq3-game-combat-fl-godmode-const-fl-godmode-16-src-mq3-game-combat-ml-914560114"></a>
 ### FL_GODMODE
@@ -151,7 +151,7 @@ const FL_GODMODE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L18)
 
 <a id="constant-constant-mq3-game-combat-fl-no-knockback-const-fl-no-knockback-2048-src-mq3-game-combat-ml-1408256715"></a>
 ### FL_NO_KNOCKBACK
@@ -161,7 +161,7 @@ const FL_NO_KNOCKBACK = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L19)
 
 <a id="function-function-mq3-game-combat-gametype-function-gametype-level-src-mq3-game-combat-ml-924928022"></a>
 ### gametype
@@ -175,7 +175,7 @@ function gametype(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L63)
 
 <a id="function-function-mq3-game-combat-invulnerabilityeffect-function-invulnerabilityeffect-level-targ-dir-point-impactpoint-bouncedir-src-mq3-game-combat-ml-2104107714"></a>
 ### invulnerabilityEffect
@@ -194,7 +194,7 @@ function invulnerabilityEffect(level, targ, dir, point, impactpoint, bouncedir)
 | `bouncedir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L43)
 
 <a id="function-function-mq3-game-combat-logaccuracyhit-function-logaccuracyhit-level-target-attacker-src-mq3-game-combat-ml-1937329952"></a>
 ### logAccuracyHit
@@ -210,7 +210,7 @@ function logAccuracyHit(level, target, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L87)
 
 <a id="function-function-mq3-game-combat-missionpack-function-missionpack-level-src-mq3-game-combat-ml-1638481888"></a>
 ### missionpack
@@ -224,7 +224,7 @@ function missionpack(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L23)
 
 <a id="constant-constant-mq3-game-combat-mod-juiced-const-mod-juiced-28-src-mq3-game-combat-ml-1591915107"></a>
 ### MOD_JUICED
@@ -234,7 +234,7 @@ const MOD_JUICED = 28
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L21)
 
 <a id="constant-constant-mq3-game-combat-mod-proximity-mine-const-mod-proximity-mine-26-src-mq3-game-combat-ml-1031161591"></a>
 ### MOD_PROXIMITY_MINE
@@ -244,7 +244,7 @@ const MOD_PROXIMITY_MINE = 26
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L20)
 
 <a id="function-function-mq3-game-combat-onsameteam-function-onsameteam-level-first-second-src-mq3-game-combat-ml-1769371220"></a>
 ### onSameTeam
@@ -260,7 +260,7 @@ function onSameTeam(level, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L121)
 
 <a id="function-function-mq3-game-combat-persistenttag-function-persistenttag-level-client-src-mq3-game-combat-ml-558851647"></a>
 ### persistentTag
@@ -275,7 +275,7 @@ function persistentTag(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L57)
 
 <a id="function-function-mq3-game-combat-radiusdamage-function-radiusdamage-level-origin-attacker-amount-radius-ignore-mod-src-mq3-game-combat-ml-368991781"></a>
 ### radiusDamage
@@ -295,7 +295,7 @@ function radiusDamage(level, origin, attacker, amount, radius, ignore, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L93)
 
 <a id="function-function-mq3-game-combat-raysphereintersections-function-raysphereintersections-origin-radius-point-dir-intersections-src-mq3-game-combat-ml-1583478913"></a>
 ### raySphereIntersections
@@ -313,7 +313,7 @@ function raySphereIntersections(origin, radius, point, dir, intersections)
 | `intersections` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L26)
 
 <a id="function-function-mq3-game-combat-shottrace-function-shottrace-level-start-finish-mins-maxs-passentity-mask-src-mq3-game-combat-ml-207118107"></a>
 ### shotTrace
@@ -333,7 +333,7 @@ function shotTrace(level, start, finish, mins, maxs, passEntity, mask)
 | `mask` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L67)
 
 <a id="constant-constant-mq3-game-combat-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-combat-ml-1756783990"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -343,4 +343,4 @@ const STAT_PERSISTANT_POWERUP = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/combat.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/combat.ml#L22)

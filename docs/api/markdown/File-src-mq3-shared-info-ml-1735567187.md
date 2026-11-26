@@ -25,7 +25,7 @@ function copy(text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L16)
 
 <a id="function-function-mq3-shared-info-infodiagnostic-function-infodiagnostic-context-diagnosticfn-message-src-mq3-shared-info-ml-1332858825"></a>
 ### infoDiagnostic
@@ -41,7 +41,7 @@ function infoDiagnostic(context, diagnosticFn, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L64)
 
 <a id="function-function-mq3-shared-info-removekey-function-removekey-info-key-src-mq3-shared-info-ml-67983453"></a>
 ### removeKey
@@ -56,7 +56,7 @@ function removeKey(info, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L39)
 
 <a id="function-function-mq3-shared-info-setvalue-function-setvalue-info-key-newvalue-context-diagnosticfn-src-mq3-shared-info-ml-2117446646"></a>
 ### setValue
@@ -74,7 +74,7 @@ function setValue(info, key, newValue, context, diagnosticFn)
 | `diagnosticFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L69)
 
 <a id="function-function-mq3-shared-info-textbytes-function-textbytes-text-src-mq3-shared-info-ml-986412897"></a>
 ### textBytes
@@ -88,7 +88,7 @@ function textBytes(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L8)
 
 <a id="function-function-mq3-shared-info-valid-function-valid-info-src-mq3-shared-info-ml-1288371482"></a>
 ### valid
@@ -102,7 +102,7 @@ function valid(info)
 | `info` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L33)
 
 <a id="function-function-mq3-shared-info-value-function-value-info-key-src-mq3-shared-info-ml-452499257"></a>
 ### value
@@ -117,4 +117,4 @@ function value(info, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/info.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/info.ml#L22)

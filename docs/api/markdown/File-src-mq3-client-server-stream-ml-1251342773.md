@@ -29,7 +29,7 @@ function at(stream, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L30)
 
 <a id="function-function-mq3-client-server-stream-attach-function-attach-protocol-demoplaying-src-mq3-client-server-stream-ml-2094686689"></a>
 ### attach
@@ -44,7 +44,7 @@ function attach(protocol, demoPlaying)
 | `demoPlaying` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L25)
 
 <a id="function-function-mq3-client-server-stream-entity-function-entity-stream-snapshot-index-src-mq3-client-server-stream-ml-1693470456"></a>
 ### entity
@@ -60,7 +60,7 @@ function entity(stream, snapshot, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L39)
 
 <a id="function-function-mq3-client-server-stream-mapname-function-mapname-protocol-src-mq3-client-server-stream-ml-973920736"></a>
 ### mapName
@@ -74,7 +74,7 @@ function mapName(protocol)
 | `protocol` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L21)
 
 <a id="function-function-mq3-client-server-stream-ready-function-ready-protocol-src-mq3-client-server-stream-ml-1751139900"></a>
 ### ready
@@ -88,7 +88,7 @@ function ready(protocol)
 | `protocol` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L15)
 
 <a id="constant-constant-mq3-client-server-stream-snapflag-not-active-const-snapflag-not-active-2-src-mq3-client-server-stream-ml-266710153"></a>
 ### SNAPFLAG_NOT_ACTIVE
@@ -98,6 +98,6 @@ const SNAPFLAG_NOT_ACTIVE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_stream.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_stream.ml#L11)
 
 - [mq3.client.server_stream.Stream](Type-mq3-client-server-stream-stream-414087547.md) — struct

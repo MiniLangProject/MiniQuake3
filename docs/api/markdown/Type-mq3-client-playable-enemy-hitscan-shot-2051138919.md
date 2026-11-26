@@ -10,7 +10,7 @@ struct Shot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ at
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-attacker-attacker-src-mq3-client-playable-enemy-hitscan-ml-1219544049"></a>
 ### attacker
@@ -32,7 +32,7 @@ attacker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-damage-damage-src-mq3-client-playable-enemy-hitscan-ml-2135648149"></a>
 ### damage
@@ -42,7 +42,7 @@ damage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-endpoint-endpoint-src-mq3-client-playable-enemy-hitscan-ml-78974137"></a>
 ### endPoint
@@ -52,7 +52,7 @@ endPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-normal-normal-src-mq3-client-playable-enemy-hitscan-ml-505261765"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-playerhit-playerhit-src-mq3-client-playable-enemy-hitscan-ml-1892913723"></a>
 ### playerHit
@@ -72,7 +72,7 @@ playerHit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-side-side-src-mq3-client-playable-enemy-hitscan-ml-580139753"></a>
 ### side
@@ -82,7 +82,7 @@ side
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-start-start-src-mq3-client-playable-enemy-hitscan-ml-444650867"></a>
 ### start
@@ -92,7 +92,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)
 
 <a id="field-field-mq3-client-playable-enemy-hitscan-shot-worldhit-worldhit-src-mq3-client-playable-enemy-hitscan-ml-670570281"></a>
 ### worldHit
@@ -102,4 +102,4 @@ worldHit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_hitscan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_hitscan.ml#L10)

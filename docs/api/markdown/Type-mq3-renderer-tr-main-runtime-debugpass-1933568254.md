@@ -10,7 +10,7 @@ struct DebugPass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-depthmax-depthmax-src-mq3-renderer-tr-main-runtime-ml-2143483073"></a>
 ### depthMax
@@ -32,7 +32,7 @@ depthMax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-depthmin-depthmin-src-mq3-renderer-tr-main-runtime-ml-1411391757"></a>
 ### depthMin
@@ -42,7 +42,7 @@ depthMin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-points-points-src-mq3-renderer-tr-main-runtime-ml-1607058397"></a>
 ### points
@@ -52,7 +52,7 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)
 
 <a id="field-field-mq3-renderer-tr-main-runtime-debugpass-wireframe-wireframe-src-mq3-renderer-tr-main-runtime-ml-305352503"></a>
 ### wireframe
@@ -62,4 +62,4 @@ wireframe
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_main_runtime.ml#L32)

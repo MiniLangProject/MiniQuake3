@@ -27,7 +27,7 @@ function Add_Ammo(ent, weapon, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L12)
 
 <a id="function-function-mq3-game-g-items-clearregistereditems-function-clearregistereditems-level-src-mq3-game-g-items-ml-522654400"></a>
 ### ClearRegisteredItems
@@ -41,7 +41,7 @@ function ClearRegisteredItems(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L24)
 
 <a id="function-function-mq3-game-g-items-drop-item-function-drop-item-level-ent-item-angle-src-mq3-game-g-items-ml-1932210125"></a>
 ### Drop_Item
@@ -58,7 +58,7 @@ function Drop_Item(level, ent, item, angle)
 | `angle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L20)
 
 <a id="function-function-mq3-game-g-items-finishspawningitem-function-finishspawningitem-level-ent-src-mq3-game-g-items-ml-1644135103"></a>
 ### FinishSpawningItem
@@ -73,7 +73,7 @@ function FinishSpawningItem(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L22)
 
 <a id="function-function-mq3-game-g-items-g-bounceitem-function-g-bounceitem-level-ent-trace-src-mq3-game-g-items-ml-696021642"></a>
 ### G_BounceItem
@@ -89,7 +89,7 @@ function G_BounceItem(level, ent, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L33)
 
 <a id="function-function-mq3-game-g-items-g-checkteamitems-function-g-checkteamitems-level-src-mq3-game-g-items-ml-970250560"></a>
 ### G_CheckTeamItems
@@ -103,7 +103,7 @@ function G_CheckTeamItems(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L23)
 
 <a id="function-function-mq3-game-g-items-g-itemdisabled-function-g-itemdisabled-level-item-src-mq3-game-g-items-ml-1970085373"></a>
 ### G_ItemDisabled
@@ -118,7 +118,7 @@ function G_ItemDisabled(level, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L27)
 
 <a id="function-function-mq3-game-g-items-g-runitem-function-g-runitem-level-ent-src-mq3-game-g-items-ml-2030139043"></a>
 ### G_RunItem
@@ -133,7 +133,7 @@ function G_RunItem(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L34)
 
 <a id="function-function-mq3-game-g-items-g-spawnitem-function-g-spawnitem-level-ent-item-src-mq3-game-g-items-ml-24738774"></a>
 ### G_SpawnItem
@@ -149,7 +149,7 @@ function G_SpawnItem(level, ent, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L32)
 
 <a id="function-function-mq3-game-g-items-launchitem-function-launchitem-level-item-origin-velocity-src-mq3-game-g-items-ml-760832178"></a>
 ### LaunchItem
@@ -166,7 +166,7 @@ function LaunchItem(level, item, origin, velocity)
 | `velocity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L19)
 
 <a id="function-function-mq3-game-g-items-pickup-ammo-function-pickup-ammo-level-ent-other-src-mq3-game-g-items-ml-1757469549"></a>
 ### Pickup_Ammo
@@ -182,7 +182,7 @@ function Pickup_Ammo(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L13)
 
 <a id="function-function-mq3-game-g-items-pickup-armor-function-pickup-armor-level-ent-other-src-mq3-game-g-items-ml-371918767"></a>
 ### Pickup_Armor
@@ -198,7 +198,7 @@ function Pickup_Armor(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L16)
 
 <a id="function-function-mq3-game-g-items-pickup-health-function-pickup-health-level-ent-other-src-mq3-game-g-items-ml-59895297"></a>
 ### Pickup_Health
@@ -214,7 +214,7 @@ function Pickup_Health(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L15)
 
 <a id="function-function-mq3-game-g-items-pickup-holdable-function-pickup-holdable-level-ent-other-src-mq3-game-g-items-ml-865316815"></a>
 ### Pickup_Holdable
@@ -230,7 +230,7 @@ function Pickup_Holdable(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L11)
 
 <a id="function-function-mq3-game-g-items-pickup-persistantpowerup-function-pickup-persistantpowerup-level-ent-other-src-mq3-game-g-items-ml-719023159"></a>
 ### Pickup_PersistantPowerup
@@ -246,7 +246,7 @@ function Pickup_PersistantPowerup(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L10)
 
 <a id="function-function-mq3-game-g-items-pickup-powerup-function-pickup-powerup-level-ent-other-src-mq3-game-g-items-ml-1297142171"></a>
 ### Pickup_Powerup
@@ -262,7 +262,7 @@ function Pickup_Powerup(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L9)
 
 <a id="function-function-mq3-game-g-items-pickup-weapon-function-pickup-weapon-level-ent-other-src-mq3-game-g-items-ml-1476403081"></a>
 ### Pickup_Weapon
@@ -278,7 +278,7 @@ function Pickup_Weapon(level, ent, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L14)
 
 <a id="function-function-mq3-game-g-items-registeritem-function-registeritem-level-item-src-mq3-game-g-items-ml-265063149"></a>
 ### RegisterItem
@@ -293,7 +293,7 @@ function RegisterItem(level, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L25)
 
 <a id="function-function-mq3-game-g-items-respawnitem-function-respawnitem-level-ent-src-mq3-game-g-items-ml-975885433"></a>
 ### RespawnItem
@@ -308,7 +308,7 @@ function RespawnItem(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L17)
 
 <a id="function-function-mq3-game-g-items-saveregistereditems-function-saveregistereditems-level-src-mq3-game-g-items-ml-55510706"></a>
 ### SaveRegisteredItems
@@ -322,7 +322,7 @@ function SaveRegisteredItems(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L26)
 
 <a id="function-function-mq3-game-g-items-touch-item-function-touch-item-level-ent-other-trace-src-mq3-game-g-items-ml-730417230"></a>
 ### Touch_Item
@@ -339,7 +339,7 @@ function Touch_Item(level, ent, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L18)
 
 <a id="function-function-mq3-game-g-items-use-item-function-use-item-level-ent-other-activator-src-mq3-game-g-items-ml-958662900"></a>
 ### Use_Item
@@ -356,4 +356,4 @@ function Use_Item(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_items.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_items.ml#L21)

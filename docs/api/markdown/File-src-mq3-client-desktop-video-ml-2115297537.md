@@ -28,7 +28,7 @@ function apply(registry, toggleFullscreen)
 | `toggleFullscreen` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_video.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L25)
 
 <a id="function-function-mq3-client-desktop-video-open-function-open-registry-src-mq3-client-desktop-video-ml-738329123"></a>
 ### open
@@ -42,7 +42,7 @@ function open(registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_video.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L40)
 
 <a id="function-function-mq3-client-desktop-video-requestedmode-function-requestedmode-registry-togglefullscreen-src-mq3-client-desktop-video-ml-913823046"></a>
 ### requestedMode
@@ -57,4 +57,4 @@ function requestedMode(registry, toggleFullscreen)
 | `toggleFullscreen` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_video.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_video.ml#L10)

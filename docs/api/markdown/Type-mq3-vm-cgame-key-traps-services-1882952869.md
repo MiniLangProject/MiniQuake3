@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-getcatcherfn-getcatcherfn-src-mq3-vm-cgame-key-traps-ml-1790889633"></a>
 ### getCatcherFn
@@ -32,7 +32,7 @@ getCatcherFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-getkeyfn-getkeyfn-src-mq3-vm-cgame-key-traps-ml-1419534667"></a>
 ### getKeyFn
@@ -42,7 +42,7 @@ getKeyFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-isdownfn-isdownfn-src-mq3-vm-cgame-key-traps-ml-1667749153"></a>
 ### isDownFn
@@ -52,7 +52,7 @@ isDownFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)
 
 <a id="field-field-mq3-vm-cgame-key-traps-services-setcatcherfn-setcatcherfn-src-mq3-vm-cgame-key-traps-ml-1074097457"></a>
 ### setCatcherFn
@@ -62,4 +62,4 @@ setCatcherFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L14)

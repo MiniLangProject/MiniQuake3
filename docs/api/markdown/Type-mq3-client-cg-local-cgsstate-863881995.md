@@ -10,7 +10,7 @@ struct CgsState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 ## Members
 
@@ -22,7 +22,7 @@ acceptLeader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-acceptordertime-acceptordertime-src-mq3-client-cg-local-ml-40048207"></a>
 ### acceptOrderTime
@@ -32,7 +32,7 @@ acceptOrderTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-accepttask-accepttask-src-mq3-client-cg-local-ml-490193245"></a>
 ### acceptTask
@@ -42,7 +42,7 @@ acceptTask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-acceptvoice-acceptvoice-src-mq3-client-cg-local-ml-2041588739"></a>
 ### acceptVoice
@@ -52,7 +52,7 @@ acceptVoice
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-activecursor-activecursor-src-mq3-client-cg-local-ml-513786243"></a>
 ### activeCursor
@@ -62,7 +62,7 @@ activeCursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-blueflag-blueflag-src-mq3-client-cg-local-ml-2106344411"></a>
 ### blueflag
@@ -72,7 +72,7 @@ blueflag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-blueteam-blueteam-src-mq3-client-cg-local-ml-1381333181"></a>
 ### blueTeam
@@ -82,7 +82,7 @@ blueTeam
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-captureditem-captureditem-src-mq3-client-cg-local-ml-324629657"></a>
 ### capturedItem
@@ -92,7 +92,7 @@ capturedItem
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-capturelimit-capturelimit-src-mq3-client-cg-local-ml-584374857"></a>
 ### capturelimit
@@ -102,7 +102,7 @@ capturelimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-clientinfo-clientinfo-src-mq3-client-cg-local-ml-121057257"></a>
 ### clientinfo
@@ -112,7 +112,7 @@ clientinfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-currentorder-currentorder-src-mq3-client-cg-local-ml-1033135945"></a>
 ### currentOrder
@@ -122,7 +122,7 @@ currentOrder
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-currentvoiceclient-currentvoiceclient-src-mq3-client-cg-local-ml-537289147"></a>
 ### currentVoiceClient
@@ -132,7 +132,7 @@ currentVoiceClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-cursorx-cursorx-src-mq3-client-cg-local-ml-1757998851"></a>
 ### cursorX
@@ -142,7 +142,7 @@ cursorX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-cursory-cursory-src-mq3-client-cg-local-ml-550129287"></a>
 ### cursorY
@@ -152,7 +152,7 @@ cursorY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-dmflags-dmflags-src-mq3-client-cg-local-ml-471285603"></a>
 ### dmflags
@@ -162,7 +162,7 @@ dmflags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-eventhandling-eventhandling-src-mq3-client-cg-local-ml-1643906127"></a>
 ### eventHandling
@@ -172,7 +172,7 @@ eventHandling
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-flagstatus-flagstatus-src-mq3-client-cg-local-ml-515418515"></a>
 ### flagStatus
@@ -182,7 +182,7 @@ flagStatus
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-fraglimit-fraglimit-src-mq3-client-cg-local-ml-1275906503"></a>
 ### fraglimit
@@ -192,7 +192,7 @@ fraglimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-gamemodels-gamemodels-src-mq3-client-cg-local-ml-1553735539"></a>
 ### gameModels
@@ -202,7 +202,7 @@ gameModels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-gamesounds-gamesounds-src-mq3-client-cg-local-ml-1831487651"></a>
 ### gameSounds
@@ -212,7 +212,7 @@ gameSounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-gamestate-gamestate-src-mq3-client-cg-local-ml-121751727"></a>
 ### gameState
@@ -222,7 +222,7 @@ gameState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-gametype-gametype-src-mq3-client-cg-local-ml-1320231267"></a>
 ### gametype
@@ -232,7 +232,7 @@ gametype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-glconfig-glconfig-src-mq3-client-cg-local-ml-48655657"></a>
 ### glconfig
@@ -242,7 +242,7 @@ glconfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-inlinedrawmodel-inlinedrawmodel-src-mq3-client-cg-local-ml-1336618295"></a>
 ### inlineDrawModel
@@ -252,7 +252,7 @@ inlineDrawModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-inlinemodelmidpoints-inlinemodelmidpoints-src-mq3-client-cg-local-ml-1784650457"></a>
 ### inlineModelMidpoints
@@ -262,7 +262,7 @@ inlineModelMidpoints
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-levelstarttime-levelstarttime-src-mq3-client-cg-local-ml-1321789765"></a>
 ### levelStartTime
@@ -272,7 +272,7 @@ levelStartTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-localserver-localserver-src-mq3-client-cg-local-ml-12938451"></a>
 ### localServer
@@ -282,7 +282,7 @@ localServer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-mapname-mapname-src-mq3-client-cg-local-ml-219062859"></a>
 ### mapname
@@ -292,7 +292,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-maxclients-maxclients-src-mq3-client-cg-local-ml-553698475"></a>
 ### maxclients
@@ -302,7 +302,7 @@ maxclients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-media-media-src-mq3-client-cg-local-ml-1759295875"></a>
 ### media
@@ -312,7 +312,7 @@ media
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-mousecaptured-mousecaptured-src-mq3-client-cg-local-ml-1448316559"></a>
 ### mouseCaptured
@@ -322,7 +322,7 @@ mouseCaptured
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-newhud-newhud-src-mq3-client-cg-local-ml-137814165"></a>
 ### newHud
@@ -332,7 +332,7 @@ newHud
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-numinlinemodels-numinlinemodels-src-mq3-client-cg-local-ml-1309567531"></a>
 ### numInlineModels
@@ -342,7 +342,7 @@ numInlineModels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-orderpending-orderpending-src-mq3-client-cg-local-ml-1808980769"></a>
 ### orderPending
@@ -352,7 +352,7 @@ orderPending
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-ordertime-ordertime-src-mq3-client-cg-local-ml-1439655315"></a>
 ### orderTime
@@ -362,7 +362,7 @@ orderTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-processedsnapshotnum-processedsnapshotnum-src-mq3-client-cg-local-ml-1835654595"></a>
 ### processedSnapshotNum
@@ -372,7 +372,7 @@ processedSnapshotNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-redflag-redflag-src-mq3-client-cg-local-ml-2042311603"></a>
 ### redflag
@@ -382,7 +382,7 @@ redflag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-redteam-redteam-src-mq3-client-cg-local-ml-1201288227"></a>
 ### redTeam
@@ -392,7 +392,7 @@ redTeam
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-scores1-scores1-src-mq3-client-cg-local-ml-943604299"></a>
 ### scores1
@@ -402,7 +402,7 @@ scores1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-scores2-scores2-src-mq3-client-cg-local-ml-111551459"></a>
 ### scores2
@@ -412,7 +412,7 @@ scores2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-screenxbias-screenxbias-src-mq3-client-cg-local-ml-1918924559"></a>
 ### screenXBias
@@ -422,7 +422,7 @@ screenXBias
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-screenxscale-screenxscale-src-mq3-client-cg-local-ml-867072007"></a>
 ### screenXScale
@@ -432,7 +432,7 @@ screenXScale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-screenyscale-screenyscale-src-mq3-client-cg-local-ml-711912321"></a>
 ### screenYScale
@@ -442,7 +442,7 @@ screenYScale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-servercommandsequence-servercommandsequence-src-mq3-client-cg-local-ml-34330883"></a>
 ### serverCommandSequence
@@ -452,7 +452,7 @@ serverCommandSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-sizinghud-sizinghud-src-mq3-client-cg-local-ml-640712995"></a>
 ### sizingHud
@@ -462,7 +462,7 @@ sizingHud
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamchatmsgs-teamchatmsgs-src-mq3-client-cg-local-ml-1392017429"></a>
 ### teamChatMsgs
@@ -472,7 +472,7 @@ teamChatMsgs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamchatmsgtimes-teamchatmsgtimes-src-mq3-client-cg-local-ml-1932150327"></a>
 ### teamChatMsgTimes
@@ -482,7 +482,7 @@ teamChatMsgTimes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamchatpos-teamchatpos-src-mq3-client-cg-local-ml-920970499"></a>
 ### teamChatPos
@@ -492,7 +492,7 @@ teamChatPos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamflags-teamflags-src-mq3-client-cg-local-ml-1831628775"></a>
 ### teamflags
@@ -502,7 +502,7 @@ teamflags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamlastchatpos-teamlastchatpos-src-mq3-client-cg-local-ml-1037605059"></a>
 ### teamLastChatPos
@@ -512,7 +512,7 @@ teamLastChatPos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamvotemodified-teamvotemodified-src-mq3-client-cg-local-ml-1352753559"></a>
 ### teamVoteModified
@@ -522,7 +522,7 @@ teamVoteModified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamvoteno-teamvoteno-src-mq3-client-cg-local-ml-735481887"></a>
 ### teamVoteNo
@@ -532,7 +532,7 @@ teamVoteNo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamvotestring-teamvotestring-src-mq3-client-cg-local-ml-913904611"></a>
 ### teamVoteString
@@ -542,7 +542,7 @@ teamVoteString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamvotetime-teamvotetime-src-mq3-client-cg-local-ml-1661454387"></a>
 ### teamVoteTime
@@ -552,7 +552,7 @@ teamVoteTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-teamvoteyes-teamvoteyes-src-mq3-client-cg-local-ml-1368692855"></a>
 ### teamVoteYes
@@ -562,7 +562,7 @@ teamVoteYes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-timelimit-timelimit-src-mq3-client-cg-local-ml-1941187947"></a>
 ### timelimit
@@ -572,7 +572,7 @@ timelimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-votemodified-votemodified-src-mq3-client-cg-local-ml-908830397"></a>
 ### voteModified
@@ -582,7 +582,7 @@ voteModified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-voteno-voteno-src-mq3-client-cg-local-ml-173178469"></a>
 ### voteNo
@@ -592,7 +592,7 @@ voteNo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-votestring-votestring-src-mq3-client-cg-local-ml-2054603717"></a>
 ### voteString
@@ -602,7 +602,7 @@ voteString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-votetime-votetime-src-mq3-client-cg-local-ml-1947372017"></a>
 ### voteTime
@@ -612,7 +612,7 @@ voteTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)
 
 <a id="field-field-mq3-client-cg-local-cgsstate-voteyes-voteyes-src-mq3-client-cg-local-ml-720151459"></a>
 ### voteYes
@@ -622,4 +622,4 @@ voteYes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L109)

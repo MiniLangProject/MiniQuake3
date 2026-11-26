@@ -10,7 +10,7 @@ struct BufferedVoice
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-cmd-cmd-src-mq3-client-cgame-servercmds-ml-100657176"></a>
 ### cmd
@@ -32,7 +32,7 @@ cmd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-message-message-src-mq3-client-cgame-servercmds-ml-1247521920"></a>
 ### message
@@ -42,7 +42,7 @@ message
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-sound-sound-src-mq3-client-cgame-servercmds-ml-1283977360"></a>
 ### sound
@@ -52,7 +52,7 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)
 
 <a id="field-field-mq3-client-cgame-servercmds-bufferedvoice-voiceonly-voiceonly-src-mq3-client-cgame-servercmds-ml-899615568"></a>
 ### voiceOnly
@@ -62,4 +62,4 @@ voiceOnly
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_servercmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_servercmds.ml#L64)

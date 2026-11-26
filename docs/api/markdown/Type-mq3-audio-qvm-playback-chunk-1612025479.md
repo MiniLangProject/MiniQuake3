@@ -10,7 +10,7 @@ struct Chunk
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ audibleLoops
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-audiblevoices-audiblevoices-src-mq3-audio-qvm-playback-ml-1591504038"></a>
 ### audibleVoices
@@ -32,7 +32,7 @@ audibleVoices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-frames-frames-src-mq3-audio-qvm-playback-ml-1009279062"></a>
 ### frames
@@ -42,7 +42,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-limitergain-limitergain-src-mq3-audio-qvm-playback-ml-1788909246"></a>
 ### limiterGain
@@ -52,7 +52,7 @@ limiterGain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-peak-peak-src-mq3-audio-qvm-playback-ml-356544768"></a>
 ### peak
@@ -62,7 +62,7 @@ peak
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)
 
 <a id="field-field-mq3-audio-qvm-playback-chunk-samples-samples-src-mq3-audio-qvm-playback-ml-1122822770"></a>
 ### samples
@@ -72,4 +72,4 @@ samples
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/qvm_playback.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/qvm_playback.ml#L30)

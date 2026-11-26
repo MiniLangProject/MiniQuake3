@@ -29,57 +29,57 @@ function ceilNumber(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L28)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-default-x-const-default-x-64-src-mq3-renderer-playable-light-grid-ml-1697624167"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-default-x-const-default-x-64-src-mq3-renderer-playable-light-grid-ml-1244210619"></a>
 ### DEFAULT_X
 
 ```ml
-const DEFAULT_X = 64.
+const DEFAULT_X = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L13)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-default-y-const-default-y-64-src-mq3-renderer-playable-light-grid-ml-1974275011"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-default-y-const-default-y-64-src-mq3-renderer-playable-light-grid-ml-1941577255"></a>
 ### DEFAULT_Y
 
 ```ml
-const DEFAULT_Y = 64.
+const DEFAULT_Y = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L14)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-default-z-const-default-z-128-src-mq3-renderer-playable-light-grid-ml-1575665088"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-default-z-const-default-z-128-src-mq3-renderer-playable-light-grid-ml-1424215250"></a>
 ### DEFAULT_Z
 
 ```ml
-const DEFAULT_Z = 128.
+const DEFAULT_Z = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L15)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-dlight-at-radius-const-dlight-at-radius-16-src-mq3-renderer-playable-light-grid-ml-1648790980"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-dlight-at-radius-const-dlight-at-radius-16-src-mq3-renderer-playable-light-grid-ml-638224006"></a>
 ### DLIGHT_AT_RADIUS
 
 ```ml
-const DLIGHT_AT_RADIUS = 16.
+const DLIGHT_AT_RADIUS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L18)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-dlight-minimum-radius-const-dlight-minimum-radius-16-src-mq3-renderer-playable-light-grid-ml-1024124776"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-dlight-minimum-radius-const-dlight-minimum-radius-16-src-mq3-renderer-playable-light-grid-ml-1953518714"></a>
 ### DLIGHT_MINIMUM_RADIUS
 
 ```ml
-const DLIGHT_MINIMUM_RADIUS = 16.
+const DLIGHT_MINIMUM_RADIUS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L19)
 
 <a id="function-function-mq3-renderer-playable-light-grid-emptysample-function-emptysample-src-mq3-renderer-playable-light-grid-ml-1167233900"></a>
 ### emptySample
@@ -89,7 +89,7 @@ function emptySample()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L48)
 
 <a id="function-function-mq3-renderer-playable-light-grid-entitysample-function-entitysample-grid-point-src-mq3-renderer-playable-light-grid-ml-111244094"></a>
 ### entitySample
@@ -104,7 +104,7 @@ function entitySample(grid, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L85)
 
 <a id="function-function-mq3-renderer-playable-light-grid-fail-function-fail-message-src-mq3-renderer-playable-light-grid-ml-1298975737"></a>
 ### fail
@@ -118,7 +118,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L26)
 
 <a id="function-function-mq3-renderer-playable-light-grid-floornumber-function-floornumber-value-src-mq3-renderer-playable-light-grid-ml-1393804989"></a>
 ### floorNumber
@@ -132,7 +132,7 @@ function floorNumber(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L27)
 
 - [mq3.renderer.playable_light_grid.Grid](Type-mq3-renderer-playable-light-grid-grid-504861005.md) — struct
 <a id="function-function-mq3-renderer-playable-light-grid-load-function-load-map-src-mq3-renderer-playable-light-grid-ml-505859590"></a>
@@ -147,37 +147,37 @@ function load(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L36)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-minlight-const-minlight-32-src-mq3-renderer-playable-light-grid-ml-1563387792"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-minlight-const-minlight-32-src-mq3-renderer-playable-light-grid-ml-851356866"></a>
 ### MINLIGHT
 
 ```ml
-const MINLIGHT = 32.
+const MINLIGHT = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L17)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-noworld-ambient-const-noworld-ambient-182-src-mq3-renderer-playable-light-grid-ml-1581824028"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-noworld-ambient-const-noworld-ambient-182-src-mq3-renderer-playable-light-grid-ml-1001962174"></a>
 ### NOWORLD_AMBIENT
 
 ```ml
-const NOWORLD_AMBIENT = 182.
+const NOWORLD_AMBIENT = 182
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L20)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-noworld-directed-const-noworld-directed-150-src-mq3-renderer-playable-light-grid-ml-1089928999"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-noworld-directed-const-noworld-directed-150-src-mq3-renderer-playable-light-grid-ml-553991675"></a>
 ### NOWORLD_DIRECTED
 
 ```ml
-const NOWORLD_DIRECTED = 150.
+const NOWORLD_DIRECTED = 150
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L21)
 
 <a id="function-function-mq3-renderer-playable-light-grid-noworldentitysample-function-noworldentitysample-grid-point-src-mq3-renderer-playable-light-grid-ml-1695513534"></a>
 ### noWorldEntitySample
@@ -194,17 +194,17 @@ R_SetupEntityLighting uses identityLight*150 for both components when the refdef
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L92)
 
-<a id="constant-constant-mq3-renderer-playable-light-grid-pi-const-pi-3-14159265358979-src-mq3-renderer-playable-light-grid-ml-509276110"></a>
+<a id="constant-constant-mq3-renderer-playable-light-grid-pi-const-pi-3-141593-src-mq3-renderer-playable-light-grid-ml-1224293179"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L16)
 
 <a id="function-function-mq3-renderer-playable-light-grid-sample-function-sample-grid-point-src-mq3-renderer-playable-light-grid-ml-1394845694"></a>
 ### sample
@@ -219,7 +219,7 @@ function sample(grid, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L50)
 
 - [mq3.renderer.playable_light_grid.Sample](Type-mq3-renderer-playable-light-grid-sample-1549436571.md) — struct
 <a id="function-function-mq3-renderer-playable-light-grid-setdynamiclights-function-setdynamiclights-grid-lights-src-mq3-renderer-playable-light-grid-ml-912382849"></a>
@@ -235,7 +235,7 @@ function setDynamicLights(grid, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L84)
 
 <a id="function-function-mq3-renderer-playable-light-grid-shiftcolor-function-shiftcolor-red-green-blue-src-mq3-renderer-playable-light-grid-ml-503469160"></a>
 ### shiftColor
@@ -251,7 +251,7 @@ function shiftColor(red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L45)
 
 <a id="function-function-mq3-renderer-playable-light-grid-vertexcolor-function-vertexcolor-value-normal-src-mq3-renderer-playable-light-grid-ml-1161803504"></a>
 ### vertexColor
@@ -266,7 +266,7 @@ function vertexColor(value, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L101)
 
 <a id="function-function-mq3-renderer-playable-light-grid-vertexcolorinto-function-vertexcolorinto-value-normal-color-src-mq3-renderer-playable-light-grid-ml-99460487"></a>
 ### vertexColorInto
@@ -282,7 +282,7 @@ function vertexColorInto(value, normal, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L107)
 
 <a id="function-function-mq3-renderer-playable-light-grid-vertexlight-function-vertexlight-value-normal-src-mq3-renderer-playable-light-grid-ml-1179622398"></a>
 ### vertexLight
@@ -297,7 +297,7 @@ function vertexLight(value, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L97)
 
 <a id="function-function-mq3-renderer-playable-light-grid-withdynamiclights-function-withdynamiclights-value-point-lights-src-mq3-renderer-playable-light-grid-ml-169155582"></a>
 ### withDynamicLights
@@ -313,7 +313,7 @@ function withDynamicLights(value, point, lights)
 | `lights` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L70)
 
 <a id="function-function-mq3-renderer-playable-light-grid-worldgridsize-function-worldgridsize-map-src-mq3-renderer-playable-light-grid-ml-2002278784"></a>
 ### worldGridSize
@@ -327,4 +327,4 @@ function worldGridSize(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_light_grid.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_light_grid.ml#L30)

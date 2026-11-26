@@ -22,7 +22,7 @@ function cache()
 UI_LoadConfig_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L25)
 
 <a id="function-function-mq3-client-ui-load-config-displayname-function-displayname-name-src-mq3-client-ui-load-config-ml-2032299163"></a>
 ### displayName
@@ -36,7 +36,7 @@ function displayName(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L14)
 
 <a id="function-function-mq3-client-ui-load-config-event-function-event-menu-id-eventcode-src-mq3-client-ui-load-config-ml-986730547"></a>
 ### event
@@ -54,7 +54,7 @@ LoadConfig_MenuEvent
 | `eventCode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-back-const-id-back-10-src-mq3-client-ui-load-config-ml-1889686076"></a>
 ### ID_BACK
@@ -64,7 +64,7 @@ const ID_BACK = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L7)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-go-const-id-go-11-src-mq3-client-ui-load-config-ml-766469773"></a>
 ### ID_GO
@@ -74,7 +74,7 @@ const ID_GO = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-left-const-id-left-13-src-mq3-client-ui-load-config-ml-1455614499"></a>
 ### ID_LEFT
@@ -84,7 +84,7 @@ const ID_LEFT = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-list-const-id-list-12-src-mq3-client-ui-load-config-ml-175377790"></a>
 ### ID_LIST
@@ -94,7 +94,7 @@ const ID_LIST = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-load-config-id-right-const-id-right-14-src-mq3-client-ui-load-config-ml-304435334"></a>
 ### ID_RIGHT
@@ -104,7 +104,7 @@ const ID_RIGHT = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L11)
 
 <a id="function-function-mq3-client-ui-load-config-init-function-init-files-src-mq3-client-ui-load-config-ml-1436151571"></a>
 ### init
@@ -120,7 +120,7 @@ LoadConfig_MenuInit
 | `files` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L27)
 
 - [mq3.client.ui_load_config.LoadConfigMenu](Type-mq3-client-ui-load-config-loadconfigmenu-1342410830.md) — struct
 <a id="constant-constant-mq3-client-ui-load-config-max-configs-const-max-configs-128-src-mq3-client-ui-load-config-ml-1933149794"></a>
@@ -131,7 +131,7 @@ const MAX_CONFIGS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L12)
 
 <a id="function-function-mq3-client-ui-load-config-open-function-open-files-src-mq3-client-ui-load-config-ml-1396848527"></a>
 ### open
@@ -147,7 +147,7 @@ UI_LoadConfigMenu
 | `files` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-load-config-qm-activated-const-qm-activated-3-src-mq3-client-ui-load-config-ml-1383171272"></a>
 ### QM_ACTIVATED
@@ -157,4 +157,4 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_load_config.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_load_config.ml#L6)

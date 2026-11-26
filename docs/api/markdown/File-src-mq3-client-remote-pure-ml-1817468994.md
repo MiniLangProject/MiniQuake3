@@ -36,7 +36,7 @@ function advertisedChecksums(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L23)
 
 <a id="function-function-mq3-client-remote-pure-checksumforentry-function-checksumforentry-archive-packages-name-src-mq3-client-remote-pure-ml-383097346"></a>
 ### checksumForEntry
@@ -52,7 +52,7 @@ function checksumForEntry(archive, packages, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L38)
 
 <a id="constant-constant-mq3-client-remote-pure-max-pure-packages-const-max-pure-packages-128-src-mq3-client-remote-pure-ml-1719307360"></a>
 ### MAX_PURE_PACKAGES
@@ -62,7 +62,7 @@ const MAX_PURE_PACKAGES = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L18)
 
 - [mq3.client.remote_pure.Package](Type-mq3-client-remote-pure-package-1918540364.md) — struct
 - [mq3.client.remote_pure.Verification](Type-mq3-client-remote-pure-verification-1456252319.md) — struct
@@ -82,4 +82,4 @@ function verify(baseDirectory, systemInfo, checksumFeed, serverId, map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/remote_pure.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/remote_pure.ml#L47)

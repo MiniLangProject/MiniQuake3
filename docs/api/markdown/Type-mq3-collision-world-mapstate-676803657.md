@@ -10,7 +10,7 @@ struct MapState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
 
 ## Members
 
@@ -22,7 +22,7 @@ checksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
 
 <a id="field-field-mq3-collision-world-mapstate-curves-curves-src-mq3-collision-world-ml-1294631170"></a>
 ### curves
@@ -32,7 +32,7 @@ curves
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
 
 <a id="field-field-mq3-collision-world-mapstate-lastchecksum-lastchecksum-src-mq3-collision-world-ml-1825247572"></a>
 ### lastChecksum
@@ -42,7 +42,7 @@ lastChecksum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
 
 <a id="field-field-mq3-collision-world-mapstate-name-name-src-mq3-collision-world-ml-1743693572"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)
 
 <a id="field-field-mq3-collision-world-mapstate-world-world-src-mq3-collision-world-ml-727005214"></a>
 ### world
@@ -62,4 +62,4 @@ world
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/world.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/world.ml#L61)

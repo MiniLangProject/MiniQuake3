@@ -10,7 +10,7 @@ struct Clip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ audioQueue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-chunkindex-chunkindex-src-mq3-client-cinematic-runtime-ml-715657673"></a>
 ### chunkIndex
@@ -32,7 +32,7 @@ chunkIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-decoder-decoder-src-mq3-client-cinematic-runtime-ml-1604954815"></a>
 ### decoder
@@ -42,7 +42,7 @@ decoder
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-dirty-dirty-src-mq3-client-cinematic-runtime-ml-737273847"></a>
 ### dirty
@@ -52,7 +52,7 @@ dirty
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-extents-extents-src-mq3-client-cinematic-runtime-ml-317978883"></a>
 ### extents
@@ -62,7 +62,7 @@ extents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-handle-handle-src-mq3-client-cinematic-runtime-ml-1278583579"></a>
 ### handle
@@ -72,7 +72,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-hold-hold-src-mq3-client-cinematic-runtime-ml-1569570993"></a>
 ### hold
@@ -82,7 +82,7 @@ hold
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-lasttime-lasttime-src-mq3-client-cinematic-runtime-ml-1681728133"></a>
 ### lastTime
@@ -92,7 +92,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-looping-looping-src-mq3-client-cinematic-runtime-ml-924210395"></a>
 ### looping
@@ -102,7 +102,7 @@ looping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-movie-movie-src-mq3-client-cinematic-runtime-ml-30217787"></a>
 ### movie
@@ -112,7 +112,7 @@ movie
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-path-path-src-mq3-client-cinematic-runtime-ml-1690040101"></a>
 ### path
@@ -122,7 +122,7 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-shader-shader-src-mq3-client-cinematic-runtime-ml-897020073"></a>
 ### shader
@@ -132,7 +132,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-silent-silent-src-mq3-client-cinematic-runtime-ml-1103219661"></a>
 ### silent
@@ -142,7 +142,7 @@ silent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-starttime-starttime-src-mq3-client-cinematic-runtime-ml-1670345823"></a>
 ### startTime
@@ -152,7 +152,7 @@ startTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)
 
 <a id="field-field-mq3-client-cinematic-runtime-clip-status-status-src-mq3-client-cinematic-runtime-ml-204477263"></a>
 ### status
@@ -162,4 +162,4 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L26)

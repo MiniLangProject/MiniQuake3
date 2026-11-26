@@ -10,7 +10,7 @@ struct ClientSnapshot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 ## Members
 
@@ -22,7 +22,7 @@ areabits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-areabytes-areabytes-src-mq3-server-abi-ml-295996554"></a>
 ### areabytes
@@ -32,7 +32,7 @@ areabytes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-firstentity-firstentity-src-mq3-server-abi-ml-988783402"></a>
 ### firstEntity
@@ -42,7 +42,7 @@ firstEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-messageacked-messageacked-src-mq3-server-abi-ml-1950732820"></a>
 ### messageAcked
@@ -52,7 +52,7 @@ messageAcked
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-messagesent-messagesent-src-mq3-server-abi-ml-58917354"></a>
 ### messageSent
@@ -62,7 +62,7 @@ messageSent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-messagesize-messagesize-src-mq3-server-abi-ml-1100189294"></a>
 ### messageSize
@@ -72,7 +72,7 @@ messageSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-numentities-numentities-src-mq3-server-abi-ml-692896738"></a>
 ### numEntities
@@ -82,7 +82,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)
 
 <a id="field-field-mq3-server-abi-clientsnapshot-ps-ps-src-mq3-server-abi-ml-2014150012"></a>
 ### ps
@@ -92,4 +92,4 @@ ps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L88)

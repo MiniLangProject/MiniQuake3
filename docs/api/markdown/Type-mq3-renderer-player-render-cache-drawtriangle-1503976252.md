@@ -10,7 +10,7 @@ struct DrawTriangle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-lights-lights-src-mq3-renderer-player-render-cache-ml-688090937"></a>
 ### lights
@@ -32,7 +32,7 @@ lights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-lod-lod-src-mq3-renderer-player-render-cache-ml-1594342523"></a>
 ### lod
@@ -42,7 +42,7 @@ lod
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-normals-normals-src-mq3-renderer-player-render-cache-ml-1842449331"></a>
 ### normals
@@ -52,7 +52,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-part-part-src-mq3-renderer-player-render-cache-ml-1532393721"></a>
 ### part
@@ -62,7 +62,7 @@ part
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-positions-positions-src-mq3-renderer-player-render-cache-ml-966059743"></a>
 ### positions
@@ -72,7 +72,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-shadername-shadername-src-mq3-renderer-player-render-cache-ml-511963187"></a>
 ### shaderName
@@ -82,7 +82,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-surfaceindex-surfaceindex-src-mq3-renderer-player-render-cache-ml-1849596561"></a>
 ### surfaceIndex
@@ -92,7 +92,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-surfacename-surfacename-src-mq3-renderer-player-render-cache-ml-1276020463"></a>
 ### surfaceName
@@ -102,7 +102,7 @@ surfaceName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)
 
 <a id="field-field-mq3-renderer-player-render-cache-drawtriangle-texcoords-texcoords-src-mq3-renderer-player-render-cache-ml-456267575"></a>
 ### texCoords
@@ -112,4 +112,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L22)

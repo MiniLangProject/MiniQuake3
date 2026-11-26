@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ droppedWeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-goals-goals-src-mq3-botlib-ai-goal-selection-ml-196501823"></a>
 ### goals
@@ -32,7 +32,7 @@ goals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-levelitems-levelitems-src-mq3-botlib-ai-goal-selection-ml-590724783"></a>
 ### levelItems
@@ -42,7 +42,7 @@ levelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-randomseed-randomseed-src-mq3-botlib-ai-goal-selection-ml-1933336543"></a>
 ### randomSeed
@@ -52,7 +52,7 @@ randomSeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-goal-selection-runtime-services-services-src-mq3-botlib-ai-goal-selection-ml-1005937291"></a>
 ### services
@@ -62,4 +62,4 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection.ml#L36)

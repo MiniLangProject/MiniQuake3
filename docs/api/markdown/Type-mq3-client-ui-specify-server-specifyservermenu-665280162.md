@@ -10,7 +10,7 @@ struct SpecifyServerMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-assets-assets-src-mq3-client-ui-specify-server-ml-1695089766"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-commands-commands-src-mq3-client-ui-specify-server-ml-2123488564"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-domain-domain-src-mq3-client-ui-specify-server-ml-1830362888"></a>
 ### domain
@@ -52,7 +52,7 @@ domain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-domainmax-domainmax-src-mq3-client-ui-specify-server-ml-1639792284"></a>
 ### domainMax
@@ -62,7 +62,7 @@ domainMax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-domainwidth-domainwidth-src-mq3-client-ui-specify-server-ml-1525276872"></a>
 ### domainWidth
@@ -72,7 +72,7 @@ domainWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-fullscreen-fullscreen-src-mq3-client-ui-specify-server-ml-1358225942"></a>
 ### fullscreen
@@ -82,7 +82,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-port-port-src-mq3-client-ui-specify-server-ml-304910286"></a>
 ### port
@@ -92,7 +92,7 @@ port
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-portmax-portmax-src-mq3-client-ui-specify-server-ml-595345812"></a>
 ### portMax
@@ -102,7 +102,7 @@ portMax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-portwidth-portwidth-src-mq3-client-ui-specify-server-ml-2114764668"></a>
 ### portWidth
@@ -112,7 +112,7 @@ portWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)
 
 <a id="field-field-mq3-client-ui-specify-server-specifyservermenu-wraparound-wraparound-src-mq3-client-ui-specify-server-ml-229053622"></a>
 ### wrapAround
@@ -122,4 +122,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specify_server.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specify_server.ml#L8)

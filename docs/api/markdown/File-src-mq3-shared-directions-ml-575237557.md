@@ -26,7 +26,7 @@ function dirToByte(dir)
 | `dir` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L12)
 
 <a id="function-function-mq3-shared-directions-movedirvector-function-movedirvector-angles-src-mq3-shared-directions-ml-420476336"></a>
 ### movedirVector
@@ -40,7 +40,7 @@ function movedirVector(angles)
 | `angles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L7)
 
 <a id="function-function-mq3-shared-directions-perpendicular-function-perpendicular-src-src-mq3-shared-directions-ml-93724774"></a>
 ### perpendicular
@@ -54,7 +54,7 @@ function perpendicular(src)
 | `src` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L30)
 
 <a id="function-function-mq3-shared-directions-projectpoint-function-projectpoint-p-normal-src-mq3-shared-directions-ml-175034459"></a>
 ### projectPoint
@@ -69,4 +69,4 @@ function projectPoint(p, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/directions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/directions.ml#L22)

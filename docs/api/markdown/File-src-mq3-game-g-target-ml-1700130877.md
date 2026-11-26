@@ -34,7 +34,7 @@ function SP_target_delay(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L25)
 
 <a id="function-function-mq3-game-g-target-sp-target-give-function-sp-target-give-level-ent-src-mq3-game-g-target-ml-1804813281"></a>
 ### SP_target_give
@@ -49,7 +49,7 @@ function SP_target_give(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L17)
 
 <a id="function-function-mq3-game-g-target-sp-target-kill-function-sp-target-kill-level-self-src-mq3-game-g-target-ml-159105420"></a>
 ### SP_target_kill
@@ -64,7 +64,7 @@ function SP_target_kill(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L105)
 
 <a id="function-function-mq3-game-g-target-sp-target-laser-function-sp-target-laser-level-self-src-mq3-game-g-target-ml-278391506"></a>
 ### SP_target_laser
@@ -79,7 +79,7 @@ function SP_target_laser(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L90)
 
 <a id="function-function-mq3-game-g-target-sp-target-location-function-sp-target-location-level-self-src-mq3-game-g-target-ml-1557985024"></a>
 ### SP_target_location
@@ -94,7 +94,7 @@ function SP_target_location(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L108)
 
 <a id="function-function-mq3-game-g-target-sp-target-position-function-sp-target-position-level-self-src-mq3-game-g-target-ml-1582424544"></a>
 ### SP_target_position
@@ -109,7 +109,7 @@ function SP_target_position(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L106)
 
 <a id="function-function-mq3-game-g-target-sp-target-print-function-sp-target-print-level-ent-src-mq3-game-g-target-ml-692483023"></a>
 ### SP_target_print
@@ -124,7 +124,7 @@ function SP_target_print(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L38)
 
 <a id="function-function-mq3-game-g-target-sp-target-relay-function-sp-target-relay-level-self-src-mq3-game-g-target-ml-1302861242"></a>
 ### SP_target_relay
@@ -139,7 +139,7 @@ function SP_target_relay(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L103)
 
 <a id="function-function-mq3-game-g-target-sp-target-remove-powerups-function-sp-target-remove-powerups-level-ent-src-mq3-game-g-target-ml-1912853437"></a>
 ### SP_target_remove_powerups
@@ -154,7 +154,7 @@ function SP_target_remove_powerups(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L19)
 
 <a id="function-function-mq3-game-g-target-sp-target-score-function-sp-target-score-level-ent-src-mq3-game-g-target-ml-758525937"></a>
 ### SP_target_score
@@ -169,7 +169,7 @@ function SP_target_score(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L34)
 
 <a id="function-function-mq3-game-g-target-sp-target-speaker-function-sp-target-speaker-level-ent-src-mq3-game-g-target-ml-1819624599"></a>
 ### SP_target_speaker
@@ -184,7 +184,7 @@ function SP_target_speaker(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L43)
 
 <a id="function-function-mq3-game-g-target-sp-target-teleporter-function-sp-target-teleporter-level-self-src-mq3-game-g-target-ml-155580372"></a>
 ### SP_target_teleporter
@@ -199,7 +199,7 @@ function SP_target_teleporter(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L95)
 
 <a id="function-function-mq3-game-g-target-target-kill-use-function-target-kill-use-level-self-other-activator-src-mq3-game-g-target-ml-2043602405"></a>
 ### target_kill_use
@@ -216,7 +216,7 @@ function target_kill_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L104)
 
 <a id="function-function-mq3-game-g-target-target-laser-off-function-target-laser-off-level-self-src-mq3-game-g-target-ml-294115456"></a>
 ### target_laser_off
@@ -231,7 +231,7 @@ function target_laser_off(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L68)
 
 <a id="function-function-mq3-game-g-target-target-laser-on-function-target-laser-on-level-self-src-mq3-game-g-target-ml-871788738"></a>
 ### target_laser_on
@@ -246,7 +246,7 @@ function target_laser_on(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L64)
 
 <a id="function-function-mq3-game-g-target-target-laser-start-function-target-laser-start-level-self-src-mq3-game-g-target-ml-1119541036"></a>
 ### target_laser_start
@@ -261,7 +261,7 @@ function target_laser_start(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L70)
 
 <a id="function-function-mq3-game-g-target-target-laser-think-function-target-laser-think-level-self-src-mq3-game-g-target-ml-225888084"></a>
 ### target_laser_think
@@ -276,7 +276,7 @@ function target_laser_think(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L63)
 
 <a id="function-function-mq3-game-g-target-target-laser-use-function-target-laser-use-level-self-other-activator-src-mq3-game-g-target-ml-1532686629"></a>
 ### target_laser_use
@@ -293,7 +293,7 @@ function target_laser_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L69)
 
 <a id="function-function-mq3-game-g-target-target-location-linkup-function-target-location-linkup-level-ent-src-mq3-game-g-target-ml-678353025"></a>
 ### target_location_linkup
@@ -308,7 +308,7 @@ function target_location_linkup(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L107)
 
 <a id="function-function-mq3-game-g-target-target-relay-use-function-target-relay-use-level-self-other-activator-src-mq3-game-g-target-ml-388403609"></a>
 ### target_relay_use
@@ -325,7 +325,7 @@ function target_relay_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L102)
 
 <a id="function-function-mq3-game-g-target-target-teleporter-use-function-target-teleporter-use-level-self-other-activator-src-mq3-game-g-target-ml-1286800621"></a>
 ### target_teleporter_use
@@ -342,7 +342,7 @@ function target_teleporter_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L94)
 
 <a id="function-function-mq3-game-g-target-think-target-delay-function-think-target-delay-level-ent-src-mq3-game-g-target-ml-1436718493"></a>
 ### Think_Target_Delay
@@ -357,7 +357,7 @@ function Think_Target_Delay(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L21)
 
 <a id="function-function-mq3-game-g-target-use-target-delay-function-use-target-delay-level-ent-other-activator-src-mq3-game-g-target-ml-1758591368"></a>
 ### Use_Target_Delay
@@ -374,7 +374,7 @@ function Use_Target_Delay(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L22)
 
 <a id="function-function-mq3-game-g-target-use-target-give-function-use-target-give-level-ent-other-activator-src-mq3-game-g-target-ml-1328052018"></a>
 ### Use_Target_Give
@@ -391,7 +391,7 @@ function Use_Target_Give(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L16)
 
 <a id="function-function-mq3-game-g-target-use-target-print-function-use-target-print-level-ent-other-activator-src-mq3-game-g-target-ml-1988349688"></a>
 ### Use_Target_Print
@@ -408,7 +408,7 @@ function Use_Target_Print(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L37)
 
 <a id="function-function-mq3-game-g-target-use-target-remove-powerups-function-use-target-remove-powerups-level-ent-other-activator-src-mq3-game-g-target-ml-29676616"></a>
 ### Use_target_remove_powerups
@@ -425,7 +425,7 @@ function Use_target_remove_powerups(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L18)
 
 <a id="function-function-mq3-game-g-target-use-target-score-function-use-target-score-level-ent-other-activator-src-mq3-game-g-target-ml-1932876456"></a>
 ### Use_Target_Score
@@ -442,7 +442,7 @@ function Use_Target_Score(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L33)
 
 <a id="function-function-mq3-game-g-target-use-target-speaker-function-use-target-speaker-level-ent-other-activator-src-mq3-game-g-target-ml-1193033636"></a>
 ### Use_Target_Speaker
@@ -459,4 +459,4 @@ function Use_Target_Speaker(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_target.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_target.ml#L42)

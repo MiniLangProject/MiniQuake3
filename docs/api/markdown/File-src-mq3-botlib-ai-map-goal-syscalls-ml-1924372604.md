@@ -22,7 +22,7 @@ const BOT_GOAL_SIZE = 56
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goal_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-dispatch-function-dispatch-state-vm-base-op-src-mq3-botlib-ai-map-goal-syscalls-ml-1846804950"></a>
 ### dispatch
@@ -39,7 +39,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goal_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writeselectedgoal-function-writeselectedgoal-vm-address-goal-src-mq3-botlib-ai-map-goal-syscalls-ml-1212235518"></a>
 ### writeSelectedGoal
@@ -55,7 +55,7 @@ function writeSelectedGoal(vm, address, goal)
 | `goal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goal_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L11)
 
 <a id="function-function-mq3-botlib-ai-map-goal-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-map-goal-syscalls-ml-1264979321"></a>
 ### writeVector
@@ -71,4 +71,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goal_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goal_syscalls.ml#L10)

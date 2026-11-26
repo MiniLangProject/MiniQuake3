@@ -32,7 +32,7 @@ function addScore(level, ent, origin, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L227)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L227)
 
 <a id="function-function-mq3-game-scores-calculateranks-function-calculateranks-level-src-mq3-game-scores-ml-1417113350"></a>
 ### calculateRanks
@@ -46,7 +46,7 @@ function calculateRanks(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L168)
 
 <a id="function-function-mq3-game-scores-checkexitrules-function-checkexitrules-level-src-mq3-game-scores-ml-1413703838"></a>
 ### checkExitRules
@@ -60,7 +60,7 @@ function checkExitRules(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L137)
 
 <a id="function-function-mq3-game-scores-checkintermissionexit-function-checkintermissionexit-level-src-mq3-game-scores-ml-1625981458"></a>
 ### checkIntermissionExit
@@ -74,7 +74,7 @@ function checkIntermissionExit(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L112)
 
 <a id="function-function-mq3-game-scores-clientat-function-clientat-level-slot-src-mq3-game-scores-ml-2025992818"></a>
 ### clientAt
@@ -89,7 +89,7 @@ function clientAt(level, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L16)
 
 <a id="function-function-mq3-game-scores-clientlimit-function-clientlimit-limit-src-mq3-game-scores-ml-1296174359"></a>
 ### clientLimit
@@ -103,7 +103,7 @@ function clientLimit(limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L12)
 
 <a id="function-function-mq3-game-scores-commandscore-function-commandscore-level-ent-src-mq3-game-scores-ml-1307509465"></a>
 ### commandScore
@@ -118,7 +118,7 @@ function commandScore(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L81)
 
 <a id="function-function-mq3-game-scores-compareranks-function-compareranks-level-a-b-src-mq3-game-scores-ml-238853681"></a>
 ### compareRanks
@@ -134,7 +134,7 @@ function compareRanks(level, a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L46)
 
 <a id="function-function-mq3-game-scores-integerdivide-function-integerdivide-a-b-src-mq3-game-scores-ml-583329763"></a>
 ### integerDivide
@@ -149,7 +149,7 @@ function integerDivide(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L20)
 
 <a id="function-function-mq3-game-scores-logexit-function-logexit-level-reason-src-mq3-game-scores-ml-779340210"></a>
 ### logExit
@@ -164,7 +164,7 @@ function logExit(level, reason)
 | `reason` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L97)
 
 <a id="function-function-mq3-game-scores-logline-function-logline-level-message-src-mq3-game-scores-ml-1635572171"></a>
 ### logLine
@@ -179,7 +179,7 @@ function logLine(level, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L35)
 
 <a id="function-function-mq3-game-scores-matchboundary-function-matchboundary-level-kind-src-mq3-game-scores-ml-1664341838"></a>
 ### matchBoundary
@@ -194,7 +194,7 @@ function matchBoundary(level, kind)
 | `kind` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L40)
 
 <a id="function-function-mq3-game-scores-scoreboard-function-scoreboard-level-ent-src-mq3-game-scores-ml-915626053"></a>
 ### scoreboard
@@ -209,7 +209,7 @@ function scoreboard(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L63)
 
 <a id="function-function-mq3-game-scores-scoreistied-function-scoreistied-level-src-mq3-game-scores-ml-766300914"></a>
 ### scoreIsTied
@@ -223,7 +223,7 @@ function scoreIsTied(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L92)
 
 <a id="function-function-mq3-game-scores-scoreplum-function-scoreplum-level-ent-origin-score-src-mq3-game-scores-ml-2301185"></a>
 ### scorePlum
@@ -240,7 +240,7 @@ function scorePlum(level, ent, origin, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L221)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L221)
 
 <a id="function-function-mq3-game-scores-send-function-send-level-slot-message-src-mq3-game-scores-ml-94416859"></a>
 ### send
@@ -256,7 +256,7 @@ function send(level, slot, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L30)
 
 <a id="function-function-mq3-game-scores-sendall-function-sendall-level-src-mq3-game-scores-ml-172062144"></a>
 ### sendAll
@@ -270,4 +270,4 @@ function sendAll(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/scores.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/scores.ml#L84)

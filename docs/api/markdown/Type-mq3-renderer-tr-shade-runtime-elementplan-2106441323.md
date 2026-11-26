@@ -10,7 +10,7 @@ struct ElementPlan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ indexCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-elementplan-mode-mode-src-mq3-renderer-tr-shade-runtime-ml-571332886"></a>
 ### mode
@@ -32,7 +32,7 @@ mode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-shade-runtime-elementplan-strips-strips-src-mq3-renderer-tr-shade-runtime-ml-1270928390"></a>
 ### strips
@@ -42,4 +42,4 @@ strips
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_shade_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_shade_runtime.ml#L18)

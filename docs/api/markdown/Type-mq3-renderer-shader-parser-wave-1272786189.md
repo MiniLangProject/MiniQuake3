@@ -10,7 +10,7 @@ struct Wave
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ amplitude
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-base-base-src-mq3-renderer-shader-parser-ml-957843442"></a>
 ### base
@@ -32,7 +32,7 @@ base
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-frequency-frequency-src-mq3-renderer-shader-parser-ml-2012708784"></a>
 ### frequency
@@ -42,7 +42,7 @@ frequency
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-func-func-src-mq3-renderer-shader-parser-ml-1308089640"></a>
 ### func
@@ -52,7 +52,7 @@ func
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)
 
 <a id="field-field-mq3-renderer-shader-parser-wave-phase-phase-src-mq3-renderer-shader-parser-ml-1627913240"></a>
 ### phase
@@ -62,4 +62,4 @@ phase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_parser.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_parser.ml#L37)

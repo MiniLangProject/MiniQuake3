@@ -27,7 +27,7 @@ function add(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L36)
 
 <a id="function-function-mq3-collision-winding-addwindingtoconvexhull-function-addwindingtoconvexhull-points-hull-normal-src-mq3-collision-winding-ml-496075269"></a>
 ### AddWindingToConvexHull
@@ -43,7 +43,7 @@ function AddWindingToConvexHull(points, hull, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L176)
 
 <a id="function-function-mq3-collision-winding-allocwinding-function-allocwinding-points-src-mq3-collision-winding-ml-1388790465"></a>
 ### AllocWinding
@@ -59,7 +59,7 @@ Managed equivalents of the original zone-allocation helpers. Productive collisio
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L26)
 
 <a id="function-function-mq3-collision-winding-base-function-base-normal-distance-src-mq3-collision-winding-ml-1198076614"></a>
 ### base
@@ -74,7 +74,7 @@ function base(normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L46)
 
 <a id="function-function-mq3-collision-winding-basewindingforplane-function-basewindingforplane-normal-distance-src-mq3-collision-winding-ml-635948570"></a>
 ### BaseWindingForPlane
@@ -89,7 +89,7 @@ function BaseWindingForPlane(normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L104)
 
 <a id="function-function-mq3-collision-winding-bounds-function-bounds-points-src-mq3-collision-winding-ml-787888685"></a>
 ### bounds
@@ -103,7 +103,7 @@ function bounds(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L62)
 
 <a id="function-function-mq3-collision-winding-checkwinding-function-checkwinding-points-src-mq3-collision-winding-ml-1861021509"></a>
 ### CheckWinding
@@ -117,7 +117,7 @@ function CheckWinding(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L151)
 
 <a id="function-function-mq3-collision-winding-chop-function-chop-points-normal-distance-src-mq3-collision-winding-ml-1901693925"></a>
 ### chop
@@ -133,7 +133,7 @@ function chop(points, normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L203)
 
 <a id="function-function-mq3-collision-winding-chopwinding-function-chopwinding-points-normal-distance-src-mq3-collision-winding-ml-128960417"></a>
 ### ChopWinding
@@ -149,7 +149,7 @@ function ChopWinding(points, normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L149)
 
 <a id="function-function-mq3-collision-winding-chopwindinginplace-function-chopwindinginplace-points-normal-distance-epsilon-src-mq3-collision-winding-ml-985036665"></a>
 ### ChopWindingInPlace
@@ -166,7 +166,7 @@ function ChopWindingInPlace(points, normal, distance, epsilon)
 | `epsilon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L146)
 
 <a id="function-function-mq3-collision-winding-classify-function-classify-points-normal-distance-epsilon-src-mq3-collision-winding-ml-999523669"></a>
 ### classify
@@ -183,7 +183,7 @@ function classify(points, normal, distance, epsilon)
 | `epsilon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L108)
 
 <a id="function-function-mq3-collision-winding-clipwindingepsilon-function-clipwindingepsilon-points-normal-distance-epsilon-src-mq3-collision-winding-ml-1442820301"></a>
 ### ClipWindingEpsilon
@@ -200,7 +200,7 @@ function ClipWindingEpsilon(points, normal, distance, epsilon)
 | `epsilon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L128)
 
 <a id="function-function-mq3-collision-winding-clonepoint-function-clonepoint-value-src-mq3-collision-winding-ml-807931059"></a>
 ### clonePoint
@@ -214,7 +214,7 @@ function clonePoint(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L20)
 
 <a id="function-function-mq3-collision-winding-clonepoints-function-clonepoints-points-src-mq3-collision-winding-ml-893662093"></a>
 ### clonePoints
@@ -228,7 +228,7 @@ function clonePoints(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L21)
 
 <a id="function-function-mq3-collision-winding-copywinding-function-copywinding-points-src-mq3-collision-winding-ml-1322916359"></a>
 ### CopyWinding
@@ -242,7 +242,7 @@ function CopyWinding(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L105)
 
 <a id="function-function-mq3-collision-winding-freewinding-function-freewinding-value-src-mq3-collision-winding-ml-672786027"></a>
 ### FreeWinding
@@ -256,7 +256,7 @@ function FreeWinding(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L30)
 
 - [mq3.collision.winding.ManagedWinding](Type-mq3-collision-winding-managedwinding-2044491277.md) — struct
 <a id="constant-constant-mq3-collision-winding-max-hull-points-const-max-hull-points-128-src-mq3-collision-winding-ml-436613020"></a>
@@ -267,7 +267,7 @@ const MAX_HULL_POINTS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L16)
 
 <a id="constant-constant-mq3-collision-winding-max-map-bounds-const-max-map-bounds-qcommonheaders-max-map-bounds-src-mq3-collision-winding-ml-575702398"></a>
 ### MAX_MAP_BOUNDS
@@ -277,7 +277,7 @@ const MAX_MAP_BOUNDS = qcommonHeaders.MAX_MAP_BOUNDS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L14)
 
 <a id="constant-constant-mq3-collision-winding-max-points-on-winding-const-max-points-on-winding-qcommonheaders-max-points-on-winding-src-mq3-collision-winding-ml-1745937626"></a>
 ### MAX_POINTS_ON_WINDING
@@ -287,7 +287,7 @@ const MAX_POINTS_ON_WINDING = qcommonHeaders.MAX_POINTS_ON_WINDING
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L15)
 
 <a id="function-function-mq3-collision-winding-negate-function-negate-a-src-mq3-collision-winding-ml-1277114961"></a>
 ### negate
@@ -301,7 +301,7 @@ function negate(a)
 | `a` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L42)
 
 <a id="constant-constant-mq3-collision-winding-on-epsilon-const-on-epsilon-qcommonheaders-on-epsilon-src-mq3-collision-winding-ml-707488423"></a>
 ### ON_EPSILON
@@ -311,7 +311,7 @@ const ON_EPSILON = qcommonHeaders.ON_EPSILON
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L13)
 
 <a id="function-function-mq3-collision-winding-pw-function-pw-points-src-mq3-collision-winding-ml-2039396109"></a>
 ### pw
@@ -325,7 +325,7 @@ function pw(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L34)
 
 <a id="function-function-mq3-collision-winding-removecolinearpoints-function-removecolinearpoints-points-src-mq3-collision-winding-ml-708717681"></a>
 ### RemoveColinearPoints
@@ -339,7 +339,7 @@ function RemoveColinearPoints(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L73)
 
 <a id="function-function-mq3-collision-winding-reversewinding-function-reversewinding-points-src-mq3-collision-winding-ml-412618649"></a>
 ### ReverseWinding
@@ -353,7 +353,7 @@ function ReverseWinding(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L106)
 
 <a id="constant-constant-mq3-collision-winding-side-back-const-side-back-qcommonheaders-side-back-src-mq3-collision-winding-ml-1079410656"></a>
 ### SIDE_BACK
@@ -363,7 +363,7 @@ const SIDE_BACK = qcommonHeaders.SIDE_BACK
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L10)
 
 <a id="constant-constant-mq3-collision-winding-side-cross-const-side-cross-qcommonheaders-side-cross-src-mq3-collision-winding-ml-994306443"></a>
 ### SIDE_CROSS
@@ -373,7 +373,7 @@ const SIDE_CROSS = qcommonHeaders.SIDE_CROSS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L12)
 
 <a id="constant-constant-mq3-collision-winding-side-front-const-side-front-qcommonheaders-side-front-src-mq3-collision-winding-ml-1863622804"></a>
 ### SIDE_FRONT
@@ -383,7 +383,7 @@ const SIDE_FRONT = qcommonHeaders.SIDE_FRONT
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L9)
 
 <a id="constant-constant-mq3-collision-winding-side-on-const-side-on-qcommonheaders-side-on-src-mq3-collision-winding-ml-1182723294"></a>
 ### SIDE_ON
@@ -393,7 +393,7 @@ const SIDE_ON = qcommonHeaders.SIDE_ON
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L11)
 
 <a id="function-function-mq3-collision-winding-splitpoint-function-splitpoint-p1-p2-d1-d2-normal-distance-src-mq3-collision-winding-ml-1952884058"></a>
 ### splitPoint
@@ -412,7 +412,7 @@ function splitPoint(p1, p2, d1, d2, normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L118)
 
 <a id="function-function-mq3-collision-winding-subtract-function-subtract-a-b-src-mq3-collision-winding-ml-680272937"></a>
 ### subtract
@@ -427,7 +427,7 @@ function subtract(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L39)
 
 <a id="function-function-mq3-collision-winding-windingarea-function-windingarea-points-src-mq3-collision-winding-ml-280797611"></a>
 ### WindingArea
@@ -441,7 +441,7 @@ function WindingArea(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L90)
 
 <a id="function-function-mq3-collision-winding-windingbounds-function-windingbounds-points-src-mq3-collision-winding-ml-1572316771"></a>
 ### WindingBounds
@@ -455,7 +455,7 @@ function WindingBounds(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L99)
 
 <a id="function-function-mq3-collision-winding-windingcenter-function-windingcenter-points-src-mq3-collision-winding-ml-1683898435"></a>
 ### WindingCenter
@@ -469,7 +469,7 @@ function WindingCenter(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L100)
 
 <a id="function-function-mq3-collision-winding-windingonplaneside-function-windingonplaneside-points-normal-distance-src-mq3-collision-winding-ml-10077789"></a>
 ### WindingOnPlaneSide
@@ -485,7 +485,7 @@ function WindingOnPlaneSide(points, normal, distance)
 | `distance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L166)
 
 <a id="function-function-mq3-collision-winding-windingplane-function-windingplane-points-src-mq3-collision-winding-ml-637177445"></a>
 ### WindingPlane
@@ -499,4 +499,4 @@ function WindingPlane(points)
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L84)

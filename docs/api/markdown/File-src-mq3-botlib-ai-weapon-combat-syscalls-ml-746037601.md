@@ -30,7 +30,7 @@ function dispatch(runtime, pools, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-weapon-combat-syscalls-inventory-count-const-inventory-count-256-src-mq3-botlib-ai-weapon-combat-syscalls-ml-2143757898"></a>
 ### INVENTORY_COUNT
@@ -40,7 +40,7 @@ const INVENTORY_COUNT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-weapon-combat-syscalls-readinventory-function-readinventory-vm-address-src-mq3-botlib-ai-weapon-combat-syscalls-ml-427997881"></a>
 ### readInventory
@@ -55,4 +55,4 @@ function readInventory(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_combat_syscalls.ml#L11)

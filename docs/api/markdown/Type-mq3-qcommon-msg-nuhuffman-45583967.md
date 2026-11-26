@@ -10,7 +10,7 @@ struct NUHuffman
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ compressor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 <a id="field-field-mq3-qcommon-msg-nuhuffman-decompressor-decompressor-src-mq3-qcommon-msg-ml-1273050109"></a>
 ### decompressor
@@ -32,7 +32,7 @@ decompressor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)
 
 <a id="field-field-mq3-qcommon-msg-nuhuffman-frequencies-frequencies-src-mq3-qcommon-msg-ml-281819517"></a>
 ### frequencies
@@ -42,4 +42,4 @@ frequencies
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/msg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/msg.ml#L12)

@@ -31,7 +31,7 @@ function draw(media, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L53)
 
 <a id="function-function-mq3-client-baseq3-console-background-drawlayer-function-drawlayer-layer-width-height-now-src-mq3-client-baseq3-console-background-ml-1499912194"></a>
 ### drawLayer
@@ -48,7 +48,7 @@ function drawLayer(layer, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L44)
 
 <a id="function-function-mq3-client-baseq3-console-background-fail-function-fail-message-src-mq3-client-baseq3-console-background-ml-1320637069"></a>
 ### fail
@@ -62,7 +62,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L18)
 
 - [mq3.client.baseq3_console_background.Layer](Type-mq3-client-baseq3-console-background-layer-1829146384.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-load-function-load-archive-firsttextureslot-src-mq3-client-baseq3-console-background-ml-1284111481"></a>
@@ -78,7 +78,7 @@ function load(archive, firstTextureSlot)
 | `firstTextureSlot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L19)
 
 - [mq3.client.baseq3_console_background.Media](Type-mq3-client-baseq3-console-background-media-1898967553.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-point-function-point-x-y-src-mq3-client-baseq3-console-background-ml-633670739"></a>
@@ -94,7 +94,7 @@ function point(x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L43)
 
 - [mq3.client.baseq3_console_background.Point](Type-mq3-client-baseq3-console-background-point-1935872503.md) — struct
 <a id="function-function-mq3-client-baseq3-console-background-release-function-release-media-src-mq3-client-baseq3-console-background-ml-1858720838"></a>
@@ -109,7 +109,7 @@ function release(media)
 | `media` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L42)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-required-textures-const-required-textures-2-src-mq3-client-baseq3-console-background-ml-2127943845"></a>
 ### REQUIRED_TEXTURES
@@ -119,7 +119,7 @@ const REQUIRED_TEXTURES = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L12)
 
 <a id="constant-constant-mq3-client-baseq3-console-background-shader-name-const-shader-name-console-src-mq3-client-baseq3-console-background-ml-1560070400"></a>
 ### SHADER_NAME
@@ -129,7 +129,7 @@ const SHADER_NAME = "console"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L11)
 
 <a id="function-function-mq3-client-baseq3-console-background-upload-function-upload-media-src-mq3-client-baseq3-console-background-ml-986991424"></a>
 ### upload
@@ -143,4 +143,4 @@ function upload(media)
 | `media` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/baseq3_console_background.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/baseq3_console_background.ml#L37)

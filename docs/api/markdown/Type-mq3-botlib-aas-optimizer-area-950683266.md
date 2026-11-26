@@ -10,7 +10,7 @@ struct Area
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-optimizer-area-center-center-src-mq3-botlib-aas-optimizer-ml-492516990"></a>
 ### center
@@ -32,7 +32,7 @@ center
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-optimizer-area-firstface-firstface-src-mq3-botlib-aas-optimizer-ml-2009826316"></a>
 ### firstFace
@@ -42,7 +42,7 @@ firstFace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-optimizer-area-maxs-maxs-src-mq3-botlib-aas-optimizer-ml-2015265890"></a>
 ### maxs
@@ -52,7 +52,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-optimizer-area-mins-mins-src-mq3-botlib-aas-optimizer-ml-1230985514"></a>
 ### mins
@@ -62,7 +62,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)
 
 <a id="field-field-mq3-botlib-aas-optimizer-area-numfaces-numfaces-src-mq3-botlib-aas-optimizer-ml-1221171868"></a>
 ### numFaces
@@ -72,4 +72,4 @@ numFaces
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_optimizer.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_optimizer.ml#L16)

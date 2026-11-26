@@ -10,7 +10,7 @@ struct FileCursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L167)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L167)
 
 <a id="field-field-mq3-engine-local-qvm-match-filecursor-offset-offset-src-mq3-engine-local-qvm-match-ml-1298519371"></a>
 ### offset
@@ -32,7 +32,7 @@ offset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L167)
 
 <a id="field-field-mq3-engine-local-qvm-match-filecursor-writepath-writepath-src-mq3-engine-local-qvm-match-ml-1004753013"></a>
 ### writePath
@@ -42,4 +42,4 @@ writePath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_match.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_match.ml#L167)

@@ -10,7 +10,7 @@ struct GlobalInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ numberEntry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)
 
 <a id="field-field-mq3-format-unzip-globalinfo-sizecomment-sizecomment-src-mq3-format-unzip-ml-1306651522"></a>
 ### sizeComment
@@ -32,4 +32,4 @@ sizeComment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/unzip.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/unzip.ml#L26)

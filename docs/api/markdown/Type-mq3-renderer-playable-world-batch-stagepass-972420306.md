@@ -10,7 +10,7 @@ struct StagePass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ cacheSerial
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-clamptime-clamptime-src-mq3-renderer-playable-world-batch-ml-1524865200"></a>
 ### clampTime
@@ -32,7 +32,7 @@ clampTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-commands-commands-src-mq3-renderer-playable-world-batch-ml-738784056"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-deforms-deforms-src-mq3-renderer-playable-world-batch-ml-1648550832"></a>
 ### deforms
@@ -52,7 +52,7 @@ deforms
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-depthequal-depthequal-src-mq3-renderer-playable-world-batch-ml-1711282206"></a>
 ### depthEqual
@@ -62,7 +62,7 @@ depthEqual
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-fogadjustment-fogadjustment-src-mq3-renderer-playable-world-batch-ml-627841636"></a>
 ### fogAdjustment
@@ -72,7 +72,7 @@ fogAdjustment
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-fogindexes-fogindexes-src-mq3-renderer-playable-world-batch-ml-795174456"></a>
 ### fogIndexes
@@ -82,7 +82,7 @@ fogIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-initialized-initialized-src-mq3-renderer-playable-world-batch-ml-1511640736"></a>
 ### initialized
@@ -92,7 +92,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-normalnoise-normalnoise-src-mq3-renderer-playable-world-batch-ml-958715040"></a>
 ### normalNoise
@@ -102,7 +102,7 @@ normalNoise
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-polygonoffset-polygonoffset-src-mq3-renderer-playable-world-batch-ml-252499416"></a>
 ### polygonOffset
@@ -112,7 +112,7 @@ polygonOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-primary-primary-src-mq3-renderer-playable-world-batch-ml-537129536"></a>
 ### primary
@@ -122,7 +122,7 @@ primary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sort-sort-src-mq3-renderer-playable-world-batch-ml-241498872"></a>
 ### sort
@@ -132,7 +132,7 @@ sort
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourcecolors-sourcecolors-src-mq3-renderer-playable-world-batch-ml-858798742"></a>
 ### sourceColors
@@ -142,7 +142,7 @@ sourceColors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourcedeformuvs-sourcedeformuvs-src-mq3-renderer-playable-world-batch-ml-174248764"></a>
 ### sourceDeformUvs
@@ -152,7 +152,7 @@ sourceDeformUvs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourceentitycolors-sourceentitycolors-src-mq3-renderer-playable-world-batch-ml-660869776"></a>
 ### sourceEntityColors
@@ -162,7 +162,7 @@ sourceEntityColors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourceentitytexcoords-sourceentitytexcoords-src-mq3-renderer-playable-world-batch-ml-520148604"></a>
 ### sourceEntityTexCoords
@@ -172,7 +172,7 @@ sourceEntityTexCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourceindexes-sourceindexes-src-mq3-renderer-playable-world-batch-ml-656445176"></a>
 ### sourceIndexes
@@ -182,7 +182,7 @@ sourceIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourcenormals-sourcenormals-src-mq3-renderer-playable-world-batch-ml-1858259464"></a>
 ### sourceNormals
@@ -192,7 +192,7 @@ sourceNormals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourcepositions-sourcepositions-src-mq3-renderer-playable-world-batch-ml-520786244"></a>
 ### sourcePositions
@@ -202,7 +202,7 @@ sourcePositions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourceshadertimes-sourceshadertimes-src-mq3-renderer-playable-world-batch-ml-1148709992"></a>
 ### sourceShaderTimes
@@ -212,7 +212,7 @@ sourceShaderTimes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-sourceuvs-sourceuvs-src-mq3-renderer-playable-world-batch-ml-320312144"></a>
 ### sourceUvs
@@ -222,7 +222,17 @@ sourceUvs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
+
+<a id="field-field-mq3-renderer-playable-world-batch-stagepass-specularnormals-specularnormals-src-mq3-renderer-playable-world-batch-ml-822014184"></a>
+### specularNormals
+
+```ml
+specularNormals
+```
+
+
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-stage-stage-src-mq3-renderer-playable-world-batch-ml-1880755056"></a>
 ### stage
@@ -232,7 +242,7 @@ stage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-textureindex-textureindex-src-mq3-renderer-playable-world-batch-ml-598920386"></a>
 ### textureIndex
@@ -242,7 +252,7 @@ textureIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-timeoffset-timeoffset-src-mq3-renderer-playable-world-batch-ml-1044634416"></a>
 ### timeOffset
@@ -252,7 +262,7 @@ timeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-world-batch-stagepass-vertexcache-vertexcache-src-mq3-renderer-playable-world-batch-ml-922013392"></a>
 ### vertexCache
@@ -262,4 +272,4 @@ vertexCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L22)

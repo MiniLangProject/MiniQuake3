@@ -27,7 +27,7 @@ function connectPrefix(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L12)
 
 <a id="function-function-mq3-server-connectionless-dispatch-function-dispatch-runtime-host-sourceaddress-msg-src-mq3-server-connectionless-ml-1807300734"></a>
 ### dispatch
@@ -44,7 +44,7 @@ function dispatch(runtime, host, sourceAddress, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L23)
 
 <a id="function-function-mq3-server-connectionless-services-function-services-src-mq3-server-connectionless-ml-104543780"></a>
 ### services
@@ -54,7 +54,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L11)
 
 - [mq3.server.connectionless.Services](Type-mq3-server-connectionless-services-775299350.md) — struct
 <a id="function-function-mq3-server-connectionless-tokens-function-tokens-text-src-mq3-server-connectionless-ml-1651922383"></a>
@@ -69,4 +69,4 @@ function tokens(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/connectionless.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/connectionless.ml#L18)

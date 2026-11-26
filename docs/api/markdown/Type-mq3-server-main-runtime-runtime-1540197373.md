@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-dedicated-dedicated-src-mq3-server-main-runtime-ml-162267969"></a>
 ### dedicated
@@ -32,7 +32,7 @@ dedicated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-game-game-src-mq3-server-main-runtime-ml-1232193765"></a>
 ### game
@@ -42,7 +42,7 @@ game
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-gametype-gametype-src-mq3-server-main-runtime-ml-206119381"></a>
 ### gametype
@@ -52,7 +52,7 @@ gametype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-gametypevalue-gametypevalue-src-mq3-server-main-runtime-ml-1335301729"></a>
 ### gametypeValue
@@ -62,7 +62,7 @@ gametypeValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-hostname-hostname-src-mq3-server-main-runtime-ml-672864967"></a>
 ### hostname
@@ -72,7 +72,7 @@ hostname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-lastrcontime-lastrcontime-src-mq3-server-main-runtime-ml-993546799"></a>
 ### lastRconTime
@@ -82,7 +82,7 @@ lastRconTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-mapname-mapname-src-mq3-server-main-runtime-ml-1884887245"></a>
 ### mapname
@@ -92,7 +92,7 @@ mapname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-masters-masters-src-mq3-server-main-runtime-ml-838461485"></a>
 ### masters
@@ -102,7 +102,7 @@ masters
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-maxclients-maxclients-src-mq3-server-main-runtime-ml-68596477"></a>
 ### maxClients
@@ -112,7 +112,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-maxping-maxping-src-mq3-server-main-runtime-ml-622368901"></a>
 ### maxPing
@@ -122,7 +122,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-minping-minping-src-mq3-server-main-runtime-ml-1709645385"></a>
 ### minPing
@@ -132,7 +132,7 @@ minPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-nextheartbeattime-nextheartbeattime-src-mq3-server-main-runtime-ml-928003917"></a>
 ### nextHeartbeatTime
@@ -142,7 +142,7 @@ nextHeartbeatTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-privateclients-privateclients-src-mq3-server-main-runtime-ml-1685526951"></a>
 ### privateClients
@@ -152,7 +152,7 @@ privateClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-protocol-protocol-src-mq3-server-main-runtime-ml-410613837"></a>
 ### protocol
@@ -162,7 +162,7 @@ protocol
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-pure-pure-src-mq3-server-main-runtime-ml-337229349"></a>
 ### pure
@@ -172,7 +172,7 @@ pure
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-rconpassword-rconpassword-src-mq3-server-main-runtime-ml-436337463"></a>
 ### rconPassword
@@ -182,7 +182,7 @@ rconPassword
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-redirectaddress-redirectaddress-src-mq3-server-main-runtime-ml-2108663285"></a>
 ### redirectAddress
@@ -192,7 +192,7 @@ redirectAddress
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-restricted-restricted-src-mq3-server-main-runtime-ml-255860611"></a>
 ### restricted
@@ -202,7 +202,7 @@ restricted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-serverinfo-serverinfo-src-mq3-server-main-runtime-ml-996461647"></a>
 ### serverInfo
@@ -212,7 +212,7 @@ serverInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-time-time-src-mq3-server-main-runtime-ml-723133451"></a>
 ### time
@@ -222,7 +222,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)
 
 <a id="field-field-mq3-server-main-runtime-runtime-uisingleplayeractive-uisingleplayeractive-src-mq3-server-main-runtime-ml-17851191"></a>
 ### uiSinglePlayerActive
@@ -232,4 +232,4 @@ uiSinglePlayerActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L34)

@@ -10,7 +10,7 @@ struct Face
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 ## Members
 
@@ -22,7 +22,7 @@ backArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 <a id="field-field-mq3-format-aas-face-firstedge-firstedge-src-mq3-format-aas-ml-2113619312"></a>
 ### firstEdge
@@ -32,7 +32,7 @@ firstEdge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 <a id="field-field-mq3-format-aas-face-flags-flags-src-mq3-format-aas-ml-151697612"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 <a id="field-field-mq3-format-aas-face-frontarea-frontarea-src-mq3-format-aas-ml-695324332"></a>
 ### frontArea
@@ -52,7 +52,7 @@ frontArea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 <a id="field-field-mq3-format-aas-face-numedges-numedges-src-mq3-format-aas-ml-1950679196"></a>
 ### numEdges
@@ -62,7 +62,7 @@ numEdges
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)
 
 <a id="field-field-mq3-format-aas-face-planenum-planenum-src-mq3-format-aas-ml-270614888"></a>
 ### planeNum
@@ -72,4 +72,4 @@ planeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L118)

@@ -10,7 +10,7 @@ struct DrawSurface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlighted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L21)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-drawsurface-fogindex-fogindex-src-mq3-renderer-tr-world-runtime-ml-2139171122"></a>
 ### fogIndex
@@ -32,7 +32,7 @@ fogIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L21)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-drawsurface-surfaceindex-surfaceindex-src-mq3-renderer-tr-world-runtime-ml-1846546440"></a>
 ### surfaceIndex
@@ -42,4 +42,4 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L21)

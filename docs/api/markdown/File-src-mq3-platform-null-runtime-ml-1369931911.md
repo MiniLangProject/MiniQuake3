@@ -21,7 +21,7 @@ function CL_CDDialog(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L40)
 
 <a id="function-function-mq3-platform-null-runtime-cl-cdkeyvalidate-function-cl-cdkeyvalidate-key-checksum-src-mq3-platform-null-runtime-ml-420314408"></a>
 ### CL_CDKeyValidate
@@ -36,7 +36,7 @@ function CL_CDKeyValidate(key, checksum)
 | `checksum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L29)
 
 <a id="function-function-mq3-platform-null-runtime-cl-charevent-function-cl-charevent-state-key-src-mq3-platform-null-runtime-ml-1058630898"></a>
 ### CL_CharEvent
@@ -51,7 +51,7 @@ function CL_CharEvent(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L32)
 
 <a id="function-function-mq3-platform-null-runtime-cl-consoleprint-function-cl-consoleprint-state-text-src-mq3-platform-null-runtime-ml-1316280094"></a>
 ### CL_ConsolePrint
@@ -66,7 +66,7 @@ function CL_ConsolePrint(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L30)
 
 <a id="function-function-mq3-platform-null-runtime-cl-disconnect-function-cl-disconnect-state-showmainmenu-src-mq3-platform-null-runtime-ml-946229586"></a>
 ### CL_Disconnect
@@ -81,7 +81,7 @@ function CL_Disconnect(state, showMainMenu)
 | `showMainMenu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L33)
 
 <a id="function-function-mq3-platform-null-runtime-cl-flushmemory-function-cl-flushmemory-state-src-mq3-platform-null-runtime-ml-1431977169"></a>
 ### CL_FlushMemory
@@ -95,7 +95,7 @@ function CL_FlushMemory(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L41)
 
 <a id="function-function-mq3-platform-null-runtime-cl-forwardcommandtoserver-function-cl-forwardcommandtoserver-state-text-src-mq3-platform-null-runtime-ml-1265795814"></a>
 ### CL_ForwardCommandToServer
@@ -110,7 +110,7 @@ function CL_ForwardCommandToServer(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L38)
 
 <a id="function-function-mq3-platform-null-runtime-cl-frame-function-cl-frame-state-msec-src-mq3-platform-null-runtime-ml-1032731153"></a>
 ### CL_Frame
@@ -125,7 +125,7 @@ function CL_Frame(state, msec)
 | `msec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L26)
 
 <a id="function-function-mq3-platform-null-runtime-cl-gamecommand-function-cl-gamecommand-state-src-mq3-platform-null-runtime-ml-316130337"></a>
 ### CL_GameCommand
@@ -139,7 +139,7 @@ function CL_GameCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L27)
 
 <a id="function-function-mq3-platform-null-runtime-cl-init-function-cl-init-state-src-mq3-platform-null-runtime-ml-1476503425"></a>
 ### CL_Init
@@ -153,7 +153,7 @@ function CL_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L23)
 
 <a id="function-function-mq3-platform-null-runtime-cl-initkeycommands-function-cl-initkeycommands-state-src-mq3-platform-null-runtime-ml-790922033"></a>
 ### CL_InitKeyCommands
@@ -167,7 +167,7 @@ function CL_InitKeyCommands(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L39)
 
 <a id="function-function-mq3-platform-null-runtime-cl-joystickevent-function-cl-joystickevent-state-axis-value-time-src-mq3-platform-null-runtime-ml-180179118"></a>
 ### CL_JoystickEvent
@@ -184,7 +184,7 @@ function CL_JoystickEvent(state, axis, value, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L37)
 
 <a id="function-function-mq3-platform-null-runtime-cl-keyevent-function-cl-keyevent-state-key-down-time-src-mq3-platform-null-runtime-ml-410432505"></a>
 ### CL_KeyEvent
@@ -201,7 +201,7 @@ function CL_KeyEvent(state, key, down, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L35)
 
 <a id="function-function-mq3-platform-null-runtime-cl-maploading-function-cl-maploading-state-src-mq3-platform-null-runtime-ml-1812597065"></a>
 ### CL_MapLoading
@@ -215,7 +215,7 @@ function CL_MapLoading(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L34)
 
 <a id="function-function-mq3-platform-null-runtime-cl-mouseevent-function-cl-mouseevent-state-dx-dy-time-src-mq3-platform-null-runtime-ml-628105765"></a>
 ### CL_MouseEvent
@@ -232,7 +232,7 @@ function CL_MouseEvent(state, dx, dy, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L36)
 
 <a id="function-function-mq3-platform-null-runtime-cl-packetevent-function-cl-packetevent-state-source-message-src-mq3-platform-null-runtime-ml-1747412805"></a>
 ### CL_PacketEvent
@@ -248,7 +248,7 @@ function CL_PacketEvent(state, source, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L31)
 
 <a id="function-function-mq3-platform-null-runtime-cl-shutdown-function-cl-shutdown-state-src-mq3-platform-null-runtime-ml-1653480189"></a>
 ### CL_Shutdown
@@ -262,7 +262,7 @@ function CL_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L24)
 
 <a id="function-function-mq3-platform-null-runtime-cl-shutdownall-function-cl-shutdownall-state-src-mq3-platform-null-runtime-ml-1244749521"></a>
 ### CL_ShutdownAll
@@ -276,7 +276,7 @@ function CL_ShutdownAll(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L25)
 
 <a id="function-function-mq3-platform-null-runtime-cl-starthunkusers-function-cl-starthunkusers-state-src-mq3-platform-null-runtime-ml-1856709453"></a>
 ### CL_StartHunkUsers
@@ -290,7 +290,7 @@ function CL_StartHunkUsers(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L42)
 
 <a id="function-function-mq3-platform-null-runtime-create-function-create-src-mq3-platform-null-runtime-ml-660297822"></a>
 ### create
@@ -300,7 +300,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L21)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-enablelogging-function-glimp-enablelogging-state-enabled-src-mq3-platform-null-runtime-ml-739822680"></a>
 ### GLimp_EnableLogging
@@ -315,7 +315,7 @@ function GLimp_EnableLogging(state, enabled)
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L48)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-endframe-function-glimp-endframe-state-src-mq3-platform-null-runtime-ml-863471277"></a>
 ### GLimp_EndFrame
@@ -329,7 +329,7 @@ function GLimp_EndFrame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L47)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-init-function-glimp-init-state-src-mq3-platform-null-runtime-ml-510010701"></a>
 ### GLimp_Init
@@ -343,7 +343,7 @@ function GLimp_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L45)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-logcomment-function-glimp-logcomment-state-comment-src-mq3-platform-null-runtime-ml-1177069120"></a>
 ### GLimp_LogComment
@@ -358,7 +358,7 @@ function GLimp_LogComment(state, comment)
 | `comment` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L49)
 
 <a id="function-function-mq3-platform-null-runtime-glimp-shutdown-function-glimp-shutdown-state-src-mq3-platform-null-runtime-ml-266676917"></a>
 ### GLimp_Shutdown
@@ -372,7 +372,7 @@ function GLimp_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L46)
 
 <a id="function-function-mq3-platform-null-runtime-headlessmain-function-headlessmain-state-framecount-framefn-context-src-mq3-platform-null-runtime-ml-515220201"></a>
 ### headlessMain
@@ -391,7 +391,7 @@ Bounded equivalent of the original endless headless main loop.
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L96)
 
 <a id="function-function-mq3-platform-null-runtime-in-frame-function-in-frame-state-src-mq3-platform-null-runtime-ml-354527425"></a>
 ### IN_Frame
@@ -405,7 +405,7 @@ function IN_Frame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L54)
 
 <a id="function-function-mq3-platform-null-runtime-in-init-function-in-init-state-src-mq3-platform-null-runtime-ml-974523577"></a>
 ### IN_Init
@@ -419,7 +419,7 @@ function IN_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L53)
 
 <a id="function-function-mq3-platform-null-runtime-in-shutdown-function-in-shutdown-state-src-mq3-platform-null-runtime-ml-646849077"></a>
 ### IN_Shutdown
@@ -433,7 +433,7 @@ function IN_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L55)
 
 <a id="function-function-mq3-platform-null-runtime-key-writebindings-function-key-writebindings-state-file-src-mq3-platform-null-runtime-ml-1789738045"></a>
 ### Key_WriteBindings
@@ -448,7 +448,7 @@ function Key_WriteBindings(state, file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L43)
 
 <a id="function-function-mq3-platform-null-runtime-macnetsymbols-function-macnetsymbols-src-mq3-platform-null-runtime-ml-2042372864"></a>
 ### macNetSymbols
@@ -458,7 +458,7 @@ function macNetSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L13)
 
 <a id="constant-constant-mq3-platform-null-runtime-na-bad-const-na-bad-1-src-mq3-platform-null-runtime-ml-315302280"></a>
 ### NA_BAD
@@ -468,7 +468,7 @@ const NA_BAD = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L10)
 
 <a id="constant-constant-mq3-platform-null-runtime-na-loopback-const-na-loopback-2-src-mq3-platform-null-runtime-ml-718578639"></a>
 ### NA_LOOPBACK
@@ -478,7 +478,7 @@ const NA_LOOPBACK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L11)
 
 <a id="function-function-mq3-platform-null-runtime-net-stringtoadr-function-net-stringtoadr-text-src-mq3-platform-null-runtime-ml-1930757579"></a>
 ### NET_StringToAdr
@@ -492,7 +492,7 @@ function NET_StringToAdr(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L58)
 
 <a id="function-function-mq3-platform-null-runtime-nullclientsymbols-function-nullclientsymbols-src-mq3-platform-null-runtime-ml-939236084"></a>
 ### nullClientSymbols
@@ -502,7 +502,7 @@ function nullClientSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L14)
 
 <a id="function-function-mq3-platform-null-runtime-nullglimpsymbols-function-nullglimpsymbols-src-mq3-platform-null-runtime-ml-851279426"></a>
 ### nullGlimpSymbols
@@ -512,7 +512,7 @@ function nullGlimpSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L15)
 
 <a id="function-function-mq3-platform-null-runtime-nullinputsymbols-function-nullinputsymbols-src-mq3-platform-null-runtime-ml-1804178494"></a>
 ### nullInputSymbols
@@ -522,7 +522,7 @@ function nullInputSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L16)
 
 <a id="function-function-mq3-platform-null-runtime-nullmainsymbols-function-nullmainsymbols-src-mq3-platform-null-runtime-ml-1548706380"></a>
 ### nullMainSymbols
@@ -532,7 +532,7 @@ function nullMainSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L17)
 
 <a id="function-function-mq3-platform-null-runtime-nullnetsymbols-function-nullnetsymbols-src-mq3-platform-null-runtime-ml-221741378"></a>
 ### nullNetSymbols
@@ -542,7 +542,7 @@ function nullNetSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L18)
 
 <a id="function-function-mq3-platform-null-runtime-nullsoundsymbols-function-nullsoundsymbols-src-mq3-platform-null-runtime-ml-486927650"></a>
 ### nullSoundSymbols
@@ -552,7 +552,7 @@ function nullSoundSymbols()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L19)
 
 - [mq3.platform.null_runtime.Packet](Type-mq3-platform-null-runtime-packet-607746055.md) — struct
 <a id="function-function-mq3-platform-null-runtime-qgl-init-function-qgl-init-state-dllname-src-mq3-platform-null-runtime-ml-437375330"></a>
@@ -568,7 +568,7 @@ function QGL_Init(state, dllname)
 | `dllname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L50)
 
 <a id="function-function-mq3-platform-null-runtime-qgl-shutdown-function-qgl-shutdown-state-src-mq3-platform-null-runtime-ml-1040270065"></a>
 ### QGL_Shutdown
@@ -582,7 +582,7 @@ function QGL_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L51)
 
 <a id="function-function-mq3-platform-null-runtime-s-clearsoundbuffer-function-s-clearsoundbuffer-state-src-mq3-platform-null-runtime-ml-496517461"></a>
 ### S_ClearSoundBuffer
@@ -596,7 +596,7 @@ function S_ClearSoundBuffer(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L75)
 
 <a id="function-function-mq3-platform-null-runtime-s-registersound-function-s-registersound-state-name-compressed-src-mq3-platform-null-runtime-ml-1776897231"></a>
 ### S_RegisterSound
@@ -612,7 +612,7 @@ function S_RegisterSound(state, name, compressed)
 | `compressed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L73)
 
 <a id="function-function-mq3-platform-null-runtime-s-startlocalsound-function-s-startlocalsound-state-handle-channel-src-mq3-platform-null-runtime-ml-1074736548"></a>
 ### S_StartLocalSound
@@ -628,7 +628,7 @@ function S_StartLocalSound(state, handle, channel)
 | `channel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L74)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-beginpainting-function-snddma-beginpainting-state-src-mq3-platform-null-runtime-ml-1947349041"></a>
 ### SNDDMA_BeginPainting
@@ -642,7 +642,7 @@ function SNDDMA_BeginPainting(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L71)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-getdmapos-function-snddma-getdmapos-state-src-mq3-platform-null-runtime-ml-251548345"></a>
 ### SNDDMA_GetDMAPos
@@ -656,7 +656,7 @@ function SNDDMA_GetDMAPos(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L69)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-init-function-snddma-init-state-src-mq3-platform-null-runtime-ml-1869731661"></a>
 ### SNDDMA_Init
@@ -670,7 +670,7 @@ function SNDDMA_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L68)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-shutdown-function-snddma-shutdown-state-src-mq3-platform-null-runtime-ml-1008890585"></a>
 ### SNDDMA_Shutdown
@@ -684,7 +684,7 @@ function SNDDMA_Shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L70)
 
 <a id="function-function-mq3-platform-null-runtime-snddma-submit-function-snddma-submit-state-src-mq3-platform-null-runtime-ml-131095965"></a>
 ### SNDDMA_Submit
@@ -698,7 +698,7 @@ function SNDDMA_Submit(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L72)
 
 - [mq3.platform.null_runtime.State](Type-mq3-platform-null-runtime-state-476158860.md) — struct
 <a id="function-function-mq3-platform-null-runtime-sys-beginstreamedfile-function-sys-beginstreamedfile-state-file-readahead-src-mq3-platform-null-runtime-ml-1692226054"></a>
@@ -715,7 +715,7 @@ function Sys_BeginStreamedFile(state, file, readAhead)
 | `readAhead` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L77)
 
 <a id="function-function-mq3-platform-null-runtime-sys-earlyoutput-function-sys-earlyoutput-state-text-src-mq3-platform-null-runtime-ml-139767926"></a>
 ### Sys_EarlyOutput
@@ -730,7 +730,7 @@ function Sys_EarlyOutput(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L93)
 
 <a id="function-function-mq3-platform-null-runtime-sys-endstreamedfile-function-sys-endstreamedfile-state-file-src-mq3-platform-null-runtime-ml-7042607"></a>
 ### Sys_EndStreamedFile
@@ -745,7 +745,7 @@ function Sys_EndStreamedFile(state, file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L78)
 
 <a id="function-function-mq3-platform-null-runtime-sys-error-function-sys-error-state-message-src-mq3-platform-null-runtime-ml-811884334"></a>
 ### Sys_Error
@@ -760,7 +760,7 @@ function Sys_Error(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L83)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findclose-function-sys-findclose-state-src-mq3-platform-null-runtime-ml-1762945547"></a>
 ### Sys_FindClose
@@ -774,7 +774,7 @@ function Sys_FindClose(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L91)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findfirst-function-sys-findfirst-state-path-musthave-canthave-src-mq3-platform-null-runtime-ml-538987691"></a>
 ### Sys_FindFirst
@@ -791,7 +791,7 @@ function Sys_FindFirst(state, path, mustHave, cantHave)
 | `cantHave` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L89)
 
 <a id="function-function-mq3-platform-null-runtime-sys-findnext-function-sys-findnext-state-musthave-canthave-src-mq3-platform-null-runtime-ml-1769512850"></a>
 ### Sys_FindNext
@@ -807,7 +807,7 @@ function Sys_FindNext(state, mustHave, cantHave)
 | `cantHave` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L90)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getclipboarddata-function-sys-getclipboarddata-state-src-mq3-platform-null-runtime-ml-506921761"></a>
 ### Sys_GetClipboardData
@@ -821,7 +821,7 @@ function Sys_GetClipboardData(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L87)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getgameapi-function-sys-getgameapi-state-parameters-src-mq3-platform-null-runtime-ml-1181311845"></a>
 ### Sys_GetGameAPI
@@ -836,7 +836,7 @@ function Sys_GetGameAPI(state, parameters)
 | `parameters` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L86)
 
 <a id="function-function-mq3-platform-null-runtime-sys-getpacket-function-sys-getpacket-state-src-mq3-platform-null-runtime-ml-1773277933"></a>
 ### Sys_GetPacket
@@ -850,7 +850,7 @@ function Sys_GetPacket(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L66)
 
 <a id="function-function-mq3-platform-null-runtime-sys-init-function-sys-init-state-src-mq3-platform-null-runtime-ml-1737972105"></a>
 ### Sys_Init
@@ -864,7 +864,7 @@ function Sys_Init(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L92)
 
 <a id="function-function-mq3-platform-null-runtime-sys-milliseconds-function-sys-milliseconds-state-src-mq3-platform-null-runtime-ml-403292617"></a>
 ### Sys_Milliseconds
@@ -878,7 +878,7 @@ function Sys_Milliseconds(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L88)
 
 <a id="function-function-mq3-platform-null-runtime-sys-mkdir-function-sys-mkdir-state-path-src-mq3-platform-null-runtime-ml-314771108"></a>
 ### Sys_Mkdir
@@ -893,7 +893,7 @@ function Sys_Mkdir(state, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L82)
 
 <a id="function-function-mq3-platform-null-runtime-sys-mkdir-function-sys-mkdir-state-path-src-mq3-platform-null-runtime-ml-2133351588"></a>
 ### Sys_mkdir
@@ -908,7 +908,7 @@ function Sys_mkdir(state, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L81)
 
 <a id="function-function-mq3-platform-null-runtime-sys-quit-function-sys-quit-state-src-mq3-platform-null-runtime-ml-111745245"></a>
 ### Sys_Quit
@@ -922,7 +922,7 @@ function Sys_Quit(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L84)
 
 <a id="function-function-mq3-platform-null-runtime-sys-sendkeyevents-function-sys-sendkeyevents-state-src-mq3-platform-null-runtime-ml-777645217"></a>
 ### Sys_SendKeyEvents
@@ -936,7 +936,7 @@ function Sys_SendKeyEvents(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L56)
 
 <a id="function-function-mq3-platform-null-runtime-sys-sendpacket-function-sys-sendpacket-state-length-data-destination-src-mq3-platform-null-runtime-ml-459277901"></a>
 ### Sys_SendPacket
@@ -953,7 +953,7 @@ function Sys_SendPacket(state, length, data, destination)
 | `destination` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L62)
 
 <a id="function-function-mq3-platform-null-runtime-sys-streamedread-function-sys-streamedread-state-buffer-size-count-file-src-mq3-platform-null-runtime-ml-1049121329"></a>
 ### Sys_StreamedRead
@@ -971,7 +971,7 @@ function Sys_StreamedRead(state, buffer, size, count, file)
 | `file` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L79)
 
 <a id="function-function-mq3-platform-null-runtime-sys-streamseek-function-sys-streamseek-state-file-offset-origin-src-mq3-platform-null-runtime-ml-1916675842"></a>
 ### Sys_StreamSeek
@@ -988,7 +988,7 @@ function Sys_StreamSeek(state, file, offset, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L80)
 
 <a id="function-function-mq3-platform-null-runtime-sys-unloadgame-function-sys-unloadgame-state-src-mq3-platform-null-runtime-ml-931122669"></a>
 ### Sys_UnloadGame
@@ -1002,7 +1002,7 @@ function Sys_UnloadGame(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L85)
 
 <a id="function-function-mq3-platform-null-runtime-ui-gamecommand-function-ui-gamecommand-state-src-mq3-platform-null-runtime-ml-904735909"></a>
 ### UI_GameCommand
@@ -1016,4 +1016,4 @@ function UI_GameCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/null_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/null_runtime.ml#L28)

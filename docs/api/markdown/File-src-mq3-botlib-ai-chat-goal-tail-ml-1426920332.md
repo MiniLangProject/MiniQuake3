@@ -15,25 +15,25 @@ Reachable from entry: **yes**
 
 ## Declarations
 
-<a id="constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-chat-goal-tail-ml-2097555130"></a>
+<a id="constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-default-time-const-avoid-default-time-30-src-mq3-botlib-ai-chat-goal-tail-ml-1852317214"></a>
 ### AVOID_DEFAULT_TIME
 
 ```ml
-const AVOID_DEFAULT_TIME = 30.
+const AVOID_DEFAULT_TIME = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L17)
 
-<a id="constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-chat-goal-tail-ml-38429298"></a>
+<a id="constant-constant-mq3-botlib-ai-chat-goal-tail-avoid-minimum-time-const-avoid-minimum-time-10-src-mq3-botlib-ai-chat-goal-tail-ml-501024790"></a>
 ### AVOID_MINIMUM_TIME
 
 ```ml
-const AVOID_MINIMUM_TIME = 10.
+const AVOID_MINIMUM_TIME = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L16)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-chatstate-function-chatstate-state-handle-src-mq3-botlib-ai-chat-goal-tail-ml-1612733753"></a>
 ### chatState
@@ -48,7 +48,7 @@ function chatState(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L21)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-create-function-create-chatprofiles-goalruntime-levelitems-src-mq3-botlib-ai-chat-goal-tail-ml-1793519771"></a>
 ### create
@@ -64,7 +64,7 @@ function create(chatProfiles, goalRuntime, levelItems)
 | `levelItems` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-getchatmessage-function-getchatmessage-state-handle-size-src-mq3-botlib-ai-chat-goal-tail-ml-326452756"></a>
 ### getChatMessage
@@ -80,7 +80,7 @@ function getChatMessage(state, handle, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L34)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-numinitialchats-function-numinitialchats-state-handle-type-src-mq3-botlib-ai-chat-goal-tail-ml-1067980045"></a>
 ### numInitialChats
@@ -96,7 +96,7 @@ function numInitialChats(state, handle, type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L22)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-get-chat-message-const-op-get-chat-message-570-src-mq3-botlib-ai-chat-goal-tail-ml-1766833685"></a>
 ### OP_GET_CHAT_MESSAGE
@@ -106,7 +106,7 @@ const OP_GET_CHAT_MESSAGE = 570
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-num-initial-chats-const-op-num-initial-chats-569-src-mq3-botlib-ai-chat-goal-tail-ml-1225477187"></a>
 ### OP_NUM_INITIAL_CHATS
@@ -116,7 +116,7 @@ const OP_NUM_INITIAL_CHATS = 569
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-predict-visible-position-const-op-predict-visible-position-572-src-mq3-botlib-ai-chat-goal-tail-ml-1855612839"></a>
 ### OP_PREDICT_VISIBLE_POSITION
@@ -126,7 +126,7 @@ const OP_PREDICT_VISIBLE_POSITION = 572
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-remove-from-avoid-goals-const-op-remove-from-avoid-goals-571-src-mq3-botlib-ai-chat-goal-tail-ml-1671513836"></a>
 ### OP_REMOVE_FROM_AVOID_GOALS
@@ -136,7 +136,7 @@ const OP_REMOVE_FROM_AVOID_GOALS = 571
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-chat-goal-tail-op-set-avoid-goal-time-const-op-set-avoid-goal-time-573-src-mq3-botlib-ai-chat-goal-tail-ml-1353072954"></a>
 ### OP_SET_AVOID_GOAL_TIME
@@ -146,7 +146,7 @@ const OP_SET_AVOID_GOAL_TIME = 573
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L15)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-removefromavoidgoals-function-removefromavoidgoals-state-handle-number-src-mq3-botlib-ai-chat-goal-tail-ml-1094226228"></a>
 ### removeFromAvoidGoals
@@ -162,7 +162,7 @@ function removeFromAvoidGoals(state, handle, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L38)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-removetildes-function-removetildes-value-src-mq3-botlib-ai-chat-goal-tail-ml-1245634257"></a>
 ### removeTildes
@@ -176,7 +176,7 @@ function removeTildes(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L25)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-respawntime-function-respawntime-state-number-src-mq3-botlib-ai-chat-goal-tail-ml-607116960"></a>
 ### respawnTime
@@ -191,7 +191,7 @@ function respawnTime(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L39)
 
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-setavoidgoaltime-function-setavoidgoaltime-state-handle-number-avoidtime-src-mq3-botlib-ai-chat-goal-tail-ml-466492844"></a>
 ### setAvoidGoalTime
@@ -208,7 +208,7 @@ function setAvoidGoalTime(state, handle, number, avoidTime)
 | `avoidTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L46)
 
 - [mq3.botlib.ai_chat_goal_tail.State](Type-mq3-botlib-ai-chat-goal-tail-state-449589671.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-goal-tail-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-chat-goal-tail-ml-1652129987"></a>
@@ -223,4 +223,4 @@ function supportsTrap(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_goal_tail.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_goal_tail.ml#L51)

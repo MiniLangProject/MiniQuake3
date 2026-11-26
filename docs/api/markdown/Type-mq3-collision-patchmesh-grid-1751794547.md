@@ -10,7 +10,7 @@ struct Grid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ columns
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L30)
 
 <a id="field-field-mq3-collision-patchmesh-grid-wrapheight-wrapheight-src-mq3-collision-patchmesh-ml-1864820075"></a>
 ### wrapHeight
@@ -32,7 +32,7 @@ wrapHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L32)
 
 <a id="field-field-mq3-collision-patchmesh-grid-wrapwidth-wrapwidth-src-mq3-collision-patchmesh-ml-665891937"></a>
 ### wrapWidth
@@ -42,4 +42,4 @@ wrapWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/patchmesh.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/patchmesh.ml#L31)

@@ -10,7 +10,7 @@ struct MoveResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 ## Members
 
@@ -22,7 +22,7 @@ blocked
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 <a id="field-field-mq3-game-bot-navigation-moveresult-blockentity-blockentity-src-mq3-game-bot-navigation-ml-932179981"></a>
 ### blockentity
@@ -32,7 +32,7 @@ blockentity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 <a id="field-field-mq3-game-bot-navigation-moveresult-failure-failure-src-mq3-game-bot-navigation-ml-63353797"></a>
 ### failure
@@ -42,7 +42,7 @@ failure
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 <a id="field-field-mq3-game-bot-navigation-moveresult-flags-flags-src-mq3-game-bot-navigation-ml-1432296909"></a>
 ### flags
@@ -52,7 +52,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 <a id="field-field-mq3-game-bot-navigation-moveresult-movedir-movedir-src-mq3-game-bot-navigation-ml-1276396313"></a>
 ### movedir
@@ -62,7 +62,7 @@ movedir
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)
 
 <a id="field-field-mq3-game-bot-navigation-moveresult-type-type-src-mq3-game-bot-navigation-ml-989180001"></a>
 ### type
@@ -72,4 +72,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L72)

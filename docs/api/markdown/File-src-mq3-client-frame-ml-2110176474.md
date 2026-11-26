@@ -27,7 +27,7 @@ function attachSend(host, runtime, sendServices)
 | `sendServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L44)
 
 <a id="constant-constant-mq3-client-frame-ca-active-const-ca-active-8-src-mq3-client-frame-ml-215832813"></a>
 ### CA_ACTIVE
@@ -37,7 +37,7 @@ const CA_ACTIVE = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L11)
 
 <a id="constant-constant-mq3-client-frame-ca-challenging-const-ca-challenging-4-src-mq3-client-frame-ml-1632304465"></a>
 ### CA_CHALLENGING
@@ -47,7 +47,7 @@ const CA_CHALLENGING = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L9)
 
 <a id="constant-constant-mq3-client-frame-ca-cinematic-const-ca-cinematic-9-src-mq3-client-frame-ml-1842121164"></a>
 ### CA_CINEMATIC
@@ -57,7 +57,7 @@ const CA_CINEMATIC = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L12)
 
 <a id="constant-constant-mq3-client-frame-ca-connected-const-ca-connected-5-src-mq3-client-frame-ml-1213831896"></a>
 ### CA_CONNECTED
@@ -67,7 +67,7 @@ const CA_CONNECTED = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L10)
 
 <a id="constant-constant-mq3-client-frame-ca-disconnected-const-ca-disconnected-1-src-mq3-client-frame-ml-1690987642"></a>
 ### CA_DISCONNECTED
@@ -77,7 +77,7 @@ const CA_DISCONNECTED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L8)
 
 <a id="function-function-mq3-client-frame-call0-function-call0-fn-host-src-mq3-client-frame-ml-1693964108"></a>
 ### call0
@@ -92,7 +92,7 @@ function call0(fn, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L49)
 
 <a id="function-function-mq3-client-frame-checktimeout-function-checktimeout-state-host-src-mq3-client-frame-ml-405969295"></a>
 ### checkTimeout
@@ -107,7 +107,7 @@ function checkTimeout(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L61)
 
 <a id="function-function-mq3-client-frame-checkuserinfo-function-checkuserinfo-state-host-src-mq3-client-frame-ml-1220019525"></a>
 ### checkUserinfo
@@ -122,7 +122,7 @@ function checkUserinfo(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L51)
 
 <a id="constant-constant-mq3-client-frame-cvar-userinfo-const-cvar-userinfo-2-src-mq3-client-frame-ml-101637595"></a>
 ### CVAR_USERINFO
@@ -132,7 +132,7 @@ const CVAR_USERINFO = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L14)
 
 <a id="constant-constant-mq3-client-frame-keycatch-ui-const-keycatch-ui-2-src-mq3-client-frame-ml-1782586875"></a>
 ### KEYCATCH_UI
@@ -142,7 +142,7 @@ const KEYCATCH_UI = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L13)
 
 <a id="function-function-mq3-client-frame-livesend-function-livesend-host-src-mq3-client-frame-ml-933063496"></a>
 ### liveSend
@@ -156,7 +156,7 @@ function liveSend(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L43)
 
 <a id="function-function-mq3-client-frame-run-function-run-state-msec-host-src-mq3-client-frame-ml-2139911909"></a>
 ### run
@@ -172,7 +172,7 @@ function run(state, msec, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L76)
 
 <a id="function-function-mq3-client-frame-runtime-function-runtime-src-mq3-client-frame-ml-2128324342"></a>
 ### runtime
@@ -182,7 +182,7 @@ function runtime()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L25)
 
 - [mq3.client.frame.Runtime](Type-mq3-client-frame-runtime-223182724.md) — struct
 <a id="function-function-mq3-client-frame-services-function-services-src-mq3-client-frame-ml-39845774"></a>
@@ -193,7 +193,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L39)
 
 - [mq3.client.frame.Services](Type-mq3-client-frame-services-1398414064.md) — struct
 <a id="constant-constant-mq3-client-frame-uimenu-main-const-uimenu-main-1-src-mq3-client-frame-ml-1057386878"></a>
@@ -204,7 +204,7 @@ const UIMENU_MAIN = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L15)
 
 <a id="constant-constant-mq3-client-frame-uimenu-need-cd-const-uimenu-need-cd-3-src-mq3-client-frame-ml-522143854"></a>
 ### UIMENU_NEED_CD
@@ -214,4 +214,4 @@ const UIMENU_NEED_CD = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/frame.ml#L16)

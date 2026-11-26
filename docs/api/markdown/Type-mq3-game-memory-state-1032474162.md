@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/memory.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ allocPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/memory.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L9)
 
 <a id="field-field-mq3-game-memory-state-debugalloc-debugalloc-src-mq3-game-memory-ml-1496950754"></a>
 ### debugAlloc
@@ -32,7 +32,7 @@ debugAlloc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/memory.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L10)
 
 <a id="field-field-mq3-game-memory-state-pool-pool-src-mq3-game-memory-ml-778637814"></a>
 ### pool
@@ -42,4 +42,4 @@ pool
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/memory.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/memory.ml#L8)

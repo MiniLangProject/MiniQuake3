@@ -10,7 +10,7 @@ struct Transport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ loopbacks
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)
 
 <a id="field-field-mq3-qcommon-net-transport-transport-socket-socket-src-mq3-qcommon-net-transport-ml-153507994"></a>
 ### socket
@@ -32,4 +32,4 @@ socket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/net_transport.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/net_transport.ml#L24)

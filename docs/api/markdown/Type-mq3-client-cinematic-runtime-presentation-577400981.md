@@ -10,7 +10,7 @@ struct Presentation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ dirty
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-height-height-src-mq3-client-cinematic-runtime-ml-273808351"></a>
 ### height
@@ -32,7 +32,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-pixels-pixels-src-mq3-client-cinematic-runtime-ml-1147798651"></a>
 ### pixels
@@ -42,7 +42,7 @@ pixels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-sourceheight-sourceheight-src-mq3-client-cinematic-runtime-ml-44251453"></a>
 ### sourceHeight
@@ -52,7 +52,7 @@ sourceHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-sourcewidth-sourcewidth-src-mq3-client-cinematic-runtime-ml-707238185"></a>
 ### sourceWidth
@@ -62,7 +62,7 @@ sourceWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-width-width-src-mq3-client-cinematic-runtime-ml-1752986953"></a>
 ### width
@@ -72,7 +72,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-x-x-src-mq3-client-cinematic-runtime-ml-605826853"></a>
 ### x
@@ -82,7 +82,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)
 
 <a id="field-field-mq3-client-cinematic-runtime-presentation-y-y-src-mq3-client-cinematic-runtime-ml-398514577"></a>
 ### y
@@ -92,4 +92,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cinematic_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cinematic_runtime.ml#L25)

@@ -10,7 +10,7 @@ struct TraceResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L42)
 
 ## Members
 
@@ -22,7 +22,7 @@ entityNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L42)
 
 <a id="field-field-mq3-client-cgame-draw-traceresult-fog-fog-src-mq3-client-cgame-draw-ml-578115721"></a>
 ### fog
@@ -32,7 +32,7 @@ fog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L42)
 
 <a id="field-field-mq3-client-cgame-draw-traceresult-invisible-invisible-src-mq3-client-cgame-draw-ml-409244557"></a>
 ### invisible
@@ -42,4 +42,4 @@ invisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_draw.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_draw.ml#L42)

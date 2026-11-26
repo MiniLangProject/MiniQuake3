@@ -10,7 +10,7 @@ struct Md4Model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-datasize-datasize-src-mq3-renderer-tr-model-runtime-ml-1214075215"></a>
 ### dataSize
@@ -32,7 +32,7 @@ dataSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-frames-frames-src-mq3-renderer-tr-model-runtime-ml-140923201"></a>
 ### frames
@@ -42,7 +42,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-lods-lods-src-mq3-renderer-tr-model-runtime-ml-1301235173"></a>
 ### lods
@@ -52,7 +52,7 @@ lods
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-name-name-src-mq3-renderer-tr-model-runtime-ml-1117944599"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-numbones-numbones-src-mq3-renderer-tr-model-runtime-ml-1849048491"></a>
 ### numBones
@@ -72,7 +72,7 @@ numBones
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-model-runtime-md4model-numframes-numframes-src-mq3-renderer-tr-model-runtime-ml-1901362241"></a>
 ### numFrames
@@ -82,4 +82,4 @@ numFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L28)

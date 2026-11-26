@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ dynamicStates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-flares-catalog-enabled-enabled-src-mq3-renderer-playable-flares-ml-599975500"></a>
 ### enabled
@@ -32,7 +32,7 @@ enabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-flares-catalog-flares-flares-src-mq3-renderer-playable-flares-ml-1063410918"></a>
 ### flares
@@ -42,7 +42,7 @@ flares
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-flares-catalog-image-image-src-mq3-renderer-playable-flares-ml-861374268"></a>
 ### image
@@ -52,7 +52,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-flares-catalog-states-states-src-mq3-renderer-playable-flares-ml-1865131532"></a>
 ### states
@@ -62,7 +62,7 @@ states
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)
 
 <a id="field-field-mq3-renderer-playable-flares-catalog-textureslot-textureslot-src-mq3-renderer-playable-flares-ml-336707588"></a>
 ### textureSlot
@@ -72,4 +72,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L22)

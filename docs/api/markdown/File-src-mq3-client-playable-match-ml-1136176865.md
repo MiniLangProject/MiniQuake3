@@ -20,7 +20,7 @@ const ANNOUNCER_FIGHT = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L18)
 
 <a id="constant-constant-mq3-client-playable-match-announcer-none-const-announcer-none-0-src-mq3-client-playable-match-ml-328061303"></a>
 ### ANNOUNCER_NONE
@@ -30,7 +30,7 @@ const ANNOUNCER_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-match-announcer-one-const-announcer-one-3-src-mq3-client-playable-match-ml-133858126"></a>
 ### ANNOUNCER_ONE
@@ -40,7 +40,7 @@ const ANNOUNCER_ONE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L17)
 
 <a id="constant-constant-mq3-client-playable-match-announcer-three-const-announcer-three-1-src-mq3-client-playable-match-ml-1651522180"></a>
 ### ANNOUNCER_THREE
@@ -50,7 +50,7 @@ const ANNOUNCER_THREE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-match-announcer-two-const-announcer-two-2-src-mq3-client-playable-match-ml-1946280439"></a>
 ### ANNOUNCER_TWO
@@ -60,7 +60,7 @@ const ANNOUNCER_TWO = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L16)
 
 <a id="function-function-mq3-client-playable-match-announcercue-function-announcercue-message-src-mq3-client-playable-match-ml-1908077635"></a>
 ### announcerCue
@@ -74,7 +74,7 @@ function announcerCue(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L62)
 
 <a id="function-function-mq3-client-playable-match-clock-function-clock-state-now-src-mq3-client-playable-match-ml-1312635481"></a>
 ### clock
@@ -89,7 +89,7 @@ function clock(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L47)
 
 <a id="function-function-mq3-client-playable-match-create-function-create-fraglimit-timelimitminutes-warmupmilliseconds-src-mq3-client-playable-match-ml-1175348300"></a>
 ### create
@@ -105,7 +105,7 @@ function create(fragLimit, timeLimitMinutes, warmupMilliseconds)
 | `warmupMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L25)
 
 <a id="function-function-mq3-client-playable-match-fail-function-fail-message-src-mq3-client-playable-match-ml-1412568363"></a>
 ### fail
@@ -119,7 +119,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-match-phase-active-const-phase-active-2-src-mq3-client-playable-match-ml-966071561"></a>
 ### PHASE_ACTIVE
@@ -129,7 +129,7 @@ const PHASE_ACTIVE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L9)
 
 <a id="constant-constant-mq3-client-playable-match-phase-intermission-const-phase-intermission-3-src-mq3-client-playable-match-ml-1670811392"></a>
 ### PHASE_INTERMISSION
@@ -139,7 +139,7 @@ const PHASE_INTERMISSION = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L10)
 
 <a id="constant-constant-mq3-client-playable-match-phase-waiting-const-phase-waiting-0-src-mq3-client-playable-match-ml-1271267173"></a>
 ### PHASE_WAITING
@@ -149,7 +149,7 @@ const PHASE_WAITING = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L7)
 
 <a id="constant-constant-mq3-client-playable-match-phase-warmup-const-phase-warmup-1-src-mq3-client-playable-match-ml-1358394546"></a>
 ### PHASE_WARMUP
@@ -159,7 +159,7 @@ const PHASE_WARMUP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L8)
 
 <a id="function-function-mq3-client-playable-match-secondsceil-function-secondsceil-milliseconds-src-mq3-client-playable-match-ml-151716640"></a>
 ### secondsCeil
@@ -173,7 +173,7 @@ function secondsCeil(milliseconds)
 | `milliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L37)
 
 <a id="function-function-mq3-client-playable-match-snapshot-function-snapshot-state-changed-message-playerscore-enemyscore-now-src-mq3-client-playable-match-ml-705310295"></a>
 ### snapshot
@@ -192,7 +192,7 @@ function snapshot(state, changed, message, playerScore, enemyScore, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L70)
 
 <a id="function-function-mq3-client-playable-match-start-function-start-state-now-src-mq3-client-playable-match-ml-2077754913"></a>
 ### start
@@ -207,7 +207,7 @@ function start(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L30)
 
 - [mq3.client.playable_match.State](Type-mq3-client-playable-match-state-1582804198.md) — struct
 <a id="function-function-mq3-client-playable-match-twodigits-function-twodigits-value-src-mq3-client-playable-match-ml-258793521"></a>
@@ -222,7 +222,7 @@ function twoDigits(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L42)
 
 <a id="function-function-mq3-client-playable-match-update-function-update-state-now-playerscore-enemyscore-src-mq3-client-playable-match-ml-948116190"></a>
 ### update
@@ -239,7 +239,7 @@ function update(state, now, playerScore, enemyScore)
 | `enemyScore` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L76)
 
 - [mq3.client.playable_match.Update](Type-mq3-client-playable-match-update-732849796.md) — struct
 <a id="function-function-mq3-client-playable-match-warmupmessage-function-warmupmessage-state-now-src-mq3-client-playable-match-ml-216195479"></a>
@@ -255,7 +255,7 @@ function warmupMessage(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L54)
 
 <a id="constant-constant-mq3-client-playable-match-winner-enemies-const-winner-enemies-2-src-mq3-client-playable-match-ml-1223727573"></a>
 ### WINNER_ENEMIES
@@ -265,7 +265,7 @@ const WINNER_ENEMIES = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-match-winner-none-const-winner-none-0-src-mq3-client-playable-match-ml-1435172081"></a>
 ### WINNER_NONE
@@ -275,7 +275,7 @@ const WINNER_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L11)
 
 <a id="constant-constant-mq3-client-playable-match-winner-player-const-winner-player-1-src-mq3-client-playable-match-ml-468369992"></a>
 ### WINNER_PLAYER
@@ -285,4 +285,4 @@ const WINNER_PLAYER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L12)

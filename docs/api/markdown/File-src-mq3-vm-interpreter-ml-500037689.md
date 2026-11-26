@@ -27,7 +27,7 @@ function call(vm, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L185)
 
 <a id="function-function-mq3-vm-interpreter-callfast-function-callfast-vm-args-src-mq3-vm-interpreter-ml-1372106202"></a>
 ### callFast
@@ -44,7 +44,7 @@ Keep the MiniLang interpreter as the executable reference implementation. Produc
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L160)
 
 <a id="function-function-mq3-vm-interpreter-fail-function-fail-message-src-mq3-vm-interpreter-ml-2045130873"></a>
 ### fail
@@ -58,7 +58,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L36)
 
 <a id="function-function-mq3-vm-interpreter-imagelayout-function-imagelayout-image-src-mq3-vm-interpreter-ml-735397417"></a>
 ### imageLayout
@@ -72,7 +72,7 @@ function imageLayout(image)
 | `image` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L83)
 
 - [mq3.vm.interpreter.ImageLayout](Type-mq3-vm-interpreter-imagelayout-733203426.md) — struct
 <a id="function-function-mq3-vm-interpreter-immediatesize-function-immediatesize-op-src-mq3-vm-interpreter-ml-690945279"></a>
@@ -87,7 +87,7 @@ function immediateSize(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L71)
 
 <a id="function-function-mq3-vm-interpreter-load-function-load-image-callback-src-mq3-vm-interpreter-ml-598598174"></a>
 ### load
@@ -102,7 +102,7 @@ function load(image, callback)
 | `callback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L102)
 
 <a id="function-function-mq3-vm-interpreter-restorestack-function-restorestack-vm-saved-src-mq3-vm-interpreter-ml-625622636"></a>
 ### restoreStack
@@ -117,7 +117,7 @@ function restoreStack(vm, saved)
 | `saved` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L181)
 
 <a id="function-function-mq3-vm-interpreter-signeddivide-function-signeddivide-a-b-src-mq3-vm-interpreter-ml-1769187931"></a>
 ### signedDivide
@@ -132,7 +132,7 @@ function signedDivide(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L170)
 
 <a id="function-function-mq3-vm-interpreter-stackneed-function-stackneed-op-src-mq3-vm-interpreter-ml-1190623647"></a>
 ### stackNeed
@@ -146,7 +146,7 @@ function stackNeed(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L77)
 
 <a id="function-function-mq3-vm-interpreter-targetaddress-function-targetaddress-vm-target-src-mq3-vm-interpreter-ml-2097599284"></a>
 ### targetAddress
@@ -161,7 +161,7 @@ function targetAddress(vm, target)
 | `target` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L165)
 
 - [mq3.vm.interpreter.VM](Type-mq3-vm-interpreter-vm-1653730746.md) — struct
 <a id="function-function-mq3-vm-interpreter-vm-indent-function-vm-indent-calllevel-src-mq3-vm-interpreter-ml-2095087730"></a>
@@ -178,7 +178,7 @@ Debug helpers from vm_interpreted.c.  The C implementation returns a pointer int
 | `callLevel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L44)
 
 <a id="function-function-mq3-vm-interpreter-vm-stacktrace-function-vm-stacktrace-data-programcounter-programstack-symbolfn-context-src-mq3-vm-interpreter-ml-86497079"></a>
 ### VM_StackTrace
@@ -196,4 +196,4 @@ function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/interpreter.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/interpreter.ml#L52)

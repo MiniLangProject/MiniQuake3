@@ -10,7 +10,7 @@ struct HostAction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 ## Members
 
@@ -22,7 +22,7 @@ arg
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-channel-channel-src-mq3-game-bot-command-matches-ml-1711996597"></a>
 ### channel
@@ -32,7 +32,7 @@ channel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-client-client-src-mq3-game-bot-command-matches-ml-1007991007"></a>
 ### client
@@ -42,7 +42,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-kind-kind-src-mq3-game-bot-command-matches-ml-275177801"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-suppressed-suppressed-src-mq3-game-bot-command-matches-ml-2118159753"></a>
 ### suppressed
@@ -62,7 +62,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-text-text-src-mq3-game-bot-command-matches-ml-2045329375"></a>
 ### text
@@ -72,7 +72,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)
 
 <a id="field-field-mq3-game-bot-command-matches-hostaction-value-value-src-mq3-game-bot-command-matches-ml-1760176345"></a>
 ### value
@@ -82,4 +82,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_command_matches.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_command_matches.ml#L123)

@@ -28,7 +28,7 @@ function addSample(paint, frame, data, leftVolume, rightVolume)
 | `rightVolume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L103)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-adpcm-block-samples-const-adpcm-block-samples-4096-src-mq3-audio-snd-compressed-paint-ml-1349485640"></a>
 ### ADPCM_BLOCK_SAMPLES
@@ -38,7 +38,7 @@ const ADPCM_BLOCK_SAMPLES = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L11)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-adpcmdecode-function-adpcmdecode-data-count-predictor-startindex-src-mq3-audio-snd-compressed-paint-ml-1903683829"></a>
 ### adpcmDecode
@@ -55,7 +55,7 @@ function adpcmDecode(data, count, predictor, startIndex)
 | `startIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L22)
 
 - [mq3.audio.snd_compressed_paint.Block](Type-mq3-audio-snd-compressed-paint-block-2083299179.md) — struct
 <a id="constant-constant-mq3-audio-snd-compressed-paint-byte-block-samples-const-byte-block-samples-2048-src-mq3-audio-snd-compressed-paint-ml-587457079"></a>
@@ -66,7 +66,7 @@ const BYTE_BLOCK_SAMPLES = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L12)
 
 - [mq3.audio.snd_compressed_paint.Compressed](Type-mq3-audio-snd-compressed-paint-compressed-853921143.md) — struct
 <a id="function-function-mq3-audio-snd-compressed-paint-daub4-function-daub4-values-size-inverse-src-mq3-audio-snd-compressed-paint-ml-1965490375"></a>
@@ -83,7 +83,7 @@ function daub4(values, size, inverse)
 | `inverse` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L47)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-decodeblock-function-decodeblock-compressed-block-src-mq3-audio-snd-compressed-paint-ml-1721013612"></a>
 ### decodeBlock
@@ -98,7 +98,7 @@ function decodeBlock(compressed, block)
 | `block` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L84)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-decodedsamples-function-decodedsamples-compressed-src-mq3-audio-snd-compressed-paint-ml-1315184151"></a>
 ### decodedSamples
@@ -112,7 +112,7 @@ function decodedSamples(compressed)
 | `compressed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L94)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-fail-function-fail-message-src-mq3-audio-snd-compressed-paint-ml-1234420517"></a>
 ### fail
@@ -126,7 +126,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L20)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-indextable-function-indextable-src-mq3-audio-snd-compressed-paint-ml-275272408"></a>
 ### indexTable
@@ -136,7 +136,7 @@ function indexTable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L17)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-adpcm-const-method-adpcm-1-src-mq3-audio-snd-compressed-paint-ml-967669808"></a>
 ### METHOD_ADPCM
@@ -146,7 +146,7 @@ const METHOD_ADPCM = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L8)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-mulaw-const-method-mulaw-3-src-mq3-audio-snd-compressed-paint-ml-1338361852"></a>
 ### METHOD_MULAW
@@ -156,7 +156,7 @@ const METHOD_MULAW = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L10)
 
 <a id="constant-constant-mq3-audio-snd-compressed-paint-method-wavelet-const-method-wavelet-2-src-mq3-audio-snd-compressed-paint-ml-1860969783"></a>
 ### METHOD_WAVELET
@@ -166,7 +166,7 @@ const METHOD_WAVELET = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L9)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-mulawdecode-function-mulawdecode-value-src-mq3-audio-snd-compressed-paint-ml-1483766583"></a>
 ### muLawDecode
@@ -180,7 +180,7 @@ function muLawDecode(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L40)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-paint-function-paint-paintbuffer-compressed-count-sampleoffset-bufferoffset-leftvol-rightvol-sndvol-doppler-dopplerscale-olddopplerscale-src-mq3-audio-snd-compressed-paint-ml-464350214"></a>
 ### paint
@@ -206,7 +206,7 @@ Mirrors the three compressed S_PaintChannelFrom* entry points. Wavelet and ADPCM
 | `oldDopplerScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L112)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-steptable-function-steptable-src-mq3-audio-snd-compressed-paint-ml-1660035460"></a>
 ### stepTable
@@ -216,7 +216,7 @@ function stepTable()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L18)
 
 <a id="function-function-mq3-audio-snd-compressed-paint-waveletdecode-function-waveletdecode-data-size-src-mq3-audio-snd-compressed-paint-ml-1773595535"></a>
 ### waveletDecode
@@ -231,4 +231,4 @@ function waveletDecode(data, size)
 | `size` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_compressed_paint.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_compressed_paint.ml#L73)

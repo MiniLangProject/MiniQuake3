@@ -16,7 +16,7 @@ function canSubmit()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L12)
 
 <a id="extern_function-extern-function-mq3-platform-playable-ambient-cansubmitnative-extern-function-cansubmitnative-from-playable-ambient-dll-symbol-playable-ambient-can-submit-returns-i32-src-mq3-platform-playable-ambient-ml-1657569978"></a>
 ### canSubmitNative
@@ -26,7 +26,7 @@ extern function canSubmitNative() from "playable_ambient.dll" symbol "playable_a
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L6)
 
 <a id="function-function-mq3-platform-playable-ambient-init-function-init-rate-src-mq3-platform-playable-ambient-ml-347646482"></a>
 ### init
@@ -40,7 +40,7 @@ function init(rate)
 | `rate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L11)
 
 <a id="extern_function-extern-function-mq3-platform-playable-ambient-initnative-extern-function-initnative-rate-as-i32-from-playable-ambient-dll-symbol-playable-ambient-init-returns-i32-src-mq3-platform-playable-ambient-ml-2074543895"></a>
 ### initNative
@@ -54,7 +54,7 @@ extern function initNative(rate as i32) from "playable_ambient.dll" symbol "play
 | `rate` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L5)
 
 <a id="function-function-mq3-platform-playable-ambient-shutdown-function-shutdown-src-mq3-platform-playable-ambient-ml-183704720"></a>
 ### shutdown
@@ -64,7 +64,7 @@ function shutdown()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L19)
 
 <a id="extern_function-extern-function-mq3-platform-playable-ambient-shutdownnative-extern-function-shutdownnative-from-playable-ambient-dll-symbol-playable-ambient-shutdown-returns-void-src-mq3-platform-playable-ambient-ml-941273937"></a>
 ### shutdownNative
@@ -74,7 +74,7 @@ extern function shutdownNative() from "playable_ambient.dll" symbol "playable_am
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L9)
 
 <a id="function-function-mq3-platform-playable-ambient-stop-function-stop-src-mq3-platform-playable-ambient-ml-2029031836"></a>
 ### stop
@@ -84,7 +84,7 @@ function stop()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L18)
 
 <a id="extern_function-extern-function-mq3-platform-playable-ambient-stopnative-extern-function-stopnative-from-playable-ambient-dll-symbol-playable-ambient-stop-returns-void-src-mq3-platform-playable-ambient-ml-137367495"></a>
 ### stopNative
@@ -94,7 +94,7 @@ extern function stopNative() from "playable_ambient.dll" symbol "playable_ambien
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L8)
 
 <a id="function-function-mq3-platform-playable-ambient-submit-function-submit-samples-src-mq3-platform-playable-ambient-ml-1193101823"></a>
 ### submit
@@ -108,7 +108,7 @@ function submit(samples)
 | `samples` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L13)
 
 <a id="extern_function-extern-function-mq3-platform-playable-ambient-submitnative-extern-function-submitnative-samples-as-ptr-count-as-i32-from-playable-ambient-dll-symbol-playable-ambient-submit-returns-i32-src-mq3-platform-playable-ambient-ml-319716979"></a>
 ### submitNative
@@ -123,4 +123,4 @@ extern function submitNative(samples as ptr, count as i32) from "playable_ambien
 | `count` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_ambient.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_ambient.ml#L7)

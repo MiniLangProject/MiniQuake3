@@ -10,7 +10,7 @@ struct BobSample
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ cycle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L25)
 
 <a id="field-field-mq3-client-playable-viewmodel-bobsample-fraction-fraction-src-mq3-client-playable-viewmodel-ml-670808134"></a>
 ### fraction
@@ -32,7 +32,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L25)
 
 <a id="field-field-mq3-client-playable-viewmodel-bobsample-xyspeed-xyspeed-src-mq3-client-playable-viewmodel-ml-1921561918"></a>
 ### xySpeed
@@ -42,4 +42,4 @@ xySpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L25)

@@ -10,7 +10,7 @@ struct Asset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-imagename-imagename-src-mq3-client-playable-projectile-models-ml-1699355881"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-kind-kind-src-mq3-client-playable-projectile-models-ml-1735072033"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-modelasset-modelasset-src-mq3-client-playable-projectile-models-ml-361708723"></a>
 ### modelAsset
@@ -52,7 +52,7 @@ modelAsset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-modelpath-modelpath-src-mq3-client-playable-projectile-models-ml-1325124217"></a>
 ### modelPath
@@ -62,7 +62,7 @@ modelPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-radius-radius-src-mq3-client-playable-projectile-models-ml-1651556273"></a>
 ### radius
@@ -72,7 +72,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-shadername-shadername-src-mq3-client-playable-projectile-models-ml-397051201"></a>
 ### shaderName
@@ -82,7 +82,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-style-style-src-mq3-client-playable-projectile-models-ml-1570485021"></a>
 ### style
@@ -92,7 +92,7 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)
 
 <a id="field-field-mq3-client-playable-projectile-models-asset-textureslot-textureslot-src-mq3-client-playable-projectile-models-ml-1697459081"></a>
 ### textureSlot
@@ -102,4 +102,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L22)

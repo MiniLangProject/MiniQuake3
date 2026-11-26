@@ -10,7 +10,7 @@ struct Index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_cache_index.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ hashes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_cache_index.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L6)
 
 <a id="field-field-mq3-renderer-md3-cache-index-index-heads-heads-src-mq3-renderer-md3-cache-index-ml-813807343"></a>
 ### heads
@@ -32,7 +32,7 @@ heads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_cache_index.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L6)
 
 <a id="field-field-mq3-renderer-md3-cache-index-index-links-links-src-mq3-renderer-md3-cache-index-ml-381712163"></a>
 ### links
@@ -42,7 +42,7 @@ links
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_cache_index.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L6)
 
 <a id="field-field-mq3-renderer-md3-cache-index-index-mask-mask-src-mq3-renderer-md3-cache-index-ml-782643067"></a>
 ### mask
@@ -52,4 +52,4 @@ mask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md3_cache_index.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md3_cache_index.ml#L6)

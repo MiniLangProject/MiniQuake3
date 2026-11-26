@@ -32,7 +32,7 @@ function action(boundary, kind, text, x, y, style, cursorChar, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L20)
 
 <a id="function-function-mq3-client-ui-mfield-byteat-function-byteat-text-index-src-mq3-client-ui-mfield-ml-782235583"></a>
 ### byteAt
@@ -47,7 +47,7 @@ function byteAt(text, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L23)
 
 <a id="function-function-mq3-client-ui-mfield-bytetext-function-bytetext-value-src-mq3-client-ui-mfield-ml-124348911"></a>
 ### byteText
@@ -61,7 +61,7 @@ function byteText(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L22)
 
 <a id="function-function-mq3-client-ui-mfield-clamp-function-clamp-value-low-high-src-mq3-client-ui-mfield-ml-848353643"></a>
 ### clamp
@@ -77,7 +77,7 @@ function clamp(value, low, high)
 | `high` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L21)
 
 - [mq3.client.ui_mfield.DrawResult](Type-mq3-client-ui-mfield-drawresult-1748749990.md) — struct
 <a id="function-function-mq3-client-ui-mfield-eraseat-function-eraseat-text-index-src-mq3-client-ui-mfield-ml-795001741"></a>
@@ -93,7 +93,7 @@ function eraseAt(text, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L24)
 
 <a id="function-function-mq3-client-ui-mfield-field-function-field-widthinchars-maxchars-src-mq3-client-ui-mfield-ml-412473143"></a>
 ### field
@@ -108,7 +108,7 @@ function field(widthInChars, maxchars)
 | `maxchars` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L19)
 
 - [mq3.client.ui_mfield.Field](Type-mq3-client-ui-mfield-field-685654459.md) — struct
 - [mq3.client.ui_mfield.HostAction](Type-mq3-client-ui-mfield-hostaction-2004169545.md) — struct
@@ -126,7 +126,7 @@ function insertAt(text, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-mfield-k-ctrl-const-k-ctrl-137-src-mq3-client-ui-mfield-ml-1601910630"></a>
 ### K_CTRL
@@ -136,7 +136,7 @@ const K_CTRL = 137
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-mfield-k-shift-const-k-shift-138-src-mq3-client-ui-mfield-ml-542677031"></a>
 ### K_SHIFT
@@ -146,7 +146,7 @@ const K_SHIFT = 138
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-mfield-max-edit-line-const-max-edit-line-256-src-mq3-client-ui-mfield-ml-1642616110"></a>
 ### MAX_EDIT_LINE
@@ -156,7 +156,7 @@ const MAX_EDIT_LINE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L9)
 
 - [mq3.client.ui_mfield.MenuField](Type-mq3-client-ui-mfield-menufield-1519299266.md) — struct
 <a id="function-function-mq3-client-ui-mfield-menufield-draw-function-menufield-draw-value-retailactive-src-mq3-client-ui-mfield-ml-1391309944"></a>
@@ -174,7 +174,7 @@ MenuField_Draw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L106)
 
 <a id="function-function-mq3-client-ui-mfield-menufield-init-function-menufield-init-value-src-mq3-client-ui-mfield-ml-941020919"></a>
 ### MenuField_Init
@@ -190,7 +190,7 @@ MenuField_Init
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L101)
 
 <a id="function-function-mq3-client-ui-mfield-menufield-key-function-menufield-key-value-key-shiftdown-ctrldown-clipboard-src-mq3-client-ui-mfield-ml-1582699447"></a>
 ### MenuField_Key
@@ -210,7 +210,7 @@ MenuField_Key
 | `clipboard` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L114)
 
 - [mq3.client.ui_mfield.MenuKeyResult](Type-mq3-client-ui-mfield-menukeyresult-1480895852.md) — struct
 <a id="function-function-mq3-client-ui-mfield-mfield-charevent-function-mfield-charevent-edit-ch-src-mq3-client-ui-mfield-ml-2099227415"></a>
@@ -228,7 +228,7 @@ MField_CharEvent
 | `ch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L77)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-clear-function-mfield-clear-edit-src-mq3-client-ui-mfield-ml-80018126"></a>
 ### MField_Clear
@@ -244,7 +244,7 @@ MField_Clear
 | `edit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L98)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-draw-function-mfield-draw-edit-x-y-style-color-retailactive-src-mq3-client-ui-mfield-ml-588987808"></a>
 ### MField_Draw
@@ -265,7 +265,7 @@ MField_Draw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L35)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-keydownevent-function-mfield-keydownevent-edit-key-shiftdown-ctrldown-clipboard-src-mq3-client-ui-mfield-ml-470677984"></a>
 ### MField_KeyDownEvent
@@ -285,7 +285,7 @@ MField_KeyDownEvent
 | `clipboard` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L62)
 
 <a id="function-function-mq3-client-ui-mfield-mfield-paste-function-mfield-paste-edit-clipboard-src-mq3-client-ui-mfield-ml-1699824490"></a>
 ### MField_Paste
@@ -302,7 +302,7 @@ MField_Paste
 | `clipboard` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L57)
 
 <a id="function-function-mq3-client-ui-mfield-overwriteat-function-overwriteat-text-index-value-src-mq3-client-ui-mfield-ml-86910328"></a>
 ### overwriteAt
@@ -318,4 +318,4 @@ function overwriteAt(text, index, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L30)

@@ -10,7 +10,7 @@ struct ParseSession
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-shared-q-shared-runtime-parsesession-name-name-src-mq3-shared-q-shared-runtime-ml-818380830"></a>
 ### name
@@ -32,7 +32,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-shared-q-shared-runtime-parsesession-state-state-src-mq3-shared-q-shared-runtime-ml-348928436"></a>
 ### state
@@ -42,4 +42,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/q_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/q_shared_runtime.ml#L15)

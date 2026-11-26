@@ -10,7 +10,7 @@ struct WeaponAnimation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ displayedClass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L29)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-switching-switching-src-mq3-client-playable-viewmodel-ml-963169763"></a>
 ### switching
@@ -32,7 +32,7 @@ switching
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L29)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-targetclass-targetclass-src-mq3-client-playable-viewmodel-ml-1255213235"></a>
 ### targetClass
@@ -42,7 +42,7 @@ targetClass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L29)
 
 <a id="field-field-mq3-client-playable-viewmodel-weaponanimation-transitionstart-transitionstart-src-mq3-client-playable-viewmodel-ml-1519881043"></a>
 ### transitionStart
@@ -52,4 +52,4 @@ transitionStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L29)

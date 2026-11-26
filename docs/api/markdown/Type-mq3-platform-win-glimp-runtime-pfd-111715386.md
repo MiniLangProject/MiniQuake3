@@ -10,7 +10,7 @@ struct PFD
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ colorBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-depthbits-depthbits-src-mq3-platform-win-glimp-runtime-ml-1116254399"></a>
 ### depthBits
@@ -32,7 +32,7 @@ depthBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-flags-flags-src-mq3-platform-win-glimp-runtime-ml-56640971"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-index-index-src-mq3-platform-win-glimp-runtime-ml-1192545759"></a>
 ### index
@@ -52,7 +52,7 @@ index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-layertype-layertype-src-mq3-platform-win-glimp-runtime-ml-2134723311"></a>
 ### layerType
@@ -62,7 +62,7 @@ layerType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-pixeltype-pixeltype-src-mq3-platform-win-glimp-runtime-ml-1936182475"></a>
 ### pixelType
@@ -72,7 +72,7 @@ pixelType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-pfd-stencilbits-stencilbits-src-mq3-platform-win-glimp-runtime-ml-670239991"></a>
 ### stencilBits
@@ -82,4 +82,4 @@ stencilBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L25)

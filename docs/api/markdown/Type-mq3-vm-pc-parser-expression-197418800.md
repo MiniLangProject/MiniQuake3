@@ -10,7 +10,7 @@ struct Expression
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ depth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)
 
 <a id="field-field-mq3-vm-pc-parser-expression-position-position-src-mq3-vm-pc-parser-ml-803739117"></a>
 ### position
@@ -32,7 +32,7 @@ position
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)
 
 <a id="field-field-mq3-vm-pc-parser-expression-registry-registry-src-mq3-vm-pc-parser-ml-2119383925"></a>
 ### registry
@@ -42,7 +42,7 @@ registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)
 
 <a id="field-field-mq3-vm-pc-parser-expression-tokens-tokens-src-mq3-vm-pc-parser-ml-1013347795"></a>
 ### tokens
@@ -52,7 +52,7 @@ tokens
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)
 
 <a id="field-field-mq3-vm-pc-parser-expression-valid-valid-src-mq3-vm-pc-parser-ml-1691695507"></a>
 ### valid
@@ -62,4 +62,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L27)

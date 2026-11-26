@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ allocateClientFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L32)
 
 <a id="field-field-mq3-game-bot-population-state-botenable-botenable-src-mq3-game-bot-population-ml-860624838"></a>
 ### botEnable
@@ -32,7 +32,7 @@ botEnable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L30)
 
 <a id="field-field-mq3-game-bot-population-state-checktime-checktime-src-mq3-game-bot-population-ml-132082926"></a>
 ### checkTime
@@ -42,7 +42,7 @@ checkTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L26)
 
 <a id="field-field-mq3-game-bot-population-state-clients-clients-src-mq3-game-bot-population-ml-326444450"></a>
 ### clients
@@ -52,7 +52,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L25)
 
 <a id="field-field-mq3-game-bot-population-state-clrunning-clrunning-src-mq3-game-bot-population-ml-2140786998"></a>
 ### clRunning
@@ -62,7 +62,7 @@ clRunning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L31)
 
 <a id="field-field-mq3-game-bot-population-state-connectclientfn-connectclientfn-src-mq3-game-bot-population-ml-547609122"></a>
 ### connectClientFn
@@ -72,7 +72,7 @@ connectClientFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L33)
 
 <a id="field-field-mq3-game-bot-population-state-consolefn-consolefn-src-mq3-game-bot-population-ml-608354070"></a>
 ### consoleFn
@@ -82,7 +82,7 @@ consoleFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L35)
 
 <a id="field-field-mq3-game-bot-population-state-cvarsetfn-cvarsetfn-src-mq3-game-bot-population-ml-1321379262"></a>
 ### cvarSetFn
@@ -92,7 +92,7 @@ cvarSetFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L38)
 
 <a id="field-field-mq3-game-bot-population-state-minimumplayers-minimumplayers-src-mq3-game-bot-population-ml-1085524198"></a>
 ### minimumPlayers
@@ -102,7 +102,7 @@ minimumPlayers
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L27)
 
 <a id="field-field-mq3-game-bot-population-state-minimumvm-minimumvm-src-mq3-game-bot-population-ml-504172402"></a>
 ### minimumVm
@@ -112,7 +112,7 @@ minimumVm
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L28)
 
 <a id="field-field-mq3-game-bot-population-state-printfn-printfn-src-mq3-game-bot-population-ml-1735405702"></a>
 ### printFn
@@ -122,7 +122,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L37)
 
 <a id="field-field-mq3-game-bot-population-state-registry-registry-src-mq3-game-bot-population-ml-650954208"></a>
 ### registry
@@ -132,7 +132,7 @@ registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L24)
 
 <a id="field-field-mq3-game-bot-population-state-servercommandfn-servercommandfn-src-mq3-game-bot-population-ml-1873044106"></a>
 ### serverCommandFn
@@ -142,7 +142,7 @@ serverCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L36)
 
 <a id="field-field-mq3-game-bot-population-state-setuserinfofn-setuserinfofn-src-mq3-game-bot-population-ml-618932442"></a>
 ### setUserinfoFn
@@ -152,7 +152,7 @@ setUserinfoFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L34)
 
 <a id="field-field-mq3-game-bot-population-state-spskill-spskill-src-mq3-game-bot-population-ml-915670594"></a>
 ### spSkill
@@ -162,4 +162,4 @@ spSkill
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L29)

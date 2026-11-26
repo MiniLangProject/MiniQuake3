@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ defaultImage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-dlightimage-dlightimage-src-mq3-renderer-tr-image-runtime-ml-1365961650"></a>
 ### dlightImage
@@ -32,7 +32,7 @@ dlightImage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-filtermax-filtermax-src-mq3-renderer-tr-image-runtime-ml-239878266"></a>
 ### filterMax
@@ -42,7 +42,7 @@ filterMax
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-filtermin-filtermin-src-mq3-renderer-tr-image-runtime-ml-1245382850"></a>
 ### filterMin
@@ -52,7 +52,7 @@ filterMin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-filtername-filtername-src-mq3-renderer-tr-image-runtime-ml-174981108"></a>
 ### filterName
@@ -62,7 +62,7 @@ filterName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-fogimage-fogimage-src-mq3-renderer-tr-image-runtime-ml-350025460"></a>
 ### fogImage
@@ -72,7 +72,7 @@ fogImage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-fogtable-fogtable-src-mq3-renderer-tr-image-runtime-ml-66182090"></a>
 ### fogTable
@@ -82,7 +82,7 @@ fogTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-gammatable-gammatable-src-mq3-renderer-tr-image-runtime-ml-1230281044"></a>
 ### gammaTable
@@ -92,7 +92,7 @@ gammaTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-identitylight-identitylight-src-mq3-renderer-tr-image-runtime-ml-1250153762"></a>
 ### identityLight
@@ -102,7 +102,7 @@ identityLight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-identitylightbyte-identitylightbyte-src-mq3-renderer-tr-image-runtime-ml-1834835702"></a>
 ### identityLightByte
@@ -112,7 +112,7 @@ identityLightByte
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-identitylightimage-identitylightimage-src-mq3-renderer-tr-image-runtime-ml-1967533200"></a>
 ### identityLightImage
@@ -122,7 +122,7 @@ identityLightImage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-images-images-src-mq3-renderer-tr-image-runtime-ml-1949568286"></a>
 ### images
@@ -132,7 +132,7 @@ images
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-intensitytable-intensitytable-src-mq3-renderer-tr-image-runtime-ml-35375396"></a>
 ### intensityTable
@@ -142,7 +142,7 @@ intensityTable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-overbrightbits-overbrightbits-src-mq3-renderer-tr-image-runtime-ml-1437181014"></a>
 ### overbrightBits
@@ -152,7 +152,7 @@ overbrightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-scratchimages-scratchimages-src-mq3-renderer-tr-image-runtime-ml-1818476834"></a>
 ### scratchImages
@@ -162,7 +162,7 @@ scratchImages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-services-services-src-mq3-renderer-tr-image-runtime-ml-518896626"></a>
 ### services
@@ -172,7 +172,7 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-skins-skins-src-mq3-renderer-tr-image-runtime-ml-1842009578"></a>
 ### skins
@@ -182,7 +182,7 @@ skins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)
 
 <a id="field-field-mq3-renderer-tr-image-runtime-state-whiteimage-whiteimage-src-mq3-renderer-tr-image-runtime-ml-717197854"></a>
 ### whiteImage
@@ -192,4 +192,4 @@ whiteImage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_image_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_image_runtime.ml#L22)

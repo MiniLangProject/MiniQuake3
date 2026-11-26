@@ -10,7 +10,7 @@ struct Item
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 ## Members
 
@@ -22,7 +22,7 @@ icon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-number-number-src-mq3-client-cgame-weapons-ml-940139320"></a>
 ### number
@@ -32,7 +32,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-pickupname-pickupname-src-mq3-client-cgame-weapons-ml-365433800"></a>
 ### pickupName
@@ -42,7 +42,7 @@ pickupName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-registered-registered-src-mq3-client-cgame-weapons-ml-126275906"></a>
 ### registered
@@ -52,7 +52,7 @@ registered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-tag-tag-src-mq3-client-cgame-weapons-ml-2016067286"></a>
 ### tag
@@ -62,7 +62,7 @@ tag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-type-type-src-mq3-client-cgame-weapons-ml-523502466"></a>
 ### type
@@ -72,7 +72,7 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-worldmodel-worldmodel-src-mq3-client-cgame-weapons-ml-507210884"></a>
 ### worldModel
@@ -82,7 +82,7 @@ worldModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)
 
 <a id="field-field-mq3-client-cgame-weapons-item-worldmodel2-worldmodel2-src-mq3-client-cgame-weapons-ml-101903810"></a>
 ### worldModel2
@@ -92,4 +92,4 @@ worldModel2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L54)

@@ -10,7 +10,7 @@ struct ServerNode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-gamename-gamename-src-mq3-client-ui-servers2-ml-1510786828"></a>
 ### gameName
@@ -32,7 +32,7 @@ gameName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-gametype-gametype-src-mq3-client-ui-servers2-ml-1718163926"></a>
 ### gameType
@@ -42,7 +42,7 @@ gameType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-hostname-hostname-src-mq3-client-ui-servers2-ml-1184892056"></a>
 ### hostname
@@ -52,7 +52,7 @@ hostname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-mapname-mapname-src-mq3-client-ui-servers2-ml-2117317646"></a>
 ### mapName
@@ -62,7 +62,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-maxclients-maxclients-src-mq3-client-ui-servers2-ml-1283478510"></a>
 ### maxClients
@@ -72,7 +72,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-maxping-maxping-src-mq3-client-ui-servers2-ml-1423849494"></a>
 ### maxPing
@@ -82,7 +82,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-minping-minping-src-mq3-client-ui-servers2-ml-1448077490"></a>
 ### minPing
@@ -92,7 +92,7 @@ minPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-nettype-nettype-src-mq3-client-ui-servers2-ml-279428658"></a>
 ### netType
@@ -102,7 +102,7 @@ netType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-numclients-numclients-src-mq3-client-ui-servers2-ml-1075789462"></a>
 ### numClients
@@ -112,7 +112,7 @@ numClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-pingtime-pingtime-src-mq3-client-ui-servers2-ml-2126871712"></a>
 ### pingTime
@@ -122,7 +122,7 @@ pingTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)
 
 <a id="field-field-mq3-client-ui-servers2-servernode-punkbuster-punkbuster-src-mq3-client-ui-servers2-ml-582826580"></a>
 ### punkbuster
@@ -132,4 +132,4 @@ punkbuster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L58)

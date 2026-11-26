@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ closeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-context-context-src-mq3-client-download-ml-1391683747"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-cvarstringfn-cvarstringfn-src-mq3-client-download-ml-1380720405"></a>
 ### cvarStringFn
@@ -42,7 +42,7 @@ cvarStringFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-cvarvaluefn-cvarvaluefn-src-mq3-client-download-ml-1526834339"></a>
 ### cvarValueFn
@@ -52,7 +52,7 @@ cvarValueFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-nextfn-nextfn-src-mq3-client-download-ml-1362973037"></a>
 ### nextFn
@@ -62,7 +62,7 @@ nextFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-openfn-openfn-src-mq3-client-download-ml-1392865427"></a>
 ### openFn
@@ -72,7 +72,7 @@ openFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-packetfn-packetfn-src-mq3-client-download-ml-1325644907"></a>
 ### packetFn
@@ -82,7 +82,7 @@ packetFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-printfn-printfn-src-mq3-client-download-ml-1447575075"></a>
 ### printFn
@@ -92,7 +92,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-reliablefn-reliablefn-src-mq3-client-download-ml-564708239"></a>
 ### reliableFn
@@ -102,7 +102,7 @@ reliableFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-renamefn-renamefn-src-mq3-client-download-ml-887505199"></a>
 ### renameFn
@@ -112,7 +112,7 @@ renameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)
 
 <a id="field-field-mq3-client-download-services-writefn-writefn-src-mq3-client-download-ml-1849665671"></a>
 ### writeFn
@@ -122,4 +122,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L9)

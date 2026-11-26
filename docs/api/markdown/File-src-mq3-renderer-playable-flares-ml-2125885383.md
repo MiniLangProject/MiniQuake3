@@ -30,27 +30,27 @@ function colorByte(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L97)
 
-<a id="constant-constant-mq3-renderer-playable-flares-default-fade-const-default-fade-7-src-mq3-renderer-playable-flares-ml-478546362"></a>
+<a id="constant-constant-mq3-renderer-playable-flares-default-fade-const-default-fade-7-src-mq3-renderer-playable-flares-ml-1556207384"></a>
 ### DEFAULT_FADE
 
 ```ml
-const DEFAULT_FADE = 7.
+const DEFAULT_FADE = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L16)
 
-<a id="constant-constant-mq3-renderer-playable-flares-default-size-const-default-size-40-src-mq3-renderer-playable-flares-ml-25818853"></a>
+<a id="constant-constant-mq3-renderer-playable-flares-default-size-const-default-size-40-src-mq3-renderer-playable-flares-ml-1004476649"></a>
 ### DEFAULT_SIZE
 
 ```ml
-const DEFAULT_SIZE = 40.
+const DEFAULT_SIZE = 40
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L15)
 
 <a id="function-function-mq3-renderer-playable-flares-drawone-function-drawone-catalog-fogcatalog-flare-state-projection-area-nowmilliseconds-applyfacing-src-mq3-renderer-playable-flares-ml-361502939"></a>
 ### drawOne
@@ -71,7 +71,7 @@ function drawOne(catalog, fogCatalog, flare, state, projection, area, nowMillise
 | `applyFacing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L130)
 
 <a id="function-function-mq3-renderer-playable-flares-drawviewport-function-drawviewport-catalog-fogcatalog-lights-projection-area-nowmilliseconds-viewindex-src-mq3-renderer-playable-flares-ml-231982432"></a>
 ### drawViewport
@@ -91,7 +91,7 @@ function drawViewport(catalog, fogCatalog, lights, projection, area, nowMillisec
 | `viewIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L147)
 
 <a id="function-function-mq3-renderer-playable-flares-ensuredynamicview-function-ensuredynamicview-catalog-viewindex-count-src-mq3-renderer-playable-flares-ml-2120918795"></a>
 ### ensureDynamicView
@@ -107,7 +107,7 @@ function ensureDynamicView(catalog, viewIndex, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L110)
 
 <a id="function-function-mq3-renderer-playable-flares-ensureview-function-ensureview-catalog-viewindex-src-mq3-renderer-playable-flares-ml-524426880"></a>
 ### ensureView
@@ -122,7 +122,7 @@ function ensureView(catalog, viewIndex)
 | `viewIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L52)
 
 <a id="function-function-mq3-renderer-playable-flares-f32-function-f32-map-offset-src-mq3-renderer-playable-flares-ml-2027149717"></a>
 ### f32
@@ -137,7 +137,7 @@ function f32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L27)
 
 <a id="constant-constant-mq3-renderer-playable-flares-face-stride-const-face-stride-104-src-mq3-renderer-playable-flares-ml-1416399680"></a>
 ### FACE_STRIDE
@@ -147,7 +147,7 @@ const FACE_STRIDE = 104
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L14)
 
 <a id="function-function-mq3-renderer-playable-flares-facing-function-facing-origin-point-normal-src-mq3-renderer-playable-flares-ml-205865437"></a>
 ### facing
@@ -163,7 +163,7 @@ function facing(origin, point, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L92)
 
 <a id="function-function-mq3-renderer-playable-flares-fail-function-fail-message-src-mq3-renderer-playable-flares-ml-1828318161"></a>
 ### fail
@@ -177,7 +177,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L25)
 
 - [mq3.renderer.playable_flares.Flare](Type-mq3-renderer-playable-flares-flare-173432619.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-flaresize-function-flaresize-viewportwidth-eyedepth-sizevalue-src-mq3-renderer-playable-flares-ml-385506730"></a>
@@ -194,7 +194,7 @@ function flareSize(viewportWidth, eyeDepth, sizeValue)
 | `sizeValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L91)
 
 <a id="function-function-mq3-renderer-playable-flares-foggedcolor-function-foggedcolor-flare-color-fogcatalog-vieworigin-forward-src-mq3-renderer-playable-flares-ml-402580846"></a>
 ### foggedColor
@@ -214,7 +214,7 @@ RB_RenderFlare begins flareShader with the retained fog number. Its additive ble
 | `forward` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L124)
 
 <a id="function-function-mq3-renderer-playable-flares-fogindexat-function-fogindexat-fogcatalog-origin-src-mq3-renderer-playable-flares-ml-1073932909"></a>
 ### fogIndexAt
@@ -231,7 +231,7 @@ RB_AddDlightFlares assigns each submitted light to the first fog whose axial bru
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L101)
 
 <a id="function-function-mq3-renderer-playable-flares-i32-function-i32-map-offset-src-mq3-renderer-playable-flares-ml-1774398971"></a>
 ### i32
@@ -246,7 +246,7 @@ function i32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L28)
 
 <a id="function-function-mq3-renderer-playable-flares-load-function-load-archive-map-scripts-textureslot-enabled-src-mq3-renderer-playable-flares-ml-310206068"></a>
 ### load
@@ -264,7 +264,7 @@ function load(archive, map, scripts, textureSlot, enabled)
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L58)
 
 <a id="function-function-mq3-renderer-playable-flares-makestates-function-makestates-count-src-mq3-renderer-playable-flares-ml-2060215273"></a>
 ### makeStates
@@ -278,7 +278,7 @@ function makeStates(count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L51)
 
 <a id="constant-constant-mq3-renderer-playable-flares-max-view-states-const-max-view-states-16-src-mq3-renderer-playable-flares-ml-1009771882"></a>
 ### MAX_VIEW_STATES
@@ -288,7 +288,7 @@ const MAX_VIEW_STATES = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L18)
 
 <a id="constant-constant-mq3-renderer-playable-flares-mst-flare-const-mst-flare-4-src-mq3-renderer-playable-flares-ml-490546623"></a>
 ### MST_FLARE
@@ -298,7 +298,7 @@ const MST_FLARE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L13)
 
 <a id="function-function-mq3-renderer-playable-flares-parse-function-parse-map-src-mq3-renderer-playable-flares-ml-1020740748"></a>
 ### parse
@@ -314,7 +314,7 @@ ParseFlare in tr_bsp.c copies these fields directly from dsurface_t.
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L31)
 
 - [mq3.renderer.playable_flares.Point](Type-mq3-renderer-playable-flares-point-586923605.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-release-function-release-catalog-src-mq3-renderer-playable-flares-ml-314946743"></a>
@@ -329,7 +329,7 @@ function release(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L74)
 
 <a id="function-function-mq3-renderer-playable-flares-retiredynamicstates-function-retiredynamicstates-states-submittedcount-nowmilliseconds-src-mq3-renderer-playable-flares-ml-1494944380"></a>
 ### retireDynamicStates
@@ -347,7 +347,7 @@ RB_RenderFlares frees active entries that were not submitted this frame. Slot id
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L118)
 
 - [mq3.renderer.playable_flares.State](Type-mq3-renderer-playable-flares-state-337903418.md) — struct
 <a id="function-function-mq3-renderer-playable-flares-updatestate-function-updatestate-state-visible-nowmilliseconds-faderate-src-mq3-renderer-playable-flares-ml-2089516995"></a>
@@ -367,7 +367,7 @@ RB_TestFlare changes visibility at now-1 and clamps the linear fade.
 | `fadeRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L77)
 
 <a id="function-function-mq3-renderer-playable-flares-upload-function-upload-catalog-src-mq3-renderer-playable-flares-ml-336003029"></a>
 ### upload
@@ -381,7 +381,7 @@ function upload(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L68)
 
 <a id="function-function-mq3-renderer-playable-flares-validmap-function-validmap-map-src-mq3-renderer-playable-flares-ml-1729017914"></a>
 ### validMap
@@ -395,17 +395,17 @@ function validMap(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L26)
 
-<a id="constant-constant-mq3-renderer-playable-flares-visibility-tolerance-const-visibility-tolerance-24-src-mq3-renderer-playable-flares-ml-940204601"></a>
+<a id="constant-constant-mq3-renderer-playable-flares-visibility-tolerance-const-visibility-tolerance-24-src-mq3-renderer-playable-flares-ml-1802405693"></a>
 ### VISIBILITY_TOLERANCE
 
 ```ml
-const VISIBILITY_TOLERANCE = 24.
+const VISIBILITY_TOLERANCE = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L17)
 
 <a id="function-function-mq3-renderer-playable-flares-visibleatdepth-function-visibleatdepth-flaredepth-surfacedepth-src-mq3-renderer-playable-flares-ml-1869683045"></a>
 ### visibleAtDepth
@@ -420,4 +420,4 @@ function visibleAtDepth(flareDepth, surfaceDepth)
 | `surfaceDepth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L90)

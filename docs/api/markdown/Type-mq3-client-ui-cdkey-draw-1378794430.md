@@ -10,7 +10,7 @@ struct Draw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ buffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)
 
 <a id="field-field-mq3-client-ui-cdkey-draw-cursorchar-cursorchar-src-mq3-client-ui-cdkey-ml-224411467"></a>
 ### cursorChar
@@ -32,7 +32,7 @@ cursorChar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)
 
 <a id="field-field-mq3-client-ui-cdkey-draw-focus-focus-src-mq3-client-ui-cdkey-ml-237297931"></a>
 ### focus
@@ -42,7 +42,7 @@ focus
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)
 
 <a id="field-field-mq3-client-ui-cdkey-draw-message-message-src-mq3-client-ui-cdkey-ml-552215567"></a>
 ### message
@@ -52,7 +52,7 @@ message
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)
 
 <a id="field-field-mq3-client-ui-cdkey-draw-status-status-src-mq3-client-ui-cdkey-ml-1788613819"></a>
 ### status
@@ -62,4 +62,4 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cdkey.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cdkey.ml#L19)

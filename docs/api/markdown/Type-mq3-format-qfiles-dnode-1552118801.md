@@ -10,7 +10,7 @@ struct Dnode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L109)
 
 ## Members
 
@@ -22,7 +22,7 @@ children
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L109)
 
 <a id="field-field-mq3-format-qfiles-dnode-maxs-maxs-src-mq3-format-qfiles-ml-263049355"></a>
 ### maxs
@@ -32,7 +32,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L109)
 
 <a id="field-field-mq3-format-qfiles-dnode-mins-mins-src-mq3-format-qfiles-ml-748313863"></a>
 ### mins
@@ -42,7 +42,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L109)
 
 <a id="field-field-mq3-format-qfiles-dnode-planenum-planenum-src-mq3-format-qfiles-ml-1864317693"></a>
 ### planeNum
@@ -52,4 +52,4 @@ planeNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L109)

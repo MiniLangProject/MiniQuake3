@@ -36,7 +36,7 @@ Read ahead through the next snapshot for Cgame interpolation. After a new gamest
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L152)
 
 <a id="function-function-mq3-client-demo-playback-close-function-close-playback-src-mq3-client-demo-playback-ml-746511457"></a>
 ### close
@@ -50,7 +50,7 @@ function close(playback)
 | `playback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L46)
 
 <a id="constant-constant-mq3-client-demo-playback-extension-const-extension-dm-68-src-mq3-client-demo-playback-ml-1433796997"></a>
 ### EXTENSION
@@ -60,7 +60,7 @@ const EXTENSION = ".dm_68"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L15)
 
 <a id="function-function-mq3-client-demo-playback-fail-function-fail-reason-src-mq3-client-demo-playback-ml-1532683722"></a>
 ### fail
@@ -74,7 +74,7 @@ function fail(reason)
 | `reason` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L33)
 
 <a id="function-function-mq3-client-demo-playback-filename-function-filename-name-src-mq3-client-demo-playback-ml-1681053007"></a>
 ### filename
@@ -88,7 +88,7 @@ function filename(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L35)
 
 <a id="function-function-mq3-client-demo-playback-loosepath-function-loosepath-dataroot-leaf-src-mq3-client-demo-playback-ml-1884418428"></a>
 ### loosePath
@@ -103,7 +103,7 @@ function loosePath(dataRoot, leaf)
 | `leaf` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L98)
 
 <a id="constant-constant-mq3-client-demo-playback-max-archived-demo-const-max-archived-demo-64-1024-1024-src-mq3-client-demo-playback-ml-1106556961"></a>
 ### MAX_ARCHIVED_DEMO
@@ -113,7 +113,7 @@ const MAX_ARCHIVED_DEMO = 64 * 1024 * 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L16)
 
 <a id="constant-constant-mq3-client-demo-playback-max-frame-packets-const-max-frame-packets-128-src-mq3-client-demo-playback-ml-171243888"></a>
 ### MAX_FRAME_PACKETS
@@ -123,7 +123,7 @@ const MAX_FRAME_PACKETS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L18)
 
 <a id="constant-constant-mq3-client-demo-playback-max-start-packets-const-max-start-packets-1024-src-mq3-client-demo-playback-ml-1203934450"></a>
 ### MAX_START_PACKETS
@@ -133,7 +133,7 @@ const MAX_START_PACKETS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L17)
 
 <a id="function-function-mq3-client-demo-playback-open-function-open-dataroot-archive-name-now-src-mq3-client-demo-playback-ml-2048008955"></a>
 ### open
@@ -150,7 +150,7 @@ function open(dataRoot, archive, name, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L105)
 
 - [mq3.client.demo_playback.Playback](Type-mq3-client-demo-playback-playback-467060537.md) — struct
 <a id="function-function-mq3-client-demo-playback-read-function-read-playback-output-count-src-mq3-client-demo-playback-ml-1355431987"></a>
@@ -167,7 +167,7 @@ function read(playback, output, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L54)
 
 <a id="function-function-mq3-client-demo-playback-readpacket-function-readpacket-playback-realtime-src-mq3-client-demo-playback-ml-859177242"></a>
 ### readPacket
@@ -182,7 +182,7 @@ function readPacket(playback, realtime)
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L68)
 
 <a id="function-function-mq3-client-demo-playback-updatemap-function-updatemap-playback-src-mq3-client-demo-playback-ml-965245155"></a>
 ### updateMap
@@ -196,4 +196,4 @@ function updateMap(playback)
 | `playback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo_playback.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo_playback.ml#L90)

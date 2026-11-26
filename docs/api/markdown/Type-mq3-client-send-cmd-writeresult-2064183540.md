@@ -10,7 +10,7 @@ struct WriteResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ commandCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-key-key-src-mq3-client-send-cmd-ml-514149079"></a>
 ### key
@@ -32,7 +32,7 @@ key
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-message-message-src-mq3-client-send-cmd-ml-1292651575"></a>
 ### message
@@ -42,7 +42,7 @@ message
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-movetype-movetype-src-mq3-client-send-cmd-ml-1212137629"></a>
 ### moveType
@@ -52,7 +52,7 @@ moveType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)
 
 <a id="field-field-mq3-client-send-cmd-writeresult-sent-sent-src-mq3-client-send-cmd-ml-887372499"></a>
 ### sent
@@ -62,4 +62,4 @@ sent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/send_cmd.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/send_cmd.ml#L37)

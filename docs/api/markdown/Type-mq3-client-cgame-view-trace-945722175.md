@@ -10,7 +10,7 @@ struct Trace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)
 
 ## Members
 
@@ -22,7 +22,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)
 
 <a id="field-field-mq3-client-cgame-view-trace-fraction-fraction-src-mq3-client-cgame-view-ml-1674881138"></a>
 ### fraction
@@ -32,4 +32,4 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L51)

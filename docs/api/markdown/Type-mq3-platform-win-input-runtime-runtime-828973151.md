@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ appActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-events-events-src-mq3-platform-win-input-runtime-ml-686134057"></a>
 ### events
@@ -32,7 +32,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-joystick-joystick-src-mq3-platform-win-input-runtime-ml-1867915267"></a>
 ### joystick
@@ -42,7 +42,7 @@ joystick
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-midi-midi-src-mq3-platform-win-input-runtime-ml-1513812981"></a>
 ### midi
@@ -52,7 +52,7 @@ midi
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)
 
 <a id="field-field-mq3-platform-win-input-runtime-runtime-mouse-mouse-src-mq3-platform-win-input-runtime-ml-1878604775"></a>
 ### mouse
@@ -62,4 +62,4 @@ mouse
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L21)

@@ -24,7 +24,7 @@ extern function CloseHandle(handle as ptr) from "kernel32.dll" returns bool
 | `handle` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L6)
 
 <a id="extern_function-extern-function-mq3-platform-file-createfilew-extern-function-createfilew-name-as-wstr-access-as-u32-share-as-u32-security-as-ptr-creation-as-u32-attributes-as-u32-templatehandle-as-ptr-from-kernel32-dll-returns-ptr-src-mq3-platform-file-ml-433807682"></a>
 ### CreateFileW
@@ -44,7 +44,7 @@ extern function CreateFileW(name as wstr, access as u32, share as u32, security 
 | `templateHandle` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L5)
 
 <a id="extern_function-extern-function-mq3-platform-file-getfilesizeex-extern-function-getfilesizeex-handle-as-ptr-result-as-bytes-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-2107832562"></a>
 ### GetFileSizeEx
@@ -59,7 +59,7 @@ extern function GetFileSizeEx(handle as ptr, result as bytes) from "kernel32.dll
 | `result` | `bytes` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L7)
 
 <a id="extern_function-extern-function-mq3-platform-file-readfile-extern-function-readfile-handle-as-ptr-buffer-as-ptr-count-as-u32-transferred-as-bytes-overlapped-as-ptr-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-441956998"></a>
 ### ReadFile
@@ -77,7 +77,7 @@ extern function ReadFile(handle as ptr, buffer as ptr, count as u32, transferred
 | `overlapped` | `ptr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L9)
 
 <a id="function-function-mq3-platform-file-readrange-function-readrange-path-offset-count-src-mq3-platform-file-ml-1541978289"></a>
 ### readRange
@@ -93,7 +93,7 @@ function readRange(path, offset, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L11)
 
 <a id="extern_function-extern-function-mq3-platform-file-setfilepointerex-extern-function-setfilepointerex-handle-as-ptr-offset-as-i64-position-as-ptr-origin-as-u32-from-kernel32-dll-returns-bool-src-mq3-platform-file-ml-747388909"></a>
 ### SetFilePointerEx
@@ -110,4 +110,4 @@ extern function SetFilePointerEx(handle as ptr, offset as i64, position as ptr, 
 | `origin` | `u32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/file.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/file.ml#L8)

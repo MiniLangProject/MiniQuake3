@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ dentData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-entdatasize-entdatasize-src-mq3-botlib-aas-bspq3-ml-983695414"></a>
 ### entDataSize
@@ -32,7 +32,7 @@ entDataSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-entities-entities-src-mq3-botlib-aas-bspq3-ml-468875124"></a>
 ### entities
@@ -42,7 +42,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-loaded-loaded-src-mq3-botlib-aas-bspq3-ml-841093580"></a>
 ### loaded
@@ -52,7 +52,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)
 
 <a id="field-field-mq3-botlib-aas-bspq3-state-numentities-numentities-src-mq3-botlib-aas-bspq3-ml-1514019414"></a>
 ### numEntities
@@ -62,4 +62,4 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_bspq3.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_bspq3.ml#L15)

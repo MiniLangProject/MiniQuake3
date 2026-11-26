@@ -10,7 +10,7 @@ struct Server
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ restartedServerId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L15)
 
 <a id="field-field-mq3-server-client-message-server-serverid-serverid-src-mq3-server-client-message-ml-2029974292"></a>
 ### serverId
@@ -32,4 +32,4 @@ serverId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L15)

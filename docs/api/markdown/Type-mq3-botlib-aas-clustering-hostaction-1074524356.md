@@ -10,7 +10,7 @@ struct HostAction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-detail-detail-src-mq3-botlib-aas-clustering-ml-746756275"></a>
 ### detail
@@ -32,7 +32,7 @@ detail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-dispatched-dispatched-src-mq3-botlib-aas-clustering-ml-1259115787"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-kind-kind-src-mq3-botlib-aas-clustering-ml-1932277509"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-subject-subject-src-mq3-botlib-aas-clustering-ml-540845509"></a>
 ### subject
@@ -62,7 +62,7 @@ subject
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)
 
 <a id="field-field-mq3-botlib-aas-clustering-hostaction-value-value-src-mq3-botlib-aas-clustering-ml-409819001"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_clustering.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_clustering.ml#L29)

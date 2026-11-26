@@ -10,7 +10,7 @@ struct Snapshot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-snapshot-playerstate-playerstate-src-mq3-client-cgame-ents-ml-192767463"></a>
 ### playerState
@@ -32,7 +32,7 @@ playerState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)
 
 <a id="field-field-mq3-client-cgame-ents-snapshot-servertime-servertime-src-mq3-client-cgame-ents-ml-1112917027"></a>
 ### serverTime
@@ -42,4 +42,4 @@ serverTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_ents.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_ents.ml#L41)

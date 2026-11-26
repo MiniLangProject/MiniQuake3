@@ -10,7 +10,7 @@ struct MaterialBatch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ alphaTestPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-animatedpasses-animatedpasses-src-mq3-renderer-playable-world-batch-ml-1044009236"></a>
 ### animatedPasses
@@ -32,7 +32,7 @@ animatedPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-base-base-src-mq3-renderer-playable-world-batch-ml-596897518"></a>
 ### base
@@ -42,7 +42,7 @@ base
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-blendedpasses-blendedpasses-src-mq3-renderer-playable-world-batch-ml-831582308"></a>
 ### blendedPasses
@@ -52,7 +52,7 @@ blendedPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-clampedpasses-clampedpasses-src-mq3-renderer-playable-world-batch-ml-1706011968"></a>
 ### clampedPasses
@@ -62,7 +62,7 @@ clampedPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-deformedpasses-deformedpasses-src-mq3-renderer-playable-world-batch-ml-1280541034"></a>
 ### deformedPasses
@@ -72,7 +72,7 @@ deformedPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-destinationalphapasses-destinationalphapasses-src-mq3-renderer-playable-world-batch-ml-432312002"></a>
 ### destinationAlphaPasses
@@ -82,7 +82,7 @@ destinationAlphaPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-dlightbatch-dlightbatch-src-mq3-renderer-playable-world-batch-ml-135170964"></a>
 ### dlightBatch
@@ -92,7 +92,7 @@ dlightBatch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-dlightcatalog-dlightcatalog-src-mq3-renderer-playable-world-batch-ml-402092436"></a>
 ### dlightCatalog
@@ -102,7 +102,7 @@ dlightCatalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-drawabletriangles-drawabletriangles-src-mq3-renderer-playable-world-batch-ml-2110850144"></a>
 ### drawableTriangles
@@ -112,7 +112,7 @@ drawableTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-emittedtriangles-emittedtriangles-src-mq3-renderer-playable-world-batch-ml-664794190"></a>
 ### emittedTriangles
@@ -122,7 +122,7 @@ emittedTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-environmentpasses-environmentpasses-src-mq3-renderer-playable-world-batch-ml-918297004"></a>
 ### environmentPasses
@@ -132,7 +132,7 @@ environmentPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-filterpasses-filterpasses-src-mq3-renderer-playable-world-batch-ml-893842666"></a>
 ### filterPasses
@@ -142,7 +142,7 @@ filterPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-fogbatch-fogbatch-src-mq3-renderer-playable-world-batch-ml-1042203224"></a>
 ### fogBatch
@@ -152,7 +152,7 @@ fogBatch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-fogcatalog-fogcatalog-src-mq3-renderer-playable-world-batch-ml-1207735970"></a>
 ### fogCatalog
@@ -162,7 +162,7 @@ fogCatalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-generatorpasses-generatorpasses-src-mq3-renderer-playable-world-batch-ml-90396552"></a>
 ### generatorPasses
@@ -172,7 +172,7 @@ generatorPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-passes-passes-src-mq3-renderer-playable-world-batch-ml-1076653978"></a>
 ### passes
@@ -182,7 +182,7 @@ passes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-polygonoffsetpasses-polygonoffsetpasses-src-mq3-renderer-playable-world-batch-ml-705572396"></a>
 ### polygonOffsetPasses
@@ -192,7 +192,7 @@ polygonOffsetPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-skippedsky-skippedsky-src-mq3-renderer-playable-world-batch-ml-206049566"></a>
 ### skippedSky
@@ -202,7 +202,7 @@ skippedSky
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-sourcetriangles-sourcetriangles-src-mq3-renderer-playable-world-batch-ml-980200784"></a>
 ### sourceTriangles
@@ -212,7 +212,7 @@ sourceTriangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-stretchpasses-stretchpasses-src-mq3-renderer-playable-world-batch-ml-757096440"></a>
 ### stretchPasses
@@ -222,7 +222,7 @@ stretchPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-turbulentpasses-turbulentpasses-src-mq3-renderer-playable-world-batch-ml-1083806688"></a>
 ### turbulentPasses
@@ -232,7 +232,7 @@ turbulentPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)
 
 <a id="field-field-mq3-renderer-playable-world-batch-materialbatch-uvmodifiedpasses-uvmodifiedpasses-src-mq3-renderer-playable-world-batch-ml-1903056902"></a>
 ### uvModifiedPasses
@@ -242,4 +242,4 @@ uvModifiedPasses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L23)

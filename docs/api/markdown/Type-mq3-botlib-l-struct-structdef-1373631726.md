@@ -10,7 +10,7 @@ struct StructDef
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ fields
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)
 
 <a id="field-field-mq3-botlib-l-struct-structdef-size-size-src-mq3-botlib-l-struct-ml-304452655"></a>
 ### size
@@ -32,4 +32,4 @@ size
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_struct.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_struct.ml#L22)

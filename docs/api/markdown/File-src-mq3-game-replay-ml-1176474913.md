@@ -29,7 +29,7 @@ function commands(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L31)
 
 <a id="function-function-mq3-game-replay-create-function-create-world-origin-src-mq3-game-replay-ml-130067730"></a>
 ### create
@@ -44,7 +44,7 @@ function create(world, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L20)
 
 <a id="function-function-mq3-game-replay-row-function-row-p-src-mq3-game-replay-ml-1858136656"></a>
 ### row
@@ -58,7 +58,7 @@ function row(p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L52)
 
 <a id="function-function-mq3-game-replay-run-function-run-world-origin-text-src-mq3-game-replay-ml-2082399719"></a>
 ### run
@@ -74,7 +74,7 @@ function run(world, origin, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L62)
 
 <a id="function-function-mq3-game-replay-worldcontents-function-worldcontents-p-point-src-mq3-game-replay-ml-754382228"></a>
 ### worldContents
@@ -89,7 +89,7 @@ function worldContents(p, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L17)
 
 <a id="function-function-mq3-game-replay-worldtrace-function-worldtrace-p-start-finish-src-mq3-game-replay-ml-1460069101"></a>
 ### worldTrace
@@ -105,4 +105,4 @@ function worldTrace(p, start, finish)
 | `finish` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/replay.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/replay.ml#L11)

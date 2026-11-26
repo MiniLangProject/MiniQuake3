@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-blood-blood-src-mq3-client-cgame-effects-ml-1134273430"></a>
 ### blood
@@ -32,7 +32,7 @@ blood
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-emitted-emitted-src-mq3-client-cgame-effects-ml-1755533362"></a>
 ### emitted
@@ -42,7 +42,7 @@ emitted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-gibs-gibs-src-mq3-client-cgame-effects-ml-1916665740"></a>
 ### gibs
@@ -52,7 +52,7 @@ gibs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-lastscoreposition-lastscoreposition-src-mq3-client-cgame-effects-ml-1091555454"></a>
 ### lastScorePosition
@@ -62,7 +62,7 @@ lastScorePosition
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-missionpack-missionpack-src-mq3-client-cgame-effects-ml-1489912546"></a>
 ### missionpack
@@ -72,7 +72,7 @@ missionpack
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-noprojectiletrail-noprojectiletrail-src-mq3-client-cgame-effects-ml-1988396014"></a>
 ### noProjectileTrail
@@ -82,7 +82,7 @@ noProjectileTrail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-predictedclient-predictedclient-src-mq3-client-cgame-effects-ml-1869045670"></a>
 ### predictedClient
@@ -92,7 +92,7 @@ predictedClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-ragepro-ragepro-src-mq3-client-cgame-effects-ml-972201978"></a>
 ### ragePro
@@ -102,7 +102,7 @@ ragePro
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomat-randomat-src-mq3-client-cgame-effects-ml-1574237082"></a>
 ### randomAt
@@ -112,7 +112,7 @@ randomAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomints-randomints-src-mq3-client-cgame-effects-ml-1428992636"></a>
 ### randomInts
@@ -122,7 +122,7 @@ randomInts
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-randomseed-randomseed-src-mq3-client-cgame-effects-ml-779295970"></a>
 ### randomSeed
@@ -132,7 +132,7 @@ randomSeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-scoreplum-scoreplum-src-mq3-client-cgame-effects-ml-1810502146"></a>
 ### scorePlum
@@ -142,7 +142,7 @@ scorePlum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-smokeseed-smokeseed-src-mq3-client-cgame-effects-ml-1854973754"></a>
 ### smokeSeed
@@ -152,7 +152,7 @@ smokeSeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-suppressed-suppressed-src-mq3-client-cgame-effects-ml-385073170"></a>
 ### suppressed
@@ -162,7 +162,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)
 
 <a id="field-field-mq3-client-cgame-effects-state-time-time-src-mq3-client-cgame-effects-ml-492388760"></a>
 ### time
@@ -172,4 +172,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_effects.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_effects.ml#L54)

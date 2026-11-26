@@ -10,7 +10,7 @@ struct Trace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ allsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L23)
 
 <a id="field-field-mq3-collision-brush-trace-contents-contents-src-mq3-collision-brush-ml-1903935844"></a>
 ### contents
@@ -32,7 +32,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L21)
 
 <a id="field-field-mq3-collision-brush-trace-distance-distance-src-mq3-collision-brush-ml-1759185362"></a>
 ### distance
@@ -42,7 +42,7 @@ distance
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L19)
 
 <a id="field-field-mq3-collision-brush-trace-fraction-fraction-src-mq3-collision-brush-ml-473783244"></a>
 ### fraction
@@ -52,7 +52,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L17)
 
 <a id="field-field-mq3-collision-brush-trace-normal-normal-src-mq3-collision-brush-ml-1836279002"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L18)
 
 <a id="field-field-mq3-collision-brush-trace-planemetadata-planemetadata-src-mq3-collision-brush-ml-561822364"></a>
 ### planeMetadata
@@ -72,7 +72,7 @@ planeMetadata
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L24)
 
 <a id="field-field-mq3-collision-brush-trace-startsolid-startsolid-src-mq3-collision-brush-ml-1070360370"></a>
 ### startsolid
@@ -82,7 +82,7 @@ startsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L22)
 
 <a id="field-field-mq3-collision-brush-trace-surfaceflags-surfaceflags-src-mq3-collision-brush-ml-1134463388"></a>
 ### surfaceFlags
@@ -92,4 +92,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/brush.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/brush.ml#L20)

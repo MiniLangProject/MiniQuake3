@@ -10,7 +10,7 @@ struct Reliable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 ## Members
 
@@ -22,7 +22,7 @@ acknowledge
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 <a id="field-field-mq3-client-client-main-reliable-commands-commands-src-mq3-client-client-main-ml-1786256679"></a>
 ### commands
@@ -32,7 +32,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)
 
 <a id="field-field-mq3-client-client-main-reliable-sequence-sequence-src-mq3-client-client-main-ml-1549143377"></a>
 ### sequence
@@ -42,4 +42,4 @@ sequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L32)

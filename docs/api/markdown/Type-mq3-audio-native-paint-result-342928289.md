@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ peak
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L10)
 
 <a id="field-field-mq3-audio-native-paint-result-samples-samples-src-mq3-audio-native-paint-ml-1127339430"></a>
 ### samples
@@ -32,4 +32,4 @@ samples
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/native_paint.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/native_paint.ml#L10)

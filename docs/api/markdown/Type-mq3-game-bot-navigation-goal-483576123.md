@@ -10,7 +10,7 @@ struct Goal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 ## Members
 
@@ -22,7 +22,7 @@ areanum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-entitynum-entitynum-src-mq3-game-bot-navigation-ml-362502072"></a>
 ### entitynum
@@ -32,7 +32,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-flags-flags-src-mq3-game-bot-navigation-ml-1796447204"></a>
 ### flags
@@ -42,7 +42,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-iteminfo-iteminfo-src-mq3-game-bot-navigation-ml-1383077050"></a>
 ### iteminfo
@@ -52,7 +52,7 @@ iteminfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-maxs-maxs-src-mq3-game-bot-navigation-ml-1089098742"></a>
 ### maxs
@@ -62,7 +62,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-mins-mins-src-mq3-game-bot-navigation-ml-181735610"></a>
 ### mins
@@ -72,7 +72,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-number-number-src-mq3-game-bot-navigation-ml-792070550"></a>
 ### number
@@ -82,7 +82,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)
 
 <a id="field-field-mq3-game-bot-navigation-goal-origin-origin-src-mq3-game-bot-navigation-ml-1322577256"></a>
 ### origin
@@ -92,4 +92,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_navigation.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_navigation.ml#L74)

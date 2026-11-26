@@ -10,7 +10,7 @@ struct Pipeline
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-clientnum-clientnum-src-mq3-server-pipeline-ml-1013092645"></a>
 ### clientNum
@@ -32,7 +32,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadhost-downloadhost-src-mq3-server-pipeline-ml-300483749"></a>
 ### downloadHost
@@ -42,7 +42,7 @@ downloadHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadserver-downloadserver-src-mq3-server-pipeline-ml-59532903"></a>
 ### downloadServer
@@ -52,7 +52,7 @@ downloadServer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-downloadstate-downloadstate-src-mq3-server-pipeline-ml-199825289"></a>
 ### downloadState
@@ -62,7 +62,7 @@ downloadState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-fragments-fragments-src-mq3-server-pipeline-ml-645985653"></a>
 ### fragments
@@ -72,7 +72,7 @@ fragments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-lan-lan-src-mq3-server-pipeline-ml-592338309"></a>
 ### lan
@@ -82,7 +82,7 @@ lan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-local-local-src-mq3-server-pipeline-ml-658483945"></a>
 ### local
@@ -92,7 +92,7 @@ local
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-netchannel-netchannel-src-mq3-server-pipeline-ml-449437301"></a>
 ### netChannel
@@ -102,7 +102,7 @@ netChannel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-netruntime-netruntime-src-mq3-server-pipeline-ml-906480947"></a>
 ### netRuntime
@@ -112,7 +112,7 @@ netRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-runtime-runtime-src-mq3-server-pipeline-ml-491231977"></a>
 ### runtime
@@ -122,7 +122,7 @@ runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-runtimelevel-runtimelevel-src-mq3-server-pipeline-ml-181938417"></a>
 ### runtimeLevel
@@ -132,7 +132,7 @@ runtimeLevel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)
 
 <a id="field-field-mq3-server-pipeline-pipeline-server-server-src-mq3-server-pipeline-ml-472002339"></a>
 ### server
@@ -142,4 +142,4 @@ server
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L10)

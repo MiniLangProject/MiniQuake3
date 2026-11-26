@@ -26,7 +26,7 @@ function arg(vm, base, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L21)
 
 <a id="function-function-mq3-vm-cgame-key-traps-callback-function-callback-host-src-mq3-vm-cgame-key-traps-ml-1469666764"></a>
 ### callback
@@ -40,7 +40,7 @@ function callback(host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L148)
 
 <a id="constant-constant-mq3-vm-cgame-key-traps-cg-key-getcatcher-const-cg-key-getcatcher-61-src-mq3-vm-cgame-key-traps-ml-501308336"></a>
 ### CG_KEY_GETCATCHER
@@ -50,7 +50,7 @@ const CG_KEY_GETCATCHER = 61
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L9)
 
 <a id="constant-constant-mq3-vm-cgame-key-traps-cg-key-getkey-const-cg-key-getkey-63-src-mq3-vm-cgame-key-traps-ml-674354994"></a>
 ### CG_KEY_GETKEY
@@ -60,7 +60,7 @@ const CG_KEY_GETKEY = 63
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L11)
 
 <a id="constant-constant-mq3-vm-cgame-key-traps-cg-key-isdown-const-cg-key-isdown-60-src-mq3-vm-cgame-key-traps-ml-1879089359"></a>
 ### CG_KEY_ISDOWN
@@ -70,7 +70,7 @@ const CG_KEY_ISDOWN = 60
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L8)
 
 <a id="constant-constant-mq3-vm-cgame-key-traps-cg-key-setcatcher-const-cg-key-setcatcher-62-src-mq3-vm-cgame-key-traps-ml-1839741933"></a>
 ### CG_KEY_SETCATCHER
@@ -80,7 +80,7 @@ const CG_KEY_SETCATCHER = 62
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L10)
 
 <a id="function-function-mq3-vm-cgame-key-traps-clearstates-function-clearstates-state-src-mq3-vm-cgame-key-traps-ml-2103759349"></a>
 ### clearStates
@@ -94,7 +94,7 @@ function clearStates(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L113)
 
 <a id="function-function-mq3-vm-cgame-key-traps-create-function-create-src-mq3-vm-cgame-key-traps-ml-388386822"></a>
 ### create
@@ -104,7 +104,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L18)
 
 <a id="function-function-mq3-vm-cgame-key-traps-dispatch-function-dispatch-host-vm-base-src-mq3-vm-cgame-key-traps-ml-1526460228"></a>
 ### dispatch
@@ -120,7 +120,7 @@ function dispatch(host, vm, base)
 | `base` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L124)
 
 <a id="function-function-mq3-vm-cgame-key-traps-fail-function-fail-message-src-mq3-vm-cgame-key-traps-ml-676852785"></a>
 ### fail
@@ -134,7 +134,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L19)
 
 <a id="function-function-mq3-vm-cgame-key-traps-getbinding-function-getbinding-state-key-src-mq3-vm-cgame-key-traps-ml-1901124014"></a>
 ### getBinding
@@ -149,7 +149,7 @@ function getBinding(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L42)
 
 <a id="function-function-mq3-vm-cgame-key-traps-getcatcher-function-getcatcher-state-src-mq3-vm-cgame-key-traps-ml-249561127"></a>
 ### getCatcher
@@ -163,7 +163,7 @@ function getCatcher(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L34)
 
 <a id="function-function-mq3-vm-cgame-key-traps-getkey-function-getkey-state-binding-src-mq3-vm-cgame-key-traps-ml-37588476"></a>
 ### getKey
@@ -178,7 +178,7 @@ function getKey(state, binding)
 | `binding` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L46)
 
 <a id="function-function-mq3-vm-cgame-key-traps-getoverstrike-function-getoverstrike-state-src-mq3-vm-cgame-key-traps-ml-576730267"></a>
 ### getOverstrike
@@ -192,7 +192,7 @@ function getOverstrike(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L111)
 
 <a id="function-function-mq3-vm-cgame-key-traps-hexnibble-function-hexnibble-value-src-mq3-vm-cgame-key-traps-ml-313117293"></a>
 ### hexNibble
@@ -206,7 +206,7 @@ function hexNibble(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L97)
 
 <a id="function-function-mq3-vm-cgame-key-traps-isdown-function-isdown-state-key-src-mq3-vm-cgame-key-traps-ml-760937010"></a>
 ### isDown
@@ -221,7 +221,7 @@ function isDown(state, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L30)
 
 <a id="function-function-mq3-vm-cgame-key-traps-keynumtostring-function-keynumtostring-key-src-mq3-vm-cgame-key-traps-ml-1981826569"></a>
 ### keynumToString
@@ -237,7 +237,7 @@ Exact cl_keys.c textual key ABI used by the original controls menu.  Keys absent
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L59)
 
 <a id="constant-constant-mq3-vm-cgame-key-traps-max-keys-const-max-keys-256-src-mq3-vm-cgame-key-traps-ml-1625006674"></a>
 ### MAX_KEYS
@@ -247,7 +247,7 @@ const MAX_KEYS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L12)
 
 <a id="function-function-mq3-vm-cgame-key-traps-services-function-services-context-src-mq3-vm-cgame-key-traps-ml-1865868249"></a>
 ### services
@@ -261,7 +261,7 @@ function services(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L17)
 
 - [mq3.vm.cgame_key_traps.Services](Type-mq3-vm-cgame-key-traps-services-1882952869.md) — struct
 <a id="function-function-mq3-vm-cgame-key-traps-setbinding-function-setbinding-state-key-value-src-mq3-vm-cgame-key-traps-ml-1465740535"></a>
@@ -278,7 +278,7 @@ function setBinding(state, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L36)
 
 <a id="function-function-mq3-vm-cgame-key-traps-setcatcher-function-setcatcher-state-value-src-mq3-vm-cgame-key-traps-ml-1865481612"></a>
 ### setCatcher
@@ -293,7 +293,7 @@ function setCatcher(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L35)
 
 <a id="function-function-mq3-vm-cgame-key-traps-setdown-function-setdown-state-key-value-src-mq3-vm-cgame-key-traps-ml-1110406975"></a>
 ### setDown
@@ -309,7 +309,7 @@ function setDown(state, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L26)
 
 <a id="function-function-mq3-vm-cgame-key-traps-setoverstrike-function-setoverstrike-state-value-src-mq3-vm-cgame-key-traps-ml-1881891416"></a>
 ### setOverstrike
@@ -324,7 +324,7 @@ function setOverstrike(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L112)
 
 - [mq3.vm.cgame_key_traps.State](Type-mq3-vm-cgame-key-traps-state-691993510.md) — struct
 <a id="function-function-mq3-vm-cgame-key-traps-stateservices-function-stateservices-state-src-mq3-vm-cgame-key-traps-ml-631302213"></a>
@@ -339,7 +339,7 @@ function stateServices(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L119)
 
 <a id="function-function-mq3-vm-cgame-key-traps-stringtokeynum-function-stringtokeynum-text-src-mq3-vm-cgame-key-traps-ml-190703139"></a>
 ### stringToKeynum
@@ -353,7 +353,7 @@ function stringToKeynum(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L103)
 
 <a id="function-function-mq3-vm-cgame-key-traps-unavailable-function-unavailable-name-src-mq3-vm-cgame-key-traps-ml-138654151"></a>
 ### unavailable
@@ -367,7 +367,7 @@ function unavailable(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L20)
 
 <a id="function-function-mq3-vm-cgame-key-traps-validkey-function-validkey-key-src-mq3-vm-cgame-key-traps-ml-2042095721"></a>
 ### validKey
@@ -383,4 +383,4 @@ These state helpers mirror cl_keys.c and cl_ui.c closely enough to be shared by 
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_key_traps.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_key_traps.ml#L25)

@@ -20,7 +20,7 @@ function compatible(apiVersion)
 | `apiVersion` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L12)
 
 <a id="function-function-mq3-renderer-tr-public-declaredexportnames-function-declaredexportnames-src-mq3-renderer-tr-public-ml-703196322"></a>
 ### declaredExportNames
@@ -30,7 +30,7 @@ function declaredExportNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L9)
 
 <a id="function-function-mq3-renderer-tr-public-entrypointname-function-entrypointname-src-mq3-renderer-tr-public-ml-255035574"></a>
 ### entrypointName
@@ -40,7 +40,7 @@ function entrypointName()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L13)
 
 <a id="function-function-mq3-renderer-tr-public-exportnames-function-exportnames-src-mq3-renderer-tr-public-ml-1915362954"></a>
 ### exportNames
@@ -50,7 +50,7 @@ function exportNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L10)
 
 <a id="function-function-mq3-renderer-tr-public-importnames-function-importnames-src-mq3-renderer-tr-public-ml-1252804412"></a>
 ### importNames
@@ -60,7 +60,7 @@ function importNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L11)
 
 <a id="constant-constant-mq3-renderer-tr-public-ref-api-version-const-ref-api-version-8-src-mq3-renderer-tr-public-ml-1515639899"></a>
 ### REF_API_VERSION
@@ -70,7 +70,7 @@ const REF_API_VERSION = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L6)
 
 - [mq3.renderer.tr_public.RefExport](Type-mq3-renderer-tr-public-refexport-698037780.md) — struct
 - [mq3.renderer.tr_public.RefImport](Type-mq3-renderer-tr-public-refimport-1746790723.md) — struct

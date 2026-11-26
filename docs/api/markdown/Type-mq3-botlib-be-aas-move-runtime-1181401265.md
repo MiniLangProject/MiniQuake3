@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ againstLadderFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)
 
 <a id="field-field-mq3-botlib-be-aas-move-runtime-context-context-src-mq3-botlib-be-aas-move-ml-1378014939"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)
 
 <a id="field-field-mq3-botlib-be-aas-move-runtime-debugclearfn-debugclearfn-src-mq3-botlib-be-aas-move-ml-454399171"></a>
 ### debugClearFn
@@ -42,7 +42,7 @@ debugClearFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)
 
 <a id="field-field-mq3-botlib-be-aas-move-runtime-services-services-src-mq3-botlib-be-aas-move-ml-1764832363"></a>
 ### services
@@ -52,7 +52,7 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)
 
 <a id="field-field-mq3-botlib-be-aas-move-runtime-settings-settings-src-mq3-botlib-be-aas-move-ml-621884625"></a>
 ### settings
@@ -62,4 +62,4 @@ settings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_move.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_move.ml#L22)

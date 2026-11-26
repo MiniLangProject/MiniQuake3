@@ -28,7 +28,7 @@ function addPath(archive, clips, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L61)
 
 - [mq3.client.playable_weapon_sounds.Catalog](Type-mq3-client-playable-weapon-sounds-catalog-1734826936.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-choose-function-choose-clips-sequence-src-mq3-client-playable-weapon-sounds-ml-67292786"></a>
@@ -44,7 +44,7 @@ function choose(clips, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L100)
 
 - [mq3.client.playable_weapon_sounds.Clip](Type-mq3-client-playable-weapon-sounds-clip-2067069723.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-decodeclip-function-decodeclip-path-data-src-mq3-client-playable-weapon-sounds-ml-1102755113"></a>
@@ -60,7 +60,7 @@ function decodeClip(path, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L51)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-definition-function-definition-name-src-mq3-client-playable-weapon-sounds-ml-852724781"></a>
 ### definition
@@ -74,7 +74,7 @@ function definition(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L40)
 
 - [mq3.client.playable_weapon_sounds.Definition](Type-mq3-client-playable-weapon-sounds-definition-2089340608.md) — struct
 <a id="function-function-mq3-client-playable-weapon-sounds-definitions-function-definitions-src-mq3-client-playable-weapon-sounds-ml-522742786"></a>
@@ -85,7 +85,7 @@ function definitions()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L17)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-fail-function-fail-message-src-mq3-client-playable-weapon-sounds-ml-445929423"></a>
 ### fail
@@ -99,7 +99,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L15)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-find-function-find-catalog-name-src-mq3-client-playable-weapon-sounds-ml-776154144"></a>
 ### find
@@ -114,7 +114,7 @@ function find(catalog, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L94)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-findclip-function-findclip-clips-path-src-mq3-client-playable-weapon-sounds-ml-141987948"></a>
 ### findClip
@@ -129,7 +129,7 @@ function findClip(clips, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L46)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-firesound-function-firesound-catalog-name-sequence-src-mq3-client-playable-weapon-sounds-ml-803747819"></a>
 ### fireSound
@@ -145,7 +145,7 @@ function fireSound(catalog, name, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L106)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-impactsound-function-impactsound-catalog-name-sequence-src-mq3-client-playable-weapon-sounds-ml-538135095"></a>
 ### impactSound
@@ -161,7 +161,7 @@ function impactSound(catalog, name, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L107)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-isname-function-isname-def-name-src-mq3-client-playable-weapon-sounds-ml-1698181248"></a>
 ### isName
@@ -176,7 +176,7 @@ function isName(def, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L31)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-load-function-load-archive-src-mq3-client-playable-weapon-sounds-ml-1066428982"></a>
 ### load
@@ -190,7 +190,7 @@ function load(archive)
 | `archive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L76)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-loadclip-function-loadclip-archive-path-src-mq3-client-playable-weapon-sounds-ml-104378969"></a>
 ### loadClip
@@ -205,7 +205,7 @@ function loadClip(archive, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L56)
 
 <a id="constant-constant-mq3-client-playable-weapon-sounds-pickup-path-const-pickup-path-sound-misc-w-pkup-wav-src-mq3-client-playable-weapon-sounds-ml-208607306"></a>
 ### PICKUP_PATH
@@ -215,7 +215,7 @@ const PICKUP_PATH = "sound/misc/w_pkup.wav"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L8)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-pickupsound-function-pickupsound-catalog-name-src-mq3-client-playable-weapon-sounds-ml-288725150"></a>
 ### pickupSound
@@ -230,7 +230,7 @@ function pickupSound(catalog, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L108)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-play-function-play-sound-src-mq3-client-playable-weapon-sounds-ml-899781055"></a>
 ### play
@@ -244,7 +244,7 @@ function play(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L110)
 
 <a id="function-function-mq3-client-playable-weapon-sounds-resolve-function-resolve-clips-paths-src-mq3-client-playable-weapon-sounds-ml-840070931"></a>
 ### resolve
@@ -259,6 +259,6 @@ function resolve(clips, paths)
 | `paths` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L67)
 
 - [mq3.client.playable_weapon_sounds.WeaponSounds](Type-mq3-client-playable-weapon-sounds-weaponsounds-2125466897.md) — struct

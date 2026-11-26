@@ -10,7 +10,7 @@ struct Definition
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-definition-firepaths-firepaths-src-mq3-client-playable-weapon-sounds-ml-1087193472"></a>
 ### firePaths
@@ -32,7 +32,7 @@ firePaths
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-definition-impactpaths-impactpaths-src-mq3-client-playable-weapon-sounds-ml-1268469932"></a>
 ### impactPaths
@@ -42,7 +42,7 @@ impactPaths
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-definition-pickuppath-pickuppath-src-mq3-client-playable-weapon-sounds-ml-1102628726"></a>
 ### pickupPath
@@ -52,7 +52,7 @@ pickupPath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-definition-weapon-weapon-src-mq3-client-playable-weapon-sounds-ml-1922103548"></a>
 ### weapon
@@ -62,4 +62,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L10)

@@ -10,7 +10,7 @@ struct Session
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L21)
 
 <a id="field-field-mq3-client-desktop-session-session-activegame-activegame-src-mq3-client-desktop-session-ml-1667061033"></a>
 ### activeGame
@@ -32,7 +32,7 @@ activeGame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L30)
 
 <a id="field-field-mq3-client-desktop-session-session-cinematicnext-cinematicnext-src-mq3-client-desktop-session-ml-1587212497"></a>
 ### cinematicNext
@@ -42,7 +42,7 @@ cinematicNext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L35)
 
 <a id="field-field-mq3-client-desktop-session-session-configloaded-configloaded-src-mq3-client-desktop-session-ml-1984381023"></a>
 ### configLoaded
@@ -52,7 +52,7 @@ configLoaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L27)
 
 <a id="field-field-mq3-client-desktop-session-session-dataroot-dataroot-src-mq3-client-desktop-session-ml-879807553"></a>
 ### dataRoot
@@ -62,7 +62,7 @@ dataRoot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L20)
 
 <a id="field-field-mq3-client-desktop-session-session-mapname-mapname-src-mq3-client-desktop-session-ml-485866153"></a>
 ### mapName
@@ -72,7 +72,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L22)
 
 <a id="field-field-mq3-client-desktop-session-session-notice-notice-src-mq3-client-desktop-session-ml-212820697"></a>
 ### notice
@@ -82,7 +82,7 @@ notice
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L33)
 
 <a id="field-field-mq3-client-desktop-session-session-persistence-persistence-src-mq3-client-desktop-session-ml-540418049"></a>
 ### persistence
@@ -92,7 +92,7 @@ persistence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L25)
 
 <a id="field-field-mq3-client-desktop-session-session-requestedgame-requestedgame-src-mq3-client-desktop-session-ml-47151441"></a>
 ### requestedGame
@@ -102,7 +102,7 @@ requestedGame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L31)
 
 <a id="field-field-mq3-client-desktop-session-session-restartcommands-restartcommands-src-mq3-client-desktop-session-ml-705826589"></a>
 ### restartCommands
@@ -112,7 +112,7 @@ restartCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L29)
 
 <a id="field-field-mq3-client-desktop-session-session-savedbindings-savedbindings-src-mq3-client-desktop-session-ml-1204281857"></a>
 ### savedBindings
@@ -122,7 +122,7 @@ savedBindings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L26)
 
 <a id="field-field-mq3-client-desktop-session-session-settings-settings-src-mq3-client-desktop-session-ml-1031145783"></a>
 ### settings
@@ -132,7 +132,7 @@ settings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L24)
 
 <a id="field-field-mq3-client-desktop-session-session-singleplayer-singleplayer-src-mq3-client-desktop-session-ml-115410415"></a>
 ### singlePlayer
@@ -142,7 +142,7 @@ singlePlayer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L23)
 
 <a id="field-field-mq3-client-desktop-session-session-target-target-src-mq3-client-desktop-session-ml-674784995"></a>
 ### target
@@ -152,7 +152,7 @@ target
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L32)
 
 <a id="field-field-mq3-client-desktop-session-session-transitioncommands-transitioncommands-src-mq3-client-desktop-session-ml-1418420571"></a>
 ### transitionCommands
@@ -162,7 +162,7 @@ transitionCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L34)
 
 <a id="field-field-mq3-client-desktop-session-session-videoheight-videoheight-src-mq3-client-desktop-session-ml-980566629"></a>
 ### videoHeight
@@ -172,7 +172,7 @@ videoHeight
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L37)
 
 <a id="field-field-mq3-client-desktop-session-session-videorestart-videorestart-src-mq3-client-desktop-session-ml-1895361097"></a>
 ### videoRestart
@@ -182,7 +182,7 @@ videoRestart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L28)
 
 <a id="field-field-mq3-client-desktop-session-session-videowidth-videowidth-src-mq3-client-desktop-session-ml-1492745087"></a>
 ### videoWidth
@@ -192,4 +192,4 @@ videoWidth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/desktop_session.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/desktop_session.ml#L36)

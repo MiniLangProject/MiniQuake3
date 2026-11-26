@@ -31,7 +31,7 @@ function clientTick(runtime, time, msec)
 | `msec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L50)
 
 <a id="function-function-mq3-platform-engine-loop-commontick-function-commontick-runtime-time-src-mq3-platform-engine-loop-ml-1716240505"></a>
 ### commonTick
@@ -46,7 +46,7 @@ function commonTick(runtime, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L32)
 
 <a id="function-function-mq3-platform-engine-loop-create-function-create-inputqueue-inputhandlers-inputbudget-serverstate-serverservices-clientstate-clientservices-src-mq3-platform-engine-loop-ml-651422523"></a>
 ### create
@@ -66,7 +66,7 @@ function create(inputQueue, inputHandlers, inputBudget, serverState, serverServi
 | `clientServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L14)
 
 <a id="function-function-mq3-platform-engine-loop-initializeconfiguration-function-initializeconfiguration-runtime-configstate-commandstate-src-mq3-platform-engine-loop-ml-332429321"></a>
 ### initializeConfiguration
@@ -84,7 +84,7 @@ Completes the common startup portion after cvars, commands, filesystem and clien
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L23)
 
 <a id="function-function-mq3-platform-engine-loop-liveservices-function-liveservices-runtime-serveringress-src-mq3-platform-engine-loop-ml-1529702480"></a>
 ### liveServices
@@ -99,7 +99,7 @@ function liveServices(runtime, serverIngress)
 | `serverIngress` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L57)
 
 - [mq3.platform.engine_loop.Runtime](Type-mq3-platform-engine-loop-runtime-932181352.md) — struct
 <a id="function-function-mq3-platform-engine-loop-servertick-function-servertick-runtime-time-msec-src-mq3-platform-engine-loop-ml-30592809"></a>
@@ -118,4 +118,4 @@ desktop_frame_host calls this after the network pump, preserving Quake's event-b
 | `msec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/engine_loop.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/engine_loop.ml#L40)

@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-context-context-src-mq3-botlib-ai-weapon-weights-ml-1888761943"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-filereads-filereads-src-mq3-botlib-ai-weapon-weights-ml-44893723"></a>
 ### fileReads
@@ -42,7 +42,7 @@ fileReads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-fuzzyruntime-fuzzyruntime-src-mq3-botlib-ai-weapon-weights-ml-2088612663"></a>
 ### fuzzyRuntime
@@ -52,7 +52,7 @@ fuzzyRuntime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)
 
 <a id="field-field-mq3-botlib-ai-weapon-weights-runtime-readfn-readfn-src-mq3-botlib-ai-weapon-weights-ml-1613414103"></a>
 ### readFn
@@ -62,4 +62,4 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weapon_weights.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weapon_weights.ml#L21)

@@ -25,7 +25,7 @@ function clampValue(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L20)
 
 <a id="function-function-mq3-client-playable-hud-draw-function-draw-hud-width-height-src-mq3-client-playable-hud-ml-1175246730"></a>
 ### draw
@@ -41,7 +41,7 @@ function draw(hud, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L123)
 
 <a id="function-function-mq3-client-playable-hud-drawcrosshair-function-drawcrosshair-width-height-size-red-green-blue-src-mq3-client-playable-hud-ml-385066736"></a>
 ### drawCrosshair
@@ -60,7 +60,7 @@ function drawCrosshair(width, height, size, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L113)
 
 <a id="function-function-mq3-client-playable-hud-drawtext-function-drawtext-text-x-y-scale-red-green-blue-src-mq3-client-playable-hud-ml-983030460"></a>
 ### drawText
@@ -80,7 +80,7 @@ function drawText(text, x, y, scale, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L95)
 
 <a id="function-function-mq3-client-playable-hud-glyph-function-glyph-character-src-mq3-client-playable-hud-ml-1610811959"></a>
 ### glyph
@@ -94,7 +94,7 @@ function glyph(character)
 | `character` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L43)
 
 <a id="constant-constant-mq3-client-playable-hud-glyph-height-const-glyph-height-7-src-mq3-client-playable-hud-ml-1486185732"></a>
 ### GLYPH_HEIGHT
@@ -104,7 +104,7 @@ const GLYPH_HEIGHT = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L9)
 
 <a id="constant-constant-mq3-client-playable-hud-glyph-width-const-glyph-width-5-src-mq3-client-playable-hud-ml-2045999156"></a>
 ### GLYPH_WIDTH
@@ -114,7 +114,7 @@ const GLYPH_WIDTH = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L8)
 
 - [mq3.client.playable_hud.HudLayout](Type-mq3-client-playable-hud-hudlayout-191041016.md) — struct
 - [mq3.client.playable_hud.HudState](Type-mq3-client-playable-hud-hudstate-2065924275.md) — struct
@@ -131,7 +131,7 @@ function layout(width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L36)
 
 <a id="function-function-mq3-client-playable-hud-line-function-line-x0-y0-x1-y1-red-green-blue-src-mq3-client-playable-hud-ml-1773714084"></a>
 ### line
@@ -151,7 +151,7 @@ function line(x0, y0, x1, y1, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L15)
 
 <a id="function-function-mq3-client-playable-hud-setvalues-function-setvalues-hud-health-armor-ammo-src-mq3-client-playable-hud-ml-73132914"></a>
 ### setValues
@@ -168,7 +168,7 @@ function setValues(hud, health, armor, ammo)
 | `ammo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L30)
 
 <a id="function-function-mq3-client-playable-hud-state-function-state-health-armor-ammo-status-helptext-src-mq3-client-playable-hud-ml-452691587"></a>
 ### state
@@ -186,7 +186,7 @@ function state(health, armor, ammo, status, helpText)
 | `helpText` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L26)
 
 <a id="function-function-mq3-client-playable-hud-textwidth-function-textwidth-text-scale-src-mq3-client-playable-hud-ml-871692809"></a>
 ### textWidth
@@ -201,7 +201,7 @@ function textWidth(text, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L89)
 
 <a id="constant-constant-mq3-client-playable-hud-value-max-const-value-max-999-src-mq3-client-playable-hud-ml-1355337966"></a>
 ### VALUE_MAX
@@ -211,4 +211,4 @@ const VALUE_MAX = 999
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L10)

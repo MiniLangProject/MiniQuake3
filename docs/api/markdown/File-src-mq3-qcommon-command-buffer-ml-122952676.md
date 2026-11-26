@@ -22,7 +22,7 @@ function addCommand(state, name, callback)
 | `callback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L203)
 
 <a id="function-function-mq3-qcommon-command-buffer-addcontextcommand-function-addcontextcommand-state-name-callback-context-src-mq3-qcommon-command-buffer-ml-797499422"></a>
 ### addContextCommand
@@ -41,7 +41,7 @@ Context-bearing registrations keep subsystem state out of the global command sta
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L215)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L215)
 
 <a id="function-function-mq3-qcommon-command-buffer-addtext-function-addtext-state-text-src-mq3-qcommon-command-buffer-ml-667800362"></a>
 ### addText
@@ -56,7 +56,7 @@ function addText(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L139)
 
 <a id="function-function-mq3-qcommon-command-buffer-argc-function-argc-state-src-mq3-qcommon-command-buffer-ml-585140731"></a>
 ### argc
@@ -70,7 +70,7 @@ function argc(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L119)
 
 <a id="function-function-mq3-qcommon-command-buffer-args-function-args-state-src-mq3-qcommon-command-buffer-ml-519524251"></a>
 ### args
@@ -84,7 +84,7 @@ function args(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L135)
 
 <a id="function-function-mq3-qcommon-command-buffer-argsbuffer-function-argsbuffer-state-capacity-src-mq3-qcommon-command-buffer-ml-1478842727"></a>
 ### argsBuffer
@@ -99,7 +99,7 @@ function argsBuffer(state, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L136)
 
 <a id="function-function-mq3-qcommon-command-buffer-argsfrom-function-argsfrom-state-start-src-mq3-qcommon-command-buffer-ml-1913383473"></a>
 ### argsFrom
@@ -114,7 +114,7 @@ function argsFrom(state, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L125)
 
 <a id="function-function-mq3-qcommon-command-buffer-argv-function-argv-state-index-src-mq3-qcommon-command-buffer-ml-210535289"></a>
 ### argv
@@ -129,7 +129,7 @@ function argv(state, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L120)
 
 <a id="function-function-mq3-qcommon-command-buffer-argvbuffer-function-argvbuffer-state-index-capacity-src-mq3-qcommon-command-buffer-ml-1880629193"></a>
 ### argvBuffer
@@ -145,7 +145,7 @@ function argvBuffer(state, index, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L124)
 
 <a id="extern_function-extern-function-mq3-qcommon-command-buffer-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-qcommon-command-buffer-ml-1807021276"></a>
 ### atoi
@@ -159,7 +159,7 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 | `text` | `cstr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L370)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L370)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-big-info-string-const-big-info-string-8192-src-mq3-qcommon-command-buffer-ml-358108251"></a>
 ### BIG_INFO_STRING
@@ -169,7 +169,7 @@ const BIG_INFO_STRING = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L13)
 
 <a id="function-function-mq3-qcommon-command-buffer-cmd-function-cmd-state-src-mq3-qcommon-command-buffer-ml-665010827"></a>
 ### cmd
@@ -183,7 +183,7 @@ function cmd(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L137)
 
 - [mq3.qcommon.command_buffer.Command](Type-mq3-qcommon-command-buffer-command-13006865.md) — struct
 <a id="function-function-mq3-qcommon-command-buffer-commandcompletion-function-commandcompletion-state-callback-src-mq3-qcommon-command-buffer-ml-566418760"></a>
@@ -199,7 +199,7 @@ function commandCompletion(state, callback)
 | `callback` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L233)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L233)
 
 <a id="function-function-mq3-qcommon-command-buffer-containsinsensitive-function-containsinsensitive-name-part-start-src-mq3-qcommon-command-buffer-ml-1987573522"></a>
 ### containsInsensitive
@@ -215,7 +215,7 @@ function containsInsensitive(name, part, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L250)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L250)
 
 <a id="function-function-mq3-qcommon-command-buffer-copystring-function-copystring-text-capacity-src-mq3-qcommon-command-buffer-ml-591818733"></a>
 ### copyString
@@ -230,7 +230,7 @@ function copyString(text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L57)
 
 <a id="function-function-mq3-qcommon-command-buffer-create-function-create-src-mq3-qcommon-command-buffer-ml-1604661332"></a>
 ### create
@@ -240,7 +240,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L45)
 
 <a id="function-function-mq3-qcommon-command-buffer-defaultextension-function-defaultextension-path-extension-src-mq3-qcommon-command-buffer-ml-1853616096"></a>
 ### defaultExtension
@@ -255,7 +255,7 @@ function defaultExtension(path, extension)
 | `extension` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L304)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L304)
 
 <a id="function-function-mq3-qcommon-command-buffer-echocommand-function-echocommand-state-src-mq3-qcommon-command-buffer-ml-590338919"></a>
 ### echoCommand
@@ -269,7 +269,7 @@ function echoCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L328)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L328)
 
 <a id="function-function-mq3-qcommon-command-buffer-emit-function-emit-state-message-src-mq3-qcommon-command-buffer-ml-1400490004"></a>
 ### emit
@@ -284,7 +284,7 @@ function emit(state, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L64)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-append-const-exec-append-2-src-mq3-qcommon-command-buffer-ml-1882959929"></a>
 ### EXEC_APPEND
@@ -294,7 +294,7 @@ const EXEC_APPEND = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L8)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-insert-const-exec-insert-1-src-mq3-qcommon-command-buffer-ml-393893560"></a>
 ### EXEC_INSERT
@@ -304,7 +304,7 @@ const EXEC_INSERT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L7)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-exec-now-const-exec-now-0-src-mq3-qcommon-command-buffer-ml-56342201"></a>
 ### EXEC_NOW
@@ -314,7 +314,7 @@ const EXEC_NOW = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L6)
 
 <a id="function-function-mq3-qcommon-command-buffer-execcommand-function-execcommand-state-src-mq3-qcommon-command-buffer-ml-606078423"></a>
 ### execCommand
@@ -328,7 +328,7 @@ function execCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L313)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L313)
 
 <a id="function-function-mq3-qcommon-command-buffer-execute-function-execute-state-src-mq3-qcommon-command-buffer-ml-1021694185"></a>
 ### execute
@@ -342,7 +342,7 @@ function execute(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L160)
 
 <a id="function-function-mq3-qcommon-command-buffer-executeline-function-executeline-state-line-src-mq3-qcommon-command-buffer-ml-842075219"></a>
 ### executeLine
@@ -357,7 +357,7 @@ function executeLine(state, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L155)
 
 <a id="function-function-mq3-qcommon-command-buffer-executestring-function-executestring-state-text-src-mq3-qcommon-command-buffer-ml-855123162"></a>
 ### executeString
@@ -372,7 +372,7 @@ function executeString(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L342)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L342)
 
 <a id="function-function-mq3-qcommon-command-buffer-executetext-function-executetext-state-when-text-src-mq3-qcommon-command-buffer-ml-349540358"></a>
 ### executeText
@@ -388,7 +388,7 @@ function executeText(state, when, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L183)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L183)
 
 <a id="function-function-mq3-qcommon-command-buffer-filtername-function-filtername-pattern-name-src-mq3-qcommon-command-buffer-ml-402828895"></a>
 ### filterName
@@ -405,7 +405,7 @@ Case-insensitive Com_Filter subset used by Cmd_List_f, including Baseq3's *, ?, 
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L266)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L266)
 
 <a id="function-function-mq3-qcommon-command-buffer-initcommands-function-initcommands-state-src-mq3-qcommon-command-buffer-ml-1372419855"></a>
 ### initCommands
@@ -419,7 +419,7 @@ function initCommands(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L364)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L364)
 
 <a id="function-function-mq3-qcommon-command-buffer-inserttext-function-inserttext-state-text-src-mq3-qcommon-command-buffer-ml-50508242"></a>
 ### insertText
@@ -434,7 +434,7 @@ function insertText(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L147)
 
 <a id="function-function-mq3-qcommon-command-buffer-isunquotedwhitespace-function-isunquotedwhitespace-value-src-mq3-qcommon-command-buffer-ml-359862731"></a>
 ### isUnquotedWhitespace
@@ -448,7 +448,7 @@ function isUnquotedWhitespace(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L69)
 
 <a id="function-function-mq3-qcommon-command-buffer-listcommand-function-listcommand-state-src-mq3-qcommon-command-buffer-ml-1832446941"></a>
 ### listCommand
@@ -462,7 +462,7 @@ function listCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L333)
 
 <a id="function-function-mq3-qcommon-command-buffer-lowerascii-function-lowerascii-value-src-mq3-qcommon-command-buffer-ml-633175467"></a>
 ### lowerAscii
@@ -476,7 +476,7 @@ function lowerAscii(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L238)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L238)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-cmd-buffer-const-max-cmd-buffer-16384-src-mq3-qcommon-command-buffer-ml-232078153"></a>
 ### MAX_CMD_BUFFER
@@ -486,7 +486,7 @@ const MAX_CMD_BUFFER = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L9)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-cmd-line-const-max-cmd-line-1024-src-mq3-qcommon-command-buffer-ml-1845780034"></a>
 ### MAX_CMD_LINE
@@ -496,7 +496,7 @@ const MAX_CMD_LINE = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L10)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-string-chars-const-max-string-chars-1024-src-mq3-qcommon-command-buffer-ml-2141882602"></a>
 ### MAX_STRING_CHARS
@@ -506,7 +506,7 @@ const MAX_STRING_CHARS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L12)
 
 <a id="constant-constant-mq3-qcommon-command-buffer-max-string-tokens-const-max-string-tokens-1024-src-mq3-qcommon-command-buffer-ml-954706296"></a>
 ### MAX_STRING_TOKENS
@@ -516,7 +516,7 @@ const MAX_STRING_TOKENS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L11)
 
 <a id="function-function-mq3-qcommon-command-buffer-removecommand-function-removecommand-state-name-src-mq3-qcommon-command-buffer-ml-1302124260"></a>
 ### removeCommand
@@ -531,7 +531,7 @@ function removeCommand(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L225)
 
 <a id="function-function-mq3-qcommon-command-buffer-sameinsensitive-function-sameinsensitive-left-right-src-mq3-qcommon-command-buffer-ml-291042357"></a>
 ### sameInsensitive
@@ -546,7 +546,7 @@ function sameInsensitive(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L242)
 
 - [mq3.qcommon.command_buffer.State](Type-mq3-qcommon-command-buffer-state-1582591869.md) — struct
 <a id="function-function-mq3-qcommon-command-buffer-tokenizestring-function-tokenizestring-state-text-src-mq3-qcommon-command-buffer-ml-1543350726"></a>
@@ -562,7 +562,7 @@ function tokenizeString(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L74)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L74)
 
 <a id="function-function-mq3-qcommon-command-buffer-visiblebytes-function-visiblebytes-text-src-mq3-qcommon-command-buffer-ml-1602140573"></a>
 ### visibleBytes
@@ -576,7 +576,7 @@ function visibleBytes(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L49)
 
 <a id="function-function-mq3-qcommon-command-buffer-vstrcommand-function-vstrcommand-state-src-mq3-qcommon-command-buffer-ml-1517172703"></a>
 ### vstrCommand
@@ -590,7 +590,7 @@ function vstrCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L323)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L323)
 
 <a id="function-function-mq3-qcommon-command-buffer-waitcommand-function-waitcommand-state-src-mq3-qcommon-command-buffer-ml-699674359"></a>
 ### waitCommand
@@ -604,4 +604,4 @@ function waitCommand(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/command_buffer.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/command_buffer.ml#L193)

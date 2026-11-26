@@ -10,7 +10,7 @@ struct Mapping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L13)
 
 <a id="field-field-mq3-renderer-player-skins-mapping-surface-surface-src-mq3-renderer-player-skins-ml-1444455143"></a>
 ### surface
@@ -32,4 +32,4 @@ surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L13)

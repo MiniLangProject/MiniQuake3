@@ -10,7 +10,7 @@ struct CombatView
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ damageAmount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-damageside-damageside-src-mq3-client-playable-combat-view-ml-2056208622"></a>
 ### damageSide
@@ -32,7 +32,7 @@ damageSide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-deaths-deaths-src-mq3-client-playable-combat-view-ml-622927632"></a>
 ### deaths
@@ -42,7 +42,7 @@ deaths
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-hits-hits-src-mq3-client-playable-combat-view-ml-962879002"></a>
 ### hits
@@ -52,7 +52,7 @@ hits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-kills-kills-src-mq3-client-playable-combat-view-ml-1152830114"></a>
 ### kills
@@ -62,7 +62,7 @@ kills
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastdamage-lastdamage-src-mq3-client-playable-combat-view-ml-374632840"></a>
 ### lastDamage
@@ -72,7 +72,7 @@ lastDamage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastfire-lastfire-src-mq3-client-playable-combat-view-ml-45000034"></a>
 ### lastFire
@@ -82,7 +82,7 @@ lastFire
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lasthit-lasthit-src-mq3-client-playable-combat-view-ml-174614158"></a>
 ### lastHit
@@ -92,7 +92,7 @@ lastHit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-lastkill-lastkill-src-mq3-client-playable-combat-view-ml-274569842"></a>
 ### lastKill
@@ -102,7 +102,7 @@ lastKill
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-score-score-src-mq3-client-playable-combat-view-ml-1994629602"></a>
 ### score
@@ -112,7 +112,7 @@ score
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-shots-shots-src-mq3-client-playable-combat-view-ml-1737106430"></a>
 ### shots
@@ -122,7 +122,7 @@ shots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)
 
 <a id="field-field-mq3-client-playable-combat-view-combatview-weaponname-weaponname-src-mq3-client-playable-combat-view-ml-475462788"></a>
 ### weaponName
@@ -132,4 +132,4 @@ weaponName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_combat_view.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_combat_view.ml#L15)

@@ -23,7 +23,7 @@ const CA_CONNECTED = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L13)
 
 <a id="function-function-mq3-client-ui-spreset-create-function-create-game-src-mq3-client-ui-spreset-ml-2133069358"></a>
 ### create
@@ -37,7 +37,7 @@ function create(game)
 | `game` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L17)
 
 <a id="function-function-mq3-client-ui-spreset-draw-function-draw-kind-x-y-w-h-text-style-color-asset-src-mq3-client-ui-spreset-ml-1866641539"></a>
 ### draw
@@ -59,7 +59,7 @@ function draw(kind, x, y, w, h, text, style, color, asset)
 | `asset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-spreset-id-no-const-id-no-100-src-mq3-client-ui-spreset-ml-324471700"></a>
 ### ID_NO
@@ -69,7 +69,7 @@ const ID_NO = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-spreset-id-yes-const-id-yes-101-src-mq3-client-ui-spreset-ml-1023816989"></a>
 ### ID_YES
@@ -79,7 +79,7 @@ const ID_YES = 101
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L12)
 
 - [mq3.client.ui_spreset.Reset](Type-mq3-client-ui-spreset-reset-871040143.md) — struct
 <a id="function-function-mq3-client-ui-spreset-reset-cache-function-reset-cache-src-mq3-client-ui-spreset-ml-25776064"></a>
@@ -92,7 +92,7 @@ function Reset_Cache()
 Reset_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L42)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menudraw-function-reset-menudraw-value-realtime-src-mq3-client-ui-spreset-ml-1315880376"></a>
 ### Reset_MenuDraw
@@ -109,7 +109,7 @@ Reset_MenuDraw
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L37)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menuevent-function-reset-menuevent-value-id-event-src-mq3-client-ui-spreset-ml-1084441138"></a>
 ### Reset_MenuEvent
@@ -127,7 +127,7 @@ Reset_MenuEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L21)
 
 <a id="function-function-mq3-client-ui-spreset-reset-menukey-function-reset-menukey-value-key-cursorx-cursory-src-mq3-client-ui-spreset-ml-102937423"></a>
 ### Reset_MenuKey
@@ -146,7 +146,7 @@ Reset_MenuKey
 | `cursory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L26)
 
 <a id="function-function-mq3-client-ui-spreset-ui-resetmenu-function-ui-resetmenu-game-connectionstate-src-mq3-client-ui-spreset-ml-1865268047"></a>
 ### UI_ResetMenu
@@ -163,4 +163,4 @@ UI_ResetMenu
 | `connectionState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_spreset.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_spreset.ml#L45)

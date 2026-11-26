@@ -28,7 +28,7 @@ function addressText(address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L29)
 
 <a id="function-function-mq3-client-ui-lan-ingress-attach-function-attach-host-state-src-mq3-client-ui-lan-ingress-ml-1121456179"></a>
 ### attach
@@ -43,7 +43,7 @@ function attach(host, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L93)
 
 <a id="function-function-mq3-client-ui-lan-ingress-consumependingping-function-consumependingping-state-address-src-mq3-client-ui-lan-ingress-ml-1664511513"></a>
 ### consumePendingPing
@@ -58,7 +58,7 @@ function consumePendingPing(state, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L48)
 
 <a id="function-function-mq3-client-ui-lan-ingress-consumependingstatus-function-consumependingstatus-state-address-src-mq3-client-ui-lan-ingress-ml-1058898541"></a>
 ### consumePendingStatus
@@ -73,7 +73,7 @@ function consumePendingStatus(state, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L43)
 
 <a id="function-function-mq3-client-ui-lan-ingress-create-function-create-browser-src-mq3-client-ui-lan-ingress-ml-848564592"></a>
 ### create
@@ -87,7 +87,7 @@ function create(browser)
 | `browser` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-lan-ingress-max-serversperpacket-const-max-serversperpacket-256-src-mq3-client-ui-lan-ingress-ml-579689360"></a>
 ### MAX_SERVERSPERPACKET
@@ -97,7 +97,7 @@ const MAX_SERVERSPERPACKET = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-lan-ingress-na-broadcast-const-na-broadcast-3-src-mq3-client-ui-lan-ingress-ml-525213450"></a>
 ### NA_BROADCAST
@@ -107,7 +107,7 @@ const NA_BROADCAST = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-lan-ingress-na-ip-const-na-ip-4-src-mq3-client-ui-lan-ingress-ml-1037061389"></a>
 ### NA_IP
@@ -117,7 +117,7 @@ const NA_IP = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L16)
 
 <a id="function-function-mq3-client-ui-lan-ingress-nettype-function-nettype-address-src-mq3-client-ui-lan-ingress-ml-101574086"></a>
 ### netType
@@ -131,7 +131,7 @@ function netType(address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L34)
 
 - [mq3.client.ui_lan_ingress.PendingPing](Type-mq3-client-ui-lan-ingress-pendingping-1181047978.md) — struct
 <a id="constant-constant-mq3-client-ui-lan-ingress-protocol-version-const-protocol-version-68-src-mq3-client-ui-lan-ingress-ml-2012767741"></a>
@@ -142,7 +142,7 @@ const PROTOCOL_VERSION = 68
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L13)
 
 <a id="function-function-mq3-client-ui-lan-ingress-requestping-function-requestping-state-address-start-src-mq3-client-ui-lan-ingress-ml-1944021099"></a>
 ### requestPing
@@ -158,7 +158,7 @@ function requestPing(state, address, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L36)
 
 <a id="function-function-mq3-client-ui-lan-ingress-requeststatus-function-requeststatus-state-address-src-mq3-client-ui-lan-ingress-ml-650603051"></a>
 ### requestStatus
@@ -173,7 +173,7 @@ function requestStatus(state, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L39)
 
 <a id="function-function-mq3-client-ui-lan-ingress-responseinfo-function-responseinfo-host-clientstate-source-msg-src-mq3-client-ui-lan-ingress-ml-731509406"></a>
 ### responseInfo
@@ -190,7 +190,7 @@ function responseInfo(host, clientState, source, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L54)
 
 <a id="function-function-mq3-client-ui-lan-ingress-responseservers-function-responseservers-host-clientstate-source-msg-src-mq3-client-ui-lan-ingress-ml-1850128060"></a>
 ### responseServers
@@ -207,7 +207,7 @@ function responseServers(host, clientState, source, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L76)
 
 <a id="function-function-mq3-client-ui-lan-ingress-responsestatus-function-responsestatus-host-clientstate-source-msg-src-mq3-client-ui-lan-ingress-ml-241680522"></a>
 ### responseStatus
@@ -224,7 +224,7 @@ function responseStatus(host, clientState, source, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L68)
 
 <a id="function-function-mq3-client-ui-lan-ingress-sameaddress-function-sameaddress-left-right-src-mq3-client-ui-lan-ingress-ml-1147340445"></a>
 ### sameAddress
@@ -239,7 +239,7 @@ function sameAddress(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L33)
 
 <a id="function-function-mq3-client-ui-lan-ingress-services-function-services-state-src-mq3-client-ui-lan-ingress-ml-1682110597"></a>
 ### services
@@ -253,7 +253,7 @@ function services(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L97)
 
 <a id="function-function-mq3-client-ui-lan-ingress-setmaster-function-setmaster-state-number-src-mq3-client-ui-lan-ingress-ml-1446023576"></a>
 ### setMaster
@@ -268,7 +268,7 @@ function setMaster(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L27)
 
 <a id="function-function-mq3-client-ui-lan-ingress-setpingupdatesource-function-setpingupdatesource-state-source-src-mq3-client-ui-lan-ingress-ml-1957487736"></a>
 ### setPingUpdateSource
@@ -283,7 +283,7 @@ function setPingUpdateSource(state, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L26)
 
 <a id="function-function-mq3-client-ui-lan-ingress-setrealtime-function-setrealtime-state-value-src-mq3-client-ui-lan-ingress-ml-959716150"></a>
 ### setRealtime
@@ -298,6 +298,6 @@ function setRealtime(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_ingress.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_ingress.ml#L25)
 
 - [mq3.client.ui_lan_ingress.State](Type-mq3-client-ui-lan-ingress-state-390538724.md) — struct

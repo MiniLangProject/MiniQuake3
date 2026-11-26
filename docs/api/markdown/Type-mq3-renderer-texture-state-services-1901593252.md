@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ activeTextureFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-bindtexturefn-bindtexturefn-src-mq3-renderer-texture-state-ml-590917293"></a>
 ### bindTextureFn
@@ -32,7 +32,7 @@ bindTextureFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-clientactivetexturefn-clientactivetexturefn-src-mq3-renderer-texture-state-ml-1563250105"></a>
 ### clientActiveTextureFn
@@ -42,7 +42,7 @@ clientActiveTextureFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-context-context-src-mq3-renderer-texture-state-ml-1260662229"></a>
 ### context
@@ -52,7 +52,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-dropfn-dropfn-src-mq3-renderer-texture-state-ml-498528267"></a>
 ### dropFn
@@ -62,7 +62,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-logfn-logfn-src-mq3-renderer-texture-state-ml-2034066941"></a>
 ### logFn
@@ -72,7 +72,7 @@ logFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)
 
 <a id="field-field-mq3-renderer-texture-state-services-warningfn-warningfn-src-mq3-renderer-texture-state-ml-480079009"></a>
 ### warningFn
@@ -82,4 +82,4 @@ warningFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/texture_state.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/texture_state.ml#L11)

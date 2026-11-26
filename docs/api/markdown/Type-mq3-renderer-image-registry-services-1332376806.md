@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 <a id="field-field-mq3-renderer-image-registry-services-diagnosticfn-diagnosticfn-src-mq3-renderer-image-registry-ml-549634963"></a>
 ### diagnosticFn
@@ -32,7 +32,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 <a id="field-field-mq3-renderer-image-registry-services-loadfn-loadfn-src-mq3-renderer-image-registry-ml-884562013"></a>
 ### loadFn
@@ -42,7 +42,7 @@ loadFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 <a id="field-field-mq3-renderer-image-registry-services-releasefn-releasefn-src-mq3-renderer-image-registry-ml-213366181"></a>
 ### releaseFn
@@ -52,7 +52,7 @@ releaseFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)
 
 <a id="field-field-mq3-renderer-image-registry-services-submitfn-submitfn-src-mq3-renderer-image-registry-ml-1066900985"></a>
 ### submitFn
@@ -62,4 +62,4 @@ submitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/image_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/image_registry.ml#L25)

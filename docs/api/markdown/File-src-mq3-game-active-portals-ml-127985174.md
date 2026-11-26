@@ -29,7 +29,7 @@ const CONTENTS_CORPSE = headers.CONTENTS_CORPSE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L19)
 
 <a id="constant-constant-mq3-game-active-portals-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-active-portals-ml-1927564190"></a>
 ### CONTENTS_TRIGGER
@@ -39,7 +39,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L20)
 
 <a id="constant-constant-mq3-game-active-portals-damage-no-protection-const-damage-no-protection-8-src-mq3-game-active-portals-ml-1511142321"></a>
 ### DAMAGE_NO_PROTECTION
@@ -49,7 +49,7 @@ const DAMAGE_NO_PROTECTION = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L21)
 
 <a id="function-function-mq3-game-active-portals-dropcarriedflag-function-dropcarriedflag-level-other-src-mq3-game-active-portals-ml-882308682"></a>
 ### dropCarriedFlag
@@ -64,7 +64,7 @@ function dropCarriedFlag(level, other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L35)
 
 <a id="function-function-mq3-game-active-portals-dropportaldestination-function-dropportaldestination-level-player-src-mq3-game-active-portals-ml-713615113"></a>
 ### DropPortalDestination
@@ -79,7 +79,7 @@ function DropPortalDestination(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L62)
 
 <a id="function-function-mq3-game-active-portals-dropportalsource-function-dropportalsource-level-player-src-mq3-game-active-portals-ml-2088431719"></a>
 ### DropPortalSource
@@ -94,7 +94,7 @@ function DropPortalSource(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L75)
 
 <a id="function-function-mq3-game-active-portals-finddestination-function-finddestination-level-id-src-mq3-game-active-portals-ml-435632129"></a>
 ### findDestination
@@ -109,7 +109,7 @@ function findDestination(level, id)
 | `id` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L27)
 
 <a id="function-function-mq3-game-active-portals-portaldie-function-portaldie-level-self-inflictor-attacker-damage-mod-src-mq3-game-active-portals-ml-1478101472"></a>
 ### PortalDie
@@ -128,7 +128,7 @@ function PortalDie(level, self, inflictor, attacker, damage, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L23)
 
 <a id="function-function-mq3-game-active-portals-portalenable-function-portalenable-level-self-src-mq3-game-active-portals-ml-1533715552"></a>
 ### PortalEnable
@@ -143,7 +143,7 @@ function PortalEnable(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L57)
 
 <a id="function-function-mq3-game-active-portals-portaltouch-function-portaltouch-level-self-other-trace-src-mq3-game-active-portals-ml-610022993"></a>
 ### PortalTouch
@@ -160,7 +160,7 @@ function PortalTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L44)
 
 <a id="function-function-mq3-game-active-portals-use-function-use-level-player-src-mq3-game-active-portals-ml-485060485"></a>
 ### use
@@ -175,4 +175,4 @@ function use(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/active_portals.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/active_portals.ml#L88)

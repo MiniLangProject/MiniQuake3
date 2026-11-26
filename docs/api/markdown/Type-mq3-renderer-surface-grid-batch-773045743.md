@@ -10,7 +10,7 @@ struct Batch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ colors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-dlightbits-dlightbits-src-mq3-renderer-surface-grid-ml-2033666985"></a>
 ### dlightBits
@@ -32,7 +32,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-indexes-indexes-src-mq3-renderer-surface-grid-ml-1152088233"></a>
 ### indexes
@@ -42,7 +42,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-normals-normals-src-mq3-renderer-surface-grid-ml-1758088825"></a>
 ### normals
@@ -52,7 +52,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-numindexes-numindexes-src-mq3-renderer-surface-grid-ml-738380849"></a>
 ### numIndexes
@@ -62,7 +62,7 @@ numIndexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-numvertexes-numvertexes-src-mq3-renderer-surface-grid-ml-866698233"></a>
 ### numVertexes
@@ -72,7 +72,7 @@ numVertexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-texcoords-texcoords-src-mq3-renderer-surface-grid-ml-969392341"></a>
 ### texCoords
@@ -82,7 +82,7 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-vertexdlightbits-vertexdlightbits-src-mq3-renderer-surface-grid-ml-1582823361"></a>
 ### vertexDlightBits
@@ -92,7 +92,7 @@ vertexDlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-grid-batch-xyz-xyz-src-mq3-renderer-surface-grid-ml-1435938525"></a>
 ### xyz
@@ -102,4 +102,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L10)

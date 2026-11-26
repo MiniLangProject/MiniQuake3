@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ group
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-runtime-lasterror-lasterror-src-mq3-client-network-handshake-ml-619756911"></a>
 ### lastError
@@ -32,7 +32,7 @@ lastError
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-runtime-server-server-src-mq3-client-network-handshake-ml-1621324581"></a>
 ### server
@@ -42,7 +42,7 @@ server
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)
 
 <a id="field-field-mq3-client-network-handshake-runtime-slots-slots-src-mq3-client-network-handshake-ml-1061653803"></a>
 ### slots
@@ -52,4 +52,4 @@ slots
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_handshake.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_handshake.ml#L12)

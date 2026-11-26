@@ -10,7 +10,7 @@ struct KeyServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ bindingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-clearfn-clearfn-src-mq3-vm-syscall-ui-ml-721773624"></a>
 ### clearFn
@@ -32,7 +32,7 @@ clearFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-getcatcherfn-getcatcherfn-src-mq3-vm-syscall-ui-ml-1986004352"></a>
 ### getCatcherFn
@@ -42,7 +42,7 @@ getCatcherFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-getoverstrikefn-getoverstrikefn-src-mq3-vm-syscall-ui-ml-560195432"></a>
 ### getOverstrikeFn
@@ -52,7 +52,7 @@ getOverstrikeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-isdownfn-isdownfn-src-mq3-vm-syscall-ui-ml-1363116232"></a>
 ### isDownFn
@@ -62,7 +62,7 @@ isDownFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-keynamefn-keynamefn-src-mq3-vm-syscall-ui-ml-521413924"></a>
 ### keyNameFn
@@ -72,7 +72,7 @@ keyNameFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setbindingfn-setbindingfn-src-mq3-vm-syscall-ui-ml-1366495490"></a>
 ### setBindingFn
@@ -82,7 +82,7 @@ setBindingFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setcatcherfn-setcatcherfn-src-mq3-vm-syscall-ui-ml-1189286376"></a>
 ### setCatcherFn
@@ -92,7 +92,7 @@ setCatcherFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)
 
 <a id="field-field-mq3-vm-syscall-ui-keyservices-setoverstrikefn-setoverstrikefn-src-mq3-vm-syscall-ui-ml-2017445816"></a>
 ### setOverstrikeFn
@@ -102,4 +102,4 @@ setOverstrikeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/syscall_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/syscall_ui.ml#L13)

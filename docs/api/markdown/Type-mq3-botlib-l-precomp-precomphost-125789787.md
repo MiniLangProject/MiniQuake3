@@ -10,7 +10,7 @@ struct PrecompHost
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L45)
 
 ## Members
 
@@ -22,7 +22,7 @@ actionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L45)
 
 <a id="field-field-mq3-botlib-l-precomp-precomphost-context-context-src-mq3-botlib-l-precomp-ml-350206915"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L45)
 
 <a id="field-field-mq3-botlib-l-precomp-precomphost-loadfn-loadfn-src-mq3-botlib-l-precomp-ml-944596955"></a>
 ### loadFn
@@ -42,4 +42,4 @@ loadFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L45)

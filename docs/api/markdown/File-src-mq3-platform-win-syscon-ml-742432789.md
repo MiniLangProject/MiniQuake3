@@ -17,7 +17,7 @@ const CLEAR_ID = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L8)
 
 <a id="function-function-mq3-platform-win-syscon-conbuf-appendtext-function-conbuf-appendtext-state-message-src-mq3-platform-win-syscon-ml-1603289652"></a>
 ### Conbuf_AppendText
@@ -34,7 +34,7 @@ Conbuf_AppendText
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L37)
 
 <a id="constant-constant-mq3-platform-win-syscon-console-buffer-size-const-console-buffer-size-16384-src-mq3-platform-win-syscon-ml-1774137357"></a>
 ### CONSOLE_BUFFER_SIZE
@@ -44,7 +44,7 @@ const CONSOLE_BUFFER_SIZE = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L12)
 
 <a id="function-function-mq3-platform-win-syscon-conwndproc-function-conwndproc-state-message-value-minimized-src-mq3-platform-win-syscon-ml-1879140121"></a>
 ### ConWndProc
@@ -63,7 +63,7 @@ ConWndProc. This preserves every state-changing branch of the Win32 callback.
 | `minimized` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L59)
 
 <a id="constant-constant-mq3-platform-win-syscon-copy-id-const-copy-id-1-src-mq3-platform-win-syscon-ml-1445440380"></a>
 ### COPY_ID
@@ -73,7 +73,7 @@ const COPY_ID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L6)
 
 <a id="function-function-mq3-platform-win-syscon-copylimit-function-copylimit-text-count-src-mq3-platform-win-syscon-ml-1347933486"></a>
 ### copyLimit
@@ -88,7 +88,7 @@ function copyLimit(text, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L19)
 
 <a id="function-function-mq3-platform-win-syscon-create-function-create-retailactive-src-mq3-platform-win-syscon-ml-1702136199"></a>
 ### create
@@ -102,7 +102,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L17)
 
 <a id="function-function-mq3-platform-win-syscon-emit-function-emit-state-boundary-kind-text-value-src-mq3-platform-win-syscon-ml-1978328349"></a>
 ### emit
@@ -120,7 +120,7 @@ function emit(state, boundary, kind, text, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L18)
 
 <a id="function-function-mq3-platform-win-syscon-inputlinewndproc-function-inputlinewndproc-state-message-value-focustarget-src-mq3-platform-win-syscon-ml-761940832"></a>
 ### InputLineWndProc
@@ -139,7 +139,7 @@ InputLineWndProc. Message names model WM_KILLFOCUS and WM_CHAR.
 | `focusTarget` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L53)
 
 <a id="function-function-mq3-platform-win-syscon-iscolor-function-iscolor-raw-index-src-mq3-platform-win-syscon-ml-261256870"></a>
 ### isColor
@@ -154,7 +154,7 @@ function isColor(raw, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L20)
 
 <a id="constant-constant-mq3-platform-win-syscon-quit-id-const-quit-id-2-src-mq3-platform-win-syscon-ml-1048058207"></a>
 ### QUIT_ID
@@ -164,7 +164,7 @@ const QUIT_ID = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L7)
 
 - [mq3.platform.win_syscon.State](Type-mq3-platform-win-syscon-state-880075106.md) — struct
 <a id="function-function-mq3-platform-win-syscon-sys-consoleinput-function-sys-consoleinput-state-src-mq3-platform-win-syscon-ml-979616869"></a>
@@ -181,7 +181,7 @@ Sys_ConsoleInput
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L34)
 
 <a id="function-function-mq3-platform-win-syscon-sys-createconsole-function-sys-createconsole-state-registerok-windowok-src-mq3-platform-win-syscon-ml-1163065750"></a>
 ### Sys_CreateConsole
@@ -199,7 +199,7 @@ Sys_CreateConsole
 | `windowOk` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L23)
 
 <a id="function-function-mq3-platform-win-syscon-sys-destroyconsole-function-sys-destroyconsole-state-src-mq3-platform-win-syscon-ml-528470061"></a>
 ### Sys_DestroyConsole
@@ -215,7 +215,7 @@ Sys_DestroyConsole
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L27)
 
 <a id="function-function-mq3-platform-win-syscon-sys-seterrortext-function-sys-seterrortext-state-text-src-mq3-platform-win-syscon-ml-105669078"></a>
 ### Sys_SetErrorText
@@ -232,7 +232,7 @@ Sys_SetErrorText
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L50)
 
 <a id="function-function-mq3-platform-win-syscon-sys-showconsole-function-sys-showconsole-state-vislevel-quitonclose-src-mq3-platform-win-syscon-ml-1110609491"></a>
 ### Sys_ShowConsole
@@ -250,7 +250,7 @@ Sys_ShowConsole
 | `quitOnClose` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L29)
 
 <a id="constant-constant-mq3-platform-win-syscon-vis-hidden-const-vis-hidden-0-src-mq3-platform-win-syscon-ml-2014853521"></a>
 ### VIS_HIDDEN
@@ -260,7 +260,7 @@ const VIS_HIDDEN = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L9)
 
 <a id="constant-constant-mq3-platform-win-syscon-vis-minimized-const-vis-minimized-2-src-mq3-platform-win-syscon-ml-906269895"></a>
 ### VIS_MINIMIZED
@@ -270,7 +270,7 @@ const VIS_MINIMIZED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L11)
 
 <a id="constant-constant-mq3-platform-win-syscon-vis-normal-const-vis-normal-1-src-mq3-platform-win-syscon-ml-1565719194"></a>
 ### VIS_NORMAL
@@ -280,4 +280,4 @@ const VIS_NORMAL = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_syscon.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_syscon.ml#L10)

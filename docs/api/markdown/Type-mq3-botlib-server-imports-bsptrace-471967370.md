@@ -10,7 +10,7 @@ struct BspTrace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 ## Members
 
@@ -22,7 +22,7 @@ allsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-contents-contents-src-mq3-botlib-server-imports-ml-816172383"></a>
 ### contents
@@ -32,7 +32,7 @@ contents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-endpos-endpos-src-mq3-botlib-server-imports-ml-110430581"></a>
 ### endpos
@@ -42,7 +42,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-ent-ent-src-mq3-botlib-server-imports-ml-1671357855"></a>
 ### ent
@@ -52,7 +52,7 @@ ent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-expdist-expdist-src-mq3-botlib-server-imports-ml-1953725567"></a>
 ### expDist
@@ -62,7 +62,7 @@ expDist
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-fraction-fraction-src-mq3-botlib-server-imports-ml-1934945343"></a>
 ### fraction
@@ -72,7 +72,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-planedist-planedist-src-mq3-botlib-server-imports-ml-128429727"></a>
 ### planeDist
@@ -82,7 +82,7 @@ planeDist
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-planenormal-planenormal-src-mq3-botlib-server-imports-ml-993987563"></a>
 ### planeNormal
@@ -92,7 +92,7 @@ planeNormal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-planesignbits-planesignbits-src-mq3-botlib-server-imports-ml-692870915"></a>
 ### planeSignbits
@@ -102,7 +102,7 @@ planeSignbits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-planetype-planetype-src-mq3-botlib-server-imports-ml-1099296111"></a>
 ### planeType
@@ -112,7 +112,7 @@ planeType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-sidenum-sidenum-src-mq3-botlib-server-imports-ml-124645783"></a>
 ### sidenum
@@ -122,7 +122,7 @@ sidenum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-startsolid-startsolid-src-mq3-botlib-server-imports-ml-1431053097"></a>
 ### startsolid
@@ -132,7 +132,7 @@ startsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)
 
 <a id="field-field-mq3-botlib-server-imports-bsptrace-surfacevalue-surfacevalue-src-mq3-botlib-server-imports-ml-2017098863"></a>
 ### surfaceValue
@@ -142,4 +142,4 @@ surfaceValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_imports.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_imports.ml#L61)

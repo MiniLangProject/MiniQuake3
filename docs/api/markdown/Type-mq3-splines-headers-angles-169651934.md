@@ -10,7 +10,7 @@ struct Angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ pitch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
 
 <a id="field-field-mq3-splines-headers-angles-roll-roll-src-mq3-splines-headers-ml-2086082085"></a>
 ### roll
@@ -32,7 +32,7 @@ roll
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)
 
 <a id="field-field-mq3-splines-headers-angles-yaw-yaw-src-mq3-splines-headers-ml-402459139"></a>
 ### yaw
@@ -42,4 +42,4 @@ yaw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/splines/headers.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/splines/headers.ml#L15)

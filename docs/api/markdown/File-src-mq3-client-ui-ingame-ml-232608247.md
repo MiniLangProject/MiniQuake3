@@ -18,7 +18,7 @@ function cache()
 InGame_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L56)
 
 <a id="function-function-mq3-client-ui-ingame-event-function-event-menu-id-notification-src-mq3-client-ui-ingame-ml-1320600769"></a>
 ### event
@@ -36,7 +36,7 @@ InGame_Event
 | `notification` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L40)
 
 <a id="constant-constant-mq3-client-ui-ingame-gt-single-player-const-gt-single-player-2-src-mq3-client-ui-ingame-ml-390025383"></a>
 ### GT_SINGLE_PLAYER
@@ -46,7 +46,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L7)
 
 <a id="constant-constant-mq3-client-ui-ingame-gt-team-const-gt-team-3-src-mq3-client-ui-ingame-ml-1074157914"></a>
 ### GT_TEAM
@@ -56,7 +56,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-addbots-const-id-addbots-11-src-mq3-client-ui-ingame-ml-38018851"></a>
 ### ID_ADDBOTS
@@ -66,7 +66,7 @@ const ID_ADDBOTS = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-leavearena-const-id-leavearena-15-src-mq3-client-ui-ingame-ml-279951947"></a>
 ### ID_LEAVEARENA
@@ -76,7 +76,7 @@ const ID_LEAVEARENA = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-quit-const-id-quit-17-src-mq3-client-ui-ingame-ml-894252505"></a>
 ### ID_QUIT
@@ -86,7 +86,7 @@ const ID_QUIT = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-removebots-const-id-removebots-12-src-mq3-client-ui-ingame-ml-702148022"></a>
 ### ID_REMOVEBOTS
@@ -96,7 +96,7 @@ const ID_REMOVEBOTS = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-restart-const-id-restart-16-src-mq3-client-ui-ingame-ml-360396238"></a>
 ### ID_RESTART
@@ -106,7 +106,7 @@ const ID_RESTART = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-resume-const-id-resume-18-src-mq3-client-ui-ingame-ml-958692892"></a>
 ### ID_RESUME
@@ -116,7 +116,7 @@ const ID_RESUME = 18
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-serverinfo-const-id-serverinfo-14-src-mq3-client-ui-ingame-ml-1293581944"></a>
 ### ID_SERVERINFO
@@ -126,7 +126,7 @@ const ID_SERVERINFO = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-setup-const-id-setup-13-src-mq3-client-ui-ingame-ml-180028533"></a>
 ### ID_SETUP
@@ -136,7 +136,7 @@ const ID_SETUP = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-team-const-id-team-10-src-mq3-client-ui-ingame-ml-124356368"></a>
 ### ID_TEAM
@@ -146,7 +146,7 @@ const ID_TEAM = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-ingame-id-teamorders-const-id-teamorders-19-src-mq3-client-ui-ingame-ml-66283927"></a>
 ### ID_TEAMORDERS
@@ -156,7 +156,7 @@ const ID_TEAMORDERS = 19
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-ingame-ingame-frame-const-ingame-frame-menu-art-addbotframe-src-mq3-client-ui-ingame-ml-2132146860"></a>
 ### INGAME_FRAME
@@ -166,7 +166,7 @@ const INGAME_FRAME = "menu/art/addbotframe"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L20)
 
 - [mq3.client.ui_ingame.InGameItem](Type-mq3-client-ui-ingame-ingameitem-1439382987.md) — struct
 - [mq3.client.ui_ingame.InGameMenu](Type-mq3-client-ui-ingame-ingamemenu-1969074347.md) — struct
@@ -187,7 +187,7 @@ InGame_MenuInit
 | `playerTeam` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L59)
 
 <a id="function-function-mq3-client-ui-ingame-open-function-open-serverrunning-botenable-gametype-playerteam-src-mq3-client-ui-ingame-ml-1831280496"></a>
 ### open
@@ -206,7 +206,7 @@ UI_InGameMenu
 | `playerTeam` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L78)
 
 <a id="constant-constant-mq3-client-ui-ingame-qm-activated-const-qm-activated-3-src-mq3-client-ui-ingame-ml-156422168"></a>
 ### QM_ACTIVATED
@@ -216,7 +216,7 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L6)
 
 <a id="function-function-mq3-client-ui-ingame-quitaction-function-quitaction-menu-result-src-mq3-client-ui-ingame-ml-1602470552"></a>
 ### quitAction
@@ -233,7 +233,7 @@ InGame_QuitAction
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L34)
 
 <a id="function-function-mq3-client-ui-ingame-restartaction-function-restartaction-menu-result-src-mq3-client-ui-ingame-ml-1874227270"></a>
 ### restartAction
@@ -250,7 +250,7 @@ InGame_RestartAction
 | `result` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-ingame-team-spectator-const-team-spectator-3-src-mq3-client-ui-ingame-ml-1484767946"></a>
 ### TEAM_SPECTATOR
@@ -260,4 +260,4 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L9)

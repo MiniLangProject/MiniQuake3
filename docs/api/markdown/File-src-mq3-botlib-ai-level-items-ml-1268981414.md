@@ -24,7 +24,7 @@ const AREACONTENTS_JUMPPAD = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L23)
 
 <a id="function-function-mq3-botlib-ai-level-items-bind-function-bind-state-entities-aas-bspentities-gametype-callbackcontext-placefn-src-mq3-botlib-ai-level-items-ml-2016316342"></a>
 ### bind
@@ -44,7 +44,7 @@ function bind(state, entities, aas, bspEntities, gameType, callbackContext, plac
 | `placeFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L32)
 
 - [mq3.botlib.ai_level_items.BotLevelItem](Type-mq3-botlib-ai-level-items-botlevelitem-802190352.md) — struct
 <a id="function-function-mq3-botlib-ai-level-items-copyvector-function-copyvector-value-src-mq3-botlib-ai-level-items-ml-291229009"></a>
@@ -59,7 +59,7 @@ function copyVector(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-level-items-create-function-create-itemruntime-src-mq3-botlib-ai-level-items-ml-409833397"></a>
 ### create
@@ -73,7 +73,7 @@ function create(itemRuntime)
 | `itemRuntime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-level-items-currenttime-function-currenttime-state-src-mq3-botlib-ai-level-items-ml-1232350941"></a>
 ### currentTime
@@ -87,7 +87,7 @@ function currentTime(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L114)
 
 <a id="function-function-mq3-botlib-ai-level-items-defaultplace-function-defaultplace-state-origin-mins-maxs-floating-src-mq3-botlib-ai-level-items-ml-763670723"></a>
 ### defaultPlace
@@ -105,7 +105,7 @@ function defaultPlace(state, origin, mins, maxs, floating)
 | `floating` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L51)
 
 <a id="function-function-mq3-botlib-ai-level-items-distance-function-distance-a-b-src-mq3-botlib-ai-level-items-ml-1600235779"></a>
 ### distance
@@ -120,7 +120,7 @@ function distance(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L48)
 
 <a id="function-function-mq3-botlib-ai-level-items-epair-function-epair-state-entity-key-src-mq3-botlib-ai-level-items-ml-1204007435"></a>
 ### epair
@@ -136,7 +136,7 @@ function epair(state, entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L38)
 
 <a id="function-function-mq3-botlib-ai-level-items-equalvector-function-equalvector-a-b-src-mq3-botlib-ai-level-items-ml-2019471513"></a>
 ### equalVector
@@ -151,7 +151,7 @@ function equalVector(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L47)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-et-item-const-et-item-2-src-mq3-botlib-ai-level-items-ml-796655751"></a>
 ### ET_ITEM
@@ -161,7 +161,7 @@ const ET_ITEM = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L15)
 
 <a id="function-function-mq3-botlib-ai-level-items-findclass-function-findclass-items-classname-src-mq3-botlib-ai-level-items-ml-58823217"></a>
 ### findClass
@@ -176,7 +176,7 @@ function findClass(items, classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L45)
 
 <a id="function-function-mq3-botlib-ai-level-items-findmodel-function-findmodel-items-modelindex-src-mq3-botlib-ai-level-items-ml-1285305087"></a>
 ### findModel
@@ -191,7 +191,7 @@ function findModel(items, modelIndex)
 | `modelIndex` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L46)
 
 <a id="function-function-mq3-botlib-ai-level-items-goalname-function-goalname-state-number-src-mq3-botlib-ai-level-items-ml-190896992"></a>
 ### goalName
@@ -206,7 +206,7 @@ function goalName(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L156)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-gt-single-player-const-gt-single-player-2-src-mq3-botlib-ai-level-items-ml-1661136213"></a>
 ### GT_SINGLE_PLAYER
@@ -216,7 +216,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L16)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-gt-team-const-gt-team-3-src-mq3-botlib-ai-level-items-ml-676450362"></a>
 ### GT_TEAM
@@ -226,7 +226,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L17)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-ifl-notbot-const-ifl-notbot-8-src-mq3-botlib-ai-level-items-ml-1029173839"></a>
 ### IFL_NOTBOT
@@ -236,7 +236,7 @@ const IFL_NOTBOT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L21)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-ifl-notfree-const-ifl-notfree-1-src-mq3-botlib-ai-level-items-ml-1069787888"></a>
 ### IFL_NOTFREE
@@ -246,7 +246,7 @@ const IFL_NOTFREE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L18)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-ifl-notsingle-const-ifl-notsingle-4-src-mq3-botlib-ai-level-items-ml-1139947565"></a>
 ### IFL_NOTSINGLE
@@ -256,7 +256,7 @@ const IFL_NOTSINGLE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L20)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-ifl-notteam-const-ifl-notteam-2-src-mq3-botlib-ai-level-items-ml-1472570363"></a>
 ### IFL_NOTTEAM
@@ -266,7 +266,7 @@ const IFL_NOTTEAM = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L19)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-ifl-roam-const-ifl-roam-16-src-mq3-botlib-ai-level-items-ml-510748128"></a>
 ### IFL_ROAM
@@ -276,7 +276,7 @@ const IFL_ROAM = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L22)
 
 <a id="function-function-mq3-botlib-ai-level-items-initialize-function-initialize-state-src-mq3-botlib-ai-level-items-ml-1777088133"></a>
 ### initialize
@@ -290,7 +290,7 @@ function initialize(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L84)
 
 <a id="function-function-mq3-botlib-ai-level-items-intepair-function-intepair-state-entity-key-src-mq3-botlib-ai-level-items-ml-389308605"></a>
 ### intEpair
@@ -306,7 +306,7 @@ function intEpair(state, entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L43)
 
 <a id="function-function-mq3-botlib-ai-level-items-jumppadarea-function-jumppadarea-state-area-src-mq3-botlib-ai-level-items-ml-1746520964"></a>
 ### jumpPadArea
@@ -321,7 +321,7 @@ function jumpPadArea(state, area)
 | `area` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L115)
 
 - [mq3.botlib.ai_level_items.LevelItemRuntime](Type-mq3-botlib-ai-level-items-levelitemruntime-1611641085.md) — struct
 <a id="constant-constant-mq3-botlib-ai-level-items-max-level-items-const-max-level-items-256-src-mq3-botlib-ai-level-items-ml-58997490"></a>
@@ -332,7 +332,7 @@ const MAX_LEVEL_ITEMS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-op-init-level-items-const-op-init-level-items-541-src-mq3-botlib-ai-level-items-ml-572939857"></a>
 ### OP_INIT_LEVEL_ITEMS
@@ -342,7 +342,7 @@ const OP_INIT_LEVEL_ITEMS = 541
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-level-items-op-update-entity-items-const-op-update-entity-items-542-src-mq3-botlib-ai-level-items-ml-1508249652"></a>
 ### OP_UPDATE_ENTITY_ITEMS
@@ -352,7 +352,7 @@ const OP_UPDATE_ENTITY_ITEMS = 542
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L13)
 
 <a id="function-function-mq3-botlib-ai-level-items-permitted-function-permitted-state-item-src-mq3-botlib-ai-level-items-ml-126536154"></a>
 ### permitted
@@ -367,7 +367,7 @@ function permitted(state, item)
 | `item` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L79)
 
 <a id="function-function-mq3-botlib-ai-level-items-place-function-place-state-origin-mins-maxs-floating-src-mq3-botlib-ai-level-items-ml-382426133"></a>
 ### place
@@ -385,7 +385,7 @@ function place(state, origin, mins, maxs, floating)
 | `floating` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L75)
 
 <a id="function-function-mq3-botlib-ai-level-items-removeat-function-removeat-values-index-src-mq3-botlib-ai-level-items-ml-1013167650"></a>
 ### removeAt
@@ -400,7 +400,7 @@ function removeAt(values, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L108)
 
 <a id="function-function-mq3-botlib-ai-level-items-setgametype-function-setgametype-state-value-src-mq3-botlib-ai-level-items-ml-862523202"></a>
 ### setGameType
@@ -415,7 +415,7 @@ function setGameType(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L37)
 
 <a id="function-function-mq3-botlib-ai-level-items-shutdown-function-shutdown-state-src-mq3-botlib-ai-level-items-ml-49861629"></a>
 ### shutdown
@@ -429,7 +429,7 @@ function shutdown(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L155)
 
 <a id="function-function-mq3-botlib-ai-level-items-update-function-update-state-src-mq3-botlib-ai-level-items-ml-58784257"></a>
 ### update
@@ -443,7 +443,7 @@ function update(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L119)
 
 <a id="function-function-mq3-botlib-ai-level-items-vectorepair-function-vectorepair-state-entity-key-src-mq3-botlib-ai-level-items-ml-80590433"></a>
 ### vectorEpair
@@ -459,4 +459,4 @@ function vectorEpair(state, entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_level_items.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_level_items.ml#L44)

@@ -21,7 +21,7 @@ const BYTE_SIZE = 208
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entitystate.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L7)
 
 <a id="function-function-mq3-game-entitystate-copy-function-copy-source-src-mq3-game-entitystate-ml-172337713"></a>
 ### copy
@@ -35,7 +35,7 @@ function copy(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entitystate.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L126)
 
 <a id="function-function-mq3-game-entitystate-create-function-create-src-mq3-game-entitystate-ml-1222851506"></a>
 ### create
@@ -45,7 +45,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entitystate.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L39)
 
 - [mq3.game.entitystate.EntityState](Type-mq3-game-entitystate-entitystate-2108234152.md) — struct
 <a id="function-function-mq3-game-entitystate-load-function-load-data-offset-src-mq3-game-entitystate-ml-212007151"></a>
@@ -61,7 +61,7 @@ function load(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entitystate.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L43)
 
 <a id="function-function-mq3-game-entitystate-words-function-words-state-src-mq3-game-entitystate-ml-2096263879"></a>
 ### words
@@ -75,4 +75,4 @@ function words(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/entitystate.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/entitystate.ml#L85)

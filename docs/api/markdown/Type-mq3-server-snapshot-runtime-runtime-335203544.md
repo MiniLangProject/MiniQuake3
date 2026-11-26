@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ buildWorld
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)
 
 <a id="field-field-mq3-server-snapshot-runtime-runtime-scene-scene-src-mq3-server-snapshot-runtime-ml-1403573657"></a>
 ### scene
@@ -32,4 +32,4 @@ scene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_runtime.ml#L11)

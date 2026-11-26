@@ -10,7 +10,7 @@ struct Dll
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L35)
 
 ## Members
 
@@ -22,7 +22,7 @@ entryPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L35)
 
 <a id="field-field-mq3-platform-win-main-runtime-dll-handle-handle-src-mq3-platform-win-main-runtime-ml-1375517641"></a>
 ### handle
@@ -32,7 +32,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L35)
 
 <a id="field-field-mq3-platform-win-main-runtime-dll-path-path-src-mq3-platform-win-main-runtime-ml-801766839"></a>
 ### path
@@ -42,4 +42,4 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_main_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_main_runtime.ml#L35)

@@ -10,7 +10,7 @@ struct Cluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstPortal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-cluster-numareas-numareas-src-mq3-format-aas-ml-793936947"></a>
 ### numAreas
@@ -32,7 +32,7 @@ numAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-cluster-numportals-numportals-src-mq3-format-aas-ml-614413477"></a>
 ### numPortals
@@ -42,7 +42,7 @@ numPortals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)
 
 <a id="field-field-mq3-format-aas-cluster-numreachabilityareas-numreachabilityareas-src-mq3-format-aas-ml-935968185"></a>
 ### numReachabilityAreas
@@ -52,4 +52,4 @@ numReachabilityAreas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L124)

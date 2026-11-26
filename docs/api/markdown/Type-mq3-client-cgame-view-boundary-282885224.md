@@ -10,7 +10,7 @@ struct Boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 ## Members
 
@@ -22,7 +22,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 <a id="field-field-mq3-client-cgame-view-boundary-domain-domain-src-mq3-client-cgame-view-ml-1921435667"></a>
 ### domain
@@ -32,7 +32,7 @@ domain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 <a id="field-field-mq3-client-cgame-view-boundary-entity-entity-src-mq3-client-cgame-view-ml-904403629"></a>
 ### entity
@@ -42,7 +42,7 @@ entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 <a id="field-field-mq3-client-cgame-view-boundary-kind-kind-src-mq3-client-cgame-view-ml-1505974463"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 <a id="field-field-mq3-client-cgame-view-boundary-sound-sound-src-mq3-client-cgame-view-ml-673305283"></a>
 ### sound
@@ -62,7 +62,7 @@ sound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)
 
 <a id="field-field-mq3-client-cgame-view-boundary-value-value-src-mq3-client-cgame-view-ml-599061307"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L52)

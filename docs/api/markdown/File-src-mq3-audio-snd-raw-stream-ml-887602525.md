@@ -24,7 +24,7 @@ function create(outputRate)
 | `outputRate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L14)
 
 <a id="function-function-mq3-audio-snd-raw-stream-enqueue-function-enqueue-state-samples-rate-width-channels-data-volume-src-mq3-audio-snd-raw-stream-ml-312154458"></a>
 ### enqueue
@@ -46,7 +46,7 @@ This follows the four conversion branches in Baseq3 S_RawSamples. Values in the 
 | `volume` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L36)
 
 <a id="function-function-mq3-audio-snd-raw-stream-fail-function-fail-message-src-mq3-audio-snd-raw-stream-ml-639360575"></a>
 ### fail
@@ -60,7 +60,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L12)
 
 <a id="constant-constant-mq3-audio-snd-raw-stream-max-raw-samples-const-max-raw-samples-16384-src-mq3-audio-snd-raw-stream-ml-1698501557"></a>
 ### MAX_RAW_SAMPLES
@@ -70,7 +70,7 @@ const MAX_RAW_SAMPLES = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L7)
 
 <a id="function-function-mq3-audio-snd-raw-stream-paint-function-paint-state-paint-paintedtime-count-src-mq3-audio-snd-raw-stream-ml-713937664"></a>
 ### paint
@@ -87,7 +87,7 @@ function paint(state, paint, paintedTime, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L63)
 
 <a id="constant-constant-mq3-audio-snd-raw-stream-raw-mask-const-raw-mask-max-raw-samples-1-src-mq3-audio-snd-raw-stream-ml-220092758"></a>
 ### RAW_MASK
@@ -97,7 +97,7 @@ const RAW_MASK = MAX_RAW_SAMPLES - 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L8)
 
 <a id="function-function-mq3-audio-snd-raw-stream-setsoundtime-function-setsoundtime-state-value-src-mq3-audio-snd-raw-stream-ml-539061822"></a>
 ### setSoundTime
@@ -112,7 +112,7 @@ function setSoundTime(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L24)
 
 <a id="function-function-mq3-audio-snd-raw-stream-signed16-function-signed16-data-offset-src-mq3-audio-snd-raw-stream-ml-1429358529"></a>
 ### signed16
@@ -127,7 +127,7 @@ function signed16(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L19)
 
 <a id="function-function-mq3-audio-snd-raw-stream-signed8-function-signed8-value-src-mq3-audio-snd-raw-stream-ml-1293818497"></a>
 ### signed8
@@ -141,7 +141,7 @@ function signed8(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L22)
 
 - [mq3.audio.snd_raw_stream.State](Type-mq3-audio-snd-raw-stream-state-159305234.md) — struct
 <a id="function-function-mq3-audio-snd-raw-stream-store-function-store-state-left-right-src-mq3-audio-snd-raw-stream-ml-948912280"></a>
@@ -158,4 +158,4 @@ function store(state, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_raw_stream.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_raw_stream.ml#L29)

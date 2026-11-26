@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L12)
 
 <a id="field-field-mq3-renderer-playable-dynamic-lights-catalog-textureslot-textureslot-src-mq3-renderer-playable-dynamic-lights-ml-1802688376"></a>
 ### textureSlot
@@ -32,4 +32,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_dynamic_lights.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_dynamic_lights.ml#L12)

@@ -10,7 +10,7 @@ struct MenuFramework
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 ## Members
 
@@ -22,7 +22,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-cursor-prev-cursor-prev-src-mq3-client-ui-local-ml-2033461346"></a>
 ### cursor_prev
@@ -32,7 +32,7 @@ cursor_prev
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-draw-draw-src-mq3-client-ui-local-ml-1570928322"></a>
 ### draw
@@ -42,7 +42,7 @@ draw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-fullscreen-fullscreen-src-mq3-client-ui-local-ml-629038576"></a>
 ### fullscreen
@@ -52,7 +52,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-items-items-src-mq3-client-ui-local-ml-735485510"></a>
 ### items
@@ -62,7 +62,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-key-key-src-mq3-client-ui-local-ml-1064833510"></a>
 ### key
@@ -72,7 +72,7 @@ key
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-nitems-nitems-src-mq3-client-ui-local-ml-211500722"></a>
 ### nitems
@@ -82,7 +82,7 @@ nitems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-showlogo-showlogo-src-mq3-client-ui-local-ml-502368162"></a>
 ### showlogo
@@ -92,7 +92,7 @@ showlogo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)
 
 <a id="field-field-mq3-client-ui-local-menuframework-wraparound-wraparound-src-mq3-client-ui-local-ml-578803536"></a>
 ### wrapAround
@@ -102,4 +102,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L60)

@@ -25,7 +25,7 @@ const AWARD_MASK = 231496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L12)
 
 <a id="function-function-mq3-game-team-bonuses-awarddefense-function-awarddefense-level-attacker-src-mq3-game-team-bonuses-ml-462576133"></a>
 ### awardDefense
@@ -40,7 +40,7 @@ function awardDefense(level, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L40)
 
 <a id="function-function-mq3-game-team-bonuses-delta-function-delta-first-second-src-mq3-game-team-bonuses-ml-146349358"></a>
 ### delta
@@ -55,7 +55,7 @@ function delta(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L37)
 
 <a id="function-function-mq3-game-team-bonuses-findclass-function-findclass-level-after-name-src-mq3-game-team-bonuses-ml-1420871411"></a>
 ### findClass
@@ -71,7 +71,7 @@ function findClass(level, after, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L28)
 
 <a id="function-function-mq3-game-team-bonuses-fragbonuses-function-fragbonuses-level-targ-inflictor-attacker-src-mq3-game-team-bonuses-ml-1630771183"></a>
 ### fragBonuses
@@ -88,7 +88,7 @@ function fragBonuses(level, targ, inflictor, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L50)
 
 <a id="function-function-mq3-game-team-bonuses-message-function-message-level-text-src-mq3-game-team-bonuses-ml-1410032999"></a>
 ### message
@@ -103,7 +103,7 @@ function message(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L45)
 
 <a id="function-function-mq3-game-team-bonuses-otherteam-function-otherteam-team-src-mq3-game-team-bonuses-ml-1527042505"></a>
 ### otherTeam
@@ -117,7 +117,7 @@ function otherTeam(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L13)
 
 <a id="function-function-mq3-game-team-bonuses-sameteam-function-sameteam-level-first-second-src-mq3-game-team-bonuses-ml-1549869034"></a>
 ### sameTeam
@@ -133,7 +133,7 @@ function sameTeam(level, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L24)
 
 <a id="function-function-mq3-game-team-bonuses-teamname-function-teamname-team-src-mq3-game-team-bonuses-ml-1028922971"></a>
 ### teamName
@@ -147,4 +147,4 @@ function teamName(team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/team_bonuses.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/team_bonuses.ml#L18)

@@ -35,7 +35,7 @@ const AWARD_MASK = 231496
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L22)
 
 <a id="function-function-mq3-game-deaths-checkalmostcapture-function-checkalmostcapture-level-self-attacker-src-mq3-game-deaths-ml-1788149207"></a>
 ### checkAlmostCapture
@@ -51,7 +51,7 @@ function checkAlmostCapture(level, self, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L35)
 
 <a id="function-function-mq3-game-deaths-checkalmostscored-function-checkalmostscored-level-self-attacker-src-mq3-game-deaths-ml-783437991"></a>
 ### checkAlmostScored
@@ -67,7 +67,7 @@ function checkAlmostScored(level, self, attacker)
 | `attacker` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L56)
 
 <a id="function-function-mq3-game-deaths-clearaward-function-clearaward-client-award-level-src-mq3-game-deaths-ml-1371742756"></a>
 ### clearAward
@@ -83,7 +83,7 @@ function clearAward(client, award, level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L141)
 
 <a id="function-function-mq3-game-deaths-distance-function-distance-first-second-src-mq3-game-deaths-ml-1182187134"></a>
 ### distance
@@ -98,7 +98,7 @@ function distance(first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L32)
 
 <a id="function-function-mq3-game-deaths-dropitem-function-dropitem-level-self-item-angle-src-mq3-game-deaths-ml-1355237816"></a>
 ### dropItem
@@ -115,7 +115,7 @@ function dropItem(level, self, item, angle)
 | `angle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L89)
 
 <a id="function-function-mq3-game-deaths-findclass-function-findclass-level-after-name-src-mq3-game-deaths-ml-889749183"></a>
 ### findClass
@@ -131,7 +131,7 @@ function findClass(level, after, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L23)
 
 <a id="function-function-mq3-game-deaths-modepowerupitem-function-modepowerupitem-level-powerup-src-mq3-game-deaths-ml-1268025584"></a>
 ### modePowerupItem
@@ -146,7 +146,7 @@ function modePowerupItem(level, powerup)
 | `powerup` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L81)
 
 <a id="function-function-mq3-game-deaths-modname-function-modname-level-mod-src-mq3-game-deaths-ml-1189746178"></a>
 ### modName
@@ -161,7 +161,7 @@ function modName(level, mod)
 | `mod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L131)
 
 <a id="function-function-mq3-game-deaths-playerdie-function-playerdie-level-self-inflictor-attacker-damage-meansofdeath-src-mq3-game-deaths-ml-1742369275"></a>
 ### playerDie
@@ -180,7 +180,7 @@ function playerDie(level, self, inflictor, attacker, damage, meansOfDeath)
 | `meansOfDeath` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L145)
 
 <a id="function-function-mq3-game-deaths-powerupitem-function-powerupitem-powerup-src-mq3-game-deaths-ml-1859840626"></a>
 ### powerupItem
@@ -194,7 +194,7 @@ function powerupItem(powerup)
 | `powerup` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L75)
 
 <a id="function-function-mq3-game-deaths-respawn-function-respawn-level-ent-src-mq3-game-deaths-ml-339821493"></a>
 ### respawn
@@ -209,7 +209,7 @@ function respawn(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L213)
 
 <a id="function-function-mq3-game-deaths-returncarriedflag-function-returncarriedflag-level-self-clear-src-mq3-game-deaths-ml-2061024955"></a>
 ### returnCarriedFlag
@@ -225,7 +225,7 @@ function returnCarriedFlag(level, self, clear)
 | `clear` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L124)
 
 <a id="function-function-mq3-game-deaths-returnflag-function-returnflag-level-team-src-mq3-game-deaths-ml-1024748747"></a>
 ### returnFlag
@@ -240,7 +240,7 @@ function returnFlag(level, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L120)
 
 <a id="function-function-mq3-game-deaths-sameteam-function-sameteam-level-first-second-src-mq3-game-deaths-ml-410053102"></a>
 ### sameTeam
@@ -256,7 +256,7 @@ function sameTeam(level, first, second)
 | `second` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L137)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L137)
 
 <a id="function-function-mq3-game-deaths-tossclientitems-function-tossclientitems-level-self-src-mq3-game-deaths-ml-721790772"></a>
 ### tossClientItems
@@ -271,7 +271,7 @@ function tossClientItems(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L93)
 
 <a id="function-function-mq3-game-deaths-weaponitem-function-weaponitem-weapon-src-mq3-game-deaths-ml-688498706"></a>
 ### weaponItem
@@ -285,4 +285,4 @@ function weaponItem(weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/deaths.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/deaths.ml#L67)

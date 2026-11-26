@@ -10,7 +10,7 @@ struct EntityInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L61)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L61)
 
 <a id="field-field-mq3-game-bot-combat-ai-entityinfo-number-number-src-mq3-game-bot-combat-ai-ml-714897256"></a>
 ### number
@@ -32,7 +32,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L61)
 
 <a id="field-field-mq3-game-bot-combat-ai-entityinfo-powerups-powerups-src-mq3-game-bot-combat-ai-ml-1981535644"></a>
 ### powerups
@@ -42,4 +42,4 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L61)

@@ -10,7 +10,7 @@ struct MacroExpansion
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ invoked
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
 
 <a id="field-field-mq3-vm-pc-parser-macroexpansion-tokens-tokens-src-mq3-vm-pc-parser-ml-682897804"></a>
 ### tokens
@@ -32,7 +32,7 @@ tokens
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)
 
 <a id="field-field-mq3-vm-pc-parser-macroexpansion-valid-valid-src-mq3-vm-pc-parser-ml-1158855120"></a>
 ### valid
@@ -42,4 +42,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L29)

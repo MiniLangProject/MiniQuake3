@@ -10,7 +10,7 @@ struct PlayerSample
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)
 
 ## Members
 
@@ -22,7 +22,7 @@ lower
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)
 
 <a id="field-field-mq3-format-player-animation-playersample-upper-upper-src-mq3-format-player-animation-ml-1604223282"></a>
 ### upper
@@ -32,4 +32,4 @@ upper
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L35)

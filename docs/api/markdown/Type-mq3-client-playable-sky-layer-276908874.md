@@ -10,7 +10,7 @@ struct Layer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ additive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-image-image-src-mq3-client-playable-sky-ml-453533658"></a>
 ### image
@@ -32,7 +32,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-imagename-imagename-src-mq3-client-playable-sky-ml-1430708666"></a>
 ### imageName
@@ -42,7 +42,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-scaleu-scaleu-src-mq3-client-playable-sky-ml-1736240452"></a>
 ### scaleU
@@ -52,7 +52,7 @@ scaleU
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-scalev-scalev-src-mq3-client-playable-sky-ml-338273626"></a>
 ### scaleV
@@ -62,7 +62,7 @@ scaleV
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-scrollu-scrollu-src-mq3-client-playable-sky-ml-945318554"></a>
 ### scrollU
@@ -72,7 +72,7 @@ scrollU
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-scrollv-scrollv-src-mq3-client-playable-sky-ml-975907198"></a>
 ### scrollV
@@ -82,7 +82,7 @@ scrollV
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)
 
 <a id="field-field-mq3-client-playable-sky-layer-slot-slot-src-mq3-client-playable-sky-ml-1395196614"></a>
 ### slot
@@ -92,4 +92,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_sky.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_sky.ml#L26)

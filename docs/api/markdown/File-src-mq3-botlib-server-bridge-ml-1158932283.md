@@ -30,7 +30,7 @@ function clientAt(state, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L27)
 
 - [mq3.botlib.server_bridge.ConsoleResult](Type-mq3-botlib-server-bridge-consoleresult-1221046679.md) — struct
 <a id="function-function-mq3-botlib-server-bridge-create-function-create-maxclients-src-mq3-botlib-server-bridge-ml-1172272276"></a>
@@ -45,7 +45,7 @@ function create(maxClients)
 | `maxClients` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L23)
 
 <a id="function-function-mq3-botlib-server-bridge-dispatch-function-dispatch-state-vm-base-op-src-mq3-botlib-server-bridge-ml-1930759874"></a>
 ### dispatch
@@ -62,7 +62,7 @@ function dispatch(state, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L76)
 
 <a id="function-function-mq3-botlib-server-bridge-emptyclient-function-emptyclient-src-mq3-botlib-server-bridge-ml-571462182"></a>
 ### emptyClient
@@ -72,7 +72,7 @@ function emptyClient()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L22)
 
 <a id="constant-constant-mq3-botlib-server-bridge-max-reliable-commands-const-max-reliable-commands-64-src-mq3-botlib-server-bridge-ml-1434598463"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -82,7 +82,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L15)
 
 <a id="function-function-mq3-botlib-server-bridge-nextconsolemessage-function-nextconsolemessage-state-client-src-mq3-botlib-server-bridge-ml-76199330"></a>
 ### nextConsoleMessage
@@ -97,7 +97,7 @@ function nextConsoleMessage(state, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L57)
 
 <a id="constant-constant-mq3-botlib-server-bridge-op-get-console-message-const-op-get-console-message-210-src-mq3-botlib-server-bridge-ml-995701754"></a>
 ### OP_GET_CONSOLE_MESSAGE
@@ -107,7 +107,7 @@ const OP_GET_CONSOLE_MESSAGE = 210
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L13)
 
 <a id="constant-constant-mq3-botlib-server-bridge-op-get-snapshot-entity-const-op-get-snapshot-entity-209-src-mq3-botlib-server-bridge-ml-1174500334"></a>
 ### OP_GET_SNAPSHOT_ENTITY
@@ -117,7 +117,7 @@ const OP_GET_SNAPSHOT_ENTITY = 209
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L12)
 
 <a id="constant-constant-mq3-botlib-server-bridge-op-user-command-const-op-user-command-211-src-mq3-botlib-server-bridge-ml-160984627"></a>
 ### OP_USER_COMMAND
@@ -127,7 +127,7 @@ const OP_USER_COMMAND = 211
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L14)
 
 <a id="function-function-mq3-botlib-server-bridge-publishsnapshot-function-publishsnapshot-state-client-entities-src-mq3-botlib-server-bridge-ml-292069257"></a>
 ### publishSnapshot
@@ -143,7 +143,7 @@ function publishSnapshot(state, client, entities)
 | `entities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L35)
 
 <a id="function-function-mq3-botlib-server-bridge-queueconsolemessage-function-queueconsolemessage-state-client-text-src-mq3-botlib-server-bridge-ml-1087755257"></a>
 ### queueConsoleMessage
@@ -159,7 +159,7 @@ function queueConsoleMessage(state, client, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L49)
 
 <a id="function-function-mq3-botlib-server-bridge-readusercommand-function-readusercommand-vm-address-src-mq3-botlib-server-bridge-ml-591768785"></a>
 ### readUserCommand
@@ -174,7 +174,7 @@ function readUserCommand(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L64)
 
 <a id="function-function-mq3-botlib-server-bridge-resetclient-function-resetclient-state-client-src-mq3-botlib-server-bridge-ml-663209962"></a>
 ### resetClient
@@ -189,7 +189,7 @@ function resetClient(state, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L31)
 
 <a id="function-function-mq3-botlib-server-bridge-settime-function-settime-state-time-src-mq3-botlib-server-bridge-ml-1904968210"></a>
 ### setTime
@@ -204,7 +204,7 @@ function setTime(state, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L30)
 
 <a id="function-function-mq3-botlib-server-bridge-signedbyte-function-signedbyte-value-src-mq3-botlib-server-bridge-ml-2001072471"></a>
 ### signedByte
@@ -218,7 +218,7 @@ function signedByte(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L63)
 
 <a id="function-function-mq3-botlib-server-bridge-snapshotentity-function-snapshotentity-state-client-sequence-src-mq3-botlib-server-bridge-ml-1534910289"></a>
 ### snapshotEntity
@@ -234,7 +234,7 @@ function snapshotEntity(state, client, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L41)
 
 <a id="function-function-mq3-botlib-server-bridge-snapshotentitystate-function-snapshotentitystate-state-client-sequence-src-mq3-botlib-server-bridge-ml-56487913"></a>
 ### snapshotEntityState
@@ -250,7 +250,7 @@ function snapshotEntityState(state, client, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L45)
 
 - [mq3.botlib.server_bridge.State](Type-mq3-botlib-server-bridge-state-1834066986.md) — struct
 <a id="function-function-mq3-botlib-server-bridge-submitusercommand-function-submitusercommand-state-client-command-src-mq3-botlib-server-bridge-ml-1832230695"></a>
@@ -267,7 +267,7 @@ function submitUserCommand(state, client, command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L68)
 
 <a id="function-function-mq3-botlib-server-bridge-takepending-function-takepending-state-src-mq3-botlib-server-bridge-ml-1556686507"></a>
 ### takePending
@@ -281,7 +281,7 @@ function takePending(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L72)
 
 <a id="constant-constant-mq3-botlib-server-bridge-usercmd-size-const-usercmd-size-24-src-mq3-botlib-server-bridge-ml-1311203347"></a>
 ### USERCMD_SIZE
@@ -291,4 +291,4 @@ const USERCMD_SIZE = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/server_bridge.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/server_bridge.ml#L16)

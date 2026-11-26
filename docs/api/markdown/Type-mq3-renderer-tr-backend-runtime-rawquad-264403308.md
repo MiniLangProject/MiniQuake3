@@ -10,7 +10,7 @@ struct RawQuad
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L46)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L46)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawquad-positions-positions-src-mq3-renderer-tr-backend-runtime-ml-706047634"></a>
 ### positions
@@ -32,7 +32,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L46)
 
 <a id="field-field-mq3-renderer-tr-backend-runtime-rawquad-texcoords-texcoords-src-mq3-renderer-tr-backend-runtime-ml-2114623434"></a>
 ### texCoords
@@ -42,4 +42,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_backend_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_backend_runtime.ml#L46)

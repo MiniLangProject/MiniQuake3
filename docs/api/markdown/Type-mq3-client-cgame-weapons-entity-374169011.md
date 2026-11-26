@@ -10,7 +10,7 @@ struct Entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 ## Members
 
@@ -22,7 +22,7 @@ angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-barrel-barrel-src-mq3-client-cgame-weapons-ml-828085210"></a>
 ### barrel
@@ -32,7 +32,7 @@ barrel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-clientnum-clientnum-src-mq3-client-cgame-weapons-ml-135282710"></a>
 ### clientNum
@@ -42,7 +42,7 @@ clientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-currentvalid-currentvalid-src-mq3-client-cgame-weapons-ml-2116755292"></a>
 ### currentValid
@@ -52,7 +52,7 @@ currentValid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-eflags-eflags-src-mq3-client-cgame-weapons-ml-893495042"></a>
 ### eFlags
@@ -62,7 +62,7 @@ eFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-legsanim-legsanim-src-mq3-client-cgame-weapons-ml-784370354"></a>
 ### legsAnim
@@ -72,7 +72,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-lightningfiring-lightningfiring-src-mq3-client-cgame-weapons-ml-255287846"></a>
 ### lightningFiring
@@ -82,7 +82,7 @@ lightningFiring
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-muzzleflashtime-muzzleflashtime-src-mq3-client-cgame-weapons-ml-573068450"></a>
 ### muzzleFlashTime
@@ -92,7 +92,7 @@ muzzleFlashTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-number-number-src-mq3-client-cgame-weapons-ml-532124288"></a>
 ### number
@@ -102,7 +102,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-origin-origin-src-mq3-client-cgame-weapons-ml-794015542"></a>
 ### origin
@@ -112,7 +112,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-powerups-powerups-src-mq3-client-cgame-weapons-ml-447938520"></a>
 ### powerups
@@ -122,7 +122,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-railgunflash-railgunflash-src-mq3-client-cgame-weapons-ml-1398584842"></a>
 ### railgunFlash
@@ -132,7 +132,7 @@ railgunFlash
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-railgunimpact-railgunimpact-src-mq3-client-cgame-weapons-ml-1341125106"></a>
 ### railgunImpact
@@ -142,7 +142,7 @@ railgunImpact
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-trailtime-trailtime-src-mq3-client-cgame-weapons-ml-1128907354"></a>
 ### trailTime
@@ -152,7 +152,7 @@ trailTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)
 
 <a id="field-field-mq3-client-cgame-weapons-entity-weapon-weapon-src-mq3-client-cgame-weapons-ml-814311274"></a>
 ### weapon
@@ -162,4 +162,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L56)

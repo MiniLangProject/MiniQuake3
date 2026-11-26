@@ -10,7 +10,7 @@ struct StagePass
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ batch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-clamptime-clamptime-src-mq3-renderer-qvm-2d-batch-ml-29949888"></a>
 ### clampTime
@@ -32,7 +32,7 @@ clampTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-dynamic-dynamic-src-mq3-renderer-qvm-2d-batch-ml-1833644104"></a>
 ### dynamic
@@ -42,7 +42,7 @@ dynamic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-initialized-initialized-src-mq3-renderer-qvm-2d-batch-ml-1045244240"></a>
 ### initialized
@@ -52,7 +52,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-stage-stage-src-mq3-renderer-qvm-2d-batch-ml-1850765824"></a>
 ### stage
@@ -62,7 +62,7 @@ stage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-timeoffset-timeoffset-src-mq3-renderer-qvm-2d-batch-ml-945454272"></a>
 ### timeOffset
@@ -72,7 +72,7 @@ timeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-stagepass-triangles-triangles-src-mq3-renderer-qvm-2d-batch-ml-1139742248"></a>
 ### triangles
@@ -82,4 +82,4 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L24)

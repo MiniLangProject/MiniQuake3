@@ -32,7 +32,7 @@ function addAward(value, medal, amount, logged)
 | `logged` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L110)
 
 <a id="function-function-mq3-client-ui-sppostgame-arg-function-arg-argv-index-src-mq3-client-ui-sppostgame-ml-386536126"></a>
 ### arg
@@ -47,7 +47,7 @@ function arg(argv, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L113)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-accuracy-const-award-accuracy-0-src-mq3-client-ui-sppostgame-ml-461640015"></a>
 ### AWARD_ACCURACY
@@ -57,7 +57,7 @@ const AWARD_ACCURACY = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-excellent-const-award-excellent-2-src-mq3-client-ui-sppostgame-ml-1357084561"></a>
 ### AWARD_EXCELLENT
@@ -67,7 +67,7 @@ const AWARD_EXCELLENT = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-frags-const-award-frags-4-src-mq3-client-ui-sppostgame-ml-1293968183"></a>
 ### AWARD_FRAGS
@@ -77,7 +77,7 @@ const AWARD_FRAGS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-gauntlet-const-award-gauntlet-3-src-mq3-client-ui-sppostgame-ml-38983408"></a>
 ### AWARD_GAUNTLET
@@ -87,7 +87,7 @@ const AWARD_GAUNTLET = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-impressive-const-award-impressive-1-src-mq3-client-ui-sppostgame-ml-44982964"></a>
 ### AWARD_IMPRESSIVE
@@ -97,7 +97,7 @@ const AWARD_IMPRESSIVE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-perfect-const-award-perfect-5-src-mq3-client-ui-sppostgame-ml-129906248"></a>
 ### AWARD_PERFECT
@@ -107,7 +107,7 @@ const AWARD_PERFECT = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-award-presentation-time-const-award-presentation-time-2000-src-mq3-client-ui-sppostgame-ml-219188855"></a>
 ### AWARD_PRESENTATION_TIME
@@ -117,7 +117,7 @@ const AWARD_PRESENTATION_TIME = 2000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L14)
 
 <a id="function-function-mq3-client-ui-sppostgame-cleanname-function-cleanname-text-src-mq3-client-ui-sppostgame-ml-712529151"></a>
 ### cleanName
@@ -131,7 +131,7 @@ function cleanName(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L81)
 
 <a id="function-function-mq3-client-ui-sppostgame-command-function-command-value-text-src-mq3-client-ui-sppostgame-ml-1196302812"></a>
 ### command
@@ -146,7 +146,7 @@ function command(value, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L32)
 
 <a id="function-function-mq3-client-ui-sppostgame-create-function-create-game-src-mq3-client-ui-sppostgame-ml-1550401920"></a>
 ### create
@@ -160,7 +160,7 @@ function create(game)
 | `game` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L28)
 
 <a id="function-function-mq3-client-ui-sppostgame-cvar-function-cvar-value-name-text-src-mq3-client-ui-sppostgame-ml-561472179"></a>
 ### cvar
@@ -176,7 +176,7 @@ function cvar(value, name, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L33)
 
 <a id="function-function-mq3-client-ui-sppostgame-draw-function-draw-kind-x-y-w-h-text-style-color-asset-src-mq3-client-ui-sppostgame-ml-1236934573"></a>
 ### draw
@@ -198,7 +198,7 @@ function draw(kind, x, y, w, h, text, style, color, asset)
 | `asset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L34)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-id-again-const-id-again-10-src-mq3-client-ui-sppostgame-ml-648371538"></a>
 ### ID_AGAIN
@@ -208,7 +208,7 @@ const ID_AGAIN = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-id-menu-const-id-menu-12-src-mq3-client-ui-sppostgame-ml-289905290"></a>
 ### ID_MENU
@@ -218,7 +218,7 @@ const ID_MENU = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-id-next-const-id-next-11-src-mq3-client-ui-sppostgame-ml-582553431"></a>
 ### ID_NEXT
@@ -228,7 +228,7 @@ const ID_NEXT = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-max-scoreboard-clients-const-max-scoreboard-clients-8-src-mq3-client-ui-sppostgame-ml-1066634905"></a>
 ### MAX_SCOREBOARD_CLIENTS
@@ -238,7 +238,7 @@ const MAX_SCOREBOARD_CLIENTS = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L13)
 
 <a id="function-function-mq3-client-ui-sppostgame-medallocations-function-medallocations-src-mq3-client-ui-sppostgame-ml-2042265058"></a>
 ### medalLocations
@@ -248,7 +248,7 @@ function medalLocations()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L38)
 
 <a id="function-function-mq3-client-ui-sppostgame-medalnames-function-medalnames-src-mq3-client-ui-sppostgame-ml-2058901622"></a>
 ### medalNames
@@ -258,7 +258,7 @@ function medalNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L35)
 
 <a id="function-function-mq3-client-ui-sppostgame-medalpics-function-medalpics-src-mq3-client-ui-sppostgame-ml-474938130"></a>
 ### medalPics
@@ -268,7 +268,7 @@ function medalPics()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L36)
 
 <a id="function-function-mq3-client-ui-sppostgame-medalsounds-function-medalsounds-src-mq3-client-ui-sppostgame-ml-1006218688"></a>
 ### medalSounds
@@ -278,7 +278,7 @@ function medalSounds()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L37)
 
 <a id="function-function-mq3-client-ui-sppostgame-padded-function-padded-text-width-src-mq3-client-ui-sppostgame-ml-483215459"></a>
 ### padded
@@ -293,7 +293,7 @@ function padded(text, width)
 | `width` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L84)
 
 <a id="function-function-mq3-client-ui-sppostgame-playerinfo-function-playerinfo-value-clientnum-src-mq3-client-ui-sppostgame-ml-2145525604"></a>
 ### playerInfo
@@ -308,7 +308,7 @@ function playerInfo(value, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L80)
 
 - [mq3.client.ui_sppostgame.Postgame](Type-mq3-client-ui-sppostgame-postgame-205691195.md) — struct
 <a id="function-function-mq3-client-ui-sppostgame-prepname-function-prepname-value-index-src-mq3-client-ui-sppostgame-ml-1963670899"></a>
@@ -326,7 +326,7 @@ Prepname
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L87)
 
 <a id="constant-constant-mq3-client-ui-sppostgame-rank-tied-flag-const-rank-tied-flag-16384-src-mq3-client-ui-sppostgame-ml-808515313"></a>
 ### RANK_TIED_FLAG
@@ -336,7 +336,7 @@ const RANK_TIED_FLAG = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L18)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-againevent-function-ui-sppostgamemenu-againevent-value-event-src-mq3-client-ui-sppostgame-ml-1873108659"></a>
 ### UI_SPPostgameMenu_AgainEvent
@@ -353,7 +353,7 @@ UI_SPPostgameMenu_AgainEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L41)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-cache-function-ui-sppostgamemenu-cache-buildscript-src-mq3-client-ui-sppostgame-ml-607776277"></a>
 ### UI_SPPostgameMenu_Cache
@@ -369,7 +369,7 @@ UI_SPPostgameMenu_Cache
 | `buildscript` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L97)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-drawawardsmedals-function-ui-sppostgamemenu-drawawardsmedals-value-max-src-mq3-client-ui-sppostgame-ml-1631014037"></a>
 ### UI_SPPostgameMenu_DrawAwardsMedals
@@ -386,7 +386,7 @@ UI_SPPostgameMenu_DrawAwardsMedals
 | `max` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L70)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-drawawardspresentation-function-ui-sppostgamemenu-drawawardspresentation-value-timer-src-mq3-client-ui-sppostgame-ml-1797837048"></a>
 ### UI_SPPostgameMenu_DrawAwardsPresentation
@@ -403,7 +403,7 @@ UI_SPPostgameMenu_DrawAwardsPresentation
 | `timer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L75)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-f-function-ui-sppostgamemenu-f-game-realtime-systeminfo-serverinfo-argv-playerconfigs-demoversion-src-mq3-client-ui-sppostgame-ml-1489830960"></a>
 ### UI_SPPostgameMenu_f
@@ -425,7 +425,7 @@ UI_SPPostgameMenu_f
 | `demoVersion` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L116)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-init-function-ui-sppostgamemenu-init-value-realtime-src-mq3-client-ui-sppostgame-ml-1384845900"></a>
 ### UI_SPPostgameMenu_Init
@@ -442,7 +442,7 @@ UI_SPPostgameMenu_Init
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L102)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-menudraw-function-ui-sppostgamemenu-menudraw-value-realtime-currentserverid-src-mq3-client-ui-sppostgame-ml-2003713991"></a>
 ### UI_SPPostgameMenu_MenuDraw
@@ -460,7 +460,7 @@ UI_SPPostgameMenu_MenuDraw
 | `currentServerId` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L126)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-menudrawscoreline-function-ui-sppostgamemenu-menudrawscoreline-value-n-y-src-mq3-client-ui-sppostgame-ml-1638777330"></a>
 ### UI_SPPostgameMenu_MenuDrawScoreLine
@@ -478,7 +478,7 @@ UI_SPPostgameMenu_MenuDrawScoreLine
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L92)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-menuevent-function-ui-sppostgamemenu-menuevent-value-event-src-mq3-client-ui-sppostgame-ml-1363980889"></a>
 ### UI_SPPostgameMenu_MenuEvent
@@ -495,7 +495,7 @@ UI_SPPostgameMenu_MenuEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L51)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-menukey-function-ui-sppostgamemenu-menukey-value-key-realtime-cursorx-cursory-src-mq3-client-ui-sppostgame-ml-11024112"></a>
 ### UI_SPPostgameMenu_MenuKey
@@ -515,7 +515,7 @@ UI_SPPostgameMenu_MenuKey
 | `cursory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L56)
 
 <a id="function-function-mq3-client-ui-sppostgame-ui-sppostgamemenu-nextevent-function-ui-sppostgamemenu-nextevent-value-event-src-mq3-client-ui-sppostgame-ml-1295934733"></a>
 ### UI_SPPostgameMenu_NextEvent
@@ -532,4 +532,4 @@ UI_SPPostgameMenu_NextEvent
 | `event` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sppostgame.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sppostgame.ml#L46)

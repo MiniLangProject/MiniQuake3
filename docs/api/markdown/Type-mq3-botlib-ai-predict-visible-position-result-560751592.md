@@ -10,7 +10,7 @@ struct Result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ found
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-hops-hops-src-mq3-botlib-ai-predict-visible-position-ml-1206479452"></a>
 ### hops
@@ -32,7 +32,7 @@ hops
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-reachnums-reachnums-src-mq3-botlib-ai-predict-visible-position-ml-937416528"></a>
 ### reachNums
@@ -42,7 +42,7 @@ reachNums
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)
 
 <a id="field-field-mq3-botlib-ai-predict-visible-position-result-target-target-src-mq3-botlib-ai-predict-visible-position-ml-1778964778"></a>
 ### target
@@ -52,4 +52,4 @@ target
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_predict_visible_position.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_predict_visible_position.ml#L14)

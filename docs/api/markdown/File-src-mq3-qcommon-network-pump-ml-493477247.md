@@ -29,7 +29,7 @@ function create(clientSocket, serverSocket, capacity, context, clientPacketFn, s
 | `serverPacketFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L12)
 
 <a id="function-function-mq3-qcommon-network-pump-drain-function-drain-runtime-maxpackets-src-mq3-qcommon-network-pump-ml-2080990963"></a>
 ### drain
@@ -46,7 +46,7 @@ Drain currently available datagrams up to an explicit per-frame budget. A zero b
 | `maxPackets` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L45)
 
 <a id="function-function-mq3-qcommon-network-pump-pumponce-function-pumponce-runtime-src-mq3-qcommon-network-pump-ml-271500050"></a>
 ### pumpOnce
@@ -62,7 +62,7 @@ Consume at most one datagram.  When both queues are ready, alternate the first s
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L36)
 
 <a id="function-function-mq3-qcommon-network-pump-receiveside-function-receiveside-runtime-side-src-mq3-qcommon-network-pump-ml-1670796535"></a>
 ### receiveSide
@@ -77,7 +77,7 @@ function receiveSide(runtime, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L18)
 
 - [mq3.qcommon.network_pump.Runtime](Type-mq3-qcommon-network-pump-runtime-1753198241.md) — struct
 <a id="constant-constant-mq3-qcommon-network-pump-side-client-const-side-client-0-src-mq3-qcommon-network-pump-ml-1155793613"></a>
@@ -88,7 +88,7 @@ const SIDE_CLIENT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L6)
 
 <a id="constant-constant-mq3-qcommon-network-pump-side-server-const-side-server-1-src-mq3-qcommon-network-pump-ml-2135689626"></a>
 ### SIDE_SERVER
@@ -98,6 +98,6 @@ const SIDE_SERVER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/network_pump.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/network_pump.ml#L7)
 
 - [mq3.qcommon.network_pump.Step](Type-mq3-qcommon-network-pump-step-1198220221.md) — struct

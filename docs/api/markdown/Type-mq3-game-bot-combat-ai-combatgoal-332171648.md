@@ -10,7 +10,7 @@ struct CombatGoal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)
 
 ## Members
 
@@ -22,7 +22,7 @@ areanum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-entitynum-entitynum-src-mq3-game-bot-combat-ai-ml-1720315870"></a>
 ### entitynum
@@ -32,7 +32,7 @@ entitynum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-maxs-maxs-src-mq3-game-bot-combat-ai-ml-1592052600"></a>
 ### maxs
@@ -42,7 +42,7 @@ maxs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-mins-mins-src-mq3-game-bot-combat-ai-ml-440353056"></a>
 ### mins
@@ -52,7 +52,7 @@ mins
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)
 
 <a id="field-field-mq3-game-bot-combat-ai-combatgoal-origin-origin-src-mq3-game-bot-combat-ai-ml-1433872714"></a>
 ### origin
@@ -62,4 +62,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L65)

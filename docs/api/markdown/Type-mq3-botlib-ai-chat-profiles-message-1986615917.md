@@ -10,7 +10,7 @@ struct Message
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 ## Members
 
@@ -22,7 +22,7 @@ components
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-message-encoded-encoded-src-mq3-botlib-ai-chat-profiles-ml-1323646920"></a>
 ### encoded
@@ -32,7 +32,7 @@ encoded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)
 
 <a id="field-field-mq3-botlib-ai-chat-profiles-message-recenttime-recenttime-src-mq3-botlib-ai-chat-profiles-ml-584061480"></a>
 ### recentTime
@@ -42,4 +42,4 @@ recentTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_profiles.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_profiles.ml#L27)

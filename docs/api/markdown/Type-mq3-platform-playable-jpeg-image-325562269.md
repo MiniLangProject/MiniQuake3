@@ -10,7 +10,7 @@ struct Image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L12)
 
 <a id="field-field-mq3-platform-playable-jpeg-image-pixels-pixels-src-mq3-platform-playable-jpeg-ml-705941638"></a>
 ### pixels
@@ -32,7 +32,7 @@ pixels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L12)
 
 <a id="field-field-mq3-platform-playable-jpeg-image-width-width-src-mq3-platform-playable-jpeg-ml-1145714528"></a>
 ### width
@@ -42,4 +42,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_jpeg.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_jpeg.ml#L12)

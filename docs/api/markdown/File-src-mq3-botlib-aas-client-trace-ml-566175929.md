@@ -27,7 +27,7 @@ function add(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L22)
 
 <a id="function-function-mq3-botlib-aas-client-trace-copy-function-copy-value-src-mq3-botlib-aas-client-trace-ml-1189074405"></a>
 ### copy
@@ -41,7 +41,7 @@ function copy(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L17)
 
 <a id="function-function-mq3-botlib-aas-client-trace-dot-function-dot-a-b-src-mq3-botlib-aas-client-trace-ml-308670499"></a>
 ### dot
@@ -56,7 +56,7 @@ function dot(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L19)
 
 <a id="function-function-mq3-botlib-aas-client-trace-empty-function-empty-src-mq3-botlib-aas-client-trace-ml-281566996"></a>
 ### empty
@@ -66,7 +66,7 @@ function empty()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L23)
 
 <a id="function-function-mq3-botlib-aas-client-trace-fail-function-fail-message-src-mq3-botlib-aas-client-trace-ml-1044286339"></a>
 ### fail
@@ -80,7 +80,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L16)
 
 <a id="function-function-mq3-botlib-aas-client-trace-hit-function-hit-runtime-start-finish-segment-nodenum-planenum-lastarea-src-mq3-botlib-aas-client-trace-ml-1432746739"></a>
 ### hit
@@ -100,7 +100,7 @@ function hit(runtime, start, finish, segment, nodeNum, planenum, lastarea)
 | `lastarea` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L25)
 
 <a id="function-function-mq3-botlib-aas-client-trace-length-function-length-value-src-mq3-botlib-aas-client-trace-ml-356061929"></a>
 ### length
@@ -114,7 +114,7 @@ function length(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L20)
 
 <a id="function-function-mq3-botlib-aas-client-trace-scale-function-scale-value-amount-src-mq3-botlib-aas-client-trace-ml-1721523597"></a>
 ### scale
@@ -129,7 +129,7 @@ function scale(value, amount)
 | `amount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L21)
 
 - [mq3.botlib.aas_client_trace.Segment](Type-mq3-botlib-aas-client-trace-segment-775879010.md) — struct
 <a id="function-function-mq3-botlib-aas-client-trace-sub-function-sub-a-b-src-mq3-botlib-aas-client-trace-ml-2024218593"></a>
@@ -145,7 +145,7 @@ function sub(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-client-trace-trace-function-trace-runtime-start-finish-presencetype-src-mq3-botlib-aas-client-trace-ml-139957774"></a>
 ### trace
@@ -162,7 +162,7 @@ function trace(runtime, start, finish, presenceType)
 | `presenceType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L43)
 
 - [mq3.botlib.aas_client_trace.Trace](Type-mq3-botlib-aas-client-trace-trace-964334042.md) — struct
 <a id="constant-constant-mq3-botlib-aas-client-trace-trace-stack-size-const-trace-stack-size-127-src-mq3-botlib-aas-client-trace-ml-1086353703"></a>
@@ -173,7 +173,7 @@ const TRACE_STACK_SIZE = 127
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-client-trace-traceplane-epsilon-const-traceplane-epsilon-0-125-src-mq3-botlib-aas-client-trace-ml-103936643"></a>
 ### TRACEPLANE_EPSILON
@@ -183,4 +183,4 @@ const TRACEPLANE_EPSILON = 0.125
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_trace.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_trace.ml#L10)

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-again-again-src-mq3-client-ui-signup-ml-12466536"></a>
 ### again
@@ -32,7 +32,7 @@ again
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-againbox-againbox-src-mq3-client-ui-signup-ml-1192532866"></a>
 ### againBox
@@ -42,7 +42,7 @@ againBox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-cancel-cancel-src-mq3-client-ui-signup-ml-1930154384"></a>
 ### cancel
@@ -52,7 +52,7 @@ cancel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-email-email-src-mq3-client-ui-signup-ml-1510952544"></a>
 ### email
@@ -62,7 +62,7 @@ email
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-emailbox-emailbox-src-mq3-client-ui-signup-ml-1771661534"></a>
 ### emailBox
@@ -72,7 +72,7 @@ emailBox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-forcedoff-forcedoff-src-mq3-client-ui-signup-ml-928276360"></a>
 ### forcedOff
@@ -82,7 +82,7 @@ forcedOff
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-frame-frame-src-mq3-client-ui-signup-ml-1056747452"></a>
 ### frame
@@ -92,7 +92,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-menu-menu-src-mq3-client-ui-signup-ml-1674430598"></a>
 ### menu
@@ -102,7 +102,7 @@ menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-name-name-src-mq3-client-ui-signup-ml-1180139230"></a>
 ### name
@@ -112,7 +112,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-namebox-namebox-src-mq3-client-ui-signup-ml-1805715732"></a>
 ### nameBox
@@ -122,7 +122,7 @@ nameBox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-password-password-src-mq3-client-ui-signup-ml-2049635258"></a>
 ### password
@@ -132,7 +132,7 @@ password
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-passwordbox-passwordbox-src-mq3-client-ui-signup-ml-1589074816"></a>
 ### passwordBox
@@ -142,7 +142,7 @@ passwordBox
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-popped-popped-src-mq3-client-ui-signup-ml-735313536"></a>
 ### popped
@@ -152,7 +152,7 @@ popped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-pushed-pushed-src-mq3-client-ui-signup-ml-853867674"></a>
 ### pushed
@@ -162,7 +162,7 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-retailactive-retailactive-src-mq3-client-ui-signup-ml-2087168742"></a>
 ### retailActive
@@ -172,7 +172,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-signup-signup-src-mq3-client-ui-signup-ml-14918112"></a>
 ### signup
@@ -182,7 +182,7 @@ signup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)
 
 <a id="field-field-mq3-client-ui-signup-state-status-status-src-mq3-client-ui-signup-ml-150257620"></a>
 ### status
@@ -192,4 +192,4 @@ status
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_signup.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_signup.ml#L19)

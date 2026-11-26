@@ -10,7 +10,7 @@ struct Joystick
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ available
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-axiscount-axiscount-src-mq3-platform-win-input-runtime-ml-1023145735"></a>
 ### axisCount
@@ -32,7 +32,7 @@ axisCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-ballscale-ballscale-src-mq3-platform-win-input-runtime-ml-256863023"></a>
 ### ballScale
@@ -42,7 +42,7 @@ ballScale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-buttoncount-buttoncount-src-mq3-platform-win-input-runtime-ml-1660066975"></a>
 ### buttonCount
@@ -52,7 +52,7 @@ buttonCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-enabled-enabled-src-mq3-platform-win-input-runtime-ml-1957278887"></a>
 ### enabled
@@ -62,7 +62,7 @@ enabled
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-haspov-haspov-src-mq3-platform-win-input-runtime-ml-169771909"></a>
 ### hasPov
@@ -72,7 +72,7 @@ hasPov
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-oldbuttons-oldbuttons-src-mq3-platform-win-input-runtime-ml-249788095"></a>
 ### oldButtons
@@ -82,7 +82,7 @@ oldButtons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-olddirections-olddirections-src-mq3-platform-win-input-runtime-ml-170785799"></a>
 ### oldDirections
@@ -92,7 +92,7 @@ oldDirections
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)
 
 <a id="field-field-mq3-platform-win-input-runtime-joystick-threshold-threshold-src-mq3-platform-win-input-runtime-ml-573134523"></a>
 ### threshold
@@ -102,4 +102,4 @@ threshold
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_input_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_input_runtime.ml#L19)

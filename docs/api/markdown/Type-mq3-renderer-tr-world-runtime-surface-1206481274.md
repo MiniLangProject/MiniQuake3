@@ -10,7 +10,7 @@ struct Surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-culltype-culltype-src-mq3-renderer-tr-world-runtime-ml-1047006788"></a>
 ### cullType
@@ -32,7 +32,7 @@ cullType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-dlightbits-dlightbits-src-mq3-renderer-tr-world-runtime-ml-983452636"></a>
 ### dlightBits
@@ -42,7 +42,7 @@ dlightBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-fogindex-fogindex-src-mq3-renderer-tr-world-runtime-ml-1945713640"></a>
 ### fogIndex
@@ -52,7 +52,7 @@ fogIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-kind-kind-src-mq3-renderer-tr-world-runtime-ml-2088662356"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-localorigin-localorigin-src-mq3-renderer-tr-world-runtime-ml-451432364"></a>
 ### localOrigin
@@ -72,7 +72,7 @@ localOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-meshradius-meshradius-src-mq3-renderer-tr-world-runtime-ml-537187038"></a>
 ### meshRadius
@@ -82,7 +82,7 @@ meshRadius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-plane-plane-src-mq3-renderer-tr-world-runtime-ml-290400820"></a>
 ### plane
@@ -92,7 +92,7 @@ plane
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-world-runtime-surface-viewcount-viewcount-src-mq3-renderer-tr-world-runtime-ml-1939064888"></a>
 ### viewCount
@@ -102,4 +102,4 @@ viewCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_world_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_world_runtime.ml#L18)

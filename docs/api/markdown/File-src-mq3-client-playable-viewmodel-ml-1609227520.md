@@ -36,7 +36,7 @@ Baseq3 advances playerState.bobCycle by bobmove*msec while moving. The playable 
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L138)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L138)
 
 <a id="function-function-mq3-client-playable-viewmodel-animatedframes-function-animatedframes-classname-firstframe-count-fps-elapsed-switching-src-mq3-client-playable-viewmodel-ml-1247688522"></a>
 ### animatedFrames
@@ -55,7 +55,7 @@ function animatedFrames(classname, firstFrame, count, fps, elapsed, switching)
 | `switching` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L57)
 
 - [mq3.client.playable_viewmodel.Attachment](Type-mq3-client-playable-viewmodel-attachment-206761453.md) — struct
 <a id="function-function-mq3-client-playable-viewmodel-attachmenttag-function-attachmenttag-attachment-oldframe-frame-backlerp-src-mq3-client-playable-viewmodel-ml-2003147708"></a>
@@ -73,7 +73,7 @@ function attachmentTag(attachment, oldFrame, frame, backlerp)
 | `backlerp` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L205)
 
 <a id="function-function-mq3-client-playable-viewmodel-attachweapon-function-attachweapon-pose-attachment-oldframe-frame-backlerp-src-mq3-client-playable-viewmodel-ml-1451611657"></a>
 ### attachWeapon
@@ -93,7 +93,7 @@ CG_PositionEntityOnTag: translate through the parent hand basis, then compose ta
 | `backlerp` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L222)
 
 - [mq3.client.playable_viewmodel.BobSample](Type-mq3-client-playable-viewmodel-bobsample-121066897.md) — struct
 <a id="function-function-mq3-client-playable-viewmodel-calculate-function-calculate-camera-bob-now-landtime-landchange-config-src-mq3-client-playable-viewmodel-ml-1921336021"></a>
@@ -115,18 +115,18 @@ Port of CG_CalculateWeaponPosition followed by CG_AddViewWeapon's gun and high-F
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L171)
 
 - [mq3.client.playable_viewmodel.Catalog](Type-mq3-client-playable-viewmodel-catalog-54939439.md) — struct
-<a id="constant-constant-mq3-client-playable-viewmodel-default-fov-const-default-fov-90-src-mq3-client-playable-viewmodel-ml-1495694386"></a>
+<a id="constant-constant-mq3-client-playable-viewmodel-default-fov-const-default-fov-90-src-mq3-client-playable-viewmodel-ml-786521534"></a>
 ### DEFAULT_FOV
 
 ```ml
-const DEFAULT_FOV = 90.
+const DEFAULT_FOV = 90
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L14)
 
 <a id="function-function-mq3-client-playable-viewmodel-defaults-function-defaults-src-mq3-client-playable-viewmodel-ml-592368924"></a>
 ### defaults
@@ -136,7 +136,7 @@ function defaults()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L35)
 
 <a id="function-function-mq3-client-playable-viewmodel-fail-function-fail-message-src-mq3-client-playable-viewmodel-ml-1563695871"></a>
 ### fail
@@ -150,7 +150,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L32)
 
 <a id="function-function-mq3-client-playable-viewmodel-findattachment-function-findattachment-catalog-classname-src-mq3-client-playable-viewmodel-ml-1481423902"></a>
 ### findAttachment
@@ -165,7 +165,7 @@ function findAttachment(catalog, classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L129)
 
 <a id="function-function-mq3-client-playable-viewmodel-fovoffset-function-fovoffset-horizontalfov-src-mq3-client-playable-viewmodel-ml-1405151563"></a>
 ### fovOffset
@@ -179,7 +179,7 @@ function fovOffset(horizontalFov)
 | `horizontalFov` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L155)
 
 - [mq3.client.playable_viewmodel.FrameSample](Type-mq3-client-playable-viewmodel-framesample-1541521567.md) — struct
 <a id="function-function-mq3-client-playable-viewmodel-frametransform-function-frametransform-camera-bob-now-landtime-landchange-recoil-config-src-mq3-client-playable-viewmodel-ml-1000226303"></a>
@@ -200,7 +200,7 @@ function frameTransform(camera, bob, now, landTime, landChange, recoil, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L239)
 
 <a id="function-function-mq3-client-playable-viewmodel-frameweapontransform-function-frameweapontransform-camera-bob-now-landtime-landchange-recoil-config-attachment-oldframe-frame-backlerp-src-mq3-client-playable-viewmodel-ml-771319487"></a>
 ### frameWeaponTransform
@@ -224,7 +224,7 @@ function frameWeaponTransform(camera, bob, now, landTime, landChange, recoil, co
 | `backlerp` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L245)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L245)
 
 <a id="function-function-mq3-client-playable-viewmodel-handpath-function-handpath-classname-src-mq3-client-playable-viewmodel-ml-883251383"></a>
 ### handPath
@@ -238,7 +238,7 @@ function handPath(classname)
 | `classname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L85)
 
 <a id="constant-constant-mq3-client-playable-viewmodel-land-deflect-time-const-land-deflect-time-150-src-mq3-client-playable-viewmodel-ml-252838315"></a>
 ### LAND_DEFLECT_TIME
@@ -248,7 +248,7 @@ const LAND_DEFLECT_TIME = 150
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-viewmodel-land-return-time-const-land-return-time-300-src-mq3-client-playable-viewmodel-ml-313325952"></a>
 ### LAND_RETURN_TIME
@@ -258,7 +258,7 @@ const LAND_RETURN_TIME = 300
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L16)
 
 <a id="function-function-mq3-client-playable-viewmodel-landingoffset-function-landingoffset-now-landtime-landchange-src-mq3-client-playable-viewmodel-ml-345527193"></a>
 ### landingOffset
@@ -274,7 +274,7 @@ function landingOffset(now, landTime, landChange)
 | `landChange` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L160)
 
 <a id="function-function-mq3-client-playable-viewmodel-loadcatalog-function-loadcatalog-archive-classnames-src-mq3-client-playable-viewmodel-ml-993506340"></a>
 ### loadCatalog
@@ -291,7 +291,7 @@ RE_RegisterModel accepts tag-only MD3s. Load their complete animation tag stream
 | `classnames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L108)
 
 <a id="function-function-mq3-client-playable-viewmodel-multiplyaxis-function-multiplyaxis-left-right-src-mq3-client-playable-viewmodel-ml-739972429"></a>
 ### multiplyAxis
@@ -306,17 +306,17 @@ function multiplyAxis(left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L196)
 
-<a id="constant-constant-mq3-client-playable-viewmodel-pi-const-pi-3-14159265358979-src-mq3-client-playable-viewmodel-ml-2098417152"></a>
+<a id="constant-constant-mq3-client-playable-viewmodel-pi-const-pi-3-141593-src-mq3-client-playable-viewmodel-ml-250935315"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L18)
 
 - [mq3.client.playable_viewmodel.Pose](Type-mq3-client-playable-viewmodel-pose-1179003037.md) — struct
 <a id="constant-constant-mq3-client-playable-viewmodel-run-bob-advance-const-run-bob-advance-0-4-src-mq3-client-playable-viewmodel-ml-84894387"></a>
@@ -327,7 +327,7 @@ const RUN_BOB_ADVANCE = 0.4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L17)
 
 <a id="function-function-mq3-client-playable-viewmodel-sampleweaponanimation-function-sampleweaponanimation-state-classname-now-lastfire-src-mq3-client-playable-viewmodel-ml-959158500"></a>
 ### sampleWeaponAnimation
@@ -346,7 +346,7 @@ CG_MapTorsoToWeaponFrame maps the six 15-fps attack frames to hand frames 1..6. 
 | `lastFire` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L70)
 
 <a id="function-function-mq3-client-playable-viewmodel-settings-function-settings-horizontalfov-gunx-guny-gunz-modelscale-src-mq3-client-playable-viewmodel-ml-931949781"></a>
 ### settings
@@ -364,18 +364,18 @@ function settings(horizontalFov, gunX, gunY, gunZ, modelScale)
 | `modelScale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L45)
 
 - [mq3.client.playable_viewmodel.Settings](Type-mq3-client-playable-viewmodel-settings-718567293.md) — struct
-<a id="constant-constant-mq3-client-playable-viewmodel-software-depthhack-forward-const-software-depthhack-forward-25-src-mq3-client-playable-viewmodel-ml-1066448624"></a>
+<a id="constant-constant-mq3-client-playable-viewmodel-software-depthhack-forward-const-software-depthhack-forward-25-src-mq3-client-playable-viewmodel-ml-571303764"></a>
 ### SOFTWARE_DEPTHHACK_FORWARD
 
 ```ml
-const SOFTWARE_DEPTHHACK_FORWARD = 25.
+const SOFTWARE_DEPTHHACK_FORWARD = 25
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L19)
 
 <a id="constant-constant-mq3-client-playable-viewmodel-software-depthhack-side-const-software-depthhack-side-1-1-src-mq3-client-playable-viewmodel-ml-836304972"></a>
 ### SOFTWARE_DEPTHHACK_SIDE
@@ -385,17 +385,17 @@ const SOFTWARE_DEPTHHACK_SIDE = -1.1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L20)
 
-<a id="constant-constant-mq3-client-playable-viewmodel-software-depthhack-up-const-software-depthhack-up-2-src-mq3-client-playable-viewmodel-ml-538967413"></a>
+<a id="constant-constant-mq3-client-playable-viewmodel-software-depthhack-up-const-software-depthhack-up-2-src-mq3-client-playable-viewmodel-ml-1269876095"></a>
 ### SOFTWARE_DEPTHHACK_UP
 
 ```ml
-const SOFTWARE_DEPTHHACK_UP = 2.
+const SOFTWARE_DEPTHHACK_UP = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L21)
 
 <a id="function-function-mq3-client-playable-viewmodel-softwarerenderersettings-function-softwarerenderersettings-src-mq3-client-playable-viewmodel-ml-1016964496"></a>
 ### softwareRendererSettings
@@ -407,7 +407,7 @@ function softwareRendererSettings()
 Near-plane polygon clipping preserves partially visible weapon triangles. The retail CD machinegun's unmodified hand-tag attachment still projects entirely below a 640x480 viewport, so keep the visible parent adjustment isolated here until the dedicated viewmodel projection is source-matched.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L41)
 
 <a id="function-function-mq3-client-playable-viewmodel-tagfromframe-function-tagfromframe-entries-name-src-mq3-client-playable-viewmodel-ml-481922507"></a>
 ### tagFromFrame
@@ -422,7 +422,7 @@ function tagFromFrame(entries, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L100)
 
 <a id="function-function-mq3-client-playable-viewmodel-tracker-function-tracker-src-mq3-client-playable-viewmodel-ml-352637828"></a>
 ### tracker
@@ -432,7 +432,7 @@ function tracker()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L50)
 
 - [mq3.client.playable_viewmodel.Tracker](Type-mq3-client-playable-viewmodel-tracker-28652620.md) — struct
 <a id="function-function-mq3-client-playable-viewmodel-transform-function-transform-pose-src-mq3-client-playable-viewmodel-ml-1638065877"></a>
@@ -447,7 +447,7 @@ function transform(pose)
 | `pose` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L191)
 
 <a id="function-function-mq3-client-playable-viewmodel-valid3-function-valid3-value-src-mq3-client-playable-viewmodel-ml-478903329"></a>
 ### valid3
@@ -461,7 +461,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L33)
 
 <a id="function-function-mq3-client-playable-viewmodel-weaponanimation-function-weaponanimation-initialclass-src-mq3-client-playable-viewmodel-ml-1600763488"></a>
 ### weaponAnimation
@@ -475,7 +475,7 @@ function weaponAnimation(initialClass)
 | `initialClass` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L52)
 
 - [mq3.client.playable_viewmodel.WeaponAnimation](Type-mq3-client-playable-viewmodel-weaponanimation-1741882450.md) — struct
 <a id="function-function-mq3-client-playable-viewmodel-withrecoil-function-withrecoil-pose-camera-recoil-src-mq3-client-playable-viewmodel-ml-1826958400"></a>
@@ -494,4 +494,4 @@ Keeps the preview's short fire response until weapon animation frames are availa
 | `recoil` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewmodel.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewmodel.ml#L231)

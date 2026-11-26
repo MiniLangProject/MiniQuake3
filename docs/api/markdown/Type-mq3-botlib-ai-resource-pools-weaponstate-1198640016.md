@@ -10,7 +10,7 @@ struct WeaponState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ weaponWeightConfig
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-weaponstate-weaponweightindex-weaponweightindex-src-mq3-botlib-ai-resource-pools-ml-514680962"></a>
 ### weaponWeightIndex
@@ -32,4 +32,4 @@ weaponWeightIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L36)

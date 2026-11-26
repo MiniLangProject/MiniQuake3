@@ -16,7 +16,7 @@ const ART_CONFIRM_FRAME = "menu/art/cut_frame"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-confirm-ca-connected-const-ca-connected-5-src-mq3-client-ui-confirm-ml-1639926946"></a>
 ### CA_CONNECTED
@@ -26,7 +26,7 @@ const CA_CONNECTED = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L7)
 
 <a id="function-function-mq3-client-ui-confirm-cache-function-cache-src-mq3-client-ui-confirm-ml-475156892"></a>
 ### cache
@@ -38,7 +38,7 @@ function cache()
 ConfirmMenu_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L52)
 
 - [mq3.client.ui_confirm.ConfirmItem](Type-mq3-client-ui-confirm-confirmitem-370753701.md) — struct
 - [mq3.client.ui_confirm.ConfirmMenu](Type-mq3-client-ui-confirm-confirmmenu-178757785.md) — struct
@@ -56,7 +56,7 @@ ConfirmMenu_Draw
 | `menu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L45)
 
 <a id="function-function-mq3-client-ui-confirm-drawmessage-function-drawmessage-menu-src-mq3-client-ui-confirm-ml-204459285"></a>
 ### drawMessage
@@ -72,7 +72,7 @@ MessageMenu_Draw
 | `menu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L35)
 
 <a id="function-function-mq3-client-ui-confirm-event-function-event-menu-id-eventcode-src-mq3-client-ui-confirm-ml-632281715"></a>
 ### event
@@ -90,7 +90,7 @@ ConfirmMenu_Event
 | `eventCode` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L16)
 
 <a id="constant-constant-mq3-client-ui-confirm-id-confirm-no-const-id-confirm-no-10-src-mq3-client-ui-confirm-ml-761994326"></a>
 ### ID_CONFIRM_NO
@@ -100,7 +100,7 @@ const ID_CONFIRM_NO = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L8)
 
 <a id="constant-constant-mq3-client-ui-confirm-id-confirm-yes-const-id-confirm-yes-11-src-mq3-client-ui-confirm-ml-1484175053"></a>
 ### ID_CONFIRM_YES
@@ -110,7 +110,7 @@ const ID_CONFIRM_YES = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L9)
 
 <a id="function-function-mq3-client-ui-confirm-key-function-key-menu-keyname-src-mq3-client-ui-confirm-ml-106692751"></a>
 ### key
@@ -127,7 +127,7 @@ ConfirmMenu_Key
 | `keyName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L25)
 
 <a id="function-function-mq3-client-ui-confirm-message-function-message-lines-connectionstate-okwidth-src-mq3-client-ui-confirm-ml-178557796"></a>
 ### message
@@ -145,7 +145,7 @@ UI_Message
 | `okWidth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L67)
 
 <a id="function-function-mq3-client-ui-confirm-open-function-open-question-drawcallback-actioncallback-connectionstate-yesnowidth-yeswidth-slashwidth-src-mq3-client-ui-confirm-ml-1218554923"></a>
 ### open
@@ -167,7 +167,7 @@ UI_ConfirmMenu
 | `slashWidth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L62)
 
 <a id="function-function-mq3-client-ui-confirm-openstyle-function-openstyle-question-style-drawcallback-actioncallback-connectionstate-yesnowidth-yeswidth-slashwidth-src-mq3-client-ui-confirm-ml-1801257246"></a>
 ### openStyle
@@ -190,7 +190,7 @@ UI_ConfirmMenu_Style
 | `slashWidth` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L55)
 
 <a id="constant-constant-mq3-client-ui-confirm-qm-activated-const-qm-activated-3-src-mq3-client-ui-confirm-ml-215004568"></a>
 ### QM_ACTIVATED
@@ -200,4 +200,4 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_confirm.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_confirm.ml#L6)

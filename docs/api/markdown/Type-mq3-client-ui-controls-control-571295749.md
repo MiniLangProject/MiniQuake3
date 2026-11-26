@@ -10,7 +10,7 @@ struct Control
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 ## Members
 
@@ -22,7 +22,7 @@ grayed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-group-group-src-mq3-client-ui-controls-ml-973774032"></a>
 ### group
@@ -32,7 +32,7 @@ group
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-highlighted-highlighted-src-mq3-client-ui-controls-ml-1563059856"></a>
 ### highlighted
@@ -42,7 +42,7 @@ highlighted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-id-id-src-mq3-client-ui-controls-ml-1509484950"></a>
 ### id
@@ -52,7 +52,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-inactive-inactive-src-mq3-client-ui-controls-ml-1034554758"></a>
 ### inactive
@@ -62,7 +62,7 @@ inactive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-visible-visible-src-mq3-client-ui-controls-ml-845656072"></a>
 ### visible
@@ -72,7 +72,7 @@ visible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-x-x-src-mq3-client-ui-controls-ml-176244248"></a>
 ### x
@@ -82,7 +82,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)
 
 <a id="field-field-mq3-client-ui-controls-control-y-y-src-mq3-client-ui-controls-ml-1653645404"></a>
 ### y
@@ -92,4 +92,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L100)

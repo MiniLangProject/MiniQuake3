@@ -10,7 +10,7 @@ struct Barrel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L55)
 
 ## Members
 
@@ -22,7 +22,7 @@ angle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L55)
 
 <a id="field-field-mq3-client-cgame-weapons-barrel-spinning-spinning-src-mq3-client-cgame-weapons-ml-1952013129"></a>
 ### spinning
@@ -32,7 +32,7 @@ spinning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L55)
 
 <a id="field-field-mq3-client-cgame-weapons-barrel-time-time-src-mq3-client-cgame-weapons-ml-280196447"></a>
 ### time
@@ -42,4 +42,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_weapons.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_weapons.ml#L55)

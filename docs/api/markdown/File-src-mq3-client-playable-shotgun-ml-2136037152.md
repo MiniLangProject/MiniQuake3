@@ -29,7 +29,7 @@ function copyPoint(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L23)
 
 <a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-count-const-default-shotgun-count-11-src-mq3-client-playable-shotgun-ml-120540715"></a>
 ### DEFAULT_SHOTGUN_COUNT
@@ -39,7 +39,7 @@ const DEFAULT_SHOTGUN_COUNT = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L14)
 
 <a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-damage-const-default-shotgun-damage-10-src-mq3-client-playable-shotgun-ml-1067252832"></a>
 ### DEFAULT_SHOTGUN_DAMAGE
@@ -49,17 +49,17 @@ const DEFAULT_SHOTGUN_DAMAGE = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L15)
 
-<a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-spread-const-default-shotgun-spread-700-src-mq3-client-playable-shotgun-ml-1678396436"></a>
+<a id="constant-constant-mq3-client-playable-shotgun-default-shotgun-spread-const-default-shotgun-spread-700-src-mq3-client-playable-shotgun-ml-859614816"></a>
 ### DEFAULT_SHOTGUN_SPREAD
 
 ```ml
-const DEFAULT_SHOTGUN_SPREAD = 700.
+const DEFAULT_SHOTGUN_SPREAD = 700
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L13)
 
 <a id="function-function-mq3-client-playable-shotgun-fail-function-fail-message-src-mq3-client-playable-shotgun-ml-1057269955"></a>
 ### fail
@@ -73,7 +73,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L21)
 
 <a id="function-function-mq3-client-playable-shotgun-fire-function-fire-world-targetstate-origin-origin2-seed-now-src-mq3-client-playable-shotgun-ml-1165289031"></a>
 ### fire
@@ -92,7 +92,7 @@ function fire(world, targetState, origin, origin2, seed, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L80)
 
 <a id="function-function-mq3-client-playable-shotgun-firewithtrace-function-firewithtrace-tracefn-context-targetstate-origin-origin2-seed-now-src-mq3-client-playable-shotgun-ml-315736729"></a>
 ### fireWithTrace
@@ -114,17 +114,17 @@ The BSP endpoint bounds playableTargets.applyShot, so a wall always shields a ta
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L61)
 
-<a id="constant-constant-mq3-client-playable-shotgun-pattern-range-const-pattern-range-131072-src-mq3-client-playable-shotgun-ml-899048999"></a>
+<a id="constant-constant-mq3-client-playable-shotgun-pattern-range-const-pattern-range-131072-src-mq3-client-playable-shotgun-ml-1130570749"></a>
 ### PATTERN_RANGE
 
 ```ml
-const PATTERN_RANGE = 131072.
+const PATTERN_RANGE = 131072
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L16)
 
 <a id="function-function-mq3-client-playable-shotgun-patternendpoints-function-patternendpoints-origin-origin2-seed-src-mq3-client-playable-shotgun-ml-10554679"></a>
 ### patternEndpoints
@@ -142,7 +142,7 @@ This is ShotgunPattern's client/server-shared deterministic spread loop. origin2
 | `seed` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L31)
 
 - [mq3.client.playable_shotgun.Pellet](Type-mq3-client-playable-shotgun-pellet-1813882538.md) — struct
 <a id="constant-constant-mq3-client-playable-shotgun-shot-mask-const-shot-mask-100663297-src-mq3-client-playable-shotgun-ml-410773535"></a>
@@ -155,7 +155,7 @@ const SHOT_MASK = 100663297
 code/game/bg_public.h and code/game/g_weapon.c.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L12)
 
 <a id="function-function-mq3-client-playable-shotgun-tracepellets-function-tracepellets-tracefn-context-origin-endpoints-src-mq3-client-playable-shotgun-ml-1518935824"></a>
 ### tracePellets
@@ -172,7 +172,7 @@ function tracePellets(traceFn, context, origin, endpoints)
 | `endpoints` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L47)
 
 <a id="function-function-mq3-client-playable-shotgun-validpoint-function-validpoint-value-src-mq3-client-playable-shotgun-ml-1700336745"></a>
 ### validPoint
@@ -186,7 +186,7 @@ function validPoint(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L22)
 
 <a id="function-function-mq3-client-playable-shotgun-worldpointtrace-function-worldpointtrace-context-startpoint-endpoint-src-mq3-client-playable-shotgun-ml-1251212770"></a>
 ### worldPointTrace
@@ -202,4 +202,4 @@ function worldPointTrace(context, startPoint, endPoint)
 | `endPoint` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_shotgun.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_shotgun.ml#L25)

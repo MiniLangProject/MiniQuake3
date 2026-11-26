@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ audio
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-decoded-decoded-src-mq3-client-cgame-event-ml-1869872966"></a>
 ### decoded
@@ -32,7 +32,7 @@ decoded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-demoplayback-demoplayback-src-mq3-client-cgame-event-ml-1517648726"></a>
 ### demoPlayback
@@ -42,7 +42,7 @@ demoPlayback
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-dispatched-dispatched-src-mq3-client-cgame-event-ml-1385441996"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-errors-errors-src-mq3-client-cgame-event-ml-820635160"></a>
 ### errors
@@ -62,7 +62,7 @@ errors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-eventonly-eventonly-src-mq3-client-cgame-event-ml-1262074838"></a>
 ### eventOnly
@@ -72,7 +72,7 @@ eventOnly
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-follow-follow-src-mq3-client-cgame-event-ml-236183204"></a>
 ### follow
@@ -82,7 +82,7 @@ follow
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-hud-hud-src-mq3-client-cgame-event-ml-1840781022"></a>
 ### hud
@@ -92,7 +92,7 @@ hud
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-itempickup-itempickup-src-mq3-client-cgame-event-ml-1889906984"></a>
 ### itemPickup
@@ -102,7 +102,7 @@ itemPickup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-itempickupblendtime-itempickupblendtime-src-mq3-client-cgame-event-ml-70566930"></a>
 ### itemPickupBlendTime
@@ -112,7 +112,7 @@ itemPickupBlendTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-itempickuptime-itempickuptime-src-mq3-client-cgame-event-ml-1904610990"></a>
 ### itemPickupTime
@@ -122,7 +122,7 @@ itemPickupTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-landchange-landchange-src-mq3-client-cgame-event-ml-925136288"></a>
 ### landChange
@@ -132,7 +132,7 @@ landChange
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-landtime-landtime-src-mq3-client-cgame-event-ml-1155914070"></a>
 ### landTime
@@ -142,7 +142,7 @@ landTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-nopredict-nopredict-src-mq3-client-cgame-event-ml-815550006"></a>
 ### noPredict
@@ -152,7 +152,7 @@ noPredict
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-paindirection-paindirection-src-mq3-client-cgame-event-ml-1769885914"></a>
 ### painDirection
@@ -162,7 +162,7 @@ painDirection
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-paintime-paintime-src-mq3-client-cgame-event-ml-249905244"></a>
 ### painTime
@@ -172,7 +172,7 @@ painTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-powerupactive-powerupactive-src-mq3-client-cgame-event-ml-34050790"></a>
 ### powerupActive
@@ -182,7 +182,7 @@ powerupActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-poweruptime-poweruptime-src-mq3-client-cgame-event-ml-329647886"></a>
 ### powerupTime
@@ -192,7 +192,7 @@ powerupTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-predictedclient-predictedclient-src-mq3-client-cgame-event-ml-1036865466"></a>
 ### predictedClient
@@ -202,7 +202,7 @@ predictedClient
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-previousevents-previousevents-src-mq3-client-cgame-event-ml-486224374"></a>
 ### previousEvents
@@ -212,7 +212,7 @@ previousEvents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-records-records-src-mq3-client-cgame-event-ml-1382224454"></a>
 ### records
@@ -222,7 +222,7 @@ records
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-render-render-src-mq3-client-cgame-event-ml-1570832814"></a>
 ### render
@@ -232,7 +232,7 @@ render
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-seentime-seentime-src-mq3-client-cgame-event-ml-298099878"></a>
 ### seenTime
@@ -242,7 +242,7 @@ seenTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-stateactions-stateactions-src-mq3-client-cgame-event-ml-1721262718"></a>
 ### stateActions
@@ -252,7 +252,7 @@ stateActions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-stepchange-stepchange-src-mq3-client-cgame-event-ml-1317314238"></a>
 ### stepChange
@@ -262,7 +262,7 @@ stepChange
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-steptime-steptime-src-mq3-client-cgame-event-ml-78656196"></a>
 ### stepTime
@@ -272,7 +272,7 @@ stepTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-suppressed-suppressed-src-mq3-client-cgame-event-ml-1653868294"></a>
 ### suppressed
@@ -282,7 +282,7 @@ suppressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-synchronous-synchronous-src-mq3-client-cgame-event-ml-2075851930"></a>
 ### synchronous
@@ -292,7 +292,7 @@ synchronous
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-time-time-src-mq3-client-cgame-event-ml-1856455012"></a>
 ### time
@@ -302,7 +302,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-weaponselect-weaponselect-src-mq3-client-cgame-event-ml-1171536310"></a>
 ### weaponSelect
@@ -312,7 +312,7 @@ weaponSelect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)
 
 <a id="field-field-mq3-client-cgame-event-state-weaponselecttime-weaponselecttime-src-mq3-client-cgame-event-ml-1426912052"></a>
 ### weaponSelectTime
@@ -322,4 +322,4 @@ weaponSelectTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_event.ml#L24)

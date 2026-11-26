@@ -10,7 +10,7 @@ struct Vertex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L10)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-beam-vertex-uv-uv-src-mq3-renderer-surface-beam-ml-1917034097"></a>
 ### uv
@@ -32,7 +32,7 @@ uv
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L10)
 
 <a id="field-field-mq3-renderer-surface-beam-vertex-xyz-xyz-src-mq3-renderer-surface-beam-ml-2125895971"></a>
 ### xyz
@@ -42,4 +42,4 @@ xyz
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L10)

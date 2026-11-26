@@ -29,7 +29,7 @@ const CHAN_VOICE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L28)
 
 <a id="constant-constant-mq3-game-client-frame-contents-lava-const-contents-lava-headers-contents-lava-src-mq3-game-client-frame-ml-759461446"></a>
 ### CONTENTS_LAVA
@@ -39,7 +39,7 @@ const CONTENTS_LAVA = headers.CONTENTS_LAVA
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L24)
 
 <a id="constant-constant-mq3-game-client-frame-contents-slime-const-contents-slime-headers-contents-slime-src-mq3-game-client-frame-ml-1177690656"></a>
 ### CONTENTS_SLIME
@@ -49,7 +49,7 @@ const CONTENTS_SLIME = headers.CONTENTS_SLIME
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L25)
 
 <a id="constant-constant-mq3-game-client-frame-damage-no-armor-const-damage-no-armor-2-src-mq3-game-client-frame-ml-856943767"></a>
 ### DAMAGE_NO_ARMOR
@@ -59,7 +59,7 @@ const DAMAGE_NO_ARMOR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L27)
 
 <a id="function-function-mq3-game-client-frame-damagefeedback-function-damagefeedback-level-player-src-mq3-game-client-frame-ml-509921203"></a>
 ### damageFeedback
@@ -74,7 +74,7 @@ function damageFeedback(level, player)
 | `player` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L45)
 
 <a id="constant-constant-mq3-game-client-frame-ef-connection-const-ef-connection-8192-src-mq3-game-client-frame-ml-945114799"></a>
 ### EF_CONNECTION
@@ -84,7 +84,7 @@ const EF_CONNECTION = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L20)
 
 <a id="constant-constant-mq3-game-client-frame-ef-player-event-const-ef-player-event-16-src-mq3-game-client-frame-ml-374640138"></a>
 ### EF_PLAYER_EVENT
@@ -94,7 +94,7 @@ const EF_PLAYER_EVENT = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L19)
 
 <a id="constant-constant-mq3-game-client-frame-ef-teamvoted-const-ef-teamvoted-524288-src-mq3-game-client-frame-ml-181765600"></a>
 ### EF_TEAMVOTED
@@ -104,7 +104,7 @@ const EF_TEAMVOTED = 524288
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L22)
 
 <a id="constant-constant-mq3-game-client-frame-ef-voted-const-ef-voted-16384-src-mq3-game-client-frame-ml-494443275"></a>
 ### EF_VOTED
@@ -114,7 +114,7 @@ const EF_VOTED = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L21)
 
 <a id="function-function-mq3-game-client-frame-endframe-function-endframe-level-ent-src-mq3-game-client-frame-ml-1151010997"></a>
 ### endFrame
@@ -129,7 +129,7 @@ function endFrame(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L144)
 
 <a id="constant-constant-mq3-game-client-frame-fl-godmode-const-fl-godmode-16-src-mq3-game-client-frame-ml-1342006948"></a>
 ### FL_GODMODE
@@ -139,7 +139,7 @@ const FL_GODMODE = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L23)
 
 <a id="function-function-mq3-game-client-frame-missionpack-function-missionpack-level-src-mq3-game-client-frame-ml-1431044140"></a>
 ### missionpack
@@ -153,7 +153,7 @@ function missionpack(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L34)
 
 <a id="function-function-mq3-game-client-frame-persistenttag-function-persistenttag-level-client-src-mq3-game-client-frame-ml-336570875"></a>
 ### persistentTag
@@ -168,7 +168,7 @@ function persistentTag(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L38)
 
 <a id="constant-constant-mq3-game-client-frame-pmf-follow-const-pmf-follow-4096-src-mq3-game-client-frame-ml-1245208154"></a>
 ### PMF_FOLLOW
@@ -178,7 +178,7 @@ const PMF_FOLLOW = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L17)
 
 <a id="constant-constant-mq3-game-client-frame-pmf-scoreboard-const-pmf-scoreboard-8192-src-mq3-game-client-frame-ml-1231367473"></a>
 ### PMF_SCOREBOARD
@@ -188,7 +188,7 @@ const PMF_SCOREBOARD = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L18)
 
 <a id="function-function-mq3-game-client-frame-sendpendingpredictableevents-function-sendpendingpredictableevents-level-ps-src-mq3-game-client-frame-ml-342203915"></a>
 ### sendPendingPredictableEvents
@@ -203,7 +203,7 @@ function sendPendingPredictableEvents(level, ps)
 | `ps` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L109)
 
 <a id="function-function-mq3-game-client-frame-setclientsound-function-setclientsound-level-ent-src-mq3-game-client-frame-ml-258781757"></a>
 ### setClientSound
@@ -218,7 +218,7 @@ function setClientSound(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L103)
 
 <a id="function-function-mq3-game-client-frame-soundindex-function-soundindex-level-name-src-mq3-game-client-frame-ml-806078913"></a>
 ### soundIndex
@@ -233,7 +233,7 @@ function soundIndex(level, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L67)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-follow-const-spectator-follow-2-src-mq3-game-client-frame-ml-951532615"></a>
 ### SPECTATOR_FOLLOW
@@ -243,7 +243,7 @@ const SPECTATOR_FOLLOW = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L30)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-free-const-spectator-free-1-src-mq3-game-client-frame-ml-177597202"></a>
 ### SPECTATOR_FREE
@@ -253,7 +253,7 @@ const SPECTATOR_FREE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L29)
 
 <a id="constant-constant-mq3-game-client-frame-spectator-scoreboard-const-spectator-scoreboard-3-src-mq3-game-client-frame-ml-276654880"></a>
 ### SPECTATOR_SCOREBOARD
@@ -263,7 +263,7 @@ const SPECTATOR_SCOREBOARD = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L31)
 
 <a id="function-function-mq3-game-client-frame-spectatorendframe-function-spectatorendframe-level-ent-src-mq3-game-client-frame-ml-9531299"></a>
 ### spectatorEndFrame
@@ -278,7 +278,7 @@ function spectatorEndFrame(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L121)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L121)
 
 <a id="constant-constant-mq3-game-client-frame-stat-persistant-powerup-const-stat-persistant-powerup-7-src-mq3-game-client-frame-ml-293818394"></a>
 ### STAT_PERSISTANT_POWERUP
@@ -288,7 +288,7 @@ const STAT_PERSISTANT_POWERUP = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L32)
 
 <a id="constant-constant-mq3-game-client-frame-svf-notsingleclient-const-svf-notsingleclient-2048-src-mq3-game-client-frame-ml-977819437"></a>
 ### SVF_NOTSINGLECLIENT
@@ -298,7 +298,7 @@ const SVF_NOTSINGLECLIENT = 2048
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L26)
 
 <a id="function-function-mq3-game-client-frame-worldeffects-function-worldeffects-level-ent-src-mq3-game-client-frame-ml-2076799157"></a>
 ### worldEffects
@@ -313,4 +313,4 @@ function worldEffects(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/client_frame.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/client_frame.ml#L72)

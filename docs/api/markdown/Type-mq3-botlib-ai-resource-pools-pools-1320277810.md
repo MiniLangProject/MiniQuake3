@@ -10,7 +10,7 @@ struct Pools
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ chatStates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-pools-goalstates-goalstates-src-mq3-botlib-ai-resource-pools-ml-399843926"></a>
 ### goalStates
@@ -32,7 +32,7 @@ goalStates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-pools-movestates-movestates-src-mq3-botlib-ai-resource-pools-ml-1130019926"></a>
 ### moveStates
@@ -42,7 +42,7 @@ moveStates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-pools-weaponstates-weaponstates-src-mq3-botlib-ai-resource-pools-ml-899324904"></a>
 ### weaponStates
@@ -52,4 +52,4 @@ weaponStates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L37)

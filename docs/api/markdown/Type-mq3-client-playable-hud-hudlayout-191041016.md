@@ -10,7 +10,7 @@ struct HudLayout
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ crosshairSize
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-helpy-helpy-src-mq3-client-playable-hud-ml-2105840444"></a>
 ### helpY
@@ -32,7 +32,7 @@ helpY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-labely-labely-src-mq3-client-playable-hud-ml-762267342"></a>
 ### labelY
@@ -42,7 +42,7 @@ labelY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-margin-margin-src-mq3-client-playable-hud-ml-1383618892"></a>
 ### margin
@@ -52,7 +52,7 @@ margin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-statusy-statusy-src-mq3-client-playable-hud-ml-1901066904"></a>
 ### statusY
@@ -62,7 +62,7 @@ statusY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)
 
 <a id="field-field-mq3-client-playable-hud-hudlayout-valuey-valuey-src-mq3-client-playable-hud-ml-1262902244"></a>
 ### valueY
@@ -72,4 +72,4 @@ valueY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_hud.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_hud.ml#L13)

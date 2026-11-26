@@ -10,7 +10,7 @@ struct UserCommand
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L10)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-buttons-buttons-src-mq3-qcommon-message-delta-ml-2101966591"></a>
 ### buttons
@@ -32,7 +32,7 @@ buttons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L11)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-forwardmove-forwardmove-src-mq3-qcommon-message-delta-ml-1119125647"></a>
 ### forwardmove
@@ -42,7 +42,7 @@ forwardmove
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L13)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-rightmove-rightmove-src-mq3-qcommon-message-delta-ml-1394419979"></a>
 ### rightmove
@@ -52,7 +52,7 @@ rightmove
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L14)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-servertime-servertime-src-mq3-qcommon-message-delta-ml-2072648147"></a>
 ### serverTime
@@ -62,7 +62,7 @@ serverTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L9)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-upmove-upmove-src-mq3-qcommon-message-delta-ml-893891535"></a>
 ### upmove
@@ -72,7 +72,7 @@ upmove
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L15)
 
 <a id="field-field-mq3-qcommon-message-delta-usercommand-weapon-weapon-src-mq3-qcommon-message-delta-ml-1814416083"></a>
 ### weapon
@@ -82,4 +82,4 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/message_delta.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/message_delta.ml#L12)

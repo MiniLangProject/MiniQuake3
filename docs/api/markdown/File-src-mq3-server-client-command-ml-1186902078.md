@@ -21,7 +21,7 @@ function createClient()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L12)
 
 <a id="constant-constant-mq3-server-client-command-cs-active-const-cs-active-4-src-mq3-server-client-command-ml-1308717357"></a>
 ### CS_ACTIVE
@@ -31,7 +31,7 @@ const CS_ACTIVE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L7)
 
 <a id="function-function-mq3-server-client-command-execute-function-execute-host-clientstate-msg-src-mq3-server-client-command-ml-1750153017"></a>
 ### execute
@@ -47,7 +47,7 @@ function execute(host, clientState, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L20)
 
 <a id="function-function-mq3-server-client-command-runtime-function-runtime-src-mq3-server-client-command-ml-413634544"></a>
 ### runtime
@@ -57,6 +57,6 @@ function runtime()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_command.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_command.ml#L16)
 
 - [mq3.server.client_command.Runtime](Type-mq3-server-client-command-runtime-180684606.md) — struct

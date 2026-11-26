@@ -31,7 +31,7 @@ function archiveRead(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L103)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-createstate-function-createstate-archives-glconfig-src-mq3-renderer-tr-model-runtime-ml-1650506032"></a>
 ### createState
@@ -46,7 +46,7 @@ function createState(archives, glConfig)
 | `glConfig` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L41)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-emptymodel-function-emptymodel-index-src-mq3-renderer-tr-model-runtime-ml-681070588"></a>
 ### emptyModel
@@ -60,7 +60,7 @@ function emptyModel(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L40)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-f32-function-f32-data-offset-src-mq3-renderer-tr-model-runtime-ml-594993873"></a>
 ### f32
@@ -75,7 +75,7 @@ function f32(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L36)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-fail-function-fail-text-src-mq3-renderer-tr-model-runtime-ml-1285292971"></a>
 ### fail
@@ -89,7 +89,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L34)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-fixedstring-function-fixedstring-data-offset-capacity-src-mq3-renderer-tr-model-runtime-ml-978244249"></a>
 ### fixedString
@@ -105,7 +105,7 @@ function fixedString(data, offset, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L39)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-i32-function-i32-data-offset-src-mq3-renderer-tr-model-runtime-ml-2017573435"></a>
 ### i32
@@ -120,7 +120,7 @@ function i32(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L35)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-lodname-function-lodname-name-lod-src-mq3-renderer-tr-model-runtime-ml-1774574810"></a>
 ### lodName
@@ -135,7 +135,7 @@ function lodName(name, lod)
 | `lod` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L108)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-max-mod-known-const-max-mod-known-1024-src-mq3-renderer-tr-model-runtime-ml-226841584"></a>
 ### MAX_MOD_KNOWN
@@ -145,7 +145,7 @@ const MAX_MOD_KNOWN = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L18)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-max-qpath-const-max-qpath-64-src-mq3-renderer-tr-model-runtime-ml-1378982775"></a>
 ### MAX_QPATH
@@ -155,7 +155,7 @@ const MAX_QPATH = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L19)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-md3-max-lods-const-md3-max-lods-3-src-mq3-renderer-tr-model-runtime-ml-423894576"></a>
 ### MD3_MAX_LODS
@@ -165,7 +165,7 @@ const MD3_MAX_LODS = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L20)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-md4-ident-const-md4-ident-877675593-src-mq3-renderer-tr-model-runtime-ml-1803900768"></a>
 ### MD4_IDENT
@@ -175,7 +175,7 @@ const MD4_IDENT = 877675593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L21)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-md4-max-bones-const-md4-max-bones-128-src-mq3-renderer-tr-model-runtime-ml-1710204202"></a>
 ### MD4_MAX_BONES
@@ -185,7 +185,7 @@ const MD4_MAX_BONES = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L23)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-md4-version-const-md4-version-1-src-mq3-renderer-tr-model-runtime-ml-1187460012"></a>
 ### MD4_VERSION
@@ -195,7 +195,7 @@ const MD4_VERSION = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L22)
 
 - [mq3.renderer.tr_model_runtime.Md4Lod](Type-mq3-renderer-tr-model-runtime-md4lod-1063644678.md) — struct
 - [mq3.renderer.tr_model_runtime.Md4Model](Type-mq3-renderer-tr-model-runtime-md4model-99542448.md) — struct
@@ -207,7 +207,7 @@ const MOD_BAD = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L14)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-mod-brush-const-mod-brush-1-src-mq3-renderer-tr-model-runtime-ml-152279992"></a>
 ### MOD_BRUSH
@@ -217,7 +217,7 @@ const MOD_BRUSH = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L15)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-mod-md4-const-mod-md4-3-src-mq3-renderer-tr-model-runtime-ml-1419309498"></a>
 ### MOD_MD4
@@ -227,7 +227,7 @@ const MOD_MD4 = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L17)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-mod-mesh-const-mod-mesh-2-src-mq3-renderer-tr-model-runtime-ml-706497921"></a>
 ### MOD_MESH
@@ -237,7 +237,7 @@ const MOD_MESH = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L16)
 
 - [mq3.renderer.tr_model_runtime.Model](Type-mq3-renderer-tr-model-runtime-model-641358649.md) — struct
 - [mq3.renderer.tr_model_runtime.ModelList](Type-mq3-renderer-tr-model-runtime-modellist-1667031141.md) — struct
@@ -254,7 +254,7 @@ function normalizeSurfaceNames(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L56)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-allocmodel-function-r-allocmodel-state-src-mq3-renderer-tr-model-runtime-ml-1248852409"></a>
 ### R_AllocModel
@@ -268,7 +268,7 @@ function R_AllocModel(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L43)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-getmodelbyhandle-function-r-getmodelbyhandle-state-index-src-mq3-renderer-tr-model-runtime-ml-2049658579"></a>
 ### R_GetModelByHandle
@@ -283,7 +283,7 @@ function R_GetModelByHandle(state, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L47)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-gettag-function-r-gettag-model-frame-tagname-src-mq3-renderer-tr-model-runtime-ml-1158904073"></a>
 ### R_GetTag
@@ -299,7 +299,7 @@ function R_GetTag(model, frame, tagName)
 | `tagName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L131)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-lerptag-function-r-lerptag-state-handle-startframe-endframe-frac-tagname-src-mq3-renderer-tr-model-runtime-ml-1151775023"></a>
 ### R_LerpTag
@@ -318,7 +318,7 @@ function R_LerpTag(state, handle, startFrame, endFrame, frac, tagName)
 | `tagName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L132)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-loadmd3-function-r-loadmd3-model-lod-data-name-src-mq3-renderer-tr-model-runtime-ml-1598138129"></a>
 ### R_LoadMD3
@@ -335,7 +335,7 @@ function R_LoadMD3(model, lod, data, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L57)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-loadmd4-function-r-loadmd4-model-data-name-src-mq3-renderer-tr-model-runtime-ml-548600902"></a>
 ### R_LoadMD4
@@ -351,7 +351,7 @@ function R_LoadMD4(model, data, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L67)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modelbounds-function-r-modelbounds-state-handle-src-mq3-renderer-tr-model-runtime-ml-282765185"></a>
 ### R_ModelBounds
@@ -366,7 +366,7 @@ function R_ModelBounds(state, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L135)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modelinit-function-r-modelinit-state-src-mq3-renderer-tr-model-runtime-ml-351969861"></a>
 ### R_ModelInit
@@ -380,7 +380,7 @@ function R_ModelInit(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L51)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-r-modellist-f-function-r-modellist-f-state-src-mq3-renderer-tr-model-runtime-ml-1128204391"></a>
 ### R_Modellist_f
@@ -394,7 +394,7 @@ function R_Modellist_f(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L139)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-re-beginregistration-function-re-beginregistration-state-src-mq3-renderer-tr-model-runtime-ml-479505829"></a>
 ### RE_BeginRegistration
@@ -408,7 +408,7 @@ function RE_BeginRegistration(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L142)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-re-registermodel-function-re-registermodel-state-name-src-mq3-renderer-tr-model-runtime-ml-2137178506"></a>
 ### RE_RegisterModel
@@ -423,7 +423,7 @@ function RE_RegisterModel(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L111)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-shader-max-indexes-const-shader-max-indexes-6000-src-mq3-renderer-tr-model-runtime-ml-1667877655"></a>
 ### SHADER_MAX_INDEXES
@@ -433,7 +433,7 @@ const SHADER_MAX_INDEXES = 6000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L25)
 
 <a id="constant-constant-mq3-renderer-tr-model-runtime-shader-max-vertexes-const-shader-max-vertexes-1000-src-mq3-renderer-tr-model-runtime-ml-1377696154"></a>
 ### SHADER_MAX_VERTEXES
@@ -443,7 +443,7 @@ const SHADER_MAX_VERTEXES = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L24)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-span-function-span-offset-size-limit-src-mq3-renderer-tr-model-runtime-ml-810523241"></a>
 ### span
@@ -459,7 +459,7 @@ function span(offset, size, limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L38)
 
 - [mq3.renderer.tr_model_runtime.State](Type-mq3-renderer-tr-model-runtime-state-92073329.md) — struct
 <a id="function-function-mq3-renderer-tr-model-runtime-tagmodel-function-tagmodel-value-src-mq3-renderer-tr-model-runtime-ml-1642014205"></a>
@@ -474,7 +474,7 @@ function tagModel(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L127)
 
 <a id="function-function-mq3-renderer-tr-model-runtime-vec3-function-vec3-data-offset-src-mq3-renderer-tr-model-runtime-ml-1689283319"></a>
 ### vec3
@@ -489,4 +489,4 @@ function vec3(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_model_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_model_runtime.ml#L37)

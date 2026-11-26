@@ -10,7 +10,7 @@ struct Dshader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 ## Members
 
@@ -22,7 +22,7 @@ contentFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 <a id="field-field-mq3-format-qfiles-dshader-shader-shader-src-mq3-format-qfiles-ml-1340835016"></a>
 ### shader
@@ -32,7 +32,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)
 
 <a id="field-field-mq3-format-qfiles-dshader-surfaceflags-surfaceflags-src-mq3-format-qfiles-ml-1496987482"></a>
 ### surfaceFlags
@@ -42,4 +42,4 @@ surfaceFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L107)

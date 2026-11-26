@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ clientCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-services-context-context-src-mq3-server-client-message-ml-1530737565"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-services-diagnosticfn-diagnosticfn-src-mq3-server-client-message-ml-1758743987"></a>
 ### diagnosticFn
@@ -42,7 +42,7 @@ diagnosticFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-services-dropfn-dropfn-src-mq3-server-client-message-ml-2108049979"></a>
 ### dropFn
@@ -52,7 +52,7 @@ dropFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-services-sendgamestatefn-sendgamestatefn-src-mq3-server-client-message-ml-1352578969"></a>
 ### sendGamestateFn
@@ -62,7 +62,7 @@ sendGamestateFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)
 
 <a id="field-field-mq3-server-client-message-services-usermovefn-usermovefn-src-mq3-server-client-message-ml-1248475445"></a>
 ### userMoveFn
@@ -72,4 +72,4 @@ userMoveFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L21)

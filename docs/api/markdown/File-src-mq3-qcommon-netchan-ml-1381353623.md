@@ -29,7 +29,7 @@ function emit(runtime, channel, packet)
 | `packet` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L65)
 
 <a id="constant-constant-mq3-qcommon-netchan-fragment-bit-const-fragment-bit-2147483648-src-mq3-qcommon-netchan-ml-218011216"></a>
 ### FRAGMENT_BIT
@@ -39,7 +39,7 @@ const FRAGMENT_BIT = 2147483648
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L14)
 
 <a id="constant-constant-mq3-qcommon-netchan-fragment-size-const-fragment-size-1300-src-mq3-qcommon-netchan-ml-875439565"></a>
 ### FRAGMENT_SIZE
@@ -49,7 +49,7 @@ const FRAGMENT_SIZE = 1300
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L11)
 
 <a id="function-function-mq3-qcommon-netchan-init-function-init-port-src-mq3-qcommon-netchan-ml-931423395"></a>
 ### init
@@ -63,7 +63,7 @@ function init(port)
 | `port` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L43)
 
 <a id="constant-constant-mq3-qcommon-netchan-max-msglen-const-max-msglen-qcommonheaders-max-msglen-src-mq3-qcommon-netchan-ml-954055660"></a>
 ### MAX_MSGLEN
@@ -73,7 +73,7 @@ const MAX_MSGLEN = qcommonHeaders.MAX_MSGLEN
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L13)
 
 <a id="constant-constant-mq3-qcommon-netchan-max-packetlen-const-max-packetlen-1400-src-mq3-qcommon-netchan-ml-1562908450"></a>
 ### MAX_PACKETLEN
@@ -83,7 +83,7 @@ const MAX_PACKETLEN = 1400
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L10)
 
 <a id="constant-constant-mq3-qcommon-netchan-ns-client-const-ns-client-0-src-mq3-qcommon-netchan-ml-1320538675"></a>
 ### NS_CLIENT
@@ -93,7 +93,7 @@ const NS_CLIENT = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L8)
 
 <a id="constant-constant-mq3-qcommon-netchan-ns-server-const-ns-server-1-src-mq3-qcommon-netchan-ml-1984388870"></a>
 ### NS_SERVER
@@ -103,7 +103,7 @@ const NS_SERVER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L9)
 
 <a id="constant-constant-mq3-qcommon-netchan-packet-header-const-packet-header-10-src-mq3-qcommon-netchan-ml-435504966"></a>
 ### PACKET_HEADER
@@ -113,7 +113,7 @@ const PACKET_HEADER = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L12)
 
 <a id="function-function-mq3-qcommon-netchan-process-function-process-channel-data-maxsize-src-mq3-qcommon-netchan-ml-643219896"></a>
 ### process
@@ -129,7 +129,7 @@ function process(channel, data, maxsize)
 | `maxsize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L107)
 
 - [mq3.qcommon.netchan.ProcessResult](Type-mq3-qcommon-netchan-processresult-1295575579.md) — struct
 <a id="function-function-mq3-qcommon-netchan-readshort-function-readshort-data-offset-src-mq3-qcommon-netchan-ml-1892004011"></a>
@@ -145,7 +145,7 @@ function readShort(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L59)
 
 <a id="function-function-mq3-qcommon-netchan-rejected-function-rejected-data-readcount-src-mq3-qcommon-netchan-ml-985126109"></a>
 ### rejected
@@ -160,7 +160,7 @@ function rejected(data, readcount)
 | `readcount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L103)
 
 - [mq3.qcommon.netchan.Runtime](Type-mq3-qcommon-netchan-runtime-1334623059.md) — struct
 <a id="constant-constant-mq3-qcommon-netchan-scramble-start-const-scramble-start-6-src-mq3-qcommon-netchan-ml-1729049471"></a>
@@ -171,7 +171,7 @@ const SCRAMBLE_START = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L15)
 
 <a id="function-function-mq3-qcommon-netchan-scramblepacket-function-scramblepacket-data-src-mq3-qcommon-netchan-ml-176520908"></a>
 ### scramblePacket
@@ -187,7 +187,7 @@ These two routines are inside Baseq3's #if 0 block, but keeping the exact transf
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L143)
 
 <a id="function-function-mq3-qcommon-netchan-setup-function-setup-sock-address-qport-src-mq3-qcommon-netchan-ml-218128106"></a>
 ### setup
@@ -203,7 +203,7 @@ function setup(sock, address, qport)
 | `qport` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L47)
 
 <a id="function-function-mq3-qcommon-netchan-transmit-function-transmit-runtime-channel-data-src-mq3-qcommon-netchan-ml-1030911527"></a>
 ### transmit
@@ -219,7 +219,7 @@ function transmit(runtime, channel, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L88)
 
 <a id="function-function-mq3-qcommon-netchan-transmitnextfragment-function-transmitnextfragment-runtime-channel-src-mq3-qcommon-netchan-ml-644208431"></a>
 ### transmitNextFragment
@@ -234,7 +234,7 @@ function transmitNextFragment(runtime, channel)
 | `channel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L70)
 
 <a id="function-function-mq3-qcommon-netchan-unscramblepacket-function-unscramblepacket-data-src-mq3-qcommon-netchan-ml-1014647252"></a>
 ### unscramblePacket
@@ -248,7 +248,7 @@ function unscramblePacket(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L154)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L154)
 
 <a id="function-function-mq3-qcommon-netchan-writelong-function-writelong-data-offset-value-src-mq3-qcommon-netchan-ml-1836131760"></a>
 ### writeLong
@@ -264,7 +264,7 @@ function writeLong(data, offset, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L55)
 
 <a id="function-function-mq3-qcommon-netchan-writeshort-function-writeshort-data-offset-value-src-mq3-qcommon-netchan-ml-528833118"></a>
 ### writeShort
@@ -280,4 +280,4 @@ function writeShort(data, offset, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L51)

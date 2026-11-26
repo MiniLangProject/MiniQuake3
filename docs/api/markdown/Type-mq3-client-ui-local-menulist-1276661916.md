@@ -10,7 +10,7 @@ struct MenuList
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 ## Members
 
@@ -22,7 +22,7 @@ columns
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-curvalue-curvalue-src-mq3-client-ui-local-ml-21597888"></a>
 ### curvalue
@@ -32,7 +32,7 @@ curvalue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-generic-generic-src-mq3-client-ui-local-ml-1272792754"></a>
 ### generic
@@ -42,7 +42,7 @@ generic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-height-height-src-mq3-client-ui-local-ml-1868447904"></a>
 ### height
@@ -52,7 +52,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-itemnames-itemnames-src-mq3-client-ui-local-ml-363729370"></a>
 ### itemnames
@@ -62,7 +62,7 @@ itemnames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-numitems-numitems-src-mq3-client-ui-local-ml-1582971886"></a>
 ### numitems
@@ -72,7 +72,7 @@ numitems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-oldvalue-oldvalue-src-mq3-client-ui-local-ml-939040146"></a>
 ### oldvalue
@@ -82,7 +82,7 @@ oldvalue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-seperation-seperation-src-mq3-client-ui-local-ml-1238379886"></a>
 ### seperation
@@ -92,7 +92,7 @@ seperation
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-top-top-src-mq3-client-ui-local-ml-158746978"></a>
 ### top
@@ -102,7 +102,7 @@ top
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)
 
 <a id="field-field-mq3-client-ui-local-menulist-width-width-src-mq3-client-ui-local-ml-1950852846"></a>
 ### width
@@ -112,4 +112,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L65)

@@ -10,7 +10,7 @@ struct Registry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L30)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L30)
 
 <a id="field-field-mq3-vm-pc-parser-registry-defines-defines-src-mq3-vm-pc-parser-ml-1894469670"></a>
 ### defines
@@ -32,7 +32,7 @@ defines
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L30)
 
 <a id="field-field-mq3-vm-pc-parser-registry-loadfn-loadfn-src-mq3-vm-pc-parser-ml-710719402"></a>
 ### loadFn
@@ -42,7 +42,7 @@ loadFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L30)
 
 <a id="field-field-mq3-vm-pc-parser-registry-sources-sources-src-mq3-vm-pc-parser-ml-924410954"></a>
 ### sources
@@ -52,4 +52,4 @@ sources
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L30)

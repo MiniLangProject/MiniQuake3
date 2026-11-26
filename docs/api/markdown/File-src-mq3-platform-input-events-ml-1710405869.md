@@ -22,7 +22,7 @@ function charEvent(queue, time, character)
 | `character` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L56)
 
 <a id="function-function-mq3-platform-input-events-create-function-create-clockcontext-clockfn-src-mq3-platform-input-events-ml-110066661"></a>
 ### create
@@ -37,7 +37,7 @@ function create(clockContext, clockFn)
 | `clockFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L22)
 
 <a id="function-function-mq3-platform-input-events-dispatch-function-dispatch-event-sink-src-mq3-platform-input-events-ml-733613159"></a>
 ### dispatch
@@ -54,7 +54,7 @@ Productive Com_EventLoop input half. A desktop window adapter only has to enqueu
 | `sink` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L94)
 
 <a id="function-function-mq3-platform-input-events-drain-function-drain-queue-sink-maxevents-src-mq3-platform-input-events-ml-283756669"></a>
 ### drain
@@ -70,7 +70,7 @@ function drain(queue, sink, maxEvents)
 | `maxEvents` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L110)
 
 - [mq3.platform.input_events.Event](Type-mq3-platform-input-events-event-1582954779.md) — struct
 <a id="function-function-mq3-platform-input-events-handlers-function-handlers-context-keyfn-charfn-mousefn-joystickfn-src-mq3-platform-input-events-ml-1600023915"></a>
@@ -89,7 +89,7 @@ function handlers(context, keyFn, charFn, mouseFn, joystickFn)
 | `joystickFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L88)
 
 - [mq3.platform.input_events.Handlers](Type-mq3-platform-input-events-handlers-646550524.md) — struct
 <a id="function-function-mq3-platform-input-events-joystickevent-function-joystickevent-queue-time-axis-value-src-mq3-platform-input-events-ml-406383114"></a>
@@ -107,7 +107,7 @@ function joystickEvent(queue, time, axis, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L67)
 
 <a id="constant-constant-mq3-platform-input-events-k-mwheeldown-const-k-mwheeldown-183-src-mq3-platform-input-events-ml-1222826189"></a>
 ### K_MWHEELDOWN
@@ -119,7 +119,7 @@ const K_MWHEELDOWN = 183
 Baseq3 key numbers from keys.h. A wheel notch is represented as a complete key press so bindings cannot remain stuck when a host only reports deltas.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L15)
 
 <a id="constant-constant-mq3-platform-input-events-k-mwheelup-const-k-mwheelup-184-src-mq3-platform-input-events-ml-211822396"></a>
 ### K_MWHEELUP
@@ -129,7 +129,7 @@ const K_MWHEELUP = 184
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L16)
 
 <a id="function-function-mq3-platform-input-events-keyevent-function-keyevent-queue-time-key-down-src-mq3-platform-input-events-ml-694994047"></a>
 ### keyEvent
@@ -146,7 +146,7 @@ function keyEvent(queue, time, key, down)
 | `down` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L50)
 
 <a id="constant-constant-mq3-platform-input-events-max-qued-events-const-max-qued-events-256-src-mq3-platform-input-events-ml-1216338214"></a>
 ### MAX_QUED_EVENTS
@@ -156,7 +156,7 @@ const MAX_QUED_EVENTS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L11)
 
 <a id="function-function-mq3-platform-input-events-mouseevent-function-mouseevent-queue-time-dx-dy-src-mq3-platform-input-events-ml-1900111333"></a>
 ### mouseEvent
@@ -173,7 +173,7 @@ function mouseEvent(queue, time, dx, dy)
 | `dy` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L61)
 
 <a id="function-function-mq3-platform-input-events-poll-function-poll-queue-src-mq3-platform-input-events-ml-1446245603"></a>
 ### poll
@@ -187,7 +187,7 @@ function poll(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L81)
 
 - [mq3.platform.input_events.Queue](Type-mq3-platform-input-events-queue-1813437868.md) — struct
 <a id="function-function-mq3-platform-input-events-queued-function-queued-queue-src-mq3-platform-input-events-ml-627835447"></a>
@@ -202,7 +202,7 @@ function queued(queue)
 | `queue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L26)
 
 <a id="function-function-mq3-platform-input-events-queueevent-function-queueevent-queue-time-type-value-value2-src-mq3-platform-input-events-ml-88770392"></a>
 ### queueEvent
@@ -222,7 +222,7 @@ Exact ownership rule of Sys_QueEvent for input-only events: overwrite the oldest
 | `value2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L33)
 
 <a id="constant-constant-mq3-platform-input-events-se-char-const-se-char-2-src-mq3-platform-input-events-ml-675090987"></a>
 ### SE_CHAR
@@ -232,7 +232,7 @@ const SE_CHAR = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L8)
 
 <a id="constant-constant-mq3-platform-input-events-se-joystick-axis-const-se-joystick-axis-4-src-mq3-platform-input-events-ml-1966378517"></a>
 ### SE_JOYSTICK_AXIS
@@ -242,7 +242,7 @@ const SE_JOYSTICK_AXIS = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L10)
 
 <a id="constant-constant-mq3-platform-input-events-se-key-const-se-key-1-src-mq3-platform-input-events-ml-474918174"></a>
 ### SE_KEY
@@ -252,7 +252,7 @@ const SE_KEY = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L7)
 
 <a id="constant-constant-mq3-platform-input-events-se-mouse-const-se-mouse-3-src-mq3-platform-input-events-ml-1827309228"></a>
 ### SE_MOUSE
@@ -262,7 +262,7 @@ const SE_MOUSE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L9)
 
 <a id="constant-constant-mq3-platform-input-events-se-none-const-se-none-0-src-mq3-platform-input-events-ml-678810773"></a>
 ### SE_NONE
@@ -272,7 +272,7 @@ const SE_NONE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L6)
 
 <a id="function-function-mq3-platform-input-events-wheelevent-function-wheelevent-queue-time-delta-src-mq3-platform-input-events-ml-841208962"></a>
 ### wheelEvent
@@ -288,4 +288,4 @@ function wheelEvent(queue, time, delta)
 | `delta` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L72)

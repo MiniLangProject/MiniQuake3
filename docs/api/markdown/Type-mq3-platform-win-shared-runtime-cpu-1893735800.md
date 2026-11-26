@@ -10,7 +10,7 @@ struct Cpu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ cpuidSupported
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-platform-win-shared-runtime-cpu-extendedfeatureedx-extendedfeatureedx-src-mq3-platform-win-shared-runtime-ml-693360907"></a>
 ### extendedFeatureEDX
@@ -32,7 +32,7 @@ extendedFeatureEDX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-platform-win-shared-runtime-cpu-extendedmaximum-extendedmaximum-src-mq3-platform-win-shared-runtime-ml-2134691103"></a>
 ### extendedMaximum
@@ -42,7 +42,7 @@ extendedMaximum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-platform-win-shared-runtime-cpu-featureedx-featureedx-src-mq3-platform-win-shared-runtime-ml-1866462569"></a>
 ### featureEDX
@@ -52,7 +52,7 @@ featureEDX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)
 
 <a id="field-field-mq3-platform-win-shared-runtime-cpu-maximum-maximum-src-mq3-platform-win-shared-runtime-ml-1735952443"></a>
 ### maximum
@@ -62,4 +62,4 @@ maximum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_shared_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_shared_runtime.ml#L15)

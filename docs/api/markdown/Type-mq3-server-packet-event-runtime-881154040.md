@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L19)
 
 <a id="field-field-mq3-server-packet-event-runtime-time-time-src-mq3-server-packet-event-ml-1928082151"></a>
 ### time
@@ -32,4 +32,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/packet_event.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/packet_event.ml#L19)

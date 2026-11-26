@@ -10,7 +10,7 @@ struct Dbrush
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L112)
 
 ## Members
 
@@ -22,7 +22,7 @@ firstSide
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L112)
 
 <a id="field-field-mq3-format-qfiles-dbrush-numsides-numsides-src-mq3-format-qfiles-ml-517988235"></a>
 ### numSides
@@ -32,7 +32,7 @@ numSides
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L112)
 
 <a id="field-field-mq3-format-qfiles-dbrush-shadernum-shadernum-src-mq3-format-qfiles-ml-2039784195"></a>
 ### shaderNum
@@ -42,4 +42,4 @@ shaderNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L112)

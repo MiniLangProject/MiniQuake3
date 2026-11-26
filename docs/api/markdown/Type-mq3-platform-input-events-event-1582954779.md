@@ -10,7 +10,7 @@ struct Event
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L18)
 
 <a id="field-field-mq3-platform-input-events-event-type-type-src-mq3-platform-input-events-ml-1453548229"></a>
 ### type
@@ -32,7 +32,7 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L18)
 
 <a id="field-field-mq3-platform-input-events-event-value-value-src-mq3-platform-input-events-ml-1501576153"></a>
 ### value
@@ -42,7 +42,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L18)
 
 <a id="field-field-mq3-platform-input-events-event-value2-value2-src-mq3-platform-input-events-ml-165328167"></a>
 ### value2
@@ -52,4 +52,4 @@ value2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/input_events.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/input_events.ml#L18)

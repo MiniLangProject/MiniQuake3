@@ -10,7 +10,7 @@ struct Quad
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-quad-commandindex-commandindex-src-mq3-renderer-qvm-2d-batch-ml-1322038812"></a>
 ### commandIndex
@@ -32,7 +32,7 @@ commandIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-quad-positions-positions-src-mq3-renderer-qvm-2d-batch-ml-1208154122"></a>
 ### positions
@@ -42,7 +42,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-quad-shaderhandle-shaderhandle-src-mq3-renderer-qvm-2d-batch-ml-1358294864"></a>
 ### shaderHandle
@@ -52,7 +52,7 @@ shaderHandle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-quad-shadername-shadername-src-mq3-renderer-qvm-2d-batch-ml-917897678"></a>
 ### shaderName
@@ -62,7 +62,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-quad-texcoords-texcoords-src-mq3-renderer-qvm-2d-batch-ml-1453240786"></a>
 ### texCoords
@@ -72,4 +72,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L20)

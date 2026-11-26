@@ -10,7 +10,7 @@ struct TargetEntityInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 ## Members
 
@@ -22,7 +22,7 @@ angles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-flags-flags-src-mq3-game-bot-combat-ai-ml-364207731"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-lastvisorigin-lastvisorigin-src-mq3-game-bot-combat-ai-ml-2068324511"></a>
 ### lastVisOrigin
@@ -42,7 +42,7 @@ lastVisOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-number-number-src-mq3-game-bot-combat-ai-ml-1516014885"></a>
 ### number
@@ -52,7 +52,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-origin-origin-src-mq3-game-bot-combat-ai-ml-1144387687"></a>
 ### origin
@@ -62,7 +62,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-powerups-powerups-src-mq3-game-bot-combat-ai-ml-2001386757"></a>
 ### powerups
@@ -72,7 +72,7 @@ powerups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-updatetime-updatetime-src-mq3-game-bot-combat-ai-ml-304064235"></a>
 ### updateTime
@@ -82,7 +82,7 @@ updateTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)
 
 <a id="field-field-mq3-game-bot-combat-ai-targetentityinfo-valid-valid-src-mq3-game-bot-combat-ai-ml-1126248923"></a>
 ### valid
@@ -92,4 +92,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_combat_ai.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_combat_ai.ml#L62)

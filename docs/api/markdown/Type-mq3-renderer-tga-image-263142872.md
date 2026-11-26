@@ -10,7 +10,7 @@ struct Image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L13)
 
 <a id="field-field-mq3-renderer-tga-image-pixels-pixels-src-mq3-renderer-tga-ml-480832240"></a>
 ### pixels
@@ -32,7 +32,7 @@ pixels
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L13)
 
 <a id="field-field-mq3-renderer-tga-image-topdowndeclared-topdowndeclared-src-mq3-renderer-tga-ml-1295020478"></a>
 ### topDownDeclared
@@ -42,7 +42,7 @@ topDownDeclared
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L13)
 
 <a id="field-field-mq3-renderer-tga-image-width-width-src-mq3-renderer-tga-ml-522167838"></a>
 ### width
@@ -52,4 +52,4 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tga.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tga.ml#L13)

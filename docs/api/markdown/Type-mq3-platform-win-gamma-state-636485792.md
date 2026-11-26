@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-currentramp-currentramp-src-mq3-platform-win-gamma-ml-978567302"></a>
 ### currentRamp
@@ -32,7 +32,7 @@ currentRamp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-debug-debug-src-mq3-platform-win-gamma-ml-639872738"></a>
 ### debug
@@ -42,7 +42,7 @@ debug
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-devicesupportsgamma-devicesupportsgamma-src-mq3-platform-win-gamma-ml-210377354"></a>
 ### deviceSupportsGamma
@@ -52,7 +52,7 @@ deviceSupportsGamma
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-drivertype-drivertype-src-mq3-platform-win-gamma-ml-1942680830"></a>
 ### driverType
@@ -62,7 +62,7 @@ driverType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-has3dfx-has3dfx-src-mq3-platform-win-gamma-ml-1825336746"></a>
 ### has3dfx
@@ -72,7 +72,7 @@ has3dfx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-hasdc-hasdc-src-mq3-platform-win-gamma-ml-2015472086"></a>
 ### hasDc
@@ -82,7 +82,7 @@ hasDc
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-ignorehardwaregamma-ignorehardwaregamma-src-mq3-platform-win-gamma-ml-237732730"></a>
 ### ignoreHardwareGamma
@@ -92,7 +92,7 @@ ignoreHardwareGamma
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-iswin2k-iswin2k-src-mq3-platform-win-gamma-ml-1112219986"></a>
 ### isWin2k
@@ -102,7 +102,7 @@ isWin2k
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-oldramp-oldramp-src-mq3-platform-win-gamma-ml-1124491426"></a>
 ### oldRamp
@@ -112,7 +112,7 @@ oldRamp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-retailactive-retailactive-src-mq3-platform-win-gamma-ml-1493893972"></a>
 ### retailActive
@@ -122,7 +122,7 @@ retailActive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)
 
 <a id="field-field-mq3-platform-win-gamma-state-warnings-warnings-src-mq3-platform-win-gamma-ml-1529421216"></a>
 ### warnings
@@ -132,4 +132,4 @@ warnings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_gamma.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_gamma.ml#L9)

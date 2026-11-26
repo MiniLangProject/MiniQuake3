@@ -25,7 +25,7 @@ function allFaces(map, maxLines)
 | `maxLines` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L102)
 
 <a id="function-function-mq3-renderer-bsp-preview-alreadyemitted-function-alreadyemitted-keys-left-right-src-mq3-renderer-bsp-preview-ml-454105795"></a>
 ### alreadyEmitted
@@ -41,7 +41,7 @@ function alreadyEmitted(keys, left, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L55)
 
 <a id="function-function-mq3-renderer-bsp-preview-contains-function-contains-values-wanted-src-mq3-renderer-bsp-preview-ml-228448965"></a>
 ### contains
@@ -56,7 +56,7 @@ function contains(values, wanted)
 | `wanted` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L31)
 
 <a id="function-function-mq3-renderer-bsp-preview-fail-function-fail-text-src-mq3-renderer-bsp-preview-ml-715785191"></a>
 ### fail
@@ -70,7 +70,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L12)
 
 <a id="function-function-mq3-renderer-bsp-preview-i32-function-i32-map-offset-src-mq3-renderer-bsp-preview-ml-1430128459"></a>
 ### i32
@@ -85,7 +85,7 @@ function i32(map, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L22)
 
 - [mq3.renderer.bsp_preview.Line](Type-mq3-renderer-bsp-preview-line-1089291819.md) — struct
 <a id="constant-constant-mq3-renderer-bsp-preview-mst-planar-const-mst-planar-1-src-mq3-renderer-bsp-preview-ml-1305323108"></a>
@@ -96,7 +96,7 @@ const MST_PLANAR = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L6)
 
 <a id="constant-constant-mq3-renderer-bsp-preview-mst-triangle-soup-const-mst-triangle-soup-3-src-mq3-renderer-bsp-preview-ml-37564862"></a>
 ### MST_TRIANGLE_SOUP
@@ -106,7 +106,7 @@ const MST_TRIANGLE_SOUP = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L7)
 
 <a id="function-function-mq3-renderer-bsp-preview-point-function-point-map-index-src-mq3-renderer-bsp-preview-ml-282830504"></a>
 ### point
@@ -121,7 +121,7 @@ function point(map, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L25)
 
 - [mq3.renderer.bsp_preview.Preview](Type-mq3-renderer-bsp-preview-preview-860941003.md) — struct
 <a id="function-function-mq3-renderer-bsp-preview-recordrange-function-recordrange-map-lump-index-stride-src-mq3-renderer-bsp-preview-ml-813750517"></a>
@@ -139,7 +139,7 @@ function recordRange(map, lump, index, stride)
 | `stride` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L16)
 
 <a id="function-function-mq3-renderer-bsp-preview-validmap-function-validmap-map-src-mq3-renderer-bsp-preview-ml-1884392990"></a>
 ### validMap
@@ -153,7 +153,7 @@ function validMap(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L13)
 
 <a id="function-function-mq3-renderer-bsp-preview-visiblefaces-function-visiblefaces-map-leafindexes-src-mq3-renderer-bsp-preview-ml-2051796588"></a>
 ### visibleFaces
@@ -170,7 +170,7 @@ Resolve the face list referenced by a set of visible BSP leaves. The result reta
 | `leafIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L38)
 
 <a id="function-function-mq3-renderer-bsp-preview-visiblewireframe-function-visiblewireframe-map-leafindexes-maxlines-src-mq3-renderer-bsp-preview-ml-384264523"></a>
 ### visibleWireframe
@@ -186,7 +186,7 @@ function visibleWireframe(map, leafIndexes, maxLines)
 | `maxLines` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L108)
 
 <a id="function-function-mq3-renderer-bsp-preview-wireframe-function-wireframe-map-faceindexes-maxlines-src-mq3-renderer-bsp-preview-ml-2044402834"></a>
 ### wireframe
@@ -204,4 +204,4 @@ Faces use meshvert indexes relative to firstVert, exactly like srfSurfaceFace_t 
 | `maxLines` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/bsp_preview.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/bsp_preview.ml#L63)

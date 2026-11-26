@@ -10,7 +10,7 @@ struct Chunk
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ audibleSources
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
 
 <a id="field-field-mq3-audio-spatial-mixer-chunk-frames-frames-src-mq3-audio-spatial-mixer-ml-228003232"></a>
 ### frames
@@ -32,7 +32,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
 
 <a id="field-field-mq3-audio-spatial-mixer-chunk-limitergain-limitergain-src-mq3-audio-spatial-mixer-ml-758248472"></a>
 ### limiterGain
@@ -42,7 +42,7 @@ limiterGain
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
 
 <a id="field-field-mq3-audio-spatial-mixer-chunk-peak-peak-src-mq3-audio-spatial-mixer-ml-159231062"></a>
 ### peak
@@ -52,7 +52,7 @@ peak
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)
 
 <a id="field-field-mq3-audio-spatial-mixer-chunk-samples-samples-src-mq3-audio-spatial-mixer-ml-62926108"></a>
 ### samples
@@ -62,4 +62,4 @@ samples
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L17)

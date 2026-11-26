@@ -10,7 +10,7 @@ struct Call
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
 
 ## Members
 
@@ -22,7 +22,7 @@ arguments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
 
 <a id="field-field-mq3-game-syscalls-call-opcode-opcode-src-mq3-game-syscalls-ml-1853550809"></a>
 ### opcode
@@ -32,7 +32,7 @@ opcode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)
 
 <a id="field-field-mq3-game-syscalls-call-result-result-src-mq3-game-syscalls-ml-1958565819"></a>
 ### result
@@ -42,4 +42,4 @@ result
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/syscalls.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/syscalls.ml#L8)

@@ -18,7 +18,7 @@ function cache()
 UI_NetworkOptionsMenu_Cache
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L18)
 
 <a id="function-function-mq3-client-ui-network-options-event-function-event-menu-id-eventcode-value-src-mq3-client-ui-network-options-ml-1871556574"></a>
 ### event
@@ -37,7 +37,7 @@ UI_NetworkOptionsMenu_Event
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L25)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-back-const-id-back-15-src-mq3-client-ui-network-options-ml-1098216957"></a>
 ### ID_BACK
@@ -47,7 +47,7 @@ const ID_BACK = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-display-const-id-display-11-src-mq3-client-ui-network-options-ml-1107448363"></a>
 ### ID_DISPLAY
@@ -57,7 +57,7 @@ const ID_DISPLAY = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L7)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-graphics-const-id-graphics-10-src-mq3-client-ui-network-options-ml-1431255756"></a>
 ### ID_GRAPHICS
@@ -67,7 +67,7 @@ const ID_GRAPHICS = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L6)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-network-const-id-network-13-src-mq3-client-ui-network-options-ml-511487209"></a>
 ### ID_NETWORK
@@ -77,7 +77,7 @@ const ID_NETWORK = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L9)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-rate-const-id-rate-14-src-mq3-client-ui-network-options-ml-1511274188"></a>
 ### ID_RATE
@@ -87,7 +87,7 @@ const ID_RATE = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L10)
 
 <a id="constant-constant-mq3-client-ui-network-options-id-sound-const-id-sound-12-src-mq3-client-ui-network-options-ml-159552910"></a>
 ### ID_SOUND
@@ -97,7 +97,7 @@ const ID_SOUND = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L8)
 
 <a id="function-function-mq3-client-ui-network-options-init-function-init-rate-src-mq3-client-ui-network-options-ml-1713148064"></a>
 ### init
@@ -113,7 +113,7 @@ UI_NetworkOptionsMenu_Init
 | `rate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L20)
 
 <a id="function-function-mq3-client-ui-network-options-item-function-item-id-kind-name-x-y-value-src-mq3-client-ui-network-options-ml-1324895736"></a>
 ### item
@@ -132,7 +132,7 @@ function item(id, kind, name, x, y, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L14)
 
 - [mq3.client.ui_network_options.Item](Type-mq3-client-ui-network-options-item-631398488.md) — struct
 - [mq3.client.ui_network_options.Menu](Type-mq3-client-ui-network-options-menu-1084079952.md) — struct
@@ -150,7 +150,7 @@ UI_NetworkOptionsMenu
 | `rate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-network-options-qm-activated-const-qm-activated-3-src-mq3-client-ui-network-options-ml-1674065460"></a>
 ### QM_ACTIVATED
@@ -160,7 +160,7 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L5)
 
 <a id="function-function-mq3-client-ui-network-options-rateindex-function-rateindex-rate-src-mq3-client-ui-network-options-ml-838841856"></a>
 ### rateIndex
@@ -174,7 +174,7 @@ function rateIndex(rate)
 | `rate` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L15)
 
 <a id="function-function-mq3-client-ui-network-options-ratevalue-function-ratevalue-index-src-mq3-client-ui-network-options-ml-1596768438"></a>
 ### rateValue
@@ -188,4 +188,4 @@ function rateValue(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_network_options.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_network_options.ml#L16)

@@ -10,7 +10,7 @@ struct ClSnapshot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ areamask
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-cmdnum-cmdnum-src-mq3-client-client-abi-ml-156768354"></a>
 ### cmdNum
@@ -32,7 +32,7 @@ cmdNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-deltanum-deltanum-src-mq3-client-client-abi-ml-729683278"></a>
 ### deltaNum
@@ -42,7 +42,7 @@ deltaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-messagenum-messagenum-src-mq3-client-client-abi-ml-91716024"></a>
 ### messageNum
@@ -52,7 +52,7 @@ messageNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-numentities-numentities-src-mq3-client-client-abi-ml-824054386"></a>
 ### numEntities
@@ -62,7 +62,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-parseentitiesnum-parseentitiesnum-src-mq3-client-client-abi-ml-1161047662"></a>
 ### parseEntitiesNum
@@ -72,7 +72,7 @@ parseEntitiesNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-ping-ping-src-mq3-client-client-abi-ml-1108960482"></a>
 ### ping
@@ -82,7 +82,7 @@ ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-ps-ps-src-mq3-client-client-abi-ml-1568408956"></a>
 ### ps
@@ -92,7 +92,7 @@ ps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-servercommandnum-servercommandnum-src-mq3-client-client-abi-ml-6248154"></a>
 ### serverCommandNum
@@ -102,7 +102,7 @@ serverCommandNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-servertime-servertime-src-mq3-client-client-abi-ml-2074535878"></a>
 ### serverTime
@@ -112,7 +112,7 @@ serverTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-snapflags-snapflags-src-mq3-client-client-abi-ml-161226282"></a>
 ### snapFlags
@@ -122,7 +122,7 @@ snapFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)
 
 <a id="field-field-mq3-client-client-abi-clsnapshot-valid-valid-src-mq3-client-client-abi-ml-1365466294"></a>
 ### valid
@@ -132,4 +132,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L7)

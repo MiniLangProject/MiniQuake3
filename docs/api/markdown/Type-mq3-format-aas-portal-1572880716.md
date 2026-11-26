@@ -10,7 +10,7 @@ struct Portal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L123)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L123)
 
 <a id="field-field-mq3-format-aas-portal-backcluster-backcluster-src-mq3-format-aas-ml-1150260579"></a>
 ### backCluster
@@ -32,7 +32,7 @@ backCluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L123)
 
 <a id="field-field-mq3-format-aas-portal-clusterareanums-clusterareanums-src-mq3-format-aas-ml-218926151"></a>
 ### clusterAreaNums
@@ -42,7 +42,7 @@ clusterAreaNums
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L123)
 
 <a id="field-field-mq3-format-aas-portal-frontcluster-frontcluster-src-mq3-format-aas-ml-235253137"></a>
 ### frontCluster
@@ -52,4 +52,4 @@ frontCluster
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/aas.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/aas.ml#L123)

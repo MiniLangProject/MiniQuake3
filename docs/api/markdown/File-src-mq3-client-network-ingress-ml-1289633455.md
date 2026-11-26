@@ -31,7 +31,7 @@ function clientPacket(runtime, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L66)
 
 <a id="function-function-mq3-client-network-ingress-create-function-create-connectionstate-netchanruntime-protocol-hostservices-src-mq3-client-network-ingress-ml-88483758"></a>
 ### create
@@ -48,7 +48,7 @@ function create(connectionState, netchanRuntime, protocol, hostServices)
 | `hostServices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L49)
 
 <a id="function-function-mq3-client-network-ingress-createpump-function-createpump-runtime-clientsocket-serversocket-capacity-src-mq3-client-network-ingress-ml-583708552"></a>
 ### createPump
@@ -65,7 +65,7 @@ function createPump(runtime, clientSocket, serverSocket, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L86)
 
 <a id="function-function-mq3-client-network-ingress-parse-function-parse-packethost-state-msg-src-mq3-client-network-ingress-ml-797369456"></a>
 ### parse
@@ -81,7 +81,7 @@ function parse(packetHost, state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L28)
 
 <a id="function-function-mq3-client-network-ingress-process-function-process-packethost-state-msg-src-mq3-client-network-ingress-ml-696061568"></a>
 ### process
@@ -97,7 +97,7 @@ function process(packetHost, state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L22)
 
 <a id="function-function-mq3-client-network-ingress-receiveclient-function-receiveclient-runtime-address-data-src-mq3-client-network-ingress-ml-353274470"></a>
 ### receiveClient
@@ -113,7 +113,7 @@ function receiveClient(runtime, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L77)
 
 <a id="function-function-mq3-client-network-ingress-receiveserver-function-receiveserver-runtime-address-data-src-mq3-client-network-ingress-ml-1814103582"></a>
 ### receiveServer
@@ -129,7 +129,7 @@ function receiveServer(runtime, address, data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L81)
 
 <a id="function-function-mq3-client-network-ingress-recorddemo-function-recorddemo-packethost-state-msg-headerbytes-src-mq3-client-network-ingress-ml-998594900"></a>
 ### recordDemo
@@ -146,7 +146,7 @@ function recordDemo(packetHost, state, msg, headerBytes)
 | `headerBytes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L43)
 
 - [mq3.client.network_ingress.Runtime](Type-mq3-client-network-ingress-runtime-464646655.md) — struct
 <a id="function-function-mq3-client-network-ingress-services-function-services-connectionlesshost-src-mq3-client-network-ingress-ml-807274063"></a>
@@ -161,7 +161,7 @@ function services(connectionlessHost)
 | `connectionlessHost` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L18)
 
 - [mq3.client.network_ingress.Services](Type-mq3-client-network-ingress-services-622981985.md) — struct
 <a id="function-function-mq3-client-network-ingress-setrealtime-function-setrealtime-runtime-realtime-src-mq3-client-network-ingress-ml-735561797"></a>
@@ -177,4 +177,4 @@ function setRealtime(runtime, realtime)
 | `realtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/network_ingress.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/network_ingress.ml#L59)

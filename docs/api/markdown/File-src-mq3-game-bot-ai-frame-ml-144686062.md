@@ -31,7 +31,7 @@ function activeBot(state, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L161)
 
 <a id="function-function-mq3-game-bot-ai-frame-botentity-function-botentity-ent-index-src-mq3-game-bot-ai-frame-ml-1483302155"></a>
 ### botEntity
@@ -46,7 +46,7 @@ function botEntity(ent, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L133)
 
 - [mq3.game.bot_ai_frame.BotEntityState](Type-mq3-game-bot-ai-frame-botentitystate-560919205.md) — struct
 <a id="function-function-mq3-game-bot-ai-frame-commandclientstate-function-commandclientstate-services-clientnum-src-mq3-game-bot-ai-frame-ml-112755053"></a>
@@ -62,7 +62,7 @@ function commandClientState(services, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L115)
 
 <a id="function-function-mq3-game-bot-ai-frame-connected-function-connected-level-index-src-mq3-game-bot-ai-frame-ml-1110104196"></a>
 ### connected
@@ -77,7 +77,7 @@ function connected(level, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L166)
 
 <a id="function-function-mq3-game-bot-ai-frame-create-function-create-state-src-mq3-game-bot-ai-frame-ml-2050999901"></a>
 ### create
@@ -91,7 +91,7 @@ function create(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L89)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L89)
 
 <a id="function-function-mq3-game-bot-ai-frame-eligibleentity-function-eligibleentity-ent-src-mq3-game-bot-ai-frame-ml-783949097"></a>
 ### eligibleEntity
@@ -105,7 +105,7 @@ function eligibleEntity(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L145)
 
 <a id="function-function-mq3-game-bot-ai-frame-getclientstate-function-getclientstate-level-clientnum-src-mq3-game-bot-ai-frame-ml-1576009423"></a>
 ### getClientState
@@ -120,7 +120,7 @@ function getClientState(level, clientNum)
 | `clientNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L109)
 
 <a id="function-function-mq3-game-bot-ai-frame-getentitystate-function-getentitystate-level-entitynum-src-mq3-game-bot-ai-frame-ml-1969677219"></a>
 ### getEntityState
@@ -135,7 +135,7 @@ function getEntityState(level, entityNum)
 | `entityNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L119)
 
 <a id="function-function-mq3-game-bot-ai-frame-getsnapshotentity-function-getsnapshotentity-level-services-clientnum-sequence-src-mq3-game-bot-ai-frame-ml-841591236"></a>
 ### getSnapshotEntity
@@ -152,7 +152,7 @@ function getSnapshotEntity(level, services, clientNum, sequence)
 | `sequence` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L126)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-max-clients-const-max-clients-64-src-mq3-game-bot-ai-frame-ml-138227167"></a>
 ### MAX_CLIENTS
@@ -162,7 +162,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L15)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-max-gentities-const-max-gentities-1024-src-mq3-game-bot-ai-frame-ml-2028950748"></a>
 ### MAX_GENTITIES
@@ -172,7 +172,7 @@ const MAX_GENTITIES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L16)
 
 <a id="function-function-mq3-game-bot-ai-frame-need-function-need-callback-label-src-mq3-game-bot-ai-frame-ml-1854810419"></a>
 ### need
@@ -187,7 +187,7 @@ function need(callback, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L99)
 
 <a id="function-function-mq3-game-bot-ai-frame-regularupdate-function-regularupdate-services-src-mq3-game-bot-ai-frame-ml-290245038"></a>
 ### regularUpdate
@@ -201,7 +201,7 @@ function regularUpdate(services)
 | `services` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L152)
 
 - [mq3.game.bot_ai_frame.Runtime](Type-mq3-game-bot-ai-frame-runtime-1021335758.md) — struct
 - [mq3.game.bot_ai_frame.Services](Type-mq3-game-bot-ai-frame-services-1932823690.md) — struct
@@ -213,7 +213,7 @@ const SOLID_BBOX = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L18)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-solid-bsp-const-solid-bsp-2-src-mq3-game-bot-ai-frame-ml-907572499"></a>
 ### SOLID_BSP
@@ -223,7 +223,7 @@ const SOLID_BSP = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L19)
 
 <a id="function-function-mq3-game-bot-ai-frame-startframe-function-startframe-level-services-time-src-mq3-game-bot-ai-frame-ml-246449395"></a>
 ### startFrame
@@ -239,7 +239,7 @@ function startFrame(level, services, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L170)
 
 <a id="constant-constant-mq3-game-bot-ai-frame-svf-noclient-const-svf-noclient-1-src-mq3-game-bot-ai-frame-ml-1584358430"></a>
 ### SVF_NOCLIENT
@@ -249,7 +249,7 @@ const SVF_NOCLIENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L17)
 
 - [mq3.game.bot_ai_frame.UserCommand](Type-mq3-game-bot-ai-frame-usercommand-1780820726.md) — struct
 <a id="function-function-mq3-game-bot-ai-frame-validslot-function-validslot-slot-limit-label-src-mq3-game-bot-ai-frame-ml-736637507"></a>
@@ -266,4 +266,4 @@ function validSlot(slot, limit, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_ai_frame.ml#L104)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_ai_frame.ml#L104)

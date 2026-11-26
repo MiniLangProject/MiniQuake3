@@ -10,7 +10,7 @@ struct Character
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ filename
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-characters-character-skill-skill-src-mq3-botlib-ai-characters-ml-573401652"></a>
 ### skill
@@ -32,7 +32,7 @@ skill
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-characters-character-values-values-src-mq3-botlib-ai-characters-ml-1490981392"></a>
 ### values
@@ -42,4 +42,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_characters.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_characters.ml#L26)

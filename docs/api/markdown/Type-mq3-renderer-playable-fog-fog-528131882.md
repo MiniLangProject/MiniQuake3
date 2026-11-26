@@ -10,7 +10,7 @@ struct Fog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-color-color-src-mq3-renderer-playable-fog-ml-918260977"></a>
 ### color
@@ -32,7 +32,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-depth-depth-src-mq3-renderer-playable-fog-ml-873115149"></a>
 ### depth
@@ -42,7 +42,7 @@ depth
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-hassurface-hassurface-src-mq3-renderer-playable-fog-ml-310184303"></a>
 ### hasSurface
@@ -52,7 +52,7 @@ hasSurface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-shadername-shadername-src-mq3-renderer-playable-fog-ml-1157273045"></a>
 ### shaderName
@@ -62,7 +62,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-surface-surface-src-mq3-renderer-playable-fog-ml-950886713"></a>
 ### surface
@@ -72,7 +72,7 @@ surface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-fog-fog-tcscale-tcscale-src-mq3-renderer-playable-fog-ml-1774927273"></a>
 ### tcScale
@@ -82,4 +82,4 @@ tcScale
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_fog.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_fog.ml#L20)

@@ -34,7 +34,7 @@ function accuracy(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L23)
 
 <a id="function-function-mq3-game-missiles-bounce-function-bounce-level-ent-hit-src-mq3-game-missiles-ml-1775339680"></a>
 ### bounce
@@ -50,7 +50,7 @@ function bounce(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L51)
 
 <a id="function-function-mq3-game-missiles-explode-function-explode-level-ent-src-mq3-game-missiles-ml-1318663987"></a>
 ### explode
@@ -65,7 +65,7 @@ function explode(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L68)
 
 <a id="function-function-mq3-game-missiles-fire-function-fire-level-self-start-dir-weapon-src-mq3-game-missiles-ml-2085538035"></a>
 ### fire
@@ -83,7 +83,7 @@ function fire(level, self, start, dir, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L132)
 
 <a id="function-function-mq3-game-missiles-hookclient-function-hookclient-ent-src-mq3-game-missiles-ml-715130013"></a>
 ### hookClient
@@ -97,7 +97,7 @@ function hookClient(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L29)
 
 <a id="function-function-mq3-game-missiles-hookfree-function-hookfree-level-ent-src-mq3-game-missiles-ml-1084910121"></a>
 ### hookFree
@@ -112,7 +112,7 @@ function hookFree(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L33)
 
 <a id="function-function-mq3-game-missiles-hookpoint-function-hookpoint-other-src-mq3-game-missiles-ml-1114785480"></a>
 ### hookPoint
@@ -126,7 +126,7 @@ function hookPoint(other)
 | `other` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L37)
 
 <a id="function-function-mq3-game-missiles-hookthink-function-hookthink-level-ent-src-mq3-game-missiles-ml-371921023"></a>
 ### hookThink
@@ -141,7 +141,7 @@ function hookThink(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L44)
 
 <a id="function-function-mq3-game-missiles-impact-function-impact-level-ent-hit-src-mq3-game-missiles-ml-1409096684"></a>
 ### impact
@@ -157,7 +157,7 @@ function impact(level, ent, hit)
 | `hit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L77)
 
 <a id="function-function-mq3-game-missiles-run-function-run-level-ent-src-mq3-game-missiles-ml-50430007"></a>
 ### run
@@ -172,7 +172,7 @@ function run(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L112)
 
 <a id="function-function-mq3-game-missiles-snaptowards-function-snaptowards-v-towards-src-mq3-game-missiles-ml-1913883608"></a>
 ### snapTowards
@@ -187,4 +187,4 @@ function snapTowards(v, towards)
 | `towards` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/missiles.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/missiles.ml#L15)

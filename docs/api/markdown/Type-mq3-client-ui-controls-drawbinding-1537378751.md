@@ -10,7 +10,7 @@ struct DrawBinding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 ## Members
 
@@ -22,7 +22,7 @@ grayed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-drawbinding-keys-keys-src-mq3-client-ui-controls-ml-1388423326"></a>
 ### keys
@@ -32,7 +32,7 @@ keys
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-drawbinding-label-label-src-mq3-client-ui-controls-ml-2021008990"></a>
 ### label
@@ -42,7 +42,7 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-drawbinding-selected-selected-src-mq3-client-ui-controls-ml-1262228588"></a>
 ### selected
@@ -52,7 +52,7 @@ selected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)
 
 <a id="field-field-mq3-client-ui-controls-drawbinding-waiting-waiting-src-mq3-client-ui-controls-ml-1544400478"></a>
 ### waiting
@@ -62,4 +62,4 @@ waiting
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L101)

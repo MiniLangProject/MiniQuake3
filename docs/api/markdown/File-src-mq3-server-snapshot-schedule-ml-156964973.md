@@ -24,7 +24,7 @@ function client(slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L11)
 
 - [mq3.server.snapshot_schedule.Client](Type-mq3-server-snapshot-schedule-client-1766125092.md) — struct
 <a id="function-function-mq3-server-snapshot-schedule-netchan-function-netchan-src-mq3-server-snapshot-schedule-ml-934463200"></a>
@@ -35,7 +35,7 @@ function netchan()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L6)
 
 - [mq3.server.snapshot_schedule.Netchan](Type-mq3-server-snapshot-schedule-netchan-1273267814.md) — struct
 <a id="function-function-mq3-server-snapshot-schedule-sendclientmessages-function-sendclientmessages-clients-servertime-maxrate-host-src-mq3-server-snapshot-schedule-ml-1823974230"></a>
@@ -55,7 +55,7 @@ SV_SendClientMessages. Snapshot construction/transmission stays behind the callb
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L23)
 
 <a id="function-function-mq3-server-snapshot-schedule-services-function-services-sendclientsnapshotfn-transmitnextfragmentfn-context-src-mq3-server-snapshot-schedule-ml-500152765"></a>
 ### services
@@ -71,6 +71,6 @@ function services(sendClientSnapshotFn, transmitNextFragmentFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L16)
 
 - [mq3.server.snapshot_schedule.Services](Type-mq3-server-snapshot-schedule-services-1471977631.md) — struct

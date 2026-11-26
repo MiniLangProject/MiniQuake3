@@ -26,7 +26,7 @@ AAS_ClearShownDebugLines
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L69)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-clearshownpolygons-function-aas-clearshownpolygons-state-src-mq3-botlib-aas-debug-ml-1241843815"></a>
 ### AAS_ClearShownPolygons
@@ -42,7 +42,7 @@ AAS_ClearShownPolygons
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L65)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-debugline-function-aas-debugline-state-start-finish-color-src-mq3-botlib-aas-debug-ml-2107033215"></a>
 ### AAS_DebugLine
@@ -61,7 +61,7 @@ AAS_DebugLine
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L71)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawarrow-function-aas-drawarrow-state-start-finish-linecolor-arrowcolor-src-mq3-botlib-aas-debug-ml-1424404421"></a>
 ### AAS_DrawArrow
@@ -81,7 +81,7 @@ AAS_DrawArrow
 | `arrowColor` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L134)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawcross-function-aas-drawcross-state-origin-size-color-src-mq3-botlib-aas-debug-ml-2120740973"></a>
 ### AAS_DrawCross
@@ -100,7 +100,7 @@ AAS_DrawCross
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L128)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L128)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawpermanentcross-function-aas-drawpermanentcross-state-origin-size-color-src-mq3-botlib-aas-debug-ml-159165573"></a>
 ### AAS_DrawPermanentCross
@@ -119,7 +119,7 @@ AAS_DrawPermanentCross
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L80)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-drawplanecross-function-aas-drawplanecross-state-point-normal-dist-typevalue-color-src-mq3-botlib-aas-debug-ml-296533152"></a>
 ### AAS_DrawPlaneCross
@@ -140,7 +140,7 @@ AAS_DrawPlaneCross
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L84)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-floodareas-function-aas-floodareas-state-value-origin-src-mq3-botlib-aas-debug-ml-1217342454"></a>
 ### AAS_FloodAreas
@@ -158,7 +158,7 @@ AAS_FloodAreas
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L156)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L156)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-floodareas-r-function-aas-floodareas-r-state-value-areanum-cluster-done-src-mq3-botlib-aas-debug-ml-1656363381"></a>
 ### AAS_FloodAreas_r
@@ -178,7 +178,7 @@ AAS_FloodAreas_r
 | `done` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L150)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-permanentline-function-aas-permanentline-state-start-finish-color-src-mq3-botlib-aas-debug-ml-906073193"></a>
 ### AAS_PermanentLine
@@ -197,7 +197,7 @@ AAS_PermanentLine
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L78)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-printtraveltype-function-aas-printtraveltype-traveltype-src-mq3-botlib-aas-debug-ml-331372020"></a>
 ### AAS_PrintTravelType
@@ -213,7 +213,7 @@ AAS_PrintTravelType
 | `travelType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L130)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showarea-function-aas-showarea-state-value-areanum-groundfacesonly-src-mq3-botlib-aas-debug-ml-1903634348"></a>
 ### AAS_ShowArea
@@ -232,7 +232,7 @@ AAS_ShowArea
 | `groundFacesOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L118)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L118)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showareapolygons-function-aas-showareapolygons-state-value-areanum-color-groundfacesonly-src-mq3-botlib-aas-debug-ml-363440895"></a>
 ### AAS_ShowAreaPolygons
@@ -252,7 +252,7 @@ AAS_ShowAreaPolygons
 | `groundFacesOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L124)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showboundingbox-function-aas-showboundingbox-state-origin-mins-maxs-src-mq3-botlib-aas-debug-ml-1184995543"></a>
 ### AAS_ShowBoundingBox
@@ -271,7 +271,7 @@ AAS_ShowBoundingBox
 | `maxs` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L91)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showface-function-aas-showface-state-value-facenum-src-mq3-botlib-aas-debug-ml-57431919"></a>
 ### AAS_ShowFace
@@ -289,7 +289,7 @@ AAS_ShowFace
 | `faceNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L98)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showfacepolygon-function-aas-showfacepolygon-state-value-facenum-color-flip-src-mq3-botlib-aas-debug-ml-1637011079"></a>
 ### AAS_ShowFacePolygon
@@ -309,7 +309,7 @@ AAS_ShowFacePolygon
 | `flip` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L112)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L112)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showpolygon-function-aas-showpolygon-state-color-numpoints-points-src-mq3-botlib-aas-debug-ml-591196034"></a>
 ### AAS_ShowPolygon
@@ -328,7 +328,7 @@ AAS_ShowPolygon
 | `points` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L67)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showreachability-function-aas-showreachability-state-value-reach-src-mq3-botlib-aas-debug-ml-68834443"></a>
 ### AAS_ShowReachability
@@ -346,7 +346,7 @@ AAS_ShowReachability
 | `reach` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L139)
 
 <a id="function-function-mq3-botlib-aas-debug-aas-showreachableareas-function-aas-showreachableareas-state-value-areanum-time-src-mq3-botlib-aas-debug-ml-1220396020"></a>
 ### AAS_ShowReachableAreas
@@ -365,7 +365,7 @@ AAS_ShowReachableAreas
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L144)
 
 <a id="function-function-mq3-botlib-aas-debug-absindex-function-absindex-value-src-mq3-botlib-aas-debug-ml-58506731"></a>
 ### absIndex
@@ -379,7 +379,7 @@ function absIndex(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L59)
 
 - [mq3.botlib.aas_debug.Action](Type-mq3-botlib-aas-debug-action-1720482245.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-area-function-area-numfaces-firstface-src-mq3-botlib-aas-debug-ml-746666939"></a>
@@ -395,7 +395,7 @@ function area(numFaces, firstFace)
 | `firstFace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L52)
 
 - [mq3.botlib.aas_debug.Area](Type-mq3-botlib-aas-debug-area-1516825746.md) — struct
 <a id="constant-constant-mq3-botlib-aas-debug-areacontents-viewportal-const-areacontents-viewportal-512-src-mq3-botlib-aas-debug-ml-844518195"></a>
@@ -406,7 +406,7 @@ const AREACONTENTS_VIEWPORTAL = 512
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L17)
 
 <a id="function-function-mq3-botlib-aas-debug-areasettings-function-areasettings-contents-cluster-numreachableareas-firstreachablearea-src-mq3-botlib-aas-debug-ml-1287788603"></a>
 ### areaSettings
@@ -423,7 +423,7 @@ function areaSettings(contents, cluster, numReachableAreas, firstReachableArea)
 | `firstReachableArea` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L53)
 
 - [mq3.botlib.aas_debug.AreaSettings](Type-mq3-botlib-aas-debug-areasettings-1541327639.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-claimline-function-claimline-state-src-mq3-botlib-aas-debug-ml-43193463"></a>
@@ -438,7 +438,7 @@ function claimLine(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L82)
 
 <a id="function-function-mq3-botlib-aas-debug-copy3-function-copy3-value-src-mq3-botlib-aas-debug-ml-1213909023"></a>
 ### copy3
@@ -452,7 +452,7 @@ function copy3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L57)
 
 <a id="function-function-mq3-botlib-aas-debug-create-function-create-retailactive-src-mq3-botlib-aas-debug-ml-433507505"></a>
 ### create
@@ -466,7 +466,7 @@ function create(retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L56)
 
 <a id="function-function-mq3-botlib-aas-debug-createline-function-createline-state-src-mq3-botlib-aas-debug-ml-1654752831"></a>
 ### createLine
@@ -480,7 +480,7 @@ function createLine(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L61)
 
 <a id="function-function-mq3-botlib-aas-debug-edge-function-edge-a-b-src-mq3-botlib-aas-debug-ml-1964394975"></a>
 ### edge
@@ -495,7 +495,7 @@ function edge(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L49)
 
 - [mq3.botlib.aas_debug.Edge](Type-mq3-botlib-aas-debug-edge-528609626.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-emit-function-emit-state-boundary-kind-id-color-points-values-src-mq3-botlib-aas-debug-ml-141833408"></a>
@@ -516,7 +516,7 @@ function emit(state, boundary, kind, id, color, points, values)
 | `values` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L60)
 
 <a id="function-function-mq3-botlib-aas-debug-face-function-face-planenum-flags-numedges-firstedge-frontarea-backarea-src-mq3-botlib-aas-debug-ml-1894548762"></a>
 ### face
@@ -535,7 +535,7 @@ function face(planeNum, flags, numEdges, firstEdge, frontArea, backArea)
 | `backArea` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L50)
 
 - [mq3.botlib.aas_debug.Face](Type-mq3-botlib-aas-debug-face-1428232246.md) — struct
 <a id="constant-constant-mq3-botlib-aas-debug-face-ground-const-face-ground-4-src-mq3-botlib-aas-debug-ml-1487960439"></a>
@@ -546,7 +546,7 @@ const FACE_GROUND = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L15)
 
 <a id="constant-constant-mq3-botlib-aas-debug-face-ladder-const-face-ladder-2-src-mq3-botlib-aas-debug-ml-221874849"></a>
 ### FACE_LADDER
@@ -556,7 +556,7 @@ const FACE_LADDER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L16)
 
 <a id="constant-constant-mq3-botlib-aas-debug-linecolor-blue-const-linecolor-blue-3-src-mq3-botlib-aas-debug-ml-1329058048"></a>
 ### LINECOLOR_BLUE
@@ -566,7 +566,7 @@ const LINECOLOR_BLUE = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L13)
 
 <a id="constant-constant-mq3-botlib-aas-debug-linecolor-green-const-linecolor-green-2-src-mq3-botlib-aas-debug-ml-1859202409"></a>
 ### LINECOLOR_GREEN
@@ -576,7 +576,7 @@ const LINECOLOR_GREEN = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L12)
 
 <a id="constant-constant-mq3-botlib-aas-debug-linecolor-none-const-linecolor-none-1-src-mq3-botlib-aas-debug-ml-386312381"></a>
 ### LINECOLOR_NONE
@@ -586,7 +586,7 @@ const LINECOLOR_NONE = -1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L10)
 
 <a id="constant-constant-mq3-botlib-aas-debug-linecolor-red-const-linecolor-red-1-src-mq3-botlib-aas-debug-ml-1973913788"></a>
 ### LINECOLOR_RED
@@ -596,7 +596,7 @@ const LINECOLOR_RED = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-debug-linecolor-yellow-const-linecolor-yellow-4-src-mq3-botlib-aas-debug-ml-473634229"></a>
 ### LINECOLOR_YELLOW
@@ -606,7 +606,7 @@ const LINECOLOR_YELLOW = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L14)
 
 <a id="constant-constant-mq3-botlib-aas-debug-max-debuglines-const-max-debuglines-1024-src-mq3-botlib-aas-debug-ml-1495875794"></a>
 ### MAX_DEBUGLINES
@@ -616,7 +616,7 @@ const MAX_DEBUGLINES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L8)
 
 <a id="constant-constant-mq3-botlib-aas-debug-max-debugpolygons-const-max-debugpolygons-8192-src-mq3-botlib-aas-debug-ml-300092197"></a>
 ### MAX_DEBUGPOLYGONS
@@ -626,7 +626,7 @@ const MAX_DEBUGPOLYGONS = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L9)
 
 <a id="function-function-mq3-botlib-aas-debug-plane-function-plane-normal-dist-src-mq3-botlib-aas-debug-ml-1158031775"></a>
 ### plane
@@ -641,7 +641,7 @@ function plane(normal, dist)
 | `dist` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L51)
 
 - [mq3.botlib.aas_debug.Plane](Type-mq3-botlib-aas-debug-plane-1355552775.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-reachability-function-reachability-areanum-facenum-edgenum-start-finish-traveltype-traveltime-src-mq3-botlib-aas-debug-ml-375437905"></a>
@@ -662,7 +662,7 @@ function reachability(areaNum, faceNum, edgeNum, start, finish, travelType, trav
 | `travelTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L54)
 
 - [mq3.botlib.aas_debug.Reachability](Type-mq3-botlib-aas-debug-reachability-1287693228.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-showline-function-showline-state-id-start-finish-color-src-mq3-botlib-aas-debug-ml-930446882"></a>
@@ -681,7 +681,7 @@ function showLine(state, id, start, finish, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L62)
 
 - [mq3.botlib.aas_debug.State](Type-mq3-botlib-aas-debug-state-1941901200.md) — struct
 <a id="function-function-mq3-botlib-aas-debug-subtract3-function-subtract3-a-b-src-mq3-botlib-aas-debug-ml-897137113"></a>
@@ -697,7 +697,7 @@ function subtract3(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L58)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-barrierjump-const-travel-barrierjump-4-src-mq3-botlib-aas-debug-ml-1773517617"></a>
 ### TRAVEL_BARRIERJUMP
@@ -707,7 +707,7 @@ const TRAVEL_BARRIERJUMP = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L22)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-bfgjump-const-travel-bfgjump-13-src-mq3-botlib-aas-debug-ml-667334191"></a>
 ### TRAVEL_BFGJUMP
@@ -717,7 +717,7 @@ const TRAVEL_BFGJUMP = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L31)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-crouch-const-travel-crouch-3-src-mq3-botlib-aas-debug-ml-812533078"></a>
 ### TRAVEL_CROUCH
@@ -727,7 +727,7 @@ const TRAVEL_CROUCH = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L21)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-doublejump-const-travel-doublejump-15-src-mq3-botlib-aas-debug-ml-34318231"></a>
 ### TRAVEL_DOUBLEJUMP
@@ -737,7 +737,7 @@ const TRAVEL_DOUBLEJUMP = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L33)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-elevator-const-travel-elevator-11-src-mq3-botlib-aas-debug-ml-1619030187"></a>
 ### TRAVEL_ELEVATOR
@@ -747,7 +747,7 @@ const TRAVEL_ELEVATOR = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L29)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-funcbob-const-travel-funcbob-19-src-mq3-botlib-aas-debug-ml-1384403341"></a>
 ### TRAVEL_FUNCBOB
@@ -757,7 +757,7 @@ const TRAVEL_FUNCBOB = 19
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L37)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-grapplehook-const-travel-grapplehook-14-src-mq3-botlib-aas-debug-ml-2138822160"></a>
 ### TRAVEL_GRAPPLEHOOK
@@ -767,7 +767,7 @@ const TRAVEL_GRAPPLEHOOK = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L32)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-invalid-const-travel-invalid-1-src-mq3-botlib-aas-debug-ml-1737058618"></a>
 ### TRAVEL_INVALID
@@ -777,7 +777,7 @@ const TRAVEL_INVALID = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L19)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-jump-const-travel-jump-5-src-mq3-botlib-aas-debug-ml-1145844512"></a>
 ### TRAVEL_JUMP
@@ -787,7 +787,7 @@ const TRAVEL_JUMP = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L23)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-jumppad-const-travel-jumppad-18-src-mq3-botlib-aas-debug-ml-708089650"></a>
 ### TRAVEL_JUMPPAD
@@ -797,7 +797,7 @@ const TRAVEL_JUMPPAD = 18
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L36)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-ladder-const-travel-ladder-6-src-mq3-botlib-aas-debug-ml-198558189"></a>
 ### TRAVEL_LADDER
@@ -807,7 +807,7 @@ const TRAVEL_LADDER = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L24)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-rampjump-const-travel-rampjump-16-src-mq3-botlib-aas-debug-ml-1153158494"></a>
 ### TRAVEL_RAMPJUMP
@@ -817,7 +817,7 @@ const TRAVEL_RAMPJUMP = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L34)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-rocketjump-const-travel-rocketjump-12-src-mq3-botlib-aas-debug-ml-762313026"></a>
 ### TRAVEL_ROCKETJUMP
@@ -827,7 +827,7 @@ const TRAVEL_ROCKETJUMP = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L30)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-strafejump-const-travel-strafejump-17-src-mq3-botlib-aas-debug-ml-1442803313"></a>
 ### TRAVEL_STRAFEJUMP
@@ -837,7 +837,7 @@ const TRAVEL_STRAFEJUMP = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L35)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-swim-const-travel-swim-8-src-mq3-botlib-aas-debug-ml-900706211"></a>
 ### TRAVEL_SWIM
@@ -847,7 +847,7 @@ const TRAVEL_SWIM = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L26)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-teleport-const-travel-teleport-10-src-mq3-botlib-aas-debug-ml-1266217292"></a>
 ### TRAVEL_TELEPORT
@@ -857,7 +857,7 @@ const TRAVEL_TELEPORT = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L28)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-walk-const-travel-walk-2-src-mq3-botlib-aas-debug-ml-1172745313"></a>
 ### TRAVEL_WALK
@@ -867,7 +867,7 @@ const TRAVEL_WALK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L20)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-walkoffledge-const-travel-walkoffledge-7-src-mq3-botlib-aas-debug-ml-1457514378"></a>
 ### TRAVEL_WALKOFFLEDGE
@@ -877,7 +877,7 @@ const TRAVEL_WALKOFFLEDGE = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L25)
 
 <a id="constant-constant-mq3-botlib-aas-debug-travel-waterjump-const-travel-waterjump-9-src-mq3-botlib-aas-debug-ml-1276588170"></a>
 ### TRAVEL_WATERJUMP
@@ -887,7 +887,7 @@ const TRAVEL_WATERJUMP = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L27)
 
 <a id="constant-constant-mq3-botlib-aas-debug-traveltype-mask-const-traveltype-mask-16777215-src-mq3-botlib-aas-debug-ml-1761181931"></a>
 ### TRAVELTYPE_MASK
@@ -897,7 +897,7 @@ const TRAVELTYPE_MASK = 16777215
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-debug-world-function-world-vertexes-edges-edgeindex-faces-faceindex-planes-areas-settings-reaches-pointarea-retailactive-src-mq3-botlib-aas-debug-ml-646758849"></a>
 ### world
@@ -921,6 +921,6 @@ function world(vertexes, edges, edgeIndex, faces, faceIndex, planes, areas, sett
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_debug.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_debug.ml#L55)
 
 - [mq3.botlib.aas_debug.World](Type-mq3-botlib-aas-debug-world-1709028061.md) — struct

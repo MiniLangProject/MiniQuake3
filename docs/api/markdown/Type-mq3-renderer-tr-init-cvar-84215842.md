@@ -10,7 +10,7 @@ struct Cvar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L11)
 
 <a id="field-field-mq3-renderer-tr-init-cvar-integer-integer-src-mq3-renderer-tr-init-ml-318599207"></a>
 ### integer
@@ -32,7 +32,7 @@ integer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L11)
 
 <a id="field-field-mq3-renderer-tr-init-cvar-name-name-src-mq3-renderer-tr-init-ml-965122989"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L11)
 
 <a id="field-field-mq3-renderer-tr-init-cvar-value-value-src-mq3-renderer-tr-init-ml-655706859"></a>
 ### value
@@ -52,4 +52,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_init.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_init.ml#L11)

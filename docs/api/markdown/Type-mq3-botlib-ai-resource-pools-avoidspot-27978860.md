@@ -10,7 +10,7 @@ struct AvoidSpot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-avoidspot-radius-radius-src-mq3-botlib-ai-resource-pools-ml-262004350"></a>
 ### radius
@@ -32,7 +32,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)
 
 <a id="field-field-mq3-botlib-ai-resource-pools-avoidspot-type-type-src-mq3-botlib-ai-resource-pools-ml-1000261250"></a>
 ### type
@@ -42,4 +42,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_resource_pools.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_resource_pools.ml#L34)

@@ -28,7 +28,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L15)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-field-function-field-fields-key-src-mq3-client-playable-ambient-sounds-ml-2032794172"></a>
 ### field
@@ -43,7 +43,7 @@ function field(fields, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L17)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-globalloops-function-globalloops-catalog-src-mq3-client-playable-ambient-sounds-ml-1331043441"></a>
 ### globalLoops
@@ -59,7 +59,7 @@ WinMM currently has no listener-relative attenuation. Playing spatial map speake
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L73)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-load-function-load-map-archive-src-mq3-client-playable-ambient-sounds-ml-2142122870"></a>
 ### load
@@ -74,7 +74,7 @@ function load(map, archive)
 | `archive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L47)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-loopdefinitions-function-loopdefinitions-entities-src-mq3-client-playable-ambient-sounds-ml-206537559"></a>
 ### loopDefinitions
@@ -88,7 +88,7 @@ function loopDefinitions(entities)
 | `entities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L30)
 
 <a id="constant-constant-mq3-client-playable-ambient-sounds-looped-on-const-looped-on-1-src-mq3-client-playable-ambient-sounds-ml-2037997648"></a>
 ### LOOPED_ON
@@ -98,7 +98,7 @@ const LOOPED_ON = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L10)
 
 <a id="function-function-mq3-client-playable-ambient-sounds-soundpath-function-soundpath-noise-src-mq3-client-playable-ambient-sounds-ml-1300492506"></a>
 ### soundPath
@@ -112,6 +112,6 @@ function soundPath(noise)
 | `noise` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_ambient_sounds.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_ambient_sounds.ml#L23)
 
 - [mq3.client.playable_ambient_sounds.Speaker](Type-mq3-client-playable-ambient-sounds-speaker-848871510.md) — struct

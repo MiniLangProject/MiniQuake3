@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 ## Members
 
@@ -22,7 +22,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-count-count-src-mq3-botlib-cache-lru-ml-47970092"></a>
 ### count
@@ -32,7 +32,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-keys-keys-src-mq3-botlib-cache-lru-ml-1750076936"></a>
 ### keys
@@ -42,7 +42,7 @@ keys
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-newest-newest-src-mq3-botlib-cache-lru-ml-1906133632"></a>
 ### newest
@@ -52,7 +52,7 @@ newest
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-next-next-src-mq3-botlib-cache-lru-ml-1193359206"></a>
 ### next
@@ -62,7 +62,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-oldest-oldest-src-mq3-botlib-cache-lru-ml-861363318"></a>
 ### oldest
@@ -72,7 +72,7 @@ oldest
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-positions-positions-src-mq3-botlib-cache-lru-ml-216382804"></a>
 ### positions
@@ -82,7 +82,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)
 
 <a id="field-field-mq3-botlib-cache-lru-state-previous-previous-src-mq3-botlib-cache-lru-ml-1030006566"></a>
 ### previous
@@ -92,4 +92,4 @@ previous
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/cache_lru.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/cache_lru.ml#L6)

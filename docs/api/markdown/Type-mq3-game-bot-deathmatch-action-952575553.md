@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 <a id="field-field-mq3-game-bot-deathmatch-action-dispatched-dispatched-src-mq3-game-bot-deathmatch-ml-1885829343"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 <a id="field-field-mq3-game-bot-deathmatch-action-kind-kind-src-mq3-game-bot-deathmatch-ml-1911510929"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 <a id="field-field-mq3-game-bot-deathmatch-action-point-point-src-mq3-game-bot-deathmatch-ml-2092784941"></a>
 ### point
@@ -52,7 +52,7 @@ point
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 <a id="field-field-mq3-game-bot-deathmatch-action-text-text-src-mq3-game-bot-deathmatch-ml-610701127"></a>
 ### text
@@ -62,7 +62,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)
 
 <a id="field-field-mq3-game-bot-deathmatch-action-value-value-src-mq3-game-bot-deathmatch-ml-1353440297"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_deathmatch.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_deathmatch.ml#L54)

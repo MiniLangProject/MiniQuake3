@@ -10,7 +10,7 @@ struct SkullTrail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L106)
 
 ## Members
 
@@ -22,7 +22,7 @@ numpositions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L106)
 
 <a id="field-field-mq3-client-cg-local-skulltrail-positions-positions-src-mq3-client-cg-local-ml-698842542"></a>
 ### positions
@@ -32,4 +32,4 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cg_local.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cg_local.ml#L106)

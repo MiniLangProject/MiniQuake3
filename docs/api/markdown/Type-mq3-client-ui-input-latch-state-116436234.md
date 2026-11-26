@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_input_latch.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ down
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_input_latch.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)
 
 <a id="field-field-mq3-client-ui-input-latch-state-pulse-pulse-src-mq3-client-ui-input-latch-ml-1200502314"></a>
 ### pulse
@@ -32,4 +32,4 @@ pulse
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_input_latch.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_input_latch.ml#L7)

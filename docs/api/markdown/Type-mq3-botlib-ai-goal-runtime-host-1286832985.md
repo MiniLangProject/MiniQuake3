@@ -10,7 +10,7 @@ struct Host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ levelItems
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-host-logfn-logfn-src-mq3-botlib-ai-goal-runtime-ml-1380006959"></a>
 ### logFn
@@ -32,7 +32,7 @@ logFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-host-printfn-printfn-src-mq3-botlib-ai-goal-runtime-ml-199014775"></a>
 ### printFn
@@ -42,7 +42,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-host-timefn-timefn-src-mq3-botlib-ai-goal-runtime-ml-751289001"></a>
 ### timeFn
@@ -52,7 +52,7 @@ timeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-goal-runtime-host-usercontext-usercontext-src-mq3-botlib-ai-goal-runtime-ml-1393308911"></a>
 ### userContext
@@ -62,4 +62,4 @@ userContext
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_runtime.ml#L16)

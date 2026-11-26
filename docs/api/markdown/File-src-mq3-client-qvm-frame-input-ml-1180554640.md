@@ -37,7 +37,7 @@ function applyBound(state, plan, time, type, value, value2, binding, catchers)
 | `catchers` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L52)
 
 <a id="function-function-mq3-client-qvm-frame-input-bindconfig-function-bindconfig-state-registry-src-mq3-client-qvm-frame-input-ml-2124100812"></a>
 ### bindConfig
@@ -52,7 +52,7 @@ function bindConfig(state, registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L31)
 
 <a id="function-function-mq3-client-qvm-frame-input-commandtime-function-commandtime-state-clockservertime-clockactive-src-mq3-client-qvm-frame-input-ml-603994565"></a>
 ### commandTime
@@ -68,7 +68,7 @@ function commandTime(state, clockServerTime, clockActive)
 | `clockActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L80)
 
 <a id="function-function-mq3-client-qvm-frame-input-create-function-create-worldangles-deltaangles-realtime-commandtime-src-mq3-client-qvm-frame-input-ml-1490664165"></a>
 ### create
@@ -85,7 +85,7 @@ function create(worldAngles, deltaAngles, realtime, commandTime)
 | `commandTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L18)
 
 <a id="function-function-mq3-client-qvm-frame-input-fail-function-fail-text-src-mq3-client-qvm-frame-input-ml-418147351"></a>
 ### fail
@@ -99,7 +99,7 @@ function fail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L17)
 
 <a id="function-function-mq3-client-qvm-frame-input-finish-function-finish-state-plan-servertime-weapon-sensitivity-catchers-anykeydown-src-mq3-client-qvm-frame-input-ml-772820475"></a>
 ### finish
@@ -119,7 +119,7 @@ function finish(state, plan, serverTime, weapon, sensitivity, catchers, anyKeyDo
 | `anyKeyDown` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L84)
 
 <a id="function-function-mq3-client-qvm-frame-input-handlesaction-function-handlesaction-state-action-src-mq3-client-qvm-frame-input-ml-1074363809"></a>
 ### handlesAction
@@ -134,7 +134,7 @@ function handlesAction(state, action)
 | `action` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L32)
 
 <a id="constant-constant-mq3-client-qvm-frame-input-keycatch-cgame-const-keycatch-cgame-8-src-mq3-client-qvm-frame-input-ml-1574884663"></a>
 ### KEYCATCH_CGAME
@@ -144,7 +144,7 @@ const KEYCATCH_CGAME = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L14)
 
 <a id="constant-constant-mq3-client-qvm-frame-input-keycatch-console-const-keycatch-console-1-src-mq3-client-qvm-frame-input-ml-1686482312"></a>
 ### KEYCATCH_CONSOLE
@@ -154,7 +154,7 @@ const KEYCATCH_CONSOLE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L12)
 
 <a id="constant-constant-mq3-client-qvm-frame-input-keycatch-ui-const-keycatch-ui-2-src-mq3-client-qvm-frame-input-ml-1154261135"></a>
 ### KEYCATCH_UI
@@ -164,7 +164,7 @@ const KEYCATCH_UI = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L13)
 
 <a id="function-function-mq3-client-qvm-frame-input-keyup-function-keyup-button-key-time-framemsec-src-mq3-client-qvm-frame-input-ml-1096930103"></a>
 ### keyUp
@@ -181,7 +181,7 @@ function keyUp(button, key, time, frameMsec)
 | `frameMsec` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L44)
 
 - [mq3.client.qvm_frame_input.Plan](Type-mq3-client-qvm-frame-input-plan-1320632033.md) — struct
 <a id="function-function-mq3-client-qvm-frame-input-prepare-function-prepare-state-realtime-commandnumber-connectionstate-serverrunning-serverpaused-clientpaused-src-mq3-client-qvm-frame-input-ml-358397483"></a>
@@ -202,7 +202,7 @@ function prepare(state, realtime, commandNumber, connectionState, serverRunning,
 | `clientPaused` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L37)
 
 <a id="function-function-mq3-client-qvm-frame-input-registerconfig-function-registerconfig-registry-src-mq3-client-qvm-frame-input-ml-407706775"></a>
 ### registerConfig
@@ -218,7 +218,7 @@ Original CL_Init cvars are retained as objects. UI writes become visible on the 
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L28)
 
 <a id="function-function-mq3-client-qvm-frame-input-releaseall-function-releaseall-state-plan-time-src-mq3-client-qvm-frame-input-ml-530284015"></a>
 ### releaseAll
@@ -234,7 +234,7 @@ function releaseAll(state, plan, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L71)
 
 - [mq3.client.qvm_frame_input.State](Type-mq3-client-qvm-frame-input-state-1456937071.md) — struct
 <a id="function-function-mq3-client-qvm-frame-input-syncconfig-function-syncconfig-state-src-mq3-client-qvm-frame-input-ml-85415273"></a>
@@ -249,4 +249,4 @@ function syncConfig(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/qvm_frame_input.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/qvm_frame_input.ml#L33)

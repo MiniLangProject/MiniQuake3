@@ -21,7 +21,7 @@ const CLC_CLIENT_COMMAND = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L12)
 
 <a id="constant-constant-mq3-server-client-message-clc-eof-const-clc-eof-5-src-mq3-server-client-message-ml-907334104"></a>
 ### CLC_EOF
@@ -31,7 +31,7 @@ const CLC_EOF = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L13)
 
 <a id="constant-constant-mq3-server-client-message-clc-move-const-clc-move-2-src-mq3-server-client-message-ml-732380481"></a>
 ### CLC_MOVE
@@ -41,7 +41,7 @@ const CLC_MOVE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L10)
 
 <a id="constant-constant-mq3-server-client-message-clc-move-no-delta-const-clc-move-no-delta-3-src-mq3-server-client-message-ml-1590861306"></a>
 ### CLC_MOVE_NO_DELTA
@@ -51,7 +51,7 @@ const CLC_MOVE_NO_DELTA = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L11)
 
 - [mq3.server.client_message.Client](Type-mq3-server-client-message-client-942774879.md) — struct
 <a id="function-function-mq3-server-client-message-createclient-function-createclient-src-mq3-server-client-message-ml-577282840"></a>
@@ -62,7 +62,7 @@ function createClient()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L24)
 
 <a id="function-function-mq3-server-client-message-createserver-function-createserver-serverid-restartedserverid-src-mq3-server-client-message-ml-675477102"></a>
 ### createServer
@@ -77,7 +77,7 @@ function createServer(serverId, restartedServerId)
 | `restartedServerId` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L23)
 
 <a id="constant-constant-mq3-server-client-message-cs-zombie-const-cs-zombie-1-src-mq3-server-client-message-ml-2023967532"></a>
 ### CS_ZOMBIE
@@ -87,7 +87,7 @@ const CS_ZOMBIE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L9)
 
 <a id="function-function-mq3-server-client-message-execute-function-execute-serverstate-clientstate-host-msg-src-mq3-server-client-message-ml-862275497"></a>
 ### execute
@@ -104,7 +104,7 @@ function execute(serverState, clientState, host, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L27)
 
 <a id="constant-constant-mq3-server-client-message-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-client-message-ml-1803184575"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -114,7 +114,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L8)
 
 - [mq3.server.client_message.Server](Type-mq3-server-client-message-server-1884311099.md) — struct
 <a id="function-function-mq3-server-client-message-services-function-services-src-mq3-server-client-message-ml-22899144"></a>
@@ -125,6 +125,6 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/client_message.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/client_message.ml#L25)
 
 - [mq3.server.client_message.Services](Type-mq3-server-client-message-services-149189296.md) — struct

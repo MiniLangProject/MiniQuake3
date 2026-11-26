@@ -10,7 +10,7 @@ struct Eval
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ position
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-item-weights-eval-tokens-tokens-src-mq3-botlib-ai-item-weights-ml-1472214243"></a>
 ### tokens
@@ -32,7 +32,7 @@ tokens
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)
 
 <a id="field-field-mq3-botlib-ai-item-weights-eval-valid-valid-src-mq3-botlib-ai-item-weights-ml-465664035"></a>
 ### valid
@@ -42,4 +42,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_item_weights.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_item_weights.ml#L26)

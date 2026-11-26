@@ -10,7 +10,7 @@ struct Binding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
 
 <a id="field-field-mq3-renderer-qgl-binding-extension-extension-src-mq3-renderer-qgl-ml-953338362"></a>
 ### extension
@@ -32,7 +32,7 @@ extension
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)
 
 <a id="field-field-mq3-renderer-qgl-binding-name-name-src-mq3-renderer-qgl-ml-664990752"></a>
 ### name
@@ -42,4 +42,4 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl.ml#L15)

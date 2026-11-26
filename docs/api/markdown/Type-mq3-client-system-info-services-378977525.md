@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ cheatResetFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-services-context-context-src-mq3-client-system-info-ml-1848293241"></a>
 ### context
@@ -32,7 +32,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-services-getcvarfn-getcvarfn-src-mq3-client-system-info-ml-2062030121"></a>
 ### getCvarFn
@@ -42,7 +42,7 @@ getCvarFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-services-loadedpaksfn-loadedpaksfn-src-mq3-client-system-info-ml-1970453201"></a>
 ### loadedPaksFn
@@ -52,7 +52,7 @@ loadedPaksFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-services-referencedpaksfn-referencedpaksfn-src-mq3-client-system-info-ml-250251697"></a>
 ### referencedPaksFn
@@ -62,7 +62,7 @@ referencedPaksFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)
 
 <a id="field-field-mq3-client-system-info-services-setcvarfn-setcvarfn-src-mq3-client-system-info-ml-694940993"></a>
 ### setCvarFn
@@ -72,4 +72,4 @@ setCvarFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L11)

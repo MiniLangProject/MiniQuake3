@@ -29,7 +29,7 @@ function add(pools, moveHandle, origin, radius, type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L14)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-always-const-avoid-always-1-src-mq3-botlib-ai-avoid-spots-ml-689660804"></a>
 ### AVOID_ALWAYS
@@ -39,7 +39,7 @@ const AVOID_ALWAYS = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-clear-const-avoid-clear-0-src-mq3-botlib-ai-avoid-spots-ml-1633109713"></a>
 ### AVOID_CLEAR
@@ -49,7 +49,7 @@ const AVOID_CLEAR = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L10)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-avoid-dontblock-const-avoid-dontblock-2-src-mq3-botlib-ai-avoid-spots-ml-1784997587"></a>
 ### AVOID_DONTBLOCK
@@ -59,7 +59,7 @@ const AVOID_DONTBLOCK = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L12)
 
 <a id="constant-constant-mq3-botlib-ai-avoid-spots-op-add-avoid-spot-const-op-add-avoid-spot-574-src-mq3-botlib-ai-avoid-spots-ml-157969529"></a>
 ### OP_ADD_AVOID_SPOT
@@ -69,4 +69,4 @@ const OP_ADD_AVOID_SPOT = 574
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_avoid_spots.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_avoid_spots.ml#L9)

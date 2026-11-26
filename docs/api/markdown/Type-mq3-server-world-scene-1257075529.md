@@ -10,7 +10,7 @@ struct Scene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L47)
 
 ## Members
 
@@ -22,7 +22,7 @@ entities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L49)
 
 <a id="field-field-mq3-server-world-scene-sectors-sectors-src-mq3-server-world-ml-804508123"></a>
 ### sectors
@@ -32,7 +32,7 @@ sectors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L50)
 
 <a id="field-field-mq3-server-world-scene-world-world-src-mq3-server-world-ml-617615719"></a>
 ### world
@@ -42,4 +42,4 @@ world
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/world.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/world.ml#L48)

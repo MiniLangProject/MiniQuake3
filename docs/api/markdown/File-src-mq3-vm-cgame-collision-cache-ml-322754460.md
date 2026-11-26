@@ -29,7 +29,7 @@ function aliasesArguments(vm, base, index, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L37)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-bind-function-bind-memo-context-src-mq3-vm-cgame-collision-cache-ml-574837661"></a>
 ### bind
@@ -44,7 +44,7 @@ function bind(memo, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L20)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-capturemarks-function-capturemarks-vm-base-count-maxpoints-maxfragments-src-mq3-vm-cgame-collision-cache-ml-1902556435"></a>
 ### captureMarks
@@ -62,7 +62,7 @@ function captureMarks(vm, base, count, maxPoints, maxFragments)
 | `maxFragments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L66)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-clear-function-clear-memo-src-mq3-vm-cgame-collision-cache-ml-974434526"></a>
 ### clear
@@ -76,7 +76,7 @@ function clear(memo)
 | `memo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L16)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-create-function-create-src-mq3-vm-cgame-collision-cache-ml-443650822"></a>
 ### create
@@ -86,7 +86,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L15)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-fifo-function-fifo-capacity-src-mq3-vm-cgame-collision-cache-ml-1666314406"></a>
 ### fifo
@@ -100,7 +100,7 @@ function fifo(capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L14)
 
 - [mq3.vm.cgame_collision_cache.Fifo](Type-mq3-vm-cgame-collision-cache-fifo-1421891328.md) — struct
 <a id="constant-constant-mq3-vm-cgame-collision-cache-mark-capacity-const-mark-capacity-32-src-mq3-vm-cgame-collision-cache-ml-1867604904"></a>
@@ -111,7 +111,7 @@ const MARK_CAPACITY = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L10)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-markfragments-function-markfragments-memo-context-vm-base-reference-src-mq3-vm-cgame-collision-cache-ml-1064793248"></a>
 ### markFragments
@@ -129,7 +129,7 @@ function markFragments(memo, context, vm, base, reference)
 | `reference` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L84)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-markkey-function-markkey-vm-base-count-maxpoints-maxfragments-src-mq3-vm-cgame-collision-cache-ml-307834335"></a>
 ### markKey
@@ -147,7 +147,7 @@ function markKey(vm, base, count, maxPoints, maxFragments)
 | `maxFragments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L62)
 
 <a id="constant-constant-mq3-vm-cgame-collision-cache-max-mark-bytes-const-max-mark-bytes-65536-src-mq3-vm-cgame-collision-cache-ml-873289458"></a>
 ### MAX_MARK_BYTES
@@ -157,7 +157,7 @@ const MAX_MARK_BYTES = 65536
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L11)
 
 - [mq3.vm.cgame_collision_cache.Memo](Type-mq3-vm-cgame-collision-cache-memo-960623596.md) — struct
 <a id="function-function-mq3-vm-cgame-collision-cache-publishmarks-function-publishmarks-vm-base-stored-maxpoints-maxfragments-src-mq3-vm-cgame-collision-cache-ml-431772567"></a>
@@ -176,7 +176,7 @@ function publishMarks(vm, base, stored, maxPoints, maxFragments)
 | `maxFragments` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L77)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-remember-function-remember-cache-key-value-src-mq3-vm-cgame-collision-cache-ml-711153600"></a>
 ### remember
@@ -192,7 +192,7 @@ function remember(cache, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L30)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-trace-function-trace-memo-context-vm-base-capsule-transformed-reference-src-mq3-vm-cgame-collision-cache-ml-1667131642"></a>
 ### trace
@@ -212,7 +212,7 @@ function trace(memo, context, vm, base, capsule, transformed, reference)
 | `reference` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L48)
 
 <a id="constant-constant-mq3-vm-cgame-collision-cache-trace-capacity-const-trace-capacity-64-src-mq3-vm-cgame-collision-cache-ml-922031013"></a>
 ### TRACE_CAPACITY
@@ -222,7 +222,7 @@ const TRACE_CAPACITY = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L9)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-tracekey-function-tracekey-vm-base-capsule-world-src-mq3-vm-cgame-collision-cache-ml-1226749665"></a>
 ### traceKey
@@ -239,7 +239,7 @@ function traceKey(vm, base, capsule, world)
 | `world` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L41)
 
 <a id="function-function-mq3-vm-cgame-collision-cache-vectorbytes-function-vectorbytes-vm-address-target-offset-src-mq3-vm-cgame-collision-cache-ml-1803010661"></a>
 ### vectorBytes
@@ -256,4 +256,4 @@ function vectorBytes(vm, address, target, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/cgame_collision_cache.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/cgame_collision_cache.ml#L34)

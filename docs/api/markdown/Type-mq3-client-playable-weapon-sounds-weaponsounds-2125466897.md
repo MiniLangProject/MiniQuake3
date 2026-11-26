@@ -10,7 +10,7 @@ struct WeaponSounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ definition
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-weaponsounds-fire-fire-src-mq3-client-playable-weapon-sounds-ml-1175537207"></a>
 ### fire
@@ -32,7 +32,7 @@ fire
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-weaponsounds-impact-impact-src-mq3-client-playable-weapon-sounds-ml-260981975"></a>
 ### impact
@@ -42,7 +42,7 @@ impact
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L12)
 
 <a id="field-field-mq3-client-playable-weapon-sounds-weaponsounds-pickup-pickup-src-mq3-client-playable-weapon-sounds-ml-1292330439"></a>
 ### pickup
@@ -52,4 +52,4 @@ pickup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_weapon_sounds.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_weapon_sounds.ml#L12)

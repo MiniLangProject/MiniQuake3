@@ -10,7 +10,7 @@ struct AnimatedSurface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ indexes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-normals-normals-src-mq3-renderer-md4-animation-ml-1976524707"></a>
 ### normals
@@ -32,7 +32,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-positions-positions-src-mq3-renderer-md4-animation-ml-1038571999"></a>
 ### positions
@@ -42,7 +42,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)
 
 <a id="field-field-mq3-renderer-md4-animation-animatedsurface-texcoords-texcoords-src-mq3-renderer-md4-animation-ml-1561468559"></a>
 ### texCoords
@@ -52,4 +52,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L14)

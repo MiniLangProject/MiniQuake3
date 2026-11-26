@@ -10,7 +10,7 @@ struct RenderEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-backlerp-backlerp-src-mq3-client-cgame-view-ml-98206364"></a>
 ### backlerp
@@ -32,7 +32,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-dispatched-dispatched-src-mq3-client-cgame-view-ml-118540874"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-frame-frame-src-mq3-client-cgame-view-ml-741667140"></a>
 ### frame
@@ -52,7 +52,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-model-model-src-mq3-client-cgame-view-ml-2037233232"></a>
 ### model
@@ -62,7 +62,7 @@ model
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-oldframe-oldframe-src-mq3-client-cgame-view-ml-1600064920"></a>
 ### oldframe
@@ -72,7 +72,7 @@ oldframe
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-origin-origin-src-mq3-client-cgame-view-ml-1622918508"></a>
 ### origin
@@ -82,7 +82,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-radius-radius-src-mq3-client-cgame-view-ml-14933756"></a>
 ### radius
@@ -92,7 +92,7 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-renderfx-renderfx-src-mq3-client-cgame-view-ml-64807276"></a>
 ### renderfx
@@ -102,7 +102,7 @@ renderfx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-retype-retype-src-mq3-client-cgame-view-ml-1699390970"></a>
 ### reType
@@ -112,7 +112,7 @@ reType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-rgba-rgba-src-mq3-client-cgame-view-ml-1407445408"></a>
 ### rgba
@@ -122,7 +122,7 @@ rgba
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-shader-shader-src-mq3-client-cgame-view-ml-959942134"></a>
 ### shader
@@ -132,7 +132,7 @@ shader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)
 
 <a id="field-field-mq3-client-cgame-view-renderentity-skinnum-skinnum-src-mq3-client-cgame-view-ml-1289622388"></a>
 ### skinNum
@@ -142,4 +142,4 @@ skinNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_view.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_view.ml#L48)

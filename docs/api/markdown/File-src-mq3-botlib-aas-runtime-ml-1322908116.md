@@ -26,7 +26,7 @@ function absValue(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L113)
 
 <a id="function-function-mq3-botlib-aas-runtime-appendunique-function-appendunique-values-value-maximum-src-mq3-botlib-aas-runtime-ml-873775471"></a>
 ### appendUnique
@@ -42,7 +42,7 @@ function appendUnique(values, value, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L108)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-area-disabled-const-area-disabled-8-src-mq3-botlib-aas-runtime-ml-1469355053"></a>
 ### AREA_DISABLED
@@ -52,7 +52,7 @@ const AREA_DISABLED = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L12)
 
 <a id="function-function-mq3-botlib-aas-runtime-areainfo-function-areainfo-runtime-areanum-src-mq3-botlib-aas-runtime-ml-5597887"></a>
 ### areaInfo
@@ -67,7 +67,7 @@ function areaInfo(runtime, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L51)
 
 - [mq3.botlib.aas_runtime.AreaInfo](Type-mq3-botlib-aas-runtime-areainfo-1589905451.md) — struct
 <a id="function-function-mq3-botlib-aas-runtime-areareachability-function-areareachability-runtime-areanum-src-mq3-botlib-aas-runtime-ml-302353975"></a>
@@ -83,7 +83,7 @@ function areaReachability(runtime, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L57)
 
 <a id="function-function-mq3-botlib-aas-runtime-areavolume-function-areavolume-runtime-areanum-src-mq3-botlib-aas-runtime-ml-900869567"></a>
 ### areaVolume
@@ -98,7 +98,7 @@ function areaVolume(runtime, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L77)
 
 <a id="function-function-mq3-botlib-aas-runtime-bboxareas-function-bboxareas-runtime-mins-maxs-maximum-src-mq3-botlib-aas-runtime-ml-2009694552"></a>
 ### bboxAreas
@@ -115,7 +115,7 @@ function bboxAreas(runtime, mins, maxs, maximum)
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L114)
 
 <a id="function-function-mq3-botlib-aas-runtime-create-function-create-map-src-mq3-botlib-aas-runtime-ml-103902840"></a>
 ### create
@@ -129,7 +129,7 @@ function create(map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L18)
 
 <a id="function-function-mq3-botlib-aas-runtime-dot-function-dot-point-normal-src-mq3-botlib-aas-runtime-ml-365263563"></a>
 ### dot
@@ -144,7 +144,7 @@ function dot(point, normal)
 | `normal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L25)
 
 <a id="function-function-mq3-botlib-aas-runtime-enableroutingarea-function-enableroutingarea-runtime-areanum-enable-src-mq3-botlib-aas-runtime-ml-1683837510"></a>
 ### enableRoutingArea
@@ -160,7 +160,7 @@ function enableRoutingArea(runtime, areaNum, enable)
 | `enable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L103)
 
 <a id="function-function-mq3-botlib-aas-runtime-facearea-function-facearea-runtime-facenum-src-mq3-botlib-aas-runtime-ml-114550183"></a>
 ### faceArea
@@ -175,7 +175,7 @@ function faceArea(runtime, faceNum)
 | `faceNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L63)
 
 <a id="function-function-mq3-botlib-aas-runtime-fail-function-fail-message-src-mq3-botlib-aas-runtime-ml-722626567"></a>
 ### fail
@@ -189,7 +189,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L17)
 
 <a id="function-function-mq3-botlib-aas-runtime-gettime-function-gettime-runtime-src-mq3-botlib-aas-runtime-ml-244166980"></a>
 ### getTime
@@ -203,7 +203,7 @@ function getTime(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L132)
 
 <a id="function-function-mq3-botlib-aas-runtime-nextareareachability-function-nextareareachability-runtime-areanum-reachnum-src-mq3-botlib-aas-runtime-ml-1010725056"></a>
 ### nextAreaReachability
@@ -219,7 +219,7 @@ function nextAreaReachability(runtime, areaNum, reachNum)
 | `reachNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L93)
 
 <a id="function-function-mq3-botlib-aas-runtime-pointareanum-function-pointareanum-runtime-point-src-mq3-botlib-aas-runtime-ml-2034106588"></a>
 ### pointAreaNum
@@ -234,7 +234,7 @@ function pointAreaNum(runtime, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L26)
 
 <a id="function-function-mq3-botlib-aas-runtime-pointpresencetype-function-pointpresencetype-runtime-point-src-mq3-botlib-aas-runtime-ml-1335026198"></a>
 ### pointPresenceType
@@ -249,7 +249,7 @@ function pointPresenceType(runtime, point)
 | `point` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L43)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-presence-crouch-const-presence-crouch-4-src-mq3-botlib-aas-runtime-ml-885450937"></a>
 ### PRESENCE_CROUCH
@@ -259,7 +259,7 @@ const PRESENCE_CROUCH = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L11)
 
 <a id="constant-constant-mq3-botlib-aas-runtime-presence-normal-const-presence-normal-2-src-mq3-botlib-aas-runtime-ml-1023069479"></a>
 ### PRESENCE_NORMAL
@@ -269,7 +269,7 @@ const PRESENCE_NORMAL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L10)
 
 <a id="function-function-mq3-botlib-aas-runtime-presencetypeboundingbox-function-presencetypeboundingbox-presencetype-src-mq3-botlib-aas-runtime-ml-1903546129"></a>
 ### presenceTypeBoundingBox
@@ -283,7 +283,7 @@ function presenceTypeBoundingBox(presenceType)
 | `presenceType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L46)
 
 <a id="function-function-mq3-botlib-aas-runtime-reachabilityfromnum-function-reachabilityfromnum-runtime-reachnum-src-mq3-botlib-aas-runtime-ml-342539303"></a>
 ### reachabilityFromNum
@@ -298,7 +298,7 @@ function reachabilityFromNum(runtime, reachNum)
 | `reachNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L99)
 
 - [mq3.botlib.aas_runtime.Runtime](Type-mq3-botlib-aas-runtime-runtime-1457431506.md) — struct
 <a id="function-function-mq3-botlib-aas-runtime-settime-function-settime-runtime-value-src-mq3-botlib-aas-runtime-ml-1967406547"></a>
@@ -314,7 +314,7 @@ function setTime(runtime, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L131)
 
 <a id="function-function-mq3-botlib-aas-runtime-validarea-function-validarea-runtime-areanum-src-mq3-botlib-aas-runtime-ml-1667646997"></a>
 ### validArea
@@ -329,7 +329,7 @@ function validArea(runtime, areaNum)
 | `areaNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L24)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorcross-function-vectorcross-a-b-src-mq3-botlib-aas-runtime-ml-605056689"></a>
 ### vectorCross
@@ -344,7 +344,7 @@ function vectorCross(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L61)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorlength-function-vectorlength-value-src-mq3-botlib-aas-runtime-ml-1694955825"></a>
 ### vectorLength
@@ -358,7 +358,7 @@ function vectorLength(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L62)
 
 <a id="function-function-mq3-botlib-aas-runtime-vectorsubtract-function-vectorsubtract-a-b-src-mq3-botlib-aas-runtime-ml-1431325423"></a>
 ### vectorSubtract
@@ -373,4 +373,4 @@ function vectorSubtract(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_runtime.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_runtime.ml#L60)

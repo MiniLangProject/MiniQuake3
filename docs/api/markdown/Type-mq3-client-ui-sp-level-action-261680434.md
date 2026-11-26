@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ asset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-boundary-boundary-src-mq3-client-ui-sp-level-ml-522769727"></a>
 ### boundary
@@ -32,7 +32,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-dispatched-dispatched-src-mq3-client-ui-sp-level-ml-705364329"></a>
 ### dispatched
@@ -42,7 +42,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-h-h-src-mq3-client-ui-sp-level-ml-483062303"></a>
 ### h
@@ -52,7 +52,7 @@ h
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-kind-kind-src-mq3-client-ui-sp-level-ml-1126311759"></a>
 ### kind
@@ -62,7 +62,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-text-text-src-mq3-client-ui-sp-level-ml-1591434473"></a>
 ### text
@@ -72,7 +72,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-value-value-src-mq3-client-ui-sp-level-ml-1279141643"></a>
 ### value
@@ -82,7 +82,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-w-w-src-mq3-client-ui-sp-level-ml-561837459"></a>
 ### w
@@ -92,7 +92,7 @@ w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-x-x-src-mq3-client-ui-sp-level-ml-880596255"></a>
 ### x
@@ -102,7 +102,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)
 
 <a id="field-field-mq3-client-ui-sp-level-action-y-y-src-mq3-client-ui-sp-level-ml-1130029555"></a>
 ### y
@@ -112,4 +112,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sp_level.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sp_level.ml#L34)

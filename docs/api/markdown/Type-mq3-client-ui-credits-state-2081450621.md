@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)
 
 <a id="field-field-mq3-client-ui-credits-state-drawfn-drawfn-src-mq3-client-ui-credits-ml-1765926714"></a>
 ### drawFn
@@ -32,7 +32,7 @@ drawFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)
 
 <a id="field-field-mq3-client-ui-credits-state-fullscreen-fullscreen-src-mq3-client-ui-credits-ml-2042463188"></a>
 ### fullscreen
@@ -42,7 +42,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)
 
 <a id="field-field-mq3-client-ui-credits-state-keyfn-keyfn-src-mq3-client-ui-credits-ml-1271537214"></a>
 ### keyFn
@@ -52,7 +52,7 @@ keyFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)
 
 <a id="field-field-mq3-client-ui-credits-state-pushed-pushed-src-mq3-client-ui-credits-ml-106231292"></a>
 ### pushed
@@ -62,4 +62,4 @@ pushed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_credits.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_credits.ml#L14)

@@ -10,7 +10,7 @@ struct Color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L77)
 
 ## Members
 
@@ -22,7 +22,7 @@ a
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L77)
 
 <a id="field-field-mq3-client-ui-shared-color-b-b-src-mq3-client-ui-shared-ml-385568640"></a>
 ### b
@@ -32,7 +32,7 @@ b
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L77)
 
 <a id="field-field-mq3-client-ui-shared-color-g-g-src-mq3-client-ui-shared-ml-1877234276"></a>
 ### g
@@ -42,7 +42,7 @@ g
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L77)
 
 <a id="field-field-mq3-client-ui-shared-color-r-r-src-mq3-client-ui-shared-ml-233622944"></a>
 ### r
@@ -52,4 +52,4 @@ r
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_shared.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_shared.ml#L77)

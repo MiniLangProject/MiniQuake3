@@ -10,7 +10,7 @@ struct LumpLoad
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ data
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-file-lumpload-nextoffset-nextoffset-src-mq3-botlib-be-aas-file-ml-1969358431"></a>
 ### nextOffset
@@ -32,7 +32,7 @@ nextOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L18)
 
 <a id="field-field-mq3-botlib-be-aas-file-lumpload-sequential-sequential-src-mq3-botlib-be-aas-file-ml-2060847405"></a>
 ### sequential
@@ -42,4 +42,4 @@ sequential
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_aas_file.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_aas_file.ml#L18)

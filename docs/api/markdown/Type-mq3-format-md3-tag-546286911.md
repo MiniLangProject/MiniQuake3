@@ -10,7 +10,7 @@ struct Tag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-tag-name-name-src-mq3-format-md3-ml-1108343585"></a>
 ### name
@@ -32,7 +32,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)
 
 <a id="field-field-mq3-format-md3-tag-origin-origin-src-mq3-format-md3-ml-1614997927"></a>
 ### origin
@@ -42,4 +42,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/md3.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/md3.ml#L29)

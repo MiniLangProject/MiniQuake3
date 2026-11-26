@@ -10,7 +10,7 @@ struct Flare
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-faceindex-faceindex-src-mq3-renderer-playable-flares-ml-895810663"></a>
 ### faceIndex
@@ -32,7 +32,7 @@ faceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-fogindex-fogindex-src-mq3-renderer-playable-flares-ml-1469461375"></a>
 ### fogIndex
@@ -42,7 +42,7 @@ fogIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-normal-normal-src-mq3-renderer-playable-flares-ml-565684749"></a>
 ### normal
@@ -52,7 +52,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-origin-origin-src-mq3-renderer-playable-flares-ml-754343067"></a>
 ### origin
@@ -62,7 +62,7 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)
 
 <a id="field-field-mq3-renderer-playable-flares-flare-textureindex-textureindex-src-mq3-renderer-playable-flares-ml-2130020817"></a>
 ### textureIndex
@@ -72,4 +72,4 @@ textureIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_flares.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_flares.ml#L20)

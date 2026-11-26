@@ -10,7 +10,7 @@ struct Reply
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ keys
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reply-messages-messages-src-mq3-botlib-ai-chat-output-ml-327585001"></a>
 ### messages
@@ -32,7 +32,7 @@ messages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L37)
 
 <a id="field-field-mq3-botlib-ai-chat-output-reply-priority-priority-src-mq3-botlib-ai-chat-output-ml-1906605033"></a>
 ### priority
@@ -42,4 +42,4 @@ priority
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_output.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_output.ml#L37)

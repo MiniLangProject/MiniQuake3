@@ -10,7 +10,7 @@ struct Sfx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ defaultSound
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-handle-handle-src-mq3-audio-snd-dma-runtime-ml-451614214"></a>
 ### handle
@@ -32,7 +32,7 @@ handle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-inmemory-inmemory-src-mq3-audio-snd-dma-runtime-ml-533792238"></a>
 ### inMemory
@@ -42,7 +42,7 @@ inMemory
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-lasttimeused-lasttimeused-src-mq3-audio-snd-dma-runtime-ml-165122458"></a>
 ### lastTimeUsed
@@ -52,7 +52,7 @@ lastTimeUsed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundcompressed-soundcompressed-src-mq3-audio-snd-dma-runtime-ml-1618853894"></a>
 ### soundCompressed
@@ -62,7 +62,7 @@ soundCompressed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-sounddata-sounddata-src-mq3-audio-snd-dma-runtime-ml-1936352162"></a>
 ### soundData
@@ -72,7 +72,7 @@ soundData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundlength-soundlength-src-mq3-audio-snd-dma-runtime-ml-82110446"></a>
 ### soundLength
@@ -82,7 +82,7 @@ soundLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)
 
 <a id="field-field-mq3-audio-snd-dma-runtime-sfx-soundname-soundname-src-mq3-audio-snd-dma-runtime-ml-1654435150"></a>
 ### soundName
@@ -92,4 +92,4 @@ soundName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_dma_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_dma_runtime.ml#L14)

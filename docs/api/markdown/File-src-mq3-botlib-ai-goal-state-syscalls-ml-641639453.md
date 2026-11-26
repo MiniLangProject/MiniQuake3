@@ -23,7 +23,7 @@ const BOT_GOAL_SIZE = 56
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-dispatch-function-dispatch-runtime-vm-base-op-src-mq3-botlib-ai-goal-state-syscalls-ml-1611876787"></a>
 ### dispatch
@@ -40,7 +40,7 @@ function dispatch(runtime, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-readgoal-function-readgoal-vm-address-src-mq3-botlib-ai-goal-state-syscalls-ml-742361983"></a>
 ### readGoal
@@ -55,7 +55,7 @@ function readGoal(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-vector-function-vector-data-address-src-mq3-botlib-ai-goal-state-syscalls-ml-77616868"></a>
 ### vector
@@ -70,7 +70,7 @@ function vector(data, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L12)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-writegoal-function-writegoal-vm-address-goal-src-mq3-botlib-ai-goal-state-syscalls-ml-1894277060"></a>
 ### writeGoal
@@ -86,7 +86,7 @@ function writeGoal(vm, address, goal)
 | `goal` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-goal-state-syscalls-writevector-function-writevector-data-address-value-src-mq3-botlib-ai-goal-state-syscalls-ml-536031715"></a>
 ### writeVector
@@ -102,4 +102,4 @@ function writeVector(data, address, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_state_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_state_syscalls.ml#L13)

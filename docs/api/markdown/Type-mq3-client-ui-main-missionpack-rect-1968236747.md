@@ -10,7 +10,7 @@ struct Rect
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ h
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L63)
 
 <a id="field-field-mq3-client-ui-main-missionpack-rect-w-w-src-mq3-client-ui-main-missionpack-ml-1344143575"></a>
 ### w
@@ -32,7 +32,7 @@ w
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L63)
 
 <a id="field-field-mq3-client-ui-main-missionpack-rect-x-x-src-mq3-client-ui-main-missionpack-ml-395576035"></a>
 ### x
@@ -42,7 +42,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L63)
 
 <a id="field-field-mq3-client-ui-main-missionpack-rect-y-y-src-mq3-client-ui-main-missionpack-ml-1332076167"></a>
 ### y
@@ -52,4 +52,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main_missionpack.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main_missionpack.ml#L63)

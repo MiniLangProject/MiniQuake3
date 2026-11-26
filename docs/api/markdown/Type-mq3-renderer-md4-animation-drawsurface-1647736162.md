@@ -10,7 +10,7 @@ struct DrawSurface
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ dlightMap
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L13)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-fognum-fognum-src-mq3-renderer-md4-animation-ml-56737738"></a>
 ### fogNum
@@ -32,7 +32,7 @@ fogNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L13)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-shaderindex-shaderindex-src-mq3-renderer-md4-animation-ml-222340610"></a>
 ### shaderIndex
@@ -42,7 +42,7 @@ shaderIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L13)
 
 <a id="field-field-mq3-renderer-md4-animation-drawsurface-surfaceindex-surfaceindex-src-mq3-renderer-md4-animation-ml-951028708"></a>
 ### surfaceIndex
@@ -52,4 +52,4 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/md4_animation.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/md4_animation.ml#L13)

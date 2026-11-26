@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ fragLimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-intermissionat-intermissionat-src-mq3-client-playable-match-ml-892471632"></a>
 ### intermissionAt
@@ -32,7 +32,7 @@ intermissionAt
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-matchstart-matchstart-src-mq3-client-playable-match-ml-564491532"></a>
 ### matchStart
@@ -42,7 +42,7 @@ matchStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-phase-phase-src-mq3-client-playable-match-ml-883865042"></a>
 ### phase
@@ -52,7 +52,7 @@ phase
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-timelimitmilliseconds-timelimitmilliseconds-src-mq3-client-playable-match-ml-644166162"></a>
 ### timeLimitMilliseconds
@@ -62,7 +62,7 @@ timeLimitMilliseconds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-warmupmilliseconds-warmupmilliseconds-src-mq3-client-playable-match-ml-2096763666"></a>
 ### warmupMilliseconds
@@ -72,7 +72,7 @@ warmupMilliseconds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-warmupstart-warmupstart-src-mq3-client-playable-match-ml-2042524298"></a>
 ### warmupStart
@@ -82,7 +82,7 @@ warmupStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)
 
 <a id="field-field-mq3-client-playable-match-state-winner-winner-src-mq3-client-playable-match-ml-353275620"></a>
 ### winner
@@ -92,4 +92,4 @@ winner
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_match.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_match.ml#L20)

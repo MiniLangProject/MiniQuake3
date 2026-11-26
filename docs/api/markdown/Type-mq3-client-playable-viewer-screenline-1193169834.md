@@ -10,7 +10,7 @@ struct ScreenLine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ a
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L17)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-b-b-src-mq3-client-playable-viewer-ml-94743379"></a>
 ### b
@@ -32,7 +32,7 @@ b
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L17)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-clipped-clipped-src-mq3-client-playable-viewer-ml-657868591"></a>
 ### clipped
@@ -42,7 +42,7 @@ clipped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L17)
 
 <a id="field-field-mq3-client-playable-viewer-screenline-visible-visible-src-mq3-client-playable-viewer-ml-1039275755"></a>
 ### visible
@@ -52,4 +52,4 @@ visible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_viewer.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_viewer.ml#L17)

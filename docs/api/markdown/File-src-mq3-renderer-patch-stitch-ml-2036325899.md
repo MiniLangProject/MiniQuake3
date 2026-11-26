@@ -24,7 +24,7 @@ function abs(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L10)
 
 <a id="function-function-mq3-renderer-patch-stitch-atposition-function-atposition-vertex-position-src-mq3-renderer-patch-stitch-ml-672914319"></a>
 ### atPosition
@@ -39,7 +39,7 @@ function atPosition(vertex, position)
 | `position` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L64)
 
 <a id="function-function-mq3-renderer-patch-stitch-copyloderrors-function-copyloderrors-source-target-src-mq3-renderer-patch-stitch-ml-1653670492"></a>
 ### copyLodErrors
@@ -54,7 +54,7 @@ function copyLodErrors(source, target)
 | `target` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L27)
 
 <a id="function-function-mq3-renderer-patch-stitch-edgecount-function-edgecount-grid-side-src-mq3-renderer-patch-stitch-ml-739878509"></a>
 ### edgeCount
@@ -69,7 +69,7 @@ function edgeCount(grid, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L15)
 
 <a id="function-function-mq3-renderer-patch-stitch-edgeerrors-function-edgeerrors-grid-side-src-mq3-renderer-patch-stitch-ml-1630853365"></a>
 ### edgeErrors
@@ -84,7 +84,7 @@ function edgeErrors(grid, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L16)
 
 <a id="function-function-mq3-renderer-patch-stitch-edgepoint-function-edgepoint-grid-side-index-src-mq3-renderer-patch-stitch-ml-1705581003"></a>
 ### edgePoint
@@ -100,7 +100,7 @@ function edgePoint(grid, side, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L14)
 
 <a id="function-function-mq3-renderer-patch-stitch-insertcolumn-function-insertcolumn-grid-column-row-vertex-errorvalue-src-mq3-renderer-patch-stitch-ml-2114124455"></a>
 ### insertColumn
@@ -118,7 +118,7 @@ function insertColumn(grid, column, row, vertex, errorValue)
 | `errorValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L65)
 
 <a id="function-function-mq3-renderer-patch-stitch-inserterror-function-inserterror-source-at-value-src-mq3-renderer-patch-stitch-ml-616548515"></a>
 ### insertError
@@ -134,7 +134,7 @@ function insertError(source, at, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L93)
 
 <a id="function-function-mq3-renderer-patch-stitch-insertrow-function-insertrow-grid-row-column-vertex-errorvalue-src-mq3-renderer-patch-stitch-ml-1928246629"></a>
 ### insertRow
@@ -152,7 +152,7 @@ function insertRow(grid, row, column, vertex, errorValue)
 | `errorValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L79)
 
 <a id="constant-constant-mq3-renderer-patch-stitch-max-grid-size-const-max-grid-size-65-src-mq3-renderer-patch-stitch-ml-1555339004"></a>
 ### MAX_GRID_SIZE
@@ -162,7 +162,7 @@ const MAX_GRID_SIZE = 65
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L8)
 
 <a id="function-function-mq3-renderer-patch-stitch-mergededge-function-mergededge-grid-side-src-mq3-renderer-patch-stitch-ml-1180086381"></a>
 ### mergedEdge
@@ -177,7 +177,7 @@ function mergedEdge(grid, side)
 | `side` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L17)
 
 <a id="function-function-mq3-renderer-patch-stitch-nearpoint-function-nearpoint-a-b-tolerance-src-mq3-renderer-patch-stitch-ml-1099137978"></a>
 ### nearPoint
@@ -193,7 +193,7 @@ function nearPoint(a, b, tolerance)
 | `tolerance` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L11)
 
 <a id="function-function-mq3-renderer-patch-stitch-r-fixsharedvertexloderror-function-r-fixsharedvertexloderror-grids-src-mq3-renderer-patch-stitch-ml-2116539513"></a>
 ### R_FixSharedVertexLodError
@@ -207,7 +207,7 @@ function R_FixSharedVertexLodError(grids)
 | `grids` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L62)
 
 <a id="function-function-mq3-renderer-patch-stitch-r-fixsharedvertexloderror-r-function-r-fixsharedvertexloderror-r-grids-start-grid-src-mq3-renderer-patch-stitch-ml-1068103967"></a>
 ### R_FixSharedVertexLodError_r
@@ -223,7 +223,7 @@ function R_FixSharedVertexLodError_r(grids, start, grid)
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L51)
 
 <a id="function-function-mq3-renderer-patch-stitch-r-stitchallpatches-function-r-stitchallpatches-grids-src-mq3-renderer-patch-stitch-ml-1687136533"></a>
 ### R_StitchAllPatches
@@ -237,7 +237,7 @@ function R_StitchAllPatches(grids)
 | `grids` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L116)
 
 <a id="function-function-mq3-renderer-patch-stitch-r-stitchpatches-function-r-stitchpatches-grid1-grid2-src-mq3-renderer-patch-stitch-ml-1234463105"></a>
 ### R_StitchPatches
@@ -252,7 +252,7 @@ function R_StitchPatches(grid1, grid2)
 | `grid2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L99)
 
 <a id="function-function-mq3-renderer-patch-stitch-samelodgroup-function-samelodgroup-a-b-src-mq3-renderer-patch-stitch-ml-1120768229"></a>
 ### sameLodGroup
@@ -267,4 +267,4 @@ function sameLodGroup(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/patch_stitch.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/patch_stitch.ml#L12)

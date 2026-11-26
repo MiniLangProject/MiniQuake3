@@ -16,7 +16,7 @@ function init()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L11)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-initnative-extern-function-initnative-from-playable-audio-dll-symbol-playable-audio-init-returns-i32-src-mq3-platform-playable-audio-ml-911026293"></a>
 ### initNative
@@ -26,7 +26,7 @@ extern function initNative() from "playable_audio.dll" symbol "playable_audio_in
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L5)
 
 <a id="function-function-mq3-platform-playable-audio-play-function-play-sound-src-mq3-platform-playable-audio-ml-1332525019"></a>
 ### play
@@ -40,7 +40,7 @@ function play(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L15)
 
 <a id="function-function-mq3-platform-playable-audio-playloop-function-playloop-sound-src-mq3-platform-playable-audio-ml-61207847"></a>
 ### playLoop
@@ -54,7 +54,7 @@ function playLoop(sound)
 | `sound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L20)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-playloopnative-extern-function-playloopnative-samples-as-ptr-bytecount-as-i32-samplerate-as-i32-channels-as-i32-bitspersample-as-i32-from-playable-audio-dll-symbol-playable-audio-play-pcm-loop-returns-i32-src-mq3-platform-playable-audio-ml-81802106"></a>
 ### playLoopNative
@@ -72,7 +72,7 @@ extern function playLoopNative(samples as ptr, byteCount as i32, sampleRate as i
 | `bitsPerSample` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L7)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-playnative-extern-function-playnative-samples-as-ptr-bytecount-as-i32-samplerate-as-i32-channels-as-i32-bitspersample-as-i32-from-playable-audio-dll-symbol-playable-audio-play-pcm-returns-i32-src-mq3-platform-playable-audio-ml-137993979"></a>
 ### playNative
@@ -90,7 +90,7 @@ extern function playNative(samples as ptr, byteCount as i32, sampleRate as i32, 
 | `bitsPerSample` | `i32` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L6)
 
 <a id="function-function-mq3-platform-playable-audio-shutdown-function-shutdown-src-mq3-platform-playable-audio-ml-872174812"></a>
 ### shutdown
@@ -100,7 +100,7 @@ function shutdown()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L26)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-shutdownnative-extern-function-shutdownnative-from-playable-audio-dll-symbol-playable-audio-shutdown-returns-void-src-mq3-platform-playable-audio-ml-863945913"></a>
 ### shutdownNative
@@ -110,7 +110,7 @@ extern function shutdownNative() from "playable_audio.dll" symbol "playable_audi
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L9)
 
 <a id="function-function-mq3-platform-playable-audio-stop-function-stop-src-mq3-platform-playable-audio-ml-530504160"></a>
 ### stop
@@ -120,7 +120,7 @@ function stop()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L25)
 
 <a id="extern_function-extern-function-mq3-platform-playable-audio-stopnative-extern-function-stopnative-from-playable-audio-dll-symbol-playable-audio-stop-returns-void-src-mq3-platform-playable-audio-ml-1055421371"></a>
 ### stopNative
@@ -130,4 +130,4 @@ extern function stopNative() from "playable_audio.dll" symbol "playable_audio_st
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/playable_audio.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/playable_audio.ml#L8)

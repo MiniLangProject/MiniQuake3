@@ -10,7 +10,7 @@ struct Config
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 <a id="field-field-mq3-server-oob-connect-config-minping-minping-src-mq3-server-oob-connect-ml-609626959"></a>
 ### minPing
@@ -32,7 +32,7 @@ minPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 <a id="field-field-mq3-server-oob-connect-config-privateclients-privateclients-src-mq3-server-oob-connect-ml-811646585"></a>
 ### privateClients
@@ -42,7 +42,7 @@ privateClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 <a id="field-field-mq3-server-oob-connect-config-privatepassword-privatepassword-src-mq3-server-oob-connect-ml-164892595"></a>
 ### privatePassword
@@ -52,7 +52,7 @@ privatePassword
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 <a id="field-field-mq3-server-oob-connect-config-reconnectlimit-reconnectlimit-src-mq3-server-oob-connect-ml-93069159"></a>
 ### reconnectLimit
@@ -62,7 +62,7 @@ reconnectLimit
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)
 
 <a id="field-field-mq3-server-oob-connect-config-singleplayer-singleplayer-src-mq3-server-oob-connect-ml-661666785"></a>
 ### singlePlayer
@@ -72,4 +72,4 @@ singlePlayer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/oob_connect.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/oob_connect.ml#L25)

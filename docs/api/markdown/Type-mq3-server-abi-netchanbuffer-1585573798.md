@@ -10,7 +10,7 @@ struct NetchanBuffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L91)
 
 ## Members
 
@@ -22,7 +22,7 @@ msg
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L91)
 
 <a id="field-field-mq3-server-abi-netchanbuffer-msgbuffer-msgbuffer-src-mq3-server-abi-ml-608877230"></a>
 ### msgBuffer
@@ -32,7 +32,7 @@ msgBuffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L91)
 
 <a id="field-field-mq3-server-abi-netchanbuffer-next-next-src-mq3-server-abi-ml-837690400"></a>
 ### next
@@ -42,4 +42,4 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/abi.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/abi.ml#L91)

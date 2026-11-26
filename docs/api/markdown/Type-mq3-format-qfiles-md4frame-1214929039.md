@@ -10,7 +10,7 @@ struct Md4Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L101)
 
 ## Members
 
@@ -22,7 +22,7 @@ bones
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L101)
 
 <a id="field-field-mq3-format-qfiles-md4frame-bounds-bounds-src-mq3-format-qfiles-ml-111141741"></a>
 ### bounds
@@ -32,7 +32,7 @@ bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L101)
 
 <a id="field-field-mq3-format-qfiles-md4frame-localorigin-localorigin-src-mq3-format-qfiles-ml-1570234535"></a>
 ### localOrigin
@@ -42,7 +42,7 @@ localOrigin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L101)
 
 <a id="field-field-mq3-format-qfiles-md4frame-radius-radius-src-mq3-format-qfiles-ml-1984163075"></a>
 ### radius
@@ -52,4 +52,4 @@ radius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/qfiles.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/qfiles.ml#L101)

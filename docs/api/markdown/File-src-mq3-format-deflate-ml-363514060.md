@@ -24,7 +24,7 @@ Short canonical codes have one entry at every possible eight-bit suffix. DEFLATE
 | `symbols` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L37)
 
 <a id="function-function-mq3-format-deflate-decodesymbol-function-decodesymbol-reader-codes-src-mq3-format-deflate-ml-784818855"></a>
 ### decodeSymbol
@@ -39,7 +39,7 @@ function decodeSymbol(reader, codes)
 | `codes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L88)
 
 <a id="function-function-mq3-format-deflate-dynamictrees-function-dynamictrees-reader-src-mq3-format-deflate-ml-1383757355"></a>
 ### dynamicTrees
@@ -53,7 +53,7 @@ function dynamicTrees(reader)
 | `reader` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L134)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L134)
 
 <a id="function-function-mq3-format-deflate-fail-function-fail-message-src-mq3-format-deflate-ml-293057215"></a>
 ### fail
@@ -67,7 +67,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L18)
 
 <a id="function-function-mq3-format-deflate-fixedtrees-function-fixedtrees-src-mq3-format-deflate-ml-1262350762"></a>
 ### fixedTrees
@@ -77,7 +77,7 @@ function fixedTrees()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L123)
 
 - [mq3.format.deflate.Huffman](Type-mq3-format-deflate-huffman-1324627979.md) — struct
 <a id="function-function-mq3-format-deflate-inflate-function-inflate-data-expectedsize-src-mq3-format-deflate-ml-1726441759"></a>
@@ -93,7 +93,7 @@ function inflate(data, expectedSize)
 | `expectedSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L180)
 
 <a id="function-function-mq3-format-deflate-readbits-function-readbits-reader-as-bits-count-as-int-src-mq3-format-deflate-ml-395759967"></a>
 ### readBits
@@ -108,7 +108,7 @@ function readBits(reader as Bits, count as int)
 | `count` | `int` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L22)
 
 <a id="function-function-mq3-format-deflate-tree-function-tree-lengths-src-mq3-format-deflate-ml-524636917"></a>
 ### tree
@@ -122,4 +122,4 @@ function tree(lengths)
 | `lengths` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/deflate.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/deflate.ml#L62)

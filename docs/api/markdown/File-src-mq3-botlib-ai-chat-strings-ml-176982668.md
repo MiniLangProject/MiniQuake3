@@ -25,7 +25,7 @@ function botPath(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L20)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-boundary-function-boundary-value-src-mq3-botlib-ai-chat-strings-ml-321088693"></a>
 ### boundary
@@ -39,7 +39,7 @@ function boundary(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L94)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-clear-function-clear-state-src-mq3-botlib-ai-chat-strings-ml-892248795"></a>
 ### clear
@@ -53,7 +53,7 @@ function clear(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L75)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-create-function-create-context-readfn-src-mq3-botlib-ai-chat-strings-ml-631454887"></a>
 ### create
@@ -68,7 +68,7 @@ function create(context, readFn)
 | `readFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L19)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-ensureloaded-function-ensureloaded-state-src-mq3-botlib-ai-chat-strings-ml-836462845"></a>
 ### ensureLoaded
@@ -82,7 +82,7 @@ function ensureLoaded(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L72)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-expect-function-expect-registry-source-text-src-mq3-botlib-ai-chat-strings-ml-1960644145"></a>
 ### expect
@@ -98,7 +98,7 @@ function expect(registry, source, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L29)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-fail-function-fail-message-src-mq3-botlib-ai-chat-strings-ml-1188082487"></a>
 ### fail
@@ -112,7 +112,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L18)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-findword-function-findword-value-wordvalue-start-src-mq3-botlib-ai-chat-strings-ml-675628104"></a>
 ### findWord
@@ -128,7 +128,7 @@ function findWord(value, wordValue, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L99)
 
 - [mq3.botlib.ai_chat_strings.Group](Type-mq3-botlib-ai-chat-strings-group-248301701.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-strings-iswhitespace-function-iswhitespace-value-src-mq3-botlib-ai-chat-strings-ml-633914033"></a>
@@ -143,7 +143,7 @@ function isWhiteSpace(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L77)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-load-function-load-state-filename-src-mq3-botlib-ai-chat-strings-ml-280133518"></a>
 ### load
@@ -158,7 +158,7 @@ function load(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L68)
 
 - [mq3.botlib.ai_chat_strings.Loader](Type-mq3-botlib-ai-chat-strings-loader-157619677.md) — struct
 <a id="function-function-mq3-botlib-ai-chat-strings-loadtext-function-loadtext-loader-name-src-mq3-botlib-ai-chat-strings-ml-86561266"></a>
@@ -174,7 +174,7 @@ function loadText(loader, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L24)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-lower-function-lower-value-src-mq3-botlib-ai-chat-strings-ml-1862599675"></a>
 ### lower
@@ -188,7 +188,7 @@ function lower(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L93)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-matchesat-function-matchesat-data-word-at-src-mq3-botlib-ai-chat-strings-ml-1464872409"></a>
 ### matchesAt
@@ -204,7 +204,7 @@ function matchesAt(data, word, at)
 | `at` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L95)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-max-message-size-const-max-message-size-256-src-mq3-botlib-ai-chat-strings-ml-392347090"></a>
 ### MAX_MESSAGE_SIZE
@@ -214,7 +214,7 @@ const MAX_MESSAGE_SIZE = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L11)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-op-replace-synonyms-const-op-replace-synonyms-521-src-mq3-botlib-ai-chat-strings-ml-1422786995"></a>
 ### OP_REPLACE_SYNONYMS
@@ -224,7 +224,7 @@ const OP_REPLACE_SYNONYMS = 521
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L10)
 
 <a id="constant-constant-mq3-botlib-ai-chat-strings-op-unify-white-spaces-const-op-unify-white-spaces-520-src-mq3-botlib-ai-chat-strings-ml-1036907216"></a>
 ### OP_UNIFY_WHITE_SPACES
@@ -234,7 +234,7 @@ const OP_UNIFY_WHITE_SPACES = 520
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-parse-function-parse-state-filename-src-mq3-botlib-ai-chat-strings-ml-920490488"></a>
 ### parse
@@ -249,7 +249,7 @@ function parse(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L48)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-parsegroup-function-parsegroup-registry-source-context-src-mq3-botlib-ai-chat-strings-ml-353618665"></a>
 ### parseGroup
@@ -265,7 +265,7 @@ function parseGroup(registry, source, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L32)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacerange-function-replacerange-value-at-count-replacement-src-mq3-botlib-ai-chat-strings-ml-2131545949"></a>
 ### replaceRange
@@ -282,7 +282,7 @@ function replaceRange(value, at, count, replacement)
 | `replacement` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L111)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacesynonyms-function-replacesynonyms-state-value-context-src-mq3-botlib-ai-chat-strings-ml-1048737193"></a>
 ### replaceSynonyms
@@ -298,7 +298,7 @@ function replaceSynonyms(state, value, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L129)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-replacewords-function-replacewords-value-synonym-replacement-src-mq3-botlib-ai-chat-strings-ml-1398205812"></a>
 ### replaceWords
@@ -314,7 +314,7 @@ function replaceWords(value, synonym, replacement)
 | `replacement` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L116)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L116)
 
 - [mq3.botlib.ai_chat_strings.State](Type-mq3-botlib-ai-chat-strings-state-573645047.md) — struct
 - [mq3.botlib.ai_chat_strings.Synonym](Type-mq3-botlib-ai-chat-strings-synonym-1217201239.md) — struct
@@ -331,7 +331,7 @@ function take(registry, source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L28)
 
 <a id="function-function-mq3-botlib-ai-chat-strings-unifywhitespaces-function-unifywhitespaces-value-src-mq3-botlib-ai-chat-strings-ml-771593789"></a>
 ### unifyWhiteSpaces
@@ -345,4 +345,4 @@ function unifyWhiteSpaces(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L81)

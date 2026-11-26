@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ adjustAreaPortalFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-clusterpvsfn-clusterpvsfn-src-mq3-server-game-interface-ml-2020552449"></a>
 ### clusterPvsFn
@@ -32,7 +32,7 @@ clusterPvsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-context-context-src-mq3-server-game-interface-ml-163048223"></a>
 ### context
@@ -42,7 +42,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-dropclientfn-dropclientfn-src-mq3-server-game-interface-ml-1847556155"></a>
 ### dropClientFn
@@ -52,7 +52,7 @@ dropClientFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-errorfn-errorfn-src-mq3-server-game-interface-ml-1273367031"></a>
 ### errorFn
@@ -62,7 +62,7 @@ errorFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-gamecommandfn-gamecommandfn-src-mq3-server-game-interface-ml-1978563143"></a>
 ### gameCommandFn
@@ -72,7 +72,7 @@ gameCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-leafareafn-leafareafn-src-mq3-server-game-interface-ml-1824098793"></a>
 ### leafAreaFn
@@ -82,7 +82,7 @@ leafAreaFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-leafclusterfn-leafclusterfn-src-mq3-server-game-interface-ml-1950267599"></a>
 ### leafClusterFn
@@ -92,7 +92,7 @@ leafClusterFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-pointleafnumfn-pointleafnumfn-src-mq3-server-game-interface-ml-27907051"></a>
 ### pointLeafnumFn
@@ -102,7 +102,7 @@ pointLeafnumFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-printfn-printfn-src-mq3-server-game-interface-ml-161418199"></a>
 ### printFn
@@ -112,7 +112,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)
 
 <a id="field-field-mq3-server-game-interface-services-sendservercommandfn-sendservercommandfn-src-mq3-server-game-interface-ml-2125788639"></a>
 ### sendServerCommandFn
@@ -122,4 +122,4 @@ sendServerCommandFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L23)

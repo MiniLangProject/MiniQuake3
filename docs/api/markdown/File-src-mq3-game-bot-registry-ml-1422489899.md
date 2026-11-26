@@ -29,7 +29,7 @@ function create(readFileFn, listFilesFn, printFn, context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L21)
 
 <a id="function-function-mq3-game-bot-registry-filedata-function-filedata-state-filename-src-mq3-game-bot-registry-ml-341744468"></a>
 ### fileData
@@ -44,7 +44,7 @@ function fileData(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L55)
 
 <a id="function-function-mq3-game-bot-registry-getarenainfobymap-function-getarenainfobymap-state-map-src-mq3-game-bot-registry-ml-404539183"></a>
 ### getArenaInfoByMap
@@ -59,7 +59,7 @@ function getArenaInfoByMap(state, map)
 | `map` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L122)
 
 <a id="function-function-mq3-game-bot-registry-getbotinfobyname-function-getbotinfobyname-state-name-src-mq3-game-bot-registry-ml-913399118"></a>
 ### getBotInfoByName
@@ -74,7 +74,7 @@ function getBotInfoByName(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L136)
 
 <a id="function-function-mq3-game-bot-registry-getbotinfobynumber-function-getbotinfobynumber-state-num-src-mq3-game-bot-registry-ml-2094867101"></a>
 ### getBotInfoByNumber
@@ -89,7 +89,7 @@ function getBotInfoByNumber(state, num)
 | `num` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L129)
 
 <a id="function-function-mq3-game-bot-registry-listedfiles-function-listedfiles-state-extension-src-mq3-game-bot-registry-ml-1668054484"></a>
 ### listedFiles
@@ -104,7 +104,7 @@ function listedFiles(state, extension)
 | `extension` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L81)
 
 <a id="function-function-mq3-game-bot-registry-loadarenas-function-loadarenas-state-arenasfile-src-mq3-game-bot-registry-ml-230659527"></a>
 ### loadArenas
@@ -119,7 +119,7 @@ function loadArenas(state, arenasFile)
 | `arenasFile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L96)
 
 <a id="function-function-mq3-game-bot-registry-loadarenasfromfile-function-loadarenasfromfile-state-filename-src-mq3-game-bot-registry-ml-1484088228"></a>
 ### loadArenasFromFile
@@ -134,7 +134,7 @@ function loadArenasFromFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L73)
 
 <a id="function-function-mq3-game-bot-registry-loadbots-function-loadbots-state-botenable-botsfile-src-mq3-game-bot-registry-ml-445156535"></a>
 ### loadBots
@@ -150,7 +150,7 @@ function loadBots(state, botEnable, botsFile)
 | `botsFile` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L111)
 
 <a id="function-function-mq3-game-bot-registry-loadbotsfromfile-function-loadbotsfromfile-state-filename-src-mq3-game-bot-registry-ml-1599104248"></a>
 ### loadBotsFromFile
@@ -165,7 +165,7 @@ function loadBotsFromFile(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L77)
 
 <a id="function-function-mq3-game-bot-registry-loadfromfile-function-loadfromfile-state-filename-destination-src-mq3-game-bot-registry-ml-777211318"></a>
 ### loadFromFile
@@ -181,7 +181,7 @@ function loadFromFile(state, filename, destination)
 | `destination` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L60)
 
 <a id="constant-constant-mq3-game-bot-registry-max-info-text-const-max-info-text-8192-src-mq3-game-bot-registry-ml-1922505083"></a>
 ### MAX_INFO_TEXT
@@ -191,7 +191,7 @@ const MAX_INFO_TEXT = 8192
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L10)
 
 <a id="constant-constant-mq3-game-bot-registry-max-infos-const-max-infos-1024-src-mq3-game-bot-registry-ml-1594952030"></a>
 ### MAX_INFOS
@@ -201,7 +201,7 @@ const MAX_INFOS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L9)
 
 <a id="function-function-mq3-game-bot-registry-output-function-output-state-text-src-mq3-game-bot-registry-ml-1831207462"></a>
 ### output
@@ -216,7 +216,7 @@ function output(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L25)
 
 <a id="function-function-mq3-game-bot-registry-parseinfos-function-parseinfos-state-text-max-src-mq3-game-bot-registry-ml-2091311498"></a>
 ### parseInfos
@@ -232,7 +232,7 @@ function parseInfos(state, text, max)
 | `max` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L30)
 
 - [mq3.game.bot_registry.Registry](Type-mq3-game-bot-registry-registry-1702601920.md) — struct
 <a id="function-function-mq3-game-bot-registry-scriptpath-function-scriptpath-name-src-mq3-game-bot-registry-ml-1998571885"></a>
@@ -247,4 +247,4 @@ function scriptPath(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_registry.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_registry.ml#L88)

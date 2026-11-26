@@ -10,7 +10,7 @@ struct Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ cgameFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-cinematicframes-cinematicframes-src-mq3-client-ui-host-lifecycle-ml-607074990"></a>
 ### cinematicFrames
@@ -32,7 +32,7 @@ cinematicFrames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-connectcalls-connectcalls-src-mq3-client-ui-host-lifecycle-ml-648890160"></a>
 ### connectCalls
@@ -42,7 +42,7 @@ connectCalls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-fullscreen-fullscreen-src-mq3-client-ui-host-lifecycle-ml-519657720"></a>
 ### fullscreen
@@ -52,7 +52,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-menucalls-menucalls-src-mq3-client-ui-host-lifecycle-ml-1953420194"></a>
 ### menuCalls
@@ -62,7 +62,7 @@ menuCalls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-overlay-overlay-src-mq3-client-ui-host-lifecycle-ml-1167915786"></a>
 ### overlay
@@ -72,7 +72,7 @@ overlay
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)
 
 <a id="field-field-mq3-client-ui-host-lifecycle-frame-refreshcalls-refreshcalls-src-mq3-client-ui-host-lifecycle-ml-474338106"></a>
 ### refreshCalls
@@ -82,4 +82,4 @@ refreshCalls
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_host_lifecycle.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_host_lifecycle.ml#L25)

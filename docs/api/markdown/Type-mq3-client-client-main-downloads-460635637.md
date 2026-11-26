@@ -10,7 +10,7 @@ struct Downloads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ completed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 <a id="field-field-mq3-client-client-main-downloads-index-index-src-mq3-client-client-main-ml-2108608604"></a>
 ### index
@@ -32,7 +32,7 @@ index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 <a id="field-field-mq3-client-client-main-downloads-name-name-src-mq3-client-client-main-ml-20117382"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 <a id="field-field-mq3-client-client-main-downloads-queue-queue-src-mq3-client-client-main-ml-1706954068"></a>
 ### queue
@@ -52,7 +52,7 @@ queue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 <a id="field-field-mq3-client-client-main-downloads-restarted-restarted-src-mq3-client-client-main-ml-2040737992"></a>
 ### restarted
@@ -62,7 +62,7 @@ restarted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)
 
 <a id="field-field-mq3-client-client-main-downloads-tempname-tempname-src-mq3-client-client-main-ml-887319834"></a>
 ### tempName
@@ -72,4 +72,4 @@ tempName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L36)

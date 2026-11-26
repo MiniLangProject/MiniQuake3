@@ -10,7 +10,7 @@ struct NodeSwitch
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 ## Members
 
@@ -22,7 +22,7 @@ client
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 <a id="field-field-mq3-game-ai-dmnet-nodeswitch-detail-detail-src-mq3-game-ai-dmnet-ml-255451481"></a>
 ### detail
@@ -32,7 +32,7 @@ detail
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 <a id="field-field-mq3-game-ai-dmnet-nodeswitch-name-name-src-mq3-game-ai-dmnet-ml-1676645917"></a>
 ### name
@@ -42,7 +42,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 <a id="field-field-mq3-game-ai-dmnet-nodeswitch-node-node-src-mq3-game-ai-dmnet-ml-1257316431"></a>
 ### node
@@ -52,7 +52,7 @@ node
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 <a id="field-field-mq3-game-ai-dmnet-nodeswitch-source-source-src-mq3-game-ai-dmnet-ml-159893921"></a>
 ### source
@@ -62,7 +62,7 @@ source
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)
 
 <a id="field-field-mq3-game-ai-dmnet-nodeswitch-time-time-src-mq3-game-ai-dmnet-ml-62489145"></a>
 ### time
@@ -72,4 +72,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/ai_dmnet.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/ai_dmnet.ml#L54)

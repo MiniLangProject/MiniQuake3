@@ -10,7 +10,7 @@ struct ViewInput
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ axis
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-viewinput-ismirror-ismirror-src-mq3-renderer-tr-surface-runtime-ml-525070142"></a>
 ### isMirror
@@ -32,7 +32,7 @@ isMirror
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L28)
 
 <a id="field-field-mq3-renderer-tr-surface-runtime-viewinput-origin-origin-src-mq3-renderer-tr-surface-runtime-ml-929931840"></a>
 ### origin
@@ -42,4 +42,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_surface_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_surface_runtime.ml#L28)

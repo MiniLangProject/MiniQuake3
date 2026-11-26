@@ -10,7 +10,7 @@ struct Catalog
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L20)
 
 <a id="field-field-mq3-client-playable-player-shadows-catalog-imagename-imagename-src-mq3-client-playable-player-shadows-ml-744193536"></a>
 ### imageName
@@ -32,7 +32,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L20)
 
 <a id="field-field-mq3-client-playable-player-shadows-catalog-textureslot-textureslot-src-mq3-client-playable-player-shadows-ml-1657052256"></a>
 ### textureSlot
@@ -42,4 +42,4 @@ textureSlot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_shadows.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_shadows.ml#L20)

@@ -10,7 +10,7 @@ struct ScanResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)
 
 ## Members
 
@@ -22,7 +22,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)
 
 <a id="field-field-mq3-game-bg-lib-scanresult-next-next-src-mq3-game-bg-lib-ml-1703995661"></a>
 ### next
@@ -32,7 +32,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)
 
 <a id="field-field-mq3-game-bg-lib-scanresult-values-values-src-mq3-game-bg-lib-ml-564716271"></a>
 ### values
@@ -42,4 +42,4 @@ values
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bg_lib.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bg_lib.ml#L26)

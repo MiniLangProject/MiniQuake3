@@ -10,7 +10,7 @@ struct Match
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ lengths
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-offsets-offsets-src-mq3-botlib-ai-chat-matches-ml-363875790"></a>
 ### offsets
@@ -32,7 +32,7 @@ offsets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-string-string-src-mq3-botlib-ai-chat-matches-ml-224066608"></a>
 ### string
@@ -42,7 +42,7 @@ string
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-subtype-subtype-src-mq3-botlib-ai-chat-matches-ml-1957021578"></a>
 ### subtype
@@ -52,7 +52,7 @@ subtype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)
 
 <a id="field-field-mq3-botlib-ai-chat-matches-match-type-type-src-mq3-botlib-ai-chat-matches-ml-993016758"></a>
 ### type
@@ -62,4 +62,4 @@ type
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_matches.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_matches.ml#L19)

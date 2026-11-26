@@ -10,7 +10,7 @@ struct Buffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L13)
 
 <a id="field-field-mq3-audio-snd-mem-runtime-buffer-samples-samples-src-mq3-audio-snd-mem-runtime-ml-1846917209"></a>
 ### samples
@@ -32,4 +32,4 @@ samples
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/snd_mem_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/snd_mem_runtime.ml#L13)

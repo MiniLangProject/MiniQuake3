@@ -10,7 +10,7 @@ struct ModEntry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mods.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ description
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mods.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)
 
 <a id="field-field-mq3-client-ui-mods-modentry-game-game-src-mq3-client-ui-mods-ml-1991368501"></a>
 ### game
@@ -32,4 +32,4 @@ game
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mods.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mods.ml#L11)

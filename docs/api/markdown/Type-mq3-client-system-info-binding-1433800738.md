@@ -10,7 +10,7 @@ struct Binding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L12)
 
 <a id="field-field-mq3-client-system-info-binding-state-state-src-mq3-client-system-info-ml-2010678854"></a>
 ### state
@@ -32,4 +32,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/system_info.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/system_info.ml#L12)

@@ -10,7 +10,7 @@ struct Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-charevents-charevents-src-mq3-client-original-ui-session-ml-1284034974"></a>
 ### charEvents
@@ -32,7 +32,7 @@ charEvents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-commandcount-commandcount-src-mq3-client-original-ui-session-ml-896292176"></a>
 ### commandCount
@@ -42,7 +42,7 @@ commandCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-commandstart-commandstart-src-mq3-client-original-ui-session-ml-1354706102"></a>
 ### commandStart
@@ -52,7 +52,7 @@ commandStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-keyevents-keyevents-src-mq3-client-original-ui-session-ml-805539040"></a>
 ### keyEvents
@@ -62,7 +62,7 @@ keyEvents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-menuopened-menuopened-src-mq3-client-original-ui-session-ml-1214647560"></a>
 ### menuOpened
@@ -72,7 +72,7 @@ menuOpened
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-mouseevents-mouseevents-src-mq3-client-original-ui-session-ml-1367797768"></a>
 ### mouseEvents
@@ -82,7 +82,7 @@ mouseEvents
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-refreshed-refreshed-src-mq3-client-original-ui-session-ml-1949998760"></a>
 ### refreshed
@@ -92,7 +92,7 @@ refreshed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)
 
 <a id="field-field-mq3-client-original-ui-session-frame-uicommands-uicommands-src-mq3-client-original-ui-session-ml-1208944184"></a>
 ### uiCommands
@@ -102,4 +102,4 @@ uiCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/original_ui_session.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/original_ui_session.ml#L63)

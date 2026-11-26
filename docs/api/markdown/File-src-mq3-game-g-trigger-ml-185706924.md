@@ -40,7 +40,7 @@ function AimAtTarget(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L101)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L101)
 
 <a id="function-function-mq3-game-g-trigger-between-function-between-value-minimum-maximum-src-mq3-game-g-trigger-ml-744869395"></a>
 ### between
@@ -58,7 +58,7 @@ Kept because the historical symbol inventory picked the word from the g_trigger.
 | `maximum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L29)
 
 <a id="constant-constant-mq3-game-g-trigger-contents-trigger-const-contents-trigger-headers-contents-trigger-src-mq3-game-g-trigger-ml-1559554540"></a>
 ### CONTENTS_TRIGGER
@@ -68,7 +68,7 @@ const CONTENTS_TRIGGER = headers.CONTENTS_TRIGGER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L22)
 
 <a id="constant-constant-mq3-game-g-trigger-frametime-const-frametime-100-src-mq3-game-g-trigger-ml-2096376290"></a>
 ### FRAMETIME
@@ -78,7 +78,7 @@ const FRAMETIME = 100
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L24)
 
 <a id="function-function-mq3-game-g-trigger-func-timer-think-function-func-timer-think-level-self-src-mq3-game-g-trigger-ml-1824956066"></a>
 ### func_timer_think
@@ -93,7 +93,7 @@ function func_timer_think(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L201)
 
 <a id="function-function-mq3-game-g-trigger-func-timer-use-function-func-timer-use-level-self-other-activator-src-mq3-game-g-trigger-ml-359357253"></a>
 ### func_timer_use
@@ -110,7 +110,7 @@ function func_timer_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L208)
 
 <a id="function-function-mq3-game-g-trigger-hurt-touch-function-hurt-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-18700875"></a>
 ### hurt_touch
@@ -127,7 +127,7 @@ function hurt_touch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L179)
 
 <a id="function-function-mq3-game-g-trigger-hurt-use-function-hurt-use-level-self-other-activator-src-mq3-game-g-trigger-ml-1243149985"></a>
 ### hurt_use
@@ -144,7 +144,7 @@ function hurt_use(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L174)
 
 <a id="function-function-mq3-game-g-trigger-inittrigger-function-inittrigger-level-self-src-mq3-game-g-trigger-ml-1957817082"></a>
 ### InitTrigger
@@ -159,7 +159,7 @@ function InitTrigger(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L33)
 
 <a id="function-function-mq3-game-g-trigger-multi-trigger-function-multi-trigger-level-ent-activator-src-mq3-game-g-trigger-ml-54969488"></a>
 ### multi_trigger
@@ -175,7 +175,7 @@ function multi_trigger(level, ent, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L47)
 
 <a id="function-function-mq3-game-g-trigger-multi-wait-function-multi-wait-level-ent-src-mq3-game-g-trigger-ml-1599389707"></a>
 ### multi_wait
@@ -190,7 +190,7 @@ function multi_wait(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L42)
 
 <a id="function-function-mq3-game-g-trigger-sp-func-timer-function-sp-func-timer-level-self-src-mq3-game-g-trigger-ml-848011862"></a>
 ### SP_func_timer
@@ -205,7 +205,7 @@ function SP_func_timer(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L214)
 
 <a id="function-function-mq3-game-g-trigger-sp-target-push-function-sp-target-push-level-self-src-mq3-game-g-trigger-ml-525313290"></a>
 ### SP_target_push
@@ -220,7 +220,7 @@ function SP_target_push(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L141)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-always-function-sp-trigger-always-level-ent-src-mq3-game-g-trigger-ml-1078765967"></a>
 ### SP_trigger_always
@@ -235,7 +235,7 @@ function SP_trigger_always(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L90)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-hurt-function-sp-trigger-hurt-level-self-src-mq3-game-g-trigger-ml-1087340914"></a>
 ### SP_trigger_hurt
@@ -250,7 +250,7 @@ function SP_trigger_hurt(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L190)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-multiple-function-sp-trigger-multiple-level-ent-src-mq3-game-g-trigger-ml-644898245"></a>
 ### SP_trigger_multiple
@@ -265,7 +265,7 @@ function SP_trigger_multiple(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L73)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-push-function-sp-trigger-push-level-self-src-mq3-game-g-trigger-ml-1230926440"></a>
 ### SP_trigger_push
@@ -280,7 +280,7 @@ function SP_trigger_push(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L119)
 
 <a id="function-function-mq3-game-g-trigger-sp-trigger-teleport-function-sp-trigger-teleport-level-self-src-mq3-game-g-trigger-ml-2080722026"></a>
 ### SP_trigger_teleport
@@ -295,7 +295,7 @@ function SP_trigger_teleport(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L164)
 
 <a id="constant-constant-mq3-game-g-trigger-svf-noclient-const-svf-noclient-1-src-mq3-game-g-trigger-ml-210703908"></a>
 ### SVF_NOCLIENT
@@ -305,7 +305,7 @@ const SVF_NOCLIENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L23)
 
 <a id="function-function-mq3-game-g-trigger-touch-multi-function-touch-multi-level-self-other-trace-src-mq3-game-g-trigger-ml-1139128053"></a>
 ### Touch_Multi
@@ -322,7 +322,7 @@ function Touch_Multi(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L68)
 
 <a id="function-function-mq3-game-g-trigger-trigger-always-think-function-trigger-always-think-level-ent-src-mq3-game-g-trigger-ml-1021407515"></a>
 ### trigger_always_think
@@ -337,7 +337,7 @@ function trigger_always_think(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L85)
 
 <a id="function-function-mq3-game-g-trigger-trigger-push-touch-function-trigger-push-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-799395799"></a>
 ### trigger_push_touch
@@ -354,7 +354,7 @@ function trigger_push_touch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L95)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L95)
 
 <a id="function-function-mq3-game-g-trigger-trigger-teleporter-touch-function-trigger-teleporter-touch-level-self-other-trace-src-mq3-game-g-trigger-ml-245538223"></a>
 ### trigger_teleporter_touch
@@ -371,7 +371,7 @@ function trigger_teleporter_touch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L155)
 
 <a id="function-function-mq3-game-g-trigger-use-multi-function-use-multi-level-ent-other-activator-src-mq3-game-g-trigger-ml-631034130"></a>
 ### Use_Multi
@@ -388,7 +388,7 @@ function Use_Multi(level, ent, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L64)
 
 <a id="function-function-mq3-game-g-trigger-use-target-push-function-use-target-push-level-self-other-activator-src-mq3-game-g-trigger-ml-1567165669"></a>
 ### Use_target_push
@@ -405,4 +405,4 @@ function Use_target_push(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_trigger.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_trigger.ml#L129)

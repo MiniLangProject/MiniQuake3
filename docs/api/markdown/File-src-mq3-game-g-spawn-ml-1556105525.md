@@ -21,7 +21,7 @@ function fields()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L21)
 
 <a id="function-function-mq3-game-g-spawn-g-addspawnvartoken-function-g-addspawnvartoken-state-value-src-mq3-game-g-spawn-ml-596101484"></a>
 ### G_AddSpawnVarToken
@@ -36,7 +36,7 @@ function G_AddSpawnVarToken(state, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L40)
 
 <a id="function-function-mq3-game-g-spawn-g-callspawn-function-g-callspawn-state-ent-src-mq3-game-g-spawn-ml-1558151922"></a>
 ### G_CallSpawn
@@ -51,7 +51,7 @@ function G_CallSpawn(state, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L28)
 
 <a id="function-function-mq3-game-g-spawn-g-newstring-function-g-newstring-value-src-mq3-game-g-spawn-ml-1363565921"></a>
 ### G_NewString
@@ -65,7 +65,7 @@ function G_NewString(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L31)
 
 <a id="function-function-mq3-game-g-spawn-g-parsefield-function-g-parsefield-state-key-value-ent-src-mq3-game-g-spawn-ml-1235035744"></a>
 ### G_ParseField
@@ -82,7 +82,7 @@ function G_ParseField(state, key, value, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L34)
 
 <a id="function-function-mq3-game-g-spawn-g-parsespawnvars-function-g-parsespawnvars-state-src-mq3-game-g-spawn-ml-1297414531"></a>
 ### G_ParseSpawnVars
@@ -96,7 +96,7 @@ function G_ParseSpawnVars(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L43)
 
 <a id="function-function-mq3-game-g-spawn-g-spawnentitiesfromstring-function-g-spawnentitiesfromstring-state-src-mq3-game-g-spawn-ml-48284965"></a>
 ### G_SpawnEntitiesFromString
@@ -110,7 +110,7 @@ function G_SpawnEntitiesFromString(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L49)
 
 <a id="function-function-mq3-game-g-spawn-g-spawnfloat-function-g-spawnfloat-state-key-defaultstring-src-mq3-game-g-spawn-ml-27790620"></a>
 ### G_SpawnFloat
@@ -126,7 +126,7 @@ function G_SpawnFloat(state, key, defaultString)
 | `defaultString` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L12)
 
 <a id="function-function-mq3-game-g-spawn-g-spawngentityfromspawnvars-function-g-spawngentityfromspawnvars-state-src-mq3-game-g-spawn-ml-1017037875"></a>
 ### G_SpawnGEntityFromSpawnVars
@@ -140,7 +140,7 @@ function G_SpawnGEntityFromSpawnVars(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L37)
 
 <a id="function-function-mq3-game-g-spawn-g-spawnint-function-g-spawnint-state-key-defaultstring-src-mq3-game-g-spawn-ml-2072572928"></a>
 ### G_SpawnInt
@@ -156,7 +156,7 @@ function G_SpawnInt(state, key, defaultString)
 | `defaultString` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L15)
 
 <a id="function-function-mq3-game-g-spawn-g-spawnstring-function-g-spawnstring-state-key-defaultstring-src-mq3-game-g-spawn-ml-552479392"></a>
 ### G_SpawnString
@@ -172,7 +172,7 @@ function G_SpawnString(state, key, defaultString)
 | `defaultString` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L9)
 
 <a id="function-function-mq3-game-g-spawn-g-spawnvector-function-g-spawnvector-state-key-defaultstring-initial-src-mq3-game-g-spawn-ml-2079884374"></a>
 ### G_SpawnVector
@@ -189,7 +189,7 @@ function G_SpawnVector(state, key, defaultString, initial)
 | `initial` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L18)
 
 <a id="function-function-mq3-game-g-spawn-sp-item-botroam-function-sp-item-botroam-ent-src-mq3-game-g-spawn-ml-527177823"></a>
 ### SP_item_botroam
@@ -203,7 +203,7 @@ function SP_item_botroam(ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L52)
 
 <a id="function-function-mq3-game-g-spawn-sp-worldspawn-function-sp-worldspawn-state-src-mq3-game-g-spawn-ml-513503013"></a>
 ### SP_worldspawn
@@ -217,7 +217,7 @@ function SP_worldspawn(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L46)
 
 <a id="function-function-mq3-game-g-spawn-spawns-function-spawns-state-src-mq3-game-g-spawn-ml-1663778359"></a>
 ### spawns
@@ -231,4 +231,4 @@ function spawns(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_spawn.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_spawn.ml#L24)

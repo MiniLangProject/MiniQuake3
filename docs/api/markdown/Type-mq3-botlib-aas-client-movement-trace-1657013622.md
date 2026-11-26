@@ -10,7 +10,7 @@ struct Trace
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ area
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-endpos-endpos-src-mq3-botlib-aas-client-movement-ml-1938366632"></a>
 ### endpos
@@ -32,7 +32,7 @@ endpos
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-ent-ent-src-mq3-botlib-aas-client-movement-ml-1799341438"></a>
 ### ent
@@ -42,7 +42,7 @@ ent
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-fraction-fraction-src-mq3-botlib-aas-client-movement-ml-48662078"></a>
 ### fraction
@@ -52,7 +52,7 @@ fraction
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-lastarea-lastarea-src-mq3-botlib-aas-client-movement-ml-469869688"></a>
 ### lastarea
@@ -62,7 +62,7 @@ lastarea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-normal-normal-src-mq3-botlib-aas-client-movement-ml-439990720"></a>
 ### normal
@@ -72,7 +72,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-planenum-planenum-src-mq3-botlib-aas-client-movement-ml-1925620942"></a>
 ### planenum
@@ -82,7 +82,7 @@ planenum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)
 
 <a id="field-field-mq3-botlib-aas-client-movement-trace-startsolid-startsolid-src-mq3-botlib-aas-client-movement-ml-275235420"></a>
 ### startsolid
@@ -92,4 +92,4 @@ startsolid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_client_movement.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_client_movement.ml#L36)

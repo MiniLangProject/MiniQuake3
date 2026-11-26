@@ -23,7 +23,7 @@ Copies positions, base texture coordinates and packed color, then emits a fan.
 | `vertices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L37)
 
 - [mq3.renderer.surface_polychain.Buffer](Type-mq3-renderer-surface-polychain-buffer-21948748.md) — struct
 <a id="function-function-mq3-renderer-surface-polychain-checkoverflow-function-checkoverflow-buffer-vertices-indexes-src-mq3-renderer-surface-polychain-ml-282284823"></a>
@@ -42,7 +42,7 @@ Mirrors RB_CheckOverflow's strict '< MAX' checks and surface restart.
 | `indexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L27)
 
 <a id="function-function-mq3-renderer-surface-polychain-clear-function-clear-buffer-src-mq3-renderer-surface-polychain-ml-405539822"></a>
 ### clear
@@ -56,7 +56,7 @@ function clear(buffer)
 | `buffer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L21)
 
 <a id="function-function-mq3-renderer-surface-polychain-create-function-create-maxvertexes-maxindexes-src-mq3-renderer-surface-polychain-ml-1796380016"></a>
 ### create
@@ -71,7 +71,7 @@ function create(maxVertexes, maxIndexes)
 | `maxIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L16)
 
 <a id="constant-constant-mq3-renderer-surface-polychain-shader-max-indexes-const-shader-max-indexes-6000-src-mq3-renderer-surface-polychain-ml-2055452683"></a>
 ### SHADER_MAX_INDEXES
@@ -81,7 +81,7 @@ const SHADER_MAX_INDEXES = 6000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L7)
 
 <a id="constant-constant-mq3-renderer-surface-polychain-shader-max-vertexes-const-shader-max-vertexes-1000-src-mq3-renderer-surface-polychain-ml-583326680"></a>
 ### SHADER_MAX_VERTEXES
@@ -91,7 +91,7 @@ const SHADER_MAX_VERTEXES = 1000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L6)
 
 <a id="function-function-mq3-renderer-surface-polychain-vertex-function-vertex-x-y-z-s-t-r-g-b-a-src-mq3-renderer-surface-polychain-ml-1832674768"></a>
 ### vertex
@@ -113,6 +113,6 @@ function vertex(x, y, z, s, t, r, g, b, a)
 | `a` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_polychain.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_polychain.ml#L12)
 
 - [mq3.renderer.surface_polychain.Vertex](Type-mq3-renderer-surface-polychain-vertex-563302080.md) — struct

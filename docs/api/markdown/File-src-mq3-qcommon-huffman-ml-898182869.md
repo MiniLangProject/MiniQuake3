@@ -21,7 +21,7 @@ function addRef(h, ch)
 | `ch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L110)
 
 <a id="function-function-mq3-qcommon-huffman-bitlength-function-bitlength-h-ch-src-mq3-qcommon-huffman-ml-1171831483"></a>
 ### bitLength
@@ -36,7 +36,7 @@ function bitLength(h, ch)
 | `ch` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L162)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L162)
 
 <a id="function-function-mq3-qcommon-huffman-blanknode-function-blanknode-src-mq3-qcommon-huffman-ml-1316198688"></a>
 ### blankNode
@@ -46,7 +46,7 @@ function blankNode()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L32)
 
 <a id="function-function-mq3-qcommon-huffman-compresspacket-function-compresspacket-data-offset-src-mq3-qcommon-huffman-ml-810765335"></a>
 ### compressPacket
@@ -63,7 +63,7 @@ Packet-level adaptive codec used by Huff_Compress/Huff_Decompress.  The first tw
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L231)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L231)
 
 <a id="function-function-mq3-qcommon-huffman-decompresspacket-function-decompresspacket-data-offset-maxsize-src-mq3-qcommon-huffman-ml-12695628"></a>
 ### decompressPacket
@@ -79,7 +79,7 @@ function decompressPacket(data, offset, maxsize)
 | `maxsize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L242)
 
 <a id="function-function-mq3-qcommon-huffman-freehead-function-freehead-h-slot-src-mq3-qcommon-huffman-ml-470661718"></a>
 ### freeHead
@@ -94,7 +94,7 @@ function freeHead(h, slot)
 | `slot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L49)
 
 <a id="function-function-mq3-qcommon-huffman-getbit-function-getbit-data-offset-src-mq3-qcommon-huffman-ml-1304879247"></a>
 ### getBit
@@ -109,7 +109,7 @@ function getBit(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L153)
 
 <a id="function-function-mq3-qcommon-huffman-getbitbounded-function-getbitbounded-data-offset-limit-src-mq3-qcommon-huffman-ml-678238548"></a>
 ### getBitBounded
@@ -125,7 +125,7 @@ function getBitBounded(data, offset, limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L157)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L157)
 
 <a id="function-function-mq3-qcommon-huffman-gethead-function-gethead-h-src-mq3-qcommon-huffman-ml-2141719334"></a>
 ### getHead
@@ -139,7 +139,7 @@ function getHead(h)
 | `h` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L42)
 
 - [mq3.qcommon.huffman.Huff](Type-mq3-qcommon-huffman-huff-2035650852.md) — struct
 <a id="function-function-mq3-qcommon-huffman-increment-function-increment-h-index-src-mq3-qcommon-huffman-ml-428186030"></a>
@@ -155,7 +155,7 @@ function increment(h, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L79)
 
 <a id="function-function-mq3-qcommon-huffman-init-function-init-src-mq3-qcommon-huffman-ml-417605828"></a>
 ### init
@@ -165,7 +165,7 @@ function init()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L36)
 
 <a id="function-function-mq3-qcommon-huffman-initmessage-function-initmessage-src-mq3-qcommon-huffman-ml-1641784394"></a>
 ### initMessage
@@ -175,7 +175,7 @@ function initMessage()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L265)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L265)
 
 <a id="function-function-mq3-qcommon-huffman-initmessagestatic-function-initmessagestatic-src-mq3-qcommon-huffman-ml-821505482"></a>
 ### initMessageStatic
@@ -185,7 +185,7 @@ function initMessageStatic()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L274)
 
 <a id="constant-constant-mq3-qcommon-huffman-internal-node-const-internal-node-257-src-mq3-qcommon-huffman-ml-2061811241"></a>
 ### INTERNAL_NODE
@@ -195,7 +195,7 @@ const INTERNAL_NODE = 257
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L6)
 
 <a id="function-function-mq3-qcommon-huffman-messagefrequencies-function-messagefrequencies-src-mq3-qcommon-huffman-ml-1623016068"></a>
 ### messageFrequencies
@@ -205,7 +205,7 @@ function messageFrequencies()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L261)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L261)
 
 - [mq3.qcommon.huffman.Node](Type-mq3-qcommon-huffman-node-1918665367.md) — struct
 <a id="constant-constant-mq3-qcommon-huffman-node-capacity-const-node-capacity-768-src-mq3-qcommon-huffman-ml-1225617398"></a>
@@ -216,7 +216,7 @@ const NODE_CAPACITY = 768
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L7)
 
 <a id="constant-constant-mq3-qcommon-huffman-nyt-const-nyt-256-src-mq3-qcommon-huffman-ml-1151683912"></a>
 ### NYT
@@ -226,7 +226,7 @@ const NYT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L5)
 
 <a id="function-function-mq3-qcommon-huffman-putbit-function-putbit-bit-data-offset-src-mq3-qcommon-huffman-ml-1073414330"></a>
 ### putBit
@@ -242,7 +242,7 @@ function putBit(bit, data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L147)
 
 <a id="function-function-mq3-qcommon-huffman-receive-function-receive-h-data-offset-src-mq3-qcommon-huffman-ml-816861415"></a>
 ### receive
@@ -258,7 +258,7 @@ function receive(h, data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L186)
 
 <a id="function-function-mq3-qcommon-huffman-receiveadaptive-function-receiveadaptive-h-data-offset-src-mq3-qcommon-huffman-ml-1000413251"></a>
 ### receiveAdaptive
@@ -274,7 +274,7 @@ function receiveAdaptive(h, data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L218)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L218)
 
 <a id="function-function-mq3-qcommon-huffman-receivebounded-function-receivebounded-h-data-offset-limit-src-mq3-qcommon-huffman-ml-1008160666"></a>
 ### receiveBounded
@@ -291,7 +291,7 @@ function receiveBounded(h, data, offset, limit)
 | `limit` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L196)
 
 <a id="function-function-mq3-qcommon-huffman-swaplist-function-swaplist-h-a-b-src-mq3-qcommon-huffman-ml-2137151349"></a>
 ### swapList
@@ -307,7 +307,7 @@ function swapList(h, a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L67)
 
 <a id="function-function-mq3-qcommon-huffman-swaptree-function-swaptree-h-a-b-src-mq3-qcommon-huffman-ml-1839515305"></a>
 ### swapTree
@@ -323,7 +323,7 @@ function swapTree(h, a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L53)
 
 <a id="function-function-mq3-qcommon-huffman-transmit-function-transmit-h-ch-data-offset-src-mq3-qcommon-huffman-ml-1223004754"></a>
 ### transmit
@@ -340,7 +340,7 @@ function transmit(h, ch, data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L170)
 
 <a id="function-function-mq3-qcommon-huffman-transmitadaptive-function-transmitadaptive-h-ch-data-offset-src-mq3-qcommon-huffman-ml-782592538"></a>
 ### transmitAdaptive
@@ -357,4 +357,4 @@ function transmitAdaptive(h, ch, data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/huffman.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/huffman.ml#L208)

@@ -10,7 +10,7 @@ struct WorldLodVariant
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ face
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L15)
 
 <a id="field-field-mq3-renderer-world-patch-lod-worldlodvariant-minimum-minimum-src-mq3-renderer-world-patch-lod-ml-1416567017"></a>
 ### minimum
@@ -32,4 +32,4 @@ minimum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/world_patch_lod.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/world_patch_lod.ml#L15)

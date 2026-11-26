@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 <a id="field-field-mq3-client-ui-cinematics-action-dispatched-dispatched-src-mq3-client-ui-cinematics-ml-55923197"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 <a id="field-field-mq3-client-ui-cinematics-action-kind-kind-src-mq3-client-ui-cinematics-ml-419048767"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 <a id="field-field-mq3-client-ui-cinematics-action-name-name-src-mq3-client-ui-cinematics-ml-1047830245"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 <a id="field-field-mq3-client-ui-cinematics-action-text-text-src-mq3-client-ui-cinematics-ml-65492189"></a>
 ### text
@@ -62,7 +62,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)
 
 <a id="field-field-mq3-client-ui-cinematics-action-value-value-src-mq3-client-ui-cinematics-ml-1992488411"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_cinematics.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_cinematics.ml#L17)

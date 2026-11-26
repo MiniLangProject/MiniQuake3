@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L33)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L36)
 
 <a id="field-field-mq3-server-game-vm-state-botenable-botenable-src-mq3-server-game-vm-ml-2094399770"></a>
 ### botEnable
@@ -32,7 +32,7 @@ botEnable
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L38)
 
 <a id="field-field-mq3-server-game-vm-state-callcount-callcount-src-mq3-server-game-vm-ml-1629082150"></a>
 ### callCount
@@ -42,7 +42,7 @@ callCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L39)
 
 <a id="field-field-mq3-server-game-vm-state-entityparsepoint-entityparsepoint-src-mq3-server-game-vm-ml-389789626"></a>
 ### entityParsePoint
@@ -52,7 +52,7 @@ entityParsePoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L37)
 
 <a id="field-field-mq3-server-game-vm-state-host-host-src-mq3-server-game-vm-ml-751696714"></a>
 ### host
@@ -62,7 +62,7 @@ host
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L34)
 
 <a id="field-field-mq3-server-game-vm-state-lastargs-lastargs-src-mq3-server-game-vm-ml-533225096"></a>
 ### lastArgs
@@ -72,7 +72,7 @@ lastArgs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L41)
 
 <a id="field-field-mq3-server-game-vm-state-lastexport-lastexport-src-mq3-server-game-vm-ml-1257876746"></a>
 ### lastExport
@@ -82,7 +82,7 @@ lastExport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L40)
 
 <a id="field-field-mq3-server-game-vm-state-slot-slot-src-mq3-server-game-vm-ml-1856394006"></a>
 ### slot
@@ -92,4 +92,4 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_vm.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_vm.ml#L35)

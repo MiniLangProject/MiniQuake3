@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="field-field-mq3-client-ui-specifyleague-action-dispatched-dispatched-src-mq3-client-ui-specifyleague-ml-59690009"></a>
 ### dispatched
@@ -32,7 +32,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="field-field-mq3-client-ui-specifyleague-action-kind-kind-src-mq3-client-ui-specifyleague-ml-1832588591"></a>
 ### kind
@@ -42,7 +42,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="field-field-mq3-client-ui-specifyleague-action-name-name-src-mq3-client-ui-specifyleague-ml-1289544721"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="field-field-mq3-client-ui-specifyleague-action-number-number-src-mq3-client-ui-specifyleague-ml-1908032597"></a>
 ### number
@@ -62,7 +62,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)
 
 <a id="field-field-mq3-client-ui-specifyleague-action-text-text-src-mq3-client-ui-specifyleague-ml-1815433017"></a>
 ### text
@@ -72,4 +72,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_specifyleague.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_specifyleague.ml#L16)

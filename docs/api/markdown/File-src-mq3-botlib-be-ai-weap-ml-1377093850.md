@@ -26,7 +26,7 @@ function BotAllocWeaponState(statePools)
 | `statePools` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L30)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botchoosebestfightweapon-function-botchoosebestfightweapon-runtime-statepools-weaponstate-inventory-src-mq3-botlib-be-ai-weap-ml-1400276371"></a>
 ### BotChooseBestFightWeapon
@@ -43,7 +43,7 @@ function BotChooseBestFightWeapon(runtime, statePools, weaponState, inventory)
 | `inventory` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L28)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponstate-function-botfreeweaponstate-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1549961278"></a>
 ### BotFreeWeaponState
@@ -58,7 +58,7 @@ function BotFreeWeaponState(statePools, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L31)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botfreeweaponweights-function-botfreeweaponweights-runtime-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-869358001"></a>
 ### BotFreeWeaponWeights
@@ -74,7 +74,7 @@ function BotFreeWeaponWeights(runtime, statePools, weaponState)
 | `weaponState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L25)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botgetweaponinfo-function-botgetweaponinfo-runtime-statepools-weaponstate-weapon-src-mq3-botlib-be-ai-weap-ml-362490473"></a>
 ### BotGetWeaponInfo
@@ -91,7 +91,7 @@ function BotGetWeaponInfo(runtime, statePools, weaponState, weapon)
 | `weapon` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L27)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botloadweaponweights-function-botloadweaponweights-runtime-statepools-weaponstate-filename-src-mq3-botlib-be-ai-weap-ml-1101735572"></a>
 ### BotLoadWeaponWeights
@@ -108,7 +108,7 @@ function BotLoadWeaponWeights(runtime, statePools, weaponState, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L26)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botresetweaponstate-function-botresetweaponstate-statepools-weaponstate-src-mq3-botlib-be-ai-weap-ml-390260839"></a>
 ### BotResetWeaponState
@@ -123,7 +123,7 @@ function BotResetWeaponState(statePools, weaponState)
 | `weaponState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L29)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botsetupweaponai-function-botsetupweaponai-runtime-src-mq3-botlib-be-ai-weap-ml-1688691656"></a>
 ### BotSetupWeaponAI
@@ -137,7 +137,7 @@ function BotSetupWeaponAI(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L32)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botshutdownweaponai-function-botshutdownweaponai-runtime-statepools-src-mq3-botlib-be-ai-weap-ml-651086822"></a>
 ### BotShutdownWeaponAI
@@ -152,7 +152,7 @@ function BotShutdownWeaponAI(runtime, statePools)
 | `statePools` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L36)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botvalidweaponnumber-function-botvalidweaponnumber-runtime-weaponnum-src-mq3-botlib-be-ai-weap-ml-1933697796"></a>
 ### BotValidWeaponNumber
@@ -167,7 +167,7 @@ function BotValidWeaponNumber(runtime, weaponNum)
 | `weaponNum` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L10)
 
 <a id="function-function-mq3-botlib-be-ai-weap-botweaponstatefromhandle-function-botweaponstatefromhandle-statepools-handle-src-mq3-botlib-be-ai-weap-ml-1579131118"></a>
 ### BotWeaponStateFromHandle
@@ -182,7 +182,7 @@ function BotWeaponStateFromHandle(statePools, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L16)
 
 <a id="function-function-mq3-botlib-be-ai-weap-dumpweaponconfig-function-dumpweaponconfig-config-src-mq3-botlib-be-ai-weap-ml-1174770698"></a>
 ### DumpWeaponConfig
@@ -196,7 +196,7 @@ function DumpWeaponConfig(config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L17)
 
 <a id="function-function-mq3-botlib-be-ai-weap-loadweaponconfig-function-loadweaponconfig-runtime-filename-src-mq3-botlib-be-ai-weap-ml-494205605"></a>
 ### LoadWeaponConfig
@@ -211,7 +211,7 @@ function LoadWeaponConfig(runtime, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L23)
 
 <a id="function-function-mq3-botlib-be-ai-weap-weaponweightindex-function-weaponweightindex-profile-config-src-mq3-botlib-be-ai-weap-ml-1587439739"></a>
 ### WeaponWeightIndex
@@ -226,4 +226,4 @@ function WeaponWeightIndex(profile, config)
 | `config` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_ai_weap.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_ai_weap.ml#L24)

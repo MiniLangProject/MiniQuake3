@@ -10,7 +10,7 @@ struct Respawn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ invulnerableUntil
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-respawn-position-position-src-mq3-client-playable-player-ml-1937255601"></a>
 ### position
@@ -32,7 +32,7 @@ position
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-respawn-respawned-respawned-src-mq3-client-playable-player-ml-1693877487"></a>
 ### respawned
@@ -42,7 +42,7 @@ respawned
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-respawn-spawnindex-spawnindex-src-mq3-client-playable-player-ml-329757933"></a>
 ### spawnIndex
@@ -52,7 +52,7 @@ spawnIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)
 
 <a id="field-field-mq3-client-playable-player-respawn-yaw-yaw-src-mq3-client-playable-player-ml-2084216919"></a>
 ### yaw
@@ -62,4 +62,4 @@ yaw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player.ml#L22)

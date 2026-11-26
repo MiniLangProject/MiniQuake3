@@ -30,7 +30,7 @@ function dispatch(runtime, vm, base, op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection_syscalls.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L17)
 
 <a id="constant-constant-mq3-botlib-ai-goal-selection-syscalls-inventory-count-const-inventory-count-256-src-mq3-botlib-ai-goal-selection-syscalls-ml-903049230"></a>
 ### INVENTORY_COUNT
@@ -40,7 +40,7 @@ const INVENTORY_COUNT = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection_syscalls.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L9)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-syscalls-readinventory-function-readinventory-vm-address-src-mq3-botlib-ai-goal-selection-syscalls-ml-1302086663"></a>
 ### readInventory
@@ -55,7 +55,7 @@ function readInventory(vm, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection_syscalls.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-goal-selection-syscalls-readranks-function-readranks-vm-address-count-src-mq3-botlib-ai-goal-selection-syscalls-ml-589389304"></a>
 ### readRanks
@@ -71,4 +71,4 @@ function readRanks(vm, address, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_goal_selection_syscalls.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_goal_selection_syscalls.ml#L13)

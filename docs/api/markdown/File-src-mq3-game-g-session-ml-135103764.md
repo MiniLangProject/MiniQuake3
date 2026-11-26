@@ -26,7 +26,7 @@ function G_InitSessionData(level, client, userinfo)
 | `userinfo` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L9)
 
 <a id="function-function-mq3-game-g-session-g-initworldsession-function-g-initworldsession-level-src-mq3-game-g-session-ml-1709510328"></a>
 ### G_InitWorldSession
@@ -40,7 +40,7 @@ function G_InitWorldSession(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L10)
 
 <a id="function-function-mq3-game-g-session-g-readsessiondata-function-g-readsessiondata-level-client-src-mq3-game-g-session-ml-1942018597"></a>
 ### G_ReadSessionData
@@ -55,7 +55,7 @@ function G_ReadSessionData(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L8)
 
 <a id="function-function-mq3-game-g-session-g-writeclientsessiondata-function-g-writeclientsessiondata-level-client-src-mq3-game-g-session-ml-1121841965"></a>
 ### G_WriteClientSessionData
@@ -70,7 +70,7 @@ function G_WriteClientSessionData(level, client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L7)
 
 <a id="function-function-mq3-game-g-session-g-writesessiondata-function-g-writesessiondata-level-src-mq3-game-g-session-ml-1070656748"></a>
 ### G_WriteSessionData
@@ -84,4 +84,4 @@ function G_WriteSessionData(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_session.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_session.ml#L11)

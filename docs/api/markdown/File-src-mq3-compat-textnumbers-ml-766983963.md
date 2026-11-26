@@ -29,7 +29,7 @@ extern function __stdio_common_vsprintf(options as u64, output as bytes, length 
 | `arguments` | `bytes` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L8)
 
 <a id="extern_function-extern-function-mq3-compat-textnumbers-stdio-common-vsscanf-extern-function-stdio-common-vsscanf-options-as-u64-text-as-cstr-length-as-u64-format-as-cstr-locale-as-ptr-arguments-as-bytes-from-ucrtbase-dll-returns-i32-src-mq3-compat-textnumbers-ml-957401832"></a>
 ### __stdio_common_vsscanf
@@ -48,7 +48,7 @@ extern function __stdio_common_vsscanf(options as u64, text as cstr, length as u
 | `arguments` | `bytes` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L7)
 
 <a id="extern_function-extern-function-mq3-compat-textnumbers-atof-extern-function-atof-text-as-cstr-from-ucrtbase-dll-returns-double-src-mq3-compat-textnumbers-ml-1401813081"></a>
 ### atof
@@ -62,7 +62,7 @@ extern function atof(text as cstr) from "ucrtbase.dll" returns double
 | `text` | `cstr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L5)
 
 <a id="function-function-mq3-compat-textnumbers-atof32-function-atof32-text-src-mq3-compat-textnumbers-ml-1100872387"></a>
 ### atof32
@@ -76,7 +76,7 @@ function atof32(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L9)
 
 <a id="extern_function-extern-function-mq3-compat-textnumbers-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-compat-textnumbers-ml-1063092796"></a>
 ### atoi
@@ -90,7 +90,7 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 | `text` | `cstr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L6)
 
 <a id="function-function-mq3-compat-textnumbers-fixed2-function-fixed2-value-src-mq3-compat-textnumbers-ml-1079666967"></a>
 ### fixed2
@@ -104,7 +104,7 @@ function fixed2(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L25)
 
 <a id="function-function-mq3-compat-textnumbers-fixed6-function-fixed6-value-src-mq3-compat-textnumbers-ml-1845776063"></a>
 ### fixed6
@@ -118,7 +118,7 @@ function fixed6(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L48)
 
 <a id="function-function-mq3-compat-textnumbers-sessionintegers-function-sessionintegers-text-src-mq3-compat-textnumbers-ml-198750917"></a>
 ### sessionIntegers
@@ -132,7 +132,7 @@ function sessionIntegers(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L84)
 
 <a id="function-function-mq3-compat-textnumbers-truncdouble32-function-truncdouble32-value-src-mq3-compat-textnumbers-ml-1018927311"></a>
 ### truncDouble32
@@ -146,7 +146,7 @@ function truncDouble32(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L12)
 
 <a id="function-function-mq3-compat-textnumbers-vector-function-vector-text-initial-src-mq3-compat-textnumbers-ml-2049175383"></a>
 ### vector
@@ -161,4 +161,4 @@ function vector(text, initial)
 | `initial` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/compat/textnumbers.ml#L70)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/compat/textnumbers.ml#L70)

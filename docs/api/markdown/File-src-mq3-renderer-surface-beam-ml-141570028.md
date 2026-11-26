@@ -27,7 +27,7 @@ function add(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L16)
 
 <a id="function-function-mq3-renderer-surface-beam-build-function-build-origin-oldorigin-src-mq3-renderer-surface-beam-ml-801556617"></a>
 ### build
@@ -44,7 +44,7 @@ Baseq3 emits a closed six-sided triangle strip through immediate OpenGL. Positio
 | `oldOrigin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L21)
 
 <a id="function-function-mq3-renderer-surface-beam-fail-function-fail-message-src-mq3-renderer-surface-beam-ml-1168489179"></a>
 ### fail
@@ -58,7 +58,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L13)
 
 - [mq3.renderer.surface_beam.Submission](Type-mq3-renderer-surface-beam-submission-530799788.md) — struct
 <a id="function-function-mq3-renderer-surface-beam-subtract-function-subtract-a-b-src-mq3-renderer-surface-beam-ml-440446203"></a>
@@ -74,7 +74,7 @@ function subtract(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L15)
 
 <a id="function-function-mq3-renderer-surface-beam-valid3-function-valid3-value-src-mq3-renderer-surface-beam-ml-1721876057"></a>
 ### valid3
@@ -88,6 +88,6 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_beam.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_beam.ml#L14)
 
 - [mq3.renderer.surface_beam.Vertex](Type-mq3-renderer-surface-beam-vertex-1363885814.md) — struct

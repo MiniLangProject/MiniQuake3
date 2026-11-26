@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ infoScreenText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 <a id="field-field-mq3-client-cgame-info-state-itemicons-itemicons-src-mq3-client-cgame-info-ml-446077734"></a>
 ### itemIcons
@@ -32,7 +32,7 @@ itemIcons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 <a id="field-field-mq3-client-cgame-info-state-playericons-playericons-src-mq3-client-cgame-info-ml-330597786"></a>
 ### playerIcons
@@ -42,7 +42,7 @@ playerIcons
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 <a id="field-field-mq3-client-cgame-info-state-registeredshaders-registeredshaders-src-mq3-client-cgame-info-ml-2088998010"></a>
 ### registeredShaders
@@ -52,7 +52,7 @@ registeredShaders
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 <a id="field-field-mq3-client-cgame-info-state-registeredsounds-registeredsounds-src-mq3-client-cgame-info-ml-1850060438"></a>
 ### registeredSounds
@@ -62,7 +62,7 @@ registeredSounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)
 
 <a id="field-field-mq3-client-cgame-info-state-updates-updates-src-mq3-client-cgame-info-ml-5984282"></a>
 ### updates
@@ -72,4 +72,4 @@ updates
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_info.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_info.ml#L16)

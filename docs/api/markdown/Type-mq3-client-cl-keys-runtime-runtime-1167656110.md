@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 ## Members
 
@@ -22,7 +22,7 @@ anyKeyDown
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-archivemodified-archivemodified-src-mq3-client-cl-keys-runtime-ml-5959497"></a>
 ### archiveModified
@@ -32,7 +32,7 @@ archiveModified
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-bindingstate-bindingstate-src-mq3-client-cl-keys-runtime-ml-38876393"></a>
 ### bindingState
@@ -42,7 +42,7 @@ bindingState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-cameramode-cameramode-src-mq3-client-cl-keys-runtime-ml-1250102073"></a>
 ### cameraMode
@@ -52,7 +52,7 @@ cameraMode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-commandstate-commandstate-src-mq3-client-cl-keys-runtime-ml-2027899601"></a>
 ### commandState
@@ -62,7 +62,7 @@ commandState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-consolestate-consolestate-src-mq3-client-cl-keys-runtime-ml-819129633"></a>
 ### consoleState
@@ -72,7 +72,7 @@ consoleState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-demoplaying-demoplaying-src-mq3-client-cl-keys-runtime-ml-560065053"></a>
 ### demoPlaying
@@ -82,7 +82,7 @@ demoPlaying
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-events-events-src-mq3-client-cl-keys-runtime-ml-891748423"></a>
 ### events
@@ -92,7 +92,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-initialized-initialized-src-mq3-client-cl-keys-runtime-ml-1456992337"></a>
 ### initialized
@@ -102,7 +102,7 @@ initialized
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-keystate-keystate-src-mq3-client-cl-keys-runtime-ml-1643865173"></a>
 ### keyState
@@ -112,7 +112,7 @@ keyState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)
 
 <a id="field-field-mq3-client-cl-keys-runtime-runtime-repeats-repeats-src-mq3-client-cl-keys-runtime-ml-652473929"></a>
 ### repeats
@@ -122,4 +122,4 @@ repeats
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L37)

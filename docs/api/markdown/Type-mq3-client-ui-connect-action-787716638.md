@@ -10,7 +10,7 @@ struct Action
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ asset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-boundary-boundary-src-mq3-client-ui-connect-ml-114799055"></a>
 ### boundary
@@ -32,7 +32,7 @@ boundary
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-color-color-src-mq3-client-ui-connect-ml-1005321131"></a>
 ### color
@@ -42,7 +42,7 @@ color
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-dispatched-dispatched-src-mq3-client-ui-connect-ml-401939373"></a>
 ### dispatched
@@ -52,7 +52,7 @@ dispatched
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-height-height-src-mq3-client-ui-connect-ml-1622602721"></a>
 ### height
@@ -62,7 +62,7 @@ height
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-kind-kind-src-mq3-client-ui-connect-ml-1906362591"></a>
 ### kind
@@ -72,7 +72,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-style-style-src-mq3-client-ui-connect-ml-377488867"></a>
 ### style
@@ -82,7 +82,7 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-text-text-src-mq3-client-ui-connect-ml-180965933"></a>
 ### text
@@ -92,7 +92,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-value-value-src-mq3-client-ui-connect-ml-748122427"></a>
 ### value
@@ -102,7 +102,7 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-width-width-src-mq3-client-ui-connect-ml-1161457571"></a>
 ### width
@@ -112,7 +112,7 @@ width
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-x-x-src-mq3-client-ui-connect-ml-714468335"></a>
 ### x
@@ -122,7 +122,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)
 
 <a id="field-field-mq3-client-ui-connect-action-y-y-src-mq3-client-ui-connect-ml-527226931"></a>
 ### y
@@ -132,4 +132,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L23)

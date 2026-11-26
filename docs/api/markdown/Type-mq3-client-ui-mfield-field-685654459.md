@@ -10,7 +10,7 @@ struct Field
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-buffer-buffer-src-mq3-client-ui-mfield-ml-112823187"></a>
 ### buffer
@@ -32,7 +32,7 @@ buffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-clipboard-clipboard-src-mq3-client-ui-mfield-ml-1874335303"></a>
 ### clipboard
@@ -42,7 +42,7 @@ clipboard
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-cursor-cursor-src-mq3-client-ui-mfield-ml-1607744583"></a>
 ### cursor
@@ -52,7 +52,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-maxchars-maxchars-src-mq3-client-ui-mfield-ml-1643173925"></a>
 ### maxchars
@@ -62,7 +62,7 @@ maxchars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-overstrike-overstrike-src-mq3-client-ui-mfield-ml-720979863"></a>
 ### overstrike
@@ -72,7 +72,7 @@ overstrike
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-scroll-scroll-src-mq3-client-ui-mfield-ml-1466073089"></a>
 ### scroll
@@ -82,7 +82,7 @@ scroll
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)
 
 <a id="field-field-mq3-client-ui-mfield-field-widthinchars-widthinchars-src-mq3-client-ui-mfield-ml-245464951"></a>
 ### widthInChars
@@ -92,4 +92,4 @@ widthInChars
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_mfield.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_mfield.ml#L14)

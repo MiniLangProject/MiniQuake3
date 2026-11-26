@@ -10,7 +10,7 @@ struct ManagedWinding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ capacity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
 
 <a id="field-field-mq3-collision-winding-managedwinding-freed-freed-src-mq3-collision-winding-ml-1600244428"></a>
 ### freed
@@ -32,7 +32,7 @@ freed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)
 
 <a id="field-field-mq3-collision-winding-managedwinding-points-points-src-mq3-collision-winding-ml-71190350"></a>
 ### points
@@ -42,4 +42,4 @@ points
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/collision/winding.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/collision/winding.ml#L18)

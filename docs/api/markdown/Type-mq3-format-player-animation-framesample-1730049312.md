@@ -10,7 +10,7 @@ struct FrameSample
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ backlerp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L34)
 
 <a id="field-field-mq3-format-player-animation-framesample-finished-finished-src-mq3-format-player-animation-ml-1552259120"></a>
 ### finished
@@ -32,7 +32,7 @@ finished
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L34)
 
 <a id="field-field-mq3-format-player-animation-framesample-frame-frame-src-mq3-format-player-animation-ml-725545532"></a>
 ### frame
@@ -42,7 +42,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L34)
 
 <a id="field-field-mq3-format-player-animation-framesample-oldframe-oldframe-src-mq3-format-player-animation-ml-277971552"></a>
 ### oldFrame
@@ -52,4 +52,4 @@ oldFrame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/format/player_animation.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/format/player_animation.ml#L34)

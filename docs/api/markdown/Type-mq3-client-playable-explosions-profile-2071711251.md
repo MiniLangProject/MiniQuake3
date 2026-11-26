@@ -10,7 +10,7 @@ struct Profile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 ## Members
 
@@ -22,7 +22,7 @@ duration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 <a id="field-field-mq3-client-playable-explosions-profile-frames-frames-src-mq3-client-playable-explosions-ml-1172504464"></a>
 ### frames
@@ -32,7 +32,7 @@ frames
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 <a id="field-field-mq3-client-playable-explosions-profile-frequency-frequency-src-mq3-client-playable-explosions-ml-65633816"></a>
 ### frequency
@@ -42,7 +42,7 @@ frequency
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 <a id="field-field-mq3-client-playable-explosions-profile-sprite-sprite-src-mq3-client-playable-explosions-ml-620553302"></a>
 ### sprite
@@ -52,7 +52,7 @@ sprite
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)
 
 <a id="field-field-mq3-client-playable-explosions-profile-style-style-src-mq3-client-playable-explosions-ml-142198436"></a>
 ### style
@@ -62,4 +62,4 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_explosions.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_explosions.ml#L22)

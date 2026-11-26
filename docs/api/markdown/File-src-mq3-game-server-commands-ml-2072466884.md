@@ -36,7 +36,7 @@ function attach(level, addBotFn, botListFn, abortPodiumFn)
 | `abortPodiumFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L25)
 
 <a id="function-function-mq3-game-server-commands-botboundary-function-botboundary-level-argv-callback-label-src-mq3-game-server-commands-ml-2097865229"></a>
 ### botBoundary
@@ -53,7 +53,7 @@ function botBoundary(level, argv, callback, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L87)
 
 <a id="function-function-mq3-game-server-commands-clientforstring-function-clientforstring-level-text-src-mq3-game-server-commands-ml-453295291"></a>
 ### clientForString
@@ -68,7 +68,7 @@ function clientForString(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L59)
 
 <a id="function-function-mq3-game-server-commands-command-function-command-level-argv-src-mq3-game-server-commands-ml-1141385736"></a>
 ### command
@@ -83,7 +83,7 @@ function command(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L91)
 
 <a id="function-function-mq3-game-server-commands-entitylist-function-entitylist-level-src-mq3-game-server-commands-ml-84500448"></a>
 ### entityList
@@ -97,7 +97,7 @@ function entityList(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L41)
 
 <a id="function-function-mq3-game-server-commands-forceteam-function-forceteam-level-argv-src-mq3-game-server-commands-ml-612804390"></a>
 ### forceTeam
@@ -112,7 +112,7 @@ function forceTeam(level, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L81)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L81)
 
 <a id="function-function-mq3-game-server-commands-get-function-get-level-src-mq3-game-server-commands-ml-642600692"></a>
 ### get
@@ -126,7 +126,7 @@ function get(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L21)
 
 <a id="function-function-mq3-game-server-commands-serverprint-function-serverprint-level-text-src-mq3-game-server-commands-ml-1398232029"></a>
 ### serverPrint
@@ -141,7 +141,7 @@ function serverPrint(level, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L29)
 
 <a id="function-function-mq3-game-server-commands-slottext-function-slottext-value-src-mq3-game-server-commands-ml-1382355081"></a>
 ### slotText
@@ -155,6 +155,6 @@ function slotText(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/server_commands.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/server_commands.ml#L34)
 
 - [mq3.game.server_commands.State](Type-mq3-game-server-commands-state-1908516811.md) — struct

@@ -32,7 +32,7 @@ function attach(state, inputContext, keyDownFn, mouseDeltaFn)
 | `mouseDeltaFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L27)
 
 <a id="function-function-mq3-engine-local-qvm-ui-attachnative-function-attachnative-state-src-mq3-engine-local-qvm-ui-ml-353521265"></a>
 ### attachNative
@@ -46,7 +46,7 @@ function attachNative(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L33)
 
 <a id="function-function-mq3-engine-local-qvm-ui-bootandattachnative-function-bootandattachnative-state-menu-src-mq3-engine-local-qvm-ui-ml-1182127176"></a>
 ### bootAndAttachNative
@@ -61,7 +61,7 @@ function bootAndAttachNative(state, menu)
 | `menu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L34)
 
 <a id="function-function-mq3-engine-local-qvm-ui-commandcount-function-commandcount-state-src-mq3-engine-local-qvm-ui-ml-973048829"></a>
 ### commandCount
@@ -75,7 +75,7 @@ function commandCount(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L22)
 
 <a id="function-function-mq3-engine-local-qvm-ui-drawconnectscreen-function-drawconnectscreen-state-overlay-src-mq3-engine-local-qvm-ui-ml-203414941"></a>
 ### drawConnectScreen
@@ -90,7 +90,7 @@ function drawConnectScreen(state, overlay)
 | `overlay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L19)
 
 <a id="function-function-mq3-engine-local-qvm-ui-drawscreen-function-drawscreen-state-connectionstate-now-cgamefn-cinematicfn-src-mq3-engine-local-qvm-ui-ml-525158490"></a>
 ### drawScreen
@@ -108,7 +108,7 @@ function drawScreen(state, connectionState, now, cgameFn, cinematicFn)
 | `cinematicFn` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L42)
 
 <a id="function-function-mq3-engine-local-qvm-ui-fail-function-fail-message-src-mq3-engine-local-qvm-ui-ml-1448749587"></a>
 ### fail
@@ -122,7 +122,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L12)
 
 <a id="function-function-mq3-engine-local-qvm-ui-fullscreen-function-fullscreen-state-src-mq3-engine-local-qvm-ui-ml-1940518557"></a>
 ### fullscreen
@@ -136,7 +136,7 @@ function fullscreen(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L20)
 
 <a id="function-function-mq3-engine-local-qvm-ui-getcatcher-function-getcatcher-state-src-mq3-engine-local-qvm-ui-ml-935694693"></a>
 ### getCatcher
@@ -150,7 +150,7 @@ function getCatcher(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L13)
 
 <a id="function-function-mq3-engine-local-qvm-ui-keyevent-function-keyevent-state-key-down-src-mq3-engine-local-qvm-ui-ml-1381999514"></a>
 ### keyEvent
@@ -166,7 +166,7 @@ function keyEvent(state, key, down)
 | `down` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L14)
 
 <a id="function-function-mq3-engine-local-qvm-ui-mouseevent-function-mouseevent-state-dx-dy-src-mq3-engine-local-qvm-ui-ml-722567690"></a>
 ### mouseEvent
@@ -182,7 +182,7 @@ function mouseEvent(state, dx, dy)
 | `dy` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L16)
 
 <a id="function-function-mq3-engine-local-qvm-ui-nativekeydown-function-nativekeydown-context-key-src-mq3-engine-local-qvm-ui-ml-1150154600"></a>
 ### nativeKeyDown
@@ -197,7 +197,7 @@ function nativeKeyDown(context, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L31)
 
 <a id="function-function-mq3-engine-local-qvm-ui-nativemousedelta-function-nativemousedelta-context-src-mq3-engine-local-qvm-ui-ml-961176847"></a>
 ### nativeMouseDelta
@@ -211,7 +211,7 @@ function nativeMouseDelta(context)
 | `context` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L32)
 
 <a id="function-function-mq3-engine-local-qvm-ui-refresh-function-refresh-state-now-src-mq3-engine-local-qvm-ui-ml-1952797367"></a>
 ### refresh
@@ -226,7 +226,7 @@ function refresh(state, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L17)
 
 <a id="function-function-mq3-engine-local-qvm-ui-resetframecommands-function-resetframecommands-state-src-mq3-engine-local-qvm-ui-ml-380445689"></a>
 ### resetFrameCommands
@@ -240,7 +240,7 @@ function resetFrameCommands(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L21)
 
 <a id="function-function-mq3-engine-local-qvm-ui-serviceset-function-serviceset-state-src-mq3-engine-local-qvm-ui-ml-1243028329"></a>
 ### serviceSet
@@ -254,7 +254,7 @@ function serviceSet(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L23)
 
 <a id="function-function-mq3-engine-local-qvm-ui-setmenu-function-setmenu-state-menu-src-mq3-engine-local-qvm-ui-ml-1106482704"></a>
 ### setMenu
@@ -269,7 +269,7 @@ function setMenu(state, menu)
 | `menu` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L18)
 
 <a id="function-function-mq3-engine-local-qvm-ui-stateevent-function-stateevent-state-key-down-src-mq3-engine-local-qvm-ui-ml-986364102"></a>
 ### stateEvent
@@ -285,4 +285,4 @@ function stateEvent(state, key, down)
 | `down` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/engine/local_qvm_ui.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/engine/local_qvm_ui.ml#L15)

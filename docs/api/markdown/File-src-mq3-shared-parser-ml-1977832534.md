@@ -21,7 +21,7 @@ function at(state, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L17)
 
 <a id="function-function-mq3-shared-parser-create-function-create-text-src-mq3-shared-parser-ml-469338955"></a>
 ### create
@@ -35,7 +35,7 @@ function create(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L12)
 
 <a id="function-function-mq3-shared-parser-parseext-function-parseext-state-allowlinebreaks-src-mq3-shared-parser-ml-1879082220"></a>
 ### parseExt
@@ -50,6 +50,6 @@ function parseExt(state, allowLineBreaks)
 | `allowLineBreaks` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/shared/parser.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/shared/parser.ml#L22)
 
 - [mq3.shared.parser.Parser](Type-mq3-shared-parser-parser-1824324521.md) — struct

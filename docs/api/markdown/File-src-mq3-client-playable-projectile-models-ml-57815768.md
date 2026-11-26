@@ -31,7 +31,7 @@ function appendFallback(catalog, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L52)
 
 - [mq3.client.playable_projectile_models.Asset](Type-mq3-client-playable-projectile-models-asset-1716812644.md) — struct
 - [mq3.client.playable_projectile_models.Batch](Type-mq3-client-playable-projectile-models-batch-333403828.md) — struct
@@ -49,7 +49,7 @@ function containsStyle(values, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L41)
 
 <a id="function-function-mq3-client-playable-projectile-models-definition-function-definition-style-src-mq3-client-playable-projectile-models-ml-1176612653"></a>
 ### definition
@@ -65,7 +65,7 @@ cg_weapons.c registers these exact assets. Plasma has no missile MD3 in Baseq3: 
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L33)
 
 - [mq3.client.playable_projectile_models.Definition](Type-mq3-client-playable-projectile-models-definition-162654133.md) — struct
 <a id="function-function-mq3-client-playable-projectile-models-fail-function-fail-message-src-mq3-client-playable-projectile-models-ml-1594595639"></a>
@@ -80,7 +80,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L28)
 
 <a id="function-function-mq3-client-playable-projectile-models-find-function-find-catalog-style-src-mq3-client-playable-projectile-models-ml-1119751576"></a>
 ### find
@@ -95,7 +95,7 @@ function find(catalog, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L46)
 
 <a id="constant-constant-mq3-client-playable-projectile-models-kind-model-const-kind-model-1-src-mq3-client-playable-projectile-models-ml-387555878"></a>
 ### KIND_MODEL
@@ -105,7 +105,7 @@ const KIND_MODEL = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L13)
 
 <a id="constant-constant-mq3-client-playable-projectile-models-kind-sprite-const-kind-sprite-2-src-mq3-client-playable-projectile-models-ml-1451135863"></a>
 ### KIND_SPRITE
@@ -115,7 +115,7 @@ const KIND_SPRITE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L14)
 
 <a id="function-function-mq3-client-playable-projectile-models-loadcatalog-function-loadcatalog-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-projectile-models-ml-240526897"></a>
 ### loadCatalog
@@ -133,7 +133,7 @@ Missing/corrupt optional media and an exhausted slot budget select the existing 
 | `maxTextureSlots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L87)
 
 <a id="function-function-mq3-client-playable-projectile-models-loadmodel-function-loadmodel-archive-catalog-def-src-mq3-client-playable-projectile-models-ml-1396784442"></a>
 ### loadModel
@@ -149,7 +149,7 @@ function loadModel(archive, catalog, def)
 | `def` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L76)
 
 <a id="function-function-mq3-client-playable-projectile-models-loadsprite-function-loadsprite-archive-catalog-def-src-mq3-client-playable-projectile-models-ml-1757035916"></a>
 ### loadSprite
@@ -165,7 +165,7 @@ function loadSprite(archive, catalog, def)
 | `def` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L61)
 
 <a id="constant-constant-mq3-client-playable-projectile-models-max-texture-slots-const-max-texture-slots-16-src-mq3-client-playable-projectile-models-ml-1105998672"></a>
 ### MAX_TEXTURE_SLOTS
@@ -175,7 +175,7 @@ const MAX_TEXTURE_SLOTS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L15)
 
 <a id="constant-constant-mq3-client-playable-projectile-models-max-triangles-per-projectile-const-max-triangles-per-projectile-4096-src-mq3-client-playable-projectile-models-ml-738351478"></a>
 ### MAX_TRIANGLES_PER_PROJECTILE
@@ -185,7 +185,7 @@ const MAX_TRIANGLES_PER_PROJECTILE = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L16)
 
 <a id="function-function-mq3-client-playable-projectile-models-perpendicular-function-perpendicular-direction-src-mq3-client-playable-projectile-models-ml-1012774829"></a>
 ### perpendicular
@@ -199,27 +199,27 @@ function perpendicular(direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L105)
 
-<a id="constant-constant-mq3-client-playable-projectile-models-pi-const-pi-3-14159265358979-src-mq3-client-playable-projectile-models-ml-1171567940"></a>
+<a id="constant-constant-mq3-client-playable-projectile-models-pi-const-pi-3-141593-src-mq3-client-playable-projectile-models-ml-1014892891"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L19)
 
-<a id="constant-constant-mq3-client-playable-projectile-models-plasma-radius-const-plasma-radius-16-src-mq3-client-playable-projectile-models-ml-1872439100"></a>
+<a id="constant-constant-mq3-client-playable-projectile-models-plasma-radius-const-plasma-radius-16-src-mq3-client-playable-projectile-models-ml-2064987352"></a>
 ### PLASMA_RADIUS
 
 ```ml
-const PLASMA_RADIUS = 16.
+const PLASMA_RADIUS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L17)
 
 - [mq3.client.playable_projectile_models.Rendered](Type-mq3-client-playable-projectile-models-rendered-1265723693.md) — struct
 <a id="function-function-mq3-client-playable-projectile-models-rendermodel-function-rendermodel-asset-snapshot-nowmilliseconds-maxtriangles-src-mq3-client-playable-projectile-models-ml-1082838603"></a>
@@ -237,7 +237,7 @@ function renderModel(asset, snapshot, nowMilliseconds, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L135)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L135)
 
 <a id="function-function-mq3-client-playable-projectile-models-rendersnapshot-function-rendersnapshot-catalog-snapshot-camera-nowmilliseconds-maxtriangles-src-mq3-client-playable-projectile-models-ml-846026265"></a>
 ### renderSnapshot
@@ -255,7 +255,7 @@ function renderSnapshot(catalog, snapshot, camera, nowMilliseconds, maxTriangles
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L158)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L158)
 
 <a id="function-function-mq3-client-playable-projectile-models-rendersnapshots-function-rendersnapshots-catalog-snapshots-camera-nowmilliseconds-maxperprojectile-maxtriangles-src-mq3-client-playable-projectile-models-ml-247390572"></a>
 ### renderSnapshots
@@ -274,7 +274,7 @@ function renderSnapshots(catalog, snapshots, camera, nowMilliseconds, maxPerProj
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L170)
 
 <a id="function-function-mq3-client-playable-projectile-models-rendersprite-function-rendersprite-asset-snapshot-camera-maxtriangles-src-mq3-client-playable-projectile-models-ml-103806540"></a>
 ### renderSprite
@@ -291,7 +291,7 @@ function renderSprite(asset, snapshot, camera, maxTriangles)
 | `maxTriangles` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L147)
 
 <a id="function-function-mq3-client-playable-projectile-models-rotatepair-function-rotatepair-side-up-degrees-src-mq3-client-playable-projectile-models-ml-1107844283"></a>
 ### rotatePair
@@ -307,7 +307,7 @@ function rotatePair(side, up, degrees)
 | `degrees` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L113)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L113)
 
 <a id="function-function-mq3-client-playable-projectile-models-snapshotaxis-function-snapshotaxis-snapshot-nowmilliseconds-src-mq3-client-playable-projectile-models-ml-1798562598"></a>
 ### snapshotAxis
@@ -324,7 +324,7 @@ Mirrors CG_Missile: axis[0] follows travel and the other axes roll by cg.time/4 
 | `nowMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L122)
 
 <a id="constant-constant-mq3-client-playable-projectile-models-spin-degrees-per-millisecond-const-spin-degrees-per-millisecond-0-25-src-mq3-client-playable-projectile-models-ml-599217230"></a>
 ### SPIN_DEGREES_PER_MILLISECOND
@@ -334,7 +334,7 @@ const SPIN_DEGREES_PER_MILLISECOND = 0.25
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L18)
 
 <a id="function-function-mq3-client-playable-projectile-models-spritepoint-function-spritepoint-center-right-up-x-y-src-mq3-client-playable-projectile-models-ml-773093389"></a>
 ### spritePoint
@@ -352,7 +352,7 @@ function spritePoint(center, right, up, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L143)
 
 <a id="function-function-mq3-client-playable-projectile-models-texturebyname-function-texturebyname-catalog-name-src-mq3-client-playable-projectile-models-ml-1811345882"></a>
 ### textureByName
@@ -367,7 +367,7 @@ function textureByName(catalog, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L56)
 
 - [mq3.client.playable_projectile_models.Triangle](Type-mq3-client-playable-projectile-models-triangle-660647768.md) — struct
 <a id="function-function-mq3-client-playable-projectile-models-valid3-function-valid3-value-src-mq3-client-playable-projectile-models-ml-1254362033"></a>
@@ -382,7 +382,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L29)
 
 <a id="function-function-mq3-client-playable-projectile-models-wrapmodeltriangle-function-wrapmodeltriangle-source-style-src-mq3-client-playable-projectile-models-ml-682583996"></a>
 ### wrapModelTriangle
@@ -397,4 +397,4 @@ function wrapModelTriangle(source, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_projectile_models.ml#L131)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_projectile_models.ml#L131)

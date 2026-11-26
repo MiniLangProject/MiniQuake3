@@ -10,7 +10,7 @@ struct Api
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ aas
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-api-ai-ai-src-mq3-botlib-be-interface-ml-1236301657"></a>
 ### ai
@@ -32,7 +32,7 @@ ai
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-api-ea-ea-src-mq3-botlib-be-interface-ml-116291361"></a>
 ### ea
@@ -42,7 +42,7 @@ ea
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-api-top-top-src-mq3-botlib-be-interface-ml-750101045"></a>
 ### top
@@ -52,7 +52,7 @@ top
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)
 
 <a id="field-field-mq3-botlib-be-interface-api-version-version-src-mq3-botlib-be-interface-ml-452581785"></a>
 ### version
@@ -62,4 +62,4 @@ version
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/be_interface.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/be_interface.ml#L20)

@@ -10,7 +10,7 @@ struct InGameMenu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-assets-assets-src-mq3-client-ui-ingame-ml-39467765"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-commands-commands-src-mq3-client-ui-ingame-ml-331344507"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-cursorx-cursorx-src-mq3-client-ui-ingame-ml-294537999"></a>
 ### cursorX
@@ -52,7 +52,7 @@ cursorX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-cursory-cursory-src-mq3-client-ui-ingame-ml-843967923"></a>
 ### cursorY
@@ -62,7 +62,7 @@ cursorY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-frame-frame-src-mq3-client-ui-ingame-ml-117430763"></a>
 ### frame
@@ -72,7 +72,7 @@ frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-fullscreen-fullscreen-src-mq3-client-ui-ingame-ml-1529037669"></a>
 ### fullscreen
@@ -82,7 +82,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-items-items-src-mq3-client-ui-ingame-ml-845962395"></a>
 ### items
@@ -92,7 +92,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)
 
 <a id="field-field-mq3-client-ui-ingame-ingamemenu-wraparound-wraparound-src-mq3-client-ui-ingame-ml-9056861"></a>
 ### wrapAround
@@ -102,4 +102,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_ingame.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_ingame.ml#L23)

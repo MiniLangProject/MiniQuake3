@@ -27,7 +27,7 @@ function appendVertex(batch, current, needsNormal, dlightBits)
 | `dlightBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L57)
 
 - [mq3.renderer.surface_grid.Batch](Type-mq3-renderer-surface-grid-batch-773045743.md) — struct
 <a id="function-function-mq3-renderer-surface-grid-emptybatch-function-emptybatch-dlightbits-src-mq3-renderer-surface-grid-ml-841574518"></a>
@@ -42,7 +42,7 @@ function emptyBatch(dlightBits)
 | `dlightBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L53)
 
 <a id="function-function-mq3-renderer-surface-grid-grid-function-grid-width-height-widthloderror-heightloderror-verts-src-mq3-renderer-surface-grid-ml-1424622866"></a>
 ### grid
@@ -60,7 +60,7 @@ function grid(width, height, widthLodError, heightLodError, verts)
 | `verts` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L17)
 
 - [mq3.renderer.surface_grid.Grid](Type-mq3-renderer-surface-grid-grid-157659157.md) — struct
 - [mq3.renderer.surface_grid.GridVertex](Type-mq3-renderer-surface-grid-gridvertex-961288407.md) — struct
@@ -80,7 +80,7 @@ RB_SurfaceGrid always retains both outer edges and keeps an interior row or colu
 | `lodError` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L41)
 
 - [mq3.renderer.surface_grid.Submission](Type-mq3-renderer-surface-grid-submission-1698658093.md) — struct
 <a id="function-function-mq3-renderer-surface-grid-submit-function-submit-value-loderror-maxvertexes-maxindexes-needsnormal-dlightbits-src-mq3-renderer-surface-grid-ml-247846930"></a>
@@ -102,7 +102,7 @@ Mirrors RB_SurfaceGrid's conservative row capacity calculation. Consecutive batc
 | `dlightBits` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L72)
 
 <a id="function-function-mq3-renderer-surface-grid-valid2-function-valid2-value-src-mq3-renderer-surface-grid-ml-1775349113"></a>
 ### valid2
@@ -116,7 +116,7 @@ function valid2(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L21)
 
 <a id="function-function-mq3-renderer-surface-grid-valid3-function-valid3-value-src-mq3-renderer-surface-grid-ml-247598405"></a>
 ### valid3
@@ -130,7 +130,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L22)
 
 <a id="function-function-mq3-renderer-surface-grid-valid4-function-valid4-value-src-mq3-renderer-surface-grid-ml-1248855677"></a>
 ### valid4
@@ -144,7 +144,7 @@ function valid4(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L23)
 
 <a id="function-function-mq3-renderer-surface-grid-validategrid-function-validategrid-value-src-mq3-renderer-surface-grid-ml-531134893"></a>
 ### validateGrid
@@ -158,7 +158,7 @@ function validateGrid(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L28)
 
 <a id="function-function-mq3-renderer-surface-grid-validvertex-function-validvertex-value-src-mq3-renderer-surface-grid-ml-844892869"></a>
 ### validVertex
@@ -172,7 +172,7 @@ function validVertex(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L24)
 
 <a id="function-function-mq3-renderer-surface-grid-vertex-function-vertex-xyz-normal-st-lightmap-color-src-mq3-renderer-surface-grid-ml-240179550"></a>
 ### vertex
@@ -190,4 +190,4 @@ function vertex(xyz, normal, st, lightmap, color)
 | `color` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_grid.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_grid.ml#L13)

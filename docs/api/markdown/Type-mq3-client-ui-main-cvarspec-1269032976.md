@@ -10,7 +10,7 @@ struct CvarSpec
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ defaultValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-flags-flags-src-mq3-client-ui-main-ml-568030516"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-modificationcount-modificationcount-src-mq3-client-ui-main-ml-140925160"></a>
 ### modificationCount
@@ -42,7 +42,7 @@ modificationCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-name-name-src-mq3-client-ui-main-ml-932890886"></a>
 ### name
@@ -52,7 +52,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-registered-registered-src-mq3-client-ui-main-ml-1723881056"></a>
 ### registered
@@ -62,7 +62,7 @@ registered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-updatecount-updatecount-src-mq3-client-ui-main-ml-218689936"></a>
 ### updateCount
@@ -72,7 +72,7 @@ updateCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)
 
 <a id="field-field-mq3-client-ui-main-cvarspec-value-value-src-mq3-client-ui-main-ml-237684056"></a>
 ### value
@@ -82,4 +82,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_main.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_main.ml#L23)

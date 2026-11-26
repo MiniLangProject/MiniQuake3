@@ -27,7 +27,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L16)
 
 <a id="function-function-mq3-renderer-portal-view-mirrorpoint-function-mirrorpoint-input-surface-camera-src-mq3-renderer-portal-view-ml-519798500"></a>
 ### mirrorPoint
@@ -43,7 +43,7 @@ function mirrorPoint(input, surface, camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L21)
 
 <a id="function-function-mq3-renderer-portal-view-mirrorvector-function-mirrorvector-input-surface-camera-src-mq3-renderer-portal-view-ml-289715938"></a>
 ### mirrorVector
@@ -59,7 +59,7 @@ function mirrorVector(input, surface, camera)
 | `camera` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L26)
 
 <a id="function-function-mq3-renderer-portal-view-negate-function-negate-value-src-mq3-renderer-portal-view-ml-288891243"></a>
 ### negate
@@ -73,7 +73,7 @@ function negate(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L19)
 
 - [mq3.renderer.portal_view.Orientation](Type-mq3-renderer-portal-view-orientation-274468229.md) — struct
 <a id="function-function-mq3-renderer-portal-view-portalorientation-function-portalorientation-normal-dist-entities-timemilliseconds-src-mq3-renderer-portal-view-ml-1751186467"></a>
@@ -91,7 +91,7 @@ function portalOrientation(normal, dist, entities, timeMilliseconds)
 | `timeMilliseconds` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L32)
 
 <a id="function-function-mq3-renderer-portal-view-prepare-function-prepare-normal-dist-entities-timemilliseconds-vieworigin-viewaxis-src-mq3-renderer-portal-view-ml-1100148852"></a>
 ### prepare
@@ -110,7 +110,7 @@ function prepare(normal, dist, entities, timeMilliseconds, viewOrigin, viewAxis)
 | `viewAxis` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L59)
 
 <a id="constant-constant-mq3-renderer-portal-view-rt-portalsurface-const-rt-portalsurface-7-src-mq3-renderer-portal-view-ml-1260486484"></a>
 ### RT_PORTALSURFACE
@@ -120,7 +120,7 @@ const RT_PORTALSURFACE = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L11)
 
 <a id="function-function-mq3-renderer-portal-view-subtract-function-subtract-a-b-src-mq3-renderer-portal-view-ml-1613707131"></a>
 ### subtract
@@ -135,7 +135,7 @@ function subtract(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L18)
 
 <a id="function-function-mq3-renderer-portal-view-valid3-function-valid3-value-src-mq3-renderer-portal-view-ml-961817619"></a>
 ### valid3
@@ -149,6 +149,6 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/portal_view.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/portal_view.ml#L17)
 
 - [mq3.renderer.portal_view.View](Type-mq3-renderer-portal-view-view-430910756.md) — struct

@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ brains
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-events-events-src-mq3-client-playable-enemy-ai-ml-791367724"></a>
 ### events
@@ -32,7 +32,7 @@ events
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-lasttime-lasttime-src-mq3-client-playable-enemy-ai-ml-317419328"></a>
 ### lastTime
@@ -42,7 +42,7 @@ lastTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)
 
 <a id="field-field-mq3-client-playable-enemy-ai-state-visiblecount-visiblecount-src-mq3-client-playable-enemy-ai-ml-1197222392"></a>
 ### visibleCount
@@ -52,4 +52,4 @@ visibleCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_ai.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_ai.ml#L21)

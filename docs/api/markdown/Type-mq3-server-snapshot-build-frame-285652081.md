@@ -10,7 +10,7 @@ struct Frame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ areaBits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-frame-areabytes-areabytes-src-mq3-server-snapshot-build-ml-701915518"></a>
 ### areaBytes
@@ -32,7 +32,7 @@ areaBytes
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-frame-firstentity-firstentity-src-mq3-server-snapshot-build-ml-1276696406"></a>
 ### firstEntity
@@ -42,7 +42,7 @@ firstEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-frame-numentities-numentities-src-mq3-server-snapshot-build-ml-2044293774"></a>
 ### numEntities
@@ -52,7 +52,7 @@ numEntities
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)
 
 <a id="field-field-mq3-server-snapshot-build-frame-playerstate-playerstate-src-mq3-server-snapshot-build-ml-220371738"></a>
 ### playerState
@@ -62,4 +62,4 @@ playerState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_build.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_build.ml#L24)

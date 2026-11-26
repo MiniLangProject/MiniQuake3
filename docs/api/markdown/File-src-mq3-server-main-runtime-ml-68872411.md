@@ -30,7 +30,7 @@ function authorizeCallback(host, address, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L194)
 
 - [mq3.server.main_runtime.Binding](Type-mq3-server-main-runtime-binding-1989764180.md) — struct
 <a id="function-function-mq3-server-main-runtime-bounded-function-bounded-text-capacity-src-mq3-server-main-runtime-ml-986822535"></a>
@@ -46,7 +46,7 @@ function bounded(text, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L69)
 
 <a id="function-function-mq3-server-main-runtime-client-function-client-state-name-ping-score-src-mq3-server-main-runtime-ml-1763388830"></a>
 ### client
@@ -63,7 +63,7 @@ function client(state, name, ping, score)
 | `score` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L27)
 
 - [mq3.server.main_runtime.Client](Type-mq3-server-main-runtime-client-1505800316.md) — struct
 <a id="function-function-mq3-server-main-runtime-confignumber-function-confignumber-text-src-mq3-server-main-runtime-ml-1097758533"></a>
@@ -78,7 +78,7 @@ function configNumber(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L57)
 
 <a id="function-function-mq3-server-main-runtime-connectionlessservices-function-connectionlessservices-state-host-src-mq3-server-main-runtime-ml-541570811"></a>
 ### connectionlessServices
@@ -93,7 +93,7 @@ function connectionlessServices(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L197)
 
 <a id="constant-constant-mq3-server-main-runtime-cs-active-const-cs-active-4-src-mq3-server-main-runtime-ml-2089549677"></a>
 ### CS_ACTIVE
@@ -103,7 +103,7 @@ const CS_ACTIVE = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L20)
 
 <a id="constant-constant-mq3-server-main-runtime-cs-connected-const-cs-connected-2-src-mq3-server-main-runtime-ml-280056533"></a>
 ### CS_CONNECTED
@@ -113,7 +113,7 @@ const CS_CONNECTED = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L18)
 
 <a id="constant-constant-mq3-server-main-runtime-cs-free-const-cs-free-0-src-mq3-server-main-runtime-ml-1455774761"></a>
 ### CS_FREE
@@ -123,7 +123,7 @@ const CS_FREE = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L16)
 
 <a id="constant-constant-mq3-server-main-runtime-cs-primed-const-cs-primed-3-src-mq3-server-main-runtime-ml-697682622"></a>
 ### CS_PRIMED
@@ -133,7 +133,7 @@ const CS_PRIMED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L19)
 
 <a id="constant-constant-mq3-server-main-runtime-cs-zombie-const-cs-zombie-1-src-mq3-server-main-runtime-ml-311925148"></a>
 ### CS_ZOMBIE
@@ -143,7 +143,7 @@ const CS_ZOMBIE = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L17)
 
 <a id="function-function-mq3-server-main-runtime-decompresscallback-function-decompresscallback-host-msg-offset-src-mq3-server-main-runtime-ml-380620832"></a>
 ### decompressCallback
@@ -159,7 +159,7 @@ function decompressCallback(host, msg, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L195)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L195)
 
 <a id="function-function-mq3-server-main-runtime-diagnosticcallback-function-diagnosticcallback-host-address-text-src-mq3-server-main-runtime-ml-1011861205"></a>
 ### diagnosticCallback
@@ -175,7 +175,7 @@ function diagnosticCallback(host, address, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L196)
 
 <a id="constant-constant-mq3-server-main-runtime-gt-single-player-const-gt-single-player-2-src-mq3-server-main-runtime-ml-19036221"></a>
 ### GT_SINGLE_PLAYER
@@ -185,7 +185,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L21)
 
 <a id="constant-constant-mq3-server-main-runtime-heartbeat-game-const-heartbeat-game-quakearena-1-src-mq3-server-main-runtime-ml-2043118257"></a>
 ### HEARTBEAT_GAME
@@ -195,7 +195,7 @@ const HEARTBEAT_GAME = "QuakeArena-1"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L23)
 
 <a id="constant-constant-mq3-server-main-runtime-heartbeat-msec-const-heartbeat-msec-300000-src-mq3-server-main-runtime-ml-392125222"></a>
 ### HEARTBEAT_MSEC
@@ -205,7 +205,7 @@ const HEARTBEAT_MSEC = 300000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L22)
 
 <a id="function-function-mq3-server-main-runtime-infocallback-function-infocallback-host-address-args-src-mq3-server-main-runtime-ml-1282542431"></a>
 ### infoCallback
@@ -221,7 +221,7 @@ function infoCallback(host, address, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L192)
 
 <a id="function-function-mq3-server-main-runtime-master-function-master-name-value-src-mq3-server-main-runtime-ml-1415112280"></a>
 ### master
@@ -236,7 +236,7 @@ function master(name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L32)
 
 - [mq3.server.main_runtime.Master](Type-mq3-server-main-runtime-master-1361694537.md) — struct
 <a id="constant-constant-mq3-server-main-runtime-max-info-string-const-max-info-string-1024-src-mq3-server-main-runtime-ml-1524373162"></a>
@@ -247,7 +247,7 @@ const MAX_INFO_STRING = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L15)
 
 <a id="constant-constant-mq3-server-main-runtime-max-msglen-const-max-msglen-16384-src-mq3-server-main-runtime-ml-1946732765"></a>
 ### MAX_MSGLEN
@@ -257,7 +257,7 @@ const MAX_MSGLEN = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L14)
 
 <a id="constant-constant-mq3-server-main-runtime-max-reliable-commands-const-max-reliable-commands-64-src-mq3-server-main-runtime-ml-427417937"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -267,7 +267,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L12)
 
 <a id="constant-constant-mq3-server-main-runtime-max-string-chars-const-max-string-chars-1024-src-mq3-server-main-runtime-ml-1738426900"></a>
 ### MAX_STRING_CHARS
@@ -277,7 +277,7 @@ const MAX_STRING_CHARS = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L13)
 
 <a id="constant-constant-mq3-server-main-runtime-port-master-const-port-master-27950-src-mq3-server-main-runtime-ml-1826979404"></a>
 ### PORT_MASTER
@@ -287,7 +287,7 @@ const PORT_MASTER = 27950
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L24)
 
 <a id="function-function-mq3-server-main-runtime-rconcallback-function-rconcallback-host-address-msg-text-args-src-mq3-server-main-runtime-ml-143252963"></a>
 ### rconCallback
@@ -305,7 +305,7 @@ function rconCallback(host, address, msg, text, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L193)
 
 <a id="function-function-mq3-server-main-runtime-remotetail-function-remotetail-text-src-mq3-server-main-runtime-ml-1593941457"></a>
 ### remoteTail
@@ -319,7 +319,7 @@ function remoteTail(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L170)
 
 <a id="function-function-mq3-server-main-runtime-requireclient-function-requireclient-value-src-mq3-server-main-runtime-ml-829473353"></a>
 ### requireClient
@@ -333,7 +333,7 @@ function requireClient(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L64)
 
 <a id="function-function-mq3-server-main-runtime-runtime-function-runtime-src-mq3-server-main-runtime-ml-487718306"></a>
 ### runtime
@@ -343,7 +343,7 @@ function runtime()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L35)
 
 - [mq3.server.main_runtime.Runtime](Type-mq3-server-main-runtime-runtime-1540197373.md) — struct
 <a id="function-function-mq3-server-main-runtime-say-function-say-host-text-src-mq3-server-main-runtime-ml-1267963625"></a>
@@ -359,7 +359,7 @@ function say(host, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L43)
 
 <a id="function-function-mq3-server-main-runtime-send-function-send-host-address-text-src-mq3-server-main-runtime-ml-288341117"></a>
 ### send
@@ -375,7 +375,7 @@ function send(host, address, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L42)
 
 <a id="function-function-mq3-server-main-runtime-services-function-services-src-mq3-server-main-runtime-ml-1382638490"></a>
 ### services
@@ -385,7 +385,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L40)
 
 - [mq3.server.main_runtime.Services](Type-mq3-server-main-runtime-services-1416563799.md) — struct
 <a id="function-function-mq3-server-main-runtime-statuscallback-function-statuscallback-host-address-args-src-mq3-server-main-runtime-ml-2129196695"></a>
@@ -402,7 +402,7 @@ function statusCallback(host, address, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L191)
 
 <a id="function-function-mq3-server-main-runtime-statusline-function-statusline-value-src-mq3-server-main-runtime-ml-1126191793"></a>
 ### statusLine
@@ -416,7 +416,7 @@ function statusLine(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L136)
 
 <a id="function-function-mq3-server-main-runtime-sv-addservercommand-function-sv-addservercommand-host-value-cmd-src-mq3-server-main-runtime-ml-299056709"></a>
 ### SV_AddServerCommand
@@ -432,7 +432,7 @@ function SV_AddServerCommand(host, value, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L84)
 
 <a id="function-function-mq3-server-main-runtime-sv-expandnewlines-function-sv-expandnewlines-value-src-mq3-server-main-runtime-ml-645727883"></a>
 ### SV_ExpandNewlines
@@ -448,7 +448,7 @@ SV_ExpandNewlines uses a 1024-byte static buffer and stops with three bytes left
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L47)
 
 <a id="function-function-mq3-server-main-runtime-sv-flushredirect-function-sv-flushredirect-state-host-output-src-mq3-server-main-runtime-ml-1969455074"></a>
 ### SV_FlushRedirect
@@ -464,7 +464,7 @@ function SV_FlushRedirect(state, host, output)
 | `output` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L165)
 
 <a id="function-function-mq3-server-main-runtime-sv-masterheartbeat-function-sv-masterheartbeat-state-host-src-mq3-server-main-runtime-ml-473550951"></a>
 ### SV_MasterHeartbeat
@@ -479,7 +479,7 @@ function SV_MasterHeartbeat(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L110)
 
 <a id="function-function-mq3-server-main-runtime-sv-mastershutdown-function-sv-mastershutdown-state-host-src-mq3-server-main-runtime-ml-2012795163"></a>
 ### SV_MasterShutdown
@@ -494,7 +494,7 @@ function SV_MasterShutdown(state, host)
 | `host` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L130)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L130)
 
 <a id="function-function-mq3-server-main-runtime-sv-replacependingservercommands-function-sv-replacependingservercommands-value-cmd-src-mq3-server-main-runtime-ml-2099848613"></a>
 ### SV_ReplacePendingServerCommands
@@ -509,7 +509,7 @@ function SV_ReplacePendingServerCommands(value, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L73)
 
 <a id="function-function-mq3-server-main-runtime-sv-sendservercommand-function-sv-sendservercommand-state-host-target-cmd-src-mq3-server-main-runtime-ml-428837048"></a>
 ### SV_SendServerCommand
@@ -526,7 +526,7 @@ function SV_SendServerCommand(state, host, target, cmd)
 | `cmd` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L100)
 
 <a id="function-function-mq3-server-main-runtime-svc-info-function-svc-info-state-host-address-challenge-src-mq3-server-main-runtime-ml-1416807114"></a>
 ### SVC_Info
@@ -543,7 +543,7 @@ function SVC_Info(state, host, address, challenge)
 | `challenge` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L151)
 
 <a id="function-function-mq3-server-main-runtime-svc-remotecommand-function-svc-remotecommand-state-host-address-raw-args-src-mq3-server-main-runtime-ml-113775764"></a>
 ### SVC_RemoteCommand
@@ -561,7 +561,7 @@ function SVC_RemoteCommand(state, host, address, raw, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L179)
 
 <a id="function-function-mq3-server-main-runtime-svc-status-function-svc-status-state-host-address-challenge-src-mq3-server-main-runtime-ml-842789034"></a>
 ### SVC_Status
@@ -578,4 +578,4 @@ function SVC_Status(state, host, address, challenge)
 | `challenge` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/main_runtime.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/main_runtime.ml#L140)

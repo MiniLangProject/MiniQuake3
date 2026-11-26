@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-diagnostics-diagnostics-src-mq3-botlib-ai-weight-runtime-ml-482218528"></a>
 ### diagnostics
@@ -32,7 +32,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-randomfn-randomfn-src-mq3-botlib-ai-weight-runtime-ml-2133383310"></a>
 ### randomFn
@@ -42,7 +42,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-weights-weights-src-mq3-botlib-ai-weight-runtime-ml-744203456"></a>
 ### weights
@@ -52,7 +52,7 @@ weights
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)
 
 <a id="field-field-mq3-botlib-ai-weight-runtime-state-writefn-writefn-src-mq3-botlib-ai-weight-runtime-ml-1235478644"></a>
 ### writeFn
@@ -62,4 +62,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_weight_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_weight_runtime.ml#L11)

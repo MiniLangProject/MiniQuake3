@@ -10,7 +10,7 @@ struct Profile
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-directdamage-directdamage-src-mq3-client-playable-player-projectiles-ml-2078439544"></a>
 ### directDamage
@@ -32,7 +32,7 @@ directDamage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-eflags-eflags-src-mq3-client-playable-player-projectiles-ml-1943209992"></a>
 ### eFlags
@@ -42,7 +42,7 @@ eFlags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-gravity-gravity-src-mq3-client-playable-player-projectiles-ml-1751801328"></a>
 ### gravity
@@ -52,7 +52,7 @@ gravity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-lifetime-lifetime-src-mq3-client-playable-player-projectiles-ml-1884846834"></a>
 ### lifetime
@@ -62,7 +62,7 @@ lifetime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-speed-speed-src-mq3-client-playable-player-projectiles-ml-1607116804"></a>
 ### speed
@@ -72,7 +72,7 @@ speed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-splashdamage-splashdamage-src-mq3-client-playable-player-projectiles-ml-1614378848"></a>
 ### splashDamage
@@ -82,7 +82,7 @@ splashDamage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-splashradius-splashradius-src-mq3-client-playable-player-projectiles-ml-967752362"></a>
 ### splashRadius
@@ -92,7 +92,7 @@ splashRadius
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)
 
 <a id="field-field-mq3-client-playable-player-projectiles-profile-style-style-src-mq3-client-playable-player-projectiles-ml-386625340"></a>
 ### style
@@ -102,4 +102,4 @@ style
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_player_projectiles.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_player_projectiles.ml#L21)

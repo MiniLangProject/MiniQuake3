@@ -27,7 +27,7 @@ function call(service, host, a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L13)
 
 <a id="function-function-mq3-client-download-create-function-create-src-mq3-client-download-ml-1144889066"></a>
 ### create
@@ -37,7 +37,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L11)
 
 <a id="constant-constant-mq3-client-download-max-msglen-const-max-msglen-16384-src-mq3-client-download-ml-295364541"></a>
 ### MAX_MSGLEN
@@ -47,7 +47,7 @@ const MAX_MSGLEN = 16384
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L7)
 
 <a id="function-function-mq3-client-download-parsedownload-function-parsedownload-state-host-msg-src-mq3-client-download-ml-1401624696"></a>
 ### parseDownload
@@ -63,7 +63,7 @@ function parseDownload(state, host, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L15)
 
 <a id="function-function-mq3-client-download-services-function-services-src-mq3-client-download-ml-1986083990"></a>
 ### services
@@ -73,7 +73,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/download.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/download.ml#L12)
 
 - [mq3.client.download.Services](Type-mq3-client-download-services-753847501.md) — struct
 - [mq3.client.download.State](Type-mq3-client-download-state-817781582.md) — struct

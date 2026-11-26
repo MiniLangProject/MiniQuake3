@@ -28,7 +28,7 @@ function add(level, ent, event, parm)
 | `parm` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/events.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L6)
 
 <a id="function-function-mq3-game-events-sound-function-sound-level-ent-channel-index-src-mq3-game-events-ml-1716547734"></a>
 ### sound
@@ -45,4 +45,4 @@ function sound(level, ent, channel, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/events.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/events.ml#L17)

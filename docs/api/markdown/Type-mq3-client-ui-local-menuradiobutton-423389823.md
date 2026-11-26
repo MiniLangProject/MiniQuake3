@@ -10,7 +10,7 @@ struct MenuRadioButton
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L67)
 
 ## Members
 
@@ -22,7 +22,7 @@ curvalue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L67)
 
 <a id="field-field-mq3-client-ui-local-menuradiobutton-generic-generic-src-mq3-client-ui-local-ml-1534260843"></a>
 ### generic
@@ -32,4 +32,4 @@ generic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L67)

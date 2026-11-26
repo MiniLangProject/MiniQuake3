@@ -10,7 +10,7 @@ struct Index
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ buckets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 <a id="field-field-mq3-renderer-shader-index-index-entries-entries-src-mq3-renderer-shader-index-ml-1731822417"></a>
 ### entries
@@ -32,7 +32,7 @@ entries
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)
 
 <a id="field-field-mq3-renderer-shader-index-index-text-text-src-mq3-renderer-shader-index-ml-659024755"></a>
 ### text
@@ -42,4 +42,4 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/shader_index.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/shader_index.ml#L13)

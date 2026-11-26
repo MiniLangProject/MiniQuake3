@@ -33,7 +33,7 @@ function addQuadStamp(origin, left, up, color, viewForward, currentVertexes, cur
 | `maxIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L55)
 
 <a id="function-function-mq3-renderer-surface-entities-addquadstampext-function-addquadstampext-origin-left-up-color-viewforward-s1-t1-s2-t2-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-surface-entities-ml-364475863"></a>
 ### addQuadStampExt
@@ -61,7 +61,7 @@ RB_AddQuadStampExt emits two triangles. RB_CheckOverflow flushes even when the r
 | `maxIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L36)
 
 <a id="function-function-mq3-renderer-surface-entities-bytecolor-function-bytecolor-value-src-mq3-renderer-surface-entities-ml-156425295"></a>
 ### byteColor
@@ -75,17 +75,17 @@ function byteColor(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L15)
 
-<a id="constant-constant-mq3-renderer-surface-entities-pi-const-pi-3-14159265358979-src-mq3-renderer-surface-entities-ml-1085260284"></a>
+<a id="constant-constant-mq3-renderer-surface-entities-pi-const-pi-3-141593-src-mq3-renderer-surface-entities-ml-1385727875"></a>
 ### PI
 
 ```ml
-const PI = 3.14159265358979
+const PI = 3.141593
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L9)
 
 - [mq3.renderer.surface_entities.Submission](Type-mq3-renderer-surface-entities-submission-617997860.md) — struct
 <a id="function-function-mq3-renderer-surface-entities-surfacesprite-function-surfacesprite-origin-radius-rotation-color-viewleft-viewup-viewforward-ismirror-currentvertexes-currentindexes-maxvertexes-maxindexes-src-mq3-renderer-surface-entities-ml-332203652"></a>
@@ -113,7 +113,7 @@ RB_SurfaceSprite rotates the camera-facing left/up basis around the view axis, m
 | `maxIndexes` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L61)
 
 <a id="function-function-mq3-renderer-surface-entities-valid3-function-valid3-value-src-mq3-renderer-surface-entities-ml-693347057"></a>
 ### valid3
@@ -127,7 +127,7 @@ function valid3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L14)
 
 <a id="function-function-mq3-renderer-surface-entities-vecadd-function-vecadd-a-b-src-mq3-renderer-surface-entities-ml-1135128959"></a>
 ### vecAdd
@@ -142,7 +142,7 @@ function vecAdd(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L27)
 
 <a id="function-function-mq3-renderer-surface-entities-vecscale-function-vecscale-value-scale-src-mq3-renderer-surface-entities-ml-765590081"></a>
 ### vecScale
@@ -157,7 +157,7 @@ function vecScale(value, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L24)
 
 <a id="function-function-mq3-renderer-surface-entities-vecsub-function-vecsub-a-b-src-mq3-renderer-surface-entities-ml-2011145759"></a>
 ### vecSub
@@ -172,6 +172,6 @@ function vecSub(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/surface_entities.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/surface_entities.ml#L30)
 
 - [mq3.renderer.surface_entities.Vertex](Type-mq3-renderer-surface-entities-vertex-1719953646.md) — struct

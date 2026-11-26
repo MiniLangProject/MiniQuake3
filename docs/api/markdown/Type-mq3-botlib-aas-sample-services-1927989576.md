@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
 
 <a id="field-field-mq3-botlib-aas-sample-services-entitycollisionfn-entitycollisionfn-src-mq3-botlib-aas-sample-ml-625321337"></a>
 ### entityCollisionFn
@@ -32,7 +32,7 @@ entityCollisionFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)
 
 <a id="field-field-mq3-botlib-aas-sample-services-pointcontentsfn-pointcontentsfn-src-mq3-botlib-aas-sample-ml-1469339873"></a>
 ### pointContentsFn
@@ -42,4 +42,4 @@ pointContentsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/aas_sample.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/aas_sample.ml#L23)

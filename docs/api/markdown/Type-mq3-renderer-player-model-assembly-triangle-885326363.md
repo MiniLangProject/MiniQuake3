@@ -10,7 +10,7 @@ struct Triangle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ normals
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 <a id="field-field-mq3-renderer-player-model-assembly-triangle-part-part-src-mq3-renderer-player-model-assembly-ml-2063398375"></a>
 ### part
@@ -32,7 +32,7 @@ part
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 <a id="field-field-mq3-renderer-player-model-assembly-triangle-positions-positions-src-mq3-renderer-player-model-assembly-ml-1416233389"></a>
 ### positions
@@ -42,7 +42,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 <a id="field-field-mq3-renderer-player-model-assembly-triangle-shadername-shadername-src-mq3-renderer-player-model-assembly-ml-1645050929"></a>
 ### shaderName
@@ -52,7 +52,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 <a id="field-field-mq3-renderer-player-model-assembly-triangle-surfaceindex-surfaceindex-src-mq3-renderer-player-model-assembly-ml-1996295975"></a>
 ### surfaceIndex
@@ -62,7 +62,7 @@ surfaceIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)
 
 <a id="field-field-mq3-renderer-player-model-assembly-triangle-texcoords-texcoords-src-mq3-renderer-player-model-assembly-ml-1386328605"></a>
 ### texCoords
@@ -72,4 +72,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_model_assembly.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_model_assembly.ml#L20)

@@ -10,7 +10,7 @@ struct UvAffine
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ m00
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-uvaffine-m01-m01-src-mq3-renderer-playable-world-batch-ml-223719083"></a>
 ### m01
@@ -32,7 +32,7 @@ m01
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-uvaffine-m10-m10-src-mq3-renderer-playable-world-batch-ml-1587446251"></a>
 ### m10
@@ -42,7 +42,7 @@ m10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-uvaffine-m11-m11-src-mq3-renderer-playable-world-batch-ml-2020033939"></a>
 ### m11
@@ -52,7 +52,7 @@ m11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-uvaffine-tx-tx-src-mq3-renderer-playable-world-batch-ml-111927331"></a>
 ### tx
@@ -62,7 +62,7 @@ tx
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)
 
 <a id="field-field-mq3-renderer-playable-world-batch-uvaffine-ty-ty-src-mq3-renderer-playable-world-batch-ml-1134367769"></a>
 ### ty
@@ -72,4 +72,4 @@ ty
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_world_batch.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_world_batch.ml#L19)

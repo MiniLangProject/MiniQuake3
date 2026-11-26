@@ -10,7 +10,7 @@ struct Menu
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-assets-assets-src-mq3-client-ui-sound-options-ml-1857664906"></a>
 ### assets
@@ -32,7 +32,7 @@ assets
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-commands-commands-src-mq3-client-ui-sound-options-ml-1886138572"></a>
 ### commands
@@ -42,7 +42,7 @@ commands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-cursor-cursor-src-mq3-client-ui-sound-options-ml-1897321984"></a>
 ### cursor
@@ -52,7 +52,7 @@ cursor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-cvarwrites-cvarwrites-src-mq3-client-ui-sound-options-ml-1506359940"></a>
 ### cvarWrites
@@ -62,7 +62,7 @@ cvarWrites
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-fullscreen-fullscreen-src-mq3-client-ui-sound-options-ml-232666170"></a>
 ### fullscreen
@@ -72,7 +72,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-items-items-src-mq3-client-ui-sound-options-ml-1023400764"></a>
 ### items
@@ -82,7 +82,7 @@ items
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)
 
 <a id="field-field-mq3-client-ui-sound-options-menu-wraparound-wraparound-src-mq3-client-ui-sound-options-ml-735186546"></a>
 ### wrapAround
@@ -92,4 +92,4 @@ wrapAround
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_sound_options.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_sound_options.ml#L17)

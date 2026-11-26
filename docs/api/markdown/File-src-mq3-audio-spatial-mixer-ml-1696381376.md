@@ -31,7 +31,7 @@ function addLoop(state, id, origin, sound, volume, globalSound)
 | `globalSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L38)
 
 <a id="function-function-mq3-audio-spatial-mixer-addsharedloop-function-addsharedloop-state-id-key-origin-sound-volume-globalsound-src-mq3-audio-spatial-mixer-ml-2011147434"></a>
 ### addSharedLoop
@@ -51,7 +51,7 @@ function addSharedLoop(state, id, key, origin, sound, volume, globalSound)
 | `globalSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L29)
 
 - [mq3.audio.spatial_mixer.Chunk](Type-mq3-audio-spatial-mixer-chunk-559152199.md) — struct
 <a id="function-function-mq3-audio-spatial-mixer-create-function-create-outputrate-chunkframes-src-mq3-audio-spatial-mixer-ml-624026912"></a>
@@ -67,7 +67,7 @@ function create(outputRate, chunkFrames)
 | `chunkFrames` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L23)
 
 <a id="function-function-mq3-audio-spatial-mixer-fail-function-fail-message-src-mq3-audio-spatial-mixer-ml-1451982677"></a>
 ### fail
@@ -81,7 +81,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L21)
 
 - [mq3.audio.spatial_mixer.Group](Type-mq3-audio-spatial-mixer-group-1052340149.md) — struct
 <a id="constant-constant-mq3-audio-spatial-mixer-max-frames-const-max-frames-4096-src-mq3-audio-spatial-mixer-ml-83727282"></a>
@@ -92,7 +92,7 @@ const MAX_FRAMES = 4096
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L13)
 
 <a id="constant-constant-mq3-audio-spatial-mixer-max-sources-const-max-sources-64-src-mq3-audio-spatial-mixer-ml-1754303249"></a>
 ### MAX_SOURCES
@@ -102,7 +102,7 @@ const MAX_SOURCES = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L12)
 
 <a id="function-function-mq3-audio-spatial-mixer-monosample-function-monosample-sound-frame-src-mq3-audio-spatial-mixer-ml-1555219978"></a>
 ### monoSample
@@ -117,7 +117,7 @@ function monoSample(sound, frame)
 | `frame` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L63)
 
 <a id="function-function-mq3-audio-spatial-mixer-render-function-render-state-listener-right-src-mq3-audio-spatial-mixer-ml-1940948907"></a>
 ### render
@@ -133,7 +133,7 @@ function render(state, listener, right)
 | `right` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L82)
 
 <a id="function-function-mq3-audio-spatial-mixer-setenabled-function-setenabled-state-id-enabled-src-mq3-audio-spatial-mixer-ml-2018008191"></a>
 ### setEnabled
@@ -149,7 +149,7 @@ function setEnabled(state, id, enabled)
 | `enabled` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L40)
 
 <a id="function-function-mq3-audio-spatial-mixer-signed16-function-signed16-data-offset-src-mq3-audio-spatial-mixer-ml-1490208529"></a>
 ### signed16
@@ -164,27 +164,27 @@ function signed16(data, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L59)
 
-<a id="constant-constant-mq3-audio-spatial-mixer-sound-attenuate-const-sound-attenuate-8-e-004-src-mq3-audio-spatial-mixer-ml-735200739"></a>
+<a id="constant-constant-mq3-audio-spatial-mixer-sound-attenuate-const-sound-attenuate-0-0008-src-mq3-audio-spatial-mixer-ml-996329553"></a>
 ### SOUND_ATTENUATE
 
 ```ml
-const SOUND_ATTENUATE = 8.e-004
+const SOUND_ATTENUATE = 0.0008
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L11)
 
-<a id="constant-constant-mq3-audio-spatial-mixer-sound-fullvolume-const-sound-fullvolume-80-src-mq3-audio-spatial-mixer-ml-2067939329"></a>
+<a id="constant-constant-mq3-audio-spatial-mixer-sound-fullvolume-const-sound-fullvolume-80-src-mq3-audio-spatial-mixer-ml-888494599"></a>
 ### SOUND_FULLVOLUME
 
 ```ml
-const SOUND_FULLVOLUME = 80.
+const SOUND_FULLVOLUME = 80
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L10)
 
 - [mq3.audio.spatial_mixer.Source](Type-mq3-audio-spatial-mixer-source-419957791.md) — struct
 - [mq3.audio.spatial_mixer.Spatial](Type-mq3-audio-spatial-mixer-spatial-1639915850.md) — struct
@@ -204,7 +204,7 @@ function spatialize(origin, listener, right, volume, globalSound)
 | `globalSound` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L45)
 
 - [mq3.audio.spatial_mixer.State](Type-mq3-audio-spatial-mixer-state-1239949287.md) — struct
 <a id="function-function-mq3-audio-spatial-mixer-write16-function-write16-output-offset-value-src-mq3-audio-spatial-mixer-ml-495538765"></a>
@@ -221,4 +221,4 @@ function write16(output, offset, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/spatial_mixer.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/spatial_mixer.ml#L76)

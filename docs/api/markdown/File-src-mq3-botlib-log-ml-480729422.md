@@ -30,7 +30,7 @@ extern function __stdio_common_vsprintf(options as u64, output as bytes, length 
 | `arguments` | `bytes` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L9)
 
 - [mq3.botlib.log.Action](Type-mq3-botlib-log-action-1925316146.md) — struct
 <a id="function-function-mq3-botlib-log-close-function-close-state-src-mq3-botlib-log-ml-948319289"></a>
@@ -47,7 +47,7 @@ Log_Close
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L49)
 
 <a id="function-function-mq3-botlib-log-create-function-create-variables-serviceset-retailactive-src-mq3-botlib-log-ml-915817897"></a>
 ### create
@@ -63,7 +63,7 @@ function create(variables, serviceSet, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L21)
 
 <a id="function-function-mq3-botlib-log-emit-function-emit-state-kind-severity-filename-text-handle-src-mq3-botlib-log-ml-1326809118"></a>
 ### emit
@@ -82,7 +82,7 @@ function emit(state, kind, severity, filename, text, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L26)
 
 <a id="function-function-mq3-botlib-log-filepointer-function-filepointer-state-src-mq3-botlib-log-ml-1734393563"></a>
 ### filePointer
@@ -98,7 +98,7 @@ Log_FilePointer
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L64)
 
 <a id="function-function-mq3-botlib-log-floatarg-function-floatarg-value-src-mq3-botlib-log-ml-1159591809"></a>
 ### floatArg
@@ -112,7 +112,7 @@ function floatArg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L24)
 
 <a id="function-function-mq3-botlib-log-floattext-function-floattext-value-token-src-mq3-botlib-log-ml-1046230018"></a>
 ### floatText
@@ -127,7 +127,7 @@ function floatText(value, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L33)
 
 <a id="function-function-mq3-botlib-log-flush-function-flush-state-src-mq3-botlib-log-ml-352483973"></a>
 ### flush
@@ -141,7 +141,7 @@ function flush(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L41)
 
 <a id="function-function-mq3-botlib-log-format-function-format-fmt-args-src-mq3-botlib-log-ml-1926501048"></a>
 ### format
@@ -156,7 +156,7 @@ function format(fmt, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L37)
 
 - [mq3.botlib.log.FormatArg](Type-mq3-botlib-log-formatarg-777438073.md) — struct
 <a id="function-function-mq3-botlib-log-hex32-function-hex32-value-upper-src-mq3-botlib-log-ml-1110298507"></a>
@@ -172,7 +172,7 @@ function hex32(value, upper)
 | `upper` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L31)
 
 <a id="function-function-mq3-botlib-log-intarg-function-intarg-value-src-mq3-botlib-log-ml-1714268161"></a>
 ### intArg
@@ -186,7 +186,7 @@ function intArg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L23)
 
 <a id="function-function-mq3-botlib-log-logflush-function-logflush-state-src-mq3-botlib-log-ml-444937289"></a>
 ### logFlush
@@ -202,7 +202,7 @@ Log_Flush
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L66)
 
 <a id="constant-constant-mq3-botlib-log-max-logfilenamesize-const-max-logfilenamesize-1024-src-mq3-botlib-log-ml-2135721102"></a>
 ### MAX_LOGFILENAMESIZE
@@ -212,7 +212,7 @@ const MAX_LOGFILENAMESIZE = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L13)
 
 <a id="function-function-mq3-botlib-log-open-function-open-state-filename-src-mq3-botlib-log-ml-577788058"></a>
 ### open
@@ -229,7 +229,7 @@ Log_Open
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L44)
 
 <a id="function-function-mq3-botlib-log-pad-function-pad-value-width-left-zero-src-mq3-botlib-log-ml-1369415720"></a>
 ### pad
@@ -246,7 +246,7 @@ function pad(value, width, left, zero)
 | `zero` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L30)
 
 <a id="function-function-mq3-botlib-log-pointerarg-function-pointerarg-value-src-mq3-botlib-log-ml-1073782909"></a>
 ### pointerArg
@@ -260,7 +260,7 @@ function pointerArg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L25)
 
 <a id="function-function-mq3-botlib-log-pointertext-function-pointertext-value-src-mq3-botlib-log-ml-1245150657"></a>
 ### pointerText
@@ -274,7 +274,7 @@ function pointerText(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L32)
 
 <a id="function-function-mq3-botlib-log-printmessage-function-printmessage-state-severity-text-src-mq3-botlib-log-ml-1848976813"></a>
 ### printMessage
@@ -290,7 +290,7 @@ function printMessage(state, severity, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L27)
 
 <a id="constant-constant-mq3-botlib-log-prt-error-const-prt-error-3-src-mq3-botlib-log-ml-962023648"></a>
 ### PRT_ERROR
@@ -300,7 +300,7 @@ const PRT_ERROR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L12)
 
 <a id="constant-constant-mq3-botlib-log-prt-message-const-prt-message-2-src-mq3-botlib-log-ml-1416187459"></a>
 ### PRT_MESSAGE
@@ -310,7 +310,7 @@ const PRT_MESSAGE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L11)
 
 <a id="function-function-mq3-botlib-log-repeat-function-repeat-value-count-src-mq3-botlib-log-ml-106260198"></a>
 ### repeat
@@ -325,7 +325,7 @@ function repeat(value, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L29)
 
 <a id="function-function-mq3-botlib-log-services-function-services-src-mq3-botlib-log-ml-113846666"></a>
 ### services
@@ -335,7 +335,7 @@ function services()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L20)
 
 - [mq3.botlib.log.Services](Type-mq3-botlib-log-services-58467128.md) — struct
 <a id="function-function-mq3-botlib-log-shutdown-function-shutdown-state-src-mq3-botlib-log-ml-1280662573"></a>
@@ -352,7 +352,7 @@ Log_Shutdown
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L54)
 
 - [mq3.botlib.log.State](Type-mq3-botlib-log-state-233915373.md) — struct
 <a id="function-function-mq3-botlib-log-stringarg-function-stringarg-value-src-mq3-botlib-log-ml-1670325359"></a>
@@ -367,7 +367,7 @@ function stringArg(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L22)
 
 <a id="function-function-mq3-botlib-log-write-function-write-state-fmt-args-src-mq3-botlib-log-ml-2132181687"></a>
 ### write
@@ -385,7 +385,7 @@ Log_Write
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L58)
 
 <a id="function-function-mq3-botlib-log-writetext-function-writetext-state-text-src-mq3-botlib-log-ml-125999536"></a>
 ### writeText
@@ -400,7 +400,7 @@ function writeText(state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L55)
 
 <a id="function-function-mq3-botlib-log-writetimestamped-function-writetimestamped-state-fmt-args-src-mq3-botlib-log-ml-459517025"></a>
 ### writeTimeStamped
@@ -418,4 +418,4 @@ Log_WriteTimeStamped
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/log.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/log.ml#L60)

@@ -25,7 +25,7 @@ function create(snapshotState)
 | `snapshotState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L32)
 
 <a id="function-function-mq3-client-server-message-emitshownet-function-emitshownet-state-line-src-mq3-client-server-message-ml-1528918005"></a>
 ### emitShownet
@@ -40,7 +40,7 @@ function emitShownet(state, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L51)
 
 <a id="constant-constant-mq3-client-server-message-max-reliable-commands-const-max-reliable-commands-64-src-mq3-client-server-message-ml-713858343"></a>
 ### MAX_RELIABLE_COMMANDS
@@ -50,7 +50,7 @@ const MAX_RELIABLE_COMMANDS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L8)
 
 <a id="function-function-mq3-client-server-message-pad3-function-pad3-value-src-mq3-client-server-message-ml-495164361"></a>
 ### pad3
@@ -64,7 +64,7 @@ function pad3(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L37)
 
 <a id="function-function-mq3-client-server-message-parsecommandstring-function-parsecommandstring-state-msg-src-mq3-client-server-message-ml-1994860094"></a>
 ### parseCommandString
@@ -79,7 +79,7 @@ function parseCommandString(state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L69)
 
 <a id="function-function-mq3-client-server-message-parseservermessage-function-parseservermessage-state-msg-src-mq3-client-server-message-ml-968209326"></a>
 ### parseServerMessage
@@ -94,7 +94,7 @@ function parseServerMessage(state, msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L77)
 
 <a id="function-function-mq3-client-server-message-servicename-function-servicename-command-src-mq3-client-server-message-ml-2064532629"></a>
 ### serviceName
@@ -108,7 +108,7 @@ function serviceName(command)
 | `command` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L57)
 
 <a id="function-function-mq3-client-server-message-shownet-function-shownet-state-msg-text-src-mq3-client-server-message-ml-280616253"></a>
 ### shownet
@@ -124,7 +124,7 @@ function shownet(state, msg, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L43)
 
 - [mq3.client.server_message.State](Type-mq3-client-server-message-state-292969621.md) — struct
 <a id="constant-constant-mq3-client-server-message-svc-bad-const-svc-bad-0-src-mq3-client-server-message-ml-1644798217"></a>
@@ -135,7 +135,7 @@ const SVC_BAD = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L9)
 
 <a id="constant-constant-mq3-client-server-message-svc-download-const-svc-download-6-src-mq3-client-server-message-ml-2069204263"></a>
 ### SVC_DOWNLOAD
@@ -145,7 +145,7 @@ const SVC_DOWNLOAD = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L13)
 
 <a id="constant-constant-mq3-client-server-message-svc-eof-const-svc-eof-8-src-mq3-client-server-message-ml-209446589"></a>
 ### SVC_EOF
@@ -155,7 +155,7 @@ const SVC_EOF = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L15)
 
 <a id="constant-constant-mq3-client-server-message-svc-gamestate-const-svc-gamestate-2-src-mq3-client-server-message-ml-426624351"></a>
 ### SVC_GAMESTATE
@@ -165,7 +165,7 @@ const SVC_GAMESTATE = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L11)
 
 <a id="constant-constant-mq3-client-server-message-svc-nop-const-svc-nop-1-src-mq3-client-server-message-ml-1135619084"></a>
 ### SVC_NOP
@@ -175,7 +175,7 @@ const SVC_NOP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L10)
 
 <a id="constant-constant-mq3-client-server-message-svc-server-command-const-svc-server-command-5-src-mq3-client-server-message-ml-758536898"></a>
 ### SVC_SERVER_COMMAND
@@ -185,7 +185,7 @@ const SVC_SERVER_COMMAND = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L12)
 
 <a id="constant-constant-mq3-client-server-message-svc-snapshot-const-svc-snapshot-7-src-mq3-client-server-message-ml-849610982"></a>
 ### SVC_SNAPSHOT
@@ -195,4 +195,4 @@ const SVC_SNAPSHOT = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/server_message.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/server_message.ml#L14)

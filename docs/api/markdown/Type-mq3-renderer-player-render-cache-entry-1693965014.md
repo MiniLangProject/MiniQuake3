@@ -10,7 +10,7 @@ struct Entry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L19)
 
 ## Members
 
@@ -22,7 +22,7 @@ key
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L19)
 
 <a id="field-field-mq3-renderer-player-render-cache-entry-triangles-triangles-src-mq3-renderer-player-render-cache-ml-993374057"></a>
 ### triangles
@@ -32,4 +32,4 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_render_cache.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_render_cache.ml#L19)

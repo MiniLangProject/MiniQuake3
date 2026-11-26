@@ -35,7 +35,7 @@ function BroadcastTeamChange(level, client, oldTeam)
 | `oldTeam` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L40)
 
 <a id="function-function-mq3-game-g-cmds-cheatsok-function-cheatsok-level-ent-src-mq3-game-g-cmds-ml-445849537"></a>
 ### CheatsOk
@@ -50,7 +50,7 @@ function CheatsOk(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L29)
 
 <a id="function-function-mq3-game-g-cmds-clientcommand-function-clientcommand-level-clientnum-argv-src-mq3-game-g-cmds-ml-1057023027"></a>
 ### ClientCommand
@@ -68,7 +68,7 @@ GAME_CLIENT_COMMAND uses this entry after the server has tokenized the reliable 
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L69)
 
 <a id="function-function-mq3-game-g-cmds-clientcommandstate-function-clientcommandstate-runtime-clientnum-commandstate-src-mq3-game-g-cmds-ml-332220017"></a>
 ### ClientCommandState
@@ -84,7 +84,7 @@ function ClientCommandState(runtime, clientNum, commandState)
 | `commandState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L71)
 
 <a id="function-function-mq3-game-g-cmds-clientcommandtext-function-clientcommandtext-runtime-clientnum-text-src-mq3-game-g-cmds-ml-2065798046"></a>
 ### ClientCommandText
@@ -102,7 +102,7 @@ Productive server adapter for a raw reliable command.  It deliberately uses the 
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L82)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L82)
 
 <a id="function-function-mq3-game-g-cmds-clientnumberfromstring-function-clientnumberfromstring-level-callerent-text-src-mq3-game-g-cmds-ml-1034548703"></a>
 ### ClientNumberFromString
@@ -118,7 +118,7 @@ function ClientNumberFromString(level, callerEnt, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L31)
 
 <a id="function-function-mq3-game-g-cmds-cmd-callteamvote-f-function-cmd-callteamvote-f-level-ent-argv-src-mq3-game-g-cmds-ml-1049797599"></a>
 ### Cmd_CallTeamVote_f
@@ -134,7 +134,7 @@ function Cmd_CallTeamVote_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L61)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L61)
 
 <a id="function-function-mq3-game-g-cmds-cmd-callvote-f-function-cmd-callvote-f-level-ent-argv-src-mq3-game-g-cmds-ml-176038535"></a>
 ### Cmd_CallVote_f
@@ -150,7 +150,7 @@ function Cmd_CallVote_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L59)
 
 <a id="function-function-mq3-game-g-cmds-cmd-follow-f-function-cmd-follow-f-level-ent-argv-src-mq3-game-g-cmds-ml-230015651"></a>
 ### Cmd_Follow_f
@@ -166,7 +166,7 @@ function Cmd_Follow_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L44)
 
 <a id="function-function-mq3-game-g-cmds-cmd-followcycle-f-function-cmd-followcycle-f-level-ent-direction-src-mq3-game-g-cmds-ml-750481154"></a>
 ### Cmd_FollowCycle_f
@@ -182,7 +182,7 @@ function Cmd_FollowCycle_f(level, ent, direction)
 | `direction` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L45)
 
 <a id="function-function-mq3-game-g-cmds-cmd-gamecommand-f-function-cmd-gamecommand-f-level-ent-argv-src-mq3-game-g-cmds-ml-1115727717"></a>
 ### Cmd_GameCommand_f
@@ -198,7 +198,7 @@ function Cmd_GameCommand_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L56)
 
 <a id="function-function-mq3-game-g-cmds-cmd-give-f-function-cmd-give-f-level-ent-argv-src-mq3-game-g-cmds-ml-1194517523"></a>
 ### Cmd_Give_f
@@ -214,7 +214,7 @@ function Cmd_Give_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L33)
 
 <a id="function-function-mq3-game-g-cmds-cmd-god-f-function-cmd-god-f-level-ent-src-mq3-game-g-cmds-ml-1523660353"></a>
 ### Cmd_God_f
@@ -229,7 +229,7 @@ function Cmd_God_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L34)
 
 <a id="function-function-mq3-game-g-cmds-cmd-kill-f-function-cmd-kill-f-level-ent-src-mq3-game-g-cmds-ml-405756489"></a>
 ### Cmd_Kill_f
@@ -244,7 +244,7 @@ function Cmd_Kill_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L39)
 
 <a id="function-function-mq3-game-g-cmds-cmd-levelshot-f-function-cmd-levelshot-f-level-ent-src-mq3-game-g-cmds-ml-765793729"></a>
 ### Cmd_LevelShot_f
@@ -259,7 +259,7 @@ function Cmd_LevelShot_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L37)
 
 <a id="function-function-mq3-game-g-cmds-cmd-noclip-f-function-cmd-noclip-f-level-ent-src-mq3-game-g-cmds-ml-788606913"></a>
 ### Cmd_Noclip_f
@@ -274,7 +274,7 @@ function Cmd_Noclip_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L36)
 
 <a id="function-function-mq3-game-g-cmds-cmd-notarget-f-function-cmd-notarget-f-level-ent-src-mq3-game-g-cmds-ml-1958094609"></a>
 ### Cmd_Notarget_f
@@ -289,7 +289,7 @@ function Cmd_Notarget_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L35)
 
 <a id="function-function-mq3-game-g-cmds-cmd-say-f-function-cmd-say-f-level-ent-argv-mode-arg0-src-mq3-game-g-cmds-ml-493101902"></a>
 ### Cmd_Say_f
@@ -307,7 +307,7 @@ function Cmd_Say_f(level, ent, argv, mode, arg0)
 | `arg0` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L49)
 
 <a id="function-function-mq3-game-g-cmds-cmd-score-f-function-cmd-score-f-level-ent-src-mq3-game-g-cmds-ml-1422258161"></a>
 ### Cmd_Score_f
@@ -322,7 +322,7 @@ function Cmd_Score_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L28)
 
 <a id="function-function-mq3-game-g-cmds-cmd-setviewpos-f-function-cmd-setviewpos-f-level-ent-argv-src-mq3-game-g-cmds-ml-2107017771"></a>
 ### Cmd_SetViewpos_f
@@ -338,7 +338,7 @@ function Cmd_SetViewpos_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L63)
 
 <a id="function-function-mq3-game-g-cmds-cmd-stats-f-function-cmd-stats-f-level-ent-src-mq3-game-g-cmds-ml-2133492659"></a>
 ### Cmd_Stats_f
@@ -353,7 +353,7 @@ function Cmd_Stats_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L64)
 
 <a id="function-function-mq3-game-g-cmds-cmd-team-f-function-cmd-team-f-level-ent-argv-src-mq3-game-g-cmds-ml-1478456339"></a>
 ### Cmd_Team_f
@@ -369,7 +369,7 @@ function Cmd_Team_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L43)
 
 <a id="function-function-mq3-game-g-cmds-cmd-teamtask-f-function-cmd-teamtask-f-level-ent-argv-src-mq3-game-g-cmds-ml-1326149987"></a>
 ### Cmd_TeamTask_f
@@ -385,7 +385,7 @@ function Cmd_TeamTask_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L38)
 
 <a id="function-function-mq3-game-g-cmds-cmd-teamvote-f-function-cmd-teamvote-f-level-ent-argv-src-mq3-game-g-cmds-ml-135625967"></a>
 ### Cmd_TeamVote_f
@@ -401,7 +401,7 @@ function Cmd_TeamVote_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L62)
 
 <a id="function-function-mq3-game-g-cmds-cmd-tell-f-function-cmd-tell-f-level-ent-argv-src-mq3-game-g-cmds-ml-1751076379"></a>
 ### Cmd_Tell_f
@@ -417,7 +417,7 @@ function Cmd_Tell_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L50)
 
 <a id="function-function-mq3-game-g-cmds-cmd-voice-f-function-cmd-voice-f-level-ent-argv-mode-arg0-voiceonly-src-mq3-game-g-cmds-ml-1548467282"></a>
 ### Cmd_Voice_f
@@ -436,7 +436,7 @@ function Cmd_Voice_f(level, ent, argv, mode, arg0, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L53)
 
 <a id="function-function-mq3-game-g-cmds-cmd-voicetaunt-f-function-cmd-voicetaunt-f-level-ent-src-mq3-game-g-cmds-ml-2141002761"></a>
 ### Cmd_VoiceTaunt_f
@@ -451,7 +451,7 @@ function Cmd_VoiceTaunt_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L55)
 
 <a id="function-function-mq3-game-g-cmds-cmd-voicetell-f-function-cmd-voicetell-f-level-ent-argv-voiceonly-src-mq3-game-g-cmds-ml-524599673"></a>
 ### Cmd_VoiceTell_f
@@ -468,7 +468,7 @@ function Cmd_VoiceTell_f(level, ent, argv, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L54)
 
 <a id="function-function-mq3-game-g-cmds-cmd-vote-f-function-cmd-vote-f-level-ent-argv-src-mq3-game-g-cmds-ml-1365752539"></a>
 ### Cmd_Vote_f
@@ -484,7 +484,7 @@ function Cmd_Vote_f(level, ent, argv)
 | `argv` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L60)
 
 <a id="function-function-mq3-game-g-cmds-cmd-where-f-function-cmd-where-f-level-ent-src-mq3-game-g-cmds-ml-1101829983"></a>
 ### Cmd_Where_f
@@ -499,7 +499,7 @@ function Cmd_Where_f(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L57)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L57)
 
 <a id="function-function-mq3-game-g-cmds-concatargs-function-concatargs-argv-start-src-mq3-game-g-cmds-ml-234061522"></a>
 ### ConcatArgs
@@ -514,7 +514,7 @@ function ConcatArgs(argv, start)
 | `start` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L26)
 
 <a id="function-function-mq3-game-g-cmds-createruntime-function-createruntime-level-src-mq3-game-g-cmds-ml-699071126"></a>
 ### createRuntime
@@ -528,7 +528,7 @@ function createRuntime(level)
 | `level` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L22)
 
 <a id="function-function-mq3-game-g-cmds-deathmatchscoreboardmessage-function-deathmatchscoreboardmessage-level-ent-src-mq3-game-g-cmds-ml-233631945"></a>
 ### DeathmatchScoreboardMessage
@@ -543,7 +543,7 @@ function DeathmatchScoreboardMessage(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L27)
 
 <a id="function-function-mq3-game-g-cmds-g-say-function-g-say-level-ent-target-mode-text-src-mq3-game-g-cmds-ml-583738090"></a>
 ### G_Say
@@ -561,7 +561,7 @@ function G_Say(level, ent, target, mode, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L48)
 
 <a id="function-function-mq3-game-g-cmds-g-sayto-function-g-sayto-level-ent-other-mode-color-name-message-src-mq3-game-g-cmds-ml-1748102347"></a>
 ### G_SayTo
@@ -581,7 +581,7 @@ function G_SayTo(level, ent, other, mode, color, name, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L47)
 
 <a id="function-function-mq3-game-g-cmds-g-voice-function-g-voice-level-ent-target-mode-id-voiceonly-src-mq3-game-g-cmds-ml-1636212524"></a>
 ### G_Voice
@@ -600,7 +600,7 @@ function G_Voice(level, ent, target, mode, id, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L52)
 
 <a id="function-function-mq3-game-g-cmds-g-voiceto-function-g-voiceto-level-ent-other-mode-id-voiceonly-src-mq3-game-g-cmds-ml-511937623"></a>
 ### G_VoiceTo
@@ -619,7 +619,7 @@ function G_VoiceTo(level, ent, other, mode, id, voiceOnly)
 | `voiceOnly` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L51)
 
 - [mq3.game.g_cmds.Runtime](Type-mq3-game-g-cmds-runtime-1776016651.md) — struct
 <a id="function-function-mq3-game-g-cmds-sanitizestring-function-sanitizestring-text-src-mq3-game-g-cmds-ml-450607097"></a>
@@ -634,7 +634,7 @@ function SanitizeString(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L30)
 
 <a id="function-function-mq3-game-g-cmds-setteam-function-setteam-level-ent-text-src-mq3-game-g-cmds-ml-1808735992"></a>
 ### SetTeam
@@ -650,7 +650,7 @@ function SetTeam(level, ent, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L41)
 
 <a id="function-function-mq3-game-g-cmds-stopfollowing-function-stopfollowing-level-ent-src-mq3-game-g-cmds-ml-1669690675"></a>
 ### StopFollowing
@@ -665,4 +665,4 @@ function StopFollowing(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_cmds.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_cmds.ml#L42)

@@ -33,7 +33,7 @@ function hurtTouch(level, self, other, trace)
 | `trace` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L46)
 
 <a id="function-function-mq3-game-hazards-hurtuse-function-hurtuse-level-self-other-activator-src-mq3-game-hazards-ml-287052607"></a>
 ### hurtUse
@@ -50,7 +50,7 @@ function hurtUse(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L42)
 
 <a id="function-function-mq3-game-hazards-killuse-function-killuse-level-self-other-activator-src-mq3-game-hazards-ml-94901481"></a>
 ### killUse
@@ -67,7 +67,7 @@ function killUse(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L55)
 
 <a id="function-function-mq3-game-hazards-laseroff-function-laseroff-level-self-src-mq3-game-hazards-ml-375225108"></a>
 ### laserOff
@@ -82,7 +82,7 @@ function laserOff(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L33)
 
 <a id="function-function-mq3-game-hazards-laseron-function-laseron-level-self-src-mq3-game-hazards-ml-1119559564"></a>
 ### laserOn
@@ -97,7 +97,7 @@ function laserOn(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L29)
 
 <a id="function-function-mq3-game-hazards-laserthink-function-laserthink-level-self-src-mq3-game-hazards-ml-1306509692"></a>
 ### laserThink
@@ -112,7 +112,7 @@ function laserThink(level, self)
 | `self` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L11)
 
 <a id="function-function-mq3-game-hazards-laseruse-function-laseruse-level-self-other-activator-src-mq3-game-hazards-ml-1209378407"></a>
 ### laserUse
@@ -129,4 +129,4 @@ function laserUse(level, self, other, activator)
 | `activator` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/hazards.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/hazards.ml#L37)

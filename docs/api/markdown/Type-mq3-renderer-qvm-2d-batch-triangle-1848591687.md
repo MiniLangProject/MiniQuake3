@@ -10,7 +10,7 @@ struct Triangle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ colors
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-commandindex-commandindex-src-mq3-renderer-qvm-2d-batch-ml-584765333"></a>
 ### commandIndex
@@ -32,7 +32,7 @@ commandIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-positions-positions-src-mq3-renderer-qvm-2d-batch-ml-1339143843"></a>
 ### positions
@@ -42,7 +42,7 @@ positions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)
 
 <a id="field-field-mq3-renderer-qvm-2d-batch-triangle-texcoords-texcoords-src-mq3-renderer-qvm-2d-batch-ml-113587299"></a>
 ### texCoords
@@ -52,4 +52,4 @@ texCoords
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qvm_2d_batch.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qvm_2d_batch.ml#L21)

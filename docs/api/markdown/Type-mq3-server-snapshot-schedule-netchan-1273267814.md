@@ -10,7 +10,7 @@ struct Netchan
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L5)
 
 ## Members
 
@@ -22,7 +22,7 @@ unsentFragments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L5)
 
 <a id="field-field-mq3-server-snapshot-schedule-netchan-unsentfragmentstart-unsentfragmentstart-src-mq3-server-snapshot-schedule-ml-1673382300"></a>
 ### unsentFragmentStart
@@ -32,7 +32,7 @@ unsentFragmentStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L5)
 
 <a id="field-field-mq3-server-snapshot-schedule-netchan-unsentlength-unsentlength-src-mq3-server-snapshot-schedule-ml-1892823810"></a>
 ### unsentLength
@@ -42,4 +42,4 @@ unsentLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/snapshot_schedule.ml#L5)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/snapshot_schedule.ml#L5)

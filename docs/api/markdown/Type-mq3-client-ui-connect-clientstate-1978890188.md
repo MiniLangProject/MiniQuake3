@@ -10,7 +10,7 @@ struct ClientState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 ## Members
 
@@ -22,7 +22,7 @@ connectPacketCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-connstate-connstate-src-mq3-client-ui-connect-ml-1390206509"></a>
 ### connState
@@ -32,7 +32,7 @@ connState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-messagestring-messagestring-src-mq3-client-ui-connect-ml-804006257"></a>
 ### messageString
@@ -42,7 +42,7 @@ messageString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-serverinfo-serverinfo-src-mq3-client-ui-connect-ml-654574119"></a>
 ### serverInfo
@@ -52,7 +52,7 @@ serverInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-servername-servername-src-mq3-client-ui-connect-ml-2097518857"></a>
 ### servername
@@ -62,7 +62,7 @@ servername
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)
 
 <a id="field-field-mq3-client-ui-connect-clientstate-updateinfostring-updateinfostring-src-mq3-client-ui-connect-ml-212494329"></a>
 ### updateInfoString
@@ -72,4 +72,4 @@ updateInfoString
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_connect.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_connect.ml#L24)

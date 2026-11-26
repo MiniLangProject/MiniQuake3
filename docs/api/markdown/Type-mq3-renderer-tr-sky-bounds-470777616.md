@@ -10,7 +10,7 @@ struct Bounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ maxS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-sky-bounds-maxt-maxt-src-mq3-renderer-tr-sky-ml-1529798644"></a>
 ### maxT
@@ -32,7 +32,7 @@ maxT
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-sky-bounds-mins-mins-src-mq3-renderer-tr-sky-ml-550903318"></a>
 ### minS
@@ -42,7 +42,7 @@ minS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L18)
 
 <a id="field-field-mq3-renderer-tr-sky-bounds-mint-mint-src-mq3-renderer-tr-sky-ml-692356524"></a>
 ### minT
@@ -52,4 +52,4 @@ minT
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_sky.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_sky.ml#L18)

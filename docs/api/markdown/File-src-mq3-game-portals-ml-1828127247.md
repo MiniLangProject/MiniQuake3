@@ -31,7 +31,7 @@ function camera(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/portals.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L59)
 
 <a id="function-function-mq3-game-portals-locatecamera-function-locatecamera-level-ent-src-mq3-game-portals-ml-1504841795"></a>
 ### locateCamera
@@ -46,7 +46,7 @@ function locateCamera(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/portals.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L13)
 
 <a id="function-function-mq3-game-portals-surface-function-surface-level-ent-src-mq3-game-portals-ml-1855125617"></a>
 ### surface
@@ -61,4 +61,4 @@ function surface(level, ent)
 | `ent` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/portals.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/portals.ml#L42)

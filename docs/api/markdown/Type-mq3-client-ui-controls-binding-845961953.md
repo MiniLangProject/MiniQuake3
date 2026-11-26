@@ -10,7 +10,7 @@ struct Binding
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 ## Members
 
@@ -22,7 +22,7 @@ anim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-bind1-bind1-src-mq3-client-ui-controls-ml-71098728"></a>
 ### bind1
@@ -32,7 +32,7 @@ bind1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-bind2-bind2-src-mq3-client-ui-controls-ml-8257108"></a>
 ### bind2
@@ -42,7 +42,7 @@ bind2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-command-command-src-mq3-client-ui-controls-ml-1458752324"></a>
 ### command
@@ -52,7 +52,7 @@ command
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-default1-default1-src-mq3-client-ui-controls-ml-3957008"></a>
 ### default1
@@ -62,7 +62,7 @@ default1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-default2-default2-src-mq3-client-ui-controls-ml-765326786"></a>
 ### default2
@@ -72,7 +72,7 @@ default2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-id-id-src-mq3-client-ui-controls-ml-1643398862"></a>
 ### id
@@ -82,7 +82,7 @@ id
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)
 
 <a id="field-field-mq3-client-ui-controls-binding-label-label-src-mq3-client-ui-controls-ml-1372048448"></a>
 ### label
@@ -92,4 +92,4 @@ label
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_controls.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_controls.ml#L98)

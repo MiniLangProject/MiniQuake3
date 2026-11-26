@@ -10,7 +10,7 @@ struct ServerInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 ## Members
 
@@ -22,7 +22,7 @@ address
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-clients-clients-src-mq3-client-client-main-ml-978891482"></a>
 ### clients
@@ -32,7 +32,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-game-game-src-mq3-client-client-main-ml-829707414"></a>
 ### game
@@ -42,7 +42,7 @@ game
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-gametype-gametype-src-mq3-client-client-main-ml-583814086"></a>
 ### gameType
@@ -52,7 +52,7 @@ gameType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-hostname-hostname-src-mq3-client-client-main-ml-1406242300"></a>
 ### hostName
@@ -62,7 +62,7 @@ hostName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-mapname-mapname-src-mq3-client-client-main-ml-1979728222"></a>
 ### mapName
@@ -72,7 +72,7 @@ mapName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-maxclients-maxclients-src-mq3-client-client-main-ml-327706174"></a>
 ### maxClients
@@ -82,7 +82,7 @@ maxClients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-maxping-maxping-src-mq3-client-client-main-ml-1570612070"></a>
 ### maxPing
@@ -92,7 +92,7 @@ maxPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-minping-minping-src-mq3-client-client-main-ml-2102334914"></a>
 ### minPing
@@ -102,7 +102,7 @@ minPing
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-nettype-nettype-src-mq3-client-client-main-ml-1277326594"></a>
 ### netType
@@ -112,7 +112,7 @@ netType
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-ping-ping-src-mq3-client-client-main-ml-1052570502"></a>
 ### ping
@@ -122,7 +122,7 @@ ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)
 
 <a id="field-field-mq3-client-client-main-serverinfo-visible-visible-src-mq3-client-client-main-ml-2048890294"></a>
 ### visible
@@ -132,4 +132,4 @@ visible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_main.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_main.ml#L34)

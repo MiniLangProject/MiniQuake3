@@ -20,7 +20,7 @@ const MAX_RANKS = 256
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_genetic.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L8)
 
 <a id="function-function-mq3-botlib-ai-genetic-parentsandchild-function-parentsandchild-runtime-numranks-ranks-src-mq3-botlib-ai-genetic-ml-1513347306"></a>
 ### parentsAndChild
@@ -36,7 +36,7 @@ function parentsAndChild(runtime, numRanks, ranks)
 | `ranks` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_genetic.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L33)
 
 <a id="function-function-mq3-botlib-ai-genetic-randomfloat-function-randomfloat-runtime-src-mq3-botlib-ai-genetic-ml-888286542"></a>
 ### randomFloat
@@ -50,7 +50,7 @@ function randomFloat(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_genetic.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L10)
 
 <a id="function-function-mq3-botlib-ai-genetic-selection-function-selection-runtime-numranks-rankings-src-mq3-botlib-ai-genetic-ml-683098552"></a>
 ### selection
@@ -66,4 +66,4 @@ function selection(runtime, numRanks, rankings)
 | `rankings` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_genetic.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_genetic.ml#L17)

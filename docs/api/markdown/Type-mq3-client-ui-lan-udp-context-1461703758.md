@@ -10,7 +10,7 @@ struct Context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 <a id="field-field-mq3-client-ui-lan-udp-context-clientsocket-clientsocket-src-mq3-client-ui-lan-udp-ml-953203292"></a>
 ### clientSocket
@@ -32,7 +32,7 @@ clientSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 <a id="field-field-mq3-client-ui-lan-udp-context-clientstate-clientstate-src-mq3-client-ui-lan-udp-ml-719929944"></a>
 ### clientState
@@ -42,7 +42,7 @@ clientState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 <a id="field-field-mq3-client-ui-lan-udp-context-ingressservices-ingressservices-src-mq3-client-ui-lan-udp-ml-1732741636"></a>
 ### ingressServices
@@ -52,7 +52,7 @@ ingressServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)
 
 <a id="field-field-mq3-client-ui-lan-udp-context-serversocket-serversocket-src-mq3-client-ui-lan-udp-ml-524943668"></a>
 ### serverSocket
@@ -62,4 +62,4 @@ serverSocket
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_lan_udp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_lan_udp.ml#L15)

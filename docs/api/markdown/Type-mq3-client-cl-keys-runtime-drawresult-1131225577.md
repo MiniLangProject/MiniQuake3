@@ -10,7 +10,7 @@ struct DrawResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 ## Members
 
@@ -22,7 +22,7 @@ cursorChar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-cursorvisible-cursorvisible-src-mq3-client-cl-keys-runtime-ml-1438057450"></a>
 ### cursorVisible
@@ -32,7 +32,7 @@ cursorVisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-cursorx-cursorx-src-mq3-client-cl-keys-runtime-ml-846810210"></a>
 ### cursorX
@@ -42,7 +42,7 @@ cursorX
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-prestep-prestep-src-mq3-client-cl-keys-runtime-ml-319175926"></a>
 ### prestep
@@ -52,7 +52,7 @@ prestep
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-size-size-src-mq3-client-cl-keys-runtime-ml-2092922760"></a>
 ### size
@@ -62,7 +62,7 @@ size
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-text-text-src-mq3-client-cl-keys-runtime-ml-1743714272"></a>
 ### text
@@ -72,7 +72,7 @@ text
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-x-x-src-mq3-client-cl-keys-runtime-ml-629171506"></a>
 ### x
@@ -82,7 +82,7 @@ x
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)
 
 <a id="field-field-mq3-client-cl-keys-runtime-drawresult-y-y-src-mq3-client-cl-keys-runtime-ml-114216118"></a>
 ### y
@@ -92,4 +92,4 @@ y
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_keys_runtime.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_keys_runtime.ml#L36)

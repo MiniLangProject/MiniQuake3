@@ -27,7 +27,7 @@ function cleanClientText(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L280)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L280)
 
 <a id="function-function-mq3-game-bot-team-helpers-clientfromname-function-clientfromname-state-name-src-mq3-game-bot-team-helpers-ml-319073762"></a>
 ### clientFromName
@@ -42,7 +42,7 @@ function clientFromName(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L290)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L290)
 
 <a id="function-function-mq3-game-bot-team-helpers-clientonsameteamfromname-function-clientonsameteamfromname-state-bot-name-src-mq3-game-bot-team-helpers-ml-289864607"></a>
 ### clientOnSameTeamFromName
@@ -58,7 +58,7 @@ function clientOnSameTeamFromName(state, bot, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L298)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L298)
 
 <a id="function-function-mq3-game-bot-team-helpers-create-function-create-src-mq3-game-bot-team-helpers-ml-1494667706"></a>
 ### create
@@ -68,7 +68,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L45)
 
 <a id="function-function-mq3-game-bot-team-helpers-creategroup-function-creategroup-state-bot-teammates-groupsize-src-mq3-game-bot-team-helpers-ml-1004574639"></a>
 ### createGroup
@@ -85,7 +85,7 @@ function createGroup(state, bot, teammates, groupSize)
 | `groupSize` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L120)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L120)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctforders-function-ctforders-state-bot-redflagstatus-blueflagstatus-src-mq3-game-bot-team-helpers-ml-713252501"></a>
 ### ctfOrders
@@ -102,7 +102,7 @@ function ctfOrders(state, bot, redFlagStatus, blueFlagStatus)
 | `blueFlagStatus` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L110)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersbothflagsatbase-function-ctfordersbothflagsatbase-state-bot-src-mq3-game-bot-team-helpers-ml-802520488"></a>
 ### ctfOrdersBothFlagsAtBase
@@ -117,7 +117,7 @@ function ctfOrdersBothFlagsAtBase(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L151)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersbothflagsnotatbase-function-ctfordersbothflagsnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-876664506"></a>
 ### ctfOrdersBothFlagsNotAtBase
@@ -132,7 +132,7 @@ function ctfOrdersBothFlagsNotAtBase(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L179)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersenemyflagnotatbase-function-ctfordersenemyflagnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-167055842"></a>
 ### ctfOrdersEnemyFlagNotAtBase
@@ -147,7 +147,7 @@ function ctfOrdersEnemyFlagNotAtBase(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L239)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L239)
 
 <a id="function-function-mq3-game-bot-team-helpers-ctfordersflagnotatbase-function-ctfordersflagnotatbase-state-bot-src-mq3-game-bot-team-helpers-ml-850046076"></a>
 ### ctfOrdersFlagNotAtBase
@@ -162,7 +162,7 @@ function ctfOrdersFlagNotAtBase(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L214)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L214)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-ctfs-agressive-const-ctfs-agressive-aiheaders-ctfs-agressive-src-mq3-game-bot-team-helpers-ml-1634674379"></a>
 ### CTFS_AGRESSIVE
@@ -172,7 +172,7 @@ const CTFS_AGRESSIVE = aiheaders.CTFS_AGRESSIVE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L14)
 
 <a id="function-function-mq3-game-bot-team-helpers-deliverorder-function-deliverorder-state-bot-kind-args-toclient-src-mq3-game-bot-team-helpers-ml-1906892221"></a>
 ### deliverOrder
@@ -190,7 +190,7 @@ function deliverOrder(state, bot, kind, args, toClient)
 | `toClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L145)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L145)
 
 <a id="function-function-mq3-game-bot-team-helpers-entityisdead-function-entityisdead-state-entitynumber-src-mq3-game-bot-team-helpers-ml-460699035"></a>
 ### entityIsDead
@@ -205,7 +205,7 @@ function entityIsDead(state, entityNumber)
 | `entityNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L307)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L307)
 
 <a id="function-function-mq3-game-bot-team-helpers-findhumanteamleader-function-findhumanteamleader-state-bot-src-mq3-game-bot-team-helpers-ml-1972469656"></a>
 ### findHumanTeamLeader
@@ -220,7 +220,7 @@ function findHumanTeamLeader(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L132)
 
 <a id="function-function-mq3-game-bot-team-helpers-getteammatetaskpreference-function-getteammatetaskpreference-state-bot-teammate-currentname-src-mq3-game-bot-team-helpers-ml-985030952"></a>
 ### getTeamMateTaskPreference
@@ -237,7 +237,7 @@ function getTeamMateTaskPreference(state, bot, teammate, currentName)
 | `currentName` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L77)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-max-clients-const-max-clients-64-src-mq3-game-bot-team-helpers-ml-1931447045"></a>
 ### MAX_CLIENTS
@@ -247,7 +247,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L10)
 
 <a id="function-function-mq3-game-bot-team-helpers-numteammates-function-numteammates-state-bot-src-mq3-game-bot-team-helpers-ml-1925305600"></a>
 ### numTeamMates
@@ -262,7 +262,7 @@ function numTeamMates(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L59)
 
 <a id="function-function-mq3-game-bot-team-helpers-oppositeteam-function-oppositeteam-state-bot-src-mq3-game-bot-team-helpers-ml-1058698984"></a>
 ### oppositeTeam
@@ -277,7 +277,7 @@ function oppositeTeam(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L274)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L274)
 
 <a id="function-function-mq3-game-bot-team-helpers-sameteam-function-sameteam-state-bot-entitynumber-src-mq3-game-bot-team-helpers-ml-1189746062"></a>
 ### sameTeam
@@ -293,7 +293,7 @@ function sameTeam(state, bot, entityNumber)
 | `entityNumber` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L275)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayteamorder-function-sayteamorder-state-bot-toclient-src-mq3-game-bot-team-helpers-ml-1510499058"></a>
 ### sayTeamOrder
@@ -309,7 +309,7 @@ function sayTeamOrder(state, bot, toClient)
 | `toClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L103)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayteamorderalways-function-sayteamorderalways-state-bot-toclient-src-mq3-game-bot-team-helpers-ml-54100570"></a>
 ### sayTeamOrderAlways
@@ -325,7 +325,7 @@ function sayTeamOrderAlways(state, bot, toClient)
 | `toClient` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L94)
 
 <a id="function-function-mq3-game-bot-team-helpers-sayvoiceteamorder-function-sayvoiceteamorder-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1062082752"></a>
 ### sayVoiceTeamOrder
@@ -342,7 +342,7 @@ function sayVoiceTeamOrder(state, bot, toClient, voicechat)
 | `voicechat` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L108)
 
 <a id="function-function-mq3-game-bot-team-helpers-setteammatetaskpreference-function-setteammatetaskpreference-state-bot-teammate-preference-src-mq3-game-bot-team-helpers-ml-2076476181"></a>
 ### setTeamMateTaskPreference
@@ -359,7 +359,7 @@ function setTeamMateTaskPreference(state, bot, teammate, preference)
 | `preference` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L71)
 
 <a id="function-function-mq3-game-bot-team-helpers-sortteammatesbytaskpreference-function-sortteammatesbytaskpreference-state-bot-teammates-src-mq3-game-bot-team-helpers-ml-1672642199"></a>
 ### sortTeamMatesByTaskPreference
@@ -375,7 +375,7 @@ function sortTeamMatesByTaskPreference(state, bot, teammates)
 | `teammates` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L83)
 
 - [mq3.game.bot_team_helpers.State](Type-mq3-game-bot-team-helpers-state-1367161120.md) — struct
 <a id="function-function-mq3-game-bot-team-helpers-team-function-team-state-bot-src-mq3-game-bot-team-helpers-ml-2065319044"></a>
@@ -391,7 +391,7 @@ function team(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L268)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L268)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-team-spectator-const-team-spectator-3-src-mq3-game-bot-team-helpers-ml-677109062"></a>
 ### TEAM_SPECTATOR
@@ -401,7 +401,7 @@ const TEAM_SPECTATOR = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L11)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-teamtp-attacker-const-teamtp-attacker-aiheaders-teamtp-attacker-src-mq3-game-bot-team-helpers-ml-1352634264"></a>
 ### TEAMTP_ATTACKER
@@ -411,7 +411,7 @@ const TEAMTP_ATTACKER = aiheaders.TEAMTP_ATTACKER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L12)
 
 <a id="constant-constant-mq3-game-bot-team-helpers-teamtp-defender-const-teamtp-defender-aiheaders-teamtp-defender-src-mq3-game-bot-team-helpers-ml-720124300"></a>
 ### TEAMTP_DEFENDER
@@ -421,7 +421,7 @@ const TEAMTP_DEFENDER = aiheaders.TEAMTP_DEFENDER
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L13)
 
 <a id="function-function-mq3-game-bot-team-helpers-validteamleader-function-validteamleader-state-bot-src-mq3-game-bot-team-helpers-ml-1826777152"></a>
 ### validTeamLeader
@@ -436,7 +436,7 @@ function validTeamLeader(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L51)
 
 <a id="function-function-mq3-game-bot-team-helpers-voicechat-function-voicechat-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1844613924"></a>
 ### voiceChat
@@ -455,7 +455,7 @@ These are intentional no-ops in the original baseq3 build; their bodies only con
 | `voicechat` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L106)
 
 <a id="function-function-mq3-game-bot-team-helpers-voicechatonly-function-voicechatonly-state-bot-toclient-voicechat-src-mq3-game-bot-team-helpers-ml-1992932868"></a>
 ### voiceChatOnly
@@ -472,4 +472,4 @@ function voiceChatOnly(state, bot, toClient, voicechat)
 | `voicechat` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_team_helpers.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_team_helpers.ml#L107)

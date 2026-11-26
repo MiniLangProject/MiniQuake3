@@ -10,7 +10,7 @@ struct RefExport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ A3D_RenderGeometry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-addadditivelighttoscene-addadditivelighttoscene-src-mq3-renderer-tr-public-ml-1090407284"></a>
 ### AddAdditiveLightToScene
@@ -32,7 +32,7 @@ AddAdditiveLightToScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-addlighttoscene-addlighttoscene-src-mq3-renderer-tr-public-ml-1257005160"></a>
 ### AddLightToScene
@@ -42,7 +42,7 @@ AddLightToScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-addpolytoscene-addpolytoscene-src-mq3-renderer-tr-public-ml-334133692"></a>
 ### AddPolyToScene
@@ -52,7 +52,7 @@ AddPolyToScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-addrefentitytoscene-addrefentitytoscene-src-mq3-renderer-tr-public-ml-1826824012"></a>
 ### AddRefEntityToScene
@@ -62,7 +62,7 @@ AddRefEntityToScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-beginframe-beginframe-src-mq3-renderer-tr-public-ml-1048004572"></a>
 ### BeginFrame
@@ -72,7 +72,7 @@ BeginFrame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-beginregistration-beginregistration-src-mq3-renderer-tr-public-ml-12683368"></a>
 ### BeginRegistration
@@ -82,7 +82,7 @@ BeginRegistration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-clearscene-clearscene-src-mq3-renderer-tr-public-ml-1864421058"></a>
 ### ClearScene
@@ -92,7 +92,7 @@ ClearScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-drawstretchpic-drawstretchpic-src-mq3-renderer-tr-public-ml-1667267606"></a>
 ### DrawStretchPic
@@ -102,7 +102,7 @@ DrawStretchPic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-drawstretchraw-drawstretchraw-src-mq3-renderer-tr-public-ml-350116122"></a>
 ### DrawStretchRaw
@@ -112,7 +112,7 @@ DrawStretchRaw
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-endframe-endframe-src-mq3-renderer-tr-public-ml-1197601084"></a>
 ### EndFrame
@@ -122,7 +122,7 @@ EndFrame
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-endregistration-endregistration-src-mq3-renderer-tr-public-ml-642909648"></a>
 ### EndRegistration
@@ -132,7 +132,7 @@ EndRegistration
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-getentitytoken-getentitytoken-src-mq3-renderer-tr-public-ml-1389917324"></a>
 ### GetEntityToken
@@ -142,7 +142,7 @@ GetEntityToken
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-inpvs-inpvs-src-mq3-renderer-tr-public-ml-530510580"></a>
 ### inPVS
@@ -152,7 +152,7 @@ inPVS
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-lerptag-lerptag-src-mq3-renderer-tr-public-ml-1701201304"></a>
 ### LerpTag
@@ -162,7 +162,7 @@ LerpTag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-lightforpoint-lightforpoint-src-mq3-renderer-tr-public-ml-190122856"></a>
 ### LightForPoint
@@ -172,7 +172,7 @@ LightForPoint
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-loadworld-loadworld-src-mq3-renderer-tr-public-ml-85019868"></a>
 ### LoadWorld
@@ -182,7 +182,7 @@ LoadWorld
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-markfragments-markfragments-src-mq3-renderer-tr-public-ml-577662620"></a>
 ### MarkFragments
@@ -192,7 +192,7 @@ MarkFragments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-modelbounds-modelbounds-src-mq3-renderer-tr-public-ml-1167235352"></a>
 ### ModelBounds
@@ -202,7 +202,7 @@ ModelBounds
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-registerfont-registerfont-src-mq3-renderer-tr-public-ml-683091036"></a>
 ### RegisterFont
@@ -212,7 +212,7 @@ RegisterFont
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-registermodel-registermodel-src-mq3-renderer-tr-public-ml-1232406268"></a>
 ### RegisterModel
@@ -222,7 +222,7 @@ RegisterModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-registershader-registershader-src-mq3-renderer-tr-public-ml-1191410312"></a>
 ### RegisterShader
@@ -232,7 +232,7 @@ RegisterShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-registershadernomip-registershadernomip-src-mq3-renderer-tr-public-ml-644496748"></a>
 ### RegisterShaderNoMip
@@ -242,7 +242,7 @@ RegisterShaderNoMip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-registerskin-registerskin-src-mq3-renderer-tr-public-ml-132738244"></a>
 ### RegisterSkin
@@ -252,7 +252,7 @@ RegisterSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-remapshader-remapshader-src-mq3-renderer-tr-public-ml-549332744"></a>
 ### RemapShader
@@ -262,7 +262,7 @@ RemapShader
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-renderscene-renderscene-src-mq3-renderer-tr-public-ml-1809040412"></a>
 ### RenderScene
@@ -272,7 +272,7 @@ RenderScene
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-setcolor-setcolor-src-mq3-renderer-tr-public-ml-1504404894"></a>
 ### SetColor
@@ -282,7 +282,7 @@ SetColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-setworldvisdata-setworldvisdata-src-mq3-renderer-tr-public-ml-74061756"></a>
 ### SetWorldVisData
@@ -292,7 +292,7 @@ SetWorldVisData
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-shutdown-shutdown-src-mq3-renderer-tr-public-ml-513138428"></a>
 ### Shutdown
@@ -302,7 +302,7 @@ Shutdown
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)
 
 <a id="field-field-mq3-renderer-tr-public-refexport-uploadcinematic-uploadcinematic-src-mq3-renderer-tr-public-ml-590974588"></a>
 ### UploadCinematic
@@ -312,4 +312,4 @@ UploadCinematic
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_public.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_public.ml#L7)

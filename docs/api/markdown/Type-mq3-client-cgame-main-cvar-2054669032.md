@@ -10,7 +10,7 @@ struct Cvar
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 ## Members
 
@@ -22,7 +22,7 @@ defaultValue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="field-field-mq3-client-cgame-main-cvar-flags-flags-src-mq3-client-cgame-main-ml-68742271"></a>
 ### flags
@@ -32,7 +32,7 @@ flags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="field-field-mq3-client-cgame-main-cvar-integer-integer-src-mq3-client-cgame-main-ml-2034650279"></a>
 ### integer
@@ -42,7 +42,7 @@ integer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="field-field-mq3-client-cgame-main-cvar-modificationcount-modificationcount-src-mq3-client-cgame-main-ml-810137771"></a>
 ### modificationCount
@@ -52,7 +52,7 @@ modificationCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="field-field-mq3-client-cgame-main-cvar-name-name-src-mq3-client-cgame-main-ml-1000237445"></a>
 ### name
@@ -62,7 +62,7 @@ name
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)
 
 <a id="field-field-mq3-client-cgame-main-cvar-value-value-src-mq3-client-cgame-main-ml-1423737131"></a>
 ### value
@@ -72,4 +72,4 @@ value
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_main.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_main.ml#L43)

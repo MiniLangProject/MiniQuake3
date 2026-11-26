@@ -21,7 +21,7 @@ const CA_CONNECTED = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L8)
 
 <a id="function-function-mq3-client-packet-event-create-function-create-connectionstate-src-mq3-client-packet-event-ml-1322778445"></a>
 ### create
@@ -35,7 +35,7 @@ function create(connectionState)
 | `connectionState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L18)
 
 <a id="function-function-mq3-client-packet-event-isoob-function-isoob-msg-src-mq3-client-packet-event-ml-694438301"></a>
 ### isOob
@@ -49,7 +49,7 @@ function isOob(msg)
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L26)
 
 <a id="function-function-mq3-client-packet-event-packetevent-function-packetevent-state-host-source-msg-src-mq3-client-packet-event-ml-909878735"></a>
 ### packetEvent
@@ -68,7 +68,7 @@ processFn(host,state,msg) owns CL_Netchan_Process. parseFn is normally bound to 
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L32)
 
 <a id="function-function-mq3-client-packet-event-services-function-services-connectionlesshost-src-mq3-client-packet-event-ml-1457457375"></a>
 ### services
@@ -82,7 +82,7 @@ function services(connectionlessHost)
 | `connectionlessHost` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/packet_event.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/packet_event.ml#L24)
 
 - [mq3.client.packet_event.Services](Type-mq3-client-packet-event-services-377319072.md) — struct
 - [mq3.client.packet_event.State](Type-mq3-client-packet-event-state-64967829.md) — struct

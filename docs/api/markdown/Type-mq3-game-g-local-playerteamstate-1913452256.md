@@ -12,7 +12,7 @@ struct PlayerTeamState
 Managed mirrors for the records which are independent from the much larger live Entity/Client/Level aggregates.  Opaque engine records are retained as ordinary values, just as the other MiniLang game facades do.
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 ## Members
 
@@ -24,7 +24,7 @@ assists
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-basedefense-basedefense-src-mq3-game-g-local-ml-1287385702"></a>
 ### basedefense
@@ -34,7 +34,7 @@ basedefense
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-captures-captures-src-mq3-game-g-local-ml-318016348"></a>
 ### captures
@@ -44,7 +44,7 @@ captures
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-carrierdefense-carrierdefense-src-mq3-game-g-local-ml-1333490574"></a>
 ### carrierdefense
@@ -54,7 +54,7 @@ carrierdefense
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-flagrecovery-flagrecovery-src-mq3-game-g-local-ml-1786906656"></a>
 ### flagrecovery
@@ -64,7 +64,7 @@ flagrecovery
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-flagsince-flagsince-src-mq3-game-g-local-ml-1518704498"></a>
 ### flagsince
@@ -74,7 +74,7 @@ flagsince
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-fragcarrier-fragcarrier-src-mq3-game-g-local-ml-452487426"></a>
 ### fragcarrier
@@ -84,7 +84,7 @@ fragcarrier
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-lastfraggedcarrier-lastfraggedcarrier-src-mq3-game-g-local-ml-764500158"></a>
 ### lastfraggedcarrier
@@ -94,7 +94,7 @@ lastfraggedcarrier
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-lasthurtcarrier-lasthurtcarrier-src-mq3-game-g-local-ml-1306006038"></a>
 ### lasthurtcarrier
@@ -104,7 +104,7 @@ lasthurtcarrier
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-lastreturnedflag-lastreturnedflag-src-mq3-game-g-local-ml-1371694068"></a>
 ### lastreturnedflag
@@ -114,7 +114,7 @@ lastreturnedflag
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-location-location-src-mq3-game-g-local-ml-651151388"></a>
 ### location
@@ -124,7 +124,7 @@ location
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)
 
 <a id="field-field-mq3-game-g-local-playerteamstate-state-state-src-mq3-game-g-local-ml-176458138"></a>
 ### state
@@ -134,4 +134,4 @@ state
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/g_local.ml#L60)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/g_local.ml#L60)

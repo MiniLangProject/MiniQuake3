@@ -10,7 +10,7 @@ struct Impact
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 ## Members
 
@@ -22,7 +22,7 @@ at
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-attacker-attacker-src-mq3-client-playable-enemy-projectiles-ml-1681046927"></a>
 ### attacker
@@ -32,7 +32,7 @@ attacker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-damage-damage-src-mq3-client-playable-enemy-projectiles-ml-1892729059"></a>
 ### damage
@@ -42,7 +42,7 @@ damage
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-kind-kind-src-mq3-client-playable-enemy-projectiles-ml-1651676069"></a>
 ### kind
@@ -52,7 +52,7 @@ kind
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-normal-normal-src-mq3-client-playable-enemy-projectiles-ml-487313611"></a>
 ### normal
@@ -62,7 +62,7 @@ normal
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-point-point-src-mq3-client-playable-enemy-projectiles-ml-604366105"></a>
 ### point
@@ -72,7 +72,7 @@ point
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-projectileid-projectileid-src-mq3-client-playable-enemy-projectiles-ml-944292709"></a>
 ### projectileId
@@ -82,7 +82,7 @@ projectileId
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)
 
 <a id="field-field-mq3-client-playable-enemy-projectiles-impact-side-side-src-mq3-client-playable-enemy-projectiles-ml-339624879"></a>
 ### side
@@ -92,4 +92,4 @@ side
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_enemy_projectiles.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_enemy_projectiles.ml#L18)

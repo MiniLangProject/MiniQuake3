@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ protocol
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L13)
 
 <a id="field-field-mq3-client-cl-parse-runtime-runtime-systemservices-systemservices-src-mq3-client-cl-parse-runtime-ml-412284291"></a>
 ### systemServices
@@ -32,7 +32,7 @@ systemServices
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L13)
 
 <a id="field-field-mq3-client-cl-parse-runtime-runtime-systemstate-systemstate-src-mq3-client-cl-parse-runtime-ml-1803577069"></a>
 ### systemState
@@ -42,4 +42,4 @@ systemState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cl_parse_runtime.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cl_parse_runtime.ml#L13)

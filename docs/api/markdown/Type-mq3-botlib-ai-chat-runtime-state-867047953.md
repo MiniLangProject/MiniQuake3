@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-console-console-src-mq3-botlib-ai-chat-runtime-ml-935274948"></a>
 ### console
@@ -32,7 +32,7 @@ console
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-context-context-src-mq3-botlib-ai-chat-runtime-ml-158051112"></a>
 ### context
@@ -42,7 +42,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-diagnostics-diagnostics-src-mq3-botlib-ai-chat-runtime-ml-126772880"></a>
 ### diagnostics
@@ -52,7 +52,7 @@ diagnostics
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-matches-matches-src-mq3-botlib-ai-chat-runtime-ml-1609184676"></a>
 ### matches
@@ -62,7 +62,7 @@ matches
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-output-output-src-mq3-botlib-ai-chat-runtime-ml-494184322"></a>
 ### output
@@ -72,7 +72,7 @@ output
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-pools-pools-src-mq3-botlib-ai-chat-runtime-ml-1135090816"></a>
 ### pools
@@ -82,7 +82,7 @@ pools
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-profiles-profiles-src-mq3-botlib-ai-chat-runtime-ml-2009551452"></a>
 ### profiles
@@ -92,7 +92,7 @@ profiles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-randomfn-randomfn-src-mq3-botlib-ai-chat-runtime-ml-1569616722"></a>
 ### randomFn
@@ -102,7 +102,7 @@ randomFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-readfn-readfn-src-mq3-botlib-ai-chat-runtime-ml-395003120"></a>
 ### readFn
@@ -112,7 +112,7 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-setup-setup-src-mq3-botlib-ai-chat-runtime-ml-1969484092"></a>
 ### setup
@@ -122,7 +122,7 @@ setup
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-strings-strings-src-mq3-botlib-ai-chat-runtime-ml-1264730512"></a>
 ### strings
@@ -132,7 +132,7 @@ strings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)
 
 <a id="field-field-mq3-botlib-ai-chat-runtime-state-timefn-timefn-src-mq3-botlib-ai-chat-runtime-ml-459916910"></a>
 ### timeFn
@@ -142,4 +142,4 @@ timeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_runtime.ml#L20)

@@ -10,7 +10,7 @@ struct Entity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 ## Members
 
@@ -22,7 +22,7 @@ dead
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-entity-invisible-invisible-src-mq3-game-bot-chat-ml-1335510044"></a>
 ### invisible
@@ -32,7 +32,7 @@ invisible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-entity-number-number-src-mq3-game-bot-chat-ml-1997594982"></a>
 ### number
@@ -42,7 +42,7 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-entity-shooting-shooting-src-mq3-game-bot-chat-ml-429146262"></a>
 ### shooting
@@ -52,7 +52,7 @@ shooting
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-entity-valid-valid-src-mq3-game-bot-chat-ml-471242700"></a>
 ### valid
@@ -62,7 +62,7 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)
 
 <a id="field-field-mq3-game-bot-chat-entity-visible-visible-src-mq3-game-bot-chat-ml-861106172"></a>
 ### visible
@@ -72,4 +72,4 @@ visible
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_chat.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_chat.ml#L62)

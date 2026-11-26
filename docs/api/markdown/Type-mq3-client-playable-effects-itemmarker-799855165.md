@@ -10,7 +10,7 @@ struct ItemMarker
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L21)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L21)
 
 <a id="field-field-mq3-client-playable-effects-itemmarker-classname-classname-src-mq3-client-playable-effects-ml-802239334"></a>
 ### classname
@@ -32,7 +32,7 @@ classname
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L21)
 
 <a id="field-field-mq3-client-playable-effects-itemmarker-origin-origin-src-mq3-client-playable-effects-ml-1815826510"></a>
 ### origin
@@ -42,4 +42,4 @@ origin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_effects.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_effects.ml#L21)

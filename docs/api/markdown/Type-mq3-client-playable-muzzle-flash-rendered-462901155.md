@@ -10,7 +10,7 @@ struct Rendered
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L12)
 
 ## Members
 
@@ -22,7 +22,7 @@ blue
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L12)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-green-green-src-mq3-client-playable-muzzle-flash-ml-300824544"></a>
 ### green
@@ -32,7 +32,7 @@ green
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L12)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-red-red-src-mq3-client-playable-muzzle-flash-ml-1030084300"></a>
 ### red
@@ -42,7 +42,7 @@ red
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L12)
 
 <a id="field-field-mq3-client-playable-muzzle-flash-rendered-triangles-triangles-src-mq3-client-playable-muzzle-flash-ml-795858232"></a>
 ### triangles
@@ -52,4 +52,4 @@ triangles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_muzzle_flash.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_muzzle_flash.ml#L12)

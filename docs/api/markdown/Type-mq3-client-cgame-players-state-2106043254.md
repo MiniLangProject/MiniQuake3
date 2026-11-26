@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 ## Members
 
@@ -22,7 +22,7 @@ actions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-animspeed-animspeed-src-mq3-client-cgame-players-ml-1174480226"></a>
 ### animSpeed
@@ -32,7 +32,7 @@ animSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-clients-clients-src-mq3-client-cgame-players-ml-1793414022"></a>
 ### clients
@@ -42,7 +42,7 @@ clients
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-drawfriend-drawfriend-src-mq3-client-cgame-players-ml-1311279850"></a>
 ### drawFriend
@@ -52,7 +52,7 @@ drawFriend
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-enablebreath-enablebreath-src-mq3-client-cgame-players-ml-211855932"></a>
 ### enableBreath
@@ -62,7 +62,7 @@ enableBreath
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-enabledust-enabledust-src-mq3-client-cgame-players-ml-1388679728"></a>
 ### enableDust
@@ -72,7 +72,7 @@ enableDust
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-files-files-src-mq3-client-cgame-players-ml-24097406"></a>
 ### files
@@ -82,7 +82,7 @@ files
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-frametime-frametime-src-mq3-client-cgame-players-ml-1816518282"></a>
 ### frameTime
@@ -92,7 +92,7 @@ frameTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-gametype-gametype-src-mq3-client-cgame-players-ml-1351917954"></a>
 ### gametype
@@ -102,7 +102,7 @@ gametype
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-localclientnum-localclientnum-src-mq3-client-cgame-players-ml-1461133770"></a>
 ### localClientNum
@@ -112,7 +112,7 @@ localClientNum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-noplayeranims-noplayeranims-src-mq3-client-cgame-players-ml-1527844990"></a>
 ### noPlayerAnims
@@ -122,7 +122,7 @@ noPlayerAnims
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-renderingthirdperson-renderingthirdperson-src-mq3-client-cgame-players-ml-531074566"></a>
 ### renderingThirdPerson
@@ -132,7 +132,7 @@ renderingThirdPerson
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-shadows-shadows-src-mq3-client-cgame-players-ml-1424013270"></a>
 ### shadows
@@ -142,7 +142,7 @@ shadows
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-swingspeed-swingspeed-src-mq3-client-cgame-players-ml-62427784"></a>
 ### swingSpeed
@@ -152,7 +152,7 @@ swingSpeed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)
 
 <a id="field-field-mq3-client-cgame-players-state-time-time-src-mq3-client-cgame-players-ml-1105499184"></a>
 ### time
@@ -162,4 +162,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/cgame_players.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/cgame_players.ml#L64)

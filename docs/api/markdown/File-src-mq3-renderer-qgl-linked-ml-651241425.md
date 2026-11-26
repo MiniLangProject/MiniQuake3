@@ -16,7 +16,7 @@ function aliases()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl_linked.ml#L6)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L6)
 
 <a id="function-function-mq3-renderer-qgl-linked-contains-function-contains-name-src-mq3-renderer-qgl-linked-ml-785105001"></a>
 ### contains
@@ -30,7 +30,7 @@ function contains(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl_linked.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L9)
 
 <a id="function-function-mq3-renderer-qgl-linked-glname-function-glname-name-src-mq3-renderer-qgl-linked-ml-1696570521"></a>
 ### glName
@@ -44,7 +44,7 @@ function glName(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl_linked.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L8)
 
 <a id="function-function-mq3-renderer-qgl-linked-qglnames-function-qglnames-src-mq3-renderer-qgl-linked-ml-1498378886"></a>
 ### qglNames
@@ -54,4 +54,4 @@ function qglNames()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/qgl_linked.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/qgl_linked.ml#L7)

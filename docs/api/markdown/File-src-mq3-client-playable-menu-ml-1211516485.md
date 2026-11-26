@@ -28,7 +28,7 @@ function action(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L32)
 
 <a id="constant-constant-mq3-client-playable-menu-action-cinematics-const-action-cinematics-cinematics-src-mq3-client-playable-menu-ml-787634643"></a>
 ### ACTION_CINEMATICS
@@ -38,7 +38,7 @@ const ACTION_CINEMATICS = "cinematics"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L27)
 
 <a id="constant-constant-mq3-client-playable-menu-action-demos-const-action-demos-demos-src-mq3-client-playable-menu-ml-1390165263"></a>
 ### ACTION_DEMOS
@@ -48,7 +48,7 @@ const ACTION_DEMOS = "demos"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L26)
 
 <a id="constant-constant-mq3-client-playable-menu-action-exit-const-action-exit-exit-src-mq3-client-playable-menu-ml-1335161457"></a>
 ### ACTION_EXIT
@@ -58,7 +58,7 @@ const ACTION_EXIT = "exit"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L29)
 
 <a id="constant-constant-mq3-client-playable-menu-action-mods-const-action-mods-mods-src-mq3-client-playable-menu-ml-278492086"></a>
 ### ACTION_MODS
@@ -68,7 +68,7 @@ const ACTION_MODS = "mods"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L28)
 
 <a id="constant-constant-mq3-client-playable-menu-action-multiplayer-const-action-multiplayer-multiplayer-src-mq3-client-playable-menu-ml-100601951"></a>
 ### ACTION_MULTIPLAYER
@@ -78,7 +78,7 @@ const ACTION_MULTIPLAYER = "multiplayer"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L24)
 
 <a id="constant-constant-mq3-client-playable-menu-action-none-const-action-none-src-mq3-client-playable-menu-ml-1480892577"></a>
 ### ACTION_NONE
@@ -88,7 +88,7 @@ const ACTION_NONE = ""
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L22)
 
 <a id="constant-constant-mq3-client-playable-menu-action-setup-const-action-setup-setup-src-mq3-client-playable-menu-ml-2005480694"></a>
 ### ACTION_SETUP
@@ -98,7 +98,7 @@ const ACTION_SETUP = "setup"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L25)
 
 <a id="constant-constant-mq3-client-playable-menu-action-single-player-const-action-single-player-single-player-src-mq3-client-playable-menu-ml-710829287"></a>
 ### ACTION_SINGLE_PLAYER
@@ -108,28 +108,28 @@ const ACTION_SINGLE_PLAYER = "single_player"
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L23)
 
 - [mq3.client.playable_menu.Asset](Type-mq3-client-playable-menu-asset-1847687973.md) — struct
-<a id="constant-constant-mq3-client-playable-menu-banner-gap-width-const-banner-gap-width-4-src-mq3-client-playable-menu-ml-547943153"></a>
+<a id="constant-constant-mq3-client-playable-menu-banner-gap-width-const-banner-gap-width-4-src-mq3-client-playable-menu-ml-1954981853"></a>
 ### BANNER_GAP_WIDTH
 
 ```ml
-const BANNER_GAP_WIDTH = 4.
+const BANNER_GAP_WIDTH = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L16)
 
-<a id="constant-constant-mq3-client-playable-menu-banner-height-const-banner-height-36-src-mq3-client-playable-menu-ml-2062733386"></a>
+<a id="constant-constant-mq3-client-playable-menu-banner-height-const-banner-height-36-src-mq3-client-playable-menu-ml-170641064"></a>
 ### BANNER_HEIGHT
 
 ```ml
-const BANNER_HEIGHT = 36.
+const BANNER_HEIGHT = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L15)
 
 <a id="function-function-mq3-client-playable-menu-bannerglyph-function-bannerglyph-character-src-mq3-client-playable-menu-ml-578451945"></a>
 ### bannerGlyph
@@ -143,7 +143,7 @@ function bannerGlyph(character)
 | `character` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L87)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L87)
 
 <a id="function-function-mq3-client-playable-menu-bannerwidth-function-bannerwidth-text-scale-src-mq3-client-playable-menu-ml-1400172085"></a>
 ### bannerWidth
@@ -158,7 +158,7 @@ function bannerWidth(text, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L98)
 
 - [mq3.client.playable_menu.Catalog](Type-mq3-client-playable-menu-catalog-1866962430.md) — struct
 <a id="function-function-mq3-client-playable-menu-descriptor-function-descriptor-key-name-src-mq3-client-playable-menu-ml-64183908"></a>
@@ -174,7 +174,7 @@ function descriptor(key, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L53)
 
 <a id="function-function-mq3-client-playable-menu-descriptors-function-descriptors-src-mq3-client-playable-menu-ml-1548885114"></a>
 ### descriptors
@@ -184,7 +184,7 @@ function descriptors()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L54)
 
 <a id="function-function-mq3-client-playable-menu-draw-function-draw-width-height-src-mq3-client-playable-menu-ml-1253583109"></a>
 ### draw
@@ -199,7 +199,7 @@ function draw(width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L171)
 
 <a id="function-function-mq3-client-playable-menu-drawbanner-function-drawbanner-asset-text-centerx-y-scale-scalex-scaley-src-mq3-client-playable-menu-ml-1715345480"></a>
 ### drawBanner
@@ -219,7 +219,7 @@ function drawBanner(asset, text, centerX, y, scale, scaleX, scaleY)
 | `scaleY` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L115)
 
 <a id="function-function-mq3-client-playable-menu-drawprop-function-drawprop-asset-text-centerx-y-scale-scalex-scaley-red-green-blue-src-mq3-client-playable-menu-ml-790729098"></a>
 ### drawProp
@@ -242,7 +242,7 @@ function drawProp(asset, text, centerX, y, scale, scaleX, scaleY, red, green, bl
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L107)
 
 <a id="function-function-mq3-client-playable-menu-drawquad-function-drawquad-slot-x-y-width-height-u0-v0-u1-v1-red-green-blue-src-mq3-client-playable-menu-ml-814589228"></a>
 ### drawQuad
@@ -267,7 +267,7 @@ function drawQuad(slot, x, y, width, height, u0, v0, u1, v1, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L103)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L103)
 
 <a id="function-function-mq3-client-playable-menu-drawretail-function-drawretail-catalog-width-height-now-src-mq3-client-playable-menu-ml-753609362"></a>
 ### drawRetail
@@ -284,7 +284,7 @@ function drawRetail(catalog, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L140)
 
 <a id="function-function-mq3-client-playable-menu-drawretailstate-function-drawretailstate-catalog-value-width-height-now-src-mq3-client-playable-menu-ml-1141493269"></a>
 ### drawRetailState
@@ -302,7 +302,7 @@ function drawRetailState(catalog, value, width, height, now)
 | `now` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L125)
 
 <a id="function-function-mq3-client-playable-menu-drawtext-function-drawtext-text-x-y-scale-red-green-blue-src-mq3-client-playable-menu-ml-2111565008"></a>
 ### drawText
@@ -322,7 +322,7 @@ function drawText(text, x, y, scale, red, green, blue)
 | `blue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L166)
 
 <a id="function-function-mq3-client-playable-menu-entryy-function-entryy-index-src-mq3-client-playable-menu-ml-750657792"></a>
 ### entryY
@@ -336,7 +336,7 @@ function entryY(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L124)
 
 <a id="function-function-mq3-client-playable-menu-fail-function-fail-message-src-mq3-client-playable-menu-ml-1431429473"></a>
 ### fail
@@ -350,7 +350,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L52)
 
 <a id="function-function-mq3-client-playable-menu-find-function-find-catalog-key-src-mq3-client-playable-menu-ml-2011752040"></a>
 ### find
@@ -365,7 +365,7 @@ function find(catalog, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L67)
 
 <a id="function-function-mq3-client-playable-menu-glyph-function-glyph-character-src-mq3-client-playable-menu-ml-201706149"></a>
 ### glyph
@@ -381,7 +381,7 @@ Dependency-free bitmap fallback for runs without the retail PK3.
 | `character` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L143)
 
 <a id="function-function-mq3-client-playable-menu-load-function-load-archive-firsttextureslot-maxtextureslots-src-mq3-client-playable-menu-ml-385709619"></a>
 ### load
@@ -397,7 +397,7 @@ function load(archive, firstTextureSlot, maxTextureSlots)
 | `maxTextureSlots` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L55)
 
 <a id="function-function-mq3-client-playable-menu-menuentries-function-menuentries-src-mq3-client-playable-menu-ml-961688792"></a>
 ### menuEntries
@@ -407,7 +407,7 @@ function menuEntries()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L123)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L123)
 
 <a id="function-function-mq3-client-playable-menu-point-function-point-x-y-src-mq3-client-playable-menu-ml-914531183"></a>
 ### point
@@ -422,28 +422,28 @@ function point(x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L102)
 
 - [mq3.client.playable_menu.Point](Type-mq3-client-playable-menu-point-1076532699.md) — struct
-<a id="constant-constant-mq3-client-playable-menu-prop-gap-width-const-prop-gap-width-3-src-mq3-client-playable-menu-ml-153713144"></a>
+<a id="constant-constant-mq3-client-playable-menu-prop-gap-width-const-prop-gap-width-3-src-mq3-client-playable-menu-ml-479879238"></a>
 ### PROP_GAP_WIDTH
 
 ```ml
-const PROP_GAP_WIDTH = 3.
+const PROP_GAP_WIDTH = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L14)
 
-<a id="constant-constant-mq3-client-playable-menu-prop-height-const-prop-height-27-src-mq3-client-playable-menu-ml-1648620784"></a>
+<a id="constant-constant-mq3-client-playable-menu-prop-height-const-prop-height-27-src-mq3-client-playable-menu-ml-2055187678"></a>
 ### PROP_HEIGHT
 
 ```ml
-const PROP_HEIGHT = 27.
+const PROP_HEIGHT = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L13)
 
 <a id="function-function-mq3-client-playable-menu-propglyph-function-propglyph-character-src-mq3-client-playable-menu-ml-870897763"></a>
 ### propGlyph
@@ -459,7 +459,7 @@ Exact atlas coordinates from q3_ui/ui_atoms.c for the uppercase alphabet.
 | `character` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L80)
 
 <a id="function-function-mq3-client-playable-menu-release-function-release-catalog-src-mq3-client-playable-menu-ml-2028066343"></a>
 ### release
@@ -473,7 +473,7 @@ function release(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L77)
 
 <a id="constant-constant-mq3-client-playable-menu-required-textures-const-required-textures-4-src-mq3-client-playable-menu-ml-93414391"></a>
 ### REQUIRED_TEXTURES
@@ -483,7 +483,7 @@ const REQUIRED_TEXTURES = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L10)
 
 <a id="function-function-mq3-client-playable-menu-state-function-state-src-mq3-client-playable-menu-ml-587427068"></a>
 ### state
@@ -493,7 +493,7 @@ function state()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L31)
 
 - [mq3.client.playable_menu.State](Type-mq3-client-playable-menu-state-1700260740.md) — struct
 <a id="function-function-mq3-client-playable-menu-step-function-step-value-updown-downdown-enterdown-src-mq3-client-playable-menu-ml-1850430116"></a>
@@ -511,7 +511,7 @@ function step(value, upDown, downDown, enterDown)
 | `enterDown` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L42)
 
 <a id="function-function-mq3-client-playable-menu-textwidth-function-textwidth-text-scale-src-mq3-client-playable-menu-ml-704985287"></a>
 ### textWidth
@@ -526,7 +526,7 @@ function textWidth(text, scale)
 | `scale` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L94)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L94)
 
 <a id="function-function-mq3-client-playable-menu-upload-function-upload-catalog-src-mq3-client-playable-menu-ml-223408997"></a>
 ### upload
@@ -540,24 +540,24 @@ function upload(catalog)
 | `catalog` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L72)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L72)
 
-<a id="constant-constant-mq3-client-playable-menu-virtual-height-const-virtual-height-480-src-mq3-client-playable-menu-ml-437082411"></a>
+<a id="constant-constant-mq3-client-playable-menu-virtual-height-const-virtual-height-480-src-mq3-client-playable-menu-ml-1168059983"></a>
 ### VIRTUAL_HEIGHT
 
 ```ml
-const VIRTUAL_HEIGHT = 480.
+const VIRTUAL_HEIGHT = 480
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L12)
 
-<a id="constant-constant-mq3-client-playable-menu-virtual-width-const-virtual-width-640-src-mq3-client-playable-menu-ml-213320965"></a>
+<a id="constant-constant-mq3-client-playable-menu-virtual-width-const-virtual-width-640-src-mq3-client-playable-menu-ml-1982404257"></a>
 ### VIRTUAL_WIDTH
 
 ```ml
-const VIRTUAL_WIDTH = 640.
+const VIRTUAL_WIDTH = 640
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L11)

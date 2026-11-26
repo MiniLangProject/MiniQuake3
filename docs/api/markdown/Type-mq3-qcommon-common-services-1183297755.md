@@ -10,7 +10,7 @@ struct Services
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 ## Members
 
@@ -22,7 +22,7 @@ appendFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-clockfn-clockfn-src-mq3-qcommon-common-ml-929682087"></a>
 ### clockFn
@@ -32,7 +32,7 @@ clockFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-consoleeventfn-consoleeventfn-src-mq3-qcommon-common-ml-255863761"></a>
 ### consoleEventFn
@@ -42,7 +42,7 @@ consoleEventFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-context-context-src-mq3-qcommon-common-ml-2062114407"></a>
 ### context
@@ -52,7 +52,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-errorfn-errorfn-src-mq3-qcommon-common-ml-813973295"></a>
 ### errorFn
@@ -62,7 +62,7 @@ errorFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-initfn-initfn-src-mq3-qcommon-common-ml-957937519"></a>
 ### initFn
@@ -72,7 +72,7 @@ initFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-packeteventfn-packeteventfn-src-mq3-qcommon-common-ml-1725090887"></a>
 ### packetEventFn
@@ -82,7 +82,7 @@ packetEventFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-printfn-printfn-src-mq3-qcommon-common-ml-1847229903"></a>
 ### printFn
@@ -92,7 +92,7 @@ printFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-quitfn-quitfn-src-mq3-qcommon-common-ml-672610453"></a>
 ### quitFn
@@ -102,7 +102,7 @@ quitFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-readfn-readfn-src-mq3-qcommon-common-ml-252457831"></a>
 ### readFn
@@ -112,7 +112,7 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-realeventfn-realeventfn-src-mq3-qcommon-common-ml-1134466675"></a>
 ### realEventFn
@@ -122,7 +122,7 @@ realEventFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-realtimefn-realtimefn-src-mq3-qcommon-common-ml-136967613"></a>
 ### realTimeFn
@@ -132,7 +132,7 @@ realTimeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-shutdownclientfn-shutdownclientfn-src-mq3-qcommon-common-ml-408151205"></a>
 ### shutdownClientFn
@@ -142,7 +142,7 @@ shutdownClientFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-shutdownfn-shutdownfn-src-mq3-qcommon-common-ml-1718122139"></a>
 ### shutdownFn
@@ -152,7 +152,7 @@ shutdownFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-shutdownfsfn-shutdownfsfn-src-mq3-qcommon-common-ml-239480241"></a>
 ### shutdownFsFn
@@ -162,7 +162,7 @@ shutdownFsFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-shutdownserverfn-shutdownserverfn-src-mq3-qcommon-common-ml-1781835309"></a>
 ### shutdownServerFn
@@ -172,7 +172,7 @@ shutdownServerFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-validatekeyfn-validatekeyfn-src-mq3-qcommon-common-ml-268443691"></a>
 ### validateKeyFn
@@ -182,7 +182,7 @@ validateKeyFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)
 
 <a id="field-field-mq3-qcommon-common-services-writefn-writefn-src-mq3-qcommon-common-ml-1165357131"></a>
 ### writeFn
@@ -192,4 +192,4 @@ writeFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/common.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/common.ml#L31)

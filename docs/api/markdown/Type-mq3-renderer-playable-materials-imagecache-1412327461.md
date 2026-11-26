@@ -10,7 +10,7 @@ struct ImageCache
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 ## Members
 
@@ -22,7 +22,7 @@ archive
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-count-count-src-mq3-renderer-playable-materials-ml-2067388346"></a>
 ### count
@@ -32,7 +32,7 @@ count
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-hits-hits-src-mq3-renderer-playable-materials-ml-1476533822"></a>
 ### hits
@@ -42,7 +42,7 @@ hits
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-images-images-src-mq3-renderer-playable-materials-ml-1337223138"></a>
 ### images
@@ -52,7 +52,7 @@ images
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)
 
 <a id="field-field-mq3-renderer-playable-materials-imagecache-misses-misses-src-mq3-renderer-playable-materials-ml-2000662454"></a>
 ### misses
@@ -62,4 +62,4 @@ misses
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L43)

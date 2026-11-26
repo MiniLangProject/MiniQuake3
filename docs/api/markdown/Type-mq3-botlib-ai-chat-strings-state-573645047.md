@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ context
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-filereads-filereads-src-mq3-botlib-ai-chat-strings-ml-1278716704"></a>
 ### fileReads
@@ -32,7 +32,7 @@ fileReads
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-groups-groups-src-mq3-botlib-ai-chat-strings-ml-199124860"></a>
 ### groups
@@ -42,7 +42,7 @@ groups
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-loaded-loaded-src-mq3-botlib-ai-chat-strings-ml-527167206"></a>
 ### loaded
@@ -52,7 +52,7 @@ loaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)
 
 <a id="field-field-mq3-botlib-ai-chat-strings-state-readfn-readfn-src-mq3-botlib-ai-chat-strings-ml-788054972"></a>
 ### readFn
@@ -62,4 +62,4 @@ readFn
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_chat_strings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_chat_strings.ml#L16)

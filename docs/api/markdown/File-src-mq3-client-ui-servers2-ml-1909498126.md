@@ -32,7 +32,7 @@ function action(actions, boundary, kind, name, text, number, retailActive)
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L65)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L65)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserverscache-function-arenaserverscache-state-retailactive-src-mq3-client-ui-servers2-ml-1780968180"></a>
 ### arenaServersCache
@@ -49,7 +49,7 @@ ArenaServers_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L518)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L518)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserverscompare-function-arenaserverscompare-left-right-sortkey-src-mq3-client-ui-servers2-ml-1546032782"></a>
 ### arenaServersCompare
@@ -67,7 +67,7 @@ ArenaServers_Compare
 | `sortKey` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L129)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversdorefresh-function-arenaserversdorefresh-state-realtime-servercount-pingqueuecount-pingresults-serveraddresses-maxping-retailactive-src-mq3-client-ui-servers2-ml-562878418"></a>
 ### arenaServersDoRefresh
@@ -90,7 +90,7 @@ ArenaServers_DoRefresh
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L361)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L361)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversevent-function-arenaserversevent-state-id-eventcode-value-realtime-protocol-debugprotocol-maxping-retailactive-src-mq3-client-ui-servers2-ml-2129695591"></a>
 ### arenaServersEvent
@@ -114,7 +114,7 @@ ArenaServers_Event
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L465)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L465)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversgo-function-arenaserversgo-state-retailactive-src-mq3-client-ui-servers2-ml-1098927586"></a>
 ### arenaServersGo
@@ -131,7 +131,7 @@ ArenaServers_Go
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L184)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversinsert-function-arenaserversinsert-state-address-infotext-pingtime-maxping-src-mq3-client-ui-servers2-ml-2129096813"></a>
 ### arenaServersInsert
@@ -151,7 +151,7 @@ ArenaServers_Insert
 | `maxPing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L295)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L295)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversinsertfavorites-function-arenaserversinsertfavorites-state-maxping-src-mq3-client-ui-servers2-ml-314415375"></a>
 ### arenaServersInsertFavorites
@@ -168,7 +168,7 @@ ArenaServers_InsertFavorites
 | `maxPing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L311)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L311)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversloadfavorites-function-arenaserversloadfavorites-state-cvaraddresses-maxping-src-mq3-client-ui-servers2-ml-1129361413"></a>
 ### arenaServersLoadFavorites
@@ -186,7 +186,7 @@ ArenaServers_LoadFavorites
 | `maxPing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L321)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L321)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversmaxping-function-arenaserversmaxping-cvarvalue-src-mq3-client-ui-servers2-ml-1908645985"></a>
 ### arenaServersMaxPing
@@ -202,7 +202,7 @@ ArenaServers_MaxPing
 | `cvarValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L122)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L122)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversmenudraw-function-arenaserversmenudraw-state-realtime-servercount-pingqueuecount-pingresults-serveraddresses-maxping-retailactive-src-mq3-client-ui-servers2-ml-184790148"></a>
 ### arenaServersMenuDraw
@@ -225,7 +225,7 @@ ArenaServers_MenuDraw
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L487)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L487)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversmenuinit-function-arenaserversmenuinit-browsermaster-browsergametype-browsersortkey-browsershowfull-browsershowempty-punkbuster-cvarfavorites-maxping-realtime-protocol-debugprotocol-retailactive-src-mq3-client-ui-servers2-ml-1941462676"></a>
 ### arenaServersMenuInit
@@ -252,7 +252,7 @@ ArenaServers_MenuInit
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L525)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L525)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversmenukey-function-arenaserversmenukey-state-key-listfocused-maxping-retailactive-src-mq3-client-ui-servers2-ml-1380261304"></a>
 ### arenaServersMenuKey
@@ -272,7 +272,7 @@ ArenaServers_MenuKey
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L493)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L493)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversremove-function-arenaserversremove-state-src-mq3-client-ui-servers2-ml-1689987657"></a>
 ### arenaServersRemove
@@ -288,7 +288,7 @@ ArenaServers_Remove
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L277)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L277)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserverssavechanges-function-arenaserverssavechanges-state-retailactive-src-mq3-client-ui-servers2-ml-1952029456"></a>
 ### arenaServersSaveChanges
@@ -305,7 +305,7 @@ ArenaServers_SaveChanges
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L427)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L427)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserverssettype-function-arenaserverssettype-state-type-realtime-protocol-debugprotocol-retailactive-src-mq3-client-ui-servers2-ml-844030102"></a>
 ### arenaServersSetType
@@ -326,7 +326,7 @@ ArenaServers_SetType
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L442)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L442)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserverssort-function-arenaserverssort-state-type-src-mq3-client-ui-servers2-ml-666948781"></a>
 ### arenaServersSort
@@ -343,7 +343,7 @@ ArenaServers_Sort
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L436)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L436)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversstartrefresh-function-arenaserversstartrefresh-state-realtime-protocol-debugprotocol-retailactive-src-mq3-client-ui-servers2-ml-2058615060"></a>
 ### arenaServersStartRefresh
@@ -363,7 +363,7 @@ ArenaServers_StartRefresh
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L412)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L412)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversstoprefresh-function-arenaserversstoprefresh-state-maxping-src-mq3-client-ui-servers2-ml-1642583153"></a>
 ### arenaServersStopRefresh
@@ -380,7 +380,7 @@ ArenaServers_StopRefresh
 | `maxPing` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L346)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L346)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversupdatemenu-function-arenaserversupdatemenu-state-src-mq3-client-ui-servers2-ml-700036437"></a>
 ### arenaServersUpdateMenu
@@ -396,7 +396,7 @@ ArenaServers_UpdateMenu
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L242)
 
 <a id="function-function-mq3-client-ui-servers2-arenaserversupdatepicture-function-arenaserversupdatepicture-state-src-mq3-client-ui-servers2-ml-668921621"></a>
 ### arenaServersUpdatePicture
@@ -412,7 +412,7 @@ ArenaServers_UpdatePicture
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L192)
 
 <a id="constant-constant-mq3-client-ui-servers2-as-favorites-const-as-favorites-3-src-mq3-client-ui-servers2-ml-381457278"></a>
 ### AS_FAVORITES
@@ -422,7 +422,7 @@ const AS_FAVORITES = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L36)
 
 <a id="constant-constant-mq3-client-ui-servers2-as-global-const-as-global-2-src-mq3-client-ui-servers2-ml-1499733903"></a>
 ### AS_GLOBAL
@@ -432,7 +432,7 @@ const AS_GLOBAL = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L35)
 
 <a id="constant-constant-mq3-client-ui-servers2-as-local-const-as-local-0-src-mq3-client-ui-servers2-ml-703530515"></a>
 ### AS_LOCAL
@@ -442,7 +442,7 @@ const AS_LOCAL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L33)
 
 <a id="constant-constant-mq3-client-ui-servers2-as-mplayer-const-as-mplayer-1-src-mq3-client-ui-servers2-ml-226340306"></a>
 ### AS_MPLAYER
@@ -452,7 +452,7 @@ const AS_MPLAYER = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L34)
 
 <a id="extern_function-extern-function-mq3-client-ui-servers2-atoi-extern-function-atoi-text-as-cstr-from-ucrtbase-dll-returns-i32-src-mq3-client-ui-servers2-ml-900965594"></a>
 ### atoi
@@ -466,7 +466,7 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 | `text` | `cstr` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L9)
 
 <a id="function-function-mq3-client-ui-servers2-browserchoices-function-browserchoices-src-mq3-client-ui-servers2-ml-1993232450"></a>
 ### browserChoices
@@ -476,7 +476,7 @@ function browserChoices()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L508)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L508)
 
 <a id="function-function-mq3-client-ui-servers2-browseritems-function-browseritems-src-mq3-client-ui-servers2-ml-101462"></a>
 ### browserItems
@@ -486,7 +486,7 @@ function browserItems()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L500)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L500)
 
 <a id="function-function-mq3-client-ui-servers2-browserstate-function-browserstate-src-mq3-client-ui-servers2-ml-1957098726"></a>
 ### browserState
@@ -496,7 +496,7 @@ function browserState()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L77)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L77)
 
 - [mq3.client.ui_servers2.BrowserState](Type-mq3-client-ui-servers2-browserstate-60939545.md) — struct
 - [mq3.client.ui_servers2.ChoiceList](Type-mq3-client-ui-servers2-choicelist-1744423775.md) — struct
@@ -512,7 +512,7 @@ function chooseActive(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L175)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L175)
 
 <a id="function-function-mq3-client-ui-servers2-clamp-function-clamp-value-low-high-src-mq3-client-ui-servers2-ml-504142455"></a>
 ### clamp
@@ -528,7 +528,7 @@ function clamp(value, low, high)
 | `high` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L85)
 
 <a id="function-function-mq3-client-ui-servers2-cleantext-function-cleantext-text-src-mq3-client-ui-servers2-ml-1406148779"></a>
 ### cleanText
@@ -542,7 +542,7 @@ function cleanText(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L98)
 
 <a id="function-function-mq3-client-ui-servers2-emptynode-function-emptynode-address-pingtime-src-mq3-client-ui-servers2-ml-221421739"></a>
 ### emptyNode
@@ -557,7 +557,7 @@ function emptyNode(address, pingTime)
 | `pingTime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L73)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L73)
 
 <a id="function-function-mq3-client-ui-servers2-findrequest-function-findrequest-state-address-src-mq3-client-ui-servers2-ml-1956715339"></a>
 ### findRequest
@@ -572,7 +572,7 @@ function findRequest(state, address)
 | `address` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L355)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L355)
 
 <a id="function-function-mq3-client-ui-servers2-formatrow-function-formatrow-server-src-mq3-client-ui-servers2-ml-1269978145"></a>
 ### formatRow
@@ -586,7 +586,7 @@ function formatRow(server)
 | `server` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L236)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L236)
 
 <a id="function-function-mq3-client-ui-servers2-gamematches-function-gamematches-filter-gametype-src-mq3-client-ui-servers2-ml-999806792"></a>
 ### gameMatches
@@ -601,7 +601,7 @@ function gameMatches(filter, gameType)
 | `gameType` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L213)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L213)
 
 <a id="function-function-mq3-client-ui-servers2-gamename-function-gamename-value-src-mq3-client-ui-servers2-ml-819526333"></a>
 ### gameName
@@ -615,7 +615,7 @@ function gameName(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L289)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L289)
 
 <a id="constant-constant-mq3-client-ui-servers2-games-all-const-games-all-0-src-mq3-client-ui-servers2-ml-1503086913"></a>
 ### GAMES_ALL
@@ -625,7 +625,7 @@ const GAMES_ALL = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L42)
 
 <a id="constant-constant-mq3-client-ui-servers2-games-ctf-const-games-ctf-4-src-mq3-client-ui-servers2-ml-1606132405"></a>
 ### GAMES_CTF
@@ -635,7 +635,7 @@ const GAMES_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L46)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L46)
 
 <a id="constant-constant-mq3-client-ui-servers2-games-ffa-const-games-ffa-1-src-mq3-client-ui-servers2-ml-1167018398"></a>
 ### GAMES_FFA
@@ -645,7 +645,7 @@ const GAMES_FFA = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L43)
 
 <a id="constant-constant-mq3-client-ui-servers2-games-teamplay-const-games-teamplay-2-src-mq3-client-ui-servers2-ml-809562343"></a>
 ### GAMES_TEAMPLAY
@@ -655,7 +655,7 @@ const GAMES_TEAMPLAY = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L44)
 
 <a id="constant-constant-mq3-client-ui-servers2-games-tourney-const-games-tourney-3-src-mq3-client-ui-servers2-ml-464039152"></a>
 ### GAMES_TOURNEY
@@ -665,7 +665,7 @@ const GAMES_TOURNEY = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L45)
 
 <a id="constant-constant-mq3-client-ui-servers2-gt-ctf-const-gt-ctf-4-src-mq3-client-ui-servers2-ml-563311757"></a>
 ### GT_CTF
@@ -675,7 +675,7 @@ const GT_CTF = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L50)
 
 <a id="constant-constant-mq3-client-ui-servers2-gt-ffa-const-gt-ffa-0-src-mq3-client-ui-servers2-ml-1842504489"></a>
 ### GT_FFA
@@ -685,7 +685,7 @@ const GT_FFA = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L47)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L47)
 
 <a id="constant-constant-mq3-client-ui-servers2-gt-team-const-gt-team-3-src-mq3-client-ui-servers2-ml-26586636"></a>
 ### GT_TEAM
@@ -695,7 +695,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L49)
 
 <a id="constant-constant-mq3-client-ui-servers2-gt-tournament-const-gt-tournament-1-src-mq3-client-ui-servers2-ml-667939906"></a>
 ### GT_TOURNAMENT
@@ -705,7 +705,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L48)
 
 - [mq3.client.ui_servers2.HostAction](Type-mq3-client-ui-servers2-hostaction-1159759876.md) — struct
 <a id="constant-constant-mq3-client-ui-servers2-id-back-const-id-back-18-src-mq3-client-ui-servers2-ml-1725618316"></a>
@@ -716,7 +716,7 @@ const ID_BACK = 18
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L26)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-connect-const-id-connect-22-src-mq3-client-ui-servers2-ml-1448512935"></a>
 ### ID_CONNECT
@@ -726,7 +726,7 @@ const ID_CONNECT = 22
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L30)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-create-const-id-create-21-src-mq3-client-ui-servers2-ml-1029961612"></a>
 ### ID_CREATE
@@ -736,7 +736,7 @@ const ID_CREATE = 21
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L29)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-gametype-const-id-gametype-11-src-mq3-client-ui-servers2-ml-2094504351"></a>
 ### ID_GAMETYPE
@@ -746,7 +746,7 @@ const ID_GAMETYPE = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L19)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-list-const-id-list-15-src-mq3-client-ui-servers2-ml-481587751"></a>
 ### ID_LIST
@@ -756,7 +756,7 @@ const ID_LIST = 15
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L23)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-master-const-id-master-10-src-mq3-client-ui-servers2-ml-1640488044"></a>
 ### ID_MASTER
@@ -766,7 +766,7 @@ const ID_MASTER = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L18)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-punkbuster-const-id-punkbuster-24-src-mq3-client-ui-servers2-ml-276577699"></a>
 ### ID_PUNKBUSTER
@@ -776,7 +776,7 @@ const ID_PUNKBUSTER = 24
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L32)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-refresh-const-id-refresh-19-src-mq3-client-ui-servers2-ml-1588050319"></a>
 ### ID_REFRESH
@@ -786,7 +786,7 @@ const ID_REFRESH = 19
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L27)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-remove-const-id-remove-23-src-mq3-client-ui-servers2-ml-1382996874"></a>
 ### ID_REMOVE
@@ -796,7 +796,7 @@ const ID_REMOVE = 23
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-scroll-down-const-id-scroll-down-17-src-mq3-client-ui-servers2-ml-1962466395"></a>
 ### ID_SCROLL_DOWN
@@ -806,7 +806,7 @@ const ID_SCROLL_DOWN = 17
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L25)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-scroll-up-const-id-scroll-up-16-src-mq3-client-ui-servers2-ml-1062996686"></a>
 ### ID_SCROLL_UP
@@ -816,7 +816,7 @@ const ID_SCROLL_UP = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L24)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-show-empty-const-id-show-empty-14-src-mq3-client-ui-servers2-ml-101366512"></a>
 ### ID_SHOW_EMPTY
@@ -826,7 +826,7 @@ const ID_SHOW_EMPTY = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L22)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-show-full-const-id-show-full-13-src-mq3-client-ui-servers2-ml-1672129317"></a>
 ### ID_SHOW_FULL
@@ -836,7 +836,7 @@ const ID_SHOW_FULL = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L21)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-sortkey-const-id-sortkey-12-src-mq3-client-ui-servers2-ml-1057447554"></a>
 ### ID_SORTKEY
@@ -846,7 +846,7 @@ const ID_SORTKEY = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L20)
 
 <a id="constant-constant-mq3-client-ui-servers2-id-specify-const-id-specify-20-src-mq3-client-ui-servers2-ml-659364303"></a>
 ### ID_SPECIFY
@@ -856,7 +856,7 @@ const ID_SPECIFY = 20
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L28)
 
 <a id="function-function-mq3-client-ui-servers2-item-function-item-id-kind-name-x-y-src-mq3-client-ui-servers2-ml-1117525151"></a>
 ### item
@@ -874,7 +874,7 @@ function item(id, kind, name, x, y)
 | `y` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L83)
 
 - [mq3.client.ui_servers2.Item](Type-mq3-client-ui-servers2-item-1844667635.md) — struct
 <a id="constant-constant-mq3-client-ui-servers2-k-del-const-k-del-140-src-mq3-client-ui-servers2-ml-1088957654"></a>
@@ -885,7 +885,7 @@ const K_DEL = 140
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L53)
 
 <a id="constant-constant-mq3-client-ui-servers2-k-escape-const-k-escape-27-src-mq3-client-ui-servers2-ml-36312918"></a>
 ### K_ESCAPE
@@ -895,7 +895,7 @@ const K_ESCAPE = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L51)
 
 <a id="constant-constant-mq3-client-ui-servers2-k-kp-del-const-k-kp-del-171-src-mq3-client-ui-servers2-ml-1063453438"></a>
 ### K_KP_DEL
@@ -905,7 +905,7 @@ const K_KP_DEL = 171
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L54)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L54)
 
 <a id="constant-constant-mq3-client-ui-servers2-k-mouse2-const-k-mouse2-179-src-mq3-client-ui-servers2-ml-489052442"></a>
 ### K_MOUSE2
@@ -915,7 +915,7 @@ const K_MOUSE2 = 179
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L55)
 
 <a id="constant-constant-mq3-client-ui-servers2-k-space-const-k-space-32-src-mq3-client-ui-servers2-ml-1830437744"></a>
 ### K_SPACE
@@ -925,7 +925,7 @@ const K_SPACE = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L52)
 
 <a id="function-function-mq3-client-ui-servers2-lowercompare-function-lowercompare-lefttext-righttext-src-mq3-client-ui-servers2-ml-2037833843"></a>
 ### lowerCompare
@@ -940,7 +940,7 @@ function lowerCompare(leftText, rightText)
 | `rightText` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L107)
 
 <a id="constant-constant-mq3-client-ui-servers2-max-favoriteservers-const-max-favoriteservers-16-src-mq3-client-ui-servers2-ml-1322300510"></a>
 ### MAX_FAVORITESERVERS
@@ -950,7 +950,7 @@ const MAX_FAVORITESERVERS = 16
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-servers2-max-globalservers-const-max-globalservers-128-src-mq3-client-ui-servers2-ml-1734002608"></a>
 ### MAX_GLOBALSERVERS
@@ -960,7 +960,7 @@ const MAX_GLOBALSERVERS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L11)
 
 <a id="constant-constant-mq3-client-ui-servers2-max-listboxitems-const-max-listboxitems-128-src-mq3-client-ui-servers2-ml-1017790634"></a>
 ### MAX_LISTBOXITEMS
@@ -970,7 +970,7 @@ const MAX_LISTBOXITEMS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-servers2-max-localservers-const-max-localservers-128-src-mq3-client-ui-servers2-ml-85725114"></a>
 ### MAX_LOCALSERVERS
@@ -980,7 +980,7 @@ const MAX_LOCALSERVERS = 128
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-servers2-max-pingrequests-const-max-pingrequests-32-src-mq3-client-ui-servers2-ml-361414540"></a>
 ### MAX_PINGREQUESTS
@@ -990,7 +990,7 @@ const MAX_PINGREQUESTS = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L12)
 
 <a id="function-function-mq3-client-ui-servers2-netname-function-netname-value-src-mq3-client-ui-servers2-ml-265666393"></a>
 ### netName
@@ -1004,7 +1004,7 @@ function netName(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L230)
 
 <a id="function-function-mq3-client-ui-servers2-node-function-node-address-hostname-mapname-numclients-maxclients-pingtime-gametype-gamename-nettype-minping-maxping-punkbuster-src-mq3-client-ui-servers2-ml-755600300"></a>
 ### node
@@ -1029,7 +1029,7 @@ function node(address, hostname, mapName, numClients, maxClients, pingTime, game
 | `punkbuster` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L69)
 
 <a id="function-function-mq3-client-ui-servers2-padleft-function-padleft-value-width-src-mq3-client-ui-servers2-ml-55960487"></a>
 ### padLeft
@@ -1044,7 +1044,7 @@ function padLeft(value, width)
 | `width` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L207)
 
 <a id="function-function-mq3-client-ui-servers2-padright-function-padright-text-width-src-mq3-client-ui-servers2-ml-1116989761"></a>
 ### padRight
@@ -1059,7 +1059,7 @@ function padRight(text, width)
 | `width` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L201)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L201)
 
 <a id="function-function-mq3-client-ui-servers2-pingcolor-function-pingcolor-server-src-mq3-client-ui-servers2-ml-1309025601"></a>
 ### pingColor
@@ -1073,7 +1073,7 @@ function pingColor(server)
 | `server` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L222)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L222)
 
 - [mq3.client.ui_servers2.PingRequest](Type-mq3-client-ui-servers2-pingrequest-271182573.md) — struct
 - [mq3.client.ui_servers2.PingResult](Type-mq3-client-ui-servers2-pingresult-795236365.md) — struct
@@ -1094,7 +1094,7 @@ Punkbuster_ConfirmDisable
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L459)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L459)
 
 <a id="function-function-mq3-client-ui-servers2-punkbusterconfirmenable-function-punkbusterconfirmenable-state-result-currentcvar-retailactive-src-mq3-client-ui-servers2-ml-689440736"></a>
 ### punkbusterConfirmEnable
@@ -1113,7 +1113,7 @@ Punkbuster_ConfirmEnable
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L453)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L453)
 
 <a id="constant-constant-mq3-client-ui-servers2-qm-activated-const-qm-activated-3-src-mq3-client-ui-servers2-ml-2103987622"></a>
 ### QM_ACTIVATED
@@ -1123,7 +1123,7 @@ const QM_ACTIVATED = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L17)
 
 <a id="constant-constant-mq3-client-ui-servers2-qm-gotfocus-const-qm-gotfocus-1-src-mq3-client-ui-servers2-ml-1142547658"></a>
 ### QM_GOTFOCUS
@@ -1133,7 +1133,7 @@ const QM_GOTFOCUS = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L16)
 
 <a id="function-function-mq3-client-ui-servers2-refresharguments-function-refresharguments-state-src-mq3-client-ui-servers2-ml-1907140045"></a>
 ### refreshArguments
@@ -1147,7 +1147,7 @@ function refreshArguments(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L400)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L400)
 
 - [mq3.client.ui_servers2.ServerNode](Type-mq3-client-ui-servers2-servernode-153799743.md) — struct
 <a id="constant-constant-mq3-client-ui-servers2-sort-clients-const-sort-clients-2-src-mq3-client-ui-servers2-ml-551448063"></a>
@@ -1158,7 +1158,7 @@ const SORT_CLIENTS = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L39)
 
 <a id="constant-constant-mq3-client-ui-servers2-sort-game-const-sort-game-3-src-mq3-client-ui-servers2-ml-148766944"></a>
 ### SORT_GAME
@@ -1168,7 +1168,7 @@ const SORT_GAME = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L40)
 
 <a id="constant-constant-mq3-client-ui-servers2-sort-host-const-sort-host-0-src-mq3-client-ui-servers2-ml-885769501"></a>
 ### SORT_HOST
@@ -1178,7 +1178,7 @@ const SORT_HOST = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L37)
 
 <a id="constant-constant-mq3-client-ui-servers2-sort-map-const-sort-map-1-src-mq3-client-ui-servers2-ml-1785501378"></a>
 ### SORT_MAP
@@ -1188,7 +1188,7 @@ const SORT_MAP = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L38)
 
 <a id="constant-constant-mq3-client-ui-servers2-sort-ping-const-sort-ping-4-src-mq3-client-ui-servers2-ml-1255354785"></a>
 ### SORT_PING
@@ -1198,7 +1198,7 @@ const SORT_PING = 4
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L41)
 
 <a id="function-function-mq3-client-ui-servers2-sortnow-function-sortnow-state-src-mq3-client-ui-servers2-ml-1260107901"></a>
 ### sortNow
@@ -1212,7 +1212,7 @@ function sortNow(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L152)
 
 <a id="function-function-mq3-client-ui-servers2-syncactive-function-syncactive-state-src-mq3-client-ui-servers2-ml-855589673"></a>
 ### syncActive
@@ -1226,7 +1226,7 @@ function syncActive(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L167)
 
 <a id="function-function-mq3-client-ui-servers2-truncate-function-truncate-text-count-src-mq3-client-ui-servers2-ml-979002516"></a>
 ### truncate
@@ -1241,7 +1241,7 @@ function truncate(text, count)
 | `count` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L91)
 
 <a id="function-function-mq3-client-ui-servers2-uiarenaserversmenu-function-uiarenaserversmenu-browsermaster-browsergametype-browsersortkey-browsershowfull-browsershowempty-punkbuster-cvarfavorites-maxping-realtime-protocol-debugprotocol-retailactive-src-mq3-client-ui-servers2-ml-1212672216"></a>
 ### uiArenaServersMenu
@@ -1268,4 +1268,4 @@ UI_ArenaServersMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_servers2.ml#L534)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_servers2.ml#L534)

@@ -29,7 +29,7 @@ function buildSnapshot(host, clientState, serverState)
 | `serverState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L20)
 
 <a id="function-function-mq3-server-pipeline-create-function-create-level-clientnum-ringcapacity-baselines-downloadstate-downloadserver-downloadhost-netruntime-netchannel-src-mq3-server-pipeline-ml-422114260"></a>
 ### create
@@ -51,7 +51,7 @@ function create(level, clientNum, ringCapacity, baselines, downloadState, downlo
 | `netChannel` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L12)
 
 <a id="function-function-mq3-server-pipeline-host-function-host-pipe-src-mq3-server-pipeline-ml-2086071502"></a>
 ### host
@@ -65,7 +65,7 @@ function host(pipe)
 | `pipe` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L51)
 
 <a id="function-function-mq3-server-pipeline-islan-function-islan-host-clientstate-src-mq3-server-pipeline-ml-59647920"></a>
 ### isLan
@@ -80,7 +80,7 @@ function isLan(host, clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L50)
 
 <a id="function-function-mq3-server-pipeline-islocal-function-islocal-host-clientstate-src-mq3-server-pipeline-ml-2049157268"></a>
 ### isLocal
@@ -95,7 +95,7 @@ function isLocal(host, clientState)
 | `clientState` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L49)
 
 - [mq3.server.pipeline.Pipeline](Type-mq3-server-pipeline-pipeline-1212532013.md) — struct
 <a id="function-function-mq3-server-pipeline-sendsnapshot-function-sendsnapshot-pipe-level-time-src-mq3-server-pipeline-ml-1353536231"></a>
@@ -112,7 +112,7 @@ function sendSnapshot(pipe, level, time)
 | `time` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L53)
 
 <a id="function-function-mq3-server-pipeline-transmit-function-transmit-host-clientstate-payload-src-mq3-server-pipeline-ml-1466365306"></a>
 ### transmit
@@ -128,7 +128,7 @@ function transmit(host, clientState, payload)
 | `payload` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L40)
 
 <a id="function-function-mq3-server-pipeline-writedownload-function-writedownload-host-clientstate-msg-src-mq3-server-pipeline-ml-1701712815"></a>
 ### writeDownload
@@ -146,4 +146,4 @@ Runtime level is attached only for the synchronous duration of sendSnapshot.
 | `msg` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/pipeline.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/pipeline.ml#L32)

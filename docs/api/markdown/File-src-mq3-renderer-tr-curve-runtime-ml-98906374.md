@@ -25,7 +25,7 @@ function bounds(vertices)
 | `vertices` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L39)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-fail-function-fail-message-src-mq3-renderer-tr-curve-runtime-ml-846712727"></a>
 ### fail
@@ -39,7 +39,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L14)
 
 - [mq3.renderer.tr_curve_runtime.Grid](Type-mq3-renderer-tr-curve-runtime-grid-1449724334.md) — struct
 <a id="function-function-mq3-renderer-tr-curve-runtime-invertctrl-function-invertctrl-width-height-ctrl-src-mq3-renderer-tr-curve-runtime-ml-1235794706"></a>
@@ -56,7 +56,7 @@ function InvertCtrl(width, height, ctrl)
 | `ctrl` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L24)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-inverterrortable-function-inverterrortable-errortable-width-height-src-mq3-renderer-tr-curve-runtime-ml-2144184465"></a>
 ### InvertErrorTable
@@ -72,7 +72,7 @@ function InvertErrorTable(errorTable, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L28)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-lerpdrawvert-function-lerpdrawvert-a-b-src-mq3-renderer-tr-curve-runtime-ml-1018963655"></a>
 ### LerpDrawVert
@@ -87,7 +87,7 @@ function LerpDrawVert(a, b)
 | `b` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L15)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-makemeshnormals-function-makemeshnormals-width-height-ctrl-src-mq3-renderer-tr-curve-runtime-ml-1751976276"></a>
 ### MakeMeshNormals
@@ -103,7 +103,7 @@ function MakeMeshNormals(width, height, ctrl)
 | `ctrl` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L20)
 
 <a id="constant-constant-mq3-renderer-tr-curve-runtime-max-grid-size-const-max-grid-size-65-src-mq3-renderer-tr-curve-runtime-ml-1677864174"></a>
 ### MAX_GRID_SIZE
@@ -113,7 +113,7 @@ const MAX_GRID_SIZE = 65
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L10)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-putpointsoncurve-function-putpointsoncurve-ctrl-width-height-src-mq3-renderer-tr-curve-runtime-ml-1828247916"></a>
 ### PutPointsOnCurve
@@ -129,7 +129,7 @@ function PutPointsOnCurve(ctrl, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L35)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-createsurfacegridmesh-function-r-createsurfacegridmesh-width-height-ctrl-errortable-src-mq3-renderer-tr-curve-runtime-ml-532260706"></a>
 ### R_CreateSurfaceGridMesh
@@ -146,7 +146,7 @@ function R_CreateSurfaceGridMesh(width, height, ctrl, errorTable)
 | `errorTable` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L44)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L44)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-freesurfacegridmesh-function-r-freesurfacegridmesh-grid-src-mq3-renderer-tr-curve-runtime-ml-1331507586"></a>
 ### R_FreeSurfaceGridMesh
@@ -160,7 +160,7 @@ function R_FreeSurfaceGridMesh(grid)
 | `grid` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L52)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-gridinsertcolumn-function-r-gridinsertcolumn-grid-column-row-point-loderror-src-mq3-renderer-tr-curve-runtime-ml-1099590595"></a>
 ### R_GridInsertColumn
@@ -178,7 +178,7 @@ function R_GridInsertColumn(grid, column, row, point, loderror)
 | `loderror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L68)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L68)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-gridinsertrow-function-r-gridinsertrow-grid-row-column-point-loderror-src-mq3-renderer-tr-curve-runtime-ml-990341639"></a>
 ### R_GridInsertRow
@@ -196,7 +196,7 @@ function R_GridInsertRow(grid, row, column, point, loderror)
 | `loderror` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L83)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-r-subdividepatchtogrid-function-r-subdividepatchtogrid-width-height-points-subdivisions-src-mq3-renderer-tr-curve-runtime-ml-1160009970"></a>
 ### R_SubdividePatchToGrid
@@ -213,7 +213,7 @@ function R_SubdividePatchToGrid(width, height, points, subdivisions)
 | `subdivisions` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L55)
 
 <a id="constant-constant-mq3-renderer-tr-curve-runtime-sf-grid-const-sf-grid-3-src-mq3-renderer-tr-curve-runtime-ml-1873616294"></a>
 ### SF_GRID
@@ -223,7 +223,7 @@ const SF_GRID = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L11)
 
 <a id="function-function-mq3-renderer-tr-curve-runtime-transpose-function-transpose-width-height-ctrl-src-mq3-renderer-tr-curve-runtime-ml-684120780"></a>
 ### Transpose
@@ -239,4 +239,4 @@ function Transpose(width, height, ctrl)
 | `ctrl` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/tr_curve_runtime.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/tr_curve_runtime.ml#L16)

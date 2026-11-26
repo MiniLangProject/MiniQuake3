@@ -23,7 +23,7 @@ function artList()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L22)
 
 <a id="function-function-mq3-client-ui-player-settings-bitmap-function-bitmap-name-id-x-y-flags-width-height-src-mq3-client-ui-player-settings-ml-826462485"></a>
 ### bitmap
@@ -43,7 +43,7 @@ function bitmap(name, id, x, y, flags, width, height)
 | `height` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L96)
 
 <a id="function-function-mq3-client-ui-player-settings-cleanname-function-cleanname-text-src-mq3-client-ui-player-settings-ml-1401713421"></a>
 ### cleanName
@@ -57,7 +57,7 @@ function cleanName(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L32)
 
 <a id="function-function-mq3-client-ui-player-settings-color-function-color-index-src-mq3-client-ui-player-settings-ml-578201534"></a>
 ### color
@@ -71,7 +71,7 @@ function color(index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L30)
 
 <a id="function-function-mq3-client-ui-player-settings-create-function-create-source-src-mq3-client-ui-player-settings-ml-317987183"></a>
 ### create
@@ -85,7 +85,7 @@ function create(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L27)
 
 - [mq3.client.ui_player_settings.DrawCommand](Type-mq3-client-ui-player-settings-drawcommand-126187478.md) — struct
 <a id="function-function-mq3-client-ui-player-settings-emit-function-emit-value-boundary-kind-name-text-number-x-y-width-height-retailactive-src-mq3-client-ui-player-settings-ml-234755341"></a>
@@ -110,7 +110,7 @@ function emit(value, boundary, kind, name, text, number, x, y, width, height, re
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L26)
 
 <a id="function-function-mq3-client-ui-player-settings-gamecodetoui-function-gamecodetoui-src-mq3-client-ui-player-settings-ml-1163053798"></a>
 ### gameCodeToUi
@@ -120,7 +120,7 @@ function gameCodeToUi()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L24)
 
 <a id="function-function-mq3-client-ui-player-settings-handicapitems-function-handicapitems-src-mq3-client-ui-player-settings-ml-1043368722"></a>
 ### handicapItems
@@ -130,7 +130,7 @@ function handicapItems()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L23)
 
 - [mq3.client.ui_player_settings.HostAction](Type-mq3-client-ui-player-settings-hostaction-719199375.md) — struct
 <a id="constant-constant-mq3-client-ui-player-settings-id-back-const-id-back-13-src-mq3-client-ui-player-settings-ml-905494743"></a>
@@ -141,7 +141,7 @@ const ID_BACK = 13
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L14)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-effects-const-id-effects-12-src-mq3-client-ui-player-settings-ml-393659260"></a>
 ### ID_EFFECTS
@@ -151,7 +151,7 @@ const ID_EFFECTS = 12
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L13)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-handicap-const-id-handicap-11-src-mq3-client-ui-player-settings-ml-392081797"></a>
 ### ID_HANDICAP
@@ -161,7 +161,7 @@ const ID_HANDICAP = 11
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L12)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-model-const-id-model-14-src-mq3-client-ui-player-settings-ml-539032172"></a>
 ### ID_MODEL
@@ -171,7 +171,7 @@ const ID_MODEL = 14
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L15)
 
 <a id="constant-constant-mq3-client-ui-player-settings-id-name-const-id-name-10-src-mq3-client-ui-player-settings-ml-1553721784"></a>
 ### ID_NAME
@@ -181,7 +181,7 @@ const ID_NAME = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L11)
 
 <a id="function-function-mq3-client-ui-player-settings-iscolor-function-iscolor-data-index-src-mq3-client-ui-player-settings-ml-476159566"></a>
 ### isColor
@@ -196,7 +196,7 @@ function isColor(data, index)
 | `index` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L31)
 
 <a id="constant-constant-mq3-client-ui-player-settings-max-namelength-const-max-namelength-20-src-mq3-client-ui-player-settings-ml-1689016783"></a>
 ### MAX_NAMELENGTH
@@ -206,7 +206,7 @@ const MAX_NAMELENGTH = 20
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L16)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-cache-function-playersettings-cache-value-retailactive-src-mq3-client-ui-player-settings-ml-407397140"></a>
 ### PlayerSettings_Cache
@@ -223,7 +223,7 @@ PlayerSettings_Cache
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L111)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-draweffects-function-playersettings-draweffects-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-414216980"></a>
 ### PlayerSettings_DrawEffects
@@ -241,7 +241,7 @@ PlayerSettings_DrawEffects
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L64)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawhandicap-function-playersettings-drawhandicap-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-2041816990"></a>
 ### PlayerSettings_DrawHandicap
@@ -259,7 +259,7 @@ PlayerSettings_DrawHandicap
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L59)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L59)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawname-function-playersettings-drawname-value-focus-retailactive-src-mq3-client-ui-player-settings-ml-61264592"></a>
 ### PlayerSettings_DrawName
@@ -277,7 +277,7 @@ PlayerSettings_DrawName
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L52)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L52)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-drawplayer-function-playersettings-drawplayer-value-model-retailactive-src-mq3-client-ui-player-settings-ml-996159589"></a>
 ### PlayerSettings_DrawPlayer
@@ -295,7 +295,7 @@ PlayerSettings_DrawPlayer
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L69)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L69)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menuevent-function-playersettings-menuevent-value-id-event-retailactive-src-mq3-client-ui-player-settings-ml-1704063411"></a>
 ### PlayerSettings_MenuEvent
@@ -314,7 +314,7 @@ PlayerSettings_MenuEvent
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L90)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L90)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menuinit-function-playersettings-menuinit-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1415609718"></a>
 ### PlayerSettings_MenuInit
@@ -335,7 +335,7 @@ PlayerSettings_MenuInit
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L99)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-menukey-function-playersettings-menukey-value-key-cursorx-cursory-retailactive-src-mq3-client-ui-player-settings-ml-1059907116"></a>
 ### PlayerSettings_MenuKey
@@ -355,7 +355,7 @@ PlayerSettings_MenuKey
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L80)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L80)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-savechanges-function-playersettings-savechanges-value-retailactive-src-mq3-client-ui-player-settings-ml-436882608"></a>
 ### PlayerSettings_SaveChanges
@@ -372,7 +372,7 @@ PlayerSettings_SaveChanges
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L75)
 
 <a id="function-function-mq3-client-ui-player-settings-playersettings-setmenuitems-function-playersettings-setmenuitems-value-name-color1-model-handicap-src-mq3-client-ui-player-settings-ml-1340257475"></a>
 ### PlayerSettings_SetMenuItems
@@ -392,7 +392,7 @@ PlayerSettings_SetMenuItems
 | `handicap` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L85)
 
 - [mq3.client.ui_player_settings.State](Type-mq3-client-ui-player-settings-state-674577228.md) — struct
 <a id="function-function-mq3-client-ui-player-settings-ui-playersettingsmenu-function-ui-playersettingsmenu-value-name-color1-model-handicap-retailactive-src-mq3-client-ui-player-settings-ml-1648696094"></a>
@@ -414,7 +414,7 @@ UI_PlayerSettingsMenu
 | `retailActive` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L114)
 
 <a id="function-function-mq3-client-ui-player-settings-uitogamecode-function-uitogamecode-src-mq3-client-ui-player-settings-ml-2043921718"></a>
 ### uiToGameCode
@@ -424,7 +424,7 @@ function uiToGameCode()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L25)
 
 <a id="function-function-mq3-client-ui-player-settings-visiblenamecommands-function-visiblenamecommands-text-focus-basex-y-style-src-mq3-client-ui-player-settings-ml-1056592356"></a>
 ### visibleNameCommands
@@ -442,4 +442,4 @@ function visibleNameCommands(text, focus, basex, y, style)
 | `style` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_player_settings.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_player_settings.ml#L43)

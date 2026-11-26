@@ -28,7 +28,7 @@ function botLibVar(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L202)
 
 - [mq3.game.bot_lifecycle.BotState](Type-mq3-game-bot-lifecycle-botstate-1141153540.md) — struct
 <a id="function-function-mq3-game-bot-lifecycle-create-function-create-registry-src-mq3-game-bot-lifecycle-ml-1645017815"></a>
@@ -43,7 +43,7 @@ function create(registry)
 | `registry` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L164)
 
 <a id="function-function-mq3-game-bot-lifecycle-createbot-function-createbot-client-src-mq3-game-bot-lifecycle-ml-1114290541"></a>
 ### createBot
@@ -57,7 +57,7 @@ function createBot(client)
 | `client` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L172)
 
 <a id="function-function-mq3-game-bot-lifecycle-cvareffect-function-cvareffect-state-kind-key-value-src-mq3-game-bot-lifecycle-ml-1916731171"></a>
 ### cvarEffect
@@ -74,7 +74,7 @@ function cvarEffect(state, kind, key, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L176)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L176)
 
 <a id="function-function-mq3-game-bot-lifecycle-endmatch-function-endmatch-state-src-mq3-game-bot-lifecycle-ml-1799126469"></a>
 ### endMatch
@@ -88,7 +88,7 @@ function endMatch(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L375)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L375)
 
 <a id="function-function-mq3-game-bot-lifecycle-initlibrary-function-initlibrary-state-src-mq3-game-bot-lifecycle-ml-444314811"></a>
 ### initLibrary
@@ -102,7 +102,7 @@ function initLibrary(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L207)
 
 <a id="function-function-mq3-game-bot-lifecycle-interbreedbots-function-interbreedbots-state-src-mq3-game-bot-lifecycle-ml-1675249965"></a>
 ### interbreedBots
@@ -116,7 +116,7 @@ function interbreedBots(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L352)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L352)
 
 <a id="function-function-mq3-game-bot-lifecycle-loadmap-function-loadmap-state-restart-src-mq3-game-bot-lifecycle-ml-1497086434"></a>
 ### loadMap
@@ -131,7 +131,7 @@ function loadMap(state, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L303)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L303)
 
 <a id="constant-constant-mq3-game-bot-lifecycle-max-clients-const-max-clients-64-src-mq3-game-bot-lifecycle-ml-1966335303"></a>
 ### MAX_CLIENTS
@@ -141,7 +141,7 @@ const MAX_CLIENTS = 64
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L10)
 
 <a id="constant-constant-mq3-game-bot-lifecycle-max-gentities-const-max-gentities-1024-src-mq3-game-bot-lifecycle-ml-1149872298"></a>
 ### MAX_GENTITIES
@@ -151,7 +151,7 @@ const MAX_GENTITIES = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L11)
 
 <a id="function-function-mq3-game-bot-lifecycle-querycvar-function-querycvar-state-name-capacity-src-mq3-game-bot-lifecycle-ml-241355000"></a>
 ### queryCvar
@@ -167,7 +167,7 @@ function queryCvar(state, name, capacity)
 | `capacity` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L187)
 
 <a id="function-function-mq3-game-bot-lifecycle-rank-function-rank-bot-src-mq3-game-bot-lifecycle-ml-1897762733"></a>
 ### rank
@@ -181,7 +181,7 @@ function rank(bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L333)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L333)
 
 <a id="function-function-mq3-game-bot-lifecycle-registercvar-function-registercvar-state-snapshot-name-defaultvalue-flags-src-mq3-game-bot-lifecycle-ml-1728268099"></a>
 ### registerCvar
@@ -199,7 +199,7 @@ function registerCvar(state, snapshot, name, defaultValue, flags)
 | `flags` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L181)
 
 <a id="function-function-mq3-game-bot-lifecycle-required-function-required-state-callback-label-src-mq3-game-bot-lifecycle-ml-957825630"></a>
 ### required
@@ -215,7 +215,7 @@ function required(state, callback, label)
 | `label` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L270)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L270)
 
 <a id="function-function-mq3-game-bot-lifecycle-resetstate-function-resetstate-state-bot-src-mq3-game-bot-lifecycle-ml-118040456"></a>
 ### resetState
@@ -230,7 +230,7 @@ function resetState(state, bot)
 | `bot` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L275)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L275)
 
 <a id="function-function-mq3-game-bot-lifecycle-setcvar-function-setcvar-state-name-value-src-mq3-game-bot-lifecycle-ml-1359916419"></a>
 ### setCvar
@@ -246,7 +246,7 @@ function setCvar(state, name, value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L198)
 
 <a id="function-function-mq3-game-bot-lifecycle-setup-function-setup-state-restart-src-mq3-game-bot-lifecycle-ml-615696140"></a>
 ### setup
@@ -261,7 +261,7 @@ function setup(state, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L252)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L252)
 
 <a id="function-function-mq3-game-bot-lifecycle-shutdown-function-shutdown-state-restart-src-mq3-game-bot-lifecycle-ml-2101214770"></a>
 ### shutdown
@@ -276,7 +276,7 @@ function shutdown(state, restart)
 | `restart` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L317)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L317)
 
 - [mq3.game.bot_lifecycle.State](Type-mq3-game-bot-lifecycle-state-939171775.md) — struct
 <a id="function-function-mq3-game-bot-lifecycle-updatecvar-function-updatecvar-state-snapshot-name-src-mq3-game-bot-lifecycle-ml-1906683300"></a>
@@ -293,7 +293,7 @@ function updateCvar(state, snapshot, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L194)
 
 <a id="function-function-mq3-game-bot-lifecycle-writeinterbreeded-function-writeinterbreeded-state-filename-src-mq3-game-bot-lifecycle-ml-50112198"></a>
 ### writeInterbreeded
@@ -308,4 +308,4 @@ function writeInterbreeded(state, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_lifecycle.ml#L338)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_lifecycle.ml#L338)

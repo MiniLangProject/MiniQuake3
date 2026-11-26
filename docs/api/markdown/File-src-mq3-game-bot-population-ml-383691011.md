@@ -36,7 +36,7 @@ function addBot(level, state, name, skill, team, delay, altname)
 | `altname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L160)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L160)
 
 <a id="function-function-mq3-game-bot-population-addrandombot-function-addrandombot-level-state-team-src-mq3-game-bot-population-ml-824596388"></a>
 ### addRandomBot
@@ -52,7 +52,7 @@ function addRandomBot(level, state, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L79)
 
 <a id="constant-constant-mq3-game-bot-population-bot-begin-delay-base-const-bot-begin-delay-base-2000-src-mq3-game-bot-population-ml-804866861"></a>
 ### BOT_BEGIN_DELAY_BASE
@@ -62,7 +62,7 @@ const BOT_BEGIN_DELAY_BASE = 2000
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L20)
 
 <a id="constant-constant-mq3-game-bot-population-bot-begin-delay-increment-const-bot-begin-delay-increment-1500-src-mq3-game-bot-population-ml-1550680933"></a>
 ### BOT_BEGIN_DELAY_INCREMENT
@@ -72,7 +72,7 @@ const BOT_BEGIN_DELAY_INCREMENT = 1500
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L21)
 
 <a id="function-function-mq3-game-bot-population-botalreadyused-function-botalreadyused-level-state-name-team-src-mq3-game-bot-population-ml-516101435"></a>
 ### botAlreadyUsed
@@ -89,7 +89,7 @@ function botAlreadyUsed(level, state, name, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L66)
 
 <a id="function-function-mq3-game-bot-population-botlist-function-botlist-level-state-src-mq3-game-bot-population-ml-1859880911"></a>
 ### botList
@@ -104,7 +104,7 @@ function botList(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L230)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L230)
 
 <a id="function-function-mq3-game-bot-population-checkminimumplayers-function-checkminimumplayers-level-state-src-mq3-game-bot-population-ml-627732185"></a>
 ### checkMinimumPlayers
@@ -119,7 +119,7 @@ function checkMinimumPlayers(level, state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L108)
 
 <a id="function-function-mq3-game-bot-population-clean-function-clean-text-src-mq3-game-bot-population-ml-140792423"></a>
 ### clean
@@ -133,7 +133,7 @@ function clean(text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L55)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L55)
 
 <a id="function-function-mq3-game-bot-population-console-function-console-level-state-text-src-mq3-game-bot-population-ml-113469708"></a>
 ### console
@@ -149,7 +149,7 @@ function console(level, state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L50)
 
 <a id="function-function-mq3-game-bot-population-create-function-create-registry-clients-src-mq3-game-bot-population-ml-1052471601"></a>
 ### create
@@ -164,7 +164,7 @@ function create(registry, clients)
 | `clients` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L41)
 
 <a id="constant-constant-mq3-game-bot-population-exec-insert-const-exec-insert-1-src-mq3-game-bot-population-ml-1939338088"></a>
 ### EXEC_INSERT
@@ -174,7 +174,7 @@ const EXEC_INSERT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L19)
 
 <a id="constant-constant-mq3-game-bot-population-gt-ffa-const-gt-ffa-0-src-mq3-game-bot-population-ml-1225328225"></a>
 ### GT_FFA
@@ -184,7 +184,7 @@ const GT_FFA = 0
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L14)
 
 <a id="constant-constant-mq3-game-bot-population-gt-single-player-const-gt-single-player-2-src-mq3-game-bot-population-ml-2073040749"></a>
 ### GT_SINGLE_PLAYER
@@ -194,7 +194,7 @@ const GT_SINGLE_PLAYER = 2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L16)
 
 <a id="constant-constant-mq3-game-bot-population-gt-team-const-gt-team-3-src-mq3-game-bot-population-ml-902228270"></a>
 ### GT_TEAM
@@ -204,7 +204,7 @@ const GT_TEAM = 3
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L17)
 
 <a id="constant-constant-mq3-game-bot-population-gt-tournament-const-gt-tournament-1-src-mq3-game-bot-population-ml-43567092"></a>
 ### GT_TOURNAMENT
@@ -214,7 +214,7 @@ const GT_TOURNAMENT = 1
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L15)
 
 <a id="function-function-mq3-game-bot-population-infoset-function-infoset-level-state-value-key-text-src-mq3-game-bot-population-ml-219126870"></a>
 ### infoSet
@@ -232,7 +232,7 @@ function infoSet(level, state, value, key, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L139)
 
 <a id="function-function-mq3-game-bot-population-initsingleplayer-function-initsingleplayer-level-state-restart-mapname-src-mq3-game-bot-population-ml-1714272405"></a>
 ### initSinglePlayer
@@ -249,7 +249,7 @@ function initSinglePlayer(level, state, restart, mapname)
 | `mapname` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L258)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L258)
 
 <a id="function-function-mq3-game-bot-population-output-function-output-level-state-text-src-mq3-game-bot-population-ml-1530164714"></a>
 ### output
@@ -265,7 +265,7 @@ function output(level, state, text)
 | `text` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L45)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L45)
 
 <a id="function-function-mq3-game-bot-population-padded-function-padded-text-width-src-mq3-game-bot-population-ml-1106611413"></a>
 ### padded
@@ -280,7 +280,7 @@ function padded(text, width)
 | `width` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L225)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L225)
 
 <a id="function-function-mq3-game-bot-population-pickteam-function-pickteam-level-ignore-src-mq3-game-bot-population-ml-516529612"></a>
 ### pickTeam
@@ -295,7 +295,7 @@ function pickTeam(level, ignore)
 | `ignore` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L152)
 
 <a id="function-function-mq3-game-bot-population-removerandombot-function-removerandombot-level-state-team-src-mq3-game-bot-population-ml-1024330712"></a>
 ### removeRandomBot
@@ -311,7 +311,7 @@ function removeRandomBot(level, state, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L96)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L96)
 
 <a id="function-function-mq3-game-bot-population-serviceaddbot-function-serviceaddbot-level-state-args-src-mq3-game-bot-population-ml-2093052450"></a>
 ### serviceAddBot
@@ -327,7 +327,7 @@ function serviceAddBot(level, state, args)
 | `args` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L209)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L209)
 
 <a id="function-function-mq3-game-bot-population-spawnbots-function-spawnbots-level-state-botlist-basedelay-src-mq3-game-bot-population-ml-1418351124"></a>
 ### spawnBots
@@ -344,7 +344,7 @@ function spawnBots(level, state, botList, baseDelay)
 | `baseDelay` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L242)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L242)
 
 - [mq3.game.bot_population.State](Type-mq3-game-bot-population-state-1400645272.md) — struct
 <a id="constant-constant-mq3-game-bot-population-svf-bot-const-svf-bot-8-src-mq3-game-bot-population-ml-874840121"></a>
@@ -355,7 +355,7 @@ const SVF_BOT = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L18)
 
 <a id="function-function-mq3-game-bot-population-teamcount-function-teamcount-level-ignore-team-src-mq3-game-bot-population-ml-984042553"></a>
 ### teamCount
@@ -371,4 +371,4 @@ function teamCount(level, ignore, team)
 | `team` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/bot_population.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/bot_population.ml#L143)

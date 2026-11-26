@@ -10,7 +10,7 @@ struct Playback
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)
 
 ## Members
 
@@ -22,7 +22,7 @@ completed
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)
 
 <a id="field-field-mq3-client-demo-playback-lastpackettime-lastpackettime-src-mq3-client-demo-ml-1275242632"></a>
 ### lastPacketTime
@@ -32,7 +32,7 @@ lastPacketTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)
 
 <a id="field-field-mq3-client-demo-playback-offset-offset-src-mq3-client-demo-ml-1937030924"></a>
 ### offset
@@ -42,7 +42,7 @@ offset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)
 
 <a id="field-field-mq3-client-demo-playback-servermessagesequence-servermessagesequence-src-mq3-client-demo-ml-1047018022"></a>
 ### serverMessageSequence
@@ -52,7 +52,7 @@ serverMessageSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)
 
 <a id="field-field-mq3-client-demo-playback-truncated-truncated-src-mq3-client-demo-ml-1552549034"></a>
 ### truncated
@@ -62,4 +62,4 @@ truncated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/demo.ml#L63)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/demo.ml#L63)

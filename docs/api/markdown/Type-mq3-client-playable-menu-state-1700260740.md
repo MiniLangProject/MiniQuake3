@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 ## Members
 
@@ -22,7 +22,7 @@ lastDown
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 <a id="field-field-mq3-client-playable-menu-state-lastenter-lastenter-src-mq3-client-playable-menu-ml-1567032974"></a>
 ### lastEnter
@@ -32,7 +32,7 @@ lastEnter
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 <a id="field-field-mq3-client-playable-menu-state-lastup-lastup-src-mq3-client-playable-menu-ml-48494248"></a>
 ### lastUp
@@ -42,7 +42,7 @@ lastUp
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)
 
 <a id="field-field-mq3-client-playable-menu-state-selected-selected-src-mq3-client-playable-menu-ml-1845973180"></a>
 ### selected
@@ -52,4 +52,4 @@ selected
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/playable_menu.ml#L20)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/playable_menu.ml#L20)

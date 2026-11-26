@@ -10,7 +10,7 @@ struct State
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L7)
 
 ## Members
 
@@ -22,7 +22,7 @@ lastPasswordModificationCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L10)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L10)
 
 <a id="field-field-mq3-game-cvar-maintenance-state-password-password-src-mq3-game-cvar-maintenance-ml-692577884"></a>
 ### password
@@ -32,7 +32,7 @@ password
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L8)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L8)
 
 <a id="field-field-mq3-game-cvar-maintenance-state-passwordmodificationcount-passwordmodificationcount-src-mq3-game-cvar-maintenance-ml-135527614"></a>
 ### passwordModificationCount
@@ -42,4 +42,4 @@ passwordModificationCount
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/game/cvar_maintenance.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/game/cvar_maintenance.ml#L9)

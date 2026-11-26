@@ -10,7 +10,7 @@ struct Channel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L25)
 
 ## Members
 
@@ -22,7 +22,7 @@ dropped
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L27)
 
 <a id="field-field-mq3-qcommon-netchan-channel-fragmentbuffer-fragmentbuffer-src-mq3-qcommon-netchan-ml-705782982"></a>
 ### fragmentBuffer
@@ -32,7 +32,7 @@ fragmentBuffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L34)
 
 <a id="field-field-mq3-qcommon-netchan-channel-fragmentlength-fragmentlength-src-mq3-qcommon-netchan-ml-1473756282"></a>
 ### fragmentLength
@@ -42,7 +42,7 @@ fragmentLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L33)
 
 <a id="field-field-mq3-qcommon-netchan-channel-fragmentsequence-fragmentsequence-src-mq3-qcommon-netchan-ml-1958325008"></a>
 ### fragmentSequence
@@ -52,7 +52,7 @@ fragmentSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L32)
 
 <a id="field-field-mq3-qcommon-netchan-channel-incomingsequence-incomingsequence-src-mq3-qcommon-netchan-ml-2119673656"></a>
 ### incomingSequence
@@ -62,7 +62,7 @@ incomingSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L30)
 
 <a id="field-field-mq3-qcommon-netchan-channel-outgoingsequence-outgoingsequence-src-mq3-qcommon-netchan-ml-763333492"></a>
 ### outgoingSequence
@@ -72,7 +72,7 @@ outgoingSequence
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L31)
 
 <a id="field-field-mq3-qcommon-netchan-channel-qport-qport-src-mq3-qcommon-netchan-ml-1736300150"></a>
 ### qport
@@ -82,7 +82,7 @@ qport
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L29)
 
 <a id="field-field-mq3-qcommon-netchan-channel-remoteaddress-remoteaddress-src-mq3-qcommon-netchan-ml-1011263806"></a>
 ### remoteAddress
@@ -92,7 +92,7 @@ remoteAddress
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L28)
 
 <a id="field-field-mq3-qcommon-netchan-channel-sock-sock-src-mq3-qcommon-netchan-ml-1140941738"></a>
 ### sock
@@ -102,7 +102,7 @@ sock
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L26)
 
 <a id="field-field-mq3-qcommon-netchan-channel-unsentbuffer-unsentbuffer-src-mq3-qcommon-netchan-ml-791384348"></a>
 ### unsentBuffer
@@ -112,7 +112,7 @@ unsentBuffer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L38)
 
 <a id="field-field-mq3-qcommon-netchan-channel-unsentfragments-unsentfragments-src-mq3-qcommon-netchan-ml-1369025878"></a>
 ### unsentFragments
@@ -122,7 +122,7 @@ unsentFragments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L35)
 
 <a id="field-field-mq3-qcommon-netchan-channel-unsentfragmentstart-unsentfragmentstart-src-mq3-qcommon-netchan-ml-754302778"></a>
 ### unsentFragmentStart
@@ -132,7 +132,7 @@ unsentFragmentStart
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L36)
 
 <a id="field-field-mq3-qcommon-netchan-channel-unsentlength-unsentlength-src-mq3-qcommon-netchan-ml-600384980"></a>
 ### unsentLength
@@ -142,4 +142,4 @@ unsentLength
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/netchan.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/netchan.ml#L37)

@@ -24,7 +24,7 @@ function clamp16(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L15)
 
 <a id="function-function-mq3-audio-mixer-transfer-fail-function-fail-message-src-mq3-audio-mixer-transfer-ml-1495100951"></a>
 ### fail
@@ -38,7 +38,7 @@ function fail(message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L7)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L7)
 
 <a id="function-function-mq3-audio-mixer-transfer-poweroftwo-function-poweroftwo-value-src-mq3-audio-mixer-transfer-ml-2110100685"></a>
 ### powerOfTwo
@@ -52,7 +52,7 @@ function powerOfTwo(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L11)
 
 <a id="function-function-mq3-audio-mixer-transfer-transfer-function-transfer-paint-paintedtime-endtime-samplebits-channels-dmasamples-output-src-mq3-audio-mixer-transfer-ml-1807417656"></a>
 ### transfer
@@ -74,4 +74,4 @@ The paint array is interleaved [left,right,...], in the original 24.8 mix scale.
 | `output` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/audio/mixer_transfer.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/audio/mixer_transfer.ml#L24)

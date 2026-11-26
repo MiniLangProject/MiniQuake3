@@ -10,7 +10,7 @@ struct ResolvedSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 ## Members
 
@@ -22,7 +22,7 @@ bindings
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 <a id="field-field-mq3-renderer-player-skins-resolvedskin-path-path-src-mq3-renderer-player-skins-ml-165129430"></a>
 ### path
@@ -32,7 +32,7 @@ path
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)
 
 <a id="field-field-mq3-renderer-player-skins-resolvedskin-tags-tags-src-mq3-renderer-player-skins-ml-514010226"></a>
 ### tags
@@ -42,4 +42,4 @@ tags
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/player_skins.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/player_skins.ml#L16)

@@ -10,7 +10,7 @@ struct SvEntity
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L13)
 
 ## Members
 
@@ -22,7 +22,7 @@ areanum
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L13)
 
 <a id="field-field-mq3-server-game-interface-sventity-areanum2-areanum2-src-mq3-server-game-interface-ml-1116278267"></a>
 ### areanum2
@@ -32,7 +32,7 @@ areanum2
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L13)
 
 <a id="field-field-mq3-server-game-interface-sventity-number-number-src-mq3-server-game-interface-ml-369182943"></a>
 ### number
@@ -42,4 +42,4 @@ number
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/server/game_interface.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/server/game_interface.ml#L13)

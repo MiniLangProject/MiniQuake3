@@ -28,7 +28,7 @@ function bounded(value)
 | `value` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L25)
 
 - [mq3.botlib.ai_map_goals.CampResult](Type-mq3-botlib-ai-map-goals-campresult-1529521514.md) — struct
 - [mq3.botlib.ai_map_goals.CampSpot](Type-mq3-botlib-ai-map-goals-campspot-1867151947.md) — struct
@@ -44,7 +44,7 @@ function clear(state)
 | `state` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L48)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L48)
 
 <a id="function-function-mq3-botlib-ai-map-goals-create-function-create-src-mq3-botlib-ai-map-goals-ml-1665945452"></a>
 ### create
@@ -54,7 +54,7 @@ function create()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L21)
 
 <a id="function-function-mq3-botlib-ai-map-goals-epair-function-epair-entity-key-src-mq3-botlib-ai-map-goals-ml-580775528"></a>
 ### epair
@@ -69,7 +69,7 @@ function epair(entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L22)
 
 <a id="function-function-mq3-botlib-ai-map-goals-floatvalue-function-floatvalue-entity-key-src-mq3-botlib-ai-map-goals-ml-1872751886"></a>
 ### floatValue
@@ -84,7 +84,7 @@ function floatValue(entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L31)
 
 <a id="function-function-mq3-botlib-ai-map-goals-goalat-function-goalat-aas-origin-src-mq3-botlib-ai-map-goals-ml-2086219049"></a>
 ### goalAt
@@ -99,7 +99,7 @@ function goalAt(aas, origin)
 | `origin` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L32)
 
 <a id="function-function-mq3-botlib-ai-map-goals-initialize-function-initialize-state-aas-bspentities-src-mq3-botlib-ai-map-goals-ml-2018889234"></a>
 ### initialize
@@ -115,7 +115,7 @@ function initialize(state, aas, bspEntities)
 | `bspEntities` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L36)
 
 - [mq3.botlib.ai_map_goals.MapLocation](Type-mq3-botlib-ai-map-goals-maplocation-850048939.md) — struct
 <a id="function-function-mq3-botlib-ai-map-goals-maplocationgoal-function-maplocationgoal-state-name-src-mq3-botlib-ai-map-goals-ml-1486785190"></a>
@@ -131,7 +131,7 @@ function mapLocationGoal(state, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L53)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L53)
 
 <a id="constant-constant-mq3-botlib-ai-map-goals-max-epairkey-const-max-epairkey-botlibheaders-max-epairkey-src-mq3-botlib-ai-map-goals-ml-1259806562"></a>
 ### MAX_EPAIRKEY
@@ -141,7 +141,7 @@ const MAX_EPAIRKEY = botlibHeaders.MAX_EPAIRKEY
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L14)
 
 <a id="function-function-mq3-botlib-ai-map-goals-nextcampspotgoal-function-nextcampspotgoal-state-number-src-mq3-botlib-ai-map-goals-ml-1923858388"></a>
 ### nextCampSpotGoal
@@ -156,7 +156,7 @@ function nextCampSpotGoal(state, number)
 | `number` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L49)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L49)
 
 <a id="constant-constant-mq3-botlib-ai-map-goals-op-get-map-location-goal-const-op-get-map-location-goal-568-src-mq3-botlib-ai-map-goals-ml-1057732658"></a>
 ### OP_GET_MAP_LOCATION_GOAL
@@ -166,7 +166,7 @@ const OP_GET_MAP_LOCATION_GOAL = 568
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L13)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L13)
 
 <a id="constant-constant-mq3-botlib-ai-map-goals-op-get-next-camp-spot-goal-const-op-get-next-camp-spot-goal-567-src-mq3-botlib-ai-map-goals-ml-1727687565"></a>
 ### OP_GET_NEXT_CAMP_SPOT_GOAL
@@ -176,7 +176,7 @@ const OP_GET_NEXT_CAMP_SPOT_GOAL = 567
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L12)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L12)
 
 - [mq3.botlib.ai_map_goals.State](Type-mq3-botlib-ai-map-goals-state-206674215.md) — struct
 <a id="function-function-mq3-botlib-ai-map-goals-supportstrap-function-supportstrap-op-src-mq3-botlib-ai-map-goals-ml-488332499"></a>
@@ -191,7 +191,7 @@ function supportsTrap(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L56)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L56)
 
 <a id="function-function-mq3-botlib-ai-map-goals-vectorvalue-function-vectorvalue-entity-key-src-mq3-botlib-ai-map-goals-ml-591345734"></a>
 ### vectorValue
@@ -206,4 +206,4 @@ function vectorValue(entity, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/ai_map_goals.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/ai_map_goals.ml#L28)

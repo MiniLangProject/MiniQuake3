@@ -10,7 +10,7 @@ struct Runtime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ active
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-contextcreated-contextcreated-src-mq3-platform-win-glimp-runtime-ml-571178619"></a>
 ### contextCreated
@@ -32,7 +32,7 @@ contextCreated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-displaychanged-displaychanged-src-mq3-platform-win-glimp-runtime-ml-835195093"></a>
 ### displayChanged
@@ -42,7 +42,7 @@ displayChanged
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-driverloaded-driverloaded-src-mq3-platform-win-glimp-runtime-ml-1691527311"></a>
 ### driverLoaded
@@ -52,7 +52,7 @@ driverLoaded
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-extensions-extensions-src-mq3-platform-win-glimp-runtime-ml-361758805"></a>
 ### extensions
@@ -62,7 +62,7 @@ extensions
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-extensiontext-extensiontext-src-mq3-platform-win-glimp-runtime-ml-126160389"></a>
 ### extensionText
@@ -72,7 +72,7 @@ extensionText
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-fullscreen-fullscreen-src-mq3-platform-win-glimp-runtime-ml-146910763"></a>
 ### fullscreen
@@ -82,7 +82,7 @@ fullscreen
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-glwstate-glwstate-src-mq3-platform-win-glimp-runtime-ml-102882863"></a>
 ### glwState
@@ -92,7 +92,7 @@ glwState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-logs-logs-src-mq3-platform-win-glimp-runtime-ml-80848055"></a>
 ### logs
@@ -102,7 +102,7 @@ logs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-mode-mode-src-mq3-platform-win-glimp-runtime-ml-1345775235"></a>
 ### mode
@@ -112,7 +112,7 @@ mode
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-ossupported-ossupported-src-mq3-platform-win-glimp-runtime-ml-1175082641"></a>
 ### osSupported
@@ -122,7 +122,7 @@ osSupported
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-pfd-pfd-src-mq3-platform-win-glimp-runtime-ml-445132213"></a>
 ### pfd
@@ -132,7 +132,7 @@ pfd
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-qglregistry-qglregistry-src-mq3-platform-win-glimp-runtime-ml-1493658869"></a>
 ### qglRegistry
@@ -142,7 +142,7 @@ qglRegistry
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-qglstate-qglstate-src-mq3-platform-win-glimp-runtime-ml-369785343"></a>
 ### qglState
@@ -152,7 +152,7 @@ qglState
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-rendercommands-rendercommands-src-mq3-platform-win-glimp-runtime-ml-1441465053"></a>
 ### renderCommands
@@ -162,7 +162,7 @@ renderCommands
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-rendercompleted-rendercompleted-src-mq3-platform-win-glimp-runtime-ml-688603241"></a>
 ### renderCompleted
@@ -172,7 +172,7 @@ renderCompleted
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-renderer-renderer-src-mq3-platform-win-glimp-runtime-ml-848174327"></a>
 ### renderer
@@ -182,7 +182,7 @@ renderer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-rendererthread-rendererthread-src-mq3-platform-win-glimp-runtime-ml-2096037591"></a>
 ### rendererThread
@@ -192,7 +192,7 @@ rendererThread
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-swaps-swaps-src-mq3-platform-win-glimp-runtime-ml-990869209"></a>
 ### swaps
@@ -202,7 +202,7 @@ swaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-vendor-vendor-src-mq3-platform-win-glimp-runtime-ml-646673501"></a>
 ### vendor
@@ -212,7 +212,7 @@ vendor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-version-version-src-mq3-platform-win-glimp-runtime-ml-1630007081"></a>
 ### version
@@ -222,7 +222,7 @@ version
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)
 
 <a id="field-field-mq3-platform-win-glimp-runtime-runtime-windowcreated-windowcreated-src-mq3-platform-win-glimp-runtime-ml-2117198157"></a>
 ### windowCreated
@@ -232,4 +232,4 @@ windowCreated
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/platform/win_glimp_runtime.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/platform/win_glimp_runtime.ml#L28)

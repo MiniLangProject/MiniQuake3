@@ -10,7 +10,7 @@ struct Ping
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L11)
 
 ## Members
 
@@ -22,7 +22,7 @@ adr
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L11)
 
 <a id="field-field-mq3-client-client-abi-ping-info-info-src-mq3-client-client-abi-ml-425346559"></a>
 ### info
@@ -32,7 +32,7 @@ info
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L11)
 
 <a id="field-field-mq3-client-client-abi-ping-start-start-src-mq3-client-client-abi-ml-2131478471"></a>
 ### start
@@ -42,7 +42,7 @@ start
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L11)
 
 <a id="field-field-mq3-client-client-abi-ping-time-time-src-mq3-client-client-abi-ml-1633673477"></a>
 ### time
@@ -52,4 +52,4 @@ time
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/client_abi.ml#L11)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/client_abi.ml#L11)

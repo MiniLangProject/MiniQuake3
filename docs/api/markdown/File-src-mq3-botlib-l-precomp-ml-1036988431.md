@@ -29,7 +29,7 @@ function BuiltinFunction(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L181)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L181)
 
 <a id="function-function-mq3-botlib-l-precomp-conditional-function-conditional-source-name-src-mq3-botlib-l-precomp-ml-1384818596"></a>
 ### conditional
@@ -44,7 +44,7 @@ function conditional(source, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L146)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L146)
 
 <a id="function-function-mq3-botlib-l-precomp-create-function-create-hostvalue-src-mq3-botlib-l-precomp-ml-982810109"></a>
 ### create
@@ -58,7 +58,7 @@ function create(hostValue)
 | `hostValue` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L58)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L58)
 
 <a id="constant-constant-mq3-botlib-l-precomp-definehashsize-const-definehashsize-1024-src-mq3-botlib-l-precomp-ml-1112293836"></a>
 ### DEFINEHASHSIZE
@@ -68,7 +68,7 @@ const DEFINEHASHSIZE = 1024
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L14)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L14)
 
 <a id="function-function-mq3-botlib-l-precomp-emit-function-emit-runtime-kind-message-file-line-src-mq3-botlib-l-precomp-ml-188888837"></a>
 ### emit
@@ -86,7 +86,7 @@ function emit(runtime, kind, message, file, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L62)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L62)
 
 <a id="function-function-mq3-botlib-l-precomp-evaluationtoken-function-evaluationtoken-value-line-src-mq3-botlib-l-precomp-ml-138613411"></a>
 ### evaluationToken
@@ -101,7 +101,7 @@ function evaluationToken(value, line)
 | `line` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L170)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L170)
 
 <a id="function-function-mq3-botlib-l-precomp-freesource-function-freesource-source-src-mq3-botlib-l-precomp-ml-662464501"></a>
 ### FreeSource
@@ -115,7 +115,7 @@ function FreeSource(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L202)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L202)
 
 <a id="function-function-mq3-botlib-l-precomp-host-function-host-src-mq3-botlib-l-precomp-ml-491086870"></a>
 ### host
@@ -125,7 +125,7 @@ function host()
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L50)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L50)
 
 - [mq3.botlib.l_precomp.Indent](Type-mq3-botlib-l-precomp-indent-1435455151.md) — struct
 <a id="constant-constant-mq3-botlib-l-precomp-indent-elif-const-indent-elif-botlibheaders-indent-elif-src-mq3-botlib-l-precomp-ml-122801658"></a>
@@ -136,7 +136,7 @@ const INDENT_ELIF = botlibHeaders.INDENT_ELIF
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L17)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L17)
 
 <a id="constant-constant-mq3-botlib-l-precomp-indent-else-const-indent-else-botlibheaders-indent-else-src-mq3-botlib-l-precomp-ml-40148137"></a>
 ### INDENT_ELSE
@@ -146,7 +146,7 @@ const INDENT_ELSE = botlibHeaders.INDENT_ELSE
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L16)
 
 <a id="constant-constant-mq3-botlib-l-precomp-indent-if-const-indent-if-botlibheaders-indent-if-src-mq3-botlib-l-precomp-ml-566218319"></a>
 ### INDENT_IF
@@ -156,7 +156,7 @@ const INDENT_IF = botlibHeaders.INDENT_IF
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L15)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L15)
 
 <a id="constant-constant-mq3-botlib-l-precomp-indent-ifdef-const-indent-ifdef-botlibheaders-indent-ifdef-src-mq3-botlib-l-precomp-ml-931546662"></a>
 ### INDENT_IFDEF
@@ -166,7 +166,7 @@ const INDENT_IFDEF = botlibHeaders.INDENT_IFDEF
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L18)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L18)
 
 <a id="constant-constant-mq3-botlib-l-precomp-indent-ifndef-const-indent-ifndef-botlibheaders-indent-ifndef-src-mq3-botlib-l-precomp-ml-505986978"></a>
 ### INDENT_IFNDEF
@@ -176,7 +176,7 @@ const INDENT_IFNDEF = botlibHeaders.INDENT_IFNDEF
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L19)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L19)
 
 <a id="function-function-mq3-botlib-l-precomp-loadfile-function-loadfile-runtime-name-src-mq3-botlib-l-precomp-ml-544215985"></a>
 ### loadFile
@@ -191,7 +191,7 @@ function loadFile(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L51)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L51)
 
 <a id="function-function-mq3-botlib-l-precomp-loadsourcefile-function-loadsourcefile-runtime-filename-src-mq3-botlib-l-precomp-ml-595721755"></a>
 ### LoadSourceFile
@@ -206,7 +206,7 @@ function LoadSourceFile(runtime, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L197)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L197)
 
 <a id="function-function-mq3-botlib-l-precomp-loadsourcememory-function-loadsourcememory-runtime-ptr-length-name-src-mq3-botlib-l-precomp-ml-1126855829"></a>
 ### LoadSourceMemory
@@ -223,7 +223,7 @@ function LoadSourceMemory(runtime, ptr, length, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L198)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L198)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-add-const-p-add-29-src-mq3-botlib-l-precomp-ml-1898125488"></a>
 ### P_ADD
@@ -233,7 +233,7 @@ const P_ADD = 29
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L32)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-bin-and-const-p-bin-and-32-src-mq3-botlib-l-precomp-ml-58675216"></a>
 ### P_BIN_AND
@@ -243,7 +243,7 @@ const P_BIN_AND = 32
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L34)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L34)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-bin-not-const-p-bin-not-35-src-mq3-botlib-l-precomp-ml-1801733745"></a>
 ### P_BIN_NOT
@@ -253,7 +253,7 @@ const P_BIN_NOT = 35
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L37)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L37)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-bin-or-const-p-bin-or-33-src-mq3-botlib-l-precomp-ml-257083993"></a>
 ### P_BIN_OR
@@ -263,7 +263,7 @@ const P_BIN_OR = 33
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L35)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L35)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-bin-xor-const-p-bin-xor-34-src-mq3-botlib-l-precomp-ml-678454462"></a>
 ### P_BIN_XOR
@@ -273,7 +273,7 @@ const P_BIN_XOR = 34
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L36)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L36)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-colon-const-p-colon-42-src-mq3-botlib-l-precomp-ml-1618822495"></a>
 ### P_COLON
@@ -283,7 +283,7 @@ const P_COLON = 42
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L41)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-div-const-p-div-27-src-mq3-botlib-l-precomp-ml-1351286438"></a>
 ### P_DIV
@@ -293,7 +293,7 @@ const P_DIV = 27
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L30)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L30)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-and-const-p-logic-and-5-src-mq3-botlib-l-precomp-ml-2141998548"></a>
 ### P_LOGIC_AND
@@ -303,7 +303,7 @@ const P_LOGIC_AND = 5
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L21)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L21)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-eq-const-p-logic-eq-9-src-mq3-botlib-l-precomp-ml-325752790"></a>
 ### P_LOGIC_EQ
@@ -313,7 +313,7 @@ const P_LOGIC_EQ = 9
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L25)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L25)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-geq-const-p-logic-geq-7-src-mq3-botlib-l-precomp-ml-45413782"></a>
 ### P_LOGIC_GEQ
@@ -323,7 +323,7 @@ const P_LOGIC_GEQ = 7
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L23)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-greater-const-p-logic-greater-37-src-mq3-botlib-l-precomp-ml-573343211"></a>
 ### P_LOGIC_GREATER
@@ -333,7 +333,7 @@ const P_LOGIC_GREATER = 37
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L39)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L39)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-leq-const-p-logic-leq-8-src-mq3-botlib-l-precomp-ml-779428787"></a>
 ### P_LOGIC_LEQ
@@ -343,7 +343,7 @@ const P_LOGIC_LEQ = 8
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L24)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L24)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-less-const-p-logic-less-38-src-mq3-botlib-l-precomp-ml-690842234"></a>
 ### P_LOGIC_LESS
@@ -353,7 +353,7 @@ const P_LOGIC_LESS = 38
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L40)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L40)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-not-const-p-logic-not-36-src-mq3-botlib-l-precomp-ml-934649464"></a>
 ### P_LOGIC_NOT
@@ -363,7 +363,7 @@ const P_LOGIC_NOT = 36
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L38)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L38)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-or-const-p-logic-or-6-src-mq3-botlib-l-precomp-ml-978992513"></a>
 ### P_LOGIC_OR
@@ -373,7 +373,7 @@ const P_LOGIC_OR = 6
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L22)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L22)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-logic-uneq-const-p-logic-uneq-10-src-mq3-botlib-l-precomp-ml-2139524964"></a>
 ### P_LOGIC_UNEQ
@@ -383,7 +383,7 @@ const P_LOGIC_UNEQ = 10
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L26)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L26)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-lshift-const-p-lshift-22-src-mq3-botlib-l-precomp-ml-1788157469"></a>
 ### P_LSHIFT
@@ -393,7 +393,7 @@ const P_LSHIFT = 22
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L28)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-mod-const-p-mod-28-src-mq3-botlib-l-precomp-ml-318899299"></a>
 ### P_MOD
@@ -403,7 +403,7 @@ const P_MOD = 28
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L31)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L31)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-mul-const-p-mul-26-src-mq3-botlib-l-precomp-ml-1161012953"></a>
 ### P_MUL
@@ -413,7 +413,7 @@ const P_MUL = 26
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L29)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L29)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-questionmark-const-p-questionmark-43-src-mq3-botlib-l-precomp-ml-128035570"></a>
 ### P_QUESTIONMARK
@@ -423,7 +423,7 @@ const P_QUESTIONMARK = 43
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L42)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L42)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-rshift-const-p-rshift-21-src-mq3-botlib-l-precomp-ml-1651692128"></a>
 ### P_RSHIFT
@@ -433,7 +433,7 @@ const P_RSHIFT = 21
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L27)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L27)
 
 <a id="constant-constant-mq3-botlib-l-precomp-p-sub-const-p-sub-30-src-mq3-botlib-l-precomp-ml-495138546"></a>
 ### P_SUB
@@ -443,7 +443,7 @@ const P_SUB = 30
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L33)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L33)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-addbuiltindefines-function-pc-addbuiltindefines-source-src-mq3-botlib-l-precomp-ml-1230686869"></a>
 ### PC_AddBuiltinDefines
@@ -457,7 +457,7 @@ function PC_AddBuiltinDefines(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L110)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L110)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-adddefine-function-pc-adddefine-source-string-src-mq3-botlib-l-precomp-ml-1109965406"></a>
 ### PC_AddDefine
@@ -472,7 +472,7 @@ function PC_AddDefine(source, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L139)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L139)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-adddefinetohash-function-pc-adddefinetohash-define-table-src-mq3-botlib-l-precomp-ml-726146335"></a>
 ### PC_AddDefineToHash
@@ -487,7 +487,7 @@ function PC_AddDefineToHash(define, table)
 | `table` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L105)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L105)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-addglobaldefine-function-pc-addglobaldefine-runtime-string-src-mq3-botlib-l-precomp-ml-2057351111"></a>
 ### PC_AddGlobalDefine
@@ -502,7 +502,7 @@ function PC_AddGlobalDefine(runtime, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L140)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L140)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-addglobaldefinestosource-function-pc-addglobaldefinestosource-source-src-mq3-botlib-l-precomp-ml-155832497"></a>
 ### PC_AddGlobalDefinesToSource
@@ -516,7 +516,7 @@ function PC_AddGlobalDefinesToSource(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L144)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L144)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-checkopensourcehandles-function-pc-checkopensourcehandles-runtime-src-mq3-botlib-l-precomp-ml-886386404"></a>
 ### PC_CheckOpenSourceHandles
@@ -530,7 +530,7 @@ function PC_CheckOpenSourceHandles(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L208)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L208)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-checktokenstring-function-pc-checktokenstring-source-string-src-mq3-botlib-l-precomp-ml-356237902"></a>
 ### PC_CheckTokenString
@@ -545,7 +545,7 @@ function PC_CheckTokenString(source, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L188)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L188)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-checktokentype-function-pc-checktokentype-source-type-subtype-src-mq3-botlib-l-precomp-ml-425436489"></a>
 ### PC_CheckTokenType
@@ -561,7 +561,7 @@ function PC_CheckTokenType(source, type, subtype)
 | `subtype` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L189)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L189)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-cleartokenwhitespace-function-pc-cleartokenwhitespace-token-src-mq3-botlib-l-precomp-ml-677791641"></a>
 ### PC_ClearTokenWhiteSpace
@@ -575,7 +575,7 @@ function PC_ClearTokenWhiteSpace(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L127)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L127)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-convertpath-function-pc-convertpath-path-src-mq3-botlib-l-precomp-ml-336523103"></a>
 ### PC_ConvertPath
@@ -589,7 +589,7 @@ function PC_ConvertPath(path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L119)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L119)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-copydefine-function-pc-copydefine-source-define-src-mq3-botlib-l-precomp-ml-1818228668"></a>
 ### PC_CopyDefine
@@ -604,7 +604,7 @@ function PC_CopyDefine(source, define)
 | `define` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L143)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L143)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-copytoken-function-pc-copytoken-token-src-mq3-botlib-l-precomp-ml-521308491"></a>
 ### PC_CopyToken
@@ -618,7 +618,7 @@ function PC_CopyToken(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L85)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L85)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-definefromstring-function-pc-definefromstring-runtime-string-src-mq3-botlib-l-precomp-ml-345690499"></a>
 ### PC_DefineFromString
@@ -633,7 +633,7 @@ function PC_DefineFromString(runtime, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L136)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L136)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-define-function-pc-directive-define-source-src-mq3-botlib-l-precomp-ml-482579091"></a>
 ### PC_Directive_define
@@ -647,7 +647,7 @@ function PC_Directive_define(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L133)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L133)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-elif-function-pc-directive-elif-source-src-mq3-botlib-l-precomp-ml-601915857"></a>
 ### PC_Directive_elif
@@ -661,7 +661,7 @@ function PC_Directive_elif(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L152)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L152)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-else-function-pc-directive-else-source-src-mq3-botlib-l-precomp-ml-704596055"></a>
 ### PC_Directive_else
@@ -675,7 +675,7 @@ function PC_Directive_else(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L150)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L150)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-endif-function-pc-directive-endif-source-src-mq3-botlib-l-precomp-ml-574170989"></a>
 ### PC_Directive_endif
@@ -689,7 +689,7 @@ function PC_Directive_endif(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L151)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L151)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-error-function-pc-directive-error-source-src-mq3-botlib-l-precomp-ml-2063725981"></a>
 ### PC_Directive_error
@@ -703,7 +703,7 @@ function PC_Directive_error(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L167)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L167)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-eval-function-pc-directive-eval-source-src-mq3-botlib-l-precomp-ml-1352067209"></a>
 ### PC_Directive_eval
@@ -717,7 +717,7 @@ function PC_Directive_eval(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L171)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L171)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-evalfloat-function-pc-directive-evalfloat-source-src-mq3-botlib-l-precomp-ml-1229592533"></a>
 ### PC_Directive_evalfloat
@@ -731,7 +731,7 @@ function PC_Directive_evalfloat(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L172)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L172)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-if-function-pc-directive-if-source-src-mq3-botlib-l-precomp-ml-897892395"></a>
 ### PC_Directive_if
@@ -745,7 +745,7 @@ function PC_Directive_if(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L153)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L153)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-if-def-function-pc-directive-if-def-source-type-src-mq3-botlib-l-precomp-ml-1636857003"></a>
 ### PC_Directive_if_def
@@ -760,7 +760,7 @@ function PC_Directive_if_def(source, type)
 | `type` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L147)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L147)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-ifdef-function-pc-directive-ifdef-source-src-mq3-botlib-l-precomp-ml-653448045"></a>
 ### PC_Directive_ifdef
@@ -774,7 +774,7 @@ function PC_Directive_ifdef(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L148)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L148)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-ifndef-function-pc-directive-ifndef-source-src-mq3-botlib-l-precomp-ml-1345296849"></a>
 ### PC_Directive_ifndef
@@ -788,7 +788,7 @@ function PC_Directive_ifndef(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L149)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L149)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-include-function-pc-directive-include-source-src-mq3-botlib-l-precomp-ml-1271732857"></a>
 ### PC_Directive_include
@@ -802,7 +802,7 @@ function PC_Directive_include(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L124)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L124)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-line-function-pc-directive-line-source-src-mq3-botlib-l-precomp-ml-1356765913"></a>
 ### PC_Directive_line
@@ -816,7 +816,7 @@ function PC_Directive_line(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L166)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L166)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-pragma-function-pc-directive-pragma-source-src-mq3-botlib-l-precomp-ml-758161237"></a>
 ### PC_Directive_pragma
@@ -830,7 +830,7 @@ function PC_Directive_pragma(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L168)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L168)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-directive-undef-function-pc-directive-undef-source-src-mq3-botlib-l-precomp-ml-435144005"></a>
 ### PC_Directive_undef
@@ -844,7 +844,7 @@ function PC_Directive_undef(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L132)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L132)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-dollardirective-evalfloat-function-pc-dollardirective-evalfloat-source-src-mq3-botlib-l-precomp-ml-1919943909"></a>
 ### PC_DollarDirective_evalfloat
@@ -858,7 +858,7 @@ function PC_DollarDirective_evalfloat(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L179)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L179)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-dollardirective-evalint-function-pc-dollardirective-evalint-source-src-mq3-botlib-l-precomp-ml-1711447541"></a>
 ### PC_DollarDirective_evalint
@@ -872,7 +872,7 @@ function PC_DollarDirective_evalint(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L178)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L178)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-dollarevaluate-function-pc-dollarevaluate-source-intvalue-floatvalue-integer-src-mq3-botlib-l-precomp-ml-194008348"></a>
 ### PC_DollarEvaluate
@@ -889,7 +889,7 @@ function PC_DollarEvaluate(source, intvalue, floatvalue, integer)
 | `integer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L165)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L165)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-evaluate-function-pc-evaluate-source-intvalue-floatvalue-integer-src-mq3-botlib-l-precomp-ml-795021796"></a>
 ### PC_Evaluate
@@ -906,7 +906,7 @@ function PC_Evaluate(source, intvalue, floatvalue, integer)
 | `integer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L164)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L164)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-evaluatetokens-function-pc-evaluatetokens-source-tokens-intvalue-floatvalue-integer-src-mq3-botlib-l-precomp-ml-2056604682"></a>
 ### PC_EvaluateTokens
@@ -924,7 +924,7 @@ function PC_EvaluateTokens(source, tokens, intvalue, floatvalue, integer)
 | `integer` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L161)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L161)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expandbuiltindefine-function-pc-expandbuiltindefine-source-deftoken-definetoken-src-mq3-botlib-l-precomp-ml-1953953777"></a>
 ### PC_ExpandBuiltinDefine
@@ -940,7 +940,7 @@ function PC_ExpandBuiltinDefine(source, deftoken, defineToken)
 | `defineToken` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L111)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L111)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expanddefine-function-pc-expanddefine-source-deftoken-define-parms-src-mq3-botlib-l-precomp-ml-1196267901"></a>
 ### PC_ExpandDefine
@@ -957,7 +957,7 @@ function PC_ExpandDefine(source, deftoken, define, parms)
 | `parms` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L114)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L114)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expanddefineintosource-function-pc-expanddefineintosource-source-deftoken-define-src-mq3-botlib-l-precomp-ml-1393577576"></a>
 ### PC_ExpandDefineIntoSource
@@ -973,7 +973,7 @@ function PC_ExpandDefineIntoSource(source, deftoken, define)
 | `define` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L115)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L115)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expectanytoken-function-pc-expectanytoken-source-src-mq3-botlib-l-precomp-ml-1121601653"></a>
 ### PC_ExpectAnyToken
@@ -987,7 +987,7 @@ function PC_ExpectAnyToken(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L187)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L187)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expecttokenstring-function-pc-expecttokenstring-source-string-src-mq3-botlib-l-precomp-ml-1773049910"></a>
 ### PC_ExpectTokenString
@@ -1002,7 +1002,7 @@ function PC_ExpectTokenString(source, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L185)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L185)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-expecttokentype-function-pc-expecttokentype-source-type-subtype-src-mq3-botlib-l-precomp-ml-1915784663"></a>
 ### PC_ExpectTokenType
@@ -1018,7 +1018,7 @@ function PC_ExpectTokenType(source, type, subtype)
 | `subtype` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L186)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L186)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-finddefine-function-pc-finddefine-defines-name-src-mq3-botlib-l-precomp-ml-810853257"></a>
 ### PC_FindDefine
@@ -1033,7 +1033,7 @@ function PC_FindDefine(defines, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L107)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L107)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-finddefineparm-function-pc-finddefineparm-define-name-src-mq3-botlib-l-precomp-ml-269525262"></a>
 ### PC_FindDefineParm
@@ -1048,7 +1048,7 @@ function PC_FindDefineParm(define, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L108)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L108)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-findhasheddefine-function-pc-findhasheddefine-table-name-src-mq3-botlib-l-precomp-ml-215529891"></a>
 ### PC_FindHashedDefine
@@ -1063,7 +1063,7 @@ function PC_FindHashedDefine(table, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L106)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L106)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-freedefine-function-pc-freedefine-define-src-mq3-botlib-l-precomp-ml-1833996301"></a>
 ### PC_FreeDefine
@@ -1077,7 +1077,7 @@ function PC_FreeDefine(define)
 | `define` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L109)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L109)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-freesourcehandle-function-pc-freesourcehandle-runtime-handle-src-mq3-botlib-l-precomp-ml-1451579128"></a>
 ### PC_FreeSourceHandle
@@ -1092,7 +1092,7 @@ function PC_FreeSourceHandle(runtime, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L204)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L204)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-freetoken-function-pc-freetoken-token-src-mq3-botlib-l-precomp-ml-546652551"></a>
 ### PC_FreeToken
@@ -1106,7 +1106,7 @@ function PC_FreeToken(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L86)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L86)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-inittokenheap-function-pc-inittokenheap-runtime-src-mq3-botlib-l-precomp-ml-512567352"></a>
 ### PC_InitTokenHeap
@@ -1120,7 +1120,7 @@ function PC_InitTokenHeap(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L84)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L84)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-lexerview-function-pc-lexerview-source-src-mq3-botlib-l-precomp-ml-1821999365"></a>
 ### PC_LexerView
@@ -1136,7 +1136,7 @@ Expose the original l_script API over the active preprocessor input without copy
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L71)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-loadsourcehandle-function-pc-loadsourcehandle-runtime-filename-src-mq3-botlib-l-precomp-ml-1311409557"></a>
 ### PC_LoadSourceHandle
@@ -1151,7 +1151,7 @@ function PC_LoadSourceHandle(runtime, filename)
 | `filename` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L203)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L203)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-mergetokens-function-pc-mergetokens-t1-t2-src-mq3-botlib-l-precomp-ml-194123881"></a>
 ### PC_MergeTokens
@@ -1166,7 +1166,7 @@ function PC_MergeTokens(t1, t2)
 | `t2` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L98)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L98)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-namehash-function-pc-namehash-name-src-mq3-botlib-l-precomp-ml-1400024389"></a>
 ### PC_NameHash
@@ -1180,7 +1180,7 @@ function PC_NameHash(name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L102)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L102)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-operatorpriority-function-pc-operatorpriority-op-src-mq3-botlib-l-precomp-ml-1803541375"></a>
 ### PC_OperatorPriority
@@ -1194,7 +1194,7 @@ function PC_OperatorPriority(op)
 | `op` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L155)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L155)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-popindent-function-pc-popindent-source-typeout-skipout-src-mq3-botlib-l-precomp-ml-894166102"></a>
 ### PC_PopIndent
@@ -1210,7 +1210,7 @@ function PC_PopIndent(source, typeOut, skipOut)
 | `skipOut` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L79)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L79)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-printdefine-function-pc-printdefine-runtime-define-src-mq3-botlib-l-precomp-ml-1151299697"></a>
 ### PC_PrintDefine
@@ -1225,7 +1225,7 @@ function PC_PrintDefine(runtime, define)
 | `define` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L99)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L99)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-printdefinehashtable-function-pc-printdefinehashtable-runtime-table-src-mq3-botlib-l-precomp-ml-1711442026"></a>
 ### PC_PrintDefineHashTable
@@ -1240,7 +1240,7 @@ function PC_PrintDefineHashTable(runtime, table)
 | `table` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L100)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L100)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-pushindent-function-pc-pushindent-source-type-skip-src-mq3-botlib-l-precomp-ml-44671764"></a>
 ### PC_PushIndent
@@ -1256,7 +1256,7 @@ function PC_PushIndent(source, type, skip)
 | `skip` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L78)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L78)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-pushscript-function-pc-pushscript-source-script-src-mq3-botlib-l-precomp-ml-11173494"></a>
 ### PC_PushScript
@@ -1271,7 +1271,7 @@ function PC_PushScript(source, script)
 | `script` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L83)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L83)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readdefineparms-function-pc-readdefineparms-source-define-maxparms-src-mq3-botlib-l-precomp-ml-677087143"></a>
 ### PC_ReadDefineParms
@@ -1287,7 +1287,7 @@ function PC_ReadDefineParms(source, define, maxparms)
 | `maxparms` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L92)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L92)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readdirective-function-pc-readdirective-source-name-src-mq3-botlib-l-precomp-ml-37531448"></a>
 ### PC_ReadDirective
@@ -1302,7 +1302,7 @@ function PC_ReadDirective(source, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L174)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L174)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readdollardirective-function-pc-readdollardirective-source-name-src-mq3-botlib-l-precomp-ml-597513144"></a>
 ### PC_ReadDollarDirective
@@ -1317,7 +1317,7 @@ function PC_ReadDollarDirective(source, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L180)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L180)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readline-function-pc-readline-source-src-mq3-botlib-l-precomp-ml-1807120221"></a>
 ### PC_ReadLine
@@ -1331,7 +1331,7 @@ function PC_ReadLine(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L125)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L125)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readsourcetoken-function-pc-readsourcetoken-source-src-mq3-botlib-l-precomp-ml-52157697"></a>
 ### PC_ReadSourceToken
@@ -1345,7 +1345,7 @@ function PC_ReadSourceToken(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L88)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readtoken-function-pc-readtoken-source-src-mq3-botlib-l-precomp-ml-916704065"></a>
 ### PC_ReadToken
@@ -1359,7 +1359,7 @@ function PC_ReadToken(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L184)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L184)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-readtokenhandle-function-pc-readtokenhandle-runtime-handle-src-mq3-botlib-l-precomp-ml-178435078"></a>
 ### PC_ReadTokenHandle
@@ -1374,7 +1374,7 @@ function PC_ReadTokenHandle(runtime, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L205)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L205)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-removeallglobaldefines-function-pc-removeallglobaldefines-runtime-src-mq3-botlib-l-precomp-ml-963521012"></a>
 ### PC_RemoveAllGlobalDefines
@@ -1388,7 +1388,7 @@ function PC_RemoveAllGlobalDefines(runtime)
 | `runtime` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L142)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L142)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-removeglobaldefine-function-pc-removeglobaldefine-runtime-name-src-mq3-botlib-l-precomp-ml-440668561"></a>
 ### PC_RemoveGlobalDefine
@@ -1403,7 +1403,7 @@ function PC_RemoveGlobalDefine(runtime, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L141)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L141)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-setbasefolder-function-pc-setbasefolder-runtime-path-src-mq3-botlib-l-precomp-ml-670507609"></a>
 ### PC_SetBaseFolder
@@ -1418,7 +1418,7 @@ function PC_SetBaseFolder(runtime, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L207)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L207)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-setincludepath-function-pc-setincludepath-source-path-src-mq3-botlib-l-precomp-ml-858227262"></a>
 ### PC_SetIncludePath
@@ -1433,7 +1433,7 @@ function PC_SetIncludePath(source, path)
 | `path` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L193)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L193)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-setpunctuations-function-pc-setpunctuations-source-p-src-mq3-botlib-l-precomp-ml-1527365569"></a>
 ### PC_SetPunctuations
@@ -1448,7 +1448,7 @@ function PC_SetPunctuations(source, p)
 | `p` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L194)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L194)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-skipuntilstring-function-pc-skipuntilstring-source-string-src-mq3-botlib-l-precomp-ml-1548206342"></a>
 ### PC_SkipUntilString
@@ -1463,7 +1463,7 @@ function PC_SkipUntilString(source, string)
 | `string` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L190)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L190)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-sourcefileandline-function-pc-sourcefileandline-runtime-handle-src-mq3-botlib-l-precomp-ml-1438474762"></a>
 ### PC_SourceFileAndLine
@@ -1478,7 +1478,7 @@ function PC_SourceFileAndLine(runtime, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L206)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L206)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-stringizetokens-function-pc-stringizetokens-tokens-token-src-mq3-botlib-l-precomp-ml-337191813"></a>
 ### PC_StringizeTokens
@@ -1493,7 +1493,7 @@ function PC_StringizeTokens(tokens, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L97)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L97)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-unreadlasttoken-function-pc-unreadlasttoken-source-src-mq3-botlib-l-precomp-ml-1509287277"></a>
 ### PC_UnreadLastToken
@@ -1507,7 +1507,7 @@ function PC_UnreadLastToken(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L191)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L191)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-unreadsourcetoken-function-pc-unreadsourcetoken-source-token-src-mq3-botlib-l-precomp-ml-1048729814"></a>
 ### PC_UnreadSourceToken
@@ -1522,7 +1522,7 @@ function PC_UnreadSourceToken(source, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L91)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L91)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-unreadtoken-function-pc-unreadtoken-source-token-src-mq3-botlib-l-precomp-ml-1468847378"></a>
 ### PC_UnreadToken
@@ -1537,7 +1537,7 @@ function PC_UnreadToken(source, token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L192)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L192)
 
 <a id="function-function-mq3-botlib-l-precomp-pc-whitespacebeforetoken-function-pc-whitespacebeforetoken-token-src-mq3-botlib-l-precomp-ml-1239550391"></a>
 ### PC_WhiteSpaceBeforeToken
@@ -1551,7 +1551,7 @@ function PC_WhiteSpaceBeforeToken(token)
 | `token` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L126)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L126)
 
 - [mq3.botlib.l_precomp.PrecompHost](Type-mq3-botlib-l-precomp-precomphost-125789787.md) — struct
 <a id="function-function-mq3-botlib-l-precomp-quakecmacro-function-quakecmacro-source-src-mq3-botlib-l-precomp-ml-1535729641"></a>
@@ -1566,7 +1566,7 @@ function QuakeCMacro(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L182)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L182)
 
 <a id="function-function-mq3-botlib-l-precomp-removedefine-function-removedefine-registry-name-src-mq3-botlib-l-precomp-ml-1629394094"></a>
 ### removeDefine
@@ -1581,7 +1581,7 @@ function removeDefine(registry, name)
 | `name` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L129)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L129)
 
 - [mq3.botlib.l_precomp.Runtime](Type-mq3-botlib-l-precomp-runtime-699338599.md) — struct
 - [mq3.botlib.l_precomp.Source](Type-mq3-botlib-l-precomp-source-316817148.md) — struct
@@ -1597,7 +1597,7 @@ function sourceEntry(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L66)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L66)
 
 <a id="function-function-mq3-botlib-l-precomp-sourceerror-function-sourceerror-source-message-src-mq3-botlib-l-precomp-ml-815717710"></a>
 ### SourceError
@@ -1612,7 +1612,7 @@ function SourceError(source, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L75)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L75)
 
 <a id="function-function-mq3-botlib-l-precomp-sourcelocation-function-sourcelocation-source-src-mq3-botlib-l-precomp-ml-1729676237"></a>
 ### sourceLocation
@@ -1626,7 +1626,7 @@ function sourceLocation(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L67)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L67)
 
 <a id="function-function-mq3-botlib-l-precomp-sourcewarning-function-sourcewarning-source-message-src-mq3-botlib-l-precomp-ml-1904249394"></a>
 ### SourceWarning
@@ -1641,7 +1641,7 @@ function SourceWarning(source, message)
 | `message` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L76)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L76)
 
 <a id="function-function-mq3-botlib-l-precomp-unreadsigntoken-function-unreadsigntoken-source-src-mq3-botlib-l-precomp-ml-171946251"></a>
 ### UnreadSignToken
@@ -1655,7 +1655,7 @@ function UnreadSignToken(source)
 | `source` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L169)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L169)
 
 <a id="function-function-mq3-botlib-l-precomp-wrap-function-wrap-runtime-handle-src-mq3-botlib-l-precomp-ml-992172462"></a>
 ### wrap
@@ -1670,4 +1670,4 @@ function wrap(runtime, handle)
 | `handle` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/botlib/l_precomp.ml#L196)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/botlib/l_precomp.ml#L196)

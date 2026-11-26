@@ -10,7 +10,7 @@ struct Material
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 ## Members
 
@@ -22,7 +22,7 @@ clampTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-deforms-deforms-src-mq3-renderer-playable-materials-ml-3742578"></a>
 ### deforms
@@ -32,7 +32,7 @@ deforms
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-image-image-src-mq3-renderer-playable-materials-ml-743137362"></a>
 ### image
@@ -42,7 +42,7 @@ image
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-imagename-imagename-src-mq3-renderer-playable-materials-ml-1447508146"></a>
 ### imageName
@@ -52,7 +52,7 @@ imageName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-nomipmaps-nomipmaps-src-mq3-renderer-playable-materials-ml-665319198"></a>
 ### noMipMaps
@@ -62,7 +62,7 @@ noMipMaps
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-nopicmip-nopicmip-src-mq3-renderer-playable-materials-ml-1776481596"></a>
 ### noPicMip
@@ -72,7 +72,7 @@ noPicMip
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-polygonoffset-polygonoffset-src-mq3-renderer-playable-materials-ml-91781898"></a>
 ### polygonOffset
@@ -82,7 +82,7 @@ polygonOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-shadername-shadername-src-mq3-renderer-playable-materials-ml-1924956802"></a>
 ### shaderName
@@ -92,7 +92,7 @@ shaderName
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-slot-slot-src-mq3-renderer-playable-materials-ml-381131450"></a>
 ### slot
@@ -102,7 +102,7 @@ slot
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-sort-sort-src-mq3-renderer-playable-materials-ml-579795954"></a>
 ### sort
@@ -112,7 +112,7 @@ sort
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-stages-stages-src-mq3-renderer-playable-materials-ml-1643870396"></a>
 ### stages
@@ -122,7 +122,7 @@ stages
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-textureindex-textureindex-src-mq3-renderer-playable-materials-ml-822464188"></a>
 ### textureIndex
@@ -132,7 +132,7 @@ textureIndex
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-timeoffset-timeoffset-src-mq3-renderer-playable-materials-ml-1945884142"></a>
 ### timeOffset
@@ -142,7 +142,7 @@ timeOffset
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)
 
 <a id="field-field-mq3-renderer-playable-materials-material-twosided-twosided-src-mq3-renderer-playable-materials-ml-1204912772"></a>
 ### twoSided
@@ -152,4 +152,4 @@ twoSided
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/renderer/playable_materials.ml#L41)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/renderer/playable_materials.ml#L41)

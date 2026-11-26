@@ -26,7 +26,7 @@ function add3(a, b, c)
 | `c` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L28)
 
 <a id="function-function-mq3-qcommon-md4-blockchecksum-function-blockchecksum-data-src-mq3-qcommon-md4-ml-213875124"></a>
 ### blockChecksum
@@ -40,7 +40,7 @@ function blockChecksum(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L88)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L88)
 
 <a id="function-function-mq3-qcommon-md4-blockchecksumkey-function-blockchecksumkey-data-key-src-mq3-qcommon-md4-ml-295073233"></a>
 ### blockChecksumKey
@@ -55,7 +55,7 @@ function blockChecksumKey(data, key)
 | `key` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L93)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L93)
 
 <a id="function-function-mq3-qcommon-md4-decode-function-decode-input-length-src-mq3-qcommon-md4-ml-1707366610"></a>
 ### Decode
@@ -70,7 +70,7 @@ function Decode(input, length)
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L16)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L16)
 
 <a id="function-function-mq3-qcommon-md4-digest-function-digest-data-src-mq3-qcommon-md4-ml-10795856"></a>
 ### digest
@@ -84,7 +84,7 @@ function digest(data)
 | `data` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L64)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L64)
 
 <a id="function-function-mq3-qcommon-md4-encode-function-encode-input-length-src-mq3-qcommon-md4-ml-1899699970"></a>
 ### Encode
@@ -101,7 +101,7 @@ C-named little-endian conversion helpers.  The original functions accept output 
 | `length` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L9)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L9)
 
 <a id="function-function-mq3-qcommon-md4-rol-function-rol-value-amount-src-mq3-qcommon-md4-ml-833271453"></a>
 ### rol
@@ -116,7 +116,7 @@ function rol(value, amount)
 | `amount` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L23)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L23)
 
 <a id="function-function-mq3-qcommon-md4-step-function-step-work-target-word-rotation-round-src-mq3-qcommon-md4-ml-1401285280"></a>
 ### step
@@ -134,7 +134,7 @@ function step(work, target, word, rotation, round)
 | `round` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L32)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L32)
 
 <a id="function-function-mq3-qcommon-md4-transform-function-transform-state-block-offset-src-mq3-qcommon-md4-ml-1595729661"></a>
 ### transform
@@ -150,4 +150,4 @@ function transform(state, block, offset)
 | `offset` | `dynamic` | — |  |
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/qcommon/md4.ml#L43)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/qcommon/md4.ml#L43)

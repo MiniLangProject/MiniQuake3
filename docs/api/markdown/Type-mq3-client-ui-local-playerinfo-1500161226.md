@@ -10,7 +10,7 @@ struct PlayerInfo
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 ## Members
 
@@ -22,7 +22,7 @@ animations
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-barrelangle-barrelangle-src-mq3-client-ui-local-ml-97075080"></a>
 ### barrelAngle
@@ -32,7 +32,7 @@ barrelAngle
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-barrelmodel-barrelmodel-src-mq3-client-ui-local-ml-1622095132"></a>
 ### barrelModel
@@ -42,7 +42,7 @@ barrelModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-barrelspinning-barrelspinning-src-mq3-client-ui-local-ml-1774980468"></a>
 ### barrelSpinning
@@ -52,7 +52,7 @@ barrelSpinning
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-barreltime-barreltime-src-mq3-client-ui-local-ml-1131356438"></a>
 ### barrelTime
@@ -62,7 +62,7 @@ barrelTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-chat-chat-src-mq3-client-ui-local-ml-2084410468"></a>
 ### chat
@@ -72,7 +72,7 @@ chat
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-currentweapon-currentweapon-src-mq3-client-ui-local-ml-281328920"></a>
 ### currentWeapon
@@ -82,7 +82,7 @@ currentWeapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-flashdlightcolor-flashdlightcolor-src-mq3-client-ui-local-ml-512531702"></a>
 ### flashDlightColor
@@ -92,7 +92,7 @@ flashDlightColor
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-flashmodel-flashmodel-src-mq3-client-ui-local-ml-1384964314"></a>
 ### flashModel
@@ -102,7 +102,7 @@ flashModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-headmodel-headmodel-src-mq3-client-ui-local-ml-1517513980"></a>
 ### headModel
@@ -112,7 +112,7 @@ headModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-headskin-headskin-src-mq3-client-ui-local-ml-1908967390"></a>
 ### headSkin
@@ -122,7 +122,7 @@ headSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-lastweapon-lastweapon-src-mq3-client-ui-local-ml-1737832952"></a>
 ### lastWeapon
@@ -132,7 +132,7 @@ lastWeapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-legs-legs-src-mq3-client-ui-local-ml-1193667386"></a>
 ### legs
@@ -142,7 +142,7 @@ legs
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-legsanim-legsanim-src-mq3-client-ui-local-ml-78337204"></a>
 ### legsAnim
@@ -152,7 +152,7 @@ legsAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-legsanimationtimer-legsanimationtimer-src-mq3-client-ui-local-ml-359621156"></a>
 ### legsAnimationTimer
@@ -162,7 +162,7 @@ legsAnimationTimer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-legsmodel-legsmodel-src-mq3-client-ui-local-ml-1019281764"></a>
 ### legsModel
@@ -172,7 +172,7 @@ legsModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-legsskin-legsskin-src-mq3-client-ui-local-ml-1511046772"></a>
 ### legsSkin
@@ -182,7 +182,7 @@ legsSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-moveangles-moveangles-src-mq3-client-ui-local-ml-896039014"></a>
 ### moveAngles
@@ -192,7 +192,7 @@ moveAngles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-muzzleflashtime-muzzleflashtime-src-mq3-client-ui-local-ml-1097770956"></a>
 ### muzzleFlashTime
@@ -202,7 +202,7 @@ muzzleFlashTime
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-newmodel-newmodel-src-mq3-client-ui-local-ml-1625978150"></a>
 ### newModel
@@ -212,7 +212,7 @@ newModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-pendinglegsanim-pendinglegsanim-src-mq3-client-ui-local-ml-1404410400"></a>
 ### pendingLegsAnim
@@ -222,7 +222,7 @@ pendingLegsAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-pendingtorsoanim-pendingtorsoanim-src-mq3-client-ui-local-ml-826786702"></a>
 ### pendingTorsoAnim
@@ -232,7 +232,7 @@ pendingTorsoAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-pendingweapon-pendingweapon-src-mq3-client-ui-local-ml-342230436"></a>
 ### pendingWeapon
@@ -242,7 +242,7 @@ pendingWeapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-realweapon-realweapon-src-mq3-client-ui-local-ml-561317096"></a>
 ### realWeapon
@@ -252,7 +252,7 @@ realWeapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-torso-torso-src-mq3-client-ui-local-ml-105290416"></a>
 ### torso
@@ -262,7 +262,7 @@ torso
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-torsoanim-torsoanim-src-mq3-client-ui-local-ml-858223652"></a>
 ### torsoAnim
@@ -272,7 +272,7 @@ torsoAnim
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-torsoanimationtimer-torsoanimationtimer-src-mq3-client-ui-local-ml-1292280692"></a>
 ### torsoAnimationTimer
@@ -282,7 +282,7 @@ torsoAnimationTimer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-torsomodel-torsomodel-src-mq3-client-ui-local-ml-2044430676"></a>
 ### torsoModel
@@ -292,7 +292,7 @@ torsoModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-torsoskin-torsoskin-src-mq3-client-ui-local-ml-1825873252"></a>
 ### torsoSkin
@@ -302,7 +302,7 @@ torsoSkin
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-viewangles-viewangles-src-mq3-client-ui-local-ml-998682774"></a>
 ### viewAngles
@@ -312,7 +312,7 @@ viewAngles
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-weapon-weapon-src-mq3-client-ui-local-ml-737714164"></a>
 ### weapon
@@ -322,7 +322,7 @@ weapon
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-weaponmodel-weaponmodel-src-mq3-client-ui-local-ml-96348884"></a>
 ### weaponModel
@@ -332,7 +332,7 @@ weaponModel
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)
 
 <a id="field-field-mq3-client-ui-local-playerinfo-weapontimer-weapontimer-src-mq3-client-ui-local-ml-1059100864"></a>
 ### weaponTimer
@@ -342,4 +342,4 @@ weaponTimer
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/client/ui_local.ml#L71)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/client/ui_local.ml#L71)

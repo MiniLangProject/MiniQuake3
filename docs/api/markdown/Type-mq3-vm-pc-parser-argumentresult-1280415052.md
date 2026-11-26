@@ -10,7 +10,7 @@ struct ArgumentResult
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L28)
 
 ## Members
 
@@ -22,7 +22,7 @@ arguments
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L28)
 
 <a id="field-field-mq3-vm-pc-parser-argumentresult-next-next-src-mq3-vm-pc-parser-ml-1203160621"></a>
 ### next
@@ -32,7 +32,7 @@ next
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L28)
 
 <a id="field-field-mq3-vm-pc-parser-argumentresult-valid-valid-src-mq3-vm-pc-parser-ml-1371028151"></a>
 ### valid
@@ -42,4 +42,4 @@ valid
 ```
 
 
-[View source](https://github.com/n1k0m0/MiniQuake3/blob/main/src/mq3/vm/pc_parser.ml#L28)
+[View source](https://github.com/MiniLangProject/MiniQuake3/blob/master/src/mq3/vm/pc_parser.ml#L28)
