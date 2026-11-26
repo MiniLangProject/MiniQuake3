@@ -76,7 +76,7 @@ complete behavioral parity.
 | Desktop lifecycle and persistence | The Windows host routes local map, restart, menu and Retail tier-cinematic commands, consumes the post-film `nextmap` command, and saves bindings, archived settings and single-player scores to `baseq3/q3config.cfg`. |
 | Broader compatibility | Longer interactive sessions, multiplayer interoperability, hardware-specific behavior and complete 1:1 parity still need acceptance testing. |
 
-The hosted Windows screenshot runs use **software rendering** and do not
+The historical hosted Windows screenshot runs used **software rendering** and do not
 establish hardware-accelerated performance or audible playback. Capture I/O is
 also enabled: screenshot-run timings are not gameplay benchmarks. Earlier
 screenshots are evidence for their recorded revision, not a new graphical
@@ -129,6 +129,9 @@ The normal launch discovers data relative to the EXE, loads the installed
 the QVMs produced by the build; do not substitute unrelated mod DLLs or QVMs.
 
 ## Building
+
+Builds, tests and release packaging run locally using the commands below.
+This repository does not use GitHub Actions.
 
 ### Fresh checkout: published compiler
 
@@ -264,7 +267,7 @@ its documented scenario model. These checks do not measure GPU performance.
 ### Regenerate the README screenshots
 
 The capture script uses the existing `MQ3_CAPTURE` framebuffer export, so a
-small CI desktop cannot clip the image or hide part of the HUD:
+small desktop cannot clip the image or hide part of the HUD:
 
 ```powershell
 python -m pip install Pillow
