@@ -10,18 +10,34 @@ const DSERR_INVALIDCALL=-2
 const DSERR_INVALIDPARAM=-3
 const DSERR_PRIOLEVELNEEDED=-4
 
+/// Data record for `mq3.platform.win_snd.Action`; groups `boundary`, `kind`, `size`, `dispatched`.
 struct Action boundary kind size dispatched end struct
+/// Data record for `mq3.platform.win_snd.Dma`; groups `channels`, `samplebits`, `speed`, `samples`, `submissionChunk`, `bufferValid`.
 struct Dma channels samplebits speed samples submissionChunk bufferValid end struct
+/// Data record for `mq3.platform.win_snd.State`; groups `dsoundInit`, `sample16`, `sndBufSize`, `lockSize`, `hasDS`, `hasDSBuf`, and 11 further fields.
 struct State dsoundInit sample16 sndBufSize lockSize hasDS hasDSBuf hasPrimary dllLoaded coInitialized playing bufferLost bufferLocked dma actions prints errors retailActive end struct
 
+/// Constructs `mq3.platform.win_snd.State` with `dsoundInit` = `false`, `sample16` = `0`, `sndBufSize` = `0`, `lockSize` = `0` and the supplied remaining values.
+/// @param retailActive Initial value for `mq3.platform.win_snd.State.retailActive`.
 function create(retailActive)
   return State(false,0,0,0,false,false,false,false,false,false,false,false,Dma(0,0,0,0,0,false),[],[],[],retailActive)
 end function
+/// Updates `state.actions` in `mq3.platform.win_snd.emit`; returns `value`.
+/// @param state Mutable record or buffer; this call updates `state.actions`.
+/// @param kind Value used for `mq3.platform.win_snd.Action.kind`.
+/// @param size Value used for `mq3.platform.win_snd.Action.size`.
 function emit(state,kind,size) value=Action("directsound",kind,size,not state.retailActive);state.actions=state.actions+[value];return value end function
+/// Updates `state.prints` in `mq3.platform.win_snd.note`; returns `text`.
+/// @param state Mutable record or buffer; this call updates `state.prints`.
+/// @param text Input used by `state.prints=state.prints+[text]`.
 function note(state,text) state.prints=state.prints+[text];return text end function
+/// Updates `state.errors` in `mq3.platform.win_snd.fail`; returns `false`.
+/// @param state Mutable record or buffer; this call updates `state.errors`.
+/// @param text Input used by `state.errors=state.errors+[text]`.
 function fail(state,text) state.errors=state.errors+[text];return false end function
 
 // DSoundError
+/// @param errorCode Input tested by `errorCode==DSERR_BUFFERLOST`.
 function DSoundError(errorCode)
   if errorCode==DSERR_BUFFERLOST then return "DSERR_BUFFERLOST" end if
   if errorCode==DSERR_INVALIDCALL then return "DSERR_INVALIDCALLS" end if
@@ -31,6 +47,7 @@ function DSoundError(errorCode)
 end function
 
 // SNDDMA_Shutdown
+/// @param state Mutable record or buffer; this call updates `state.hasDS`, `state.hasDSBuf`, `state.hasPrimary`, `state.dllLoaded`, `state.dsoundInit`.
 function SNDDMA_Shutdown(state)
   note(state,"Shutting down sound system\n")
   if state.hasDS then
@@ -44,6 +61,15 @@ function SNDDMA_Shutdown(state)
 end function
 
 // SNDDMA_InitDS. Capability results are supplied by the Win32 host adapter.
+/// @param state Mutable record or buffer; this call updates `state.hasDS`, `state.dma.channels`, `state.dma.samplebits`, `state.dma.speed`, `state.hasPrimary`.
+/// @param use8Available Input used by `use8=use8Available`.
+/// @param legacyAvailable Input tested by `not use8Available and not legacyAvailable`.
+/// @param priorityOk Input tested by `not priorityOk`.
+/// @param hardwareBufferOk Input tested by `hardwareBufferOk`.
+/// @param softwareBufferOk Input tested by `not softwareBufferOk`.
+/// @param playOk Input tested by `not playOk`.
+/// @param capsOk Input tested by `not capsOk`.
+/// @param returnedBufferBytes Value assigned to `state.sndBufSize`.
 function SNDDMA_InitDS(state,use8Available,legacyAvailable,priorityOk,hardwareBufferOk,softwareBufferOk,playOk,capsOk,returnedBufferBytes)
   note(state,"Initializing DirectSound\n")
   use8=use8Available
@@ -69,6 +95,15 @@ function SNDDMA_InitDS(state,use8Available,legacyAvailable,priorityOk,hardwareBu
 end function
 
 // SNDDMA_Init
+/// @param state Mutable record or buffer; this call updates `state.dma`, `state.dsoundInit`, `state.coInitialized`.
+/// @param use8Available Value forwarded as `use8Available` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param legacyAvailable Value forwarded as `legacyAvailable` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param priorityOk Value forwarded as `priorityOk` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param hardwareBufferOk Value forwarded as `hardwareBufferOk` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param softwareBufferOk Value forwarded as `softwareBufferOk` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param playOk Value forwarded as `playOk` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param capsOk Value forwarded as `capsOk` to `mq3.platform.win_snd.SNDDMA_InitDS`.
+/// @param returnedBufferBytes Value forwarded as `returnedBufferBytes` to `mq3.platform.win_snd.SNDDMA_InitDS`.
 function SNDDMA_Init(state,use8Available,legacyAvailable,priorityOk,hardwareBufferOk,softwareBufferOk,playOk,capsOk,returnedBufferBytes)
   state.dma=Dma(0,0,0,0,0,false);state.dsoundInit=false;state.coInitialized=true
   if not SNDDMA_InitDS(state,use8Available,legacyAvailable,priorityOk,hardwareBufferOk,softwareBufferOk,playOk,capsOk,returnedBufferBytes) then return false end if
@@ -76,12 +111,19 @@ function SNDDMA_Init(state,use8Available,legacyAvailable,priorityOk,hardwareBuff
 end function
 
 // SNDDMA_GetDMAPos (the inventory extractor calls this candidate `position`).
+/// @param state Record providing `state.dsoundInit`, `state.sample16`, `state.dma`.
+/// @param readCursor Input used in the result expression `(readCursor>>state.sample16)&(state.dma.samples-1)`.
 function SNDDMA_GetDMAPos(state,readCursor)
   if not state.dsoundInit then return 0 end if
   return (readCursor>>state.sample16)&(state.dma.samples-1)
 end function
 
 // SNDDMA_BeginPainting
+/// @param state Mutable record or buffer; this call updates `state.bufferLost`, `state.playing`, `state.dma.bufferValid`, `state.bufferLocked`, `state.lockSize`.
+/// @param statusOk Input tested by `not statusOk`.
+/// @param restoreOk Input tested by `state.bufferLost`.
+/// @param restartOk Input tested by `not state.playing`.
+/// @param lockResults Indexed input read at `index`.
 function SNDDMA_BeginPainting(state,statusOk,restoreOk,restartOk,lockResults)
   if not state.hasDSBuf then return false end if
   if not statusOk then note(state,"Couldn't get sound buffer status\n") end if
@@ -98,12 +140,15 @@ function SNDDMA_BeginPainting(state,statusOk,restoreOk,restartOk,lockResults)
 end function
 
 // SNDDMA_Submit
+/// @param state Mutable record or buffer; this call updates `state.bufferLocked`.
 function SNDDMA_Submit(state)
   if state.hasDSBuf then emit(state,"unlock-buffer",state.lockSize);state.bufferLocked=false end if
   return void
 end function
 
 // SNDDMA_Activate
+/// @param state Record providing `state.hasDS`.
+/// @param priorityOk Input tested by `not priorityOk`.
 function SNDDMA_Activate(state,priorityOk)
   if not state.hasDS then return false end if
   if not priorityOk then fail(state,"sound SetCooperativeLevel failed\n");SNDDMA_Shutdown(state);return false end if

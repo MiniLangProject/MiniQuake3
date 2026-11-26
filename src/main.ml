@@ -105,10 +105,14 @@ import mq3.game.bot_seek_state as botSeekState
 import std.fs as fs
 import std.string as strings
 
+/// Format a three-component vector as a parenthesized comma-separated diagnostic string.
+/// @param vector Three-element vector in X, Y, Z order.
 function formatVector(vector)
   return "("+str(vector[0])+", "+str(vector[1])+", "+str(vector[2])+")"
 end function
 
+/// Print the collision fraction, endpoint, plane, contents, surface flags, and solid-state diagnostics.
+/// @param result Collision result with a trace record and endpos vector.
 function printTrace(result)
   print "Fraction: "+str(result.trace.fraction)
   print "End: "+formatVector(result.endpos)
@@ -118,6 +122,8 @@ function printTrace(result)
   return void
 end function
 
+/// Extract the final path component and remove its last extension for use as the map name.
+/// @param path Map filename using either slash or backslash separators.
 function mapNameFromPath(path)
   slash=strings.lastIndexOf(path,"/");backslash=strings.lastIndexOf(path,"\\")
   if backslash>slash then slash=backslash end if
@@ -126,6 +132,10 @@ function mapNameFromPath(path)
   if dot>=0 then return strings.substr(name,0,dot) end if
   return name
 end function
+/// Start the desktop QVM menu or dispatch the selected command-line game, asset, and regression probe.
+///
+/// Validation failures include `could not determine the MiniQuake3 executable directory`; `--qvm-match requires a positive frame count`.
+/// @param args Command-line arguments excluding the executable; an empty list starts the retail menu beside the executable.
 function main(args)
   if len(args)==3 and args[0]=="--cinematic-smoke" then
     archive=try(pk3.open(args[1]));if archive is error then return archive end if

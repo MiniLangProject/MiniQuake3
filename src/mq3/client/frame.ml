@@ -15,6 +15,7 @@ const CVAR_USERINFO=2
 const UIMENU_MAIN=1
 const UIMENU_NEED_CD=3
 
+/// Stores frame runtime wiring and state, including `running`, `cdDialog`, `state`, `keyCatchers`, `serverRunning`, `aviDemo` and additional values.
 struct Runtime
   running cdDialog state keyCatchers serverRunning
   aviDemo forceAviDemo timeScale timeGraph
@@ -22,6 +23,7 @@ struct Runtime
   paused serverPaused modifiedFlags lastPacketTime timeoutSeconds timeoutCount
 end struct
 
+/// Creates a `mq3.client.frame.Runtime` record. Initializes the record with the defaults written in this constructor.
 function runtime()
   return Runtime(0,0,CA_DISCONNECTED,0,0,0,0,1.0,0,0,0,0,0,0,0,0,0,30.0,0)
 end function
@@ -36,18 +38,31 @@ struct Services
   networkRuntime protocolRuntime demoRuntime sendRuntime sendServices context
 end struct
 
+/// Creates a `mq3.client.frame.Services` record. Initializes the record with the defaults written in this constructor.
 function services()
   return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
+/// Adapts `mq3.client.send_cmd.send` to frame `liveSend`, returning its result for `host.sendRuntime, host.sendRuntime.realtime, host.sendServices`.
+/// @param host Record read through `host.sendRuntime`, `host.sendRuntime.realtime`, `host.sendServices`.
 function liveSend(host) return sendCmd.send(host.sendRuntime,host.sendRuntime.realtime,host.sendServices) end function
+/// Updates `host.sendRuntime`, `host.sendServices`, `host.sendCmdFn` during frame `attachSend`.
+/// @param host Mutable frame record/storage; this routine assigns `host.sendRuntime`, `host.sendServices`, `host.sendCmdFn`.
+/// @param runtime Value assigned to `host.sendRuntime`.
+/// @param sendServices Value assigned to `host.sendServices`.
 function attachSend(host,runtime,sendServices)
   if host==void or runtime==void or sendServices==void then return error(7110,"client frame: missing send-command binding") end if
   host.sendRuntime=runtime;host.sendServices=sendServices;host.sendCmdFn=liveSend;return host
 end function
 
+/// Calls `fn` from frame `call0`.
+/// @param fn Value used by `if fn!=void then fn(host) end if`.
+/// @param host host record passed to the frame helper calls.
 function call0(fn,host) if fn!=void then fn(host) end if;return void end function
 
+/// Updates `state.modifiedFlags` during frame `checkUserinfo`.
+/// @param state Mutable frame record/storage; this routine assigns `state.modifiedFlags`.
+/// @param host Record read through `host.infoStringFn`, `host.reliableFn`.
 function checkUserinfo(state,host)
   if state.state<CA_CHALLENGING then return false end if
   if state.paused!=0 then return false end if
@@ -58,6 +73,9 @@ function checkUserinfo(state,host)
   return true
 end function
 
+/// Updates `state.timeoutCount` during frame `checkTimeout`.
+/// @param state Mutable frame record/storage; this routine assigns `state.timeoutCount`.
+/// @param host Record read through `host.diagnosticFn`, `host.disconnectFn`.
 function checkTimeout(state,host)
   timedOut=(state.paused==0 or state.serverPaused==0) and state.state>=CA_CONNECTED and state.state!=CA_CINEMATIC and state.realtime-state.lastPacketTime>state.timeoutSeconds*1000
   if timedOut then
@@ -73,6 +91,10 @@ function checkTimeout(state,host)
   return false
 end function
 
+/// Updates `state.cdDialog`, `state.realFrametime`, `state.frametime`, `state.realtime` and additional values during frame `run`.
+/// @param state Mutable frame record/storage; this routine assigns `state.cdDialog`, `state.realFrametime`, `state.frametime`, `state.realtime` and additional values.
+/// @param msec Time interval in milliseconds.
+/// @param host Mutable frame record/storage; this routine assigns `host.sendRuntime.connectionState`, `host.sendRuntime.realtime`, `host.sendRuntime.serverRunning`, `host.sendRuntime.serverPaused` and additional values.
 function run(state,msec,host)
   if state==void or host==void then return error(7110,"client frame: missing runtime or services") end if
   if state.running==0 then return "not-running" end if

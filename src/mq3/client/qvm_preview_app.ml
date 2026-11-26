@@ -69,18 +69,33 @@ const SOURCE_HEIGHT=720
 // Retention bound, not a scene/triangle budget: evicted poses are recomputed.
 const MD3_FRAME_CACHE_ENTRIES=32
 
+/// Stores QVM preview app prepared view record, including `source`, `geometry`, `batch`, `target`.
 struct PreparedView source geometry batch target end struct
+/// Stores QVM preview app prepared portal record, including `plan`, `world`, `batch`, `target`, `source`.
 struct PreparedPortal plan world batch target source end struct
+/// Stores QVM preview app native input record, including `mouse`, `keys`.
 struct NativeInput mouse keys end struct
+/// Stores QVM preview app client input bridge record, including `frame`, `plan`, `ui`, `matchState`.
 struct ClientInputBridge frame plan ui matchState end struct
+/// Stores QVM preview app pipeline profile record, including `expansion`, `material`, `batch`.
 struct PipelineProfile expansion material batch end struct
+/// Stores QVM preview app screen point record, including `x`, `y`, `depth`.
 struct ScreenPoint x y depth end struct
+/// Stores QVM preview app stream source record, including `transport`, `protocol`, `demo`, `name`, `systemInfo`.
 struct StreamSource transport protocol demo name systemInfo end struct
 
+/// Creates the QVM preview app error `7682` with diagnostic text `"QVM preview: "+message`.
+/// @param message Argument 2 of `error`; passed as `"QVM preview: "+message`.
 function fail(message) return error(7682,"QVM preview: "+message) end function
+/// Adapts `mq3.client.frame_timing.percentile` to QVM preview app `framePercentile`, returning its result for `histogram, count, percent`.
+/// @param histogram Argument 1 of `mq3.client.frame_timing.percentile`.
+/// @param count Argument 2 of `mq3.client.frame_timing.percentile`.
+/// @param percent Argument 3 of `mq3.client.frame_timing.percentile`.
 function framePercentile(histogram,count,percent)
   return frameTiming.percentile(histogram,count,percent)
 end function
+/// Calls `std.string.toLowerAscii`, `std.string.replaceAll`, `std.string.split` and additional helpers from QVM preview app `requestedQuit`.
+/// @param state Record read through `state.context`, `state.context.console`.
 function requestedQuit(state)
   if state==void or state.context==void then return false end if
   for each entry in state.context.console
@@ -89,18 +104,42 @@ function requestedQuit(state)
   end for
   return false
 end function
+/// Evaluates QVM preview app `largestView` and returns `void`, `result` according to its guard/selection conditions.
+/// @param views Sequence read at `views[0]`.
 function largestView(views)
   if views==void or len(views)==0 then return void end if
   result=views[0];area=result.refdef.width*result.refdef.height
   for each view in views nextArea=view.refdef.width*view.refdef.height;if nextArea>area then result=view;area=nextArea end if end for
   return result
 end function
+/// Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QVM preview app `selectionCamera`. The final path returns `viewer.camera(view.refdef.vieworg,angles[1],angles[0],0.0,0.0)`.
+/// @param view Record read through `view.refdef.viewaxis`, `view.refdef.vieworg`.
 function selectionCamera(view)
   angles=qmath.vectoangles(view.refdef.viewaxis[0]);return viewer.camera(view.refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
+/// Calls `mq3.shared.math.vectoangles`, `mq3.client.playable_viewer.camera` from QVM preview app `refdefCamera`. The final path returns `viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)`.
+/// @param refdef Record read through `refdef.viewaxis`, `refdef.vieworg`.
 function refdefCamera(refdef)
   angles=qmath.vectoangles(refdef.viewaxis[0]);return viewer.camera(refdef.vieworg,angles[1],angles[0],0.0,0.0)
 end function
+/// Updates `profile.expansion`, `profile.material`, `profile.batch` during QVM preview app `prepareViews`.
+/// @param views Sequence whose length/content is inspected by `prepareViews`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `refreshed=sceneMaterials.refresh(catalog,archive,expanded.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param kinds Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param frameCache Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param grid Value used by `if grid!=void then ignored=lightGrid.setDynamicLights(grid,view.scene.dlights) end if`.
+/// @param videoManager Value used by `boundVideo=qvmVideo.bindCatalog(videoManager,catalog,view.refdef.time)`.
+/// @param previousViews Sequence read at `previousViews[viewIndex]`.
+/// @param profile Mutable QVM preview app record/storage; this routine assigns `profile.expansion`, `profile.material`, `profile.batch`.
+/// @param fogCatalog Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param dlightCatalog Value used by `if len(view.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,catalog,dlightCatalog)`.
+/// @param shadowMode Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param lodScale Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param lodBias Value used by `expanded=sceneGeometry.buildRecordsWithFrameCacheReuseCulledShadowsFogLod(view.scene.entities,view.scene.polys,kinds,modelAssets,view.refdef,8...`.
+/// @param mode Record read through `mode.width`, `mode.height`.
 function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,previousViews,profile,fogCatalog,dlightCatalog,shadowMode,lodScale,lodBias,mode)
   result=lists.List.withCapacity(len(views));viewIndex=0
   for each view in views
@@ -122,24 +161,43 @@ function prepareViews(views,catalog,archive,modelAssets,assetNames,kinds,frameCa
   end for
   return result.toArray()
 end function
+/// Evaluates QVM preview app `movementAxis` and returns `127`, `-127`, `0` according to its guard/selection conditions.
+/// @param positive Value used by `if positive and not negative then return 127 end if`.
+/// @param negative Value used by `if positive and not negative then return 127 end if`.
 function movementAxis(positive,negative)
   if positive and not negative then return 127 end if
   if negative and not positive then return -127 end if
   return 0
 end function
+/// Calls `mq3.client.ui_input_latch.keyDown`, `mq3.platform.playable_window.inputKeyDown` from QVM preview app `nativeKeyDown`. The final path returns `window.inputKeyDown(key)`.
+/// @param input Record read through `input.keys`.
+/// @param key Key or control identifier used to select the corresponding QVM preview app entry.
 function nativeKeyDown(input,key)
   if input!=void and inputLatch.keyDown(input.keys,key) then return true end if
   return window.inputKeyDown(key)
 end function
+/// Reads `input.mouse` for QVM preview app `nativeMouseDelta`.
+/// @param input Record read through `input.mouse`.
 function nativeMouseDelta(input) return input.mouse end function
+/// Calls `mq3.client.ui_input_latch.observe` from QVM preview app `observeNativeInputEvents`.
+/// @param input Record read through `input.keys`.
+/// @param events Value used by `for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2)`.
 function observeNativeInputEvents(input,events)
   for each event in events observed=inputLatch.observe(input.keys,event.type,event.value,event.value2);if observed is error then return observed end if end for
   return void
 end function
+/// Calls `mq3.client.qvm_frame_input.handlesAction`, `mq3.engine.local_qvm_match.queueInputCommand` from QVM preview app `queueExpandedInput`. The final path returns `expanded`.
+/// @param matchState Value used by `for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(mat...`.
+/// @param frameState Value used by `for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(mat...`.
+/// @param expanded Value used by `if expanded is error then return expanded end if`.
 function queueExpandedInput(matchState,frameState,expanded)
   if expanded is error then return expanded end if
   for each command in expanded if not command.button or not frameInput.handlesAction(frameState,command.action) then match.queueInputCommand(matchState,command.text) end if end for;return expanded
 end function
+/// Calls `mq3.engine.local_qvm_match.keyCatcher`, `mq3.engine.local_qvm_match.clientTextChar`, `bridge.ui.services.keyEventFn` and additional helpers from QVM preview app `applyInputEvent`. The final path returns `expanded`.
+/// @param bridge Record read through `bridge.ui.services.keyEventFn`, `bridge.ui.services.context`, `bridge.ui.services.mouseEventFn`, `bridge.frame` and additional values.
+/// @param matchState Record read through `matchState.cgame`, `matchState.context`.
+/// @param event Record read through `event.type`, `event.value`, `event.value2`, `event.time`.
 function applyInputEvent(bridge,matchState,event)
   catcher=match.keyCatcher(matchState)
   if event.type==window.INPUT_CHAR then
@@ -177,12 +235,18 @@ function applyInputEvent(bridge,matchState,event)
   else if (catcher&consoleInput.KEYCATCH_MESSAGE)!=0 and down then match.clientTextKey(matchState,key,match.keyIsDown(matchState,consoleInput.K_SHIFT),match.keyIsDown(matchState,consoleInput.K_CTRL)) end if
   return expanded
 end function
+/// Updates `ui.frameCount` during QVM preview app `refreshUiFrame`.
+/// @param ui Mutable QVM preview app record/storage; this routine assigns `ui.frameCount`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
 function refreshUiFrame(ui,serverTime)
   // Input has already been delivered once, in native-event order. Keep UI
   // refresh after beginRendererFrame/CG draw so its real commands survive.
   if uiSession.active(ui) then refreshed=ui.services.refreshFn(ui.services.context,serverTime);if refreshed is error then return refreshed end if;ui.frameCount=ui.frameCount+1 end if
   return true
 end function
+/// Calls `mq3.engine.local_qvm_match.keyIsDown`, `mq3.client.qvm_frame_input.applyBound`, `mq3.engine.local_qvm_match.keyBinding` and additional helpers from QVM preview app `releaseGameInput`. The final path returns `frameInput.releaseAll(bridge.frame,bridge.plan,time)`.
+/// @param bridge Record read through `bridge.matchState`, `bridge.frame`, `bridge.plan`.
+/// @param time Value used by `expanded=frameInput.applyBound(bridge.frame,bridge.plan,time,window.INPUT_KEY,key,0,match.keyBinding(bridge.matchState,key),match.keyCatcher(b...`.
 function releaseGameInput(bridge,time)
   // Key_ClearStates must also release delegated +commands such as +zoom.
   // Use the current binding, just like CL_KeyEvent(false), before keys clear.
@@ -193,17 +257,38 @@ function releaseGameInput(bridge,time)
   end for
   return frameInput.releaseAll(bridge.frame,bridge.plan,time)
 end function
+/// Adapts `mq3.client.qvm_preview_app.releaseGameInput` to QVM preview app `clearClientInput`, returning its result for `bridge, 0`.
+/// @param bridge Argument 1 of `mq3.client.qvm_preview_app.releaseGameInput`.
 function clearClientInput(bridge) return releaseGameInput(bridge,0) end function
+/// Evaluates QVM preview app `consoleColor` and returns `[0,0,0]`, `[255,0,0]`, `[0,255,0]` and additional values according to its guard/selection conditions.
+/// @param index Value tested by `index==0`, `index==1` and additional values before the calculation continues.
 function consoleColor(index)
   if index==0 then return [0,0,0] end if;if index==1 then return [255,0,0] end if;if index==2 then return [0,255,0] end if;if index==3 then return [255,255,0] end if
   if index==4 then return [0,0,255] end if;if index==5 then return [0,255,255] end if;if index==6 then return [255,0,255] end if;return [255,255,255]
 end function
+/// Calls `mq3.client.qvm_preview_app.consoleColor`, `mq3.client.baseq3_match_display.appendGlyphCode` from QVM preview app `drawConsoleGlyph`.
+/// @param media Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
+/// @param glyph Record read through `glyph.color`, `glyph.ch`, `glyph.x`, `glyph.y`.
+/// @param scaleX Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
+/// @param scaleY Value used by `return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])`.
 function drawConsoleGlyph(media,glyph,scaleX,scaleY)
   color=consoleColor(glyph.color);return baseMatchDisplay.appendGlyphCode(media,glyph.ch,glyph.x,glyph.y,8,16,scaleX,scaleY,color[0],color[1],color[2])
 end function
+/// Calls `mq3.client.baseq3_match_display.appendString` from QVM preview app `drawConsoleField`.
+/// @param media Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
+/// @param field Record read through `field.active`, `field.text`, `field.x`, `field.y`.
+/// @param scaleX Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
+/// @param scaleY Value used by `return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)`.
 function drawConsoleField(media,field,scaleX,scaleY)
   if field==void or not field.active then return true end if;return baseMatchDisplay.appendString(media,field.text,field.x,field.y,8,16,scaleX,scaleY,255,255,255,false)
 end function
+/// Calls `mq3.engine.local_qvm_match.clientConsoleState`, `mq3.client.console_input_display.draw`, `mq3.engine.local_qvm_match.clientTextState` and additional helpers from QVM preview app `drawProductiveConsole`.
+/// @param media Value used by `if runtime==void then return consoleDisplay.draw(media,match.clientTextState(matchState),width,height,now) end if`.
+/// @param background Value used by `if bottom>=0 then painted=consoleBackground.draw(background,width,bottom+1,now)`.
+/// @param matchState Value used by `runtime=match.clientConsoleState(matchState)`.
+/// @param width Width in the coordinate space used by `drawProductiveConsole`.
+/// @param height Height in the coordinate space used by `drawProductiveConsole`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function drawProductiveConsole(media,background,matchState,width,height,now)
   runtime=match.clientConsoleState(matchState);if runtime==void then return consoleDisplay.draw(media,match.clientTextState(matchState),width,height,now) end if
   view=match.clientConsoleView(matchState,now,16,"MiniQuake3");scaleX=width/640.0;scaleY=height/480.0
@@ -220,12 +305,18 @@ function drawProductiveConsole(media,background,matchState,width,height,now)
   end if
   return true
 end function
+/// Calls `mq3.engine.local_qvm_match.keyBinding`, `mq3.engine.local_qvm_match.setKeyBinding` from QVM preview app `ensurePlayableBindings`.
+/// @param state Shared QVM preview app state passed to the helper calls in `ensurePlayableBindings`.
 function ensurePlayableBindings(state)
   for each pair in [[119,"+forward"],[115,"+back"],[100,"+moveright"],[97,"+moveleft"],[32,"+moveup"],[178,"+attack"]]
     if match.keyBinding(state,pair[0])=="" then match.setKeyBinding(state,pair[0],pair[1]) end if
   end for
   return void
 end function
+/// Calls `mq3.engine.local_qvm_match.runServerTick`, `mq3.engine.local_qvm_match.snapshotProductive`, `mq3.client.cgame_clock.publishSnapshot` from QVM preview app `advanceGameTick`. The final path returns `published`.
+/// @param state Record read through `state.context.snapshotNumber`.
+/// @param clientClock Value used by `published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0)`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
 function advanceGameTick(state,clientClock,serverTime)
   // Human ClientThink already runs exactly once when each fresh cmd arrives.
   advanced=match.runServerTick(state,serverTime);if advanced is error then return advanced end if
@@ -233,6 +324,11 @@ function advanceGameTick(state,clientClock,serverTime)
   published=cgameClock.publishSnapshot(clientClock,state.context.snapshotNumber,snapshot.serverTime,0);if published is error then return published end if
   return snapshot
 end function
+/// Calls `mq3.engine.local_qvm_match.beginRendererFrame`, `mq3.client.cgame_clock.frame`, `mq3.engine.local_qvm_match.drawCgameProductiveInFrame` from QVM preview app `drawFrame`.
+/// @param state Record read through `state.serverPaused`, `state.connectionState`, `state.context.errors`.
+/// @param clientClock Record read through `clientClock.state.serverPaused`, `clientClock.state.connectionState`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param demoTime Value used by `drawTime=demoTime`.
 function drawFrame(state,clientClock,realtime,demoTime)
   begun=match.beginRendererFrame(state);if begun is error then return begun end if
   drawTime=demoTime
@@ -245,6 +341,8 @@ function drawFrame(state,clientClock,realtime,demoTime)
   if len(state.context.errors)>0 then return fail(state.context.errors[0]) end if
   return drawn
 end function
+/// Calls `mq3.renderer.bsp_render_data.lightmapRgba`, `mq3.platform.playable_window.uploadTexture` from QVM preview app `uploadLightmaps`. The final path returns `count`.
+/// @param map Record read through `map.counts`.
 function uploadLightmaps(map)
   count=map.counts[14];if count>WORLD_TEXTURE_FIRST_SLOT then count=WORLD_TEXTURE_FIRST_SLOT end if
   if count>0 then for index=0 to count-1
@@ -253,11 +351,39 @@ function uploadLightmaps(map)
   end for end if
   return count
 end function
+/// Calls `mq3.renderer.playable_world_batch.attachFog`, `mq3.renderer.playable_world_batch.attachDynamicLights` from QVM preview app `attachWorldEffects`. The final path returns `batch`.
+/// @param batch Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param triangles Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param fogCatalog Value used by `if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog)`.
+/// @param dlightCatalog Value used by `if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog)`.
+/// @param dlightReceiveFlags Value used by `if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog)`.
 function attachWorldEffects(batch,triangles,fogCatalog,dlightCatalog,dlightReceiveFlags)
   if fogCatalog!=void then attached=worldBatch.attachFog(batch,triangles,fogCatalog);if attached is error then return attached end if end if
   if dlightCatalog!=void then attached=worldBatch.attachDynamicLights(batch,triangles,dlightReceiveFlags,dlightCatalog);if attached is error then return attached end if end if
   return batch
 end function
+/// Updates `portalCache.clippedFaces` during QVM preview app `preparePortal`.
+/// @param source Record read through `source.geometry`, `source.source.refdef`, `source.source.scene.dlights`, `source.source.scene.entities` and additional values.
+/// @param selectedWorld Value used by `plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false)`.
+/// @param portalCache Mutable QVM preview app record/storage; this routine assigns `portalCache.clippedFaces`.
+/// @param worldCatalog Value used by `plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false)`.
+/// @param qvmCatalog Value used by `refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `refreshed=sceneMaterials.refresh(qvmCatalog,archive,geometry.triangles,assetNames,kinds,QVM_TEXTURE_FIRST_SLOT+MAX_QVM_TEXTURE_SLOTS)`.
+/// @param kinds Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param frameCache Record read through `frameCache.normalTable`.
+/// @param grid Value used by `if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if`.
+/// @param videoManager Value used by `boundVideo=qvmVideo.bindCatalog(videoManager,qvmCatalog,plan.refdef.time)`.
+/// @param worldCache Value used by `chosen=worldSelection.selectPortalCached(worldCache,refdefCamera(plan.refdef),plan.view.pvsOrigin,portalConfig)`.
+/// @param worldConfig Record read through `worldConfig.width`, `worldConfig.height`.
+/// @param skyFlags Value used by `world=worldBatch.buildMaterials(clippedWorld,worldCatalog,skyFlags)`.
+/// @param fogCatalog Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param dlightCatalog Value used by `if len(source.source.scene.dlights)>0 then attached=sceneBatch.attachDynamicLights(batch,qvmCatalog,dlightCatalog)`.
+/// @param dlightReceiveFlags Value used by `attached=attachWorldEffects(world,clippedWorld,fogCatalog,dlightCatalog,dlightReceiveFlags)`.
+/// @param shadowMode Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param lodScale Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
+/// @param lodBias Value used by `geometry=sceneGeometry.buildPortalRecordsCulledShadowsFogLod(source.source.scene.entities,source.source.scene.polys,kinds,modelAssets,plan.ref...`.
 function preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
   plan=portalPass.prepare(selectedWorld,worldCatalog,source.geometry,source.source.refdef,false);if plan is error or plan==void then return plan end if
   if grid!=void then ignored=lightGrid.setDynamicLights(grid,source.source.scene.dlights) end if
@@ -282,9 +408,34 @@ function preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,
   target=qvmViewport.prepare(plan.refdef,SOURCE_WIDTH,SOURCE_HEIGHT,worldConfig.width,worldConfig.height);if target is error then return target end if
   return PreparedPortal(plan,world,batch,target,source.source)
 end function
+/// Calls `std.ds.list.List.withCapacity`, `mq3.client.qvm_preview_app.preparePortal`, `result.add` and additional helpers from QVM preview app `preparePortals`. The final path returns `result.toArray()`.
+/// @param preparedViews Sequence whose length/content is inspected by `preparePortals`.
+/// @param selectedWorld Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param portalCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param qvmCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param assetNames Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param kinds Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param frameCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param grid Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param videoManager Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldCache Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param worldConfig Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param skyFlags Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param fogCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param dlightCatalog Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param dlightReceiveFlags Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param shadowMode Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param lodScale Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
+/// @param lodBias Value used by `for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,...`.
 function preparePortals(preparedViews,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias)
   result=lists.List.withCapacity(len(preparedViews));for each source in preparedViews portal=preparePortal(source,selectedWorld,portalCache,worldCatalog,qvmCatalog,archive,modelAssets,assetNames,kinds,frameCache,grid,videoManager,worldCache,worldConfig,skyFlags,fogCatalog,dlightCatalog,dlightReceiveFlags,shadowMode,lodScale,lodBias);if portal is error then return portal end if;result.add(portal) end for;return result.toArray()
 end function
+/// Calls `mq3.client.cinematic_runtime.takeDraws`, `mq3.client.cinematic_runtime.presentation`, `mq3.platform.playable_window.uploadTextureNoMip` and additional helpers from QVM preview app `drawCinematics`. The final path returns `drawn`.
+/// @param state Record read through `state.context.cinematics`.
+/// @param mode Record read through `mode.width`, `mode.height`.
 function drawCinematics(state,mode)
   draws=cinematics.takeDraws(state.context.cinematics);drawn=0
   for each draw in draws
@@ -300,6 +451,9 @@ function drawCinematics(state,mode)
   end for
   multitexture.setTextureClamp(false);multitexture.setState(multitexture.BLEND_OPAQUE,false,true);return drawn
 end function
+/// Calls `mq3.client.cinematic_runtime.takeAudio`, `mq3.audio.qvm_playback.queueRaw` from QVM preview app `collectCinematicAudio`. The final path returns `count`.
+/// @param state Record read through `state.context.cinematics`.
+/// @param audio Value used by `for each chunk in chunks queued=qvmPlayback.queueRaw(audio,chunk,1.0)`.
 function collectCinematicAudio(state,audio)
   count=0
   for handle=0 to cinematics.MAX_HANDLES-1
@@ -308,9 +462,16 @@ function collectCinematicAudio(state,audio)
   end for
   return count
 end function
+/// Calls `mq3.platform.playable_window.releaseTexture` from QVM preview app `releaseCinematics`.
 function releaseCinematics()
   for handle=0 to cinematics.MAX_HANDLES-1 window.releaseTexture(CINEMATIC_TEXTURE_FIRST_SLOT+handle) end for;return void
 end function
+/// Calls `mq3.engine.local_qvm_match.bootWithQvmsSettingsNamed`, `mq3.engine.local_qvm_match.connectLocal`, `mq3.vm.syscall_qagame_world.userCommand` and additional helpers from QVM preview app `bootFrameSettingsNamed`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param settings Value used by `state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,qvmRoot,settings)`.
 function bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings)
   state=match.bootWithQvmsSettingsNamed(archive,map,mapName,1000,qvmRoot,settings);if state is error then return state end if
   joined=match.connectLocal(state,0);if joined is error then return joined end if
@@ -330,9 +491,25 @@ function bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings)
   end for
   return state
 end function
+/// Adapts `mq3.client.qvm_preview_app.bootFrameSettingsNamed` to QVM preview app `bootFrameSettings`, returning its result for `archive, map, "q3dm1", qvmRoot, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
+/// @param settings Argument 5 of `mq3.client.qvm_preview_app.bootFrameSettingsNamed`.
 function bootFrameSettings(archive,map,qvmRoot,settings) return bootFrameSettingsNamed(archive,map,"q3dm1",qvmRoot,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.bootFrameSettings` to QVM preview app `bootFrame`, returning its result for `archive, map, qvmRoot, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.bootFrameSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.bootFrameSettings`.
 function bootFrame(archive,map,qvmRoot) return bootFrameSettings(archive,map,qvmRoot,void) end function
 
+/// Calls `mq3.client.qvm_preview_app.bootFrameSettingsNamed`, `mq3.engine.local_qvm_match.bootServerStream`, `mq3.engine.local_qvm_match.drawCgameProductive` and additional helpers from QVM preview app `bootMatch`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param settings Value used by `if source==void then return bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings) end if`.
+/// @param source Record read through `source.protocol`, `source.demo`, `source.name`.
 function bootMatch(archive,map,mapName,qvmRoot,settings,source)
   if source==void then return bootFrameSettingsNamed(archive,map,mapName,qvmRoot,settings) end if
   state=try(match.bootServerStream(archive,map,mapName,qvmRoot,settings,source.protocol,source.demo,source.name,1000))
@@ -346,6 +523,12 @@ function bootMatch(archive,map,mapName,qvmRoot,settings,source)
   return state
 end function
 
+/// Calls `mq3.client.demo_playback.advance`, `mq3.client.remote_play.pump`, `mq3.engine.local_qvm_match.refreshServerStream` and additional helpers from QVM preview app `updateStream`.
+/// @param state Record read through `state.context.snapshotNumber`.
+/// @param source Record read through `source.demo`, `source.transport`, `source.protocol.dispatcher.snapshotState.snap`.
+/// @param clientClock Record read through `clientClock.snapshotNumber`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param demoTime Value used by `read=try(demos.advance(source.transport,demoTime,serverTime))`.
 function updateStream(state,source,clientClock,serverTime,demoTime)
   if source.demo then
     read=try(demos.advance(source.transport,demoTime,serverTime));if read is error then return read end if
@@ -360,6 +543,11 @@ function updateStream(state,source,clientClock,serverTime,demoTime)
   return true
 end function
 
+/// Updates `source.systemInfo` during QVM preview app `sendStreamFrame`.
+/// @param state Record read through `state.context.configstrings`, `state.context.cvars`, `state.context`.
+/// @param source Mutable QVM preview app record/storage; this routine assigns `source.systemInfo`.
+/// @param created Value used by `if created==void then return false end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function sendStreamFrame(state,source,created,now)
   systemInfo=state.context.configstrings[1]
   if systemInfo!=source.systemInfo then
@@ -379,6 +567,15 @@ function sendStreamFrame(state,source,created,now)
   return remote.writeFrame(source.transport,created,now)
 end function
 
+/// Calls `mq3.platform.playable_window.open`, `mq3.client.map_loading.create`, `mq3.platform.playable_window.shutdown` and additional helpers from QVM preview app `runMatch`. The final path returns `loaded`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map map record passed to the QVM preview app helper calls.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param maxFrames Value used by `if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if`.
+/// @param settings Value used by `loaded=try(runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,SOURCE_WIDTH,SOURCE_HEIGHT))`.
+/// @param session session record passed to the QVM preview app helper calls.
+/// @param source Record read through `source.name`.
 function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   if archive==void or map==void or maxFrames==0 or maxFrames< -1 then return fail("invalid launch input") end if
   opened=window.open(SOURCE_WIDTH,SOURCE_HEIGHT);if opened is error then return opened end if
@@ -388,6 +585,11 @@ function runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,session,source)
   mapLoading.release(screen);return loaded
 end function
 
+/// Updates `session.action` during QVM preview app `stopLoading`.
+/// @param screen Value used by `mapLoading.release(screen)`.
+/// @param state Shared QVM preview app state passed to the helper calls in `stopLoading`.
+/// @param session Mutable QVM preview app record/storage; this routine assigns `session.action`.
+/// @param result Value used by `if result is error then return result end if`.
 function stopLoading(screen,state,session,result)
   mapLoading.release(screen)
   if state!=void then match.shutdown(state) end if
@@ -397,6 +599,18 @@ function stopLoading(screen,state,session,result)
   return 0
 end function
 
+/// Updates `session.videoWidth`, `session.videoHeight`, `session.action`, `session.videoRestart` during QVM preview app `runMatchWithLoading`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param map Record read through `map.counts`.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param maxFrames Value used by `interactiveInput=maxFrames<0`.
+/// @param settings Value used by `state=try(bootMatch(archive,map,mapName,qvmRoot,settings,source))`.
+/// @param session Mutable QVM preview app record/storage; this routine assigns `session.videoWidth`, `session.videoHeight`, `session.action`, `session.videoRestart`.
+/// @param source Record read through `source.demo`, `source.transport.completed`, `source.scene.dlights`, `source.refdef.flags` and additional values.
+/// @param screen Record read through `screen.startedAt`, `screen.catalog`, `screen.scripts`, `screen.indexMillis`.
+/// @param initialWidth Value used by `loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)`.
+/// @param initialHeight Value used by `loading=mapLoading.show(screen,"maps/"+mapName+".bsp",initialWidth,initialHeight,void,false)`.
 function runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,session,source,screen,initialWidth,initialHeight)
   startupAt=screen.startedAt
   if screen.catalog==void then
@@ -679,13 +893,61 @@ function runMatchWithLoading(archive,map,mapName,qvmRoot,maxFrames,settings,sess
   if frames>0 and loopElapsedMs>0 then print "QVM loop profile: elapsed="+str(loopElapsedMs)+"ms fps="+str(frames*1000.0/loopElapsedMs)+" workP50="+str(framePercentile(frameHistogram,frames,50))+"ms workP95="+str(framePercentile(frameHistogram,frames,95))+"ms workP99="+str(framePercentile(frameHistogram,frames,99))+"ms workMax="+str(maximumFrameMs)+"ms" end if
   return 0
 end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopMatch`, returning its result for `archive, map, mapName, qvmRoot, -1, settings, session, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param session Argument 7 of `mq3.client.qvm_preview_app.runMatch`.
 function runDesktopMatch(archive,map,mapName,qvmRoot,settings,session) return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runDesktopStream`, returning its result for `archive, map, mapName, qvmRoot, -1, settings, session, source`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param session Argument 7 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param source Argument 8 of `mq3.client.qvm_preview_app.runMatch`.
 function runDesktopStream(archive,map,mapName,qvmRoot,settings,session,source)
   return runMatch(archive,map,mapName,qvmRoot,-1,settings,session,source)
 end function
+/// Adapts `mq3.client.qvm_preview_app.runMatch` to QVM preview app `runLimitedSettingsNamed`, returning its result for `archive, map, mapName, qvmRoot, maxFrames, settings, void, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runMatch`.
+/// @param maxFrames Argument 5 of `mq3.client.qvm_preview_app.runMatch`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runMatch`.
 function runLimitedSettingsNamed(archive,map,mapName,qvmRoot,maxFrames,settings) return runMatch(archive,map,mapName,qvmRoot,maxFrames,settings,void,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `runLimitedSettings`, returning its result for `archive, map, "q3dm1", qvmRoot, maxFrames, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param maxFrames Argument 5 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
 function runLimitedSettings(archive,map,qvmRoot,maxFrames,settings) return runLimitedSettingsNamed(archive,map,"q3dm1",qvmRoot,maxFrames,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runLimited`, returning its result for `archive, map, qvmRoot, maxFrames, void`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param maxFrames Argument 4 of `mq3.client.qvm_preview_app.runLimitedSettings`.
 function runLimited(archive,map,qvmRoot,maxFrames) return runLimitedSettings(archive,map,qvmRoot,maxFrames,void) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettings` to QVM preview app `runWithSettings`, returning its result for `archive, map, qvmRoot, -1, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettings`.
+/// @param settings Argument 5 of `mq3.client.qvm_preview_app.runLimitedSettings`.
 function runWithSettings(archive,map,qvmRoot,settings) return runLimitedSettings(archive,map,qvmRoot,-1,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimitedSettingsNamed` to QVM preview app `runWithSettingsNamed`, returning its result for `archive, map, mapName, qvmRoot, -1, settings`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param mapName Map name used to select the level and its associated assets. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
+/// @param settings Argument 6 of `mq3.client.qvm_preview_app.runLimitedSettingsNamed`.
 function runWithSettingsNamed(archive,map,mapName,qvmRoot,settings) return runLimitedSettingsNamed(archive,map,mapName,qvmRoot,-1,settings) end function
+/// Adapts `mq3.client.qvm_preview_app.runLimited` to QVM preview app `run`, returning its result for `archive, map, qvmRoot, -1`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.qvm_preview_app.runLimited`.
+/// @param map Argument 2 of `mq3.client.qvm_preview_app.runLimited`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files. Forwarded to `mq3.client.qvm_preview_app.runLimited`.
 function run(archive,map,qvmRoot) return runLimited(archive,map,qvmRoot,-1) end function

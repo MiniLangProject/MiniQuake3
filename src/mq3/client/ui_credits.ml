@@ -10,9 +10,19 @@ const UI_SMALLFONT=16
 const PROP_HEIGHT=27
 const PROP_SMALL_SIZE_SCALE=0.75
 const SMALLCHAR_HEIGHT=16
+/// Stores UI credits draw record, including `text`, `x`, `y`, `style`, `color`, `proportional`.
 struct Draw text x y style color proportional end struct
+/// Stores UI credits state, including `fullscreen`, `drawFn`, `keyFn`, `pushed`, `commands`.
 struct State fullscreen drawFn keyFn pushed commands end struct
+/// Creates a `mq3.client.ui_credits.Draw` record. Assigns `text` from `text`, `y` from `y`, `color` from `color`, `proportional` from `proportional`.
+/// @param text Value used to initialize `Draw.text`.
+/// @param y Value used to initialize `Draw.y`.
+/// @param color Value used to initialize `Draw.color`.
+/// @param proportional Value used to initialize `Draw.proportional`.
 function row(text,y,color,proportional) return Draw(text,320,y,UI_CENTER|UI_SMALLFONT,color,proportional) end function
+/// Adapts `mq3.compat.numeric.trunc32` to UI credits `gap`, returning its result for `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`.
+/// @param y Argument 1 of `mq3.compat.numeric.trunc32`; passed as `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`.
+/// @param scale Argument 1 of `mq3.compat.numeric.trunc32`; passed as `y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE`.
 function gap(y,scale) return n.trunc32(y+scale*PROP_HEIGHT*PROP_SMALL_SIZE_SCALE) end function
 // UI_CreditMenu_Draw
 function draw()
@@ -28,6 +38,7 @@ function draw()
   y=gap(y,1.35);rows=rows+[row("To order: 1-800-idgames     www.quake3arena.com     www.idsoftware.com",y,red,false)];y=y+SMALLCHAR_HEIGHT;rows=rows+[row("Quake III Arena(c) 1999-2000, Id Software, Inc.  All Rights Reserved",y,red,false)];return rows
 end function
 // UI_CreditMenu_Key
+/// @param keyCode Value used by `if (keyCode&K_CHAR_FLAG)!=0 then return [] end if`.
 function key(keyCode) if (keyCode&K_CHAR_FLAG)!=0 then return [] end if;return [[EXEC_APPEND,"quit\n"]] end function
 // UI_CreditMenu
 function open() return State(true,draw,key,true,[]) end function

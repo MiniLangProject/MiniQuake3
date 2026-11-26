@@ -5,6 +5,7 @@
 package mq3.game.playerstate
 import mq3.compat.numeric as n
 const BYTE_SIZE = 468
+/// `PlayerState` record for playerstate, containing `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields.
 struct PlayerState
   commandTime
   pm_type
@@ -53,10 +54,13 @@ struct PlayerState
   entityEventSequence
 end struct
 
+/// Create a `mq3.game.playerstate.PlayerState` record, initializing `origin` as `[0.0,0.0,0.0]`, `velocity` as `[0.0,0.0,0.0]` and `delta_angles` as `[0,0,0]`.
 function create()
   return PlayerState(0,0,0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0,[0,0,0],0,0,0,0,0,0,[0.0,0.0,0.0],0,0,[0,0],[0,0],0,0,0,0,0,0,[0.0,0.0,0.0],0,0,0,0,0,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],0,0,0,0,0,0,0)
 end function
 
+/// Create a `mq3.game.playerstate.PlayerState` record, initializing `commandTime` as `source.commandTime`, `pm_type` as `source.pm_type` and `bobCycle` as `source.bobCycle`.
+/// @param source Parser source state; accesses `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields.
 function copy(source)
   return PlayerState(
     source.commandTime,
@@ -107,6 +111,9 @@ function copy(source)
   )
 end function
 
+/// Populate player state from the ordered word representation used by the network protocol.
+/// @param data Sequence whose length bounds the iteration or lookup in `load`.
+/// @param offset Offset into the buffer or sequence used by this operation.
 function load(data, offset)
   if offset < 0 or offset+BYTE_SIZE > len(data) then return error(470,"Truncated playerState") end if
   ps = create()
@@ -158,6 +165,8 @@ function load(data, offset)
   return ps
 end function
 
+/// Serialize player state into the ordered integer and floating-point bit patterns required by the snapshot protocol.
+/// @param ps Player movement state; accesses `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields.
 function words(ps)
   return [
     n.u32(ps.commandTime),

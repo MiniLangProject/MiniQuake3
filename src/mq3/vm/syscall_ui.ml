@@ -9,34 +9,76 @@ import mq3.compat.numeric as n
 const CLIENT_STATE_SIZE = 3084
 const GLCONFIG_SIZE = 11332
 
+/// ClientServices record for vm.syscall_ui, containing `clipboardFn`, `glconfigFn`, `clientStateFn`, `configStringFn`.
 struct ClientServices clipboardFn glconfigFn clientStateFn configStringFn end struct
+/// KeyServices record for vm.syscall_ui, containing `keyNameFn`, `bindingFn`, `setBindingFn`, `isDownFn`, `getOverstrikeFn`, `setOverstrikeFn`, and 3 further fields.
 struct KeyServices keyNameFn bindingFn setBindingFn isDownFn getOverstrikeFn setOverstrikeFn clearFn getCatcherFn setCatcherFn end struct
+/// RendererServices record for vm.syscall_ui, containing `registerModelFn`, `registerSkinFn`, `registerShaderNoMipFn`, `clearSceneFn`, `setColorFn`, `drawStretchPicFn`, and 1 further fields.
 struct RendererServices registerModelFn registerSkinFn registerShaderNoMipFn clearSceneFn setColorFn drawStretchPicFn updateScreenFn end struct
+/// LanServices record for vm.syscall_ui, containing `loadFn`, `saveFn`, `addFn`, `removeFn`, `pingQueueCountFn`, `clearPingFn`, and 12 further fields.
 struct LanServices loadFn saveFn addFn removeFn pingQueueCountFn clearPingFn getPingFn getPingInfoFn serverCountFn serverAddressFn serverInfoFn serverPingFn markVisibleFn isVisibleFn updatePingsFn resetPingsFn serverStatusFn compareFn end struct
+/// Services record for vm.syscall_ui, containing `shared`, `context`, `client`, `keys`, `renderer`, `lan`, and 4 further fields.
 struct Services shared context client keys renderer lan fileListFn memoryRemainingFn mediaServices extendedFn end struct
 
+/// Create `mq3.vm.syscall_ui.ClientServices` with clipboardFn=void; glconfigFn=void; clientStateFn=void; configStringFn=void.
 function clientServices() return ClientServices(void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui.KeyServices` with keyNameFn=void; bindingFn=void; setBindingFn=void; isDownFn=void; getOverstrikeFn=void; setOverstrikeFn=void; clearFn=void; getCatcherFn=void; setCatcherFn=void.
 function keyServices() return KeyServices(void,void,void,void,void,void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui.RendererServices` with registerModelFn=void; registerSkinFn=void; registerShaderNoMipFn=void; clearSceneFn=void; setColorFn=void; drawStretchPicFn=void; updateScreenFn=void.
 function rendererServices() return RendererServices(void,void,void,void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui.LanServices` with loadFn=void; saveFn=void; addFn=void; removeFn=void; 14 further fields.
 function lanServices() return LanServices(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui.Services` with shared=shared; context=context; client=clientServices(); keys=keyServices(); 6 further fields.
+/// @param shared Initial `shared` field stored in the returned or constructed `mq3.vm.syscall_ui.Services` record.
+/// @param context Initial `context` field stored in the returned or constructed `mq3.vm.syscall_ui.Services` record.
 function services(shared,context) return Services(shared,context,clientServices(),keyServices(),rendererServices(),lanServices(),void,void,void,void) end function
+/// Create the vm.syscall_ui error for `unavailable` with 3423 and the supplied diagnostic text.
+/// @param name Name used in `("UI syscall: " + name)` and `(("UI syscall: " + name) + " service unavailable")`.
 function unavailable(name) return error(3423,"UI syscall: "+name+" service unavailable") end function
+/// Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.syscall_ui.arg`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param index Index passed as `index` to `mq3.vm.syscall_common.argument`.
 function arg(vm,base,index) return common.argument(vm,base,index) end function
 
+/// Compute output in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param address Value passed as `value` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param capacity Capacity passed as `capacity` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param text Data passed as `data` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.writeBuffer`.
 function output(vm,address,capacity,text,label)
   common.writeBuffer(vm,address,capacity,text,label);return 0
 end function
 
+/// Compute fixed output in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeRaw`.
+/// @param address Value passed as `value` to `mq3.vm.syscall_common.writeRaw`.
+/// @param data Data passed as `data` to `mq3.vm.syscall_common.writeRaw`.
+/// @param size Count passed as `count` to `mq3.vm.syscall_common.writeRaw`.
+/// @param label Label used in `(label + " output")` and `("UI syscall: invalid " + label)`.
 function fixedOutput(vm,address,data,size,label)
   if typeof(data)!="bytes" or len(data)!=size then return error(3423,"UI syscall: invalid "+label+" layout") end if
   common.writeRaw(vm,address,data,size,label+" output");return 0
 end function
 
+/// Register asset in vm.syscall_ui; the normal completion returns `callback(host.context, common.readString(vm, arg(vm, base, 1)))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `context`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
+/// @param name Name passed as `name` to `mq3.vm.syscall_ui.unavailable`.
 function registerAsset(vm,base,host,callback,name)
   if callback==void then return unavailable(name) end if
   return callback(host.context,common.readString(vm,arg(vm,base,1)))
 end function
 
+/// Compute string output in vm.syscall_ui; the normal completion returns `output(vm, arg(vm, base, 2), arg(vm, base, 3), callback(host.context, arg(vm, base, 1)), (name + " output"))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.output`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `context`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
+/// @param name Name passed as `name` to `mq3.vm.syscall_ui.unavailable`.
 function stringOutput(vm,base,host,callback,name)
   if callback==void then return unavailable(name) end if
   return output(vm,arg(vm,base,2),arg(vm,base,3),callback(host.context,arg(vm,base,1)),name+" output")
@@ -45,17 +87,28 @@ end function
 // cl_ui.c Key_GetBindingBuf explicitly converts an unbound key's NULL
 // Key_GetBinding result into an empty, NUL-terminated output buffer.
 // Keep nullable key storage: Key_GetKey must not match never-bound keys.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `keys`, `context`.
 function bindingOutput(vm,base,host)
   if host.keys.bindingFn==void then return unavailable("binding") end if
   value=host.keys.bindingFn(host.context,arg(vm,base,1));if value==void then value="" end if
   return output(vm,arg(vm,base,2),arg(vm,base,3),value,"binding output")
 end function
 
+/// Set binding in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `keys`, `context`.
 function setBinding(vm,base,host)
   if host.keys.setBindingFn==void then return unavailable("set binding") end if
   host.keys.setBindingFn(host.context,arg(vm,base,1),common.readString(vm,arg(vm,base,2)));return 0
 end function
 
+/// Set color in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `renderer`, `context`.
 function setColor(vm,base,host)
   if host.renderer.setColorFn==void then return unavailable("set color") end if
   address=arg(vm,base,1);color=void
@@ -66,6 +119,10 @@ function setColor(vm,base,host)
   host.renderer.setColorFn(host.context,color);return 0
 end function
 
+/// Compute draw stretch pic in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `renderer`, `context`.
 function drawStretchPic(vm,base,host)
   if host.renderer.drawStretchPicFn==void then return unavailable("draw stretch pic") end if
   values=array(8,0.0)
@@ -73,11 +130,19 @@ function drawStretchPic(vm,base,host)
   host.renderer.drawStretchPicFn(host.context,values,arg(vm,base,9));return 0
 end function
 
+/// Get client state in vm.syscall_ui; the normal completion returns `fixedOutput(vm, arg(vm, base, 1), host.client.clientStateFn(host.context), CLIENT_STATE_SIZE, "client state")`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.fixedOutput`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `client`, `context`.
 function getClientState(vm,base,host)
   if host.client.clientStateFn==void then return unavailable("client state") end if
   return fixedOutput(vm,arg(vm,base,1),host.client.clientStateFn(host.context),CLIENT_STATE_SIZE,"client state")
 end function
 
+/// Get config string in vm.syscall_ui; the normal completion returns `1`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `client`, `context`.
 function getConfigString(vm,base,host)
   if host.client.configStringFn==void then return unavailable("config string") end if
   value=host.client.configStringFn(host.context,arg(vm,base,1))
@@ -85,6 +150,10 @@ function getConfigString(vm,base,host)
   output(vm,arg(vm,base,2),arg(vm,base,3),value,"config string output");return 1
 end function
 
+/// Get ping in vm.syscall_ui; the normal completion returns `0`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `lan`, `context`.
 function getPing(vm,base,host)
   if host.lan.getPingFn==void then return unavailable("ping") end if
   value=host.lan.getPingFn(host.context,arg(vm,base,1))
@@ -93,6 +162,12 @@ function getPing(vm,base,host)
   at=common.pointer(vm,arg(vm,base,4),4,"ping time output");n.writeU32(vm.data,at,value[1]);return 0
 end function
 
+/// Get file list in vm.syscall_ui; the normal completion returns `count`.
+///
+/// Validation failures include `UI syscall: negative file-list capacity`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `fileListFn`, `context`.
 function getFileList(vm,base,host)
   if host.fileListFn==void then return unavailable("file list") end if
   capacity=arg(vm,base,4);if capacity<0 then return error(3423,"UI syscall: negative file-list capacity") end if
@@ -119,12 +194,22 @@ function getFileList(vm,base,host)
   return count
 end function
 
+/// Compute lan string in vm.syscall_ui; the normal completion returns `output(vm, arg(vm, base, 3), arg(vm, base, 4), value, (name + " output"))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `context`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
+/// @param name Name passed as `name` to `mq3.vm.syscall_ui.unavailable`.
 function lanString(vm,base,host,callback,name)
   if callback==void then return unavailable(name) end if
   value=callback(host.context,arg(vm,base,1),arg(vm,base,2))
   return output(vm,arg(vm,base,3),arg(vm,base,4),value,name+" output")
 end function
 
+/// Compute server status in vm.syscall_ui; the normal completion returns `1`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui.arg`.
+/// @param host Record exposing `lan`, `context`.
 function serverStatus(vm,base,host)
   if host.lan.serverStatusFn==void then return unavailable("server status") end if
   address=common.readString(vm,arg(vm,base,1));capacity=arg(vm,base,3)
@@ -133,6 +218,11 @@ function serverStatus(vm,base,host)
   output(vm,arg(vm,base,2),capacity,value,"server status output");return 1
 end function
 
+/// Dispatch specific in vm.syscall_ui; the normal completion returns `error(3423, ("UI syscall: unsupported client trap " + str(op)))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui_media.dispatch`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.dispatch`.
+/// @param host Record exposing `mediaServices`, `renderer`, `context`, `keys`, `client`, `lan`, `memoryRemainingFn` and further fields.
+/// @param op Op used in `str(op)` and `(op == 31)`.
 function dispatchSpecific(vm,base,host,op)
   if op==31 or op==32 or op==53 or op==54 or (op>=62 and op<=64) or (op>=75 and op<=81) or op==86 or op==87 then
     if host.mediaServices==void then return unavailable("media") end if
@@ -184,6 +274,12 @@ function dispatchSpecific(vm,base,host,op)
   return error(3423,"UI syscall: unsupported client trap "+str(op))
 end function
 
+/// Dispatch syscall ui in vm.syscall_ui; the normal completion returns `dispatchSpecific(vm, base, host, op)`.
+///
+/// Validation failures include `UI syscall: invalid dispatcher context`.
+/// @param host Record exposing `shared`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function dispatch(host,vm,base)
   if host==void or host.shared==void then return error(3423,"UI syscall: invalid dispatcher context") end if
   op=common.argument(vm,base,0)
@@ -191,4 +287,6 @@ function dispatch(host,vm,base)
   return dispatchSpecific(vm,base,host,op)
 end function
 
+/// Apply `mq3.vm.syscall_ui.dispatch` for callback in vm.syscall_ui.
+/// @param host Host passed as `host` to `mq3.vm.syscall_ui.dispatch`.
 function callback(host) return function(vm,base) => dispatch(host,vm,base) end function

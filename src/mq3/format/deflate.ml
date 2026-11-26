@@ -2,6 +2,7 @@
 // RFC 1951 raw DEFLATE decoder. No native decompression dependency.
 package mq3.format.deflate
 
+/// Bits record for format.deflate, containing `data`, `offset`, `value`, `available`.
 struct Bits
   data
   offset
@@ -9,16 +10,24 @@ struct Bits
   available
 end struct
 
+/// Huffman record for format.deflate, containing `counts`, `symbols`, `prefix`.
 struct Huffman
   counts
   symbols
   prefix
 end struct
 
+/// Create the format.deflate error for `fail` with 3500 and the supplied diagnostic text.
+/// @param message Message used in `("DEFLATE: " + message)` and `error(3500, ("DEFLATE: " + message))`.
 function fail(message)
   return error(3500, "DEFLATE: " + message)
 end function
 
+/// Read bits in format.deflate; the normal completion returns `result`.
+///
+/// Direct state writes: `reader.value`, `reader.available`, `reader.offset`.
+/// @param reader Record exposing `available`, `offset`, `data`, `value`. Updated in place: `value`, `available`, `offset`.
+/// @param count Count used in `(1 << count)` and `((1 << count) - 1)`.
 function readBits(reader as Bits, count as int)
   while reader.available < count
     if reader.offset >= len(reader.data) then return fail("truncated bitstream") end if
@@ -34,6 +43,8 @@ end function
 
 // Short canonical codes have one entry at every possible eight-bit suffix.
 // DEFLATE transmits their high bit first inside the low-bit-first byte stream.
+/// @param counts Counts used in `counts[width]`.
+/// @param symbols Symbols used in `symbols[(index + offset)]` and `(symbols[(index + offset)] << 4)`.
 function buildPrefix(counts,symbols)
   prefix=array(256,0);first=0;index=0
   for width=1 to 8
@@ -59,6 +70,8 @@ function buildPrefix(counts,symbols)
   return prefix
 end function
 
+/// Compute tree in format.deflate; the normal completion returns `Huffman(counts, symbols, buildPrefix(counts, symbols))`.
+/// @param lengths Lengths used in `len(lengths)` and `lengths[sym]`.
 function tree(lengths)
   counts = array(16, 0)
   for each width in lengths
@@ -85,6 +98,11 @@ function tree(lengths)
   return Huffman(counts,symbols,buildPrefix(counts,symbols))
 end function
 
+/// Decode symbol in format.deflate; the normal completion returns `fail("invalid Huffman code")`.
+///
+/// Direct state writes: `reader.value`, `reader.available`, `reader.offset`.
+/// @param reader Record exposing `available`, `value`, `offset`, `data`. Updated in place: `value`, `available`, `offset`.
+/// @param codes Record exposing `prefix`, `counts`, `symbols`.
 function decodeSymbol(reader, codes)
   available=reader.available;value=reader.value
   // Peek the next byte without claiming it. Trailing bytes and stored-block
@@ -120,6 +138,7 @@ function decodeSymbol(reader, codes)
   return fail("invalid Huffman code")
 end function
 
+/// Compute fixed trees in format.deflate; the normal completion returns `[tree(lengths), tree(array(32, 5))]`.
 function fixedTrees()
   lengths = array(288, 8)
   for index = 144 to 255
@@ -131,6 +150,8 @@ function fixedTrees()
   return [tree(lengths), tree(array(32, 5))]
 end function
 
+/// Compute dynamic trees in format.deflate; the normal completion returns `[tree(literals), tree(distances)]`.
+/// @param reader Reader passed as `reader` to `mq3.format.deflate.readBits`.
 function dynamicTrees(reader)
   literalCount = readBits(reader, 5) + 257
   distanceCount = readBits(reader, 5) + 1
@@ -177,6 +198,9 @@ function dynamicTrees(reader)
   return [tree(literals), tree(distances)]
 end function
 
+/// Compute inflate in format.deflate; the normal completion returns `output`.
+/// @param data Initial `data` field stored in the returned or constructed `mq3.format.deflate.Bits` record.
+/// @param expectedSize Expected size used in `(expectedSize < 0)` and `bytes(expectedSize, 0)`.
 function inflate(data, expectedSize)
   if expectedSize < 0 or expectedSize > 268435456 then return fail("output size exceeds limit") end if
   reader = Bits(data, 0, 0, 0)

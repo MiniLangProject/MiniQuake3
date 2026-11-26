@@ -5,26 +5,52 @@ package mq3.renderer.surface_grid
 
 import mq3.compat.numeric as numeric
 
+/// Data record for `mq3.renderer.surface_grid.GridVertex`; groups `xyz`, `normal`, `st`, `lightmap`, `color`.
 struct GridVertex xyz normal st lightmap color end struct
+/// Data record for `mq3.renderer.surface_grid.Grid`; groups `width`, `height`, `widthLodError`, `heightLodError`, `verts`.
 struct Grid width height widthLodError heightLodError verts end struct
+/// Data record for `mq3.renderer.surface_grid.Batch`; groups `xyz`, `normals`, `texCoords`, `colors`, `vertexDlightBits`, `indexes`, and 3 further fields.
 struct Batch xyz normals texCoords colors vertexDlightBits indexes numVertexes numIndexes dlightBits end struct
+/// Data record for `mq3.renderer.surface_grid.Submission`; groups `widthTable`, `heightTable`, `batches`, `flushes`, `numVertexes`, `numIndexes`, and 1 further field.
 struct Submission widthTable heightTable batches flushes numVertexes numIndexes dlightBits end struct
 
+/// Constructs `mq3.renderer.surface_grid.GridVertex` with `color` = `[color[0]&255,color[1]&255,color[2]&255,color[3]&255]` and the supplied remaining values.
+/// @param xyz Initial value for `mq3.renderer.surface_grid.GridVertex.xyz`.
+/// @param normal Initial value for `mq3.renderer.surface_grid.GridVertex.normal`.
+/// @param st Initial value for `mq3.renderer.surface_grid.GridVertex.st`.
+/// @param lightmap Initial value for `mq3.renderer.surface_grid.GridVertex.lightmap`.
+/// @param color Indexed input read at `0`, `1`, `2`, `3`.
 function vertex(xyz,normal,st,lightmap,color)
   return GridVertex(xyz,normal,st,lightmap,[color[0]&255,color[1]&255,color[2]&255,color[3]&255])
 end function
 
+/// Constructs `mq3.renderer.surface_grid.Grid` from `width`, `height`, `widthLodError`, `heightLodError`, `verts`.
+/// @param width Initial value for `mq3.renderer.surface_grid.Grid.width`.
+/// @param height Initial value for `mq3.renderer.surface_grid.Grid.height`.
+/// @param widthLodError Initial value for `mq3.renderer.surface_grid.Grid.widthLodError`.
+/// @param heightLodError Initial value for `mq3.renderer.surface_grid.Grid.heightLodError`.
+/// @param verts Initial value for `mq3.renderer.surface_grid.Grid.verts`.
 function grid(width,height,widthLodError,heightLodError,verts)
   return Grid(width,height,widthLodError,heightLodError,verts)
 end function
 
+/// Computes `value!=void and len(value)==2` for `mq3.renderer.surface_grid.valid2`.
+/// @param value Input used in the result expression `value!=void and len(value)==2`.
 function valid2(value) return value!=void and len(value)==2 end function
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.surface_grid.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Computes `value!=void and len(value)==4` for `mq3.renderer.surface_grid.valid4`.
+/// @param value Input used in the result expression `value!=void and len(value)==4`.
 function valid4(value) return value!=void and len(value)==4 end function
+/// Computes `value!=void and valid3(value.xyz) and valid3(value.normal) and valid2(value.st) and valid2(value.lightmap) and valid4(value.color)` for `mq3.renderer.surface_grid.validVertex`.
+/// @param value Record providing `value.xyz`, `value.normal`, `value.st`, `value.lightmap`, `value.color`.
 function validVertex(value)
   return value!=void and valid3(value.xyz) and valid3(value.normal) and valid2(value.st) and valid2(value.lightmap) and valid4(value.color)
 end function
 
+/// Checks grid dimensions, LOD-error table lengths, total vertex count, and every grid vertex.
+/// @param value Record providing `value.width`, `value.height`, `value.widthLodError`, `value.heightLodError`, `value.verts`.
 function validateGrid(value)
   if value==void or value.width<2 or value.height<2 then return error(7300,"grid dimensions must be at least two") end if
   if value.widthLodError==void or len(value.widthLodError)!=value.width then return error(7301,"grid width LOD table mismatch") end if
@@ -38,6 +64,9 @@ end function
 
 // RB_SurfaceGrid always retains both outer edges and keeps an interior row or
 // column when its subdivision error is within the current volume LOD error.
+/// @param size Input tested by `size>2`.
+/// @param lodErrors Indexed input read at `i`.
+/// @param lodError Input tested by `lodErrors[i]<=lodError`.
 function selectAxis(size,lodErrors,lodError)
   selected=[0]
   // MiniLang's inclusive descending range would visit entries for a two-point
@@ -50,10 +79,17 @@ function selectAxis(size,lodErrors,lodError)
   return selected+[size-1]
 end function
 
+/// Constructs `mq3.renderer.surface_grid.Batch` with `xyz` = `[]`, `normals` = `[]`, `texCoords` = `[]`, `colors` = `[]` and the supplied remaining values.
+/// @param dlightBits Initial value for `mq3.renderer.surface_grid.Batch.dlightBits`.
 function emptyBatch(dlightBits)
   return Batch([],[],[],[],[],[],0,0,dlightBits)
 end function
 
+/// Updates `batch.xyz`, `batch.normals`, `batch.texCoords`, `batch.colors`, `batch.vertexDlightBits` in `mq3.renderer.surface_grid.appendVertex`.
+/// @param batch Mutable record or buffer; this call updates `batch.xyz`, `batch.normals`, `batch.texCoords`, `batch.colors`, `batch.vertexDlightBits`.
+/// @param current Record providing `current.xyz`, `current.normal`, `current.st`, `current.lightmap`, `current.color`.
+/// @param needsNormal Input tested by `needsNormal`.
+/// @param dlightBits Input used by `batch.vertexDlightBits=batch.vertexDlightBits+[dlightBits]`.
 function appendVertex(batch,current,needsNormal,dlightBits)
   batch.xyz=batch.xyz+[[current.xyz[0],current.xyz[1],current.xyz[2]]]
   if needsNormal then
@@ -69,6 +105,12 @@ end function
 
 // Mirrors RB_SurfaceGrid's conservative row capacity calculation. Consecutive
 // batches repeat their boundary row so every batch remains independently drawable.
+/// @param value Record providing `value.width`, `value.widthLodError`, `value.height`, `value.heightLodError`, `value.verts`.
+/// @param lodError Value forwarded as `lodError` to `mq3.renderer.surface_grid.selectAxis`.
+/// @param maxVertexes Input tested by `maxVertexes<1 or maxIndexes<1`.
+/// @param maxIndexes Input tested by `maxVertexes<1 or maxIndexes<1`.
+/// @param needsNormal Value forwarded as `needsNormal` to `mq3.renderer.surface_grid.appendVertex`.
+/// @param dlightBits Initial value for `mq3.renderer.surface_grid.Submission.dlightBits`.
 function submit(value,lodError,maxVertexes,maxIndexes,needsNormal,dlightBits)
   valid=validateGrid(value);if valid is error then return valid end if
   if maxVertexes<1 or maxIndexes<1 then return error(7305,"invalid grid tessellation capacity") end if

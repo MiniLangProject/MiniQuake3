@@ -13,13 +13,22 @@ const HEALTH_OVERMAX_CAP=200
 const ARMOR_CAP=200
 const AMMO_CAP=200
 
+/// Stores playable items menu item, including `classname`, `kind`, `origin`, `amount`, `cap`, `respawnMs` and additional values.
 struct Item classname kind origin amount cap respawnMs active respawnAt weapon end struct
+/// Stores playable items stats record, including `health`, `armor`, `ammo`, `weapon`.
 struct Stats health armor ammo weapon end struct
+/// Stores playable items state, including `items`, `stats`, `pickupRadius`, `lastTime`.
 struct State items stats pickupRadius lastTime end struct
+/// Stores playable items pickup record, including `itemIndex`, `classname`, `kind`, `amount`, `before`, `after` and additional values.
 struct Pickup itemIndex classname kind amount before after weapon end struct
 
+/// Creates the playable items error `7501` with diagnostic text `"preview items: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview items: "+message`.
 function fail(message) return error(7501,"preview items: "+message) end function
 
+/// Calls `std.string.toLowerAscii` from playable items `field`. The final path returns `""`.
+/// @param fields Value used by `for each pair in fields`.
+/// @param key Key or control identifier used to select the corresponding playable items entry.
 function field(fields,key)
   wanted=strings.toLowerAscii(key)
   for each pair in fields
@@ -30,6 +39,7 @@ end function
 
 // [kind, amount, cap, respawn milliseconds, weapon name]. Values follow the
 // Baseq3 item table closely while the preview keeps one combined ammo counter.
+/// @param classname Value used by `name=strings.toLowerAscii(classname)`.
 function definition(classname)
   name=strings.toLowerAscii(classname)
   if name=="item_health_small" then return ["health",5,HEALTH_OVERMAX_CAP,35000,""] end if
@@ -65,6 +75,9 @@ function definition(classname)
   return void
 end function
 
+/// Calls `mq3.client.playable_items.field`, `mq3.client.playable_items.definition`, `mq3.compat.textnumbers.vector` and additional helpers from playable items `fromEntities`. The final path returns `State(items,Stats(100,0,50,"weapon_machinegun"),pickupRadius,0)`.
+/// @param entities Value used by `if entities==void or pickupRadius<=0.0 then return fail("entities and a positive pickup radius are required") end if`.
+/// @param pickupRadius Value used by `if entities==void or pickupRadius<=0.0 then return fail("entities and a positive pickup radius are required") end if`.
 function fromEntities(entities,pickupRadius)
   if entities==void or pickupRadius<=0.0 then return fail("entities and a positive pickup radius are required") end if
   items=[]
@@ -78,11 +91,19 @@ function fromEntities(entities,pickupRadius)
   return State(items,Stats(100,0,50,"weapon_machinegun"),pickupRadius,0)
 end function
 
+/// Calls `mq3.format.bsp.entities`, `mq3.client.playable_items.fromEntities` from playable items `load`. The final path returns `fromEntities(entities,DEFAULT_PICKUP_RADIUS)`.
+/// @param map map record passed to the playable items helper calls.
 function load(map)
   entities=bsp.entities(map);if entities is error then return entities end if
   return fromEntities(entities,DEFAULT_PICKUP_RADIUS)
 end function
 
+/// Updates `state.stats.health`, `state.stats.armor`, `state.stats.ammo`, `state.stats.weapon` during playable items `setStats`.
+/// @param state Mutable playable items record/storage; this routine assigns `state.stats.health`, `state.stats.armor`, `state.stats.ammo`, `state.stats.weapon`.
+/// @param health Value assigned to `state.stats.health`.
+/// @param armor Value assigned to `state.stats.armor`.
+/// @param ammo Value assigned to `state.stats.ammo`.
+/// @param weapon Value assigned to `state.stats.weapon`.
 function setStats(state,health,armor,ammo,weapon)
   if state==void then return fail("state is required") end if
   if health<0 or armor<0 or ammo<0 then return fail("negative player stat") end if
@@ -93,6 +114,9 @@ function setStats(state,health,armor,ammo,weapon)
   return void
 end function
 
+/// Evaluates playable items `canTake` and returns `stats.health<item.cap`, `stats.armor<item.cap`, `stats.ammo<item.cap` and additional values according to its guard/selection conditions.
+/// @param item Record read through `item.kind`, `item.cap`, `item.weapon`.
+/// @param stats Record read through `stats.health`, `stats.armor`, `stats.ammo`, `stats.weapon`.
 function canTake(item,stats)
   if item.kind=="health" then return stats.health<item.cap end if
   if item.kind=="armor" then return stats.armor<item.cap end if
@@ -103,6 +127,9 @@ end function
 
 // The integrated preview keeps Baseq3's independent ammo pools.  The legacy
 // aggregate path above remains useful to small callers and map probes.
+/// @param item Record read through `item.kind`, `item.classname`.
+/// @param stats Value used by `if item.kind=="health" or item.kind=="armor" then return canTake(item,stats) end if`.
+/// @param inventory Value used by `amount=weaponInventory.ammoFor(inventory,def.id)`.
 function canTakeInventory(item,stats,inventory)
   if item.kind=="health" or item.kind=="armor" then return canTake(item,stats) end if
   if item.kind=="ammo" then
@@ -118,11 +145,18 @@ function canTakeInventory(item,stats,inventory)
   return false
 end function
 
+/// Evaluates playable items `distanceSquared` and returns `x*x+y*y+z*z` according to its guard/selection conditions.
+/// @param a Sequence read at `a[0]`, `a[1]`, `a[2]`.
+/// @param b Sequence read at `b[0]`, `b[1]`, `b[2]`.
 function distanceSquared(a,b)
   x=a[0]-b[0];y=a[1]-b[1];z=a[2]-b[2]
   return x*x+y*y+z*z
 end function
 
+/// Calls `mq3.client.playable_items.Pickup` from playable items `take`. The final path returns `Pickup(index,item.classname,item.kind,after-before,before,after,stats.weapon)`.
+/// @param state Record read through `state.items`, `state.stats`.
+/// @param index Value used by `item=state.items[index]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function take(state,index,now)
   item=state.items[index];stats=state.stats
   before=0;after=0
@@ -135,6 +169,10 @@ function take(state,index,now)
   return Pickup(index,item.classname,item.kind,after-before,before,after,stats.weapon)
 end function
 
+/// Updates `state.lastTime` during playable items `update`.
+/// @param state Mutable playable items record/storage; this routine assigns `state.lastTime`.
+/// @param playerPosition Sequence whose length/content is inspected by `update`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function update(state,playerPosition,now)
   if state==void or playerPosition==void or len(playerPosition)!=3 then return fail("state and three-axis player position are required") end if
   if now<0 then return fail("negative time") end if
@@ -149,6 +187,12 @@ function update(state,playerPosition,now)
   return events
 end function
 
+/// Updates `state.stats.ammo`, `state.stats.weapon` during playable items `takeInventory`.
+/// @param state Mutable playable items record/storage; this routine assigns `state.stats.ammo`, `state.stats.weapon`.
+/// @param index Value used by `item=state.items[index]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param inventory Record read through `inventory.selectedWeapon`.
+/// @param teamMode Value used by `granted=weaponInventory.pickupWeapon(inventory,item.classname,0,false,teamMode) end if`.
 function takeInventory(state,index,now,inventory,teamMode)
   item=state.items[index]
   if item.kind=="health" or item.kind=="armor" then
@@ -176,6 +220,12 @@ function takeInventory(state,index,now,inventory,teamMode)
   return Pickup(index,item.classname,item.kind,after-before,before,after,state.stats.weapon)
 end function
 
+/// Updates `state.lastTime` during playable items `updateInventory`.
+/// @param state Mutable playable items record/storage; this routine assigns `state.lastTime`.
+/// @param playerPosition Sequence whose length/content is inspected by `updateInventory`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param inventory Value used by `if state==void or playerPosition==void or len(playerPosition)!=3 or inventory==void then return fail("state, inventory and three-axis player p...`.
+/// @param teamMode Value used by `picked=takeInventory(state,index,now,inventory,teamMode)`.
 function updateInventory(state,playerPosition,now,inventory,teamMode)
   if state==void or playerPosition==void or len(playerPosition)!=3 or inventory==void then return fail("state, inventory and three-axis player position are required") end if
   if now<0 then return fail("negative time") end if
@@ -191,6 +241,8 @@ function updateInventory(state,playerPosition,now,inventory,teamMode)
   return events
 end function
 
+/// Evaluates playable items `activeCount` and returns `0`, `count` according to its guard/selection conditions.
+/// @param state Record read through `state.items`.
 function activeCount(state)
   if state==void then return 0 end if
   count=0;for each item in state.items if item.active then count=count+1 end if end for

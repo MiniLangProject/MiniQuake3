@@ -83,41 +83,78 @@ const MST_FLARE=4
 // Managed mirrors keep the original member order. Variable-sized tails are
 // represented by ordinary arrays and all on-disk decoding remains explicit.
 struct VmHeader vmMagic instructionCount codeOffset codeLength dataOffset dataLength litLength bssLength end struct
+/// Pcx record for format.qfiles, containing `manufacturer`, `version`, `encoding`, `bitsPerPixel`, `xmin`, `ymin`, and 11 further fields.
 struct Pcx manufacturer version encoding bitsPerPixel xmin ymin xmax ymax hres vres palette reserved colorPlanes bytesPerLine paletteType filler data end struct
+/// TargaHeader record for format.qfiles, containing `idLength`, `colormapType`, `imageType`, `colormapIndex`, `colormapLength`, `colormapSize`, and 6 further fields.
 struct TargaHeader idLength colormapType imageType colormapIndex colormapLength colormapSize xOrigin yOrigin width height pixelSize attributes end struct
+/// Md3Frame record for format.qfiles, containing `bounds`, `localOrigin`, `radius`, `name`.
 struct Md3Frame bounds localOrigin radius name end struct
+/// Md3Tag record for format.qfiles, containing `name`, `origin`, `axis`.
 struct Md3Tag name origin axis end struct
+/// Md3Surface record for format.qfiles, containing `ident`, `name`, `flags`, `numFrames`, `numShaders`, `numVerts`, and 6 further fields.
 struct Md3Surface ident name flags numFrames numShaders numVerts numTriangles ofsTriangles ofsShaders ofsSt ofsXyzNormals ofsEnd end struct
+/// Md3Shader record for format.qfiles, containing `name`, `shaderIndex`.
 struct Md3Shader name shaderIndex end struct
+/// Md3Triangle record for format.qfiles, containing `indexes`.
 struct Md3Triangle indexes end struct
+/// Md3St record for format.qfiles, containing `st`.
 struct Md3St st end struct
+/// Md3XyzNormal record for format.qfiles, containing `xyz`, `normal`.
 struct Md3XyzNormal xyz normal end struct
+/// Md3Header record for format.qfiles, containing `ident`, `version`, `name`, `flags`, `numFrames`, `numTags`, and 6 further fields.
 struct Md3Header ident version name flags numFrames numTags numSurfaces numSkins ofsFrames ofsTags ofsSurfaces ofsEnd end struct
+/// Md4Weight record for format.qfiles, containing `boneIndex`, `boneWeight`, `offset`.
 struct Md4Weight boneIndex boneWeight offset end struct
+/// Md4Vertex record for format.qfiles, containing `normal`, `texCoords`, `numWeights`, `weights`.
 struct Md4Vertex normal texCoords numWeights weights end struct
+/// Md4Triangle record for format.qfiles, containing `indexes`.
 struct Md4Triangle indexes end struct
+/// Md4Surface record for format.qfiles, containing `ident`, `name`, `shader`, `shaderIndex`, `ofsHeader`, `numVerts`, and 6 further fields.
 struct Md4Surface ident name shader shaderIndex ofsHeader numVerts ofsVerts numTriangles ofsTriangles numBoneReferences ofsBoneReferences ofsEnd end struct
+/// Md4Bone record for format.qfiles, containing `matrix`.
 struct Md4Bone matrix end struct
+/// Md4Frame record for format.qfiles, containing `bounds`, `localOrigin`, `radius`, `bones`.
 struct Md4Frame bounds localOrigin radius bones end struct
+/// Md4Lod record for format.qfiles, containing `numSurfaces`, `ofsSurfaces`, `ofsEnd`.
 struct Md4Lod numSurfaces ofsSurfaces ofsEnd end struct
+/// Md4Header record for format.qfiles, containing `ident`, `version`, `name`, `numFrames`, `numBones`, `ofsBoneNames`, and 4 further fields.
 struct Md4Header ident version name numFrames numBones ofsBoneNames ofsFrames numLods ofsLods ofsEnd end struct
+/// Lump record for format.qfiles, containing `fileofs`, `filelen`.
 struct Lump fileofs filelen end struct
+/// Dheader record for format.qfiles, containing `ident`, `version`, `lumps`.
 struct Dheader ident version lumps end struct
+/// Dmodel record for format.qfiles, containing `mins`, `maxs`, `firstSurface`, `numSurfaces`, `firstBrush`, `numBrushes`.
 struct Dmodel mins maxs firstSurface numSurfaces firstBrush numBrushes end struct
+/// Dshader record for format.qfiles, containing `shader`, `surfaceFlags`, `contentFlags`.
 struct Dshader shader surfaceFlags contentFlags end struct
+/// Dplane record for format.qfiles, containing `normal`, `dist`.
 struct Dplane normal dist end struct
+/// Dnode record for format.qfiles, containing `planeNum`, `children`, `mins`, `maxs`.
 struct Dnode planeNum children mins maxs end struct
+/// Dleaf record for format.qfiles, containing `cluster`, `area`, `mins`, `maxs`, `firstLeafSurface`, `numLeafSurfaces`, and 2 further fields.
 struct Dleaf cluster area mins maxs firstLeafSurface numLeafSurfaces firstLeafBrush numLeafBrushes end struct
+/// Dbrushside record for format.qfiles, containing `planeNum`, `shaderNum`.
 struct Dbrushside planeNum shaderNum end struct
+/// Dbrush record for format.qfiles, containing `firstSide`, `numSides`, `shaderNum`.
 struct Dbrush firstSide numSides shaderNum end struct
+/// Dfog record for format.qfiles, containing `shader`, `brushNum`, `visibleSide`.
 struct Dfog shader brushNum visibleSide end struct
+/// DrawVert record for format.qfiles, containing `xyz`, `st`, `lightmap`, `normal`, `color`.
 struct DrawVert xyz st lightmap normal color end struct
+/// Dsurface record for format.qfiles, containing `shaderNum`, `fogNum`, `surfaceType`, `firstVert`, `numVerts`, `firstIndex`, and 10 further fields.
 struct Dsurface shaderNum fogNum surfaceType firstVert numVerts firstIndex numIndexes lightmapNum lightmapX lightmapY lightmapWidth lightmapHeight lightmapOrigin lightmapVecs patchWidth patchHeight end struct
 
+/// List the 32 names in format.qfiles.typeNames, beginning with `vmHeader_t`, `pcx_t`, `TargaHeader`, `md3Frame_t`.
 function typeNames()
   return ["vmHeader_t","pcx_t","TargaHeader","md3Frame_t","md3Tag_t","md3Surface_t","md3Shader_t","md3Triangle_t","md3St_t","md3XyzNormal_t","md3Header_t","md4Weight_t","md4Vertex_t","md4Triangle_t","md4Surface_t","md4Bone_t","md4Frame_t","md4LOD_t","md4Header_t","lump_t","dheader_t","dmodel_t","dshader_t","dplane_t","dnode_t","dleaf_t","dbrushside_t","dbrush_t","dfog_t","drawVert_t","mapSurfaceType_t","dsurface_t"]
 end function
 
+/// Compute lump range in format.qfiles; the normal completion returns `[lump.fileofs, lump.filelen]`.
+///
+/// Validation failures include `qfiles lump index`; `qfiles lump range`.
+/// @param header Record exposing `lumps`.
+/// @param index Zero-based index into `header.lumps`.
+/// @param totalSize Total size used in `(lump.filelen > totalSize)` and `(totalSize - lump.filelen)`.
 function lumpRange(header,index,totalSize)
   if header==void or index<0 or index>=len(header.lumps) then return error(7951,"qfiles lump index") end if
   lump=header.lumps[index];if lump.fileofs<0 or lump.filelen<0 or lump.filelen>totalSize or lump.fileofs>totalSize-lump.filelen then return error(7951,"qfiles lump range") end if

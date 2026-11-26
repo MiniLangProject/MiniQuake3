@@ -12,37 +12,62 @@ const FT_OUTLINE=1
 const PIXEL_MODE_MONO=1
 const PIXEL_MODE_GRAY=2
 
+/// Data record for `mq3.renderer.tr_font_runtime.Cursor`; groups `data`, `offset`.
 struct Cursor data offset end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Metrics`; groups `horiBearingX`, `width`, `horiBearingY`, `height`, `horiAdvance`.
 struct Metrics horiBearingX width horiBearingY height horiAdvance end struct
+/// Data record for `mq3.renderer.tr_font_runtime.GlyphBounds`; groups `left`, `right`, `width`, `top`, `bottom`, `height`, and 1 further field.
 struct GlyphBounds left right width top bottom height pitch end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Bitmap`; groups `width`, `rows`, `pitch`, `pixelMode`, `buffer`, `numGrays`.
 struct Bitmap width rows pitch pixelMode buffer numGrays end struct
+/// Data record for `mq3.renderer.tr_font_runtime.GlyphInfo`; groups `height`, `top`, `bottom`, `pitch`, `xSkip`, `imageWidth`, and 7 further fields.
 struct GlyphInfo height top bottom pitch xSkip imageWidth imageHeight s t s2 t2 glyph shaderName end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Rendered`; groups `bitmap`, `glyph`.
 struct Rendered bitmap glyph end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Constructed`; groups `glyph`, `x`, `y`, `maxHeight`, `placed`.
 struct Constructed glyph x y maxHeight placed end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Raster`; groups `metrics`, `format`, `coverage`, `pixelMode`.
 struct Raster metrics format coverage pixelMode end struct
+/// Callback table for `mq3.renderer.tr_font_runtime.FreeTypeBackend`; exposes `context`, `rasterizeFn`, `createImageFn`, `saveFontData`, `outputRoot`.
 struct FreeTypeBackend context rasterizeFn createImageFn saveFontData outputRoot end struct
+/// Data record for `mq3.renderer.tr_font_runtime.Lifecycle`; groups `registry`, `registeredFontCount`, `freeTypeInitialized`, `backend`.
 struct Lifecycle registry registeredFontCount freeTypeInitialized backend end struct
 
+/// Creates error `7798` with message `"tr_font: "+message`.
+/// @param message Input used in the result expression `error(7798,"tr_font: "+message)`.
 function fail(message) return error(7798,"tr_font: "+message) end function
+/// Constructs `mq3.renderer.tr_font_runtime.Cursor` with `offset` = `0` and the supplied remaining values.
+/// @param data Initial value for `mq3.renderer.tr_font_runtime.Cursor.data`.
 function createCursor(data) return Cursor(data,0) end function
+/// Updates `cursor.offset` in `mq3.renderer.tr_font_runtime.readInt`; returns `value`.
+/// @param cursor Mutable record or buffer; this call updates `cursor.offset`.
 function readInt(cursor)
   if cursor==void or cursor.offset<0 or cursor.offset+4>len(cursor.data) then return fail("truncated integer") end if
   value=n.readI32(cursor.data,cursor.offset);cursor.offset=cursor.offset+4;return value
 end function
+/// Updates `cursor.offset` in `mq3.renderer.tr_font_runtime.readFloat`; returns `value`.
+/// @param cursor Mutable record or buffer; this call updates `cursor.offset`.
 function readFloat(cursor)
   if cursor==void or cursor.offset<0 or cursor.offset+4>len(cursor.data) then return fail("truncated float") end if
   value=n.bitsFloat(n.readU32(cursor.data,cursor.offset));cursor.offset=cursor.offset+4;return value
 end function
 
+/// Builds `mq3.renderer.tr_font_runtime.GlyphBounds` for `mq3.renderer.tr_font_runtime.R_GetGlyphInfo`.
+/// @param metrics Record providing `metrics.horiBearingX`, `metrics.width`, `metrics.horiBearingY`, `metrics.height`.
 function R_GetGlyphInfo(metrics)
   left=metrics.horiBearingX&(-64);right=(metrics.horiBearingX+metrics.width+63)&(-64);width=(right-left)>>6
   top=(metrics.horiBearingY+63)&(-64);bottom=(metrics.horiBearingY-metrics.height)&(-64);height=(top-bottom)>>6;pitch=(width+3)&(-4)
   return GlyphBounds(left,right,width,top,bottom,height,pitch)
 end function
+/// Constructs `mq3.renderer.tr_font_runtime.GlyphInfo` with `height` = `0`, `top` = `0`, `bottom` = `0`, `pitch` = `0` and the supplied remaining values.
 function blankGlyph() return GlyphInfo(0,0,0,0,0,0,0,0.0,0.0,0.0,0.0,0,"") end function
 
 // FreeType performs the outline scan conversion. The facade consumes that
 // exact coverage buffer and retains all of tr_font.c's metric/lifetime rules.
+/// @param metrics Record providing `metrics.horiBearingY`.
+/// @param format Input tested by `format!=FT_OUTLINE`.
+/// @param coverage Argument 1 supplied to `slice`.
+/// @param pixelMode Value used for `mq3.renderer.tr_font_runtime.Bitmap.pixelMode`.
 function R_RenderGlyph(metrics,format,coverage,pixelMode)
   glyph=blankGlyph();if format!=FT_OUTLINE then return Rendered(void,glyph) end if
   bounds=R_GetGlyphInfo(metrics);size=bounds.pitch*bounds.height;if coverage==void or len(coverage)!=size then return fail("outline coverage size differs from glyph bounds") end if
@@ -51,6 +76,16 @@ function R_RenderGlyph(metrics,format,coverage,pixelMode)
   return Rendered(bitmap,glyph)
 end function
 
+/// Builds `mq3.renderer.tr_font_runtime.Constructed` after updating `glyph.xSkip`, `imageOut[destination+column]`, `glyph.imageHeight`, `glyph.imageWidth`.
+/// @param imageOut Mutable record or buffer; this call updates `imageOut[destination+column]`.
+/// @param x Initial value for `mq3.renderer.tr_font_runtime.Constructed.x`.
+/// @param y Initial value for `mq3.renderer.tr_font_runtime.Constructed.y`.
+/// @param maxHeight Initial value for `mq3.renderer.tr_font_runtime.Constructed.maxHeight`.
+/// @param metrics Record providing `metrics.horiAdvance`.
+/// @param format Value forwarded as `format` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`.
+/// @param coverage Value forwarded as `coverage` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`.
+/// @param pixelMode Value forwarded as `pixelMode` to `mq3.renderer.tr_font_runtime.R_RenderGlyph`.
+/// @param calcHeight Input tested by `calcHeight`.
 function RE_ConstructGlyphInfo(imageOut,x,y,maxHeight,metrics,format,coverage,pixelMode,calcHeight)
   rendered=R_RenderGlyph(metrics,format,coverage,pixelMode);if rendered is error then return rendered end if;glyph=rendered.glyph;bitmap=rendered.bitmap
   if bitmap==void then return Constructed(glyph,x,y,maxHeight,false) end if;if glyph.height>maxHeight then maxHeight=glyph.height end if
@@ -71,28 +106,52 @@ function RE_ConstructGlyphInfo(imageOut,x,y,maxHeight,metrics,format,coverage,pi
   return Constructed(glyph,x+width+1,y,maxHeight,true)
 end function
 
+/// Builds `output[2]`, `output[12]`, `output[13]`, `output[14]`, `output[15]` in `mq3.renderer.tr_font_runtime.tgaBytes`; returns `output`.
+/// @param data Indexed input read at `source+2`, `source+1`, `source`, `source+3`.
+/// @param width Input tested by `width<=0 or height<=0 or data==void or len(data)!=width*height*4`.
+/// @param height Input tested by `width<=0 or height<=0 or data==void or len(data)!=width*height*4`.
 function tgaBytes(data,width,height)
   if width<=0 or height<=0 or data==void or len(data)!=width*height*4 then return fail("invalid RGBA image") end if
   output=bytes(width*height*4+18,0);output[2]=2;output[12]=width&255;output[13]=(width>>8)&255;output[14]=height&255;output[15]=(height>>8)&255;output[16]=32
   for pixel=0 to width*height-1 source=pixel*4;target=18+source;output[target]=data[source+2];output[target+1]=data[source+1];output[target+2]=data[source];output[target+3]=data[source+3] end for
   return output
 end function
+/// Returns `len(encoded)` from `mq3.renderer.tr_font_runtime.WriteTGA`; earlier branches return `encoded`, `written`.
+/// @param filename Argument 1 supplied to `std.fs.writeAllBytes`.
+/// @param data Value forwarded as `data` to `mq3.renderer.tr_font_runtime.tgaBytes`.
+/// @param width Value forwarded as `width` to `mq3.renderer.tr_font_runtime.tgaBytes`.
+/// @param height Value forwarded as `height` to `mq3.renderer.tr_font_runtime.tgaBytes`.
 function WriteTGA(filename,data,width,height)
   encoded=tgaBytes(data,width,height);if encoded is error then return encoded end if;written=try(fs.writeAllBytes(filename,encoded));if written is error then return written end if;return len(encoded)
 end function
 
+/// Updates `data[offset+index]` in `mq3.renderer.tr_font_runtime.writeCString`.
+/// @param data Mutable record or buffer; this call updates `data[offset+index]`.
+/// @param offset Argument 2 supplied to `copyBytes`.
+/// @param capacity Input tested by `count>=capacity`.
+/// @param value Argument 1 supplied to `bytes`.
 function writeCString(data,offset,capacity,value)
   encoded=bytes(value);count=len(encoded);if count>=capacity then count=capacity-1 end if;for index=0 to capacity-1 data[offset+index]=0 end for;if count>0 then copyBytes(data,offset,encoded,0,count) end if;return void
 end function
+/// Validates glyph metadata and writes one fixed-layout QVM font glyph record into the byte buffer.
+/// @param data Argument 1 supplied to `mq3.compat.numeric.writeU32`.
+/// @param index Input used by `offset=index*fontAbi.GLYPH_SIZE`.
+/// @param glyph Record providing `glyph.height`, `glyph.top`, `glyph.bottom`, `glyph.pitch`, `glyph.xSkip`, `glyph.imageWidth`.
 function writeGlyph(data,index,glyph)
   if typeof(glyph.height)!="int" or typeof(glyph.top)!="int" or typeof(glyph.bottom)!="int" or typeof(glyph.pitch)!="int" or typeof(glyph.xSkip)!="int" or typeof(glyph.imageWidth)!="int" or typeof(glyph.imageHeight)!="int" or typeof(glyph.glyph)!="int" or typeof(glyph.shaderName)!="string" then return fail("incomplete glyph "+str(index)) end if
   offset=index*fontAbi.GLYPH_SIZE;n.writeU32(data,offset,glyph.height);n.writeU32(data,offset+4,glyph.top);n.writeU32(data,offset+8,glyph.bottom);n.writeU32(data,offset+12,glyph.pitch);n.writeU32(data,offset+16,glyph.xSkip);n.writeU32(data,offset+20,glyph.imageWidth);n.writeU32(data,offset+24,glyph.imageHeight);n.writeU32(data,offset+28,n.floatBits(glyph.s));n.writeU32(data,offset+32,n.floatBits(glyph.t));n.writeU32(data,offset+36,n.floatBits(glyph.s2));n.writeU32(data,offset+40,n.floatBits(glyph.t2));n.writeU32(data,offset+44,glyph.glyph);writeCString(data,offset+48,32,glyph.shaderName);return void
 end function
+/// Builds `rgba[index*4+3]` in `mq3.renderer.tr_font_runtime.alphaImage`; returns `rgba`.
+/// @param atlas Indexed input read at `index`.
 function alphaImage(atlas)
   maximum=0;for index=0 to 256*256-1 if atlas[index]>maximum then maximum=atlas[index] end if end for;rgba=bytes(256*256*4,255)
   scale=0.0;if maximum>0 then scale=n.fdiv(255.0,maximum) end if
   for index=0 to 256*256-1 alpha=0;if maximum>0 then alpha=n.trunc32(n.fmul(atlas[index],scale)) end if;rgba[index*4+3]=alpha end for;return rgba
 end function
+/// Updates `state.registry.fonts` in `mq3.renderer.tr_font_runtime.generatedFont`; returns `fontAbi.Result(true,data,fontAbi.GLYPHS_PER_FONT-1,path)`.
+/// @param state Mutable record or buffer; this call updates `state.registry.fonts`.
+/// @param fontName Argument 2 supplied to `mq3.format.pk3.read`.
+/// @param pointSize Argument 1 supplied to `mq3.vm.font_abi.pathFor`.
 function generatedFont(state,fontName,pointSize)
   backend=state.backend;if backend==void or backend.rasterizeFn==void or backend.createImageFn==void then return fontAbi.Result(false,void,0,fontAbi.pathFor(pointSize)) end if
   source=try(pk3.read(state.registry.archive,fontName));if source is error or len(source)==0 then return fontAbi.Result(false,void,0,fontAbi.pathFor(pointSize)) end if
@@ -117,10 +176,29 @@ function generatedFont(state,fontName,pointSize)
   state.registry.fonts=state.registry.fonts+[fontAbi.Cached(pointSize,data,fontAbi.GLYPHS_PER_FONT-1,path)];return fontAbi.Result(true,data,fontAbi.GLYPHS_PER_FONT-1,path)
 end function
 
+/// Constructs `mq3.renderer.tr_font_runtime.Lifecycle` with `registry` = `fontAbi.create(archive)`, `registeredFontCount` = `0`, `freeTypeInitialized` = `false`, `backend` = `void`.
+/// @param archive Argument 1 supplied to `mq3.vm.font_abi.create`.
 function create(archive) return Lifecycle(fontAbi.create(archive),0,false,void) end function
+/// Constructs `mq3.renderer.tr_font_runtime.FreeTypeBackend` from `context`, `rasterizeFn`, `createImageFn`, `saveFontData`, `outputRoot`.
+/// @param context Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.context`.
+/// @param rasterizeFn Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.rasterizeFn`.
+/// @param createImageFn Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.createImageFn`.
+/// @param saveFontData Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.saveFontData`.
+/// @param outputRoot Value used for `mq3.renderer.tr_font_runtime.FreeTypeBackend.outputRoot`.
 function createBackend(context,rasterizeFn,createImageFn,saveFontData,outputRoot) return FreeTypeBackend(context,rasterizeFn,createImageFn,saveFontData,outputRoot) end function
+/// Updates `state.backend`, `state.freeTypeInitialized`, `state.registeredFontCount`, `state.registry.fonts` in `mq3.renderer.tr_font_runtime.R_InitFreeType`; returns `state.freeTypeInitialized`.
+/// @param state Mutable record or buffer; this call updates `state.backend`, `state.freeTypeInitialized`, `state.registeredFontCount`, `state.registry.fonts`.
+/// @param backend Value assigned to `state.backend`.
 function R_InitFreeType(state,backend) if state==void then return fail("missing font lifecycle") end if;state.backend=backend;state.freeTypeInitialized=backend!=void and backend!=false;state.registeredFontCount=0;state.registry.fonts=[];return state.freeTypeInitialized end function
+/// Updates `state.freeTypeInitialized`, `state.backend`, `state.registeredFontCount`, `state.registry.fonts` in `mq3.renderer.tr_font_runtime.R_DoneFreeType`.
+/// @param state Mutable record or buffer; this call updates `state.freeTypeInitialized`, `state.backend`, `state.registeredFontCount`, `state.registry.fonts`.
 function R_DoneFreeType(state) if state==void then return void end if;state.freeTypeInitialized=false;state.backend=void;state.registeredFontCount=0;state.registry.fonts=[];return void end function
+/// Updates `state.registeredFontCount` in `mq3.renderer.tr_font_runtime.RE_RegisterFont`; returns `result`.
+/// @param state Mutable record or buffer; this call updates `state.registeredFontCount`.
+/// @param shaderContext Argument 2 supplied to `mq3.vm.font_abi.load`.
+/// @param registerShaderFn Argument 3 supplied to `mq3.vm.font_abi.load`.
+/// @param fontName Argument 4 supplied to `mq3.vm.font_abi.load`.
+/// @param pointSize Argument 1 supplied to `mq3.vm.font_abi.pathFor`.
 function RE_RegisterFont(state,shaderContext,registerShaderFn,fontName,pointSize)
   if state==void or state.registry==void then return fail("missing font lifecycle") end if;if pointSize<=0 then pointSize=12 end if;if state.registeredFontCount>=MAX_FONTS then return fontAbi.Result(false,void,0,fontAbi.pathFor(pointSize)) end if
   previous=fontAbi.cached(state.registry,pointSize);result=fontAbi.load(state.registry,shaderContext,registerShaderFn,fontName,pointSize);if result is error then return result end if;if not result.found and state.freeTypeInitialized then result=generatedFont(state,fontName,pointSize) end if

@@ -11,6 +11,11 @@ import mq3.game.bot_clients as botClients
 import mq3.shared.info as infoStrings
 import std.string as strings
 
+/// Use `level.userinfoFn`, `level.filterPacketFn` and `level.botConnectFn` to perform `connect`.
+/// @param level Game-level state; accesses `entities`, `userinfoFn`, `filterPacketFn`, `cvarMaintenance` and `clients` and related fields.
+/// @param slot Slot in the owning table or pool.
+/// @param firstTime Value used by `connect` in `if firstTime or level.newSession then sessions.initClient(level,client,info) end if`.
+/// @param isBot Value used by `connect` in `if isBot then`.
 function connect(level,slot,firstTime,isBot)
   if slot < 0 or slot >= 64 then return error(492,"Invalid connecting client slot") end if
   ent = level.entities[slot]

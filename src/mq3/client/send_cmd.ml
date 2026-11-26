@@ -24,7 +24,9 @@ const CLC_MOVE=2
 const CLC_MOVE_NO_DELTA=3
 const CLC_CLIENT_COMMAND=4
 
+/// Stores send cmd out packet record, including `serverTime`, `realtime`, `cmdNumber`.
 struct OutPacket serverTime realtime cmdNumber end struct
+/// Stores send cmd state, including `connectionState`, `realtime`, `oldFrameTime`, `frameMsec`, `lastPacketSentTime`, `demoPlaying` and additional values.
 struct State
   connectionState realtime oldFrameTime frameMsec lastPacketSentTime
   demoPlaying demoWaiting downloadTempName remoteAddressType lanAddress
@@ -33,35 +35,56 @@ struct State
   reliableCommands serverCommands checksumFeed snapValid snapMessageNum outgoingSequence
   cmdNumber commands outPackets codec
 end struct
+/// Stores send cmd host-service callbacks, including `createCommandFn`, `transmitFn`, `cvarFn`, `diagnosticFn`, `context`.
 struct Services createCommandFn transmitFn cvarFn diagnosticFn context end struct
+/// Stores send cmd write result record, including `sent`, `message`, `commandCount`, `moveType`, `key`.
 struct WriteResult sent message commandCount moveType key end struct
+/// Stores send cmd live transport record, including `runtime`, `channel`.
 struct LiveTransport runtime channel end struct
 
+/// Adapts `mq3.qcommon.message_delta.userCommand` to send cmd `zeroCommand`, returning its result for `0, 0, 0, 0, 0, 0, 0, 0, 0`.
 function zeroCommand() return usercmdDelta.userCommand(0,0,0,0,0,0,0,0,0) end function
+/// Calls `mq3.client.send_cmd.zeroCommand`, `mq3.qcommon.message_delta.userCommand` from send cmd `commandCopy`.
+/// @param value Record read through `value.serverTime`, `value.angles`, `value.buttons`, `value.weapon` and additional values.
 function commandCopy(value)
   if value==void then return zeroCommand() end if
   return usercmdDelta.userCommand(value.serverTime,value.angles[0],value.angles[1],value.angles[2],value.buttons,value.weapon,value.forwardmove,value.rightmove,value.upmove)
 end function
+/// Calls `mq3.client.command_ring.create`, `mq3.client.send_cmd.zeroCommand`, `mq3.client.send_cmd.OutPacket` and additional helpers from send cmd `create`.
 function create()
   reliable=array(MAX_RELIABLE_COMMANDS,"");server=array(MAX_RELIABLE_COMMANDS,"")
   commands=sendCommandRing.create();for index=0 to CMD_BACKUP-1 commands[index]=zeroCommand() end for
   packets=array(PACKET_BACKUP,void);for index=0 to PACKET_BACKUP-1 packets[index]=OutPacket(0,0,0) end for
   return State(1,0,0,0,0,false,false,"",0,false,30,1,false,false,false,false,0,0,0,0,0,reliable,server,0,false,0,1,0,commands,packets,void)
 end function
+/// Creates a `mq3.client.send_cmd.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void) end function
 
 // Com_HashKey uses signed char on the pinned Windows reference build.
+/// @param text Text consumed or emitted by `hashKey` in the send cmd path.
+/// @param maxLength Value used by `if limit>maxLength then limit=maxLength end if`.
 function hashKey(text,maxLength)
   if text==void then return 0 end if;raw=bytes(text);limit=len(raw);if limit>maxLength then limit=maxLength end if;hash=0
   if limit>0 then for index=0 to limit-1 value=raw[index];if value>127 then value=value-256 end if;hash=n.i32(hash+value*(119+index)) end for end if
   return n.i32(hash^(hash>>10)^(hash>>20))
 end function
 
+/// Calls `host.cvarFn` from send cmd `setCvar`. The final path returns `value`.
+/// @param host Record read through `host.cvarFn`.
+/// @param name Name used to select or register the corresponding send cmd resource.
+/// @param value Value used by `if host.cvarFn!=void then host.cvarFn(host,name,str(value)) end if`.
 function setCvar(host,name,value)
   if host.cvarFn!=void then host.cvarFn(host,name,str(value)) end if;return value
 end function
+/// Calls `host.diagnosticFn` from send cmd `diagnose`.
+/// @param host Record read through `host.diagnosticFn`.
+/// @param text Text consumed or emitted by `diagnose` in the send cmd path.
 function diagnose(host,text) if host.diagnosticFn!=void then host.diagnosticFn(host,text) end if;return void end function
 
+/// Updates `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber` during send cmd `createNewCommand`.
+/// @param state Mutable send cmd record/storage; this routine assigns `state.frameMsec`, `state.oldFrameTime`, `state.cmdNumber`.
+/// @param frameTime Value assigned to `command.serverTime`.
+/// @param host Record read through `host.createCommandFn`.
 function createNewCommand(state,frameTime,host)
   advanced=sendCommandRing.advance(state.connectionState,frameTime,state.oldFrameTime,state.cmdNumber)
   if not advanced.created then return false end if
@@ -71,6 +94,9 @@ function createNewCommand(state,frameTime,host)
   sendCommandRing.store(state.commands,state.cmdNumber,commandCopy(command));return true
 end function
 
+/// Updates `state.maxPackets` during send cmd `ready`.
+/// @param state Mutable send cmd record/storage; this routine assigns `state.maxPackets`.
+/// @param host host record passed to the send cmd helper calls.
 function ready(state,host)
   if state.demoPlaying or state.connectionState==CA_CINEMATIC then return false end if
   elapsed=n.i32(state.realtime-state.lastPacketSentTime)
@@ -82,6 +108,9 @@ function ready(state,host)
   return n.i32(state.realtime-oldPacket.realtime)>=1000/state.maxPackets
 end function
 
+/// Updates `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values during send cmd `writePacket`.
+/// @param state Mutable send cmd record/storage; this routine assigns `state.codec`, `state.packetDup`, `state.outPackets[packetNum]`, `state.lastPacketSentTime` and additional values.
+/// @param host Record read through `host.transmitFn`.
 function writePacket(state,host)
   if state.demoPlaying or state.connectionState==CA_CINEMATIC then return WriteResult(false,void,0,0,0) end if
   msg=message.initStorageWithCodec(bytes(16384,0),16384,false,state.codec);state.codec=msg.codec
@@ -116,6 +145,10 @@ function writePacket(state,host)
   return WriteResult(true,msg,count,moveType,key)
 end function
 
+/// Calls `mq3.client.send_cmd.createNewCommand`, `mq3.client.send_cmd.ready`, `mq3.client.send_cmd.writePacket` from send cmd `send`. The final path returns `result`.
+/// @param state Record read through `state.connectionState`, `state.serverRunning`, `state.serverPaused`, `state.clientPaused`.
+/// @param frameTime Value used by `created=createNewCommand(state,frameTime,host)`.
+/// @param host host record passed to the send cmd helper calls.
 function send(state,frameTime,host)
   if state==void or host==void then return error(7710,"client send: missing state or services") end if
   if state.connectionState<CA_CONNECTED then return "disconnected" end if
@@ -125,11 +158,18 @@ function send(state,frameTime,host)
   result=writePacket(state,host);if result is error then return result end if;return result
 end function
 
+/// Calls `mq3.client.netchan.transmit`, `mq3.client.netchan.transmitNextFragment` from send cmd `liveTransmit`. The final path returns `transport.channel.outgoingSequence`.
+/// @param host Record read through `host.context`.
+/// @param state Accepted for compatibility with `liveTransmit`; the current implementation does not read it.
+/// @param msg Value used by `result=clientNetchan.transmit(transport.runtime,transport.channel,msg)`.
 function liveTransmit(host,state,msg)
   transport=host.context;result=clientNetchan.transmit(transport.runtime,transport.channel,msg);if result is error then return result end if
   while transport.channel.unsentFragments result=clientNetchan.transmitNextFragment(transport.runtime,transport.channel);if result is error then return result end if end while
   return transport.channel.outgoingSequence
 end function
+/// Calls `mq3.client.send_cmd.services`, `mq3.client.send_cmd.LiveTransport` from send cmd `liveServices`. The final path returns `host`.
+/// @param runtime runtime record passed to the send cmd helper calls.
+/// @param channel Value used by `if runtime==void or channel==void then return error(7710,"client send: missing live transport") end if`.
 function liveServices(runtime,channel)
   if runtime==void or channel==void then return error(7710,"client send: missing live transport") end if
   host=services();host.context=LiveTransport(runtime,channel);host.transmitFn=liveTransmit;return host

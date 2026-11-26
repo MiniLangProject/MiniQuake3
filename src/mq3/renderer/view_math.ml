@@ -11,15 +11,30 @@ const CULL_IN=0
 const CULL_CLIP=1
 const CULL_OUT=2
 
+/// Data record for `mq3.renderer.view_math.Plane`; groups `normal`, `dist`.
 struct Plane normal dist end struct
+/// Data record for `mq3.renderer.view_math.Orientation`; groups `origin`, `axis`.
 struct Orientation origin axis end struct
+/// Data record for `mq3.renderer.view_math.ClipWindow`; groups `normalized`, `window`.
 struct ClipWindow normalized window end struct
 
+/// Constructs `mq3.renderer.view_math.Plane` with `dist` = `numeric.f32(dist)` and the supplied remaining values.
+/// @param normal Initial value for `mq3.renderer.view_math.Plane.normal`.
+/// @param dist Argument 1 supplied to `mq3.compat.numeric.f32`.
 function plane(normal,dist) return Plane(normal,numeric.f32(dist)) end function
+/// Constructs `mq3.renderer.view_math.Orientation` from `origin`, `axis`.
+/// @param origin Initial value for `mq3.renderer.view_math.Orientation.origin`.
+/// @param axis Initial value for `mq3.renderer.view_math.Orientation.axis`.
 function orientation(origin,axis) return Orientation(origin,axis) end function
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.view_math.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Computes `value!=void and len(value)==4` for `mq3.renderer.view_math.valid4`.
+/// @param value Input used in the result expression `value!=void and len(value)==4`.
 function valid4(value) return value!=void and len(value)==4 end function
 
+/// Checks a renderer orientation's three-component origin and three three-component basis axes.
+/// @param value Record providing `value.origin`, `value.axis`.
 function validateOrientation(value)
   if value==void or not valid3(value.origin) or value.axis==void or len(value.axis)!=3 then return error(7380,"malformed renderer orientation") end if
   for i=0 to 2
@@ -28,6 +43,8 @@ function validateOrientation(value)
   return true
 end function
 
+/// Requires four nonmissing frustum planes with three-component normals.
+/// @param frustum Indexed input read at `i`.
 function validateFrustum(frustum)
   if frustum==void or len(frustum)!=4 then return error(7382,"renderer frustum needs four planes") end if
   for i=0 to 3
@@ -36,6 +53,9 @@ function validateFrustum(frustum)
   return true
 end function
 
+/// Transforms a local direction through the orientation basis using compatibility float arithmetic, without translation.
+/// @param local Value forwarded as `value` to `mq3.renderer.view_math.valid3`.
+/// @param value Record providing `value.axis`.
 function localNormalToWorld(local,value)
   if not valid3(local) then return error(7384,"local normal needs three components") end if
   valid=validateOrientation(value);if valid is error then return valid end if
@@ -47,6 +67,9 @@ function localNormalToWorld(local,value)
   return world
 end function
 
+/// Transforms a local point through the orientation basis and adds the world-space origin.
+/// @param local Value forwarded as `local` to `mq3.renderer.view_math.localNormalToWorld`.
+/// @param value Record providing `value.origin`.
 function localPointToWorld(local,value)
   world=localNormalToWorld(local,value);if world is error then return world end if
   return [numeric.fadd(world[0],value.origin[0]),numeric.fadd(world[1],value.origin[1]),numeric.fadd(world[2],value.origin[2])]
@@ -54,12 +77,17 @@ end function
 
 // Baseq3's R_WorldToLocal projects the supplied vector onto the axes. The
 // caller subtracts the origin when a position rather than a vector is used.
+/// @param world Value forwarded as `value` to `mq3.renderer.view_math.valid3`.
+/// @param value Record providing `value.axis`.
 function worldToLocal(world,value)
   if not valid3(world) then return error(7385,"world vector needs three components") end if
   valid=validateOrientation(value);if valid is error then return valid end if
   return [qmath.DotProduct(world,value.axis[0]),qmath.DotProduct(world,value.axis[1]),qmath.DotProduct(world,value.axis[2])]
 end function
 
+/// Multiplies a four-component vector by a column-major 4-by-4 matrix using compatibility float arithmetic.
+/// @param source Indexed input read at `0`, `1`, `2`, `3`.
+/// @param matrix Indexed input read at `i`, `i+4`, `i+8`, `i+12`.
 function matrixVector4(source,matrix)
   result=[]
   for i=0 to 3
@@ -69,6 +97,10 @@ function matrixVector4(source,matrix)
   return result
 end function
 
+/// Computes `transformModelToClip` from `[eye,matrixVector4(eye,projectionMatrix)]` using `mq3.renderer.view_math.valid3`, `mq3.renderer.view_math.matrixVector4`.
+/// @param source Value forwarded as `value` to `mq3.renderer.view_math.valid3`.
+/// @param modelMatrix Value forwarded as `matrix` to `mq3.renderer.view_math.matrixVector4`.
+/// @param projectionMatrix Value forwarded as `matrix` to `mq3.renderer.view_math.matrixVector4`.
 function transformModelToClip(source,modelMatrix,projectionMatrix)
   if not valid3(source) then return error(7386,"model point needs three components") end if
   if modelMatrix==void or len(modelMatrix)!=16 or projectionMatrix==void or len(projectionMatrix)!=16 then return error(7387,"renderer transform needs two 4x4 matrices") end if
@@ -76,6 +108,10 @@ function transformModelToClip(source,modelMatrix,projectionMatrix)
   return [eye,matrixVector4(eye,projectionMatrix)]
 end function
 
+/// Builds `mq3.renderer.view_math.ClipWindow` for `mq3.renderer.view_math.transformClipToWindow`.
+/// @param clip Value forwarded as `value` to `mq3.renderer.view_math.valid4`.
+/// @param viewportWidth Argument 2 supplied to `mq3.compat.numeric.fmul`.
+/// @param viewportHeight Argument 2 supplied to `mq3.compat.numeric.fmul`.
 function transformClipToWindow(clip,viewportWidth,viewportHeight)
   if not valid4(clip) then return error(7388,"clip point needs four components") end if
   if viewportWidth<0 or viewportHeight<0 then return error(7389,"negative renderer viewport") end if
@@ -87,6 +123,11 @@ function transformClipToWindow(clip,viewportWidth,viewportHeight)
   return ClipWindow([x,y,z],[wx,wy,z])
 end function
 
+/// Validates and classifies a sphere against four frustum planes; disabled culling returns CULL_CLIP.
+/// @param point Value forwarded as `value` to `mq3.renderer.view_math.valid3`.
+/// @param radius Argument 1 supplied to `mq3.compat.numeric.fneg`.
+/// @param frustum Value forwarded as `frustum` to `mq3.renderer.view_math.validateFrustum`.
+/// @param noCull Input tested by `noCull`.
 function cullPointAndRadius(point,radius,frustum,noCull)
   if not valid3(point) then return error(7390,"cull point needs three components") end if
   if radius<0.0 then return error(7391,"negative cull radius") end if
@@ -102,11 +143,22 @@ function cullPointAndRadius(point,radius,frustum,noCull)
   return CULL_IN
 end function
 
+/// Returns `cullPointAndRadius(transformed,radius,frustum,noCull)` from `mq3.renderer.view_math.cullLocalPointAndRadius`; earlier branches return `transformed`.
+/// @param point Value forwarded as `local` to `mq3.renderer.view_math.localPointToWorld`.
+/// @param radius Value forwarded as `radius` to `mq3.renderer.view_math.cullPointAndRadius`.
+/// @param value Value forwarded as `value` to `mq3.renderer.view_math.localPointToWorld`.
+/// @param frustum Value forwarded as `frustum` to `mq3.renderer.view_math.cullPointAndRadius`.
+/// @param noCull Value forwarded as `noCull` to `mq3.renderer.view_math.cullPointAndRadius`.
 function cullLocalPointAndRadius(point,radius,value,frustum,noCull)
   transformed=localPointToWorld(point,value);if transformed is error then return transformed end if
   return cullPointAndRadius(transformed,radius,frustum,noCull)
 end function
 
+/// Transforms all eight local box corners and classifies them against the validated world-space frustum.
+/// @param bounds Nested indexed data; outer entries read at `0`, `1`, `i&1`, `(i>>1)&1`.
+/// @param value Value forwarded as `value` to `mq3.renderer.view_math.validateOrientation`.
+/// @param frustum Value forwarded as `frustum` to `mq3.renderer.view_math.validateFrustum`.
+/// @param noCull Input tested by `noCull`.
 function cullLocalBox(bounds,value,frustum,noCull)
   if bounds==void or len(bounds)!=2 or not valid3(bounds[0]) or not valid3(bounds[1]) then return error(7392,"local bounds need two corners") end if
   valid=validateOrientation(value);if valid is error then return valid end if
@@ -134,6 +186,10 @@ end function
 // R_SetupFrustum constructs the four side planes from the current refdef.
 // Quake's view axes are forward, left and up, so the signed cosine terms
 // intentionally follow the original renderer rather than a right-vector API.
+/// @param origin Value forwarded as `origin` to `mq3.renderer.view_math.orientation`.
+/// @param axis Value forwarded as `axis` to `mq3.renderer.view_math.orientation`.
+/// @param fovX Argument 1 supplied to `mq3.compat.numeric.fdiv`.
+/// @param fovY Argument 1 supplied to `mq3.compat.numeric.fdiv`.
 function setupFrustum(origin,axis,fovX,fovY)
   value=orientation(origin,axis);valid=validateOrientation(value);if valid is error then return valid end if
   if fovX<=0.0 or fovX>=180.0 or fovY<=0.0 or fovY>=180.0 then return error(7393,"renderer frustum needs valid fields of view") end if

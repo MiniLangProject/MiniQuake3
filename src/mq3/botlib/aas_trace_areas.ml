@@ -6,12 +6,24 @@ package mq3.botlib.aas_trace_areas
 import mq3.format.aas as aas
 import std.ds.list as lists
 
+/// `Segment` record for aas trace areas, containing `start`, `finish`, `nodeNum` and `planeNum`.
 struct Segment start finish nodeNum planeNum end struct
+/// `Result` record for aas trace areas, containing `areas` and `points`.
 struct Result areas points end struct
 
+/// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas trace areas.
+/// @param value Three-component array; components 0, 1 and 2 are used in their stored order.
 function copy(value) return [value[0],value[1],value[2]] end function
+/// Return `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `dot`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function dot(a,b) return a[0]*b[0]+a[1]*b[1]+a[2]*b[2] end function
 
+/// Trace a line segment through AAS areas and retain the crossed area numbers and intersection points.
+/// @param runtime AAS trace areas runtime; accesses `initialized` and `map`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param maximum Upper bound applied by the operation.
 function trace(runtime,start,finish,maximum)
   if runtime==void or not runtime.initialized or runtime.map==void or maximum<=0 then return Result([],[]) end if
   if start==void or finish==void or len(start)!=3 or len(finish)!=3 then return error(7531,"invalid AAS trace-area line") end if

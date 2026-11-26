@@ -8,6 +8,10 @@ import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 import std.string as strings
+/// Find the next active entity with a case-insensitive class-name match for player spawns.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param after After record; accesses `slot`.
+/// @param name Name used to identify the requested entry.
 function findClass(level,after,name)
   index = 0
   if after != void then index = after.slot+1 end if
@@ -17,6 +21,9 @@ function findClass(level,after,name)
   end while
   return void
 end function
+/// Apply `mq3.server.world.areaEntities` while evaluating `wouldTelefrag`.
+/// @param level Game-level state; accesses `scene` and `entities`.
+/// @param spot Spot record; accesses `s`.
 function wouldTelefrag(level,spot)
   mins = [-15.0,-15.0,-24.0]; maxs = [15.0,15.0,32.0]
   for axis = 0 to 2
@@ -27,6 +34,9 @@ function wouldTelefrag(level,spot)
   end for
   return false
 end function
+/// Measure Euclidean distance from a player spawn point to a world-space point.
+/// @param spot Spot record; accesses `s`.
+/// @param point Three-component point used by the geometric query.
 function distanceFrom(spot,point)
   delta = [0.0,0.0,0.0]
   for axis = 0 to 2
@@ -34,6 +44,9 @@ function distanceFrom(spot,point)
   end for
   return q.VectorLength(delta)
 end function
+/// Apply `mq3.game.player_spawns.findClass` and `mq3.game.player_spawns.distanceFrom` while evaluating `nearest`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param point Three-component point used by the geometric query.
 function nearest(level,point)
   nearestDist = 999999.0; result = void; spot = void
   while true
@@ -44,6 +57,8 @@ function nearest(level,point)
   end while
   return result
 end function
+/// Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.entities.random` while evaluating `randomDeathmatch`. Return paths include `spots[game.random(level) % len(spots)]`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
 function randomDeathmatch(level)
   spots = []; spot = void
   while true
@@ -56,6 +71,10 @@ function randomDeathmatch(level)
   if len(spots) == 0 then return findClass(level,void,"info_player_deathmatch") end if
   return spots[game.random(level) % len(spots)]
 end function
+/// Update `origin[axis]`, `angles[axis]` and `origin[2]` during `spawnResult`. Return paths include `spot`.
+/// @param spot Spot record; accesses `s`.
+/// @param origin World-space position as three coordinates. Entries may be updated in place.
+/// @param angles Pitch, yaw and roll angles in degrees. Entries may be updated in place.
 function spawnResult(spot,origin,angles)
   if spot == void then return error(493,"Couldn't find a spawn point") end if
   for axis = 0 to 2
@@ -64,6 +83,11 @@ function spawnResult(spot,origin,angles)
   origin[2] = n.fadd(origin[2],9.0)
   return spot
 end function
+/// Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.player_spawns.distanceFrom` while evaluating `furthest`. Return paths include `spawnResult(spots[rnd],origin,angles)`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param avoid Three-component point used by the geometric query.
+/// @param origin World-space position as three coordinates.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function furthest(level,avoid,origin,angles)
   spots = array(64,0); distances = array(64,0.0); count = 0; spot = void
   while true
@@ -91,9 +115,18 @@ function furthest(level,avoid,origin,angles)
   rnd = n.trunc32(n.fmul(n.fdiv(game.random(level) & 32767,32767.0),count >> 1))
   return spawnResult(spots[rnd],origin,angles)
 end function
+/// Forward `selectSpawn` to `mq3.game.player_spawns.furthest` and return the delegated result.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param avoid Three-component point used by the geometric query.
+/// @param origin World-space position as three coordinates.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function selectSpawn(level,avoid,origin,angles)
   return furthest(level,avoid,origin,angles)
 end function
+/// Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.selectSpawn` and `mq3.game.player_spawns.wouldTelefrag` while evaluating `initial`. Return paths include `spawnResult(spot,origin,angles)`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param origin World-space position as three coordinates.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function initial(level,origin,angles)
   spot = void
   while true
@@ -105,6 +138,10 @@ function initial(level,origin,angles)
   if wouldTelefrag(level,spot) then return selectSpawn(level,[0.0,0.0,0.0],origin,angles) end if
   return spawnResult(spot,origin,angles)
 end function
+/// Apply `mq3.game.player_spawns.findClass`, `mq3.game.player_spawns.wouldTelefrag` and `mq3.game.entities.random` while evaluating `randomTeam`. Return paths include `spots[game.random(level) % len(spots)]`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param teamstate Value used by `randomTeam` in `if teamstate == 0 then`.
+/// @param team Team identifier used by the game rules.
 function randomTeam(level,teamstate,team)
   name = ""
   if team != 1 and team != 2 then return void end if
@@ -124,11 +161,19 @@ function randomTeam(level,teamstate,team)
   if len(spots) == 0 then return findClass(level,void,name) end if
   return spots[game.random(level) % len(spots)]
 end function
+/// Apply `mq3.game.player_spawns.randomTeam`, `mq3.game.player_spawns.selectSpawn` and `mq3.game.player_spawns.spawnResult` while evaluating `ctf`. Return paths include `spawnResult(spot,origin,angles)`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param team Team identifier used by the game rules.
+/// @param teamstate Value used by `randomTeam` in `if teamstate == 0 then`.
+/// @param origin World-space position as three coordinates.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function ctf(level,team,teamstate,origin,angles)
   spot = randomTeam(level,teamstate,team)
   if spot == void then return selectSpawn(level,[0.0,0.0,0.0],origin,angles) end if
   return spawnResult(spot,origin,angles)
 end function
+/// Update `level.intermission_origin` and `level.intermission_angle` during `findIntermission`.
+/// @param level Game-level state; accesses `intermission_origin` and `intermission_angle`. May update `level.intermission_origin` and `level.intermission_angle` in place.
 function findIntermission(level)
   ent = findClass(level,void,"info_player_intermission")
   if ent == void then
@@ -148,6 +193,10 @@ function findIntermission(level)
   end if
   return void
 end function
+/// Set `origin[axis]` to `level.intermission_origin[axis]` and `angles[axis]` to `level.intermission_angle[axis]` in `mq3.game.player_spawns.spectator`.
+/// @param level Game-level state; accesses `intermission_origin` and `intermission_angle`.
+/// @param origin World-space position as three coordinates. Entries may be updated in place.
+/// @param angles Pitch, yaw and roll angles in degrees. Entries may be updated in place.
 function spectator(level,origin,angles)
   findIntermission(level)
   for axis = 0 to 2

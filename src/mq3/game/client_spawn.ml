@@ -35,10 +35,18 @@ const SVF_BOT = 0x00000008
 const CONTENTS_BODY=headers.CONTENTS_BODY
 const MASK_PLAYERSOLID = 0x02010001
 
+/// Forward `infoValue` to `mq3.shared.info.value` and return the delegated result.
+/// @param info Text to parse, format or deliver.
+/// @param key Lookup key or field name used by the operation.
 function infoValue(info,key)
   return infoStrings.value(info,key)
 end function
 
+/// Update `client.ps`, `client.ps.ping`, `client.ps.persistant[index]` and `client.ps.eventSequence` and related state during `clearTransient`.
+/// @param client Client state; accesses `ps`, `readyToExit`, `noclip`, `lastCmdTime` and `buttons` and related fields. May update `client.ps`, `client.ps.ping` and `client.ps.persistant[index]` and additional fields in place.
+/// @param savedPing Value used by `clearTransient` in `client.ps.ping = savedPing`.
+/// @param persistant Array or byte sequence accessed at `index`. Entries are written in place.
+/// @param eventSequence Value used by `clearTransient` in `client.ps.eventSequence = eventSequence`.
 function clearTransient(client,savedPing,persistant,eventSequence)
   client.ps = playerstate.create(); client.ps.ping = savedPing
   for index = 0 to 15
@@ -57,6 +65,9 @@ function clearTransient(client,savedPing,persistant,eventSequence)
   return void
 end function
 
+/// Use `level.clientSpawnFn` to perform `respawn`.
+/// @param level Game-level state; accesses `clientSpawnFn` and `playerDieFn`.
+/// @param ent Game entity; accesses `client` and `s`.
 function respawn(level,ent)
   bodies.copyToQueue(level,ent)
   if level.clientSpawnFn != void then level.clientSpawnFn(level,ent)
@@ -68,6 +79,12 @@ function respawn(level,ent)
   return void
 end function
 
+/// Set `client.initialSpawn` to `true` in `mq3.game.client_spawn.selectPoint`. Return paths include `spot`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `r`.
+/// @param client Client state; accesses `team`, `teamStateState`, `initialSpawn`, `localClient` and `ps`. May update `client.initialSpawn` in place.
+/// @param origin World-space position as three coordinates.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function selectPoint(level,ent,client,origin,angles)
   if client.team == c.TEAM_SPECTATOR then
     spawns.spectator(level,origin,angles); return void
@@ -86,6 +103,10 @@ function selectPoint(level,ent,client,origin,angles)
   end while
 end function
 
+/// Update `level.playerDieFn`, `level.respawnFn`, `level.clientBeginFn` and `ent.s.eFlags` and related state during `spawn`.
+/// @param level Game-level state; accesses `clients`, `spawner`, `playerDieFn`, `respawnFn` and `clientBeginFn` and related fields. May update `level.playerDieFn`, `level.respawnFn` and `level.clientBeginFn` in place.
+/// @param ent Game entity; accesses `slot`, `client`, `s`, `takedamage` and `inuse` and related fields. May update `ent.s.eFlags`, `ent.s.groundEntityNum` and `ent.client` and additional fields in place.
+/// @param dieFn Value used by `spawn` in `level.playerDieFn = dieFn`.
 function spawn(level,ent,dieFn)
   index = ent.slot
   if index < 0 or index >= len(level.clients) or ent.client == void or ent.client != level.clients[index] then return error(496,"ClientSpawn requires its persistent client slot") end if
@@ -158,6 +179,9 @@ function spawn(level,ent,dieFn)
   return void
 end function
 
+/// Use `level.serverCommandFn` and `level.gameLogFn` to perform `clientBegin`. Return paths include `scores.calculateRanks(level)`.
+/// @param level Game-level state; accesses `clients`, `spawner`, `playerDieFn`, `entities` and `time` and related fields.
+/// @param clientNum Client slot number.
 function clientBegin(level,clientNum)
   if clientNum < 0 or clientNum >= len(level.clients) then return error(496,"Invalid ClientBegin slot") end if
   if level.spawner == void then return error(496,"ClientBegin requires game spawn state") end if

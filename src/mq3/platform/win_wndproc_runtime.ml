@@ -77,23 +77,44 @@ const MK_LBUTTON=1
 const MK_RBUTTON=2
 const MK_MBUTTON=16
 
+/// Data record for `mq3.platform.win_wndproc_runtime.Event`; groups `time`, `type`, `value`, `value2`.
 struct Event time type value value2 end struct
+/// Data record for `mq3.platform.win_wndproc_runtime.Runtime`; groups `activeApp`, `isMinimized`, `fullscreen`, `altTabDisabled`, `windowCreated`, `inputActive`, and 9 further fields.
 struct Runtime activeApp isMinimized fullscreen altTabDisabled windowCreated inputActive vidX vidY mouseButtons logitechFlip quitRequested videoRestart soundActivations clearStateCount events end struct
 
+/// Constructs `mq3.platform.win_wndproc_runtime.Runtime` with `activeApp` = `false`, `isMinimized` = `false`, `altTabDisabled` = `false`, `windowCreated` = `false` and the supplied remaining values.
+/// @param fullscreen Initial value for `mq3.platform.win_wndproc_runtime.Runtime.fullscreen`.
 function create(fullscreen)
   return Runtime(false,false,fullscreen,false,false,false,3,22,0,true,false,false,0,0,[])
 end function
+/// Updates `state.events` in `mq3.platform.win_wndproc_runtime.queue`.
+/// @param state Mutable record or buffer; this call updates `state.events`.
+/// @param time Value used for `mq3.platform.win_wndproc_runtime.Event.time`.
+/// @param type Value used for `mq3.platform.win_wndproc_runtime.Event.type`.
+/// @param value Value used for `mq3.platform.win_wndproc_runtime.Event.value`.
+/// @param value2 Value used for `mq3.platform.win_wndproc_runtime.Event.value2`.
 function queue(state,time,type,value,value2) state.events=state.events+[Event(time,type,value,value2)];return void end function
+/// Updates `state.altTabDisabled` in `mq3.platform.win_wndproc_runtime.WIN_DisableAltTab`.
+/// @param state Mutable record or buffer; this call updates `state.altTabDisabled`.
 function WIN_DisableAltTab(state) if not state.altTabDisabled then state.altTabDisabled=true end if;return void end function
+/// Updates `state.altTabDisabled` in `mq3.platform.win_wndproc_runtime.WIN_EnableAltTab`.
+/// @param state Mutable record or buffer; this call updates `state.altTabDisabled`.
 function WIN_EnableAltTab(state) state.altTabDisabled=false;return void end function
+/// Updates `state.isMinimized`, `state.clearStateCount`, `state.activeApp`, `state.inputActive` in `mq3.platform.win_wndproc_runtime.VID_AppActivate`; returns `state.activeApp`.
+/// @param state Mutable record or buffer; this call updates `state.isMinimized`, `state.clearStateCount`, `state.activeApp`, `state.inputActive`.
+/// @param active Input used by `state.activeApp=active and not minimized`.
+/// @param minimized Value assigned to `state.isMinimized`.
 function VID_AppActivate(state,active,minimized)
   state.isMinimized=minimized;state.clearStateCount=state.clearStateCount+1
   state.activeApp=active and not minimized;state.inputActive=state.activeApp;return state.activeApp
 end function
 
+/// Builds the 130-element result for `mq3.platform.win_wndproc_runtime.scanTable` from `0`, `27`, `49`, `50`, `51`.
 function scanTable()
   return [0,27,49,50,51,52,53,54,55,56,57,48,45,61,K_BACKSPACE,9,113,119,101,114,116,121,117,105,111,112,91,93,13,K_CTRL,97,115,100,102,103,104,106,107,108,59,39,96,K_SHIFT,92,122,120,99,118,98,110,109,44,46,47,K_SHIFT,K_KP_STAR,K_ALT,32,K_CAPSLOCK,K_F1,K_F2,K_F3,K_F4,K_F5,K_F6,K_F7,K_F8,K_F9,K_F10,K_PAUSE,0,K_HOME,K_UPARROW,K_PGUP,K_KP_MINUS,K_LEFTARROW,K_KP_5,K_RIGHTARROW,K_KP_PLUS,K_END,K_DOWNARROW,K_PGDN,K_INS,K_DEL,0,0,0,K_F11,K_F12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 end function
+/// Computes `MapKey` from `scanTable()[modified]` using `mq3.platform.win_wndproc_runtime.scanTable`.
+/// @param key Input used by `modified=(key>>16)&255`.
 function MapKey(key)
   modified=(key>>16)&255;if modified>127 then return 0 end if
   result=scanTable()[modified];extended=(key&(1<<24))!=0
@@ -107,6 +128,11 @@ function MapKey(key)
   return result
 end function
 
+/// Updates `state.logitechFlip` in `mq3.platform.win_wndproc_runtime.wheel`; returns `steps`.
+/// @param state Mutable record or buffer; this call updates `state.logitechFlip`.
+/// @param time Value forwarded as `time` to `mq3.platform.win_wndproc_runtime.queue`.
+/// @param delta Input tested by `delta>0`.
+/// @param logitechBug Input tested by `logitechBug`.
 function wheel(state,time,delta,logitechBug)
   key=K_MWHEELDOWN;if delta>0 then key=K_MWHEELUP end if;steps=delta/120;if steps<0 then steps=0-steps end if
   for i=0 to steps-1
@@ -114,8 +140,20 @@ function wheel(state,time,delta,logitechBug)
     else queue(state,time,SE_KEY,key,true);queue(state,time,SE_KEY,key,false) end if
   end for;return steps
 end function
+/// Returns `result` from `mq3.platform.win_wndproc_runtime.mouseState`.
+/// @param wParam Input tested by `(wParam&MK_LBUTTON)!=0`.
 function mouseState(wParam) result=0;if (wParam&MK_LBUTTON)!=0 then result=result|1 end if;if (wParam&MK_RBUTTON)!=0 then result=result|2 end if;if (wParam&MK_MBUTTON)!=0 then result=result|4 end if;return result end function
 
+/// Updates `state.windowCreated`, `state.quitRequested`, `state.soundActivations`, `state.vidX`, `state.vidY` in `mq3.platform.win_wndproc_runtime.MainWndProc`; returns `0`.
+/// @param state Mutable record or buffer; this call updates `state.windowCreated`, `state.quitRequested`, `state.soundActivations`, `state.vidX`, `state.vidY`.
+/// @param message Input tested by `inMouse!=1 and message==legacyWheelMessage`.
+/// @param wParam Value forwarded as `wParam` to `mq3.platform.win_wndproc_runtime.mouseState`.
+/// @param lParam Value forwarded as `key` to `mq3.platform.win_wndproc_runtime.MapKey`.
+/// @param time Value forwarded as `time` to `mq3.platform.win_wndproc_runtime.wheel`.
+/// @param inMouse Input tested by `inMouse!=1 and message==legacyWheelMessage`.
+/// @param consoleCatcher Input tested by `inMouse!=1 or (not state.fullscreen and consoleCatcher)`.
+/// @param logitechBug Value forwarded as `logitechBug` to `mq3.platform.win_wndproc_runtime.wheel`.
+/// @param legacyWheelMessage Input tested by `inMouse!=1 and message==legacyWheelMessage`.
 function MainWndProc(state,message,wParam,lParam,time,inMouse,consoleCatcher,logitechBug,legacyWheelMessage)
   if inMouse!=1 and message==legacyWheelMessage then delta=-120;if wParam>0 then delta=120 end if;wheel(state,time,delta,false);return 1 end if
   if message==WM_MOUSEWHEEL then

@@ -58,12 +58,19 @@ const MOVE_CROUCH=2
 const MOVE_JUMP=8
 const BFL_STRAFERIGHT=aiheaders.BFL_STRAFERIGHT
 
+/// `EntityInfo` record for bot combat ai, containing `number`, `powerups` and `flags`.
 struct EntityInfo number powerups flags end struct
+/// `TargetEntityInfo` record for bot combat ai, containing `number`, `powerups`, `flags`, `valid` and `origin` and related fields.
 struct TargetEntityInfo number powerups flags valid origin angles lastVisOrigin updateTime end struct
+/// `Trace` record for bot combat ai, containing `fraction`, `ent`, `endpos` and `startsolid`.
 struct Trace fraction ent endpos startsolid end struct
+/// `WeaponInfo` record for bot combat ai, containing `number`, `speed`, `offset`, `vspread` and `hspread` and related fields.
 struct WeaponInfo number speed offset vspread hspread damageType radius damage flags end struct
+/// `CombatGoal` record for bot combat ai, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs`.
 struct CombatGoal entitynum areanum origin mins maxs end struct
+/// `MoveResult` record for bot combat ai, containing `failure`, `flags`, `weapon`, `movedir` and `idealViewangles`.
 struct MoveResult failure flags weapon movedir idealViewangles end struct
+/// `Services` record for bot combat ai, containing `gametype`, `rocketjump`, `intermissiontime`, `floatTimeFn` and `pointContentsFn` and related fields.
 struct Services
   gametype
   rocketjump
@@ -91,39 +98,68 @@ struct Services
   context
 end struct
 
+/// Create a `mq3.game.bot_combat_ai.Services` record, initializing `maxclients` as `64` and `lastteleportOrigin` as `[0.0,0.0,0.0]`.
 function create()
   return Services(0,false,0,void,void,void,void,64,0.0,[0.0,0.0,0.0],void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
+/// Test `(entinfo.powerups&(1<<c.PW_REDFLAG))!=0 or (entinfo.powerups&(1<<c.PW_BLUEFLAG))!=0` as the condition for `entityCarriesFlag`.
+/// @param entinfo Entinfo record; accesses `powerups`.
 function entityCarriesFlag(entinfo)
   return (entinfo.powerups&(1<<c.PW_REDFLAG))!=0 or (entinfo.powerups&(1<<c.PW_BLUEFLAG))!=0
 end function
+/// Apply `mq3.game.bot_combat_ai.entityCarriesFlag` while evaluating `entityIsInvisible`. Return paths include `(entinfo.powerups&(1<<c.PW_INVIS))!=0`.
+/// @param entinfo Entinfo record; accesses `powerups`.
 function entityIsInvisible(entinfo)
   if entityCarriesFlag(entinfo) then return false end if
   return (entinfo.powerups&(1<<c.PW_INVIS))!=0
 end function
+/// Test `(entinfo.flags&EF_FIRING)!=0` as the condition for `entityIsShooting`.
+/// @param entinfo Entinfo record; accesses `flags`.
 function entityIsShooting(entinfo) return (entinfo.flags&EF_FIRING)!=0 end function
+/// Test `(entinfo.flags&EF_TALK)!=0` as the condition for `entityIsChatting`.
+/// @param entinfo Entinfo record; accesses `flags`.
 function entityIsChatting(entinfo) return (entinfo.flags&EF_TALK)!=0 end function
+/// Test `(entinfo.powerups&(1<<c.PW_QUAD))!=0` as the condition for `entityHasQuad`.
+/// @param entinfo Entinfo record; accesses `powerups`.
 function entityHasQuad(entinfo) return (entinfo.powerups&(1<<c.PW_QUAD))!=0 end function
+/// Return the red or blue flag code carried by the bot in CTF, or zero when neither flag is carried.
+/// @param services Host service callbacks; accesses `gametype`.
+/// @param bot Bot AI state; accesses `inventory`.
 function ctfCarryingFlag(services,bot)
   if services.gametype!=GT_CTF then return 0 end if
   if bot.inventory[INVENTORY_REDFLAG]>0 then return 1 end if
   if bot.inventory[INVENTORY_BLUEFLAG]>0 then return 2 end if
   return 0
 end function
+/// Test `services.gametype>=GT_TEAM` as the condition for `teamPlayIsOn`.
+/// @param services Host service callbacks; accesses `gametype`.
 function teamPlayIsOn(services) return services.gametype>=GT_TEAM end function
+/// Set `bot.teleportTime` to `services.floatTimeFn(services)` and `bot.lastEFlags` to `bot.curPs.eFlags` in `mq3.game.bot_combat_ai.setTeleportTime`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `curPs`, `lastEFlags` and `teleportTime`. May update `bot.teleportTime` and `bot.lastEFlags` in place.
 function setTeleportTime(services,bot)
   if ((bot.curPs.eFlags^bot.lastEFlags)&EF_TELEPORT_BIT)!=0 then bot.teleportTime=services.floatTimeFn(services) end if
   bot.lastEFlags=bot.curPs.eFlags; return void
 end function
+/// Test `bot.curPs.pm_type==c.PM_DEAD` as the condition for `isDead`.
+/// @param bot Bot AI state; accesses `curPs`.
 function isDead(bot) return bot.curPs.pm_type==c.PM_DEAD end function
+/// Detect intermission from the game timer or the bot player-state freeze/intermission mode.
+/// @param services Host service callbacks; accesses `intermissiontime`.
+/// @param bot Bot AI state; accesses `curPs`.
 function intermission(services,bot)
   if services.intermissiontime!=0 then return true end if
   return bot.curPs.pm_type==c.PM_FREEZE or bot.curPs.pm_type==c.PM_INTERMISSION
 end function
+/// Use `services.pointContentsFn` to perform `inLavaOrSlime`. Return paths include `(services.pointContentsFn(services,feet)&(CONTENTS_LAVA|CONTENTS_SLIME))!=0`.
+/// @param services Host service callbacks; accesses `pointContentsFn`.
+/// @param bot Bot AI state; accesses `origin`.
 function inLavaOrSlime(services,bot)
   feet=[bot.origin[0],bot.origin[1],n.fsub(bot.origin[2],23.0)]
   return (services.pointContentsFn(services,feet)&(CONTENTS_LAVA|CONTENTS_SLIME))!=0
 end function
+/// Estimate combat aggression from the bot's health, armor, powerups, ammunition and enemy height.
+/// @param bot Bot AI state; accesses `inventory` and `weaponnum`.
 function aggression(bot)
   inv=bot.inventory
   if inv[INVENTORY_QUAD]!=0 and (bot.weaponnum!=WP_GAUNTLET or inv[ENEMY_HORIZONTAL_DIST]<80) then return 70.0 end if
@@ -139,6 +175,8 @@ function aggression(bot)
   if inv[INVENTORY_SHOTGUN]>0 and inv[INVENTORY_SHELLS]>10 then return 50.0 end if
   return 0.0
 end function
+/// Assign a retreat pressure value from the bot's current weapon and remaining health.
+/// @param bot Bot AI state; accesses `weaponnum` and `inventory`.
 function feelingBad(bot)
   if bot.weaponnum==WP_GAUNTLET then return 100.0 end if
   if bot.inventory[INVENTORY_HEALTH]<40 then return 100.0 end if
@@ -146,12 +184,18 @@ function feelingBad(bot)
   if bot.inventory[INVENTORY_HEALTH]<60 then return 80.0 end if
   return 0.0
 end function
+/// Use `services.entityInfoFn` to perform `wantsToRetreat`. Return paths include `aggression(bot)<50.0`.
+/// @param services Host service callbacks; accesses `gametype` and `entityInfoFn`.
+/// @param bot Bot AI state; accesses `enemy` and `ltgtype`.
 function wantsToRetreat(services,bot)
   if services.gametype==GT_CTF and ctfCarryingFlag(services,bot)!=0 then return true end if
   if bot.enemy>=0 and entityCarriesFlag(services.entityInfoFn(services,bot.enemy)) then return false end if
   if bot.ltgtype==LTG_GETFLAG then return true end if
   return aggression(bot)<50.0
 end function
+/// Use `services.entityInfoFn` to perform `wantsToChase`. Return paths include `aggression(bot)>50.0`.
+/// @param services Host service callbacks; accesses `gametype` and `entityInfoFn`.
+/// @param bot Bot AI state; accesses `enemy` and `ltgtype`.
 function wantsToChase(services,bot)
   if services.gametype==GT_CTF then
     if ctfCarryingFlag(services,bot)!=0 then return false end if
@@ -160,6 +204,9 @@ function wantsToChase(services,bot)
   if bot.ltgtype==LTG_GETFLAG then return false end if
   return aggression(bot)>50.0
 end function
+/// Use `services.characteristicFloatFn` to perform `canAndWantsToRocketJump`. Return paths include `value>=0.5`.
+/// @param services Host service callbacks; accesses `rocketjump` and `characteristicFloatFn`.
+/// @param bot Bot AI state; accesses `inventory` and `character`.
 function canAndWantsToRocketJump(services,bot)
   inv=bot.inventory
   if not services.rocketjump or inv[INVENTORY_ROCKETLAUNCHER]<=0 or inv[INVENTORY_ROCKETS]<3 then return false end if
@@ -168,6 +215,10 @@ function canAndWantsToRocketJump(services,bot)
   value=services.characteristicFloatFn(services,bot.character,CHARACTERISTIC_WEAPONJUMPING,0.0,1.0)
   return value>=0.5
 end function
+/// Set `angles[axis]` to `input.angleMod(angles[axis])` in `mq3.game.bot_combat_ai.inFieldOfVision`.
+/// @param viewangles Array or byte sequence accessed at `axis`.
+/// @param fov Value passed as argument 1 to `mq3.compat.numeric.fmul`.
+/// @param angles Pitch, yaw and roll angles in degrees. Entries may be updated in place.
 function inFieldOfVision(viewangles,fov,angles)
   for axis=0 to 1
     angle=input.angleMod(viewangles[axis]); angles[axis]=input.angleMod(angles[axis]); diff=n.fsub(angles[axis],angle)
@@ -179,10 +230,21 @@ function inFieldOfVision(viewangles,fov,angles)
   return true
 end function
 
+/// Return a new array `[n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]` for `subtract`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function subtract(a,b) return [n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])] end function
+/// Forward `lengthSquared` to `mq3.shared.math.DotProduct` and return the delegated result.
+/// @param v Value passed as argument 1 to `mq3.shared.math.DotProduct`.
 function lengthSquared(v) return q.DotProduct(v,v) end function
+/// Return the result of `services.floatTimeFn(services)` for `now`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
 function now(services) return services.floatTimeFn(services) end function
 
+/// Update `bot.lastHealth`, `bot.enemy`, `bot.enemySightTime` and `bot.enemySuicide` and related state during `findEnemy`.
+/// @param services Host service callbacks; accesses `characteristicFloatFn`, `entityInfoFn`, `maxclients`, `entityDeadFn` and `lastteleportTime` and related fields.
+/// @param bot Bot AI state; accesses `character`, `lastHealth`, `inventory`, `origin` and `client` and related fields. May update `bot.lastHealth`, `bot.enemy` and `bot.enemySightTime` and additional fields in place.
+/// @param curenemy Value passed as argument 2 to `services.entityInfoFn`.
 function findEnemy(services,bot,curenemy)
   alertness=services.characteristicFloatFn(services,bot.character,CHARACTERISTIC_ALERTNESS,0.0,1.0)
   easyfragger=services.characteristicFloatFn(services,bot.character,CHARACTERISTIC_EASY_FRAGGER,0.0,1.0)
@@ -214,6 +276,13 @@ function findEnemy(services,bot,curenemy)
   return false
 end function
 
+/// Update `bot.enemyPositionTime`, `bot.enemyVelocity` and `bot.enemyOrigin` during `projectileAim`. Return paths include `best`.
+/// @param services Host service callbacks; accesses `predictMovementFn`.
+/// @param bot Bot AI state; accesses `enemyPositionTime`, `enemyVelocity`, `enemyOrigin`, `origin` and `curPs` and related fields. May update `bot.enemyPositionTime`, `bot.enemyVelocity` and `bot.enemyOrigin` in place.
+/// @param ent Game entity; accesses `origin`, `lastVisOrigin` and `updateTime`.
+/// @param weapon Weapon record; accesses `speed`.
+/// @param aimskill Value used by `projectileAim` in `if aimskill>0.8 and bot.curPs.weaponstate==0 then`.
+/// @param best Three-component array; components 0, 1 and 2 are used in their stored order.
 function projectileAim(services,bot,ent,weapon,aimskill,best)
   velocity=subtract(ent.origin,ent.lastVisOrigin);velocity=q.VectorScale(velocity,n.fdiv(1.0,ent.updateTime))
   if bot.enemyPositionTime<now(services) then bot.enemyPositionTime=n.fadd(now(services),0.5);bot.enemyVelocity=[velocity[0],velocity[1],velocity[2]];bot.enemyOrigin=[ent.origin[0],ent.origin[1],ent.origin[2]] end if
@@ -230,6 +299,12 @@ function projectileAim(services,bot,ent,weapon,aimskill,best)
   return best
 end function
 
+/// Use `services.traceFn` to perform `splashGroundAim`. Return paths include `best`.
+/// @param services Host service callbacks; accesses `traceFn`.
+/// @param bot Bot AI state; accesses `origin` and `entitynum`.
+/// @param ent Game entity; accesses `origin` and `number`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param best Three-component array; components 0, 1 and 2 are used in their stored order.
 function splashGroundAim(services,bot,ent,start,best)
   if ent.origin[2]>=n.fadd(bot.origin[2],16.0) then return best end if
   down=[ent.origin[0],ent.origin[1],n.fsub(ent.origin[2],64.0)];floor=services.traceFn(services,ent.origin,down,ent.number,4);ground=[best[0],best[1],best[2]]
@@ -241,6 +316,12 @@ function splashGroundAim(services,bot,ent,start,best)
   return best
 end function
 
+/// Use `services.predictVisibleFn` to perform `cornerAim`. Return paths include `[target[0],target[1],n.fsub(target[2],20.0)]`.
+/// @param services Host service callbacks; accesses `predictVisibleFn`.
+/// @param bot Bot AI state; accesses `lastEnemyOrigin`, `lastEnemyAreaNum` and `eye`.
+/// @param weapon Weapon record; accesses `number`.
+/// @param aimskill Value used by `cornerAim` in `if aimskill<=0.5 or (weapon.number!=5 and weapon.number!=4 and weapon.number!=9) then return best end if`.
+/// @param best Operand used to evaluate the returned expression `best`.
 function cornerAim(services,bot,weapon,aimskill,best)
   if aimskill<=0.5 or (weapon.number!=5 and weapon.number!=4 and weapon.number!=9) then return best end if
   target=services.predictVisibleFn(services,bot.lastEnemyOrigin,bot.lastEnemyAreaNum,bot.eye)
@@ -248,6 +329,9 @@ function cornerAim(services,bot,weapon,aimskill,best)
   return [target[0],target[1],n.fsub(target[2],20.0)]
 end function
 
+/// Update `bot.aimTarget` and `bot.idealViewangles` during `aimAtEnemy`.
+/// @param services Host service callbacks; accesses `entityInfoFn`, `characteristicFloatFn`, `weaponInfoFn`, `visibleFn` and `traceFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `aimTarget`, `idealViewangles`, `eye` and `character` and related fields. May update `bot.aimTarget` and `bot.idealViewangles` in place.
 function aimAtEnemy(services,bot)
   if bot.enemy<0 then return false end if
   ent=services.entityInfoFn(services,bot.enemy);best=[ent.origin[0],ent.origin[1],ent.origin[2]]
@@ -270,6 +354,9 @@ function aimAtEnemy(services,bot)
   bot.idealViewangles=q.vectoangles(dir);return true
 end function
 
+/// Update `bot.firethrottlewaitTime`, `bot.firethrottleshootTime` and `bot.combatFlags` during `checkAttack`. Return paths include `attacked`.
+/// @param services Host service callbacks; accesses `entityInfoFn`, `characteristicFloatFn`, `randomFn`, `traceFn` and `weaponInfoFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `character`, `enemySightTime`, `teleportTime` and `weaponchangeTime` and related fields. May update `bot.firethrottlewaitTime`, `bot.firethrottleshootTime` and `bot.combatFlags` in place.
 function checkAttack(services,bot)
   attackentity=bot.enemy;services.entityInfoFn(services,attackentity);time=now(services);reaction=services.characteristicFloatFn(services,bot.character,CHARACTERISTIC_REACTIONTIME,0.0,1.0)
   if bot.enemySightTime>n.fsub(time,reaction) or bot.teleportTime>n.fsub(time,reaction) or bot.weaponchangeTime>n.fsub(time,0.1) then return false end if
@@ -288,7 +375,12 @@ function checkAttack(services,bot)
   bot.combatFlags=bot.combatFlags^BFL_ATTACKED;return attacked
 end function
 
+/// Create a `mq3.game.bot_combat_ai.MoveResult` record, initializing `movedir` as `[0.0,0.0,0.0]` and `idealViewangles` as `[0.0,0.0,0.0]`.
 function emptyMoveResult() return MoveResult(false,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]) end function
+/// Update `bot.attackcrouchTime`, `bot.attackjumpTime`, `bot.attackstrafeTime` and `bot.combatFlags` during `attackMove`.
+/// @param services Host service callbacks; accesses `setupMovementFn`, `moveToGoalFn`, `characteristicFloatFn`, `entityInfoFn` and `randomFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `attackchaseTime`, `lastEnemyAreaNum`, `lastEnemyOrigin` and `ms` and related fields. May update `bot.attackcrouchTime`, `bot.attackjumpTime` and `bot.attackstrafeTime` and additional fields in place.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
 function attackMove(services,bot,tfl)
   attackentity=bot.enemy;time=now(services)
   if bot.attackchaseTime>time then

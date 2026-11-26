@@ -7,6 +7,8 @@ import mq3.compat.numeric as geneticNumeric
 
 const MAX_RANKS=256
 
+/// Update `runtime.randomSeed` during `randomFloat`. Return paths include `geneticNumeric.fdiv((geneticNumeric.u32(runtime.randomSeed)>>16)&32767,32767.0)`.
+/// @param runtime AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place.
 function randomFloat(runtime)
   // Baseq3 random() expands to rand()/RAND_MAX. The original Windows build
   // therefore uses the MSVCRT 214013/2531011 sequence and its 15-bit result.
@@ -14,6 +16,10 @@ function randomFloat(runtime)
   return geneticNumeric.fdiv((geneticNumeric.u32(runtime.randomSeed)>>16)&32767,32767.0)
 end function
 
+/// Apply `mq3.botlib.ai_genetic.randomFloat` while evaluating `selection`.
+/// @param runtime AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place.
+/// @param numRanks Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param rankings Array or byte sequence accessed at `index`.
 function selection(runtime,numRanks,rankings)
   sum=0.0
   for index=0 to numRanks-1 if rankings[index]>=0.0 then sum=geneticNumeric.fadd(sum,rankings[index]) end if end for
@@ -30,6 +36,10 @@ function selection(runtime,numRanks,rankings)
   return 0
 end function
 
+/// Apply `mq3.botlib.ai_genetic.selection` while evaluating `parentsAndChild`. Return paths include `[1,parent1,parent2,child]`.
+/// @param runtime AI genetic runtime; accesses `randomSeed`. May update `runtime.randomSeed` in place.
+/// @param numRanks Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param ranks Array or byte sequence accessed at `index`.
 function parentsAndChild(runtime,numRanks,ranks)
   if runtime==void or numRanks>MAX_RANKS or numRanks<0 or len(ranks)<numRanks then return [0,0,0,0] end if
   valid=0;for index=0 to numRanks-1 if ranks[index]>=0.0 then valid=valid+1 end if end for

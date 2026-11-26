@@ -126,9 +126,18 @@ const CG_KEY_EVENT=6
 const CG_MOUSE_EVENT=7
 const CG_EVENT_HANDLING=8
 
+/// Stores client game public snapshot metadata and contents, including `snapFlags`, `ping`, `serverTime`, `areamask`, `ps`, `numEntities` and additional values.
 struct Snapshot snapFlags ping serverTime areamask ps numEntities entities numServerCommands serverCommandSequence end struct
 
+/// Lists the type names catalog for client game public in its declared source order.
 function typeNames() return ["snapshot_t","cgameImport_t","cgameExport_t"] end function
+/// Computes `count>=0 and count<=MAX_ENTITIES_IN_SNAPSHOT` for client game public `validSnapshotEntityCount`.
+/// @param count Value used by `return count>=0 and count<=MAX_ENTITIES_IN_SNAPSHOT`.
 function validSnapshotEntityCount(count) return count>=0 and count<=MAX_ENTITIES_IN_SNAPSHOT end function
+/// Computes `requested>current-CMD_BACKUP and requested<=current` for client game public `validCommandNumber`.
+/// @param current Value used by `return requested>current-CMD_BACKUP and requested<=current`.
+/// @param requested Value used by `return requested>current-CMD_BACKUP and requested<=current`.
 function validCommandNumber(current,requested) return requested>current-CMD_BACKUP and requested<=current end function
+/// Computes `value>=CGAME_EVENT_NONE and value<=CGAME_EVENT_EDITHUD` for client game public `validEventHandling`.
+/// @param value Value used by `return value>=CGAME_EVENT_NONE and value<=CGAME_EVENT_EDITHUD`.
 function validEventHandling(value) return value>=CGAME_EVENT_NONE and value<=CGAME_EVENT_EDITHUD end function

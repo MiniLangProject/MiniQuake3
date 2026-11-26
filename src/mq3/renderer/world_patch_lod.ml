@@ -10,13 +10,25 @@ import std.ds.hashmap as maps
 import std.ds.list as lists
 import std.sort as sorting
 
+/// Data record for `mq3.renderer.world_patch_lod.WorldLodPatch`; groups `face`, `texture`, `lightmap`, `fog`, `grid`, `variants`.
 struct WorldLodPatch face texture lightmap fog grid variants end struct
+/// Data record for `mq3.renderer.world_patch_lod.WorldPatchGrid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
 struct WorldPatchGrid control width height widthLodError heightLodError lodOrigin lodRadius lodFixed lodStitched end struct
+/// Data record for `mq3.renderer.world_patch_lod.WorldLodVariant`; groups `minimum`, `face`.
 struct WorldLodVariant minimum face end struct
+/// Data record for `mq3.renderer.world_patch_lod.WorldLodAxis`; groups `minimum`, `columns`, `rows`.
 struct WorldLodAxis minimum columns rows end struct
 
+/// Creates error `7490` with message `"World patch LOD: "+message`.
+/// @param message Input used in the result expression `error(7490,"World patch LOD: "+message)`.
 function fail(message) return error(7490,"World patch LOD: "+message) end function
 
+/// Builds `mq3.renderer.world_patch_lod.WorldLodPatch` after updating `first[axis]`, `origin[axis]`.
+/// @param map Record providing `map.data`, `map.counts`.
+/// @param face Initial value for `mq3.renderer.world_patch_lod.WorldLodPatch.face`.
+/// @param faceOffset Argument 2 supplied to `mq3.renderer.bsp_render_data.patchGrid`.
+/// @param texture Initial value for `mq3.renderer.world_patch_lod.WorldLodPatch.texture`.
+/// @param patchError Argument 3 supplied to `mq3.renderer.bsp_render_data.patchGrid`.
 function read(map,face,faceOffset,texture,patchError)
   data=render.patchGrid(map,faceOffset,patchError);if data is error then return data end if
   lightmap=n.readI32(map.data,faceOffset+28);fog=n.readI32(map.data,faceOffset+4)
@@ -32,6 +44,8 @@ function read(map,face,faceOffset,texture,patchError)
   return WorldLodPatch(face,texture,lightmap,fog+1,grid,[])
 end function
 
+/// Builds `grid.control` in `mq3.renderer.world_patch_lod.stitch`; returns `true`.
+/// @param patches Sequence traversed as `patch` while producing this result.
 function stitch(patches)
   groups=maps.HashMap.new()
   for each patch in patches
@@ -55,18 +69,31 @@ function stitch(patches)
   return true
 end function
 
+/// Computes `left<right` for `mq3.renderer.world_patch_lod.before`.
+/// @param left Input used in the result expression `left<right`.
+/// @param right Input used in the result expression `left<right`.
 function before(left,right) return left<right end function
+/// Collects positive interior LOD-error values into the supplied threshold list.
+/// @param values Indexed input read at `index`.
+/// @param size Input tested by `size>2`.
+/// @param thresholds Record providing `thresholds.add`.
 function addThresholds(values,size,thresholds)
   if size>2 then for index=1 to size-2
     if values[index]>0.0 then thresholds.add(values[index]) end if
   end for end if
 end function
+/// Returns `selected.toArray()` from `mq3.renderer.world_patch_lod.selectAxis`.
+/// @param size Argument 1 supplied to `std.ds.list.List.withCapacity`.
+/// @param errors Indexed input read at `index`.
+/// @param threshold Input tested by `size>2`.
 function selectAxis(size,errors,threshold)
   selected=lists.List.withCapacity(size);selected.add(0)
   if size>2 then for index=1 to size-2 if errors[index]<=threshold then selected.add(index) end if end for end if
   selected.add(size-1)
   return selected.toArray()
 end function
+/// Computes `axes` from `variants.toArray()` using `std.ds.list.List.withCapacity`, `thresholds.add`, `mq3.renderer.world_patch_lod.addThresholds`.
+/// @param grid Record providing `grid.width`, `grid.height`, `grid.widthLodError`, `grid.heightLodError`.
 function axes(grid)
   thresholds=lists.List.withCapacity(grid.width+grid.height);thresholds.add(0.0)
   addThresholds(grid.widthLodError,grid.width,thresholds)
@@ -82,6 +109,10 @@ function axes(grid)
   return variants.toArray()
 end function
 
+/// Computes `triangles` from `result.toArray()` using `std.ds.list.List.withCapacity`, `mq3.renderer.bsp_render_data.appendPatchGrid`, `result.toArray`.
+/// @param patch Record providing `patch.grid`, `patch.texture`, `patch.lightmap`, `patch.fog`.
+/// @param variant Record providing `variant.columns`, `variant.rows`.
+/// @param face Argument 9 supplied to `mq3.renderer.bsp_render_data.appendPatchGrid`.
 function triangles(patch,variant,face)
   grid=patch.grid
   count=(len(variant.columns)-1)*(len(variant.rows)-1)*2
@@ -91,6 +122,11 @@ function triangles(patch,variant,face)
   return result.toArray()
 end function
 
+/// Computes `select` from `patch.variants[0].face` using `mq3.compat.numeric.fsub`, `mq3.shared.math.DotProduct`, `mq3.compat.numeric.fneg`.
+/// @param patch Record providing `patch.variants`, `patch.face`, `patch.grid`.
+/// @param position Three-component vector read at indices 0, 1, and 2.
+/// @param forward Argument 2 supplied to `mq3.shared.math.DotProduct`.
+/// @param curveError Argument 1 supplied to `mq3.compat.numeric.fdiv`.
 function select(patch,position,forward,curveError)
   if len(patch.variants)==0 then return patch.face end if
   // World patches have the identity entity transform. Compare distance

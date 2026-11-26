@@ -12,9 +12,18 @@ import mq3.qcommon.cvar as qvmFrameCvars
 const KEYCATCH_CONSOLE=1
 const KEYCATCH_UI=2
 const KEYCATCH_CGAME=8
+/// Stores QVM frame input state, including `input`, `config`, `oldFrameTime`, `lastCommandTime`, `sequence`, `produced` and additional values.
 struct State input config oldFrameTime lastCommandTime sequence produced epochs variables end struct
+/// Stores QVM frame input plan record, including `realtime`, `rawMsec`, `integrationMsec`, `commandNumber`, `send`, `sequence` and additional values.
 struct Plan realtime rawMsec integrationMsec commandNumber send sequence used end struct
+/// Creates the QVM frame input error `7696` with diagnostic text `"client frame input: "+text`.
+/// @param text Argument 2 of `error`; passed as `"client frame input: "+text`.
 function fail(text) return error(7696,"client frame input: "+text) end function
+/// Calls `mq3.compat.numeric.f32`, `mq3.compat.numeric.i16`, `mq3.client.qvm_frame_input.State` and additional helpers from QVM frame input `create`.
+/// @param worldAngles Sequence read at `worldAngles[axis]`.
+/// @param deltaAngles Sequence read at `deltaAngles[axis]`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param commandTime Value used by `if len(worldAngles)!=3 or len(deltaAngles)!=3 or realtime<0 or commandTime<0 then return fail("invalid initial view/time") end if`.
 function create(worldAngles,deltaAngles,realtime,commandTime)
   if len(worldAngles)!=3 or len(deltaAngles)!=3 or realtime<0 or commandTime<0 then return fail("invalid initial view/time") end if
   localAngles=array(3,0.0)
@@ -25,15 +34,32 @@ function create(worldAngles,deltaAngles,realtime,commandTime)
 end function
 // Original CL_Init cvars are retained as objects. UI writes become visible
 // on the next command without per-frame registry lookups or allocations.
+/// @param registry Value used by `return [qvmFrameCvars.get(registry,"cl_yawspeed","140",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"cl_pitchspeed","140",qvmFrameCvars.A...`.
 function registerConfig(registry)
   return [qvmFrameCvars.get(registry,"cl_yawspeed","140",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"cl_pitchspeed","140",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"cl_anglespeedkey","1.5",0),qvmFrameCvars.get(registry,"cl_run","1",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"sensitivity","5",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"cl_mouseAccel","0",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"cl_freelook","1",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"m_pitch","-0.022",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"m_yaw","0.022",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"m_forward","0.25",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"m_side","0.25",qvmFrameCvars.ARCHIVE),qvmFrameCvars.get(registry,"m_filter","0",qvmFrameCvars.ARCHIVE)]
 end function
+/// Updates `state.variables` during QVM frame input `bindConfig`.
+/// @param state Mutable QVM frame input record/storage; this routine assigns `state.variables`.
+/// @param registry Value used by `state.variables=registerConfig(registry)`.
 function bindConfig(state,registry) state.variables=registerConfig(registry);return syncConfig(state) end function
+/// Computes `action=="mlook" or qvmFrameEvents.actionButton(state.input,action)!=void` for QVM frame input `handlesAction`.
+/// @param state Record read through `state.input`.
+/// @param action Value used by `return action=="mlook" or qvmFrameEvents.actionButton(state.input,action)!=void`.
 function handlesAction(state,action) return action=="mlook" or qvmFrameEvents.actionButton(state.input,action)!=void end function
+/// Evaluates QVM frame input `syncConfig` and returns `false`, `true` according to its guard/selection conditions.
+/// @param state Record read through `state.variables`, `state.config`.
 function syncConfig(state)
   values=state.variables;if values==void then return false end if;config=state.config
   config.yawSpeed=values[0].value;config.pitchSpeed=values[1].value;config.angleSpeedKey=values[2].value;config.run=values[3].integer!=0;config.sensitivity=values[4].value;config.mouseAccel=values[5].value;config.freelook=values[6].integer!=0;config.mousePitch=values[7].value;config.mouseYaw=values[8].value;config.mouseForward=values[9].value;config.mouseSide=values[10].value;config.filter=values[11].integer!=0;return true
 end function
+/// Updates `state.sequence` during QVM frame input `prepare`.
+/// @param state Mutable QVM frame input record/storage; this routine assigns `state.sequence`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param commandNumber Value used by `if serverRunning and serverPaused and clientPaused then return Plan(realtime,0,1,commandNumber,false,state.sequence,false) end if`.
+/// @param connectionState Value used by `advanced=qvmFrameRing.advance(connectionState,realtime,state.oldFrameTime,commandNumber)`.
+/// @param serverRunning Value used by `if serverRunning and serverPaused and clientPaused then return Plan(realtime,0,1,commandNumber,false,state.sequence,false) end if`.
+/// @param serverPaused Value used by `if serverRunning and serverPaused and clientPaused then return Plan(realtime,0,1,commandNumber,false,state.sequence,false) end if`.
+/// @param clientPaused Value used by `if serverRunning and serverPaused and clientPaused then return Plan(realtime,0,1,commandNumber,false,state.sequence,false) end if`.
 function prepare(state,realtime,commandNumber,connectionState,serverRunning,serverPaused,clientPaused)
   if realtime<state.oldFrameTime then return fail("frame realtime went backwards") end if
   state.sequence=state.sequence+1
@@ -41,6 +67,11 @@ function prepare(state,realtime,commandNumber,connectionState,serverRunning,serv
   advanced=qvmFrameRing.advance(connectionState,realtime,state.oldFrameTime,commandNumber);msec=advanced.frameMsec;safeMsec=msec;if safeMsec<1 then safeMsec=1 end if
   return Plan(realtime,msec,safeMsec,advanced.commandNumber,advanced.created,state.sequence,false)
 end function
+/// Updates `button.down0`, `button.down1`, `button.active`, `button.msec` during QVM frame input `keyUp`.
+/// @param button Mutable QVM frame input record/storage; this routine assigns `button.down0`, `button.down1`, `button.active`, `button.msec`.
+/// @param key Key or control identifier used to select the corresponding QVM frame input entry.
+/// @param time Value used by `if time!=0 then button.msec=button.msec+time-button.downtime else button.msec=button.msec+(frameMsec>>1) end if`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function keyUp(button,key,time,frameMsec)
   if key==0 then button.down0=0;button.down1=0;button.active=false;return true end if
   if button.down0==key then button.down0=0 else if button.down1==key then button.down1=0 else return false end if
@@ -49,6 +80,15 @@ function keyUp(button,key,time,frameMsec)
   if time!=0 then button.msec=button.msec+time-button.downtime else button.msec=button.msec+(frameMsec>>1) end if
   return true
 end function
+/// Updates `state.input.mlooking` during QVM frame input `applyBound`.
+/// @param state Mutable QVM frame input record/storage; this routine assigns `state.input.mlooking`.
+/// @param plan Record read through `plan.rawMsec`.
+/// @param time Value used by `if time<0 then return fail("negative event time") end if`.
+/// @param type Value used by `if type==qvmFrameEvents.INPUT_MOUSE then`.
+/// @param value Value used by `accumulated=qvmFrameCommands.accumulateMouse(state.input,value,value2)`.
+/// @param value2 Value used by `accumulated=qvmFrameCommands.accumulateMouse(state.input,value,value2)`.
+/// @param binding Command text associated with an input key.
+/// @param catchers Value used by `if (catchers&(KEYCATCH_CONSOLE|KEYCATCH_UI|KEYCATCH_CGAME))!=0 then return [] end if`.
 function applyBound(state,plan,time,type,value,value2,binding,catchers)
   if time<0 then return fail("negative event time") end if
   if type==qvmFrameEvents.INPUT_MOUSE then
@@ -68,6 +108,10 @@ function applyBound(state,plan,time,type,value,value2,binding,catchers)
   end for
   return expanded
 end function
+/// Updates `state.input.mlooking` during QVM frame input `releaseAll`.
+/// @param state Mutable QVM frame input record/storage; this routine assigns `state.input.mlooking`.
+/// @param plan Record read through `plan.rawMsec`.
+/// @param time Value used by `if button.down0!=0 then keyUp(button,button.down0,time,plan.rawMsec) end if`.
 function releaseAll(state,plan,time)
   for each button in [state.input.left,state.input.right,state.input.forward,state.input.back,state.input.lookup,state.input.lookdown,state.input.moveleft,state.input.moveright,state.input.strafe,state.input.speed,state.input.up,state.input.down]
     if button.down0!=0 then keyUp(button,button.down0,time,plan.rawMsec) end if;if button.down1!=0 then keyUp(button,button.down1,time,plan.rawMsec) end if
@@ -77,10 +121,22 @@ function releaseAll(state,plan,time)
   end for
   state.input.mlooking=false;return qvmFrameCommands.clearMouse(state.input)
 end function
+/// Evaluates QVM frame input `commandTime` and returns `state.lastCommandTime`, `fail("negative command server time")`, `clockServerTime` according to its guard/selection conditions.
+/// @param state Record read through `state.lastCommandTime`.
+/// @param clockServerTime Value used by `if clockServerTime<0 then return fail("negative command server time") end if`.
+/// @param clockActive Value used by `if not clockActive then return state.lastCommandTime end if`.
 function commandTime(state,clockServerTime,clockActive)
   if not clockActive then return state.lastCommandTime end if
   if clockServerTime<0 then return fail("negative command server time") end if;return clockServerTime
 end function
+/// Updates `plan.used`, `state.epochs`, `state.oldFrameTime`, `state.lastCommandTime` and additional values during QVM frame input `finish`.
+/// @param state Mutable QVM frame input record/storage; this routine assigns `state.epochs`, `state.oldFrameTime`, `state.lastCommandTime`, `state.produced`.
+/// @param plan Mutable QVM frame input record/storage; this routine assigns `plan.used`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param weapon Value used by `created=qvmFrameCommands.createCommand(state.input,state.config,plan.realtime,plan.integrationMsec,serverTime,weapon,sensitivity,catchers,anyK...`.
+/// @param sensitivity Value used by `created=qvmFrameCommands.createCommand(state.input,state.config,plan.realtime,plan.integrationMsec,serverTime,weapon,sensitivity,catchers,anyK...`.
+/// @param catchers Value used by `created=qvmFrameCommands.createCommand(state.input,state.config,plan.realtime,plan.integrationMsec,serverTime,weapon,sensitivity,catchers,anyK...`.
+/// @param anyKeyDown Value used by `created=qvmFrameCommands.createCommand(state.input,state.config,plan.realtime,plan.integrationMsec,serverTime,weapon,sensitivity,catchers,anyK...`.
 function finish(state,plan,serverTime,weapon,sensitivity,catchers,anyKeyDown)
   if plan.used or plan.sequence!=state.sequence then return fail("stale or already consumed client frame") end if;plan.used=true
   if not plan.send then return void end if

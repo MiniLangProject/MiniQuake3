@@ -6,17 +6,28 @@ import mq3.qcommon.message as message
 
 const CS_ACTIVE=4
 
+/// Client record for server.client_command, containing `state`, `name`, `lastClientCommand`, `lastClientCommandString`, `nextReliableTime`.
 struct Client state name lastClientCommand lastClientCommandString nextReliableTime end struct
+/// Runtime record for server.client_command, containing `time`, `floodProtect`, `clientRunning`, `executeFn`, `dropFn`, `diagnosticFn`, and 1 further fields.
 struct Runtime time floodProtect clientRunning executeFn dropFn diagnosticFn context end struct
 
+/// Create `mq3.server.client_command.Client` with state=0; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
 function createClient()
   return Client(0,"",0,"",0)
 end function
 
+/// Create `mq3.server.client_command.Runtime` with time=0; floodProtect=true; clientRunning=false; executeFn=void; dropFn=void; diagnosticFn=void; context=void.
 function runtime()
   return Runtime(0,true,false,void,void,void,void)
 end function
 
+/// Consume one reliable client command, discard retransmissions, reject sequence gaps, and apply the flood interval before dispatch.
+///
+/// Validation failures include `client command: missing state`.
+/// Direct state writes: `clientState.nextReliableTime`, `clientState.lastClientCommand`, `clientState.lastClientCommandString`.
+/// @param host Server command callbacks, flood policy, and current millisecond clock.
+/// @param clientState Mutable client sequencing record; accepted commands update its sequence, text, and next reliable-command time.
+/// @param msg Network message read at the current cursor: an int32 sequence followed by a C string.
 function execute(host,clientState,msg)
   if host==void or clientState==void or msg==void then return error(6981,"client command: missing state") end if
   sequence=message.readI32(msg)

@@ -9,8 +9,17 @@ import mq3.client.frame as clientLoopFrame
 import mq3.qcommon.config_persistence as configPersistence
 import mq3.qcommon.cvar_commands as cvarCommands
 
+/// Data record for `mq3.platform.engine_loop.Runtime`; groups `inputQueue`, `inputHandlers`, `inputBudget`, `serverState`, `serverServices`, `clientState`, and 7 further fields.
 struct Runtime inputQueue inputHandlers inputBudget serverState serverServices clientState clientServices inputCount lastServerResult lastClientResult frameCount configState commandState end struct
 
+/// Builds `mq3.platform.engine_loop.Runtime` for `mq3.platform.engine_loop.create`.
+/// @param inputQueue Initial value for `mq3.platform.engine_loop.Runtime.inputQueue`.
+/// @param inputHandlers Initial value for `mq3.platform.engine_loop.Runtime.inputHandlers`.
+/// @param inputBudget Initial value for `mq3.platform.engine_loop.Runtime.inputBudget`.
+/// @param serverState Initial value for `mq3.platform.engine_loop.Runtime.serverState`.
+/// @param serverServices Initial value for `mq3.platform.engine_loop.Runtime.serverServices`.
+/// @param clientState Initial value for `mq3.platform.engine_loop.Runtime.clientState`.
+/// @param clientServices Initial value for `mq3.platform.engine_loop.Runtime.clientServices`.
 function create(inputQueue,inputHandlers,inputBudget,serverState,serverServices,clientState,clientServices)
   if inputQueue==void or inputHandlers==void or serverState==void or serverServices==void or clientState==void or clientServices==void then return error(7120,"engine loop: missing component") end if
   if typeof(inputBudget)!="int" or inputBudget<0 then return error(7120,"engine loop: invalid input budget") end if
@@ -20,6 +29,9 @@ end function
 // Completes the common startup portion after cvars, commands, filesystem and
 // client input have initialized.  Baseq3 registers writeconfig during Com_Init
 // and only enables automatic writes at the very end of that routine.
+/// @param runtime Mutable record or buffer; this call updates `runtime.configState`, `runtime.commandState`.
+/// @param configState Mutable record or buffer; this call updates `configState.fullyInitialized`.
+/// @param commandState Value assigned to `runtime.commandState`.
 function initializeConfiguration(runtime,configState,commandState)
   if runtime==void or configState==void or commandState==void then return error(7120,"engine loop: missing configuration persistence") end if
   if runtime.configState!=void or runtime.commandState!=void then return error(7120,"engine loop: configuration persistence already initialized") end if
@@ -29,6 +41,9 @@ function initializeConfiguration(runtime,configState,commandState)
   return true
 end function
 
+/// Returns `void` from `mq3.platform.engine_loop.commonTick`; earlier branches return `error(7120,"engine loop: missing runtime")`.
+/// @param runtime Record providing `runtime.configState`.
+/// @param time Unused compatibility argument retained by this entry point.
 function commonTick(runtime,time)
   if runtime==void then return error(7120,"engine loop: missing runtime") end if
   if runtime.configState!=void then configPersistence.writeConfiguration(runtime.configState) end if
@@ -37,6 +52,9 @@ end function
 
 // desktop_frame_host calls this after the network pump, preserving Quake's
 // event-before-simulation rule.
+/// @param runtime Mutable record or buffer; this call updates `runtime.inputCount`, `runtime.lastServerResult`.
+/// @param time Value forwarded as `time` to `mq3.platform.engine_loop.commonTick`.
+/// @param msec Argument 2 supplied to `mq3.server.frame.run`.
 function serverTick(runtime,time,msec)
   if runtime==void then return error(7120,"engine loop: missing runtime") end if
   // Com_Frame persists archive cvars before polling events and simulation.
@@ -47,6 +65,10 @@ function serverTick(runtime,time,msec)
   return runtime.lastServerResult
 end function
 
+/// Updates `runtime.lastClientResult`, `runtime.frameCount` in `mq3.platform.engine_loop.clientTick`; returns `runtime.lastClientResult`.
+/// @param runtime Mutable record or buffer; this call updates `runtime.lastClientResult`, `runtime.frameCount`.
+/// @param time Unused compatibility argument retained by this entry point.
+/// @param msec Argument 2 supplied to `mq3.client.frame.run`.
 function clientTick(runtime,time,msec)
   if runtime==void then return error(7120,"engine loop: missing runtime") end if
   runtime.lastClientResult=clientLoopFrame.run(runtime.clientState,msec,runtime.clientServices)
@@ -54,6 +76,9 @@ function clientTick(runtime,time,msec)
   return runtime.lastClientResult
 end function
 
+/// Returns `desktopHost.liveServicesWithCommon(serverIngress,runtime,commonTick,serverTick,clientTick)` from `mq3.platform.engine_loop.liveServices`; earlier branches return `error(7120,"engine loop: missing live component")`.
+/// @param runtime Argument 2 supplied to `mq3.platform.desktop_frame_host.liveServicesWithCommon`.
+/// @param serverIngress Argument 1 supplied to `mq3.platform.desktop_frame_host.liveServicesWithCommon`.
 function liveServices(runtime,serverIngress)
   if runtime==void or serverIngress==void then return error(7120,"engine loop: missing live component") end if
   return desktopHost.liveServicesWithCommon(serverIngress,runtime,commonTick,serverTick,clientTick)

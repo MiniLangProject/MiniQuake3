@@ -10,26 +10,50 @@ import std.ds.list as lists
 import std.sort as sorting
 import mq3.renderer.world_surface_selection as worldSelection
 
+/// Data record for `mq3.renderer.portal_render_pass.Refdef`; groups `x`, `y`, `width`, `height`, `fovX`, `fovY`, and 5 further fields.
 struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
+/// Data record for `mq3.renderer.portal_render_pass.Surface`; groups `normal`, `dist`, `faceIndex`, `textureIndex`, `distanceSquared`.
 struct Surface normal dist faceIndex textureIndex distanceSquared end struct
+/// Data record for `mq3.renderer.portal_render_pass.Plan`; groups `surface`, `view`, `refdef`.
 struct Plan surface view refdef end struct
+/// Data record for `mq3.renderer.portal_render_pass.WorldBatchCache`; groups `faces`, `normal`, `dist`, `batch`, `builds`, `hits`, and 1 further field.
 struct WorldBatchCache faces normal dist batch builds hits clippedFaces end struct
 
+/// Constructs `mq3.renderer.portal_render_pass.WorldBatchCache` with `faces` = `void`, `normal` = `void`, `dist` = `0.0`, `batch` = `void` and the supplied remaining values.
 function worldBatchCache() return WorldBatchCache(void,void,0.0,void,0,0,void) end function
+/// Updates `cache.hits` in `mq3.renderer.portal_render_pass.cachedWorldBatch`; returns `cache.batch`.
+/// @param cache Mutable record or buffer; this call updates `cache.hits`.
+/// @param faces Argument 2 supplied to `mq3.renderer.world_surface_selection.sameFaces`.
+/// @param normal Three-component vector read at indices 0, 1, and 2.
+/// @param dist Input tested by `cache.batch==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2]`.
 function cachedWorldBatch(cache,faces,normal,dist)
   if cache.batch==void or cache.dist!=dist or cache.normal[0]!=normal[0] or cache.normal[1]!=normal[1] or cache.normal[2]!=normal[2] then return void end if
   if not worldSelection.sameFaces(cache.faces,faces) then return void end if
   cache.hits=cache.hits+1
   return cache.batch
 end function
+/// Updates `cache.faces`, `cache.normal`, `cache.dist`, `cache.batch`, `cache.builds` in `mq3.renderer.portal_render_pass.storeWorldBatch`; returns `batch`.
+/// @param cache Mutable record or buffer; this call updates `cache.faces`, `cache.normal`, `cache.dist`, `cache.batch`, `cache.builds`.
+/// @param faces Value assigned to `cache.faces`.
+/// @param normal Value assigned to `cache.normal`.
+/// @param dist Value assigned to `cache.dist`.
+/// @param batch Value assigned to `cache.batch`.
 function storeWorldBatch(cache,faces,normal,dist,batch)
   cache.faces=faces;cache.normal=normal;cache.dist=dist;cache.batch=batch
   cache.builds=cache.builds+1
   return batch
 end function
 
+/// Creates error `7702` with message `"portal render pass: "+message`.
+/// @param message Input used in the result expression `error(7702,"portal render pass: "+message)`.
 function fail(message) return error(7702,"portal render pass: "+message) end function
+/// Returns `x*x+y*y+z*z` from `mq3.renderer.portal_render_pass.squaredDistance`.
+/// @param a Three-component vector read at indices 0, 1, and 2.
+/// @param b Three-component vector read at indices 0, 1, and 2.
 function squaredDistance(a,b) x=a[0]-b[0];y=a[1]-b[1];z=a[2]-b[2];return x*x+y*y+z*z end function
+/// Builds `mq3.renderer.portal_render_pass.Surface` using `mq3.shared.math.VectorLength`, `mq3.shared.math.CrossProduct`, `mq3.shared.math.VectorNormalize`.
+/// @param triangle Record providing `triangle.vertices`, `triangle.faceIndex`, `triangle.textureIndex`.
+/// @param viewOrigin Value forwarded as `b` to `mq3.renderer.portal_render_pass.squaredDistance`.
 function planeFor(triangle,viewOrigin)
   if triangle==void or triangle.vertices==void or len(triangle.vertices)!=3 then return void end if
   a=triangle.vertices[0].position;b=triangle.vertices[1].position;c=triangle.vertices[2].position
@@ -39,6 +63,9 @@ function planeFor(triangle,viewOrigin)
   center=[(a[0]+b[0]+c[0])/3.0,(a[1]+b[1]+c[1])/3.0,(a[2]+b[2]+c[2])/3.0]
   return Surface(normal,qmath.DotProduct(a,normal),triangle.faceIndex,triangle.textureIndex,squaredDistance(center,viewOrigin))
 end function
+/// Computes `left.distanceSquared<right.distanceSquared or (left.distanceSquared==right.distanceSquared and left.faceIndex<right.faceIndex)` for `mq3.renderer.portal_render_pass.before`.
+/// @param left Record providing `left.distanceSquared`, `left.faceIndex`.
+/// @param right Record providing `right.distanceSquared`, `right.faceIndex`.
 function before(left,right)
   return left.distanceSquared<right.distanceSquared or (left.distanceSquared==right.distanceSquared and left.faceIndex<right.faceIndex)
 end function
@@ -46,6 +73,10 @@ end function
 // tr_main.c:SurfIsOffscreen rejects a portal surface when every vertex is
 // outside the same clip plane.  The draw-surface selection alone is coarser:
 // its face bounds can intersect the frustum while the portal triangle does not.
+/// @param triangle Record providing `triangle.vertices`.
+/// @param refdef Record providing `refdef.vieworg`, `refdef.viewaxis`.
+/// @param slopeX Input tested by `side>=depth*slopeX`.
+/// @param slopeY Input tested by `up>=depth*slopeY`.
 function triangleInFrustum(triangle,refdef,slopeX,slopeY)
   common=127
   for each vertex in triangle.vertices
@@ -63,6 +94,8 @@ end function
 
 // SurfIsOffscreen counts only triangles whose first vertex faces the eye.
 // A surface with every triangle backfaced cannot contribute a portal view.
+/// @param triangle Record providing `triangle.vertices`.
+/// @param viewOrigin Three-component vector read at indices 0, 1, and 2.
 function triangleFacesView(triangle,viewOrigin)
   vertex=triangle.vertices[0];point=vertex.position;normal=vertex.normal
   return (point[0]-viewOrigin[0])*normal[0]+(point[1]-viewOrigin[1])*normal[1]+(point[2]-viewOrigin[2])*normal[2]<0.0
@@ -71,6 +104,11 @@ end function
 // Baseq3 renders at most the first viable portal view in a main view and
 // refuses recursion.  Here distance provides deterministic draw-surface
 // ordering when several selected portal faces share sort == SS_PORTAL.
+/// @param renderData Record providing `renderData.triangles`.
+/// @param catalog Record providing `catalog.materials`.
+/// @param geometry Record providing `geometry.portals`.
+/// @param sourceRefdef Record providing `sourceRefdef.flags`, `sourceRefdef.width`, `sourceRefdef.fovX`, `sourceRefdef.height`, `sourceRefdef.fovY`, `sourceRefdef.vieworg`.
+/// @param isPortal Input tested by `isPortal`.
 function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
   if isPortal then return void end if
   if renderData==void or renderData.triangles==void or geometry==void or sourceRefdef==void then return fail("world, scene geometry and refdef are required") end if
@@ -104,7 +142,11 @@ function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
   return void
 end function
 
+/// Callback table for `mq3.renderer.portal_render_pass.ComposeServices`; exposes `drawPortalFn`, `clearDepthFn`, `drawMainFn`, `context`.
 struct ComposeServices drawPortalFn clearDepthFn drawMainFn context end struct
+/// Computes `compose` from `drawn+value` using `services.drawPortalFn`, `services.clearDepthFn`, `services.drawMainFn`.
+/// @param services Record providing `services.clearDepthFn`, `services.drawMainFn`, `services.drawPortalFn`, `services.context`.
+/// @param portal Argument 2 supplied to `services.drawPortalFn`.
 function compose(services,portal)
   if services==void or services.clearDepthFn==void or services.drawMainFn==void then return fail("composition services are incomplete") end if
   drawn=0

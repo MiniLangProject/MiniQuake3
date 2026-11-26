@@ -14,6 +14,10 @@ import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Update `ent.flags`, `ent.health` and `level.playerDieFn` during `setTeam`.
+/// @param level Game-level state; accesses `spawner`, `teamForceBalance`, `numNonSpectatorClients`, `maxGameClients` and `time` and related fields. May update `level.playerDieFn` in place.
+/// @param ent Game entity; accesses `client`, `flags` and `health`. May update `ent.flags` and `ent.health` in place.
+/// @param request Text to parse, format or deliver.
 function setTeam(level,ent,request)
   if ent == void or ent.client == void then return error(492,"Team change requires a client entity") end if
   if level.spawner == void then return error(492,"Team change requires game spawn state") end if
@@ -58,6 +62,9 @@ function setTeam(level,ent,request)
   return void
 end function
 
+/// Set `ent.r.svFlags` to `ent.r.svFlags & ~8` in `mq3.game.team_changes.stopFollowing`.
+/// @param level Not read by this implementation; retained in the `stopFollowing` signature.
+/// @param ent Game entity; accesses `client`, `slot` and `r`. May update `ent.r.svFlags` in place.
 function stopFollowing(level,ent)
   if ent == void or ent.client == void or ent.slot < 0 or ent.slot >= 64 then return error(492,"StopFollowing requires a client entity") end if
   client = ent.client; client.ps.persistant[c.PERS_TEAM] = 3; client.team = 3; client.spectatorState = 1
@@ -65,6 +72,10 @@ function stopFollowing(level,ent)
   return void
 end function
 
+/// Set `ent.client.switchTeamTime` to `n.add32(level.time,5000)` in `mq3.game.team_changes.commandTeam`.
+/// @param level Game-level state; accesses `time` and `spawner`.
+/// @param ent Game entity; accesses `client` and `slot`. May update `ent.client.switchTeamTime` in place.
+/// @param argv Command argument strings in their original order.
 function commandTeam(level,ent,argv)
   if ent == void or ent.client == void then return error(492,"Team command requires a client entity") end if
   client = ent.client

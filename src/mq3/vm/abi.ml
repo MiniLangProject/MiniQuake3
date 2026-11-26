@@ -68,16 +68,20 @@ const OP_CVIF=58
 const OP_CVFI=59
 const OP_COUNT=60
 
+/// VmSymbol record for vm.abi, containing `next`, `symValue`, `profileCount`, `symName`.
 struct VmSymbol next symValue profileCount symName end struct
 
 // vm_s is pointer-heavy in C. The port keeps equivalent ownership and state
 // fields as managed values while retaining the two assembler-visible offsets.
 struct VmState programStack systemCall name dllHandle entryPoint currentlyInterpreting compiled codeBase codeLength instructionPointers instructionPointersLength dataBase dataMask stackBottom numSymbols symbols callLevel breakFunction breakCount fqpath end struct
 
+/// Provide the opcode values lookup table in vm.abi.
 function opcodeValues()
   return [OP_UNDEF,OP_IGNORE,OP_BREAK,OP_ENTER,OP_LEAVE,OP_CALL,OP_PUSH,OP_POP,OP_CONST,OP_LOCAL,OP_JUMP,OP_EQ,OP_NE,OP_LTI,OP_LEI,OP_GTI,OP_GEI,OP_LTU,OP_LEU,OP_GTU,OP_GEU,OP_EQF,OP_NEF,OP_LTF,OP_LEF,OP_GTF,OP_GEF,OP_LOAD1,OP_LOAD2,OP_LOAD4,OP_STORE1,OP_STORE2,OP_STORE4,OP_ARG,OP_BLOCK_COPY,OP_SEX8,OP_SEX16,OP_NEGI,OP_ADD,OP_SUB,OP_DIVI,OP_DIVU,OP_MODI,OP_MODU,OP_MULI,OP_MULU,OP_BAND,OP_BOR,OP_BXOR,OP_BCOM,OP_LSH,OP_RSHI,OP_RSHU,OP_NEGF,OP_ADDF,OP_SUBF,OP_DIVF,OP_MULF,OP_CVIF,OP_CVFI]
 end function
 
+/// Create `mq3.vm.abi.VmState` with programStack=0; systemCall=void; name=name; dllHandle=void; 16 further fields.
+/// @param name Initial `name` field stored in the returned or constructed `mq3.vm.abi.VmState` record.
 function createState(name)
   return VmState(0,void,name,void,void,false,false,void,0,[],0,void,0,0,0,[],0,0,0,"")
 end function

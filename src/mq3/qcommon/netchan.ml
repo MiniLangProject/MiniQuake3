@@ -14,14 +14,17 @@ const MAX_MSGLEN = qcommonHeaders.MAX_MSGLEN
 const FRAGMENT_BIT = 0x80000000
 const SCRAMBLE_START = 6
 
+/// Address record for qcommon.netchan, containing `type`, `ip`, `port`.
 struct Address type ip port end struct
 
+/// Runtime record for qcommon.netchan, containing `qport`, `sendPacketFn`, `context`.
 struct Runtime
   qport
   sendPacketFn
   context
 end struct
 
+/// Channel record for qcommon.netchan, containing `sock`, `dropped`, `remoteAddress`, `qport`, `incomingSequence`, `outgoingSequence`, and 7 further fields.
 struct Channel
   sock
   dropped
@@ -38,35 +41,67 @@ struct Channel
   unsentBuffer
 end struct
 
+/// ProcessResult record for qcommon.netchan, containing `accepted`, `data`, `cursize`, `readcount`, `bit`.
 struct ProcessResult accepted data cursize readcount bit end struct
 
+/// Create `mq3.qcommon.netchan.Runtime` with qport=(port & 65535); sendPacketFn=void; context=void.
+/// @param port Port used in `(port & 65535)` and `Runtime((port & 65535), void, void)`.
 function init(port)
   return Runtime(port&0xffff,void,void)
 end function
 
+/// Create `mq3.qcommon.netchan.Channel` with sock=sock; dropped=0; remoteAddress=address; qport=qport; 9 further fields.
+/// @param sock Initial `sock` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record.
+/// @param address Initial `remoteAddress` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record.
+/// @param qport Initial `qport` field stored in the returned or constructed `mq3.qcommon.netchan.Channel` record.
 function setup(sock,address,qport)
   return Channel(sock,0,address,qport,0,1,0,0,bytes(MAX_MSGLEN,0),false,0,0,bytes(MAX_MSGLEN,0))
 end function
 
+/// Write short in qcommon.netchan; updates `data entries`.
+///
+/// Direct state writes: `data elements`.
+/// @param data Mutable sequence written at `offset`, `(offset + 1)`.
+/// @param offset Offset used in `(offset + 1)`.
+/// @param value Value used in `(value >> 8)` and `(value & 255)`.
 function writeShort(data,offset,value)
   data[offset]=value&255;data[offset+1]=(value>>8)&255;return void
 end function
 
+/// Write long in qcommon.netchan.
+/// @param data Data passed as `data` to `mq3.compat.numeric.writeU32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.writeU32`.
+/// @param value Integer whose low 32 bits are retained.
 function writeLong(data,offset,value)
   n.writeU32(data,offset,n.i32(value));return void
 end function
 
+/// Read short in qcommon.netchan; the normal completion returns `value`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function readShort(data,offset)
   value=data[offset]|(data[offset+1]<<8)
   if value>=32768 then return value-65536 end if
   return value
 end function
 
+/// Emit netchan in qcommon.netchan.
+///
+/// Validation failures include `Netchan transmit requires NET_SendPacket service`.
+/// @param runtime Record exposing `sendPacketFn`.
+/// @param channel Record exposing `sock`, `remoteAddress`.
+/// @param packet Packet used in `runtime.sendPacketFn(runtime, channel.sock, packet, channel.remoteAddress)`.
 function emit(runtime,channel,packet)
   if runtime.sendPacketFn==void then return error(3512,"Netchan transmit requires NET_SendPacket service") end if
   runtime.sendPacketFn(runtime,channel.sock,packet,channel.remoteAddress);return void
 end function
 
+/// Update `channel.unsentFragmentStart`, `channel.outgoingSequence`, `channel.unsentFragments` in qcommon.netchan; the normal completion returns `packet`.
+///
+/// Validation failures include `Netchan has no pending fragments`.
+/// Direct state writes: `channel.unsentFragmentStart`, `channel.outgoingSequence`, `channel.unsentFragments`.
+/// @param runtime Record exposing `qport`.
+/// @param channel Record exposing `unsentFragments`, `unsentFragmentStart`, `unsentLength`, `sock`, `outgoingSequence`, `unsentBuffer`. Updated in place: `unsentFragmentStart`, `outgoingSequence`, `unsentFragments`.
 function transmitNextFragment(runtime,channel)
   if not channel.unsentFragments then return error(3512,"Netchan has no pending fragments") end if
   fragmentLength=FRAGMENT_SIZE
@@ -85,6 +120,13 @@ function transmitNextFragment(runtime,channel)
   return packet
 end function
 
+/// Update `channel.unsentFragmentStart`, `channel.unsentFragments`, `channel.unsentLength`, `channel.outgoingSequence` in qcommon.netchan; the normal completion returns `packet`.
+///
+/// Validation failures include `Netchan_Transmit length exceeds MAX_MSGLEN`.
+/// Direct state writes: `channel.unsentFragmentStart`, `channel.unsentFragments`, `channel.unsentLength`, `channel.outgoingSequence`.
+/// @param runtime Record exposing `qport`.
+/// @param channel Record exposing `unsentBuffer`, `sock`, `outgoingSequence`. Updated in place: `unsentFragmentStart`, `unsentFragments`, `unsentLength`, `outgoingSequence`.
+/// @param data Data used in `len(data)` and `data[index]`.
 function transmit(runtime,channel,data)
   length=len(data);if length>MAX_MSGLEN then return error(3512,"Netchan_Transmit length exceeds MAX_MSGLEN") end if
   channel.unsentFragmentStart=0
@@ -100,10 +142,19 @@ function transmit(runtime,channel,data)
   emit(runtime,channel,packet);return packet
 end function
 
+/// Create `mq3.qcommon.netchan.ProcessResult` with accepted=false; data=data; cursize=len(data); readcount=readcount; bit=(readcount * 8).
+/// @param data Initial `data` field stored in the returned or constructed `mq3.qcommon.netchan.ProcessResult` record.
+/// @param readcount Initial `readcount` field stored in the returned or constructed `mq3.qcommon.netchan.ProcessResult` record.
 function rejected(data,readcount)
   return ProcessResult(false,data,len(data),readcount,readcount*8)
 end function
 
+/// Process netchan in qcommon.netchan; the normal completion returns `ProcessResult(true, data, cursize, readcount, (readcount * 8))`.
+///
+/// Direct state writes: `channel.dropped`, `channel.fragmentSequence`, `channel.fragmentLength`, `channel.incomingSequence`.
+/// @param channel Record exposing `sock`, `incomingSequence`, `fragmentSequence`, `fragmentLength`, `fragmentBuffer`. Updated in place: `dropped`, `fragmentSequence`, `fragmentLength`, `incomingSequence`.
+/// @param data Data passed as `data` to `mq3.qcommon.netchan.rejected`.
+/// @param maxsize Maxsize used in `((channel.fragmentLength + 4) > maxsize)`.
 function process(channel,data,maxsize)
   cursize=len(data);if cursize<4 then return rejected(data,cursize) end if
   sequence=n.readI32(data,0);fragmented=(sequence&FRAGMENT_BIT)!=0
@@ -140,6 +191,7 @@ end function
 // These two routines are inside Baseq3's #if 0 block, but keeping the exact
 // transform here makes the complete source-file contract available to tools
 // and preserves the original reversible packet codec.
+/// @param data Data used in `len(data)` and `bytes(data)`.
 function scramblePacket(data)
   c=len(data);if c<=SCRAMBLE_START then return data end if
   if c>MAX_PACKETLEN then return error(3512,"Netchan scramble exceeds MAX_PACKETLEN") end if
@@ -151,6 +203,10 @@ function scramblePacket(data)
   return result
 end function
 
+/// Compute unscramble packet in qcommon.netchan; the normal completion returns `result`.
+///
+/// Validation failures include `Netchan unscramble exceeds MAX_PACKETLEN`.
+/// @param data Data used in `len(data)` and `bytes(data)`.
 function unscramblePacket(data)
   c=len(data);if c<=SCRAMBLE_START then return data end if
   if c>MAX_PACKETLEN then return error(3512,"Netchan unscramble exceeds MAX_PACKETLEN") end if

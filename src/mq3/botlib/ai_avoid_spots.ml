@@ -11,6 +11,12 @@ const AVOID_CLEAR=0
 const AVOID_ALWAYS=1
 const AVOID_DONTBLOCK=2
 
+/// Apply `mq3.botlib.ai_resource_pools.moveState` while evaluating `add`.
+/// @param pools Bot resource pools; accesses `moveStates`.
+/// @param moveHandle Handle identifying the allocated bot movement state.
+/// @param origin World-space position as three coordinates.
+/// @param radius Radius used by the spatial or damage query.
+/// @param type Value used by `add` in `if type==AVOID_CLEAR then state.numAvoidSpots=0`.
 function add(pools,moveHandle,origin,radius,type)
   state=resources.moveState(pools,moveHandle);if state==void then return 0 end if
   if type==AVOID_CLEAR then state.numAvoidSpots=0;return 0 end if

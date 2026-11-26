@@ -12,9 +12,21 @@ const ID_BRIGHTNESS=14
 const ID_SCREENSIZE=15
 const ID_BACK=16
 
+/// Stores UI display options menu item, including `id`, `kind`, `name`, `x`, `y`, `minValue` and additional values.
 struct Item id kind name x y minValue maxValue value active end struct
+/// Stores UI display options menu, including `wrapAround`, `fullscreen`, `cursor`, `items`, `assets`, `actions` and additional values.
 struct Menu wrapAround fullscreen cursor items assets actions cvarWrites end struct
 
+/// Creates a `mq3.client.ui_display_options.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
+/// @param id Value used to initialize `Item.id`.
+/// @param kind Value used to initialize `Item.kind`.
+/// @param name Value used to initialize `Item.name`.
+/// @param x Value used to initialize `Item.x`.
+/// @param y Value used to initialize `Item.y`.
+/// @param minValue Value used to initialize `Item.minValue`.
+/// @param maxValue Value used to initialize `Item.maxValue`.
+/// @param value Value used to initialize `Item.value`.
+/// @param active Value used to initialize `Item.active`.
 function item(id,kind,name,x,y,minValue,maxValue,value,active)
   return Item(id,kind,name,x,y,minValue,maxValue,value,active)
 end function
@@ -25,6 +37,9 @@ function cache()
 end function
 
 // UI_DisplayOptionsMenu_Init
+/// @param rGamma Value used by `items=items+[item(ID_BRIGHTNESS,"slider","Brightness:",400,222,5.0,20.0,rGamma*10.0,deviceSupportsGamma)]`.
+/// @param cgViewsize Value used by `items=items+[item(ID_SCREENSIZE,"slider","Screen Size:",400,240,3.0,10.0,cgViewsize/10.0,true)]`.
+/// @param deviceSupportsGamma Value used by `items=items+[item(ID_BRIGHTNESS,"slider","Brightness:",400,222,5.0,20.0,rGamma*10.0,deviceSupportsGamma)]`.
 function init(rGamma,cgViewsize,deviceSupportsGamma)
   items=[]
   items=items+[item(0,"btext","SYSTEM SETUP",320,16,0.0,0.0,0.0,true)]
@@ -41,6 +56,10 @@ function init(rGamma,cgViewsize,deviceSupportsGamma)
 end function
 
 // UI_DisplayOptionsMenu_Event
+/// @param menu Mutable UI display options record/storage; this routine assigns `menu.actions`, `menu.cvarWrites`.
+/// @param id Value used by `if id==ID_GRAPHICS then menu.actions=menu.actions+["pop","graphics"]`.
+/// @param eventCode Quake III event identifier selecting the event handler.
+/// @param value Value used by `else if id==ID_BRIGHTNESS then menu.cvarWrites=menu.cvarWrites+[["r_gamma",value/10.0]]`.
 function event(menu,id,eventCode,value)
   if eventCode!=QM_ACTIVATED then return menu end if
   if id==ID_GRAPHICS then menu.actions=menu.actions+["pop","graphics"]
@@ -54,6 +73,9 @@ function event(menu,id,eventCode,value)
 end function
 
 // UI_DisplayOptionsMenu
+/// @param rGamma Argument 1 of `mq3.client.ui_display_options.init`.
+/// @param cgViewsize Argument 2 of `mq3.client.ui_display_options.init`.
+/// @param deviceSupportsGamma Argument 3 of `mq3.client.ui_display_options.init`.
 function open(rGamma,cgViewsize,deviceSupportsGamma)
   return init(rGamma,cgViewsize,deviceSupportsGamma)
 end function

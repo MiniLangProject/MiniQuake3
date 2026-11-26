@@ -34,17 +34,32 @@ const MAX_SHADER_STAGES=8
 const TR_MAX_TEXMODS=4
 const MAX_IMAGE_ANIMATIONS=8
 
+/// Data record for `mq3.renderer.shader_parser.Wave`; groups `func`, `base`, `amplitude`, `phase`, `frequency`.
 struct Wave func base amplitude phase frequency end struct
+/// Data record for `mq3.renderer.shader_parser.TexMod`; groups `kind`, `values`, `wave`.
 struct TexMod kind values wave end struct
+/// Data record for `mq3.renderer.shader_parser.Deform`; groups `kind`, `spread`, `wave`, `vector`, `bulgeWidth`, `bulgeHeight`, and 1 further field.
 struct Deform kind spread wave vector bulgeWidth bulgeHeight bulgeSpeed end struct
+/// Data record for `mq3.renderer.shader_parser.Stage`; groups `active`, `mapMode`, `images`, `animationSpeed`, `isLightmap`, `blendSrc`, and 16 further fields.
 struct Stage active mapMode images animationSpeed isLightmap blendSrc blendDst rgbGen alphaGen rgbWave alphaWave constantColor portalRange tcGen tcGenVectors texMods depthWrite depthExplicit alphaFunc depthFunc detail stateBits end struct
+/// Data record for `mq3.renderer.shader_parser.Shader`; groups `name`, `stages`, `sort`, `cull`, `surfaceParms`, `noMipMaps`, and 10 further fields.
 struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms fogColor fogDepth warnings cloudHeight end struct
 
+/// Calls `std.string.toLowerAscii` with `(text)` and returns its result.
+/// @param text Argument 1 supplied to `std.string.toLowerAscii`.
 function lower(text) return strings.toLowerAscii(text) end function
+/// Calls `mq3.compat.numeric.f32` with `(numbers.atof(text))` and returns its result.
+/// @param text Argument 1 supplied to `mq3.compat.textnumbers.atof`.
 function number(text) return n.f32(numbers.atof(text)) end function
+/// Constructs `mq3.renderer.shader_parser.Wave` with `func` = `0`, `base` = `0.0`, `amplitude` = `0.0`, `phase` = `0.0` and the supplied remaining values.
 function blankWave() return Wave(0,0.0,0.0,0.0,0.0) end function
+/// Returns `false` from `mq3.renderer.shader_parser.hasValue`; earlier branches return `true`.
+/// @param values Sequence traversed as `value` while producing this result.
+/// @param wanted Input used by `for each value in values if value==wanted then return true`.
 function hasValue(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 
+/// Returns `0` from `mq3.renderer.shader_parser.nameToAFunc`; earlier branches return `GLS_ATEST_GT_0`, `GLS_ATEST_LT_80`, `GLS_ATEST_GE_80`.
+/// @param name Value forwarded as `text` to `mq3.renderer.shader_parser.lower`.
 function nameToAFunc(name)
   name=lower(name)
   if name=="gt0" then return GLS_ATEST_GT_0 end if
@@ -53,6 +68,8 @@ function nameToAFunc(name)
   return 0
 end function
 
+/// Maps a case-insensitive OpenGL source-blend token to packed shader state, defaulting to GL_ONE.
+/// @param name Value forwarded as `text` to `mq3.renderer.shader_parser.lower`.
 function nameToSrcBlendMode(name)
   name=lower(name)
   if name=="gl_one" then return GLS_SRCBLEND_ONE end if
@@ -67,6 +84,8 @@ function nameToSrcBlendMode(name)
   return GLS_SRCBLEND_ONE
 end function
 
+/// Maps a case-insensitive OpenGL destination-blend token to packed shader state, defaulting to GL_ONE.
+/// @param name Value forwarded as `text` to `mq3.renderer.shader_parser.lower`.
 function nameToDstBlendMode(name)
   name=lower(name)
   if name=="gl_one" then return GLS_DSTBLEND_ONE end if
@@ -80,6 +99,8 @@ function nameToDstBlendMode(name)
   return GLS_DSTBLEND_ONE
 end function
 
+/// Maps sine, square, triangle, sawtooth, inverse-sawtooth, or noise names to waveform IDs, defaulting to sine.
+/// @param name Value forwarded as `text` to `mq3.renderer.shader_parser.lower`.
 function nameToGenFunc(name)
   name=lower(name)
   if name=="sin" then return 1 end if
@@ -91,6 +112,8 @@ function nameToGenFunc(name)
   return 1
 end function
 
+/// Computes `sortValue` from `number(name)` using `mq3.renderer.shader_parser.lower`, `mq3.renderer.shader_parser.number`.
+/// @param name Value forwarded as `text` to `mq3.renderer.shader_parser.lower`.
 function sortValue(name)
   value=lower(name)
   if value=="portal" then return 1.0 end if
@@ -105,12 +128,17 @@ function sortValue(name)
   return number(name)
 end function
 
+/// Builds `mq3.renderer.shader_parser.Wave` using `mq3.shared.parser.parseExt`.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
 function parseWave(state)
   kind=parser.parseExt(state,false);a=parser.parseExt(state,false);b=parser.parseExt(state,false);c=parser.parseExt(state,false);d=parser.parseExt(state,false)
   if kind=="" or a=="" or b=="" or c=="" or d=="" then return error(7120,"incomplete shader waveform") end if
   return Wave(nameToGenFunc(kind),number(a),number(b),number(c),number(d))
 end function
 
+/// Parses a parenthesized vector with the requested component count and reports missing tokens or delimiters.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
+/// @param count Input used by `for index=0 to count-1`.
 function parseVector(state,count)
   if parser.parseExt(state,false)!="(" then return error(7121,"shader vector requires spaced opening parenthesis") end if
   values=[]
@@ -122,6 +150,8 @@ function parseVector(state,count)
   return values
 end function
 
+/// Returns `values` from `mq3.renderer.shader_parser.restOfLine`.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
 function restOfLine(state)
   values=[]
   while true
@@ -130,6 +160,8 @@ function restOfLine(state)
   return values
 end function
 
+/// Builds `mq3.renderer.shader_parser.Deform` using `mq3.shared.parser.parseExt`.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
 function parseDeform(state)
   kind=lower(parser.parseExt(state,false));if kind=="" then return error(7144,"missing deformVertexes type") end if
   if kind=="wave" then
@@ -154,6 +186,8 @@ function parseDeform(state)
   restOfLine(state);return Deform(kind,0.0,blankWave(),[0.0,0.0,0.0],0.0,0.0,0.0)
 end function
 
+/// Builds `mq3.renderer.shader_parser.TexMod` for `mq3.renderer.shader_parser.parseTexMod`.
+/// @param tokens Indexed input read at `0`, `1`, `2`, `3`.
 function parseTexMod(tokens)
   if len(tokens)==0 then return error(7124,"missing tcMod type") end if
   kind=lower(tokens[0]);expected=0
@@ -174,10 +208,13 @@ function parseTexMod(tokens)
   return TexMod(kind,values,blankWave())
 end function
 
+/// Constructs `mq3.renderer.shader_parser.Stage` with `active` = `true`, `mapMode` = `""`, `images` = `[]`, `animationSpeed` = `0.0` and the supplied remaining values.
 function blankStage()
   return Stage(true,"",[],0.0,false,0,0,"bad","identity",blankWave(),blankWave(),[255,255,255,255],0.0,"bad",[],[],true,false,0,0,false,GLS_DEPTHMASK_TRUE)
 end function
 
+/// Builds `stage.mapMode`, `stage.images`, `stage.isLightmap`, `stage.animationSpeed`, `stage.alphaFunc` in `mq3.renderer.shader_parser.parseStage`; returns `stage`.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
 function parseStage(state)
   stage=blankStage()
   while true
@@ -245,8 +282,13 @@ function parseStage(state)
   return stage
 end function
 
+/// Returns `1` from `mq3.renderer.shader_parser.skipLine`.
+/// @param state Value forwarded as `state` to `mq3.renderer.shader_parser.restOfLine`.
 function skipLine(state) restOfLine(state);return 1 end function
 
+/// Builds `shader.stages`, `shader.portalRange`, `shader.cloudHeight`, `shader.surfaceParms`, `shader.noMipMaps` in `mq3.renderer.shader_parser.parse`; returns `shader`.
+/// @param state Argument 1 supplied to `mq3.shared.parser.parseExt`.
+/// @param name Value used for `mq3.renderer.shader_parser.Shader.name`.
 function parse(state,name)
   if parser.parseExt(state,true)!="{" then return error(7139,"shader definition must begin with {") end if
   shader=Shader(name,[],0.0,"front",[],false,false,false,false,0.0,0.0,[],[0.0,0.0,0.0],0.0,[],512.0)
@@ -283,7 +325,13 @@ function parse(state,name)
   return shader
 end function
 
+/// Calls `mq3.renderer.shader_parser.parse` with `(parser.create(text),name)` and returns its result.
+/// @param text Argument 1 supplied to `mq3.shared.parser.create`.
+/// @param name Value forwarded as `name` to `mq3.renderer.shader_parser.parse`.
 function parseText(text,name) return parse(parser.create(text),name) end function
+/// Builds `state.offset` in `mq3.renderer.shader_parser.parseIndexed`; returns `parse(state,entry.name)`.
+/// @param index Record providing `index.text`.
+/// @param name Argument 2 supplied to `mq3.renderer.shader_index.find`.
 function parseIndexed(index,name)
   entry=shaderIndex.find(index,name);if entry==void then return void end if
   state=parser.create(index.text);state.offset=entry.bodyOffset;return parse(state,entry.name)

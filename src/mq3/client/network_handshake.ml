@@ -8,9 +8,14 @@ import mq3.client.network_match_loop as matchLoop
 import mq3.server.oob_connect as serverConnect
 import mq3.qcommon.netchan as netchan
 
+/// Stores network handshake slot record, including `runtime`, `clientBound`, `serverBound`, `serverSlot`.
 struct Slot runtime clientBound serverBound serverSlot end struct
+/// Stores network handshake runtime wiring and state, including `group`, `server`, `slots`, `lastError`.
 struct Runtime group server slots lastError end struct
 
+/// Calls `mq3.client.network_handshake.Slot`, `mq3.client.network_handshake.Runtime` from network handshake `create`. The final path returns `Runtime(groupState,serverState,slots,"")`.
+/// @param groupState Record read through `groupState.runtimes`.
+/// @param serverState Value used by `if groupState==void or serverState==void or groupState.runtimes==void or len(groupState.runtimes)<1 then return error(7715,"network handshake:...`.
 function create(groupState,serverState)
   if groupState==void or serverState==void or groupState.runtimes==void or len(groupState.runtimes)<1 then return error(7715,"network handshake: missing topology") end if
   slots=[]
@@ -21,10 +26,15 @@ function create(groupState,serverState)
   return Runtime(groupState,serverState,slots,"")
 end function
 
+/// Adapts `mq3.client.connectionless.addressEqual` to network handshake `sameEndpoint`, returning its result for `left, right, true`.
+/// @param left Argument 1 of `mq3.client.connectionless.addressEqual`.
+/// @param right Argument 2 of `mq3.client.connectionless.addressEqual`.
 function sameEndpoint(left,right)
   return clientConnectionless.addressEqual(left,right,true)
 end function
 
+/// Updates `slot.clientBound` during network handshake `bindClient`.
+/// @param slot Mutable network handshake record/storage; this routine assigns `slot.clientBound`.
 function bindClient(slot)
   current=slot.runtime;connection=current.clientConnection
   if connection.connectionState<clientConnectionless.CA_CONNECTED then return false end if
@@ -36,6 +46,9 @@ function bindClient(slot)
   slot.clientBound=true;return true
 end function
 
+/// Calls `mq3.client.network_handshake.sameEndpoint` from network handshake `findSlot`. The final path returns `found`.
+/// @param state Record read through `state.slots`.
+/// @param accepted Record read through `accepted.qport`, `accepted.address`.
 function findSlot(state,accepted)
   found=-1
   for index=0 to len(state.slots)-1
@@ -47,6 +60,9 @@ function findSlot(state,accepted)
   return found
 end function
 
+/// Calls `mq3.client.network_handshake.sameEndpoint`, `mq3.client.network_handshake.findSlot`, `mq3.qcommon.netchan.setup` from network handshake `bindServer`.
+/// @param state Record read through `state.server.clients`, `state.slots`.
+/// @param serverSlot Value assigned to `slot.serverSlot`.
 function bindServer(state,serverSlot)
   accepted=state.server.clients[serverSlot]
   for index=0 to len(state.slots)-1
@@ -70,6 +86,8 @@ function bindServer(state,serverSlot)
   slot.serverBound=true;slot.serverSlot=serverSlot;return index
 end function
 
+/// Updates `state.lastError` during network handshake `reconcile`.
+/// @param state Mutable network handshake record/storage; this routine assigns `state.lastError`.
 function reconcile(state)
   if state==void then return error(7715,"network handshake: missing runtime") end if
   bound=0
@@ -84,12 +102,17 @@ function reconcile(state)
   matchLoop.synchronizeGroup(state.group);return bound
 end function
 
+/// Updates `state.server.time` during network handshake `setTime`.
+/// @param state Mutable network handshake record/storage; this routine assigns `state.server.time`.
+/// @param time Value assigned to `state.server.time`, `slot.runtime.clientConnection.realtime`.
 function setTime(state,time)
   if state==void then return error(7715,"network handshake: missing runtime") end if
   state.server.time=time;matchLoop.setGroupTime(state.group,time)
   for each slot in state.slots slot.runtime.clientConnection.realtime=time end for;return void
 end function
 
+/// Calls `mq3.client.connectionless.checkForResend` from network handshake `resend`. The final path returns `sent`.
+/// @param state Record read through `state.slots`.
 function resend(state)
   if state==void then return error(7715,"network handshake: missing runtime") end if
   sent=0
@@ -100,11 +123,16 @@ function resend(state)
   return sent
 end function
 
+/// Calls `mq3.client.network_match_loop.pumpGroupOnce`, `mq3.client.network_handshake.reconcile` from network handshake `pumpOnce`. The final path returns `result`.
+/// @param state Record read through `state.group`.
 function pumpOnce(state)
   if state==void then return error(7715,"network handshake: missing runtime") end if
   step=matchLoop.pumpGroupOnce(state.group);if step is error then return step end if;result=reconcile(state);if result is error then return result end if;return step
 end function
 
+/// Calls `mq3.client.network_handshake.pumpOnce` from network handshake `pump`. The final path returns `count`.
+/// @param state Shared network handshake state passed to the helper calls in `pump`.
+/// @param budget Value used by `if state==void or budget<0 then return error(7715,"network handshake: invalid pump") end if`.
 function pump(state,budget)
   if state==void or budget<0 then return error(7715,"network handshake: invalid pump") end if
   count=0
@@ -112,10 +140,15 @@ function pump(state,budget)
   return count
 end function
 
+/// Checks that the selected network slot exists and both client/server transport endpoints are bound.
+/// @param state Record read through `state.slots`.
+/// @param index Value tested by `state==void or index<0 or index>=len(state.slots)` before the calculation continues.
 function ready(state,index)
   if state==void or index<0 or index>=len(state.slots) then return false end if
   slot=state.slots[index];return slot.clientBound and slot.serverBound
 end function
+/// Calls `mq3.client.network_handshake.ready` from network handshake `allReady`.
+/// @param state Record read through `state.slots`.
 function allReady(state)
   if state==void then return false end if
   for index=0 to len(state.slots)-1 if not ready(state,index) then return false end if end for;return true
@@ -124,6 +157,8 @@ end function
 // Gamestate parsing normally performs these transitions. Local hosts that have
 // installed their game state can atomically expose the already negotiated slot
 // to CL_SendCmd/SV_UserMove and snapshot scheduling through this boundary.
+/// @param state Record read through `state.slots`, `state.server.clients`.
+/// @param index Value tested by `not ready(state,index)` before the calculation continues.
 function activate(state,index)
   if not ready(state,index) then return error(7715,"network handshake: client is not ready") end if
   slot=state.slots[index];current=slot.runtime;accepted=state.server.clients[slot.serverSlot]

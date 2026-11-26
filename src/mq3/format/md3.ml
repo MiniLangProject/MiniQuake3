@@ -25,28 +25,55 @@ const MAX_SHADERS=256
 const MAX_VERTS=4096
 const MAX_TRIANGLES=8192
 
+/// Frame record for format.md3, containing `mins`, `maxs`, `localOrigin`, `radius`, `name`.
 struct Frame mins maxs localOrigin radius name end struct
+/// Tag record for format.md3, containing `name`, `origin`, `axis`.
 struct Tag name origin axis end struct
+/// Surface record for format.md3, containing `name`, `shaders`, `mesh`.
 struct Surface name shaders mesh end struct
+/// Model record for format.md3, containing `name`, `flags`, `numFrames`, `numTags`, `numSurfaces`, `numSkins`, and 4 further fields.
 struct Model name flags numFrames numTags numSurfaces numSkins frames tags surfaces bounds end struct
+/// RenderTriangle record for format.md3, containing `positions`, `texCoords`, `normals`, `surfaceIndex`, `shaderName`.
 struct RenderTriangle positions texCoords normals surfaceIndex shaderName end struct
 
+/// Create the format.md3 error for `fail` with 7500 and the supplied diagnostic text.
+/// @param message Message used in `("MD3: " + message)` and `error(7500, ("MD3: " + message))`.
 function fail(message) return error(7500,"MD3: "+message) end function
+/// Test span in format.md3; the normal completion returns `true`.
+/// @param offset Offset used in `(offset < 0)` and `(offset > limit)`.
+/// @param size Size used in `(size < 0)` and `(size > (limit - offset))`.
+/// @param limit Limit used in `(offset > limit)` and `(limit - offset)`.
 function span(offset,size,limit)
   if offset<0 or size<0 or offset>limit or size>limit-offset then return fail("section outside file") end if
   return true
 end function
+/// Compute i 32 in format.md3; the normal completion returns `value`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readI32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readI32`.
 function i32(data,offset)
   value=n.readI32(data,offset);if value is error then return fail("truncated integer") end if;return value
 end function
+/// Compute u 16 in format.md3; the normal completion returns `(data[offset] | (data[(offset + 1)] << 8))`.
+/// @param data Data used in `len(data)` and `data[offset]`.
+/// @param offset Zero-based index into `data`.
 function u16(data,offset)
   if offset<0 or offset+2>len(data) then return fail("truncated word") end if
   return data[offset]|(data[offset+1]<<8)
 end function
+/// Compute f 32 in format.md3; the normal completion returns `n.bitsFloat(value)`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readU32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readU32`.
 function f32(data,offset)
   value=n.readU32(data,offset);if value is error then return fail("truncated float") end if;return n.bitsFloat(value)
 end function
+/// Compute format.md3.vec3 as `[f32(data, offset), f32(data, (offset + 4)), f32(data, (offset + 8))]`.
+/// @param data Data passed as `data` to `mq3.format.md3.f32`.
+/// @param offset Offset passed as `offset` to `mq3.format.md3.f32`.
 function vec3(data,offset) return [f32(data,offset),f32(data,offset+4),f32(data,offset+8)] end function
+/// Compute fixed string in format.md3; the normal completion returns `decode(slice(data, offset, count))`.
+/// @param data Data used in `len(data)` and `data[(offset + count)]`.
+/// @param offset Offset passed as `offset` to `mq3.format.md3.span`.
+/// @param capacity Size passed as `size` to `mq3.format.md3.span`.
 function fixedString(data,offset,capacity)
   check=span(offset,capacity,len(data));if check is error then return check end if
   count=0;while count<capacity and data[offset+count]!=0 count=count+1 end while
@@ -54,6 +81,7 @@ function fixedString(data,offset,capacity)
 end function
 
 // The renderer strips a trailing LOD suffix before resolving skin mappings.
+/// @param model Record exposing `surfaces`.
 function normalizeSurfaceNames(model)
   for each surface in model.surfaces
     name=strings.toLowerAscii(surface.name);raw=bytes(name)
@@ -65,8 +93,14 @@ end function
 
 // Both representations pass through the identical complete parser/validation.
 // Public load keeps its eagerly decoded reference frames unchanged.
+/// @param data Data passed as `data` to `mq3.format.md3.loadMode`.
 function load(data) return loadMode(data,false) end function
+/// Return `mq3.format.md3.loadMode(data, true)` from `format.md3.loadPacked`.
+/// @param data Data passed as `data` to `mq3.format.md3.loadMode`.
 function loadPacked(data) return loadMode(data,true) end function
+/// Load mode in format.md3; the normal completion returns `Model(name, flags, numFrames, numTags, numSurfaces, numSkins, frames, tags, surfaces, [boundsMin, boundsMax])`.
+/// @param data Data passed as `data` to `mq3.format.md3.i32`.
+/// @param packedOnly Packed only operand used by `loadMode`; its reads are shown in the implementation.
 function loadMode(data,packedOnly)
   if data==void or typeof(data)!="bytes" or len(data)<HEADER_SIZE then return fail("truncated header") end if
   if i32(data,0)!=MD3_IDENT then return fail("invalid signature") end if
@@ -165,6 +199,13 @@ function loadMode(data,packedOnly)
 end function
 
 // Produces renderer-neutral animated triangles for the playable preview.
+/// @param model Record exposing `surfaces`.
+/// @param surfaceIndex Initial `surfaceIndex` field stored in the returned or constructed `mq3.format.md3.RenderTriangle` record.
+/// @param frame Frame passed as `frame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param oldFrame Old frame passed as `oldFrame` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param backlerp Backlerp passed as `backlerp` to `mq3.renderer.surface_md3.lerpVertexesCached`.
+/// @param maxTriangles Max triangles used in `(maxTriangles < 0)` and `(maxTriangles == 0)`.
+/// @param normalTable Table passed as `table` to `mq3.renderer.surface_md3.lerpVertexesCached`.
 function renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,normalTable)
   if model==void or surfaceIndex<0 or surfaceIndex>=len(model.surfaces) then return fail("surface index outside model") end if
   if maxTriangles<0 then return fail("negative triangle limit") end if
@@ -184,4 +225,11 @@ function renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTri
   end for
   return result
 end function
+/// Return `mq3.format.md3.renderTrianglesCached(model, surfaceIndex, frame, oldFrame, backlerp, maxTriangles, void)` from `format.md3.renderTriangles`.
+/// @param model Model passed as `model` to `mq3.format.md3.renderTrianglesCached`.
+/// @param surfaceIndex Surface index passed as `surfaceIndex` to `mq3.format.md3.renderTrianglesCached`.
+/// @param frame Frame passed as `frame` to `mq3.format.md3.renderTrianglesCached`.
+/// @param oldFrame Old frame passed as `oldFrame` to `mq3.format.md3.renderTrianglesCached`.
+/// @param backlerp Backlerp passed as `backlerp` to `mq3.format.md3.renderTrianglesCached`.
+/// @param maxTriangles Max triangles passed as `maxTriangles` to `mq3.format.md3.renderTrianglesCached`.
 function renderTriangles(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles) return renderTrianglesCached(model,surfaceIndex,frame,oldFrame,backlerp,maxTriangles,void) end function

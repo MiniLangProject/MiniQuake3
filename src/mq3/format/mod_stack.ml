@@ -9,6 +9,9 @@ import std.ds.list as lists
 import std.fs as fs
 import std.string as strings
 
+/// Read Win32 file or directory attributes for format.mod_stack.
+/// @param path Null-terminated UTF-16 filesystem path.
+/// @returns The file-attribute bitmask, or INVALID_FILE_ATTRIBUTES (0xffffffff) on failure.
 extern function fileAttributes(path as wstr) from "kernel32.dll" symbol "GetFileAttributesW" returns u32
 
 const FILE_ATTRIBUTE_DIRECTORY=0x10
@@ -18,10 +21,15 @@ const MAX_LOOSE_FILES=65536
 const MAX_LOOSE_DEPTH=16
 const MAX_QVM_IMAGE=16777216
 
+/// Mount record for format.mod_stack, containing `game`, `dataRoot`, `archive`.
 struct Mount game dataRoot archive end struct
 
+/// Create the format.mod_stack error for `fail` with 7689 and the supplied diagnostic text.
+/// @param message Message used in `("Mod: " + message)` and `error(7689, ("Mod: " + message))`.
 function fail(message) return error(7689,"Mod: "+message) end function
 
+/// Validate name in format.mod_stack; the normal completion returns `true`.
+/// @param name Name used in `len(name)` and `bytes(name)`.
 function validName(name)
   if typeof(name)!="string" or len(name)<1 or len(name)>15 then return false end if
   for each ch in bytes(name)
@@ -30,11 +38,18 @@ function validName(name)
   return true
 end function
 
+/// Apply `mq3.format.mod_stack.fileAttributes` for regular directory in format.mod_stack.
+/// @param path Null-terminated UTF-16 filesystem path.
 function regularDirectory(path)
   attributes=fileAttributes(path)
   return attributes!=INVALID_ATTRIBUTES and (attributes&FILE_ATTRIBUTE_DIRECTORY)!=0 and (attributes&FILE_ATTRIBUTE_REPARSE_POINT)==0
 end function
 
+/// Test scan loose in format.mod_stack; the normal completion returns `true`.
+/// @param directory Directory used in `fs.listDir(directory)` and `try(fs.listDir(directory))`.
+/// @param prefix Prefix used in `(prefix + name)`.
+/// @param depth Depth used in `(depth + 1)` and `(depth < MAX_LOOSE_DEPTH)`.
+/// @param entries Record exposing `len`, `add`.
 function scanLoose(directory,prefix,depth,entries)
   names=try(fs.listDir(directory));if names is error then return names end if
   for each name in names
@@ -58,6 +73,9 @@ function scanLoose(directory,prefix,depth,entries)
   return true
 end function
 
+/// Test verify packages in format.mod_stack; the normal completion returns `true`.
+/// @param directory Directory used in `fs.joinPath(directory, name)` and `fileAttributes(fs.joinPath(directory, name))`.
+/// @param names Sequence traversed as `name` by the loop in `verifyPackages`.
 function verifyPackages(directory,names)
   for each name in names
     if not strings.endsWith(strings.toLowerAscii(name),".pk3") then continue end if
@@ -67,6 +85,9 @@ function verifyPackages(directory,names)
   return true
 end function
 
+/// Test verify modules in format.mod_stack; the normal completion returns `true`.
+/// @param gameArchive Archive passed as `archive` to `mq3.format.pk3.findEntry`.
+/// @param names Sequence traversed as `name` by the loop in `verifyModules`.
 function verifyModules(gameArchive,names)
   for each moduleName in ["ui","cgame","qagame"]
     path="vm/"+moduleName+".qvm";entry=pk3.findEntry(gameArchive,path)
@@ -87,6 +108,10 @@ function verifyModules(gameArchive,names)
   return true
 end function
 
+/// Compute mount in format.mod_stack; the normal completion returns `Mount(requestedGame, directory, pk3.overlay(directory, baseArchive, gameArchive))`.
+/// @param baseArchive Initial `archive` field stored in the returned or constructed `mq3.format.mod_stack.Mount` record.
+/// @param installRoot Install root used in `(installRoot == "")` and `fs.joinPath(installRoot, "baseq3")`.
+/// @param requestedGame Name passed as `name` to `mq3.format.mod_stack.validName`.
 function mount(baseArchive,installRoot,requestedGame)
   if baseArchive==void or installRoot=="" or typeof(requestedGame)!="string" then return fail("base archive and install directory are required") end if
   if requestedGame=="" or stringEqualsIgnoreCaseAscii(requestedGame,"baseq3") then return Mount("",fs.joinPath(installRoot,"baseq3"),baseArchive) end if

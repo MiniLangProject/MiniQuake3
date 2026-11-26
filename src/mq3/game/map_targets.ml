@@ -10,22 +10,31 @@ import mq3.game.movement as mapTargetMovement
 import mq3.collision.brush as mapTargetBrush
 import mq3.game.g_utils as gUtils
 
+/// Require a non-void game entity for a map target operation.
+/// @param ent Operand used to evaluate the returned expression `ent`.
 function mapTargetsEntity(ent)
   if ent is void then return error(477,"Map target requires a native entity") end if
   return ent
 end function
+/// Validate the level entity count against the native 1024-entity storage limit.
+/// @param level Game-level state; accesses `num_entities`.
 function mapTargetsEntityLimit(level)
   if typeof(level.num_entities) != "int" or level.num_entities < 0 or level.num_entities > 1024 then
     return error(477,"Map target search exceeds native entity storage")
   end if
   return level.num_entities
 end function
+/// Validate the level client count against the native sixty-four-client storage limit.
+/// @param level Game-level state; accesses `maxclients`.
 function mapTargetsClientLimit(level)
   if typeof(level.maxclients) != "int" or level.maxclients < 0 or level.maxclients > 64 then
     return error(477,"Map target team command exceeds native client storage")
   end if
   return level.maxclients
 end function
+/// Read bounded native target text through its zero terminator, rejecting invalid types or oversized text.
+/// @param text Text to parse, format or deliver.
+/// @param limit Value used by `mapTargetsText` in `if length > limit then return error(477,"Map target format exceeds native va storage") end if`.
 function mapTargetsText(text,limit)
   // Native Windows CRT prints (null) for the original va %s NULL argument.
   // This measured profile behavior is separate from ISO-C-defined cases.
@@ -38,6 +47,9 @@ function mapTargetsText(text,limit)
   end while
   return decode(slice(data,0,length))
 end function
+/// Compare native target names case-insensitively through their zero terminators.
+/// @param first Value passed as argument 1 to `typeof`.
+/// @param second Value passed as argument 1 to `typeof`.
 function mapTargetsNamesEqual(first,second)
   // Q_stricmp rejects either NULL, stops at NUL and compares at most 99999
   // bytes. Bytes above ASCII are unchanged by its case folding.
@@ -57,6 +69,11 @@ function mapTargetsNamesEqual(first,second)
   return true
 end function
 
+/// Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.map_targets.mapTargetsEntityLimit` and `mq3.game.map_targets.mapTargetsNamesEqual` while evaluating `giveUse`.
+/// @param level Game-level state; accesses `entities`.
+/// @param ent Game entity; accesses `target`.
+/// @param other Not read by this implementation; retained in the `giveUse` signature.
+/// @param activator Activator record; accesses `client`.
 function giveUse(level,ent,other,activator)
   mapTargetsEntity(activator)
   if activator.client is void then return void end if
@@ -80,10 +97,15 @@ function giveUse(level,ent,other,activator)
   end while
   return void
 end function
+/// Set `ent.use` to `giveUse` in `mq3.game.map_targets.giveSpawn`.
+/// @param level Not read by this implementation; retained in the `giveSpawn` signature.
+/// @param ent Game entity; accesses `use`. May update `ent.use` in place.
 function giveSpawn(level,ent)
   mapTargetsEntity(ent); ent.use = giveUse; return void
 end function
 
+/// Require an activating client with the native sixteen-slot powerup array and return that array.
+/// @param activator Activator record; accesses `client`.
 function mapTargetsPowerups(activator)
   if activator.client is void then return error(477,"Map target lost its activating client") end if
   if activator.client.ps is void or len(activator.client.ps.powerups) != 16 then
@@ -91,6 +113,11 @@ function mapTargetsPowerups(activator)
   end if
   return activator.client.ps.powerups
 end function
+/// Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.map_targets.mapTargetsPowerups` and `mq3.game.items.returnFlag` while evaluating `removePowerupsUse`.
+/// @param level Game-level state; accesses `teamMessageFn`.
+/// @param ent Not read by this implementation; retained in the `removePowerupsUse` signature.
+/// @param other Not read by this implementation; retained in the `removePowerupsUse` signature.
+/// @param activator Activator record; accesses `client`.
 function removePowerupsUse(level,ent,other,activator)
   mapTargetsEntity(activator)
   if activator.client is void then return void end if
@@ -106,32 +133,54 @@ function removePowerupsUse(level,ent,other,activator)
   end for
   return void
 end function
+/// Set `ent.use` to `removePowerupsUse` in `mq3.game.map_targets.removePowerupsSpawn`.
+/// @param level Not read by this implementation; retained in the `removePowerupsSpawn` signature.
+/// @param ent Game entity; accesses `use`. May update `ent.use` in place.
 function removePowerupsSpawn(level,ent)
   mapTargetsEntity(ent); ent.use = removePowerupsUse; return void
 end function
 
+/// Apply `mq3.game.map_targets.mapTargetsEntity` and `mq3.game.scores.addScore` while evaluating `scoreUse`. Return paths include `mapTargetScores.addScore(level,activator,ent.r.currentOrigin,ent.count)`.
+/// @param level Game-level state; accesses `spawner` and `teamScores`. May update `level.teamScores[team]` in place.
+/// @param ent Game entity; accesses `r` and `count`.
+/// @param other Not read by this implementation; retained in the `scoreUse` signature.
+/// @param activator Entity responsible for activating the target.
 function scoreUse(level,ent,other,activator)
   mapTargetsEntity(ent); mapTargetsEntity(activator)
   // Keep the origin vector aliased through G_TempEntity's allocation/link
   // callbacks. AddScore supplies warmup, score-plum and rank behavior.
   return mapTargetScores.addScore(level,activator,ent.r.currentOrigin,ent.count)
 end function
+/// Set `ent.count` to `1` and `ent.use` to `scoreUse` in `mq3.game.map_targets.scoreSpawn`.
+/// @param level Not read by this implementation; retained in the `scoreSpawn` signature.
+/// @param ent Game entity; accesses `count` and `use`. May update `ent.count` and `ent.use` in place.
 function scoreSpawn(level,ent)
   mapTargetsEntity(ent)
   if ent.count == 0 then ent.count = 1 end if
   ent.use = scoreUse; return void
 end function
 
+/// Apply `mq3.game.map_targets.mapTargetsText` while evaluating `mapTargetsCenterCommand`. Return paths include `+mapTargetsText(ent.message,31994)+"\""`.
+/// @param ent Game entity; accesses `message`.
 function mapTargetsCenterCommand(ent)
   // va("cp \"%s\"", message): five framing bytes plus the final NUL must
   // fit in string[2][32000]. Embedded NUL terminates the %s argument.
   return "cp \""+mapTargetsText(ent.message,31994)+"\""
 end function
+/// Forward `mapTargetsTeamCommand` to `mq3.game.g_utils.G_TeamCommand` and return the delegated result.
+/// @param level Game-level state; accesses `maxclients`, `clients` and `serverCommandFn`.
+/// @param team Team identifier used by the game rules.
+/// @param command Text to parse, format or deliver.
 function mapTargetsTeamCommand(level,team,command)
   // G_TeamCommand does not inspect cmd when no client receives it.  Keep the
   // conversion lazy so this helper has the same observable evaluation order.
   return gUtils.G_TeamCommand(level,team,command)
 end function
+/// Apply `mq3.game.map_targets.mapTargetsEntity`, `mq3.game.scores.send` and `mq3.game.map_targets.mapTargetsCenterCommand` while evaluating `printUse`. Return paths include `mapTargetScores.send(level,-1,mapTargetsCenterCommand(ent))`.
+/// @param level Game-level state; accesses `entities`.
+/// @param ent Game entity; accesses `spawnflags`.
+/// @param other Not read by this implementation; retained in the `printUse` signature.
+/// @param activator Activator record; accesses `client` and `slot`.
 function printUse(level,ent,other,activator)
   mapTargetsEntity(activator); mapTargetsEntity(ent)
   if not (activator.client is void) and (ent.spawnflags & 4) != 0 then
@@ -148,6 +197,9 @@ function printUse(level,ent,other,activator)
   end if
   return mapTargetScores.send(level,-1,mapTargetsCenterCommand(ent))
 end function
+/// Set `ent.use` to `printUse` in `mq3.game.map_targets.printSpawn`.
+/// @param level Not read by this implementation; retained in the `printSpawn` signature.
+/// @param ent Game entity; accesses `use`. May update `ent.use` in place.
 function printSpawn(level,ent)
   mapTargetsEntity(ent); ent.use = printUse; return void
 end function

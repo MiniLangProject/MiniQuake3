@@ -7,11 +7,13 @@ import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.game.game_internal_headers as internal
 
+/// `Collision` record for movement, containing `trace`, `endpos` and `entityNum`.
 struct Collision
   trace
   endpos
   entityNum
 end struct
+/// `Movement` record for movement, containing `origin`, `velocity`, `mins`, `maxs` and `clientNum` and related fields.
 struct Movement
   origin
   velocity
@@ -40,14 +42,22 @@ struct Movement
   context
 end struct
 
+/// Create a `mq3.game.movement.Movement` record, initializing `origin` as `[0.0,0.0,0.0]`, `velocity` as `[0.0,0.0,0.0]` and `mins` as `[-15.0,-15.0,-24.0]`.
+/// @param traceFn Initial value stored in `mq3.game.movement.Movement.traceFn`.
+/// @param context Context forwarded to the configured host callbacks.
 function create(traceFn, context)
   return Movement([0.0,0.0,0.0],[0.0,0.0,0.0],[-15.0,-15.0,-24.0],[15.0,15.0,32.0],0,0x2010001,800,0,0,0,320,false,0,0.0,false,false,[0.0,0.0,1.0],0,0.0,[],[0,0],[0,0],0,traceFn,context)
 end function
 
+/// Copy the three components of a movement vector into an independent array.
+/// @param v Three-component array; components 0, 1 and 2 are used in their stored order.
 function copy(v)
   return [v[0],v[1],v[2]]
 end function
 
+/// Set `state.touches` to `state.touches+[entity]` in `mq3.game.movement.addTouchEnt`.
+/// @param state Movement state; accesses `touches`. May update `state.touches` in place.
+/// @param entity Value used by `addTouchEnt` in `if entity == 1022 or len(state.touches) == 32 then return void end if`.
 function addTouchEnt(state, entity)
   if entity == 1022 or len(state.touches) == 32 then return void end if
   for each previous in state.touches
@@ -57,6 +67,9 @@ function addTouchEnt(state, entity)
   return void
 end function
 
+/// Update `state.events[slot]`, `state.eventParms[slot]` and `state.eventSequence` during `addEvent`.
+/// @param state Movement state; accesses `eventSequence`, `events` and `eventParms`. May update `state.events[slot]`, `state.eventParms[slot]` and `state.eventSequence` in place.
+/// @param event Player or entity event identifier.
 function addEvent(state, event)
   slot = state.eventSequence & 1
   state.events[slot] = event
@@ -65,12 +78,18 @@ function addEvent(state, event)
   return void
 end function
 
+/// Project velocity along a collision plane using the supplied overbounce factor.
+/// @param velocity Three-component movement velocity.
+/// @param normal Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param overbounce Value passed as argument 2 to `mq3.compat.numeric.fmul`.
 function clipVelocity(velocity, normal, overbounce)
   backoff = q.DotProduct(velocity,normal)
   if backoff < 0 then backoff = n.fmul(backoff,overbounce) else backoff = n.fdiv(backoff,overbounce) end if
   return [n.fsub(velocity[0],n.fmul(normal[0],backoff)),n.fsub(velocity[1],n.fmul(normal[1],backoff)),n.fsub(velocity[2],n.fmul(normal[2],backoff))]
 end function
 
+/// Apply ground or water friction to the movement velocity while preserving the movement-state representation.
+/// @param state Movement state; accesses `velocity`, `walking`, `waterlevel`, `groundFlags` and `pmFlags` and related fields. May update `state.velocity[0]`, `state.velocity[1]` and `state.velocity` in place.
 function friction(state)
   vec = copy(state.velocity)
   if state.walking then vec[2] = 0.0 end if
@@ -97,6 +116,11 @@ function friction(state)
   return void
 end function
 
+/// Accelerate toward the requested movement direction, limiting the added speed to the remaining target speed.
+/// @param state Movement state; accesses `velocity` and `frametime`. May update `state.velocity` in place.
+/// @param wishdir Value passed as argument 2 to `mq3.shared.math.DotProduct`.
+/// @param wishspeed Value passed as argument 1 to `mq3.compat.numeric.fsub`.
+/// @param accel Value passed as argument 1 to `mq3.compat.numeric.fmul`.
 function accelerate(state, wishdir, wishspeed, accel)
   currentspeed = q.DotProduct(state.velocity,wishdir)
   addspeed = n.fsub(wishspeed,currentspeed)
@@ -107,6 +131,11 @@ function accelerate(state, wishdir, wishspeed, accel)
   return void
 end function
 
+/// Normalize signed movement command axes to preserve the player speed limit during diagonal movement.
+/// @param state Movement state; accesses `speed`.
+/// @param forward Value used by `cmdScale` in `for each input in [forward,right,up]`.
+/// @param right Value used by `cmdScale` in `for each input in [forward,right,up]`.
+/// @param up Value used by `cmdScale` in `for each input in [forward,right,up]`.
 function cmdScale(state, forward, right, up)
   largest = 0
   total = 0
@@ -122,6 +151,9 @@ function cmdScale(state, forward, right, up)
   return n.f32(n.fmul(state.speed,largest)/(127.0*length))
 end function
 
+/// Update `state.velocity[2]`, `state.velocity`, `state.origin` and `state.velocity[axis]` and related state during `slideMove`. Return paths include `bumpcount != 0`.
+/// @param state Movement state; accesses `velocity`, `gravity`, `frametime`, `groundPlane` and `groundNormal` and related fields. May update `state.velocity[2]`, `state.velocity` and `state.origin` and additional fields in place.
+/// @param gravity Value used by `slideMove` in `if gravity then`.
 function slideMove(state, gravity)
   primalVelocity = copy(state.velocity)
   // C leaves this unused result uninitialized without gravity. Zeroing it
@@ -202,6 +234,9 @@ function slideMove(state, gravity)
   return bumpcount != 0
 end function
 
+/// Update `state.origin` and `state.velocity` during `stepSlideMove`.
+/// @param state Movement state; accesses `origin`, `velocity` and `traceFn`. May update `state.origin` and `state.velocity` in place.
+/// @param gravity Value used by `slideMove` in `if gravity then`.
 function stepSlideMove(state, gravity)
   startOrigin = copy(state.origin)
   startVelocity = copy(state.velocity)

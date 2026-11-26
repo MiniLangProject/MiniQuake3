@@ -20,8 +20,14 @@ import std.string as strings
 // The map screen releases its textures before the match uploads its HUD.
 const FIRST_TEXTURE=3072
 const TEXTURE_COUNT=980
+/// Stores map loading screen record, including `archive`, `scripts`, `assets`, `kinds`, `mapName`, `serverName` and additional values.
 struct Screen archive scripts assets kinds mapName serverName localGame catalog loadingInfo startedAt indexMillis end struct
 
+/// Calls `mq3.platform.playable_window.milliseconds`, `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.shader_index.find` and additional helpers from map loading `create`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param serverName Value used by `return Screen(archive,scripts,[name,"levelShotDetail","menu/art/font1_prop"],["shaderNoMip","shader","shaderNoMip"],mapName,serverName,localGa...`.
+/// @param localGame Value used by `return Screen(archive,scripts,[name,"levelShotDetail","menu/art/font1_prop"],["shaderNoMip","shader","shaderNoMip"],mapName,serverName,localGa...`.
 function create(archive,mapName,serverName,localGame)
   startedAt=window.milliseconds()
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if
@@ -35,10 +41,28 @@ function create(archive,mapName,serverName,localGame)
   return Screen(archive,scripts,[name,"levelShotDetail","menu/art/font1_prop"],["shaderNoMip","shader","shaderNoMip"],mapName,serverName,localGame,void,cgameInfo.create(),startedAt,indexMillis)
 end function
 
+/// Calls `commands.add`, `mq3.renderer.command_queue.Command` from map loading `quad`.
+/// @param commands Record read through `commands.add`.
+/// @param x Horizontal coordinate in the coordinate space used by `quad`.
+/// @param y Vertical coordinate in the coordinate space used by `quad`.
+/// @param w Width in the coordinate space used by `quad`.
+/// @param h Height in the coordinate space used by `quad`.
+/// @param s1 Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`.
+/// @param t1 Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`.
+/// @param s2 Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`.
+/// @param t2 Value used by `commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))`.
+/// @param handle Handle identifying the parser, file, media or control resource consumed by `quad`.
 function quad(commands,x,y,w,h,s1,t1,s2,t2,handle)
   commands.add(q2commands.Command(q2commands.RC_STRETCH_PIC,q2commands.STRETCH_PIC_BYTES,[x,y,w,h,s1,t1,s2,t2],handle))
 end function
 
+/// Calls `mq3.client.cgame_drawtools.clear`, `mq3.client.cgame_drawtools.drawProportionalString`, `mq3.client.map_loading.quad` and additional helpers from map loading `textLine`.
+/// @param commands Record read through `commands.add`.
+/// @param font Record read through `font.actions`.
+/// @param x Horizontal coordinate in the coordinate space used by `textLine`.
+/// @param y Vertical coordinate in the coordinate space used by `textLine`.
+/// @param text Text consumed or emitted by `textLine` in the map loading path.
+/// @param small Value used by `if small then style=style|loadFont.UI_SMALLFONT end if`.
 function textLine(commands,font,x,y,text,small)
   if text=="" then return void end if
   style=loadFont.UI_CENTER|loadFont.UI_DROPSHADOW
@@ -55,11 +79,17 @@ function textLine(commands,font,x,y,text,small)
   end for
 end function
 
+/// Evaluates map loading `configValue` and returns `""`, `config[slot]` according to its guard/selection conditions.
+/// @param config Sequence read at `config[slot]`.
+/// @param slot Value used by `if config==void or slot>=len(config) or config[slot]==void then return "" end if`.
 function configValue(config,slot)
   if config==void or slot>=len(config) or config[slot]==void then return "" end if
   return config[slot]
 end function
 
+/// Calls `mq3.renderer.playable_materials.candidates`, `mq3.format.pk3.findEntry`, `mq3.renderer.shader_index.find` from map loading `hasImage`. The final path returns `shaderIndex.find(screen.scripts[0],name)!=void`.
+/// @param screen Record read through `screen.archive`, `screen.scripts`.
+/// @param name Name used to select or register the corresponding map loading resource.
 function hasImage(screen,name)
   for each path in materials.candidates(name)
     if pk3.findEntry(screen.archive,path)!=void then return true end if
@@ -67,6 +97,10 @@ function hasImage(screen,name)
   return shaderIndex.find(screen.scripts[0],name)!=void
 end function
 
+/// Calls `assetList.len`, `assetList.get`, `assetList.add` and additional helpers from map loading `addIcon`. The final path returns `assetList.len()`.
+/// @param assetList Record read through `assetList.len`, `assetList.get`, `assetList.add`.
+/// @param kindList Record read through `kindList.add`.
+/// @param name Name used to select or register the corresponding map loading resource.
 function addIcon(assetList,kindList,name)
   for i=0 to assetList.len()-1
     if assetList.get(i)==name then return i+1 end if
@@ -75,6 +109,12 @@ function addIcon(assetList,kindList,name)
   return assetList.len()
 end function
 
+/// Updates `screen.loadingInfo.itemIcons`, `screen.loadingInfo.playerIcons`, `screen.assets`, `screen.kinds` during map loading `collectIcons`.
+/// @param screen Mutable map loading record/storage; this routine assigns `screen.loadingInfo.itemIcons`, `screen.loadingInfo.playerIcons`, `screen.assets`, `screen.kinds`.
+/// @param config Value used by `bits=bytes(configValue(config,bg.CS_ITEMS))`.
+/// @param assets Sequence read at `assets[index]`.
+/// @param kinds Sequence read at `kinds[index]`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
 function collectIcons(screen,config,assets,kinds,clientNum)
   assetList=lists.List.withCapacity(48);kindList=lists.List.withCapacity(48)
   for each name in screen.assets assetList.add(name) end for
@@ -105,6 +145,12 @@ function collectIcons(screen,config,assets,kinds,clientNum)
   screen.assets=assetList.toArray();screen.kinds=kindList.toArray()
 end function
 
+/// Calls `mq3.client.map_loading.configValue`, `mq3.shared.info.setValue`, `mq3.client.cgame_info.loadingString` and additional helpers from map loading `layout`. The final path returns `commands.toArray()`.
+/// @param screen Record read through `screen.mapName`, `screen.loadingInfo`, `screen.localGame`, `screen.assets` and additional values.
+/// @param loadingText Value used by `cgameInfo.loadingString(state,loadingText)`.
+/// @param width Value assigned to `font.screenXScale`.
+/// @param height Value assigned to `font.screenYScale`, `font.screenXScale`.
+/// @param config Value used by `server=configValue(config,0)`.
 function layout(screen,loadingText,width,height,config)
   server=configValue(config,0)
   if server=="" then server=info.setValue("","mapname",screen.mapName,void,void) end if
@@ -131,6 +177,13 @@ function layout(screen,loadingText,width,height,config)
   return commands.toArray()
 end function
 
+/// Updates `screen.catalog` during map loading `show`.
+/// @param screen Mutable map loading record/storage; this routine assigns `screen.catalog`.
+/// @param loadingText Value used by `commands=layout(screen,loadingText,width,height,config)`.
+/// @param width Width in the coordinate space used by `show`.
+/// @param height Height in the coordinate space used by `show`.
+/// @param config Value used by `commands=layout(screen,loadingText,width,height,config)`.
+/// @param reupload Value used by `reupload=true`.
 function show(screen,loadingText,width,height,config,reupload)
   window.poll();if window.shouldClose() then return false end if
   commands=layout(screen,loadingText,width,height,config);if commands is error then return commands end if
@@ -151,6 +204,8 @@ function show(screen,loadingText,width,height,config,reupload)
   window.present();window.poll();return not window.shouldClose()
 end function
 
+/// Updates `screen.catalog` during map loading `release`.
+/// @param screen Mutable map loading record/storage; this routine assigns `screen.catalog`.
 function release(screen)
   if screen!=void and screen.catalog!=void then qvm2d.release(screen.catalog);screen.catalog=void end if
 end function

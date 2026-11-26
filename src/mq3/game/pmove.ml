@@ -12,6 +12,7 @@ import mq3.collision.brush as brush
 
 const ALL_TIMES = 352
 const OVERCLIP = internal.OVERCLIP
+/// `Command` record for pmove, containing `serverTime`, `angles`, `buttons`, `weapon` and `forwardmove` and related fields.
 struct Command
   serverTime
   angles
@@ -21,6 +22,7 @@ struct Command
   rightmove
   upmove
 end struct
+/// `PmoveContext` record for pmove, containing `ps`, `cmd`, `k`, `noFootsteps` and `gauntletHit` and related fields.
 struct PmoveContext
   ps
   cmd
@@ -45,11 +47,20 @@ struct PmoveContext
   context
 end struct
 
+/// Run the movement collision callback with the kernel bounds and preserve its trace result.
+/// @param k K record; accesses `context`.
+/// @param start Value passed as argument 2 to `p.traceFn`.
+/// @param finish Value passed as argument 3 to `p.traceFn`.
 function kernelTrace(k,start,finish)
   p = k.context
   return p.traceFn(p,start,finish)
 end function
 
+/// Apply `mq3.game.movement.create` and `mq3.collision.brush.emptyTrace` while evaluating `create`. Return paths include `p`.
+/// @param ps Initial value stored in `mq3.game.pmove.PmoveContext.ps`.
+/// @param traceFn Initial value stored in `mq3.game.pmove.PmoveContext.traceFn`.
+/// @param pointFn Initial value stored in `mq3.game.pmove.PmoveContext.pointFn`.
+/// @param context Context forwarded to the configured host callbacks.
 function create(ps,traceFn,pointFn,context)
   k = kernel.create(kernelTrace,void)
   p = PmoveContext(ps,Command(0,[0,0,0],0,0,0,0,0),k,false,false,false,false,8,0,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,kernel.Collision(brush.emptyTrace(),[0.0,0.0,0.0],0),[0.0,0.0,0.0],[0.0,0.0,0.0],0,traceFn,pointFn,context)
@@ -57,6 +68,8 @@ function create(ps,traceFn,pointFn,context)
   return p
 end function
 
+/// Copy the player movement inputs into the reusable collision and movement kernel.
+/// @param p Player movement context; accesses `ps` and `k`.
 function syncKernel(p)
   s = p.ps; k = p.k
   k.origin = s.origin; k.velocity = s.velocity
@@ -67,30 +80,48 @@ function syncKernel(p)
   return void
 end function
 
+/// Copy the movement kernel results back into the player state.
+/// @param p Player movement context; accesses `ps` and `k`. May update `p.ps.origin`, `p.ps.velocity` and `p.ps.eventSequence` in place.
 function syncPlayer(p)
   p.ps.origin = p.k.origin; p.ps.velocity = p.k.velocity
   p.ps.eventSequence = p.k.eventSequence
   return void
 end function
 
+/// Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.friction` and `mq3.game.pmove.syncPlayer` while evaluating `friction`.
+/// @param p Player movement context; accesses `k`.
 function friction(p)
   syncKernel(p); kernel.friction(p.k); syncPlayer(p)
   return void
 end function
+/// Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.accelerate` and `mq3.game.pmove.syncPlayer` while evaluating `accelerate`.
+/// @param p Player movement context; accesses `k`.
+/// @param dir Value passed as argument 2 to `mq3.shared.math.DotProduct`.
+/// @param speed Requested movement speed.
+/// @param accel Value passed as argument 1 to `mq3.compat.numeric.fmul`.
 function accelerate(p,dir,speed,accel)
   syncKernel(p); kernel.accelerate(p.k,dir,speed,accel); syncPlayer(p)
   return void
 end function
+/// Apply `mq3.game.pmove.syncKernel`, `mq3.game.movement.stepSlideMove` and `mq3.game.movement.slideMove` while evaluating `slide`.
+/// @param p Player movement context; accesses `k`.
+/// @param gravity Value used by `slideMove` in `if gravity then`.
+/// @param step Value used by `slide` in `if step then kernel.stepSlideMove(p.k,gravity) else kernel.slideMove(p.k,gravity) end if`.
 function slide(p,gravity,step)
   syncKernel(p)
   if step then kernel.stepSlideMove(p.k,gravity) else kernel.slideMove(p.k,gravity) end if
   syncPlayer(p)
   return void
 end function
+/// Set `p.k.speed` to `p.ps.speed` in `mq3.game.pmove.scale`. Return paths include `kernel.cmdScale(p.k,p.cmd.forwardmove,p.cmd.rightmove,p.cmd.upmove)`.
+/// @param p Player movement context; accesses `k`, `ps` and `cmd`. May update `p.k.speed` in place.
 function scale(p)
   p.k.speed = p.ps.speed
   return kernel.cmdScale(p.k,p.cmd.forwardmove,p.cmd.rightmove,p.cmd.upmove)
 end function
+/// Update `p.ps.events[slot]`, `p.ps.eventParms[slot]` and `p.ps.eventSequence` during `addEvent`.
+/// @param p Player movement context; accesses `ps`. May update `p.ps.events[slot]`, `p.ps.eventParms[slot]` and `p.ps.eventSequence` in place.
+/// @param event Player or entity event identifier.
 function addEvent(p,event)
   slot = p.ps.eventSequence & 1
   p.ps.events[slot] = event; p.ps.eventParms[slot] = 0
@@ -98,32 +129,49 @@ function addEvent(p,event)
   return void
 end function
 
+/// Set `p.ps.torsoAnim` to `((p.ps.torsoAnim & 128)^128)|anim` in `mq3.game.pmove.startTorso`.
+/// @param p Player movement context; accesses `ps`. May update `p.ps.torsoAnim` in place.
+/// @param anim Value used by `startTorso` in `p.ps.torsoAnim = ((p.ps.torsoAnim & 128)^128)|anim`.
 function startTorso(p,anim)
   if p.ps.pm_type >= c.PM_DEAD then return void end if
   p.ps.torsoAnim = ((p.ps.torsoAnim & 128)^128)|anim
   return void
 end function
+/// Set `p.ps.legsAnim` to `((p.ps.legsAnim & 128)^128)|anim` in `mq3.game.pmove.startLegs`.
+/// @param p Player movement context; accesses `ps`. May update `p.ps.legsAnim` in place.
+/// @param anim Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)|anim`.
 function startLegs(p,anim)
   if p.ps.pm_type >= c.PM_DEAD or p.ps.legsTimer > 0 then return void end if
   p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)|anim
   return void
 end function
+/// Apply `mq3.game.pmove.startLegs` while evaluating `continueLegs`.
+/// @param p Player movement context; accesses `ps`.
+/// @param anim Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)|anim`.
 function continueLegs(p,anim)
   if (p.ps.legsAnim & ~128) == anim or p.ps.legsTimer > 0 then return void end if
   startLegs(p,anim)
   return void
 end function
+/// Apply `mq3.game.pmove.startTorso` while evaluating `continueTorso`.
+/// @param p Player movement context; accesses `ps`.
+/// @param anim Value used by `startTorso` in `p.ps.torsoAnim = ((p.ps.torsoAnim & 128)^128)|anim`.
 function continueTorso(p,anim)
   if (p.ps.torsoAnim & ~128) == anim or p.ps.torsoTimer > 0 then return void end if
   startTorso(p,anim)
   return void
 end function
+/// Set `p.ps.legsTimer` to `0` in `mq3.game.pmove.forceLegs`.
+/// @param p Player movement context; accesses `ps`. May update `p.ps.legsTimer` in place.
+/// @param anim Value used by `startLegs` in `p.ps.legsAnim = ((p.ps.legsAnim & 128)^128)|anim`.
 function forceLegs(p,anim)
   p.ps.legsTimer = 0
   startLegs(p,anim)
   return void
 end function
 
+/// Update `p.ps.movementDir` during `movementDir`.
+/// @param p Player movement context; accesses `cmd` and `ps`. May update `p.ps.movementDir` in place.
 function movementDir(p)
   f = p.cmd.forwardmove; r = p.cmd.rightmove
   if f != 0 or r != 0 then
@@ -143,6 +191,8 @@ function movementDir(p)
   return void
 end function
 
+/// Set `p.ps.pm_flags` to `p.ps.pm_flags & ~8` and `p.ps.pm_flags` to `p.ps.pm_flags | 8` in `mq3.game.pmove.jumpAnimation`.
+/// @param p Player movement context; accesses `cmd` and `ps`. May update `p.ps.pm_flags` in place.
 function jumpAnimation(p)
   if p.cmd.forwardmove >= 0 then
     forceLegs(p,c.LEGS_JUMP); p.ps.pm_flags = p.ps.pm_flags & ~8
@@ -152,6 +202,8 @@ function jumpAnimation(p)
   return void
 end function
 
+/// Update `p.cmd.upmove`, `p.k.groundPlane`, `p.k.walking` and `p.ps.pm_flags` and related state during `checkJump`.
+/// @param p Player movement context; accesses `ps`, `cmd` and `k`. May update `p.cmd.upmove`, `p.k.groundPlane` and `p.k.walking` and additional fields in place.
 function checkJump(p)
   if (p.ps.pm_flags & 512) != 0 or p.cmd.upmove < 10 then return false end if
   if (p.ps.pm_flags & 2) != 0 then p.cmd.upmove = 0; return false end if
@@ -162,6 +214,8 @@ function checkJump(p)
   return true
 end function
 
+/// Update `p.ps.velocity`, `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` during `checkWaterJump`.
+/// @param p Player movement context; accesses `ps`, `k`, `forward` and `pointFn`. May update `p.ps.velocity`, `p.ps.velocity[2]` and `p.ps.pm_flags` and additional fields in place.
 function checkWaterJump(p)
   if p.ps.pm_time != 0 or p.k.waterlevel != 2 then return false end if
   flat = kernel.copy(p.forward); flat[2] = 0.0; q.VectorNormalize(flat)
@@ -173,6 +227,8 @@ function checkWaterJump(p)
   p.ps.pm_flags = p.ps.pm_flags | 256; p.ps.pm_time = 2000
   return true
 end function
+/// Update `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` during `waterJumpMove`.
+/// @param p Player movement context; accesses `ps` and `k`. May update `p.ps.velocity[2]`, `p.ps.pm_flags` and `p.ps.pm_time` in place.
 function waterJumpMove(p)
   slide(p,true,true)
   p.ps.velocity[2] = n.fsub(p.ps.velocity[2],n.fmul(p.ps.gravity,p.k.frametime))
@@ -180,6 +236,10 @@ function waterJumpMove(p)
   return void
 end function
 
+/// Build the desired swimming velocity from view-relative command axes, with an optional idle sinking velocity.
+/// @param p Player movement context; accesses `forward`, `cmd` and `right`.
+/// @param cmdscale Value passed as argument 1 to `mq3.compat.numeric.fmul`.
+/// @param sink Value used by `swimmingWish` in `if sink then wish[2] = -60.0 end if`.
 function swimmingWish(p,cmdscale,sink)
   wish = [0.0,0.0,0.0]
   if cmdscale == 0 then
@@ -192,6 +252,8 @@ function swimmingWish(p,cmdscale,sink)
   end if
   return wish
 end function
+/// Set `p.ps.velocity` to `kernel.clipVelocity(p.ps.velocity,p.k.groundNormal,OVERCLIP)` and `p.ps.velocity` to `q.VectorScale(p.ps.velocity,speed)` in `mq3.game.pmove.waterMove`.
+/// @param p Player movement context; accesses `ps` and `k`. May update `p.ps.velocity` in place.
 function waterMove(p)
   if checkWaterJump(p) then waterJumpMove(p); return void end if
   friction(p)
@@ -207,18 +269,24 @@ function waterMove(p)
   slide(p,false,false)
   return void
 end function
+/// Update `p.cmd.forwardmove`, `p.cmd.rightmove`, `p.cmd.upmove` and `p.ps.velocity` during `invulnerabilityMove`.
+/// @param p Player movement context; accesses `cmd` and `ps`. May update `p.cmd.forwardmove`, `p.cmd.rightmove` and `p.cmd.upmove` and additional fields in place.
 function invulnerabilityMove(p)
   // Team Arena's invulnerability sphere suppresses every movement axis.
   p.cmd.forwardmove = 0; p.cmd.rightmove = 0; p.cmd.upmove = 0
   p.ps.velocity = [0.0,0.0,0.0]
   return void
 end function
+/// Apply `mq3.game.pmove.friction`, `mq3.game.pmove.swimmingWish` and `mq3.game.pmove.scale` while evaluating `flyMove`.
+/// @param p Player movement context; accesses `k`.
 function flyMove(p)
   friction(p)
   wish = swimmingWish(p,scale(p),false); wishspeed = q.VectorNormalize(wish)
   accelerate(p,wish,wishspeed,8.0); slide(p,false,true)
   return void
 end function
+/// Update `p.forward[2]`, `p.right[2]` and `p.ps.velocity` during `airMove`.
+/// @param p Player movement context; accesses `forward`, `right`, `cmd`, `k` and `ps`. May update `p.forward[2]`, `p.right[2]` and `p.ps.velocity` in place.
 function airMove(p)
   friction(p); cmdscale = scale(p); movementDir(p)
   p.forward[2] = 0.0; p.right[2] = 0.0
@@ -233,6 +301,8 @@ function airMove(p)
   slide(p,true,true)
   return void
 end function
+/// Set `p.ps.velocity` to `q.VectorScale(wish,speed)` and `p.k.groundPlane` to `false` in `mq3.game.pmove.grappleMove`.
+/// @param p Player movement context; accesses `ps`, `forward` and `k`. May update `p.ps.velocity` and `p.k.groundPlane` in place.
 function grappleMove(p)
   wish = q.VectorMA(p.ps.grapplePoint,-16.0,p.forward)
   for axis = 0 to 2
@@ -244,6 +314,8 @@ function grappleMove(p)
   p.ps.velocity = q.VectorScale(wish,speed); p.k.groundPlane = false
   return void
 end function
+/// Update `p.forward[2]`, `p.right[2]`, `p.forward` and `p.right` and related state during `walkMove`.
+/// @param p Player movement context; accesses `k`, `forward`, `right`, `cmd` and `ps`. May update `p.forward[2]`, `p.right[2]` and `p.forward` and additional fields in place.
 function walkMove(p)
   if p.k.waterlevel > 2 and q.DotProduct(p.forward,p.k.groundNormal) > 0 then waterMove(p); return void end if
   if checkJump(p) then
@@ -280,6 +352,8 @@ function walkMove(p)
   slide(p,false,true)
   return void
 end function
+/// Set `p.ps.velocity` to `[0.0,0.0,0.0]` and `p.ps.velocity` to `q.VectorScale(p.ps.velocity,speed)` in `mq3.game.pmove.deadMove`.
+/// @param p Player movement context; accesses `k` and `ps`. May update `p.ps.velocity` in place.
 function deadMove(p)
   if not p.k.walking then return void end if
   speed = n.fsub(q.VectorLength(p.ps.velocity),20.0)
@@ -289,6 +363,8 @@ function deadMove(p)
   end if
   return void
 end function
+/// Update `p.ps.viewheight`, `p.ps.velocity` and `p.ps.origin` during `noclipMove`.
+/// @param p Player movement context; accesses `ps`, `k`, `forward`, `cmd` and `right`. May update `p.ps.viewheight`, `p.ps.velocity` and `p.ps.origin` in place.
 function noclipMove(p)
   p.ps.viewheight = 26
   speed = q.VectorLength(p.ps.velocity)
@@ -311,11 +387,15 @@ function noclipMove(p)
   return void
 end function
 
+/// Select no footstep, a metal footstep or a normal footstep from the ground surface flags.
+/// @param p Player movement context; accesses `k`.
 function footstepForSurface(p)
   if (p.k.groundFlags & 0x2000) != 0 then return 0 end if
   if (p.k.groundFlags & 0x1000) != 0 then return c.EV_FOOTSTEP_METAL end if
   return c.EV_FOOTSTEP
 end function
+/// Set `p.ps.legsTimer` to `internal.TIMER_LAND` and `p.ps.bobCycle` to `0` in `mq3.game.pmove.crashLand`.
+/// @param p Player movement context; accesses `ps`, `previousOrigin`, `previousVelocity` and `k`. May update `p.ps.legsTimer` and `p.ps.bobCycle` in place.
 function crashLand(p)
   anim = c.LEGS_LAND
   if (p.ps.pm_flags & 8) != 0 then anim = c.LEGS_LANDB end if
@@ -345,15 +425,22 @@ function crashLand(p)
   p.ps.bobCycle = 0
   return void
 end function
+/// Update `p.groundTrace`, `p.k.groundNormal` and `p.k.groundFlags` during `setGroundTrace`.
+/// @param p Player movement context; accesses `groundTrace` and `k`. May update `p.groundTrace`, `p.k.groundNormal` and `p.k.groundFlags` in place.
+/// @param hit Hit record; accesses `trace`.
 function setGroundTrace(p,hit)
   p.groundTrace = hit
   p.k.groundNormal = hit.trace.normal; p.k.groundFlags = hit.trace.surfaceFlags
   return void
 end function
+/// Update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` during `clearGround`.
+/// @param p Player movement context; accesses `ps` and `k`. May update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` in place.
 function clearGround(p)
   p.ps.groundEntityNum = 1023; p.k.groundPlane = false; p.k.walking = false
   return void
 end function
+/// Use `p.traceFn` to perform `correctAllSolid`.
+/// @param p Player movement context; accesses `ps` and `traceFn`.
 function correctAllSolid(p)
   for x = -1 to 1
     for y = -1 to 1
@@ -371,11 +458,15 @@ function correctAllSolid(p)
   clearGround(p)
   return false
 end function
+/// Return `p.traceFn(p,p.ps.origin,p.ps.origin).trace.allsolid` for `checkStuck`.
+/// @param p Player movement context; accesses `traceFn` and `ps`.
 function checkStuck(p)
   // PM_CheckStuck is disabled at the original Pmove call site.  Keep the
   // diagnostic available without changing baseq3 movement behaviour.
   return p.traceFn(p,p.ps.origin,p.ps.origin).trace.allsolid
 end function
+/// Use `p.traceFn` to perform `groundTraceMissed`.
+/// @param p Player movement context; accesses `ps` and `traceFn`.
 function groundTraceMissed(p)
   if p.ps.groundEntityNum != 1023 then
     point = kernel.copy(p.ps.origin); point[2] = n.fsub(point[2],64.0)
@@ -385,6 +476,8 @@ function groundTraceMissed(p)
   clearGround(p)
   return void
 end function
+/// Update `p.ps.groundEntityNum`, `p.k.groundPlane`, `p.k.walking` and `p.ps.pm_flags` and related state during `groundTrace`.
+/// @param p Player movement context; accesses `ps`, `traceFn`, `groundTrace`, `k` and `previousVelocity`. May update `p.ps.groundEntityNum`, `p.k.groundPlane` and `p.k.walking` and additional fields in place.
 function groundTrace(p)
   point = kernel.copy(p.ps.origin); point[2] = n.fsub(point[2],0.25)
   setGroundTrace(p,p.traceFn(p,p.ps.origin,point))
@@ -411,6 +504,8 @@ function groundTrace(p)
   kernel.addTouchEnt(p.k,p.groundTrace.entityNum)
   return void
 end function
+/// Update `p.k.waterlevel` and `p.watertype` during `setWaterLevel`.
+/// @param p Player movement context; accesses `k`, `watertype`, `ps` and `pointFn`. May update `p.k.waterlevel` and `p.watertype` in place.
 function setWaterLevel(p)
   p.k.waterlevel = 0; p.watertype = 0
   point = kernel.copy(p.ps.origin); point[2] = n.fadd(n.fadd(p.ps.origin[2],-24.0),1.0)
@@ -427,6 +522,8 @@ function setWaterLevel(p)
   end if
   return void
 end function
+/// Update `p.k.mins`, `p.k.maxs`, `p.ps.pm_flags` and `p.ps.viewheight` and related state during `checkDuck`.
+/// @param p Player movement context; accesses `ps`, `k`, `cmd` and `traceFn`. May update `p.k.mins`, `p.k.maxs` and `p.ps.pm_flags` and additional fields in place.
 function checkDuck(p)
   if p.ps.powerups[c.PW_INVULNERABILITY] != 0 then
     if (p.ps.pm_flags & 16384) != 0 then
@@ -452,6 +549,8 @@ function checkDuck(p)
   return void
 end function
 
+/// Update `p.xyspeed` and `p.ps.bobCycle` during `footsteps`.
+/// @param p Player movement context; accesses `xyspeed`, `ps`, `k`, `cmd` and `msec` and related fields. May update `p.xyspeed` and `p.ps.bobCycle` in place.
 function footsteps(p)
   p.xyspeed = n.fsqrt(n.fadd(n.fmul(p.ps.velocity[0],p.ps.velocity[0]),n.fmul(p.ps.velocity[1],p.ps.velocity[1])))
   if p.ps.groundEntityNum == 1023 then
@@ -489,6 +588,8 @@ function footsteps(p)
   end if
   return void
 end function
+/// Apply `mq3.game.pmove.addEvent` while evaluating `waterEvents`.
+/// @param p Player movement context; accesses `previousWaterlevel` and `k`.
 function waterEvents(p)
   previous = p.previousWaterlevel; current = p.k.waterlevel
   if previous == 0 and current != 0 then addEvent(p,c.EV_WATER_TOUCH) end if
@@ -498,6 +599,9 @@ function waterEvents(p)
   return void
 end function
 
+/// Set `p.ps.weaponstate` to `c.WEAPON_DROPPING` and `p.ps.weaponTime` to `p.ps.weaponTime+200` in `mq3.game.pmove.beginWeaponChange`.
+/// @param p Player movement context; accesses `ps`. May update `p.ps.weaponstate` and `p.ps.weaponTime` in place.
+/// @param weapon Weapon identifier used by the action or inventory lookup.
 function beginWeaponChange(p,weapon)
   if weapon <= c.WP_NONE or weapon >= c.WP_NUM_WEAPONS then return void end if
   if (p.ps.stats[c.STAT_WEAPONS] & (1 << weapon)) == 0 or p.ps.weaponstate == c.WEAPON_DROPPING then return void end if
@@ -505,6 +609,8 @@ function beginWeaponChange(p,weapon)
   p.ps.weaponTime = p.ps.weaponTime+200; startTorso(p,c.TORSO_DROP)
   return void
 end function
+/// Update `p.ps.weapon`, `p.ps.weaponstate` and `p.ps.weaponTime` during `finishWeaponChange`.
+/// @param p Player movement context; accesses `cmd` and `ps`. May update `p.ps.weapon`, `p.ps.weaponstate` and `p.ps.weaponTime` in place.
 function finishWeaponChange(p)
   weapon = p.cmd.weapon
   if weapon < c.WP_NONE or weapon >= c.WP_NUM_WEAPONS then weapon = c.WP_NONE end if
@@ -513,16 +619,23 @@ function finishWeaponChange(p)
   startTorso(p,c.TORSO_RAISE)
   return void
 end function
+/// Apply `mq3.game.pmove.continueTorso` and `mq3.game.pmove.startTorso` while evaluating `standTorso`.
+/// @param p Player movement context; accesses `ps`.
+/// @param continuing Value used by `standTorso` in `if continuing then continueTorso(p,anim) else startTorso(p,anim) end if`.
 function standTorso(p,continuing)
   anim = c.TORSO_STAND
   if p.ps.weapon == c.WP_GAUNTLET then anim = c.TORSO_STAND2 end if
   if continuing then continueTorso(p,anim) else startTorso(p,anim) end if
   return void
 end function
+/// Apply `mq3.game.pmove.standTorso` while evaluating `torsoAnimation`.
+/// @param p Player movement context; accesses `ps`.
 function torsoAnimation(p)
   if p.ps.weaponstate == c.WEAPON_READY then standTorso(p,true) end if
   return void
 end function
+/// Apply `mq3.game.constants.itemTag`, `mq3.game.pmove.addEvent` and `mq3.game.pmove.beginWeaponChange` while evaluating `weapon`.
+/// @param p Player movement context; accesses `ps`, `cmd`, `msec` and `gauntletHit`.
 function weapon(p)
   s = p.ps
   if (s.pm_flags & 512) != 0 or s.persistant[c.PERS_TEAM] == c.TEAM_SPECTATOR then return void end if
@@ -559,12 +672,16 @@ function weapon(p)
   s.weaponTime = s.weaponTime+addTime
   return void
 end function
+/// Set `p.ps.torsoTimer` to `internal.TIMER_GESTURE` in `mq3.game.pmove.animate`.
+/// @param p Player movement context; accesses `cmd` and `ps`. May update `p.ps.torsoTimer` in place.
 function animate(p)
   if (p.cmd.buttons & 8) != 0 and p.ps.torsoTimer == 0 then
     startTorso(p,c.TORSO_GESTURE); p.ps.torsoTimer = internal.TIMER_GESTURE; addEvent(p,c.EV_TAUNT)
   end if
   return void
 end function
+/// Advance movement and animation timers by the frame duration, clearing expired movement flags and clamping timers to zero.
+/// @param p Player movement context; accesses `ps` and `msec`.
 function dropTimers(p)
   s = p.ps
   if s.pm_time != 0 then
@@ -576,6 +693,9 @@ function dropTimers(p)
   return void
 end function
 
+/// Update `ps.delta_angles[axis]` and `ps.viewangles[axis]` during `updateViewAngles`.
+/// @param ps Player movement state; accesses `pm_type`, `stats`, `delta_angles` and `viewangles`. May update `ps.delta_angles[axis]` and `ps.viewangles[axis]` in place.
+/// @param cmd Input user command; accesses `angles`.
 function updateViewAngles(ps,cmd)
   if ps.pm_type == c.PM_INTERMISSION or ps.pm_type == c.PM_SPINTERMISSION then return void end if
   if ps.pm_type != c.PM_SPECTATOR and ps.stats[c.STAT_HEALTH] <= 0 then return void end if
@@ -590,6 +710,8 @@ function updateViewAngles(ps,cmd)
   return void
 end function
 
+/// Update `p.watertype`, `p.previousWaterlevel`, `p.msec` and `p.previousOrigin` and related state during `single`.
+/// @param p Player movement context; accesses `ps`, `cmd`, `k`, `watertype` and `previousWaterlevel` and related fields. May update `p.watertype`, `p.previousWaterlevel` and `p.msec` and additional fields in place.
 function single(p)
   s = p.ps; cmd = p.cmd; k = p.k
   k.touches = []; p.watertype = 0; k.waterlevel = 0
@@ -635,6 +757,8 @@ function single(p)
   return void
 end function
 
+/// Update `p.cmd.weapon`, `p.cmd.forwardmove`, `p.cmd.rightmove` and `p.cmd.upmove` and related state during `move`.
+/// @param p Player movement context; accesses `fixed`, `fixedMsec`, `ps` and `cmd`. May update `p.cmd.weapon`, `p.cmd.forwardmove` and `p.cmd.rightmove` and additional fields in place.
 function move(p)
   if p.fixed and (p.fixedMsec < 1 or p.fixedMsec > 200) then return error(472,"Invalid fixed Pmove interval") end if
   // Reject out-of-bounds engine state; commands retain the original byte widths.

@@ -27,14 +27,24 @@ const CULL_TWO_SIDED=1
 const CULL_BACK=2
 const FACE_PLANE_EPSILON=8.0
 
+/// Data record for `mq3.renderer.world_surface_selection.SelectionConfig`; groups `width`, `height`, `horizontalFov`, `nearDistance`, `farDistance`, `triangleBudget`, and 6 further fields.
 struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError runtime verticalFov areaMask lodCurveError end struct
+/// Data record for `mq3.renderer.world_surface_selection.Candidate`; groups `faceIndex`, `triangleCount`, `distanceSquared`, `importance`.
 struct Candidate faceIndex triangleCount distanceSquared importance end struct
+/// Data record for `mq3.renderer.world_surface_selection.Selection`; groups `faceIndexes`, `candidateCount`, `selectedSurfaceCount`, `estimatedTriangleCount`, `pvsUsed`, `cameraLeaf`, and 6 further fields.
 struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
+/// Data record for `mq3.renderer.world_surface_selection.PreparedWorld`; groups `selection`, `renderData`.
 struct PreparedWorld selection renderData end struct
+/// Data record for `mq3.renderer.world_surface_selection.Frustum`; groups `slopeX`, `slopeY`, `radiusScaleX`, `radiusScaleY`.
 struct Frustum slopeX slopeY radiusScaleX radiusScaleY end struct
+/// Data record for `mq3.renderer.world_surface_selection.WorldCache`; groups `map`, `faceCenters`, `faceRadii`, `faceTriangleCounts`, `faceKinds`, `faceNormals`, and 15 further fields.
 struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes cullModes trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount nativeFaces nativeVisible nativeOutput nativePrevious nativeSelected areaMask patches end struct
 
+/// Creates error `7490` with message `"World surface selection: "+text`.
+/// @param text Input used in the result expression `error(7490,"World surface selection: "+text)`.
 function fail(text) return error(7490,"World surface selection: "+text) end function
+/// Computes `map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>=17 and map.counts!=void and len(map.counts)>=17` for `mq3.renderer.world_surface_selection.validMap`.
+/// @param map Record providing `map.data`, `map.offsets`, `map.counts`.
 function validMap(map)
   return map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>=17 and map.counts!=void and len(map.counts)>=17
 end function
@@ -42,18 +52,34 @@ end function
 // tr_bsp.c loads model 0 as the static world. Retail q3dm0 also lists the
 // *12/*13 door faces in leaf marksurfaces; those faces belong to brush models
 // and must be submitted at the mover's current origin, never as static world.
+/// @param map Record providing `map.counts`, `map.data`, `map.offsets`.
 function worldSurfaceRange(map)
   if map.counts[7]<1 then return fail("BSP has no world model") end if
   first=n.readI32(map.data,map.offsets[7]+24);count=n.readI32(map.data,map.offsets[7]+28)
   if first<0 or count<0 or first+count>map.counts[13] then return fail("invalid world model surface range") end if
   return [first,first+count]
 end function
+/// Returns `value` from `mq3.renderer.world_surface_selection.i32`; earlier branches return `fail("truncated integer")`.
+/// @param map Record providing `map.data`.
+/// @param offset Argument 2 supplied to `mq3.compat.numeric.readI32`.
 function i32(map,offset)
   value=n.readI32(map.data,offset);if value is error then return fail("truncated integer") end if;return value
 end function
+/// Returns `n.bitsFloat(value)` from `mq3.renderer.world_surface_selection.f32`; earlier branches return `fail("truncated float")`.
+/// @param map Record providing `map.data`.
+/// @param offset Argument 2 supplied to `mq3.compat.numeric.readU32`.
 function f32(map,offset)
   value=n.readU32(map.data,offset);if value is error then return fail("truncated float") end if;return n.bitsFloat(value)
 end function
+/// Builds `mq3.renderer.world_surface_selection.SelectionConfig` for `mq3.renderer.world_surface_selection.config`.
+/// @param width Initial value for `mq3.renderer.world_surface_selection.SelectionConfig.width`.
+/// @param height Initial value for `mq3.renderer.world_surface_selection.SelectionConfig.height`.
+/// @param horizontalFov Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param nearDistance Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param farDistance Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param triangleBudget Initial value for `mq3.renderer.world_surface_selection.SelectionConfig.triangleBudget`.
+/// @param backfaceCull Initial value for `mq3.renderer.world_surface_selection.SelectionConfig.backfaceCull`.
+/// @param patchError Argument 1 supplied to `mq3.compat.numeric.f32`.
 function config(width,height,horizontalFov,nearDistance,farDistance,triangleBudget,backfaceCull,patchError)
   if width<=0 or height<=0 then return fail("viewport must be positive") end if
   if horizontalFov<=0.0 or horizontalFov>=179.0 then return fail("field of view must be between zero and 179 degrees") end if
@@ -62,17 +88,28 @@ function config(width,height,horizontalFov,nearDistance,farDistance,triangleBudg
   if patchError<=0.0 then return fail("non-positive patch error") end if
   return SelectionConfig(width,height,n.f32(horizontalFov),n.f32(nearDistance),n.f32(farDistance),triangleBudget,backfaceCull,n.f32(patchError),void,void,void,void)
 end function
+/// Calls `mq3.renderer.world_surface_selection.config` with `(width,height,DEFAULT_HORIZONTAL_FOV,DEFAULT_NEAR_DISTANCE,DEFAULT_FAR_DISTANCE,DEFAULT_TRIANGLE_BUDGET,true,render.DEFAULT_PATCH_ERROR)` and returns its result.
+/// @param width Value forwarded as `width` to `mq3.renderer.world_surface_selection.config`.
+/// @param height Value forwarded as `height` to `mq3.renderer.world_surface_selection.config`.
 function defaults(width,height) return config(width,height,DEFAULT_HORIZONTAL_FOV,DEFAULT_NEAR_DISTANCE,DEFAULT_FAR_DISTANCE,DEFAULT_TRIANGLE_BUDGET,true,render.DEFAULT_PATCH_ERROR) end function
+/// Updates `cfg.horizontalFov`, `cfg.verticalFov`, `cfg.runtime`, `cfg.areaMask` in `mq3.renderer.world_surface_selection.setView`; returns `cfg`.
+/// @param cfg Mutable record or buffer; this call updates `cfg.horizontalFov`, `cfg.verticalFov`, `cfg.runtime`, `cfg.areaMask`.
+/// @param refdef Record providing `refdef.fovX`, `refdef.fovY`, `refdef.viewaxis`, `refdef.areaMask`.
 function setView(cfg,refdef)
   cfg.horizontalFov=refdef.fovX;cfg.verticalFov=refdef.fovY;cfg.runtime=refdef.viewaxis;cfg.areaMask=refdef.areaMask
   return cfg
 end function
+/// Constructs `mq3.renderer.world_surface_selection.SelectionConfig` with `width` = `cfg.width`, `height` = `cfg.height`, `horizontalFov` = `refdef.fovX`, `nearDistance` = `cfg.nearDistance` and the supplied remaining values.
+/// @param cfg Record providing `cfg.width`, `cfg.height`, `cfg.nearDistance`, `cfg.farDistance`, `cfg.triangleBudget`, `cfg.backfaceCull`.
+/// @param refdef Record providing `refdef.fovX`, `refdef.viewaxis`, `refdef.fovY`, `refdef.areaMask`.
 function forView(cfg,refdef)
   return SelectionConfig(cfg.width,cfg.height,refdef.fovX,cfg.nearDistance,cfg.farDistance,cfg.triangleBudget,cfg.backfaceCull,cfg.patchError,refdef.viewaxis,refdef.fovY,refdef.areaMask,cfg.lodCurveError)
 end function
 
 // This is CM_PointLeafnum's BSP walk, kept here so selection needs no loaded
 // collision world. Negative children encode leaves as -1-leafIndex.
+/// @param map Record providing `map.counts`, `map.offsets`.
+/// @param point Three-component vector read at indices 0, 1, and 2.
 function pointLeaf(map,point)
   if map.counts[3]<=0 then return 0 end if
   node=0;guard=0
@@ -88,6 +125,10 @@ function pointLeaf(map,point)
   leaf=-1-node;if leaf<0 or leaf>=map.counts[4] then return fail("invalid node leaf") end if;return leaf
 end function
 
+/// Computes `pvsContains` from `(map.data[at]&(1<<(other&7)))!=0` using `mq3.renderer.world_surface_selection.i32`, `mq3.compat.numeric.quotient`, `return`.
+/// @param map Record providing `map.lengths`, `map.offsets`, `map.data`.
+/// @param cluster Input tested by `clusters is error or rowBytes is error or rowBytes<=0 or cluster<0 or cluster>=clusters or other<0 or other>=clusters`.
+/// @param other Input tested by `clusters is error or rowBytes is error or rowBytes<=0 or cluster<0 or cluster>=clusters or other<0 or other>=clusters`.
 function pvsContains(map,cluster,other)
   if map.lengths[16]==0 then return true end if
   if map.lengths[16]<8 or map.offsets[16]<0 or map.offsets[16]+map.lengths[16]>len(map.data) then return false end if
@@ -98,8 +139,15 @@ function pvsContains(map,cluster,other)
   if at<map.offsets[16]+8 or at>=map.offsets[16]+map.lengths[16] then return false end if
   return (map.data[at]&(1<<(other&7)))!=0
 end function
+/// Returns `false` from `mq3.renderer.world_surface_selection.contains`; earlier branches return `true`.
+/// @param values Sequence traversed as `value` while producing this result.
+/// @param wanted Input used by `for each value in values if value==wanted then return true`.
 function contains(values,wanted) for each value in values if value==wanted then return true end if end for;return false end function
 
+/// Builds `control[index]` in `mq3.renderer.world_surface_selection.faceTriangleCount`; returns `(grid[1]-1)*(grid[2]-1)*2`.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.i32`.
+/// @param faceOffset Input used by `kind=i32(map,faceOffset+8)`.
+/// @param patchError Argument 4 supplied to `mq3.renderer.bsp_render_data.subdividePatch`.
 function faceTriangleCount(map,faceOffset,patchError)
   kind=i32(map,faceOffset+8);numMesh=i32(map,faceOffset+24)
   if kind==render.MST_PLANAR or kind==render.MST_TRIANGLE_SOUP then return n.quotient(numMesh,3) end if
@@ -111,6 +159,9 @@ function faceTriangleCount(map,faceOffset,patchError)
   return (grid[1]-1)*(grid[2]-1)*2
 end function
 
+/// Builds `positions[index]`, `center[axis]` in `mq3.renderer.world_surface_selection.faceBounds`; returns `[center,n.fsqrt(radiusSquared)]`.
+/// @param map Record providing `map.counts`.
+/// @param faceOffset Input used by `first=i32(map,faceOffset+12)`.
 function faceBounds(map,faceOffset)
   first=i32(map,faceOffset+12);count=i32(map,faceOffset+16)
   if first is error or count is error or first<0 or count<=0 or first+count>map.counts[10] then return fail("invalid face vertex range") end if
@@ -122,6 +173,8 @@ function faceBounds(map,faceOffset)
   return [center,n.fsqrt(radiusSquared)]
 end function
 
+/// Builds `mq3.renderer.world_surface_selection.Frustum` using `mq3.client.playable_viewer.focalLength`.
+/// @param cfg Record providing `cfg.width`, `cfg.horizontalFov`, `cfg.height`, `cfg.verticalFov`.
 function prepareFrustum(cfg)
   focal=viewer.focalLength(cfg.width,cfg.horizontalFov);if focal is error then return focal end if
   sx=cfg.width/(2.0*focal);sy=cfg.height/(2.0*focal)
@@ -131,6 +184,11 @@ function prepareFrustum(cfg)
   end if
   return Frustum(sx,sy,n.fsqrt(1.0+sx*sx),n.fsqrt(1.0+sy*sy))
 end function
+/// Computes `visibleInPreparedFrustum` from `local[0]>=0.0-horizontal and local[0]<=horizontal and local[1]>=0.0-vertical and local[1]<=vertical`.
+/// @param local Three-component vector read at indices 0, 1, and 2.
+/// @param radius Input tested by `local[2]+radius<cfg.nearDistance or local[2]-radius>cfg.farDistance`.
+/// @param cfg Record providing `cfg.nearDistance`, `cfg.farDistance`.
+/// @param frustum Record providing `frustum.slopeX`, `frustum.radiusScaleX`, `frustum.slopeY`, `frustum.radiusScaleY`.
 function visibleInPreparedFrustum(local,radius,cfg,frustum)
   if local[2]+radius<cfg.nearDistance or local[2]-radius>cfg.farDistance then return false end if
   // x +/- z*tan(fov/2) is an unnormalised plane equation. Expand its
@@ -139,19 +197,38 @@ function visibleInPreparedFrustum(local,radius,cfg,frustum)
   vertical=local[2]*frustum.slopeY+radius*frustum.radiusScaleY
   return local[0]>=0.0-horizontal and local[0]<=horizontal and local[1]>=0.0-vertical and local[1]<=vertical
 end function
+/// Returns `visibleInPreparedFrustum(local,radius,cfg,frustum)` from `mq3.renderer.world_surface_selection.visibleInFrustum`; earlier branches return `false`.
+/// @param local Value forwarded as `local` to `mq3.renderer.world_surface_selection.visibleInPreparedFrustum`.
+/// @param radius Value forwarded as `radius` to `mq3.renderer.world_surface_selection.visibleInPreparedFrustum`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.prepareFrustum`.
 function visibleInFrustum(local,radius,cfg)
   frustum=prepareFrustum(cfg);if frustum is error then return false end if
   return visibleInPreparedFrustum(local,radius,cfg,frustum)
 end function
+/// Computes `viewPointAxes` from `[qmath.DotProduct(delta,axes[1]),qmath.DotProduct(delta,axes[2]),qmath.DotProduct(delta,axes[0])]` using `mq3.compat.numeric.fsub`, `mq3.shared.math.DotProduct`.
+/// @param camera Record providing `camera.position`.
+/// @param point Three-component vector read at indices 0, 1, and 2.
+/// @param axes Three-component vector read at indices 0, 1, and 2.
 function viewPointAxes(camera,point,axes)
   delta=[n.fsub(point[0],camera.position[0]),n.fsub(point[1],camera.position[1]),n.fsub(point[2],camera.position[2])]
   return [qmath.DotProduct(delta,axes[1]),qmath.DotProduct(delta,axes[2]),qmath.DotProduct(delta,axes[0])]
 end function
+/// Returns `a.faceIndex<b.faceIndex` from `mq3.renderer.world_surface_selection.before`; earlier branches return `true`, `false`.
+/// @param a Record providing `a.importance`, `a.faceIndex`.
+/// @param b Record providing `b.importance`, `b.faceIndex`.
 function before(a,b)
   if a.importance<b.importance then return true end if
   if a.importance>b.importance then return false end if
   return a.faceIndex<b.faceIndex
 end function
+/// Updates `byFace[patch.face]`, `counts[patch.face]` in `mq3.renderer.world_surface_selection.preparePatches`; returns `coarseCount`.
+/// @param patches Argument 1 supplied to `mq3.renderer.world_patch_lod.stitch`.
+/// @param byFace Mutable record or buffer; this call updates `byFace[patch.face]`.
+/// @param counts Mutable record or buffer; this call updates `counts[patch.face]`.
+/// @param nativeFaces Argument 1 supplied to `mq3.renderer.native_world_selection.store`.
+/// @param centers Indexed input read at `patch.face`.
+/// @param radii Indexed input read at `patch.face`.
+/// @param normals Indexed input read at `patch.face`.
 function preparePatches(patches,byFace,counts,nativeFaces,centers,radii,normals)
   patchLod.stitch(patches);coarseCount=0;coarseTriangles=0
   for each patch in patches
@@ -171,7 +248,14 @@ function preparePatches(patches,byFace,counts,nativeFaces,centers,radii,normals)
   return coarseCount
 end function
 
+/// Calls `mq3.renderer.world_surface_selection.buildCacheForPatches` with `(map,patchError,false)` and returns its result.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.buildCacheForPatches`.
+/// @param patchError Value forwarded as `patchError` to `mq3.renderer.world_surface_selection.buildCacheForPatches`.
 function buildCache(map,patchError) return buildCacheForPatches(map,patchError,false) end function
+/// Builds `mq3.renderer.world_surface_selection.WorldCache` after updating `byFace[faceIndex]`, `textureIndexes[faceIndex]`, `kinds[faceIndex]`, `centers[faceIndex]`.
+/// @param map Initial value for `mq3.renderer.world_surface_selection.WorldCache.map`.
+/// @param patchError Argument 5 supplied to `mq3.renderer.world_patch_lod.read`.
+/// @param withVariants Input tested by `withVariants`.
 function buildCacheForPatches(map,patchError,withVariants)
   if not validMap(map) then return fail("invalid BSP object") end if
   if patchError<=0.0 then return fail("non-positive patch error") end if
@@ -244,6 +328,9 @@ function buildCacheForPatches(map,patchError,withVariants)
   return WorldCache(map,centers,radii,counts,kinds,normals,textureIndexes,array(map.counts[1],CULL_FRONT),byFace,n.f32(patchError),totalTriangles,array(clusterCount+1,void),array(clusterCount+1,0),clusterCount,nativeFaces,array(clusterCount+1,void),bytes(32+map.counts[13]*4,0),bytes(32+map.counts[13]*4,0),[],void,patches)
 end function
 
+/// Updates `cache.cullModes` in `mq3.renderer.world_surface_selection.setCullModes`; returns `cache`.
+/// @param cache Mutable record or buffer; this call updates `cache.cullModes`.
+/// @param modes Value assigned to `cache.cullModes`.
 function setCullModes(cache,modes)
   if cache==void or modes==void or len(modes)!=cache.map.counts[1] then return fail("cull mode table does not match BSP shaders") end if
   cache.cullModes=modes
@@ -257,6 +344,9 @@ function setCullModes(cache,modes)
   return cache
 end function
 
+/// Builds `modes[index]` in `mq3.renderer.world_surface_selection.setTwoSidedTextures`; returns `setCullModes(cache,modes)`.
+/// @param cache Record providing `cache.map`.
+/// @param flags Indexed input read at `index`.
 function setTwoSidedTextures(cache,flags)
   if cache==void or flags==void or len(flags)!=cache.map.counts[1] then return fail("two-sided texture table does not match BSP shaders") end if
   modes=array(len(flags),CULL_FRONT)
@@ -264,6 +354,9 @@ function setTwoSidedTextures(cache,flags)
   return setCullModes(cache,modes)
 end function
 
+/// Builds `modes[textureIndex]` in `mq3.renderer.world_surface_selection.setIndexedCulling`; returns `setCullModes(cache,modes)`.
+/// @param cache Record providing `cache.map`.
+/// @param index Argument 1 supplied to `mq3.renderer.shader_parser.parseIndexed`.
 function setIndexedCulling(cache,index)
   modes=array(cache.map.counts[1],CULL_FRONT)
   if len(modes)==0 then return setCullModes(cache,modes) end if
@@ -275,6 +368,9 @@ function setIndexedCulling(cache,index)
   return setCullModes(cache,modes)
 end function
 
+/// Compares optional area-mask buffers by presence, length, and every byte.
+/// @param left Indexed input read at `index`.
+/// @param right Indexed input read at `index`.
 function equalAreaMask(left,right)
   if left==void or right==void then return left==right end if
   if len(left)!=len(right) then return false end if
@@ -283,6 +379,11 @@ function equalAreaMask(left,right)
   return true
 end function
 
+/// Builds `seenFaces[face]` in `mq3.renderer.world_surface_selection.visibleFaces`; returns `[faceList.toArray(),rejectedPvs]`.
+/// @param map Record providing `map.counts`, `map.offsets`.
+/// @param cameraCluster Value forwarded as `cluster` to `mq3.renderer.world_surface_selection.pvsContains`.
+/// @param pvsUsed Input tested by `pvsUsed`.
+/// @param areaMask Indexed input read at `area>>3`.
 function visibleFaces(map,cameraCluster,pvsUsed,areaMask)
   worldRange=worldSurfaceRange(map);if worldRange is error then return worldRange end if
   faceList=lists.List.withCapacity(map.counts[13]);seenFaces=array(map.counts[13],false);rejectedPvs=0
@@ -303,6 +404,12 @@ function visibleFaces(map,cameraCluster,pvsUsed,areaMask)
   return [faceList.toArray(),rejectedPvs]
 end function
 
+/// Updates `cache.areaMask`, `cache.pvsFaces`, `cache.nativeVisible`, `cache.pvsFaces[slot]`, `cache.pvsRejected[slot]` in `mq3.renderer.world_surface_selection.cachedVisibleFaces`; returns `[cache.pvsFaces[slot],cache.pvsRejected[slot]]`.
+/// @param cache Mutable record or buffer; this call updates `cache.areaMask`, `cache.pvsFaces`, `cache.nativeVisible`, `cache.pvsFaces[slot]`, `cache.pvsRejected[slot]`.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.visibleFaces`.
+/// @param cameraCluster Value forwarded as `cameraCluster` to `mq3.renderer.world_surface_selection.visibleFaces`.
+/// @param pvsUsed Value forwarded as `pvsUsed` to `mq3.renderer.world_surface_selection.visibleFaces`.
+/// @param areaMask Value assigned to `cache.areaMask`.
 function cachedVisibleFaces(cache,map,cameraCluster,pvsUsed,areaMask)
   if cache==void then return visibleFaces(map,cameraCluster,pvsUsed,areaMask) end if
   if not equalAreaMask(cache.areaMask,areaMask) then
@@ -315,6 +422,12 @@ function cachedVisibleFaces(cache,map,cameraCluster,pvsUsed,areaMask)
   return [cache.pvsFaces[slot],cache.pvsRejected[slot]]
 end function
 
+/// Builds `mq3.renderer.world_surface_selection.Selection` after updating `cache.nativeVisible[slot]`, `selected[index]`, `cache.nativeSelected`.
+/// @param map Record providing `map.offsets`, `map.lengths`.
+/// @param camera Record providing `camera.position`.
+/// @param pvsOrigin Value forwarded as `point` to `mq3.renderer.world_surface_selection.pointLeaf`.
+/// @param cfg Record providing `cfg.areaMask`, `cfg.runtime`, `cfg.triangleBudget`, `cfg.farDistance`, `cfg.backfaceCull`, `cfg.patchError`.
+/// @param cache Mutable record or buffer; this call updates `cache.nativeVisible[slot]`, `cache.nativeSelected`.
 function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   if not validMap(map) then return fail("invalid BSP object") end if
   if camera==void or camera.position==void or len(camera.position)!=3 then return fail("invalid camera") end if
@@ -386,19 +499,42 @@ function chooseCorePvs(map,camera,pvsOrigin,cfg,cache)
   return Selection(selected,len(candidates),len(selected),used,pvsUsed,leaf,cameraCluster,rejectedPvs,rejectedFrustum,rejectedBackface,rejectedDistance,rejectedBudget)
 end function
 
+/// Calls `mq3.renderer.world_surface_selection.chooseCorePvs` with `(map,camera,camera.position,cfg,cache)` and returns its result.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.chooseCorePvs`.
+/// @param camera Record providing `camera.position`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCorePvs`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.world_surface_selection.chooseCorePvs`.
 function chooseCore(map,camera,cfg,cache) return chooseCorePvs(map,camera,camera.position,cfg,cache) end function
+/// Calls `mq3.renderer.world_surface_selection.chooseCore` with `(map,camera,cfg,void)` and returns its result.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.chooseCore`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.chooseCore`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCore`.
 function choose(map,camera,cfg) return chooseCore(map,camera,cfg,void) end function
+/// Computes `chooseCached` from `chooseCore(cache.map,camera,cfg,cache)` using `mq3.renderer.world_surface_selection.chooseCore`.
+/// @param cache Record providing `cache.map`, `cache.patchError`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.chooseCore`.
+/// @param cfg Record providing `cfg.patchError`.
 function chooseCached(cache,camera,cfg)
   if cache==void or cache.map==void then return fail("invalid world cache") end if
   if cfg.patchError!=cache.patchError then return fail("cache patch error differs from configuration") end if
   return chooseCore(cache.map,camera,cfg,cache)
 end function
+/// Computes `choosePortalCached` from `chooseCorePvs(cache.map,camera,pvsOrigin,cfg,cache)` using `mq3.renderer.world_surface_selection.chooseCorePvs`.
+/// @param cache Record providing `cache.map`, `cache.patchError`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.chooseCorePvs`.
+/// @param pvsOrigin Value forwarded as `pvsOrigin` to `mq3.renderer.world_surface_selection.chooseCorePvs`.
+/// @param cfg Record providing `cfg.patchError`.
 function choosePortalCached(cache,camera,pvsOrigin,cfg)
   if cache==void or cache.map==void then return fail("invalid world cache") end if
   if cfg.patchError!=cache.patchError then return fail("cache patch error differs from configuration") end if
   return chooseCorePvs(cache.map,camera,pvsOrigin,cfg,cache)
 end function
 
+/// Updates `chosen.estimatedTriangleCount`, `chosen.faceIndexes` in `mq3.renderer.world_surface_selection.choosePatchLod`; returns `chosen`.
+/// @param cache Record providing `cache.patches`, `cache.trianglesByFace`.
+/// @param chosen Mutable record or buffer; this call updates `chosen.estimatedTriangleCount`, `chosen.faceIndexes`.
+/// @param camera Record providing `camera.position`.
+/// @param cfg Record providing `cfg.lodCurveError`, `cfg.runtime`.
 function choosePatchLod(cache,chosen,camera,cfg)
   if cfg.lodCurveError==void or cache.patches==void or len(chosen.faceIndexes)==0 then return chosen end if
   axes=cfg.runtime;if axes==void then axes=viewer.cameraBasis(camera) end if
@@ -416,6 +552,9 @@ function choosePatchLod(cache,chosen,camera,cfg)
   return chosen
 end function
 
+/// Builds `triangles[offset]` in `mq3.renderer.world_surface_selection.cachedRenderData`; returns `render.RenderData(triangles,chosen.selectedSurfaceCount,len(triangles),0,false,patches)`.
+/// @param cache Record providing `cache.trianglesByFace`, `cache.faceKinds`.
+/// @param chosen Record providing `chosen.faceIndexes`, `chosen.selectedSurfaceCount`.
 function cachedRenderData(cache,chosen)
   if cache==void or chosen==void then return fail("cache and selection required") end if
   total=0;patches=0
@@ -428,6 +567,10 @@ function cachedRenderData(cache,chosen)
   return render.RenderData(triangles,chosen.selectedSurfaceCount,len(triangles),0,false,patches)
 end function
 
+/// Builds `mq3.renderer.world_surface_selection.PreparedWorld` for `mq3.renderer.world_surface_selection.prepareCached`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.world_surface_selection.chooseCached`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.chooseCached`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCached`.
 function prepareCached(cache,camera,cfg)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
   chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
@@ -436,16 +579,30 @@ end function
 // Keep the already-flattened triangle stream when camera motion does not
 // alter the visible face order. PVS/frustum metadata is still refreshed,
 // while the hot frame path avoids rebuilding an identical immutable array.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.world_surface_selection.chooseCached`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.chooseCached`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.chooseCached`.
+/// @param previous Record providing `previous.selection`, `previous.renderData`.
 function prepareCachedRetained(cache,camera,cfg,previous)
   chosen=chooseCached(cache,camera,cfg);if chosen is error then return chosen end if
   chosen=choosePatchLod(cache,chosen,camera,cfg);if chosen is error then return chosen end if
   if previous!=void and previous.selection!=void and previous.renderData!=void and sameFaces(previous.selection.faceIndexes,chosen.faceIndexes) then return PreparedWorld(chosen,previous.renderData) end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
 end function
+/// Returns `choosePatchLod(cache,chosen,camera,cfg)` from `mq3.renderer.world_surface_selection.selectPortalCached`; earlier branches return `chosen`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.world_surface_selection.choosePortalCached`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.choosePortalCached`.
+/// @param pvsOrigin Value forwarded as `pvsOrigin` to `mq3.renderer.world_surface_selection.choosePortalCached`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.choosePortalCached`.
 function selectPortalCached(cache,camera,pvsOrigin,cfg)
   chosen=choosePortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
   return choosePatchLod(cache,chosen,camera,cfg)
 end function
+/// Builds `mq3.renderer.world_surface_selection.PreparedWorld` for `mq3.renderer.world_surface_selection.preparePortalCached`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.world_surface_selection.selectPortalCached`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.selectPortalCached`.
+/// @param pvsOrigin Value forwarded as `pvsOrigin` to `mq3.renderer.world_surface_selection.selectPortalCached`.
+/// @param cfg Value forwarded as `cfg` to `mq3.renderer.world_surface_selection.selectPortalCached`.
 function preparePortalCached(cache,camera,pvsOrigin,cfg)
   chosen=selectPortalCached(cache,camera,pvsOrigin,cfg);if chosen is error then return chosen end if
   return PreparedWorld(chosen,cachedRenderData(cache,chosen))
@@ -453,6 +610,8 @@ end function
 
 // Camera checks run regularly, but rebuilding retained material commands is
 // only necessary when the selected BSP face set actually changes.
+/// @param left Indexed input read at `index`.
+/// @param right Indexed input read at `index`.
 function sameFaces(left,right)
   if left==void or right==void or len(left)!=len(right) then return false end if
   if len(left)==0 then return true end if
@@ -460,6 +619,10 @@ function sameFaces(left,right)
   return true
 end function
 
+/// Builds `mq3.renderer.world_surface_selection.PreparedWorld` using `mq3.renderer.bsp_render_data.extractWithPatchError`.
+/// @param map Value forwarded as `map` to `mq3.renderer.world_surface_selection.choose`.
+/// @param camera Value forwarded as `camera` to `mq3.renderer.world_surface_selection.choose`.
+/// @param cfg Record providing `cfg.triangleBudget`, `cfg.patchError`.
 function prepare(map,camera,cfg)
   chosen=choose(map,camera,cfg);if chosen is error then return chosen end if
   data=render.extractWithPatchError(map,chosen.faceIndexes,cfg.triangleBudget,cfg.patchError);if data is error then return data end if

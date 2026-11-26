@@ -17,12 +17,14 @@ const CHAT_GENDERFEMALE = 1
 const CHAT_GENDERMALE = 2
 const CHAT_ALL = 0
 
+/// `Settings` record for bot client resources, containing `characterfile`, `skill` and `team`.
 struct Settings
   characterfile
   skill
   team
 end struct
 
+/// `Services` record for bot client resources, containing `lifecycleState`, `aasInitializedFn`, `diagnosticFn`, `loadCharacterFn` and `allocGoalStateFn` and related fields.
 struct Services
   lifecycleState
   aasInitializedFn
@@ -58,31 +60,50 @@ struct Services
   context
 end struct
 
+/// Build the `mq3.game.bot_client_resources.Services` result for `create`.
+/// @param state Initial value stored in `mq3.game.bot_client_resources.Services.lifecycleState`.
 function create(state)
   if state == void then return error(495,"Bot client resources require lifecycle state") end if
   return Services(state,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,
     void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
+/// Require an integer bot client slot within the fixed bot-client capacity.
+/// @param client Value passed as argument 1 to `typeof`.
 function validClient(client)
   if typeof(client) != "int" or client < 0 or client >= botLifecycle.MAX_CLIENTS then return error(495,"Invalid bot client slot") end if
   return client
 end function
 
+/// Require a callback used to allocate or release bot client resources.
+/// @param callback Callback invoked by this operation.
+/// @param label Label retained with the diagnostic or action record.
 function need(callback,label)
   if callback == void then return error(495,"Bot client resources require "+label) end if
   return callback
 end function
 
+/// Use `services.diagnosticFn` to perform `diagnostic`.
+/// @param services Host service callbacks; accesses `diagnosticFn`.
+/// @param kind Value passed as argument 2 to `services.diagnosticFn`.
+/// @param client Value passed as argument 3 to `services.diagnosticFn`.
+/// @param settings Value passed as argument 4 to `services.diagnosticFn`.
 function diagnostic(services,kind,client,settings)
   if services.diagnosticFn != void then services.diagnosticFn(services,kind,client,settings) end if
   return void
 end function
 
+/// Apply `mq3.game.bot_lifecycle.createBot` while evaluating `inactiveBot`. Return paths include `bot`.
+/// @param client Initial value stored in `mq3.game.bot_lifecycle.BotState.client`.
 function inactiveBot(client)
   bot = botLifecycle.createBot(client); bot.inuse = false; return bot
 end function
 
+/// Use `services.characteristicStringFn` to perform `setupClient`.
+/// @param services Host service callbacks; accesses `lifecycleState`, `aasInitializedFn`, `loadCharacterFn`, `allocGoalStateFn` and `characteristicStringFn` and related fields.
+/// @param client Value passed as argument 1 to `typeof`.
+/// @param settings Settings record; accesses `characterfile`, `skill` and `team`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function setupClient(services,client,settings,restart)
   validClient(client)
   if settings == void then return error(495,"Bot setup requires settings") end if
@@ -140,6 +161,8 @@ function setupClient(services,client,settings,restart)
   return true
 end function
 
+/// Update `bot.inuse`, `bot.client`, `bot.entitynum` and `bot.settings` and related state during `clearBot`.
+/// @param bot Bot AI state; accesses `inuse`, `client`, `entitynum`, `settings` and `curPs` and related fields. May update `bot.inuse`, `bot.client` and `bot.entitynum` and additional fields in place.
 function clearBot(bot)
   bot.inuse = false; bot.client = 0; bot.entitynum = 0; bot.settings = void; bot.curPs = void
   bot.character = 0; bot.ms = 0; bot.gs = 0; bot.cs = 0; bot.ws = 0; bot.entergameTime = 0.0
@@ -147,6 +170,10 @@ function clearBot(bot)
   bot.numKills = 0; bot.numDeaths = 0; bot.transient = void; return void
 end function
 
+/// Apply `mq3.game.bot_client_resources.validClient`, `mq3.game.bot_client_resources.need` and `mq3.game.bot_client_resources.clearBot` while evaluating `shutdownClient`.
+/// @param services Host service callbacks; accesses `lifecycleState`, `writeSessionFn`, `chatExitGameFn`, `enterChatFn` and `freeMoveStateFn` and related fields.
+/// @param client Value passed as argument 1 to `typeof`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function shutdownClient(services,client,restart)
   validClient(client); state = services.lifecycleState; bot = state.botstates[client]
   if bot == void or not bot.inuse then return false end if

@@ -12,20 +12,40 @@ const SOUND_ATTENUATE=0.0008
 const MAX_SOURCES=64
 const MAX_FRAMES=4096
 
+/// Source record for audio.spatial_mixer, containing `id`, `key`, `origin`, `sound`, `volume`, `globalSound`, and 2 further fields.
 struct Source id key origin sound volume globalSound cursor enabled end struct
+/// State record for audio.spatial_mixer, containing `outputRate`, `chunkFrames`, `sources`.
 struct State outputRate chunkFrames sources end struct
+/// Chunk record for audio.spatial_mixer, containing `samples`, `frames`, `audibleSources`, `peak`, `limiterGain`.
 struct Chunk samples frames audibleSources peak limiterGain end struct
+/// Spatial record for audio.spatial_mixer, containing `left`, `right`, `distance`, `attenuation`.
 struct Spatial left right distance attenuation end struct
+/// Group record for audio.spatial_mixer, containing `key`, `sound`, `cursor`, `step`, `sourceFrames`, `left`, and 2 further fields.
 struct Group key sound cursor step sourceFrames left right sourceIndexes end struct
 
+/// Create the audio.spatial_mixer error for `fail` with 7620 and the supplied diagnostic text.
+/// @param message Message used in `("spatial mixer: " + message)` and `error(7620, ("spatial mixer: " + message))`.
 function fail(message) return error(7620,"spatial mixer: "+message) end function
 
+/// Create spatial mixer in audio.spatial_mixer; the normal completion returns `State(outputRate, chunkFrames, [])`.
+/// @param outputRate Initial `outputRate` field stored in the returned or constructed `mq3.audio.spatial_mixer.State` record.
+/// @param chunkFrames Initial `chunkFrames` field stored in the returned or constructed `mq3.audio.spatial_mixer.State` record.
 function create(outputRate,chunkFrames)
   if outputRate<4000 or outputRate>192000 then return fail("invalid output rate") end if
   if chunkFrames<1 or chunkFrames>MAX_FRAMES then return fail("invalid chunk size") end if
   return State(outputRate,chunkFrames,[])
 end function
 
+/// Add shared loop in audio.spatial_mixer; the normal completion returns `(len(state.sources) - 1)`.
+///
+/// Direct state writes: `state.sources`.
+/// @param state Record exposing `sources`. Updated in place: `sources`.
+/// @param id Initial `id` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
+/// @param key Initial `key` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
+/// @param origin Origin used in `origin[0]` and `origin[1]`.
+/// @param sound Record exposing `samples`, `blockAlign`.
+/// @param volume Initial `volume` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
+/// @param globalSound Initial `globalSound` field stored in the returned or constructed `mq3.audio.spatial_mixer.Source` record.
 function addSharedLoop(state,id,key,origin,sound,volume,globalSound)
   if state==void or sound==void or origin==void or len(origin)!=3 then return fail("invalid source") end if
   if typeof(key)!="string" then return fail("invalid source key") end if
@@ -35,13 +55,30 @@ function addSharedLoop(state,id,key,origin,sound,volume,globalSound)
   state.sources=state.sources+[Source(id,key,[origin[0],origin[1],origin[2]],sound,volume,globalSound,0.0,true)]
   return len(state.sources)-1
 end function
+/// Return `mq3.audio.spatial_mixer.addSharedLoop(state, id, ("#" + str(id)), origin, sound, volume, globalSound)` from `audio.spatial_mixer.addLoop`.
+/// @param state State passed as `state` to `mq3.audio.spatial_mixer.addSharedLoop`.
+/// @param id Id passed as `id` to `mq3.audio.spatial_mixer.addSharedLoop`.
+/// @param origin Origin passed as `origin` to `mq3.audio.spatial_mixer.addSharedLoop`.
+/// @param sound Sound passed as `sound` to `mq3.audio.spatial_mixer.addSharedLoop`.
+/// @param volume Volume passed as `volume` to `mq3.audio.spatial_mixer.addSharedLoop`.
+/// @param globalSound Global sound passed as `globalSound` to `mq3.audio.spatial_mixer.addSharedLoop`.
 function addLoop(state,id,origin,sound,volume,globalSound) return addSharedLoop(state,id,"#"+str(id),origin,sound,volume,globalSound) end function
 
+/// Set enabled in audio.spatial_mixer; the normal completion returns `false`.
+/// @param state Record exposing `sources`.
+/// @param id Id used in `(source.id == id)`.
+/// @param enabled Enabled operand used by `setEnabled`; its reads are shown in the implementation.
 function setEnabled(state,id,enabled)
   for each source in state.sources if source.id==id then source.enabled=enabled;return true end if end for
   return false
 end function
 
+/// Compute spatialize in audio.spatial_mixer; the normal completion returns `Spatial(left, rightGain, distance, attenuation)`.
+/// @param origin Origin used in `origin[0]` and `origin[1]`.
+/// @param listener Listener used in `listener[0]` and `listener[1]`.
+/// @param right Left three-element vector.
+/// @param volume Initial `left` field stored in the returned or constructed `mq3.audio.spatial_mixer.Spatial` record.
+/// @param globalSound Global sound operand used by `spatialize`; its reads are shown in the implementation.
 function spatialize(origin,listener,right,volume,globalSound)
   if volume<=0.0 then return Spatial(0.0,0.0,0.0,0.0) end if
   if globalSound then return Spatial(volume,volume,0.0,1.0) end if
@@ -56,10 +93,16 @@ function spatialize(origin,listener,right,volume,globalSound)
   return Spatial(left,rightGain,distance,attenuation)
 end function
 
+/// Compute signed 16 in audio.spatial_mixer; the normal completion returns `value`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function signed16(data,offset)
   value=data[offset]|(data[offset+1]<<8);if value>=32768 then value=value-65536 end if;return value
 end function
 
+/// Compute mono sample in audio.spatial_mixer; the normal completion returns `((left + right) / 2)`.
+/// @param sound Record exposing `samples`, `blockAlign`, `bitsPerSample`, `channels`.
+/// @param frame Frame used in `(frame % frames)`.
 function monoSample(sound,frame)
   frames=len(sound.samples)/sound.blockAlign;if frames<1 then return 0 end if
   index=frame%frames;if index<0 then index=index+frames end if;offset=index*sound.blockAlign
@@ -73,12 +116,22 @@ function monoSample(sound,frame)
   right=signed16(sound.samples,offset+2);return (left+right)/2
 end function
 
+/// Write 16 in audio.spatial_mixer; updates `output entries`.
+///
+/// Direct state writes: `output elements`.
+/// @param output Mutable sequence written at `offset`, `(offset + 1)`.
+/// @param offset Offset used in `(offset + 1)`.
+/// @param value Floating-point value to convert to signed 32-bit integer semantics.
 function write16(output,offset,value)
   integer=numeric.trunc32(value);if value>=0.0 then integer=numeric.trunc32(value+0.5) else integer=numeric.trunc32(value-0.5) end if
   if integer>32767 then integer=32767 else if integer< -32768 then integer=-32768 end if
   output[offset]=integer&255;output[offset+1]=(integer>>8)&255;return void
 end function
 
+/// Render spatial mixer in audio.spatial_mixer; the normal completion returns `Chunk(output, state.chunkFrames, audible, peak, limiter)`.
+/// @param state Record exposing `chunkFrames`, `sources`, `outputRate`.
+/// @param listener Listener passed as `listener` to `mq3.audio.spatial_mixer.spatialize`.
+/// @param right A passed as `a` to `mq3.shared.math.VectorLength`.
 function render(state,listener,right)
   if state==void or listener==void or right==void or len(listener)!=3 or len(right)!=3 then return fail("invalid listener") end if
   rightLength=qmath.VectorLength(right);if rightLength<0.99 or rightLength>1.01 then return fail("listener right vector is not normalized") end if

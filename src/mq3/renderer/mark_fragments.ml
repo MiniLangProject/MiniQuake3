@@ -20,17 +20,26 @@ const CONTENTS_FOG=0x40
 const FACE_STRIDE=104
 const SHADER_STRIDE=72
 
+/// Data record for `mq3.renderer.mark_fragments.Plane`; groups `normal`, `distance`.
 struct Plane normal distance end struct
+/// Data record for `mq3.renderer.mark_fragments.Fragment`; groups `firstPoint`, `numPoints`.
 struct Fragment firstPoint numPoints end struct
+/// Data record for `mq3.renderer.mark_fragments.Result`; groups `points`, `fragments`, `candidateSurfaces`, `testedTriangles`.
 struct Result points fragments candidateSurfaces testedTriangles end struct
+/// Data record for `mq3.renderer.mark_fragments.GeometryCache`; groups `map`, `data`, `dataPointer`, `slots`, `faceVisits`, `faceSerial`, and 5 further fields.
 struct GeometryCache map data dataPointer slots faceVisits faceSerial faceMap faceDataPointer faceTriangles faceTriangleCount faceCacheEnabled end struct
+/// Data record for `mq3.renderer.mark_fragments.FaceBatch`; groups `faces`, `triangles`.
 struct FaceBatch faces triangles end struct
 
+/// Constructs `mq3.renderer.mark_fragments.GeometryCache` with `map` = `void`, `data` = `void`, `dataPointer` = `0`, `slots` = `array(32,void)` and the supplied remaining values.
 function geometryCache() return GeometryCache(void,void,0,array(32,void),void,0,void,0,void,0,false) end function
 
 // A moving impact can hit the same ordered set of static faces with different
 // clip planes. Keep only small batches. Projection bounds, clipping and output
 // limits are still evaluated for each impact.
+/// @param map Record providing `map.data`, `map.counts`.
+/// @param faces Argument 2 supplied to `mq3.renderer.bsp_render_data.extractRetainedWithPatchError`.
+/// @param cache Mutable record or buffer; this call updates `cache.slots`, `cache.faceTriangles`, `cache.faceTriangleCount`, `cache.faceCacheEnabled`, `cache.map`.
 function markTriangles(map,faces,cache)
   if len(faces)==0 then return [] end if
   slot=0
@@ -101,16 +110,39 @@ function markTriangles(map,faces,cache)
   return triangles
 end function
 
+/// Creates error `7693` with message `"mark fragments: "+message`.
+/// @param message Input used in the result expression `error(7693,"mark fragments: "+message)`.
 function fail(message) return error(7693,"mark fragments: "+message) end function
+/// Computes `a[0]*b[0]+a[1]*b[1]+a[2]*b[2]` for `mq3.renderer.mark_fragments.dot`.
+/// @param a Three-component vector read at indices 0, 1, and 2.
+/// @param b Three-component vector read at indices 0, 1, and 2.
 function dot(a,b) return a[0]*b[0]+a[1]*b[1]+a[2]*b[2] end function
+/// Returns `[value[0]/length,value[1]/length,value[2]/length]` from `mq3.renderer.mark_fragments.normalize`; earlier branches return `[0.0,0.0,0.0]`.
+/// @param value Value forwarded as `a` to `mq3.renderer.mark_fragments.dot`.
 function normalize(value)
   length=n.fsqrt(dot(value,value));if length<=0.0 then return [0.0,0.0,0.0] end if
   return [value[0]/length,value[1]/length,value[2]/length]
 end function
+/// Calls `mq3.compat.numeric.readI32` with `(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative)` and returns its result.
+/// @param map Record providing `map.data`, `map.offsets`.
+/// @param faceIndex Input used in the result expression `n.readI32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative)`.
+/// @param relative Input used in the result expression `n.readI32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative)`.
 function faceValue(map,faceIndex,relative) return n.readI32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative) end function
+/// Calls `mq3.compat.numeric.bitsFloat` with `(n.readU32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative))` and returns its result.
+/// @param map Record providing `map.data`, `map.offsets`.
+/// @param faceIndex Input used in the result expression `n.bitsFloat(n.readU32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative))`.
+/// @param relative Input used in the result expression `n.bitsFloat(n.readU32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative))`.
 function faceFloat(map,faceIndex,relative) return n.bitsFloat(n.readU32(map.data,map.offsets[13]+faceIndex*FACE_STRIDE+relative)) end function
+/// Calls `mq3.compat.numeric.readI32` with `(map.data,map.offsets[1]+shaderIndex*SHADER_STRIDE+relative)` and returns its result.
+/// @param map Record providing `map.data`, `map.offsets`.
+/// @param shaderIndex Input used in the result expression `n.readI32(map.data,map.offsets[1]+shaderIndex*SHADER_STRIDE+relative)`.
+/// @param relative Input used in the result expression `n.readI32(map.data,map.offsets[1]+shaderIndex*SHADER_STRIDE+relative)`.
 function shaderValue(map,shaderIndex,relative) return n.readI32(map.data,map.offsets[1]+shaderIndex*SHADER_STRIDE+relative) end function
 
+/// Builds `mins[axis]`, `maxs[axis]` in `mq3.renderer.mark_fragments.projectionBounds`; returns `[mins,maxs]`.
+/// @param points Nested indexed data; outer entries read at `0`.
+/// @param projection Indexed input read at `axis`.
+/// @param direction Indexed input read at `axis`.
 function projectionBounds(points,projection,direction)
   mins=[points[0][0],points[0][1],points[0][2]];maxs=[points[0][0],points[0][1],points[0][2]]
   for each point in points
@@ -124,6 +156,9 @@ function projectionBounds(points,projection,direction)
   return [mins,maxs]
 end function
 
+/// Builds `planes[index]`, `planes[len(points)]`, `planes[len(points)+1]` in `mq3.renderer.mark_fragments.projectionPlanes`; returns `planes`.
+/// @param points Indexed input read at `index`, `(index+1)%len(points)`, `0`.
+/// @param projection Value forwarded as `value` to `mq3.renderer.mark_fragments.normalize`.
 function projectionPlanes(points,projection)
   direction=normalize(projection)
   planes=array(len(points)+2,void)
@@ -143,6 +178,8 @@ function projectionPlanes(points,projection)
 end function
 
 // R_ChopPolyBehindPlane keeps front/on points and uses a 0.5 unit epsilon.
+/// @param points Indexed input read at `index`, `next`.
+/// @param plane Record providing `plane.normal`, `plane.distance`.
 function clipPlane(points,plane)
   if len(points)==0 or len(points)>=MAX_VERTS_ON_POLY-2 then return [] end if
   front=0;back=0
@@ -166,6 +203,9 @@ function clipPlane(points,plane)
   end for
   return output.toArray()
 end function
+/// Returns `output` from `mq3.renderer.mark_fragments.clipTriangle`.
+/// @param vertices Input used by `output=vertices`.
+/// @param planes Sequence traversed as `plane` while producing this result.
 function clipTriangle(vertices,planes)
   output=vertices
   for each plane in planes output=clipPlane(output,plane);if len(output)==0 then break end if end for
@@ -175,6 +215,11 @@ end function
 // The clipper rejects most triangles of a repeated combat face list before
 // any polygon work, so the prism test reads the three positions directly
 // instead of materializing the vertex array the clipper needs afterwards.
+/// @param first Indexed input read at `axis`.
+/// @param second Indexed input read at `axis`.
+/// @param third Indexed input read at `axis`.
+/// @param mins Indexed input read at `axis`.
+/// @param maxs Indexed input read at `axis`.
 function triangleBoundsOverlap(first,second,third,mins,maxs)
   for axis=0 to 2
     low=first[axis];high=low
@@ -184,6 +229,12 @@ function triangleBoundsOverlap(first,second,third,mins,maxs)
   end for
   return true
 end function
+/// Filters decal targets by supported BSP face kind, shader impact/mark flags, and contents.
+/// @param map Record providing `map.offsets`, `map.data`.
+/// @param faceIndex Value forwarded as `faceIndex` to `mq3.renderer.mark_fragments.faceValue`.
+/// @param direction Three-component vector read at indices 0, 1, and 2.
+/// @param mins Three-component vector read at indices 0, 1, and 2.
+/// @param maxs Three-component vector read at indices 0, 1, and 2.
 function eligibleFace(map,faceIndex,direction,mins,maxs)
   kind=faceValue(map,faceIndex,8);if kind!=renderData.MST_PLANAR and kind!=renderData.MST_PATCH then return false end if
   shader=faceValue(map,faceIndex,0);flags=shaderValue(map,shader,64);contents=shaderValue(map,shader,68)
@@ -201,6 +252,13 @@ function eligibleFace(map,faceIndex,direction,mins,maxs)
   end if
   return true
 end function
+/// Updates `cache.faceVisits`, `cache.faceSerial`, `cache.faceMap`, `cache.faceDataPointer`, `cache.faceVisits[faceIndex]` in `mq3.renderer.mark_fragments.candidateFaces`; returns `result.toArray()`.
+/// @param map Record providing `map.data`, `map.counts`.
+/// @param world Record providing `world.leaves`.
+/// @param mins Argument 2 supplied to `mq3.collision.world.enumerateLeaves`.
+/// @param maxs Argument 3 supplied to `mq3.collision.world.enumerateLeaves`.
+/// @param direction Value forwarded as `direction` to `mq3.renderer.mark_fragments.eligibleFace`.
+/// @param cache Mutable record or buffer; this call updates `cache.faceVisits`, `cache.faceSerial`, `cache.faceMap`, `cache.faceDataPointer`, `cache.faceVisits[faceIndex]`.
 function candidateFaces(map,world,mins,maxs,direction,cache)
   leaves=collision.enumerateLeaves(world,mins,maxs)
   seen=void
@@ -232,9 +290,24 @@ function candidateFaces(map,world,mins,maxs,direction,cache)
   return result.toArray()
 end function
 
+/// Calls `mq3.renderer.mark_fragments.projectWithCache` with `(map,world,sourcePoints,projection,maxPoints,maxFragments,void)` and returns its result.
+/// @param map Value forwarded as `map` to `mq3.renderer.mark_fragments.projectWithCache`.
+/// @param world Value forwarded as `world` to `mq3.renderer.mark_fragments.projectWithCache`.
+/// @param sourcePoints Value forwarded as `sourcePoints` to `mq3.renderer.mark_fragments.projectWithCache`.
+/// @param projection Value forwarded as `projection` to `mq3.renderer.mark_fragments.projectWithCache`.
+/// @param maxPoints Value forwarded as `maxPoints` to `mq3.renderer.mark_fragments.projectWithCache`.
+/// @param maxFragments Value forwarded as `maxFragments` to `mq3.renderer.mark_fragments.projectWithCache`.
 function project(map,world,sourcePoints,projection,maxPoints,maxFragments)
   return projectWithCache(map,world,sourcePoints,projection,maxPoints,maxFragments,void)
 end function
+/// Builds `mq3.renderer.mark_fragments.Result` using `fragments.add`, `outputPoints.add`, `outputPoints.toArray`.
+/// @param map Value forwarded as `map` to `mq3.renderer.mark_fragments.candidateFaces`.
+/// @param world Value forwarded as `world` to `mq3.renderer.mark_fragments.candidateFaces`.
+/// @param sourcePoints Value forwarded as `points` to `mq3.renderer.mark_fragments.projectionBounds`.
+/// @param projection Value forwarded as `value` to `mq3.renderer.mark_fragments.normalize`.
+/// @param maxPoints Input tested by `maxPoints<0 or maxFragments<0 or maxPoints>131072 or maxFragments>131072`.
+/// @param maxFragments Input tested by `maxPoints<0 or maxFragments<0 or maxPoints>131072 or maxFragments>131072`.
+/// @param cache Value forwarded as `cache` to `mq3.renderer.mark_fragments.candidateFaces`.
 function projectWithCache(map,world,sourcePoints,projection,maxPoints,maxFragments,cache)
   if map==void or world==void or sourcePoints==void or len(sourcePoints)<3 or projection==void or len(projection)!=3 then return fail("invalid projection input") end if
   if maxPoints<0 or maxFragments<0 or maxPoints>131072 or maxFragments>131072 then return fail("invalid output capacity") end if

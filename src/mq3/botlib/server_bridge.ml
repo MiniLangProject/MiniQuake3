@@ -15,37 +15,68 @@ const OP_USER_COMMAND=211
 const MAX_RELIABLE_COMMANDS=64
 const USERCMD_SIZE=24
 
+/// `Client` record for server bridge, containing `snapshotEntities`, `reliableCommands`, `reliableSequence`, `reliableAcknowledge` and `lastPacketTime` and related fields.
 struct Client snapshotEntities reliableCommands reliableSequence reliableAcknowledge lastPacketTime userCommand pending end struct
+/// `State` record for server bridge, containing `clients`, `now` and `lastFrameTime`.
 struct State clients now lastFrameTime end struct
+/// `ConsoleResult` record for server bridge, containing `available` and `text`.
 struct ConsoleResult available text end struct
 
+/// Create a `mq3.botlib.server_bridge.Client` record, initializing `reliableCommands` as `array(MAX_RELIABLE_COMMANDS,"")`.
 function emptyClient() return Client([],array(MAX_RELIABLE_COMMANDS,""),0,0,0,void,false) end function
+/// Build the `mq3.botlib.server_bridge.State` result for `create`. Return paths include `State(clients,0,-1)`.
+/// @param maxClients Value passed as argument 1 to `array`.
 function create(maxClients)
   if maxClients<1 then return error(7580,"bot server bridge: client capacity must be positive") end if
   clients=array(maxClients,void);for index=0 to maxClients-1 clients[index]=emptyClient() end for;return State(clients,0,-1)
 end function
+/// Read a bridge client record by its zero-based slot, returning void for an invalid state or slot.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
 function clientAt(state,client)
   if state==void or client<0 or client>=len(state.clients) then return void end if;return state.clients[client]
 end function
+/// Set `state.now` to `time` in `mq3.botlib.server_bridge.setTime`.
+/// @param state Server bridge state; accesses `now`. May update `state.now` in place.
+/// @param time Time value in the units expected by this module.
 function setTime(state,time) if state!=void then state.now=time end if;return 0 end function
+/// Set `state.clients[client]` to `emptyClient()` in `mq3.botlib.server_bridge.resetClient`.
+/// @param state Server bridge state; accesses `clients`. May update `state.clients[client]` in place.
+/// @param client Value used by `resetClient` in `if state==void or client<0 or client>=len(state.clients) then return error(7580,"bot server bridge: invalid rese...`.
 function resetClient(state,client)
   if state==void or client<0 or client>=len(state.clients) then return error(7580,"bot server bridge: invalid reset client") end if
   state.clients[client]=emptyClient();return 0
 end function
+/// Apply `mq3.botlib.server_bridge.clientAt` and `mq3.game.entitystate.copy` while evaluating `publishSnapshot`. Return paths include `len(value.snapshotEntities)`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
+/// @param entities Sequence whose length bounds the iteration or lookup in `publishSnapshot`.
 function publishSnapshot(state,client,entities)
   value=clientAt(state,client);if value==void then return error(7580,"bot server bridge: invalid snapshot client") end if
   capacity=0;if entities!=void then capacity=len(entities) end if;copied=lists.List.withCapacity(capacity)
   if entities!=void then for each entity in entities if entity==void then return error(7580,"bot server bridge: missing snapshot entity") end if;copied.add(entitystate.copy(entity)) end for end if
   value.snapshotEntities=copied.toArray();return len(value.snapshotEntities)
 end function
+/// Apply `mq3.botlib.server_bridge.clientAt` while evaluating `snapshotEntity`. Return paths include `value.snapshotEntities[sequence].number`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
+/// @param sequence Operand used to evaluate the returned expression `value.snapshotEntities[sequence].number`.
 function snapshotEntity(state,client,sequence)
   value=clientAt(state,client);if value==void or sequence<0 or sequence>=len(value.snapshotEntities) then return -1 end if
   return value.snapshotEntities[sequence].number
 end function
+/// Apply `mq3.botlib.server_bridge.clientAt` and `mq3.game.entitystate.copy` while evaluating `snapshotEntityState`. Return paths include `entitystate.copy(value.snapshotEntities[sequence])`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
+/// @param sequence Operand used to evaluate the returned expression `entitystate.copy(value.snapshotEntities[sequence])`.
 function snapshotEntityState(state,client,sequence)
   value=clientAt(state,client);if value==void or sequence<0 or sequence>=len(value.snapshotEntities) then return void end if
   return entitystate.copy(value.snapshotEntities[sequence])
 end function
+/// Apply `mq3.botlib.server_bridge.clientAt` while evaluating `queueConsoleMessage`. Return paths include `value.reliableSequence`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
+/// @param text Text to parse, format or deliver.
 function queueConsoleMessage(state,client,text)
   value=clientAt(state,client);if value==void then return error(7580,"bot server bridge: invalid console client") end if
   value.reliableSequence=value.reliableSequence+1;value.reliableCommands[value.reliableSequence&(MAX_RELIABLE_COMMANDS-1)]=text
@@ -54,25 +85,44 @@ function queueConsoleMessage(state,client,text)
   if value.reliableSequence-value.reliableAcknowledge>MAX_RELIABLE_COMMANDS then value.reliableAcknowledge=value.reliableSequence-MAX_RELIABLE_COMMANDS end if
   return value.reliableSequence
 end function
+/// Build the `mq3.botlib.server_bridge.ConsoleResult` result for `nextConsoleMessage`. Return paths include `ConsoleResult(true,text)`.
+/// @param state Server bridge state; accesses `now`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
 function nextConsoleMessage(state,client)
   value=clientAt(state,client);if value==void then return ConsoleResult(false,"") end if;value.lastPacketTime=state.now
   if value.reliableAcknowledge==value.reliableSequence then return ConsoleResult(false,"") end if
   value.reliableAcknowledge=value.reliableAcknowledge+1;text=value.reliableCommands[value.reliableAcknowledge&(MAX_RELIABLE_COMMANDS-1)]
   if text=="" then return ConsoleResult(false,"") end if;return ConsoleResult(true,text)
 end function
+/// Interpret a user-command byte as a signed eight-bit movement component.
+/// @param value Operand used to evaluate the returned expression `value-256`.
 function signedByte(value) if value>=128 then return value-256 end if;return value end function
+/// Apply `mq3.vm.syscall_common.pointer`, `mq3.vm.syscall_qagame_world.userCommand` and `mq3.botlib.server_bridge.signedByte` while evaluating `readUserCommand`.
+/// @param vm Vm record; accesses `data`.
+/// @param address Address within the VM memory or native data buffer.
 function readUserCommand(vm,address)
   at=common.pointer(vm,address,USERCMD_SIZE,"bot usercmd_t")
   return qworld.userCommand(n.readI32(vm.data,at),[n.readI32(vm.data,at+4),n.readI32(vm.data,at+8),n.readI32(vm.data,at+12)],n.readI32(vm.data,at+16),vm.data[at+20],signedByte(vm.data[at+21]),signedByte(vm.data[at+22]),signedByte(vm.data[at+23]))
 end function
+/// Apply `mq3.botlib.server_bridge.clientAt` and `mq3.vm.syscall_qagame_world.userCommand` while evaluating `submitUserCommand`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param client Operand used to evaluate the returned expression `state.clients[client]`.
+/// @param command Command record; accesses `serverTime`, `angles`, `buttons`, `weapon` and `forwardmove` and related fields.
 function submitUserCommand(state,client,command)
   value=clientAt(state,client);if value==void or command==void then return error(7580,"bot server bridge: invalid user command client") end if
   value.userCommand=qworld.userCommand(command.serverTime,[command.angles[0],command.angles[1],command.angles[2]],command.buttons,command.weapon,command.forwardmove,command.rightmove,command.upmove);value.pending=true;return 0
 end function
+/// Collect pending bot user commands with their client slots and clear the consumed pending flags.
+/// @param state Server bridge state; accesses `clients`.
 function takePending(state)
   if state==void then return [] end if;result=lists.List.withCapacity(len(state.clients))
   for client=0 to len(state.clients)-1 value=state.clients[client];if value.pending then result.add([client,value.userCommand]);value.pending=false end if end for;return result.toArray()
 end function
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.botlib.server_bridge.snapshotEntity` and `mq3.botlib.server_bridge.nextConsoleMessage` while evaluating `dispatch`.
+/// @param state Server bridge state; accesses `clients`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   client=common.argument(vm,base,1)
   if op==OP_GET_SNAPSHOT_ENTITY then return snapshotEntity(state,client,common.argument(vm,base,2)) end if

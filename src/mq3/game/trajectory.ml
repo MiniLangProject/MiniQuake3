@@ -6,6 +6,7 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 import mq3.shared.math as q
 import mq3.game.movement as movement
+/// `Trajectory` record for trajectory, containing `trType`, `trTime`, `trDuration`, `trBase` and `trDelta`.
 struct Trajectory
   trType
   trTime
@@ -13,6 +14,9 @@ struct Trajectory
   trBase
   trDelta
 end struct
+/// Calculate the sine-trajectory phase in radians at the supplied game time; reject a zero trajectory duration.
+/// @param tr Trajectory record containing the start time and nonzero duration in milliseconds.
+/// @param atTime Game time in milliseconds at which the trajectory is evaluated.
 function phaseAngle(tr,atTime)
   if tr.trDuration == 0 then return error(481,"Sine trajectory requires a nonzero duration") end if
   delta = n.fdiv(n.i32(atTime-tr.trTime),tr.trDuration)
@@ -20,6 +24,8 @@ function phaseAngle(tr,atTime)
 end function
 // Every branch returns. A dense switch here emits unresolved jump-table data
 // when this package is imported by the published MiniLang 1.3.9 compiler.
+/// @param tr Trajectory record containing type, base position, velocity, start time and duration.
+/// @param atTime Game time in milliseconds at which the trajectory is evaluated.
 function evaluate(tr,atTime)
   kind=tr.trType
   if kind==0 or kind==1 then
@@ -46,6 +52,9 @@ function evaluate(tr,atTime)
   end if
   return error(481,"Unknown trajectory type")
 end function
+/// Evaluate trajectory velocity for stationary, linear, stopped, sinusoidal and gravity-driven motion at the supplied time.
+/// @param tr Trajectory record containing type, velocity, start time and duration.
+/// @param atTime Game time in milliseconds at which the trajectory is evaluated.
 function evaluateDelta(tr,atTime)
   kind=tr.trType
   if kind==0 or kind==1 then
@@ -68,6 +77,10 @@ function evaluateDelta(tr,atTime)
   end if
   return error(481,"Unknown trajectory type")
 end function
+/// Test the player origin against the asymmetric item-pickup bounds after evaluating the item trajectory.
+/// @param ps Player movement state; accesses `origin`.
+/// @param trajectory Trajectory record containing type, base position, velocity, start time and duration.
+/// @param atTime Game time in milliseconds at which the trajectory is evaluated.
 function playerTouchesItem(ps,trajectory,atTime)
   origin = evaluate(trajectory,atTime)
   x = n.fsub(ps.origin[0],origin[0]); y = n.fsub(ps.origin[1],origin[1]); z = n.fsub(ps.origin[2],origin[2])

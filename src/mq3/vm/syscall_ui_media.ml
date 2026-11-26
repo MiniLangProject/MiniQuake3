@@ -7,33 +7,66 @@ import mq3.vm.syscall_common as common
 const QTIME_SIZE = 36
 const CDKEY_CHARS = 16
 
+/// SoundServices record for vm.syscall_ui_media, containing `registerFn`, `startLocalFn`, `stopBackgroundFn`, `startBackgroundFn`.
 struct SoundServices registerFn startLocalFn stopBackgroundFn startBackgroundFn end struct
+/// CinematicServices record for vm.syscall_ui_media, containing `playFn`, `stopFn`, `runFn`, `drawFn`, `setExtentsFn`.
 struct CinematicServices playFn stopFn runFn drawFn setExtentsFn end struct
+/// PlatformServices record for vm.syscall_ui_media, containing `realTimeFn`, `remapShaderFn`, `getCdKeyFn`, `setCdKeyFn`, `verifyCdKeyFn`, `seekFn`, and 1 further fields.
 struct PlatformServices realTimeFn remapShaderFn getCdKeyFn setCdKeyFn verifyCdKeyFn seekFn pbStatusFn end struct
+/// Services record for vm.syscall_ui_media, containing `context`, `sound`, `cinematic`, `platform`.
 struct Services context sound cinematic platform end struct
 
+/// Create `mq3.vm.syscall_ui_media.SoundServices` with registerFn=void; startLocalFn=void; stopBackgroundFn=void; startBackgroundFn=void.
 function soundServices() return SoundServices(void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui_media.CinematicServices` with playFn=void; stopFn=void; runFn=void; drawFn=void; setExtentsFn=void.
 function cinematicServices() return CinematicServices(void,void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui_media.PlatformServices` with realTimeFn=void; remapShaderFn=void; getCdKeyFn=void; setCdKeyFn=void; verifyCdKeyFn=void; seekFn=void; pbStatusFn=void.
 function platformServices() return PlatformServices(void,void,void,void,void,void,void) end function
+/// Create `mq3.vm.syscall_ui_media.Services` with context=context; sound=soundServices(); cinematic=cinematicServices(); platform=platformServices().
+/// @param context Initial `context` field stored in the returned or constructed `mq3.vm.syscall_ui_media.Services` record.
 function services(context) return Services(context,soundServices(),cinematicServices(),platformServices()) end function
+/// Create the vm.syscall_ui_media error for `unavailable` with 3424 and the supplied diagnostic text.
+/// @param name Name used in `("UI media syscall: " + name)` and `(("UI media syscall: " + name) + " service unavailable")`.
 function unavailable(name) return error(3424,"UI media syscall: "+name+" service unavailable") end function
+/// Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.syscall_ui_media.arg`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param index Index passed as `index` to `mq3.vm.syscall_common.argument`.
 function arg(vm,base,index) return common.argument(vm,base,index) end function
 
+/// Register sound in vm.syscall_ui_media; the normal completion returns `host.sound.registerFn(host.context, common.readString(vm, arg(vm, base, 1)), (arg(vm, base, 2) != 0))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `sound`, `context`.
 function registerSound(vm,base,host)
   if host.sound.registerFn==void then return unavailable("register sound") end if
   return host.sound.registerFn(host.context,common.readString(vm,arg(vm,base,1)),arg(vm,base,2)!=0)
 end function
 
+/// Start local sound in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui_media.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `sound`, `context`.
 function startLocalSound(vm,base,host)
   if host.sound.startLocalFn==void then return unavailable("start local sound") end if
   host.sound.startLocalFn(host.context,arg(vm,base,1),arg(vm,base,2));return 0
 end function
 
+/// Start background in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `sound`, `context`.
 function startBackground(vm,base,host)
   if host.sound.startBackgroundFn==void then return unavailable("start background track") end if
   host.sound.startBackgroundFn(host.context,common.readString(vm,arg(vm,base,1)),common.readString(vm,arg(vm,base,2)));return 0
 end function
 
+/// Compute real time in vm.syscall_ui_media; the normal completion returns `value[0]`.
+///
+/// Validation failures include `UI media syscall: invalid qtime_t layout`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeRaw`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `platform`, `context`.
 function realTime(vm,base,host)
   if host.platform.realTimeFn==void then return unavailable("real time") end if
   value=host.platform.realTimeFn(host.context)
@@ -41,21 +74,39 @@ function realTime(vm,base,host)
   common.writeRaw(vm,arg(vm,base,1),value[1],QTIME_SIZE,"qtime_t output");return value[0]
 end function
 
+/// Apply `mq3.vm.syscall_ui_media.unavailable`, `host.cinematic.playFn`, `mq3.vm.syscall_common.readString` for play cinematic in vm.syscall_ui_media.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `cinematic`, `context`.
 function playCinematic(vm,base,host)
   if host.cinematic.playFn==void then return unavailable("play cinematic") end if
   return host.cinematic.playFn(host.context,common.readString(vm,arg(vm,base,1)),arg(vm,base,2),arg(vm,base,3),arg(vm,base,4),arg(vm,base,5),arg(vm,base,6))
 end function
 
+/// Set extents in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui_media.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `cinematic`, `context`.
 function setExtents(vm,base,host)
   if host.cinematic.setExtentsFn==void then return unavailable("set cinematic extents") end if
   host.cinematic.setExtentsFn(host.context,arg(vm,base,1),arg(vm,base,2),arg(vm,base,3),arg(vm,base,4),arg(vm,base,5));return 0
 end function
 
+/// Compute remap shader in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `platform`, `context`.
 function remapShader(vm,base,host)
   if host.platform.remapShaderFn==void then return unavailable("remap shader") end if
   host.platform.remapShaderFn(host.context,common.readString(vm,arg(vm,base,1)),common.readString(vm,arg(vm,base,2)),common.readString(vm,arg(vm,base,3)));return 0
 end function
 
+/// Get cd key in vm.syscall_ui_media; the normal completion returns `0`.
+///
+/// Validation failures include `UI media syscall: CD-key output capacity below 17 bytes`; `UI media syscall: CD-key service returned fewer than 16 bytes`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui_media.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `platform`, `context`.
 function getCdKey(vm,base,host)
   if host.platform.getCdKeyFn==void then return unavailable("get CD key") end if
   capacity=arg(vm,base,2)
@@ -66,12 +117,20 @@ function getCdKey(vm,base,host)
   common.writeRaw(vm,arg(vm,base,1),output,17,"CD-key output");return 0
 end function
 
+/// Set cd key in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `platform`, `context`.
 function setCdKey(vm,base,host)
   if host.platform.setCdKeyFn==void then return unavailable("set CD key") end if
   at=common.pointer(vm,arg(vm,base,1),CDKEY_CHARS,"CD-key input")
   host.platform.setCdKeyFn(host.context,slice(vm.data,at,CDKEY_CHARS));return 0
 end function
 
+/// Compute verify cd key in vm.syscall_ui_media; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_ui_media.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
+/// @param host Record exposing `platform`, `context`.
 function verifyCdKey(vm,base,host)
   if host.platform.verifyCdKeyFn==void then return unavailable("verify CD key") end if
   key="";keyAt=arg(vm,base,1);if keyAt!=0 then key=common.readString(vm,keyAt) end if
@@ -80,6 +139,12 @@ function verifyCdKey(vm,base,host)
   return 0
 end function
 
+/// Dispatch syscall ui media in vm.syscall_ui_media; the normal completion returns `error(3424, ("UI media syscall: unsupported trap " + str(op)))`.
+///
+/// Validation failures include `UI media syscall: invalid dispatcher context`.
+/// @param host Record exposing `sound`, `context`, `cinematic`, `platform`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_ui_media.arg`.
 function dispatch(host,vm,base)
   if host==void or vm==void or typeof(vm.data)!="bytes" then return error(3424,"UI media syscall: invalid dispatcher context") end if
   op=arg(vm,base,0)
@@ -104,4 +169,6 @@ function dispatch(host,vm,base)
   return error(3424,"UI media syscall: unsupported trap "+str(op))
 end function
 
+/// Apply `mq3.vm.syscall_ui_media.dispatch` for callback in vm.syscall_ui_media.
+/// @param host Host passed as `host` to `mq3.vm.syscall_ui_media.dispatch`.
 function callback(host) return function(vm,base) => dispatch(host,vm,base) end function

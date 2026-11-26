@@ -6,20 +6,42 @@ const MAX_PCM_BYTES=67108864
 const MIN_SAMPLE_RATE=4000
 const MAX_SAMPLE_RATE=192000
 
+/// Sound record for audio.wav, containing `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`, `byteRate`, `samples`.
 struct Sound sampleRate channels bitsPerSample blockAlign byteRate samples end struct
 
+/// Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text.
+/// @param message Message used in `("WAV: " + message)` and `error(7490, ("WAV: " + message))`.
 function fail(message) return error(7490,"WAV: "+message) end function
+/// Compute audio.wav.u16 as `(data[offset] | (data[(offset + 1)] << 8))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function u16(data,offset) return data[offset]|(data[offset+1]<<8) end function
+/// Compute audio.wav.u32 as `(((data[offset] | (data[(offset + 1)] << 8)) | (data[(offset + 2)] << 16)) | (data[(offset + 3)] << 24))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
 function u32(data,offset) return data[offset]|(data[offset+1]<<8)|(data[offset+2]<<16)|(data[offset+3]<<24) end function
+/// Compute audio.wav.tag as `((((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c)) and (data[(offset + 3)] == d))`.
+/// @param data Data used in `data[offset]` and `data[(offset + 1)]`.
+/// @param offset Zero-based index into `data`.
+/// @param a A used in `(data[offset] == a)` and `((data[offset] == a) and (data[(offset + 1)] == b))`.
+/// @param b B used in `(data[(offset + 1)] == b)` and `((data[offset] == a) and (data[(offset + 1)] == b))`.
+/// @param c C used in `(data[(offset + 2)] == c)` and `(((data[offset] == a) and (data[(offset + 1)] == b)) and (data[(offset + 2)] == c))`.
+/// @param d D used in `(data[(offset + 3)] == d)`.
 function tag(data,offset,a,b,c,d)
   return data[offset]==a and data[offset+1]==b and data[offset+2]==c and data[offset+3]==d
 end function
+/// Copy wav in audio.wav; the normal completion returns `output`.
+/// @param data Data used in `data[(offset + index)]`.
+/// @param offset Offset used in `(offset + index)` and `data[(offset + index)]`.
+/// @param count Count used in `(count > 0)` and `(count - 1)`.
 function copy(data,offset,count)
   output=bytes(count,0)
   if count>0 then for index=0 to count-1 output[index]=data[offset+index] end for end if
   return output
 end function
 
+/// Decode wav in audio.wav; the normal completion returns `Sound(sampleRate, channels, bits, blockAlign, byteRate, copy(data, dataOffset, dataSize))`.
+/// @param data Data passed as `data` to `mq3.audio.wav.tag`.
 function decode(data)
   if data==void or len(data)<12 then return fail("truncated RIFF header") end if
   if not tag(data,0,82,73,70,70) then return fail("missing RIFF signature") end if

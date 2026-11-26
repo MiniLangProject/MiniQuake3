@@ -6,7 +6,13 @@
 package mq3.client.cgame_main
 import std.string as strings
 import mq3.compat.numeric as numeric
+/// Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by client game main.
+/// @param text NUL-terminated C string containing the decimal numeric text.
+/// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
+/// Converts a NUL-terminated numeric C string to a double using the Windows C runtime. This binding is used by client game main.
+/// @param text NUL-terminated C string containing the decimal numeric text.
+/// @returns The parsed floating-point value; a string with no initial numeric conversion yields zero.
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
 
 const MAX_CLIENTS=64
@@ -38,38 +44,87 @@ const FEEDER_REDTEAM_LIST=1
 const FEEDER_BLUETEAM_LIST=2
 const FEEDER_SCOREBOARD=3
 
+/// Stores client game main queued engine action, including `boundary`, `kind`, `name`, `value`, `value2`, `number` and additional values.
 struct Action boundary kind name value value2 number flags dispatched end struct
+/// Stores client game main operation result, including `handled`, `value`, `actions`.
 struct Result handled value actions end struct
+/// Stores client game main cvar record, including `name`, `defaultValue`, `flags`, `value`, `integer`, `modificationCount`.
 struct Cvar name defaultValue flags value integer modificationCount end struct
+/// Stores client game main menu item, including `classname`, `pickupSound`, `sounds`, `icon`.
 struct Item classname pickupSound sounds icon end struct
+/// Stores client game main client record, including `infoValid`, `team`, `name`, `powerups`, `botSkill`, `handicap` and additional values.
 struct Client infoValid team name powerups botSkill handicap teamTask wins losses teamLeader score end struct
+/// Stores client game main score record, including `client`, `team`, `score`, `time`, `ping`.
 struct Score client team score time ping end struct
+/// Stores client game main hud assets record, including `textFont`, `smallFont`, `bigFont`, `gradientBar`, `cursor`, `fadeClamp` and additional values.
 struct HudAssets textFont smallFont bigFont gradientBar cursor fadeClamp fadeCycle fadeAmount shadowX shadowY shadowColor shadowFadeClamp end struct
+/// Stores client game main state, including `initialized`, `loading`, `clientNum`, `processedSnapshotNum`, `serverCommandSequence`, `weaponSelect` and additional values.
 struct State initialized loading clientNum processedSnapshotNum serverCommandSequence weaponSelect redflag blueflag flagStatus levelStartTime gametype mapname screenXScale screenYScale time crosshairClientTime crosshairClientNum attackerTime attackerNum forceModelModificationCount drawTeamOverlayModificationCount cvars configstrings clients scores numScores selectedScore spectatorList spectatorLen spectatorWidth infoScreenText gameVersion hudFile hudAssets menuFiles eventType cursorX cursorY nextCinematicHandle end struct
 
+/// Creates a `mq3.client.cgame_main.Client` record. Initializes the record with the defaults written in this constructor.
 function client() return Client(false,TEAM_FREE,"",0,0,100,0,0,0,false,0) end function
+/// Creates a `mq3.client.cgame_main.HudAssets` record. Initializes the record with the defaults written in this constructor.
 function hudAssets() return HudAssets("","","","","",0.0,0,0.0,0.0,0.0,[],0.0) end function
+/// Calls `mq3.client.cgame_main.client`, `mq3.client.cgame_main.State`, `mq3.client.cgame_main.hudAssets` from client game main `create`.
 function create()
   clients=[];for i=0 to MAX_CLIENTS-1 clients=clients+[client()] end for
   return State(false,false,0,0,0,WP_MACHINEGUN,-1,-1,-1,0,0,"",1.0,1.0,0,0,-1,0,-1,-1,-1,[],array(MAX_CONFIGSTRINGS,""),clients,[],0,0,"",0,-1,"","baseq3-1","ui/hud.txt",hudAssets(),[],0,0,0,1)
 end function
+/// Creates a `mq3.client.cgame_main.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `name` from `name`, `value` from `value`.
+/// @param boundary Value used to initialize `Action.boundary`.
+/// @param kind Value used to initialize `Action.kind`.
+/// @param name Value used to initialize `Action.name`.
+/// @param value Value used to initialize `Action.value`.
+/// @param value2 Value used to initialize `Action.value2`.
+/// @param number Value used to initialize `Action.number`.
+/// @param flags Value used to initialize `Action.flags`.
+/// @param retailActive Value used to initialize `Action.dispatched`.
 function action(boundary,kind,name,value,value2,number,flags,retailActive) return Action(boundary,kind,name,value,value2,number,flags,not retailActive) end function
+/// Creates a `mq3.client.cgame_main.Result` record. Assigns `handled` from `handled`, `value` from `value`.
+/// @param handled Value used to initialize `Result.handled`.
+/// @param value Value used to initialize `Result.value`.
 function result(handled,value) return Result(handled,value,[]) end function
+/// Appends a client game main action record to the queued engine requests.
+/// @param effect Mutable client game main record/storage; this routine assigns `effect.actions`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param name Name used to select or register the corresponding client game main resource.
+/// @param value Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`.
+/// @param value2 Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`.
+/// @param number Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`.
+/// @param flags Value used by `effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function emit(effect,boundary,kind,name,value,value2,number,flags,retailActive) effect.actions=effect.actions+[action(boundary,kind,name,value,value2,number,flags,retailActive)];return void end function
+/// Updates `effect.actions` during client game main `merge`.
+/// @param effect Mutable client game main record/storage; this routine assigns `effect.actions`.
+/// @param other Record read through `other.actions`.
 function merge(effect,other) effect.actions=effect.actions+other.actions;return void end function
 
 // CG_Printf
 // Com_Printf
+/// @param text Text consumed or emitted by `printMessage` in the client game main path.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function printMessage(text,retailActive) effect=result(true,0);emit(effect,"system","print","",text,"",0,0,retailActive);return effect end function
 // CG_Error
 // Com_Error
+/// @param text Text consumed or emitted by `errorMessage` in the client game main path.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function errorMessage(text,retailActive) effect=result(true,-1);emit(effect,"system","error","",text,"",0,0,retailActive);return effect end function
 // CG_Argv
+/// @param args Sequence read at `args[index]`.
+/// @param index Value tested by `index<0 or index>=len(args)` before the calculation continues.
 function argv(args,index) if index<0 or index>=len(args) then return "" end if;return args[index] end function
 // CG_ConfigString
+/// @param state Record read through `state.configstrings`.
+/// @param index Value tested by `index<0 or index>=MAX_CONFIGSTRINGS` before the calculation continues.
 function configString(state,index) if index<0 or index>=MAX_CONFIGSTRINGS then return error(7840,"CG_ConfigString: bad index: "+str(index)) end if;return state.configstrings[index] end function
 
+/// Creates a `mq3.client.cgame_main.Cvar` record. Assigns `name` from `name`, `defaultValue` from `defaultValue`, `flags` from `flags`, `value` from `defaultValue`.
+/// @param name Value used to initialize `Cvar.name`.
+/// @param defaultValue Value used to initialize `Cvar.defaultValue`, `Cvar.value`, `Cvar.integer`.
+/// @param flags Value used to initialize `Cvar.flags`.
 function cvarSpec(name,defaultValue,flags) return Cvar(name,defaultValue,flags,defaultValue,atoi(defaultValue),0) end function
+/// Calls `mq3.client.cgame_main.cvarSpec` from client game main `cvarSpecs`. The final path returns `effect`.
 function cvarSpecs()
   // Exact baseq3 table order; numeric flags preserve archive(1), userinfo(2),
   // serverinfo(4), rom(64) and cheat(512) intent at the host boundary.
@@ -77,9 +132,15 @@ function cvarSpecs()
   defaults=["0","1","1","22.5","90","100","0.4","1","1","1","1","0","0","0","1","1","1","1","4","1","1","24","1","0","0","2500","0","1","1","400","0","0","0","3","0.002","0.005","0.005","0.002","0.002","0.3","1","0","0","0","100","0","0","0","1","0.4","1","100","40","0","0","3000","0","0","1","1","0","0","0","1","0","0","0","0","0","1","0","0","50","1","0","1","1","0","0","0","8","0","0","0.25","0.4","1","1","1","0.0"]
   effect=[];for i=0 to len(names)-1 flags=0;if i>=1 and i<=29 then flags=1 end if;if names[i]=="teamoverlay" then flags=66 end if;if names[i]=="cl_paused" then flags=64 end if;if names[i]=="cg_scorePlums" or names[i]=="cg_smoothClients" then flags=3 end if;effect=effect+[cvarSpec(names[i],defaults[i],flags)] end for;return effect
 end function
+/// Searches the client game main collection for find cvar, returning `void` when no entry matches.
+/// @param state Record read through `state.cvars`.
+/// @param name Name used to select or register the corresponding client game main resource.
 function findCvar(state,name) for each cv in state.cvars if strings.equalsIgnoreCaseAscii(cv.name,name) then return cv end if end for;return void end function
 
 // CG_RegisterCvars
+/// @param state Mutable client game main record/storage; this routine assigns `state.cvars`, `state.forceModelModificationCount`.
+/// @param svRunning Value used by `emit(effect,"state","local-server","",svRunning,"",atoi(svRunning),0,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function registerCvars(state,svRunning,retailActive)
   effect=result(true,0);state.cvars=cvarSpecs()
   for each cv in state.cvars emit(effect,"cvar","register",cv.name,cv.defaultValue,"",0,cv.flags,retailActive) end for
@@ -87,10 +148,15 @@ function registerCvars(state,svRunning,retailActive)
   forced=findCvar(state,"cg_forceModel");state.forceModelModificationCount=forced.modificationCount;emit(effect,"state","local-server","",svRunning,"",atoi(svRunning),0,retailActive);return effect
 end function
 // CG_ForceModelChange
+/// @param state Shared client game main state passed to the helper calls in `forceModelChange`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function forceModelChange(state,retailActive)
   effect=result(true,0);for i=0 to MAX_CLIENTS-1 if configString(state,CS_PLAYERS+i)!="" then emit(effect,"client","new-info","",configString(state,CS_PLAYERS+i),"",i,0,retailActive) end if end for;return effect
 end function
 // CG_UpdateCvars
+/// @param state Mutable client game main record/storage; this routine assigns `state.drawTeamOverlayModificationCount`, `state.forceModelModificationCount`.
+/// @param updates Value used by `for each update in updates cv=findCvar(state,update[0])`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function updateCvars(state,updates,retailActive)
   effect=result(true,0)
   for each update in updates cv=findCvar(state,update[0]);if cv!=void then cv.value=update[1];cv.integer=atoi(update[1]);cv.modificationCount=atoi(update[2]);emit(effect,"cvar","update",cv.name,cv.value,"",cv.modificationCount,cv.flags,retailActive) end if end for
@@ -98,27 +164,45 @@ function updateCvars(state,updates,retailActive)
   forced=findCvar(state,"cg_forceModel");if forced!=void and forced.modificationCount!=state.forceModelModificationCount then state.forceModelModificationCount=forced.modificationCount;merge(effect,forceModelChange(state,retailActive)) end if;return effect
 end function
 // CG_CrosshairPlayer
+/// @param state Record read through `state.time`, `state.crosshairClientTime`, `state.crosshairClientNum`.
 function crosshairPlayer(state) if state.time>state.crosshairClientTime+1000 then return -1 end if;return state.crosshairClientNum end function
 // CG_LastAttacker
+/// @param state Record read through `state.attackerTime`, `state.attackerNum`.
 function lastAttacker(state) if state.attackerTime==0 then return -1 end if;return state.attackerNum end function
 
+/// Calls `decode`, `slice` from client game main `splitWords`. The final path returns `effect`.
+/// @param text Text consumed or emitted by `splitWords` in the client game main path.
 function splitWords(text) effect=[];data=bytes(text);at=0;while at<len(data) while at<len(data) and data[at]<=32 at=at+1 end while;if at>=len(data) then break end if;start=at;while at<len(data) and data[at]>32 at=at+1 end while;effect=effect+[decode(slice(data,start,at-start))] end while;return effect end function
+/// Calls `std.string.equalsIgnoreCaseAscii`, `std.string.substr` from client game main `suffix`. The final path returns `strings.equalsIgnoreCaseAscii(strings.substr(text,len(text)-len(want),len(want)),want)`.
+/// @param text Text whose length/content is inspected by `suffix`.
+/// @param want Sequence whose length/content is inspected by `suffix`.
 function suffix(text,want) if len(text)<len(want) then return false end if;return strings.equalsIgnoreCaseAscii(strings.substr(text,len(text)-len(want),len(want)),want) end function
 // CG_RegisterItemSounds
+/// @param item Record read through `item.pickupSound`, `item.sounds`, `item.classname`.
+/// @param itemNum Value used by `if item.pickupSound!="" then emit(effect,"audio","register-sound",item.pickupSound,"","",itemNum,0,retailActive) end if`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function registerItemSounds(item,itemNum,retailActive)
   effect=result(true,0);if item.pickupSound!="" then emit(effect,"audio","register-sound",item.pickupSound,"","",itemNum,0,retailActive) end if
   for each sound in splitWords(item.sounds) if len(sound)<5 or len(sound)>=64 then return error(7841,"PrecacheItem: "+item.classname+" has bad precache string") end if;if suffix(sound,"wav") then emit(effect,"audio","register-sound",sound,"","",itemNum,0,retailActive) end if end for;return effect
 end function
+/// Lists the 145 client game main base sounds strings in their declared order, beginning with `"sound/feedback/1_minute.wav"`, `"sound/feedback/5_minute.wav"`, `"sound/feedback/sudden_death.wav"`.
 function baseSounds() return ["sound/feedback/1_minute.wav","sound/feedback/5_minute.wav","sound/feedback/sudden_death.wav","sound/feedback/1_frag.wav","sound/feedback/2_frags.wav","sound/feedback/3_frags.wav","sound/feedback/three.wav","sound/feedback/two.wav","sound/feedback/one.wav","sound/feedback/fight.wav","sound/feedback/prepare.wav","sound/feedback/prepare_team.wav","sound/teamplay/flagcapture_yourteam.wav","sound/feedback/redleads.wav","sound/feedback/blueleads.wav","sound/feedback/teamstied.wav","sound/feedback/hit_teammate.wav","sound/teamplay/voc_red_scores.wav","sound/teamplay/voc_blue_scores.wav","sound/teamplay/flagcapture_yourteam.wav","sound/teamplay/flagcapture_opponent.wav","sound/teamplay/flagreturn_yourteam.wav","sound/teamplay/flagreturn_opponent.wav","sound/teamplay/flagtaken_yourteam.wav","sound/teamplay/flagtaken_opponent.wav","sound/teamplay/voc_red_returned.wav","sound/teamplay/voc_blue_returned.wav","sound/teamplay/voc_enemy_flag.wav","sound/teamplay/voc_team_flag.wav","sound/teamplay/flagreturn_opponent.wav","sound/teamplay/voc_team_1flag.wav","sound/teamplay/voc_enemy_1flag.wav","sound/teamplay/voc_you_flag.wav","sound/feedback/voc_holyshit.wav","sound/teamplay/voc_base_attack.wav","sound/teamplay/voc_you_flag.wav","sound/feedback/voc_holyshit.wav","sound/teamplay/flagreturn_opponent.wav","sound/teamplay/voc_team_1flag.wav","sound/teamplay/voc_enemy_1flag.wav","sound/weapons/machinegun/buletby1.wav","sound/weapons/change.wav","sound/items/wearoff.wav","sound/items/use_nothing.wav","sound/player/gibsplt1.wav","sound/player/gibimp1.wav","sound/player/gibimp2.wav","sound/player/gibimp3.wav","sound/items/invul_activate.wav","sound/items/invul_impact_01.wav","sound/items/invul_impact_02.wav","sound/items/invul_impact_03.wav","sound/items/invul_juiced.wav","sound/items/obelisk_hit_01.wav","sound/items/obelisk_hit_02.wav","sound/items/obelisk_hit_03.wav","sound/items/obelisk_respawn.wav","sound/items/cl_ammoregen.wav","sound/items/cl_doubler.wav","sound/items/cl_guard.wav","sound/items/cl_scout.wav","sound/world/telein.wav","sound/world/teleout.wav","sound/items/respawn1.wav","sound/weapons/noammo.wav","sound/player/talk.wav","sound/player/land1.wav","sound/feedback/hit.wav","sound/feedback/hithi.wav","sound/feedback/hitlo.wav","sound/feedback/impressive.wav","sound/feedback/excellent.wav","sound/feedback/denied.wav","sound/feedback/humiliation.wav","sound/feedback/assist.wav","sound/feedback/defense.wav","sound/feedback/first_impressive.wav","sound/feedback/first_excellent.wav","sound/feedback/first_gauntlet.wav","sound/feedback/takenlead.wav","sound/feedback/tiedlead.wav","sound/feedback/lostlead.wav","sound/feedback/vote_now.wav","sound/feedback/vote_passed.wav","sound/feedback/vote_failed.wav","sound/player/watr_in.wav","sound/player/watr_out.wav","sound/player/watr_un.wav","sound/world/jumppad.wav","sound/items/flight.wav","sound/items/use_medkit.wav","sound/items/damage3.wav","sound/weapons/machinegun/ric1.wav","sound/weapons/machinegun/ric2.wav","sound/weapons/machinegun/ric3.wav","sound/weapons/railgun/railgf1a.wav","sound/weapons/rocket/rocklx1a.wav","sound/weapons/plasma/plasmx1a.wav","sound/weapons/proxmine/wstbexpl.wav","sound/weapons/nailgun/wnalimpd.wav","sound/weapons/nailgun/wnalimpl.wav","sound/weapons/nailgun/wnalimpm.wav","sound/weapons/vulcan/wvulimpd.wav","sound/weapons/vulcan/wvulimpl.wav","sound/weapons/vulcan/wvulimpm.wav","sound/weapons/weapon_hover.wav","sound/items/kam_explode.wav","sound/items/kam_implode.wav","sound/items/kam_explode_far.wav","sound/feedback/voc_youwin.wav","sound/feedback/voc_youlose.wav","sound/misc/yousuck.wav","sound/weapons/proxmine/wstbimpl.wav","sound/weapons/proxmine/wstbimpm.wav","sound/weapons/proxmine/wstbimpd.wav","sound/weapons/proxmine/wstbactv.wav","sound/items/regen.wav","sound/items/protect3.wav","sound/items/n_health.wav","sound/weapons/grenade/hgrenb1a.wav","sound/weapons/grenade/hgrenb2a.wav","sound/player/james/death1.wav","sound/player/james/death2.wav","sound/player/james/death3.wav","sound/player/james/jump1.wav","sound/player/james/pain25_1.wav","sound/player/james/pain75_1.wav","sound/player/james/pain100_1.wav","sound/player/james/falling1.wav","sound/player/james/gasp.wav","sound/player/james/drown.wav","sound/player/james/fall1.wav","sound/player/james/taunt.wav","sound/player/janet/death1.wav","sound/player/janet/death2.wav","sound/player/janet/death3.wav","sound/player/janet/jump1.wav","sound/player/janet/pain25_1.wav","sound/player/janet/pain75_1.wav","sound/player/janet/pain100_1.wav","sound/player/janet/falling1.wav","sound/player/janet/gasp.wav","sound/player/janet/drown.wav","sound/player/janet/fall1.wav","sound/player/janet/taunt.wav"] end function
 // CG_RegisterSounds
+/// @param state Shared client game main state passed to the helper calls in `registerSounds`.
+/// @param items Sequence read at `items[i]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function registerSounds(state,items,retailActive)
   effect=result(true,0);for each name in baseSounds() emit(effect,"audio","register-sound",name,"","",0,0,retailActive) end for
   for foot=1 to 4 for each stem in ["step","boot","flesh","mech","energy","splash","clank"] emit(effect,"audio","register-sound","sound/player/footsteps/"+stem+str(foot)+".wav","","",0,0,retailActive) end for end for
   if len(items)>1 then for i=1 to len(items)-1 merge(effect,registerItemSounds(items[i],i,retailActive)) end for end if
   for i=1 to 255 name=configString(state,CS_SOUNDS+i);if name=="" then break end if;if strings.substr(name,0,1)!="*" then emit(effect,"audio","register-game-sound",name,"","",i,0,retailActive) end if end for;return effect
 end function
+/// Lists the 140 client game main base graphics strings in their declared order, beginning with `"menu/art/skill1.tga"`, `"menu/art/skill2.tga"`, `"menu/art/skill3.tga"`.
 function baseGraphics() return ["menu/art/skill1.tga","menu/art/skill2.tga","menu/art/skill3.tga","menu/art/skill4.tga","menu/art/skill5.tga","viewBloodBlend","gfx/2d/defer.tga","menu/tab/name.tga","menu/tab/ping.tga","menu/tab/score.tga","menu/tab/time.tga","smokePuff","smokePuffRagePro","shotgunSmokePuff","nailtrail","models/weaphits/proxmineb.md3","sprites/plasma1","bloodTrail","lagometer","disconnected","waterBubble","gfx/misc/tracer","gfx/2d/select","gfx/2d/backtile","icons/noammo","powerups/quad","powerups/quadWeapon","powerups/battleSuit","powerups/battleWeapon","powerups/invisibility","powerups/regen","hasteSmokePuff","models/powerups/orb/r_orb.md3","models/powerups/orb/b_orb.md3","icons/skull_red","icons/skull_blue","models/flags/r_flag.md3","models/flags/b_flag.md3","icons/iconf_red1","icons/iconf_red2","icons/iconf_red3","icons/iconf_blu1","icons/iconf_blu2","icons/iconf_blu3","models/flag2/flagpole.md3","models/flag2/flagflap3.md3","models/flag2/red.skin","models/flag2/blue.skin","models/flag2/white.skin","models/mapobjects/flagbase/red_base.md3","models/mapobjects/flagbase/blue_base.md3","models/mapobjects/flagbase/ntrl_base.md3","models/flags/n_flag.md3","icons/iconf_neutral1","icons/iconf_red2","icons/iconf_blu2","icons/iconf_neutral3","models/powerups/overload_base.md3","models/powerups/overload_target.md3","models/powerups/overload_lights.md3","models/powerups/overload_energy.md3","models/powerups/harvester/harvester.md3","models/powerups/harvester/red.skin","models/powerups/harvester/blue.skin","models/powerups/obelisk/obelisk.md3","models/weaphits/kamikred","hasteSmokePuff","sprites/foe","powerups/blueflag","gfx/2d/colorbar.tga","models/weaphits/kamikblu","models/powerups/armor/armor_yel.md3","icons/iconr_yellow","models/weapons2/shells/m_shell.md3","models/weapons2/shells/s_shell.md3","models/gibs/abdomen.md3","models/gibs/arm.md3","models/gibs/chest.md3","models/gibs/fist.md3","models/gibs/foot.md3","models/gibs/forearm.md3","models/gibs/intestine.md3","models/gibs/leg.md3","models/gibs/skull.md3","models/gibs/brain.md3","models/weapons2/shells/s_shell.md3","sprites/balloon3","bloodExplosion","models/weaphits/bullet.md3","models/weaphits/ring02.md3","models/weaphits/boom01.md3","models/powerups/pop.md3","models/misc/telep.md3","teleportEffect","models/weaphits/kamboom2.md3","models/weaphits/kamwave.md3","models/powerups/kamikazi.md3","models/powerups/trailtest.md3","models/powerups/guard_player.md3","models/powerups/scout_player.md3","models/powerups/doubler_player.md3","models/powerups/ammo_player.md3","models/powerups/shield/impact.md3","models/powerups/shield/juicer.md3","models/powerups/regen.md3","ui/assets/statusbar/selectedhealth.tga","models/powerups/shield/shield.md3","medal_impressive","medal_excellent","medal_gauntlet","medal_defend","medal_assist","medal_capture","gfx/damage/bullet_mrk","gfx/damage/burn_med_mrk","gfx/damage/hole_lg_mrk","gfx/damage/plasma_mrk","markShadow","wake","bloodMark","ui/assets/statusbar/patrol.tga","ui/assets/statusbar/assault.tga","ui/assets/statusbar/camp.tga","ui/assets/statusbar/follow.tga","ui/assets/statusbar/defend.tga","ui/assets/statusbar/team_leader.tga","ui/assets/statusbar/retrieve.tga","ui/assets/statusbar/escort.tga","menu/art/3_cursor2","ui/assets/sizecursor.tga","ui/assets/selectcursor.tga","ui/assets/statusbar/flag_in_base.tga","ui/assets/statusbar/flag_capture.tga","ui/assets/statusbar/flag_missing.tga","models/players/james/lower.md3","models/players/james/upper.md3","models/players/heads/james/james.md3","models/players/janet/lower.md3","models/players/janet/upper.md3","models/players/heads/janet/janet.md3"] end function
 // CG_RegisterGraphics
+/// @param state Record read through `state.mapname`.
+/// @param items Sequence read at `items[i]`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function registerGraphics(state,items,retailActive)
   effect=result(true,0);emit(effect,"renderer","clear-scene","","","",0,0,retailActive);emit(effect,"renderer","load-world",state.mapname,"","",0,0,retailActive)
   digits=["zero","one","two","three","four","five","six","seven","eight","nine","minus"];for each digit in digits emit(effect,"renderer","register-shader","gfx/2d/numbers/"+digit+"_32b","","",0,0,retailActive) end for
@@ -129,23 +213,37 @@ function registerGraphics(state,items,retailActive)
   emit(effect,"particles","clear","","","",0,0,retailActive);return effect
 end function
 // CG_BuildSpectatorString
+/// @param state Mutable client game main record/storage; this routine assigns `state.spectatorList`, `state.spectatorLen`, `state.spectatorWidth`.
 function buildSpectatorString(state)
   text="";for each ci in state.clients if ci.infoValid and ci.team==TEAM_SPECTATOR then text=text+ci.name+"     " end if end for;state.spectatorList=text;if len(text)!=state.spectatorLen then state.spectatorLen=len(text);state.spectatorWidth=-1 end if;return text
 end function
 // CG_RegisterClients
+/// @param state Record read through `state.clientNum`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function registerClients(state,retailActive)
   effect=result(true,0);emit(effect,"client","loading","","","",state.clientNum,0,retailActive);emit(effect,"client","new-info","",configString(state,CS_PLAYERS+state.clientNum),"",state.clientNum,0,retailActive)
   for i=0 to MAX_CLIENTS-1 if i!=state.clientNum and configString(state,CS_PLAYERS+i)!="" then emit(effect,"client","loading","","","",i,0,retailActive);emit(effect,"client","new-info","",configString(state,CS_PLAYERS+i),"",i,0,retailActive) end if end for;buildSpectatorString(state);return effect
 end function
 // CG_StartMusic
+/// @param state Shared client game main state passed to the helper calls in `startMusic`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function startMusic(state,retailActive) words=splitWords(configString(state,CS_MUSIC));intro="";loopTrack="";if len(words)>0 then intro=words[0] end if;if len(words)>1 then loopTrack=words[1] end if;effect=result(true,0);emit(effect,"audio","start-background",intro,loopTrack,"",0,0,retailActive);return effect end function
 
+/// Calls `decode`, `slice` from client game main `menuTokens`. The final path returns `effect`.
+/// @param text Text consumed or emitted by `menuTokens` in the client game main path.
 function menuTokens(text)
   effect=[];data=bytes(text);at=0;while at<len(data) while at<len(data) and data[at]<=32 at=at+1 end while;if at>=len(data) then break end if;if data[at]==123 or data[at]==125 then effect=effect+[decode(slice(data,at,1))];at=at+1 else if data[at]==34 then at=at+1;start=at;while at<len(data) and data[at]!=34 at=at+1 end while;effect=effect+[decode(slice(data,start,at-start))];if at<len(data) then at=at+1 end if else start=at;while at<len(data) and data[at]>32 and data[at]!=123 and data[at]!=125 at=at+1 end while;effect=effect+[decode(slice(data,start,at-start))] end if end while;return effect
 end function
 // CG_GetMenuBuffer
+/// @param filename File name passed to the corresponding file/asset operation.
+/// @param text Text whose length/content is inspected by `getMenuBuffer`.
+/// @param maxSize Value used by `if len(text)>=maxSize then return error(7843,"menu file too large: "+filename) end if`.
 function getMenuBuffer(filename,text,maxSize) if text==void then return error(7842,"menu file not found: "+filename+", using default") end if;if len(text)>=maxSize then return error(7843,"menu file too large: "+filename) end if;return text end function
 // CG_Asset_Parse
+/// @param state Mutable client game main record/storage; this routine assigns `state.hudAssets.textFont`, `state.hudAssets.smallFont`, `state.hudAssets.bigFont`, `state.hudAssets.gradientBar` and additional values.
+/// @param tokens Sequence read at `tokens[start]`, `tokens[at]`, `tokens[at+1]`, `tokens[at+2]` and additional values.
+/// @param start Value tested by `start>=len(tokens) or tokens[start]!="{"` before the calculation continues.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function assetParse(state,tokens,start,retailActive)
   effect=result(false,start);if start>=len(tokens) or tokens[start]!="{" then return effect end if;at=start+1
   while at<len(tokens) key=strings.toLowerAscii(tokens[at]);at=at+1;if key=="}" then effect.handled=true;effect.value=at;return effect end if
@@ -162,29 +260,61 @@ function assetParse(state,tokens,start,retailActive)
   end while;return effect
 end function
 // CG_ParseMenu
+/// @param state Mutable client game main record/storage; this routine assigns `state.menuFiles`.
+/// @param menuFile Value used by `at=nested.value else if key=="menudef" then emit(effect,"ui","new-menu",menuFile,"","",at,0,retailActive)`.
+/// @param text Text consumed or emitted by `parseMenu` in the client game main path.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function parseMenu(state,menuFile,text,retailActive)
   tokens=menuTokens(text);effect=result(true,0);at=0;while at<len(tokens) key=strings.toLowerAscii(tokens[at]);at=at+1;if key=="}" then break end if;if key=="assetglobaldef" then nested=assetParse(state,tokens,at,retailActive);merge(effect,nested);if not nested.handled then break end if;at=nested.value else if key=="menudef" then emit(effect,"ui","new-menu",menuFile,"","",at,0,retailActive);depth=0;while at<len(tokens) if tokens[at]=="{" then depth=depth+1 else if tokens[at]=="}" then depth=depth-1;if depth<=0 then at=at+1;break end if end if;at=at+1 end while end if end while;state.menuFiles=state.menuFiles+[menuFile];return effect
 end function
 // CG_Load_Menu
+/// @param state Shared client game main state passed to the helper calls in `loadMenu`.
+/// @param tokens Sequence read at `tokens[start]`, `tokens[at]`.
+/// @param start Value tested by `start>=len(tokens) or tokens[start]!="{"` before the calculation continues.
+/// @param files Value used by `for each file in files if file[0]==name then text=file[1] end if end for`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function loadMenu(state,tokens,start,files,retailActive)
   effect=result(false,start);if start>=len(tokens) or tokens[start]!="{" then return effect end if;at=start+1;while at<len(tokens) if tokens[at]=="}" then effect.handled=true;effect.value=at+1;return effect end if;name=tokens[at];at=at+1;text="";for each file in files if file[0]==name then text=file[1] end if end for;if text!="" then merge(effect,parseMenu(state,name,text,retailActive)) end if end while;return effect
 end function
 // CG_LoadMenus
+/// @param state Shared client game main state passed to the helper calls in `loadMenus`.
+/// @param menuFile Accepted for compatibility with `loadMenus`; the current implementation does not read it.
+/// @param text Text consumed or emitted by `loadMenus` in the client game main path.
+/// @param files Value used by `if key=="loadmenu" then nested=loadMenu(state,tokens,at,files,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function loadMenus(state,menuFile,text,files,retailActive)
   tokens=menuTokens(text);effect=result(true,0);emit(effect,"ui","reset-menus","","","",0,0,retailActive);at=0;while at<len(tokens) key=strings.toLowerAscii(tokens[at]);at=at+1;if key=="}" then break end if;if key=="loadmenu" then nested=loadMenu(state,tokens,at,files,retailActive);merge(effect,nested);if not nested.handled then break end if;at=nested.value end if end while;emit(effect,"system","print","","UI menu load complete\n","",0,0,retailActive);return effect
 end function
 // CG_OwnerDrawHandleKey
+/// @param ownerDraw Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it.
+/// @param flags Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it.
+/// @param special Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it.
+/// @param key Accepted for compatibility with `ownerDrawHandleKey`; the current implementation does not read it.
 function ownerDrawHandleKey(ownerDraw,flags,special,key) return false end function
 // CG_FeederCount
+/// @param state Record read through `state.numScores`, `state.scores`.
+/// @param feederID Value used by `if feederID==FEEDER_SCOREBOARD then return state.numScores end if`.
 function feederCount(state,feederID) if feederID==FEEDER_SCOREBOARD then return state.numScores end if;team=TEAM_RED;if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE else if feederID!=FEEDER_REDTEAM_LIST then return 0 end if;count=0;for each score in state.scores if score.team==team then count=count+1 end if end for;return count end function
 // CG_SetScoreSelection
+/// @param state Mutable client game main record/storage; this routine assigns `state.selectedScore`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
+/// @param hasMenu Value used by `if hasMenu and len(state.scores)>0 then feeder=FEEDER_SCOREBOARD`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function setScoreSelection(state,clientNum,hasMenu,retailActive)
   effect=result(true,0);red=0;blue=0;for i=0 to len(state.scores)-1 score=state.scores[i];if score.team==TEAM_RED then red=red+1 else if score.team==TEAM_BLUE then blue=blue+1 end if;if score.client==clientNum then state.selectedScore=i end if end for
   if hasMenu and len(state.scores)>0 then feeder=FEEDER_SCOREBOARD;index=state.selectedScore;if state.gametype>=GT_TEAM then feeder=FEEDER_REDTEAM_LIST;index=red;if state.scores[state.selectedScore].team==TEAM_BLUE then feeder=FEEDER_BLUETEAM_LIST;index=blue end if end if;emit(effect,"ui","set-feeder-selection","","","",index,feeder,retailActive) end if;return effect
 end function
 // CG_InfoFromScoreIndex
+/// @param state Record read through `state.gametype`, `state.scores`.
+/// @param index Value tested by `count==index` before the calculation continues.
+/// @param team Value used by `for i=0 to len(state.scores)-1 if state.scores[i].team==team then if count==index then return i end if`.
 function infoFromScoreIndex(state,index,team) if state.gametype>=GT_TEAM then count=0;for i=0 to len(state.scores)-1 if state.scores[i].team==team then if count==index then return i end if;count=count+1 end if end for end if;return index end function
 // CG_FeederItemText
+/// @param state Record read through `state.scores`, `state.clients`, `state.gametype`.
+/// @param feederID Value used by `if feederID==FEEDER_REDTEAM_LIST then team=TEAM_RED else if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if`.
+/// @param index Value used by `scoreIndex=infoFromScoreIndex(state,index,team)`.
+/// @param column Value used by `if column==0 then if ci.botSkill>0 and ci.botSkill<=5 then return ["",ci.botSkill] end if`.
+/// @param readyMask Value used by `else if column==2 then if (readyMask & (1<<sp.client))!=0 then return ["Ready",-1] end if`.
 function feederItemText(state,feederID,index,column,readyMask)
   team=-1;if feederID==FEEDER_REDTEAM_LIST then team=TEAM_RED else if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if;scoreIndex=infoFromScoreIndex(state,index,team);if scoreIndex<0 or scoreIndex>=len(state.scores) then return ["",-1] end if;sp=state.scores[scoreIndex];if sp.client<0 or sp.client>=len(state.clients) then return ["",-1] end if;ci=state.clients[sp.client];if not ci.infoValid then return ["",-1] end if
   if column==0 then if ci.botSkill>0 and ci.botSkill<=5 then return ["",ci.botSkill] end if;if ci.handicap<100 then return [str(ci.handicap),-1] end if
@@ -193,29 +323,81 @@ function feederItemText(state,feederID,index,column,readyMask)
   else if column==3 then return [ci.name,-1] else if column==4 then return [str(ci.score),-1] else if column==5 then return [str(sp.time),-1] else if column==6 then if sp.ping==-1 then return ["connecting",-1] end if;return [str(sp.ping),-1] end if;return ["",-1]
 end function
 // CG_FeederItemImage
+/// @param feederID Accepted for compatibility with `feederItemImage`; the current implementation does not read it.
+/// @param index Accepted for compatibility with `feederItemImage`; the current implementation does not read it.
 function feederItemImage(feederID,index) return 0 end function
 // CG_FeederSelection
+/// @param state Mutable client game main record/storage; this routine assigns `state.selectedScore`.
+/// @param feederID Value used by `if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if`.
+/// @param index Value assigned to `state.selectedScore`.
 function feederSelection(state,feederID,index) if state.gametype<GT_TEAM then state.selectedScore=index;return index end if;team=TEAM_RED;if feederID==FEEDER_BLUETEAM_LIST then team=TEAM_BLUE end if;count=0;for i=0 to len(state.scores)-1 if state.scores[i].team==team then if index==count then state.selectedScore=i end if;count=count+1 end if end for;return state.selectedScore end function
 // CG_Cvar_Get
+/// @param state Shared client game main state passed to the helper calls in `cvarGet`.
+/// @param name Name used to select or register the corresponding client game main resource.
 function cvarGet(state,name) cv=findCvar(state,name);if cv==void then return 0.0 end if;return atof(cv.value) end function
 // CG_Text_PaintWithCursor
+/// @param text Text consumed or emitted by `textPaintWithCursor` in the client game main path.
+/// @param cursorPos Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`.
+/// @param cursor Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`.
+/// @param limit Accepted for compatibility with `textPaintWithCursor`; the current implementation does not read it.
+/// @param style Value used by `emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive)`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function textPaintWithCursor(text,cursorPos,cursor,limit,style,retailActive) effect=result(true,0);emit(effect,"ui","paint-text",text,str(cursor),"",cursorPos,style,retailActive);return effect end function
 // CG_OwnerDrawWidth
+/// @param ownerDraw Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
+/// @param scale Value used by `return numeric.trunc32(len(text)*8*scale)`.
+/// @param gameTypeText Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
+/// @param statusText Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
+/// @param killerText Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
+/// @param redName Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
+/// @param blueName Value used by `if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==...`.
 function ownerDrawWidth(ownerDraw,scale,gameTypeText,statusText,killerText,redName,blueName) text="";if ownerDraw==1 then text=gameTypeText else if ownerDraw==2 then text=statusText else if ownerDraw==3 then text=killerText else if ownerDraw==4 then text=redName else if ownerDraw==5 then text=blueName end if;return numeric.trunc32(len(text)*8*scale) end function
 // CG_PlayCinematic
+/// @param state Mutable client game main record/storage; this routine assigns `state.nextCinematicHandle`.
+/// @param name Name used to select or register the corresponding client game main resource.
+/// @param x Horizontal coordinate in the coordinate space used by `playCinematic`.
+/// @param y Vertical coordinate in the coordinate space used by `playCinematic`.
+/// @param w Width in the coordinate space used by `playCinematic`.
+/// @param h Height in the coordinate space used by `playCinematic`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function playCinematic(state,name,x,y,w,h,retailActive) handle=state.nextCinematicHandle;state.nextCinematicHandle=handle+1;effect=result(true,handle);emit(effect,"cinematic","play",name,str(x)+","+str(y),str(w)+","+str(h),handle,1,retailActive);return effect end function
 // CG_StopCinematic
+/// @param handle Handle identifying the parser, file, media or control resource consumed by `stopCinematic`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function stopCinematic(handle,retailActive) effect=result(true,0);emit(effect,"cinematic","stop","","","",handle,0,retailActive);return effect end function
 // CG_DrawCinematic
+/// @param handle Handle identifying the parser, file, media or control resource consumed by `drawCinematic`.
+/// @param x Horizontal coordinate in the coordinate space used by `drawCinematic`.
+/// @param y Vertical coordinate in the coordinate space used by `drawCinematic`.
+/// @param w Width in the coordinate space used by `drawCinematic`.
+/// @param h Height in the coordinate space used by `drawCinematic`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function drawCinematic(handle,x,y,w,h,retailActive) effect=result(true,0);emit(effect,"cinematic","set-extents","",str(x)+","+str(y),str(w)+","+str(h),handle,0,retailActive);emit(effect,"cinematic","draw","","","",handle,0,retailActive);return effect end function
 // CG_RunCinematicFrame
+/// @param handle Handle identifying the parser, file, media or control resource consumed by `runCinematicFrame`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function runCinematicFrame(handle,retailActive) effect=result(true,0);emit(effect,"cinematic","run-frame","","","",handle,0,retailActive);return effect end function
 // CG_LoadHudMenu
+/// @param state Mutable client game main record/storage; this routine assigns `state.hudFile`.
+/// @param hudText Value used by `merge(effect,loadMenus(state,state.hudFile,hudText,menuFiles,retailActive))`.
+/// @param menuFiles Value used by `merge(effect,loadMenus(state,state.hudFile,hudText,menuFiles,retailActive))`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function loadHudMenu(state,hudText,menuFiles,retailActive) state.hudFile="ui/hud.txt";cv=findCvar(state,"cg_hudFiles");if cv!=void and cv.value!="" then state.hudFile=cv.value end if;effect=result(true,0);emit(effect,"ui","init-display","","","",0,0,retailActive);merge(effect,loadMenus(state,state.hudFile,hudText,menuFiles,retailActive));return effect end function
 // CG_AssetCache
+/// @param state Accepted for compatibility with `assetCache`; the current implementation does not read it.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function assetCache(state,retailActive) effect=result(true,0);for each name in ["ui/assets/gradientbar2.tga","ui/assets/scrollbar.tga","ui/assets/scrollbar_arrow_dwn_a.tga","ui/assets/scrollbar_arrow_up_a.tga","ui/assets/scrollbar_arrow_left.tga","ui/assets/scrollbar_arrow_right.tga","ui/assets/scrollbar_thumb.tga","ui/assets/slider2.tga","ui/assets/sliderbutt_1.tga","ui/assets/fx_base.tga","ui/assets/fx_red.tga","ui/assets/fx_yellow.tga","ui/assets/fx_green.tga","ui/assets/fx_teal.tga","ui/assets/fx_blue.tga","ui/assets/fx_cyan.tga","ui/assets/fx_white.tga"] emit(effect,"renderer","register-shader",name,"","",0,0,retailActive) end for;return effect end function
 
 // CG_Init
+/// @param state Mutable client game main record/storage; this routine assigns `state.initialized`, `state.loading`, `state.clientNum`, `state.processedSnapshotNum` and additional values.
+/// @param serverMessageNum Value assigned to `state.processedSnapshotNum`.
+/// @param serverCommandSequence Value assigned to `state.serverCommandSequence`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
+/// @param gameVersion Value used by `if gameVersion!=state.gameVersion then return error(7844,"Client/Server game mismatch: "+state.gameVersion+"/"+gameVersion) end if`.
+/// @param vidWidth Value assigned to `state.screenXScale`.
+/// @param vidHeight Value assigned to `state.screenYScale`.
+/// @param items Value used by `merge(effect,registerSounds(state,items,retailActive))`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function init(state,serverMessageNum,serverCommandSequence,clientNum,gameVersion,vidWidth,vidHeight,items,retailActive)
   state.initialized=true;state.loading=true;state.clientNum=clientNum;state.processedSnapshotNum=serverMessageNum;state.serverCommandSequence=serverCommandSequence;state.weaponSelect=WP_MACHINEGUN;state.redflag=-1;state.blueflag=-1;state.flagStatus=-1;state.screenXScale=vidWidth/640.0;state.screenYScale=vidHeight/480.0;effect=result(true,0)
   for each shader in ["gfx/2d/bigchars","white","menu/art/font1_prop.tga","menu/art/font1_prop_glo.tga","menu/art/font2_prop.tga"] emit(effect,"renderer","register-shader",shader,"","",0,0,retailActive) end for
@@ -224,14 +406,32 @@ function init(state,serverMessageNum,serverCommandSequence,clientNum,gameVersion
   merge(effect,registerSounds(state,items,retailActive));merge(effect,registerGraphics(state,items,retailActive));merge(effect,registerClients(state,retailActive));state.loading=false;emit(effect,"state","init-local-entities","","","",0,0,retailActive);emit(effect,"state","init-mark-polys","","","",0,0,retailActive);state.infoScreenText="";emit(effect,"state","set-config-values","","","",0,0,retailActive);merge(effect,startMusic(state,retailActive));emit(effect,"renderer","shader-state-changed","","","",0,0,retailActive);emit(effect,"audio","clear-looping","","","",1,0,retailActive);return effect
 end function
 // CG_Shutdown
+/// @param state Mutable client game main record/storage; this routine assigns `state.initialized`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function shutdown(state,retailActive) state.initialized=false;effect=result(true,0);emit(effect,"lifecycle","shutdown","","","",0,0,retailActive);return effect end function
 // CG_EventHandling
+/// @param state Mutable client game main record/storage; this routine assigns `state.eventType`.
+/// @param type Value assigned to `state.eventType`.
 function eventHandling(state,type) state.eventType=type;return 0 end function
 // CG_KeyEvent
+/// @param state Accepted for compatibility with `keyEvent`; the current implementation does not read it.
+/// @param key Accepted for compatibility with `keyEvent`; the current implementation does not read it.
+/// @param down Accepted for compatibility with `keyEvent`; the current implementation does not read it.
 function keyEvent(state,key,down) return 0 end function
 // CG_MouseEvent
+/// @param state Mutable client game main record/storage; this routine assigns `state.cursorX`, `state.cursorY`.
+/// @param x Horizontal coordinate in the coordinate space used by `mouseEvent`.
+/// @param y Vertical coordinate in the coordinate space used by `mouseEvent`.
 function mouseEvent(state,x,y) state.cursorX=state.cursorX+x;state.cursorY=state.cursorY+y;return 0 end function
 // vmMain
+/// @param state Shared client game main state passed to the helper calls in `vmMain`.
+/// @param command Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`.
+/// @param args Sequence read at `args[0]`, `args[1]`, `args[2]`.
+/// @param items Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`.
+/// @param gameVersion Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`.
+/// @param vidWidth Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`.
+/// @param vidHeight Value used by `if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function vmMain(state,command,args,items,gameVersion,vidWidth,vidHeight,retailActive)
   if command==CG_INIT then return init(state,args[0],args[1],args[2],gameVersion,vidWidth,vidHeight,items,retailActive) end if;if command==CG_SHUTDOWN then return shutdown(state,retailActive) end if
   if command==CG_CONSOLE_COMMAND then effect=result(true,0);emit(effect,"console","command","","","",0,0,retailActive);return effect end if

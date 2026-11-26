@@ -7,6 +7,9 @@ import mq3.client.cg_local as cgabi
 import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.numeric as numeric
+/// Converts a NUL-terminated decimal C string to a signed 32-bit integer using the Windows C runtime. This binding is used by client game servercmds.
+/// @param text NUL-terminated C string containing the decimal numeric text.
+/// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
 const MAX_CLIENTS=64
@@ -55,18 +58,30 @@ const CS_MODELS=32
 const CS_SOUNDS=288
 const CS_PLAYERS=544
 
+/// Stores client game servercmds score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerups` and additional values.
 struct Score client score ping time scoreFlags powerups accuracy impressive excellent gauntlet defend assist perfect captures team end struct
+/// Stores client game servercmds client record, including `name`, `team`, `score`, `powerups`, `location`, `health` and additional values.
 struct Client name team score powerups location health armor curWeapon gender headModelName headSkinName end struct
+/// Stores client game servercmds voice variant record, including `sound`, `chat`.
 struct VoiceVariant sound chat end struct
+/// Stores client game servercmds voice chat record, including `id`, `variants`.
 struct VoiceChat id variants end struct
+/// Stores client game servercmds voice list record, including `name`, `gender`, `chats`.
 struct VoiceList name gender chats end struct
+/// Stores client game servercmds head voice record, including `headmodel`, `voiceChatNum`.
 struct HeadVoice headmodel voiceChatNum end struct
+/// Stores client game servercmds buffered voice record, including `clientNum`, `sound`, `voiceOnly`, `cmd`, `message`.
 struct BufferedVoice clientNum sound voiceOnly cmd message end struct
+/// Stores client game servercmds queued engine action, including `boundary`, `kind`, `value`, `value2`, `number`, `dispatched`.
 struct Action boundary kind value value2 number dispatched end struct
+/// Stores client game servercmds operation result, including `handled`, `actions`.
 struct Result handled actions end struct
+/// Stores client game servercmds state, including `configstrings`, `clients`, `scores`, `numScores`, `teamScores`, `sortedTeamPlayers` and additional values.
 struct State configstrings clients scores numScores teamScores sortedTeamPlayers gametype dmflags teamflags fraglimit capturelimit timelimit maxclients mapname redTeam blueTeam scores1 scores2 levelStartTime redflag blueflag flagStatus warmup warmupCount voteTime voteYes voteNo voteString voteModified teamVoteTime teamVoteYes teamVoteNo teamVoteString teamVoteModified intermissionStarted teamChatHeight teamChatTime teamChatMsgs teamChatMsgTimes teamChatPos teamLastChatPos time fraglimitWarnings timelimitWarnings mapRestart levelShot serverCommandSequence voiceLists headVoices voiceBuffer voiceChatBufferIn voiceChatBufferOut voiceChatTime currentVoiceClient acceptOrderTime acceptVoice acceptTask acceptLeader teamChatsOnly noTaunt noVoiceChats noVoiceText localClientNum randomCursor end struct
 
+/// Creates a `mq3.client.cgame_servercmds.Client` record. Initializes the record with the defaults written in this constructor.
 function client() return Client("",0,0,0,0,0,0,0,GENDER_MALE,"","") end function
+/// Calls `mq3.client.cgame_servercmds.client`, `mq3.client.cgame_servercmds.State` from client game servercmds `create`.
 function create()
   clients=[];for index=0 to MAX_CLIENTS-1 clients=clients+[client()] end for
   return State(array(1024,""),clients,[],0,[0,0],[],0,0,0,0,0,0,0,"","","",
@@ -74,13 +89,37 @@ function create()
     TEAMCHAT_HEIGHT,3000,array(TEAMCHAT_HEIGHT,""),array(TEAMCHAT_HEIGHT,0),0,0,0,0,0,false,false,0,
     [],[],array(MAX_VOICECHATBUFFER,void),0,0,0,0,0,"",0,0,false,false,false,false,0,0.0)
 end function
+/// Creates a `mq3.client.cgame_servercmds.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `value` from `value`, `value2` from `value2`.
+/// @param boundary Value used to initialize `Action.boundary`.
+/// @param kind Value used to initialize `Action.kind`.
+/// @param value Value used to initialize `Action.value`.
+/// @param value2 Value used to initialize `Action.value2`.
+/// @param number Value used to initialize `Action.number`.
+/// @param emit Value used to initialize `Action.dispatched`.
 function action(boundary,kind,value,value2,number,emit) return Action(boundary,kind,value,value2,number,emit) end function
+/// Creates a `mq3.client.cgame_servercmds.Result` record. Assigns `handled` from `handled`.
+/// @param handled Value used to initialize `Result.handled`.
 function result(handled) return Result(handled,[]) end function
+/// Updates `effect.actions` during client game servercmds `add`.
+/// @param effect Mutable client game servercmds record/storage; this routine assigns `effect.actions`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param value Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`.
+/// @param value2 Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`.
+/// @param number Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`.
+/// @param emit Value used by `effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)]`.
 function add(effect,boundary,kind,value,value2,number,emit) effect.actions=effect.actions+[action(boundary,kind,value,value2,number,emit)];return void end function
+/// Evaluates client game servercmds `arg` and returns `""`, `args[index]` according to its guard/selection conditions.
+/// @param args Sequence read at `args[index]`.
+/// @param index Value tested by `index<0 or index>=len(args)` before the calculation continues.
 function arg(args,index) if index<0 or index>=len(args) then return "" end if;return args[index] end function
+/// Adapts `mq3.client.cgame_servercmds.atoi` to client game servercmds `integer`, returning its result for `arg(args,index)`.
+/// @param args Argument 1 of `mq3.client.cgame_servercmds.atoi`; passed as `arg(args,index)`.
+/// @param index Argument 1 of `mq3.client.cgame_servercmds.atoi`; passed as `arg(args,index)`.
 function integer(args,index) return atoi(arg(args,index)) end function
 
 // CG_ValidOrder
+/// @param name Name used to select or register the corresponding client game servercmds resource.
 function validOrder(name)
   key=strings.toLowerAscii(name)
   if key=="getflag" or key=="offense" then return TEAMTASK_OFFENSE end if
@@ -94,6 +133,8 @@ function validOrder(name)
 end function
 
 // CG_ParseScores: the wire command has fourteen fields per score.
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.numScores`, `state.teamScores`, `state.scores`, `state.clients[number].score` and additional values.
+/// @param args Value used by `count=integer(args,1)`.
 function parseScores(state,args)
   count=integer(args,1);if count>MAX_CLIENTS then count=MAX_CLIENTS end if;if count<0 then count=0 end if
   state.numScores=count;state.teamScores=[integer(args,2),integer(args,3)];state.scores=[]
@@ -106,6 +147,8 @@ function parseScores(state,args)
 end function
 
 // CG_ParseTeamInfo
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.sortedTeamPlayers`.
+/// @param args Value used by `count=integer(args,1)`.
 function parseTeamInfo(state,args)
   count=integer(args,1);if count<0 then count=0 end if;if count>MAX_CLIENTS then count=MAX_CLIENTS end if;state.sortedTeamPlayers=[]
   for index=0 to count-1
@@ -118,12 +161,14 @@ function parseTeamInfo(state,args)
 end function
 
 // CG_ParseServerinfo
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.gametype`, `state.dmflags`, `state.teamflags`, `state.fraglimit` and additional values.
 function parseServerinfo(state)
   text=state.configstrings[CS_SERVERINFO];state.gametype=atoi(info.value(text,"g_gametype"));state.dmflags=atoi(info.value(text,"dmflags"));state.teamflags=atoi(info.value(text,"teamflags"));state.fraglimit=atoi(info.value(text,"fraglimit"));state.capturelimit=atoi(info.value(text,"capturelimit"));state.timelimit=atoi(info.value(text,"timelimit"));state.maxclients=atoi(info.value(text,"sv_maxclients"));state.mapname="maps/"+info.value(text,"mapname")+".bsp";state.redTeam=info.value(text,"g_redTeam");state.blueTeam=info.value(text,"g_blueTeam")
   effect=result(true);add(effect,"cvar","set","g_gametype",str(state.gametype),0,true);add(effect,"cvar","set","g_redTeam",state.redTeam,0,true);add(effect,"cvar","set","g_blueTeam",state.blueTeam,0,true);return effect
 end function
 
 // CG_ParseWarmup
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.warmupCount`, `state.warmup`.
 function parseWarmup(state)
   warmup=atoi(state.configstrings[CS_WARMUP]);state.warmupCount=-1;effect=result(true)
   if warmup>0 and state.warmup<=0 then kind="prepare";if state.gametype>=GT_CTF then kind="prepare-team" end if;add(effect,"audio",kind,"","",0,true) end if
@@ -131,6 +176,7 @@ function parseWarmup(state)
 end function
 
 // CG_SetConfigValues
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.scores1`, `state.scores2`, `state.levelStartTime`, `state.redflag` and additional values.
 function setConfigValues(state)
   state.scores1=atoi(state.configstrings[CS_SCORES1]);state.scores2=atoi(state.configstrings[CS_SCORES2]);state.levelStartTime=atoi(state.configstrings[CS_LEVEL_START_TIME]);flags=state.configstrings[CS_FLAGSTATUS]
   if state.gametype==GT_CTF and len(flags)>=2 then state.redflag=atoi(strings.substr(flags,0,1));state.blueflag=atoi(strings.substr(flags,1,1))
@@ -139,6 +185,8 @@ function setConfigValues(state)
 end function
 
 // CG_ShaderStateChanged
+/// @param state Record read through `state.configstrings`.
+/// @param emit Value used by `add(effect,"renderer","remap-shader",oldName,newName,atoi(offset),emit)`.
 function shaderStateChanged(state,emit)
   effect=result(true);text=state.configstrings[CS_SHADERSTATE];at=0
   while at<len(text)
@@ -149,6 +197,10 @@ function shaderStateChanged(state,emit)
 end function
 
 // CG_ConfigStringModified. The engine has already integrated the new value.
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.configstrings[num]`, `state.scores1`, `state.scores2`, `state.levelStartTime` and additional values.
+/// @param num Value used by `if num<0 or num>=len(state.configstrings) then return error(7820,"cg_servercmds: bad configstring index") end if`.
+/// @param value Sequence whose length/content is inspected by `configStringModified`.
+/// @param emit Value used by `if num==CS_MUSIC then add(effect,"audio","start-music",value,"",0,emit)`.
 function configStringModified(state,num,value,emit)
   effect=result(true);if num<0 or num>=len(state.configstrings) then return error(7820,"cg_servercmds: bad configstring index") end if;state.configstrings[num]=value
   if num==CS_MUSIC then add(effect,"audio","start-music",value,"",0,emit)
@@ -174,8 +226,13 @@ function configStringModified(state,num,value,emit)
   return effect
 end function
 
+/// Computes `index+1<len(data) and data[index]==94 and data[index+1]!=94` for client game servercmds `isColor`.
+/// @param data Sequence read at `data[index]`, `data[index+1]`.
+/// @param index Value used by `return index+1<len(data) and data[index]==94 and data[index+1]!=94`.
 function isColor(data,index) return index+1<len(data) and data[index]==94 and data[index+1]!=94 end function
 // CG_AddToTeamChat, including color carry and last-space wrapping.
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.teamChatPos`, `state.teamLastChatPos`, `state.teamChatMsgs[state.teamChatPos%height]`, `state.teamChatMsgTimes[state.teamChatPos%height]`.
+/// @param text Text consumed or emitted by `addToTeamChat` in the client game servercmds path.
 function addToTeamChat(state,text)
   height=state.teamChatHeight;if height>TEAMCHAT_HEIGHT then height=TEAMCHAT_HEIGHT end if
   if height<=0 or state.teamChatTime<=0 then state.teamChatPos=0;state.teamLastChatPos=0;return 0 end if
@@ -195,6 +252,8 @@ function addToTeamChat(state,text)
 end function
 
 // CG_MapRestart
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.fraglimitWarnings`, `state.timelimitWarnings`, `state.intermissionStarted`, `state.voteTime` and additional values.
+/// @param emit Value used by `for each kind in ["init-local-entities","init-mark-polys","clear-particles"] add(effect,"state",kind,"","",0,emit) end for`.
 function mapRestart(state,emit)
   effect=result(true);state.fraglimitWarnings=0;state.timelimitWarnings=0;state.intermissionStarted=false;state.voteTime=0;state.mapRestart=true
   for each kind in ["init-local-entities","init-mark-polys","clear-particles"] add(effect,"state",kind,"","",0,emit) end for
@@ -204,6 +263,7 @@ function mapRestart(state,emit)
 end function
 
 // COM_ParseExt subset used by .voice and .vc files.
+/// @param text Text consumed or emitted by `voiceTokens` in the client game servercmds path.
 function voiceTokens(text)
   data=bytes(text);tokens=[];at=0
   while at<len(data)
@@ -217,6 +277,11 @@ function voiceTokens(text)
 end function
 
 // CG_ParseVoiceChats. soundFn(path,compress) may reject an unavailable sound.
+/// @param filename File name passed to the corresponding file/asset operation.
+/// @param text Text consumed or emitted by `parseVoiceChats` in the client game servercmds path.
+/// @param maxVoiceChats Value used by `while at<len(tokens) and len(list.chats)<maxVoiceChats`.
+/// @param soundFn Callback invoked by `parseVoiceChats` for sound.
+/// @param compress Value used by `if soundFn!=void then sound=soundFn(path,compress) end if`.
 function parseVoiceChats(filename,text,maxVoiceChats,soundFn,compress)
   tokens=voiceTokens(text);if len(tokens)==0 then return VoiceList(filename,GENDER_MALE,[]) end if
   key=strings.toLowerAscii(tokens[0]);gender=-1;if key=="male" then gender=GENDER_MALE else if key=="female" then gender=GENDER_FEMALE else if key=="neuter" then gender=GENDER_NEUTER end if;if gender<0 then return error(7821,"expected gender not found in voice chat file: "+filename) end if
@@ -232,16 +297,25 @@ function parseVoiceChats(filename,text,maxVoiceChats,soundFn,compress)
 end function
 
 // CG_LoadVoiceChats
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.voiceLists`.
+/// @param files Value used by `for each item in files if len(state.voiceLists)>=MAX_VOICEFILES then break end if`.
+/// @param soundFn Callback invoked by `loadVoiceChats` for sound.
+/// @param compress Value used by `parsed=parseVoiceChats(item[0],item[1],MAX_VOICECHATS,soundFn,compress)`.
 function loadVoiceChats(state,files,soundFn,compress)
   state.voiceLists=[];for each item in files if len(state.voiceLists)>=MAX_VOICEFILES then break end if;parsed=parseVoiceChats(item[0],item[1],MAX_VOICECHATS,soundFn,compress);if not (parsed is error) then state.voiceLists=state.voiceLists+[parsed] end if end for;return len(state.voiceLists)
 end function
 
 // CG_HeadModelVoiceChats
+/// @param state Record read through `state.voiceLists`.
+/// @param text Text consumed or emitted by `headModelVoiceChats` in the client game servercmds path.
 function headModelVoiceChats(state,text)
   tokens=voiceTokens(text);if len(tokens)==0 then return -1 end if;for index=0 to len(state.voiceLists)-1 if strings.equalsIgnoreCaseAscii(tokens[0],state.voiceLists[index].name) then return index end if end for;return -1
 end function
 
 // CG_GetVoiceChat. cursor is an injected [0,1) random value.
+/// @param list Record read through `list.chats`.
+/// @param id Value used by `if strings.equalsIgnoreCaseAscii(id,chat.id) and len(chat.variants)>0 then index=numeric.trunc32(cursor*len(chat.variants))`.
+/// @param cursor Value used by `if strings.equalsIgnoreCaseAscii(id,chat.id) and len(chat.variants)>0 then index=numeric.trunc32(cursor*len(chat.variants))`.
 function getVoiceChat(list,id,cursor)
   for each chat in list.chats
     if strings.equalsIgnoreCaseAscii(id,chat.id) and len(chat.variants)>0 then index=numeric.trunc32(cursor*len(chat.variants));if index>=len(chat.variants) then index=len(chat.variants)-1 end if;if index<0 then index=0 end if;return chat.variants[index] end if
@@ -249,11 +323,18 @@ function getVoiceChat(list,id,cursor)
   return void
 end function
 
+/// Updates `state.headVoices` during client game servercmds `cacheHead`.
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.headVoices`.
+/// @param name Name used to select or register the corresponding client game servercmds resource.
+/// @param index Value assigned to `pair.voiceChatNum`.
 function cacheHead(state,name,index)
   for each pair in state.headVoices if strings.equalsIgnoreCaseAscii(pair.headmodel,name) then pair.voiceChatNum=index;return void end if end for
   if len(state.headVoices)<MAX_HEADMODELS then state.headVoices=state.headVoices+[HeadVoice(name,index)] end if;return void
 end function
 // CG_VoiceChatListForClient. vcFiles contains [path,text] pairs.
+/// @param state Record read through `state.clients`, `state.headVoices`, `state.voiceLists`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
+/// @param vcFiles Value used by `for each file in vcFiles if strings.equalsIgnoreCaseAscii(file[0],wanted) then index=headModelVoiceChats(state,file[1])`.
 function voiceChatListForClient(state,clientNum,vcFiles)
   if clientNum<0 or clientNum>=MAX_CLIENTS then clientNum=0 end if;ci=state.clients[clientNum];base=ci.headModelName;if len(base)>0 and strings.substr(base,0,1)=="*" then base=strings.substr(base,1,len(base)-1) end if
   candidates=[base+"/"+ci.headSkinName,base]
@@ -266,6 +347,9 @@ function voiceChatListForClient(state,clientNum,vcFiles)
 end function
 
 // CG_PlayVoiceChat
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.acceptOrderTime`, `state.acceptVoice`, `state.acceptTask`, `state.acceptLeader`.
+/// @param vchat Record read through `vchat.sound`, `vchat.clientNum`, `vchat.cmd`, `vchat.voiceOnly` and additional values.
+/// @param emit Value used by `if not state.noVoiceChats then add(effect,"audio","voice",vchat.sound,"",vchat.clientNum,emit)`.
 function playVoiceChat(state,vchat,emit)
   effect=result(true);if state.intermissionStarted then return effect end if
   if not state.noVoiceChats then add(effect,"audio","voice",vchat.sound,"",vchat.clientNum,emit);if vchat.clientNum!=state.localClientNum then task=validOrder(vchat.cmd);if task>0 then state.acceptOrderTime=state.time+5000;state.acceptVoice=vchat.cmd;state.acceptTask=task;state.acceptLeader=vchat.clientNum end if;add(effect,"hud","response-head","","",vchat.clientNum,emit) end if end if
@@ -273,32 +357,55 @@ function playVoiceChat(state,vchat,emit)
 end function
 
 // CG_PlayBufferedVoiceChats
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.voiceBuffer[state.voiceChatBufferOut]`, `state.voiceChatBufferOut`, `state.voiceChatTime`.
+/// @param emit Value used by `if value!=void then nested=playVoiceChat(state,value,emit)`.
 function playBufferedVoiceChats(state,emit)
   effect=result(true);if state.voiceChatTime<state.time and state.voiceChatBufferOut!=state.voiceChatBufferIn then value=state.voiceBuffer[state.voiceChatBufferOut];if value!=void then nested=playVoiceChat(state,value,emit);effect.actions=effect.actions+nested.actions;state.voiceBuffer[state.voiceChatBufferOut]=void;state.voiceChatBufferOut=(state.voiceChatBufferOut+1)%MAX_VOICECHATBUFFER;state.voiceChatTime=state.time+1000 end if end if;return effect
 end function
 
 // CG_AddBufferedVoiceChat
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.voiceBuffer[state.voiceChatBufferIn]`, `state.voiceChatBufferIn`, `state.voiceChatBufferOut`.
+/// @param vchat Value used by `state.voiceBuffer[state.voiceChatBufferIn]=vchat`.
+/// @param emit Value used by `if state.voiceChatBufferIn==state.voiceChatBufferOut then nested=playVoiceChat(state,state.voiceBuffer[state.voiceChatBufferOut],emit)`.
 function addBufferedVoiceChat(state,vchat,emit)
   effect=result(true);if state.intermissionStarted then return effect end if;state.voiceBuffer[state.voiceChatBufferIn]=vchat;state.voiceChatBufferIn=(state.voiceChatBufferIn+1)%MAX_VOICECHATBUFFER
   if state.voiceChatBufferIn==state.voiceChatBufferOut then nested=playVoiceChat(state,state.voiceBuffer[state.voiceChatBufferOut],emit);effect.actions=effect.actions+nested.actions;state.voiceChatBufferOut=(state.voiceChatBufferOut+1)%MAX_VOICECHATBUFFER end if;return effect
 end function
 
 // CG_VoiceChatLocal
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.currentVoiceClient`.
+/// @param mode Value used by `if variant==void or (mode!=SAY_TEAM and state.teamChatsOnly) then return effect end if`.
+/// @param voiceOnly Value used by `vchat=BufferedVoice(clientNum,variant.sound,voiceOnly,cmd,message)`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
+/// @param color Color value used by the client game servercmds drawing or interpolation operation.
+/// @param cmd Value used by `variant=getVoiceChat(list,cmd,state.randomCursor)`.
+/// @param vcFiles Value used by `list=voiceChatListForClient(state,clientNum,vcFiles)`.
+/// @param emit Value used by `return addBufferedVoiceChat(state,vchat,emit)`.
 function voiceChatLocal(state,mode,voiceOnly,clientNum,color,cmd,vcFiles,emit)
   effect=result(true);if state.intermissionStarted then return effect end if;if clientNum<0 or clientNum>=MAX_CLIENTS then clientNum=0 end if;state.currentVoiceClient=clientNum;list=voiceChatListForClient(state,clientNum,vcFiles);if list==void then return effect end if;variant=getVoiceChat(list,cmd,state.randomCursor);if variant==void or (mode!=SAY_TEAM and state.teamChatsOnly) then return effect end if
   name=state.clients[clientNum].name;prefix=name+": ";if mode==SAY_TELL then prefix="["+name+"]: " else if mode==SAY_TEAM then prefix="("+name+"): " end if;message=prefix+"^"+str(color)+variant.chat;vchat=BufferedVoice(clientNum,variant.sound,voiceOnly,cmd,message);return addBufferedVoiceChat(state,vchat,emit)
 end function
 
 // CG_VoiceChat
+/// @param state Record read through `state.noTaunt`.
+/// @param mode Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`.
+/// @param args Value used by `cmd=arg(args,4)`.
+/// @param vcFiles Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`.
+/// @param emit Value used by `return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)`.
 function voiceChat(state,mode,args,vcFiles,emit)
   cmd=arg(args,4);key=strings.toLowerAscii(cmd);if state.noTaunt and (key=="kill_insult" or key=="taunt" or key=="death_insult" or key=="kill_guantlet" or key=="praise") then return result(true) end if
   return voiceChatLocal(state,mode,integer(args,1)!=0,integer(args,2),integer(args,3),cmd,vcFiles,emit)
 end function
 
 // CG_RemoveChatEscapeChar
+/// @param text Text consumed or emitted by `removeChatEscapeChar` in the client game servercmds path.
 function removeChatEscapeChar(text) data=bytes(text);effect=[];for each value in data if value!=25 then effect=effect+[value] end if end for;return decode(bytes(effect)) end function
 
 // CG_ServerCommand
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.levelShot`.
+/// @param args Command argument sequence by `serverCommand`.
+/// @param vcFiles Value used by `else if cmd=="vchat" then nested=voiceChat(state,SAY_ALL,args,vcFiles,emit)`.
+/// @param emit Value used by `if cmd=="cp" then add(effect,"hud","center-print",arg(args,1),"144",16,emit)`.
 function serverCommand(state,args,vcFiles,emit)
   effect=result(true);cmd=arg(args,0);if cmd=="" then return effect end if
   if cmd=="cp" then add(effect,"hud","center-print",arg(args,1),"144",16,emit)
@@ -320,6 +427,11 @@ function serverCommand(state,args,vcFiles,emit)
 end function
 
 // CG_ExecuteNewServerCommands. commands contains [sequence,argv] records.
+/// @param state Mutable client game servercmds record/storage; this routine assigns `state.serverCommandSequence`.
+/// @param latestSequence Value used by `while state.serverCommandSequence<latestSequence`.
+/// @param commands Value used by `for each item in commands if item[0]==state.serverCommandSequence then found=item[1]`.
+/// @param vcFiles Value used by `if found!=void then nested=serverCommand(state,found,vcFiles,emit)`.
+/// @param emit Value used by `if found!=void then nested=serverCommand(state,found,vcFiles,emit)`.
 function executeNewServerCommands(state,latestSequence,commands,vcFiles,emit)
   effect=result(true)
   while state.serverCommandSequence<latestSequence
@@ -331,4 +443,6 @@ function executeNewServerCommands(state,latestSequence,commands,vcFiles,emit)
 end function
 
 // Cmd_Argv compatibility name retained for the original candidate inventory.
+/// @param args Argument 1 of `mq3.client.cgame_servercmds.arg`.
+/// @param index Argument 2 of `mq3.client.cgame_servercmds.arg`.
 function cmdArgv(args,index) return arg(args,index) end function

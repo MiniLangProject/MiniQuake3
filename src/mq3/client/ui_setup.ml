@@ -10,13 +10,20 @@ const ID_GAME=13
 const ID_CDKEY=14
 const ID_DEFAULTS=17
 const ID_BACK=18
+/// Stores UI setup setup item record, including `id`, `label`, `y`.
 struct SetupItem id label y end struct
+/// Stores UI setup setup menu record, including `wrapAround`, `fullscreen`, `items`, `assets`, `commands`, `actions`.
 struct SetupMenu wrapAround fullscreen items assets commands actions end struct
 // Setup_ResetDefaults_Action
+/// @param menu Mutable UI setup record/storage; this routine assigns `menu.commands`.
+/// @param result Value used by `if result then menu.commands=menu.commands+["exec default.cfg\n","cvar_restart\n","vid_restart\n"] end if`.
 function resetDefaultsAction(menu,result) if result then menu.commands=menu.commands+["exec default.cfg\n","cvar_restart\n","vid_restart\n"] end if;return menu end function
 // Setup_ResetDefaults_Draw
 function resetDefaultsDraw() return ["text:320,356:WARNING: This will reset *ALL*","text:320,383:options to their default values."] end function
 // UI_SetupMenu_Event
+/// @param menu Mutable UI setup record/storage; this routine assigns `menu.actions`.
+/// @param id Value used by `if id==ID_CUSTOMIZEPLAYER then menu.actions=menu.actions+["playerSettings"]`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function event(menu,id,eventCode)
   if eventCode!=QM_ACTIVATED then return menu end if
   if id==ID_CUSTOMIZEPLAYER then menu.actions=menu.actions+["playerSettings"]
@@ -31,6 +38,7 @@ end function
 // UI_SetupMenu_Cache
 function cache() return ["menu/art/back_0","menu/art/back_1","menu/art/frame2_l","menu/art/frame1_r"] end function
 // UI_SetupMenu_Init
+/// @param paused Value used by `if not paused then items=items+[SetupItem(ID_DEFAULTS,"DEFAULTS",304)] end if`.
 function init(paused)
   items=[SetupItem(ID_CUSTOMIZEPLAYER,"PLAYER",134),SetupItem(ID_CUSTOMIZECONTROLS,"CONTROLS",168),SetupItem(ID_SYSTEMCONFIG,"SYSTEM",202),SetupItem(ID_GAME,"GAME OPTIONS",236),SetupItem(ID_CDKEY,"CD Key",270)]
   if not paused then items=items+[SetupItem(ID_DEFAULTS,"DEFAULTS",304)] end if
@@ -38,4 +46,5 @@ function init(paused)
   return SetupMenu(true,true,items,cache(),[],[])
 end function
 // UI_SetupMenu
+/// @param paused Value used by `menu=init(paused)`.
 function open(paused) menu=init(paused);menu.actions=menu.actions+["push"];return menu end function

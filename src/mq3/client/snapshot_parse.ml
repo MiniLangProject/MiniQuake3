@@ -11,11 +11,13 @@ const MAX_GENTITIES=1024
 const GENTITYNUM_BITS=10
 const ENTITY_SENTINEL=1023
 
+/// Stores snapshot parse frame data, including `parseEntitiesNum`, `numEntities`.
 struct Frame
   parseEntitiesNum
   numEntities
 end struct
 
+/// Stores snapshot parse state, including `parseEntities`, `parseEntitiesNum`, `entityBaselines`, `shownetLevel`, `shownetLines`.
 struct State
   parseEntities
   parseEntitiesNum
@@ -24,18 +26,29 @@ struct State
   shownetLines
 end struct
 
+/// Creates an empty packet-entity frame descriptor with zero ring origin and entity count.
 function createFrame() return Frame(0,0) end function
 
+/// Allocates the 2,048-entry parse-entity ring and 1,024 baseline slots with diagnostic tracing disabled.
 function createState()
   return State(array(MAX_PARSE_ENTITIES,void),0,array(MAX_GENTITIES,void),0,[])
 end function
 
+/// Left-pads a packet offset to at least three characters for entity diagnostics.
+/// @param value Value used by `text=str(value)`.
 function pad3(value) text=str(value);while len(bytes(text))<3 text=" "+text end while;return text end function
+/// Records packet-entity trace lines only at shownet level three.
+/// @param state Mutable snapshot parse record/storage; this routine assigns `state.shownetLines`.
+/// @param msg Record read through `msg.readcount`.
+/// @param text Text consumed or emitted by `trace` in the snapshot parse path.
 function trace(state,msg,text)
   if state.shownetLevel==3 then state.shownetLines=state.shownetLines+[pad3(msg.readcount)+":  "+text] end if
   return void
 end function
 
+/// Returns a validated entity baseline or creates a zeroed fallback carrying the requested entity number.
+/// @param state Record read through `state.entityBaselines`.
+/// @param number Value assigned to `value.number`.
 function baseline(state,number)
   if number<0 or number>=MAX_GENTITIES then return error(6850,"snapshot parse: bad baseline number") end if
   value=state.entityBaselines[number]
@@ -43,6 +56,9 @@ function baseline(state,number)
   return value
 end function
 
+/// Reads an absolute entity sequence through the parse ring, rejecting negative indices and missing history entries.
+/// @param state Record read through `state.parseEntities`.
+/// @param absoluteIndex Value used by `if absoluteIndex<0 then return error(6851,"snapshot parse: negative entity index") end if`.
 function parsedEntity(state,absoluteIndex)
   if absoluteIndex<0 then return error(6851,"snapshot parse: negative entity index") end if
   value=state.parseEntities[absoluteIndex&(MAX_PARSE_ENTITIES-1)]
@@ -51,6 +67,12 @@ function parsedEntity(state,absoluteIndex)
 end function
 
 // Mirrors CL_DeltaEntity: removed records occupy no ring slot.
+/// @param state Mutable snapshot parse record/storage; this routine assigns `state.parseEntities[state.parseEntitiesNum&(MAX_PARSE_ENTITIES-1)]`, `state.parseEntitiesNum`.
+/// @param msg Value used by `if unchanged then value=entitystate.copy(old) else value=delta.readDeltaEntity(msg,old,newnum) end if`.
+/// @param frame Mutable snapshot parse record/storage; this routine assigns `frame.numEntities`.
+/// @param newnum Value used by `if newnum<0 or newnum>=MAX_GENTITIES then return error(6853,"snapshot parse: bad entity number") end if`.
+/// @param old Value used by `if old==void then old=baseline(state,newnum) end if`.
+/// @param unchanged Value used by `if unchanged then value=entitystate.copy(old) else value=delta.readDeltaEntity(msg,old,newnum) end if`.
 function deltaEntity(state,msg,frame,newnum,old,unchanged)
   if newnum<0 or newnum>=MAX_GENTITIES then return error(6853,"snapshot parse: bad entity number") end if
   if old==void then old=baseline(state,newnum) end if
@@ -62,6 +84,10 @@ function deltaEntity(state,msg,frame,newnum,old,unchanged)
   return true
 end function
 
+/// Reads the next entity from the prior snapshot, returning the merge sentinel pair [99999, void] at the end.
+/// @param state Shared snapshot parse state passed to the helper calls in `nextOld`.
+/// @param oldframe Record read through `oldframe.numEntities`, `oldframe.parseEntitiesNum`.
+/// @param index Value tested by `oldframe==void or index>=oldframe.numEntities` before the calculation continues.
 function nextOld(state,oldframe,index)
   if oldframe==void or index>=oldframe.numEntities then return [99999,void] end if
   value=parsedEntity(state,oldframe.parseEntitiesNum+index)
@@ -69,6 +95,10 @@ function nextOld(state,oldframe,index)
 end function
 
 // Merge the sorted wire entity stream with the prior snapshot's sorted ring slice.
+/// @param state Record read through `state.parseEntitiesNum`.
+/// @param msg Record read through `msg.readcount`, `msg.cursize`.
+/// @param oldframe Value used by `pair=nextOld(state,oldframe,oldindex)`.
+/// @param newframe Mutable snapshot parse record/storage; this routine assigns `newframe.parseEntitiesNum`, `newframe.numEntities`.
 function parsePacketEntities(state,msg,oldframe,newframe)
   if state==void or msg==void or newframe==void then return error(6854,"snapshot parse: missing state") end if
   newframe.parseEntitiesNum=state.parseEntitiesNum;newframe.numEntities=0

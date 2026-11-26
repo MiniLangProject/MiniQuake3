@@ -14,6 +14,8 @@ import mq3.game.snapshot as snapshot
 import mq3.shared.math as q
 import mq3.server.world as sv
 import mq3.compat.numeric as n
+/// Convert a horizontal direction vector to the nonnegative yaw angle used to orient a corpse.
+/// @param vector Array or byte sequence accessed at `1` and `0`.
 function vectorYaw(vector)
   yaw = 0.0
   if vector[1] != 0 or vector[0] != 0 then
@@ -23,6 +25,11 @@ function vectorYaw(vector)
   end if
   return yaw
 end function
+/// Set `self.client.ps.stats[c.STAT_DEAD_YAW]` to `n.trunc32(self.s.angles[1])` and `self.client.ps.stats[c.STAT_DEAD_YAW]` to `n.trunc32(vectorYaw(dir))` in `mq3.game.bodies.lookAtKiller`.
+/// @param level Not read by this implementation; retained in the `lookAtKiller` signature.
+/// @param self Entity receiving the callback; accesses `client` and `s`. May update `self.client.ps.stats[c.STAT_DEAD_YAW]` in place.
+/// @param inflictor Entity directly delivering the damage.
+/// @param attacker Entity credited with the attack.
 function lookAtKiller(level,self,inflictor,attacker)
   if self.client == void then return error(494,"LookAtKiller requires a client") end if
   source = void
@@ -36,6 +43,10 @@ function lookAtKiller(level,self,inflictor,attacker)
   self.client.ps.stats[c.STAT_DEAD_YAW] = n.trunc32(vectorYaw(dir))
   return void
 end function
+/// Update `self.takedamage`, `self.s.eType` and `self.r.contents` during `gib`.
+/// @param level Game-level state; accesses `entities`.
+/// @param self Entity receiving the callback; accesses `s`, `takedamage` and `r`. May update `self.takedamage`, `self.s.eType` and `self.r.contents` in place.
+/// @param killer Integer parameter stored alongside the emitted event.
 function gib(level,self,killer)
   if (self.s.eFlags & 512) != 0 then
     for i = 0 to 1023
@@ -46,11 +57,20 @@ function gib(level,self,killer)
   events.add(level,self,c.EV_GIB_PLAYER,killer); self.takedamage = false; self.s.eType = c.ET_INVISIBLE; self.r.contents = 0
   return void
 end function
+/// Set `self.health` to `-39` in `mq3.game.bodies.die`. Return paths include `gib(level,self,0)`.
+/// @param level Game-level state; accesses `blood`.
+/// @param self Entity receiving the callback; accesses `health`. May update `self.health` in place.
+/// @param inflictor Not read by this implementation; retained in the `die` signature.
+/// @param attacker Not read by this implementation; retained in the `die` signature.
+/// @param damage Not read by this implementation; retained in the `die` signature.
+/// @param meansOfDeath Not read by this implementation; retained in the `die` signature.
 function die(level,self,inflictor,attacker,damage,meansOfDeath)
   if self.health > -40 then return void end if
   if level.blood == 0 then self.health = -39; return void end if
   return gib(level,self,0)
 end function
+/// Update `level.bodyQueIndex`, `level.bodyQue` and `level.bodyQue[i]` during `initQueue`.
+/// @param level Game-level state; accesses `bodyQueIndex` and `bodyQue`. May update `level.bodyQueIndex`, `level.bodyQue` and `level.bodyQue[i]` in place.
 function initQueue(level)
   level.bodyQueIndex = 0
   // Standalone levels start without a queue; a live module owns eight fixed
@@ -63,11 +83,17 @@ function initQueue(level)
   end for
   return void
 end function
+/// Update `ent.physicsObject`, `ent.nextthink` and `ent.s.pos.trBase[2]` during `sink`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `timestamp`, `physicsObject`, `nextthink` and `s`. May update `ent.physicsObject`, `ent.nextthink` and `ent.s.pos.trBase[2]` in place.
 function sink(level,ent)
   if n.i32(level.time-ent.timestamp) > 6500 then game.unlink(level,ent); ent.physicsObject = false; return void end if
   ent.nextthink = n.add32(level.time,100); ent.s.pos.trBase[2] = n.fsub(ent.s.pos.trBase[2],1.0)
   return void
 end function
+/// Set `level.bodyQueIndex` to `local.nextBodyQueueSlot(level.bodyQueIndex)` in `mq3.game.bodies.copyToQueue`. Return paths include `game.link(level,body)`.
+/// @param level Game-level state; accesses `scene`, `bodyQue`, `bodyQueIndex` and `time`. May update `level.bodyQueIndex` in place.
+/// @param ent Game entity; accesses `s`, `client`, `r` and `health`.
 function copyToQueue(level,ent)
   game.unlink(level,ent)
   if (sv.pointContents(level.scene,ent.s.origin,-1) & 0x80000000) != 0 then return void end if
@@ -94,6 +120,10 @@ function copyToQueue(level,ent)
   body.r.currentOrigin = movement.copy(body.s.pos.trBase)
   return game.link(level,body)
 end function
+/// Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `hit.endpos[2]` and `ent.s.groundEntityNum` and related state during `bounce`.
+/// @param level Game-level state; accesses `previousTime` and `time`.
+/// @param ent Game entity; accesses `s`, `physicsBounce` and `r`. May update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]` and `ent.s.groundEntityNum` and additional fields in place.
+/// @param hit Hit record; accesses `trace`, `endpos` and `entityNum`. May update `hit.endpos[2]` in place.
 function bounce(level,ent,hit)
   tr = hit.trace
   hitTime = n.trunc32(n.fadd(level.previousTime,n.fmul(n.i32(level.time-level.previousTime),tr.fraction)))
@@ -112,6 +142,9 @@ function bounce(level,ent,hit)
   ent.s.pos.trBase = movement.copy(ent.r.currentOrigin); ent.s.pos.trTime = level.time
   return void
 end function
+/// Update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` during `run`. Return paths include `bounce(level,ent,hit)`.
+/// @param level Game-level state; accesses `time` and `scene`.
+/// @param ent Game entity; accesses `classname`, `s`, `clipmask` and `r`. May update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` in place.
 function run(level,ent)
   if ent.classname != "bodyque" or ent.s.eType == c.ET_ITEM then return error(494,"Only body queue physics is implemented here") end if
   if ent.s.groundEntityNum == -1 and ent.s.pos.trType != c.TR_GRAVITY then ent.s.pos.trType = c.TR_GRAVITY; ent.s.pos.trTime = level.time end if

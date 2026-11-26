@@ -8,10 +8,16 @@ import mq3.format.aas as aas
 
 const MAX_AREA_REACHABILITIES=128
 
+/// `ReverseLink` record for aas routing tables, containing `areaNum` and `linkNum`.
 struct ReverseLink areaNum linkNum end struct
+/// `Tables` record for aas routing tables, containing `router`, `reversed`, `areaTravelTimes`, `portalMaxTravelTimes` and `totalLinks` and related fields.
 struct Tables router reversed areaTravelTimes portalMaxTravelTimes totalLinks truncatedSources reachSources end struct
 
+/// Create a `mq3.botlib.aas_routing_tables.Tables` record, initializing `router` from `router`.
+/// @param router Initial value stored in `mq3.botlib.aas_routing_tables.Tables.router`.
 function empty(router) return Tables(router,[],[],[],0,0,[]) end function
+/// Build the `mq3.botlib.aas_routing_tables.Tables` result for `create`. Return paths include `Tables(router,reversed,areaTimes,portalMax,total,truncated,reachSources)`.
+/// @param router AAS routing state; accesses `runtime`, `settings` and `reaches`.
 function create(router)
   if router==void or router.runtime==void or not router.runtime.initialized then return empty(router) end if
   areaCount=len(router.settings);reversed=array(areaCount,void);total=0;truncated=0
@@ -47,8 +53,19 @@ function create(router)
   end for end if
   return Tables(router,reversed,areaTimes,portalMax,total,truncated,reachSources)
 end function
+/// Read the reversed reachability list for an area, returning an empty list for invalid table access.
+/// @param tables Tables record; accesses `reversed`.
+/// @param areaNum AAS area number; zero denotes no area.
 function incoming(tables,areaNum) if tables==void or areaNum<0 or areaNum>=len(tables.reversed) then return [] end if;return tables.reversed[areaNum] end function
+/// Read the precomputed travel time between the requested incoming and outgoing area edges, returning zero for invalid indices.
+/// @param tables Tables record; accesses `areaTravelTimes`.
+/// @param areaNum AAS area number; zero denotes no area.
+/// @param outgoingOffset Value used by `areaTravelTime` in `if outgoingOffset<0 or outgoingOffset>=len(rows) then return 0 end if`.
+/// @param incomingOffset Operand used to evaluate the returned expression `row[incomingOffset]`.
 function areaTravelTime(tables,areaNum,outgoingOffset,incomingOffset)
   if tables==void or areaNum<0 or areaNum>=len(tables.areaTravelTimes) then return 0 end if;rows=tables.areaTravelTimes[areaNum];if outgoingOffset<0 or outgoingOffset>=len(rows) then return 0 end if;row=rows[outgoingOffset];if incomingOffset<0 or incomingOffset>=len(row) then return 0 end if;return row[incomingOffset]
 end function
+/// Read a portal maximum-travel-time entry, returning zero when the table or index is invalid.
+/// @param tables Tables record; accesses `portalMaxTravelTimes`.
+/// @param portalNum Operand used to evaluate the returned expression `tables.portalMaxTravelTimes[portalNum]`.
 function portalMaxTravelTime(tables,portalNum) if tables==void or portalNum<0 or portalNum>=len(tables.portalMaxTravelTimes) then return 0 end if;return tables.portalMaxTravelTimes[portalNum] end function

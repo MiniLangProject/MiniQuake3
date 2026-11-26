@@ -90,17 +90,26 @@ const MAX_PROJECTILE_TEXTURES=8
 const MAX_PROJECTILE_TRIANGLES=1024
 const MAX_TRIANGLES_PER_PROJECTILE=256
 
+/// Stores playable app player texture record, including `part`, `surface`, `imageName`, `image`, `slot`.
 struct PlayerTexture part surface imageName image slot end struct
+/// Stores playable app player skin set record, including `lower`, `upper`, `head`.
 struct PlayerSkinSet lower upper head end struct
+/// Stores playable app player model assets record, including `models`, `animation`, `textures`, `cache`, `barrelStates`.
 struct PlayerModelAssets models animation textures cache barrelStates end struct
+/// Stores playable app render runtime record, including `lightGrid`, `collisionWorld`, `shadowCatalog`.
 struct RenderRuntime lightGrid collisionWorld shadowCatalog end struct
 
+/// Evaluates playable app `captureEnemyPositions` and returns `result` according to its guard/selection conditions.
+/// @param targetState Record read through `targetState.targets`.
 function captureEnemyPositions(targetState)
   result=[]
   for each target in targetState.targets result=result+[[[target.origin[0],target.origin[1],target.origin[2]],target.alive]] end for
   return result
 end function
 
+/// Evaluates playable app `restoreEnemyPositions` and returns `void` according to its guard/selection conditions.
+/// @param targetState Record read through `targetState.targets`.
+/// @param previous Sequence read at `previous[index]`.
 function restoreEnemyPositions(targetState,previous)
   for index=0 to len(targetState.targets)-1
     target=targetState.targets[index]
@@ -110,6 +119,10 @@ function restoreEnemyPositions(targetState,previous)
   return void
 end function
 
+/// Calls `mq3.client.playable_enemy_movement.moveTarget` from playable app `collideEnemyPositions`.
+/// @param world world record passed to the playable app helper calls.
+/// @param targetState Record read through `targetState.targets`.
+/// @param previous Sequence read at `previous[index]`.
 function collideEnemyPositions(world,targetState,previous)
   for index=0 to len(targetState.targets)-1
     target=targetState.targets[index]
@@ -124,6 +137,9 @@ function collideEnemyPositions(world,targetState,previous)
   return void
 end function
 
+/// Evaluates playable app `field` and returns `pair[1]`, `""` according to its guard/selection conditions.
+/// @param fields Value used by `for each pair in fields`.
+/// @param key Key or control identifier used to select the corresponding playable app entry.
 function field(fields,key)
   for each pair in fields
     if pair[0]==key then return pair[1] end if
@@ -131,6 +147,8 @@ function field(fields,key)
   return ""
 end function
 
+/// Calls `mq3.format.bsp.entities`, `mq3.client.playable_app.field`, `mq3.compat.textnumbers.vector` and additional helpers from playable app `startPose`. The final path returns `[[0.0,0.0,64.0],0.0]`.
+/// @param map map record passed to the playable app helper calls.
 function startPose(map)
   entities=bsp.entities(map);if entities is error then return entities end if
   for each entity in entities
@@ -147,10 +165,15 @@ function startPose(map)
   return [[0.0,0.0,64.0],0.0]
 end function
 
+/// Computes `(vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0)` for playable app `vertexLight`.
+/// @param vertex Record read through `vertex.color`.
 function vertexLight(vertex)
   return (vertex.color[0]+vertex.color[1]+vertex.color[2])/(255.0*3.0)
 end function
 
+/// Calls `mq3.format.pk3.read`, `mq3.audio.wav.decode` from playable app `archiveSound`. The final path returns `sound`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param name Name used to select or register the corresponding playable app resource.
 function archiveSound(archive,name)
   if archive==void then return void end if
   data=try(pk3.read(archive,name));if data is error then return void end if
@@ -158,11 +181,18 @@ function archiveSound(archive,name)
   return sound
 end function
 
+/// Evaluates playable app `trailFor` and returns `trail`, `void` according to its guard/selection conditions.
+/// @param trails Value used by `for each trail in trails if trail.projectileId==projectileId then return trail end if end for`.
+/// @param projectileId Value used by `for each trail in trails if trail.projectileId==projectileId then return trail end if end for`.
 function trailFor(trails,projectileId)
   for each trail in trails if trail.projectileId==projectileId then return trail end if end for
   return void
 end function
 
+/// Calls `mq3.client.playable_projectile_view.alive`, `mq3.client.playable_projectile_view.flying`, `mq3.client.playable_app.trailFor` and additional helpers from playable app `projectileSnapshots`. The final path returns `result`.
+/// @param previous Value used by `for each value in previous`.
+/// @param state Record read through `state.trails`, `state.projectiles`, `state.impacts`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function projectileSnapshots(previous,state,now)
   result=[]
   for each value in previous
@@ -182,6 +212,10 @@ function projectileSnapshots(previous,state,now)
   return result
 end function
 
+/// Calls `mq3.client.playable_projectile_view.alive`, `mq3.client.playable_projectile_view.flying`, `mq3.client.playable_app.trailFor` and additional helpers from playable app `playerProjectileSnapshots`. The final path returns `result`.
+/// @param previous Value used by `for each value in previous`.
+/// @param state Record read through `state.trails`, `state.projectiles`, `state.impacts`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function playerProjectileSnapshots(previous,state,now)
   result=[]
   for each value in previous
@@ -201,10 +235,16 @@ function playerProjectileSnapshots(previous,state,now)
   return result
 end function
 
+/// Computes `classname=="weapon_rocketlauncher" or classname=="weapon_plasmagun" or classname=="weapon_grenadelauncher" or classname=="weapon_bfg"` for playable app `isPlayerProjectile`.
+/// @param classname Value used by `return classname=="weapon_rocketlauncher" or classname=="weapon_plasmagun" or classname=="weapon_grenadelauncher" or classname=="weapon_bfg"`.
 function isPlayerProjectile(classname)
   return classname=="weapon_rocketlauncher" or classname=="weapon_plasmagun" or classname=="weapon_grenadelauncher" or classname=="weapon_bfg"
 end function
 
+/// Calls `mq3.format.pk3.read`, `mq3.format.md3.load`, `mq3.format.md3.renderTriangles` from playable app `archiveModel`. The final path returns `result`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param name Name used to select or register the corresponding playable app resource.
+/// @param maxTriangles Upper bound on emitted render triangles.
 function archiveModel(archive,name,maxTriangles)
   if archive==void then return [] end if
   data=try(pk3.read(archive,name));if data is error then return [] end if
@@ -213,23 +253,33 @@ function archiveModel(archive,name,maxTriangles)
   return result
 end function
 
+/// Calls `mq3.format.pk3.read` from playable app `archiveBytes`. The final path returns `data`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param name Name used to select or register the corresponding playable app resource.
 function archiveBytes(archive,name)
   if archive==void then return void end if
   data=try(pk3.read(archive,name));if data is error then return void end if
   return data
 end function
 
+/// Calls `stringEqualsIgnoreCaseAscii` from playable app `textureSlotForName`. The final path returns `-1`.
+/// @param textures Value used by `for each texture in textures if stringEqualsIgnoreCaseAscii(texture.imageName,name) then return texture.slot end if end for`.
+/// @param name Name used to select or register the corresponding playable app resource.
 function textureSlotForName(textures,name)
   for each texture in textures if stringEqualsIgnoreCaseAscii(texture.imageName,name) then return texture.slot end if end for
   return -1
 end function
 
+/// Evaluates playable app `nextPlayerTextureSlot` and returns `slot` according to its guard/selection conditions.
+/// @param textures Value used by `for each texture in textures if texture.slot>=slot then slot=texture.slot+1 end if end for`.
 function nextPlayerTextureSlot(textures)
   slot=PLAYER_TEXTURE_FIRST_SLOT
   for each texture in textures if texture.slot>=slot then slot=texture.slot+1 end if end for
   return slot
 end function
 
+/// Calls `mq3.client.playable_weapon_barrel.classnames`, `stringEqualsIgnoreCaseAscii`, `mq3.client.playable_muzzle_flash.classnames` from playable app `itemClassnames`. The final path returns `result`.
+/// @param items Value used by `for each value in items`.
 function itemClassnames(items)
   // The machinegun also supplies the first-person view model, even on maps
   // which do not place a machinegun pickup.
@@ -251,24 +301,35 @@ function itemClassnames(items)
   return result
 end function
 
+/// Evaluates playable app `firstFreeModelTexture` and returns `slot` according to its guard/selection conditions.
+/// @param modelAssets Loaded model resources used by the rendering operation. Record read through `modelAssets.textures`.
 function firstFreeModelTexture(modelAssets)
   slot=PLAYER_TEXTURE_FIRST_SLOT
   if modelAssets!=void then for each texture in modelAssets.textures if texture.slot>=slot then slot=texture.slot+1 end if end for end if
   return slot
 end function
 
+/// Calls `mq3.client.playable_app.firstFreeModelTexture` from playable app `firstFreeHudTexture`. The final path returns `slot`.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param itemCatalog Item definitions and associated render resources. Record read through `itemCatalog.textures`.
 function firstFreeHudTexture(modelAssets,itemCatalog)
   slot=firstFreeModelTexture(modelAssets)
   if itemCatalog!=void then for each texture in itemCatalog.textures if texture.slot>=slot then slot=texture.slot+1 end if end for end if
   return slot
 end function
 
+/// Calls `mq3.client.playable_app.firstFreeHudTexture` from playable app `firstFreeMenuTexture`. The final path returns `slot`.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param baseHudCatalog Record read through `baseHudCatalog.firstTextureSlot`, `baseHudCatalog.textureCount`.
 function firstFreeMenuTexture(modelAssets,itemCatalog,baseHudCatalog)
   slot=firstFreeHudTexture(modelAssets,itemCatalog)
   if baseHudCatalog!=void and baseHudCatalog.firstTextureSlot+baseHudCatalog.textureCount>slot then slot=baseHudCatalog.firstTextureSlot+baseHudCatalog.textureCount end if
   return slot
 end function
 
+/// Evaluates playable app `pickupName` and returns `"5 HEALTH"`, `"25 HEALTH"`, `"50 HEALTH"` and additional values according to its guard/selection conditions.
+/// @param classname Value used by `if classname=="item_health_small" then return "5 HEALTH" end if`.
 function pickupName(classname)
   if classname=="item_health_small" then return "5 HEALTH" end if
   if classname=="item_health" then return "25 HEALTH" end if
@@ -287,6 +348,7 @@ function pickupName(classname)
   return classname
 end function
 
+/// Calls `mq3.platform.playable_window.keyDown` from playable app `digitWeaponDown`. The final path returns `0`.
 function digitWeaponDown()
   if window.keyDown(window.VK_1) then return 1 end if
   if window.keyDown(window.VK_2) then return 2 end if
@@ -300,6 +362,12 @@ function digitWeaponDown()
   return 0
 end function
 
+/// Updates `weaponState.ammo`, `playerState.weapon`, `playerState.ammo`, `itemState.stats.weapon` and additional values during playable app `applySelectedWeapon`.
+/// @param inventoryState Record read through `inventoryState.selectedWeapon`.
+/// @param weaponState Mutable playable app record/storage; this routine assigns `weaponState.ammo`.
+/// @param playerState Mutable playable app record/storage; this routine assigns `playerState.weapon`, `playerState.ammo`.
+/// @param itemState Mutable playable app record/storage; this routine assigns `itemState.stats.weapon`, `itemState.stats.ammo`.
+/// @param combatState Mutable playable app record/storage; this routine assigns `combatState.weaponName`.
 function applySelectedWeapon(inventoryState,weaponState,playerState,itemState,combatState)
   selectedDef=weaponInventory.weaponDefinition(inventoryState.selectedWeapon)
   if selectedDef==void then return error(749,"selected weapon definition missing") end if
@@ -312,6 +380,10 @@ function applySelectedWeapon(inventoryState,weaponState,playerState,itemState,co
   return true
 end function
 
+/// Calls `mq3.client.playable_weapon_inventory.owns`, `mq3.client.playable_weapon_inventory.weaponDefinition`, `mq3.client.playable_weapon_inventory.ammoFor` and additional helpers from playable app `syncHudWeaponSelection`. The final path returns `baseHud.selectWeapons(hudState,weapons,ammo,selected.classname,now)`.
+/// @param hudState Value used by `return baseHud.selectWeapons(hudState,weapons,ammo,selected.classname,now)`.
+/// @param inventoryState Record read through `inventoryState.selectedWeapon`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function syncHudWeaponSelection(hudState,inventoryState,now)
   weapons=[];ammo=[]
   for weapon=weaponInventory.WP_GAUNTLET to weaponInventory.WP_BFG
@@ -325,6 +397,10 @@ function syncHudWeaponSelection(hudState,inventoryState,now)
   return baseHud.selectWeapons(hudState,weapons,ammo,selected.classname,now)
 end function
 
+/// Calls `mq3.client.playable_weapon.muzzlePoint`, `mq3.client.playable_viewer.cameraBasis`, `mq3.client.playable_weapon.shootRay` and additional helpers from playable app `gauntletHasTarget`.
+/// @param weaponState Value used by `probe=playableWeapon.shootRay(weaponState,muzzle,basis[0])`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param targetState Record read through `targetState.targets`, `targetState.radius`, `targetState.minZ`, `targetState.maxZ`.
 function gauntletHasTarget(weaponState,camera,targetState)
   muzzle=playableWeapon.muzzlePoint(camera);if muzzle is error then return muzzle end if
   basis=viewer.cameraBasis(camera)
@@ -335,6 +411,8 @@ function gauntletHasTarget(weaponState,camera,targetState)
   return false
 end function
 
+/// Calls `mq3.shared.math.VectorNormalize`, `mq3.shared.math.DotProduct` from playable app `fallbackModelLight`. The final path returns `value`.
+/// @param normal Surface-normal vector used to orient or offset the effect.
 function fallbackModelLight(normal)
   // Keep MD3 shape readable for asset-free BSP fixtures without a light grid.
   direction=[0.35,-0.25,0.90];qmath.VectorNormalize(direction)
@@ -343,11 +421,22 @@ function fallbackModelLight(normal)
   return value
 end function
 
+/// Calls `mq3.renderer.playable_light_grid.vertexColor`, `mq3.compat.numeric.trunc32`, `mq3.client.playable_app.fallbackModelLight` from playable app `modelColor`. The final path returns `[component,component,component,255]`.
+/// @param sampled Record read through `sampled.totalFactor`.
+/// @param normal Surface-normal vector used to orient or offset the effect.
 function modelColor(sampled,normal)
   if sampled!=void and sampled.totalFactor>0.0 then return playableLightGrid.vertexColor(sampled,normal) end if
   component=numeric.trunc32(fallbackModelLight(normal)*255.0);return [component,component,component,255]
 end function
 
+/// Calls `mq3.client.playable_viewer.preparedViewPoint`, `mq3.client.playable_app.modelColor`, `mq3.client.playable_viewer.clipNearPolygon` and additional helpers from playable app `drawModelTriangle`. The final path returns `drawn`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates. Record read through `projection.nearDistance`.
+/// @param triangle Record read through `triangle.positions`, `triangle.normals`, `triangle.texCoords`, `triangle.textureSlot`.
+/// @param red Red color component.
+/// @param green Green color component.
+/// @param blue Blue color component.
+/// @param lit Value used by `if lit then color=modelColor(sampled,triangle.normals[corner]) end if`.
+/// @param sampled Value used by `if lit then color=modelColor(sampled,triangle.normals[corner]) end if`.
 function drawModelTriangle(projection,triangle,red,green,blue,lit,sampled)
   vertices=[]
   for corner=0 to 2
@@ -369,6 +458,10 @@ function drawModelTriangle(projection,triangle,red,green,blue,lit,sampled)
   return drawn
 end function
 
+/// Calls `mq3.client.playable_viewer.projectPrepared`, `mq3.renderer.playable_light_grid.entitySample`, `mq3.platform.playable_window.drawTriangleColored` and additional helpers from playable app `drawItemTriangles`. The final path returns `len(triangles)`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param triangles Sequence whose length/content is inspected by `drawItemTriangles`.
+/// @param lightGrid Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`.
 function drawItemTriangles(projection,triangles,lightGrid)
   sampled=void;sampleOrigin=void
   for each triangle in triangles
@@ -381,6 +474,10 @@ function drawItemTriangles(projection,triangles,lightGrid)
   return len(triangles)
 end function
 
+/// Calls `mq3.renderer.playable_light_grid.entitySample`, `mq3.client.playable_app.drawModelTriangle` from playable app `drawClippedItemTriangles`. The final path returns `drawn`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param triangles Value used by `for each triangle in triangles`.
+/// @param lightGrid Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`.
 function drawClippedItemTriangles(projection,triangles,lightGrid)
   drawn=0;sampled=void;sampleOrigin=void
   for each triangle in triangles
@@ -390,6 +487,10 @@ function drawClippedItemTriangles(projection,triangles,lightGrid)
   return drawn
 end function
 
+/// Calls `mq3.client.playable_viewer.projectPrepared`, `mq3.renderer.playable_light_grid.entitySample`, `mq3.client.playable_app.modelColor` and additional helpers from playable app `drawProjectileTriangles`. The final path returns `len(triangles)`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param triangles Sequence whose length/content is inspected by `drawProjectileTriangles`.
+/// @param lightGrid Value used by `if lightGrid!=void and (sampleOrigin==void or sampleOrigin!=triangle.lightOrigin) then sampleOrigin=triangle.lightOrigin`.
 function drawProjectileTriangles(projection,triangles,lightGrid)
   sampled=void;sampleOrigin=void
   for each triangle in triangles
@@ -406,6 +507,11 @@ function drawProjectileTriangles(projection,triangles,lightGrid)
   return len(triangles)
 end function
 
+/// Calls `mq3.client.playable_viewer.projectPoint`, `mq3.client.playable_item_models.find`, `mq3.client.playable_item_models.renderItem` from playable app `pickupModelTriangles`. The final path returns `triangles`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param items Sequence read at `items[index]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function pickupModelTriangles(camera,catalog,items,now)
   if catalog==void then return [] end if
   triangles=[];drawn=0
@@ -426,6 +532,12 @@ function pickupModelTriangles(camera,catalog,items,now)
   return triangles
 end function
 
+/// Calls `mq3.client.playable_app.drawModelTriangle` from playable app `drawTintedItemTriangles`. The final path returns `drawn`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param triangles Value used by `for each triangle in triangles`.
+/// @param red Red color component.
+/// @param green Green color component.
+/// @param blue Blue color component.
 function drawTintedItemTriangles(projection,triangles,red,green,blue)
   drawn=0
   for each triangle in triangles
@@ -434,6 +546,17 @@ function drawTintedItemTriangles(projection,triangles,red,green,blue)
   return drawn
 end function
 
+/// Calls `mq3.client.playable_item_models.find`, `mq3.client.playable_item_models.renderAsset`, `mq3.platform.playable_multitexture.setState` and additional helpers from playable app `renderViewModel`. The final path returns `drawn+barrelDrawn+flashDrawn`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates. Record read through `projection.nearDistance`.
+/// @param catalog Asset catalog used to resolve names to loaded resources.
+/// @param weaponState Record read through `weaponState.triggerHeld`.
+/// @param combatState Record read through `combatState.lastFire`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param transform Value used by `if transform==void then return 0 end if`.
+/// @param weaponClass Value used by `asset=itemModels.find(catalog,weaponClass)`.
+/// @param barrelAngle Value used by `barrelTriangles=weaponBarrel.render(catalog,weaponClass,transform,barrelAngle,MAX_VIEWMODEL_TRIANGLES)`.
+/// @param showFlash Value used by `if showFlash then`.
+/// @param lightGrid Value used by `drawn=drawClippedItemTriangles(projection,triangles,lightGrid)`.
 function renderViewModel(projection,catalog,weaponState,combatState,now,transform,weaponClass,barrelAngle,showFlash,lightGrid)
   if catalog==void then return 0 end if
   asset=itemModels.find(catalog,weaponClass)
@@ -457,6 +580,10 @@ function renderViewModel(projection,catalog,weaponState,combatState,now,transfor
   return drawn+barrelDrawn+flashDrawn
 end function
 
+/// Calls `mq3.client.playable_app.textureSlotForName`, `mq3.client.playable_app.nextPlayerTextureSlot`, `mq3.client.playable_app.PlayerTexture` from playable app `appendSkinTextures`. The final path returns `textures`.
+/// @param textures Value used by `slot=textureSlotForName(textures,binding.imageName)`.
+/// @param skin Record read through `skin.bindings`.
+/// @param part Value used by `textures=textures+[PlayerTexture(part,binding.surface,binding.imageName,binding.image,slot)]`.
 function appendSkinTextures(textures,skin,part)
   for each binding in skin.bindings
     slot=textureSlotForName(textures,binding.imageName)
@@ -466,6 +593,9 @@ function appendSkinTextures(textures,skin,part)
   return textures
 end function
 
+/// Calls `mq3.client.playable_app.archiveBytes`, `mq3.renderer.player_model_assembly.load`, `mq3.format.player_animation.parse` and additional helpers from playable app `archivePlayerAssets`. The final path returns `PlayerModelAssets(modelSet,animation,textures,cache,barrelStates)`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param shaderScripts Value used by `lowerSkin=try(playerSkins.loadResolved(archive,playerSkins.SARGE_LOWER,shaderScripts))`.
 function archivePlayerAssets(archive,shaderScripts)
   lower=archiveBytes(archive,"models/players/sarge/lower.md3")
   upper=archiveBytes(archive,"models/players/sarge/upper.md3")
@@ -488,6 +618,9 @@ function archivePlayerAssets(archive,shaderScripts)
   return PlayerModelAssets(modelSet,animation,textures,cache,barrelStates)
 end function
 
+/// Calls `stringEqualsIgnoreCaseAscii` from playable app `playerTextureSlot`. The final path returns `texture.slot`.
+/// @param assets Record read through `assets.models.lower`, `assets.models.upper`, `assets.models.head`, `assets.textures`.
+/// @param triangle Record read through `triangle.part`, `triangle.surfaceIndex`.
 function playerTextureSlot(assets,triangle)
   model=assets.models.lower
   if triangle.part==playerAssembly.UPPER_PART then model=assets.models.upper else if triangle.part==playerAssembly.HEAD_PART then model=assets.models.head end if
@@ -499,11 +632,17 @@ function playerTextureSlot(assets,triangle)
   return -1
 end function
 
+/// Calls `stringEqualsIgnoreCaseAscii` from playable app `detailedPlayerTextureSlot`. The final path returns `-1`.
+/// @param assets Record read through `assets.textures`.
+/// @param triangle Record read through `triangle.imageName`.
 function detailedPlayerTextureSlot(assets,triangle)
   for each texture in assets.textures if stringEqualsIgnoreCaseAscii(texture.imageName,triangle.imageName) then return texture.slot end if end for
   return -1
 end function
 
+/// Calls `mq3.shared.math.VectorNormalize`, `mq3.renderer.player_model_assembly.identityTransform` from playable app `targetTransform`. The final path returns `root`.
+/// @param target Record read through `target.origin`.
+/// @param camera Camera state used to transform/project the scene. Record read through `camera.position`.
 function targetTransform(target,camera)
   forward=[camera.position[0]-target.origin[0],camera.position[1]-target.origin[1],0.0]
   if qmath.VectorNormalize(forward)==0.0 then forward=[1.0,0.0,0.0] end if
@@ -512,6 +651,9 @@ function targetTransform(target,camera)
   return root
 end function
 
+/// Calls `mq3.format.player_animation.samplePlayer`, `mq3.renderer.player_model_assembly.animation`, `mq3.renderer.player_model_assembly.assemble` and additional helpers from playable app `animatedPlayerTriangles`. The final path returns `triangles`.
+/// @param assets Record read through `assets.animation`, `assets.models`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function animatedPlayerTriangles(assets,now)
   if assets==void then return [] end if
   sample=try(playerAnimation.samplePlayer(assets.animation,15,11,now));if sample is error then return [] end if
@@ -523,6 +665,11 @@ function animatedPlayerTriangles(assets,now)
   return triangles
 end function
 
+/// Calls `mq3.renderer.player_render_cache.keyFor`, `mq3.renderer.player_model_assembly.animation`, `mq3.renderer.player_render_cache.phaseBacklerp` and additional helpers from playable app `targetWeaponTransform`. The final path returns `itemModels.transform(attached.origin,attached.axis,1.0)`.
+/// @param modelAssets Loaded model resources used by the rendering operation. Record read through `modelAssets.cache`, `modelAssets.models`.
+/// @param lowerSample Value used by `key=playerCache.keyFor(modelAssets.cache,lowerSample,upperSample)`.
+/// @param upperSample Value used by `key=playerCache.keyFor(modelAssets.cache,lowerSample,upperSample)`.
+/// @param root Value used by `assembled=playerAssembly.assemble(modelAssets.models,lower,upper,playerAssembly.animation(0,0,0.0),root)`.
 function targetWeaponTransform(modelAssets,lowerSample,upperSample,root)
   key=playerCache.keyFor(modelAssets.cache,lowerSample,upperSample);if key is error then return key end if
   lower=playerAssembly.animation(key.lowerFrame,key.lowerOldFrame,playerCache.phaseBacklerp(modelAssets.cache,key.lowerPhase))
@@ -532,6 +679,18 @@ function targetWeaponTransform(modelAssets,lowerSample,upperSample,root)
   return itemModels.transform(attached.origin,attached.axis,1.0)
 end function
 
+/// Updates `modelAssets.barrelStates` during playable app `drawTargetWeapon`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param modelAssets Mutable playable app record/storage; this routine assigns `modelAssets.barrelStates`.
+/// @param index Value used by `while index>=len(modelAssets.barrelStates) modelAssets.barrelStates=modelAssets.barrelStates+[weaponBarrel.state()] end while`.
+/// @param input Record read through `input.action`, `input.elapsedMilliseconds`.
+/// @param lower Value used by `transform=targetWeaponTransform(modelAssets,lower,upper,root)`.
+/// @param upper Value used by `transform=targetWeaponTransform(modelAssets,lower,upper,root)`.
+/// @param root Value used by `transform=targetWeaponTransform(modelAssets,lower,upper,root)`.
+/// @param show Value used by `if not show or itemCatalog==void then return 0 end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param lightGrid Value used by `drawn=drawItemTriangles(projection,triangles+barrel,lightGrid)`.
 function drawTargetWeapon(projection,itemCatalog,modelAssets,index,input,lower,upper,root,show,now,lightGrid)
   if not show or itemCatalog==void then return 0 end if
   asset=itemModels.find(itemCatalog,"weapon_machinegun");if asset==void then return 0 end if
@@ -548,6 +707,14 @@ function drawTargetWeapon(projection,itemCatalog,modelAssets,index,input,lower,u
   return drawn
 end function
 
+/// Calls `mq3.client.playable_enemy_events.input`, `mq3.format.player_animation.sampleAnimation`, `mq3.client.playable_app.targetWeaponTransform` and additional helpers from playable app `targetMuzzleLights`. The final path returns `light`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param renderTargets Sequence read at `renderTargets[index]`.
+/// @param modelAssets Loaded model resources used by the rendering operation. Record read through `modelAssets.animation`.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param eventState Value used by `if modelAssets==void or itemCatalog==void or eventState==void or enemyState==void then return result end if`.
+/// @param enemyState Record read through `enemyState.brains`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now)
   result=[];if modelAssets==void or itemCatalog==void or eventState==void or enemyState==void then return result end if
   for index=0 to len(renderTargets)-1
@@ -563,6 +730,12 @@ function targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventSt
   return result
 end function
 
+/// Calls `mq3.format.player_animation.sampleAnimation`, `mq3.client.playable_app.targetWeaponTransform`, `mq3.client.playable_app.targetTransform` and additional helpers from playable app `enemyAttackMuzzles`. The final path returns `muzzle`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param targetState Record read through `targetState.targets`.
+/// @param modelAssets Loaded model resources used by the rendering operation. Record read through `modelAssets.animation`.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param enemyState Record read through `enemyState.events`.
 function enemyAttackMuzzles(camera,targetState,modelAssets,itemCatalog,enemyState)
   result=array(len(targetState.targets),void);if modelAssets==void or itemCatalog==void then return result end if
   lower=playerAnimation.sampleAnimation(modelAssets.animation,enemyEvents.LEGS_IDLE,0);if lower is error then return lower end if
@@ -576,6 +749,16 @@ function enemyAttackMuzzles(camera,targetState,modelAssets,itemCatalog,enemyStat
   return result
 end function
 
+/// Calls `mq3.renderer.player_render_cache.beginFrame`, `mq3.client.playable_enemy_events.input`, `mq3.format.player_animation.sampleAnimation` and additional helpers from playable app `renderTargetModels`. The final path returns `weaponDraw`.
+/// @param camera Camera state used to transform/project the scene. Record read through `camera.position`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param renderTargets Sequence read at `renderTargets[index]`.
+/// @param modelAssets Loaded model resources used by the rendering operation. Record read through `modelAssets.cache`, `modelAssets.cache.frameTargets`, `modelAssets.animation`.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param eventState Value used by `if modelAssets==void or eventState==void then return void end if`.
+/// @param enemyState Record read through `enemyState.brains`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param lightGrid Value used by `if lightGrid!=void then targetLight=playableLightGrid.entitySample(lightGrid,target.origin) end if`.
 function renderTargetModels(camera,projection,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now,lightGrid)
   if modelAssets==void or eventState==void then return void end if
   reset=playerCache.beginFrame(modelAssets.cache);if reset is error then return reset end if
@@ -610,12 +793,19 @@ function renderTargetModels(camera,projection,renderTargets,modelAssets,itemCata
   return void
 end function
 
+/// Calls `mq3.client.playable_target_render.target` from playable app `createRenderTargets`. The final path returns `result`.
+/// @param targetState Record read through `targetState.targets`.
 function createRenderTargets(targetState)
   result=[]
   for each target in targetState.targets result=result+[targetRender.target(target.origin,target.health,target.maxHealth)] end for
   return result
 end function
 
+/// Updates `renderTargets[combatHit.targetIndex].hitFlashUntil` during playable app `syncRenderTargets`.
+/// @param targetState Record read through `targetState.targets`.
+/// @param renderTargets Mutable sequence; this routine writes `renderTargets[combatHit.targetIndex].hitFlashUntil`.
+/// @param combatHit Record read through `combatHit.targetIndex`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function syncRenderTargets(targetState,renderTargets,combatHit,now)
   for index=0 to len(targetState.targets)-1
     source=targetState.targets[index];view=renderTargets[index]
@@ -626,6 +816,10 @@ function syncRenderTargets(targetState,renderTargets,combatHit,now)
   return void
 end function
 
+/// Evaluates playable app `visibleTargetViews` and returns `result` according to its guard/selection conditions.
+/// @param enemyState Record read through `enemyState.brains`.
+/// @param renderTargets Sequence read at `renderTargets[index]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function visibleTargetViews(enemyState,renderTargets,now)
   result=[]
   for index=0 to len(renderTargets)-1
@@ -635,6 +829,10 @@ function visibleTargetViews(enemyState,renderTargets,now)
   return result
 end function
 
+/// Evaluates playable app `reservePlayerSpawn` and returns `void` according to its guard/selection conditions.
+/// @param targetState Record read through `targetState.targets`.
+/// @param playerState Record read through `playerState.spawns`.
+/// @param spawnIndex Value used by `previous=spawnIndex-1`.
 function reservePlayerSpawn(targetState,playerState,spawnIndex)
   previous=spawnIndex-1;if previous<0 then previous=len(playerState.spawns)-1 end if
   for each target in targetState.targets
@@ -648,6 +846,13 @@ function reservePlayerSpawn(targetState,playerState,spawnIndex)
   return void
 end function
 
+/// Calls `mq3.client.playable_enemy_events.input`, `mq3.client.playable_player_shadows.trace`, `mq3.client.playable_player_shadows.draw` from playable app `renderTargetShadows`. The final path returns `playerShadows.draw(values,runtime.shadowCatalog,projection)`.
+/// @param projection Projection parameters used to convert camera-space geometry to screen coordinates.
+/// @param targets Sequence read at `targets[index]`.
+/// @param eventState Value used by `input=enemyEvents.input(eventState,index)`.
+/// @param enemyState Record read through `enemyState.brains`.
+/// @param now Accepted for compatibility with `renderTargetShadows`; the current implementation does not read it.
+/// @param runtime Record read through `runtime.shadowCatalog`, `runtime.collisionWorld`.
 function renderTargetShadows(projection,targets,eventState,enemyState,now,runtime)
   if runtime==void or runtime.shadowCatalog==void or runtime.collisionWorld==void then return 0 end if
   values=[]
@@ -655,6 +860,46 @@ function renderTargetShadows(projection,targets,eventState,enemyState,now,runtim
   return playerShadows.draw(values,runtime.shadowCatalog,projection)
 end function
 
+/// Calls `mq3.platform.playable_window.beginFrame`, `mq3.client.playable_menu.drawRetailState`, `mq3.client.playable_hud.drawText` and additional helpers from playable app `render`. The final path returns `resetUiState`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param geometry Record read through `geometry.lines`.
+/// @param worldBatchState Value used by `if materialCatalog!=void then worldDrawn=playableWorldBatch.drawMaterialsLit(worldBatchState,projection,now,sceneLights)`.
+/// @param materialCatalog Value used by `if materialCatalog!=void then worldDrawn=playableWorldBatch.drawMaterialsLit(worldBatchState,projection,now,sceneLights)`.
+/// @param skyCatalog Value used by `if skyCatalog!=void then skyDraw=playableSky.draw(skyCatalog,camera,WIDTH,HEIGHT,now)`.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param projectileCatalog Value used by `if projectileCatalog!=void then`.
+/// @param projectileFxState Value used by `trailCommands=projectileFx.frameCommands(projectileFxState,camera,projectileEffects,now,WIDTH,HEIGHT,HORIZONTAL_FOV,1.0)`.
+/// @param markState Value used by `if markCatalog!=void then markDrawn=playableMarks.draw(markState,markCatalog,projection,now)`.
+/// @param markCatalog Value used by `if markCatalog!=void then markDrawn=playableMarks.draw(markState,markCatalog,projection,now)`.
+/// @param explosionCatalog Value used by `if explosionCatalog!=void then explosionDrawn=playableExplosions.draw(explosionCatalog,projectileEffects,camera,projection,now)`.
+/// @param runtime Record read through `runtime.lightGrid`.
+/// @param pickupTriangles Value used by `itemDraw=drawItemTriangles(projection,pickupTriangles,lightGrid)`.
+/// @param hudState Value used by `hud.draw(hudState,WIDTH,HEIGHT)`.
+/// @param baseHudCatalog Value used by `if baseHudCatalog!=void then`.
+/// @param baseHudState Value used by `drawnHud=baseHud.draw(baseHudCatalog,baseHudState,WIDTH,HEIGHT,now)`.
+/// @param menuCatalog Value used by `menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now)`.
+/// @param menuState Value used by `menuDraw=menu.drawRetailState(menuCatalog,menuState,WIDTH,HEIGHT,now)`.
+/// @param matchMedia Value used by `if matchMedia!=void and matchView!=void then`.
+/// @param itemState Accepted for compatibility with `render`; the current implementation does not read it.
+/// @param playerState Accepted for compatibility with `render`; the current implementation does not read it.
+/// @param shotEffects Accepted for compatibility with `render`; the current implementation does not read it.
+/// @param projectileEffects Value used by `sceneLights=projectileFx.worldLights(projectileEffects,now)`.
+/// @param renderTargets Value used by `enemyLights=targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now)`.
+/// @param visibleTargets Accepted for compatibility with `render`; the current implementation does not read it.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param eventState Value used by `enemyLights=targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now)`.
+/// @param enemyState Value used by `enemyLights=targetMuzzleLights(camera,renderTargets,modelAssets,itemCatalog,eventState,enemyState,now)`.
+/// @param weaponState Record read through `weaponState.triggerHeld`.
+/// @param combatState Record read through `combatState.lastFire`, `combatState.score`, `combatState.deaths`.
+/// @param matchState Record read through `matchState.phase`, `matchState.matchStart`.
+/// @param matchView Record read through `matchView.clock`, `matchView.message`.
+/// @param matchCenter Value used by `matchDraw=baseMatchDisplay.draw(matchMedia,WIDTH,HEIGHT,matchState.matchStart,now,showTimer,"FREE FOR ALL",warmupEnd,matchCenter)`.
+/// @param viewmodelTransform Value used by `if not viewmodelSwitching then muzzleLight=muzzleFlash.dynamicLight(itemCatalog,viewmodelClassname,viewmodelTransform,combatState.lastFire,now...`.
+/// @param viewmodelClassname Value used by `if not viewmodelSwitching then muzzleLight=muzzleFlash.dynamicLight(itemCatalog,viewmodelClassname,viewmodelTransform,combatState.lastFire,now...`.
+/// @param viewmodelBarrelAngle Value used by `viewDraw=renderViewModel(projection,itemCatalog,weaponState,combatState,now,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,not vie...`.
+/// @param viewmodelSwitching Value used by `if not viewmodelSwitching then muzzleLight=muzzleFlash.dynamicLight(itemCatalog,viewmodelClassname,viewmodelTransform,combatState.lastFire,now...`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param menuOpen Value used by `if menuOpen then`.
 function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatalog,explosionCatalog,runtime,pickupTriangles,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,playerState,shotEffects,projectileEffects,renderTargets,visibleTargets,modelAssets,eventState,enemyState,weaponState,combatState,matchState,matchView,matchCenter,viewmodelTransform,viewmodelClassname,viewmodelBarrelAngle,viewmodelSwitching,now,menuOpen)
   lightGrid=runtime.lightGrid
   window.beginFrame(7,10,16)
@@ -720,6 +965,63 @@ function render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemC
   return void
 end function
 
+/// Updates `controller.motion.origin`, `controller.motion.velocity`, `camera.position`, `camera.yaw` and additional values during playable app `frameLoop`.
+/// @param camera Mutable playable app record/storage; this routine assigns `camera.position`, `camera.yaw`, `camera.pitch`.
+/// @param geometry Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param triangles Value used by `triangles=prepared.renderData`.
+/// @param worldBatchState Value used by `worldBatchState=void`.
+/// @param materialCatalog Value used by `if materialCatalog!=void then worldBatchState=playableWorldBatch.buildMaterials(triangles,materialCatalog,skyTextureFlags)`.
+/// @param fogCatalog Value used by `if materialCatalog!=void and fogCatalog!=void then fogged=playableWorldBatch.attachFog(worldBatchState,triangles,fogCatalog)`.
+/// @param dlightCatalog Value used by `if materialCatalog!=void and dlightCatalog!=void then lit=playableWorldBatch.attachDynamicLights(worldBatchState,triangles,dlightReceiveFlags,...`.
+/// @param markCatalog Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param markState Value used by `markCount=playableMarks.update(markState,projectileEffects,shotEffects,current)`.
+/// @param explosionCatalog Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param worldCache Value used by `prepared=worldSelection.prepareCached(worldCache,camera,worldConfig)`.
+/// @param worldConfig Record read through `worldConfig.runtime`.
+/// @param selectedFaceIndexes Value used by `if not worldSelection.sameFaces(selectedFaceIndexes,prepared.selection.faceIndexes) then`.
+/// @param materialSlots Value used by `else worldBatchState=playableWorldBatch.build(triangles,materialSlots,skyTextureFlags) end if`.
+/// @param skyTextureFlags Value used by `if materialCatalog!=void then worldBatchState=playableWorldBatch.buildMaterials(triangles,materialCatalog,skyTextureFlags)`.
+/// @param dlightReceiveFlags Value used by `if materialCatalog!=void and dlightCatalog!=void then lit=playableWorldBatch.attachDynamicLights(worldBatchState,triangles,dlightReceiveFlags,...`.
+/// @param skyCatalog Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param itemCatalog Item definitions and associated render resources.
+/// @param projectileCatalog Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param projectileFxState Value used by `trailCount=projectileFx.update(projectileFxState,projectileEffects,current)`.
+/// @param hudState Value used by `hud.setValues(hudState,itemState.stats.health,itemState.stats.armor,weaponState.ammo)`.
+/// @param baseHudCatalog Value used by `if baseHudCatalog!=void then for each pickup in pickups baseHud.pickup(baseHudState,pickup.classname,pickupName(pickup.classname),current) end...`.
+/// @param baseHudState Mutable playable app record/storage; this routine assigns `baseHudState.health`, `baseHudState.armor`, `baseHudState.ammo`, `baseHudState.weapon` and additional values.
+/// @param menuCatalog Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param menuState Value used by `if menuOpen then menuAction=menu.step(menuState,window.keyDown(window.VK_UP),window.keyDown(window.VK_DOWN),enterDown)`.
+/// @param matchMedia Value used by `rendered=render(camera,geometry,worldBatchState,materialCatalog,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,markState,markCatal...`.
+/// @param itemState Mutable playable app record/storage; this routine assigns `itemState.stats.health`, `itemState.stats.armor`, `itemState.stats.ammo`, `itemState.stats.weapon`.
+/// @param inventoryState Mutable playable app record/storage; this routine assigns `inventoryState.ammo[inventoryState.selectedWeapon]`.
+/// @param weaponState Mutable playable app record/storage; this routine assigns `weaponState.cooldownRemaining`, `weaponState.triggerHeld`, `weaponState.ammo`.
+/// @param targetState Record read through `targetState.score`.
+/// @param renderTargets Value used by `syncRenderTargets(targetState,renderTargets,pelletHit,current)`.
+/// @param modelAssets Loaded model resources used by the rendering operation.
+/// @param combatState Mutable playable app record/storage; this routine assigns `combatState.weaponName`.
+/// @param matchState Record read through `matchState.phase`.
+/// @param playerState Mutable playable app record/storage; this routine assigns `playerState.weapon`, `playerState.ammo`, `playerState.position`, `playerState.yaw` and additional values.
+/// @param enemyState Mutable playable app record/storage; this routine assigns `enemyState.events`.
+/// @param eventState Value used by `enemyInputs=enemyEvents.update(eventState,targetState,enemyState,current)`.
+/// @param playerProjectileState Record read through `playerProjectileState.impacts`.
+/// @param controller Mutable playable app record/storage; this routine assigns `controller.motion.origin`, `controller.motion.velocity`.
+/// @param fpsState Value used by `caption=fpsTitle.frame(fpsState,window.milliseconds())`.
+/// @param viewmodelTracker Value used by `bob=viewmodel.advance(viewmodelTracker,controller.motion.velocity,playableMovement.isGrounded(controller),current)`.
+/// @param viewmodelSettings Value used by `if attachment!=void then viewmodelTransform=viewmodel.frameWeaponTransform(camera,bob,current,-1000,0.0,recoil,viewmodelSettings,attachment,we...`.
+/// @param viewmodelCatalog Value used by `attachment=viewmodel.findAttachment(viewmodelCatalog,viewmodelClassname)`.
+/// @param viewmodelAnimation Value used by `weaponFrame=viewmodel.sampleWeaponAnimation(viewmodelAnimation,weaponState.classname,current,combatState.lastFire)`.
+/// @param barrelState Value used by `viewmodelBarrelAngle=weaponBarrel.advance(barrelState,current,weaponState.triggerHeld and not viewmodelSwitching)`.
+/// @param spatialRuntime Value used by `if spatialRuntime!=void then`.
+/// @param maxFrames Value used by `menuOpen=maxFrames<0`.
+/// @param matchSounds Sequence read at `matchSounds[cue]`.
+/// @param fireSound Value used by `selectedFireSound=fireSound`.
+/// @param weaponSoundCatalog Value used by `if weaponSoundCatalog!=void then candidate=weaponSounds.pickupSound(weaponSoundCatalog,pickups[len(pickups)-1].classname)`.
+/// @param enemyFireSound Value used by `if len(enemyShots)>0 and enemyFireSound!=void then ignored=try(audio.play(enemyFireSound)) end if`.
+/// @param enemyImpactSound Value used by `if enemyShot.worldHit and enemyImpactSound!=void then ignored=try(audio.play(enemyImpactSound)) end if`.
+/// @param pickupSound Value used by `selectedPickupSound=pickupSound`.
+/// @param jumpSound Value used by `if jumped and jumpSound!=void then ignored=try(audio.play(jumpSound)) end if`.
+/// @param painSound Value used by `else if painSound!=void then ignored=try(audio.play(painSound)) end if`.
+/// @param deathSound Value used by `if deathSound!=void then ignored=try(audio.play(deathSound)) end if`.
 function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCache,worldConfig,selectedFaceIndexes,materialSlots,skyTextureFlags,dlightReceiveFlags,skyCatalog,itemCatalog,projectileCatalog,projectileFxState,hudState,baseHudCatalog,baseHudState,menuCatalog,menuState,matchMedia,itemState,inventoryState,weaponState,targetState,renderTargets,modelAssets,combatState,matchState,playerState,enemyState,eventState,playerProjectileState,controller,fpsState,viewmodelTracker,viewmodelSettings,viewmodelCatalog,viewmodelAnimation,barrelState,spatialRuntime,maxFrames,matchSounds,fireSound,weaponSoundCatalog,enemyFireSound,enemyImpactSound,pickupSound,jumpSound,painSound,deathSound)
   previous=window.milliseconds();frames=0;menuOpen=maxFrames<0;lastEnter=false;lastEscape=false;lastPreviousWeapon=false;lastNextWeapon=false;lastDigitWeapon=0;shotEffects=[];projectileEffects=[];pickupTriangles=[];updateMilliseconds=0;renderMilliseconds=0;matchView=void;lastMatchMessage="";matchCenter=void
   if maxFrames>=0 then started=playableMatch.start(matchState,previous);if started is error then return started end if;hudSelection=syncHudWeaponSelection(baseHudState,inventoryState,previous);if hudSelection is error then return hudSelection end if end if
@@ -937,10 +1239,19 @@ function frameLoop(camera,geometry,triangles,worldBatchState,materialCatalog,fog
   return frames
 end function
 
+/// Calls `mq3.client.cgame_info.loadingString`, `mq3.platform.playable_window.showLoading` from playable app `showNativeLoading`. The final path returns `window.showLoading(progress,state.infoScreenText)`.
+/// @param state Record read through `state.infoScreenText`.
+/// @param progress Value used by `return window.showLoading(progress,state.infoScreenText)`.
+/// @param text Text consumed or emitted by `showNativeLoading` in the playable app path.
 function showNativeLoading(state,progress,text)
   cgameInfo.loadingString(state,text);return window.showLoading(progress,state.infoScreenText)
 end function
 
+/// Calls `mq3.platform.playable_window.open`, `mq3.client.cgame_info.create`, `mq3.client.playable_app.showNativeLoading` and additional helpers from playable app `runLimited`. The final path returns `result`.
+/// @param map Record read through `map.data`, `map.counts`.
+/// @param maxFrames Value used by `result=try(frameLoop(camera,geometry,triangles,worldBatchState,catalog,fogCatalog,dlightCatalog,markCatalog,markState,explosionCatalog,worldCa...`.
+/// @param sound Sound handle or asset name passed to the audio action.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
 function runLimited(map,maxFrames,sound,archive)
   opened=window.open(WIDTH,HEIGHT);if opened is error then return opened end if
   nativeLoading=cgameInfo.create()
@@ -1241,11 +1552,22 @@ function runLimited(map,maxFrames,sound,archive)
   return 0
 end function
 
+/// Adapts `mq3.client.playable_app.runLimited` to playable app `run`, returning its result for `map, -1, sound, archive`.
+/// @param map Argument 1 of `mq3.client.playable_app.runLimited`.
+/// @param sound Argument 3 of `mq3.client.playable_app.runLimited`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Forwarded to `mq3.client.playable_app.runLimited`.
 function run(map,sound,archive) return runLimited(map,-1,sound,archive) end function
+/// Calls `mq3.client.playable_app.runLimited` from playable app `smoke`. The final path returns `runLimited(map,frames,void,void)`.
+/// @param map map record passed to the playable app helper calls.
+/// @param frames Value used by `if frames<1 or frames>600 then return error(7482,"preview smoke frame count outside range") end if`.
 function smoke(map,frames)
   if frames<1 or frames>600 then return error(7482,"preview smoke frame count outside range") end if
   return runLimited(map,frames,void,void)
 end function
+/// Calls `mq3.client.playable_app.runLimited` from playable app `smokeAssets`. The final path returns `runLimited(map,frames,void,archive)`.
+/// @param map map record passed to the playable app helper calls.
+/// @param frames Value used by `if frames<1 or frames>600 then return error(7482,"preview smoke frame count outside range") end if`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
 function smokeAssets(map,frames,archive)
   if frames<1 or frames>600 then return error(7482,"preview smoke frame count outside range") end if
   return runLimited(map,frames,void,archive)

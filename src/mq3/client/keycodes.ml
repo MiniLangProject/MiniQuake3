@@ -117,6 +117,12 @@ const K_AUX16=232
 const K_LAST_KEY=233
 const K_CHAR_FLAG=1024
 
+/// Computes `key>=0 and key<K_LAST_KEY` for keycodes `isKeyNumber`.
+/// @param key Key or control identifier used to select the corresponding keycodes entry.
 function isKeyNumber(key) return key>=0 and key<K_LAST_KEY end function
+/// Computes `(key&K_CHAR_FLAG)!=0` for keycodes `isCharacterEvent`.
+/// @param key Key or control identifier used to select the corresponding keycodes entry.
 function isCharacterEvent(key) return (key&K_CHAR_FLAG)!=0 end function
+/// Computes `key&(~K_CHAR_FLAG)` for keycodes `characterCode`.
+/// @param key Key or control identifier used to select the corresponding keycodes entry.
 function characterCode(key) return key&(~K_CHAR_FLAG) end function

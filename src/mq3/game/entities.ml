@@ -12,6 +12,7 @@ import mq3.game.movement as movement
 import mq3.server.world as sv
 import mq3.compat.numeric as n
 import std.string as strings
+/// `Client` record for entities, containing `ps`, `team`, `cmdAngles`, `noclip` and `damage_armor` and related fields.
 struct Client
   ps
   team
@@ -84,6 +85,7 @@ struct Client
   invulnerabilityTime
   portalID
 end struct
+/// `Entity` record for entities, containing `slot`, `s`, `r`, `client` and `inuse` and related fields.
 struct Entity
   slot
   s
@@ -152,6 +154,7 @@ struct Entity
   watertype
   pain_debounce_time
 end struct
+/// `Level` record for entities, containing `scene`, `entities`, `num_entities`, `time` and `startTime` and related fields.
 struct Level
   scene
   entities
@@ -301,10 +304,16 @@ struct Level
   obeliskRespawnDelay
   obeliskAttackFn
 end struct
+/// Create a client record with initialized player state, session data, statistics and gameplay timers.
+/// @param state Initial value stored in `mq3.game.entities.Client.ps`.
+/// @param team Team identifier used by the game rules.
+/// @param cmdAngles Initial value stored in `mq3.game.entities.Client.cmdAngles`.
 function createClient(state,team,cmdAngles)
   return Client(state,team,cmdAngles,false,0,0,0,[0.0,0.0,0.0],false,0,0,0.0,0,void,0,0,0,0,0,0,"",false,0,0,0,0,0,0.0,0,0,0,false,0,0,0,0.0,0.0,
     false,false,false,0,0,0,0,0,false,0,0,false,0,0,0,0,0,0,0,0,0,[0.0,0.0,0.0],0,0,false,0,false,0,0,void,array(16,0),0,0)
 end function
+/// Reset the existing client record to the default values used when binding a new player.
+/// @param client Client state; accesses `ps`, `team`, `cmdAngles`, `noclip` and `damage_armor` and related fields. May update `client.ps`, `client.team` and `client.cmdAngles` and additional fields in place.
 function resetClient(client)
   // Keep the persistent client object identity while zeroing every modeled field.
   fresh = createClient(ps.create(),0,[0,0,0])
@@ -334,9 +343,14 @@ function resetClient(client)
   client.portalID = fresh.portalID
   return void
 end function
+/// Create an inactive entity record with the default game, collision and event fields.
+/// @param slot Slot in the owning table or pool.
+/// @param r Initial value stored in `mq3.game.entities.Entity.r`.
 function blank(slot,r)
   return Entity(slot,es.create(),r,void,false,void,0,false,0,false,void,void,void,0,void,void,0.0,void,void,0.0,0.0,0,0,0,void,void,0,[0.0,0.0,0.0],0,void,void,void,false,false,0,0,void,false,0,[0.0,0.0,0.0],[0.0,0.0,0.0],void,void,0,0,0,0,0,void,void,void,0,void,void,0,0,0,0,0,0.0,void,void,void,0,0,0)
 end function
+/// Apply `mq3.server.world.create`, `mq3.game.cvar_maintenance.create` and `mq3.game.entities.blank` while evaluating `create`. Return paths include `level`.
+/// @param world Initial value stored in `mq3.server.world.Scene.world`.
 function create(world)
   scene = sv.create(world); level = Level(scene,[],64,0,0,1,void,void,void,void,void,[],void,false,void,0,1000.0,0,void,0,array(256,0),1,0,[],[0.0,0.0,0.0],[0.0,0.0,0.0],[],0,0,array(64,0),array(4,0),0,0,0,0,0,0,array(2,0),0,0,0,0,false,0,void,void,void,0,void,void,void,void,0,0,0,0,0,0.0,0,5,30,0,void,void,void,void,void,0,false,void,800,320,0,false,8,false,0,void,void,void,void,void,void,void,void,0,false,void,0,20,0,0,void,void,
     "",0,0,0,0,array(2,""),array(2,0),array(2,0),array(2,0),void,0,cvarMaintenance.create(),void,void,"",0,false,0,0,void,void,void,void,0,void,void,void,void,void,void,0,0,void,0.0,void,void,void,void,0,0,void,0,void,void,void,void,void,void,250,1,1,10,void)
@@ -348,19 +362,31 @@ function create(world)
   end for
   return level
 end function
+/// Set `ent.client` to `client` and `level.clients[ent.slot]` to `client` in `mq3.game.entities.bindClient`. Return paths include `client`.
+/// @param level Game-level state; accesses `clients`. May update `level.clients[ent.slot]` in place.
+/// @param ent Game entity; accesses `slot` and `client`. May update `ent.client` in place.
+/// @param client Operand used to evaluate the returned expression `client`.
 function bindClient(level,ent,client)
   if ent.slot < 0 or ent.slot >= 64 then return error(495,"Invalid client binding slot") end if
   ent.client = client; level.clients[ent.slot] = client
   return client
 end function
+/// Use `level.observeFn` to perform `observe`.
+/// @param level Game-level state; accesses `observeFn`.
+/// @param kind Value passed as argument 2 to `level.observeFn`.
+/// @param ent Value passed as argument 3 to `level.observeFn`.
 function observe(level,kind,ent)
   if level.observeFn != void then level.observeFn(level,kind,ent) end if
   return void
 end function
+/// Initialize an allocated game entity for use by the level and its collision services.
+/// @param ent Game entity; accesses `inuse`, `classname`, `s`, `slot` and `r`. May update `ent.inuse`, `ent.classname` and `ent.s.number` and additional fields in place.
 function initEntity(ent)
   ent.inuse = true; ent.classname = "noclass"; ent.s.number = ent.slot; ent.r.number = ent.slot; ent.r.ownerNum = 1023
   return ent
 end function
+/// Set `level.num_entities` to `level.num_entities+1` in `mq3.game.entities.spawn`. Return paths include `initEntity(ent)`.
+/// @param level Game-level state; accesses `num_entities`, `entities`, `startTime` and `time`. May update `level.num_entities` in place.
 function spawn(level)
   if level.num_entities < 64 or level.num_entities > 1022 then return error(483,"Invalid game entity count") end if
   i = 64
@@ -375,6 +401,8 @@ function spawn(level)
   observe(level,3,ent)
   return initEntity(ent)
 end function
+/// Check whether any non-client entity slot below the active entity limit is unused.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
 function entitiesFree(level)
   i = 64
   while i < level.num_entities
@@ -383,20 +411,31 @@ function entitiesFree(level)
   end while
   return false
 end function
+/// Update `ent.r.number`, `ent.r.modelindex`, `ent.r.solid` and `ent.r.origin` and related state during `syncSpatial`.
+/// @param ent Game entity; accesses `r` and `s`. May update `ent.r.number`, `ent.r.modelindex` and `ent.r.solid` and additional fields in place.
 function syncSpatial(ent)
   ent.r.number = ent.s.number; ent.r.modelindex = ent.s.modelindex; ent.r.solid = ent.s.solid
   ent.r.origin = movement.copy(ent.s.origin); ent.r.angles = movement.copy(ent.s.angles)
   return void
 end function
+/// Set `ent.s.solid` to `ent.r.solid` in `mq3.game.entities.link`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `slot`, `s` and `r`. May update `ent.s.solid` in place.
 function link(level,ent)
   syncSpatial(ent); sv.linkEntity(level.scene,ent.slot); ent.s.solid = ent.r.solid
   observe(level,1,ent)
   return void
 end function
+/// Apply `mq3.server.world.unlinkEntity` and `mq3.game.entities.observe` while evaluating `unlink`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `slot`.
 function unlink(level,ent)
   sv.unlinkEntity(level.scene,ent.slot); observe(level,2,ent)
   return void
 end function
+/// Unlink and release a game entity while preserving the entity-slot lifecycle rules.
+/// @param level Game-level state; accesses `scene` and `time`. May update `level.scene.entities[ent.slot]` in place.
+/// @param ent Game entity; accesses `neverFree`, `r`, `slot`, `s` and `client` and related fields. May update `ent.r`, `ent.s` and `ent.client` and additional fields in place.
 function free(level,ent)
   unlink(level,ent)
   if ent.neverFree then return void end if
@@ -420,6 +459,9 @@ function free(level,ent)
   ent.pain_debounce_time = 0
   return void
 end function
+/// Set `ent.nextthink` to `0` in `mq3.game.entities.runThink`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place.
 function runThink(level,ent)
   thinktime = n.f32(ent.nextthink)
   if thinktime <= 0 or thinktime > n.f32(level.time) then return void end if
@@ -428,16 +470,24 @@ function runThink(level,ent)
   ent.think(level,ent)
   return void
 end function
+/// Update `ent.s.pos.trBase`, `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.s.pos.trDuration` and related state during `setOrigin`.
+/// @param ent Game entity; accesses `s` and `r`. May update `ent.s.pos.trBase`, `ent.s.pos.trType` and `ent.s.pos.trTime` and additional fields in place.
+/// @param origin World-space position as three coordinates.
 function setOrigin(ent,origin)
   ent.s.pos.trBase = movement.copy(origin); ent.s.pos.trType = c.TR_STATIONARY; ent.s.pos.trTime = 0; ent.s.pos.trDuration = 0
   ent.s.pos.trDelta = [0.0,0.0,0.0]; ent.r.currentOrigin = movement.copy(origin)
   return void
 end function
+/// Use `level.gamePrintFn` to perform `diagnostic`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function diagnostic(level,text)
   if len(bytes(text)) > 1023 then return error(485,"Game diagnostic exceeds original G_Printf buffer") end if
   if level.gamePrintFn != void then level.gamePrintFn(level,text) end if
   return void
 end function
+/// Convert a native diagnostic string to text up to its first zero byte, with a null-pointer placeholder.
+/// @param text Text to parse, format or deliver.
 function diagnosticArgument(text)
   if text == void then return "(null)" end if
   data = bytes(text); size = 0
@@ -446,6 +496,9 @@ function diagnosticArgument(text)
   end while
   return decode(slice(data,0,size))
 end function
+/// Use `level.gamePrintFn` to perform `vtos`. Return paths include `text`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param vector Three-component array; components 0, 1 and 2 are used in their stored order.
 function vtos(level,vector)
   // Original g_utils.c vtos uses float-to-int truncation and Com_sprintf into
   // 32 bytes. Return owned text instead of one of eight static native buffers.
@@ -457,17 +510,26 @@ function vtos(level,vector)
   end if
   return text
 end function
+/// Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot.snapVector` while evaluating `tempEntity`. Return paths include `ent`.
+/// @param level Game-level state; accesses `time`.
+/// @param origin World-space position as three coordinates.
+/// @param event Player or entity event identifier.
 function tempEntity(level,origin,event)
   ent = spawn(level); ent.s.eType = c.ET_EVENTS+event; ent.classname = "tempEntity"
   ent.eventTime = level.time; ent.freeAfterEvent = true
   snapped = movement.copy(origin); snapshot.snapVector(snapped); setOrigin(ent,snapped); link(level,ent)
   return ent
 end function
+/// Set `level.randSeed` to `n.add32(n.mul32(level.randSeed,214013),2531011)` in `mq3.game.entities.random`. Return paths include `(n.u32(level.randSeed) >> 16) & 32767`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
 function random(level)
   // Native Windows rand profile; separate from Q_rand and the QVM rand profile.
   level.randSeed = n.add32(n.mul32(level.randSeed,214013),2531011)
   return (n.u32(level.randSeed) >> 16) & 32767
 end function
+/// Use `level.gamePrintFn` to perform `pickTarget`. Return paths include `choices[random(level) % len(choices)]`.
+/// @param level Game-level state; accesses `gamePrintFn`, `num_entities` and `entities`.
+/// @param name Name used to identify the requested entry.
 function pickTarget(level,name)
   if name == void then
     if level.gamePrintFn != void then level.gamePrintFn(level,"G_PickTarget called with NULL targetname\n") end if

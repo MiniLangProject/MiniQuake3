@@ -14,11 +14,16 @@ import mq3.shared.math as q
 import mq3.shared.directions as weaponDirections
 import mq3.compat.numeric as n
 
+/// Require and return a client state for a player weapon operation.
+/// @param ent Game entity; accesses `client`.
 function weaponClient(ent)
   if ent == void or ent.client == void then return error(491,"Weapon requires a client entity") end if
   return ent.client
 end function
 
+/// Update `state.forward[axis]`, `state.right[axis]` and `state.up[axis]` during `weaponAim`.
+/// @param state Weapons state; accesses `forward`, `right` and `up`. May update `state.forward[axis]`, `state.right[axis]` and `state.up[axis]` in place.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function weaponAim(state,angles)
   axes = q.AngleVectors(angles)
   // Keep the original static-vector identities: traces and damage callbacks
@@ -31,6 +36,12 @@ function weaponAim(state,angles)
   return void
 end function
 
+/// Update `output[axis]` and `output[2]` during `calcMuzzlePoint`. Return paths include `weaponSnapshot.snapVector(output)`.
+/// @param ent Game entity; accesses `s`.
+/// @param forward Array or byte sequence accessed at `axis`.
+/// @param right Not read by this implementation; retained in the `calcMuzzlePoint` signature.
+/// @param up Not read by this implementation; retained in the `calcMuzzlePoint` signature.
+/// @param output Array or byte sequence accessed at `axis`. Entries are written in place.
 function calcMuzzlePoint(ent,forward,right,up,output)
   client = weaponClient(ent)
   for axis = 0 to 2
@@ -44,11 +55,23 @@ function calcMuzzlePoint(ent,forward,right,up,output)
   return weaponSnapshot.snapVector(output)
 end function
 
+/// Forward `calcMuzzlePointOrigin` to `mq3.game.weapons.calcMuzzlePoint` and return the delegated result.
+/// @param ent Game entity; accesses `s`.
+/// @param origin Not read by this implementation; retained in the `calcMuzzlePointOrigin` signature.
+/// @param forward Array or byte sequence accessed at `axis`.
+/// @param right Value passed as argument 3 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param up Value passed as argument 4 to `mq3.game.weapons.calcMuzzlePoint`.
+/// @param output Array or byte sequence accessed at `axis`. Entries are written in place.
 function calcMuzzlePointOrigin(ent,origin,forward,right,up,output)
   // The pinned native function deliberately reads trBase and ignores origin.
   return calcMuzzlePoint(ent,forward,right,up,output)
 end function
 
+/// Set `endout[axis]` to `n.fadd(impact[axis],n.fmul(8192.0,bounced[axis]))` in `mq3.game.weapons.bounceProjectile`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param impact Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 2 to `mq3.shared.math.DotProduct`.
+/// @param endout Array or byte sequence accessed at `axis`. Entries are written in place.
 function bounceProjectile(start,impact,dir,endout)
   delta = [n.fsub(impact[0],start[0]),n.fsub(impact[1],start[1]),n.fsub(impact[2],start[2])]
   dot = q.DotProduct(delta,dir); bounced = q.VectorMA(delta,n.fmul(-2.0,dot),dir)
@@ -59,11 +82,17 @@ function bounceProjectile(start,impact,dir,endout)
   return void
 end function
 
+/// Return `void` for `gauntlet`.
+/// @param level Not read by this implementation; retained in the `gauntlet` signature.
+/// @param ent Not read by this implementation; retained in the `gauntlet` signature.
 function gauntlet(level,ent)
   // Weapon_Gauntlet has an empty body; CheckGauntletAttack applies the damage.
   return void
 end function
 
+/// Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game.weapons.weaponAim` while evaluating `checkGauntlet`.
+/// @param level Game-level state; accesses `entities` and `quadfactor`.
+/// @param ent Game entity; accesses `s`.
 function checkGauntlet(level,ent)
   client = weaponClient(ent); state = weaponState.get(level)
   weaponAim(state,client.ps.viewangles)
@@ -88,12 +117,18 @@ function checkGauntlet(level,ent)
   return true
 end function
 
+/// Set `missile.damage` to `n.trunc32(n.fmul(missile.damage,state.quadFactor))` and `missile.splashDamage` to `n.trunc32(n.fmul(missile.splashDamage,state.quadFactor))` in `mq3.game.weapons.weaponScaleMissile`.
+/// @param state Weapons state; accesses `quadFactor`.
+/// @param missile Missile record; accesses `damage` and `splashDamage`. May update `missile.damage` and `missile.splashDamage` in place.
 function weaponScaleMissile(state,missile)
   missile.damage = n.trunc32(n.fmul(missile.damage,state.quadFactor))
   missile.splashDamage = n.trunc32(n.fmul(missile.splashDamage,state.quadFactor))
   return void
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapons.weaponScaleMissile` while evaluating `grenade`. Return paths include `weaponScaleMissile(state,missile)`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function grenade(level,ent)
   state = weaponState.get(level)
   state.forward[2] = n.fadd(state.forward[2],n.f32(0.2)); q.VectorNormalize(state.forward)
@@ -101,24 +136,36 @@ function grenade(level,ent)
   return weaponScaleMissile(state,missile)
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapons.weaponScaleMissile` while evaluating `rocket`. Return paths include `weaponScaleMissile(state,missile)`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function rocket(level,ent)
   state = weaponState.get(level)
   missile = weaponMissiles.fire(level,ent,state.muzzle,state.forward,c.WP_ROCKET_LAUNCHER)
   return weaponScaleMissile(state,missile)
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapons.weaponScaleMissile` while evaluating `plasma`. Return paths include `weaponScaleMissile(state,missile)`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function plasma(level,ent)
   state = weaponState.get(level)
   missile = weaponMissiles.fire(level,ent,state.muzzle,state.forward,c.WP_PLASMAGUN)
   return weaponScaleMissile(state,missile)
 end function
 
+/// Apply `mq3.game.weapon_state.get`, `mq3.game.missiles.fire` and `mq3.game.weapons.weaponScaleMissile` while evaluating `bfg`. Return paths include `weaponScaleMissile(state,missile)`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Entity receiving the callback; accesses `s`.
 function bfg(level,ent)
   state = weaponState.get(level)
   missile = weaponMissiles.fire(level,ent,state.muzzle,state.forward,c.WP_BFG)
   return weaponScaleMissile(state,missile)
 end function
 
+/// Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game.missiles.fire` while evaluating `grapple`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
+/// @param ent Game entity; accesses `client`.
 function grapple(level,ent)
   client = weaponClient(ent); state = weaponState.get(level)
   if not client.fireHeld and client.hook == void then
@@ -127,6 +174,9 @@ function grapple(level,ent)
   client = weaponClient(ent); client.fireHeld = true; return void
 end function
 
+/// Apply `mq3.game.weapons.weaponClient`, `mq3.game.weapon_state.get` and `mq3.game.weapons.weaponAim` while evaluating `fire`.
+/// @param level Game-level state; accesses `quadfactor` and `spawner`.
+/// @param ent Game entity; accesses `s`.
 function fire(level,ent)
   client = weaponClient(ent); state = weaponState.get(level)
   if client.ps.powerups[c.PW_QUAD] != 0 then state.quadFactor = level.quadfactor

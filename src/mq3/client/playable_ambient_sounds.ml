@@ -9,17 +9,26 @@ import std.string as strings
 
 const LOOPED_ON=1
 
+/// Stores playable ambient sounds speaker record, including `noise`, `origin`, `globalSound`, `sound`.
 struct Speaker noise origin globalSound sound end struct
+/// Stores playable ambient sounds catalog record, including `speakers`, `uniqueSounds`, `skipped`.
 struct Catalog speakers uniqueSounds skipped end struct
 
+/// Creates the playable ambient sounds error `7610` with diagnostic text `"preview ambience: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview ambience: "+message`.
 function fail(message) return error(7610,"preview ambience: "+message) end function
 
+/// Calls `std.string.toLowerAscii` from playable ambient sounds `field`. The final path returns `""`.
+/// @param fields Value used by `for each pair in fields if len(pair)>=2 and strings.toLowerAscii(pair[0])==wanted then return pair[1] end if end for`.
+/// @param key Key or control identifier used to select the corresponding playable ambient sounds entry.
 function field(fields,key)
   wanted=strings.toLowerAscii(key)
   for each pair in fields if len(pair)>=2 and strings.toLowerAscii(pair[0])==wanted then return pair[1] end if end for
   return ""
 end function
 
+/// Calls `std.string.toLowerAscii`, `std.string.startsWith`, `std.string.endsWith` from playable ambient sounds `soundPath`. The final path returns `value`.
+/// @param noise Value used by `value=strings.toLowerAscii(noise)`.
 function soundPath(noise)
   value=strings.toLowerAscii(noise)
   if value=="" or strings.startsWith(value,"*") then return "" end if
@@ -27,6 +36,8 @@ function soundPath(noise)
   return value
 end function
 
+/// Calls `std.string.toLowerAscii`, `mq3.client.playable_ambient_sounds.field`, `toNumber` and additional helpers from playable ambient sounds `loopDefinitions`. The final path returns `result`.
+/// @param entities Value used by `if entities==void then return fail("entities are required") end if`.
 function loopDefinitions(entities)
   if entities==void then return fail("entities are required") end if
   result=[]
@@ -44,6 +55,9 @@ function loopDefinitions(entities)
   return result
 end function
 
+/// Calls `mq3.format.bsp.entities`, `mq3.client.playable_ambient_sounds.loopDefinitions`, `mq3.format.pk3.read` and additional helpers from playable ambient sounds `load`. The final path returns `Catalog(loaded,unique,skipped)`.
+/// @param map map record passed to the playable ambient sounds helper calls.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
 function load(map,archive)
   if map==void or archive==void then return fail("map and archive are required") end if
   entities=bsp.entities(map);if entities is error then return entities end if
@@ -70,6 +84,7 @@ end function
 // speakers as full-volume global loops is both inaccurate and easily clips.
 // Until the mixer owns positions, start only speakers carrying Baseq3's global
 // sound flag and deduplicate equal sound paths.
+/// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.speakers`.
 function globalLoops(catalog)
   if catalog==void then return [] end if
   result=[];paths=[]

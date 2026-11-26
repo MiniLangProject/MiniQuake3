@@ -5,10 +5,22 @@ package mq3.botlib.ai_chat_output_syscalls
 import mq3.botlib.ai_chat_output as chatOutput
 import mq3.vm.syscall_common as common
 
+/// Apply `mq3.vm.syscall_common.readString` while evaluating `optionalString`. Return paths include `common.readString(vm,pointer)`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param pointer Value used by `pointer` in `if value==0 then return fail(label+" is NULL") end if`.
 function optionalString(vm,pointer) if pointer==0 then return void end if;return common.readString(vm,pointer) end function
+/// Apply `mq3.botlib.ai_chat_output_syscalls.optionalString` and `mq3.vm.syscall_common.argument` while evaluating `variables`. Return paths include `values`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param start Value used by `variables` in `for index=0 to 7 value=optionalString(vm,common.argument(vm,base,start+index))`.
 function variables(vm,base,start)
   values=array(8,void);for index=0 to 7 value=optionalString(vm,common.argument(vm,base,start+index));if value is error then return value end if;values[index]=value end for;return values
 end function
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readString` and `mq3.botlib.ai_chat_output_syscalls.variables` while evaluating `dispatch`.
+/// @param state AI chat output state; accesses `profiles`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(state,vm,base,op)
   handle=common.argument(vm,base,1)
   if op==chatOutput.OP_INITIAL_CHAT then type=common.readString(vm,common.argument(vm,base,2));if type is error then return type end if;values=variables(vm,base,4);if values is error then return values end if;return chatOutput.initialChat(state,handle,type,common.argument(vm,base,3),values) end if

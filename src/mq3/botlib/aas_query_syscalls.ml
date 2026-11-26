@@ -11,14 +11,29 @@ import mq3.compat.numeric as n
 const BOT_ENTITYSTATE_SIZE=112
 const AAS_ENTITYINFO_SIZE=140
 
+/// Return a new array `[n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(data,address+4)),n.bitsFloat(n.readI32(data,address+8))]` for `vector`.
+/// @param data Value passed as argument 1 to `mq3.compat.numeric.readI32`.
+/// @param address Address within the VM memory or native data buffer.
 function vector(data,address) return [n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(data,address+4)),n.bitsFloat(n.readI32(data,address+8))] end function
+/// Write three float bit patterns to consecutive VM memory words for aas query syscalls.
+/// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param address Address within the VM memory or native data buffer.
+/// @param value Array or byte sequence accessed at `axis`.
 function writeVector(data,address,value) for axis=0 to 2 n.writeU32(data,address+axis*4,n.floatBits(value[axis])) end for;return void end function
 
+/// Build the `mq3.botlib.aas_entities.EntityState` result for `readEntityState`.
+/// @param vm Vm record; accesses `data`.
+/// @param address Address within the VM memory or native data buffer.
 function readEntityState(vm,address)
   at=common.pointer(vm,address,BOT_ENTITYSTATE_SIZE,"bot_entitystate_t input");if at is error then return at end if
   return aasEntities.EntityState(n.readI32(vm.data,at),n.readI32(vm.data,at+4),vector(vm.data,at+8),vector(vm.data,at+20),vector(vm.data,at+32),vector(vm.data,at+44),vector(vm.data,at+56),n.readI32(vm.data,at+68),n.readI32(vm.data,at+72),n.readI32(vm.data,at+76),n.readI32(vm.data,at+80),n.readI32(vm.data,at+84),n.readI32(vm.data,at+88),n.readI32(vm.data,at+92),n.readI32(vm.data,at+96),n.readI32(vm.data,at+100),n.readI32(vm.data,at+104),n.readI32(vm.data,at+108))
 end function
 
+/// Apply `mq3.vm.syscall_common.pointer`, `mq3.botlib.aas_entities.AAS_EntityInfo` and `mq3.botlib.aas_query_syscalls.writeVector` while evaluating `entityInfo`.
+/// @param state AAS entities state; accesses `maxEntities` and `entities`.
+/// @param vm Vm record; accesses `data`.
+/// @param number Entity number in the game or AAS entity table.
+/// @param address Address within the VM memory or native data buffer.
 function entityInfo(state,vm,number,address)
   output=common.pointer(vm,address,AAS_ENTITYINFO_SIZE,"aas_entityinfo_t output");if output is error then return output end if
   info=aasEntities.AAS_EntityInfo(state,number);valid=0;if info.valid then valid=1 end if
@@ -28,6 +43,10 @@ function entityInfo(state,vm,number,address)
   return 0
 end function
 
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.vm.syscall_common.readFloatVector` and `mq3.botlib.aas_trace_areas.trace` while evaluating `trace`. Return paths include `len(result.areas)`.
+/// @param runtime AAS trace areas runtime; accesses `initialized` and `map`.
+/// @param vm Vm record; accesses `data`.
+/// @param base Address within the VM memory or native data buffer.
 function trace(runtime,vm,base)
   maximum=common.argument(vm,base,5);if maximum<0 or maximum>65536 then return error(7532,"invalid AAS TraceAreas capacity") end if
   start=common.readFloatVector(vm,common.argument(vm,base,1),3,"AAS trace-area start");if start is error then return start end if

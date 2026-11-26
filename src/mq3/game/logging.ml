@@ -4,10 +4,16 @@
 package mq3.game.logging
 import mq3.compat.numeric as n
 
+/// Perform signed integer division with truncation toward zero for game log timestamps.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.quotient`.
+/// @param divisor Value passed as argument 2 to `mq3.compat.numeric.quotient`.
 function logDivide(value,divisor)
   if value < 0 then return 0-n.quotient(0-value,divisor) end if
   return n.quotient(value,divisor)
 end function
+/// Use `level.gamePrintFn` and `level.logWriteFn` to perform `write`.
+/// @param level Game-level state; accesses `time`, `dedicated`, `gamePrintFn`, `logFile` and `logWriteFn`.
+/// @param payload Value passed as argument 1 to `bytes`.
 function write(level,payload)
   if payload is void then return error(486,"Game log requires a formatted payload") end if
   data = bytes(payload)

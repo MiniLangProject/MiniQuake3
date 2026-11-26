@@ -10,6 +10,7 @@ import mq3.compat.numeric as n
 const MAX_CLIENTS = 64
 const MAX_GENTITIES = 1024
 
+/// `BotState` record for bot lifecycle, containing `inuse`, `client`, `entitynum`, `settings` and `curPs` and related fields.
 struct BotState
   inuse
   client
@@ -122,6 +123,7 @@ struct BotState
   proxMines
 end struct
 
+/// `State` record for bot lifecycle, containing `registry`, `botstates`, `numbots`, `interbreed` and `interbreedMatchCount` and related fields.
 struct State
   registry
   botstates
@@ -161,6 +163,8 @@ struct State
   clientResources
 end struct
 
+/// Build the `mq3.game.bot_lifecycle.State` result for `create`.
+/// @param registry Initial value stored in `mq3.game.bot_lifecycle.State.registry`.
 function create(registry)
   if registry == void then return error(494,"Bot lifecycle requires a Cvar registry") end if
   return State(registry,array(MAX_CLIENTS,void),0,false,0,
@@ -169,21 +173,38 @@ function create(registry)
     void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
+/// Create a `mq3.game.bot_lifecycle.BotState` record, initializing `inuse` as `true`, `client` from `client` and `entitynum` from `client`.
+/// @param client Initial value stored in `mq3.game.bot_lifecycle.BotState.client`.
 function createBot(client)
   return BotState(true,client,client,void,void,0,0,0,0,0,0.0,0.0,0,void,void,0,0,void,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],-1,"",0,0,0,0,array(204,0),0,0,0.0,[0.0,0.0,0.0],0,0.0,0,0,0.0,void,0.0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0.0,false,0.0,0.0,0.0,0.0,0,0,0.0,0,0.0,0.0,0.0,void,-1,[0.0,0.0,0.0],[0.0,0.0,0.0],0.0,0,-1,0,0,0.0,void,0.0,0.0,0.0,false,0.0,0,-1,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,void,0,0,0,0.0,0.0,0,0.0,void,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,false,0,0.0,0.0,0,0.0,[])
 end function
 
+/// Use `state.cvarEffectFn` to perform `cvarEffect`.
+/// @param state Bot lifecycle state; accesses `cvarEffectFn`.
+/// @param kind Value passed as argument 2 to `state.cvarEffectFn`.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 4 to `state.cvarEffectFn`.
 function cvarEffect(state,kind,key,value)
   if state.cvarEffectFn != void then state.cvarEffectFn(state,kind,key,value) end if
   return void
 end function
 
+/// Register a bot lifecycle cvar through the configured host services and retain its local state.
+/// @param state Bot lifecycle state; accesses `registry`.
+/// @param snapshot Snapshot record; accesses `handle` and `modificationCount`. May update `snapshot.handle` and `snapshot.modificationCount` in place.
+/// @param name Name used to identify the requested entry.
+/// @param defaultValue Value passed as argument 4 to `state.cvarEffectFn`.
+/// @param flags Initial value stored in `mq3.qcommon.cvar.Cvar.flags`.
 function registerCvar(state,snapshot,name,defaultValue,flags)
   cvarEffect(state,1,name,defaultValue)
   cv.registerVm(state.registry,snapshot,name,defaultValue,flags)
   return void
 end function
 
+/// Apply `mq3.game.bot_lifecycle.cvarEffect`, `mq3.qcommon.cvar.find` and `mq3.shared.info.copy` while evaluating `queryCvar`. Return paths include `infoStrings.copy(variable.string,capacity)`.
+/// @param state Bot lifecycle state; accesses `registry`.
+/// @param name Name used to identify the requested entry.
+/// @param capacity Maximum number of entries to allocate or retain.
 function queryCvar(state,name,capacity)
   cvarEffect(state,2,name,"")
   variable = cv.find(state.registry,name)
@@ -191,19 +212,33 @@ function queryCvar(state,name,capacity)
   return infoStrings.copy(variable.string,capacity)
 end function
 
+/// Apply `mq3.game.bot_lifecycle.cvarEffect` and `mq3.qcommon.cvar.updateVm` while evaluating `updateCvar`.
+/// @param state Bot lifecycle state; accesses `registry`.
+/// @param snapshot Snapshot record; accesses `handle`, `modificationCount`, `string`, `value` and `integer` and related fields. May update `snapshot.modificationCount`, `snapshot.string` and `snapshot.value` and additional fields in place.
+/// @param name Name used to identify the requested entry.
 function updateCvar(state,snapshot,name)
   cvarEffect(state,3,name,""); cv.updateVm(state.registry,snapshot); return void
 end function
 
+/// Apply `mq3.game.bot_lifecycle.cvarEffect` and `mq3.qcommon.cvar.set2` while evaluating `setCvar`.
+/// @param state Bot lifecycle state; accesses `registry`.
+/// @param name Name used to identify the requested entry.
+/// @param value Value passed as argument 4 to `state.cvarEffectFn`.
 function setCvar(state,name,value)
   cvarEffect(state,4,name,value); cv.set2(state.registry,name,value,true); return void
 end function
 
+/// Use `state.botLibVarSetFn` to perform `botLibVar`.
+/// @param state Bot lifecycle state; accesses `botLibVarSetFn`.
+/// @param name Name used to identify the requested entry.
+/// @param value Value passed as argument 3 to `state.botLibVarSetFn`.
 function botLibVar(state,name,value)
   if state.botLibVarSetFn == void then return error(494,"Bot lifecycle requires BotLibVarSet") end if
   state.botLibVarSetFn(state,name,value); return void
 end function
 
+/// Use `state.botLibSetupFn` to perform `initLibrary`. Return paths include `state.botLibSetupFn(state)`.
+/// @param state Bot lifecycle state; accesses `developer` and `botLibSetupFn`.
 function initLibrary(state)
   buffer = queryCvar(state,"sv_maxclients",144)
   if buffer == "" then buffer = "8" end if
@@ -249,6 +284,9 @@ function initLibrary(state)
   return state.botLibSetupFn(state)
 end function
 
+/// Set `state.botstates` to `array(MAX_CLIENTS,void)` in `mq3.game.bot_lifecycle.setup`. Return paths include `initLibrary(state) == 0`.
+/// @param state Bot lifecycle state; accesses `thinktime`, `memorydump`, `saveroutingcache`, `pause` and `report` and related fields. May update `state.botstates` in place.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function setup(state,restart)
   registerCvar(state,state.thinktime,"bot_thinktime","100",cv.CHEAT)
   registerCvar(state,state.memorydump,"bot_memorydump","0",cv.CHEAT)
@@ -267,11 +305,18 @@ function setup(state,restart)
   return initLibrary(state) == 0
 end function
 
+/// Require a bot lifecycle callback and report the missing service by name.
+/// @param state Not read by this implementation; retained in the `required` signature.
+/// @param callback Callback invoked by this operation.
+/// @param label Label retained with the diagnostic or action record.
 function required(state,callback,label)
   if callback == void then return error(494,"Bot lifecycle requires "+label) end if
   return callback
 end function
 
+/// Update `bot.setupcount`, `bot.checkpoints`, `bot.patrolpoints` and `bot.walker` and related state during `resetState`.
+/// @param state Bot lifecycle state; accesses `freeWaypointsFn`, `resetMoveStateFn`, `resetGoalStateFn`, `resetWeaponStateFn` and `resetAvoidGoalsFn` and related fields.
+/// @param bot Bot AI state; accesses `checkpoints`, `patrolpoints`, `setupcount`, `walker` and `numKills` and related fields. May update `bot.setupcount`, `bot.checkpoints` and `bot.patrolpoints` and additional fields in place.
 function resetState(state,bot)
   if bot == void then return error(494,"Bot reset requires state") end if
   freeFn = required(state,state.freeWaypointsFn,"BotFreeWaypoints")
@@ -300,6 +345,9 @@ function resetState(state,bot)
   return void
 end function
 
+/// Use `state.botLibLoadMapFn` and `state.deathmatchSetupFn` to perform `loadMap`.
+/// @param state Bot lifecycle state; accesses `botLibLoadMapFn`, `botstates` and `deathmatchSetupFn`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function loadMap(state,restart)
   if restart == 0 then
     mapname = cv.createVm(); registerCvar(state,mapname,"mapname","",cv.SERVERINFO | cv.ROM)
@@ -314,6 +362,9 @@ function loadMap(state,restart)
   state.deathmatchSetupFn(state); return true
 end function
 
+/// Use `state.shutdownClientFn` and `state.botLibShutdownFn` to perform `shutdown`.
+/// @param state Bot lifecycle state; accesses `botstates`, `shutdownClientFn` and `botLibShutdownFn`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function shutdown(state,restart)
   if restart != 0 then
     for index = 0 to MAX_CLIENTS-1
@@ -330,11 +381,16 @@ function shutdown(state,restart)
   return true
 end function
 
+/// Forward `rank` to `mq3.compat.numeric.f32` and return the delegated result.
+/// @param bot Bot AI state; accesses `numKills` and `numDeaths`.
 function rank(bot)
   // C evaluates the counters as int and then stores the result in float.
   return n.f32(n.add32(n.mul32(bot.numKills,2),n.mul32(bot.numDeaths,-1)))
 end function
 
+/// Use `state.saveGoalFn` to perform `writeInterbreeded`.
+/// @param state Bot lifecycle state; accesses `botstates` and `saveGoalFn`.
+/// @param filename Filename supplied to the configured loader or file service.
 function writeInterbreeded(state,filename)
   bestRank = 0.0; bestBot = -1
   for index = 0 to MAX_CLIENTS-1
@@ -349,6 +405,8 @@ function writeInterbreeded(state,filename)
   return void
 end function
 
+/// Use `state.geneticSelectionFn`, `state.interbreedGoalFn` and `state.mutateGoalFn` to perform `interbreedBots`.
+/// @param state Bot lifecycle state; accesses `botstates`, `geneticSelectionFn`, `interbreedGoalFn` and `mutateGoalFn`.
 function interbreedBots(state)
   ranks = array(MAX_CLIENTS,-1.0)
   for index = 0 to MAX_CLIENTS-1
@@ -372,6 +430,8 @@ function interbreedBots(state)
   return void
 end function
 
+/// Set `state.interbreedMatchCount` to `n.add32(state.interbreedMatchCount,1)` and `state.interbreedMatchCount` to `0` in `mq3.game.bot_lifecycle.endMatch`. Return paths include `interbreedBots(state)`.
+/// @param state Bot lifecycle state; accesses `interbreed`, `interbreedMatchCount`, `interbreedcycle` and `interbreedwrite`. May update `state.interbreedMatchCount` in place.
 function endMatch(state)
   if not state.interbreed then return void end if
   state.interbreedMatchCount = n.add32(state.interbreedMatchCount,1)

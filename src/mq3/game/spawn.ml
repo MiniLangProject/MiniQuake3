@@ -16,6 +16,7 @@ import mq3.qcommon.cvar as cv
 import mq3.compat.textnumbers as textnum
 import mq3.compat.numeric as n
 import std.string as strings
+/// `State` record for spawn, containing `level`, `parser`, `vars`, `chars` and `spawning` and related fields.
 struct State
   level
   parser
@@ -37,26 +38,48 @@ struct State
   singlePlayer
   portalSequence
 end struct
+/// Set `level.spawner` to `state` and `level.damageFn` to `combat.damage` in `mq3.game.spawn.create`. Return paths include `state`.
+/// @param level Game-level state; accesses `spawner` and `damageFn`. May update `level.spawner` and `level.damageFn` in place.
+/// @param text Text to parse, format or deliver.
 function create(level,text)
   state = State(level,parser.create(text),[],0,false,0,"",0,0,0,800.0,array(1024,""),cv.create(),void,void,void,false,false,0)
   level.spawner = state
   level.damageFn = combat.damage
   return state
 end function
+/// Forward `getString` to `mq3.game.spawn_values.getString` and return the delegated result.
+/// @param state Spawn values state; accesses `vars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param fallback Value used when the requested entry is unavailable.
 function getString(state,key,fallback)
   // Original still searches old spawnVars when level.spawning is false.
   return values.getString(state,key,fallback)
 end function
+/// Apply `mq3.game.spawn.getString` while evaluating `getInt`. Return paths include `[result[0],textnum.atoi(result[1])]`.
+/// @param state Spawn values state; accesses `vars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param fallback Value used when the requested entry is unavailable.
 function getInt(state,key,fallback)
   result = getString(state,key,fallback); return [result[0],textnum.atoi(result[1])]
 end function
+/// Apply `mq3.game.spawn.getString` while evaluating `getFloat`. Return paths include `[result[0],n.f32(textnum.atof(result[1]))]`.
+/// @param state Spawn values state; accesses `vars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param fallback Value used when the requested entry is unavailable.
 function getFloat(state,key,fallback)
   result = getString(state,key,fallback); return [result[0],n.f32(textnum.atof(result[1]))]
 end function
+/// Apply `mq3.game.spawn.getString` while evaluating `getVector`. Return paths include `[result[0],values[1]]`.
+/// @param state Spawn values state; accesses `vars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param fallback Value used when the requested entry is unavailable.
+/// @param initial Value passed as argument 2 to `mq3.compat.textnumbers.vector`.
 function getVector(state,key,fallback,initial)
   result = getString(state,key,fallback); values = textnum.vector(result[1],initial)
   return [result[0],values[1]]
 end function
+/// Copy a native spawn string while translating newline escapes and preserving the released backslash escape behavior.
+/// @param value Value passed as argument 1 to `bytes`.
 function newString(value)
   data = bytes(value); result = bytes(len(data),0); i = 0; written = 0
   while i < len(data) and data[i] != 0
@@ -73,9 +96,18 @@ function newString(value)
   end while
   return decode(slice(result,0,written))
 end function
+/// Forward `parseField` to `mq3.game.spawn.parseLevelField` and return the delegated result.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 1 to `bytes`.
+/// @param ent Game entity; accesses `classname`, `s`, `model`, `model2` and `spawnflags` and related fields. May update `ent.classname`, `ent.s.origin` and `ent.model` and additional fields in place.
 function parseField(key,value,ent)
   return parseLevelField(void,key,value,ent)
 end function
+/// Update `ent.classname`, `ent.s.origin`, `ent.model` and `ent.model2` and related state during `parseLevelField`.
+/// @param level Game-level state; accesses `memoryState`. May update `level.memoryState` in place.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 1 to `bytes`.
+/// @param ent Game entity; accesses `classname`, `s`, `model`, `model2` and `spawnflags` and related fields. May update `ent.classname`, `ent.s.origin` and `ent.model` and additional fields in place.
 function parseLevelField(level,key,value,ent)
   field = void
   for each row in tables.fields()
@@ -161,16 +193,23 @@ function parseLevelField(level,key,value,ent)
   end switch
   return void
 end function
+/// Apply `mq3.shared.parser.parseExt` while evaluating `token`. Return paths include `[state.parser.offset >= 0 or value != "",value]`.
+/// @param state Spawn state; accesses `parser`.
 function token(state)
   value = parser.parseExt(state.parser,true)
   return [state.parser.offset >= 0 or value != "",value]
 end function
+/// Set `state.chars` to `next` in `mq3.game.spawn.addToken`.
+/// @param state Spawn state; accesses `chars`. May update `state.chars` in place.
+/// @param value Value passed as argument 1 to `bytes`.
 function addToken(state,value)
   next = state.chars+len(bytes(value))+1
   if next > local.MAX_SPAWN_VARS_CHARS then return error(485,"G_AddSpawnVarToken: MAX_SPAWN_CHARS") end if
   state.chars = next
   return value
 end function
+/// Update `state.vars` and `state.chars` during `parseVars`.
+/// @param state Spawn state; accesses `vars` and `chars`. May update `state.vars` and `state.chars` in place.
 function parseVars(state)
   state.vars = []; state.chars = 0; opening = token(state)
   if not opening[0] then return false end if
@@ -188,17 +227,33 @@ function parseVars(state)
   end while
   return true
 end function
+/// Use `state.effectFn` to perform `effect`.
+/// @param state Spawn state; accesses `effectFn`.
+/// @param kind Value passed as argument 2 to `state.effectFn`.
+/// @param index Index of the entry to access.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 5 to `state.effectFn`.
 function effect(state,kind,index,key,value)
   if state.effectFn != void then state.effectFn(state,kind,index,key,value) end if
   return void
 end function
+/// Forward `setConfig` to `mq3.game.spawn_values.setConfig` and return the delegated result.
+/// @param state Spawn values state; accesses `configstrings` and `effectFn`. May update `state.configstrings[index]` in place.
+/// @param index Index of the entry to access.
+/// @param value Value passed as argument 5 to `state.effectFn`.
 function setConfig(state,index,value)
   return values.setConfig(state,index,value)
 end function
+/// Apply `mq3.qcommon.cvar.set2` and `mq3.game.spawn.effect` while evaluating `setCvar`.
+/// @param state Spawn state; accesses `cvars`.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Initial value stored in `mq3.qcommon.cvar.Cvar.string`.
 function setCvar(state,key,value)
   cv.set2(state.cvars,key,value,true); effect(state,2,0,key,value)
   return void
 end function
+/// Update `state.level.entities[1022].s.number`, `state.level.entities[1022].classname` and `state.warmupTime` during `worldspawn`.
+/// @param state Spawn state; accesses `level`, `motd`, `restarted`, `warmupTime` and `doWarmup`. May update `state.level.entities[1022].s.number`, `state.level.entities[1022].classname` and `state.warmupTime` in place.
 function worldspawn(state)
   if not strings.equalsIgnoreCaseAscii(getString(state,"classname","")[1],"worldspawn") then return error(485,"First entity is not worldspawn") end if
   setConfig(state,20,"baseq3-1"); setConfig(state,21,str(state.level.startTime))
@@ -210,6 +265,9 @@ function worldspawn(state)
   else if state.doWarmup != 0 then state.warmupTime = -1; setConfig(state,5,"-1"); effect(state,3,0,"","Warmup:\n") end if
   return void
 end function
+/// Use `state.level.gamePrintFn` to perform `spawnDiagnostic`.
+/// @param state Spawn state; accesses `level`.
+/// @param text Text to parse, format or deliver.
 function spawnDiagnostic(state,text)
   if len(bytes(text)) > 1023 then return error(486,"Spawn diagnostic exceeds original G_Printf buffer") end if
   // Isolated spawn fixtures may omit console transport. Attached modules bind
@@ -217,6 +275,9 @@ function spawnDiagnostic(state,text)
   if state.level.gamePrintFn != void then state.level.gamePrintFn(state.level,text) end if
   return void
 end function
+/// Use `state.unportedFn` to perform `callSpawn`.
+/// @param state Spawn state; accesses `missionpack`, `level` and `unportedFn`.
+/// @param ent Game entity; accesses `classname`.
 function callSpawn(state,ent)
   if ent.classname == void then spawnDiagnostic(state,"G_CallSpawn: NULL classname\n"); return false end if
   items = tables.items(); if state.missionpack then items = tables.missionpackItems() end if; index = 1
@@ -239,6 +300,8 @@ function callSpawn(state,ent)
   end for
   spawnDiagnostic(state,ent.classname+" doesn't have a spawn function\n"); return false
 end function
+/// Apply `mq3.game.entities.spawn`, `mq3.game.spawn.parseLevelField` and `mq3.game.spawn.getInt` while evaluating `fromVars`.
+/// @param state Spawn state; accesses `level`, `vars`, `gametype` and `missionpack`.
 function fromVars(state)
   ent = game.spawn(state.level)
   for each pair in state.vars
@@ -258,6 +321,8 @@ function fromVars(state)
   if not callSpawn(state,ent) then game.free(state.level,ent) end if
   return void
 end function
+/// Update `state.spawning` and `state.vars` during `load`. Return paths include `state`.
+/// @param state Spawn state; accesses `spawning` and `vars`. May update `state.spawning` and `state.vars` in place.
 function load(state)
   state.spawning = true; state.vars = []
   if not parseVars(state) then return error(485,"SpawnEntities: no entities") end if

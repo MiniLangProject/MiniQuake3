@@ -9,6 +9,7 @@ import std.string as strings
 const MAX_INFOS = 1024
 const MAX_INFO_TEXT = 8192
 
+/// `Registry` record for bot registry, containing `botInfos`, `arenaInfos`, `readFileFn`, `listFilesFn` and `printFn` and related fields.
 struct Registry
   botInfos
   arenaInfos
@@ -18,15 +19,27 @@ struct Registry
   context
 end struct
 
+/// Create a `mq3.game.bot_registry.Registry` record, initializing `readFileFn` from `readFileFn`, `listFilesFn` from `listFilesFn` and `printFn` from `printFn`.
+/// @param readFileFn Initial value stored in `mq3.game.bot_registry.Registry.readFileFn`.
+/// @param listFilesFn Initial value stored in `mq3.game.bot_registry.Registry.listFilesFn`.
+/// @param printFn Initial value stored in `mq3.game.bot_registry.Registry.printFn`.
+/// @param context Context forwarded to the configured host callbacks.
 function create(readFileFn,listFilesFn,printFn,context)
   return Registry([],[],readFileFn,listFilesFn,printFn,context)
 end function
 
+/// Use `state.printFn` to perform `output`.
+/// @param state Bot registry state; accesses `printFn` and `context`.
+/// @param text Text to parse, format or deliver.
 function output(state,text)
   if state.printFn != void then state.printFn(state.context,text) end if
   return void
 end function
 
+/// Record or dispatch `"Missing { in info file\n"`, `"Max infos exceeded\n"` and `"Unexpected end of info file\n"` actions in `parseInfos`.
+/// @param state Bot registry state; accesses `context` and `printFn`.
+/// @param text Text to parse, format or deliver.
+/// @param max Value used by `parseInfos` in `if max < 0 then return error(490,"Negative info capacity") end if`.
 function parseInfos(state,text,max)
   if max < 0 then return error(490,"Negative info capacity") end if
   source = text
@@ -52,11 +65,18 @@ function parseInfos(state,text,max)
   return result
 end function
 
+/// Use `state.readFileFn` to perform `fileData`. Return paths include `state.readFileFn(state.context,filename)`.
+/// @param state Bot registry state; accesses `readFileFn` and `context`.
+/// @param filename Filename supplied to the configured loader or file service.
 function fileData(state,filename)
   if state.readFileFn == void then return void end if
   return state.readFileFn(state.context,filename)
 end function
 
+/// Apply `mq3.game.bot_registry.fileData`, `mq3.game.bot_registry.output` and `mq3.game.bot_registry.parseInfos` while evaluating `loadFromFile`. Return paths include `destination+parseInfos(state,data,available)`.
+/// @param state Bot registry state; accesses `readFileFn` and `context`.
+/// @param filename Filename supplied to the configured loader or file service.
+/// @param destination Sequence whose length bounds the iteration or lookup in `loadFromFile`.
 function loadFromFile(state,filename,destination)
   data = fileData(state,filename)
   if data == void then output(state,"^1file not found: "+filename+"\n"); return destination end if
@@ -70,14 +90,23 @@ function loadFromFile(state,filename,destination)
   return destination+parseInfos(state,data,available)
 end function
 
+/// Set `state.arenaInfos` to `loadFromFile(state,filename,state.arenaInfos)` in `mq3.game.bot_registry.loadArenasFromFile`.
+/// @param state Bot registry state; accesses `arenaInfos`. May update `state.arenaInfos` in place.
+/// @param filename Filename supplied to the configured loader or file service.
 function loadArenasFromFile(state,filename)
   state.arenaInfos = loadFromFile(state,filename,state.arenaInfos); return void
 end function
 
+/// Set `state.botInfos` to `loadFromFile(state,filename,state.botInfos)` in `mq3.game.bot_registry.loadBotsFromFile`.
+/// @param state Bot registry state; accesses `botInfos`. May update `state.botInfos` in place.
+/// @param filename Filename supplied to the configured loader or file service.
 function loadBotsFromFile(state,filename)
   state.botInfos = loadFromFile(state,filename,state.botInfos); return void
 end function
 
+/// Use `state.listFilesFn` to perform `listedFiles`. Return paths include `files`.
+/// @param state Bot registry state; accesses `listFilesFn` and `context`.
+/// @param extension Value passed as argument 3 to `state.listFilesFn`.
 function listedFiles(state,extension)
   if state.listFilesFn == void then return [] end if
   files = state.listFilesFn(state.context,"scripts",extension,1024)
@@ -85,6 +114,8 @@ function listedFiles(state,extension)
   return files
 end function
 
+/// Prefix a bot registry filename with scripts/ and reject paths exceeding the native path buffer.
+/// @param name Name used to identify the requested entry.
 function scriptPath(name)
   path = "scripts/"+name
   // Baseq3 assembles this path in filename[128]. A longer name has undefined
@@ -93,6 +124,9 @@ function scriptPath(name)
   return path
 end function
 
+/// Set `state.arenaInfos` to `[]` and `state.arenaInfos` to `numbered` in `mq3.game.bot_registry.loadArenas`.
+/// @param state Bot registry state; accesses `arenaInfos`, `context` and `printFn`. May update `state.arenaInfos` in place.
+/// @param arenasFile Filename supplied to the configured loader or file service.
 function loadArenas(state,arenasFile)
   state.arenaInfos = []
   if arenasFile == "" then loadArenasFromFile(state,"scripts/arenas.txt") else loadArenasFromFile(state,arenasFile) end if
@@ -108,6 +142,10 @@ function loadArenas(state,arenasFile)
   state.arenaInfos = numbered; return void
 end function
 
+/// Load bot definitions into the registry using the configured file and diagnostic services.
+/// @param state Bot registry state; accesses `botInfos`. May update `state.botInfos` in place.
+/// @param botEnable Value used by `loadBots` in `if not botEnable then return void end if`.
+/// @param botsFile Filename supplied to the configured loader or file service.
 function loadBots(state,botEnable,botsFile)
   // The original returns before clearing the previous registry.
   if not botEnable then return void end if
@@ -119,6 +157,9 @@ function loadBots(state,botEnable,botsFile)
   output(state,str(len(state.botInfos))+" bots parsed\n"); return void
 end function
 
+/// Apply `mq3.shared.info.value` while evaluating `getArenaInfoByMap`.
+/// @param state Bot registry state; accesses `arenaInfos`.
+/// @param map Value passed as argument 2 to `std.string.equalsIgnoreCaseAscii`.
 function getArenaInfoByMap(state,map)
   for each arena in state.arenaInfos
     if strings.equalsIgnoreCaseAscii(infoStrings.value(arena,"map"),map) then return arena end if
@@ -126,6 +167,9 @@ function getArenaInfoByMap(state,map)
   return void
 end function
 
+/// Apply `mq3.game.bot_registry.output` while evaluating `getBotInfoByNumber`. Return paths include `state.botInfos[num]`.
+/// @param state Bot registry state; accesses `botInfos`.
+/// @param num Value passed as argument 1 to `str`.
 function getBotInfoByNumber(state,num)
   if num < 0 or num >= len(state.botInfos) then
     output(state,"^1Invalid bot number: "+str(num)+"\n"); return void
@@ -133,6 +177,9 @@ function getBotInfoByNumber(state,num)
   return state.botInfos[num]
 end function
 
+/// Apply `mq3.shared.info.value` while evaluating `getBotInfoByName`.
+/// @param state Bot registry state; accesses `botInfos`.
+/// @param name Name used to identify the requested entry.
 function getBotInfoByName(state,name)
   for each bot in state.botInfos
     if strings.equalsIgnoreCaseAscii(infoStrings.value(bot,"name"),name) then return bot end if

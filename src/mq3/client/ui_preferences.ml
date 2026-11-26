@@ -15,15 +15,35 @@ const ID_FORCEMODEL=135
 const ID_DRAWTEAMOVERLAY=136
 const ID_ALLOWDOWNLOAD=137
 const ID_BACK=138
+/// Stores UI preferences preference item record, including `id`, `label`, `y`, `kind`.
 struct PreferenceItem id label y kind end struct
+/// Stores UI preferences preferences record, including `crosshair`, `simpleItems`, `highQualitySky`, `brass`, `wallMarks`, `dynamicLights` and additional values.
 struct Preferences crosshair simpleItems highQualitySky brass wallMarks dynamicLights identifyTarget syncEveryFrame forceModel teamOverlay allowDownload items assets cvarWrites actions end struct
+/// Clamps `value` to the inclusive bounds `low` and `high` for UI preferences.
+/// @param value Value tested by `value<low`, `value>high` before the calculation continues.
+/// @param low Lower bound used for comparison or clamping.
+/// @param high Upper bound used for comparison or clamping.
 function clamp(value,low,high) if value<low then return low end if;if value>high then return high end if;return value end function
 // Preferences_SetMenuItems
+/// @param crosshair Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param simpleItems Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param brassTime Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param marks Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param identify Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param dynamicLights Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param fastSky Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param finish Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param forceModel Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param teamOverlay Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
+/// @param allowDownload Value used by `value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(team...`.
 function setMenuItems(crosshair,simpleItems,brassTime,marks,identify,dynamicLights,fastSky,finish,forceModel,teamOverlay,allowDownload)
   value=Preferences(crosshair%10,simpleItems!=0,fastSky==0,brassTime!=0,marks!=0,dynamicLights!=0,identify!=0,finish!=0,forceModel!=0,clamp(teamOverlay,0,3),allowDownload!=0,[],[],[],[])
   return value
 end function
 // Preferences_Event
+/// @param value Mutable UI preferences record/storage; this routine assigns `value.crosshair`, `value.cvarWrites`, `value.actions`.
+/// @param id Value used by `if id==ID_CROSSHAIR then value.crosshair=(value.crosshair+1)%10`.
+/// @param notification Value used by `if notification!=QM_ACTIVATED then return value end if`.
 function event(value,id,notification)
   if notification!=QM_ACTIVATED then return value end if
   if id==ID_CROSSHAIR then value.crosshair=(value.crosshair+1)%10;value.cvarWrites=value.cvarWrites+["cg_drawCrosshair="+str(value.crosshair)]
@@ -41,6 +61,10 @@ function event(value,id,notification)
   return value
 end function
 // Crosshair_Draw
+/// @param value Record read through `value.crosshair`.
+/// @param focus Value used by `if grayed then color="disabled" else if focus then color="highlight"`.
+/// @param grayed Value used by `if grayed then color="disabled" else if focus then color="highlight"`.
+/// @param blink Value used by `style="small+pulse" else if blink then color="highlight"`.
 function drawCrosshair(value,focus,grayed,blink)
   color="normal";style="small"
   if grayed then color="disabled" else if focus then color="highlight";style="small+pulse" else if blink then color="highlight";style="small+blink" end if
@@ -55,6 +79,7 @@ function cache()
   return result
 end function
 // Preferences_MenuInit
+/// @param value Mutable UI preferences record/storage; this routine assigns `value.items`, `value.assets`.
 function init(value)
   y=144;items=[PreferenceItem(ID_CROSSHAIR,"Crosshair:",y,"ownerdraw")];y=y+30
   for each item in [[ID_SIMPLEITEMS,"Simple Items:","radio"],[ID_WALLMARKS,"Marks on Walls:","radio"],[ID_EJECTINGBRASS,"Ejecting Brass:","radio"],[ID_DYNAMICLIGHTS,"Dynamic Lights:","radio"],[ID_IDENTIFYTARGET,"Identify Target:","radio"],[ID_HIGHQUALITYSKY,"High Quality Sky:","radio"],[ID_SYNCEVERYFRAME,"Sync Every Frame:","radio"],[ID_FORCEMODEL,"Force Player Models:","radio"],[ID_DRAWTEAMOVERLAY,"Draw Team Overlay:","spin"],[ID_ALLOWDOWNLOAD,"Automatic Downloading:","radio"]]
@@ -63,4 +88,5 @@ function init(value)
   items=items+[PreferenceItem(ID_BACK,"BACK",416,"bitmap")];value.items=items;value.assets=cache();return value
 end function
 // UI_PreferencesMenu
+/// @param value Mutable UI preferences record/storage; this routine assigns `value.actions`.
 function open(value) value=init(value);value.actions=value.actions+["push"];return value end function

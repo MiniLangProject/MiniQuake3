@@ -28,10 +28,17 @@ const GAME_RUN_FRAME=8
 const GAME_CONSOLE_COMMAND=9
 const BOTAI_START_FRAME=10
 
+/// `EntityShared` record for g public, containing `s`, `linked`, `linkcount`, `svFlags` and `singleClient` and related fields.
 struct EntityShared s linked linkcount svFlags singleClient bmodel mins maxs contents absmin absmax currentOrigin currentAngles ownerNum end struct
+/// `SharedEntity` record for g public, containing `s` and `r`.
 struct SharedEntity s r end struct
+/// Return a new array `["entityShared_t","sharedEntity_t"]` for `typeNames`.
 function typeNames() return ["entityShared_t","sharedEntity_t"] end function
 
+/// Apply NOCLIENT, SINGLECLIENT, NOTSINGLECLIENT and CLIENTMASK visibility flags to a client slot.
+/// @param svFlags Value used by `sendsToClient` in `if (svFlags&SVF_NOCLIENT)!=0 then return false end if`.
+/// @param singleClient Operand used to evaluate the returned expression `(singleClient&(1<<clientNum))!=0`.
+/// @param clientNum Client slot number.
 function sendsToClient(svFlags,singleClient,clientNum)
   if (svFlags&SVF_NOCLIENT)!=0 then return false end if
   if (svFlags&SVF_SINGLECLIENT)!=0 and singleClient!=clientNum then return false end if

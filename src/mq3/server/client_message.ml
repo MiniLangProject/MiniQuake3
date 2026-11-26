@@ -12,18 +12,34 @@ const CLC_MOVE_NO_DELTA=3
 const CLC_CLIENT_COMMAND=4
 const CLC_EOF=5
 
+/// Server record for server.client_message, containing `serverId`, `restartedServerId`.
 struct Server serverId restartedServerId end struct
+/// Client record for server.client_message, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `gamestateMessageNum`, `downloadName`, and 4 further fields.
 struct Client
   state messageAcknowledge reliableAcknowledge reliableSequence
   gamestateMessageNum downloadName name lastClientCommand
   lastClientCommandString nextReliableTime
 end struct
+/// Services record for server.client_message, containing `clientCommandFn`, `userMoveFn`, `sendGamestateFn`, `dropFn`, `diagnosticFn`, `context`.
 struct Services clientCommandFn userMoveFn sendGamestateFn dropFn diagnosticFn context end struct
 
+/// Create `mq3.server.client_message.Server` with serverId=serverId; restartedServerId=restartedServerId.
+/// @param serverId Initial `serverId` field stored in the returned or constructed `mq3.server.client_message.Server` record.
+/// @param restartedServerId Initial `restartedServerId` field stored in the returned or constructed `mq3.server.client_message.Server` record.
 function createServer(serverId,restartedServerId) return Server(serverId,restartedServerId) end function
+/// Create `mq3.server.client_message.Client` with state=0; messageAcknowledge=0; reliableAcknowledge=0; reliableSequence=0; gamestateMessageNum=0; downloadName=""; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
 function createClient() return Client(0,0,0,0,0,"","",0,"",0) end function
+/// Create `mq3.server.client_message.Services` with clientCommandFn=void; userMoveFn=void; sendGamestateFn=void; dropFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void) end function
 
+/// Execute client message in server.client_message; the normal completion returns `"eof"`.
+///
+/// Validation failures include `client message: missing state`.
+/// Direct state writes: `clientState.messageAcknowledge`, `clientState.reliableAcknowledge`.
+/// @param serverState Record exposing `serverId`, `restartedServerId`.
+/// @param clientState Record exposing `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `lastClientCommandString`, `downloadName`, `gamestateMessageNum`, `state`. Updated in place: `messageAcknowledge`, `reliableAcknowledge`.
+/// @param host Record exposing `dropFn`, `sendGamestateFn`, `clientCommandFn`, `userMoveFn`, `diagnosticFn`.
+/// @param msg Msg passed as `msg` to `mq3.qcommon.message.bitstream`.
 function execute(serverState,clientState,host,msg)
   if serverState==void or clientState==void or host==void or msg==void then return error(6980,"client message: missing state") end if
   msgio.bitstream(msg)

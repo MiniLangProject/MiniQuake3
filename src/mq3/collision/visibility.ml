@@ -4,6 +4,7 @@
 package mq3.collision.visibility
 import mq3.compat.numeric as n
 
+/// Visibility record for collision.visibility, containing `clusters`, `areas`, `numClusters`, `numAreas`, `clusterBytes`, `data`, and 4 further fields.
 struct Visibility
   clusters
   areas
@@ -17,10 +18,14 @@ struct Visibility
   noAreas
 end struct
 
+/// Create the collision.visibility error for `fail` with 3504 and the supplied diagnostic text.
+/// @param message Message used in `("Visibility: " + message)` and `error(3504, ("Visibility: " + message))`.
 function fail(message)
   return error(3504,"Visibility: "+message)
 end function
 
+/// Load visibility in collision.visibility; the normal completion returns `state`.
+/// @param map Record exposing `counts`, `offsets`, `data`, `lengths`.
 function load(map)
   clusters = array(map.counts[4],0); areas = array(map.counts[4],0)
   numClusters = 0; numAreas = 0; index = 0
@@ -50,14 +55,23 @@ function load(map)
   return state
 end function
 
+/// Compute leaf cluster in collision.visibility; the normal completion returns `state.clusters[leaf]`.
+/// @param state Record exposing `clusters`.
+/// @param leaf Zero-based index into `state.clusters`.
 function leafCluster(state,leaf)
   if leaf < 0 or leaf >= len(state.clusters) then return fail("invalid leaf number") end if
   return state.clusters[leaf]
 end function
+/// Compute leaf area in collision.visibility; the normal completion returns `state.areas[leaf]`.
+/// @param state Record exposing `areas`.
+/// @param leaf Zero-based index into `state.areas`.
 function leafArea(state,leaf)
   if leaf < 0 or leaf >= len(state.areas) then return fail("invalid leaf number") end if
   return state.areas[leaf]
 end function
+/// Compute cluster pvs in collision.visibility; the normal completion returns `slice(state.data, offset, state.clusterBytes)`.
+/// @param state Record exposing `numClusters`, `vised`, `clusterBytes`, `data`.
+/// @param cluster Cluster used in `(cluster >= 0)` and `(cluster < state.numClusters)`.
 function clusterPVS(state,cluster)
   offset = 0
   if cluster >= 0 and cluster < state.numClusters and state.vised then offset = cluster*state.clusterBytes end if
@@ -67,6 +81,10 @@ end function
 
 // Hot PVS tests need one bit, not a freshly copied visibility row.
 // Match clusterPVS's first-row fallback for invalid source clusters.
+/// @param state Visibility table and its per-cluster row width.
+/// @param sourceCluster Source cluster index; invalid or unavailable rows fall back to the first row.
+/// @param targetCluster Target cluster index whose bit is tested; negative/out-of-row indices return false.
+/// @returns True when the selected PVS bit is set; false when it is clear or the target bit is out of range.
 function clusterVisible(state as Visibility,sourceCluster as int,targetCluster as int) returns bool
   if targetCluster<0 or (targetCluster>>3)>=state.clusterBytes then return false end if
   offset=0
@@ -74,6 +92,10 @@ function clusterVisible(state as Visibility,sourceCluster as int,targetCluster a
   return (state.data[offset+(targetCluster>>3)]&(1<<(targetCluster&7)))!=0
 end function
 
+/// Update `state.floodnums` in collision.visibility.
+///
+/// Direct state writes: `state.floodnums`.
+/// @param state Record exposing `numAreas`, `floodnums`, `portals`. Updated in place: `floodnums`.
 function floodConnections(state)
   state.floodnums = array(state.numAreas,0)
   number = 0; root = 0
@@ -94,6 +116,11 @@ function floodConnections(state)
   return void
 end function
 
+/// Compute adjust area portal state in collision.visibility.
+/// @param state Record exposing `numAreas`, `portals`.
+/// @param area1 Area 1 used in `(area1 < 0)` and `(area1 * state.numAreas)`.
+/// @param area2 Area 2 used in `(area2 < 0)` and `(area2 * state.numAreas)`.
+/// @param open Open operand used by `adjustAreaPortalState`; its reads are shown in the implementation.
 function adjustAreaPortalState(state,area1,area2,open)
   if area1 < 0 or area2 < 0 then return void end if
   if area1 >= state.numAreas or area2 >= state.numAreas then return fail("invalid area number") end if
@@ -110,6 +137,10 @@ function adjustAreaPortalState(state,area1,area2,open)
   return void
 end function
 
+/// Compute areas connected in collision.visibility; the normal completion returns `(state.floodnums[area1] == state.floodnums[area2])`.
+/// @param state Record exposing `noAreas`, `numAreas`, `floodnums`.
+/// @param area1 Zero-based index into `state.floodnums`.
+/// @param area2 Zero-based index into `state.floodnums`.
 function areasConnected(state,area1,area2)
   if state.noAreas then return true end if
   if area1 < 0 or area2 < 0 then return false end if
@@ -117,6 +148,12 @@ function areasConnected(state,area1,area2)
   return state.floodnums[area1] == state.floodnums[area2]
 end function
 
+/// Write area bits in collision.visibility; the normal completion returns `count`.
+///
+/// Direct state writes: `buffer elements`.
+/// @param state Record exposing `numAreas`, `noAreas`, `floodnums`.
+/// @param buffer Mutable sequence written at `index`, `(index >> 3)`.
+/// @param area Zero-based index into `state.floodnums`.
 function writeAreaBits(state,buffer,area)
   count = (state.numAreas+7)>>3
   if typeof(buffer) != "bytes" or len(buffer) < count then return fail("short area bit buffer") end if

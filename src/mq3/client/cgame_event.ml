@@ -19,17 +19,48 @@ const CHAN_VOICE=2
 const CHAN_ITEM=3
 const CHAN_BODY=4
 
+/// Stores client game event queued engine action, including `boundary`, `kind`, `entity`, `channel`, `parm`, `origin` and additional values.
 struct Action boundary kind entity channel parm origin origin2 weapon other text dispatched end struct
+/// Stores client game event record, including `serverTime`, `sourceEntity`, `effectiveEntity`, `event`, `eventParm`, `position` and additional values.
 struct Record serverTime sourceEntity effectiveEntity event eventParm position actions suppressed end struct
+/// Stores client game event state, including `previousEvents`, `eventOnly`, `seenTime`, `painTime`, `painDirection`, `time` and additional values.
 struct State previousEvents eventOnly seenTime painTime painDirection time predictedClient demoPlayback follow noPredict synchronous stepTime stepChange landTime landChange itemPickup itemPickupTime itemPickupBlendTime weaponSelect weaponSelectTime powerupActive powerupTime records audio render hud stateActions errors decoded dispatched suppressed end struct
 
+/// Creates a `mq3.client.cgame_event.State` record.
+/// @param maxEntities Value used to initialize `State.previousEvents`, `State.eventOnly`, `State.seenTime`, `State.painTime`, `State.painDirection`.
 function create(maxEntities)
   return State(array(maxEntities,0),array(maxEntities,false),array(maxEntities,0),array(maxEntities,-1000000),array(maxEntities,0),0,0,false,false,false,false,0,0.0,0,0,0,0,0,0,0,0,0,[],[],[],[],[],[],0,0,0)
 end function
 
+/// Creates a `mq3.client.cgame_event.Action` record. Assigns `boundary` from `boundary`, `kind` from `kind`, `entity` from `entity`, `channel` from `channel`.
+/// @param boundary Value used to initialize `Action.boundary`.
+/// @param kind Value used to initialize `Action.kind`.
+/// @param entity Value used to initialize `Action.entity`.
+/// @param channel Value used to initialize `Action.channel`.
+/// @param parm Value used to initialize `Action.parm`.
+/// @param origin Value used to initialize `Action.origin`.
+/// @param origin2 Value used to initialize `Action.origin2`.
+/// @param weapon Value used to initialize `Action.weapon`.
+/// @param other Value used to initialize `Action.other`.
+/// @param text Value used to initialize `Action.text`.
+/// @param dispatched Value used to initialize `Action.dispatched`.
 function action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,dispatched)
   return Action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,dispatched)
 end function
+/// Updates `value.audio`, `value.render`, `value.hud`, `value.stateActions` and additional values during client game event `appendAction`.
+/// @param value Mutable client game event record/storage; this routine assigns `value.audio`, `value.render`, `value.hud`, `value.stateActions` and additional values.
+/// @param result Value used by `result=result+[item]`.
+/// @param boundary Engine service boundary recorded on the queued action, such as renderer, audio or cvar.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param entity Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
+/// @param channel Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
+/// @param parm Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param origin2 Second world-space endpoint of the effect.
+/// @param weapon Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
+/// @param other Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
+/// @param text Text consumed or emitted by `appendAction` in the client game event path.
+/// @param emit Value used by `item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)`.
 function appendAction(value,result,boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit)
   item=action(boundary,kind,entity,channel,parm,origin,origin2,weapon,other,text,emit);result=result+[item]
   if boundary=="audio" then value.audio=value.audio+[item]
@@ -41,6 +72,7 @@ function appendAction(value,result,boundary,kind,entity,channel,parm,origin,orig
 end function
 
 // CG_PlaceString
+/// @param rank Value used by `if (rank&RANK_TIED_FLAG)!=0 then rank=rank&(~RANK_TIED_FLAG)`.
 function placeString(rank)
   prefix="";suffix="";if (rank&RANK_TIED_FLAG)!=0 then rank=rank&(~RANK_TIED_FLAG);prefix="Tied for " end if
   if rank==1 then suffix="^41st^7"
@@ -56,6 +88,8 @@ function placeString(rank)
   return prefix+suffix
 end function
 
+/// Evaluates client game event `eventName` and returns `"EV_NONE"`, `"EV_FOOTSTEP"`, `"EV_FOOTSTEP_METAL"` and additional values according to its guard/selection conditions.
+/// @param event Event identifier compared with the supported activation/input events.
 function eventName(event)
   switch event
     case 0 return "EV_NONE" end case
@@ -145,11 +179,18 @@ function eventName(event)
   end switch
 end function
 
+/// Evaluates client game event `painSound` and returns `"*pain25_1.wav"`, `"*pain50_1.wav"`, `"*pain75_1.wav"` and additional values according to its guard/selection conditions.
+/// @param health Value used by `if health<25 then return "*pain25_1.wav" end if`.
 function painSound(health)
   if health<25 then return "*pain25_1.wav" end if;if health<50 then return "*pain50_1.wav" end if;if health<75 then return "*pain75_1.wav" end if;return "*pain100_1.wav"
 end function
 
 // CG_PainEvent
+/// @param value Mutable client game event record/storage; this routine assigns `value.painTime[entity]`, `value.painDirection[entity]`.
+/// @param entity Value used by `if entity<0 or entity>=len(value.painTime) then return [] end if`.
+/// @param health Value used by `return appendAction(value,[],"audio","custom:"+painSound(health),entity,CHAN_VOICE,health,origin,void,0,0,"",emit)`.
+/// @param origin World-space origin of the entity, sound or rendered effect.
+/// @param emit Value used by `return appendAction(value,[],"audio","custom:"+painSound(health),entity,CHAN_VOICE,health,origin,void,0,0,"",emit)`.
 function painEvent(value,entity,health,origin,emit)
   if entity<0 or entity>=len(value.painTime) then return [] end if
   if value.time-value.painTime[entity]<500 then return [] end if
@@ -158,6 +199,11 @@ function painEvent(value,entity,health,origin,emit)
 end function
 
 // CG_ItemPickup
+/// @param value Mutable client game event record/storage; this routine assigns `value.itemPickup`, `value.itemPickupTime`, `value.itemPickupBlendTime`, `value.weaponSelectTime` and additional values.
+/// @param itemNum Value assigned to `value.itemPickup`.
+/// @param isWeapon Value used by `if isWeapon and autoSwitch and weaponTag!=2 then value.weaponSelectTime=value.time`.
+/// @param weaponTag Value assigned to `value.weaponSelect`.
+/// @param autoSwitch Value used by `if isWeapon and autoSwitch and weaponTag!=2 then value.weaponSelectTime=value.time`.
 function itemPickup(value,itemNum,isWeapon,weaponTag,autoSwitch)
   value.itemPickup=itemNum;value.itemPickupTime=value.time;value.itemPickupBlendTime=value.time
   if isWeapon and autoSwitch and weaponTag!=2 then value.weaponSelectTime=value.time;value.weaponSelect=weaponTag end if
@@ -166,15 +212,47 @@ end function
 
 // CG_Obituary is kept semantic here: the full target, attacker and means of
 // death reach the HUD boundary, where configured player names/gender live.
+/// @param value Argument 1 of `mq3.client.cgame_event.appendAction`.
+/// @param es Record read through `es.otherEntityNum`, `es.eventParm`, `es.otherEntityNum2`.
+/// @param position Argument 8 of `mq3.client.cgame_event.appendAction`.
+/// @param emit Argument 13 of `mq3.client.cgame_event.appendAction`.
 function obituary(value,es,position,emit)
   return appendAction(value,[],"hud","obituary",es.otherEntityNum,0,es.eventParm,position,void,0,es.otherEntityNum2,"",emit)
 end function
 
+/// Adapts `mq3.client.cgame_event.appendAction` to client game event `audio`, returning its result for `value, result, "audio", kind, entity, channel, parm, origin, void, 0, 0, "", emit`.
+/// @param value Argument 1 of `mq3.client.cgame_event.appendAction`.
+/// @param result Argument 2 of `mq3.client.cgame_event.appendAction`.
+/// @param kind Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`.
+/// @param entity Argument 5 of `mq3.client.cgame_event.appendAction`.
+/// @param channel Argument 6 of `mq3.client.cgame_event.appendAction`.
+/// @param parm Argument 7 of `mq3.client.cgame_event.appendAction`.
+/// @param origin World-space origin of the entity, sound or rendered effect. Forwarded to `mq3.client.cgame_event.appendAction`.
+/// @param emit Argument 13 of `mq3.client.cgame_event.appendAction`.
 function audio(value,result,kind,entity,channel,parm,origin,emit) return appendAction(value,result,"audio",kind,entity,channel,parm,origin,void,0,0,"",emit) end function
+/// Adapts `mq3.client.cgame_event.appendAction` to client game event `render`, returning its result for `value, result, "render", kind, es.number, 0, es.eventParm, position, es.origin2, es.weapon, es.otherEntityNum, "", emit`.
+/// @param value Argument 1 of `mq3.client.cgame_event.appendAction`.
+/// @param result Argument 2 of `mq3.client.cgame_event.appendAction`.
+/// @param kind Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`.
+/// @param es Record read through `es.number`, `es.eventParm`, `es.origin2`, `es.weapon` and additional values.
+/// @param position Argument 8 of `mq3.client.cgame_event.appendAction`.
+/// @param emit Argument 13 of `mq3.client.cgame_event.appendAction`.
 function render(value,result,kind,es,position,emit) return appendAction(value,result,"render",kind,es.number,0,es.eventParm,position,es.origin2,es.weapon,es.otherEntityNum,"",emit) end function
+/// Adapts `mq3.client.cgame_event.appendAction` to client game event `stateAction`, returning its result for `value, result, "state", kind, es.number, 0, es.eventParm, position, es.origin2, es.weapon, es.otherEntityNum, "", emit`.
+/// @param value Argument 1 of `mq3.client.cgame_event.appendAction`.
+/// @param result Argument 2 of `mq3.client.cgame_event.appendAction`.
+/// @param kind Action/operation identifier used to select the engine service request. Forwarded to `mq3.client.cgame_event.appendAction`.
+/// @param es Record read through `es.number`, `es.eventParm`, `es.origin2`, `es.weapon` and additional values.
+/// @param position Argument 8 of `mq3.client.cgame_event.appendAction`.
+/// @param emit Argument 13 of `mq3.client.cgame_event.appendAction`.
 function stateAction(value,result,kind,es,position,emit) return appendAction(value,result,"state",kind,es.number,0,es.eventParm,position,es.origin2,es.weapon,es.otherEntityNum,"",emit) end function
 
 // CG_UseItem
+/// @param value Record read through `value.predictedClient`.
+/// @param es Record read through `es.number`.
+/// @param position Value used by `if es.number==value.predictedClient then result=appendAction(value,result,"hud","use-item",es.number,0,itemNum,position,void,0,0,"",emit) end if`.
+/// @param event Event identifier compared with the supported activation/input events.
+/// @param emit Value used by `if es.number==value.predictedClient then result=appendAction(value,result,"hud","use-item",es.number,0,itemNum,position,void,0,0,"",emit) end if`.
 function useItem(value,es,position,event,emit)
   itemNum=event-24;if itemNum<0 or itemNum>5 then itemNum=0 end if;result=[]
   if es.number==value.predictedClient then result=appendAction(value,result,"hud","use-item",es.number,0,itemNum,position,void,0,0,"",emit) end if
@@ -186,6 +264,12 @@ end function
 
 // CG_EntityEvent.  Symbolic media names preserve the exact choice point; the
 // active retail VM resolves them to registered handles and owns emission.
+/// @param value Mutable client game event record/storage; this routine assigns `value.stepChange`, `value.stepTime`, `value.painTime[entity]`, `value.landChange` and additional values.
+/// @param es Mutable client game event record/storage; this routine assigns `es.loopSound`.
+/// @param entity Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`.
+/// @param position Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`.
+/// @param event Value assigned to `value.powerupActive`.
+/// @param emit Value used by `if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)`.
 function entityEvent(value,es,entity,position,event,emit)
   result=[];client=es.clientNum;if client<0 or client>=MAX_CLIENTS then client=0 end if
   if event>=1 and event<=5 then result=audio(value,result,eventName(event),entity,CHAN_BODY,es.eventParm,position,emit)
@@ -240,6 +324,10 @@ function entityEvent(value,es,entity,position,event,emit)
 end function
 
 // CG_CheckEvents
+/// @param value Mutable client game event record/storage; this routine assigns `value.previousEvents[sourceEntity]`, `value.eventOnly[sourceEntity]`, `value.seenTime[sourceEntity]`, `value.records` and additional values.
+/// @param es Record read through `es.number`, `es.event`, `es.eType`, `es.eFlags` and additional values.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function checkEvent(value,es,serverTime,retailActive)
   sourceEntity=es.number;if sourceEntity<0 or sourceEntity>=len(value.previousEvents) then return error(7710,"event entity number out of range") end if
   // CG_ResetEntity makes a slot eligible after EVENT_VALID_MSEC.  A visible
@@ -257,6 +345,10 @@ function checkEvent(value,es,serverTime,retailActive)
   actions=entityEvent(value,es,effectiveEntity,position,event,not retailActive);record=Record(serverTime,sourceEntity,effectiveEntity,event,es.eventParm,position,actions,retailActive);value.records=value.records+[record];value.decoded=value.decoded+1;return record
 end function
 
+/// Updates `value.time`, `value.predictedClient`, `value.follow` during client game event `observeSnapshot`.
+/// @param value Mutable client game event record/storage; this routine assigns `value.time`, `value.predictedClient`, `value.follow`.
+/// @param snapshot Record read through `snapshot.serverTime`, `snapshot.playerState.clientNum`, `snapshot.playerState.pm_flags`, `snapshot.entities`.
+/// @param retailActive Whether the retail QVM owns dispatch; action records use the inverse for their dispatched flag.
 function observeSnapshot(value,snapshot,retailActive)
   if value==void or snapshot==void then return error(7710,"event observer requires state and snapshot") end if
   value.time=snapshot.serverTime;value.predictedClient=snapshot.playerState.clientNum;value.follow=(snapshot.playerState.pm_flags&0x1000)!=0
@@ -264,4 +356,6 @@ function observeSnapshot(value,snapshot,retailActive)
   return len(value.records)-before
 end function
 
+/// Updates `value.audio`, `value.render`, `value.hud`, `value.stateActions` during client game event `clearBoundaryQueues`.
+/// @param value Mutable client game event record/storage; this routine assigns `value.audio`, `value.render`, `value.hud`, `value.stateActions`.
 function clearBoundaryQueues(value) value.audio=[];value.render=[];value.hud=[];value.stateActions=[];return void end function

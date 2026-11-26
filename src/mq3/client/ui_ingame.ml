@@ -19,10 +19,14 @@ const ID_RESUME=18
 const ID_TEAMORDERS=19
 const INGAME_FRAME="menu/art/addbotframe"
 
+/// Stores UI ingame in game item record, including `id`, `label`, `y`, `grayed`.
 struct InGameItem id label y grayed end struct
+/// Stores UI ingame in game menu record, including `wrapAround`, `fullscreen`, `frame`, `items`, `assets`, `commands` and additional values.
 struct InGameMenu wrapAround fullscreen frame items assets commands actions cursorX cursorY end struct
 
 // InGame_RestartAction
+/// @param menu Mutable UI ingame record/storage; this routine assigns `menu.actions`, `menu.commands`.
+/// @param result Value used by `if not result then return menu end if`.
 function restartAction(menu,result)
   if not result then return menu end if
   menu.actions=menu.actions+["pop"]
@@ -31,12 +35,17 @@ function restartAction(menu,result)
 end function
 
 // InGame_QuitAction
+/// @param menu Mutable UI ingame record/storage; this routine assigns `menu.actions`.
+/// @param result Value used by `if result then menu.actions=menu.actions+["pop","credits"] end if`.
 function quitAction(menu,result)
   if result then menu.actions=menu.actions+["pop","credits"] end if
   return menu
 end function
 
 // InGame_Event
+/// @param menu Mutable UI ingame record/storage; this routine assigns `menu.actions`, `menu.commands`.
+/// @param id Value used by `if id==ID_TEAM then menu.actions=menu.actions+["team"]`.
+/// @param notification Value used by `if notification!=QM_ACTIVATED then return menu end if`.
 function event(menu,id,notification)
   if notification!=QM_ACTIVATED then return menu end if
   if id==ID_TEAM then menu.actions=menu.actions+["team"]
@@ -56,6 +65,10 @@ end function
 function cache() return [INGAME_FRAME] end function
 
 // InGame_MenuInit
+/// @param serverRunning Value used by `botGrayed=not serverRunning or not botEnable or gametype==GT_SINGLE_PLAYER`.
+/// @param botEnable Value used by `botGrayed=not serverRunning or not botEnable or gametype==GT_SINGLE_PLAYER`.
+/// @param gametype Quake III game-type identifier.
+/// @param playerTeam Value used by `ordersGrayed=gametype<GT_TEAM or playerTeam==TEAM_SPECTATOR`.
 function init(serverRunning,botEnable,gametype,playerTeam)
   botGrayed=not serverRunning or not botEnable or gametype==GT_SINGLE_PLAYER
   ordersGrayed=gametype<GT_TEAM or playerTeam==TEAM_SPECTATOR
@@ -75,6 +88,10 @@ function init(serverRunning,botEnable,gametype,playerTeam)
 end function
 
 // UI_InGameMenu
+/// @param serverRunning Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`.
+/// @param botEnable Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`.
+/// @param gametype Quake III game-type identifier.
+/// @param playerTeam Value used by `menu=init(serverRunning,botEnable,gametype,playerTeam)`.
 function open(serverRunning,botEnable,gametype,playerTeam)
   menu=init(serverRunning,botEnable,gametype,playerTeam)
   menu.actions=menu.actions+["resetStack","push"]

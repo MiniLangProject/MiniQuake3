@@ -7,6 +7,13 @@ const FS_SEEK_CUR=0
 const FS_SEEK_END=1
 const FS_SEEK_SET=2
 
+/// Seek memory file seek in qcommon.memory_file_seek; the normal completion returns `0`.
+///
+/// Validation failures include `invalid FS_Seek origin`.
+/// @param files Files used in `len(files)` and `files[handle]`.
+/// @param handle Zero-based index into `files`.
+/// @param offset Offset used in `(base + offset)` and `(cursor.offset < 0)`.
+/// @param origin Origin used in `(origin == FS_SEEK_END)` and `(origin == FS_SEEK_SET)`.
 function seek(files,handle,offset,origin)
   if files==void or handle<=0 or handle>=len(files) then return -1 end if
   cursor=files[handle]

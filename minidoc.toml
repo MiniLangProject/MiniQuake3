@@ -10,7 +10,7 @@ target = "windows-x64"
 [documentation]
 include_internal = true
 reachable_only = false
-strict = false
+strict = true
 dependencies = "summary"
 contract_warnings = "public"
 summary_quality_warnings = "public"

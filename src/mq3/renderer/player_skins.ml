@@ -10,20 +10,38 @@ const SARGE_LOWER="models/players/sarge/lower_default.skin"
 const SARGE_UPPER="models/players/sarge/upper_default.skin"
 const SARGE_HEAD="models/players/sarge/head_default.skin"
 
+/// Data record for `mq3.renderer.player_skins.Mapping`; groups `surface`, `shaderName`.
 struct Mapping surface shaderName end struct
+/// Data record for `mq3.renderer.player_skins.Skin`; groups `path`, `mappings`, `tags`.
 struct Skin path mappings tags end struct
+/// Data record for `mq3.renderer.player_skins.Binding`; groups `surface`, `shaderName`, `imageName`, `image`.
 struct Binding surface shaderName imageName image end struct
+/// Data record for `mq3.renderer.player_skins.ResolvedSkin`; groups `path`, `bindings`, `tags`.
 struct ResolvedSkin path bindings tags end struct
+/// Data record for `mq3.renderer.player_skins.SargeDefault`; groups `lower`, `upper`, `head`, `uniqueImages`, `scriptCount`.
 struct SargeDefault lower upper head uniqueImages scriptCount end struct
 
+/// Creates error `7520` with message `"player skin: "+message`.
+/// @param message Input used in the result expression `error(7520,"player skin: "+message)`.
 function fail(message) return error(7520,"player skin: "+message) end function
 
+/// Returns `decode(slice(data,first,last-first))` from `mq3.renderer.player_skins.textRange`.
+/// @param data Argument 1 supplied to `slice`.
+/// @param first Argument 2 supplied to `slice`.
+/// @param last Input used by `while first<last and data[first]<=32 first=first+1`.
 function textRange(data,first,last)
   while first<last and data[first]<=32 first=first+1 end while
   while last>first and data[last-1]<=32 last=last-1 end while
   return decode(slice(data,first,last-first))
 end function
 
+/// Computes `parseLine` from `[mappings+[Mapping(surface,shaderName)],tags]` using `mq3.renderer.player_skins.textRange`, `std.string.startsWith`, `std.string.toLowerAscii`.
+/// @param data Value forwarded as `data` to `mq3.renderer.player_skins.textRange`.
+/// @param first Value forwarded as `first` to `mq3.renderer.player_skins.textRange`.
+/// @param last Value forwarded as `last` to `mq3.renderer.player_skins.textRange`.
+/// @param lineNumber Input tested by `comma<0`.
+/// @param mappings Input tested by `first==last`.
+/// @param tags Input tested by `first==last`.
 function parseLine(data,first,last,lineNumber,mappings,tags)
   comment=last;i=first
   while i+1<last
@@ -48,6 +66,8 @@ function parseLine(data,first,last,lineNumber,mappings,tags)
   return [mappings+[Mapping(surface,shaderName)],tags]
 end function
 
+/// Builds `mq3.renderer.player_skins.Skin` for `mq3.renderer.player_skins.parse`.
+/// @param text Input tested by `text==void`.
 function parse(text)
   if text==void then return fail("missing text") end if
   data=text;if typeof(data)=="string" then data=bytes(data) end if
@@ -65,6 +85,9 @@ function parse(text)
   return Skin("",mappings,tags)
 end function
 
+/// Builds `skin.path` in `mq3.renderer.player_skins.load`; returns `skin`.
+/// @param archive Argument 1 supplied to `mq3.format.pk3.read`.
+/// @param path Value assigned to `skin.path`.
 function load(archive,path)
   if archive==void or path==void or path=="" then return fail("archive and path are required") end if
   source=pk3.read(archive,path);if source is error then return source end if
@@ -72,6 +95,10 @@ function load(archive,path)
   skin.path=path;return skin
 end function
 
+/// Builds `mq3.renderer.player_skins.ResolvedSkin` using `mq3.renderer.playable_materials.mappedImageName`, `mq3.renderer.playable_materials.loadImage`.
+/// @param archive Argument 1 supplied to `mq3.renderer.playable_materials.loadImage`.
+/// @param skin Record providing `skin.mappings`, `skin.path`, `skin.tags`.
+/// @param shaderIndex Argument 1 supplied to `mq3.renderer.playable_materials.mappedImageName`.
 function resolve(archive,skin,shaderIndex)
   if archive==void or skin==void then return fail("archive and skin are required") end if
   bindings=[]
@@ -86,11 +113,18 @@ function resolve(archive,skin,shaderIndex)
   return ResolvedSkin(skin.path,bindings,skin.tags)
 end function
 
+/// Returns `resolve(archive,skin,shaderIndex)` from `mq3.renderer.player_skins.loadResolved`; earlier branches return `skin`.
+/// @param archive Value forwarded as `archive` to `mq3.renderer.player_skins.load`.
+/// @param path Value forwarded as `path` to `mq3.renderer.player_skins.load`.
+/// @param shaderIndex Value forwarded as `shaderIndex` to `mq3.renderer.player_skins.resolve`.
 function loadResolved(archive,path,shaderIndex)
   skin=load(archive,path);if skin is error then return skin end if
   return resolve(archive,skin,shaderIndex)
 end function
 
+/// Computes `addUnique` from `names+[binding.imageName]` using `stringEqualsIgnoreCaseAscii`.
+/// @param names Sequence traversed as `name` while producing this result.
+/// @param skin Record providing `skin.bindings`.
 function addUnique(names,skin)
   for each binding in skin.bindings
     found=false
@@ -100,6 +134,8 @@ function addUnique(names,skin)
   return names
 end function
 
+/// Builds `mq3.renderer.player_skins.SargeDefault` using `mq3.renderer.playable_materials.buildScriptIndex`.
+/// @param archive Argument 1 supplied to `mq3.renderer.playable_materials.buildScriptIndex`.
 function loadSargeDefault(archive)
   if archive==void then return fail("archive is required") end if
   scripts=materials.buildScriptIndex(archive);if scripts is error then return scripts end if

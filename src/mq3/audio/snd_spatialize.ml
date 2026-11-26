@@ -8,12 +8,23 @@ import mq3.shared.math as qmath
 const SOUND_FULLVOLUME=80.0
 const SOUND_ATTENUATE=0.0008
 
+/// Volumes record for audio.snd_spatialize, containing `left`, `right`, `distance`, `attenuation`, `dot`.
 struct Volumes left right distance attenuation dot end struct
 
+/// Create the audio.snd_spatialize error for `fail` with 7662 and the supplied diagnostic text.
+/// @param message Message used in `("S_SpatializeOrigin: " + message)` and `error(7662, ("S_SpatializeOrigin: " + message))`.
 function fail(message) return error(7662,"S_SpatializeOrigin: "+message) end function
 
+/// Compute audio.snd_spatialize.validVector as `((value != void) and (len(value) == 3))`.
+/// @param value Value used in `len(value)` and `(value != void)`.
 function validVector(value) return value!=void and len(value)==3 end function
 
+/// Calculate left/right gains from listener orientation, source distance, and attenuation.
+/// @param origin Value passed as `value` to `mq3.audio.snd_spatialize.validVector`.
+/// @param listenerOrigin Value passed as `value` to `mq3.audio.snd_spatialize.validVector`.
+/// @param listenerAxis Listener axis used in `listenerAxis[0]` and `listenerAxis[1]`.
+/// @param masterVolume Floating-point value to narrow to binary32.
+/// @param channels Channels used in `(channels != 1)` and `(channels != 2)`.
 function spatialize(origin,listenerOrigin,listenerAxis,masterVolume,channels)
   if not validVector(origin) or not validVector(listenerOrigin) then return fail("invalid origin") end if
   if listenerAxis==void or len(listenerAxis)!=3 or not validVector(listenerAxis[0]) or not validVector(listenerAxis[1]) or not validVector(listenerAxis[2]) then return fail("invalid listener axis") end if
@@ -36,6 +47,11 @@ function spatialize(origin,listenerOrigin,listenerAxis,masterVolume,channels)
   return Volumes(left,right,distance,attenuation,dot)
 end function
 
+/// Convert spatialized channel volumes into normalized left/right gains with distance and attenuation metadata.
+/// @param origin Origin passed as `origin` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param listenerOrigin Listener origin passed as `listenerOrigin` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param listenerAxis Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param masterVolume Master volume passed as `masterVolume` to `mq3.audio.snd_spatialize.spatialize`.
 function gains(origin,listenerOrigin,listenerAxis,masterVolume)
   value=try(spatialize(origin,listenerOrigin,listenerAxis,masterVolume,2));if value is error then return value end if
   if masterVolume==0 then return [0.0,0.0,value.distance,value.attenuation] end if

@@ -5,6 +5,7 @@ package mq3.game.entitystate
 import mq3.compat.numeric as n
 import mq3.game.trajectory as tr
 const BYTE_SIZE = 208
+/// `EntityState` record for entitystate, containing `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 struct EntityState
   number
   eType
@@ -36,10 +37,14 @@ struct EntityState
   generic1
 end struct
 
+/// Create a `mq3.game.entitystate.EntityState` record, initializing `pos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])`, `apos` as `tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0])` and `origin` as `[0.0,0.0,0.0]`.
 function create()
   return EntityState(0,0,0,tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]),tr.Trajectory(0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]),0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0)
 end function
 
+/// Populate an entity state from its ordered snapshot-word representation.
+/// @param data Sequence whose length bounds the iteration or lookup in `load`.
+/// @param offset Offset into the buffer or sequence used by this operation.
 function load(data,offset)
   if offset < 0 or offset+BYTE_SIZE > len(data) then return error(482,"Truncated entityState") end if
   state = create()
@@ -82,6 +87,8 @@ function load(data,offset)
   return state
 end function
 
+/// Serialize an entity state into the ordered 32-bit words used by Quake III snapshot fields.
+/// @param state Entitystate state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 function words(state)
   return [
     n.u32(state.number),
@@ -123,6 +130,8 @@ function words(state)
   ]
 end function
 
+/// Apply `mq3.game.entitystate.create` while evaluating `copy`. Return paths include `state`.
+/// @param source Parser source state; accesses `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 function copy(source)
   state = create()
   state.number = source.number

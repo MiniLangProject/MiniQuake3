@@ -10,14 +10,24 @@ import std.string as strings
 const ARENAS_PER_TIER=4
 const EXEC_APPEND=2
 
+/// Stores UI sp arena host-service callbacks, including `context`, `variableValueFn`, `setValueFn`, `numTiersFn`, `executeTextFn`.
 struct Services context variableValueFn setValueFn numTiersFn executeTextFn end struct
+/// Stores UI sp arena operation result, including `maxClientsRaised`, `selection`, `map`, `command`.
 struct Result maxClientsRaised selection map command end struct
 
+/// Creates a `mq3.client.ui_sp_arena.Services` record. Assigns `context` from `context`, `variableValueFn` from `variableValueFn`, `setValueFn` from `setValueFn`, `numTiersFn` from `numTiersFn`.
+/// @param context Value used to initialize `Services.context`.
+/// @param variableValueFn Value used to initialize `Services.variableValueFn`.
+/// @param setValueFn Value used to initialize `Services.setValueFn`.
+/// @param numTiersFn Value used to initialize `Services.numTiersFn`.
+/// @param executeTextFn Value used to initialize `Services.executeTextFn`.
 function services(context,variableValueFn,setValueFn,numTiersFn,executeTextFn)
   return Services(context,variableValueFn,setValueFn,numTiersFn,executeTextFn)
 end function
 
 // UI_SPArena_Start. Host callbacks are the four original trap/UI boundaries.
+/// @param host Record read through `host.variableValueFn`, `host.setValueFn`, `host.numTiersFn`, `host.executeTextFn` and additional values.
+/// @param infoText Value used by `level=textNumbers.atoi(arenaInfo.value(infoText,"num"))`.
 function start(host,infoText)
   if host==void or host.variableValueFn==void or host.setValueFn==void or host.numTiersFn==void or host.executeTextFn==void then return error(7750,"UI_SPArena_Start: incomplete services") end if
   maxClients=host.variableValueFn(host.context,"sv_maxclients");if maxClients is error then return maxClients end if

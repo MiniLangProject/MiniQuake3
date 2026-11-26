@@ -17,14 +17,23 @@ const STRAFE_SPEED=72.0
 const PATROL_RADIUS=30.0
 const DEFAULT_DAMAGE=7
 
+/// Stores playable enemy ai brain record, including `mode`, `nextThink`, `nextAttack`, `strafeSide`, `lastSeen`, `visible`.
 struct Brain mode nextThink nextAttack strafeSide lastSeen visible end struct
+/// Stores playable enemy ai state, including `brains`, `lastTime`, `events`, `visibleCount`.
 struct State brains lastTime events visibleCount end struct
+/// Stores playable enemy ai event record, including `damage`, `side`, `attacker`.
 struct Event damage side attacker end struct
 
+/// Creates the playable enemy ai error `7540` with diagnostic text `"preview enemy AI: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview enemy AI: "+message`.
 function fail(message) return error(7540,"preview enemy AI: "+message) end function
+/// Computes `typeof(value)=="array" and len(value)==3` for playable enemy ai `validVector`.
+/// @param value Sequence whose length/content is inspected by `validVector`.
 function validVector(value) return typeof(value)=="array" and len(value)==3 end function
 
 // A separate state object keeps AI timing out of playable_targets' combat data.
+/// @param targetState Record read through `targetState.targets`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function state(targetState,now)
   if targetState==void or now<0 then return fail("targets and non-negative time are required") end if
   brains=[]
@@ -35,15 +44,27 @@ function state(targetState,now)
   return State(brains,now,[],0)
 end function
 
+/// Adapts `mq3.collision.world.boxTrace` to playable enemy ai `worldPointTrace`, returning its result for `context, startPoint, endPoint, [0.0,0.0,0.0], [0.0,0.0,0.0], 0, SIGHT_MASK, false`.
+/// @param context Argument 1 of `mq3.collision.world.boxTrace`.
+/// @param startPoint Starting world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`.
+/// @param endPoint Ending world-space point of the segment or trace. Forwarded to `mq3.collision.world.boxTrace`.
 function worldPointTrace(context,startPoint,endPoint)
   return collision.boxTrace(context,startPoint,endPoint,[0.0,0.0,0.0],[0.0,0.0,0.0],0,SIGHT_MASK,false)
 end function
 
+/// Calls `traceFn` from playable enemy ai `lineVisible`. The final path returns `result.trace.fraction>=0.9999`.
+/// @param traceFn Collision-trace callback used to test the requested movement or visibility segment.
+/// @param context context record passed to the playable enemy ai helper calls.
+/// @param startPoint Starting world-space point of the segment or trace.
+/// @param endPoint Ending world-space point of the segment or trace.
 function lineVisible(traceFn,context,startPoint,endPoint)
   result=traceFn(context,startPoint,endPoint);if result is error then return result end if
   return result.trace.fraction>=0.9999
 end function
 
+/// Calls `mq3.compat.numeric.fsub`, `mq3.shared.math.VectorLength`, `mq3.shared.math.VectorNormalize` from playable enemy ai `horizontalDirection`. The final path returns `[value,length]`.
+/// @param fromPoint Sequence read at `fromPoint[0]`, `fromPoint[1]`.
+/// @param toPoint Sequence read at `toPoint[0]`, `toPoint[1]`.
 function horizontalDirection(fromPoint,toPoint)
   value=[numeric.fsub(toPoint[0],fromPoint[0]),numeric.fsub(toPoint[1],fromPoint[1]),0.0]
   length=qmath.VectorLength(value)
@@ -51,6 +72,12 @@ function horizontalDirection(fromPoint,toPoint)
   return [value,length]
 end function
 
+/// Updates `target.origin[0]`, `target.origin[1]`, `target.origin[2]` during playable enemy ai `moveTarget`.
+/// @param target Mutable playable enemy ai record/storage; this routine assigns `target.origin[0]`, `target.origin[1]`, `target.origin[2]`.
+/// @param brain Record read through `brain.mode`, `brain.strafeSide`.
+/// @param playerPosition Value used by `direction=horizontalDirection(target.origin,playerPosition)[0]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param deltaMilliseconds Elapsed simulation interval in milliseconds.
 function moveTarget(target,brain,playerPosition,now,deltaMilliseconds)
   seconds=numeric.fdiv(deltaMilliseconds,1000.0)
   if brain.mode=="chase" then
@@ -71,6 +98,13 @@ function moveTarget(target,brain,playerPosition,now,deltaMilliseconds)
 end function
 
 // Injectable trace entry point used by contracts. Events are rebuilt per frame.
+/// @param traceFn Collision-trace callback used to test the requested movement or visibility segment.
+/// @param context context record passed to the playable enemy ai helper calls.
+/// @param ai Mutable playable enemy ai record/storage; this routine assigns `ai.events`, `ai.visibleCount`, `ai.lastTime`.
+/// @param targetState Record read through `targetState.targets`.
+/// @param playerPosition Sequence read at `playerPosition[0]`, `playerPosition[1]`, `playerPosition[2]`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param deltaMilliseconds Elapsed simulation interval in milliseconds.
 function stepWithTrace(traceFn,context,ai,targetState,playerPosition,now,deltaMilliseconds)
   if traceFn==void or ai==void or targetState==void or not validVector(playerPosition) then return fail("trace, state, targets and player position are required") end if
   if now<0 or deltaMilliseconds<0 then return fail("time values cannot be negative") end if
@@ -104,6 +138,12 @@ function stepWithTrace(traceFn,context,ai,targetState,playerPosition,now,deltaMi
 end function
 
 // Public BSP-world entry point: sight is a zero-sized CM_BoxTrace.
+/// @param world world record passed to the playable enemy ai helper calls.
+/// @param ai Value used by `return stepWithTrace(worldPointTrace,world,ai,targetState,playerPosition,now,deltaMilliseconds)`.
+/// @param targetState targetState record passed to the playable enemy ai helper calls.
+/// @param playerPosition Value used by `return stepWithTrace(worldPointTrace,world,ai,targetState,playerPosition,now,deltaMilliseconds)`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param deltaMilliseconds Elapsed simulation interval in milliseconds.
 function step(world,ai,targetState,playerPosition,now,deltaMilliseconds)
   if world==void then return fail("collision world is required") end if
   return stepWithTrace(worldPointTrace,world,ai,targetState,playerPosition,now,deltaMilliseconds)

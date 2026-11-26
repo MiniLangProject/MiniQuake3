@@ -5,8 +5,12 @@ import mq3.platform.playable_window as window
 import mq3.qcommon.cvar as cvar
 import mq3.renderer.tr_init as renderer
 
+/// Stores desktop video active mode record, including `width`, `height`, `fullscreen`, `picmip`.
 struct ActiveMode width height fullscreen picmip end struct
 
+/// Calls `mq3.qcommon.cvar.get`, `mq3.qcommon.cvar.set2`, `mq3.renderer.tr_init.getModeInfo` and additional helpers from desktop video `requestedMode`. The final path returns `window.DisplayMode(dimensions[0],dimensions[1],fullscreen)`.
+/// @param registry Value used by `mode=cvar.get(registry,"r_mode","-1",cvar.ARCHIVE).integer`.
+/// @param toggleFullscreen Value used by `if toggleFullscreen then`.
 function requestedMode(registry,toggleFullscreen)
   mode=cvar.get(registry,"r_mode","-1",cvar.ARCHIVE).integer
   width=cvar.get(registry,"r_customwidth","1280",cvar.ARCHIVE).integer
@@ -22,6 +26,9 @@ function requestedMode(registry,toggleFullscreen)
   return window.DisplayMode(dimensions[0],dimensions[1],fullscreen)
 end function
 
+/// Calls `mq3.client.desktop_video.requestedMode`, `mq3.qcommon.cvar.get`, `mq3.platform.playable_window.setMode` and additional helpers from desktop video `apply`. The final path returns `ActiveMode(active.width,active.height,active.fullscreen,picmip)`.
+/// @param registry Value used by `mode=requestedMode(registry,toggleFullscreen)`.
+/// @param toggleFullscreen Value used by `mode=requestedMode(registry,toggleFullscreen)`.
 function apply(registry,toggleFullscreen)
   mode=requestedMode(registry,toggleFullscreen)
   frequency=cvar.get(registry,"r_displayRefresh","0",cvar.ARCHIVE).integer
@@ -37,6 +44,8 @@ function apply(registry,toggleFullscreen)
   return ActiveMode(active.width,active.height,active.fullscreen,picmip)
 end function
 
+/// Calls `mq3.client.desktop_video.requestedMode`, `mq3.platform.playable_window.open`, `mq3.client.desktop_video.apply` from desktop video `open`. The final path returns `apply(registry,false)`.
+/// @param registry Value used by `mode=requestedMode(registry,false)`.
 function open(registry)
   mode=requestedMode(registry,false)
   opened=window.open(mode.width,mode.height);if opened is error then return opened end if

@@ -11,25 +11,42 @@ const BUTTON_WALKING=16
 const BUTTON_ANY=2048
 const MAX_JOYSTICK_AXIS=16
 
+/// Stores input command button record, including `down0`, `down1`, `downtime`, `msec`, `active`, `wasPressed`.
 struct Button down0 down1 downtime msec active wasPressed end struct
+/// Stores input command config record, including `forwardSpeed`, `sideSpeed`, `upSpeed`, `yawSpeed`, `pitchSpeed`, `angleSpeedKey` and additional values.
 struct Config forwardSpeed sideSpeed upSpeed yawSpeed pitchSpeed angleSpeedKey run filter sensitivity mouseAccel mouseYaw mousePitch mouseForward mouseSide freelook end struct
+/// Stores input command state, including `left`, `right`, `forward`, `back`, `lookup`, `lookdown` and additional values.
 struct State left right forward back lookup lookdown moveleft moveright strafe speed up down buttons mlooking viewangles mouseDx mouseDy mouseIndex joystickAxis end struct
+/// Stores input command command data, including `angles`, `buttons`, `weapon`, `forwardmove`, `rightmove`, `upmove` and additional values.
 struct Command angles buttons weapon forwardmove rightmove upmove serverTime viewangles end struct
 
+/// Creates a `mq3.client.input_command.Button` record. Initializes the record with the defaults written in this constructor.
 function button() return Button(0,0,0,0,false,false) end function
+/// Creates a `mq3.client.input_command.Config` record. Initializes the record with the defaults written in this constructor.
 function defaults() return Config(127.0,127.0,127.0,140.0,140.0,1.5,true,false,5.0,0.0,0.022,0.022,0.25,0.25,true) end function
+/// Calls `mq3.client.input_command.button`, `mq3.client.input_command.State`, `mq3.compat.numeric.f32` from input command `create`.
+/// @param pitch Value used by `return State(button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),values,false,[n.f32(p...`.
+/// @param yaw Value used by `return State(button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),values,false,[n.f32(p...`.
+/// @param roll Value used by `return State(button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),values,false,[n.f32(p...`.
 function create(pitch,yaw,roll)
   values=[];for index=0 to 15 values=values+[button()] end for
   return State(button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),button(),values,false,[n.f32(pitch),n.f32(yaw),n.f32(roll)],[0,0],[0,0],0,array(MAX_JOYSTICK_AXIS,0))
 end function
 
+/// Calls `mq3.compat.numeric.trunc32` from input command `clampChar`. The final path returns `value`.
+/// @param value Value tested by `value< -128`, `value>127` before the calculation continues.
 function clampChar(value)
   value=n.trunc32(value);if value< -128 then return -128 end if;if value>127 then return 127 end if;return value
 end function
+/// Computes `n.trunc32(value*65536.0/360.0)&65535` for input command `angleShort`.
+/// @param value Value used by `return n.trunc32(value*65536.0/360.0)&65535`.
 function angleShort(value) return n.trunc32(value*65536.0/360.0)&65535 end function
 
 // IN_KeyDown/IN_KeyUp preserve two independent physical sources and exact
 // sub-frame timestamps. A zero timestamp on release means half a frame.
+/// @param value Mutable input command record/storage; this routine assigns `value.down0`, `value.down1`, `value.downtime`, `value.active` and additional values.
+/// @param key Value assigned to `value.down0`, `value.down1`.
+/// @param time Value assigned to `value.downtime`.
 function keyDown(value,key,time)
   if value==void or typeof(key)!="int" or typeof(time)!="int" or time<0 then return error(7700,"input command: invalid key down") end if
   if key==value.down0 or key==value.down1 then return false end if
@@ -37,6 +54,11 @@ function keyDown(value,key,time)
   if value.active then return false end if
   value.downtime=time;value.active=true;value.wasPressed=true;return true
 end function
+/// Updates `value.down0`, `value.down1`, `value.active`, `value.msec` during input command `keyUp`.
+/// @param value Mutable input command record/storage; this routine assigns `value.down0`, `value.down1`, `value.active`, `value.msec`.
+/// @param key Key or control identifier used to select the corresponding input command entry.
+/// @param time Value used by `if value==void or typeof(key)!="int" or typeof(time)!="int" or typeof(frameMsec)!="int" or time<0 or frameMsec<=0 then return error(7700,"inpu...`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function keyUp(value,key,time,frameMsec)
   if value==void or typeof(key)!="int" or typeof(time)!="int" or typeof(frameMsec)!="int" or time<0 or frameMsec<=0 then return error(7700,"input command: invalid key up") end if
   if key==0 then value.down0=0;value.down1=0;value.active=false;return true end if
@@ -44,11 +66,20 @@ function keyUp(value,key,time,frameMsec)
   if value.down0!=0 or value.down1!=0 then return false end if
   value.active=false;if time!=0 then value.msec=value.msec+time-value.downtime else value.msec=value.msec+(frameMsec>>1) end if;return true
 end function
+/// Calls `mq3.client.input_command.keyDown`, `mq3.client.input_command.keyUp` from input command `setPolled`.
+/// @param value Record read through `value.active`.
+/// @param active Value used by `if active and not value.active then return keyDown(value,1,time) end if`.
+/// @param time Value used by `if active and not value.active then return keyDown(value,1,time) end if`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function setPolled(value,active,time,frameMsec)
   if active and not value.active then return keyDown(value,1,time) end if
   if not active and value.active then return keyUp(value,1,time,frameMsec) end if
   return false
 end function
+/// Updates `value.msec`, `value.downtime` during input command `keyState`.
+/// @param value Mutable input command record/storage; this routine assigns `value.msec`, `value.downtime`.
+/// @param frameTime Value assigned to `value.downtime`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function keyState(value,frameTime,frameMsec)
   if value==void or frameMsec<=0 then return 0.0 end if
   milliseconds=value.msec;value.msec=0
@@ -56,24 +87,45 @@ function keyState(value,frameTime,frameMsec)
   fraction=n.f32(milliseconds/frameMsec);if fraction<0.0 then return 0.0 end if;if fraction>1.0 then return 1.0 end if;return fraction
 end function
 
+/// Updates `state.mouseDx[state.mouseIndex]`, `state.mouseDy[state.mouseIndex]` during input command `accumulateMouse`.
+/// @param state Mutable input command record/storage; this routine assigns `state.mouseDx[state.mouseIndex]`, `state.mouseDy[state.mouseIndex]`.
+/// @param dx Value used by `if state==void or typeof(dx)!="int" or typeof(dy)!="int" then return error(7700,"input command: invalid mouse delta") end if`.
+/// @param dy Value used by `if state==void or typeof(dx)!="int" or typeof(dy)!="int" then return error(7700,"input command: invalid mouse delta") end if`.
 function accumulateMouse(state,dx,dy)
   if state==void or typeof(dx)!="int" or typeof(dy)!="int" then return error(7700,"input command: invalid mouse delta") end if
   state.mouseDx[state.mouseIndex]=state.mouseDx[state.mouseIndex]+dx;state.mouseDy[state.mouseIndex]=state.mouseDy[state.mouseIndex]+dy;return void
 end function
+/// Updates `state.mouseDx[0]`, `state.mouseDx[1]`, `state.mouseDy[0]`, `state.mouseDy[1]` during input command `clearMouse`.
+/// @param state Mutable input command record/storage; this routine assigns `state.mouseDx[0]`, `state.mouseDx[1]`, `state.mouseDy[0]`, `state.mouseDy[1]`.
 function clearMouse(state)
   if state==void then return error(7700,"input command: missing mouse state") end if
   state.mouseDx[0]=0;state.mouseDx[1]=0;state.mouseDy[0]=0;state.mouseDy[1]=0;return void
 end function
+/// Updates `state.joystickAxis[axis]` during input command `joystickEvent`.
+/// @param state Mutable input command record/storage; this routine assigns `state.joystickAxis[axis]`.
+/// @param axis Value used by `if state==void or axis<0 or axis>=MAX_JOYSTICK_AXIS or value< -127 or value>127 then return error(7700,"input command: invalid joystick axis")...`.
+/// @param value Value tested by `state==void or axis<0 or axis>=MAX_JOYSTICK_AXIS or value< -127 or value>127` before the calculation continues.
 function joystickEvent(state,axis,value)
   if state==void or axis<0 or axis>=MAX_JOYSTICK_AXIS or value< -127 or value>127 then return error(7700,"input command: invalid joystick axis") end if
   state.joystickAxis[axis]=value;return void
 end function
 
+/// Updates `state.viewangles[1]`, `state.viewangles[0]` during input command `adjustAngles`.
+/// @param state Mutable input command record/storage; this routine assigns `state.viewangles[1]`, `state.viewangles[0]`.
+/// @param config Record read through `config.angleSpeedKey`, `config.yawSpeed`, `config.pitchSpeed`.
+/// @param frameTime Value used by `if not state.strafe.active then state.viewangles[1]=n.f32(state.viewangles[1]-scale*config.yawSpeed*keyState(state.right,frameTime,frameMsec))`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function adjustAngles(state,config,frameTime,frameMsec)
   scale=0.001*frameMsec;if state.speed.active then scale=scale*config.angleSpeedKey end if
   if not state.strafe.active then state.viewangles[1]=n.f32(state.viewangles[1]-scale*config.yawSpeed*keyState(state.right,frameTime,frameMsec));state.viewangles[1]=n.f32(state.viewangles[1]+scale*config.yawSpeed*keyState(state.left,frameTime,frameMsec)) end if
   state.viewangles[0]=n.f32(state.viewangles[0]-scale*config.pitchSpeed*keyState(state.lookup,frameTime,frameMsec));state.viewangles[0]=n.f32(state.viewangles[0]+scale*config.pitchSpeed*keyState(state.lookdown,frameTime,frameMsec));return void
 end function
+/// Updates `command.buttons`, `command.forwardmove`, `command.rightmove`, `command.upmove` during input command `keyMove`.
+/// @param state Record read through `state.speed.active`, `state.strafe.active`, `state.right`, `state.left` and additional values.
+/// @param config Record read through `config.run`.
+/// @param command Mutable input command record/storage; this routine assigns `command.buttons`, `command.forwardmove`, `command.rightmove`, `command.upmove`.
+/// @param frameTime Value used by `if state.strafe.active then side=side+n.trunc32(moveSpeed*keyState(state.right,frameTime,frameMsec))`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function keyMove(state,config,command,frameTime,frameMsec)
   moveSpeed=64;if state.speed.active!=config.run then moveSpeed=127;command.buttons=command.buttons&(~BUTTON_WALKING) else command.buttons=command.buttons|BUTTON_WALKING end if
   forward=0;side=0;up=0
@@ -83,6 +135,12 @@ function keyMove(state,config,command,frameTime,frameMsec)
   forward=forward+n.trunc32(moveSpeed*keyState(state.forward,frameTime,frameMsec));forward=forward-n.trunc32(moveSpeed*keyState(state.back,frameTime,frameMsec))
   command.forwardmove=clampChar(forward);command.rightmove=clampChar(side);command.upmove=clampChar(up);return void
 end function
+/// Updates `state.mouseIndex`, `state.mouseDx[state.mouseIndex]`, `state.mouseDy[state.mouseIndex]`, `command.rightmove` and additional values during input command `mouseMove`.
+/// @param state Mutable input command record/storage; this routine assigns `state.mouseIndex`, `state.mouseDx[state.mouseIndex]`, `state.mouseDy[state.mouseIndex]`, `state.viewangles[1]` and additional values.
+/// @param config Record read through `config.filter`, `config.sensitivity`, `config.mouseAccel`, `config.mouseSide` and additional values.
+/// @param command Mutable input command record/storage; this routine assigns `command.rightmove`, `command.forwardmove`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
+/// @param cgameSensitivity Value used by `acceleration=(config.sensitivity+rate*config.mouseAccel)*cgameSensitivity`.
 function mouseMove(state,config,command,frameMsec,cgameSensitivity)
   mx=0.0;my=0.0;if config.filter then mx=(state.mouseDx[0]+state.mouseDx[1])*0.5;my=(state.mouseDy[0]+state.mouseDy[1])*0.5 else mx=state.mouseDx[state.mouseIndex];my=state.mouseDy[state.mouseIndex] end if
   state.mouseIndex=state.mouseIndex^1;state.mouseDx[state.mouseIndex]=0;state.mouseDy[state.mouseIndex]=0
@@ -91,6 +149,11 @@ function mouseMove(state,config,command,frameMsec,cgameSensitivity)
   if (state.mlooking or config.freelook) and not state.strafe.active then state.viewangles[0]=n.f32(state.viewangles[0]+config.mousePitch*my) else command.forwardmove=clampChar(command.forwardmove-config.mouseForward*my) end if
   return void
 end function
+/// Updates `command.buttons`, `state.viewangles[1]`, `command.rightmove`, `state.viewangles[0]` and additional values during input command `joystickMove`.
+/// @param state Mutable input command record/storage; this routine assigns `state.viewangles[1]`, `state.viewangles[0]`.
+/// @param config Record read through `config.run`, `config.angleSpeedKey`, `config.yawSpeed`, `config.pitchSpeed`.
+/// @param command Mutable input command record/storage; this routine assigns `command.buttons`, `command.rightmove`, `command.forwardmove`, `command.upmove`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
 function joystickMove(state,config,command,frameMsec)
   moveSpeed=1;if state.speed.active!=config.run then moveSpeed=2 else command.buttons=command.buttons|BUTTON_WALKING end if
   angleSpeed=0.001*frameMsec;if state.speed.active then angleSpeed=angleSpeed*config.angleSpeedKey end if
@@ -98,11 +161,26 @@ function joystickMove(state,config,command,frameMsec)
   if state.mlooking then state.viewangles[0]=n.f32(state.viewangles[0]+angleSpeed*config.pitchSpeed*state.joystickAxis[1]) else command.forwardmove=clampChar(command.forwardmove+state.joystickAxis[1]) end if
   command.upmove=clampChar(command.upmove+state.joystickAxis[2]);return void
 end function
+/// Updates `command.buttons`, `state.buttons[index].wasPressed` during input command `commandButtons`.
+/// @param state Mutable input command record/storage; this routine assigns `state.buttons[index].wasPressed`.
+/// @param command Mutable input command record/storage; this routine assigns `command.buttons`.
+/// @param keyCatchers Value used by `if keyCatchers!=0 then command.buttons=command.buttons|BUTTON_TALK end if`.
+/// @param anyKeyDown Value used by `if anyKeyDown and keyCatchers==0 then command.buttons=command.buttons|BUTTON_ANY end if`.
 function commandButtons(state,command,keyCatchers,anyKeyDown)
   for index=0 to 14 if state.buttons[index].active or state.buttons[index].wasPressed then command.buttons=command.buttons|(1<<index) end if;state.buttons[index].wasPressed=false end for
   if keyCatchers!=0 then command.buttons=command.buttons|BUTTON_TALK end if;if anyKeyDown and keyCatchers==0 then command.buttons=command.buttons|BUTTON_ANY end if;return void
 end function
 
+/// Updates `state.viewangles[0]` during input command `createCommand`.
+/// @param state Mutable input command record/storage; this routine assigns `state.viewangles[0]`.
+/// @param config Value used by `if state==void or config==void or frameMsec<=0 then return error(7700,"input command: invalid create") end if`.
+/// @param frameTime Value used by `adjustAngles(state,config,frameTime,frameMsec)`.
+/// @param frameMsec Elapsed frame interval in milliseconds.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param weapon Value used by `command=Command([0,0,0],0,weapon&255,0,0,0,serverTime,[0.0,0.0,0.0])`.
+/// @param cgameSensitivity Value used by `mouseMove(state,config,command,frameMsec,cgameSensitivity)`.
+/// @param keyCatchers Value used by `commandButtons(state,command,keyCatchers,anyKeyDown)`.
+/// @param anyKeyDown Value used by `commandButtons(state,command,keyCatchers,anyKeyDown)`.
 function createCommand(state,config,frameTime,frameMsec,serverTime,weapon,cgameSensitivity,keyCatchers,anyKeyDown)
   if state==void or config==void or frameMsec<=0 then return error(7700,"input command: invalid create") end if
   oldPitch=state.viewangles[0];adjustAngles(state,config,frameTime,frameMsec)

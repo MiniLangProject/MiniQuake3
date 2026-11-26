@@ -29,6 +29,7 @@ const TFL_SLIME=0x200000
 const TFL_LAVA=0x400000
 const PERS_HITS=1
 
+/// `Services` record for bot fight state, containing `combatServices`, `observerFn`, `recordNodeFn`, `resetLastAvoidFn` and `enterNodeFn` and related fields.
 struct Services
   combatServices
   observerFn
@@ -63,27 +64,62 @@ struct Services
   dmnetServices
   context
 end struct
+/// Create a `mq3.game.bot_fight_state.Services` record, initializing `combatServices` from `combatServices`.
+/// @param combatServices Initial value stored in `mq3.game.bot_fight_state.Services.combatServices`.
 function create(combatServices)
   return Services(combatServices,void,void,void,void,void,void,void,void,void,void,void,void,void,false,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
+/// Set `bot.aiNode` to `node` in `mq3.game.bot_fight_state.transition`.
+/// @param services Host service callbacks; accesses `enterNodeFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param node Value passed as argument 3 to `services.enterNodeFn`.
+/// @param reason Reason text recorded with the operation.
 function transition(services,bot,node,reason)
   bot.aiNode=node;if services.enterNodeFn!=void then services.enterNodeFn(services,bot,node,reason) end if;return void
 end function
+/// Set `bot.aiNode` to `NODE_FIGHT` in `mq3.game.bot_fight_state.enterFight`.
+/// @param services Host service callbacks; accesses `recordNodeFn` and `resetLastAvoidFn`.
+/// @param bot Bot AI state; accesses `ms` and `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterFight(services,bot,reason)
   services.recordNodeFn(services,bot,"battle fight","",reason);services.resetLastAvoidFn(services,bot.ms);bot.aiNode=NODE_FIGHT;return void
 end function
+/// Set `bot.combatFlags` to `bot.combatFlags|BFL_FIGHTSUICIDAL` in `mq3.game.bot_fight_state.enterSuicidalFight`.
+/// @param services Host service callbacks; accesses `recordNodeFn` and `resetLastAvoidFn`.
+/// @param bot Bot AI state; accesses `combatFlags`. May update `bot.combatFlags` in place.
+/// @param reason Reason text recorded with the operation.
 function enterSuicidalFight(services,bot,reason)
   enterFight(services,bot,reason);bot.combatFlags=bot.combatFlags|BFL_FIGHTSUICIDAL;return void
 end function
+/// Set `bot.chaseTime` to `fightCombat.now(services.combatServices)` and `bot.aiNode` to `NODE_CHASE` in `mq3.game.bot_fight_state.enterChase`.
+/// @param services Host service callbacks; accesses `recordNodeFn` and `combatServices`.
+/// @param bot Bot AI state; accesses `chaseTime` and `aiNode`. May update `bot.chaseTime` and `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterChase(services,bot,reason)
   services.recordNodeFn(services,bot,"battle chase","",reason);bot.chaseTime=fightCombat.now(services.combatServices);bot.aiNode=NODE_CHASE;return void
 end function
+/// Set `bot.aiNode` to `NODE_RETREAT` in `mq3.game.bot_fight_state.enterRetreat`.
+/// @param services Host service callbacks; accesses `recordNodeFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterRetreat(services,bot,reason)
   services.recordNodeFn(services,bot,"battle retreat","",reason);bot.aiNode=NODE_RETREAT;return void
 end function
+/// Set `bot.aiNode` to `NODE_NBG` in `mq3.game.bot_fight_state.enterNbg`.
+/// @param services Host service callbacks; accesses `recordNodeFn`.
+/// @param bot Bot AI state; accesses `aiNode`. May update `bot.aiNode` in place.
+/// @param reason Reason text recorded with the operation.
 function enterNbg(services,bot,reason)
   services.recordNodeFn(services,bot,"battle NBG","",reason);bot.aiNode=NODE_NBG;return void
 end function
+/// Update `bot.idealViewangles`, `bot.idealViewangles[2]` and `bot.weaponnum` during `setMovementView`.
+/// @param services Host service callbacks; accesses `combatServices` and `movementViewTargetFn`.
+/// @param bot Bot AI state; accesses `idealViewangles`, `combatFlags`, `ms`, `tfl` and `origin` and related fields. May update `bot.idealViewangles`, `bot.idealViewangles[2]` and `bot.weaponnum` in place.
+/// @param movement Movement record; accesses `flags`, `idealViewangles`, `movedir` and `weapon`.
+/// @param goal Value passed as argument 3 to `services.movementViewTargetFn`.
+/// @param allowAim Value used by `setMovementView` in `if allowAim then fightCombat.aimAtEnemy(services.combatServices,bot)`.
+/// @param copyViewSet Value used by `setMovementView` in `fixed=(movement.flags&(MOVERESULT_MOVEMENTVIEW|MOVERESULT_SWIMVIEW))!=0 or (copyViewSet and (movement.flags&MOVE...`.
+/// @param halveRoll Value used by `setMovementView` in `if halveRoll then bot.idealViewangles[2]=n.fmul(bot.idealViewangles[2],0.5) end if`.
 function setMovementView(services,bot,movement,goal,allowAim,copyViewSet,halveRoll)
   fixed=(movement.flags&(MOVERESULT_MOVEMENTVIEW|MOVERESULT_SWIMVIEW))!=0 or (copyViewSet and (movement.flags&MOVERESULT_MOVEMENTVIEWSET)!=0)
   if fixed then bot.idealViewangles=[movement.idealViewangles[0],movement.idealViewangles[1],movement.idealViewangles[2]]
@@ -98,6 +134,9 @@ function setMovementView(services,bot,movement,goal,allowAim,copyViewSet,halveRo
   if (movement.flags&MOVERESULT_MOVEMENTWEAPON)!=0 then bot.weaponnum=movement.weapon end if
   return void
 end function
+/// Update `bot.enemyDeathTime`, `bot.standTime`, `bot.ltgTime` and `bot.lastEnemyOrigin` and related state during `fightNode`.
+/// @param services Host service callbacks; accesses `combatServices`, `observerFn`, `chatEnemySuicideFn`, `chatKillFn` and `chatTimeFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `enemyDeathTime`, `enemySuicide`, `lastKilledPlayer` and `standTime` and related fields. May update `bot.enemyDeathTime`, `bot.standTime` and `bot.ltgTime` and additional fields in place.
 function fightNode(services,bot)
   cs=services.combatServices
   if services.observerFn(services,bot) then transition(services,bot,NODE_OBSERVER,"battle fight: observer");return false end if
@@ -134,6 +173,9 @@ function fightNode(services,bot)
   return true
 end function
 
+/// Update `bot.tfl`, `bot.chaseTime`, `bot.checkTime` and `bot.nbgTime` and related state during `chaseNode`.
+/// @param services Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `touchingGoalFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `entitynum`, `eye`, `viewangles` and `lastEnemyAreaNum` and related fields. May update `bot.tfl`, `bot.chaseTime` and `bot.checkTime` and additional fields in place.
 function chaseNode(services,bot)
   cs=services.combatServices;time=fightCombat.now(cs)
   if services.observerFn(services,bot) then transition(services,bot,NODE_OBSERVER,"battle chase: observer");return false end if
@@ -160,6 +202,9 @@ function chaseNode(services,bot)
   return true
 end function
 
+/// Update `bot.tfl`, `bot.enemyVisibleTime`, `bot.lastEnemyOrigin` and `bot.lastEnemyAreaNum` and related state during `retreatNode`.
+/// @param services Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `updateBattleFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `tfl`, `gs`, `entitynum` and `eye` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place.
 function retreatNode(services,bot)
   cs=services.combatServices;time=fightCombat.now(cs)
   if services.observerFn(services,bot) then transition(services,bot,NODE_OBSERVER,"battle retreat: observer");return false end if
@@ -182,6 +227,9 @@ function retreatNode(services,bot)
   skill=cs.characteristicFloatFn(cs,bot.character,fightCombat.CHARACTERISTIC_ATTACK_SKILL,0.0,1.0);setMovementView(services,bot,movement,goal,skill>0.3,false,false);fightCombat.checkAttack(cs,bot);return true
 end function
 
+/// Update `bot.tfl`, `bot.enemyVisibleTime`, `bot.lastEnemyOrigin` and `bot.lastEnemyAreaNum` and related state during `nbgNode`.
+/// @param services Host service callbacks; accesses `combatServices`, `observerFn`, `grapple`, `mapScriptsFn` and `missionEnemyTargetFn` and related fields.
+/// @param bot Bot AI state; accesses `enemy`, `tfl`, `entitynum`, `eye` and `viewangles` and related fields. May update `bot.tfl`, `bot.enemyVisibleTime` and `bot.lastEnemyOrigin` and additional fields in place.
 function nbgNode(services,bot)
   cs=services.combatServices;time=fightCombat.now(cs)
   if services.observerFn(services,bot) then transition(services,bot,NODE_OBSERVER,"battle nbg: observer");return false end if
@@ -198,6 +246,9 @@ function nbgNode(services,bot)
   skill=cs.characteristicFloatFn(cs,bot.character,fightCombat.CHARACTERISTIC_ATTACK_SKILL,0.0,1.0);setMovementView(services,bot,movement,goal,skill>0.3,false,false);fightCombat.checkAttack(cs,bot);return true
 end function
 
+/// Apply `mq3.game.bot_fight_state.fightNode`, `mq3.game.bot_fight_state.chaseNode` and `mq3.game.bot_fight_state.retreatNode` while evaluating `runNode`.
+/// @param services Host service callbacks; accesses `combatServices`, `observerFn`, `chatEnemySuicideFn`, `chatKillFn` and `chatTimeFn` and related fields.
+/// @param bot Bot AI state; accesses `aiNode`.
 function runNode(services,bot)
   if bot.aiNode==NODE_FIGHT then return fightNode(services,bot) end if
   if bot.aiNode==NODE_CHASE then return chaseNode(services,bot) end if

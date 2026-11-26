@@ -14,6 +14,7 @@ const SVC_CONFIGSTRING=3
 const SVC_BASELINE=4
 const SVC_EOF=8
 
+/// Stores gamestate state, including `stringOffsets`, `stringData`, `dataCount`, `baselines`, `serverCommandSequence`, `clientNum` and additional values.
 struct State
   stringOffsets
   stringData
@@ -32,16 +33,22 @@ struct State
   context
 end struct
 
+/// Creates a `mq3.client.gamestate.State` record. Initializes the record with the defaults written in this constructor.
 function create()
   return State(array(MAX_CONFIGSTRINGS,0),bytes(MAX_GAMESTATE_CHARS,0),1,array(MAX_GENTITIES,void),0,0,0,0,0,void,void,void,void,void,void)
 end function
 
+/// Updates `state.stringOffsets`, `state.stringData`, `state.dataCount`, `state.baselines` and additional values during gamestate `clear`.
+/// @param state Mutable gamestate record/storage; this routine assigns `state.stringOffsets`, `state.stringData`, `state.dataCount`, `state.baselines` and additional values.
 function clear(state)
   state.stringOffsets=array(MAX_CONFIGSTRINGS,0);state.stringData=bytes(MAX_GAMESTATE_CHARS,0);state.dataCount=1
   state.baselines=array(MAX_GENTITIES,void);state.clientNum=0;state.checksumFeed=0;state.paused=0
   return void
 end function
 
+/// Calls `decode`, `slice` from gamestate `configString`. The final path returns `decode(slice(state.stringData,offset,finish-offset))`.
+/// @param state Record read through `state.stringOffsets`, `state.stringData`.
+/// @param index Value tested by `index<0 or index>=MAX_CONFIGSTRINGS` before the calculation continues.
 function configString(state,index)
   if index<0 or index>=MAX_CONFIGSTRINGS then return error(6900,"gamestate: configstring index") end if
   offset=state.stringOffsets[index]
@@ -53,6 +60,9 @@ function configString(state,index)
   return decode(slice(state.stringData,offset,finish-offset))
 end function
 
+/// Updates `state.connectPacketCount`, `state.serverCommandSequence`, `state.stringOffsets[index]`, `state.stringData[state.dataCount+offset]` and additional values during gamestate `parse`.
+/// @param state Mutable gamestate record/storage; this routine assigns `state.connectPacketCount`, `state.serverCommandSequence`, `state.stringOffsets[index]`, `state.stringData[state.dataCount+offset]` and additional values.
+/// @param msg Record read through `msg.readcount`, `msg.cursize`.
 function parse(state,msg)
   if state==void or msg==void then return error(6901,"gamestate: missing state") end if
   if state.closeFn!=void then state.closeFn(state) end if

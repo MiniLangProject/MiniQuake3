@@ -8,15 +8,25 @@ import mq3.collision.world as cm
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Build the `mq3.game.movement.Collision` result for `worldTrace`. Return paths include `kernel.Collision(hit.trace,hit.endpos,entity)`.
+/// @param p Player movement context; accesses `context` and `k`.
+/// @param start Array or byte sequence accessed at `axis`.
+/// @param finish Array or byte sequence accessed at `axis`.
 function worldTrace(p,start,finish)
   hit = cm.boxTrace(p.context,start,finish,p.k.mins,p.k.maxs,0,p.k.mask,false)
   entity = 1023
   if hit.trace.fraction < 1 then entity = 1022 end if
   return kernel.Collision(hit.trace,hit.endpos,entity)
 end function
+/// Forward `worldContents` to `mq3.collision.world.pointContents` and return the delegated result.
+/// @param p Player movement context; accesses `context`.
+/// @param point Three-component point used by the geometric query.
 function worldContents(p,point)
   return cm.pointContents(p.context,point,0)
 end function
+/// Apply `mq3.game.playerstate.create`, `mq3.game.movement.copy` and `mq3.game.pmove.create` while evaluating `create`. Return paths include `pm.create(s,worldTrace,worldContents,world)`.
+/// @param world Context forwarded to the configured host callbacks.
+/// @param origin World-space position as three coordinates.
 function create(world,origin)
   s = states.create()
   s.origin = kernel.copy(origin); s.gravity = 800; s.speed = 320; s.viewheight = 26
@@ -28,6 +38,8 @@ function create(world,origin)
   s.ammo[1] = -1
   return pm.create(s,worldTrace,worldContents,world)
 end function
+/// Parse movement replay rows as nine tab-separated signed 32-bit integers, skipping empty lines and comments.
+/// @param text Text to parse, format or deliver.
 function commands(text)
   result = []; lineNumber = 0
   for each line in strings.split(text,"\n")
@@ -49,6 +61,8 @@ function commands(text)
   end for
   return result
 end function
+/// Serialize the selected player and movement-kernel fields as one tab-separated replay result row.
+/// @param p Player movement context; accesses `ps` and `k`.
 function row(p)
   s = p.ps
   values = [s.commandTime]+s.origin+s.velocity+[s.groundEntityNum,s.pm_flags,p.k.waterlevel,s.weapon,s.weaponTime,s.eventSequence,s.events[0],s.events[1]]
@@ -59,6 +73,10 @@ function row(p)
   end for
   return text
 end function
+/// Apply `mq3.game.replay.commands`, `mq3.game.replay.create` and `mq3.game.pmove.move` while evaluating `run`.
+/// @param world Context forwarded to the configured host callbacks.
+/// @param origin World-space position as three coordinates.
+/// @param text Text to parse, format or deliver.
 function run(world,origin,text)
   inputs = commands(text); p = create(world,origin)
   print "time\tx\ty\tz\tvx\tvy\tvz\tground\tflags\twater\tweapon\tweaponTime\teventSequence\tevent0\tevent1"

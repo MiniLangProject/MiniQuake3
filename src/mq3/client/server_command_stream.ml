@@ -10,6 +10,7 @@ const BIG_INFO_STRING=8192
 const MAX_CONFIGSTRINGS=1024
 const CS_SYSTEMINFO=1
 
+/// Stores server command stream host-service callbacks, including `context`, `configstringFn`, `systemInfoFn`, `clearNotifyFn`, `clearUsercmdsFn`, `closeConsoleFn` and additional values.
 struct Services
   context
   configstringFn
@@ -21,6 +22,7 @@ struct Services
   serverRunning
 end struct
 
+/// Stores server command stream state, including `commandState`, `configstrings`, `commandSequence`, `lastExecuted`, `commands`, `demoPlaying` and additional values.
 struct State
   commandState
   configstrings
@@ -31,7 +33,11 @@ struct State
   bigConfigString
 end struct
 
+/// Creates a `mq3.client.server_command_stream.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void,void,void,false) end function
+/// Creates the reliable server-command consumer with a 64-command ring and validates the configstring table capacity.
+/// @param commandState commandState record passed to the server command stream helper calls.
+/// @param configstrings Sequence whose length/content is inspected by `create`.
 function create(commandState,configstrings)
   if commandState==void then commandState=command.create() end if
   if configstrings==void then configstrings=array(MAX_CONFIGSTRINGS,"") end if
@@ -39,6 +45,9 @@ function create(commandState,configstrings)
   return State(commandState,configstrings,0,0,array(MAX_RELIABLE_COMMANDS,""),false,"")
 end function
 
+/// Appends a reliable server command to the sequence ring and returns its assigned sequence number.
+/// @param state Mutable server command stream record/storage; this routine assigns `state.commandSequence`, `state.commands[state.commandSequence&(MAX_RELIABLE_COMMANDS-1)]`.
+/// @param text Text consumed or emitted by `queue` in the server command stream path.
 function queue(state,text)
   if state==void or text==void then return error(6930,"server command stream: invalid queued command") end if
   state.commandSequence=state.commandSequence+1
@@ -46,6 +55,10 @@ function queue(state,text)
   return state.commandSequence
 end function
 
+/// Copies a validated external reliable-command ring and its current sequence into the consumer state.
+/// @param state Mutable server command stream record/storage; this routine assigns `state.commandSequence`, `state.commands[index]`.
+/// @param sequence Value assigned to `state.commandSequence`.
+/// @param commands Mutable sequence; this routine writes `commands[index]`.
 function setSequence(state,sequence,commands)
   if state==void or sequence<0 or commands==void or len(commands)<MAX_RELIABLE_COMMANDS then return error(6930,"server command stream: invalid synchronized ring") end if
   state.commandSequence=sequence
@@ -53,6 +66,9 @@ function setSequence(state,sequence,commands)
   return void
 end function
 
+/// Applies the tokenized configstring command and notifies configstring/system-info callbacks as required.
+/// @param state Mutable server command stream record/storage; this routine assigns `state.configstrings[index]`.
+/// @param host Record read through `host.configstringFn`, `host.context`, `host.systemInfoFn`.
 function updateConfigstring(state,host)
   index=toNumber(command.argv(state.commandState,1))
   if index<0 or index>=MAX_CONFIGSTRINGS then return error(6930,"server command stream: bad configstring index") end if
@@ -62,10 +78,18 @@ function updateConfigstring(state,host)
   return void
 end function
 
+/// Checks whether a configstring fragment plus reserved terminator space reaches the BIG_INFO_STRING byte limit.
+/// @param prefix Value used by `return len(bytes(prefix))+len(bytes(value))+extra>=BIG_INFO_STRING`.
+/// @param value Value used by `return len(bytes(prefix))+len(bytes(value))+extra>=BIG_INFO_STRING`.
+/// @param extra Additional bytes reserved for quoting or termination when testing the 8,192-byte configstring limit.
 function tooLong(prefix,value,extra)
   return len(bytes(prefix))+len(bytes(value))+extra>=BIG_INFO_STRING
 end function
 
+/// Consumes a numbered reliable command, assembles bcs fragments, updates configstrings and handles disconnect/map-restart/levelshot commands.
+/// @param state Mutable server command stream record/storage; this routine assigns `state.lastExecuted`, `state.bigConfigString`.
+/// @param host Optional callbacks for configstrings, system-info changes, map-restart cleanup and local levelshot commands.
+/// @param number Reliable sequence to consume; commands beyond the received sequence are rejected, and expired ring entries fail outside demo playback.
 function get(state,host,number)
   if state==void then return error(6930,"server command stream: missing state") end if
   if number<=state.commandSequence-MAX_RELIABLE_COMMANDS then

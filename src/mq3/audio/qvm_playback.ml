@@ -21,17 +21,31 @@ const MAX_ENTITIES=1024
 const MAX_VOICES=96
 const MAX_LOOPS=1024
 
+/// Listener record for audio.qvm_playback, containing `entity`, `origin`, `axis`, `inWater`.
 struct Listener entity origin axis inWater end struct
+/// Voice record for audio.qvm_playback, containing `id`, `slot`, `entity`, `channel`, `handle`, `origin`, and 7 further fields.
 struct Voice id slot entity channel handle origin fixedOrigin localSound sound compressed mono cursor active end struct
+/// LoopSource record for audio.qvm_playback, containing `entity`, `handle`, `origin`, `velocity`, `realLoop`, `sound`, and 7 further fields.
 struct LoopSource entity handle origin velocity realLoop sound compressed mono cursor active doppler dopplerScale oldDopplerScale end struct
+/// Music record for audio.qvm_playback, containing `introSound`, `loopSound`, `cursor`, `inIntro`, `active`.
 struct Music introSound loopSound cursor inIntro active end struct
+/// State record for audio.qvm_playback, containing `outputRate`, `chunkFrames`, `catalog`, `listener`, `entityOrigins`, `voices`, and 10 further fields.
 struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache clipHandles monoHandles end struct
+/// ApplyResult record for audio.qvm_playback, containing `applied`, `missing`, `ignored`.
 struct ApplyResult applied missing ignored end struct
+/// Chunk record for audio.qvm_playback, containing `samples`, `frames`, `audibleVoices`, `audibleLoops`, `peak`, `limiterGain`.
 struct Chunk samples frames audibleVoices audibleLoops peak limiterGain end struct
 
+/// Create the audio.qvm_playback error for `fail` with 7651 and the supplied diagnostic text.
+/// @param message Message used in `("QVM playback: " + message)` and `error(7651, ("QVM playback: " + message))`.
 function fail(message) return error(7651,"QVM playback: "+message) end function
+/// Compute audio.qvm_playback.defaultAxis as `[[1.0, 0.0, 0.0], [0.0, 1.0, 0.0], [0.0, 0.0, 1.0]]`.
 function defaultAxis() return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] end function
 
+/// Create qvm playback in audio.qvm_playback.
+/// @param catalog Record exposing `clips`.
+/// @param outputRate Output rate passed as `outputRate` to `mq3.audio.snd_raw_stream.create`.
+/// @param chunkFrames Initial `chunkFrames` field stored in the returned or constructed `mq3.audio.qvm_playback.State` record.
 function create(catalog,outputRate,chunkFrames)
   if catalog==void then return fail("sound catalog is required") end if
   if outputRate<4000 or outputRate>192000 then return fail("invalid output rate") end if
@@ -42,6 +56,11 @@ function create(catalog,outputRate,chunkFrames)
   return State(outputRate,chunkFrames,catalog,Listener(0,[0.0,0.0,0.0],defaultAxis(),false),array(MAX_ENTITIES,void),[],[],1,void,0,sndChannels.create(),0,rawStream,lists.List.withCapacity(64),clipHandles,array(maxHandle+1,void))
 end function
 
+/// Update `state.clipHandles` in audio.qvm_playback; the normal completion returns `clip`.
+///
+/// Direct state writes: `state.clipHandles`.
+/// @param state Record exposing `clipHandles`, `catalog`. Updated in place: `clipHandles`.
+/// @param handle Handle passed as `handle` to `mq3.audio.qvm_sound_assets.clipForHandle`.
 function clipForHandle(state,handle)
   if handle<=0 then return void end if
   if handle<len(state.clipHandles) and state.clipHandles[handle]!=void then return state.clipHandles[handle] end if
@@ -53,16 +72,31 @@ function clipForHandle(state,handle)
   state.clipHandles[handle]=clip;return clip
 end function
 
+/// Queue raw in audio.qvm_playback.
+/// @param state Record exposing `rawStream`, `loopPaintedFrames`.
+/// @param audio Record exposing `frames`, `sampleRate`, `bitsPerSample`, `channels`, `samples`.
+/// @param volume Volume passed as `volume` to `mq3.audio.snd_raw_stream.enqueue`.
 function queueRaw(state,audio,volume)
   if state==void or audio==void then return fail("state and raw audio are required") end if
   synced=sndRaw.setSoundTime(state.rawStream,state.loopPaintedFrames);if synced is error then return synced end if
   return sndRaw.enqueue(state.rawStream,audio.frames,audio.sampleRate,audio.bitsPerSample/8,audio.channels,audio.samples,volume)
 end function
 
+/// Compute audio.qvm_playback.validOrigin as `((origin != void) and (len(origin) == 3))`.
+/// @param origin Origin used in `len(origin)` and `(origin != void)`.
 function validOrigin(origin) return origin!=void and len(origin)==3 end function
+/// Return `mq3.audio.snd_public.validEntity(entity)` from `audio.qvm_playback.validSoundEntity`.
+/// @param entity Entity passed as `entity` to `mq3.audio.snd_public.validEntity`.
 function validSoundEntity(entity) return sndPublic.validEntity(entity) end function
+/// Compute audio.qvm_playback.copyOrigin as `[origin[0], origin[1], origin[2]]`.
+/// @param origin Origin used in `origin[0]` and `origin[1]`.
 function copyOrigin(origin) return [origin[0],origin[1],origin[2]] end function
 
+/// Update `state.monoHandles` in audio.qvm_playback; the normal completion returns `samples`.
+///
+/// Direct state writes: `state.monoHandles`.
+/// @param state Record exposing `monoHandles`, `monoCache`. Updated in place: `monoHandles`.
+/// @param clip Record exposing `compressed`, `handle`, `sound`.
 function cachedMono(state,clip)
   if clip.compressed!=void then return void end if
   // std.ds.list.List is not a foreach iterable. Iterating the List object
@@ -85,11 +119,20 @@ function cachedMono(state,clip)
   state.monoCache.add([clip.handle,samples]);return samples
 end function
 
+/// Compute entity origin in audio.qvm_playback; the normal completion returns `[0.0, 0.0, 0.0]`.
+/// @param state Record exposing `entityOrigins`.
+/// @param entity Zero-based index into `state.entityOrigins`.
 function entityOrigin(state,entity)
   if entity>=0 and entity<MAX_ENTITIES and state.entityOrigins[entity]!=void then return state.entityOrigins[entity] end if
   return [0.0,0.0,0.0]
 end function
 
+/// Add voice in audio.qvm_playback; the normal completion returns `true`.
+///
+/// Direct state writes: `state.nextVoice`, `state.voices`.
+/// @param state Record exposing `listener`, `channels`, `voices`, `nextVoice`. Updated in place: `nextVoice`, `voices`.
+/// @param command Record exposing `handle`, `entity`, `channel`, `origin`.
+/// @param localSound Initial `localSound` field stored in the returned or constructed `mq3.audio.qvm_playback.Voice` record.
 function addVoice(state,command,localSound)
   clip=clipForHandle(state,command.handle);if clip==void then return false end if
   entity=command.entity;if localSound then entity=state.listener.entity end if
@@ -102,6 +145,11 @@ function addVoice(state,command,localSound)
   active.add(voice);state.voices=active.toArray();return true
 end function
 
+/// Add loop in audio.qvm_playback; the normal completion returns `true`.
+///
+/// Direct state writes: `state.loops`.
+/// @param state Record exposing `loops`, `listener`. Updated in place: `loops`.
+/// @param command Record exposing `entity`, `handle`, `origin`, `velocity`, `flag`.
 function addLoop(state,command)
   if command.entity<0 or command.entity>=MAX_ENTITIES then return false end if
   clip=clipForHandle(state,command.handle);if clip==void then return false end if
@@ -123,18 +171,32 @@ function addLoop(state,command)
   return true
 end function
 
+/// Clear loops in audio.qvm_playback; updates `state.loops`.
+///
+/// Direct state writes: `state.loops`.
+/// @param state Record exposing `loops`. Updated in place: `loops`.
+/// @param killAll Kill all operand used by `clearLoops`; its reads are shown in the implementation.
 function clearLoops(state,killAll)
   kept=lists.List.withCapacity(len(state.loops))
   if not killAll then for each sourceLoop in state.loops if sourceLoop.realLoop and sourceLoop.active then kept.add(sourceLoop) end if end for end if
   state.loops=kept.toArray();return void
 end function
 
+/// Stop loop in audio.qvm_playback; the normal completion returns `found`.
+///
+/// Direct state writes: `state.loops`.
+/// @param state Record exposing `loops`. Updated in place: `loops`.
+/// @param entity Entity used in `(sourceLoop.entity == entity)`.
 function stopLoop(state,entity)
   kept=lists.List.withCapacity(len(state.loops));found=false
   for each sourceLoop in state.loops if sourceLoop.entity==entity then found=true else kept.add(sourceLoop) end if end for
   state.loops=kept.toArray();return found
 end function
 
+/// Set position in audio.qvm_playback; the normal completion returns `true`.
+/// @param state Record exposing `entityOrigins`, `loops`.
+/// @param entity Entity used in `(entity < 0)` and `(entity >= MAX_ENTITIES)`.
+/// @param origin Origin passed as `origin` to `mq3.audio.qvm_playback.validOrigin`.
 function setPosition(state,entity,origin)
   if entity<0 or entity>=MAX_ENTITIES or not validOrigin(origin) then return false end if
   copied=copyOrigin(origin);state.entityOrigins[entity]=copied
@@ -142,6 +204,11 @@ function setPosition(state,entity,origin)
   return true
 end function
 
+/// Set listener in audio.qvm_playback; the normal completion returns `true`.
+///
+/// Direct state writes: `state.listener`.
+/// @param state Record exposing `channels`. Updated in place: `listener`.
+/// @param command Record exposing `origin`, `axis`, `entity`, `flag`.
 function setListener(state,command)
   if not validOrigin(command.origin) or command.axis==void or len(command.axis)!=3 then return false end if
   for each row in command.axis if not validOrigin(row) then return false end if end for
@@ -149,6 +216,12 @@ function setListener(state,command)
   state.listener=Listener(command.entity,copyOrigin(command.origin),[copyOrigin(command.axis[0]),copyOrigin(command.axis[1]),copyOrigin(command.axis[2])],command.flag);sndChannels.setListener(state.channels,command.entity);return true
 end function
 
+/// Start music in audio.qvm_playback; the normal completion returns `true`.
+///
+/// Direct state writes: `state.music`.
+/// @param state Record exposing `catalog`. Updated in place: `music`.
+/// @param intro Path passed as `path` to `mq3.audio.qvm_sound_assets.ensurePath`.
+/// @param trackLoop Track loop operand used by `startMusic`; its reads are shown in the implementation.
 function startMusic(state,intro,trackLoop)
   // Baseq3 streams the intro once and only then starts the loop track.  An
   // empty intro is a no-op in S_StartBackgroundTrack; stopping has its own
@@ -160,6 +233,12 @@ function startMusic(state,intro,trackLoop)
   state.music=Music(introClip.sound,loopClip.sound,0.0,true,true);return true
 end function
 
+/// Apply from in audio.qvm_playback; the normal completion returns `ApplyResult(applied, missing, ignored)`.
+///
+/// Direct state writes: `state.music`.
+/// @param state Updated in place: `music`.
+/// @param commands Commands used in `len(commands)` and `(commands == void)`.
+/// @param start Start used in `(start < 0)` and `(start > len(commands))`.
 function applyFrom(state,commands,start)
   if state==void then return fail("state is required") end if
   if commands==void then return ApplyResult(0,0,0) end if
@@ -188,8 +267,16 @@ function applyFrom(state,commands,start)
   return ApplyResult(applied,missing,ignored)
 end function
 
+/// Return `mq3.audio.qvm_playback.applyFrom(state, commands, 0)` from `audio.qvm_playback.apply`.
+/// @param state State passed as `state` to `mq3.audio.qvm_playback.applyFrom`.
+/// @param commands Commands passed as `commands` to `mq3.audio.qvm_playback.applyFrom`.
 function apply(state,commands) return applyFrom(state,commands,0) end function
 
+/// Update `state.commandCursor` in audio.qvm_playback; the normal completion returns `result`.
+///
+/// Direct state writes: `state.commandCursor`.
+/// @param state Record exposing `commandCursor`. Updated in place: `commandCursor`.
+/// @param commands Commands passed as `commands` to `mq3.audio.qvm_playback.applyFrom`.
 function consume(state,commands)
   if state==void then return fail("state is required") end if
   if commands==void then state.commandCursor=0;return ApplyResult(0,0,0) end if
@@ -199,23 +286,46 @@ function consume(state,commands)
   state.commandCursor=len(commands);return result
 end function
 
+/// Compute source gains in audio.qvm_playback; the normal completion returns `spatial.Spatial(value[0], value[1], value[2], value[3])`.
+/// @param state Record exposing `listener`.
+/// @param entity Entity used in `(entity == state.listener.entity)` and `(localSound or (entity == state.listener.entity))`.
+/// @param origin Origin passed as `origin` to `mq3.audio.snd_spatialize.gains`.
+/// @param localSound Local sound used in `(localSound or (entity == state.listener.entity))`.
 function sourceGains(state,entity,origin,localSound)
   if localSound or entity==state.listener.entity then return spatial.Spatial(1.0,1.0,0.0,1.0) end if
   value=sndSpatial.gains(origin,state.listener.origin,state.listener.axis,127);if value is error then return value end if
   return spatial.Spatial(value[0],value[1],value[2],value[3])
 end function
 
+/// Compute source volumes in audio.qvm_playback; the normal completion returns `[value.left, value.right]`.
+/// @param state Record exposing `listener`.
+/// @param entity Entity used in `(entity == state.listener.entity)` and `(localSound or (entity == state.listener.entity))`.
+/// @param origin Origin passed as `origin` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param localSound Local sound used in `(localSound or (entity == state.listener.entity))`.
 function sourceVolumes(state,entity,origin,localSound)
   if localSound or entity==state.listener.entity then return [127,127] end if
   value=sndSpatial.spatialize(origin,state.listener.origin,state.listener.axis,127,2);if value is error then return value end if
   return [value.left,value.right]
 end function
 
+/// Compute loop by entity in audio.qvm_playback.
+/// @param state Record exposing `loops`.
+/// @param entity Entity used in `(sourceLoop.entity == entity)`.
 function loopByEntity(state,entity)
   for each sourceLoop in state.loops if sourceLoop.entity==entity then return sourceLoop end if end for
   return void
 end function
 
+/// Mix source in audio.qvm_playback; the normal completion returns `[phase, active]`.
+///
+/// Direct state writes: `leftMix elements`, `rightMix elements`.
+/// @param state Record exposing `outputRate`, `chunkFrames`.
+/// @param sound Record exposing `samples`, `blockAlign`, `sampleRate`.
+/// @param cursor Cursor operand used by `mixSource`; its reads are shown in the implementation.
+/// @param looping Looping operand used by `mixSource`; its reads are shown in the implementation.
+/// @param gains Record exposing `left`, `right`.
+/// @param leftMix Mutable sequence written at `frame`.
+/// @param rightMix Mutable sequence written at `frame`.
 function mixSource(state,sound,cursor,looping,gains,leftMix,rightMix)
   frames=len(sound.samples)/sound.blockAlign;if frames<1 then return [cursor,false] end if
   phase=cursor;step=sound.sampleRate/state.outputRate;active=true
@@ -228,6 +338,10 @@ function mixSource(state,sound,cursor,looping,gains,leftMix,rightMix)
   return [phase,active]
 end function
 
+/// Compute music sample in audio.qvm_playback; the normal completion returns `spatial.signed16(sound.samples, offset)`.
+/// @param sound Record exposing `samples`, `blockAlign`, `bitsPerSample`, `channels`.
+/// @param frame Frame used in `(frame % frames)`.
+/// @param channel Channel used in `(channel * 2)` and `(offset + channel)`.
 function musicSample(sound,frame,channel)
   frames=len(sound.samples)/sound.blockAlign;if frames<1 then return 0 end if
   index=frame%frames;if index<0 then index=index+frames end if;offset=index*sound.blockAlign
@@ -239,6 +353,13 @@ function musicSample(sound,frame,channel)
   return spatial.signed16(sound.samples,offset)
 end function
 
+/// Mix music in audio.qvm_playback; the normal completion returns `active`.
+///
+/// Direct state writes: `music.cursor`, `music.inIntro`, `music.active`, `leftMix elements`, `rightMix elements`.
+/// @param state Record exposing `chunkFrames`, `outputRate`.
+/// @param music Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`.
+/// @param leftMix Mutable sequence written at `frame`.
+/// @param rightMix Mutable sequence written at `frame`.
 function mixMusic(state,music,leftMix,rightMix)
   phase=music.cursor;inIntro=music.inIntro;active=music.active
   for frame=0 to state.chunkFrames-1
@@ -269,6 +390,12 @@ function mixMusic(state,music,leftMix,rightMix)
   music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
 end function
 
+/// Paint music in audio.qvm_playback; the normal completion returns `active`.
+///
+/// Direct state writes: `music.cursor`, `music.inIntro`, `music.active`.
+/// @param state Record exposing `chunkFrames`, `outputRate`.
+/// @param music Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`.
+/// @param paint Paint passed as `paint` to `mq3.audio.snd_paint_pipeline.paintRaw`.
 function paintMusic(state,music,paint)
   phase=music.cursor;inIntro=music.inIntro;active=music.active;left=array(state.chunkFrames,0);right=array(state.chunkFrames,0)
   for frame=0 to state.chunkFrames-1
@@ -295,6 +422,10 @@ function paintMusic(state,music,paint)
   music.cursor=phase;music.inIntro=inIntro;music.active=active;return active
 end function
 
+/// Render qvm playback in audio.qvm_playback; the normal completion returns `Chunk(output, state.chunkFrames, voiceCount, loopCount, peak, limiter)`.
+///
+/// Direct state writes: `state.loopPaintedFrames`, `state.voices`.
+/// @param state Record exposing `chunkFrames`, `rawStream`, `loopPaintedFrames`, `music`, `voices`, `loops`, `listener` and further fields. Updated in place: `loopPaintedFrames`, `voices`.
 function render(state)
   if state==void then return fail("state is required") end if
   paint=array(state.chunkFrames*2,0);voiceCount=0;loopCount=0
@@ -335,12 +466,20 @@ function render(state)
   return Chunk(output,state.chunkFrames,voiceCount,loopCount,peak,limiter)
 end function
 
+/// Test compressed sources in audio.qvm_playback; the normal completion returns `false`.
+/// @param state Record exposing `voices`, `loops`.
 function hasCompressedSources(state)
   for each voice in state.voices if voice.active and voice.compressed!=void then return true end if end for
   for each sourceLoop in state.loops if sourceLoop.active and sourceLoop.compressed!=void then return true end if end for
   return false
 end function
 
+/// Paint music fast in audio.qvm_playback; the normal completion returns `active`.
+///
+/// Direct state writes: `music.cursor`, `music.inIntro`, `music.active`.
+/// @param state Record exposing `chunkFrames`, `outputRate`.
+/// @param music Record exposing `cursor`, `inIntro`, `active`, `loopSound`, `introSound`. Updated in place: `cursor`, `inIntro`, `active`.
+/// @param paint Writable byte buffer containing interleaved signed-int32 stereo accumulators.
 function paintMusicFast(state,music,paint)
   phase=music.cursor;inIntro=music.inIntro;active=music.active;done=0
   while done<state.chunkFrames and active
@@ -364,6 +503,7 @@ end function
 // Production Windows fast path. It is deliberately additive: the exact,
 // reference-tested MiniLang painter above remains the fallback for compressed
 // effects and queued cinematic raw audio.
+/// @param state Record exposing `rawStream`, `loopPaintedFrames`, `chunkFrames`, `music`, `voices`, `loops`, `listener` and further fields. Updated in place: `loopPaintedFrames`, `voices`.
 function renderFast(state)
   if state==void then return fail("state is required") end if
   if hasCompressedSources(state) or state.rawStream.rawEnd>state.loopPaintedFrames then return render(state) end if

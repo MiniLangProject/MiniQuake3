@@ -13,6 +13,9 @@ import std.string as strings
 const EF_VOTED = 0x00004000
 const EF_TEAMVOTED = 0x00080000
 
+/// Validate vote argument storage and reject embedded zero bytes, truncating text to leave space for the terminator.
+/// @param text Text to parse, format or deliver.
+/// @param capacity Maximum number of entries to allocate or retain.
 function boundedText(text,capacity)
   if capacity < 1 then return error(492,"Vote argument has no native storage") end if
   data = bytes(text)
@@ -22,6 +25,10 @@ function boundedText(text,capacity)
   if len(data) >= capacity then return decode(slice(data,0,capacity-1)) end if
   return text
 end function
+/// Use `level.gamePrintFn` to perform `formattedText`. Return paths include `boundedText(text,capacity)`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
+/// @param capacity Maximum number of entries to allocate or retain.
 function formattedText(level,text,capacity)
   size = len(bytes(text))
   if size >= 32000 then return error(492,"Vote format exceeds native temporary storage") end if
@@ -32,31 +39,55 @@ function formattedText(level,text,capacity)
   end if
   return boundedText(text,capacity)
 end function
+/// Apply `mq3.game.vote_commands.boundedText` while evaluating `argument`. Return paths include `boundedText(argv[index],capacity)`.
+/// @param argv Command argument strings in their original order.
+/// @param index Index of the entry to access.
+/// @param capacity Maximum number of entries to allocate or retain.
 function argument(argv,index,capacity)
   if index >= len(argv) then return "" end if
   return boundedText(argv[index],capacity)
 end function
+/// Apply `mq3.game.votes.clientLimit` while evaluating `voteClient`. Return paths include `ent.client`.
+/// @param level Game-level state; accesses `maxclients`.
+/// @param ent Game entity; accesses `slot` and `client`.
 function voteClient(level,ent)
   if ent == void then return error(492,"Vote requires caller entity") end if
   if ent.slot < 0 or ent.slot >= 64 or ent.client == void then return error(492,"Vote requires client slot and binding") end if
   votes.clientLimit(level); return ent.client
 end function
+/// Forward `notice` to `mq3.game.votes.send` and return the delegated result.
+/// @param level Game-level state; accesses `serverCommandFn`.
+/// @param ent Game entity; accesses `slot`.
+/// @param text Text to parse, format or deliver.
 function notice(level,ent,text)
   return votes.send(level,ent.slot,"print \""+text+"\n\"")
 end function
+/// Apply `mq3.game.spawn_values.setConfig` while evaluating `voteConfig`. Return paths include `values.setConfig(level.spawner,index,value)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
+/// @param value Value passed as argument 5 to `state.effectFn`.
 function voteConfig(level,index,value)
   if level.spawner == void then return error(492,"Vote requires spawn state") end if
   return values.setConfig(level.spawner,index,value)
 end function
+/// Apply `mq3.qcommon.cvar.find` and `mq3.game.vote_commands.boundedText` while evaluating `nextMap`. Return paths include `boundedText(variable.string,1024)`.
+/// @param level Game-level state; accesses `spawner`.
 function nextMap(level)
   if level.spawner == void then return error(492,"Vote requires engine Cvar registry") end if
   variable = cv.find(level.spawner.cvars,"nextmap")
   if variable == void then return "" end if
   return boundedText(variable.string,1024)
 end function
+/// Test `strings.indexOf(first,";",0) >= 0 or strings.indexOf(second,";",0) >= 0` as the condition for `invalidString`.
+/// @param first Value passed as argument 1 to `std.string.indexOf`.
+/// @param second Value passed as argument 1 to `std.string.indexOf`.
 function invalidString(first,second)
   return strings.indexOf(first,";",0) >= 0 or strings.indexOf(second,";",0) >= 0
 end function
+/// Update `level.voteExecuteTime`, `level.voteString`, `level.voteDisplayString` and `level.voteTime` and related state during `callVote`.
+/// @param level Game-level state; accesses `allowVote`, `voteTime`, `voteExecuteTime`, `voteString` and `voteDisplayString` and related fields. May update `level.voteExecuteTime`, `level.voteString` and `level.voteDisplayString` and additional fields in place.
+/// @param ent Game entity; accesses `slot` and `client`.
+/// @param argv Command argument strings in their original order.
 function callVote(level,ent,argv)
   client = voteClient(level,ent)
   if level.allowVote == 0 then return notice(level,ent,"Voting not allowed here.") end if
@@ -107,6 +138,8 @@ function callVote(level,ent,argv)
   // Neither original call handler increments pers.voteCount/teamVoteCount.
   return void
 end function
+/// Apply `mq3.game.vote_commands.argument` while evaluating `isYes`. Return paths include `first == 121 or second == 89 or second == 49`.
+/// @param argv Command argument strings in their original order.
 function isYes(argv)
   data = bytes(argument(argv,1,64)); first = 0; second = 0
   if len(data) > 0 then first = data[0] end if
@@ -114,6 +147,10 @@ function isYes(argv)
   // Preserve msg[1] for uppercase Y and 1; Q_strncpyz zero-pads short args.
   return first == 121 or second == 89 or second == 49
 end function
+/// Set `level.voteYes` to `n.add32(level.voteYes,1)` and `level.voteNo` to `n.add32(level.voteNo,1)` in `mq3.game.vote_commands.castVote`.
+/// @param level Game-level state; accesses `voteTime`, `voteYes` and `voteNo`. May update `level.voteYes` and `level.voteNo` in place.
+/// @param ent Game entity; accesses `slot` and `client`.
+/// @param argv Command argument strings in their original order.
 function castVote(level,ent,argv)
   client = voteClient(level,ent)
   if level.voteTime == 0 then return notice(level,ent,"No vote in progress.") end if
@@ -127,6 +164,8 @@ function castVote(level,ent,argv)
   end if
   return void
 end function
+/// Apply `mq3.game.vote_commands.argument` while evaluating `teamArguments`. Return paths include `text`.
+/// @param argv Command argument strings in their original order.
 function teamArguments(argv)
   text = ""; index = 2
   while index < len(argv)
@@ -139,6 +178,8 @@ function teamArguments(argv)
   end while
   return text
 end function
+/// Apply `mq3.game.vote_commands.boundedText` while evaluating `cleanName`. Return paths include `decode(bytes(result))`.
+/// @param text Text to parse, format or deliver.
 function cleanName(text)
   data = bytes(boundedText(text,36)); result = []; index = 0
   while index < len(data)
@@ -151,6 +192,10 @@ function cleanName(text)
   end while
   return decode(bytes(result))
 end function
+/// Update `level.teamVoteString[offset]`, `level.teamVoteTime[offset]`, `level.teamVoteYes[offset]` and `level.teamVoteNo[offset]` during `callTeamVote`.
+/// @param level Game-level state; accesses `allowVote`, `teamVoteTime`, `maxclients`, `entities` and `clients` and related fields. May update `level.teamVoteString[offset]`, `level.teamVoteTime[offset]` and `level.teamVoteYes[offset]` and additional fields in place.
+/// @param ent Game entity; accesses `slot` and `client`.
+/// @param argv Command argument strings in their original order.
 function callTeamVote(level,ent,argv)
   client = voteClient(level,ent); team = client.team
   if team != c.TEAM_RED and team != c.TEAM_BLUE then return void end if
@@ -205,6 +250,10 @@ function callTeamVote(level,ent,argv)
   voteConfig(level,16+offset,str(level.teamVoteYes[offset])); voteConfig(level,18+offset,str(level.teamVoteNo[offset]))
   return void
 end function
+/// Set `level.teamVoteYes[offset]` to `n.add32(level.teamVoteYes[offset],1)` and `level.teamVoteNo[offset]` to `n.add32(level.teamVoteNo[offset],1)` in `mq3.game.vote_commands.castTeamVote`.
+/// @param level Game-level state; accesses `teamVoteTime`, `teamVoteYes` and `teamVoteNo`. May update `level.teamVoteYes[offset]` and `level.teamVoteNo[offset]` in place.
+/// @param ent Game entity; accesses `slot` and `client`.
+/// @param argv Command argument strings in their original order.
 function castTeamVote(level,ent,argv)
   client = voteClient(level,ent); team = client.team
   if team != c.TEAM_RED and team != c.TEAM_BLUE then return void end if

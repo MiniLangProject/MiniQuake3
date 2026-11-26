@@ -8,7 +8,9 @@ const SNAPFLAG_NOT_ACTIVE=2
 const CA_PRIMED=7
 const CA_ACTIVE=8
 
+/// Stores client game time host-service callbacks, including `context`, `addTextFn`, `clearActiveActionFn`, `beginProfilingFn`, `readDemoFn`, `millisecondsFn` and additional values.
 struct Services context addTextFn clearActiveActionFn beginProfilingFn readDemoFn millisecondsFn diagnosticFn end struct
+/// Stores client game time state, including `host`, `connectionState`, `realtime`, `snapValid`, `snapFlags`, `snapServerTime` and additional values.
 struct State
   host
   connectionState
@@ -37,13 +39,21 @@ struct State
   activeAction
 end struct
 
+/// Creates a `mq3.client.cgame_time.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void,void,void) end function
+/// Calls `mq3.client.cgame_time.services`, `mq3.client.cgame_time.State` from client game time `create`.
+/// @param host host record passed to the client game time helper calls.
 function create(host)
   if host==void then host=services() end if
   return State(host,0,0,false,0,0,false,false,0,0,0,0,false,false,false,false,0,0,0,0,false,false,false,1.0,"")
 end function
+/// Calls `host.diagnosticFn` from client game time `diagnostic`.
+/// @param state Record read through `state.host`.
+/// @param text Text consumed or emitted by `diagnostic` in the client game time path.
 function diagnostic(state,text) host=state.host;context=host.context;if host.diagnosticFn!=void then host.diagnosticFn(context,text) end if;return void end function
 
+/// Updates `state.newSnapshots`, `state.serverTimeDelta`, `state.oldServerTime`, `state.serverTime` and additional values during client game time `adjustTimeDelta`.
+/// @param state Mutable client game time record/storage; this routine assigns `state.newSnapshots`, `state.serverTimeDelta`, `state.oldServerTime`, `state.serverTime` and additional values.
 function adjustTimeDelta(state)
   state.newSnapshots=false
   if state.demoPlaying then return void end if
@@ -59,6 +69,8 @@ function adjustTimeDelta(state)
   return void
 end function
 
+/// Updates `state.connectionState`, `state.serverTimeDelta`, `state.oldServerTime`, `state.timeDemoBaseTime` and additional values during client game time `firstSnapshot`.
+/// @param state Mutable client game time record/storage; this routine assigns `state.connectionState`, `state.serverTimeDelta`, `state.oldServerTime`, `state.timeDemoBaseTime` and additional values.
 function firstSnapshot(state)
   if (state.snapFlags & SNAPFLAG_NOT_ACTIVE)!=0 then return false end if
   state.connectionState=CA_ACTIVE;state.serverTimeDelta=state.snapServerTime-state.realtime
@@ -72,11 +84,15 @@ function firstSnapshot(state)
   return true
 end function
 
+/// Calls `host.readDemoFn` from client game time `readDemo`.
+/// @param state Record read through `state.host`.
 function readDemo(state)
   host=state.host;if host.readDemoFn==void then return error(3460,"cgame time: demo reader unavailable") end if
   context=host.context;host.readDemoFn(context,state);return void
 end function
 
+/// Updates `state.firstDemoFrameSkipped`, `state.newSnapshots`, `state.oldFrameServerTime`, `state.serverTime` and additional values during client game time `setCGameTime`.
+/// @param state Mutable client game time record/storage; this routine assigns `state.firstDemoFrameSkipped`, `state.newSnapshots`, `state.oldFrameServerTime`, `state.serverTime` and additional values.
 function setCGameTime(state)
   if state.connectionState!=CA_ACTIVE then
     if state.connectionState!=CA_PRIMED then return false end if

@@ -18,6 +18,7 @@ const SVF_NOCLIENT = 1
 const SOLID_BBOX = 1
 const SOLID_BSP = 2
 
+/// `UserCommand` record for bot ai frame, containing `serverTime`, `buttons`, `angles`, `weapon` and `forwardmove` and related fields.
 struct UserCommand
   serverTime
   buttons
@@ -28,11 +29,13 @@ struct UserCommand
   upmove
 end struct
 
+/// `Runtime` record for bot ai frame, containing `botthinkResidual` and `lastucmd`.
 struct Runtime
   botthinkResidual
   lastucmd
 end struct
 
+/// `BotEntityState` record for bot ai frame, containing `origin`, `angles`, `oldOrigin`, `mins` and `maxs` and related fields.
 struct BotEntityState
   origin
   angles
@@ -54,6 +57,7 @@ struct BotEntityState
   weapon
 end struct
 
+/// `Services` record for bot ai frame, containing `lifecycleState`, `runtimes`, `localTime`, `botlibResidual` and `lastBotThinkTime` and related fields.
 struct Services
   lifecycleState
   runtimes
@@ -86,6 +90,8 @@ struct Services
   context
 end struct
 
+/// Apply `mq3.game.bot_ai_commands.create` and `mq3.game.bot_input.create` while evaluating `create`. Return paths include `services`.
+/// @param state Initial value stored in `mq3.game.bot_ai_frame.Services.lifecycleState`.
 function create(state)
   if state == void then return error(498,"Bot AI frame requires lifecycle state") end if
   runtimes = []
@@ -96,26 +102,42 @@ function create(state)
   services.commandServices=botCommands.create(state); services.inputServices=botInput.create(); return services
 end function
 
+/// Require a bot frame service callback and identify a missing service in the resulting error.
+/// @param callback Callback invoked by this operation.
+/// @param label Label retained with the diagnostic or action record.
 function need(callback,label)
   if callback == void then return error(498,"Bot AI frame requires "+label) end if
   return callback
 end function
 
+/// Require an integer bot-frame slot within the specified table limit.
+/// @param slot Slot in the owning table or pool.
+/// @param limit Value used by `validSlot` in `if typeof(slot) != "int" or slot < 0 or slot >= limit then return error(498,"Invalid "+label+" slot") end if`.
+/// @param label Label retained with the diagnostic or action record.
 function validSlot(slot,limit,label)
   if typeof(slot) != "int" or slot < 0 or slot >= limit then return error(498,"Invalid "+label+" slot") end if
   return slot
 end function
 
+/// Apply `mq3.game.bot_ai_frame.validSlot`, `mq3.game.playerstate.create` and `mq3.game.playerstate.copy` while evaluating `getClientState`. Return paths include `[true,playerstate.copy(ent.client.ps)]`.
+/// @param level Game-level state; accesses `entities`.
+/// @param clientNum Client slot number.
 function getClientState(level,clientNum)
   validSlot(clientNum,MAX_CLIENTS,"client")
   ent = level.entities[clientNum]
   if not ent.inuse or ent.client == void then return [false,playerstate.create()] end if
   return [true,playerstate.copy(ent.client.ps)]
 end function
+/// Forward `commandClientState` to `mq3.game.bot_ai_frame.getClientState` and return the delegated result.
+/// @param services Host service callbacks; accesses `frameLevel`.
+/// @param clientNum Client slot number.
 function commandClientState(services,clientNum)
   return getClientState(services.frameLevel,clientNum)
 end function
 
+/// Apply `mq3.game.bot_ai_frame.validSlot`, `mq3.game.entitystate.create` and `mq3.game.entitystate.copy` while evaluating `getEntityState`. Return paths include `[true,entitystate.copy(ent.s)]`.
+/// @param level Game-level state; accesses `entities`.
+/// @param entityNum Entity number in the game or AAS entity table.
 function getEntityState(level,entityNum)
   validSlot(entityNum,MAX_GENTITIES,"entity")
   ent = level.entities[entityNum]
@@ -123,6 +145,11 @@ function getEntityState(level,entityNum)
   return [true,entitystate.copy(ent.s)]
 end function
 
+/// Use `services.snapshotEntityFn` to perform `getSnapshotEntity`. Return paths include `[n.add32(sequence,1),getEntityState(level,entNum)[1]]`.
+/// @param level Game-level state; accesses `entities`.
+/// @param services Host service callbacks; accesses `snapshotEntityFn`.
+/// @param clientNum Client slot number.
+/// @param sequence Value passed as argument 3 to `services.snapshotEntityFn`.
 function getSnapshotEntity(level,services,clientNum,sequence)
   validSlot(clientNum,MAX_CLIENTS,"client")
   entNum = services.snapshotEntityFn(services,clientNum,sequence)
@@ -130,6 +157,9 @@ function getSnapshotEntity(level,services,clientNum,sequence)
   return [n.add32(sequence,1),getEntityState(level,entNum)[1]]
 end function
 
+/// Build the `mq3.game.bot_ai_frame.BotEntityState` result for `botEntity`.
+/// @param ent Game entity; accesses `r` and `s`.
+/// @param index Index of the entry to access.
 function botEntity(ent,index)
   angles = ent.r.currentAngles
   if index < MAX_CLIENTS then angles = ent.s.apos.trBase end if
@@ -142,6 +172,8 @@ function botEntity(ent,index)
     ent.s.frame,ent.s.event,ent.s.eventParm,ent.s.powerups,ent.s.legsAnim,ent.s.torsoAnim,ent.s.weapon)
 end function
 
+/// Select linked, client-visible entities for bot perception, excluding ordinary missiles and event-only entities.
+/// @param ent Game entity; accesses `inuse`, `r` and `s`.
 function eligibleEntity(ent)
   if not ent.inuse or not ent.r.linked or (ent.r.svFlags & SVF_NOCLIENT) != 0 then return false end if
   if ent.s.eType == c.ET_MISSILE and ent.s.weapon != c.WP_GRAPPLING_HOOK then return false end if
@@ -149,6 +181,8 @@ function eligibleEntity(ent)
   return true
 end function
 
+/// Set `services.regularUpdateTime` to `n.fadd(services.floatTimeFn(services),0.3)` in `mq3.game.bot_ai_frame.regularUpdate`.
+/// @param services Host service callbacks; accesses `floatTimeFn`, `regularUpdateTime` and `updateEntityItemsFn`. May update `services.regularUpdateTime` in place.
 function regularUpdate(services)
   now = services.floatTimeFn(services)
   if services.regularUpdateTime < now then
@@ -158,15 +192,25 @@ function regularUpdate(services)
   return void
 end function
 
+/// Check whether the selected bot-state entry exists and is marked in use.
+/// @param state Bot AI frame state; accesses `botstates`.
+/// @param index Index of the entry to access.
 function activeBot(state,index)
   bot = state.botstates[index]
   return bot != void and bot.inuse
 end function
 
+/// Test `level.entities[index].client != void and level.entities[index].client.connected == 2` as the condition for `connected`.
+/// @param level Game-level state; accesses `entities`.
+/// @param index Index of the entry to access.
 function connected(level,index)
   return level.entities[index].client != void and level.entities[index].client.connected == 2
 end function
 
+/// Update `services.commandServices.fightServices`, `services.commandServices.seekServices`, `services.commandServices.frameLevel` and `services.commandServices.getClientStateFn` and related state during `startFrame`.
+/// @param level Game-level state; accesses `entities`.
+/// @param services Host service callbacks; accesses `lifecycleState`, `fightServices`, `commandServices`, `seekServices` and `checkSpawnFn` and related fields. May update `services.commandServices.fightServices`, `services.commandServices.seekServices` and `services.commandServices.frameLevel` and additional fields in place.
+/// @param time Time value in the units expected by this module.
 function startFrame(level,services,time)
   if typeof(time) != "int" then return error(498,"Bot frame time must be an integer") end if
   state = services.lifecycleState

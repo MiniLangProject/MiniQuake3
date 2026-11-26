@@ -95,49 +95,123 @@ const ART_BACK1="menu/art/back_1"
 const ART_FRAMEL="menu/art/frame2_l"
 const ART_FRAMER="menu/art/frame1_r"
 
+/// Stores UI controls binding record, including `command`, `label`, `id`, `anim`, `default1`, `default2` and additional values.
 struct Binding command label id anim default1 default2 bind1 bind2 end struct
+/// Stores UI controls config record, including `name`, `defaultValue`, `value`.
 struct Config name defaultValue value end struct
+/// Stores UI controls control record, including `id`, `group`, `visible`, `inactive`, `grayed`, `highlighted` and additional values.
 struct Control id group visible inactive grayed highlighted x y end struct
+/// Stores UI controls draw binding record, including `label`, `keys`, `selected`, `grayed`, `waiting`.
 struct DrawBinding label keys selected grayed waiting end struct
+/// Stores UI controls queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `number` and additional values.
 struct Action boundary kind name text value number dispatched end struct
+/// Stores UI controls state, including `keyState`, `bindings`, `configs`, `controls`, `section`, `waitingForKey` and additional values.
 struct State keyState bindings configs controls section waitingForKey changesMade cursorId cvarValues cvarDefaults settings actions retailActive playerModel playerName playerViewangles playerMoveangles playerLegs playerTorso playerWeapon playerChat pushed cached weaponModels menuEvents end struct
 
+/// Creates a `mq3.client.ui_controls.Binding` record. Assigns `command` from `command`, `label` from `label`, `id` from `id`, `anim` from `anim`.
+/// @param command Value used to initialize `Binding.command`.
+/// @param label Value used to initialize `Binding.label`.
+/// @param id Value used to initialize `Binding.id`.
+/// @param anim Value used to initialize `Binding.anim`.
+/// @param key Value used to initialize `Binding.default1`.
 function binding(command,label,id,anim,key) return Binding(command,label,id,anim,key,-1,-1,-1) end function
+/// Builds the UI controls `defaultBindings` sequence from `[binding("+scores","show scores",0,ANIM_IDLE,9),binding("+button2","use item",1,ANIM_IDLE,13),binding("+speed","run / walk",2,ANIM_RUN,138),binding("+forward","walk forward",3,ANIM_WALK,132),bindin...`.
 function defaultBindings()
   return [binding("+scores","show scores",0,ANIM_IDLE,9),binding("+button2","use item",1,ANIM_IDLE,13),binding("+speed","run / walk",2,ANIM_RUN,138),binding("+forward","walk forward",3,ANIM_WALK,132),binding("+back","backpedal",4,ANIM_BACK,133),binding("+moveleft","step left",5,ANIM_STEPLEFT,44),binding("+moveright","step right",6,ANIM_STEPRIGHT,46),binding("+moveup","up / jump",7,ANIM_JUMP,32),binding("+movedown","down / crouch",8,ANIM_CROUCH,99),binding("+left","turn left",9,ANIM_TURNLEFT,134),binding("+right","turn right",10,ANIM_TURNRIGHT,135),binding("+strafe","sidestep / turn",11,ANIM_IDLE,136),binding("+lookup","look up",12,ANIM_LOOKUP,141),binding("+lookdown","look down",13,ANIM_LOOKDOWN,140),binding("+mlook","mouse look",14,ANIM_IDLE,47),binding("centerview","center view",15,ANIM_IDLE,144),binding("+zoom","zoom view",16,ANIM_IDLE,-1),binding("weapon 1","gauntlet",17,ANIM_WEAPON1,49),binding("weapon 2","machinegun",18,ANIM_WEAPON2,50),binding("weapon 3","shotgun",19,ANIM_WEAPON3,51),binding("weapon 4","grenade launcher",20,ANIM_WEAPON4,52),binding("weapon 5","rocket launcher",21,ANIM_WEAPON5,53),binding("weapon 6","lightning",22,ANIM_WEAPON6,54),binding("weapon 7","railgun",23,ANIM_WEAPON7,55),binding("weapon 8","plasma gun",24,ANIM_WEAPON8,56),binding("weapon 9","BFG",25,ANIM_WEAPON9,57),binding("+attack","attack",26,ANIM_ATTACK,137),binding("weapprev","prev weapon",27,ANIM_IDLE,91),binding("weapnext","next weapon",28,ANIM_IDLE,93),binding("+button3","gesture",29,ANIM_GESTURE,180),binding("messagemode","chat",30,ANIM_CHAT,116),binding("messagemode2","chat - team",31,ANIM_CHAT,-1),binding("messagemode3","chat - target",32,ANIM_CHAT,-1),binding("messagemode4","chat - attacker",33,ANIM_CHAT,-1)]
 end function
+/// Evaluates UI controls `groupFor` and returns `C_MOVEMENT`, `C_LOOKING`, `C_WEAPONS` and additional values according to its guard/selection conditions.
+/// @param id Value used by `if id==ID_ALWAYSRUN or (id>=2 and id<=11) then return C_MOVEMENT end if`.
 function groupFor(id)
   if id==ID_ALWAYSRUN or (id>=2 and id<=11) then return C_MOVEMENT end if
   if id==ID_MOUSESPEED or id==ID_SMOOTHMOUSE or id==ID_INVERTMOUSE or (id>=12 and id<=16) or id==ID_FREELOOK or id==ID_JOYENABLE or id==ID_JOYTHRESHOLD then return C_LOOKING end if
   if id==ID_AUTOSWITCH or (id>=17 and id<=28) then return C_WEAPONS end if
   return C_MISC
 end function
+/// Calls `mq3.client.ui_controls.Control`, `mq3.client.ui_controls.groupFor` from UI controls `makeControls`. The final path returns `result`.
 function makeControls() result=[];for id=0 to 41 result=result+[Control(id,groupFor(id),false,true,true,false,320,0)] end for;return result end function
+/// Creates a `mq3.client.ui_controls.State` record. Assigns `retailActive` from `retailActive`.
+/// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive)
   return State(keys.create(),defaultBindings(),[],makeControls(),C_LOOKING,false,false,0,[],[],[],[],retailActive,"","",[0.0,150.0,0.0],[0.0,150.0,0.0],LEGS_IDLE,TORSO_STAND,-1,false,false,false,[],[])
 end function
+/// Appends a UI controls action record to the queued engine requests. Retail-QVM ownership suppresses its dispatch flag.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.actions`.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param name Name used to select or register the corresponding UI controls resource.
+/// @param text Text consumed or emitted by `emit` in the UI controls path.
+/// @param value Value used by `item=Action("ui-controls",kind,name,text,value,number,not state.retailActive)`.
+/// @param number Value used by `item=Action("ui-controls",kind,name,text,value,number,not state.retailActive)`.
 function emit(state,kind,name,text,value,number) item=Action("ui-controls",kind,name,text,value,number,not state.retailActive);state.actions=state.actions+[item];return item end function
+/// Compares two UI controls names using ASCII case-insensitive equality.
+/// @param a Argument 1 of `std.string.equalsIgnoreCaseAscii`.
+/// @param b Argument 2 of `std.string.equalsIgnoreCaseAscii`.
 function same(a,b) return strings.equalsIgnoreCaseAscii(a,b) end function
+/// Evaluates UI controls `clean` and returns `result` according to its guard/selection conditions.
+/// @param value Sequence read at `value[at]`, `value[at+1]`.
 function clean(value) result="";at=0;while at<len(value) if at+1<len(value) and value[at]=="^" and value[at+1]!="^" then at=at+2 else result=result+value[at];at=at+1 end if end while;return result end function
+/// Evaluates UI controls `pairGet` and returns `pair[1]`, `fallback` according to its guard/selection conditions.
+/// @param pairs Value used by `for each pair in pairs if pair[0]==name then return pair[1] end if end for`.
+/// @param name Name used to select or register the corresponding UI controls resource.
+/// @param fallback Value used by `return fallback`.
 function pairGet(pairs,name,fallback) for each pair in pairs if pair[0]==name then return pair[1] end if end for;return fallback end function
+/// Evaluates UI controls `pairSet` and returns `result+[[name,value]]` according to its guard/selection conditions.
+/// @param pairs Value used by `for each pair in pairs if pair[0]!=name then result=result+[pair] end if end for`.
+/// @param name Name used to select or register the corresponding UI controls resource.
+/// @param value Value used by `return result+[[name,value]]`.
 function pairSet(pairs,name,value) result=[];for each pair in pairs if pair[0]!=name then result=result+[pair] end if end for;return result+[[name,value]] end function
+/// Adapts `mq3.client.ui_controls.pairGet` to UI controls `cvar`, returning its result for `state.cvarValues, name, "0"`.
+/// @param state Record read through `state.cvarValues`.
+/// @param name Argument 2 of `mq3.client.ui_controls.pairGet`.
 function cvar(state,name) return pairGet(state.cvarValues,name,"0") end function
+/// Updates `state.cvarValues` during UI controls `setCvar`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.cvarValues`.
+/// @param name Name used to select or register the corresponding UI controls resource.
+/// @param value Value used by `state.cvarValues=pairSet(state.cvarValues,name,str(value))`.
 function setCvar(state,name,value) state.cvarValues=pairSet(state.cvarValues,name,str(value));emit(state,"set-cvar",name,str(value),value,0);return void end function
+/// Adapts `mq3.client.ui_controls.pairGet` to UI controls `defaultCvar`, returning its result for `state.cvarDefaults, name, "0"`.
+/// @param state Record read through `state.cvarDefaults`.
+/// @param name Argument 2 of `mq3.client.ui_controls.pairGet`.
 function defaultCvar(state,name) return pairGet(state.cvarDefaults,name,"0") end function
+/// Adapts `mq3.client.ui_controls.pairGet` to UI controls `setting`, returning its result for `state.settings, name, 0.0`.
+/// @param state Record read through `state.settings`.
+/// @param name Argument 2 of `mq3.client.ui_controls.pairGet`.
 function setting(state,name) return pairGet(state.settings,name,0.0) end function
+/// Updates `state.settings` during UI controls `setSetting`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.settings`.
+/// @param name Name used to select or register the corresponding UI controls resource.
+/// @param value Value used by `state.settings=pairSet(state.settings,name,value)`.
 function setSetting(state,name,value) state.settings=pairSet(state.settings,name,value);return value end function
+/// Clamps `low` to the inclusive bounds `high` and `value` for UI controls.
+/// @param low Lower bound used for comparison or clamping.
+/// @param high Upper bound used for comparison or clamping.
+/// @param value Value tested by `value<low`, `value>high` before the calculation continues.
 function clamp(low,high,value) if value<low then return low end if;if value>high then return high end if;return value end function
+/// Evaluates UI controls `control` and returns `state.controls[id]`, `void` according to its guard/selection conditions.
+/// @param state Record read through `state.controls`.
+/// @param id Value used by `if id>=0 and id<len(state.controls) then return state.controls[id] end if`.
 function control(state,id) if id>=0 and id<len(state.controls) then return state.controls[id] end if;return void end function
+/// Evaluates UI controls `actionBinding` and returns `state.bindings[id]`, `void` according to its guard/selection conditions.
+/// @param state Record read through `state.bindings`.
+/// @param id Value used by `if id>=0 and id<len(state.bindings) then return state.bindings[id] end if`.
 function actionBinding(state,id) if id>=0 and id<len(state.bindings) then return state.bindings[id] end if;return void end function
 
 // Controls_InitCvars / Controls_GetCvarDefault / Controls_GetCvarValue
+/// @param state Mutable UI controls record/storage; this routine assigns `state.configs`.
 function initCvars(state)
   state.configs=[];for each name in ["cl_run","m_pitch","cg_autoswitch","sensitivity","in_joystick","joy_threshold","m_filter","cl_freelook"] current=numbers.atof(cvar(state,name));fallback=numbers.atof(defaultCvar(state,name));state.configs=state.configs+[Config(name,fallback,current)];emit(state,"reset-cvar",name,"",fallback,0);emit(state,"set-cvar",name,str(current),current,0) end for;return len(state.configs)
 end function
+/// Evaluates UI controls `getCvarDefault` and returns `item.defaultValue`, `0.0` according to its guard/selection conditions.
+/// @param state Record read through `state.configs`.
+/// @param name Name used to select or register the corresponding UI controls resource.
 function getCvarDefault(state,name) for each item in state.configs if item.name==name then return item.defaultValue end if end for;return 0.0 end function
+/// Evaluates UI controls `getCvarValue` and returns `item.value`, `0.0` according to its guard/selection conditions.
+/// @param state Record read through `state.configs`.
+/// @param name Name used to select or register the corresponding UI controls resource.
 function getCvarValue(state,name) for each item in state.configs if item.name==name then return item.value end if end for;return 0.0 end function
 
 // Controls_UpdateModel
+/// @param state Mutable UI controls record/storage; this routine assigns `state.playerViewangles`, `state.playerMoveangles`, `state.playerLegs`, `state.playerTorso` and additional values.
+/// @param anim Value used by `switch anim`.
 function updateModel(state,anim)
   state.playerViewangles=[0.0,150.0,0.0];state.playerMoveangles=[0.0,150.0,0.0];state.playerLegs=LEGS_IDLE;state.playerTorso=TORSO_STAND;state.playerWeapon=-1;state.playerChat=false
   switch anim
@@ -171,12 +245,15 @@ function updateModel(state,anim)
 end function
 
 // Controls_Update
+/// @param section Value used by `if section==C_MOVEMENT then return [36,2,3,4,5,6,7,8,9,10,11] end if`.
 function groupIds(section)
   if section==C_MOVEMENT then return [36,2,3,4,5,6,7,8,9,10,11] end if
   if section==C_LOOKING then return [38,41,35,12,13,14,34,15,16,39,40] end if
   if section==C_WEAPONS then return [26,28,27,37,17,18,19,20,21,22,23,24,25] end if
   return [0,1,29,30,31,32,33]
 end function
+/// Calls `mq3.client.ui_controls.groupIds`, `mq3.client.ui_controls.control` from UI controls `update`. The final path returns `len(active)`.
+/// @param state Record read through `state.controls`, `state.section`, `state.waitingForKey`, `state.cursorId`.
 function update(state)
   for each item in state.controls item.visible=false;item.inactive=true;item.grayed=true;item.highlighted=false end for;active=groupIds(state.section);y=(480-len(active)*16)/2;for each id in active item=control(state,id);item.visible=true;item.inactive=false;item.grayed=false;item.x=320;item.y=y;y=y+16 end for
   if state.waitingForKey then for each item in state.controls item.grayed=true end for;selected=control(state,state.cursorId);if selected!=void then selected.grayed=false end if;return len(active) end if
@@ -184,30 +261,52 @@ function update(state)
 end function
 
 // Controls_DrawKeyBinding / Controls_StatusBar / Controls_DrawPlayer
+/// @param state Record read through `state.waitingForKey`.
+/// @param id Value used by `item=actionBinding(state,id)`.
+/// @param selected Value used by `if item==void then return DrawBinding("","???",selected,true,state.waitingForKey) end if`.
 function drawKeyBinding(state,id,selected)
   item=actionBinding(state,id);if item==void then return DrawBinding("","???",selected,true,state.waitingForKey) end if;text="???";if item.bind1!=-1 then text=strings.toUpperAscii(keys.keynumToString(item.bind1));if item.bind2!=-1 then text=text+" or "+strings.toUpperAscii(keys.keynumToString(item.bind2)) end if end if;entry=control(state,id);gray=false;if entry!=void then gray=entry.grayed end if;emit(state,"draw-binding",item.command,item.label+"="+text,0.0,id);if selected then if state.waitingForKey then emit(state,"status","waiting","Waiting for new key ... ESCAPE to cancel",0.0,id) else emit(state,"status","change","Press ENTER or CLICK to change / Press BACKSPACE to clear",0.0,id) end if end if;return DrawBinding(item.label,text,selected,gray,state.waitingForKey)
 end function
+/// Calls `mq3.client.ui_controls.emit` from UI controls `statusBar`. The final path returns `"Use Arrow Keys or CLICK to change"`.
+/// @param state Shared UI controls state passed to the helper calls in `statusBar`.
 function statusBar(state) emit(state,"status","controls","Use Arrow Keys or CLICK to change",0.0,0);return "Use Arrow Keys or CLICK to change" end function
+/// Updates `state.playerModel` during UI controls `drawPlayer`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.playerModel`.
+/// @param model Value assigned to `state.playerModel`.
+/// @param realtime Current client real-time clock in milliseconds.
 function drawPlayer(state,model,realtime) if model!=state.playerModel then state.playerModel=model;emit(state,"player-model",model,"",0.0,0);updateModel(state,ANIM_IDLE) end if;emit(state,"draw-player",model,"",realtime/2.0,0);return state.playerModel end function
 
 // Controls_GetKeyAssignment / Controls_GetConfig
+/// @param state Record read through `state.keyState`.
+/// @param command Value used by `if value!="" and same(value,command) then result[count]=key`.
 function getKeyAssignment(state,command) result=[-1,-1];count=0;for key=0 to 255 value=keys.getBinding(state.keyState,key);if value!="" and same(value,command) then result[count]=key;count=count+1;if count==2 then break end if end if end for;return result end function
+/// Calls `mq3.client.ui_controls.getKeyAssignment`, `mq3.client.ui_controls.setSetting`, `mq3.client.ui_controls.getCvarValue` and additional helpers from UI controls `getConfig`. The final path returns `state`.
+/// @param state Record read through `state.bindings`.
 function getConfig(state)
   for each item in state.bindings assigned=getKeyAssignment(state,item.command);item.bind1=assigned[0];item.bind2=assigned[1] end for
   setSetting(state,"invertmouse",getCvarValue(state,"m_pitch")<0.0);setSetting(state,"smoothmouse",clamp(0.0,1.0,getCvarValue(state,"m_filter")));setSetting(state,"alwaysrun",clamp(0.0,1.0,getCvarValue(state,"cl_run")));setSetting(state,"autoswitch",clamp(0.0,1.0,getCvarValue(state,"cg_autoswitch")));setSetting(state,"sensitivity",clamp(2.0,30.0,getCvarValue(state,"sensitivity")));setSetting(state,"joyenable",clamp(0.0,1.0,getCvarValue(state,"in_joystick")));setSetting(state,"joythreshold",clamp(0.05,0.75,getCvarValue(state,"joy_threshold")));setSetting(state,"freelook",clamp(0.0,1.0,getCvarValue(state,"cl_freelook")));return state
 end function
+/// Calls `mq3.vm.cgame_key_traps.setBinding`, `mq3.client.ui_controls.emit`, `mq3.vm.cgame_key_traps.keynumToString` from UI controls `setKey`.
+/// @param state Record read through `state.keyState`.
+/// @param key Key or control identifier used to select the corresponding UI controls entry.
+/// @param command Value used by `if key>=0 and key<256 then keys.setBinding(state.keyState,key,command) end if`.
 function setKey(state,key,command) if key>=0 and key<256 then keys.setBinding(state.keyState,key,command) end if;emit(state,"set-binding",keys.keynumToString(key),command,0.0,key);return void end function
 
 // Controls_SetConfig / Controls_SetDefaults
+/// @param state Record read through `state.bindings`.
 function setConfig(state)
   for each item in state.bindings if item.bind1!=-1 then setKey(state,item.bind1,item.command);if item.bind2!=-1 then setKey(state,item.bind2,item.command) end if end if end for
   pitch=numbers.atof(cvar(state,"m_pitch"));if pitch<0.0 then pitch=-pitch end if;if setting(state,"invertmouse") then pitch=-pitch end if;setCvar(state,"m_pitch",pitch);setCvar(state,"m_filter",setting(state,"smoothmouse"));setCvar(state,"cl_run",setting(state,"alwaysrun"));setCvar(state,"cg_autoswitch",setting(state,"autoswitch"));setCvar(state,"sensitivity",setting(state,"sensitivity"));setCvar(state,"in_joystick",setting(state,"joyenable"));setCvar(state,"joy_threshold",setting(state,"joythreshold"));setCvar(state,"cl_freelook",setting(state,"freelook"));emit(state,"execute","in_restart","in_restart\n",0.0,2);return true
 end function
+/// Calls `mq3.client.ui_controls.setSetting`, `mq3.client.ui_controls.getCvarDefault` from UI controls `setDefaults`. The final path returns `state`.
+/// @param state Record read through `state.bindings`.
 function setDefaults(state)
   for each item in state.bindings item.bind1=item.default1;item.bind2=item.default2 end for;setSetting(state,"invertmouse",getCvarDefault(state,"m_pitch")<0.0);setSetting(state,"smoothmouse",getCvarDefault(state,"m_filter"));setSetting(state,"alwaysrun",getCvarDefault(state,"cl_run"));setSetting(state,"autoswitch",getCvarDefault(state,"cg_autoswitch"));setSetting(state,"sensitivity",getCvarDefault(state,"sensitivity"));setSetting(state,"joyenable",getCvarDefault(state,"in_joystick"));setSetting(state,"joythreshold",getCvarDefault(state,"joy_threshold"));setSetting(state,"freelook",getCvarDefault(state,"cl_freelook"));return state
 end function
 
 // Controls_MenuKey
+/// @param state Mutable UI controls record/storage; this routine assigns `state.waitingForKey`, `state.changesMade`.
+/// @param key Value assigned to `item.bind1`, `item.bind2`.
 function menuKey(state,key)
   if not state.waitingForKey then
     if key==K_BACKSPACE or key==K_DEL or key==K_KP_DEL then
@@ -243,20 +342,44 @@ function menuKey(state,key)
 end function
 
 // Reset/default confirmation and menu callbacks.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.changesMade`.
+/// @param result Value used by `if not result then return false end if`.
 function resetDefaultsAction(state,result) if not result then return false end if;state.changesMade=true;setDefaults(state);update(state);return true end function
+/// Calls `mq3.client.ui_controls.emit` from UI controls `resetDefaultsDraw`. The final path returns `lines`.
+/// @param state Shared UI controls state passed to the helper calls in `resetDefaultsDraw`.
 function resetDefaultsDraw(state) lines=["WARNING: This will reset all","controls to their default values."];emit(state,"text","warning",lines[0],0.0,0);emit(state,"text","warning",lines[1],0.0,1);return lines end function
+/// Updates `state.section`, `state.menuEvents`, `state.changesMade` during UI controls `menuEvent`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.section`, `state.menuEvents`, `state.changesMade`.
+/// @param id Value used by `if id==ID_MOVEMENT then state.section=C_MOVEMENT`.
+/// @param event Event identifier compared with the supported activation/input events.
 function menuEvent(state,id,event)
   if event!=QM_ACTIVATED then return false end if
   if id==ID_MOVEMENT then state.section=C_MOVEMENT;update(state);return true else if id==ID_LOOKING then state.section=C_LOOKING;update(state);return true else if id==ID_WEAPONS then state.section=C_WEAPONS;update(state);return true else if id==ID_MISC then state.section=C_MISC;update(state);return true else if id==ID_DEFAULTS then state.menuEvents=state.menuEvents+[["confirm","SET TO DEFAULTS?"]];emit(state,"confirm","defaults","SET TO DEFAULTS?",0.0,0);return true else if id==ID_BACK then if state.changesMade then setConfig(state) end if;state.menuEvents=state.menuEvents+[["pop"]];return true else if id==ID_SAVEANDEXIT then setConfig(state);state.menuEvents=state.menuEvents+[["pop"]];return true else if id==ID_EXIT then state.menuEvents=state.menuEvents+[["pop"]];return true end if
   if id>=ID_FREELOOK and id<=ID_SMOOTHMOUSE then state.changesMade=true;return true end if;return false
 end function
+/// Updates `state.waitingForKey`, `state.cursorId` during UI controls `actionEvent`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.waitingForKey`, `state.cursorId`.
+/// @param id Value assigned to `state.cursorId`.
+/// @param event Event identifier compared with the supported activation/input events.
 function actionEvent(state,id,event) item=actionBinding(state,id);if item==void then return false end if;if event==QM_LOSTFOCUS then updateModel(state,ANIM_IDLE);return true else if event==QM_GOTFOCUS then updateModel(state,item.anim);return true else if event==QM_ACTIVATED and not state.waitingForKey then state.waitingForKey=true;state.cursorId=id;update(state);return true end if;return false end function
 
 // Controls_InitModel / Controls_InitWeapons / Controls_MenuInit
+/// @param state Mutable UI controls record/storage; this routine assigns `state.playerModel`.
 function initModel(state) state.playerModel=cvar(state,"model");emit(state,"player-model",state.playerModel,"",0.0,0);updateModel(state,ANIM_IDLE);return state.playerModel end function
+/// Updates `state.weaponModels` during UI controls `initWeapons`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.weaponModels`.
+/// @param models Value used by `for each model in models state.weaponModels=state.weaponModels+[model]`.
 function initWeapons(state,models) state.weaponModels=[];for each model in models state.weaponModels=state.weaponModels+[model];emit(state,"register-model",model,"",0.0,0) end for;return len(state.weaponModels) end function
+/// Updates `state.cached` during UI controls `cache`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.cached`.
 function cache(state) for each asset in [ART_BACK0,ART_BACK1,ART_FRAMEL,ART_FRAMER] emit(state,"register-shader",asset,"",0.0,0) end for;state.cached=true;return 4 end function
+/// Updates `state.bindings`, `state.controls`, `state.section`, `state.waitingForKey` and additional values during UI controls `menuInit`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.bindings`, `state.controls`, `state.section`, `state.waitingForKey` and additional values.
+/// @param weaponModels Value used by `initWeapons(state,weaponModels)`.
 function menuInit(state,weaponModels)
   state.bindings=defaultBindings();state.controls=makeControls();state.section=C_LOOKING;state.waitingForKey=false;state.changesMade=false;state.cursorId=0;state.actions=[];state.menuEvents=[];cache(state);state.playerName=clean(cvar(state,"name"));initCvars(state);getConfig(state);initModel(state);initWeapons(state,weaponModels);update(state);return state
 end function
+/// Updates `state.pushed`, `state.menuEvents` during UI controls `uiControlsMenu`.
+/// @param state Mutable UI controls record/storage; this routine assigns `state.pushed`, `state.menuEvents`.
+/// @param weaponModels Value used by `menuInit(state,weaponModels)`.
 function uiControlsMenu(state,weaponModels) menuInit(state,weaponModels);state.pushed=true;state.menuEvents=state.menuEvents+[["push"]];emit(state,"push-menu","controls","",0.0,0);return state end function

@@ -51,37 +51,60 @@ const GL_VERTEX_ARRAY=0x8074
 const GL_ALPHA_TEST=0x0bc0
 const GL_STENCIL_TEST=0x0b90
 
+/// Data record for `mq3.platform.win_qgl_runtime.State`; groups `loaded`, `driver`, `logging`, `logCounter`, `logOpen`, `logLines`, and 1 further field.
 struct State loaded driver logging logCounter logOpen logLines calls end struct
 
+/// Constructs `mq3.platform.win_qgl_runtime.State` with `loaded` = `false`, `driver` = `""`, `logging` = `false`, `logCounter` = `0` and the supplied remaining values.
 function create() return State(false,"",false,0,false,[],[]) end function
+/// Returns `"OUT OF RANGE FOR BOOLEAN"` from `mq3.platform.win_qgl_runtime.BooleanToString`; earlier branches return `"GL_FALSE"`, `"GL_TRUE"`.
+/// @param value Input tested by `value==GL_FALSE`.
 function BooleanToString(value) if value==GL_FALSE then return "GL_FALSE" end if;if value==GL_TRUE then return "GL_TRUE" end if;return "OUT OF RANGE FOR BOOLEAN" end function
+/// Computes `FuncToString` from `"!!! UNKNOWN !!!"`.
+/// @param value Input tested by `value==GL_ALWAYS`.
 function FuncToString(value)
   if value==GL_ALWAYS then return "GL_ALWAYS" end if;if value==GL_NEVER then return "GL_NEVER" end if;if value==GL_LEQUAL then return "GL_LEQUAL" end if;if value==GL_LESS then return "GL_LESS" end if
   if value==GL_EQUAL then return "GL_EQUAL" end if;if value==GL_GREATER then return "GL_GREATER" end if;if value==GL_GEQUAL then return "GL_GEQUAL" end if;if value==GL_NOTEQUAL then return "GL_NOTEQUAL" end if;return "!!! UNKNOWN !!!"
 end function
+/// Computes `PrimToString` from `str(value)`.
+/// @param value Input tested by `value==GL_TRIANGLES`.
 function PrimToString(value)
   if value==GL_TRIANGLES then return "GL_TRIANGLES" end if;if value==GL_TRIANGLE_STRIP then return "GL_TRIANGLE_STRIP" end if;if value==GL_TRIANGLE_FAN then return "GL_TRIANGLE_FAN" end if
   if value==GL_QUADS then return "GL_QUADS" end if;if value==GL_QUAD_STRIP then return "GL_QUAD_STRIP" end if;if value==GL_POLYGON then return "GL_POLYGON" end if
   if value==GL_POINTS then return "GL_POINTS" end if;if value==GL_LINES then return "GL_LINES" end if;if value==GL_LINE_STRIP then return "GL_LINE_STRIP" end if;if value==GL_LINE_LOOP then return "GL_LINE_LOOP" end if;return str(value)
 end function
+/// Computes `CapToString` from `str(value)`.
+/// @param value Input tested by `value==GL_TEXTURE_2D`.
 function CapToString(value)
   if value==GL_TEXTURE_2D then return "GL_TEXTURE_2D" end if;if value==GL_BLEND then return "GL_BLEND" end if;if value==GL_DEPTH_TEST then return "GL_DEPTH_TEST" end if;if value==GL_CULL_FACE then return "GL_CULL_FACE" end if
   if value==GL_CLIP_PLANE0 then return "GL_CLIP_PLANE0" end if;if value==GL_COLOR_ARRAY then return "GL_COLOR_ARRAY" end if;if value==GL_TEXTURE_COORD_ARRAY then return "GL_TEXTURE_COORD_ARRAY" end if
   if value==GL_VERTEX_ARRAY then return "GL_VERTEX_ARRAY" end if;if value==GL_ALPHA_TEST then return "GL_ALPHA_TEST" end if;if value==GL_STENCIL_TEST then return "GL_STENCIL_TEST" end if;return str(value)
 end function
+/// Computes `TypeToString` from `"!!! UNKNOWN !!!"`.
+/// @param value Input tested by `value==GL_BYTE`.
 function TypeToString(value)
   if value==GL_BYTE then return "GL_BYTE" end if;if value==GL_UNSIGNED_BYTE then return "GL_UNSIGNED_BYTE" end if;if value==GL_SHORT then return "GL_SHORT" end if;if value==GL_UNSIGNED_SHORT then return "GL_UNSIGNED_SHORT" end if
   if value==GL_INT then return "GL_INT" end if;if value==GL_UNSIGNED_INT then return "GL_UNSIGNED_INT" end if;if value==GL_FLOAT then return "GL_FLOAT" end if;if value==GL_DOUBLE then return "GL_DOUBLE" end if;return "!!! UNKNOWN !!!"
 end function
+/// Computes `BlendToName` from `str(value)`.
+/// @param value Input tested by `value==GL_ONE`.
 function BlendToName(value)
   if value==GL_ONE then return "GL_ONE" end if;if value==GL_ZERO then return "GL_ZERO" end if;if value==GL_SRC_ALPHA then return "GL_SRC_ALPHA" end if;if value==GL_ONE_MINUS_SRC_ALPHA then return "GL_ONE_MINUS_SRC_ALPHA" end if
   if value==GL_DST_COLOR then return "GL_DST_COLOR" end if;if value==GL_ONE_MINUS_DST_COLOR then return "GL_ONE_MINUS_DST_COLOR" end if;if value==GL_DST_ALPHA then return "GL_DST_ALPHA" end if;return str(value)
 end function
+/// Computes `loadSucceeded` for `mq3.platform.win_qgl_runtime.GlideIsValid`.
+/// @param loadSucceeded Input used in the result expression `loadSucceeded`.
 function GlideIsValid(loadSucceeded) return loadSucceeded end function
 
+/// Recognizes the eight optional multitexture, array-lock, swap-interval, and 3DFX-gamma entry points.
+/// @param name Exact qgl/qwgl symbol name to classify as an optional extension entry.
 function isExtensionEntry(name)
   return name=="qglActiveTextureARB" or name=="qglClientActiveTextureARB" or name=="qglMultiTexCoord2fARB" or name=="qglLockArraysEXT" or name=="qglUnlockArraysEXT" or name=="qwglSwapIntervalEXT" or name=="qwglGetDeviceGammaRamp3DFX" or name=="qwglSetDeviceGammaRamp3DFX"
 end function
+/// Updates `state.loaded`, `state.driver` in `mq3.platform.win_qgl_runtime.QGL_Init`; returns `true`.
+/// @param state Mutable record or buffer; this call updates `state.loaded`, `state.driver`.
+/// @param registry Argument 1 supplied to `mq3.renderer.qgl.reset`.
+/// @param dllname Value assigned to `state.driver`.
+/// @param loadSucceeded Input tested by `not loadSucceeded`.
 function QGL_Init(state,registry,dllname,loadSucceeded)
   if state==void or registry==void or dllname=="" or state.loaded then return false end if
   if not loadSucceeded then return false end if
@@ -91,10 +114,17 @@ function QGL_Init(state,registry,dllname,loadSucceeded)
   if not qgl.activate(registry,dllname) then qgl.reset(registry);return false end if
   state.loaded=true;state.driver=dllname;return true
 end function
+/// Updates `state.loaded`, `state.driver`, `state.logging`, `state.logCounter`, `state.logOpen` in `mq3.platform.win_qgl_runtime.QGL_Shutdown`.
+/// @param state Mutable record or buffer; this call updates `state.loaded`, `state.driver`, `state.logging`, `state.logCounter`, `state.logOpen`.
+/// @param registry Argument 1 supplied to `mq3.renderer.qgl.reset`.
 function QGL_Shutdown(state,registry)
   if state==void or registry==void then return void end if
   state.loaded=false;state.driver="";state.logging=false;state.logCounter=0;state.logOpen=false;qgl.reset(registry);return void
 end function
+/// Updates `state.logCounter`, `state.logging`, `state.logOpen`, `state.logLines` in `mq3.platform.win_qgl_runtime.QGL_EnableLogging`; returns `state.logging`.
+/// @param state Mutable record or buffer; this call updates `state.logCounter`, `state.logging`, `state.logOpen`, `state.logLines`.
+/// @param enable Value assigned to `state.logging`.
+/// @param counter Value assigned to `state.logCounter`.
 function QGL_EnableLogging(state,enable,counter)
   if state==void then return false end if
   if state.logging and enable then state.logCounter=counter-1;if state.logCounter>0 then return true end if;enable=false end if
@@ -103,6 +133,11 @@ function QGL_EnableLogging(state,enable,counter)
   if enable then state.logCounter=counter;if not state.logOpen then state.logOpen=true;state.logLines=state.logLines+["QGL log opened"] end if end if
   return state.logging
 end function
+/// Updates `state.calls`, `state.logLines` in `mq3.platform.win_qgl_runtime.dispatch`; returns `true`.
+/// @param state Mutable record or buffer; this call updates `state.calls`, `state.logLines`.
+/// @param registry Argument 1 supplied to `mq3.renderer.qgl.has`.
+/// @param name Argument 2 supplied to `mq3.renderer.qgl.has`.
+/// @param arguments Input used by `state.calls=state.calls+[[name,arguments]]`.
 function dispatch(state,registry,name,arguments)
   if state==void or registry==void or not state.loaded or not qgl.has(registry,name) then return false end if
   state.calls=state.calls+[[name,arguments]]
@@ -121,6 +156,8 @@ function logFunctionNames()
   for each name in qgl.coreEntryPoints() if not isExtensionEntry(name) then names=names+[name] end if end for
   return names
 end function
+/// Lists the 7 declared names for `mq3.platform.win_qgl_runtime.helperFunctionNames`, including `BlendToName`, `BooleanToString`, `CapToString`, `FuncToString`.
 function helperFunctionNames() return ["BlendToName","BooleanToString","CapToString","FuncToString","GlideIsValid","PrimToString","TypeToString"] end function
+/// Lists the 3 declared names for `mq3.platform.win_qgl_runtime.lifecycleFunctionNames`, including `QGL_EnableLogging`, `QGL_Init`, `QGL_Shutdown`.
 function lifecycleFunctionNames() return ["QGL_EnableLogging","QGL_Init","QGL_Shutdown"] end function
 

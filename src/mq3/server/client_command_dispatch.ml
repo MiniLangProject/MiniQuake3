@@ -7,17 +7,30 @@ import mq3.server.client_lifecycle as lifecycle
 
 const SS_GAME=2
 
+/// Services record for server.client_command_dispatch, containing `builtinFn`, `downloadFn`, `gameFn`, `ignoredFn`, `context`, `downloadContext`, and 1 further fields.
 struct Services builtinFn downloadFn gameFn ignoredFn context downloadContext lifecycleRuntime end struct
+/// Create `mq3.server.client_command_dispatch.Services` with builtinFn=void; downloadFn=void; gameFn=void; ignoredFn=void; context=void; downloadContext=void; lifecycleRuntime=void.
 function services() return Services(void,void,void,void,void,void,void) end function
 
+/// List the 8 names in server.client_command_dispatch.builtinNames, beginning with `userinfo`, `disconnect`, `cp`, `vdr`.
 function builtinNames() return ["userinfo","disconnect","cp","vdr","download","nextdl","stopdl","donedl"] end function
 
+/// Compute builtin index in server.client_command_dispatch; the normal completion returns `- 1`.
+/// @param name Name used in `(names[index] == name)`.
 function builtinIndex(name)
   names=builtinNames()
   for index=0 to len(names)-1 if names[index]==name then return index end if end for
   return -1
 end function
 
+/// Execute client command dispatch in server.client_command_dispatch; the normal completion returns `"ignored"`.
+///
+/// Validation failures include `client command dispatch: missing input`; `client command dispatch: missing builtin service`; `client command dispatch: missing game service`.
+/// @param host Record exposing `downloadFn`, `builtinFn`, `lifecycleRuntime`, `gameFn`, `ignoredFn`.
+/// @param clientState Client passed as `client` to `mq3.server.client_lifecycle.dispatchBuiltin`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`.
+/// @param clientOk Client ok operand used by `execute`; its reads are shown in the implementation.
+/// @param serverState Server state used in `(serverState == SS_GAME)`.
 function execute(host,clientState,text,clientOk,serverState)
   if host==void or clientState==void or text==void then return error(6985,"client command dispatch: missing input") end if
   parser=commandBuffer.create();commandBuffer.tokenizeString(parser,text);name=commandBuffer.argv(parser,0)

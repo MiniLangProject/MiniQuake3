@@ -6,28 +6,48 @@ import mq3.compat.numeric as n
 const MST_PLANAR = 1
 const MST_TRIANGLE_SOUP = 3
 
+/// Data record for `mq3.renderer.bsp_preview.Line`; groups `a`, `b`, `face`, `triangle`.
 struct Line a b face triangle end struct
+/// Data record for `mq3.renderer.bsp_preview.Preview`; groups `lines`, `surfaceCount`, `triangleCount`, `truncated`.
 struct Preview lines surfaceCount triangleCount truncated end struct
 
+/// Creates error `7404` with message `"BSP preview: "+text`.
+/// @param text Input used in the result expression `error(7404,"BSP preview: "+text)`.
 function fail(text) return error(7404,"BSP preview: "+text) end function
+/// Computes `map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>=17 and map.counts!=void and len(map.counts)>=17` for `mq3.renderer.bsp_preview.validMap`.
+/// @param map Record providing `map.data`, `map.offsets`, `map.counts`.
 function validMap(map)
   return map!=void and typeof(map.data)=="bytes" and map.offsets!=void and len(map.offsets)>=17 and map.counts!=void and len(map.counts)>=17
 end function
+/// Computes `recordRange` from `map.offsets[lump]+index*stride`.
+/// @param map Record providing `map.counts`, `map.offsets`, `map.data`.
+/// @param lump Input tested by `index<0 or index>=map.counts[lump]`.
+/// @param index Input tested by `index<0 or index>=map.counts[lump]`.
+/// @param stride Input used by `offset=map.offsets[lump]+index*stride`.
 function recordRange(map,lump,index,stride)
   if index<0 or index>=map.counts[lump] then return fail("record index outside lump") end if
   offset=map.offsets[lump]+index*stride
   if offset<0 or offset+stride>len(map.data) then return fail("record outside BSP data") end if
   return offset
 end function
+/// Returns `value` from `mq3.renderer.bsp_preview.i32`; earlier branches return `fail("truncated integer")`.
+/// @param map Record providing `map.data`.
+/// @param offset Argument 2 supplied to `mq3.compat.numeric.readI32`.
 function i32(map,offset)
   value=n.readI32(map.data,offset);if value is error then return fail("truncated integer") end if;return value
 end function
+/// Computes `point` from `[n.bitsFloat(x),n.bitsFloat(y),n.bitsFloat(z)]` using `mq3.renderer.bsp_preview.recordRange`, `mq3.compat.numeric.readU32`, `mq3.compat.numeric.bitsFloat`.
+/// @param map Record providing `map.data`.
+/// @param index Value forwarded as `index` to `mq3.renderer.bsp_preview.recordRange`.
 function point(map,index)
   offset=recordRange(map,10,index,44);if offset is error then return offset end if
   x=n.readU32(map.data,offset);y=n.readU32(map.data,offset+4);z=n.readU32(map.data,offset+8)
   if x is error or y is error or z is error then return fail("truncated vertex") end if
   return [n.bitsFloat(x),n.bitsFloat(y),n.bitsFloat(z)]
 end function
+/// Returns `false` from `mq3.renderer.bsp_preview.contains`; earlier branches return `true`.
+/// @param values Sequence traversed as `value` while producing this result.
+/// @param wanted Input used by `for each value in values if value==wanted then return true`.
 function contains(values,wanted)
   for each value in values if value==wanted then return true end if end for
   return false
@@ -35,6 +55,8 @@ end function
 
 // Resolve the face list referenced by a set of visible BSP leaves. The result
 // retains first occurrence order and removes faces shared by several leaves.
+/// @param map Record providing `map.counts`.
+/// @param leafIndexes Sequence traversed as `leafIndex` while producing this result.
 function visibleFaces(map,leafIndexes)
   if not validMap(map) then return fail("invalid BSP object") end if
   if leafIndexes==void then return fail("missing leaf list") end if
@@ -52,6 +74,10 @@ function visibleFaces(map,leafIndexes)
   return result
 end function
 
+/// Returns `false` from `mq3.renderer.bsp_preview.alreadyEmitted`; earlier branches return `true`.
+/// @param keys Sequence traversed as `key` while producing this result.
+/// @param left Input used by `low=left`.
+/// @param right Input used by `high=right`.
 function alreadyEmitted(keys,left,right)
   low=left;high=right;if low>high then low=right;high=left end if
   for each key in keys if key[0]==low and key[1]==high then return true end if end for
@@ -60,6 +86,9 @@ end function
 
 // Faces use meshvert indexes relative to firstVert, exactly like srfSurfaceFace_t
 // and srfTriangles_t. Shared triangle edges are emitted once.
+/// @param map Record providing `map.counts`.
+/// @param faceIndexes Sequence traversed as `faceIndex` while producing this result.
+/// @param maxLines Input tested by `maxLines<0`.
 function wireframe(map,faceIndexes,maxLines)
   if not validMap(map) then return fail("invalid BSP object") end if
   if faceIndexes==void then return fail("missing face list") end if
@@ -99,12 +128,19 @@ function wireframe(map,faceIndexes,maxLines)
   return Preview(lines,surfaces,triangles,truncated)
 end function
 
+/// Returns `wireframe(map,indexes,maxLines)` from `mq3.renderer.bsp_preview.allFaces`; earlier branches return `fail("invalid BSP object")`.
+/// @param map Record providing `map.counts`.
+/// @param maxLines Value forwarded as `maxLines` to `mq3.renderer.bsp_preview.wireframe`.
 function allFaces(map,maxLines)
   if not validMap(map) then return fail("invalid BSP object") end if
   indexes=[];for index=0 to map.counts[13]-1 indexes=indexes+[index] end for
   return wireframe(map,indexes,maxLines)
 end function
 
+/// Returns `wireframe(map,faces,maxLines)` from `mq3.renderer.bsp_preview.visibleWireframe`; earlier branches return `faces`.
+/// @param map Value forwarded as `map` to `mq3.renderer.bsp_preview.visibleFaces`.
+/// @param leafIndexes Value forwarded as `leafIndexes` to `mq3.renderer.bsp_preview.visibleFaces`.
+/// @param maxLines Value forwarded as `maxLines` to `mq3.renderer.bsp_preview.wireframe`.
 function visibleWireframe(map,leafIndexes,maxLines)
   faces=visibleFaces(map,leafIndexes);if faces is error then return faces end if
   return wireframe(map,faces,maxLines)

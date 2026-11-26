@@ -3,6 +3,7 @@
 // The file-static g_weapon.c firing state persists across weapon helper calls.
 package mq3.game.weapon_state
 
+/// `State` record for weapon state, containing `quadFactor`, `forward`, `right`, `up` and `muzzle` and related fields.
 struct State
   quadFactor
   forward
@@ -15,6 +16,8 @@ struct State
   kamikazeShockGeneration
 end struct
 
+/// Update `level.weaponState` during `get`. Return paths include `level.weaponState`.
+/// @param level Game-level state; accesses `weaponState`. May update `level.weaponState` in place.
 function get(level)
   if level.weaponState == void then
     // Team Arena stores these two cooldowns on gentity_t.  Keeping the

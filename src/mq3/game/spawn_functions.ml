@@ -25,14 +25,22 @@ import mq3.collision.world as cm
 import mq3.server.world as sv
 import mq3.game.movement as movement
 import std.string as strings
+/// Forward `movedirVector` to `mq3.shared.directions.movedirVector` and return the delegated result.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function movedirVector(angles)
   return dirs.movedirVector(angles)
 end function
+/// Set `ent.movedir` to `movedirVector(ent.s.angles)` and `ent.s.angles` to `[0.0,0.0,0.0]` in `mq3.game.spawn_functions.setMovedir`.
+/// @param ent Game entity; accesses `movedir` and `s`. May update `ent.movedir` and `ent.s.angles` in place.
 function setMovedir(ent)
   ent.movedir = movedirVector(ent.s.angles)
   ent.s.angles = [0.0,0.0,0.0]
   return void
 end function
+/// Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and related state during `setBrushModel`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `s`, `r` and `slot`. May update `ent.s.modelindex`, `ent.r.mins` and `ent.r.maxs` and additional fields in place.
+/// @param name Name used to identify the requested entry.
 function setBrushModel(level,ent,name)
   if name == void or len(name) == 0 or name[0] != "*" then return error(485,"SV_SetBrushModel: invalid brush model name") end if
   ent.s.modelindex = textnum.atoi(decode(slice(bytes(name),1,len(bytes(name))-1)))
@@ -42,11 +50,17 @@ function setBrushModel(level,ent,name)
   game.syncSpatial(ent); sv.linkEntity(level.scene,ent.slot); ent.s.solid = ent.r.solid
   return void
 end function
+/// Set `ent.r.contents` to `0x40000000` and `ent.r.svFlags` to `1` in `mq3.game.spawn_functions.initTrigger`.
+/// @param level Game-level state; accesses `scene`.
+/// @param ent Game entity; accesses `s`, `model` and `r`. May update `ent.r.contents` and `ent.r.svFlags` in place.
 function initTrigger(level,ent)
   if ent.s.angles[0] != 0 or ent.s.angles[1] != 0 or ent.s.angles[2] != 0 then setMovedir(ent) end if
   setBrushModel(level,ent,ent.model); ent.r.contents = 0x40000000; ent.r.svFlags = 1
   return void
 end function
+/// Update `ent.s.origin2` and `ent.s.origin2[2]` during `aimAtTarget`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `r`, `target` and `s`. May update `ent.s.origin2` and `ent.s.origin2[2]` in place.
 function aimAtTarget(level,ent)
   origin = array(3,0.0)
   for axis = 0 to 2
@@ -65,14 +79,23 @@ function aimAtTarget(level,ent)
   ent.s.origin2 = q.VectorScale(ent.s.origin2,forward); ent.s.origin2[2] = n.fmul(time,gravity)
   return void
 end function
+/// Forward `runThink` to `mq3.game.entities.runThink` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `nextthink` and `think`. May update `ent.nextthink` in place.
 function runThink(level,ent)
   return game.runThink(level,ent)
 end function
+/// Set `ent.flags` to `ent.flags | 0x2000` and `ent.flags` to `ent.flags | 0x4000` in `mq3.game.spawn_functions.playerDeathmatch`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `flags`. May update `ent.flags` in place.
 function playerDeathmatch(level,ent)
   if values.getInt(level.spawner,"nobots","0")[1] != 0 then ent.flags = ent.flags | 0x2000 end if
   if values.getInt(level.spawner,"nohumans","0")[1] != 0 then ent.flags = ent.flags | 0x4000 end if
   return void
 end function
+/// Update `self.s.eType`, `self.enemy`, `self.use` and `self.think` and related state during `laserStart`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param self Entity receiving the callback; accesses `s`, `target`, `classname`, `enemy` and `use` and related fields. May update `self.s.eType`, `self.enemy` and `self.use` and additional fields in place.
 function laserStart(level,self)
   self.s.eType = c.ET_BEAM
   if self.target != void then
@@ -95,6 +118,10 @@ function laserStart(level,self)
   if (self.spawnflags & 1) != 0 then hazards.laserOn(level,self) else hazards.laserOff(level,self) end if
   return void
 end function
+/// Update `ent.use`, `ent.s.weapon`, `ent.random` and `ent.think` and related state during `initShooter`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `use`, `s`, `random`, `target` and `think` and related fields. May update `ent.use`, `ent.s.weapon` and `ent.random` and additional fields in place.
+/// @param weapon Weapon identifier used by the action or inventory lookup.
 function initShooter(level,ent,weapon)
   ent.use = shooters.use; ent.s.weapon = weapon
   shooters.registerItem(level,shooters.weaponItem(weapon)); setMovedir(ent)
@@ -103,6 +130,9 @@ function initShooter(level,ent,weapon)
   if ent.target != void then ent.think = shooters.finish; ent.nextthink = n.add32(level.time,500) end if
   return game.link(level,ent)
 end function
+/// Set `ent.classname` to `"info_player_deathmatch"` in `mq3.game.spawn_functions.dispatch`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param ent Game entity; accesses `classname`. May update `ent.classname` in place.
 function dispatch(level,ent)
   if gMover.dispatch(level,ent) then return true end if
   switch ent.classname

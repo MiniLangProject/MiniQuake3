@@ -29,6 +29,7 @@ import mq3.shared.parser as parser
 import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 
+/// `State` record for lifecycle, containing `buildDate`, `entitiesBound`, `clientsBound`, `openLogFn` and `closeLogFn` and related fields.
 struct State
   buildDate
   entitiesBound
@@ -53,26 +54,40 @@ struct State
   botPopulation
   botAiFrame
 end struct
+/// Require and return the module bindings attached to the game-level lifecycle state.
+/// @param level Game-level state; accesses `lifecycleState`.
 function get(level)
   if level.lifecycleState == void then return error(476,"Game lifecycle requires module bindings") end if
   return level.lifecycleState
 end function
+/// Apply `mq3.game.lifecycle.get` and `mq3.game.bot_ai_frame.startFrame` while evaluating `startBotFrame`. Return paths include `botAiFrame.startFrame(level,state.botAiFrame,time)`.
+/// @param level Game-level state; accesses `lifecycleState`.
+/// @param time Time value in the units expected by this module.
 function startBotFrame(level,time)
   state = get(level)
   if state.botAiFrame == void then return error(476,"Game lifecycle requires BotAI frame service") end if
   return botAiFrame.startFrame(level,state.botAiFrame,time)
 end function
+/// Use `level.gamePrintFn` to perform `gamePrint`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function gamePrint(level,text)
   if len(bytes(text)) > 1023 then return error(476,"Game diagnostic exceeds original G_Printf buffer") end if
   if level.gamePrintFn == void then return error(476,"Game lifecycle requires diagnostic delivery") end if
   level.gamePrintFn(level,text); return void
 end function
+/// Apply `mq3.game.cvars.moduleState` while evaluating `vm`.
+/// @param level Game-level state; accesses `gameCvars`.
+/// @param name Lookup text matched against `row.vmName`.
 function vm(level,name)
   for each row in gameCvars.moduleState(level).rows
     if row.vmName == name and row.vm != void then return row.vm end if
   end for
   return error(476,"Missing lifecycle VM Cvar: "+name)
 end function
+/// Apply `mq3.qcommon.cvar.find` and `mq3.game.lifecycle.get` while evaluating `integerValue`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param name Name used to identify the requested entry.
 function integerValue(level,name)
   value = 0; variable = cv.find(level.spawner.cvars,name)
   if variable != void then value = variable.integer end if
@@ -80,18 +95,34 @@ function integerValue(level,name)
   if state.integerQueryFn != void then state.integerQueryFn(level,name,value) end if
   return value
 end function
+/// Apply `mq3.game.lifecycle.get` and `mq3.game.lifecycle.gamePrint` while evaluating `cvarEffect`.
+/// @param cvarState Cvar state record; accesses `level`.
+/// @param kind Value passed as argument 2 to `state.cvarEffectFn`.
+/// @param index Index of the entry to access.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Text to parse, format or deliver.
 function cvarEffect(cvarState,kind,index,key,value)
   level = cvarState.level; state = get(level)
   if kind == 4 then return gamePrint(level,value) end if
   if state.cvarEffectFn != void then state.cvarEffectFn(cvarState,kind,index,key,value) end if
   return void
 end function
+/// Apply `mq3.game.lifecycle.get` and `mq3.game.logging.write` while evaluating `spawnEffect`.
+/// @param spawner Spawner record; accesses `level`.
+/// @param kind Value passed as argument 2 to `state.spawnEffectFn`.
+/// @param index Index of the entry to access.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 1 to `bytes`.
 function spawnEffect(spawner,kind,index,key,value)
   level = spawner.level; state = get(level)
   if kind == 3 then return logging.write(level,value) end if
   if state.spawnEffectFn != void then state.spawnEffectFn(spawner,kind,index,key,value) end if
   return void
 end function
+/// Apply `mq3.game.lifecycle.get` while evaluating `entityObserve`.
+/// @param level Game-level state; accesses `num_entities`.
+/// @param kind Value passed as argument 2 to `state.entityObserveFn`.
+/// @param ent Value passed as argument 3 to `state.entityObserveFn`.
 function entityObserve(level,kind,ent)
   state = get(level)
   if kind == 3 then
@@ -101,61 +132,117 @@ function entityObserve(level,kind,ent)
   if state.entityObserveFn != void then state.entityObserveFn(level,kind,ent) end if
   return void
 end function
+/// Forward `registryPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function registryPrint(level,text)
   return gamePrint(level,text)
 end function
+/// Use `level.userinfoFn` to perform `queuedBotUserinfo`. Return paths include `level.userinfoFn(level,slot)`.
+/// @param level Game-level state; accesses `userinfoFn`.
+/// @param slot Slot in the owning table or pool.
 function queuedBotUserinfo(level,slot)
   if level.userinfoFn == void then return error(476,"Bot client integration requires userinfo delivery") end if
   return level.userinfoFn(level,slot)
 end function
+/// Use `level.clientBeginFn` to perform `queuedBotBegin`.
+/// @param level Game-level state; accesses `clientBeginFn`.
+/// @param slot Slot in the owning table or pool.
 function queuedBotBegin(level,slot)
   if level.clientBeginFn == void then return error(476,"Bot client integration requires ClientBegin") end if
   level.clientBeginFn(level,slot); return void
 end function
+/// Use `level.dropClientFn` to perform `queuedBotDrop`.
+/// @param level Game-level state; accesses `dropClientFn`.
+/// @param slot Slot in the owning table or pool.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function queuedBotDrop(level,slot,message)
   if level.dropClientFn == void then return error(476,"Bot client integration requires DropClient") end if
   level.dropClientFn(level,slot,message); return void
 end function
+/// Forward `queuedBotPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function queuedBotPrint(level,text)
   return gamePrint(level,text)
 end function
+/// Forward `resourceBotSetup` to `mq3.game.bot_client_resources.setupClient` and return the delegated result.
+/// @param level Game-level state; accesses `lifecycleState`.
+/// @param slot Slot in the owning table or pool.
+/// @param settings Settings record; accesses `characterfile`, `skill` and `team`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function resourceBotSetup(level,slot,settings,restart)
   return botClientResources.setupClient(get(level).botClientResources,slot,settings,restart)
 end function
+/// Apply `mq3.game.bot_client_resources.shutdownClient` while evaluating `resourceBotShutdown`. Return paths include `botClientResources.shutdownClient(state.clientResources,slot,restart)`.
+/// @param state Lifecycle state; accesses `clientResources`.
+/// @param slot Slot in the owning table or pool.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function resourceBotShutdown(state,slot,restart)
   if state.clientResources == void then return error(476,"Bot client integration requires resource bindings") end if
   return botClientResources.shutdownClient(state.clientResources,slot,restart)
 end function
+/// Forward `populationMinimum` to `mq3.game.bot_population.checkMinimumPlayers` and return the delegated result.
+/// @param level Game-level state; accesses `intermissiontime`, `time`, `spawner` and `maxclients`.
 function populationMinimum(level)
   return botPopulation.checkMinimumPlayers(level,get(level).botPopulation)
 end function
+/// Forward `populationPrint` to `mq3.game.lifecycle.gamePrint` and return the delegated result.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function populationPrint(level,text)
   return gamePrint(level,text)
 end function
+/// Use `level.consoleCommandFn` to perform `populationConsole`.
+/// @param level Game-level state; accesses `consoleCommandFn`.
+/// @param mode Value passed as argument 2 to `level.consoleCommandFn`.
+/// @param text Text to parse, format or deliver.
 function populationConsole(level,mode,text)
   if level.consoleCommandFn == void then return error(476,"Bot population requires console-command delivery") end if
   level.consoleCommandFn(level,mode,text); return void
 end function
+/// Use `level.serverCommandFn` to perform `populationServer`.
+/// @param level Game-level state; accesses `serverCommandFn`.
+/// @param slot Slot in the owning table or pool.
+/// @param text Text to parse, format or deliver.
 function populationServer(level,slot,text)
   if level.serverCommandFn == void then return error(476,"Bot population requires server-command delivery") end if
   level.serverCommandFn(level,slot,text); return void
 end function
+/// Use `level.cvarSetFn` to perform `populationCvarSet`.
+/// @param level Game-level state; accesses `cvarSetFn`.
+/// @param key Lookup key or field name used by the operation.
+/// @param value Value passed as argument 3 to `level.cvarSetFn`.
 function populationCvarSet(level,key,value)
   if level.cvarSetFn == void then return error(476,"Bot population requires Cvar_Set delivery") end if
   level.cvarSetFn(level,key,value); return void
 end function
+/// Use `level.userinfoSetFn` to perform `populationSetUserinfo`.
+/// @param level Game-level state; accesses `userinfoSetFn`.
+/// @param slot Slot in the owning table or pool.
+/// @param value Value passed as argument 3 to `level.userinfoSetFn`.
 function populationSetUserinfo(level,slot,value)
   if level.userinfoSetFn == void then return error(476,"Bot population requires SetUserinfo delivery") end if
   level.userinfoSetFn(level,slot,value); return void
 end function
+/// Forward `populationConnect` to `mq3.game.g_client.ClientConnect` and return the delegated result.
+/// @param level Game-level state; accesses `entities`, `userinfoFn`, `filterPacketFn`, `cvarMaintenance` and `clients` and related fields.
+/// @param slot Slot in the owning table or pool.
+/// @param firstTime Value used by `connect` in `if firstTime or level.newSession then sessions.initClient(level,client,info) end if`.
+/// @param isBot Value used by `connect` in `if isBot then`.
 function populationConnect(level,slot,firstTime,isBot)
   return gClient.ClientConnect(level,slot,firstTime,isBot)
 end function
+/// Apply `mq3.game.lifecycle.get` while evaluating `populationAllocate`. Return paths include `callback(level)`.
+/// @param level Game-level state; accesses `lifecycleState`.
 function populationAllocate(level)
   callback = get(level).botAllocateClientFn
   if callback == void then return error(476,"Bot population requires BotAllocateClient delivery") end if
   return callback(level)
 end function
+/// Apply `mq3.game.lifecycle.get`, `mq3.game.lifecycle.integerValue` and `mq3.qcommon.cvar.find` while evaluating `populationAddCommand`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param argv Command argument strings in their original order.
 function populationAddCommand(level,argv)
   state = get(level).botPopulation
   state.botEnable = integerValue(level,"bot_enable") != 0
@@ -163,9 +250,15 @@ function populationAddCommand(level,argv)
   skill = cv.find(level.spawner.cvars,"g_spSkill"); if skill != void then state.spSkill = skill.value end if
   gBot.Svcmd_AddBot_f(level,state,argv); return void
 end function
+/// Apply `mq3.game.g_bot.Svcmd_BotList_f` and `mq3.game.lifecycle.get` while evaluating `populationListCommand`.
+/// @param level Value passed as argument 1 to `state.printFn`.
+/// @param argv Not read by this implementation; retained in the `populationListCommand` signature.
 function populationListCommand(level,argv)
   gBot.Svcmd_BotList_f(level,get(level).botPopulation); return void
 end function
+/// Apply `mq3.game.lifecycle.get`, `mq3.qcommon.cvar.createVm` and `mq3.qcommon.cvar.registerVm` while evaluating `defaultInitBots`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function defaultInitBots(level,restart)
   state = get(level); registry = state.botRegistry
   botsFile = cv.createVm(); arenasFile = cv.createVm(); minimum = cv.createVm()
@@ -184,20 +277,35 @@ function defaultInitBots(level,restart)
   end if
   return void
 end function
+/// Forward `defaultBotConnect` to `mq3.game.bot_clients.botConnect` and return the delegated result.
+/// @param level Value passed as argument 1 to `state.userinfoFn`.
+/// @param slot Slot in the owning table or pool.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function defaultBotConnect(level,slot,restart)
   return botClients.botConnect(level,get(level).botClients,slot,restart)
 end function
+/// Apply `mq3.game.bot_clients.removeQueuedBotBegin` and `mq3.game.lifecycle.get` while evaluating `defaultRemoveQueuedBotBegin`.
+/// @param level Game-level state; accesses `lifecycleState`.
+/// @param slot Slot in the owning table or pool.
 function defaultRemoveQueuedBotBegin(level,slot)
   botClients.removeQueuedBotBegin(get(level).botClients,slot); return void
 end function
+/// Apply `mq3.game.lifecycle.get` while evaluating `defaultBotShutdownClient`. Return paths include `state.shutdownClientFn(state,slot,restart)`.
+/// @param level Game-level state; accesses `lifecycleState`.
+/// @param slot Slot in the owning table or pool.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function defaultBotShutdownClient(level,slot,restart)
   state = get(level).botState
   if state.shutdownClientFn == void then return error(476,"Bot client integration requires BotAIShutdownClient") end if
   return state.shutdownClientFn(state,slot,restart)
 end function
+/// Forward `checkBotSpawn` to `mq3.game.bot_clients.checkBotSpawn` and return the delegated result.
+/// @param level Game-level state; accesses `time`.
 function checkBotSpawn(level)
   return botClients.checkBotSpawn(level,get(level).botClients)
 end function
+/// Update `level.num_entities`, `level.time`, `level.startTime` and `level.previousTime` and related state during `clearLevel`.
+/// @param level Game-level state; accesses `num_entities`, `time`, `startTime`, `previousTime` and `maxclients` and related fields. May update `level.num_entities`, `level.time` and `level.startTime` and additional fields in place.
 function clearLevel(level)
   // Only fields of native level_locals_t. Cvar mirrors, module statics, engine
   // storage and host interfaces deliberately survive this memset phase.
@@ -218,6 +326,8 @@ function clearLevel(level)
   level.spawner.vars = []; level.spawner.chars = 0; level.spawner.spawning = false; level.spawner.warmupTime = 0
   return void
 end function
+/// Set `level.scene.entities[index]` to `r` in `mq3.game.lifecycle.clearEntities`.
+/// @param level Game-level state; accesses `entities` and `scene`. May update `level.scene.entities[index]` in place.
 function clearEntities(level)
   // g_entities has stable array addresses. Its shared-r bytes are separate
   // from the server's sector/PVS metadata, which GAME_INIT does not memset.
@@ -310,12 +420,17 @@ function clearEntities(level)
   end for
   return void
 end function
+/// Apply `mq3.game.entities.resetClient` while evaluating `clearClients`.
+/// @param level Game-level state; accesses `clients`.
 function clearClients(level)
   for index = 0 to 63
     game.resetClient(level.clients[index])
   end for
   return void
 end function
+/// Update `level.lifecycleState`, `level.randSeed`, `level.shaderRemaps` and `level.itemRegistered` and related state during `attach`. Return paths include `state`.
+/// @param level Game-level state; accesses `lifecycleState`, `spawner`, `observeFn`, `randSeed` and `shaderRemaps` and related fields. May update `level.lifecycleState`, `level.randSeed` and `level.shaderRemaps` and additional fields in place.
+/// @param buildDate Text to parse, format or deliver.
 function attach(level,buildDate)
   if level.lifecycleState != void then return error(476,"Module is already attached; use a fresh level for a new VM image") end if
   if level.spawner == void then return error(476,"Module requires an engine world and entity-token source") end if
@@ -358,6 +473,12 @@ function attach(level,buildDate)
   level.gameLogFn = logging.write
   return state
 end function
+/// Update `level.spawner.parser`, `level.randSeed`, `level.time` and `level.startTime` and related state during `init`.
+/// @param level Game-level state; accesses `spawner`, `randSeed`, `time`, `startTime` and `sndFry` and related fields. May update `level.spawner.parser`, `level.randSeed` and `level.time` and additional fields in place.
+/// @param levelTime Current server game time in milliseconds.
+/// @param randomSeed State used to initialize the deterministic random sequence.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
+/// @param entityText Text to parse, format or deliver.
 function init(level,levelTime,randomSeed,restart,entityText)
   state = get(level)
   if typeof(levelTime) != "int" or levelTime < -2147483648 or levelTime > 2147483647 then return error(476,"Invalid native level time") end if
@@ -416,6 +537,9 @@ function init(level,levelTime,randomSeed,restart,entityText)
   end if
   gameCvars.remapTeamShaders(level); return void
 end function
+/// Apply `mq3.game.lifecycle.get`, `mq3.game.lifecycle.gamePrint` and `mq3.game.logging.write` while evaluating `shutdown`.
+/// @param level Game-level state; accesses `logFile`.
+/// @param restart Whether initialization or shutdown belongs to a map restart.
 function shutdown(level,restart)
   state = get(level)
   if typeof(restart) != "int" or restart < -2147483648 or restart > 2147483647 then return error(476,"Invalid native restart argument") end if

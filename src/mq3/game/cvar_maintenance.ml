@@ -4,16 +4,20 @@
 package mq3.game.cvar_maintenance
 import mq3.compat.numeric as n
 import std.string as strings
+/// `State` record for cvar maintenance, containing `password`, `passwordModificationCount` and `lastPasswordModificationCount`.
 struct State
   password
   passwordModificationCount
   lastPasswordModificationCount
 end struct
+/// Create a `mq3.game.cvar_maintenance.State` record, initializing `lastPasswordModificationCount` as `-1`.
 function create()
   // This state has game-module lifetime. Reuse it across level resets within
   // the same module; create a fresh instance when loading a new game module.
   return State("",0,-1)
 end function
+/// Use `level.cvarSetFn` to perform `check`.
+/// @param level Game-level state; accesses `cvarMaintenance` and `cvarSetFn`.
 function check(level)
   state = level.cvarMaintenance
   if state == void then return error(490,"CheckCvars requires game-module Cvar state") end if

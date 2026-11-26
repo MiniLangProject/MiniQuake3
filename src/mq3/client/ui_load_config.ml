@@ -10,9 +10,15 @@ const ID_LIST=12
 const ID_LEFT=13
 const ID_RIGHT=14
 const MAX_CONFIGS=128
+/// Stores UI load config load config menu record, including `wrapAround`, `fullscreen`, `names`, `selected`, `goHidden`, `assets` and additional values.
 struct LoadConfigMenu wrapAround fullscreen names selected goHidden assets commands actions end struct
+/// Calls `std.string.toLowerAscii`, `std.string.endsWith`, `std.string.substr` and additional helpers from UI load config `displayName`. The final path returns `strings.toUpperAscii(name)`.
+/// @param name Name whose length/content is inspected by `displayName`.
 function displayName(name) lower=strings.toLowerAscii(name);if strings.endsWith(lower,".cfg") then name=strings.substr(name,0,len(name)-4) end if;return strings.toUpperAscii(name) end function
 // LoadConfig_MenuEvent
+/// @param menu Mutable UI load config record/storage; this routine assigns `menu.commands`, `menu.actions`.
+/// @param id Value used by `if id==ID_GO and not menu.goHidden then menu.commands=menu.commands+["exec "+menu.names[menu.selected]+"\n"]`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function event(menu,id,eventCode)
   if eventCode!=QM_ACTIVATED then return menu end if
   if id==ID_GO and not menu.goHidden then menu.commands=menu.commands+["exec "+menu.names[menu.selected]+"\n"];menu.actions=menu.actions+["pop"]
@@ -24,10 +30,12 @@ end function
 // UI_LoadConfig_Cache
 function cache() return ["menu/art/back_0","menu/art/back_1","menu/art/load_0","menu/art/load_1","menu/art/frame2_l","menu/art/frame1_r","menu/art/arrows_horz_0","menu/art/arrows_horz_left","menu/art/arrows_horz_right"] end function
 // LoadConfig_MenuInit
+/// @param files Value used by `for each file in files if len(names)<MAX_CONFIGS then names=names+[displayName(file)] end if end for`.
 function init(files)
   names=[];for each file in files if len(names)<MAX_CONFIGS then names=names+[displayName(file)] end if end for
   hidden=len(names)==0;if hidden then names=["No Files Found."] end if
   return LoadConfigMenu(true,true,names,0,hidden,cache(),[],[])
 end function
 // UI_LoadConfigMenu
+/// @param files Value used by `menu=init(files)`.
 function open(files) menu=init(files);menu.actions=menu.actions+["push"];return menu end function

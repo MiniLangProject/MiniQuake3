@@ -38,9 +38,16 @@ const INVENTORY_REGEN=headers.INVENTORY_REGEN
 const INVENTORY_FLIGHT=headers.INVENTORY_FLIGHT
 const INVENTORY_REDFLAG=headers.INVENTORY_REDFLAG
 const INVENTORY_BLUEFLAG=headers.INVENTORY_BLUEFLAG
+/// `Services` record for bot inventory ai, containing `chooseBestFn`, `selectWeaponFn`, `floatTimeFn`, `entityInfoFn` and `checkItemPickupFn` and related fields.
 struct Services chooseBestFn selectWeaponFn floatTimeFn entityInfoFn checkItemPickupFn context end struct
+/// Create a `mq3.game.bot_inventory_ai.Services` record with the declared empty defaults.
 function create() return Services(void,void,void,void,void,void) end function
+/// Convert a truth value to the integer one or zero for inventory flags.
+/// @param value Value used by `bit` in `if value then return 1 end if return 0`.
 function bit(value) if value then return 1 end if return 0 end function
+/// Set `bot.weaponchangeTime` to `services.floatTimeFn(services)` and `bot.weaponnum` to `newWeapon` in `mq3.game.bot_inventory_ai.chooseWeapon`.
+/// @param services Host service callbacks; accesses `selectWeaponFn`, `chooseBestFn` and `floatTimeFn`.
+/// @param bot Bot AI state; accesses `curPs`, `client`, `weaponnum`, `ws` and `inventory` and related fields. May update `bot.weaponchangeTime` and `bot.weaponnum` in place.
 function chooseWeapon(services,bot)
   if bot.curPs.weaponstate==c.WEAPON_RAISING or bot.curPs.weaponstate==c.WEAPON_DROPPING then
     services.selectWeaponFn(services,bot.client,bot.weaponnum);return void
@@ -49,12 +56,19 @@ function chooseWeapon(services,bot)
   if bot.weaponnum!=newWeapon then bot.weaponchangeTime=services.floatTimeFn(services) end if
   bot.weaponnum=newWeapon;services.selectWeaponFn(services,bot.client,bot.weaponnum);return void
 end function
+/// Set `bot.inventory[ENEMY_HEIGHT]` to `n.trunc32(dz)` and `bot.inventory[ENEMY_HORIZONTAL_DIST]` to `n.trunc32(n.fsqrt(n.fadd(n.fmul(dx,dx),n.fmul(dy,dy))))` in `mq3.game.bot_inventory_ai.updateBattleInventory`.
+/// @param services Host service callbacks; accesses `entityInfoFn`.
+/// @param bot Bot AI state; accesses `origin` and `inventory`. May update `bot.inventory[ENEMY_HEIGHT]` and `bot.inventory[ENEMY_HORIZONTAL_DIST]` in place.
+/// @param enemy Value passed as argument 2 to `services.entityInfoFn`.
 function updateBattleInventory(services,bot,enemy)
   ent=services.entityInfoFn(services,enemy);dx=n.fsub(ent.origin[0],bot.origin[0]);dy=n.fsub(ent.origin[1],bot.origin[1]);dz=n.fsub(ent.origin[2],bot.origin[2])
   bot.inventory[ENEMY_HEIGHT]=n.trunc32(dz)
   bot.inventory[ENEMY_HORIZONTAL_DIST]=n.trunc32(n.fsqrt(n.fadd(n.fmul(dx,dx),n.fmul(dy,dy))))
   return void
 end function
+/// Update `bot.inventory[INVENTORY_ARMOR]`, `bot.inventory[INVENTORY_GAUNTLET]`, `bot.inventory[INVENTORY_SHOTGUN]` and `bot.inventory[INVENTORY_MACHINEGUN]` and related state during `updateInventory`.
+/// @param services Host service callbacks; accesses `checkItemPickupFn`.
+/// @param bot Bot AI state; accesses `inventory` and `curPs`. May update `bot.inventory[INVENTORY_ARMOR]`, `bot.inventory[INVENTORY_GAUNTLET]` and `bot.inventory[INVENTORY_SHOTGUN]` and additional fields in place.
 function updateInventory(services,bot)
   old=[];for each value in bot.inventory old=old+[value] end for;p=bot.curPs;weapons=p.stats[c.STAT_WEAPONS]
   bot.inventory[INVENTORY_ARMOR]=p.stats[c.STAT_ARMOR]

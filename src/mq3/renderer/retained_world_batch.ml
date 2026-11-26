@@ -10,17 +10,57 @@ import mq3.renderer.playable_fog as fog
 import mq3.renderer.playable_dynamic_lights as lights
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as n
+/// Gathers selected face runs as 128-byte triangle records after validating all spans and overlap.
+/// @param source Read-only packed source records.
+/// @param sourceBytes Available size of the source buffer in bytes.
+/// @param sourceCount Number of source records available to the gather operation.
+/// @param target Writable destination storage; must not overlap any input range.
+/// @param targetBytes Writable capacity of the destination buffer in bytes.
+/// @param runs Read-only eight-byte face-run records: first source record and record count.
+/// @param runBytes Size of the per-face first/count table in bytes.
+/// @param selected Read-only packed 32-bit face indices, retained in this exact order.
+/// @param selectedBytes Size of the selected-face index buffer in bytes.
+/// @param selectedCount Number of 32-bit face indices to gather in selection order.
+/// @returns Gathered record count; -1 invalid buffers, -2 face index, -3 source span, -4 capacity, or -5 overlap.
 extern function gatherNative(source as ptr,sourceBytes as i32,sourceCount as i32,target as ptr,targetBytes as i32,runs as ptr,runBytes as i32,selected as ptr,selectedBytes as i32,selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_world_records" returns i32
+/// Gathers selected face runs as 36-byte triangle-normal records after validating all spans and overlap.
+/// @param source Read-only packed source records.
+/// @param sourceBytes Available size of the source buffer in bytes.
+/// @param sourceCount Number of source records available to the gather operation.
+/// @param target Writable destination storage; must not overlap any input range.
+/// @param targetBytes Writable capacity of the destination buffer in bytes.
+/// @param runs Read-only eight-byte face-run records: first source record and record count.
+/// @param runBytes Size of the per-face first/count table in bytes.
+/// @param selected Read-only packed 32-bit face indices, retained in this exact order.
+/// @param selectedBytes Size of the selected-face index buffer in bytes.
+/// @param selectedCount Number of 32-bit face indices to gather in selection order.
+/// @returns Gathered record count; -1 invalid buffers, -2 face index, -3 source span, -4 capacity, or -5 overlap.
 extern function gatherSpecularNative(source as ptr,sourceBytes as i32,sourceCount as i32,target as ptr,targetBytes as i32,runs as ptr,runBytes as i32,selected as ptr,selectedBytes as i32,selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_specular_normals" returns i32
+/// Data record for `mq3.renderer.retained_world_batch.Stream`; groups `source`, `count`, `runs`, `firsts`, `counts`, `draw`, and 3 further fields.
 struct Stream source count runs firsts counts draw fullPass activePass primed end struct
+/// Data record for `mq3.renderer.retained_world_batch.Cache`; groups `world`, `catalog`, `skyFlags`, `fogCatalog`, `lightCatalog`, `receiveFlags`, and 14 further fields.
 struct Cache world catalog skyFlags fogCatalog lightCatalog receiveFlags full base streams fogStream dlightCommands fallbackFaces faces active last enabled reason selections fallbacks staticPrimes end struct
+/// Creates error `7494` with message `"retained world batch: "+text`.
+/// @param text Input used in the result expression `error(7494,"retained world batch: "+text)`.
 function fail(text) return error(7494,"retained world batch: "+text) end function
+/// Constructs `mq3.renderer.retained_world_batch.Cache` with `full` = `void`, `base` = `void`, `streams` = `[]`, `fogStream` = `void` and the supplied remaining values.
+/// @param world Initial value for `mq3.renderer.retained_world_batch.Cache.world`.
+/// @param catalog Initial value for `mq3.renderer.retained_world_batch.Cache.catalog`.
+/// @param skyFlags Initial value for `mq3.renderer.retained_world_batch.Cache.skyFlags`.
+/// @param fogCatalog Initial value for `mq3.renderer.retained_world_batch.Cache.fogCatalog`.
+/// @param lightCatalog Initial value for `mq3.renderer.retained_world_batch.Cache.lightCatalog`.
+/// @param receiveFlags Initial value for `mq3.renderer.retained_world_batch.Cache.receiveFlags`.
 function blank(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
   return Cache(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags,void,void,[],void,void,[],void,void,void,false,"",0,0,0)
 end function
+/// Computes `material!=void and (batches.hasDeform(material.deforms,"autosprite") or batches.hasDeform(material.deforms,"autosprite2"))` for `mq3.renderer.retained_world_batch.unsupported`.
+/// @param material Record providing `material.deforms`.
 function unsupported(material)
   return material!=void and (batches.hasDeform(material.deforms,"autosprite") or batches.hasDeform(material.deforms,"autosprite2"))
 end function
+/// Creates a mutable draw-stage view with fresh per-triangle arrays while preserving the full stage's shader configuration.
+/// @param full Record providing `full.commands`, `full.vertexCache`, `full.specularNormals`, `full.fogAdjustment`, `full.stage`, `full.textureIndex`.
+/// @param commands Record providing `commands.count`.
 function stageView(full,commands)
   count=full.commands.count;vertexCache=void
   if full.vertexCache!=void then
@@ -30,6 +70,13 @@ function stageView(full,commands)
   specularNormals=void;if full.specularNormals!=void then specularNormals=bytes(count*36,0) end if
   return batches.StagePass(commands,array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),array(count,void),[],full.fogAdjustment,full.stage,full.textureIndex,full.deforms,full.normalNoise,vertexCache,0,full.primary,full.depthEqual,full.sort,full.polygonOffset,full.timeOffset,full.clampTime,false,specularNormals)
 end function
+/// Builds `mq3.renderer.retained_world_batch.Stream` after updating `firsts[face]`, `counts[face]`.
+/// @param state Record providing `state.world`, `state.fogCatalog`, `state.skyFlags`.
+/// @param data Record providing `data.triangles`.
+/// @param commands Record providing `commands.count`, `commands.data`.
+/// @param pass Initial value for `mq3.renderer.retained_world_batch.Stream.fullPass`.
+/// @param mode Input tested by `mode==2`.
+/// @param lookup Indexed input read at `triangle.textureIndex`.
 function makeStream(state,data,commands,pass,mode,lookup)
   faceCount=len(state.world.trianglesByFace);firsts=array(faceCount,0);counts=array(faceCount,0);runs=bytes(faceCount*8,0);record=0
   for each triangle in data.triangles
@@ -61,6 +108,13 @@ function makeStream(state,data,commands,pass,mode,lookup)
   activePass=void;if pass!=void then activePass=stageView(pass,draw) end if
   return Stream(commands.data,commands.count,runs,firsts,counts,draw,pass,activePass,primed)
 end function
+/// Builds `state.reason`, `indexes[index]`, `state.full`, `state.fallbackFaces`, `state.fallbackFaces[face]` in `mq3.renderer.retained_world_batch.create`; returns `state`.
+/// @param world Record providing `world.totalTriangleCount`, `world.trianglesByFace`, `world.faceTextureIndexes`.
+/// @param catalog Value forwarded as `catalog` to `mq3.renderer.retained_world_batch.blank`.
+/// @param skyFlags Value forwarded as `skyFlags` to `mq3.renderer.retained_world_batch.blank`.
+/// @param fogCatalog Value forwarded as `fogCatalog` to `mq3.renderer.retained_world_batch.blank`.
+/// @param lightCatalog Value forwarded as `lightCatalog` to `mq3.renderer.retained_world_batch.blank`.
+/// @param receiveFlags Value forwarded as `receiveFlags` to `mq3.renderer.retained_world_batch.blank`.
 function create(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
   if world==void or catalog==void or skyFlags==void or receiveFlags==void then return fail("world/material tables are required") end if
   state=blank(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
@@ -97,6 +151,10 @@ function create(world,catalog,skyFlags,fogCatalog,lightCatalog,receiveFlags)
   state.active=batches.MaterialBatch(state.base.draw,[],0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,activeFog,fogCatalog,activeLights,lightCatalog)
   state.enabled=true;return state
 end function
+/// Updates `stream.draw.count` in `mq3.renderer.retained_world_batch.gather`; returns `written`.
+/// @param stream Mutable record or buffer; this call updates `stream.draw.count`.
+/// @param packed Read-only selected face indices, packed as 32-bit integers in draw order.
+/// @param count Value forwarded as `selectedCount` to `mq3.renderer.retained_world_batch.gatherNative`.
 function gather(stream,packed,count)
   written=gatherNative(nativeBytesPtr(stream.source),len(stream.source),stream.count,nativeBytesPtr(stream.draw.data),len(stream.draw.data),nativeBytesPtr(stream.runs),len(stream.runs),nativeBytesPtr(packed),len(packed),count)
   if written<0 then return fail("native record gather rejected input code="+str(written)) end if
@@ -107,6 +165,10 @@ function gather(stream,packed,count)
   end if
   stream.draw.count=written;return written
 end function
+/// Builds `active.fogIndexes`, `active.sourceUvs[outputIndex]`, `active.sourceDeformUvs[outputIndex]`, `active.sourcePositions[outputIndex]`, `active.sourceIndexes[outputIndex]` in `mq3.renderer.retained_world_batch.stageSources`; returns `active`.
+/// @param stream Record providing `stream.fullPass`, `stream.activePass`, `stream.draw`, `stream.firsts`, `stream.counts`, `stream.primed`.
+/// @param faces Sequence traversed as `face` while producing this result.
+/// @param fogCatalog Input tested by `fogCatalog!=void`.
 function stageSources(stream,faces,fogCatalog)
   full=stream.fullPass;active=stream.activePass;outputIndex=0
   // These arrays hold triangle-row references, never copies of vertices.
@@ -127,6 +189,9 @@ function stageSources(stream,faces,fogCatalog)
   // would allow a prior selection's shared vertex-cache epoch to match.
   active.initialized=stream.primed;return active
 end function
+/// Builds `target.sourcePositions[outputIndex]`, `target.fogIndexes[outputIndex]` in `mq3.renderer.retained_world_batch.refreshFog`; returns `true`.
+/// @param state Record providing `state.fogStream`, `state.full`, `state.active`.
+/// @param faces Sequence traversed as `face` while producing this result.
 function refreshFog(state,faces)
   if state.fogStream==void then return true end if
   source=state.full.fogBatch;target=state.active.fogBatch;outputIndex=0;stream=state.fogStream
@@ -137,6 +202,9 @@ function refreshFog(state,faces)
   if outputIndex!=target.commands.count then return fail("active fog metadata differs from gathered records") end if
   return true
 end function
+/// Updates `state.active.dlightBatch.triangles` in `mq3.renderer.retained_world_batch.refreshLights`; returns `true`.
+/// @param state Mutable record or buffer; this call updates `state.active.dlightBatch.triangles`.
+/// @param data Record providing `data.triangles`.
 function refreshLights(state,data)
   if state.active.dlightBatch==void then return true end if
   count=0
@@ -146,12 +214,17 @@ function refreshLights(state,data)
   for each triangle in data.triangles if triangle.textureIndex>=0 and triangle.textureIndex<len(state.receiveFlags) and state.receiveFlags[triangle.textureIndex] then triangles[index]=triangle;index=index+1 end if end for
   state.active.dlightBatch.triangles=triangles;return true
 end function
+/// Updates `state.fallbacks` in `mq3.renderer.retained_world_batch.legacy`; returns `result`.
+/// @param state Mutable record or buffer; this call updates `state.fallbacks`.
+/// @param chosen Record providing `chosen.renderData`.
 function legacy(state,chosen)
   result=batches.buildMaterials(chosen.renderData,state.catalog,state.skyFlags);if result is error then return result end if
   if state.fogCatalog!=void then value=batches.attachFog(result,chosen.renderData,state.fogCatalog);if value is error then return value end if end if
   if state.lightCatalog!=void then value=batches.attachDynamicLights(result,chosen.renderData,state.receiveFlags,state.lightCatalog);if value is error then return value end if end if
   state.fallbacks=state.fallbacks+1;return result
 end function
+/// Updates `batch.animatedPasses`, `batch.uvModifiedPasses`, `batch.blendedPasses`, `batch.generatorPasses`, `batch.alphaTestPasses` in `mq3.renderer.retained_world_batch.counters`; returns `batch`.
+/// @param batch Mutable record or buffer; this call updates `batch.animatedPasses`, `batch.uvModifiedPasses`, `batch.blendedPasses`, `batch.generatorPasses`, `batch.alphaTestPasses`.
 function counters(batch)
   batch.animatedPasses=0;batch.uvModifiedPasses=0;batch.blendedPasses=0;batch.generatorPasses=0;batch.alphaTestPasses=0;batch.turbulentPasses=0;batch.stretchPasses=0;batch.environmentPasses=0;batch.filterPasses=0;batch.destinationAlphaPasses=0;batch.clampedPasses=0;batch.deformedPasses=0;batch.polygonOffsetPasses=0
   for each pass in batch.passes
@@ -172,6 +245,9 @@ function counters(batch)
   end for
   return batch
 end function
+/// Updates `state.selections`, `state.faces`, `state.last` in `mq3.renderer.retained_world_batch.select`; returns `batch`.
+/// @param state Mutable record or buffer; this call updates `state.selections`, `state.faces`, `state.last`.
+/// @param chosen Record providing `chosen.selection`, `chosen.renderData`.
 function select(state,chosen)
   if state==void or chosen==void or chosen.selection==void or chosen.renderData==void then return fail("cache and selected world are required") end if
   faces=chosen.selection.faceIndexes

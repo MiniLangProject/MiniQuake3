@@ -13,6 +13,9 @@ import mq3.game.constants as c
 import mq3.compat.numeric as n
 import mq3.game.bot_clients as botClients
 
+/// Set `level.clients[winner].wins` to `n.add32(level.clients[winner].wins,1)` in `mq3.game.client_disconnect.disconnect`.
+/// @param level Game-level state; accesses `removeQueuedBotBeginFn`, `lifecycleState`, `entities`, `maxclients` and `clients` and related fields. May update `level.clients[winner].wins` in place.
+/// @param slot Slot in the owning table or pool.
 function disconnect(level,slot)
   if slot < 0 or slot >= 64 then return error(492,"Invalid disconnecting client slot") end if
   if level.removeQueuedBotBeginFn != void then level.removeQueuedBotBeginFn(level,slot)

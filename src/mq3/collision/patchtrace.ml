@@ -8,22 +8,28 @@ import mq3.shared.math as q
 import mq3.collision.patchmesh as mesh
 import mq3.collision.winding as w
 
+/// Adjusted record for collision.patchtrace, containing `plane`, `start`, `finish`.
 struct Adjusted
   plane
   start
   finish
 end struct
+/// Clip record for collision.patchtrace, containing `enter`, `leave`, `hit`.
 struct Clip
   enter
   leave
   hit
 end struct
+/// DebugState record for collision.patchtrace, containing `patch`, `facet`.
 struct DebugState
   patch
   facet
 end struct
 
+/// Create `mq3.collision.patchtrace.DebugState` with patch=void; facet=- 1.
 function CM_ClearLevelPatches() return DebugState(void,-1) end function
+/// Compute draw debug surface in collision.patchtrace; the normal completion returns `result`.
+/// @param state Record exposing `patch`, `facet`.
 function CM_DrawDebugSurface(state)
   if state==void or state.patch==void then return [] end if
   result=[];index=0
@@ -37,6 +43,11 @@ function CM_DrawDebugSurface(state)
   return result
 end function
 
+/// Project the box support corner selected by the plane sign bits onto the plane normal.
+/// @param work Trace work record with three-element mins and maxs bounds.
+/// @param signbits Low three bits select maxs instead of mins for X, Y, and Z.
+/// @param normal Three-element plane-normal vector.
+/// @returns The binary32 dot product of the selected corner and the normal.
 function cornerDot(work,signbits as int,normal as array) returns float
   x=work.mins[0];y=work.mins[1];z=work.mins[2]
   if (signbits&1)!=0 then x=work.maxs[0] end if
@@ -45,6 +56,11 @@ function cornerDot(work,signbits as int,normal as array) returns float
   return n.dot3(x,y,z,normal[0],normal[1],normal[2])
 end function
 
+/// Compute adjusted in collision.patchtrace; the normal completion returns `Adjusted(mesh.Plane(normal, distance, p.signbits), a, b)`.
+/// @param work Record exposing `start`, `finish`, `capsule`, `radius`, `capsuleOffset`.
+/// @param original Record exposing `signbits`.
+/// @param inward Inward operand used by `adjusted`; its reads are shown in the implementation.
+/// @param border Border operand used by `adjusted`; its reads are shown in the implementation.
 function adjusted(work,original,inward,border)
   p = original
   if inward then p = mesh.inverted(p,false) end if
@@ -63,6 +79,11 @@ function adjusted(work,original,inward,border)
   return Adjusted(mesh.Plane(normal,distance,p.signbits),a,b)
 end function
 
+/// Check plane in collision.patchtrace; the normal completion returns `true`.
+///
+/// Direct state writes: `clip.hit`, `clip.enter`, `clip.leave`.
+/// @param adjusted Record exposing `plane`, `start`, `finish`.
+/// @param clip Record exposing `enter`, `leave`. Updated in place: `hit`, `enter`, `leave`.
 function checkPlane(adjusted,clip)
   clip.hit = false
   p = adjusted.plane
@@ -81,8 +102,15 @@ function checkPlane(adjusted,clip)
   end if
   return true
 end function
+/// Return `mq3.collision.patchtrace.checkPlane(adjusted, clip)` from `collision.patchtrace.CM_CheckFacetPlane`.
+/// @param adjusted Adjusted passed as `adjusted` to `mq3.collision.patchtrace.checkPlane`.
+/// @param clip Clip passed as `clip` to `mq3.collision.patchtrace.checkPlane`.
 function CM_CheckFacetPlane(adjusted,clip) return checkPlane(adjusted,clip) end function
 
+/// Trace point in collision.patchtrace.
+/// @param work Record exposing `isPoint`, `start`, `finish`, `trace`.
+/// @param patch Record exposing `planes`, `facets`.
+/// @param playerCurveClip Player curve clip used in `(not playerCurveClip or not work.isPoint)`.
 function tracePoint(work,patch,playerCurveClip)
   if not playerCurveClip or not work.isPoint then return void end if
   front = array(len(patch.planes),false);intersections = array(len(patch.planes),0.0)
@@ -127,8 +155,16 @@ function tracePoint(work,patch,playerCurveClip)
   end for
   return void
 end function
+/// Return `mq3.collision.patchtrace.tracePoint(work, patch, playerCurveClip)` from `collision.patchtrace.CM_TracePointThroughPatchCollide`.
+/// @param work Work passed as `work` to `mq3.collision.patchtrace.tracePoint`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchtrace.tracePoint`.
+/// @param playerCurveClip Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.tracePoint`.
 function CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) return tracePoint(work,patch,playerCurveClip) end function
 
+/// Trace patchtrace in collision.patchtrace.
+/// @param work Record exposing `isPoint`, `trace`.
+/// @param patch Record exposing `facets`, `planes`.
+/// @param playerCurveClip Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.CM_TracePointThroughPatchCollide`.
 function trace(work,patch,playerCurveClip)
   if work.isPoint then return CM_TracePointThroughPatchCollide(work,patch,playerCurveClip) end if
   clip=Clip(-1.0,1.0,false)
@@ -152,8 +188,15 @@ function trace(work,patch,playerCurveClip)
   end for
   return void
 end function
+/// Return `mq3.collision.patchtrace.trace(work, patch, playerCurveClip)` from `collision.patchtrace.CM_TraceThroughPatchCollide`.
+/// @param work Work passed as `work` to `mq3.collision.patchtrace.trace`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchtrace.trace`.
+/// @param playerCurveClip Player curve clip passed as `playerCurveClip` to `mq3.collision.patchtrace.trace`.
 function CM_TraceThroughPatchCollide(work,patch,playerCurveClip) return trace(work,patch,playerCurveClip) end function
 
+/// Test position test in collision.patchtrace; the normal completion returns `false`.
+/// @param work Record exposing `isPoint`.
+/// @param patch Record exposing `facets`, `planes`.
 function positionTest(work,patch)
   if work.isPoint then return false end if
   for each facet in patch.facets
@@ -169,4 +212,7 @@ function positionTest(work,patch)
   end for
   return false
 end function
+/// Return `mq3.collision.patchtrace.positionTest(work, patch)` from `collision.patchtrace.CM_PositionTestInPatchCollide`.
+/// @param work Work passed as `work` to `mq3.collision.patchtrace.positionTest`.
+/// @param patch Patch passed as `patch` to `mq3.collision.patchtrace.positionTest`.
 function CM_PositionTestInPatchCollide(work,patch) return positionTest(work,patch) end function

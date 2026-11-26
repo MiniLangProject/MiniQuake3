@@ -32,50 +32,131 @@ const SE_HITGROUNDAREA=1024
 const SE_TOUCHCLUSTERPORTAL=4096
 const SE_HITBOUNDINGBOX=2048
 
+/// `Settings` record for aas client movement, containing `friction`, `stopspeed`, `gravity`, `waterfriction` and `watergravity` and related fields.
 struct Settings friction stopspeed gravity waterfriction watergravity maxwalkvelocity maxcrouchvelocity maxswimvelocity walkaccelerate airaccelerate swimaccelerate maxstep maxsteepness maxbarrier jumpvel end struct
+/// `Trace` record for aas client movement, containing `startsolid`, `fraction`, `endpos`, `ent` and `lastarea` and related fields.
 struct Trace startsolid fraction endpos ent lastarea area planenum normal end struct
+/// `AreaTrace` record for aas client movement, containing `areas` and `points`.
 struct AreaTrace areas points end struct
+/// `Movement` record for aas client movement, containing `success`, `endpos`, `endarea`, `velocity` and `trace` and related fields.
 struct Movement success endpos endarea velocity trace presencetype stopevent endcontents time frames end struct
+/// `Services` record for aas client movement, containing `context`, `traceFn`, `pointContentsFn`, `pointAreaFn` and `pointPresenceFn` and related fields.
 struct Services context traceFn pointContentsFn pointAreaFn pointPresenceFn areaContentsFn traceAreasFn settings end struct
 
+/// Create a `mq3.botlib.aas_client_movement.Settings` record, initializing `friction` as `6.0`, `stopspeed` as `100.0` and `gravity` as `800.0`.
 function settings() return Settings(6.0,100.0,800.0,1.0,400.0,320.0,100.0,150.0,10.0,1.0,4.0,19.0,0.7,33.0,270.0) end function
+/// Create a `mq3.botlib.aas_client_movement.Services` record, initializing `context` from `context` and `settings` as `settings()`.
+/// @param context Context forwarded to the configured host callbacks.
 function services(context) return Services(context,void,void,void,void,void,void,settings()) end function
+/// Construct error `7540` with diagnostic text `"AAS client movement: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7540,"AAS client movement: "+message) end function
+/// Copy `v[0]`, `v[1]` and `v[2]` into a new ordered array for aas client movement.
+/// @param v Three-component array; components 0, 1 and 2 are used in their stored order.
 function copy(v) return [v[0],v[1],v[2]] end function
+/// Create a `mq3.botlib.aas_client_movement.Trace` record, initializing `endpos` as `[0.0,0.0,0.0]` and `normal` as `[0.0,0.0,0.0]`.
 function zeroTrace() return Trace(false,0.0,[0.0,0.0,0.0],0,0,0,0,[0.0,0.0,0.0]) end function
+/// Return the result of `n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(a[2],b[2]))` for `dot`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function dot(a,b) return n.fadd(n.fadd(n.fmul(a[0],b[0]),n.fmul(a[1],b[1])),n.fmul(a[2],b[2])) end function
+/// Return a new array `[n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])]` for `add`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function add(a,b) return [n.fadd(a[0],b[0]),n.fadd(a[1],b[1]),n.fadd(a[2],b[2])] end function
+/// Return a new array `[n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])]` for `sub`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function sub(a,b) return [n.fsub(a[0],b[0]),n.fsub(a[1],b[1]),n.fsub(a[2],b[2])] end function
+/// Return a new array `[n.fmul(a[0],value),n.fmul(a[1],value),n.fmul(a[2],value)]` for `scale`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param value Value passed as argument 2 to `mq3.compat.numeric.fmul`.
 function scale(a,value) return [n.fmul(a[0],value),n.fmul(a[1],value),n.fmul(a[2],value)] end function
+/// Forward `ma` to `mq3.botlib.aas_client_movement.add` and return the delegated result.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param value Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function ma(a,value,b) return add(a,scale(b,value)) end function
+/// Forward `length` to `mq3.compat.numeric.fsqrt` and return the delegated result.
+/// @param v Three-component array; components 0, 1 and 2 are used in their stored order.
 function length(v) return n.fsqrt(dot(v,v)) end function
+/// Apply `mq3.botlib.aas_client_movement.length` and `mq3.botlib.aas_client_movement.scale` while evaluating `normalize`. Return paths include `[magnitude,scale(v,n.fdiv(1.0,magnitude))]`.
+/// @param v Three-component array; components 0, 1 and 2 are used in their stored order.
 function normalize(v)
   magnitude=length(v);if magnitude==0.0 then return [0.0,[0.0,0.0,0.0]] end if;return [magnitude,scale(v,n.fdiv(1.0,magnitude))]
 end function
+/// Use `s.traceFn` to perform `callTrace`. Return paths include `s.traceFn(s.context,start,finish,presence,passEntity)`.
+/// @param s S record; accesses `traceFn` and `context`.
+/// @param start Value passed as argument 2 to `s.traceFn`.
+/// @param finish Value passed as argument 3 to `s.traceFn`.
+/// @param presence Value passed as argument 4 to `s.traceFn`.
+/// @param passEntity Value passed as argument 5 to `s.traceFn`.
 function callTrace(s,start,finish,presence,passEntity) if s==void or s.traceFn==void then return fail("trace callback missing") end if;return s.traceFn(s.context,start,finish,presence,passEntity) end function
+/// Use `s.pointContentsFn` to perform `pointContents`. Return paths include `s.pointContentsFn(s.context,point)`.
+/// @param s S record; accesses `pointContentsFn` and `context`.
+/// @param point Three-component point used by the geometric query.
 function pointContents(s,point) if s.pointContentsFn==void then return 0 end if;return s.pointContentsFn(s.context,point) end function
+/// Use `s.pointAreaFn` to perform `pointArea`. Return paths include `s.pointAreaFn(s.context,point)`.
+/// @param s S record; accesses `pointAreaFn` and `context`.
+/// @param point Three-component point used by the geometric query.
 function pointArea(s,point) if s.pointAreaFn==void then return 0 end if;return s.pointAreaFn(s.context,point) end function
+/// Use `s.pointPresenceFn` to perform `pointPresence`. Return paths include `s.pointPresenceFn(s.context,point)`.
+/// @param s S record; accesses `pointPresenceFn` and `context`.
+/// @param point Three-component point used by the geometric query.
 function pointPresence(s,point) if s.pointPresenceFn==void then return 0 end if;return s.pointPresenceFn(s.context,point) end function
+/// Use `s.areaContentsFn` to perform `callAreaContents`. Return paths include `s.areaContentsFn(s.context,area)`.
+/// @param s S record; accesses `areaContentsFn` and `context`.
+/// @param area Value passed as argument 2 to `s.areaContentsFn`.
 function callAreaContents(s,area) if s.areaContentsFn==void then return 0 end if;return s.areaContentsFn(s.context,area) end function
+/// Use `s.traceAreasFn` to perform `callTraceAreas`. Return paths include `s.traceAreasFn(s.context,start,finish,20)`.
+/// @param s S record; accesses `traceAreasFn` and `context`.
+/// @param start Value passed as argument 2 to `s.traceAreasFn`.
+/// @param finish Value passed as argument 3 to `s.traceAreasFn`.
 function callTraceAreas(s,start,finish) if s.traceAreasFn==void then return AreaTrace([],[]) end if;return s.traceAreasFn(s.context,start,finish,20) end function
 
+/// Apply `mq3.botlib.aas_client_movement.copy` and `mq3.botlib.aas_client_movement.pointContents` while evaluating `swimming`. Return paths include `(pointContents(s,test)&(CONTENTS_LAVA|CONTENTS_SLIME|CONTENTS_WATER))!=0`.
+/// @param s S record; accesses `pointContentsFn` and `context`.
+/// @param origin World-space position as three coordinates.
 function swimming(s,origin)
   test=copy(origin);test[2]=n.fsub(test[2],2.0);return (pointContents(s,test)&(CONTENTS_LAVA|CONTENTS_SLIME|CONTENTS_WATER))!=0
 end function
+/// Set `velocity[axis]` to `n.fadd(velocity[axis],n.fmul(amount,wishdir[axis]))` in `mq3.botlib.aas_client_movement.accelerate`. Return paths include `velocity`.
+/// @param velocity Three-component movement velocity. Entries may be updated in place.
+/// @param frametime Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param wishdir Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param wishspeed Value passed as argument 1 to `mq3.compat.numeric.fsub`.
+/// @param acceleration Value passed as argument 1 to `mq3.compat.numeric.fmul`.
 function accelerate(velocity,frametime,wishdir,wishspeed,acceleration)
   current=dot(velocity,wishdir);additional=n.fsub(wishspeed,current);if additional<=0.0 then return velocity end if
   amount=n.fmul(n.fmul(acceleration,frametime),wishspeed);if amount>additional then amount=additional end if
   for axis=0 to 2 velocity[axis]=n.fadd(velocity[axis],n.fmul(amount,wishdir[axis])) end for;return velocity
 end function
+/// Set `velocity[0]` to `n.fmul(velocity[0],ratio)` and `velocity[1]` to `n.fmul(velocity[1],ratio)` in `mq3.botlib.aas_client_movement.applyFriction`. Return paths include `velocity`.
+/// @param velocity Three-component movement velocity. Entries may be updated in place.
+/// @param friction Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param stopspeed Value used by `applyFriction` in `if control<stopspeed then control=stopspeed end if`.
+/// @param frametime Value passed as argument 1 to `mq3.compat.numeric.fmul`.
 function applyFriction(velocity,friction,stopspeed,frametime)
   speed=n.fsqrt(n.fadd(n.fmul(velocity[0],velocity[0]),n.fmul(velocity[1],velocity[1])));if speed==0.0 then return velocity end if
   control=speed;if control<stopspeed then control=stopspeed end if;newspeed=n.fsub(speed,n.fmul(n.fmul(frametime,control),friction));if newspeed<0.0 then newspeed=0.0 end if;ratio=n.fdiv(newspeed,speed)
   velocity[0]=n.fmul(velocity[0],ratio);velocity[1]=n.fmul(velocity[1],ratio);return velocity
 end function
+/// Apply `mq3.botlib.aas_client_movement.copy` and `mq3.botlib.aas_client_movement.callTrace` while evaluating `onGround`. Return paths include `trace.normal[2]>=maxSteepness`.
+/// @param s S record; accesses `traceFn` and `context`.
+/// @param origin World-space position as three coordinates.
+/// @param presence Value passed as argument 4 to `s.traceFn`.
+/// @param passEntity Value passed as argument 5 to `s.traceFn`.
+/// @param maxSteepness Operand used to evaluate the returned expression `trace.normal[2]>=maxSteepness`.
 function onGround(s,origin,presence,passEntity,maxSteepness)
   finish=copy(origin);finish[2]=n.fsub(finish[2],10.0);trace=callTrace(s,origin,finish,presence,passEntity);if trace is error or trace.startsolid or trace.fraction>=1.0 then return false end if
   if n.fsub(origin[2],trace.endpos[2])>10.0 then return false end if;return trace.normal[2]>=maxSteepness
 end function
+/// Build the `mq3.botlib.aas_client_movement.Trace` result for `clipToBBox`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param finish Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param presence AAS presence type selecting the movement bounds.
+/// @param mins Minimum coordinates of the axis-aligned bounds.
+/// @param maxs Maximum coordinates of the axis-aligned bounds.
 function clipToBBox(start,finish,presence,mins,maxs)
   if mins==void or maxs==void then return void end if;bounds=aasRuntime.presenceTypeBoundingBox(presence);if bounds is error then return void end if
   absmins=sub(mins,bounds[1]);absmaxs=sub(maxs,bounds[0]);direction=sub(finish,start)
@@ -89,14 +170,52 @@ function clipToBBox(start,finish,presence,mins,maxs)
     end if
   end for;return void
 end function
+/// Build the `mq3.botlib.aas_client_movement.Movement` result for `result`.
+/// @param success Initial value stored in `mq3.botlib.aas_client_movement.Movement.success`.
+/// @param origin World-space position as three coordinates.
+/// @param velocity Three-component movement velocity.
+/// @param frametime Value passed as argument 2 to `mq3.compat.numeric.fdiv`.
+/// @param presence Initial value stored in `mq3.botlib.aas_client_movement.Movement.presencetype`.
+/// @param event Player or entity event identifier.
+/// @param contents Initial value stored in `mq3.botlib.aas_client_movement.Movement.endcontents`.
+/// @param frames Initial value stored in `mq3.botlib.aas_client_movement.Movement.frames`.
+/// @param trace Initial value stored in `mq3.botlib.aas_client_movement.Movement.trace`.
+/// @param s S record; accesses `pointAreaFn` and `context`.
 function result(success,origin,velocity,frametime,presence,event,contents,frames,trace,s)
   outputVelocity=copy(velocity);if frametime!=0.0 then outputVelocity=scale(velocity,n.fdiv(1.0,frametime)) end if
   return Movement(success,copy(origin),pointArea(s,origin),outputVelocity,trace,presence,event,contents,n.fmul(frames,frametime),frames)
 end function
+/// Apply `mq3.botlib.aas_client_movement.result` while evaluating `stopped`.
+/// @param s S record; accesses `pointAreaFn` and `context`.
+/// @param origin World-space position as three coordinates.
+/// @param velocity Three-component movement velocity.
+/// @param frametime Value passed as argument 2 to `mq3.compat.numeric.fdiv`.
+/// @param presence Initial value stored in `mq3.botlib.aas_client_movement.Movement.presencetype`.
+/// @param event Player or entity event identifier.
+/// @param contents Initial value stored in `mq3.botlib.aas_client_movement.Movement.endcontents`.
+/// @param frame Initial value stored in `mq3.botlib.aas_client_movement.Movement.frames`.
+/// @param trace Initial value stored in `mq3.botlib.aas_client_movement.Movement.trace`.
+/// @param area Value used by `stopped` in `if area>=0 then value.endarea=area end if`.
 function stopped(s,origin,velocity,frametime,presence,event,contents,frame,trace,area)
   value=result(true,origin,velocity,frametime,presence,event,contents,frame,trace,s);if area>=0 then value.endarea=area end if;return value
 end function
 
+/// Build the `mq3.botlib.aas_client_movement.Movement` result for `predictWithBBox`. Return paths include `result(true,org,frameVelocity,frametime,presence,SE_NONE,0,frame,zeroTrace(),s)`.
+/// @param s S record; accesses `settings`.
+/// @param entnum Entity number in the game or AAS entity table.
+/// @param origin World-space position as three coordinates.
+/// @param presence Value passed as argument 4 to `s.traceFn`.
+/// @param onground Value used by `predictWithBBox` in `if onground or inWater then friction=cfg.waterfriction`.
+/// @param velocity Three-component movement velocity.
+/// @param cmdmove Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param cmdframes Value used by `predictWithBBox` in `if frame<cmdframes then`.
+/// @param maxframes Value used by `predictWithBBox` in `while frame<maxframes`.
+/// @param frametime Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param stopevents Operand used to evaluate the returned expression `stopped(s,org,frameVelocity,frametime,presence,event&stopevents,contents,frame,zeroTrace(),area)`.
+/// @param stoparea Value used by `stopped` in `if area>=0 then value.endarea=area end if`.
+/// @param mins Minimum coordinates of the axis-aligned bounds.
+/// @param maxs Maximum coordinates of the axis-aligned bounds.
+/// @param visualize Not read by this implementation; retained in the `predictWithBBox` signature.
 function predictWithBBox(s,entnum,origin,presence,onground,velocity,cmdmove,cmdframes,maxframes,frametime,stopevents,stoparea,mins,maxs,visualize)
   if s==void or origin==void or velocity==void or cmdmove==void or len(origin)!=3 or len(velocity)!=3 or len(cmdmove)!=3 then return fail("invalid prediction input") end if
   if frametime<=0.0 then frametime=0.1 end if;frametime=n.f32(frametime);cfg=s.settings;if cfg==void then cfg=settings() end if
@@ -167,6 +286,20 @@ function predictWithBBox(s,entnum,origin,presence,onground,velocity,cmdmove,cmdf
   return result(true,org,frameVelocity,frametime,presence,SE_NONE,0,frame,zeroTrace(),s)
 end function
 
+/// Forward `predict` to `mq3.botlib.aas_client_movement.predictWithBBox` and return the delegated result.
+/// @param s S record; accesses `settings`.
+/// @param entnum Entity number in the game or AAS entity table.
+/// @param origin World-space position as three coordinates.
+/// @param presence Value passed as argument 4 to `s.traceFn`.
+/// @param onground Value used by `predictWithBBox` in `if onground or inWater then friction=cfg.waterfriction`.
+/// @param velocity Three-component movement velocity.
+/// @param cmdmove Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param cmdframes Value used by `predictWithBBox` in `if frame<cmdframes then`.
+/// @param maxframes Value used by `predictWithBBox` in `while frame<maxframes`.
+/// @param frametime Value passed as argument 2 to `mq3.compat.numeric.fmul`.
+/// @param stopevents Operand used to evaluate the returned expression `stopped(s,org,frameVelocity,frametime,presence,event&stopevents,contents,frame,zeroTrace(),area)`.
+/// @param stoparea Value used by `stopped` in `if area>=0 then value.endarea=area end if`.
+/// @param visualize Value passed as argument 15 to `mq3.botlib.aas_client_movement.predictWithBBox`.
 function predict(s,entnum,origin,presence,onground,velocity,cmdmove,cmdframes,maxframes,frametime,stopevents,stoparea,visualize)
   return predictWithBBox(s,entnum,origin,presence,onground,velocity,cmdmove,cmdframes,maxframes,frametime,stopevents,stoparea,void,void,visualize)
 end function

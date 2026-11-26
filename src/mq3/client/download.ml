@@ -5,13 +5,26 @@ package mq3.client.download
 import mq3.qcommon.message as message
 
 const MAX_MSGLEN=16384
+/// Stores download state, including `downloadSize`, `downloadBlock`, `download`, `downloadTempName`, `downloadName`, `downloadCount`.
 struct State downloadSize downloadBlock download downloadTempName downloadName downloadCount end struct
+/// Stores download host-service callbacks, including `cvarValueFn`, `cvarStringFn`, `reliableFn`, `openFn`, `writeFn`, `closeFn` and additional values.
 struct Services cvarValueFn cvarStringFn reliableFn openFn writeFn closeFn renameFn packetFn nextFn printFn context end struct
 
+/// Creates a `mq3.client.download.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State(0,0,0,"","",0) end function
+/// Creates a `mq3.client.download.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void,void,void,void,void,void,void) end function
+/// Calls `service` from download `call`.
+/// @param service Value used by `if service!=void then service(host,a,b) end if`.
+/// @param host host record passed to the download helper calls.
+/// @param a Value used by `if service!=void then service(host,a,b) end if`.
+/// @param b Value used by `if service!=void then service(host,a,b) end if`.
 function call(service,host,a,b) if service!=void then service(host,a,b) end if;return void end function
 
+/// Updates `state.downloadSize`, `state.download`, `state.downloadBlock`, `state.downloadCount` and additional values during download `parseDownload`.
+/// @param state Mutable download record/storage; this routine assigns `state.downloadSize`, `state.download`, `state.downloadBlock`, `state.downloadCount` and additional values.
+/// @param host Record read through `host.cvarValueFn`, `host.printFn`, `host.reliableFn`, `host.openFn` and additional values.
+/// @param msg Record read through `msg.readcount`, `msg.cursize`.
 function parseDownload(state,host,msg)
   if state==void or host==void or msg==void then return error(6910,"download: missing state") end if
   block=message.readI16(msg)

@@ -7,6 +7,10 @@ package mq3.renderer.pvs_query
 import mq3.collision.world as collision
 import mq3.collision.visibility as visibility
 
+/// Computes `inPVS` from `(mask[secondCluster>>3]&(1<<(secondCluster&7)))!=0` using `mq3.collision.world.pointLeafnum`, `mq3.collision.visibility.leafCluster`, `mq3.collision.visibility.clusterPVS`.
+/// @param world Record providing `world.visibility`.
+/// @param firstPoint Argument 2 supplied to `mq3.collision.world.pointLeafnum`.
+/// @param secondPoint Argument 2 supplied to `mq3.collision.world.pointLeafnum`.
 function inPVS(world,firstPoint,secondPoint)
   if world==void then return false end if
   firstLeaf=collision.pointLeafnum(world,firstPoint)

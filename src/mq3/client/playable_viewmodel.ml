@@ -20,18 +20,31 @@ const SOFTWARE_DEPTHHACK_FORWARD=25.0
 const SOFTWARE_DEPTHHACK_SIDE=-1.1
 const SOFTWARE_DEPTHHACK_UP=2.0
 
+/// Stores playable viewmodel settings record, including `horizontalFov`, `gunX`, `gunY`, `gunZ`, `modelScale`.
 struct Settings horizontalFov gunX gunY gunZ modelScale end struct
+/// Stores playable viewmodel tracker record, including `bobPhase`, `lastTime`, `initialized`.
 struct Tracker bobPhase lastTime initialized end struct
+/// Stores playable viewmodel bob sample record, including `cycle`, `fraction`, `xySpeed`.
 struct BobSample cycle fraction xySpeed end struct
+/// Stores playable viewmodel pose record, including `origin`, `axis`, `scale`, `fovOffset`, `bobCycle`, `bobFraction` and additional values.
 struct Pose origin axis scale fovOffset bobCycle bobFraction xySpeed end struct
+/// Stores playable viewmodel attachment record, including `classname`, `path`, `frames`.
 struct Attachment classname path frames end struct
+/// Stores playable viewmodel catalog record, including `attachments`, `skipped`.
 struct Catalog attachments skipped end struct
+/// Stores playable viewmodel weapon animation record, including `displayedClass`, `targetClass`, `transitionStart`, `switching`.
 struct WeaponAnimation displayedClass targetClass transitionStart switching end struct
+/// Stores playable viewmodel frame sample record, including `classname`, `oldFrame`, `frame`, `backlerp`, `switching`.
 struct FrameSample classname oldFrame frame backlerp switching end struct
 
+/// Creates the playable viewmodel error `7620` with diagnostic text `"playable viewmodel: "+message`.
+/// @param message Argument 2 of `error`; passed as `"playable viewmodel: "+message`.
 function fail(message) return error(7620,"playable viewmodel: "+message) end function
+/// Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable viewmodel `valid3`.
+/// @param value Sequence whose length/content is inspected by `valid3`.
 function valid3(value) return value!=void and typeof(value)=="array" and len(value)==3 end function
 
+/// Creates a `mq3.client.playable_viewmodel.Settings` record. Initializes the record with the defaults written in this constructor.
 function defaults() return Settings(DEFAULT_FOV,0.0,0.0,0.0,1.0) end function
 
 // Near-plane polygon clipping preserves partially visible weapon triangles.
@@ -42,18 +55,34 @@ function softwareRendererSettings()
   return Settings(DEFAULT_FOV,SOFTWARE_DEPTHHACK_FORWARD,SOFTWARE_DEPTHHACK_SIDE,SOFTWARE_DEPTHHACK_UP,1.0)
 end function
 
+/// Calls `mq3.client.playable_viewmodel.Settings`, `mq3.compat.numeric.f32` from playable viewmodel `settings`.
+/// @param horizontalFov Value used by `if horizontalFov<=0.0 or horizontalFov>=179.0 or modelScale<=0.0 then return fail("invalid FOV or model scale") end if`.
+/// @param gunX Value used by `return Settings(numeric.f32(horizontalFov),numeric.f32(gunX),numeric.f32(gunY),numeric.f32(gunZ),numeric.f32(modelScale))`.
+/// @param gunY Value used by `return Settings(numeric.f32(horizontalFov),numeric.f32(gunX),numeric.f32(gunY),numeric.f32(gunZ),numeric.f32(modelScale))`.
+/// @param gunZ Value used by `return Settings(numeric.f32(horizontalFov),numeric.f32(gunX),numeric.f32(gunY),numeric.f32(gunZ),numeric.f32(modelScale))`.
+/// @param modelScale Value used by `if horizontalFov<=0.0 or horizontalFov>=179.0 or modelScale<=0.0 then return fail("invalid FOV or model scale") end if`.
 function settings(horizontalFov,gunX,gunY,gunZ,modelScale)
   if horizontalFov<=0.0 or horizontalFov>=179.0 or modelScale<=0.0 then return fail("invalid FOV or model scale") end if
   return Settings(numeric.f32(horizontalFov),numeric.f32(gunX),numeric.f32(gunY),numeric.f32(gunZ),numeric.f32(modelScale))
 end function
 
+/// Creates a `mq3.client.playable_viewmodel.Tracker` record. Initializes the record with the defaults written in this constructor.
 function tracker() return Tracker(0.0,0,false) end function
 
+/// Calls `mq3.client.playable_viewmodel.WeaponAnimation` from playable viewmodel `weaponAnimation`. The final path returns `WeaponAnimation(initialClass,initialClass,0,false)`.
+/// @param initialClass Value used by `if typeof(initialClass)!="string" or initialClass=="" then return fail("weapon animation needs an initial classname") end if`.
 function weaponAnimation(initialClass)
   if typeof(initialClass)!="string" or initialClass=="" then return fail("weapon animation needs an initial classname") end if
   return WeaponAnimation(initialClass,initialClass,0,false)
 end function
 
+/// Calls `mq3.client.playable_viewmodel.FrameSample`, `mq3.compat.numeric.trunc32` from playable viewmodel `animatedFrames`. The final path returns `FrameSample(classname,oldFrame,frame,1.0-fraction,switching)`.
+/// @param classname Value used by `if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if`.
+/// @param firstFrame Value used by `frame=firstFrame+step`.
+/// @param count Value tested by `elapsed<0 or count<1 or fps<1`, `step>=count` before the calculation continues.
+/// @param fps Value used by `if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if`.
+/// @param elapsed Value used by `if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if`.
+/// @param switching Value used by `if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if`.
 function animatedFrames(classname,firstFrame,count,fps,elapsed,switching)
   if elapsed<0 or count<1 or fps<1 then return FrameSample(classname,0,0,0.0,switching) end if
   step=numeric.trunc32(elapsed*fps/1000)
@@ -67,6 +96,10 @@ end function
 // 1..6. A weapon change spends 200 ms dropping the old model through the
 // mapped 20-fps frames beginning at 6, then 250 ms raising the new model; the
 // source mapping intentionally leaves TORSO_RAISE on hand frame zero.
+/// @param state Mutable playable viewmodel record/storage; this routine assigns `state.targetClass`, `state.transitionStart`, `state.switching`, `state.displayedClass`.
+/// @param classname Value assigned to `state.targetClass`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param lastFire Value used by `return animatedFrames(state.displayedClass,1,6,15,now-lastFire,false)`.
 function sampleWeaponAnimation(state,classname,now,lastFire)
   if state==void or typeof(classname)!="string" or classname=="" or now<0 then return fail("invalid weapon animation sample") end if
   if not stringEqualsIgnoreCaseAscii(state.targetClass,classname) then
@@ -82,6 +115,8 @@ function sampleWeaponAnimation(state,classname,now,lastFire)
   return animatedFrames(state.displayedClass,1,6,15,now-lastFire,false)
 end function
 
+/// Calls `std.string.toLowerAscii` from playable viewmodel `handPath`. The final path returns `""`.
+/// @param classname Value used by `name=strings.toLowerAscii(classname)`.
 function handPath(classname)
   name=strings.toLowerAscii(classname)
   if name=="weapon_gauntlet" then return "models/weapons2/gauntlet/gauntlet_hand.md3" end if
@@ -97,6 +132,9 @@ function handPath(classname)
   return ""
 end function
 
+/// Calls `stringEqualsIgnoreCaseAscii` from playable viewmodel `tagFromFrame`. The final path returns `entry`.
+/// @param entries Value used by `if entries==void then return void end if`.
+/// @param name Name used to select or register the corresponding playable viewmodel resource.
 function tagFromFrame(entries,name)
   if entries==void then return void end if
   for each entry in entries if stringEqualsIgnoreCaseAscii(entry.name,name) then return entry end if end for
@@ -105,6 +143,8 @@ end function
 
 // RE_RegisterModel accepts tag-only MD3s. Load their complete animation tag
 // stream once so later weapon-frame mapping can use frames beyond idle zero.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param classnames Value used by `if archive==void or classnames==void then return fail("archive and classnames are required") end if`.
 function loadCatalog(archive,classnames)
   if archive==void or classnames==void then return fail("archive and classnames are required") end if
   result=Catalog([],0)
@@ -126,6 +166,9 @@ function loadCatalog(archive,classnames)
   return result
 end function
 
+/// Searches the playable viewmodel collection for find attachment, returning `void` when no entry matches.
+/// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.attachments`.
+/// @param classname Value used by `for each value in catalog.attachments if stringEqualsIgnoreCaseAscii(value.classname,classname) then return value end if end for`.
 function findAttachment(catalog,classname)
   if catalog==void then return void end if
   for each value in catalog.attachments if stringEqualsIgnoreCaseAscii(value.classname,classname) then return value end if end for
@@ -135,6 +178,10 @@ end function
 // Baseq3 advances playerState.bobCycle by bobmove*msec while moving. The
 // playable controller currently has one run speed, so its stock 0.4 rate is
 // the closest available source for CG_CalculateWeaponPosition.
+/// @param state Mutable playable viewmodel record/storage; this routine assigns `state.lastTime`, `state.initialized`, `state.bobPhase`.
+/// @param velocity Velocity vector used to advance or orient the effect.
+/// @param grounded Value used by `if grounded and speed>=5.0 then`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function advance(state,velocity,grounded,now)
   if state==void or not valid3(velocity) or now<0 then return fail("tracker needs velocity and non-negative time") end if
   speed=qmath.VectorLength([velocity[0],velocity[1],0.0])
@@ -152,11 +199,17 @@ function advance(state,velocity,grounded,now)
   return BobSample(cycle,fraction,numeric.f32(speed))
 end function
 
+/// Evaluates playable viewmodel `fovOffset` and returns `-0.2*(horizontalFov-90.0)`, `0.0` according to its guard/selection conditions.
+/// @param horizontalFov Value used by `if horizontalFov>90.0 then return -0.2*(horizontalFov-90.0) end if`.
 function fovOffset(horizontalFov)
   if horizontalFov>90.0 then return -0.2*(horizontalFov-90.0) end if
   return 0.0
 end function
 
+/// Evaluates playable viewmodel `landingOffset` and returns `0.0`, `landChange*0.25*delta/LAND_DEFLECT_TIME`, `landChange*0.25*(LAND_DEFLECT_TIME+LAND_RETURN_TIME-delta)/LAND_RETURN_TIME` according to its guard/selection conditions.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param landTime Value used by `delta=now-landTime`.
+/// @param landChange Value used by `if delta<LAND_DEFLECT_TIME then return landChange*0.25*delta/LAND_DEFLECT_TIME end if`.
 function landingOffset(now,landTime,landChange)
   delta=now-landTime
   if delta<0 then return 0.0 end if
@@ -168,6 +221,12 @@ end function
 // Port of CG_CalculateWeaponPosition followed by CG_AddViewWeapon's gun and
 // high-FOV offsets. The caller may pass landTime far in the past when no
 // landing event is active.
+/// @param camera Camera state used to transform/project the scene. Record read through `camera.position`, `camera.pitch`, `camera.yaw`.
+/// @param bob Record read through `bob.xySpeed`, `bob.cycle`, `bob.fraction`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param landTime Value used by `origin=[camera.position[0],camera.position[1],camera.position[2]+landingOffset(now,landTime,landChange)]`.
+/// @param landChange Value used by `origin=[camera.position[0],camera.position[1],camera.position[2]+landingOffset(now,landTime,landChange)]`.
+/// @param config Record read through `config.horizontalFov`, `config.modelScale`, `config.gunX`, `config.gunY` and additional values.
 function calculate(camera,bob,now,landTime,landChange,config)
   if camera==void or bob==void or config==void or now<0 then return fail("camera, bob sample, time and settings are required") end if
   if config.horizontalFov<=0.0 or config.horizontalFov>=179.0 or config.modelScale<=0.0 then return fail("invalid settings") end if
@@ -188,11 +247,16 @@ function calculate(camera,bob,now,landTime,landChange,config)
   return Pose(origin,axis,config.modelScale,fovOffset(config.horizontalFov),bob.cycle,bob.fraction,bob.xySpeed)
 end function
 
+/// Calls `mq3.client.playable_item_models.transform` from playable viewmodel `transform`. The final path returns `itemModels.transform(pose.origin,pose.axis,pose.scale)`.
+/// @param pose Record read through `pose.origin`, `pose.axis`, `pose.scale`.
 function transform(pose)
   if pose==void then return fail("pose is required") end if
   return itemModels.transform(pose.origin,pose.axis,pose.scale)
 end function
 
+/// Evaluates playable viewmodel `multiplyAxis` and returns `result` according to its guard/selection conditions.
+/// @param left Sequence read at `left[row]`.
+/// @param right Sequence read at `right[0]`, `right[1]`, `right[2]`.
 function multiplyAxis(left,right)
   result=[]
   for row=0 to 2
@@ -202,6 +266,11 @@ function multiplyAxis(left,right)
   return result
 end function
 
+/// Calls `mq3.client.playable_viewmodel.tagFromFrame`, `mq3.shared.math.VectorNormalize`, `mq3.format.md3.Tag` from playable viewmodel `attachmentTag`. The final path returns `md3.Tag("tag_weapon",origin,axis)`.
+/// @param attachment Record read through `attachment.frames`.
+/// @param oldFrame Value used by `if attachment==void or oldFrame<0 or frame<0 or backlerp<0.0 or backlerp>1.0 or len(attachment.frames)==0 then return fail("invalid attachment...`.
+/// @param frame Value used by `if attachment==void or oldFrame<0 or frame<0 or backlerp<0.0 or backlerp>1.0 or len(attachment.frames)==0 then return fail("invalid attachment...`.
+/// @param backlerp Value used by `if attachment==void or oldFrame<0 or frame<0 or backlerp<0.0 or backlerp>1.0 or len(attachment.frames)==0 then return fail("invalid attachment...`.
 function attachmentTag(attachment,oldFrame,frame,backlerp)
   if attachment==void or oldFrame<0 or frame<0 or backlerp<0.0 or backlerp>1.0 or len(attachment.frames)==0 then return fail("invalid attachment tag sample") end if
   if oldFrame>=len(attachment.frames) then oldFrame=len(attachment.frames)-1 end if
@@ -219,6 +288,11 @@ end function
 
 // CG_PositionEntityOnTag: translate through the parent hand basis, then
 // compose tag orientation with the hand orientation in the original order.
+/// @param pose Record read through `pose.origin`, `pose.axis`, `pose.scale`.
+/// @param attachment Value used by `tag=attachmentTag(attachment,oldFrame,frame,backlerp)`.
+/// @param oldFrame Value used by `tag=attachmentTag(attachment,oldFrame,frame,backlerp)`.
+/// @param frame Value used by `tag=attachmentTag(attachment,oldFrame,frame,backlerp)`.
+/// @param backlerp Value used by `tag=attachmentTag(attachment,oldFrame,frame,backlerp)`.
 function attachWeapon(pose,attachment,oldFrame,frame,backlerp)
   if pose==void then return fail("weapon pose is required") end if
   tag=attachmentTag(attachment,oldFrame,frame,backlerp);if tag is error then return tag end if
@@ -228,6 +302,9 @@ end function
 
 // Keeps the preview's short fire response until weapon animation frames are
 // available. A zero pulse is an exact no-op; 1000 is the peak pulse value.
+/// @param pose Record read through `pose.origin`, `pose.axis`, `pose.scale`, `pose.fovOffset` and additional values.
+/// @param camera Camera state used to transform/project the scene.
+/// @param recoil Value used by `if pose==void or camera==void or recoil<0 then return fail("recoil needs pose, camera and a non-negative pulse") end if`.
 function withRecoil(pose,camera,recoil)
   if pose==void or camera==void or recoil<0 then return fail("recoil needs pose, camera and a non-negative pulse") end if
   axes=viewer.cameraBasis(camera)
@@ -236,12 +313,32 @@ function withRecoil(pose,camera,recoil)
   return Pose(origin,pose.axis,pose.scale,pose.fovOffset,pose.bobCycle,pose.bobFraction,pose.xySpeed)
 end function
 
+/// Calls `mq3.client.playable_viewmodel.calculate`, `mq3.client.playable_viewmodel.withRecoil`, `mq3.client.playable_viewmodel.transform` from playable viewmodel `frameTransform`. The final path returns `transform(pose)`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param bob Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param landTime Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param landChange Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param recoil Value used by `pose=withRecoil(pose,camera,recoil)`.
+/// @param config Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
 function frameTransform(camera,bob,now,landTime,landChange,recoil,config)
   pose=calculate(camera,bob,now,landTime,landChange,config);if pose is error then return pose end if
   pose=withRecoil(pose,camera,recoil);if pose is error then return pose end if
   return transform(pose)
 end function
 
+/// Calls `mq3.client.playable_viewmodel.calculate`, `mq3.client.playable_viewmodel.withRecoil`, `mq3.client.playable_viewmodel.attachWeapon` from playable viewmodel `frameWeaponTransform`. The final path returns `attachWeapon(pose,attachment,oldFrame,frame,backlerp)`.
+/// @param camera Camera state used to transform/project the scene.
+/// @param bob Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
+/// @param landTime Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param landChange Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param recoil Value used by `pose=withRecoil(pose,camera,recoil)`.
+/// @param config Value used by `pose=calculate(camera,bob,now,landTime,landChange,config)`.
+/// @param attachment Value used by `return attachWeapon(pose,attachment,oldFrame,frame,backlerp)`.
+/// @param oldFrame Value used by `return attachWeapon(pose,attachment,oldFrame,frame,backlerp)`.
+/// @param frame Value used by `return attachWeapon(pose,attachment,oldFrame,frame,backlerp)`.
+/// @param backlerp Value used by `return attachWeapon(pose,attachment,oldFrame,frame,backlerp)`.
 function frameWeaponTransform(camera,bob,now,landTime,landChange,recoil,config,attachment,oldFrame,frame,backlerp)
   pose=calculate(camera,bob,now,landTime,landChange,config);if pose is error then return pose end if
   pose=withRecoil(pose,camera,recoil);if pose is error then return pose end if

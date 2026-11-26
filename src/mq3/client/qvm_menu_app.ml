@@ -34,10 +34,19 @@ const SOURCE_HEIGHT=720
 const FIRST_TEXTURE_SLOT=1
 const MAX_TEXTURE_SLOTS=300
 const CINEMATIC_TEXTURE_SLOT=4055
+/// Stores QVM menu app screen point record, including `x`, `y`, `depth`.
 struct ScreenPoint x y depth end struct
 
+/// Creates the QVM menu app error `7688` with diagnostic text `"QVM menu: "+message`.
+/// @param message Argument 2 of `error`; passed as `"QVM menu: "+message`.
 function fail(message) return error(7688,"QVM menu: "+message) end function
 
+/// Updates `session.videoWidth`, `session.videoHeight`, `session.videoRestart` during QVM menu app `runMenu`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Record read through `archive.modArchive`.
+/// @param bootstrapMap Value used by `state=match.bootUiShellSettings(archive,bootstrapMap,1000,qvmRoot,session.settings)`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param session Mutable QVM menu app record/storage; this routine assigns `session.videoWidth`, `session.videoHeight`, `session.videoRestart`.
+/// @param openLevelSelect Value used by `if openLevelSelect then match.executeClientConsole(state,"levelselect") end if`.
 function runMenu(archive,bootstrapMap,qvmRoot,session,openLevelSelect)
   state=match.bootUiShellSettings(archive,bootstrapMap,1000,qvmRoot,session.settings);if state is error then return state end if
   attached=desktopSession.attach(state,session);if attached is error then match.shutdown(state);return attached end if
@@ -110,6 +119,9 @@ end function
 
 // CL_PlayCinematic_f takes ownership of the disconnected screen. When the
 // system RoQ ends, CL_HandleCinEnd queues the saved nextmap command.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param session Record read through `session.target`, `session.videoWidth`, `session.videoHeight`.
+/// @param measurePixels Value used by `if measurePixels then lit=window.presentedNonBlack()`.
 function runCinematic(archive,session,measurePixels)
   movie=try(cinematics.create(archive));if movie is error then return movie end if
   name=strings.toLowerAscii(session.target)
@@ -167,6 +179,10 @@ function runCinematic(archive,session,measurePixels)
   return brightest
 end function
 
+/// Calls `mq3.engine.local_qvm_match.desktopFilePath`, `std.string.indexOf`, `mq3.format.pk3.read` and additional helpers from QVM menu app `loadMap`. The final path returns `bsp.load(mapData)`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param dataRoot Value used by `if name=="" or match.desktopFilePath(dataRoot,relative)=="" then return fail("invalid map name") end if`.
+/// @param name Name used to select or register the corresponding QVM menu app resource.
 function loadMap(archive,dataRoot,name)
   relative="maps/"+name+".bsp"
   if name=="" or match.desktopFilePath(dataRoot,relative)=="" then return fail("invalid map name") end if
@@ -175,6 +191,10 @@ function loadMap(archive,dataRoot,name)
   return bsp.load(mapData)
 end function
 
+/// Updates `session.action` during QVM menu app `loadLocalMatch`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param session Mutable QVM menu app record/storage; this routine assigns `session.action`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
 function loadLocalMatch(archive,session,qvmRoot)
   opened=window.open(session.videoWidth,session.videoHeight);if opened is error then return opened end if
   screen=mapLoading.create(archive,session.mapName,"localhost",true);if screen is error then return screen end if
@@ -186,6 +206,9 @@ function loadLocalMatch(archive,session,qvmRoot)
   mapLoading.release(screen);return result
 end function
 
+/// Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` and additional values during QVM menu app `switchGame`.
+/// @param session Mutable QVM menu app record/storage; this routine assigns `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` and additional values.
+/// @param mounted Record read through `mounted.game`, `mounted.dataRoot`.
 function switchGame(session,mounted)
   changed=not stringEqualsIgnoreCaseAscii(session.activeGame,mounted.game)
   session.activeGame=mounted.game;session.dataRoot=mounted.dataRoot
@@ -195,6 +218,8 @@ function switchGame(session,mounted)
   return void
 end function
 
+/// Calls `mq3.platform.playable_window.shouldClose`, `mq3.platform.playable_window.milliseconds`, `mq3.client.remote_play.pump` and additional helpers from QVM menu app `waitForServer`.
+/// @param live Value used by `ready=try(remote.pump(live,now,64))`.
 function waitForServer(live)
   while not window.shouldClose()
     now=window.milliseconds()
@@ -209,6 +234,13 @@ function waitForServer(live)
   return false
 end function
 
+/// Updates `session.action` during QVM menu app `renderStream`.
+/// @param baseArchive Value used by `mounted=try(mods.mount(baseArchive,installRoot,game))`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param installRoot Value used by `mounted=try(mods.mount(baseArchive,installRoot,game))`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param session Mutable QVM menu app record/storage; this routine assigns `session.action`.
+/// @param source Record read through `source.demo`, `source.transport.mapName`, `source.transport`.
 function renderStream(baseArchive,archive,installRoot,qvmRoot,session,source)
   while not window.shouldClose()
     name=""
@@ -234,6 +266,13 @@ function renderStream(baseArchive,archive,installRoot,qvmRoot,session,source)
   return false
 end function
 
+/// Updates `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded` during QVM menu app `runStream`.
+/// @param baseArchive Value used by `result=try(renderStream(baseArchive,archive,installRoot,qvmRoot,session,source))`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param installRoot Value used by `if not demoPlaying then remote.setBasePackages(transport,installRoot+"/baseq3") end if`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
+/// @param session Mutable QVM menu app record/storage; this routine assigns `session.activeGame`, `session.dataRoot`, `session.settings`, `session.configLoaded`.
+/// @param demoPlaying Value used by `if demoPlaying then`.
 function runStream(baseArchive,archive,installRoot,qvmRoot,session,demoPlaying)
   now=window.milliseconds();name=session.target;transport=void
   previousGame=session.activeGame;previousRoot=session.dataRoot;previousSettings=session.settings;previousConfig=session.configLoaded
@@ -254,6 +293,10 @@ function runStream(baseArchive,archive,installRoot,qvmRoot,session,demoPlaying)
   return result
 end function
 
+/// Calls `mq3.platform.playable_window.executableDirectory`, `mq3.client.desktop_session.create`, `mq3.client.qvm_menu_app.loadLocalMatch` and additional helpers from QVM menu app `run`. The final path returns `0`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets.
+/// @param bootstrapMap Value used by `result=try(runMenu(activeArchive,bootstrapMap,qvmRoot,session,request=="levelselect"))`.
+/// @param qvmRoot Directory containing the retail QVM bytecode files.
 function run(archive,bootstrapMap,qvmRoot)
   if archive==void then return fail("archive is required") end if
   installRoot=window.executableDirectory()

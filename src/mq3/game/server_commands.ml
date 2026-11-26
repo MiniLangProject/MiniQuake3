@@ -13,24 +13,37 @@ import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
 
+/// `State` record for server commands, containing `addBotFn`, `botListFn` and `abortPodiumFn`.
 struct State
   addBotFn
   botListFn
   abortPodiumFn
 end struct
+/// Set `level.serverCommands` to `State(void,void,void)` in `mq3.game.server_commands.get`. Return paths include `level.serverCommands`.
+/// @param level Game-level state; accesses `serverCommands`. May update `level.serverCommands` in place.
 function get(level)
   if level.serverCommands == void then level.serverCommands = State(void,void,void) end if
   return level.serverCommands
 end function
+/// Apply `mq3.game.server_commands.get` while evaluating `attach`. Return paths include `state`.
+/// @param level Game-level state; accesses `serverCommands`. May update `level.serverCommands` in place.
+/// @param addBotFn Value used by `attach` in `state.addBotFn = addBotFn`.
+/// @param botListFn Value used by `attach` in `state.botListFn = botListFn`.
+/// @param abortPodiumFn Value used by `attach` in `state.abortPodiumFn = abortPodiumFn`.
 function attach(level,addBotFn,botListFn,abortPodiumFn)
   state = get(level); state.addBotFn = addBotFn; state.botListFn = botListFn; state.abortPodiumFn = abortPodiumFn
   return state
 end function
+/// Use `level.gamePrintFn` to perform `serverPrint`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function serverPrint(level,text)
   if len(infoStrings.textBytes(text)) >= 1024 then return error(488,"Server output exceeds native G_Printf storage") end if
   if level.gamePrintFn == void then return error(488,"Server command requires game-print delivery") end if
   level.gamePrintFn(level,text); return void
 end function
+/// Format a signed client-slot value right-aligned in a field at least three characters wide.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.i32`.
 function slotText(value)
   text = str(n.i32(value))
   while len(text) < 3
@@ -38,6 +51,8 @@ function slotText(value)
   end while
   return text
 end function
+/// Apply `mq3.game.server_commands.serverPrint` and `mq3.game.server_commands.slotText` while evaluating `entityList`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
 function entityList(level)
   if level.num_entities < 0 or level.num_entities > 1024 then return error(488,"Entity list exceeds native entity storage") end if
   types = ["ET_GENERAL          ","ET_PLAYER           ","ET_ITEM             ","ET_MISSILE          ",
@@ -56,6 +71,9 @@ function entityList(level)
   end while
   return void
 end function
+/// Apply `mq3.shared.info.textBytes` and `mq3.game.server_commands.serverPrint` while evaluating `clientForString`.
+/// @param level Game-level state; accesses `maxclients` and `clients`.
+/// @param text Text to parse, format or deliver.
 function clientForString(level,text)
   data = infoStrings.textBytes(text)
   if level.maxclients < 0 or level.maxclients > 64 then return error(488,"Server client lookup exceeds native client storage") end if
@@ -78,16 +96,27 @@ function clientForString(level,text)
   end while
   serverPrint(level,"User "+text+" is not on the server\n"); return void
 end function
+/// Apply `mq3.game.server_commands.clientForString`, `mq3.game.command_args.argument` and `mq3.game.session.sessionSlot` while evaluating `forceTeam`. Return paths include `teamChanges.setTeam(level,level.entities[slot],commandArgs.argument(argv,2,1024))`.
+/// @param level Game-level state; accesses `entities`.
+/// @param argv Command argument strings in their original order.
 function forceTeam(level,argv)
   client = clientForString(level,commandArgs.argument(argv,1,1024))
   if client == void then return void end if
   slot = sessions.sessionSlot(level,client)
   return teamChanges.setTeam(level,level.entities[slot],commandArgs.argument(argv,2,1024))
 end function
+/// Require the requested bot command callback and invoke it with the level and command arguments.
+/// @param level Value passed as argument 1 to `callback`.
+/// @param argv Command argument strings in their original order.
+/// @param callback Callback invoked by this operation.
+/// @param label Label retained with the diagnostic or action record.
 function botBoundary(level,argv,callback,label)
   if callback == void then return error(488,"Server command requires "+label+" implementation") end if
   callback(level,argv); return void
 end function
+/// Use `level.consoleCommandFn` and `level.serverCommandFn` to perform `command`.
+/// @param level Game-level state; accesses `consoleCommandFn`, `dedicated` and `serverCommandFn`.
+/// @param argv Command argument strings in their original order.
 function command(level,argv)
   cmd = commandArgs.argument(argv,0,1024)
   if strings.equalsIgnoreCaseAscii(cmd,"entitylist") then entityList(level); return true end if

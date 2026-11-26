@@ -7,10 +7,12 @@ import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 
+/// `Filter` record for ip filters, containing `mask` and `compare`.
 struct Filter
   mask
   compare
 end struct
+/// `State` record for ip filters, containing `filters`, `count`, `banBuffer`, `banVm` and `filterBanVm` and related fields.
 struct State
   filters
   count
@@ -22,6 +24,8 @@ struct State
   bufferVisible
   bufferCopyGeneration
 end struct
+/// Set `level.ipFilters` to `State(filters,0,bytes(256,0),void,void,void,0,"",0)` in `mq3.game.ip_filters.get`. Return paths include `level.ipFilters`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
 function get(level)
   if level.ipFilters == void then
     filters = []
@@ -32,10 +36,17 @@ function get(level)
   end if
   return level.ipFilters
 end function
+/// Apply `mq3.game.ip_filters.get` while evaluating `bindVm`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
+/// @param banVm Value used by `bindVm` in `state.banVm = banVm`.
+/// @param filterBanVm Value used by `bindVm` in `state.filterBanVm = filterBanVm`.
 function bindVm(level,banVm,filterBanVm)
   // Explicit isolated-host bridge. Real game-Cvar rows always take priority.
   state = get(level); state.banVm = banVm; state.filterBanVm = filterBanVm; return void
 end function
+/// Apply `mq3.game.ip_filters.get` while evaluating `filterVm`. Return paths include `vm`.
+/// @param level Game-level state; accesses `gameCvars`.
+/// @param name Lookup text matched against `row.vmName`.
 function filterVm(level,name)
   if level.gameCvars != void then
     for each row in level.gameCvars.rows
@@ -48,6 +59,9 @@ function filterVm(level,name)
   if vm == void then return error(486,"IP filter requires game Cvars or explicit VM bindings") end if
   return vm
 end function
+/// Use `level.gamePrintFn` to perform `filterPrint`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function filterPrint(level,text)
   // G_Printf uses unbounded vsprintf into msg[1024]. Do not claim parity for
   // diagnostics whose payload would overflow that original stack buffer.
@@ -55,14 +69,23 @@ function filterPrint(level,text)
   if level.gamePrintFn == void then return error(486,"IP filter requires diagnostic delivery") end if
   level.gamePrintFn(level,text); return void
 end function
+/// Validate and return the number of active IP-filter entries within the fixed filter capacity.
+/// @param state Ip filters state; accesses `count`.
 function filterCount(state)
   if state.count < 0 or state.count > 1024 then return error(486,"Invalid IP filter count") end if
   return state.count
 end function
+/// Read an IP-filter byte, using zero when the requested index lies beyond the supplied data.
+/// @param data Array or byte sequence accessed at `index`.
+/// @param index Index of the entry to access.
 function filterByte(data,index)
   if index >= len(data) then return 0 end if
   return data[index]
 end function
+/// Set `filter.mask` to `n.u32(mask)` and `filter.compare` to `n.u32(compare)` in `mq3.game.ip_filters.stringToFilter`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
+/// @param filter Filter record; accesses `mask` and `compare`. May update `filter.mask` and `filter.compare` in place.
 function stringToFilter(level,text,filter)
   data = infoStrings.textBytes(text); values = [0,0,0,0]; masks = [0,0,0,0]; at = 0
   for index = 0 to 3
@@ -91,6 +114,8 @@ function stringToFilter(level,text,filter)
   end for
   filter.mask = n.u32(mask); filter.compare = n.u32(compare); return true
 end function
+/// Use `level.cvarSetFn` to perform `updateBans`.
+/// @param level Game-level state; accesses `cvarSetFn`.
 function updateBans(level)
   state = get(level); text = ""; index = 0
   while index < filterCount(state)
@@ -109,6 +134,9 @@ function updateBans(level)
   // trap_Cvar_Set changes engine storage; the VM copy waits for Cvar_Update.
   level.cvarSetFn(level,"g_banIPs",text); return void
 end function
+/// Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.filterCount` and `mq3.game.ip_filters.filterPrint` while evaluating `addIP`. Return paths include `updateBans(level)`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
+/// @param text Text to parse, format or deliver.
 function addIP(level,text)
   state = get(level); index = 0
   while index < filterCount(state)
@@ -122,6 +150,9 @@ function addIP(level,text)
   if not stringToFilter(level,text,state.filters[index]) then state.filters[index].compare = 0xffffffff end if
   return updateBans(level)
 end function
+/// Apply `mq3.shared.info.textBytes`, `mq3.game.ip_filters.filterByte` and `mq3.game.ip_filters.get` while evaluating `filterPacket`. Return paths include `filterVm(level,"g_filterBan").integer == 0`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
+/// @param address Address within the VM memory or native data buffer.
 function filterPacket(level,address)
   data = infoStrings.textBytes(address); values = [0,0,0,0]; index = 0; at = 0; initialized = 0
   while filterByte(data,at) != 0 and index < 4
@@ -149,6 +180,8 @@ function filterPacket(level,address)
   end while
   return filterVm(level,"g_filterBan").integer == 0
 end function
+/// Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.filterVm` and `mq3.shared.info.textBytes` while evaluating `banBytes`. Return paths include `state.banBuffer`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
 function banBytes(level)
   state = get(level); vm = filterVm(level,"g_banIPs")
   // Only an actual VM copy clears the hidden tail. Register first writes -1
@@ -164,6 +197,8 @@ function banBytes(level)
   end if
   return state.banBuffer
 end function
+/// Apply `mq3.game.ip_filters.get`, `mq3.game.ip_filters.banBytes` and `mq3.game.ip_filters.filterVm` while evaluating `processBans`.
+/// @param level Game-level state; accesses `ipFilters`. May update `level.ipFilters` in place.
 function processBans(level)
   state = get(level); data = banBytes(level); at = 0; start = 0
   // Original copies to an unused local str, then parses/mutates g_banIPs.string.
@@ -191,10 +226,16 @@ function processBans(level)
   end while
   return void
 end function
+/// Apply `mq3.game.ip_filters.filterPrint`, `mq3.game.ip_filters.addIP` and `mq3.game.command_args.argument` while evaluating `addCommand`. Return paths include `addIP(level,commandArgs.argument(argv,1,1024))`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param argv Command argument strings in their original order.
 function addCommand(level,argv)
   if len(argv) < 2 then filterPrint(level,"Usage:  addip <ip-mask>\n"); return void end if
   return addIP(level,commandArgs.argument(argv,1,1024))
 end function
+/// Apply `mq3.game.ip_filters.filterPrint`, `mq3.game.command_args.argument` and `mq3.game.ip_filters.stringToFilter` while evaluating `removeCommand`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param argv Command argument strings in their original order.
 function removeCommand(level,argv)
   if len(argv) < 2 then filterPrint(level,"Usage:  sv removeip <ip-mask>\n"); return void end if
   text = commandArgs.argument(argv,1,1024); wanted = Filter(0,0)

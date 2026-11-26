@@ -8,11 +8,20 @@ import mq3.compat.numeric as n
 
 const INVENTORY_COUNT=256
 
+/// Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
+/// @param vm Vm record; accesses `data`.
+/// @param address Address within the VM memory or native data buffer.
 function readInventory(vm,address)
   at=common.pointer(vm,address,INVENTORY_COUNT*4,"weapon inventory input");if at is error then return at end if
   result=array(INVENTORY_COUNT,0);for index=0 to INVENTORY_COUNT-1 result[index]=n.readI32(vm.data,at+index*4) end for;return result
 end function
 
+/// Apply `mq3.botlib.ai_weapon_combat_syscalls.readInventory`, `mq3.vm.syscall_common.argument` and `mq3.botlib.ai_weapon_combat.chooseBestFightWeapon` while evaluating `dispatch`.
+/// @param runtime AI weapon combat runtime; accesses `config`.
+/// @param pools Bot resource pools; accesses `weaponStates`.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(runtime,pools,vm,base,op)
   if op==aiWeaponCombat.OP_CHOOSE_BEST_FIGHT_WEAPON then
     inventory=readInventory(vm,common.argument(vm,base,2));if inventory is error then return inventory end if

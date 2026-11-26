@@ -5,6 +5,11 @@ package mq3.botlib.ai_resource_syscalls
 import mq3.botlib.ai_resource_pools as resources
 import mq3.vm.syscall_common as common
 
+/// Apply `mq3.vm.syscall_common.argument`, `mq3.botlib.ai_resource_pools.allocChatState` and `mq3.botlib.ai_resource_pools.freeChatState` while evaluating `dispatch`.
+/// @param pools Bot resource pools; accesses `chatStates`. May update `pools.chatStates[handle]` in place.
+/// @param vm VM instance owning the syscall memory and state.
+/// @param base Address within the VM memory or native data buffer.
+/// @param op Numeric syscall operation identifier.
 function dispatch(pools,vm,base,op)
   handle=common.argument(vm,base,1)
   if op==resources.OP_ALLOC_CHAT_STATE then return resources.allocChatState(pools) end if

@@ -74,17 +74,34 @@ const M_GAUNTLET=104
 const M_DEFEND=105
 const M_ASSIST=106
 
+/// Stores client game playerstate state, including `time`, `serverTime`, `gametype`, `timelimit`, `levelStartTime`, `fraglimit` and additional values.
 struct State time serverTime gametype timelimit levelStartTime fraglimit scores1 warmup intermissionStarted mapRestart viewaxis lowAmmoWarning attackerTime damageX damageY vDmgRoll vDmgPitch damageValue vDmgTime damageTime thisFrameTeleport weaponSelectTime weaponSelect duckChange duckTime eventSequence predictableEvents rewardStack rewardSound rewardShader rewardCount timelimitWarnings fraglimitWarnings actions transitions end struct
 
+/// Creates a `mq3.client.cgame_playerstate.State` record. Initializes the record with the defaults written in this constructor.
 function create()
   return State(0,0,0,0,0,0,0,0,false,false,[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]],0,0,0.0,0.0,0.0,0.0,0.0,0,0,false,0,0,0,0,0,array(MAX_PREDICTED_EVENTS,0),0,array(MAX_REWARDSTACK,0),array(MAX_REWARDSTACK,0),array(MAX_REWARDSTACK,0),0,0,[],0)
 end function
 
+/// Appends a client game playerstate action record to the queued engine requests.
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.actions`.
+/// @param kind Action/operation identifier used to select the engine service request.
+/// @param a Value used by `state.actions=state.actions+[[kind,a,b,c]]`.
+/// @param b Value used by `state.actions=state.actions+[[kind,a,b,c]]`.
+/// @param c Value used by `state.actions=state.actions+[[kind,a,b,c]]`.
 function emit(state,kind,a,b,c) state.actions=state.actions+[[kind,a,b,c]];return void end function
+/// Adapts `mq3.client.cgame_playerstate.emit` to client game playerstate `localSound`, returning its result for `state, "localSound", sound, channel, 0`.
+/// @param state Argument 1 of `mq3.client.cgame_playerstate.emit`.
+/// @param sound Argument 3 of `mq3.client.cgame_playerstate.emit`.
+/// @param channel Argument 4 of `mq3.client.cgame_playerstate.emit`.
 function localSound(state,sound,channel) return emit(state,"localSound",sound,channel,0) end function
+/// Adapts `mq3.client.cgame_playerstate.emit` to client game playerstate `bufferedSound`, returning its result for `state, "bufferedSound", sound, 0, 0`.
+/// @param state Argument 1 of `mq3.client.cgame_playerstate.emit`.
+/// @param sound Argument 3 of `mq3.client.cgame_playerstate.emit`.
 function bufferedSound(state,sound) return emit(state,"bufferedSound",sound,0,0) end function
 
 // CG_CheckAmmo
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.lowAmmoWarning`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.stats`, `ps.ammo`.
 function checkAmmo(state,ps)
   weapons=ps.stats[STAT_WEAPONS];total=0
   for weapon=WP_MACHINEGUN to WP_NUM_WEAPONS-1
@@ -97,6 +114,11 @@ function checkAmmo(state,ps)
 end function
 
 // CG_DamageFeedback
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.attackerTime`, `state.damageX`, `state.damageY`, `state.vDmgRoll` and additional values.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.stats`.
+/// @param yawByte Value used by `if yawByte==255 and pitchByte==255 then`.
+/// @param pitchByte Value used by `if yawByte==255 and pitchByte==255 then`.
+/// @param damage Value used by `kick=n.fmul(damage,scale)`.
 function damageFeedback(state,ps,yawByte,pitchByte,damage)
   state.attackerTime=state.time;health=ps.stats[STAT_HEALTH];scale=1.0;if health>=40 then scale=n.fdiv(40.0,health) end if
   kick=n.fmul(damage,scale);if kick<5.0 then kick=5.0 end if;if kick>10.0 then kick=10.0 end if
@@ -112,11 +134,21 @@ function damageFeedback(state,ps,yawByte,pitchByte,damage)
 end function
 
 // CG_Respawn
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.thisFrameTeleport`, `state.weaponSelectTime`, `state.weaponSelect`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.weapon`.
 function respawn(state,ps) state.thisFrameTeleport=true;state.weaponSelectTime=state.time;state.weaponSelect=ps.weapon;emit(state,"respawn",ps.weapon,0,0);return void end function
 
+/// Calls `mq3.client.cgame_playerstate.emit` from client game playerstate `entityEvent`.
+/// @param state Shared client game playerstate state passed to the helper calls in `entityEvent`.
+/// @param event Event identifier compared with the supported activation/input events.
+/// @param eventParm Value used by `emit(state,"entityEvent",event,eventParm,clientNum)`.
+/// @param clientNum Client slot identifier used by the client/server protocol.
 function entityEvent(state,event,eventParm,clientNum) emit(state,"entityEvent",event,eventParm,clientNum);return void end function
 
 // CG_CheckPlayerstateEvents
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.predictableEvents[index&(MAX_PREDICTED_EVENTS-1)]`, `state.eventSequence`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.externalEvent`, `ps.externalEventParm`, `ps.clientNum`, `ps.eventSequence` and additional values.
+/// @param ops Record read through `ops.externalEvent`, `ops.eventSequence`, `ops.events`.
 function checkPlayerstateEvents(state,ps,ops)
   if ps.externalEvent!=0 and ps.externalEvent!=ops.externalEvent then entityEvent(state,ps.externalEvent,ps.externalEventParm,ps.clientNum) end if
   for index=ps.eventSequence-MAX_PS_EVENTS to ps.eventSequence-1
@@ -126,6 +158,8 @@ function checkPlayerstateEvents(state,ps,ops)
 end function
 
 // CG_CheckChangedPredictableEvents
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.predictableEvents[remember]`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.eventSequence`, `ps.events`, `ps.eventParms`, `ps.clientNum`.
 function checkChangedPredictableEvents(state,ps)
   for index=ps.eventSequence-MAX_PS_EVENTS to ps.eventSequence-1
     if index>=state.eventSequence then continue end if
@@ -134,11 +168,18 @@ function checkChangedPredictableEvents(state,ps)
 end function
 
 // pushReward
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.rewardStack`, `state.rewardSound[state.rewardStack]`, `state.rewardShader[state.rewardStack]`, `state.rewardCount[state.rewardStack]`.
+/// @param sound Sound handle or asset name passed to the audio action.
+/// @param shader Shader handle or asset name selected for this draw operation.
+/// @param count Value used by `state.rewardCount[state.rewardStack]=count end if`.
 function pushReward(state,sound,shader,count)
   if state.rewardStack<MAX_REWARDSTACK-1 then state.rewardStack=state.rewardStack+1;state.rewardSound[state.rewardStack]=sound;state.rewardShader[state.rewardStack]=shader;state.rewardCount[state.rewardStack]=count end if;return void
 end function
 
 // CG_CheckLocalSounds
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.timelimitWarnings`, `state.fraglimitWarnings`.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.persistant`, `ps.stats`, `ps.powerups`.
+/// @param ops Record read through `ops.persistant`, `ops.stats`, `ops.powerups`.
 function checkLocalSounds(state,ps,ops)
   if ps.persistant[PERS_TEAM]!=ops.persistant[PERS_TEAM] then return void end if
   if ps.persistant[PERS_HITS]>ops.persistant[PERS_HITS] then localSound(state,S_HIT,1) else if ps.persistant[PERS_HITS]<ops.persistant[PERS_HITS] then localSound(state,S_HIT_TEAM,1) end if
@@ -174,6 +215,9 @@ function checkLocalSounds(state,ps,ops)
 end function
 
 // CG_TransitionPlayerState.  Event and sound actions are observation only.
+/// @param state Mutable client game playerstate record/storage; this routine assigns `state.transitions`, `state.thisFrameTeleport`, `state.mapRestart`, `state.duckChange` and additional values.
+/// @param ps Player-state record containing authoritative or predicted player data. Record read through `ps.clientNum`, `ps.damageEvent`, `ps.damageCount`, `ps.damageYaw` and additional values.
+/// @param old Value used by `ops=old`.
 function transitionPlayerState(state,ps,old)
   state.transitions=state.transitions+1;ops=old
   if ps.clientNum!=ops.clientNum then state.thisFrameTeleport=true;ops=playerstate.copy(ps) end if

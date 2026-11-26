@@ -5,8 +5,12 @@ package mq3.client.ui_specify_server
 const QM_ACTIVATED=3
 const ID_SPECIFYSERVERBACK=102
 const ID_SPECIFYSERVERGO=103
+/// Stores UI specify server specify server menu record, including `wrapAround`, `fullscreen`, `domain`, `port`, `domainWidth`, `domainMax` and additional values.
 struct SpecifyServerMenu wrapAround fullscreen domain port domainWidth domainMax portWidth portMax assets commands actions end struct
 // SpecifyServer_Event
+/// @param menu Mutable UI specify server record/storage; this routine assigns `menu.commands`, `menu.actions`.
+/// @param id Value used by `if id==ID_SPECIFYSERVERGO and eventCode==QM_ACTIVATED and menu.domain!="" then address=menu.domain`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function event(menu,id,eventCode)
   if id==ID_SPECIFYSERVERGO and eventCode==QM_ACTIVATED and menu.domain!="" then address=menu.domain;if menu.port!="" then address=address+":"+menu.port end if;menu.commands=menu.commands+["connect "+address+"\n"]
   else if id==ID_SPECIFYSERVERBACK and eventCode==QM_ACTIVATED then menu.actions=menu.actions+["pop"] end if

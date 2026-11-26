@@ -26,19 +26,29 @@ const CTF_CAPTURE_BONUS=headers.CTF_CAPTURE_BONUS
 const REWARD_SPRITE_TIME = 2000
 const OVERLOAD_ATTACK_BASE_SOUND_TIME=headers.OVERLOAD_ATTACK_BASE_SOUND_TIME
 
+/// Read the Team Arena game type from the spawner, returning zero when the spawner is absent.
+/// @param level Game-level state; accesses `spawner`.
 function gametype(level)
   if level.spawner == void then return 0 end if
   return level.spawner.gametype
 end function
+/// Exchange red and blue team identifiers for team missionpack, preserving other team values.
+/// @param team Team identifier used by the game rules.
 function otherTeam(team)
   if team == c.TEAM_RED then return c.TEAM_BLUE end if
   if team == c.TEAM_BLUE then return c.TEAM_RED end if
   return team
 end function
+/// Use `level.teamMessageFn` to perform `message`.
+/// @param level Game-level state; accesses `teamMessageFn`.
+/// @param text Text to parse, format or deliver.
 function message(level,text)
   if level.teamMessageFn == void then return error(497,"Obelisk message requires PrintMsg delivery") end if
   level.teamMessageFn(level,-1,text); return void
 end function
+/// Force a team celebration gesture for active clients through the Team Arena entity flag.
+/// @param level Game-level state; accesses `entities`.
+/// @param team Team identifier used by the game rules.
 function forceGesture(level,team)
   for slot = 0 to 63
     ent = level.entities[slot]
@@ -46,6 +56,11 @@ function forceGesture(level,team)
   end for
   return void
 end function
+/// Set `level.teamScores[team]` to `n.add32(level.teamScores[team],score)` in `mq3.game.team_missionpack.addTeamScore`.
+/// @param level Game-level state; accesses `teamScores`. May update `level.teamScores[team]` in place.
+/// @param origin World-space position as three coordinates.
+/// @param team Team identifier used by the game rules.
+/// @param score Value passed as argument 2 to `mq3.compat.numeric.add32`.
 function addTeamScore(level,origin,team,score)
   if team != c.TEAM_RED and team != c.TEAM_BLUE then return error(497,"Invalid obelisk score team") end if
   sound = game.tempEntity(level,origin,c.EV_GLOBAL_TEAM_SOUND); sound.r.svFlags = sound.r.svFlags | SVF_BROADCAST
@@ -60,6 +75,10 @@ function addTeamScore(level,origin,team,score)
   end if
   level.teamScores[team] = n.add32(level.teamScores[team],score); return void
 end function
+/// Apply `mq3.game.entities.diagnostic` and `mq3.game.entities.tempEntity` while evaluating `captureSound`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param ent Game entity; accesses `s`.
+/// @param team Team identifier used by the game rules.
 function captureSound(level,ent,team)
   if ent == void then
     game.diagnostic(level,"Warning:  NULL passed to Team_CaptureFlagSound\n"); return void
@@ -69,6 +88,9 @@ function captureSound(level,ent,team)
   sound.r.svFlags = sound.r.svFlags | SVF_BROADCAST; return void
 end function
 
+/// Update `self.nextthink`, `self.health`, `self.activator.s.modelindex2` and `self.activator.s.frame` during `ObeliskRegen`.
+/// @param level Game-level state; accesses `time`, `obeliskRegenPeriod`, `obeliskHealth` and `obeliskRegenAmount`.
+/// @param self Entity receiving the callback; accesses `nextthink`, `health` and `activator`. May update `self.nextthink`, `self.health` and `self.activator.s.modelindex2` and additional fields in place.
 function ObeliskRegen(level,self)
   self.nextthink = n.add32(level.time,n.mul32(level.obeliskRegenPeriod,1000))
   if self.health >= level.obeliskHealth then return void end if
@@ -80,12 +102,22 @@ function ObeliskRegen(level,self)
   self.activator.s.modelindex2 = scores.integerDivide(n.mul32(self.health,255),level.obeliskHealth)
   self.activator.s.frame = 0; return void
 end function
+/// Update `self.takedamage`, `self.health`, `self.think` and `self.nextthink` and related state during `ObeliskRespawn`.
+/// @param level Game-level state; accesses `obeliskHealth`, `time` and `obeliskRegenPeriod`.
+/// @param self Entity receiving the callback; accesses `takedamage`, `health`, `think`, `nextthink` and `activator`. May update `self.takedamage`, `self.health` and `self.think` and additional fields in place.
 function ObeliskRespawn(level,self)
   self.takedamage = true; self.health = level.obeliskHealth
   self.think = ObeliskRegen; self.nextthink = n.add32(level.time,n.mul32(level.obeliskRegenPeriod,1000))
   if self.activator == void then return error(497,"Obelisk has no visual activator") end if
   self.activator.s.frame = 0; return void
 end function
+/// Update `self.takedamage`, `self.think`, `self.nextthink` and `self.activator.s.modelindex2` and related state during `ObeliskDie`.
+/// @param level Game-level state; accesses `time`, `obeliskRespawnDelay`, `redObeliskAttackedTime` and `blueObeliskAttackedTime`. May update `level.redObeliskAttackedTime` and `level.blueObeliskAttackedTime` in place.
+/// @param self Entity receiving the callback; accesses `spawnflags`, `s`, `takedamage`, `think` and `nextthink` and related fields. May update `self.takedamage`, `self.think` and `self.nextthink` and additional fields in place.
+/// @param inflictor Not read by this implementation; retained in the `ObeliskDie` signature.
+/// @param attacker Attacking entity; accesses `client`. May update `attacker.client.ps.eFlags`, `attacker.client.rewardTime` and `attacker.client.ps.persistant[c.PERS_CAPTURES]` in place.
+/// @param damage Not read by this implementation; retained in the `ObeliskDie` signature.
+/// @param mod Not read by this implementation; retained in the `ObeliskDie` signature.
 function ObeliskDie(level,self,inflictor,attacker,damage,mod)
   team = otherTeam(self.spawnflags); addTeamScore(level,self.s.pos.trBase,team,1); forceGesture(level,team); scores.calculateRanks(level)
   self.takedamage = false; self.think = ObeliskRespawn
@@ -99,6 +131,11 @@ function ObeliskDie(level,self,inflictor,attacker,damage,mod)
   attacker.client.ps.persistant[c.PERS_CAPTURES] = n.add32(attacker.client.ps.persistant[c.PERS_CAPTURES],1)
   level.redObeliskAttackedTime = 0; level.blueObeliskAttackedTime = 0; return void
 end function
+/// Update `other.client.ps.eFlags`, `other.client.rewardTime`, `other.client.ps.persistant[c.PERS_CAPTURES]` and `other.client.ps.generic1` during `ObeliskTouch`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `spawnflags`, `s` and `r`.
+/// @param other Other record; accesses `client`. May update `other.client.ps.eFlags`, `other.client.rewardTime` and `other.client.ps.persistant[c.PERS_CAPTURES]` and additional fields in place.
+/// @param trace Not read by this implementation; retained in the `ObeliskTouch` signature.
 function ObeliskTouch(level,self,other,trace)
   if other.client == void or otherTeam(other.client.team) != self.spawnflags then return void end if
   tokens = other.client.ps.generic1; if tokens <= 0 then return void end if
@@ -111,6 +148,11 @@ function ObeliskTouch(level,self,other,trace)
   other.client.ps.persistant[c.PERS_CAPTURES] = n.add32(other.client.ps.persistant[c.PERS_CAPTURES],tokens)
   other.client.ps.generic1 = 0; scores.calculateRanks(level); captureSound(level,self,self.spawnflags); return void
 end function
+/// Update `self.activator.s.modelindex2` and `self.activator.s.frame` during `ObeliskPain`.
+/// @param level Game-level state; accesses `obeliskHealth`.
+/// @param self Entity receiving the callback; accesses `activator`, `health` and `r`. May update `self.activator.s.modelindex2` and `self.activator.s.frame` in place.
+/// @param attacker Entity credited with the attack.
+/// @param damage Damage amount before the current operation applies its rules.
 function ObeliskPain(level,self,attacker,damage)
   actual = scores.integerDivide(damage,10); if actual <= 0 then actual = 1 end if
   if self.activator == void then return error(497,"Obelisk has no visual activator") end if
@@ -119,6 +161,11 @@ function ObeliskPain(level,self,attacker,damage)
   if self.activator.s.frame == 0 then events.add(level,self,c.EV_OBELISKPAIN,0) end if
   self.activator.s.frame = 1; scores.addScore(level,attacker,self.r.currentOrigin,actual); return void
 end function
+/// Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.entities.setOrigin` while evaluating `SpawnObelisk`. Return paths include `ent`.
+/// @param level Game-level state; accesses `obeliskHealth`, `time`, `obeliskRegenPeriod` and `scene`.
+/// @param origin World-space position as three coordinates. Entries may be updated in place.
+/// @param team Team identifier used by the game rules.
+/// @param spawnflags Value used by `SpawnObelisk` in `if (spawnflags & 1) != 0 then game.setOrigin(ent,ent.s.origin)`.
 function SpawnObelisk(level,origin,team,spawnflags)
   ent = game.spawn(level); ent.s.origin = movement.copy(origin); game.setOrigin(ent,origin)
   ent.r.mins = [-15.0,-15.0,0.0]; ent.r.maxs = [15.0,15.0,87.0]
@@ -141,6 +188,10 @@ function SpawnObelisk(level,origin,team,spawnflags)
   end if
   ent.spawnflags = team; game.link(level,ent); return ent
 end function
+/// Update `level.obeliskAttackFn`, `ent.s.eType`, `ent.s.modelindex2` and `ent.s.frame` and related state during `teamObelisk`.
+/// @param level Game-level state; accesses `obeliskAttackFn`. May update `level.obeliskAttackFn` in place.
+/// @param ent Game entity; accesses `s` and `spawnflags`. May update `ent.s.eType`, `ent.s.modelindex2` and `ent.s.frame` and additional fields in place.
+/// @param team Team identifier used by the game rules.
 function teamObelisk(level,ent,team)
   level.obeliskAttackFn = CheckObeliskAttack
   if gametype(level) <= GT_TEAM then game.free(level,ent); return void end if
@@ -151,8 +202,17 @@ function teamObelisk(level,ent,team)
   end if
   ent.s.modelindex = team; game.link(level,ent); return void
 end function
+/// Forward `SP_team_redobelisk` to `mq3.game.team_missionpack.teamObelisk` and return the delegated result.
+/// @param level Game-level state; accesses `obeliskAttackFn`. May update `level.obeliskAttackFn` in place.
+/// @param ent Game entity; accesses `s` and `spawnflags`. May update `ent.s.eType`, `ent.s.modelindex2` and `ent.s.frame` and additional fields in place.
 function SP_team_redobelisk(level,ent) return teamObelisk(level,ent,c.TEAM_RED) end function
+/// Forward `SP_team_blueobelisk` to `mq3.game.team_missionpack.teamObelisk` and return the delegated result.
+/// @param level Game-level state; accesses `obeliskAttackFn`. May update `level.obeliskAttackFn` in place.
+/// @param ent Game entity; accesses `s` and `spawnflags`. May update `ent.s.eType`, `ent.s.modelindex2` and `ent.s.frame` and additional fields in place.
 function SP_team_blueobelisk(level,ent) return teamObelisk(level,ent,c.TEAM_BLUE) end function
+/// Update `level.obeliskAttackFn`, `ent.s.eType`, `level.neutralObelisk` and `level.neutralObelisk.spawnflags` and related state during `SP_team_neutralobelisk`.
+/// @param level Game-level state; accesses `obeliskAttackFn` and `neutralObelisk`. May update `level.obeliskAttackFn`, `level.neutralObelisk` and `level.neutralObelisk.spawnflags` in place.
+/// @param ent Game entity; accesses `s` and `spawnflags`. May update `ent.s.eType` and `ent.s.modelindex` in place.
 function SP_team_neutralobelisk(level,ent)
   level.obeliskAttackFn = CheckObeliskAttack
   if gametype(level) != GT_1FCTF and gametype(level) != GT_HARVESTER then game.free(level,ent); return void end if
@@ -162,6 +222,10 @@ function SP_team_neutralobelisk(level,ent)
   end if
   ent.s.modelindex = c.TEAM_FREE; game.link(level,ent); return void
 end function
+/// Set `level.redObeliskAttackedTime` to `level.time` and `level.blueObeliskAttackedTime` to `level.time` in `mq3.game.team_missionpack.CheckObeliskAttack`.
+/// @param level Game-level state; accesses `time`, `redObeliskAttackedTime` and `blueObeliskAttackedTime`. May update `level.redObeliskAttackedTime` and `level.blueObeliskAttackedTime` in place.
+/// @param obelisk Obelisk record; accesses `die`, `spawnflags` and `s`.
+/// @param attacker Attacking entity; accesses `client`.
 function CheckObeliskAttack(level,obelisk,attacker)
   if obelisk.die != ObeliskDie or attacker.client == void then return false end if
   if obelisk.spawnflags == attacker.client.team then return true end if

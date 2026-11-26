@@ -17,6 +17,7 @@ const MAX_ARCHIVED_DEMO=64*1024*1024
 const MAX_START_PACKETS=1024
 const MAX_FRAME_PACKETS=128
 
+/// Stores demo playback playback record, including `protocol`, `mapName`, `completed`, `handle`, `archiveData`, `offset` and additional values.
 struct Playback
   protocol
   mapName
@@ -30,8 +31,12 @@ struct Playback
   msg
 end struct
 
+/// Creates the demo playback error `6928` with diagnostic text `"demo playback: "+reason`.
+/// @param reason Argument 2 of `error`; passed as `"demo playback: "+reason`.
 function fail(reason) return error(6928,"demo playback: "+reason) end function
 
+/// Calls `std.string.toLowerAscii`, `std.string.endsWith` from demo playback `filename`. The final path returns `name+EXTENSION`.
+/// @param name Name used to select or register the corresponding demo playback resource.
 function filename(name)
   raw=bytes(name)
   if len(raw)==0 or len(raw)>128 or raw[0]==46 or raw[len(raw)-1]==32 or raw[len(raw)-1]==46 then return void end if
@@ -43,6 +48,8 @@ function filename(name)
   return name+EXTENSION
 end function
 
+/// Updates `playback.handle`, `playback.archiveData`, `playback.completed` during demo playback `close`.
+/// @param playback Mutable demo playback record/storage; this routine assigns `playback.handle`, `playback.archiveData`, `playback.completed`.
 function close(playback)
   if playback==void then return void end if
   if playback.handle!=-1 then file.CloseHandle(playback.handle);playback.handle=-1 end if
@@ -51,6 +58,10 @@ function close(playback)
   return void
 end function
 
+/// Updates `playback.offset` during demo playback `read`.
+/// @param playback Mutable demo playback record/storage; this routine assigns `playback.offset`.
+/// @param output Value used by `if not file.ReadFile(playback.handle,nativeBytesPtr(output),count,playback.transferred,0) then return fail("could not read demo data") end if`.
+/// @param count Value tested by `not file.ReadFile(playback.handle,nativeBytesPtr(output),count,playback.transferred,0)`, `count>available` and additional values before the calculation continues.
 function read(playback,output,count)
   if playback.handle!=-1 then
     if not file.ReadFile(playback.handle,nativeBytesPtr(output),count,playback.transferred,0) then return fail("could not read demo data") end if
@@ -65,6 +76,9 @@ function read(playback,output,count)
   return count
 end function
 
+/// Updates `playback.msg.cursize` during demo playback `readPacket`.
+/// @param playback Mutable demo playback record/storage; this routine assigns `playback.msg.cursize`.
+/// @param realtime Current client real-time clock in milliseconds.
 function readPacket(playback,realtime)
   amount=try(read(playback,playback.header,8));if amount is error then return amount end if
   if amount==0 then close(playback);return false end if
@@ -87,6 +101,8 @@ function readPacket(playback,realtime)
   return true
 end function
 
+/// Updates `playback.mapName` during demo playback `updateMap`.
+/// @param playback Mutable demo playback record/storage; this routine assigns `playback.mapName`.
 function updateMap(playback)
   mapName=try(serverStream.mapName(playback.protocol))
   if mapName is error then return mapName end if
@@ -95,6 +111,9 @@ function updateMap(playback)
   return true
 end function
 
+/// Calls `std.fs.joinPath`, `std.fs.isFile` from demo playback `loosePath`. The final path returns `path`.
+/// @param dataRoot Value used by `if dataRoot=="" then return "" end if`.
+/// @param leaf Value used by `path=fs.joinPath(fs.joinPath(dataRoot,"demos"),leaf)`.
 function loosePath(dataRoot,leaf)
   if dataRoot=="" then return "" end if
   path=fs.joinPath(fs.joinPath(dataRoot,"demos"),leaf)
@@ -102,6 +121,11 @@ function loosePath(dataRoot,leaf)
   return ""
 end function
 
+/// Calls `mq3.client.demo_playback.filename`, `mq3.format.pk3.findEntry`, `mq3.client.demo_playback.loosePath` and additional helpers from demo playback `open`.
+/// @param dataRoot Value used by `mounted=archive!=void and archive.modArchive!=void and dataRoot!=""`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Record read through `archive.modArchive`.
+/// @param name Name used to select or register the corresponding demo playback resource.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function open(dataRoot,archive,name,now)
   leaf=filename(name)
   if leaf==void then return fail("invalid demo filename") end if
@@ -149,6 +173,9 @@ end function
 
 // Read ahead through the next snapshot for Cgame interpolation. After a new
 // gamestate, stop at its first active snapshot so Cgame can initialize again.
+/// @param playback Record read through `playback.completed`, `playback.protocol.dispatcher.snapshotState`, `playback.protocol`.
+/// @param serverTime Authoritative server timestamp in milliseconds.
+/// @param realtime Current client real-time clock in milliseconds.
 function advance(playback,serverTime,realtime)
   if playback.completed then return 0 end if
   initialEpoch=playback.protocol.dispatcher.snapshotState

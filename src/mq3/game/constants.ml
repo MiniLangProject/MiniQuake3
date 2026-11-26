@@ -264,34 +264,46 @@ const TR_LINEAR_STOP = 3
 const TR_SINE = 4
 const TR_GRAVITY = 5
 
+/// Read the baseq3 item category from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function itemType(index)
   types = [0,3,3,3,4,4,4,4,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,6,6,5,5,5,5,5,5,8,8]
   if index < 0 or index >= len(types) then return error(471,"Invalid baseq3 item index") end if
   return types[index]
 end function
 
+/// Read the baseq3 pickup quantity from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function itemQuantity(index)
   quantities = [0,5,50,100,5,25,50,100,0,10,40,10,10,100,10,50,20,0,10,50,5,30,60,5,10,15,60,60,30,30,30,30,30,60,0,0]
   if index < 0 or index >= len(quantities) then return error(471,"Invalid baseq3 item index") end if
   return quantities[index]
 end function
 
+/// Read the baseq3 weapon, powerup or holdable tag from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function itemTag(index)
   tags = [0,0,0,0,0,0,0,0,1,3,2,4,5,6,7,8,9,10,3,2,4,8,6,5,7,9,1,2,1,2,3,4,5,6,7,8]
   if index < 0 or index >= len(tags) then return error(471,"Invalid baseq3 item index") end if
   return tags[index]
 end function
 
+/// Read the Team Arena item category from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function missionpackItemType(index)
   types = [0,3,3,3,4,4,4,4,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,6,6,5,5,5,5,5,5,8,8,6,6,6,2,2,2,7,7,7,7,8,8,8,1,1,1]
   if index < 0 or index >= len(types) then return error(471,"Invalid Team Arena item index") end if
   return types[index]
 end function
+/// Read the Team Arena pickup quantity from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function missionpackItemQuantity(index)
   quantities = [0,5,50,100,5,25,50,100,0,10,40,10,10,100,10,50,20,0,10,50,5,30,60,5,10,15,60,60,30,30,30,30,30,60,0,0,60,60,60,20,10,100,30,30,30,30,0,0,0,10,5,80]
   if index < 0 or index >= len(quantities) then return error(471,"Invalid Team Arena item index") end if
   return quantities[index]
 end function
+/// Read the Team Arena weapon, powerup or holdable tag from the pinned item table, rejecting an invalid item index.
+/// @param index Index of the entry to access.
 function missionpackItemTag(index)
   tags = [0,0,0,0,0,0,0,0,1,3,2,4,5,6,7,8,9,10,3,2,4,8,6,5,7,9,1,2,1,2,3,4,5,6,7,8,3,4,5,11,12,13,10,11,12,13,9,0,0,11,12,13]
   if index < 0 or index >= len(tags) then return error(471,"Invalid Team Arena item index") end if

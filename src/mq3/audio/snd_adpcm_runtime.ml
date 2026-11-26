@@ -8,12 +8,24 @@ import mq3.compat.numeric as n
 
 const BLOCK_SAMPLES=4096
 const HEADER_BYTES=8
+/// State record for audio.snd_adpcm_runtime, containing `sample`, `index`.
 struct State sample index end struct
+/// Encoded record for audio.snd_adpcm_runtime, containing `data`, `state`.
 struct Encoded data state end struct
 
+/// Clamp index in audio.snd_adpcm_runtime; the normal completion returns `value`.
+/// @param value Value used in `(value < 0)` and `(value > 88)`.
 function clampIndex(value) if value<0 then return 0 end if;if value>88 then return 88 end if;return value end function
+/// Clamp sample in audio.snd_adpcm_runtime; the normal completion returns `value`.
+/// @param value Value used in `(value > 32767)` and `(value < - 32768)`.
 function clampSample(value) if value>32767 then return 32767 end if;if value<(-32768) then return -32768 end if;return value end function
 
+/// Update `state.sample`, `state.index` in audio.snd_adpcm_runtime; the normal completion returns `Encoded(output, state)`.
+///
+/// Validation failures include `S_AdpcmEncode: invalid input`.
+/// Direct state writes: `state.sample`, `state.index`.
+/// @param samples Samples used in `len(samples)` and `(samples == void)`.
+/// @param state Record exposing `index`, `sample`. Updated in place: `sample`, `index`.
 function S_AdpcmEncode(samples,state)
   if samples==void or state==void or state.index<0 or state.index>88 then return error(7670,"S_AdpcmEncode: invalid input") end if
   indexes=compressed.indexTable();steps=compressed.stepTable();output=bytes((len(samples)+1)>>1,0);predicted=state.sample;stepIndex=state.index;step=steps[stepIndex]
@@ -31,6 +43,13 @@ function S_AdpcmEncode(samples,state)
   return Encoded(output,state)
 end function
 
+/// Update `state.sample`, `state.index` in audio.snd_adpcm_runtime; the normal completion returns `samples`.
+///
+/// Validation failures include `S_AdpcmDecode: state is required`.
+/// Direct state writes: `state.sample`, `state.index`.
+/// @param data Data passed as `data` to `mq3.audio.snd_compressed_paint.adpcmDecode`.
+/// @param count Count passed as `count` to `mq3.audio.snd_compressed_paint.adpcmDecode`.
+/// @param state Record exposing `sample`, `index`. Updated in place: `sample`, `index`.
 function S_AdpcmDecode(data,count,state)
   if state==void then return error(7670,"S_AdpcmDecode: state is required") end if
   samples=try(compressed.adpcmDecode(data,count,state.sample,state.index));if samples is error then return samples end if
@@ -43,11 +62,17 @@ function S_AdpcmDecode(data,count,state)
   state.sample=predicted;state.index=stepIndex;return samples
 end function
 
+/// Compute adpcm get samples in audio.snd_adpcm_runtime; the normal completion returns `S_AdpcmDecode(block.data, block.size, state)`.
+/// @param block Record exposing `sample`, `index`, `data`, `size`.
 function S_AdpcmGetSamples(block)
   state=State(block.sample,block.index)
   return S_AdpcmDecode(block.data,block.size,state)
 end function
 
+/// Compute adpcm encode sound in audio.snd_adpcm_runtime; the normal completion returns `compressed.Compressed(compressed.METHOD_ADPCM, blocks, len(samples))`.
+///
+/// Validation failures include `S_AdpcmEncodeSound: samples are required`.
+/// @param samples Samples used in `samples[0]` and `len(samples)`.
 function S_AdpcmEncodeSound(samples)
   if samples==void or len(samples)==0 then return error(7670,"S_AdpcmEncodeSound: samples are required") end if
   state=State(samples[0],0);blocks=[];offset=0
@@ -60,10 +85,20 @@ function S_AdpcmEncodeSound(samples)
   return compressed.Compressed(compressed.METHOD_ADPCM,blocks,len(samples))
 end function
 
+/// Compute adpcm memory needed in audio.snd_adpcm_runtime; the normal completion returns `((scaled / 2) + (blocks * HEADER_BYTES))`.
+///
+/// Validation failures include `S_AdpcmMemoryNeeded: invalid format`.
+/// @param rate Floating-point value to narrow to binary32.
+/// @param samples Floating-point value to narrow to binary32.
+/// @param dmaSpeed Floating-point value to narrow to binary32.
 function S_AdpcmMemoryNeeded(rate,samples,dmaSpeed)
   if rate<=0 or samples<0 or dmaSpeed<=0 then return error(7670,"S_AdpcmMemoryNeeded: invalid format") end if
   scale=n.fdiv(n.f32(rate),n.f32(dmaSpeed));scaled=n.trunc32(n.fdiv(n.f32(samples),scale));blocks=scaled/BLOCK_SAMPLES;if (scaled%BLOCK_SAMPLES)!=0 then blocks=blocks+1 end if
   return scaled/2+blocks*HEADER_BYTES
 end function
 
+/// Return `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded(rate, samples, dmaSpeed)` from `audio.snd_adpcm_runtime.memory`.
+/// @param rate Rate passed as `rate` to `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded`.
+/// @param samples Samples passed as `samples` to `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded`.
+/// @param dmaSpeed Dma speed passed as `dmaSpeed` to `mq3.audio.snd_adpcm_runtime.S_AdpcmMemoryNeeded`.
 function memory(rate,samples,dmaSpeed) return S_AdpcmMemoryNeeded(rate,samples,dmaSpeed) end function

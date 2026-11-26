@@ -8,6 +8,9 @@ import mq3.game.movement as movement
 import mq3.server.world as sv
 import mq3.shared.math as q
 import mq3.compat.numeric as n
+/// Update `ent.client.ps.delta_angles[axis]`, `ent.s.angles` and `ent.client.ps.viewangles` during `setClientViewAngle`.
+/// @param ent Game entity; accesses `client` and `s`. May update `ent.client.ps.delta_angles[axis]`, `ent.s.angles` and `ent.client.ps.viewangles` in place.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function setClientViewAngle(ent,angles)
   for axis = 0 to 2
     // ANGLE2SHORT uses two float operations, unlike AngleNormalize360.
@@ -17,6 +20,9 @@ function setClientViewAngle(ent,angles)
   ent.s.angles = movement.copy(angles); ent.client.ps.viewangles = movement.copy(ent.s.angles)
   return void
 end function
+/// Use `level.damageFn` to perform `killBox`.
+/// @param level Game-level state; accesses `scene`, `entities` and `damageFn`.
+/// @param ent Game entity; accesses `client` and `r`.
 function killBox(level,ent)
   mins = array(3,0.0); maxs = array(3,0.0)
   for axis = 0 to 2
@@ -30,6 +36,11 @@ function killBox(level,ent)
   end for
   return void
 end function
+/// Set `ent.r.currentOrigin` to `movement.copy(state.origin)` in `mq3.game.teleport.player`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `client`, `s` and `r`. May update `ent.r.currentOrigin` in place.
+/// @param origin World-space position as three coordinates. Entries may be updated in place.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function player(level,ent,origin,angles)
   if ent.client == void then return error(484,"TeleportPlayer requires a client") end if
   if ent.client.team != c.TEAM_SPECTATOR then

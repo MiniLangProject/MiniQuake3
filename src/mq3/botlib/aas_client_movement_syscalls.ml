@@ -7,7 +7,15 @@ import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
 const AAS_CLIENTMOVE_SIZE=84
+/// Write three float bit patterns to consecutive VM memory words for aas client movement syscalls.
+/// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.
+/// @param address Address within the VM memory or native data buffer.
+/// @param value Array or byte sequence accessed at `axis`.
 function writeVector(data,address,value) for axis=0 to 2 n.writeU32(data,address+axis*4,n.floatBits(value[axis])) end for;return void end function
+/// Apply `mq3.vm.syscall_common.pointer`, `mq3.vm.syscall_common.argument` and `mq3.vm.syscall_common.readFloatVector` while evaluating `dispatch`.
+/// @param services S record; accesses `settings`.
+/// @param vm Vm record; accesses `data`.
+/// @param base Address within the VM memory or native data buffer.
 function dispatch(services,vm,base)
   output=common.pointer(vm,common.argument(vm,base,1),AAS_CLIENTMOVE_SIZE,"aas_clientmove_t output");if output is error then return output end if
   origin=common.readFloatVector(vm,common.argument(vm,base,3),3,"AAS movement origin");if origin is error then return origin end if

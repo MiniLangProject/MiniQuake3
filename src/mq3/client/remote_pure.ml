@@ -17,9 +17,13 @@ import std.string_builder as pureBuilder
 
 const MAX_PURE_PACKAGES=128
 
+/// Stores remote pure package record, including `archive`, `pureChecksum`.
 struct Package archive pureChecksum end struct
+/// Stores remote pure verification record, including `archive`, `command`.
 struct Verification archive command end struct
 
+/// Calls `mq3.qcommon.command_buffer.create`, `mq3.qcommon.command_buffer.tokenizeString`, `mq3.qcommon.command_buffer.argc` and additional helpers from remote pure `advertisedChecksums`. The final path returns `checksums`.
+/// @param text Text consumed or emitted by `advertisedChecksums` in the remote pure path.
 function advertisedChecksums(text)
   command=pureCommands.create()
   pureCommands.tokenizeString(command,text)
@@ -35,6 +39,10 @@ function advertisedChecksums(text)
   return checksums
 end function
 
+/// Calls `mq3.format.pk3.findEntry` from remote pure `checksumForEntry`.
+/// @param archive Opened game archive supplying maps, models, textures or other assets. Record read through `archive.path`.
+/// @param packages Value used by `for each candidate in packages`.
+/// @param name Name used to select or register the corresponding remote pure resource.
 function checksumForEntry(archive,packages,name)
   entry=purePk3.findEntry(archive,name)
   if entry==void then return error(7826,"Matching Retail packages are missing "+name) end if
@@ -44,6 +52,12 @@ function checksumForEntry(archive,packages,name)
   return error(7826,"No verified PK3 owns "+name)
 end function
 
+/// Calls `mq3.client.remote_pure.advertisedChecksums`, `mq3.shared.info.value`, `std.fs.listDir` and additional helpers from remote pure `verify`. The final path returns `Verification(archive,builder.toString())`.
+/// @param baseDirectory Value used by `if baseDirectory=="" then return error(7826,"This connection needs a local baseq3 directory for pure PK3 verification") end if`.
+/// @param systemInfo Value used by `loaded=advertisedChecksums(pureInfo.value(systemInfo,"sv_paks"))`.
+/// @param checksumFeed Value used by `candidates.set(checksum,Package(archive,pureMd4.blockChecksumKey(header,checksumFeed)))`.
+/// @param serverId Value used by `builder.append(str(serverId))`.
+/// @param map map record passed to the remote pure helper calls.
 function verify(baseDirectory,systemInfo,checksumFeed,serverId,map)
   if baseDirectory=="" then return error(7826,"This connection needs a local baseq3 directory for pure PK3 verification") end if
   loaded=advertisedChecksums(pureInfo.value(systemInfo,"sv_paks"))

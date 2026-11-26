@@ -26,18 +26,53 @@ const GIANT_WIDTH=32
 const GIANT_HEIGHT=48
 const FADE_TIME=200
 
+/// Stores client game scoreboard score record, including `client`, `score`, `ping`, `time`.
 struct Score client score ping time end struct
+/// Stores client game scoreboard client record, including `name`, `team`, `powerups`, `botSkill`, `handicap`, `wins` and additional values.
 struct Client name team powerups botSkill handicap wins losses infoValid score end struct
+/// Stores client game scoreboard state, including `time`, `scoresRequestTime`, `showScores`, `numScores`, `scoreFadeTime`, `paused` and additional values.
 struct State time scoresRequestTime showScores numScores scoreFadeTime paused gametype pmType warmup killerName teamScores clientNum playerTeam rank playerScore readyMask deferredPlayerLoading motd scores clients end struct
+/// Stores client game scoreboard draw record, including `kind`, `x`, `y`, `width`, `height`, `text` and additional values.
 struct Draw kind x y width height text alpha red green blue client team large end struct
+/// Stores client game scoreboard frame data, including `drawn`, `commands`, `clientCommands`, `deferredLoads`, `localClient`, `lineHeight`.
 struct Frame drawn commands clientCommands deferredLoads localClient lineHeight end struct
 
+/// Creates a `mq3.client.cgame_scoreboard.Score` record. Assigns `client` from `client`, `score` from `points`, `ping` from `ping`, `time` from `time`.
+/// @param client Value used to initialize `Score.client`.
+/// @param points Value used to initialize `Score.score`.
+/// @param ping Value used to initialize `Score.ping`.
+/// @param time Value used to initialize `Score.time`.
 function score(client,points,ping,time) return Score(client,points,ping,time) end function
+/// Creates a `mq3.client.cgame_scoreboard.Client` record. Assigns `name` from `name`, `team` from `team`.
+/// @param name Value used to initialize `Client.name`.
+/// @param team Value used to initialize `Client.team`.
 function client(name,team) return Client(name,team,0,0,100,0,0,true,0) end function
+/// Creates a `mq3.client.cgame_scoreboard.State` record. Initializes the record with the defaults written in this constructor.
 function state() return State(0,0,false,0,0,false,TEAM_FREE,0,0,"",[0,0],0,TEAM_FREE,0,0,0,0,"",[],[]) end function
+/// Creates a `mq3.client.cgame_scoreboard.Draw` record. Assigns `kind` from `kind`, `x` from `x`, `y` from `y`, `width` from `width`.
+/// @param kind Value used to initialize `Draw.kind`.
+/// @param x Value used to initialize `Draw.x`.
+/// @param y Value used to initialize `Draw.y`.
+/// @param width Value used to initialize `Draw.width`.
+/// @param height Value used to initialize `Draw.height`.
+/// @param text Value used to initialize `Draw.text`.
+/// @param alpha Value used to initialize `Draw.alpha`.
+/// @param red Value used to initialize `Draw.red`.
+/// @param green Value used to initialize `Draw.green`.
+/// @param blue Value used to initialize `Draw.blue`.
+/// @param clientNum Value used to initialize `Draw.client`.
+/// @param team Value used to initialize `Draw.team`.
+/// @param large Value used to initialize `Draw.large`.
 function draw(kind,x,y,width,height,text,alpha,red,green,blue,clientNum,team,large) return Draw(kind,x,y,width,height,text,alpha,red,green,blue,clientNum,team,large) end function
+/// Creates a `mq3.client.cgame_scoreboard.Frame` record. Assigns `drawn` from `drawn`.
+/// @param drawn Value used to initialize `Frame.drawn`.
 function frame(drawn) return Frame(drawn,[],[],0,false,SB_NORMAL_HEIGHT) end function
+/// Updates `value.commands` during client game scoreboard `append`.
+/// @param value Mutable client game scoreboard record/storage; this routine assigns `value.commands`.
+/// @param command Value used by `value.commands=value.commands+[command]`.
 function append(value,command) value.commands=value.commands+[command];return void end function
+/// Evaluates client game scoreboard `printableLength` and returns `count` according to its guard/selection conditions.
+/// @param text Text consumed or emitted by `printableLength` in the client game scoreboard path.
 function printableLength(text)
   data=bytes(text);count=0;index=0
   while index<len(data)
@@ -45,19 +80,31 @@ function printableLength(text)
   end while
   return count
 end function
+/// Evaluates client game scoreboard `placeString` and returns `"Tied for "+text`, `text` according to its guard/selection conditions.
+/// @param rank Value used by `tied=(rank & RANK_TIED_FLAG)!=0`.
 function placeString(rank)
   tied=(rank & RANK_TIED_FLAG)!=0;value=rank & ~RANK_TIED_FLAG;text=""
   if value==1 then text="1st" else if value==2 then text="2nd" else if value==3 then text="3rd" else text=str(value)+"th" end if
   if tied then return "Tied for "+text end if;return text
 end function
+/// Evaluates client game scoreboard `fadeAlpha` and returns `0.0`, `(FADE_TIME-elapsed)/FADE_TIME` according to its guard/selection conditions.
+/// @param stateValue Record read through `stateValue.time`, `stateValue.scoreFadeTime`.
 function fadeAlpha(stateValue)
   elapsed=stateValue.time-stateValue.scoreFadeTime;if elapsed<0 or elapsed>=FADE_TIME then return 0.0 end if;return (FADE_TIME-elapsed)/FADE_TIME
 end function
+/// Evaluates client game scoreboard `padLeft` and returns `text` according to its guard/selection conditions.
+/// @param value Value used by `text=str(value)`.
+/// @param width Width in the coordinate space used by `padLeft`.
 function padLeft(value,width)
   text=str(value);while len(text)<width text=" "+text end while;return text
 end function
 
 // CG_DrawClientScore
+/// @param value Record read through `value.clients`, `value.gametype`, `value.clientNum`, `value.rank` and additional values.
+/// @param y Vertical coordinate in the coordinate space used by `drawClientScore`.
+/// @param entry Record read through `entry.client`, `entry.ping`, `entry.time`, `entry.score`.
+/// @param fade Value used by `if ci.powerups!=0 then commands=commands+[draw("flag",iconx,iconY,iconSize,iconSize,"",fade,1.0,1.0,1.0,entry.client,ci.team,largeFormat)]`.
+/// @param largeFormat Value used by `if largeFormat then iconY=y-8`.
 function drawClientScore(value,y,entry,fade,largeFormat)
   if entry.client<0 or entry.client>=len(value.clients) then return [[draw("print",0,0,0,0,"Bad score->client: "+str(entry.client)+"\n",1.0,1.0,1.0,1.0,-1,0,false)],false] end if
   ci=value.clients[entry.client];commands=[];iconx=80;headx=112;text=""
@@ -80,6 +127,12 @@ function drawClientScore(value,y,entry,fade,largeFormat)
 end function
 
 // CG_TeamScoreboard
+/// @param value Record read through `value.scores`, `value.clients`.
+/// @param y Vertical coordinate in the coordinate space used by `teamScoreboard`.
+/// @param team Value used by `if entry.client>=0 and entry.client<len(value.clients) and value.clients[entry.client].team==team then`.
+/// @param fade Value used by `part=drawClientScore(value,y+lineHeight*count,entry,fade,lineHeight==SB_NORMAL_HEIGHT)`.
+/// @param maxClients Value used by `if count>=maxClients then break end if`.
+/// @param lineHeight Value used by `part=drawClientScore(value,y+lineHeight*count,entry,fade,lineHeight==SB_NORMAL_HEIGHT)`.
 function teamScoreboard(value,y,team,fade,maxClients,lineHeight)
   commands=[];count=0;local=false
   for each entry in value.scores
@@ -92,6 +145,7 @@ function teamScoreboard(value,y,team,fade,maxClients,lineHeight)
 end function
 
 // CG_DrawOldScoreboard
+/// @param value Mutable client game scoreboard record/storage; this routine assigns `value.deferredPlayerLoading`, `value.killerName`.
 function drawOldScoreboard(value)
   result=frame(false);fade=0.0;text="";maxClients=0;lineHeight=0;topBorder=0
   if value.paused or (value.gametype==GT_SINGLE_PLAYER and value.pmType==PM_INTERMISSION) then value.deferredPlayerLoading=0;return result end if
@@ -122,9 +176,12 @@ function drawOldScoreboard(value)
 end function
 
 // CG_CenterGiantLine
+/// @param y Argument 3 of `mq3.client.cgame_scoreboard.draw`.
+/// @param text Argument 2, 6 of `mq3.client.cgame_scoreboard.draw`; passed as `(640-GIANT_WIDTH*printableLength(text))/2`, `text`.
 function centerGiantLine(y,text) return draw("giant",(640-GIANT_WIDTH*printableLength(text))/2,y,0,0,text,1.0,1.0,1.0,1.0,-1,0,false) end function
 
 // CG_DrawOldTourneyScoreboard
+/// @param value Mutable client game scoreboard record/storage; this routine assigns `value.scoresRequestTime`.
 function drawOldTourneyScoreboard(value)
   result=frame(true);text="";if value.scoresRequestTime+2000<value.time then value.scoresRequestTime=value.time;result.clientCommands=["score"] end if
   append(result,draw("fill",0,0,640,480,"",1.0,0.0,0.0,0.0,-1,0,false));title=value.motd;if title=="" then title="Scoreboard" end if;append(result,centerGiantLine(8,title))

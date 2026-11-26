@@ -9,8 +9,10 @@ import mq3.shared.math as qmath
 
 const QTIME_SIZE=36
 
+/// TokenResult record for vm.syscall_qagame, containing `found`, `text`.
 struct TokenResult found text end struct
 
+/// Services record for vm.syscall_qagame, containing `shared`, `context`, `locateGameDataFn`, `dropClientFn`, `sendServerCommandFn`, `setConfigstringFn`, and 20 further fields.
 struct Services
   shared
   context
@@ -40,23 +42,46 @@ struct Services
   extendedFn
 end struct
 
+/// Create `mq3.vm.syscall_qagame.Services` with shared=shared; context=context; locateGameDataFn=void; dropClientFn=void; 22 further fields.
+/// @param shared Initial `shared` field stored in the returned or constructed `mq3.vm.syscall_qagame.Services` record.
+/// @param context Initial `context` field stored in the returned or constructed `mq3.vm.syscall_qagame.Services` record.
 function services(shared,context)
   return Services(shared,context,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void)
 end function
 
+/// Create the vm.syscall_qagame error for `unavailable` with 3421 and the supplied diagnostic text.
+/// @param name Name used in `("qagame syscall: " + name)` and `(("qagame syscall: " + name) + " service unavailable")`.
 function unavailable(name) return error(3421,"qagame syscall: "+name+" service unavailable") end function
 
+/// Return `mq3.vm.syscall_common.argument(vm, base, index)` from `vm.syscall_qagame.arg`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param index Index passed as `index` to `mq3.vm.syscall_common.argument`.
 function arg(vm,base,index) return common.argument(vm,base,index) end function
 
+/// Return `mq3.vm.syscall_common.pointer(vm, value, 1, label)` from `vm.syscall_qagame.opaque`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.pointer`.
+/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function opaque(vm,value,label)
   return common.pointer(vm,value,1,label)
 end function
 
+/// Apply `mq3.vm.syscall_common.pointer`, `mq3.compat.numeric.bitsFloat`, `mq3.compat.numeric.readU32` for vector in vm.syscall_qagame.
+/// @param vm Record exposing `data`.
+/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function vector(vm,value,label)
   at=common.pointer(vm,value,12,label)
   return [n.bitsFloat(n.readU32(vm.data,at)),n.bitsFloat(n.readU32(vm.data,at+4)),n.bitsFloat(n.readU32(vm.data,at+8))]
 end function
 
+/// Compute locate game data in vm.syscall_qagame; the normal completion returns `0`.
+///
+/// Validation failures include `qagame syscall: invalid game-data layout`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `locateGameDataFn`, `context`.
 function locateGameData(vm,base,host)
   if host.locateGameDataFn==void then return unavailable("locate game data") end if
   entityCount=arg(vm,base,2);entityStride=arg(vm,base,3);clientStride=arg(vm,base,5)
@@ -68,6 +93,13 @@ function locateGameData(vm,base,host)
   return 0
 end function
 
+/// Compute string call in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `context`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
+/// @param name Name passed as `name` to `mq3.vm.syscall_qagame.unavailable`.
+/// @param withClient With client operand used by `stringCall`; its reads are shown in the implementation.
 function stringCall(vm,base,host,callback,name,withClient)
   if callback==void then return unavailable(name) end if
   text=common.readString(vm,arg(vm,base,2))
@@ -75,6 +107,12 @@ function stringCall(vm,base,host,callback,name,withClient)
   return 0
 end function
 
+/// Compute indexed output in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `context`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
+/// @param name Name passed as `name` to `mq3.vm.syscall_qagame.unavailable`.
 function indexedOutput(vm,base,host,callback,name)
   if callback==void then return unavailable(name) end if
   value=callback(host.context,arg(vm,base,1))
@@ -82,35 +120,61 @@ function indexedOutput(vm,base,host,callback,name)
   return 0
 end function
 
+/// Compute server info in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `getServerinfoFn`, `context`.
 function serverInfo(vm,base,host)
   if host.getServerinfoFn==void then return unavailable("serverinfo") end if
   common.writeBuffer(vm,arg(vm,base,1),arg(vm,base,2),host.getServerinfoFn(host.context),"serverinfo output")
   return 0
 end function
 
+/// Compute brush model in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.opaque`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `setBrushModelFn`, `context`.
 function brushModel(vm,base,host)
   if host.setBrushModelFn==void then return unavailable("brush model") end if
   host.setBrushModelFn(host.context,opaque(vm,arg(vm,base,1),"gentity"),common.readString(vm,arg(vm,base,2)))
   return 0
 end function
 
+/// Compute in pvs in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.vector`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `inPvsFn`, `context`.
+/// @param ignorePortals Argument 4 passed to `host.inPvsFn`.
 function inPvs(vm,base,host,ignorePortals)
   if host.inPvsFn==void then return unavailable("PVS") end if
   if host.inPvsFn(host.context,vector(vm,arg(vm,base,1),"PVS origin 1"),vector(vm,arg(vm,base,2),"PVS origin 2"),ignorePortals) then return 1 end if
   return 0
 end function
 
+/// Compute portal state in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.opaque`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `adjustAreaPortalFn`, `context`.
 function portalState(vm,base,host)
   if host.adjustAreaPortalFn==void then return unavailable("area portal") end if
   host.adjustAreaPortalFn(host.context,opaque(vm,arg(vm,base,1),"gentity"),arg(vm,base,2)!=0);return 0
 end function
 
+/// Compute entity link in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.opaque`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `unlinkEntityFn`, `linkEntityFn`, `context`.
+/// @param isLink Is link operand used by `entityLink`; its reads are shown in the implementation.
 function entityLink(vm,base,host,isLink)
   callback=host.unlinkEntityFn;if isLink then callback=host.linkEntityFn end if
   if callback==void then return unavailable("entity link") end if
   callback(host.context,opaque(vm,arg(vm,base,1),"gentity"));return 0
 end function
 
+/// Compute entity token in vm.syscall_qagame; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `entityTokenFn`, `context`.
 function entityToken(vm,base,host)
   if host.entityTokenFn==void then return unavailable("entity token") end if
   result=host.entityTokenFn(host.context)
@@ -120,6 +184,12 @@ function entityToken(vm,base,host)
   return 0
 end function
 
+/// Compute file list in vm.syscall_qagame; the normal completion returns `count`.
+///
+/// Validation failures include `qagame syscall: negative file-list capacity`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `fileListFn`, `context`.
 function fileList(vm,base,host)
   if host.fileListFn==void then return unavailable("file list") end if
   capacity=arg(vm,base,4);if capacity<0 then return error(3421,"qagame syscall: negative file-list capacity") end if
@@ -135,6 +205,12 @@ function fileList(vm,base,host)
   return count
 end function
 
+/// Compute debug polygon create in vm.syscall_qagame; the normal completion returns `host.debugPolygonCreateFn(host.context, arg(vm, base, 1), points)`.
+///
+/// Validation failures include `qagame syscall: negative debug-polygon point count`; `qagame syscall: debug-polygon point count overflow`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `debugPolygonCreateFn`, `context`.
 function debugPolygonCreate(vm,base,host)
   if host.debugPolygonCreateFn==void then return unavailable("debug polygon create") end if
   count=arg(vm,base,2);if count<0 then return error(3421,"qagame syscall: negative debug-polygon point count") end if
@@ -146,6 +222,12 @@ function debugPolygonCreate(vm,base,host)
   return host.debugPolygonCreateFn(host.context,arg(vm,base,1),points)
 end function
 
+/// Compute real time in vm.syscall_qagame; the normal completion returns `value.epoch`.
+///
+/// Validation failures include `qagame syscall: invalid qtime_t layout`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_qagame.arg`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame.arg`.
+/// @param host Record exposing `realTimeFn`, `context`.
 function realTime(vm,base,host)
   if host.realTimeFn==void then return unavailable("real time") end if
   value=host.realTimeFn(host.context)
@@ -154,6 +236,11 @@ function realTime(vm,base,host)
   return value.epoch
 end function
 
+/// Dispatch specific in vm.syscall_qagame; the normal completion returns `error(3421, ("qagame syscall: unsupported server trap " + str(op)))`.
+/// @param vm Record exposing `data`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_qagame_world.dispatch`.
+/// @param host Record exposing `worldServices`, `fileListFn`, `debugPolygonCreateFn`, `debugPolygonDeleteFn`, `context`, `realTimeFn`, `dropClientFn` and further fields.
+/// @param op Op passed as `op` to `mq3.vm.syscall_qagame_world.dispatch`.
 function dispatchSpecific(vm,base,host,op)
   if op==24 or op==25 or op==32 or op==33 or op==36 or op==43 or op==44 then
     if host.worldServices==void then return unavailable("binary world") end if
@@ -194,6 +281,12 @@ function dispatchSpecific(vm,base,host,op)
   return error(3421,"qagame syscall: unsupported server trap "+str(op))
 end function
 
+/// Dispatch syscall qagame in vm.syscall_qagame; the normal completion returns `dispatchSpecific(vm, base, host, op)`.
+///
+/// Validation failures include `qagame syscall: invalid dispatcher context`.
+/// @param host Record exposing `shared`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function dispatch(host,vm,base)
   if host==void or host.shared==void then return error(3421,"qagame syscall: invalid dispatcher context") end if
   op=common.argument(vm,base,0)
@@ -201,4 +294,6 @@ function dispatch(host,vm,base)
   return dispatchSpecific(vm,base,host,op)
 end function
 
+/// Apply `mq3.vm.syscall_qagame.dispatch` for callback in vm.syscall_qagame.
+/// @param host Host passed as `host` to `mq3.vm.syscall_qagame.dispatch`.
 function callback(host) return function(vm,base) => dispatch(host,vm,base) end function

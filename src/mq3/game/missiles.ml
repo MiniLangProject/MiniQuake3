@@ -12,6 +12,9 @@ import mq3.game.movement as movement
 import mq3.shared.math as q
 import mq3.shared.directions as directions
 import mq3.compat.numeric as n
+/// Set `v[axis]` to `n.f32(value)` in `mq3.game.missiles.snapTowards`.
+/// @param v Array or byte sequence accessed at `axis`. Entries are written in place.
+/// @param towards Array or byte sequence accessed at `axis`.
 function snapTowards(v,towards)
   for axis = 0 to 2
     value = n.trunc32(v[axis])
@@ -20,20 +23,30 @@ function snapTowards(v,towards)
   end for
   return void
 end function
+/// Increment the owning client's accuracy-hit count and reject missiles without a client owner.
+/// @param level Game-level state; accesses `entities`.
+/// @param ent Game entity; accesses `r`.
 function accuracy(level,ent)
   owner = level.entities[ent.r.ownerNum]
   if owner.client == void then return error(492,"Missile accuracy requires an owner client") end if
   owner.client.accuracy_hits = n.add32(owner.client.accuracy_hits,1)
   return void
 end function
+/// Require and return the parent client of a grappling-hook entity.
+/// @param ent Game entity; accesses `parent`.
 function hookClient(ent)
   if ent.parent == void or ent.parent.client == void then return error(492,"Grapple requires a parent client") end if
   return ent.parent.client
 end function
+/// Apply `mq3.game.missiles.hookClient` and `mq3.game.entities.free` while evaluating `hookFree`. Return paths include `game.free(level,ent)`.
+/// @param level Game-level state; accesses `scene` and `time`. May update `level.scene.entities[ent.slot]` in place.
+/// @param ent Game entity; accesses `parent`.
 function hookFree(level,ent)
   client = hookClient(ent); client.hook = void; client.ps.pm_flags = client.ps.pm_flags & n.i32(~2048)
   return game.free(level,ent)
 end function
+/// Calculate the hooked entity's bounding-box center relative to its current world origin.
+/// @param other Other record; accesses `r`.
 function hookPoint(other)
   point = [0.0,0.0,0.0]
   for axis = 0 to 2
@@ -41,6 +54,9 @@ function hookPoint(other)
   end for
   return point
 end function
+/// Apply `mq3.game.missiles.hookPoint`, `mq3.game.missiles.snapTowards` and `mq3.game.entities.setOrigin` while evaluating `hookThink`.
+/// @param level Not read by this implementation; retained in the `hookThink` signature.
+/// @param ent Game entity; accesses `enemy` and `r`.
 function hookThink(level,ent)
   if ent.enemy != void then
     point = hookPoint(ent.enemy); snapTowards(point,ent.r.currentOrigin); game.setOrigin(ent,point)
@@ -48,6 +64,10 @@ function hookThink(level,ent)
   client = hookClient(ent); client.ps.grapplePoint = movement.copy(ent.r.currentOrigin)
   return void
 end function
+/// Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `ent.r.currentOrigin[axis]` and `ent.s.pos.trBase` and related state during `bounce`.
+/// @param level Game-level state; accesses `previousTime` and `time`.
+/// @param ent Game entity; accesses `s` and `r`. May update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]` and `ent.r.currentOrigin[axis]` and additional fields in place.
+/// @param hit Hit record; accesses `trace` and `endpos`.
 function bounce(level,ent,hit)
   tr = hit.trace
   hitTime = n.trunc32(n.fadd(level.previousTime,n.fmul(n.i32(level.time-level.previousTime),tr.fraction)))
@@ -65,6 +85,9 @@ function bounce(level,ent,hit)
   ent.s.pos.trBase = movement.copy(ent.r.currentOrigin); ent.s.pos.trTime = level.time
   return void
 end function
+/// Set `ent.s.eType` to `c.ET_GENERAL` and `ent.freeAfterEvent` to `true` in `mq3.game.missiles.explode`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `freeAfterEvent`, `splashDamage`, `r` and `parent` and related fields. May update `ent.s.eType` and `ent.freeAfterEvent` in place.
 function explode(level,ent)
   origin = trajectory.evaluate(ent.s.pos,level.time); snapshot.snapVector(origin); game.setOrigin(ent,origin)
   ent.s.eType = c.ET_GENERAL; events.add(level,ent,c.EV_MISSILE_MISS,directions.dirToByte([0.0,0.0,1.0]))
@@ -74,6 +97,10 @@ function explode(level,ent)
   end if
   return game.link(level,ent)
 end function
+/// Update `ent.enemy`, `ent.s.eType`, `ent.think` and `ent.nextthink` and related state during `impact`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `entities` and `time`.
+/// @param ent Game entity; accesses `s`, `damage`, `r`, `methodOfDeath` and `classname` and related fields. May update `ent.enemy`, `ent.s.eType` and `ent.think` and additional fields in place.
+/// @param hit Hit record; accesses `trace`, `entityNum` and `endpos`.
 function impact(level,ent,hit)
   tr = hit.trace; other = level.entities[hit.entityNum]; hitClient = false
   if not other.takedamage and (ent.s.eFlags & 48) != 0 then
@@ -109,6 +136,9 @@ function impact(level,ent,hit)
   end if
   return game.link(level,ent)
 end function
+/// Set `ent.r.currentOrigin` to `movement.copy(hit.endpos)` and `ent.parent.client.hook` to `void` in `mq3.game.missiles.run`. Return paths include `game.runThink(level,ent)`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`, `r`, `target_ent`, `clipmask` and `parent`. May update `ent.r.currentOrigin` and `ent.parent.client.hook` in place.
 function run(level,ent)
   origin = trajectory.evaluate(ent.s.pos,level.time); passEntity = ent.r.ownerNum
   if ent.target_ent != void then passEntity = ent.target_ent.s.number end if
@@ -129,6 +159,12 @@ function run(level,ent)
   end if
   return game.runThink(level,ent)
 end function
+/// Apply `mq3.game.entities.spawn`, `mq3.game.movement.copy` and `mq3.game.snapshot.snapVector` while evaluating `fire`. Return paths include `ent`.
+/// @param level Game-level state; accesses `time`.
+/// @param self Entity receiving the callback; accesses `s`.
+/// @param start Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param dir Value passed as argument 1 to `mq3.shared.math.VectorNormalize`.
+/// @param weapon Weapon identifier used by the action or inventory lookup.
 function fire(level,self,start,dir,weapon)
   // Shared assignments of the five original fire_* routines, in their order.
   if weapon != 4 and weapon != 5 and weapon != 8 and weapon != 9 and weapon != 10 then return error(492,"Unsupported missile weapon") end if

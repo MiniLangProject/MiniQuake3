@@ -7,17 +7,31 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import mq3.renderer.surface_trails as trails
 
+/// Data record for `mq3.renderer.surface_beam.Vertex`; groups `xyz`, `uv`, `color`.
 struct Vertex xyz uv color end struct
+/// Data record for `mq3.renderer.surface_beam.Submission`; groups `vertices`, `indexes`.
 struct Submission vertices indexes end struct
 
+/// Creates error `7699` with message `"surface beam: "+message`.
+/// @param message Input used in the result expression `error(7699,"surface beam: "+message)`.
 function fail(message) return error(7699,"surface beam: "+message) end function
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.surface_beam.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Returns `[numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2])]` for `mq3.renderer.surface_beam.subtract`.
+/// @param a Three-component vector read at indices 0, 1, and 2.
+/// @param b Three-component vector read at indices 0, 1, and 2.
 function subtract(a,b) return [numeric.fsub(a[0],b[0]),numeric.fsub(a[1],b[1]),numeric.fsub(a[2],b[2])] end function
+/// Returns `[numeric.fadd(a[0],b[0]),numeric.fadd(a[1],b[1]),numeric.fadd(a[2],b[2])]` for `mq3.renderer.surface_beam.add`.
+/// @param a Three-component vector read at indices 0, 1, and 2.
+/// @param b Three-component vector read at indices 0, 1, and 2.
 function add(a,b) return [numeric.fadd(a[0],b[0]),numeric.fadd(a[1],b[1]),numeric.fadd(a[2],b[2])] end function
 
 // Baseq3 emits a closed six-sided triangle strip through immediate OpenGL.
 // Positions intentionally remain relative to zero because R_RotateForEntity
 // uses the world orientation for every non-model entity.
+/// @param origin Value forwarded as `value` to `mq3.renderer.surface_beam.valid3`.
+/// @param oldOrigin Value forwarded as `value` to `mq3.renderer.surface_beam.valid3`.
 function build(origin,oldOrigin)
   if not valid3(origin) or not valid3(oldOrigin) then return fail("beam endpoints need three components") end if
   direction=subtract(oldOrigin,origin);normalized=[direction[0],direction[1],direction[2]]

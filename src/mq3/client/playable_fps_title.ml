@@ -5,16 +5,25 @@ import mq3.compat.numeric as numeric
 
 const UPDATE_INTERVAL_MILLISECONDS=500
 
+/// Stores playable FPS title state, including `mapName`, `sampleStart`, `frameCount`, `smoothedFps`, `initialized`, `lastTime` and additional values.
 struct State mapName sampleStart frameCount smoothedFps initialized lastTime currentTitle end struct
 
+/// Creates the playable FPS title error `7590` with diagnostic text `"preview FPS title: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview FPS title: "+message`.
 function fail(message) return error(7590,"preview FPS title: "+message) end function
 
+/// Evaluates playable FPS title `title` and returns `"MiniQuake3 | "+value+" FPS | "+mapName` according to its guard/selection conditions.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param fps Value used by `if fps>=0 then value=str(fps) end if`.
 function title(mapName,fps)
   value="--"
   if fps>=0 then value=str(fps) end if
   return "MiniQuake3 | "+value+" FPS | "+mapName
 end function
 
+/// Calls `mq3.client.playable_fps_title.State`, `mq3.client.playable_fps_title.title` from playable FPS title `create`. The final path returns `State(mapName,now,0,0,false,now,title(mapName,-1))`.
+/// @param mapName Map name used to select the level and its associated assets.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function create(mapName,now)
   if typeof(mapName)!="string" or len(bytes(mapName))<1 or len(bytes(mapName))>64 then return fail("map name must contain 1 to 64 UTF-8 bytes") end if
   if now<0 then return fail("time must be non-negative") end if
@@ -23,6 +32,8 @@ end function
 
 // Call exactly once after each presented frame. A string return value means the
 // native title should be changed; void deliberately avoids per-frame Win32 work.
+/// @param state Mutable playable FPS title record/storage; this routine assigns `state.lastTime`, `state.frameCount`, `state.smoothedFps`, `state.initialized` and additional values.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function frame(state,now)
   if state==void or now<state.lastTime then return fail("time must be monotonic") end if
   state.lastTime=now;state.frameCount=state.frameCount+1
@@ -43,6 +54,8 @@ function frame(state,now)
   return nextTitle
 end function
 
+/// Evaluates playable FPS title `initialTitle` and returns `fail("state is required")`, `state.currentTitle` according to its guard/selection conditions.
+/// @param state Record read through `state.currentTitle`.
 function initialTitle(state)
   if state==void then return fail("state is required") end if
   return state.currentTitle

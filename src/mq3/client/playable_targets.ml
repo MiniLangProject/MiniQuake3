@@ -16,12 +16,20 @@ const DEFAULT_MAX_Z=32.0
 const DEFAULT_RESPAWN_MILLISECONDS=3000
 const DEFAULT_PATROL_RADIUS=24.0
 
+/// Stores playable targets target record, including `origin`, `health`, `maxHealth`, `alive`, `respawnAt`, `score` and additional values.
 struct Target origin health maxHealth alive respawnAt score spawnOrigin spawnIndex end struct
+/// Stores playable targets state, including `targets`, `score`, `lastTime`, `respawnMilliseconds`, `radius`, `minZ` and additional values.
 struct State targets score lastTime respawnMilliseconds radius minZ maxZ end struct
+/// Stores playable targets hit record, including `targetIndex`, `damage`, `killed`, `point`, `distance`, `awardedScore`.
 struct Hit targetIndex damage killed point distance awardedScore end struct
 
+/// Creates the playable targets error `7520` with diagnostic text `"preview targets: "+message`.
+/// @param message Argument 2 of `error`; passed as `"preview targets: "+message`.
 function fail(message) return error(7520,"preview targets: "+message) end function
 
+/// Calls `std.string.toLowerAscii` from playable targets `field`. The final path returns `""`.
+/// @param fields Value used by `for each pair in fields`.
+/// @param key Key or control identifier used to select the corresponding playable targets entry.
 function field(fields,key)
   wanted=strings.toLowerAscii(key)
   for each pair in fields
@@ -30,6 +38,9 @@ function field(fields,key)
   return ""
 end function
 
+/// Calls `std.string.toLowerAscii`, `mq3.client.playable_targets.field`, `mq3.compat.textnumbers.vector` and additional helpers from playable targets `fromEntities`. The final path returns `State(targets,0,0,DEFAULT_RESPAWN_MILLISECONDS,DEFAULT_RADIUS,DEFAULT_MIN_Z,DEFAULT_MAX_Z)`.
+/// @param entities Value used by `if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if`.
+/// @param playerSpawnIndex Value used by `if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if`.
 function fromEntities(entities,playerSpawnIndex)
   if entities==void or playerSpawnIndex< -1 then return fail("entities and a valid player spawn index are required") end if
   targets=[];spawnIndex=0
@@ -48,11 +59,16 @@ function fromEntities(entities,playerSpawnIndex)
   return State(targets,0,0,DEFAULT_RESPAWN_MILLISECONDS,DEFAULT_RADIUS,DEFAULT_MIN_Z,DEFAULT_MAX_Z)
 end function
 
+/// Calls `mq3.format.bsp.entities`, `mq3.client.playable_targets.fromEntities` from playable targets `load`. The final path returns `fromEntities(entities,playerSpawnIndex)`.
+/// @param map map record passed to the playable targets helper calls.
+/// @param playerSpawnIndex Value used by `return fromEntities(entities,playerSpawnIndex)`.
 function load(map,playerSpawnIndex)
   entities=bsp.entities(map);if entities is error then return entities end if
   return fromEntities(entities,playerSpawnIndex)
 end function
 
+/// Evaluates playable targets `activeCount` and returns `0`, `count` according to its guard/selection conditions.
+/// @param state Record read through `state.targets`.
 function activeCount(state)
   if state==void then return 0 end if
   count=0;for each target in state.targets if target.alive then count=count+1 end if end for
@@ -60,6 +76,12 @@ function activeCount(state)
 end function
 
 // Returns the normalized entry fraction for a segment/AABB hit, or -1 on miss.
+/// @param startPoint Starting world-space point of the segment or trace.
+/// @param endPoint Ending world-space point of the segment or trace.
+/// @param target Record read through `target.origin`.
+/// @param radius Radius used by the spatial or visual calculation.
+/// @param minZ Value used by `if axis==2 then low=target.origin[2]+minZ`.
+/// @param maxZ Value used by `high=target.origin[2]+maxZ end if`.
 function segmentFraction(startPoint,endPoint,target,radius,minZ,maxZ)
   tMinimum=0.0;tMaximum=1.0
   for axis=0 to 2
@@ -84,6 +106,10 @@ end function
 
 // The Shot endpoint already contains the BSP world hit, so targets behind a wall
 // cannot win this nearest-segment test.
+/// @param state Mutable playable targets record/storage; this routine assigns `state.score`.
+/// @param shot Record read through `shot.start`, `shot.endPoint`.
+/// @param damage Value used by `if damage<=0 or now<0 then return fail("positive damage and non-negative time are required") end if`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function applyShot(state,shot,damage,now)
   if state==void or shot==void then return fail("state and shot are required") end if
   if damage<=0 or now<0 then return fail("positive damage and non-negative time are required") end if
@@ -109,11 +135,17 @@ function applyShot(state,shot,damage,now)
   return Hit(best,applied,killed,point,qmath.VectorLength(delta)*bestFraction,awarded)
 end function
 
+/// Adapts `mq3.client.playable_targets.applyShot` to playable targets `applyDefaultShot`, returning its result for `state, shot, DEFAULT_DAMAGE, now`.
+/// @param state Argument 1 of `mq3.client.playable_targets.applyShot`.
+/// @param shot Argument 2 of `mq3.client.playable_targets.applyShot`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps. Forwarded to `mq3.client.playable_targets.applyShot`.
 function applyDefaultShot(state,shot,now)
   return applyShot(state,shot,DEFAULT_DAMAGE,now)
 end function
 
 // Absolute-time motion makes previews and contract captures reproducible.
+/// @param state Mutable playable targets record/storage; this routine assigns `state.lastTime`.
+/// @param now Current time used by this operation; it shares the clock domain of the compared timestamps.
 function update(state,now)
   if state==void or now<0 then return fail("state and non-negative time are required") end if
   state.lastTime=now

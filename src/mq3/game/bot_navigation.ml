@@ -58,6 +58,7 @@ const CONTENTS_SLIME=headers.CONTENTS_SLIME
 const CONTENTS_WATER=headers.CONTENTS_WATER
 const CONTENTS_PLAYERCLIP=headers.CONTENTS_PLAYERCLIP
 
+/// `InitMove` record for bot navigation, containing `origin`, `velocity`, `viewoffset`, `entitynum` and `client` and related fields.
 struct InitMove
   origin
   velocity
@@ -69,14 +70,23 @@ struct InitMove
   presencetype
   viewangles
 end struct
+/// `MoveResult` record for bot navigation, containing `failure`, `blocked`, `type`, `flags` and `blockentity` and related fields.
 struct MoveResult failure blocked type flags blockentity movedir end struct
+/// `Route` record for bot navigation, containing `stopevent` and `endcontents`.
 struct Route stopevent endcontents end struct
+/// `Goal` record for bot navigation, containing `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields.
 struct Goal areanum entitynum origin mins maxs iteminfo number flags end struct
+/// `EntityInfo` record for bot navigation, containing `origin` and `modelindex`.
 struct EntityInfo origin modelindex end struct
+/// `LongTermEntity` record for bot navigation, containing `valid`, `origin`, `mins`, `maxs` and `angles`.
 struct LongTermEntity valid origin mins maxs angles end struct
+/// `Waypoint` record for bot navigation, containing `name`, `goal`, `next` and `prev`.
 struct Waypoint name goal next prev end struct
+/// `NavTrace` record for bot navigation, containing `fraction`, `endpos` and `startsolid`.
 struct NavTrace fraction endpos startsolid end struct
+/// `ActivateGoal` record for bot navigation, containing `inuse`, `time`, `startTime`, `justusedTime` and `origin` and related fields.
 struct ActivateGoal inuse time startTime justusedTime origin goal numareas areas areasdisabled nextIndex shoot weapon target end struct
+/// `Services` record for bot navigation, containing `initMoveStateFn`, `moveInDirectionFn`, `randomFn`, `floatTimeFn` and `predictRouteFn` and related fields.
 struct Services
   initMoveStateFn
   moveInDirectionFn
@@ -144,9 +154,16 @@ struct Services
   context
 end struct
 
+/// Create a `mq3.game.bot_navigation.Services` record with the declared empty defaults.
 function create() return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,0,void) end function
+/// Require a navigation service callback and report the missing service by name.
+/// @param callback Callback invoked by this operation.
+/// @param label Label retained with the diagnostic or action record.
 function need(callback,label) if callback==void then return error(498,"Bot navigation requires "+label) end if return callback end function
 
+/// Apply `mq3.game.bot_navigation.need` while evaluating `setupForMovement`. Return paths include `initmove`.
+/// @param services Host service callbacks; accesses `initMoveStateFn`.
+/// @param bot Bot AI state; accesses `curPs`, `entitynum`, `client`, `thinktime` and `viewangles` and related fields.
 function setupForMovement(services,bot)
   state=bot.curPs
   initmove=InitMove([state.origin[0],state.origin[1],state.origin[2]],
@@ -162,12 +179,18 @@ function setupForMovement(services,bot)
   return initmove
 end function
 
+/// Store a movement direction in the bot navigation command state.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function setMovedir(angles)
   if angles[0]==0.0 and angles[1]==-1.0 and angles[2]==0.0 then return [0.0,0.0,1.0] end if
   if angles[0]==0.0 and angles[1]==-2.0 and angles[2]==0.0 then return [0.0,0.0,-1.0] end if
   return qmath.AngleVectors(angles)[0]
 end function
 
+/// Set `moveresult.failure` to `false` and `moveresult.movedir` to `[direction[0],direction[1],direction[2]]` in `mq3.game.bot_navigation.randomMove`. Return paths include `moveresult`.
+/// @param services Host service callbacks; accesses `randomFn` and `moveInDirectionFn`.
+/// @param bot Bot AI state; accesses `ms`.
+/// @param moveresult Moveresult record; accesses `failure` and `movedir`. May update `moveresult.failure` and `moveresult.movedir` in place.
 function randomMove(services,bot,moveresult)
   angle=n.fmul(need(services.randomFn,"random")(services),360.0)
   direction=setMovedir([0.0,angle,0.0])
@@ -176,6 +199,11 @@ function randomMove(services,bot,moveresult)
   return moveresult
 end function
 
+/// Set `bot.predictobstaclesGoalareanum` to `goal.areanum` and `bot.predictobstaclesTime` to `need(services.floatTimeFn,"FloatTime")(services)` in `mq3.game.bot_navigation.predictObstacles`.
+/// @param services Host service callbacks; accesses `floatTimeFn`, `predictRouteFn`, `modelEntityFn`, `getActivateGoalFn` and `activationStackInUseFn` and related fields.
+/// @param bot Bot AI state; accesses `predictobstaclesGoalareanum`, `predictobstaclesTime`, `areanum`, `origin` and `tfl`. May update `bot.predictobstaclesGoalareanum` and `bot.predictobstaclesTime` in place.
+/// @param goal Bot navigation goal; accesses `areanum` and `entitynum`.
+/// @param enabled Value used by `predictObstacles` in `if not enabled then return false end if`.
 function predictObstacles(services,bot,goal,enabled)
   if not enabled then return false end if
   now=need(services.floatTimeFn,"FloatTime")(services)
@@ -203,6 +231,9 @@ function predictObstacles(services,bot,goal,enabled)
   return false
 end function
 
+/// Update `target.areanum`, `target.entitynum`, `target.origin` and `target.mins` and related state during `copyGoalInto`. Return paths include `target`.
+/// @param target Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `target.areanum`, `target.entitynum` and `target.origin` and additional fields in place.
+/// @param source Parser source state; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields.
 function copyGoalInto(target,source)
   target.areanum=source.areanum;target.entitynum=source.entitynum
   target.origin=[source.origin[0],source.origin[1],source.origin[2]]
@@ -211,6 +242,10 @@ function copyGoalInto(target,source)
   return target
 end function
 
+/// Set `bot.reachedAltRouteGoalTime` to `need(services.floatTimeFn,"FloatTime")(services)` in `mq3.game.bot_navigation.alternateRoute`. Return paths include `goal`.
+/// @param services Host service callbacks; accesses `areaTravelTimeFn` and `floatTimeFn`.
+/// @param bot Bot AI state; accesses `altRouteGoal`, `reachedAltRouteGoalTime`, `areanum`, `origin` and `tfl`. May update `bot.reachedAltRouteGoalTime` in place.
+/// @param goal Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place.
 function alternateRoute(services,bot,goal)
   alt=bot.altRouteGoal
   if alt!=void and alt.areanum!=0 then
@@ -223,6 +258,12 @@ function alternateRoute(services,bot,goal)
   return goal
 end function
 
+/// Set `bot.altRouteGoal` to `goal` and `bot.reachedAltRouteGoalTime` to `0.0` in `mq3.game.bot_navigation.getAlternateRouteGoal`.
+/// @param services Host service callbacks; accesses `randomFn`.
+/// @param bot Bot AI state; accesses `altRouteGoal` and `reachedAltRouteGoalTime`. May update `bot.altRouteGoal` and `bot.reachedAltRouteGoalTime` in place.
+/// @param base Value used by `getAlternateRouteGoal` in `if base==TEAM_RED then goals=redGoals end if`.
+/// @param redGoals Value used by `getAlternateRouteGoal` in `if base==TEAM_RED then goals=redGoals end if`.
+/// @param blueGoals Value used by `getAlternateRouteGoal` in `goals=blueGoals`.
 function getAlternateRouteGoal(services,bot,base,redGoals,blueGoals)
   goals=blueGoals;if base==TEAM_RED then goals=redGoals end if
   count=len(goals);if count==0 then return false end if
@@ -234,40 +275,67 @@ function getAlternateRouteGoal(services,bot,base,redGoals,blueGoals)
   return true
 end function
 
+/// Create a `mq3.game.bot_navigation.ActivateGoal` record, initializing `origin` as `[0.0,0.0,0.0]`, `goal` as `Goal(0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0)` and `nextIndex` as `-1`.
 function emptyActivateGoal()
   return ActivateGoal(false,0.0,0.0,0.0,[0.0,0.0,0.0],Goal(0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0),0,[],false,-1,false,0,[0.0,0.0,0.0])
 end function
+/// Set `bot.activateGoalHeap` to `[]` and `bot.activateGoalHeap` to `bot.activateGoalHeap+[emptyActivateGoal()]` in `mq3.game.bot_navigation.ensureActivateHeap`. Return paths include `bot.activateGoalHeap`.
+/// @param bot Bot AI state; accesses `activateGoalHeap`. May update `bot.activateGoalHeap` in place.
 function ensureActivateHeap(bot)
   if bot.activateGoalHeap==void then bot.activateGoalHeap=[];for index=0 to MAX_ACTIVATESTACK-1 bot.activateGoalHeap=bot.activateGoalHeap+[emptyActivateGoal()] end for end if
   return bot.activateGoalHeap
 end function
+/// Build the `mq3.game.bot_navigation.ActivateGoal` result for `copyActivateGoal`.
+/// @param source Parser source state; accesses `goal`, `areas`, `inuse`, `time` and `startTime` and related fields.
 function copyActivateGoal(source)
   goal=Goal(source.goal.areanum,source.goal.entitynum,[source.goal.origin[0],source.goal.origin[1],source.goal.origin[2]],[source.goal.mins[0],source.goal.mins[1],source.goal.mins[2]],[source.goal.maxs[0],source.goal.maxs[1],source.goal.maxs[2]],source.goal.iteminfo,source.goal.number,source.goal.flags)
   areas=[];for each area in source.areas areas=areas+[area] end for
   return ActivateGoal(source.inuse,source.time,source.startTime,source.justusedTime,[source.origin[0],source.origin[1],source.origin[2]],goal,source.numareas,areas,source.areasdisabled,source.nextIndex,source.shoot,source.weapon,[source.target[0],source.target[1],source.target[2]])
 end function
+/// Set `activategoal.areasdisabled` to `disabled` in `mq3.game.bot_navigation.enableActivateGoalAreas`.
+/// @param services Host service callbacks; accesses `enableRoutingAreaFn`.
+/// @param activategoal Activategoal record; accesses `areasdisabled`, `numareas` and `areas`. May update `activategoal.areasdisabled` in place.
+/// @param enable Value used by `enableActivateGoalAreas` in `disabled=not enable`.
 function enableActivateGoalAreas(services,activategoal,enable)
   disabled=not enable;if activategoal.areasdisabled==disabled then return void end if
   for index=0 to activategoal.numareas-1 need(services.enableRoutingAreaFn,"AAS_EnableRoutingArea")(services,activategoal.areas[index],enable) end for
   activategoal.areasdisabled=disabled;return void
 end function
+/// Set `bot.activateStackIndex` to `goal.nextIndex` in `mq3.game.bot_navigation.popActivateGoal`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`. May update `bot.activateStackIndex` in place.
 function popActivateGoal(services,bot)
   ensureActivateHeap(bot);index=bot.activateStackIndex;if index<0 then return false end if
   goal=bot.activateGoalHeap[index];enableActivateGoalAreas(services,goal,true);goal.inuse=false;goal.justusedTime=need(services.floatTimeFn,"FloatTime")(services);bot.activateStackIndex=goal.nextIndex;return true
 end function
+/// Set `bot.activateGoalHeap[best]` to `stored` and `bot.activateStackIndex` to `best` in `mq3.game.bot_navigation.pushActivateGoal`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `activateGoalHeap` and `activateStackIndex`. May update `bot.activateGoalHeap[best]` and `bot.activateStackIndex` in place.
+/// @param activategoal Parser source state; accesses `goal`, `areas`, `inuse`, `time` and `startTime` and related fields.
 function pushActivateGoal(services,bot,activategoal)
   ensureActivateHeap(bot);best=-1;besttime=n.fadd(need(services.floatTimeFn,"FloatTime")(services),9999.0)
   for index=0 to MAX_ACTIVATESTACK-1 candidate=bot.activateGoalHeap[index];if not candidate.inuse and candidate.justusedTime<besttime then besttime=candidate.justusedTime;best=index end if end for
   if best<0 then return false end if
   stored=copyActivateGoal(activategoal);stored.inuse=true;stored.nextIndex=bot.activateStackIndex;bot.activateGoalHeap[best]=stored;bot.activateStackIndex=best;return true
 end function
+/// Apply `mq3.game.bot_navigation.popActivateGoal` while evaluating `clearActivateGoalStack`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `activateStackIndex`.
 function clearActivateGoalStack(services,bot) while bot.activateStackIndex>=0 popActivateGoal(services,bot) end while;return void end function
+/// Apply `mq3.game.bot_navigation.ensureActivateHeap` and `mq3.game.bot_navigation.need` while evaluating `isGoingToActivateEntity`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`.
+/// @param entitynum Value used by `isGoingToActivateEntity` in `if goal.time>=need(services.floatTimeFn,"FloatTime")(services) and goal.goal.entitynum==entitynum then return tr...`.
 function isGoingToActivateEntity(services,bot,entitynum)
   ensureActivateHeap(bot);index=bot.activateStackIndex
   while index>=0 goal=bot.activateGoalHeap[index];if goal.time>=need(services.floatTimeFn,"FloatTime")(services) and goal.goal.entitynum==entitynum then return true end if;index=goal.nextIndex end while
   for index=0 to MAX_ACTIVATESTACK-1 goal=bot.activateGoalHeap[index];if goal.inuse then continue end if;if goal.goal.entitynum==entitynum and goal.justusedTime>n.fsub(need(services.floatTimeFn,"FloatTime")(services),2.0) then return true end if end for
   return false
 end function
+/// Update `activategoal.inuse`, `activategoal.time`, `activategoal.startTime` and `activategoal.origin` during `goForActivateGoal`.
+/// @param services Host service callbacks; accesses `floatTimeFn`, `entityInfoFn` and `enterActivateNodeFn`.
+/// @param bot Bot AI state; accesses `activateGoalHeap` and `activateStackIndex`. May update `bot.activateGoalHeap[best]` and `bot.activateStackIndex` in place.
+/// @param activategoal Activategoal record; accesses `inuse`, `time`, `startTime`, `goal` and `origin`. May update `activategoal.inuse`, `activategoal.time` and `activategoal.startTime` and additional fields in place.
 function goForActivateGoal(services,bot,activategoal)
   activategoal.inuse=true;if activategoal.time==0.0 then activategoal.time=n.fadd(need(services.floatTimeFn,"FloatTime")(services),10.0) end if
   activategoal.startTime=need(services.floatTimeFn,"FloatTime")(services);info=need(services.entityInfoFn,"BotEntityInfo")(services,activategoal.goal.entitynum);activategoal.origin=[info.origin[0],info.origin[1],info.origin[2]]
@@ -275,12 +343,27 @@ function goForActivateGoal(services,bot,activategoal)
   enableActivateGoalAreas(services,activategoal,true);return false
 end function
 
+/// Update `goal.inuse`, `goal.time`, `goal.startTime` and `goal.justusedTime` and related state during `resetActivateGoal`. Return paths include `goal`.
+/// @param goal Bot navigation goal; accesses `inuse`, `time`, `startTime`, `justusedTime` and `origin` and related fields. May update `goal.inuse`, `goal.time` and `goal.startTime` and additional fields in place.
 function resetActivateGoal(goal)
   fresh=emptyActivateGoal();goal.inuse=fresh.inuse;goal.time=0.0;goal.startTime=0.0;goal.justusedTime=0.0;goal.origin=[0.0,0.0,0.0];goal.goal=fresh.goal;goal.numareas=0;goal.areas=[];goal.areasdisabled=false;goal.nextIndex=-1;goal.shoot=false;goal.weapon=0;goal.target=[0.0,0.0,0.0];return goal
 end function
+/// Test `a[0]==b[0] and a[1]==b[1] and a[2]==b[2]` as the condition for `sameVector`.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function sameVector(a,b) return a[0]==b[0] and a[1]==b[1] and a[2]==b[2] end function
+/// Parse the numeric model identifier after the leading inline-model marker.
+/// @param text Text to parse, format or deliver.
 function modelIndex(text) data=bytes(text);digits=[];for index=1 to len(data)-1 digits=digits+[data[index]] end for;if len(digits)==0 then return 0 end if;return toNumber(decode(bytes(digits))) end function
+/// Return `need(services.stringKeyFn,"AAS_ValueForBSPEpairKey")(services,entity,name)` for `key`.
+/// @param services Host service callbacks; accesses `stringKeyFn`.
+/// @param entity Operand used to evaluate the returned expression `need(services.stringKeyFn,"AAS_ValueForBSPEpairKey")(services,entity,name)`.
+/// @param name Name used to identify the requested entry.
 function key(services,entity,name) return need(services.stringKeyFn,"AAS_ValueForBSPEpairKey")(services,entity,name) end function
+/// Apply `mq3.game.bot_navigation.ensureActivateHeap` and `mq3.game.bot_navigation.need` while evaluating `currentActivationDuplicate`. Return paths include `top.startTime<n.fsub(need(services.floatTimeFn,"FloatTime")(services),2.0)`.
+/// @param services Host service callbacks; accesses `floatTimeFn`.
+/// @param bot Bot AI state; accesses `activateStackIndex` and `activateGoalHeap`.
+/// @param activategoal Activategoal record; accesses `goal`.
 function currentActivationDuplicate(services,bot,activategoal)
   if bot.activateStackIndex<0 then return false end if
   ensureActivateHeap(bot);top=bot.activateGoalHeap[bot.activateStackIndex]
@@ -288,6 +371,12 @@ function currentActivationDuplicate(services,bot,activategoal)
   if top.time<=need(services.floatTimeFn,"FloatTime")(services) then return false end if
   return top.startTime<n.fsub(need(services.floatTimeFn,"FloatTime")(services),2.0)
 end function
+/// Update `activategoal.time` during `prepareActivator`.
+/// @param services Host service callbacks; accesses `buttonActivateGoalFn`, `triggerActivateGoalFn`, `areaReachabilityFn`, `areaTravelTimeFn` and `floatTimeFn`.
+/// @param bot Bot AI state; accesses `areanum`, `origin` and `tfl`.
+/// @param entity Value used by `prepareActivator` in `if kind==1 then okay=need(services.buttonActivateGoalFn,"BotFuncButtonActivateGoal")(services,bot,entity,activat...`.
+/// @param activategoal Activategoal record; accesses `goal` and `time`. May update `activategoal.time` in place.
+/// @param kind Value used by `prepareActivator` in `if kind==1 then okay=need(services.buttonActivateGoalFn,"BotFuncButtonActivateGoal")(services,bot,entity,activat...`.
 function prepareActivator(services,bot,entity,activategoal,kind)
   okay=false
   if kind==1 then okay=need(services.buttonActivateGoalFn,"BotFuncButtonActivateGoal")(services,bot,entity,activategoal)
@@ -301,6 +390,11 @@ function prepareActivator(services,bot,entity,activategoal,kind)
   end if
   return true
 end function
+/// Set `activategoal.areas` to `activategoal.areas+[area]` and `activategoal.numareas` to `activategoal.numareas+1` in `mq3.game.bot_navigation.getActivateGoal`.
+/// @param services Host service callbacks; accesses `entityInfoFn`, `nextBspEntityFn`, `diagnosticFn`, `floatKeyFn` and `doorActivateGoalFn` and related fields.
+/// @param bot Bot AI state; accesses `areanum`, `origin` and `tfl`.
+/// @param entitynum Value used by `getActivateGoal` in `info=need(services.entityInfoFn,"BotEntityInfo")(services,entitynum)`.
+/// @param activategoal Activategoal record; accesses `numareas` and `areas`. May update `activategoal.areas` and `activategoal.numareas` in place.
 function getActivateGoal(services,bot,entitynum,activategoal)
   resetActivateGoal(activategoal);info=need(services.entityInfoFn,"BotEntityInfo")(services,entitynum);model="*"+str(info.modelindex)
   entity=need(services.nextBspEntityFn,"AAS_NextBSPEntity")(services,0)
@@ -351,6 +445,10 @@ function getActivateGoal(services,bot,entitynum,activategoal)
   return 0
 end function
 
+/// Update `bot.decisionmaker`, `bot.teammessageTime`, `bot.ltgtype` and `bot.teamGoal` and related state during `goCamp`.
+/// @param services Host service callbacks; accesses `characteristicFn`, `floatTimeFn` and `randomFn`.
+/// @param bot Bot AI state; accesses `decisionmaker`, `client`, `teammessageTime`, `ltgtype` and `teamGoal` and related fields. May update `bot.decisionmaker`, `bot.teammessageTime` and `bot.ltgtype` and additional fields in place.
+/// @param goal Bot navigation goal; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields.
 function goCamp(services,bot,goal)
   bot.decisionmaker=bot.client;bot.teammessageTime=0.0;bot.ltgtype=LTG_CAMP
   bot.teamGoal=Goal(goal.areanum,goal.entitynum,[goal.origin[0],goal.origin[1],goal.origin[2]],[goal.mins[0],goal.mins[1],goal.mins[2]],[goal.maxs[0],goal.maxs[1],goal.maxs[2]],goal.iteminfo,goal.number,goal.flags)
@@ -358,6 +456,9 @@ function goCamp(services,bot,goal)
   if camper>0.99 then bot.teamgoalTime=n.fadd(services.floatTimeFn(services),99999.0) else bot.teamgoalTime=n.f32(services.floatTimeFn(services)+120+180*camper+services.randomFn(services)*15) end if
   bot.campTime=services.floatTimeFn(services);bot.teammate=0;bot.arriveTime=1.0;return void
 end function
+/// Set `bot.campTime` to `services.floatTimeFn(services)` and `bot.ordered` to `false` in `mq3.game.bot_navigation.wantsToCamp`.
+/// @param services Host service callbacks; accesses `characteristicFn`, `floatTimeFn`, `randomFn`, `aggressionFn` and `nextCampSpotFn` and related fields.
+/// @param bot Bot AI state; accesses `character`, `ltgtype`, `campTime`, `inventory` and `areanum` and related fields. May update `bot.campTime` and `bot.ordered` in place.
 function wantsToCamp(services,bot)
   camper=need(services.characteristicFn,"Characteristic_BFloat")(services,bot.character,CHARACTERISTIC_CAMPER,0.0,1.0);if camper<0.1 then return false end if
   if bot.ltgtype==LTG_TEAMHELP or bot.ltgtype==LTG_TEAMACCOMPANY or bot.ltgtype==LTG_DEFENDKEYAREA or bot.ltgtype==LTG_GETFLAG or bot.ltgtype==LTG_RUSHBASE or bot.ltgtype==LTG_CAMP or bot.ltgtype==LTG_CAMPORDER or bot.ltgtype==LTG_PATROL then return false end if
@@ -369,46 +470,94 @@ function wantsToCamp(services,bot)
   while true pair=services.nextCampSpotFn(services,cursor);cursor=pair[0];if cursor==0 then break end if;goal=pair[1];travel=services.areaTravelTimeFn(services,bot.areanum,bot.origin,goal.areanum,TFL_DEFAULT);if travel!=0 and travel<besttime then besttime=travel;best=goal end if end while
   if besttime>150 then return false end if;goCamp(services,bot,best);bot.ordered=false;return true
 end function
+/// Use `services.levelItemGoalFn` and `services.removeAvoidGoalFn` to perform `dontAvoid`.
+/// @param services Host service callbacks; accesses `levelItemGoalFn` and `removeAvoidGoalFn`.
+/// @param bot Bot AI state; accesses `gs`.
+/// @param itemname Value passed as argument 3 to `services.levelItemGoalFn`.
 function dontAvoid(services,bot,itemname)
   number=-1
   while true pair=services.levelItemGoalFn(services,number,itemname);number=pair[0];if number<0 then break end if;services.removeAvoidGoalFn(services,bot.gs,pair[1].number) end while
   return void
 end function
+/// Set `bot.ltgTime` to `0.0` in `mq3.game.bot_navigation.goForPowerups`.
+/// @param services Host service callbacks; accesses `levelItemGoalFn` and `removeAvoidGoalFn`.
+/// @param bot Bot AI state; accesses `ltgTime`. May update `bot.ltgTime` in place.
 function goForPowerups(services,bot)
   for each name in ["Quad Damage","Regeneration","Battle Suit","Speed","Invisibility"] dontAvoid(services,bot,name) end for
   bot.ltgTime=0.0;return void
 end function
 
+/// Update `goal.origin`, `goal.areanum`, `goal.mins` and `goal.maxs` and related state during `getAirGoal`.
+/// @param services Host service callbacks; accesses `traceFn` and `pointAreaFn`.
+/// @param bot Bot AI state; accesses `origin` and `entitynum`.
+/// @param goal Bot navigation goal; accesses `origin`, `areanum`, `mins`, `maxs` and `flags` and related fields. May update `goal.origin`, `goal.areanum` and `goal.mins` and additional fields in place.
 function getAirGoal(services,bot,goal)
   finish=[bot.origin[0],bot.origin[1],n.fadd(bot.origin[2],1000.0)];mins=[-15.0,-15.0,-2.0];maxs=[15.0,15.0,2.0]
   trace=services.traceFn(services,bot.origin,mins,maxs,finish,bot.entitynum,CONTENTS_SOLID|CONTENTS_PLAYERCLIP);trace=services.traceFn(services,trace.endpos,mins,maxs,bot.origin,bot.entitynum,CONTENTS_WATER|CONTENTS_SLIME|CONTENTS_LAVA)
   if trace.fraction>0.0 then area=services.pointAreaFn(services,trace.endpos);if area!=0 then goal.origin=[trace.endpos[0],trace.endpos[1],n.fsub(trace.endpos[2],2.0)];goal.areanum=area;goal.mins=[-15.0,-15.0,-1.0];goal.maxs=[15.0,15.0,1.0];goal.flags=GFL_AIR;goal.number=0;goal.iteminfo=0;goal.entitynum=0;return true end if end if;return false
 end function
+/// Use `services.floatTimeFn`, `services.pushGoalFn` and `services.chooseNbgFn` to perform `goForAir`.
+/// @param services Host service callbacks; accesses `floatTimeFn`, `pushGoalFn`, `chooseNbgFn`, `topGoalFn` and `pointContentsFn` and related fields.
+/// @param bot Bot AI state; accesses `lastairTime`, `gs`, `origin` and `inventory`.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
+/// @param ltg Value passed as argument 6 to `services.chooseNbgFn`.
+/// @param range Value passed as argument 7 to `services.chooseNbgFn`.
 function goForAir(services,bot,tfl,ltg,range)
   if bot.lastairTime<n.fsub(services.floatTimeFn(services),6.0) then goal=Goal(0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0);if getAirGoal(services,bot,goal) then services.pushGoalFn(services,bot.gs,goal);return true end if;while services.chooseNbgFn(services,bot.gs,bot.origin,bot.inventory,tfl,ltg,range) pair=services.topGoalFn(services,bot.gs);goal=pair[1];if (services.pointContentsFn(services,goal.origin)&(CONTENTS_WATER|CONTENTS_SLIME|CONTENTS_LAVA))==0 then return true end if;services.popGoalFn(services,bot.gs) end while;services.resetAvoidGoalsFn(services,bot.gs) end if;return false
 end function
+/// Use `services.carryingFlagFn`, `services.areaTravelTimeFn` and `services.chooseNbgFn` to perform `nearbyGoal`. Return paths include `services.chooseNbgFn(services,bot.gs,bot.origin,bot.inventory,tfl,ltg,range)`.
+/// @param services Host service callbacks; accesses `carryingFlagFn`, `areaTravelTimeFn` and `chooseNbgFn`.
+/// @param bot Bot AI state; accesses `areanum`, `origin`, `teamGoal`, `gs` and `inventory`.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
+/// @param ltg Value passed as argument 6 to `services.chooseNbgFn`.
+/// @param range Value passed as argument 7 to `services.chooseNbgFn`.
 function nearbyGoal(services,bot,tfl,ltg,range)
   if goForAir(services,bot,tfl,ltg,range) then return true end if;if services.carryingFlagFn(services,bot) and services.areaTravelTimeFn(services,bot.areanum,bot.origin,bot.teamGoal.areanum,TFL_DEFAULT)<300 then range=50.0 end if;return services.chooseNbgFn(services,bot.gs,bot.origin,bot.inventory,tfl,ltg,range)
 end function
+/// Use `services.touchingGoalFn`, `services.setAvoidGoalTimeFn` and `services.itemNotVisibleFn` to perform `reachedGoal`.
+/// @param services Host service callbacks; accesses `touchingGoalFn`, `setAvoidGoalTimeFn`, `itemNotVisibleFn`, `swimmingFn` and `floatTimeFn`.
+/// @param bot Bot AI state; accesses `origin`, `gs`, `entitynum`, `eye` and `viewangles` and related fields.
+/// @param goal Bot navigation goal; accesses `flags`, `number`, `areanum`, `origin` and `mins` and related fields.
 function reachedGoal(services,bot,goal)
   if (goal.flags&GFL_ITEM)!=0 then if services.touchingGoalFn(services,bot.origin,goal) then if (goal.flags&GFL_DROPPED)==0 then services.setAvoidGoalTimeFn(services,bot.gs,goal.number,-1.0) end if;return true end if;if services.itemNotVisibleFn(services,bot.entitynum,bot.eye,bot.viewangles,goal) then return true end if;if bot.areanum==goal.areanum and bot.origin[0]>goal.origin[0]+goal.mins[0] and bot.origin[0]<goal.origin[0]+goal.maxs[0] and bot.origin[1]>goal.origin[1]+goal.mins[1] and bot.origin[1]<goal.origin[1]+goal.maxs[1] and not services.swimmingFn(services,bot.origin) then return true end if
   else if (goal.flags&GFL_AIR)!=0 then if services.touchingGoalFn(services,bot.origin,goal) or bot.lastairTime>n.fsub(services.floatTimeFn(services),1.0) then return true end if
   else if services.touchingGoalFn(services,bot.origin,goal) then return true end if;return false
 end function
+/// Set `bot.ltgTime` to `0.0` and `bot.ltgTime` to `n.fadd(services.floatTimeFn(services),20.0)` in `mq3.game.bot_navigation.getItemLongTermGoal`.
+/// @param services Host service callbacks; accesses `topGoalFn`, `chooseWeaponFn`, `floatTimeFn`, `popGoalFn` and `chooseLtgFn` and related fields.
+/// @param bot Bot AI state; accesses `gs`, `ltgTime`, `origin`, `inventory` and `ms`. May update `bot.ltgTime` in place.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
+/// @param goal Target record; accesses `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields. May update `goal.areanum`, `goal.entitynum` and `goal.origin` and additional fields in place.
 function getItemLongTermGoal(services,bot,tfl,goal)
   pair=services.topGoalFn(services,bot.gs);if not pair[0] then bot.ltgTime=0.0 else copyGoalInto(goal,pair[1]);if reachedGoal(services,bot,goal) then services.chooseWeaponFn(services,bot);bot.ltgTime=0.0 end if end if
   if bot.ltgTime<services.floatTimeFn(services) then services.popGoalFn(services,bot.gs);if services.chooseLtgFn(services,bot.gs,bot.origin,bot.inventory,tfl) then bot.ltgTime=n.fadd(services.floatTimeFn(services),20.0) else services.resetAvoidGoalsFn(services,bot.gs);services.resetAvoidReachFn(services,bot.ms) end if;pair=services.topGoalFn(services,bot.gs);if pair[0] then copyGoalInto(goal,pair[1]) end if;return pair[0] end if;return true
 end function
 
+/// Calculate squared Euclidean distance between two navigation points using single-precision arithmetic.
+/// @param a Three-component array; components 0, 1 and 2 are used in their stored order.
+/// @param b Three-component array; components 0, 1 and 2 are used in their stored order.
 function distSquared(a,b)
   x=n.fsub(a[0],b[0]);y=n.fsub(a[1],b[1]);z=n.fsub(a[2],b[2]);return n.fadd(n.fadd(n.fmul(x,x),n.fmul(y,y)),n.fmul(z,z))
 end function
+/// Use `services.notifyFn` to perform `notifyLongTerm`.
+/// @param services Host service callbacks; accesses `notifyFn`.
+/// @param bot Value passed as argument 2 to `services.notifyFn`.
+/// @param event Player or entity event identifier.
+/// @param target Value passed as argument 4 to `services.notifyFn`.
 function notifyLongTerm(services,bot,event,target)
   if services.notifyFn!=void then services.notifyFn(services,bot,event,target) end if;return void
 end function
+/// Return `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)` for `longTermEntity`.
+/// @param services Host service callbacks; accesses `entityLongTermInfoFn`.
+/// @param entity Operand used to evaluate the returned expression `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)`.
 function longTermEntity(services,entity)
   return need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)
 end function
+/// Update `teamGoal.entitynum`, `teamGoal.areanum`, `teamGoal.origin` and `teamGoal.mins` and related state during `updateMovingTeamGoal`. Return paths include `info`.
+/// @param services Host service callbacks; accesses `pointAreaFn` and `areaReachabilityFn`.
+/// @param bot Not read by this implementation; retained in the `updateMovingTeamGoal` signature.
+/// @param entity Operand used to evaluate the returned expression `need(services.entityLongTermInfoFn,"BotEntityInfo")(services,entity)`.
+/// @param teamGoal Team goal record; accesses `entitynum`, `areanum`, `origin`, `mins` and `maxs`. May update `teamGoal.entitynum`, `teamGoal.areanum` and `teamGoal.origin` and additional fields in place.
 function updateMovingTeamGoal(services,bot,entity,teamGoal)
   info=longTermEntity(services,entity)
   if info.valid then area=services.pointAreaFn(services,info.origin);if area!=0 and services.areaReachabilityFn(services,area) then teamGoal.entitynum=entity;teamGoal.areanum=area;teamGoal.origin=[info.origin[0],info.origin[1],info.origin[2]];teamGoal.mins=[-8.0,-8.0,-8.0];teamGoal.maxs=[8.0,8.0,8.0] end if end if
@@ -416,6 +565,11 @@ function updateMovingTeamGoal(services,bot,entity,teamGoal)
 end function
 
 // ai_dmnet.c BotGetLongTermGoal: common Baseq3 and CTF long-term goal policy.
+/// @param services Host service callbacks; accesses `floatTimeFn`, `entityVisibleFn`, `resetAvoidReachFn`, `pointAreaFn` and `areaReachabilityFn` and related fields.
+/// @param bot Bot AI state; accesses `ltgtype`, `teammessageTime`, `teammate`, `teamgoalTime` and `teammatevisibleTime` and related fields. May update `bot.teammessageTime`, `bot.ltgtype` and `bot.teammatevisibleTime` and additional fields in place.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
+/// @param retreat Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`.
+/// @param goal Bot navigation goal; accesses `origin`.
 function getLongTermGoal(services,bot,tfl,retreat,goal)
   now=services.floatTimeFn(services)
   if bot.ltgtype==LTG_TEAMHELP and not retreat then
@@ -498,6 +652,11 @@ function getLongTermGoal(services,bot,tfl,retreat,goal)
 end function
 
 // ai_dmnet.c BotLongTermGoal: leading policy before the LTG dispatcher.
+/// @param services Host service callbacks; accesses `floatTimeFn` and `entityVisibleFn`.
+/// @param bot Bot AI state; accesses `leadTime`, `leadTeammate`, `leadmessageTime`, `leadTeamGoal` and `entitynum` and related fields. May update `bot.leadTime`, `bot.leadmessageTime` and `bot.leadvisibleTime` and additional fields in place.
+/// @param tfl Bit mask of permitted AAS travel modes and area restrictions.
+/// @param retreat Value used by `getLongTermGoal` in `if bot.ltgtype==LTG_TEAMHELP and not retreat then`.
+/// @param goal Bot navigation goal; accesses `origin`.
 function longTermGoal(services,bot,tfl,retreat,goal)
   if bot.leadTime>0.0 and not retreat then
     now=services.floatTimeFn(services);if bot.leadTime<now then notifyLongTerm(services,bot,"lead_stop",bot.leadTeammate);bot.leadTime=0.0;return getLongTermGoal(services,bot,tfl,retreat,goal) end if

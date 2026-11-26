@@ -6,9 +6,15 @@ import mq3.audio.snd_spatialize as loopSpatial
 
 const MAX_CHANNELS=96
 
+/// Entry record for audio.snd_loop_channels, containing `id`, `handle`, `origin`, `realLoop`, `doppler`, `dopplerScale`, and 2 further fields.
 struct Entry id handle origin realLoop doppler dopplerScale oldDopplerScale active end struct
+/// Group record for audio.snd_loop_channels, containing `handle`, `primary`, `ids`, `left`, `right`, `doppler`, and 2 further fields.
 struct Group handle primary ids left right doppler dopplerScale oldDopplerScale end struct
 
+/// Group active loop sounds by matching source while accumulating their spatialized channel volumes.
+/// @param entries Entries used in `len(entries)` and `entries[index]`.
+/// @param listenerOrigin Listener origin passed as `listenerOrigin` to `mq3.audio.snd_spatialize.spatialize`.
+/// @param listenerAxis Listener axis passed as `listenerAxis` to `mq3.audio.snd_spatialize.spatialize`.
 function build(entries,listenerOrigin,listenerAxis)
   groups=[];merged=array(len(entries),false)
   if len(entries)>0 then

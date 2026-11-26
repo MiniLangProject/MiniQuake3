@@ -7,18 +7,33 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import mq3.renderer.view_math as viewMath
 
+/// Computes the tangent of a radian angle through the C runtime.
+/// @param value Input angle in radians.
+/// @returns The tangent of the input angle.
 extern function tan(value as double) from "ucrtbase.dll" returns double
 
 const RF_WRAP_FRAMES=512
 
+/// Data record for `mq3.renderer.md3_entity.Frames`; groups `frame`, `oldFrame`, `wrapped`, `repaired`.
 struct Frames frame oldFrame wrapped repaired end struct
 
+/// Creates error `7695` with message `"MD3 entity: "+message`.
+/// @param message Input used in the result expression `error(7695,"MD3 entity: "+message)`.
 function fail(message) return error(7695,"MD3 entity: "+message) end function
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.md3_entity.valid3`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function valid3(value) return value!=void and len(value)==3 end function
+/// Returns `value%divisor` from `mq3.renderer.md3_entity.cRemainder`; earlier branches return `0-((0-value)%divisor)`.
+/// @param value Input tested by `value<0`.
+/// @param divisor Input tested by `value<0`.
 function cRemainder(value,divisor) if value<0 then return 0-((0-value)%divisor) end if;return value%divisor end function
 
 // R_AddMD3Surfaces first wraps continuous animation frames, then repairs both
 // frame indexes to zero together if either remains outside the model.
+/// @param numFrames Value forwarded as `divisor` to `mq3.renderer.md3_entity.cRemainder`.
+/// @param frame Initial value for `mq3.renderer.md3_entity.Frames.frame`.
+/// @param oldFrame Initial value for `mq3.renderer.md3_entity.Frames.oldFrame`.
+/// @param renderfx Input tested by `(renderfx&RF_WRAP_FRAMES)!=0`.
 function normalizeFrames(numFrames,frame,oldFrame,renderfx)
   if numFrames<1 then return fail("model needs at least one frame") end if
   wrapped=false
@@ -32,6 +47,8 @@ end function
 
 // RadiusFromBounds from q_shared.c. It selects the most distant corner from
 // the origin before taking the Euclidean length.
+/// @param mins Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
+/// @param maxs Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
 function radiusFromBounds(mins,maxs)
   if not valid3(mins) or not valid3(maxs) then return fail("bounds need two three-component corners") end if
   corner=[]
@@ -45,6 +62,11 @@ end function
 
 // ProjectRadius uses the renderer's current view orientation and projection
 // matrix. All intermediate stores remain binary32 as in the x86 Baseq3 path.
+/// @param radius Input used by `r=radius`.
+/// @param location Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
+/// @param viewOrigin Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
+/// @param viewForward Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
+/// @param projection Indexed input read at `5`, `9`, `13`, `7`.
 function projectRadius(radius,location,viewOrigin,viewForward,projection)
   if not valid3(location) or not valid3(viewOrigin) or not valid3(viewForward) then return fail("view vectors need three components") end if
   if projection==void or len(projection)!=16 then return fail("projection matrix needs sixteen components") end if
@@ -62,6 +84,15 @@ end function
 
 // R_ComputeLOD. A single-level model still applies r_lodbias and clamps it,
 // matching the original rather than bypassing the common tail.
+/// @param numLods Argument 2 supplied to `mq3.compat.numeric.fmul`.
+/// @param mins Value forwarded as `mins` to `mq3.renderer.md3_entity.radiusFromBounds`.
+/// @param maxs Value forwarded as `maxs` to `mq3.renderer.md3_entity.radiusFromBounds`.
+/// @param origin Value forwarded as `location` to `mq3.renderer.md3_entity.projectRadius`.
+/// @param viewOrigin Value forwarded as `viewOrigin` to `mq3.renderer.md3_entity.projectRadius`.
+/// @param viewForward Value forwarded as `viewForward` to `mq3.renderer.md3_entity.projectRadius`.
+/// @param projection Value forwarded as `projection` to `mq3.renderer.md3_entity.projectRadius`.
+/// @param lodScale Argument 1 supplied to `mq3.compat.numeric.f32`.
+/// @param lodBias Input used by `lod=lod+lodBias`.
 function computeLod(numLods,mins,maxs,origin,viewOrigin,viewForward,projection,lodScale,lodBias)
   if numLods<1 then return fail("model needs at least one LOD") end if
   lod=0
@@ -86,6 +117,10 @@ end function
 // real BSP fogs start at one.  The original deliberately uses only the
 // selected frame's sphere and entity origin (not the entity axes), and treats
 // a sphere that merely touches a fog bound as outside that fog.
+/// @param fogs Indexed input read at `fogIndex`.
+/// @param origin Value forwarded as `value` to `mq3.renderer.md3_entity.valid3`.
+/// @param frame Record providing `frame.localOrigin`, `frame.radius`.
+/// @param noWorldModel Input tested by `noWorldModel`.
 function computeFogNum(fogs,origin,frame,noWorldModel)
   if noWorldModel then return 0 end if
   if fogs==void then return 0 end if
@@ -105,6 +140,11 @@ end function
 // Control-flow core of R_CullModel.  The sphere tests can produce an early
 // definitive answer only for normalized axes; clipped or disagreeing frame
 // spheres fall through to the merged-frame box exactly like Baseq3.
+/// @param sameFrame Input tested by `sameFrame`.
+/// @param nonNormalizedAxes Input tested by `not nonNormalizedAxes`.
+/// @param newSphere Input tested by `newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN`.
+/// @param oldSphere Input tested by `newSphere==oldSphere and (newSphere==viewMath.CULL_OUT or newSphere==viewMath.CULL_IN)`.
+/// @param boxCull Input used in the result expression `boxCull`.
 function cullModelDecision(sameFrame,nonNormalizedAxes,newSphere,oldSphere,boxCull)
   if not nonNormalizedAxes then
     if sameFrame then
@@ -116,6 +156,15 @@ function cullModelDecision(sameFrame,nonNormalizedAxes,newSphere,oldSphere,boxCu
   return boxCull
 end function
 
+/// Builds `bounds[0]`, `bounds[1]` in `mq3.renderer.md3_entity.cullModel`; returns `cullModelDecision(frame==oldFrame,nonNormalizedAxes,newSphere,oldSphere,boxCull)`.
+/// @param frames Indexed input read at `frame`, `oldFrame`.
+/// @param frame Input tested by `frames==void or frame<0 or oldFrame<0 or frame>=len(frames) or oldFrame>=len(frames)`.
+/// @param oldFrame Input tested by `frames==void or frame<0 or oldFrame<0 or frame>=len(frames) or oldFrame>=len(frames)`.
+/// @param origin Argument 1 supplied to `mq3.renderer.view_math.orientation`.
+/// @param axis Argument 2 supplied to `mq3.renderer.view_math.orientation`.
+/// @param nonNormalizedAxes Value forwarded as `nonNormalizedAxes` to `mq3.renderer.md3_entity.cullModelDecision`.
+/// @param frustum Argument 4 supplied to `mq3.renderer.view_math.cullLocalPointAndRadius`.
+/// @param noCull Argument 5 supplied to `mq3.renderer.view_math.cullLocalPointAndRadius`.
 function cullModel(frames,frame,oldFrame,origin,axis,nonNormalizedAxes,frustum,noCull)
   if frames==void or frame<0 or oldFrame<0 or frame>=len(frames) or oldFrame>=len(frames) then return fail("cull frame outside model") end if
   if frustum==void then return viewMath.CULL_CLIP end if
@@ -140,6 +189,8 @@ end function
 // R_SetupProjection fields used by ProjectRadius.  This keeps the original
 // float stores around tan() and matrix construction; all unused fields stay
 // zero except projection[11], which supplies clip W = distance.
+/// @param fovY Input tested by `fovY<=0.0 or fovY>=180.0 or zNear<=0.0`.
+/// @param zNear Argument 1 supplied to `mq3.compat.numeric.fmul`.
 function lodProjection(fovY,zNear)
   if fovY<=0.0 or fovY>=180.0 or zNear<=0.0 then return fail("invalid LOD projection") end if
   ymax=numeric.f32(numeric.fmul(zNear,tan(fovY*3.14159265358979323846/360.0)));ymin=numeric.fneg(ymax);height=numeric.fsub(ymax,ymin)

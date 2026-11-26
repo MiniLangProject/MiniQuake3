@@ -6,6 +6,7 @@ import mq3.compat.numeric as n
 import mq3.format.qfiles as qfiles
 import mq3.vm.native_exec as nativeExec
 
+/// VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`, `needs`, `data`, and 8 further fields.
 struct VM
   code
   addresses
@@ -23,6 +24,7 @@ struct VM
   nativePlan
 end struct
 
+/// ImageLayout record for vm.interpreter, containing `count`, `codeOffset`, `codeLength`, `dataOffset`, `dataLength`, `litLength`, and 1 further fields.
 struct ImageLayout
   count
   codeOffset
@@ -33,6 +35,8 @@ struct ImageLayout
   memorySize
 end struct
 
+/// Create the vm.interpreter error for `fail` with 3400 and the supplied diagnostic text.
+/// @param message Message used in `("QVM: " + message)` and `error(3400, ("QVM: " + message))`.
 function fail(message)
   return error(3400, "QVM: " + message)
 end function
@@ -41,6 +45,7 @@ end function
 // pointer into a static forty-space string; MiniLang returns the equivalent
 // immutable suffix.  Stack traces retain the original frame layout:
 // [return pc, previous program stack] at offsets 0 and 4.
+/// @param callLevel Call level used in `(callLevel < 0)` and `(callLevel > 20)`.
 function VM_Indent(callLevel)
   value = "                                        "
   if callLevel > 20 then return value end if
@@ -49,6 +54,12 @@ function VM_Indent(callLevel)
   return decode(slice(bytes(value), offset, 40 - offset))
 end function
 
+/// Compute stack trace in vm.interpreter; the normal completion returns `lines`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readI32`.
+/// @param programCounter Program counter used in `str(programCounter)` and `(programCounter == - 1)`.
+/// @param programStack Offset passed as `offset` to `mq3.compat.numeric.readI32`.
+/// @param symbolFn Callback invoked for symbol; the call sites below define the callback arguments.
+/// @param context Context used in `symbolFn(context, programCounter)`.
 function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
   if typeof(data) != "bytes" then return fail("stack trace data missing") end if
   lines = []
@@ -68,18 +79,24 @@ function VM_StackTrace(data, programCounter, programStack, symbolFn, context)
   return lines
 end function
 
+/// Compute immediate size in vm.interpreter; the normal completion returns `0`.
+/// @param op Op used in `(op == 3)` and `(op == 4)`.
 function immediateSize(op)
   if op == 3 or op == 4 or op == 8 or op == 9 or (op >= 11 and op <= 26) or op == 34 then return 4 end if
   if op == 33 then return 1 end if
   return 0
 end function
 
+/// Compute stack need in vm.interpreter; the normal completion returns `0`.
+/// @param op Op used in `(op == 5)` and `(op == 7)`.
 function stackNeed(op)
   if op == 5 or op == 7 or op == 10 or (op >= 27 and op <= 29) or op == 33 or (op >= 35 and op <= 37) or op == 49 or op == 53 or op == 58 or op == 59 then return 1 end if
   if (op >= 11 and op <= 26) or (op >= 30 and op <= 32) or op == 34 or (op >= 38 and op <= 48) or (op >= 50 and op <= 52) or (op >= 54 and op <= 57) then return 2 end if
   return 0
 end function
 
+/// Compute image layout in vm.interpreter; the normal completion returns `ImageLayout(count, codeOffset, codeLength, dataOffset, dataLength, litLength, memorySize)`.
+/// @param image Data passed as `data` to `mq3.compat.numeric.readU32`.
 function imageLayout(image)
   if typeof(image) != "bytes" or len(image) < 32 then return fail("truncated header") end if
   if n.readU32(image, 0) != qfiles.VM_MAGIC then return fail("unsupported magic") end if
@@ -99,6 +116,9 @@ function imageLayout(image)
   return ImageLayout(count, codeOffset, codeLength, dataOffset, dataLength, litLength, memorySize)
 end function
 
+/// Load interpreter in vm.interpreter.
+/// @param image Image passed as `image` to `mq3.vm.interpreter.imageLayout`.
+/// @param callback Initial `syscall` field stored in the returned or constructed `mq3.vm.interpreter.VM` record.
 function load(image, callback)
   layout = try(imageLayout(image))
   if layout is error then return layout end if
@@ -157,16 +177,24 @@ end function
 // Keep the MiniLang interpreter as the executable reference implementation.
 // Production dispatch runs the same validated plan in bounded native code and
 // yields back to MiniLang at each trap without crossing a callback ABI.
+/// @param vm Record exposing `nativePlan`.
+/// @param args Args passed as `args` to `mq3.vm.interpreter.call`.
 function callFast(vm,args)
   if vm.nativePlan==void then return call(vm,args) end if
   return nativeExec.call(vm,args)
 end function
 
+/// Compute target address in vm.interpreter; the normal completion returns `vm.addresses[target]`.
+/// @param vm Record exposing `addresses`.
+/// @param target Zero-based index into `vm.addresses`.
 function targetAddress(vm, target)
   if target < 0 or target >= len(vm.addresses) then return fail("jump outside code") end if
   return vm.addresses[target]
 end function
 
+/// Compute signed divide in vm.interpreter; the normal completion returns `value`.
+/// @param a A passed as `a` to `mq3.compat.numeric.quotient`.
+/// @param b B passed as `b` to `mq3.compat.numeric.quotient`.
 function signedDivide(a, b)
   if b == 0 then return fail("integer divide by zero") end if
   if a == -2147483648 and b == -1 then return fail("signed division overflow") end if
@@ -178,10 +206,18 @@ function signedDivide(a, b)
   return value
 end function
 
+/// Update `vm.programStack` in vm.interpreter.
+/// @param vm Updated in place: `programStack`.
+/// @param saved Saved operand used by `restoreStack`; its reads are shown in the implementation.
 function restoreStack(vm, saved)
   vm.programStack = saved
 end function
 
+/// Update `vm.steps`, `vm.breaks`, `vm.programStack` in vm.interpreter.
+///
+/// Direct state writes: `vm.steps`, `vm.breaks`, `vm.programStack`.
+/// @param vm Record exposing `programStack`, `steps`, `stackBottom`, `data`, `limit`, `code`, `starts` and further fields. Updated in place: `steps`, `breaks`, `programStack`.
+/// @param args Args used in `len(args)` and `args[index]`.
 function call(vm, args)
   if len(args) > 10 then return fail("vmMain accepts at most ten arguments") end if
   originalStack = vm.programStack

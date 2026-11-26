@@ -3,22 +3,34 @@
 // COM_ParseExt from code/game/q_shared.c. Byte-based C string semantics.
 package mq3.shared.parser
 
+/// Parser record for shared.parser, containing `data`, `offset`, `line`.
 struct Parser
   data
   offset
   line
 end struct
 
+/// Create parser in shared.parser; the normal completion returns `Parser(text, 0, 0)`.
+/// @param text Initial `data` field stored in the returned or constructed `mq3.shared.parser.Parser` record.
 function create(text)
   if typeof(text) == "string" then text = bytes(text) end if
   return Parser(text, 0, 0)
 end function
 
+/// Compute at in shared.parser; the normal completion returns `state.data[offset]`.
+/// @param state Record exposing `data`.
+/// @param offset Zero-based index into `state.data`.
 function at(state, offset)
   if offset < 0 or offset >= len(state.data) then return 0 end if
   return state.data[offset]
 end function
 
+/// Parse ext in shared.parser; the normal completion returns `decode(slice(token, 0, length))`.
+///
+/// Validation failures include `quoted token exceeds safe C buffer capacity`.
+/// Direct state writes: `state.offset`, `state.line`.
+/// @param state Record exposing `offset`, `line`. Updated in place: `offset`, `line`.
+/// @param allowLineBreaks Allow line breaks used in `(newlines and not allowLineBreaks)`.
 function parseExt(state, allowLineBreaks)
   if state.offset < 0 then return "" end if
   pos = state.offset

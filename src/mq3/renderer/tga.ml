@@ -2,6 +2,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // TGA pixel path from renderer/tr_image.c LoadTGA, with checked byte access.
 package mq3.renderer.tga
+/// Decodes bounded TGA pixel packets into RGBA output, including RLE and orientation handling.
+/// @param input Read-only encoded TGA image bytes.
+/// @param inputBytes Encoded input-buffer length in bytes.
+/// @param offset Byte offset where TGA pixel data begins.
+/// @param width Width of the image, surface, or viewport in pixels.
+/// @param height Height of the image, surface, or viewport in pixels.
+/// @param pixelBytes Bytes per encoded source pixel.
+/// @param rle Nonzero selects TGA run-length packet decoding.
+/// @param output Writable RGBA8 pixel buffer.
+/// @param outputBytes Capacity of the native output buffer in bytes.
+/// @returns 1 on success; negative codes identify invalid bounds, unsupported pixels, output overflow, or truncated packets.
 extern function decodePixels(input as bytes,inputBytes as i32,offset as i32,width as i32,height as i32,pixelBytes as i32,rle as i32,output as bytes,outputBytes as i32) from "playable_window.dll" symbol "playable_decode_tga_pixels" returns i32
 
 const TYPE_TRUECOLOR=2
@@ -10,16 +21,24 @@ const TYPE_RLE_TRUECOLOR=10
 const MAX_DIMENSION=16384
 const MAX_PIXELS=67108864
 
+/// Data record for `mq3.renderer.tga.Image`; groups `width`, `height`, `pixels`, `topDownDeclared`.
 struct Image width height pixels topDownDeclared end struct
 
+/// Creates error `7120` with message `"TGA: "+message`.
+/// @param message Input used in the result expression `error(7120,"TGA: "+message)`.
 function fail(message)
   return error(7120,"TGA: "+message)
 end function
 
+/// Computes `data[offset]|(data[offset+1]<<8)` for `mq3.renderer.tga.u16`.
+/// @param data Indexed input read at `offset`, `offset+1`.
+/// @param offset Input used in the result expression `data[offset]|(data[offset+1]<<8)`.
 function u16(data,offset)
   return data[offset]|(data[offset+1]<<8)
 end function
 
+/// Returns `0` from `mq3.renderer.tga.pixelBytes`; earlier branches return `1`, `3`, `4`.
+/// @param pixelSize Input tested by `pixelSize==8`.
 function pixelBytes(pixelSize)
   if pixelSize==8 then return 1 end if
   if pixelSize==24 then return 3 end if
@@ -27,6 +46,8 @@ function pixelBytes(pixelSize)
   return 0
 end function
 
+/// Builds `mq3.renderer.tga.Image` for `mq3.renderer.tga.decode`.
+/// @param data Value forwarded as `data` to `mq3.renderer.tga.u16`.
 function decode(data)
   if data==void or len(data)<18 then return fail("truncated header") end if
   idLength=data[0];colorMapType=data[1];imageType=data[2]

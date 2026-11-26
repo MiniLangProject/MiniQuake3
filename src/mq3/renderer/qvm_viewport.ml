@@ -6,16 +6,31 @@ import mq3.client.playable_viewer as viewer
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
+/// Data record for `mq3.renderer.qvm_viewport.Prepared`; groups `area`, `projection`.
 struct Prepared area projection end struct
 
+/// Creates error `7691` with message `"QVM viewport: "+message`.
+/// @param message Input used in the result expression `error(7691,"QVM viewport: "+message)`.
 function fail(message) return error(7691,"QVM viewport: "+message) end function
+/// Returns `numeric.trunc32(scaled)` from `mq3.renderer.qvm_viewport.edge`; earlier branches return `fail("scaled viewport edge exceeds native integer range")`.
+/// @param value Input used by `scaled=value*targetSize/sourceSize`.
+/// @param sourceSize Input used by `scaled=value*targetSize/sourceSize`.
+/// @param targetSize Input used by `scaled=value*targetSize/sourceSize`.
 function edge(value,sourceSize,targetSize)
   scaled=value*targetSize/sourceSize
   if scaled< -2147483648 or scaled>2147483647 then return fail("scaled viewport edge exceeds native integer range") end if
   return numeric.trunc32(scaled)
 end function
+/// Computes `value!=void and len(value)==3` for `mq3.renderer.qvm_viewport.validVector`.
+/// @param value Input used in the result expression `value!=void and len(value)==3`.
 function validVector(value) return value!=void and len(value)==3 end function
 
+/// Builds `mq3.renderer.qvm_viewport.Prepared` using `mq3.platform.playable_window.viewport`, `mq3.client.playable_viewer.focalLength`.
+/// @param refdef Record providing `refdef.width`, `refdef.height`, `refdef.x`, `refdef.y`, `refdef.vieworg`, `refdef.viewaxis`.
+/// @param sourceWidth Value forwarded as `sourceSize` to `mq3.renderer.qvm_viewport.edge`.
+/// @param sourceHeight Value forwarded as `sourceSize` to `mq3.renderer.qvm_viewport.edge`.
+/// @param targetWidth Value forwarded as `targetSize` to `mq3.renderer.qvm_viewport.edge`.
+/// @param targetHeight Value forwarded as `targetSize` to `mq3.renderer.qvm_viewport.edge`.
 function prepare(refdef,sourceWidth,sourceHeight,targetWidth,targetHeight)
   if refdef==void or sourceWidth<1 or sourceHeight<1 or targetWidth<1 or targetHeight<1 then return fail("invalid source or target dimensions") end if
   if sourceWidth>2147483647 or sourceHeight>2147483647 or targetWidth>2147483647 or targetHeight>2147483647 then return fail("source or target dimensions exceed native integer range") end if

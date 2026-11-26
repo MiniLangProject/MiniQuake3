@@ -13,21 +13,35 @@ const CVAR_SYSTEMINFO=8
 const CS_SERVERINFO=0
 const CS_SYSTEMINFO=1
 
+/// Runtime record for server.frame, containing `killServer`, `running`, `clPaused`, `svPaused`, `fps`, `dedicated`, and 14 further fields.
 struct Runtime killServer running clPaused svPaused fps dedicated speeds modifiedFlags timeGame timeResidual time restartTime nextSnapshotEntities numSnapshotEntities maxRate pauseClients pingClients playerStates timeoutState snapshotClients end struct
+/// Create `mq3.server.frame.Runtime` with killServer=0; running=0; clPaused=0; svPaused=0; 16 further fields.
 function runtime()
   return Runtime(0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,[],[],[],void,[])
 end function
 
+/// Services record for server.frame, containing `shutdownFn`, `cvarSetFn`, `botFrameFn`, `sleepFn`, `commandFn`, `infoStringFn`, and 11 further fields.
 struct Services shutdownFn cvarSetFn botFrameFn sleepFn commandFn infoStringFn setConfigstringFn millisecondsFn gameFrameFn heartbeatFn pauseObservedFn pingsObservedFn timeoutObservedFn messagesObservedFn timeoutServices snapshotServices context end struct
+/// Create `mq3.server.frame.Services` with shutdownFn=void; cvarSetFn=void; botFrameFn=void; sleepFn=void; 13 further fields.
 function services()
   return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,serverTimeouts.services(),void,void)
 end function
 
+/// Compute call 0 in server.frame.
+/// @param fn Fn used in `fn(host)` and `(fn != void)`.
+/// @param host Host used in `fn(host)`.
 function call0(fn,host) if fn!=void then fn(host) end if;return void end function
+/// Compute cvar set in server.frame.
+/// @param host Record exposing `cvarSetFn`.
+/// @param name Name used in `host.cvarSetFn(host, name, value)`.
+/// @param value Value used in `host.cvarSetFn(host, name, value)`.
 function cvarSet(host,name,value) if host.cvarSetFn!=void then host.cvarSetFn(host,name,value) end if;return void end function
 
 // Runs one outer server frame. All platform/VM effects are explicit services;
 // ping, pause, timeout and snapshot policy use their productive port modules.
+/// @param state Record exposing `killServer`, `running`, `pauseClients`, `clPaused`, `svPaused`, `fps`, `timeResidual` and further fields. Updated in place: `killServer`, `svPaused`, `fps`, `timeResidual`, `restartTime`, `modifiedFlags` and further fields.
+/// @param msec Right integer operand; only its low 32 bits participate.
+/// @param host Record exposing `shutdownFn`, `pauseObservedFn`, `botFrameFn`, `sleepFn`, `commandFn`, `infoStringFn`, `setConfigstringFn` and further fields.
 function run(state,msec,host)
   if state==void or host==void then return error(7280,"server frame: missing runtime or services") end if
   if state.killServer!=0 then

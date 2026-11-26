@@ -14,10 +14,20 @@ const ABI_UI = 2
 const MAX_VM_STRING = 8192
 const VM_CVAR_SIZE = 272
 
+/// Round down to the greatest integral double no larger than the input.
+/// @param value Floating-point operand.
+/// @returns The integral double rounded toward negative infinity.
 extern function floor(value as double) from "ucrtbase.dll" returns double
+/// Round up to the least integral double no smaller than the input.
+/// @param value Floating-point operand.
+/// @returns The integral double rounded toward positive infinity.
 extern function ceil(value as double) from "ucrtbase.dll" returns double
+/// Compute the inverse cosine in radians.
+/// @param value Floating-point operand.
+/// @returns The principal angle in radians, with C-runtime domain handling outside [-1, 1].
 extern function acos(value as double) from "ucrtbase.dll" returns double
 
+/// Services record for vm.syscall_common, containing `cvars`, `commands`, `context`, `printFn`, `errorFn`, `millisecondsFn`, and 5 further fields.
 struct Services
   cvars
   commands
@@ -32,20 +42,36 @@ struct Services
   closeFn
 end struct
 
+/// OpenResult record for vm.syscall_common, containing `handle`, `length`.
 struct OpenResult handle length end struct
 
+/// Create `mq3.vm.syscall_common.Services` with cvars=registry; commands=commands; context=context; printFn=void; errorFn=void; millisecondsFn=void; consoleFn=void; openFn=void; readFn=void; writeFn=void; closeFn=void.
+/// @param registry Initial `cvars` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
+/// @param commands Initial `commands` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
+/// @param context Initial `context` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.
 function services(registry,commands,context)
   return Services(registry,commands,context,void,void,void,void,void,void,void,void)
 end function
 
+/// Create the vm.syscall_common error for `fail` with 3420 and the supplied diagnostic text.
+/// @param message Message used in `("QVM syscall: " + message)` and `error(3420, ("QVM syscall: " + message))`.
 function fail(message) return error(3420,"QVM syscall: "+message) end function
 
+/// Compute argument in vm.syscall_common; the normal completion returns `n.readI32(vm.data, at)`.
+/// @param vm Record exposing `data`.
+/// @param address Address used in `(address < 0)` and `(at < address)`.
+/// @param index Index used in `(index * 4)` and `(index < 0)`.
 function argument(vm,address as int,index as int)
   at=address+index*4
   if address<0 or index<0 or at<address or at+4>len(vm.data) then return fail("argument vector outside VM memory") end if
   return n.readI32(vm.data,at)
 end function
 
+/// Compute pointer in vm.syscall_common; the normal completion returns `at`.
+/// @param vm Record exposing `mask`, `data`.
+/// @param value Value used in `(value == 0)` and `(value & vm.mask)`.
+/// @param size Size used in `(size < 0)` and `(size > (len(vm.data) - at))`.
+/// @param label Label used in `(label + " is NULL")` and `fail((label + " is NULL"))`.
 function pointer(vm,value,size,label)
   if value==0 then return fail(label+" is NULL") end if
   if size<0 then return fail(label+" has negative size") end if
@@ -54,6 +80,9 @@ function pointer(vm,value,size,label)
   return at
 end function
 
+/// Read string in vm.syscall_common; the normal completion returns `decode(slice(vm.data, at, (stop - at)))`.
+/// @param vm Record exposing `data`.
+/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
 function readString(vm,value)
   at=pointer(vm,value,1,"string");limit=at+MAX_VM_STRING
   if limit>len(vm.data) then limit=len(vm.data) end if
@@ -63,6 +92,12 @@ function readString(vm,value)
   return decode(slice(vm.data,at,stop-at))
 end function
 
+/// Write buffer in vm.syscall_common; the normal completion returns `count`.
+/// @param vm Record exposing `data`.
+/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param capacity Size passed as `size` to `mq3.vm.syscall_common.pointer`.
+/// @param data Data used in `bytes(data)` and `copyBytes(vm.data, at, source, 0, count)`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function writeBuffer(vm,value,capacity,data,label)
   if capacity<0 then return fail(label+" has negative capacity") end if
   if capacity==0 then return 0 end if
@@ -72,6 +107,12 @@ function writeBuffer(vm,value,capacity,data,label)
   return count
 end function
 
+/// Write raw in vm.syscall_common.
+/// @param vm Record exposing `data`.
+/// @param value Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param data Data used in `len(data)` and `(len(data) < count)`.
+/// @param count Size passed as `size` to `mq3.vm.syscall_common.pointer`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function writeRaw(vm,value,data,count,label)
   if count<0 then return fail(label+" has negative length") end if
   at=pointer(vm,value,count,label)
@@ -80,11 +121,17 @@ function writeRaw(vm,value,data,count,label)
   return void
 end function
 
+/// Compute require cvars in vm.syscall_common; the normal completion returns `host.cvars`.
+/// @param host Record exposing `cvars`.
 function requireCvars(host)
   if host.cvars==void then return fail("cvar service unavailable") end if
   return host.cvars
 end function
 
+/// Write vm cvar in vm.syscall_common.
+/// @param vm Record exposing `data`.
+/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param variable Record exposing `index`, `modificationCount`, `value`, `integer`, `string`.
 function writeVmCvar(vm,address,variable)
   at=pointer(vm,address,VM_CVAR_SIZE,"vmCvar_t")
   n.writeU32(vm.data,at,variable.index);n.writeU32(vm.data,at+4,variable.modificationCount)
@@ -95,6 +142,10 @@ function writeVmCvar(vm,address,variable)
   return void
 end function
 
+/// Register cvar in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function registerCvar(vm,base,host)
   registry=requireCvars(host);target=argument(vm,base,1)
   variable=cvar.get(registry,readString(vm,argument(vm,base,2)),readString(vm,argument(vm,base,3)),argument(vm,base,4))
@@ -102,6 +153,10 @@ function registerCvar(vm,base,host)
   return 0
 end function
 
+/// Update cvar in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function updateCvar(vm,base,host)
   registry=requireCvars(host);target=argument(vm,base,1);at=pointer(vm,target,VM_CVAR_SIZE,"vmCvar_t")
   handle=n.readI32(vm.data,at)
@@ -111,53 +166,99 @@ function updateCvar(vm,base,host)
   return 0
 end function
 
+/// Compute cvar set in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarSet(vm,base,host)
   cvar.set(requireCvars(host),readString(vm,argument(vm,base,1)),readString(vm,argument(vm,base,2)));return 0
 end function
 
+/// Return `mq3.qcommon.cvar.variableIntegerValue(requireCvars(host), readString(vm, argument(vm, base, 1)))` from `vm.syscall_common.cvarInteger`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarInteger(vm,base,host)
   return cvar.variableIntegerValue(requireCvars(host),readString(vm,argument(vm,base,1)))
 end function
 
+/// Return `mq3.compat.numeric.i32(n.floatBits(cvar.variableValue(requireCvars(host), readString(vm, argument(vm, base, 1)))))` from `vm.syscall_common.cvarValueBits`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarValueBits(vm,base,host)
   return n.i32(n.floatBits(cvar.variableValue(requireCvars(host),readString(vm,argument(vm,base,1)))))
 end function
 
+/// Compute cvar string in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarString(vm,base,host)
   text=cvar.variableString(requireCvars(host),readString(vm,argument(vm,base,1)))
   writeBuffer(vm,argument(vm,base,2),argument(vm,base,3),text,"cvar output");return 0
 end function
 
+/// Compute cvar set value in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarSetValue(vm,base,host)
   cvar.setValue(requireCvars(host),readString(vm,argument(vm,base,1)),n.bitsFloat(argument(vm,base,2)));return 0
 end function
+/// Compute cvar reset in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarReset(vm,base,host)
   cvar.reset(requireCvars(host),readString(vm,argument(vm,base,1)));return 0
 end function
+/// Compute cvar create in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarCreate(vm,base,host)
   cvar.get(requireCvars(host),readString(vm,argument(vm,base,1)),readString(vm,argument(vm,base,2)),argument(vm,base,3));return 0
 end function
+/// Compute cvar info string in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.requireCvars`.
 function cvarInfoString(vm,base,host)
   text=cvar.infoString(requireCvars(host),argument(vm,base,1))
   writeBuffer(vm,argument(vm,base,2),argument(vm,base,3),text,"cvar info output");return 0
 end function
 
+/// Compute argc in vm.syscall_common; the normal completion returns `command.argc(host.commands)`.
+/// @param host Record exposing `commands`.
 function argc(host)
   if host.commands==void then return fail("command service unavailable") end if
   return command.argc(host.commands)
 end function
 
+/// Compute argv in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `commands`.
 function argv(vm,base,host)
   if host.commands==void then return fail("command service unavailable") end if
   text=command.argv(host.commands,argument(vm,base,1))
   writeBuffer(vm,argument(vm,base,2),argument(vm,base,3),text,"argv output");return 0
 end function
 
+/// Compute args text in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.writeBuffer`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `commands`.
 function argsText(vm,base,host)
   if host.commands==void then return fail("command service unavailable") end if
   writeBuffer(vm,argument(vm,base,1),argument(vm,base,2),command.args(host.commands),"args output");return 0
 end function
 
+/// Open syscall common in vm.syscall_common; the normal completion returns `result.length`.
+/// @param vm Record exposing `data`, `mask`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `openFn`, `context`, `closeFn`.
 function fsOpen(vm,base,host)
   if host.openFn==void then return fail("file open service unavailable") end if
   target=argument(vm,base,2);if target!=0 then pointer(vm,target,4,"file handle output") end if
@@ -171,23 +272,40 @@ function fsOpen(vm,base,host)
   return result.length
 end function
 
+/// Read syscall common in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `readFn`, `context`.
 function fsRead(vm,base,host)
   if host.readFn==void then return fail("file read service unavailable") end if
   count=argument(vm,base,2);data=host.readFn(host.context,argument(vm,base,3),count)
   writeRaw(vm,argument(vm,base,1),data,count,"file read output");return 0
 end function
 
+/// Write syscall common in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `writeFn`, `context`.
 function fsWrite(vm,base,host)
   if host.writeFn==void then return fail("file write service unavailable") end if
   count=argument(vm,base,2);at=pointer(vm,argument(vm,base,1),count,"file write input")
   host.writeFn(host.context,argument(vm,base,3),slice(vm.data,at,count));return 0
 end function
 
+/// Close syscall common in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `closeFn`, `context`.
 function fsClose(vm,base,host)
   if host.closeFn==void then return fail("file close service unavailable") end if
   host.closeFn(host.context,argument(vm,base,1));return 0
 end function
 
+/// Emit print in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readString`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `printFn`, `errorFn`, `context`.
+/// @param isError Is error operand used by `emitPrint`; its reads are shown in the implementation.
 function emitPrint(vm,base,host,isError)
   text=readString(vm,argument(vm,base,1));callback=host.printFn
   if isError then callback=host.errorFn end if
@@ -195,11 +313,18 @@ function emitPrint(vm,base,host,isError)
   callback(host.context,text);return 0
 end function
 
+/// Execute console in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.argument`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
+/// @param host Record exposing `consoleFn`, `context`.
 function executeConsole(vm,base,host)
   if host.consoleFn==void then return fail("console command service unavailable") end if
   host.consoleFn(host.context,argument(vm,base,1),readString(vm,argument(vm,base,2)));return 0
 end function
 
+/// Compute libc memset in vm.syscall_common; the normal completion returns `destination`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function libcMemset(vm,base)
   destination=argument(vm,base,1);value=argument(vm,base,2)&255;count=argument(vm,base,3)
   at=pointer(vm,destination,count,"memset destination")
@@ -207,6 +332,9 @@ function libcMemset(vm,base)
   return destination
 end function
 
+/// Compute libc memcpy in vm.syscall_common; the normal completion returns `destination`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function libcMemcpy(vm,base)
   destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
   target=pointer(vm,destination,count,"memcpy destination");sourceAt=pointer(vm,source,count,"memcpy source")
@@ -216,6 +344,9 @@ function libcMemcpy(vm,base)
   return destination
 end function
 
+/// Compute libc strncpy in vm.syscall_common; the normal completion returns `destination`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function libcStrncpy(vm,base)
   destination=argument(vm,base,1);source=argument(vm,base,2);count=argument(vm,base,3)
   target=pointer(vm,destination,count,"strncpy destination");sourceAt=pointer(vm,source,1,"strncpy source")
@@ -231,8 +362,15 @@ function libcStrncpy(vm,base)
   return destination
 end function
 
+/// Return `mq3.compat.numeric.i32(n.floatBits(value))` from `vm.syscall_common.floatResult`.
+/// @param value Floating-point value to narrow and reinterpret.
 function floatResult(value) return n.i32(n.floatBits(value)) end function
 
+/// Read float vector in vm.syscall_common; the normal completion returns `result`.
+/// @param vm Record exposing `data`.
+/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param count Count used in `(count * 4)` and `(index < count)`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function readFloatVector(vm,address,count,label)
   at=pointer(vm,address,count*4,label);result=array(count,0.0)
   index=0
@@ -241,11 +379,19 @@ function readFloatVector(vm,address,count,label)
   end while
   return result
 end function
+/// Write float vector in vm.syscall_common.
+/// @param vm Record exposing `data`.
+/// @param address Value passed as `value` to `mq3.vm.syscall_common.pointer`.
+/// @param values Values used in `len(values)` and `values[index]`.
+/// @param label Label passed as `label` to `mq3.vm.syscall_common.pointer`.
 function writeFloatVector(vm,address,values,label)
   if address==0 then return void end if
   at=pointer(vm,address,len(values)*4,label);for index=0 to len(values)-1 n.writeU32(vm.data,at+index*4,n.floatBits(values[index])) end for;return void
 end function
 
+/// Compute matrix multiply in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readFloatVector`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function matrixMultiply(vm,base)
   left=readFloatVector(vm,argument(vm,base,1),9,"matrix left");right=readFloatVector(vm,argument(vm,base,2),9,"matrix right");values=[]
   for row=0 to 2 for column=0 to 2
@@ -253,10 +399,16 @@ function matrixMultiply(vm,base)
   end for end for
   writeFloatVector(vm,argument(vm,base,3),values,"matrix output");return 0
 end function
+/// Compute angle vectors in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readFloatVector`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function angleVectors(vm,base)
   vectors=qmath.AngleVectors(readFloatVector(vm,argument(vm,base,1),3,"angles"))
   writeFloatVector(vm,argument(vm,base,2),vectors[0],"forward");writeFloatVector(vm,argument(vm,base,3),vectors[1],"right");writeFloatVector(vm,argument(vm,base,4),vectors[2],"up");return 0
 end function
+/// Compute perpendicular vector in vm.syscall_common; the normal completion returns `0`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.readFloatVector`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function perpendicularVector(vm,base)
   source=readFloatVector(vm,argument(vm,base,2),3,"perpendicular source");axis=0
   if source[1]*source[1]<source[axis]*source[axis] then axis=1 end if;if source[2]*source[2]<source[axis]*source[axis] then axis=2 end if
@@ -265,6 +417,11 @@ function perpendicularVector(vm,base)
   if length!=0.0 then values=[values[0]/length,values[1]/length,values[2]/length] end if;writeFloatVector(vm,argument(vm,base,1),values,"perpendicular output");return 0
 end function
 
+/// Dispatch libc in vm.syscall_common; the normal completion returns `fail(("unsupported VM libc trap " + str(op)))`.
+/// @param abi Abi used in `(abi == ABI_CGAME)` and `(abi == ABI_QAGAME)`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.libcMemset`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_common.libcMemset`.
+/// @param op Op used in `str(op)` and `(op == 107)`.
 function dispatchLibc(abi,vm,base,op)
   switch op
     case 100 return libcMemset(vm,base) end case
@@ -287,6 +444,11 @@ function dispatchLibc(abi,vm,base,op)
   return fail("unsupported VM libc trap "+str(op))
 end function
 
+/// Dispatch qagame in vm.syscall_common; the normal completion returns `fail(("unsupported qagame trap " + str(op)))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_common.emitPrint`.
+/// @param host Record exposing `millisecondsFn`, `context`.
+/// @param op Op used in `str(op)` and `("unsupported qagame trap " + str(op))`.
 function dispatchQagame(vm,base,host,op)
   switch op
     case 0 return emitPrint(vm,base,host,false) end case
@@ -308,6 +470,11 @@ function dispatchQagame(vm,base,host,op)
   return fail("unsupported qagame trap "+str(op))
 end function
 
+/// Dispatch cgame in vm.syscall_common; the normal completion returns `fail(("unsupported cgame trap " + str(op)))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.dispatchQagame`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_common.dispatchQagame`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`.
+/// @param op Op passed as `op` to `mq3.vm.syscall_common.dispatchQagame`.
 function dispatchCgame(vm,base,host,op)
   if op<=5 then return dispatchQagame(vm,base,host,op) end if
   switch op
@@ -324,6 +491,11 @@ function dispatchCgame(vm,base,host,op)
   return fail("unsupported cgame trap "+str(op))
 end function
 
+/// Dispatch ui in vm.syscall_common; the normal completion returns `fail(("unsupported UI trap " + str(op)))`.
+/// @param vm Vm passed as `vm` to `mq3.vm.syscall_common.emitPrint`.
+/// @param base Base passed as `base` to `mq3.vm.syscall_common.emitPrint`.
+/// @param host Record exposing `millisecondsFn`, `context`.
+/// @param op Op used in `str(op)` and `("unsupported UI trap " + str(op))`.
 function dispatchUi(vm,base,host,op)
   switch op
     case 0 return emitPrint(vm,base,host,true) end case
@@ -349,6 +521,11 @@ function dispatchUi(vm,base,host,op)
   return fail("unsupported UI trap "+str(op))
 end function
 
+/// Dispatch syscall common in vm.syscall_common; the normal completion returns `fail("unknown ABI")`.
+/// @param abi Abi passed as `abi` to `mq3.vm.syscall_common.dispatchLibc`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatchQagame`.
+/// @param vm Record exposing `data`.
+/// @param base Address passed as `address` to `mq3.vm.syscall_common.argument`.
 function dispatch(abi,host,vm,base)
   if host==void or vm==void or typeof(vm.data)!="bytes" then return fail("invalid dispatcher context") end if
   op=argument(vm,base,0)
@@ -359,6 +536,9 @@ function dispatch(abi,host,vm,base)
   return fail("unknown ABI")
 end function
 
+/// Apply `mq3.vm.syscall_common.dispatch` for callback in vm.syscall_common.
+/// @param abi Abi passed as `abi` to `mq3.vm.syscall_common.dispatch`.
+/// @param host Host passed as `host` to `mq3.vm.syscall_common.dispatch`.
 function callback(abi,host)
   return function(vm,base) => dispatch(abi,host,vm,base)
 end function

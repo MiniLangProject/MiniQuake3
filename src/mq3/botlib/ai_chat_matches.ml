@@ -14,28 +14,56 @@ const MAX_MESSAGE_SIZE=256
 const MAX_MATCH_VARIABLES=8
 const MATCH_ABI_SIZE=328
 
+/// `Piece` record for ai chat matches, containing `variable` and `alternatives`.
 struct Piece variable alternatives end struct
+/// `Template` record for ai chat matches, containing `context`, `pieces`, `type` and `subtype`.
 struct Template context pieces type subtype end struct
+/// `Match` record for ai chat matches, containing `string`, `type`, `subtype`, `offsets` and `lengths`.
 struct Match string type subtype offsets lengths end struct
+/// `Loader` record for ai chat matches, containing `state`.
 struct Loader state end struct
+/// `State` record for ai chat matches, containing `context`, `readFn`, `templates`, `loaded` and `fileReads`.
 struct State context readFn templates loaded fileReads end struct
 
+/// Construct error `7597` with diagnostic text `"AI chat matches: "+message`.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(message) return error(7597,"AI chat matches: "+message) end function
+/// Create a `mq3.botlib.ai_chat_matches.State` record, initializing `context` from `context` and `readFn` from `readFn`.
+/// @param context Context forwarded to the configured host callbacks.
+/// @param readFn Callback that loads a named resource through the supplied context.
 function create(context,readFn) return State(context,readFn,[],false,0) end function
+/// Create a `mq3.botlib.ai_chat_matches.Match` record, initializing `string` from `value`, `offsets` as `[-1,-1,-1,-1,-1,-1,-1,-1]` and `lengths` as `[0,0,0,0,0,0,0,0]`.
+/// @param value Initial value stored in `mq3.botlib.ai_chat_matches.Match.string`.
 function emptyMatch(value) return Match(value,0,0,[-1,-1,-1,-1,-1,-1,-1,-1],[0,0,0,0,0,0,0,0]) end function
+/// Normalize a ai chat matches resource path by removing leading slashes and ensuring the botfiles prefix.
+/// @param name Name used to identify the requested entry.
 function botPath(name)
   value=name;while textStrings.startsWith(value,"/") value=decode(slice(bytes(value),1,len(bytes(value))-1)) end while
   if textStrings.startsWith(textStrings.toLowerAscii(value),"botfiles/") then return value end if;return "botfiles/"+value
 end function
+/// Set `loader.state.fileReads` to `loader.state.fileReads+1` in `mq3.botlib.ai_chat_matches.loadText`. Return paths include `loader.state.readFn(loader.state.context,botPath(name))`.
+/// @param loader Loader record; accesses `state`. May update `loader.state.fileReads` in place.
+/// @param name Name used to identify the requested entry.
 function loadText(loader,name)
   if loader==void or loader.state==void or loader.state.readFn==void then return fail("file callback missing") end if
   loader.state.fileReads=loader.state.fileReads+1;return loader.state.readFn(loader.state.context,botPath(name))
 end function
+/// Forward `take` to `mq3.vm.pc_parser.read` and return the delegated result.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
 function take(registry,source) return pc.read(registry,source) end function
+/// Apply `mq3.botlib.ai_chat_matches.take` while evaluating `expectText`. Return paths include `token`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
+/// @param value Operand used to evaluate the returned expression `fail("expected "+value)`.
 function expectText(registry,source,value)
   token=take(registry,source);if token==void or token is error then return fail("expected "+value) end if
   if token.text!=value then return fail("expected "+value+", found "+token.text) end if;return token
 end function
+/// Apply `mq3.botlib.ai_chat_matches.take` and `mq3.botlib.ai_chat_matches.expectText` while evaluating `expectInteger`. Return paths include `fail("unsupported $evalint operator "+part.text)`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
+/// @param label Label retained with the diagnostic or action record.
 function expectInteger(registry,source,label)
   token=take(registry,source);if token==void or token is error then return fail("expected integer "+label) end if
   if token.type==pc.TT_NUMBER and (token.subtype&pc.TT_INTEGER)!=0 then return token.intValue end if
@@ -51,6 +79,10 @@ function expectInteger(registry,source,label)
   end while
 end function
 
+/// Apply `mq3.botlib.ai_chat_matches.take` while evaluating `parsePieces`. Return paths include `fail("expected match piece separator, found "+separator.text)`.
+/// @param registry Registry record; accesses `sources` and `defines`. May update `registry.defines` and `registry.defines[index]` in place.
+/// @param source Value used by `read` in `if sourceHandle<1 or sourceHandle>=MAX_SOURCEFILES or registry.sources[sourceHandle]==0 then return void end if`.
+/// @param firstToken Value used by `parsePieces` in `nextToken=firstToken`.
 function parsePieces(registry,source,firstToken)
   pieces=[];lastWasVariable=false;nextToken=firstToken
   while true
@@ -75,6 +107,9 @@ function parsePieces(registry,source,firstToken)
   end while
 end function
 
+/// Apply `mq3.vm.pc_parser.create`, `mq3.vm.pc_parser.load` and `mq3.botlib.ai_chat_matches.take` while evaluating `parse`. Return paths include `templates.toArray()`.
+/// @param state Initial value stored in `mq3.botlib.ai_chat_matches.Loader.state`.
+/// @param filename Filename supplied to the configured loader or file service.
 function parse(state,filename)
   loader=Loader(state);registry=pc.create(loader,loadText);source=pc.load(registry,filename);if source==0 then return fail("cannot load "+filename) end if
   templates=lists.List.withCapacity(256)
@@ -97,14 +132,27 @@ function parse(state,filename)
   end while
   pc.free(registry,source);return templates.toArray()
 end function
+/// Set `state.templates` to `templates` and `state.loaded` to `true` in `mq3.botlib.ai_chat_matches.load`. Return paths include `len(templates)`.
+/// @param state AI chat matches state; accesses `templates` and `loaded`. May update `state.templates` and `state.loaded` in place.
+/// @param filename Filename supplied to the configured loader or file service.
 function load(state,filename)
   if state==void then return fail("state missing") end if;templates=parse(state,filename);if templates is error then return templates end if
   state.templates=templates;state.loaded=true;return len(templates)
 end function
+/// Apply `mq3.botlib.ai_chat_matches.load` while evaluating `ensureLoaded`. Return paths include `load(state,"match.c")`.
+/// @param state AI chat matches state; accesses `loaded` and `templates`.
 function ensureLoaded(state) if state==void then return fail("state missing") end if;if state.loaded then return len(state.templates) end if;return load(state,"match.c") end function
+/// Set `state.templates` to `[]` and `state.loaded` to `false` in `mq3.botlib.ai_chat_matches.clear`.
+/// @param state AI chat matches state; accesses `templates` and `loaded`. May update `state.templates` and `state.loaded` in place.
 function clear(state) if state!=void then state.templates=[];state.loaded=false end if;return 0 end function
 
+/// Convert an ASCII lowercase letter to uppercase while preserving other byte values.
+/// @param value Operand used to evaluate the returned expression `value-32`.
 function upper(value) if value>=97 and value<=122 then return value-32 end if;return value end function
+/// Apply `mq3.botlib.ai_chat_matches.upper` while evaluating `stringContains`. Return paths include `-1`.
+/// @param value Value passed as argument 1 to `bytes`.
+/// @param needle Text or value to search for.
+/// @param caseSensitive Whether comparisons distinguish letter case.
 function stringContains(value,needle,caseSensitive)
   input=bytes(value);wanted=bytes(needle);if len(wanted)==0 then return 0 end if;remaining=len(input)-len(wanted);if remaining<0 then return -1 end if
   for index=0 to remaining
@@ -112,7 +160,13 @@ function stringContains(value,needle,caseSensitive)
     if equal then return index end if
   end for;return -1
 end function
+/// Return the text suffix beginning at the supplied byte offset, or an empty string beyond the end.
+/// @param value Value passed as argument 1 to `bytes`.
+/// @param start Value passed as argument 2 to `slice`.
 function suffix(value,start) data=bytes(value);if start>=len(data) then return "" end if;return decode(slice(data,start,len(data)-start)) end function
+/// Update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` during `stringsMatch`. Return paths include `position==len(bytes(match.string))`.
+/// @param pieces Value used by `stringsMatch` in `for each piece in pieces`.
+/// @param match Parsed match record; accesses `offsets`, `string` and `lengths`. May update `match.offsets[piece.variable]` and `match.lengths[lastVariable]` in place.
 function stringsMatch(pieces,match)
   lastVariable=-1;position=0
   for each piece in pieces
@@ -134,7 +188,13 @@ function stringsMatch(pieces,match)
   if lastVariable>=0 then match.lengths[lastVariable]=len(bytes(match.string))-match.offsets[lastVariable];return true end if
   return position==len(bytes(match.string))
 end function
+/// Remove trailing line-feed bytes from chat text.
+/// @param value Value passed as argument 1 to `bytes`.
 function trimEnters(value) data=bytes(value);count=len(data);while count>0 and data[count-1]==10 count=count-1 end while;return decode(slice(data,0,count)) end function
+/// Apply `mq3.botlib.ai_chat_matches.ensureLoaded`, `mq3.botlib.ai_chat_matches.emptyMatch` and `mq3.botlib.ai_chat_matches.trimEnters` while evaluating `findMatch`.
+/// @param state AI chat matches state; accesses `templates`.
+/// @param value Value passed as argument 1 to `bytes`.
+/// @param context Bit mask selecting the bot-chat contexts accepted by this operation.
 function findMatch(state,value,context)
   ready=ensureLoaded(state);if ready is error then return ready end if
   data=bytes(value);if len(data)>MAX_MESSAGE_SIZE then data=slice(data,0,MAX_MESSAGE_SIZE) end if;match=emptyMatch(trimEnters(decode(data)))
@@ -145,6 +205,10 @@ function findMatch(state,value,context)
     end if
   end for;return void
 end function
+/// Extract a matched chat variable and truncate it to the supplied buffer capacity minus its terminator.
+/// @param match Parsed match record; accesses `offsets`, `lengths` and `string`.
+/// @param variable Operand used to evaluate the returned expression `decode(slice(bytes(match.string),match.offsets[variable],count))`.
+/// @param size Size or capacity supplied to the buffer operation.
 function matchVariable(match,variable,size)
   if match==void or variable<0 or variable>=MAX_MATCH_VARIABLES or size<=0 or match.offsets[variable]<0 then return "" end if
   count=match.lengths[variable];if count>=size then count=size-1 end if;if count<=0 then return "" end if

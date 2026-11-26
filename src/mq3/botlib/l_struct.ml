@@ -18,45 +18,84 @@ const FT_ARRAY=0x0100
 const FT_BOUNDED=0x0200
 const FT_UNSIGNED=0x0400
 
+/// `FieldDef` record for l struct, containing `name`, `offset`, `type`, `maxarray` and `floatmin` and related fields.
 struct FieldDef name offset type maxarray floatmin floatmax substruct end struct
+/// `StructDef` record for l struct, containing `size` and `fields`.
 struct StructDef size fields end struct
+/// `FieldValue` record for l struct, containing `definition` and `values`.
 struct FieldValue definition values end struct
+/// `Structure` record for l struct, containing `definition` and `fields`.
 struct Structure definition fields end struct
 // A reader can consume either a raw pc_parser Source or a precompiled handle.
 // pending is local because l_struct.c needs exactly one-token pushback.
 struct Reader source registry sourceHandle pending diagnostics end struct
 
+/// Set `reader.diagnostics` to `reader.diagnostics+[message]` in `mq3.botlib.l_struct.fail`.
+/// @param reader Token-reader state; accesses `diagnostics`. May update `reader.diagnostics` in place.
+/// @param message Message text supplied to the diagnostic or chat operation.
 function fail(reader,message)
   if reader!=void then reader.diagnostics=reader.diagnostics+[message] end if
   return error(7902,"l_struct: "+message)
 end function
+/// Create a `mq3.botlib.l_struct.FieldDef` record, initializing `name` from `name`, `offset` from `offset` and `type` from `type`.
+/// @param name Name used to identify the requested entry.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param type Initial value stored in `mq3.botlib.l_struct.FieldDef.type`.
+/// @param maxarray Initial value stored in `mq3.botlib.l_struct.FieldDef.maxarray`.
+/// @param floatmin Initial value stored in `mq3.botlib.l_struct.FieldDef.floatmin`.
+/// @param floatmax Initial value stored in `mq3.botlib.l_struct.FieldDef.floatmax`.
+/// @param substruct Initial value stored in `mq3.botlib.l_struct.FieldDef.substruct`.
 function field(name,offset,type,maxarray,floatmin,floatmax,substruct) return FieldDef(name,offset,type,maxarray,floatmin,floatmax,substruct) end function
+/// Create a `mq3.botlib.l_struct.StructDef` record, initializing `size` from `size` and `fields` from `fields`.
+/// @param size Size or capacity supplied to the buffer operation.
+/// @param fields Initial value stored in `mq3.botlib.l_struct.StructDef.fields`.
 function definition(size,fields) return StructDef(size,fields) end function
+/// Create a `mq3.botlib.l_struct.Reader` record, initializing `source` as `pc.Source(name,bytes(text),0,1,0)`.
+/// @param name Name used to identify the requested entry.
+/// @param text Text to parse, format or deliver.
 function sourceReader(name,text) return Reader(pc.Source(name,bytes(text),0,1,0),void,0,void,[]) end function
+/// Create a `mq3.botlib.l_struct.Reader` record, initializing `registry` from `registry` and `sourceHandle` from `sourceHandle`.
+/// @param registry Initial value stored in `mq3.botlib.l_struct.Reader.registry`.
+/// @param sourceHandle Initial value stored in `mq3.botlib.l_struct.Reader.sourceHandle`.
 function precompilerReader(registry,sourceHandle) return Reader(void,registry,sourceHandle,void,[]) end function
+/// Set `reader.pending` to `void` in `mq3.botlib.l_struct.nextToken`. Return paths include `pc.sourceTake(reader.source)`.
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
 function nextToken(reader)
   if reader.pending!=void then token=reader.pending;reader.pending=void;return token end if
   if reader.registry!=void then return pc.read(reader.registry,reader.sourceHandle) end if
   if reader.source==void then return void end if
   return pc.sourceTake(reader.source)
 end function
+/// Set `reader.pending` to `token` in `mq3.botlib.l_struct.unreadToken`.
+/// @param reader Token-reader state; accesses `pending`. May update `reader.pending` in place.
+/// @param token Value used by `unreadToken` in `if token!=void then reader.pending=token end if`.
 function unreadToken(reader,token) if token!=void then reader.pending=token end if;return void end function
+/// Apply `mq3.botlib.l_struct.nextToken` while evaluating `expectToken`. Return paths include `token`.
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param text Text to parse, format or deliver.
 function expectToken(reader,text)
   token=nextToken(reader);if token==void then return fail(reader,"expected "+text+", found end of source") end if;if token is error then return token end if
   if token.text!=text then return fail(reader,"expected "+text+", found "+token.text) end if;return token
 end function
+/// Apply `mq3.botlib.l_struct.nextToken` and `mq3.botlib.l_struct.unreadToken` while evaluating `checkToken`.
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param text Text to parse, format or deliver.
 function checkToken(reader,text)
   token=nextToken(reader);if token==void then return false end if;if token is error then return token end if
   if token.text==text then return true end if;unreadToken(reader,token);return false
 end function
 
 // FindField
+/// @param defs Value used by `FindField` in `if defs==void then return void end if`.
+/// @param name Lookup text matched against `candidate.name`.
 function FindField(defs,name)
   if defs==void then return void end if
   for each candidate in defs if candidate.name==name then return candidate end if end for
   return void
 end function
 
+/// Apply `mq3.botlib.l_struct.createStructure` while evaluating `scalarDefault`.
+/// @param fd Fd record; accesses `type` and `substruct`.
 function scalarDefault(fd)
   kind=fd.type&FT_TYPE
   if kind==FT_FLOAT then return 0.0 end if
@@ -64,30 +103,51 @@ function scalarDefault(fd)
   if kind==FT_STRUCT then if fd.substruct==void then return void end if;return createStructure(fd.substruct) end if
   return 0
 end function
+/// Build the `mq3.botlib.l_struct.FieldValue` result for `createFieldValue`. Return paths include `FieldValue(fd,values)`.
+/// @param fd Fd record; accesses `type` and `maxarray`.
 function createFieldValue(fd)
   count=1;if (fd.type&FT_ARRAY)!=0 then count=fd.maxarray end if;if count<0 then count=0 end if
   values=[];if count>0 then for index=0 to count-1 values=values+[scalarDefault(fd)] end for end if
   return FieldValue(fd,values)
 end function
+/// Build the `mq3.botlib.l_struct.Structure` result for `createStructure`. Return paths include `Structure(def,values)`.
+/// @param def Def record; accesses `fields`.
 function createStructure(def)
   if def==void then return void end if;values=[]
   if def.fields!=void then for each fd in def.fields values=values+[createFieldValue(fd)] end for end if
   return Structure(def,values)
 end function
+/// Find the stored field-value index by definition name, returning -1 for a missing structure or field.
+/// @param structure Structure record; accesses `fields`.
+/// @param name Lookup text matched against `structure.fields[index].definition.name`.
 function valueIndex(structure,name)
   if structure==void or structure.fields==void then return -1 end if
   for index=0 to len(structure.fields)-1 if structure.fields[index].definition.name==name then return index end if end for
   return -1
 end function
+/// Apply `mq3.botlib.l_struct.valueIndex` while evaluating `fieldValue`. Return paths include `structure.fields[index]`.
+/// @param structure Structure record; accesses `fields`.
+/// @param name Name used to identify the requested entry.
 function fieldValue(structure,name) index=valueIndex(structure,name);if index<0 then return void end if;return structure.fields[index] end function
+/// Apply `mq3.botlib.l_struct.fieldValue` while evaluating `value`. Return paths include `stored.values[index]`.
+/// @param structure Structure record; accesses `fields`.
+/// @param name Name used to identify the requested entry.
+/// @param index Index of the entry to access.
 function value(structure,name,index)
   stored=fieldValue(structure,name);if stored==void or index<0 or index>=len(stored.values) then return void end if;return stored.values[index]
 end function
+/// Apply `mq3.botlib.l_struct.fieldValue` while evaluating `setValue`.
+/// @param structure Structure record; accesses `fields`.
+/// @param name Name used to identify the requested entry.
+/// @param index Index of the entry to access.
+/// @param newValue Value used by `setValue` in `stored.values[index]=newValue`.
 function setValue(structure,name,index,newValue)
   stored=fieldValue(structure,name);if stored==void or index<0 or index>=len(stored.values) then return false end if;stored.values[index]=newValue;return true
 end function
 
 // ReadNumber
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param fd Fd record; accesses `type`, `floatmin` and `floatmax`.
 function ReadNumber(reader,fd)
   token=nextToken(reader);if token==void then return fail(reader,"expected number, found end of source") end if;if token is error then return token end if
   negative=false
@@ -123,6 +183,8 @@ function ReadNumber(reader,fd)
 end function
 
 // ReadChar
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param fd Fd record; accesses `type`, `floatmin` and `floatmax`.
 function ReadChar(reader,fd)
   token=nextToken(reader);if token==void then return fail(reader,"expected character, found end of source") end if;if token is error then return token end if
   if token.type==pc.TT_LITERAL then data=bytes(token.text);if len(data)==0 then return 0 end if;return data[0] end if
@@ -130,12 +192,17 @@ function ReadChar(reader,fd)
 end function
 
 // ReadString
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param fd Not read by this implementation; retained in the `ReadString` signature.
 function ReadString(reader,fd)
   token=nextToken(reader);if token==void then return fail(reader,"expected string, found end of source") end if;if token is error then return token end if
   if token.type!=pc.TT_STRING then return fail(reader,"expected string, found "+token.text) end if
   data=bytes(token.text);if len(data)<MAX_STRINGFIELD then return token.text end if;return decode(slice(data,0,MAX_STRINGFIELD-1))
 end function
 
+/// Apply `mq3.botlib.l_struct.ReadChar`, `mq3.botlib.l_struct.ReadNumber` and `mq3.botlib.l_struct.ReadString` while evaluating `readFieldScalar`. Return paths include `fail(reader,"unsupported structure field type "+str(kind))`.
+/// @param reader Token-reader state; accesses `pending`, `registry`, `sourceHandle` and `source`. May update `reader.pending` in place.
+/// @param fd Fd record; accesses `type` and `substruct`.
 function readFieldScalar(reader,fd)
   kind=fd.type&FT_TYPE
   if kind==FT_CHAR then return ReadChar(reader,fd) end if
@@ -149,6 +216,9 @@ function readFieldScalar(reader,fd)
 end function
 
 // ReadStructure
+/// @param reader Token-reader state; accesses `diagnostics`. May update `reader.diagnostics` in place.
+/// @param def Def record; accesses `fields`.
+/// @param structure Structure record; accesses `fields`.
 function ReadStructure(reader,def,structure)
   if def==void then return fail(reader,"missing structure definition") end if;if structure==void then structure=createStructure(def) end if
   opened=expectToken(reader,"{");if opened is error then return opened end if
@@ -171,17 +241,24 @@ function ReadStructure(reader,def,structure)
 end function
 
 // WriteIndent
+/// @param indent Value used by `WriteIndent` in `while indent>0 text=text+"\t"`.
 function WriteIndent(indent)
   text="";while indent>0 text=text+"\t";indent=indent-1 end while;return text
 end function
 
 // WriteFloat
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.f32`.
 function WriteFloat(value)
   text=textnumbers.fixed6(numeric.f32(value));if text is error then return text end if;data=bytes(text);count=len(data)
   while count>1 and data[count-1]==48 count=count-1 end while
   if count>1 and data[count-1]==46 then count=count-1 end if
   if count==len(data) then return text end if;if count<=0 then return "" end if;return decode(slice(data,0,count))
 end function
+/// Apply `mq3.botlib.l_struct.WriteFloat` and `mq3.botlib.l_struct.WriteStructWithIndent` while evaluating `writeScalar`. Return paths include `fail(void,"unsupported structure field type "+str(kind))`.
+/// @param fd Fd record; accesses `type`, `substruct` and `name`.
+/// @param stored Stored record; accesses `values`.
+/// @param index Index of the entry to access.
+/// @param indent Value used by `WriteIndent` in `while indent>0 text=text+"\t"`.
 function writeScalar(fd,stored,index,indent)
   if index<0 or index>=len(stored.values) then return fail(void,"field storage outside array") end if;item=stored.values[index];kind=fd.type&FT_TYPE
   if kind==FT_CHAR then if (fd.type&FT_UNSIGNED)!=0 and item>=128 then return str(item-256) end if;return str(item) end if
@@ -193,6 +270,9 @@ function writeScalar(fd,stored,index,indent)
 end function
 
 // WriteStructWithIndent
+/// @param def Def record; accesses `fields`.
+/// @param structure Structure record; accesses `fields`.
+/// @param indent Value used by `WriteIndent` in `while indent>0 text=text+"\t"`.
 function WriteStructWithIndent(def,structure,indent)
   if def==void or structure==void then return fail(void,"missing structure for write") end if
   text=WriteIndent(indent)+"{\r\n";childIndent=indent+1
@@ -207,4 +287,6 @@ function WriteStructWithIndent(def,structure,indent)
 end function
 
 // WriteStructure
+/// @param def Def record; accesses `fields`.
+/// @param structure Structure record; accesses `fields`.
 function WriteStructure(def,structure) return WriteStructWithIndent(def,structure,0) end function

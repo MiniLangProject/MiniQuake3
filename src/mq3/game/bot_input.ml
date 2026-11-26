@@ -40,6 +40,7 @@ const BUTTON_FOLLOWME=1024
 const CHARACTERISTIC_VIEW_FACTOR=headers.CHARACTERISTIC_VIEW_FACTOR
 const CHARACTERISTIC_VIEW_MAXCHANGE=headers.CHARACTERISTIC_VIEW_MAXCHANGE
 
+/// `BotInput` record for bot input, containing `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields.
 struct BotInput
   thinktime
   dir
@@ -48,6 +49,7 @@ struct BotInput
   actionflags
   weapon
 end struct
+/// `Services` record for bot input, containing `challenge`, `characteristicFloatFn`, `viewFn`, `getInputFn` and `context`.
 struct Services
   challenge
   characteristicFloatFn
@@ -55,20 +57,34 @@ struct Services
   getInputFn
   context
 end struct
+/// Create a `mq3.game.bot_input.Services` record with the declared empty defaults.
 function create()
   return Services(false,void,void,void,void)
 end function
+/// Wrap an angle using the Quake III fixed-point angle representation.
+/// @param value Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`.
 function angleMod(value) return q.AngleNormalize360(value) end function
+/// Return the result of `n.fmul(n.i16(value),n.f32(360.0/65536.0))` for `shortToAngle`.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.i16`.
 function shortToAngle(value) return n.fmul(n.i16(value),n.f32(360.0/65536.0)) end function
+/// Convert a degree angle into the signed sixteen-bit network user-command representation.
+/// @param value Value passed as argument 1 to `mq3.compat.numeric.f32`.
 function angleToShort(value)
   scaled=n.f32(value)*(65536/360.0); return n.i16(n.trunc32(scaled)&65535)
 end function
+/// Compute the shortest signed angular difference used by bot view steering.
+/// @param a Value passed as argument 1 to `mq3.compat.numeric.fsub`.
+/// @param b Value passed as argument 2 to `mq3.compat.numeric.fsub`.
 function angleDifference(a,b)
   diff=n.fsub(a,b)
   if a>b then if diff>180.0 then diff=n.fsub(diff,360.0) end if
   else if diff < -180.0 then diff=n.fadd(diff,360.0) end if
   return diff
 end function
+/// Move one bot view angle toward its target with the specified maximum angular change.
+/// @param angle Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`.
+/// @param ideal Value passed as argument 1 to `mq3.shared.math.AngleNormalize360`.
+/// @param speed Requested movement speed.
 function changeViewAngle(angle,ideal,speed)
   angle=angleMod(angle); ideal=angleMod(ideal)
   if angle==ideal then return angle end if
@@ -79,6 +95,10 @@ function changeViewAngle(angle,ideal,speed)
   else if move < n.fneg(speed) then move=n.fneg(speed) end if
   return angleMod(n.fadd(angle,move))
 end function
+/// Update `bot.idealViewangles[0]`, `bot.viewangles[axis]`, `bot.idealViewangles[axis]` and `bot.viewanglespeed[axis]` and related state during `changeViewAngles`.
+/// @param services Host service callbacks; accesses `characteristicFloatFn`, `challenge` and `viewFn`.
+/// @param bot Bot AI state; accesses `idealViewangles`, `enemy`, `character`, `viewangles` and `viewanglespeed` and related fields. May update `bot.idealViewangles[0]`, `bot.viewangles[axis]` and `bot.idealViewangles[axis]` and additional fields in place.
+/// @param thinktime Bot thinking interval in seconds.
 function changeViewAngles(services,bot,thinktime)
   if bot.idealViewangles[0]>180.0 then bot.idealViewangles[0]=n.fsub(bot.idealViewangles[0],360.0) end if
   factor=0.05; maxchange=360.0
@@ -108,7 +128,15 @@ function changeViewAngles(services,bot,thinktime)
   if bot.viewangles[0]>180.0 then bot.viewangles[0]=n.fsub(bot.viewangles[0],360.0) end if
   services.viewFn(services,bot.client,bot.viewangles); return void
 end function
+/// Forward `addMove` to `mq3.compat.numeric.i8` and return the delegated result.
+/// @param value Operand used to evaluate the returned expression `n.i8(value+delta)`.
+/// @param delta Operand used to evaluate the returned expression `n.i8(value+delta)`.
 function addMove(value,delta) return n.i8(value+delta) end function
+/// Update `command.serverTime`, `command.buttons`, `command.angles` and `command.weapon` and related state during `inputToUserCommand`.
+/// @param input Input record; accesses `actionflags`, `weapon`, `viewangles`, `dir` and `speed`. May update `input.actionflags` and `input.speed` in place.
+/// @param command Command record; accesses `serverTime`, `buttons`, `angles`, `weapon` and `forwardmove` and related fields. May update `command.serverTime`, `command.buttons` and `command.angles` and additional fields in place.
+/// @param deltaAngles Array or byte sequence accessed at `axis`.
+/// @param time Time value in the units expected by this module.
 function inputToUserCommand(input,command,deltaAngles,time)
   command.serverTime=time; command.buttons=0; command.angles=[0,0,0]; command.weapon=0
   command.forwardmove=0; command.rightmove=0; command.upmove=0
@@ -136,6 +164,12 @@ function inputToUserCommand(input,command,deltaAngles,time)
   if (input.actionflags&ACTION_CROUCH)!=0 then command.upmove=addMove(command.upmove,-127) end if
   return void
 end function
+/// Update `bot.viewangles[axis]` during `updateInput`.
+/// @param services Host service callbacks; accesses `getInputFn`.
+/// @param bot Bot AI state; accesses `viewangles`, `curPs` and `client`. May update `bot.viewangles[axis]` in place.
+/// @param command Command record; accesses `buttons`.
+/// @param time Time value in the units expected by this module.
+/// @param elapsed Value passed as argument 1 to `mq3.compat.numeric.fdiv`.
 function updateInput(services,bot,command,time,elapsed)
   for axis=0 to 2 bot.viewangles[axis]=angleMod(n.fadd(bot.viewangles[axis],shortToAngle(bot.curPs.delta_angles[axis]))) end for
   changeViewAngles(services,bot,n.fdiv(elapsed,1000.0))

@@ -22,31 +22,45 @@ const MAX_STRING_TOKENS=1024
 const RETRANSMIT_TIMEOUT=3000
 const PROTOCOL_VERSION=68
 
+/// Stores connectionless state, including `connectionState`, `realtime`, `serverAddress`, `channel`, `challenge`, `connectPacketCount` and additional values.
 struct State
   connectionState realtime serverAddress channel challenge connectPacketCount
   connectTime lastPacketSentTime lastPacketTime serverMessage qport demoplaying
 end struct
+/// Stores connectionless host-service callbacks, including `infoFn`, `statusFn`, `disconnectFn`, `printFn`, `outOfBandFn`, `motdFn` and additional values.
 struct Services
   infoFn statusFn disconnectFn printFn outOfBandFn motdFn serversFn diagnosticFn context
   lanFn authorizationFn userinfoFn outOfBandDataFn clearUserinfoModifiedFn
 end struct
 
+/// Creates a disconnected client handshake state for the supplied network address.
+/// @param address Value used to initialize `State.serverAddress`.
 function create(address)
   return State(CA_DISCONNECTED,0,address,void,0,0,0,0,0,"",0,false)
 end function
+/// Creates a `mq3.client.connectionless.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
 
+/// Converts only ASCII A-Z bytes to lowercase for case-insensitive connectionless command dispatch.
+/// @param text Text consumed or emitted by `lowerAscii` in the connectionless path.
 function lowerAscii(text)
   result="";raw=bytes(text)
   if len(raw)>0 then for each value in raw if value>=65 and value<=90 then value=value+32 end if;result=result+decode(bytes([value])) end for end if
   return result
 end function
+/// Tests a byte-for-byte text prefix, accepting an empty prefix.
+/// @param text Text consumed or emitted by `startsWith` in the connectionless path.
+/// @param prefix Value used by `b=bytes(prefix)`.
 function startsWith(text,prefix)
   a=bytes(text);b=bytes(prefix);if len(a)<len(b) then return false end if
   if len(b)>0 then for i=0 to len(b)-1 if a[i]!=b[i] then return false end if end for end if
   return true
 end function
 
+/// Compares network-address type and IP bytes and optionally requires the UDP ports to match.
+/// @param a Record read through `a.type`, `a.ip`, `a.port`.
+/// @param b Record read through `b.type`, `b.ip`, `b.port`.
+/// @param includePort Value used by `if includePort and a.port!=b.port then return false end if`.
 function addressEqual(a,b,includePort)
   if a==void or b==void or a.type!=b.type or len(a.ip)!=len(b.ip) then return false end if
   if len(a.ip)>0 then for i=0 to len(a.ip)-1 if a.ip[i]!=b.ip[i] then return false end if end for end if
@@ -54,6 +68,10 @@ function addressEqual(a,b,includePort)
   return true
 end function
 
+/// Accepts disconnects only from the connected remote endpoint after three quiet seconds and invokes the host print/disconnect callbacks.
+/// @param state Record read through `state.connectionState`, `state.channel.remoteAddress`, `state.realtime`, `state.lastPacketTime`.
+/// @param host Record read through `host.printFn`, `host.disconnectFn`.
+/// @param source Value used by `if not addressEqual(source,state.channel.remoteAddress,true) then return false end if`.
 function disconnectPacket(state,host,source)
   if state.connectionState<CA_AUTHORIZING then return false end if
   if not addressEqual(source,state.channel.remoteAddress,true) then return false end if
@@ -64,6 +82,9 @@ function disconnectPacket(state,host,source)
   return true
 end function
 
+/// Retries the protocol-68 handshake every three seconds, sending getchallenge or connect with protocol, qport and challenge userinfo.
+/// @param state Mutable connectionless record/storage; this routine assigns `state.connectTime`, `state.connectPacketCount`.
+/// @param host Record read through `host.lanFn`, `host.authorizationFn`, `host.outOfBandFn`, `host.userinfoFn` and additional values.
 function checkForResend(state,host)
   if state==void or host==void then return error(6942,"client resend: missing state") end if
   if state.demoplaying then return false end if
@@ -86,6 +107,11 @@ function checkForResend(state,host)
   return true
 end function
 
+/// Reads and tokenizes an out-of-band packet, advances challenge/connect state and dispatches server-browser, status, print, MOTD and echo responses.
+/// @param state Mutable connectionless record/storage; this routine assigns `state.challenge`, `state.connectionState`, `state.connectPacketCount`, `state.connectTime` and additional values.
+/// @param host Record read through `host.infoFn`, `host.statusFn`, `host.outOfBandFn`, `host.motdFn` and additional values.
+/// @param source Value assigned to `state.serverAddress`.
+/// @param msg Value used by `if state==void or host==void or source==void or msg==void then return error(6940,"client connectionless: missing state") end if`.
 function dispatch(state,host,source,msg)
   if state==void or host==void or source==void or msg==void then return error(6940,"client connectionless: missing state") end if
   message.beginReadingOob(msg);message.readI32(msg);line=message.readCStringLine(msg)

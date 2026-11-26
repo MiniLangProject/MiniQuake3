@@ -58,20 +58,40 @@ const MAX_FILEPATH=144
 // live Entity/Client/Level aggregates.  Opaque engine records are retained as
 // ordinary values, just as the other MiniLang game facades do.
 struct PlayerTeamState state location captures basedefense carrierdefense flagrecovery fragcarrier assists lasthurtcarrier lastreturnedflag flagsince lastfraggedcarrier end struct
+/// `ClientSession` record for g local, containing `sessionTeam`, `spectatorTime`, `spectatorState`, `spectatorClient` and `wins` and related fields.
 struct ClientSession sessionTeam spectatorTime spectatorState spectatorClient wins losses teamLeader end struct
+/// `ClientPersistant` record for g local, containing `connected`, `cmd`, `localClient`, `initialSpawn` and `predictItemPickup` and related fields.
 struct ClientPersistant connected cmd localClient initialSpawn predictItemPickup pmoveFixed netname maxHealth enterTime teamState voteCount teamVoteCount teamInfo end struct
+/// `BotSettings` record for g local, containing `characterfile`, `skill` and `team`.
 struct BotSettings characterfile skill team end struct
 
+/// Return the ordered type names table for g local: 11 entries beginning with `"moverState_t"` and `"gentity_t"`.
 function typeNames() return ["moverState_t","gentity_t","gclient_t","clientConnected_t","spectatorState_t","playerTeamStateState_t","playerTeamState_t","clientSession_t","clientPersistant_t","level_locals_t","bot_settings_t"] end function
+/// Return the ordered entity field names table for g local: 69 entries beginning with `"s"` and `"r"`.
 function entityFieldNames() return ["s","r","client","inuse","classname","spawnflags","neverFree","flags","model","model2","freetime","eventTime","freeAfterEvent","unlinkAfterEvent","physicsObject","physicsBounce","clipmask","moverState","soundPos1","sound1to2","sound2to1","soundPos2","soundLoop","parent","nextTrain","prevTrain","pos1","pos2","message","timestamp","angle","target","targetname","team","targetShaderName","targetShaderNewName","target_ent","speed","movedir","nextthink","think","reached","blocked","touch","use","pain","die","pain_debounce_time","fly_sound_debounce_time","last_move_time","health","takedamage","damage","splashDamage","splashRadius","methodOfDeath","splashMethodOfDeath","count","chain","enemy","activator","teamchain","teammaster","watertype","waterlevel","noise_index","wait","random","item"] end function
+/// Return the ordered client field names table for g local: 32 entries beginning with `"ps"` and `"pers"`.
 function clientFieldNames() return ["ps","pers","sess","readyToExit","noclip","lastCmdTime","buttons","oldbuttons","latched_buttons","oldOrigin","damage_armor","damage_blood","damage_knockback","damage_from","damage_fromWorld","accurateCount","accuracy_shots","accuracy_hits","lastkilled_client","lasthurt_client","lasthurt_mod","respawnTime","inactivityTime","inactivityWarning","rewardTime","airOutTime","lastKillTime","fireHeld","hook","switchTeamTime","timeResidual","areabits"] end function
+/// Return the ordered level field names table for g local: 51 entries beginning with `"clients"` and `"gentities"`.
 function levelFieldNames() return ["clients","gentities","gentitySize","num_entities","warmupTime","logFile","maxclients","framenum","time","previousTime","startTime","teamScores","lastTeamLocationTime","newSession","restarted","numConnectedClients","numNonSpectatorClients","numPlayingClients","sortedClients","follow1","follow2","snd_fry","warmupModificationCount","voteString","voteDisplayString","voteTime","voteExecuteTime","voteYes","voteNo","numVotingClients","teamVoteString","teamVoteTime","teamVoteYes","teamVoteNo","numteamVotingClients","spawning","numSpawnVars","spawnVars","numSpawnVarChars","spawnVarChars","intermissionQueued","intermissiontime","changemap","readyToExit","exitTime","intermission_origin","intermission_angle","locationLinked","locationHead","bodyQueIndex","bodyQue"] end function
 
+/// Test `state>=MOVER_POS1 and state<=MOVER_2TO1` as the condition for `validMoverState`.
+/// @param state Operand used to evaluate the returned expression `state>=MOVER_POS1 and state<=MOVER_2TO1`.
 function validMoverState(state) return state>=MOVER_POS1 and state<=MOVER_2TO1 end function
+/// Test `clientNum==FOLLOW_ACTIVE1 or clientNum==FOLLOW_ACTIVE2` as the condition for `isFollowSentinel`.
+/// @param clientNum Client slot number.
 function isFollowSentinel(clientNum) return clientNum==FOLLOW_ACTIVE1 or clientNum==FOLLOW_ACTIVE2 end function
+/// Test `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0` as the condition for `damageUsesArmor`.
+/// @param flags Operand used to evaluate the returned expression `(flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0`.
 function damageUsesArmor(flags) return (flags&DAMAGE_NO_ARMOR)==0 and (flags&DAMAGE_NO_PROTECTION)==0 end function
+/// Test `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS` as the condition for `validSpawnStorage`.
+/// @param pairCount Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`.
+/// @param charCount Operand used to evaluate the returned expression `pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS`.
 function validSpawnStorage(pairCount,charCount) return pairCount>=0 and pairCount<=MAX_SPAWN_VARS and charCount>=0 and charCount<=MAX_SPAWN_VARS_CHARS end function
+/// Advance a valid body-queue slot with circular wraparound and reject an out-of-range slot.
+/// @param slot Slot in the owning table or pool.
 function nextBodyQueueSlot(slot) if slot<0 or slot>=BODY_QUEUE_SIZE then return error(7955,"g_local.h: invalid body queue slot") end if;return (slot+1)%BODY_QUEUE_SIZE end function
+/// Apply `mq3.game.g_local.entityFieldNames` while evaluating `FOFS`.
+/// @param fieldName Value used by `FOFS` in `if fields[index]==fieldName then return index end if`.
 function FOFS(fieldName)
   fields=entityFieldNames()
   for index=0 to len(fields)-1

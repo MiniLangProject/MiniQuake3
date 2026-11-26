@@ -30,49 +30,83 @@ const FLAG_TAKEN = 1
 const FLAG_DROPPED = 4
 const AWARD_MASK = 0x38848
 
+/// Test `typeof(index) == "int" and index > 0 and index < len(tables.items())` as the condition for `validItem`.
+/// @param index Index of the entry to access.
 function validItem(index)
   return typeof(index) == "int" and index > 0 and index < len(tables.items())
 end function
+/// Apply `mq3.game.items.validItem` while evaluating `requireItem`. Return paths include `index`.
+/// @param index Index of the entry to access.
 function requireItem(index)
   if not validItem(index) then return error(497,"Invalid baseq3 item") end if
   return index
 end function
+/// Return `tables.items()[requireItem(index)]` for `itemName`.
+/// @param index Index of the entry to access.
 function itemName(index)
   return tables.items()[requireItem(index)]
 end function
+/// Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemType` while evaluating `itemType`. Return paths include `c.itemType(index)`.
+/// @param index Index of the entry to access.
 function itemType(index)
   requireItem(index); return c.itemType(index)
 end function
+/// Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemTag` while evaluating `itemTag`. Return paths include `c.itemTag(index)`.
+/// @param index Index of the entry to access.
 function itemTag(index)
   requireItem(index); return c.itemTag(index)
 end function
+/// Apply `mq3.game.items.requireItem` and `mq3.game.constants.itemQuantity` while evaluating `itemQuantity`. Return paths include `c.itemQuantity(index)`.
+/// @param index Index of the entry to access.
 function itemQuantity(index)
   requireItem(index); return c.itemQuantity(index)
 end function
+/// Test `level != void and level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
+/// @param level Game-level state; accesses `spawner`.
 function missionpack(level)
   return level != void and level.spawner != void and level.spawner.missionpack
 end function
+/// Apply `mq3.game.spawn_tables.items`, `mq3.game.items.missionpack` and `mq3.game.spawn_tables.missionpackItems` while evaluating `requireModeItem`. Return paths include `index`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
 function requireModeItem(level,index)
   limit = len(tables.items()); if missionpack(level) then limit = len(tables.missionpackItems()) end if
   if typeof(index) != "int" or index <= 0 or index >= limit then return error(497,"Invalid game item") end if
   return index
 end function
+/// Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.game.spawn_tables.missionpackItems` while evaluating `modeItemName`. Return paths include `tables.items()[index]`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
 function modeItemName(level,index)
   requireModeItem(level,index); if missionpack(level) then return tables.missionpackItems()[index] end if; return tables.items()[index]
 end function
+/// Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.game.constants.missionpackItemType` while evaluating `modeItemType`. Return paths include `c.itemType(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
 function modeItemType(level,index)
   requireModeItem(level,index); if missionpack(level) then return c.missionpackItemType(index) end if; return c.itemType(index)
 end function
+/// Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.game.constants.missionpackItemTag` while evaluating `modeItemTag`. Return paths include `c.itemTag(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
 function modeItemTag(level,index)
   requireModeItem(level,index); if missionpack(level) then return c.missionpackItemTag(index) end if; return c.itemTag(index)
 end function
+/// Apply `mq3.game.items.requireModeItem`, `mq3.game.items.missionpack` and `mq3.game.constants.missionpackItemQuantity` while evaluating `modeItemQuantity`. Return paths include `c.itemQuantity(index)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param index Index of the entry to access.
 function modeItemQuantity(level,index)
   requireModeItem(level,index); if missionpack(level) then return c.missionpackItemQuantity(index) end if; return c.itemQuantity(index)
 end function
+/// Return `2.0*(n.fdiv(game.random(level),32767)-0.5)` for `centeredRandom`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
 function centeredRandom(level)
   // random() divides as float; crandom() then promotes its operands to double.
   return 2.0*(n.fdiv(game.random(level),32767)-0.5)
 end function
+/// Set `level.itemRegistered[item]` to `1` in `mq3.game.items.register`.
+/// @param level Game-level state; accesses `itemRegistered`. May update `level.itemRegistered[item]` in place.
+/// @param item Value passed as argument 1 to `typeof`.
 function register(level,item)
   // Frozen MiniLang compares integer zero equal to void; inspect its type
   // first so the valid bg_itemlist[0] pointer is not mistaken for NULL.
@@ -86,6 +120,8 @@ function register(level,item)
   if item < 0 or item > limit then return error(497,"RegisterItem requires an original item-array pointer") end if
   level.itemRegistered[item] = 1; return void
 end function
+/// Set `level.itemRegistered[index]` to `0` in `mq3.game.items.clearRegistered`.
+/// @param level Game-level state; accesses `itemRegistered` and `spawner`. May update `level.itemRegistered[index]` in place.
 function clearRegistered(level)
   for index = 0 to 255
     level.itemRegistered[index] = 0
@@ -95,10 +131,15 @@ function clearRegistered(level)
   if missionpack(level) and level.spawner.gametype == 7 then register(level,47); register(level,48) end if
   return void
 end function
+/// Use `level.gamePrintFn` to perform `itemInitializationPrint`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param text Text to parse, format or deliver.
 function itemInitializationPrint(level,text)
   if level.gamePrintFn == void then return error(497,"Item initialization requires game diagnostic delivery") end if
   level.gamePrintFn(level,text); return void
 end function
+/// Apply `mq3.game.spawn_tables.items`, `mq3.game.items.missionpack` and `mq3.game.spawn_tables.missionpackItems` while evaluating `saveRegistered`. Return paths include `values.setConfig(level.spawner,27,decode(bits))`.
+/// @param level Game-level state; accesses `itemRegistered` and `spawner`.
 function saveRegistered(level)
   limit = len(tables.items()); if missionpack(level) then limit = len(tables.missionpackItems()) end if
   count = 0; bits = bytes(limit,48)
@@ -109,6 +150,8 @@ function saveRegistered(level)
   if level.spawner == void then return error(497,"Item registration requires game configstrings") end if
   return values.setConfig(level.spawner,27,decode(bits))
 end function
+/// Update `level.lastFlagCapture`, `level.lastCaptureTeam`, `level.redFlagStatus` and `level.blueFlagStatus` and related state during `initTeamGame`.
+/// @param level Game-level state; accesses `lastFlagCapture`, `lastCaptureTeam`, `redFlagStatus`, `blueFlagStatus` and `neutralFlagStatus` and related fields. May update `level.lastFlagCapture`, `level.lastCaptureTeam` and `level.redFlagStatus` and additional fields in place.
 function initTeamGame(level)
   level.lastFlagCapture = 0.0; level.lastCaptureTeam = 0
   level.redFlagStatus = 0; level.blueFlagStatus = 0; level.neutralFlagStatus = 0
@@ -125,6 +168,8 @@ function initTeamGame(level)
   end if
   return void
 end function
+/// Apply `mq3.game.items.initTeamGame`, `mq3.game.items.itemInitializationPrint` and `mq3.game.items.missionpack` while evaluating `checkTeamItems`.
+/// @param level Game-level state; accesses `spawner` and `itemRegistered`.
 function checkTeamItems(level)
   initTeamGame(level)
   if level.spawner.gametype == 4 then
@@ -143,11 +188,20 @@ function checkTeamItems(level)
   end if
   return void
 end function
+/// Append an item event and parameter to the two-slot player-state event ring.
+/// @param level Not read by this implementation; retained in the `predictableEvent` signature.
+/// @param ent Game entity; accesses `client`.
+/// @param event Player or entity event identifier.
+/// @param parm Integer parameter stored alongside the emitted event.
 function predictableEvent(level,ent,event,parm)
   state = ent.client.ps; slot = state.eventSequence & 1
   state.events[slot] = event; state.eventParms[slot] = parm; state.eventSequence = n.add32(state.eventSequence,1)
   return void
 end function
+/// Apply `mq3.game.spawn_tables.items`, `mq3.game.constants.missionpackItemType` and `mq3.game.constants.missionpackItemTag` while evaluating `canGrab`.
+/// @param gametype Value used by `canGrab` in `if gametype == 7 then return true end if`.
+/// @param ent Game entity; accesses `s`.
+/// @param state Items state; accesses `ammo`, `stats`, `persistant` and `powerups`.
 function canGrab(gametype,ent,state)
   item = ent.s.modelindex; type = 0; tag = 0
   if item >= len(tables.items()) then type = c.missionpackItemType(item); tag = c.missionpackItemTag(item) else item = requireItem(item); type = itemType(item); tag = itemTag(item) end if
@@ -192,6 +246,9 @@ function canGrab(gametype,ent,state)
   if type == c.IT_BAD then return error(497,"BG_CanItemBeGrabbed: IT_BAD") end if
   return false
 end function
+/// Use `level.userinfoFn` to perform `userHandicap`. Return paths include `handicap`.
+/// @param level Game-level state; accesses `userinfoFn`.
+/// @param other Other record; accesses `s`.
 function userHandicap(level,other)
   handicap = 100
   if level.userinfoFn != void then
@@ -200,6 +257,10 @@ function userHandicap(level,other)
   end if
   return handicap
 end function
+/// Update `other.client.ps.stats[7]`, `other.client.persistantPowerup`, `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` and related state during `pickupPersistantPowerup`. Return paths include `-1`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`.
+/// @param other Other record; accesses `client` and `health`. May update `other.client.ps.stats[7]`, `other.client.persistantPowerup` and `other.health` and additional fields in place.
 function pickupPersistantPowerup(level,ent,other)
   tag = modeItemTag(level,ent.item); handicap = userHandicap(level,other)
   // Baseq3 has no persistent-stat slot. The port keeps the Team Arena pointer
@@ -215,6 +276,10 @@ function pickupPersistantPowerup(level,ent,other)
   end if
   return -1
 end function
+/// Apply `mq3.game.items.modeItemTag`, `mq3.game.items.modeItemQuantity` and `mq3.game.combat.shotTrace` while evaluating `pickupPowerup`. Return paths include `120`.
+/// @param level Game-level state; accesses `time`, `maxclients`, `clients` and `spawner`.
+/// @param ent Game entity; accesses `item`, `count` and `s`.
+/// @param other Other record; accesses `client`.
 function pickupPowerup(level,ent,other)
   state = other.client.ps; tag = modeItemTag(level,ent.item)
   if state.powerups[tag] == 0 then state.powerups[tag] = n.add32(level.time,0-(level.time % 1000)) end if
@@ -234,20 +299,36 @@ function pickupPowerup(level,ent,other)
   end for
   return 120
 end function
+/// Set `other.client.ps.stats[c.STAT_HOLDABLE_ITEM]` to `ent.item` and `other.client.ps.eFlags` to `other.client.ps.eFlags | 0x200` in `mq3.game.items.pickupHoldable`. Return paths include `60`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`.
+/// @param other Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_HOLDABLE_ITEM]` and `other.client.ps.eFlags` in place.
 function pickupHoldable(level,ent,other)
   other.client.ps.stats[c.STAT_HOLDABLE_ITEM] = ent.item
   if missionpack(level) and modeItemTag(level,ent.item) == c.HI_KAMIKAZE then other.client.ps.eFlags = other.client.ps.eFlags | 0x200 end if
   return 60
 end function
+/// Set `ent.client.ps.ammo[weapon]` to `n.add32(ent.client.ps.ammo[weapon],count)` and `ent.client.ps.ammo[weapon]` to `200` in `mq3.game.items.addAmmo`.
+/// @param ent Game entity; accesses `client`. May update `ent.client.ps.ammo[weapon]` in place.
+/// @param weapon Weapon identifier used by the action or inventory lookup.
+/// @param count Number of entries or bytes processed by this call.
 function addAmmo(ent,weapon,count)
   ent.client.ps.ammo[weapon] = n.add32(ent.client.ps.ammo[weapon],count)
   if ent.client.ps.ammo[weapon] > 200 then ent.client.ps.ammo[weapon] = 200 end if
   return void
 end function
+/// Apply `mq3.game.items.modeItemQuantity`, `mq3.game.items.addAmmo` and `mq3.game.items.modeItemTag` while evaluating `pickupAmmo`. Return paths include `40`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item` and `count`.
+/// @param other Game entity; accesses `client`. May update `other.client.ps.ammo[weapon]` in place.
 function pickupAmmo(level,ent,other)
   quantity = modeItemQuantity(level,ent.item); if ent.count != 0 then quantity = ent.count end if
   addAmmo(other,modeItemTag(level,ent.item),quantity); return 40
 end function
+/// Set `other.client.ps.stats[c.STAT_WEAPONS]` to `other.client.ps.stats[c.STAT_WEAPONS] | (1 << tag)` and `other.client.ps.ammo[tag]` to `-1` in `mq3.game.items.pickupWeapon`. Return paths include `level.weaponRespawn`.
+/// @param level Game-level state; accesses `spawner`, `weaponTeamRespawn` and `weaponRespawn`.
+/// @param ent Game entity; accesses `item`, `count` and `flags`.
+/// @param other Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_WEAPONS]` and `other.client.ps.ammo[tag]` in place.
 function pickupWeapon(level,ent,other)
   tag = modeItemTag(level,ent.item); quantity = 0
   if ent.count >= 0 then
@@ -262,6 +343,10 @@ function pickupWeapon(level,ent,other)
   if level.spawner.gametype == 3 then return level.weaponTeamRespawn end if
   return level.weaponRespawn
 end function
+/// Update `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` during `pickupHealth`. Return paths include `35`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item` and `count`.
+/// @param other Other record; accesses `client` and `health`. May update `other.health` and `other.client.ps.stats[c.STAT_HEALTH]` in place.
 function pickupHealth(level,ent,other)
   quantity = modeItemQuantity(level,ent.item); max = other.client.ps.stats[c.STAT_MAX_HEALTH]
   guard = missionpack(level) and other.client.persistantPowerup != void and modeItemTag(level,other.client.persistantPowerup.item) == c.PW_GUARD
@@ -272,16 +357,29 @@ function pickupHealth(level,ent,other)
   if modeItemQuantity(level,ent.item) == 100 then return 35 end if
   return 35
 end function
+/// Set `other.client.ps.stats[c.STAT_ARMOR]` to `value` in `mq3.game.items.pickupArmor`. Return paths include `25`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`.
+/// @param other Other record; accesses `client`. May update `other.client.ps.stats[c.STAT_ARMOR]` in place.
 function pickupArmor(level,ent,other)
   value = n.add32(other.client.ps.stats[c.STAT_ARMOR],modeItemQuantity(level,ent.item)); max = n.mul32(other.client.ps.stats[c.STAT_MAX_HEALTH],2)
   if missionpack(level) and other.client.persistantPowerup != void and modeItemTag(level,other.client.persistantPowerup.item) == c.PW_GUARD then max = other.client.ps.stats[c.STAT_MAX_HEALTH] end if
   if value > max then value = max end if
   other.client.ps.stats[c.STAT_ARMOR] = value; return 25
 end function
+/// Use `level.teamMessageFn` to perform `teamMessage`.
+/// @param level Game-level state; accesses `teamMessageFn`.
+/// @param recipient Value passed as argument 2 to `level.teamMessageFn`.
+/// @param text Text to parse, format or deliver.
 function teamMessage(level,recipient,text)
   if level.teamMessageFn == void then return error(497,"Team item requires a PrintMsg sink") end if
   level.teamMessageFn(level,recipient,text); return void
 end function
+/// Set `level.teamScores[team]` to `n.add32(level.teamScores[team],score)` in `mq3.game.items.addTeamScore`.
+/// @param level Game-level state; accesses `teamScores`. May update `level.teamScores[team]` in place.
+/// @param origin World-space position as three coordinates.
+/// @param team Team identifier used by the game rules.
+/// @param score Value passed as argument 2 to `mq3.compat.numeric.add32`.
 function addTeamScore(level,origin,team,score)
   if team != c.TEAM_RED and team != c.TEAM_BLUE then return error(497,"Invalid CTF score team") end if
   temp = game.tempEntity(level,origin,c.EV_GLOBAL_TEAM_SOUND); temp.r.svFlags = temp.r.svFlags | 32
@@ -296,6 +394,9 @@ function addTeamScore(level,origin,team,score)
   end if
   level.teamScores[team] = n.add32(level.teamScores[team],score); return void
 end function
+/// Set the forced-gesture flag on every active client belonging to the selected team.
+/// @param level Game-level state; accesses `entities`.
+/// @param team Team identifier used by the game rules.
 function forceGesture(level,team)
   for i = 0 to 63
     ent = level.entities[i]
@@ -303,6 +404,10 @@ function forceGesture(level,team)
   end for
   return void
 end function
+/// Set `level.blueTakenTime` to `level.time` and `level.redTakenTime` to `level.time` in `mq3.game.items.takeFlagSound`.
+/// @param level Game-level state; accesses `blueFlagStatus`, `blueTakenTime`, `time`, `redFlagStatus` and `redTakenTime`. May update `level.blueTakenTime` and `level.redTakenTime` in place.
+/// @param ent Game entity; accesses `s`.
+/// @param team Team identifier used by the game rules.
 function takeFlagSound(level,ent,team)
   if ent == void then return void end if
   if team == c.TEAM_RED then
@@ -316,16 +421,27 @@ function takeFlagSound(level,ent,team)
   if team == c.TEAM_BLUE then temp.s.eventParm = c.GTS_RED_TAKEN else temp.s.eventParm = c.GTS_BLUE_TAKEN end if
   temp.r.svFlags = temp.r.svFlags | 32; return void
 end function
+/// Apply `mq3.game.entities.tempEntity` while evaluating `captureFlagSound`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `s`.
+/// @param team Team identifier used by the game rules.
 function captureFlagSound(level,ent,team)
   if ent == void then return void end if
   temp = game.tempEntity(level,ent.s.pos.trBase,c.EV_GLOBAL_TEAM_SOUND)
   if team == c.TEAM_BLUE then temp.s.eventParm = c.GTS_BLUE_CAPTURE else temp.s.eventParm = c.GTS_RED_CAPTURE end if
   temp.r.svFlags = temp.r.svFlags | 32; return void
 end function
+/// Apply `mq3.game.items.resetFlag` while evaluating `resetFlags`.
+/// @param level Game-level state; accesses `spawner`.
 function resetFlags(level)
   if level.spawner.gametype == 4 then resetFlag(level,c.TEAM_RED); resetFlag(level,c.TEAM_BLUE) end if
   return void
 end function
+/// Set `level.lastFlagCapture` to `n.f32(level.time)` and `level.lastCaptureTeam` to `team` in `mq3.game.items.touchOurFlag`.
+/// @param level Game-level state; accesses `time`, `lastFlagCapture`, `lastCaptureTeam`, `maxclients` and `entities`. May update `level.lastFlagCapture` and `level.lastCaptureTeam` in place.
+/// @param ent Game entity; accesses `flags`, `r` and `s`.
+/// @param other Other record; accesses `client`.
+/// @param team Team identifier used by the game rules.
 function touchOurFlag(level,ent,other,team)
   client = other.client; enemyFlag = c.PW_REDFLAG
   if client.team == c.TEAM_RED then enemyFlag = c.PW_BLUEFLAG end if
@@ -360,6 +476,11 @@ function touchOurFlag(level,ent,other,team)
   end for
   resetFlags(level); scores.calculateRanks(level); return 0
 end function
+/// Apply `mq3.game.items.teamMessage`, `mq3.game.team_bonuses.teamName` and `mq3.game.items.setFlagStatus` while evaluating `touchEnemyFlag`. Return paths include `-1`.
+/// @param level Game-level state; accesses `time`.
+/// @param ent Game entity; accesses `r`.
+/// @param other Other record; accesses `client`.
+/// @param team Team identifier used by the game rules.
 function touchEnemyFlag(level,ent,other,team)
   client = other.client
   teamMessage(level,-1,client.netname+"^7 got the "+bonuses.teamName(team)+" flag!\n")
@@ -367,6 +488,10 @@ function touchEnemyFlag(level,ent,other,team)
   setFlagStatus(level,team,FLAG_TAKEN); scores.addScore(level,other,ent.r.currentOrigin,0); client.flagsince = n.f32(level.time); takeFlagSound(level,ent,team)
   return -1
 end function
+/// Apply `mq3.game.items.teamMessage`, `mq3.game.items.touchOurFlag` and `mq3.game.items.touchEnemyFlag` while evaluating `pickupTeam`. Return paths include `touchEnemyFlag(level,ent,other,team)`.
+/// @param level Game-level state; accesses `teamMessageFn`.
+/// @param ent Game entity; accesses `classname`.
+/// @param other Other record; accesses `slot` and `client`.
 function pickupTeam(level,ent,other)
   team = 0
   if ent.classname == "team_CTF_redflag" then team = c.TEAM_RED
@@ -375,6 +500,11 @@ function pickupTeam(level,ent,other)
   if team == other.client.team then return touchOurFlag(level,ent,other,team) end if
   return touchEnemyFlag(level,ent,other,team)
 end function
+/// Update `ent.r.svFlags`, `ent.s.eFlags`, `ent.r.contents` and `ent.unlinkAfterEvent` and related state during `touch`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `spawner`, `gameLogFn` and `time`.
+/// @param ent Game entity; accesses `item`, `s`, `speed`, `wait` and `r` and related fields. May update `ent.r.svFlags`, `ent.s.eFlags` and `ent.r.contents` and additional fields in place.
+/// @param other Other record; accesses `client`, `health` and `s`.
+/// @param trace Not read by this implementation; retained in the `touch` signature.
 function touch(level,ent,other,trace)
   if other.client == void or other.health < 1 then return void end if
   if not canGrab(level.spawner.gametype,ent,other.client.ps) then return void end if
@@ -409,6 +539,10 @@ function touch(level,ent,other,trace)
   if respawnTime <= 0 then ent.nextthink = 0; ent.think = void else ent.nextthink = n.add32(level.time,n.mul32(respawnTime,1000)); ent.think = respawn end if
   return game.link(level,ent)
 end function
+/// Update `level.redFlagStatus`, `level.blueFlagStatus` and `level.neutralFlagStatus` during `setFlagStatus`.
+/// @param level Game-level state; accesses `redFlagStatus`, `blueFlagStatus`, `neutralFlagStatus` and `spawner`. May update `level.redFlagStatus`, `level.blueFlagStatus` and `level.neutralFlagStatus` in place.
+/// @param team Team identifier used by the game rules.
+/// @param status Value used by `setFlagStatus` in `if status < 0 or status > 4 then return error(497,"Invalid flag status") end if`.
 function setFlagStatus(level,team,status)
   if status < 0 or status > 4 then return error(497,"Invalid flag status") end if
   modified = false
@@ -430,6 +564,9 @@ function setFlagStatus(level,team,status)
   end if
   return void
 end function
+/// Apply `mq3.game.items.modeItemTag` and `mq3.game.items.setFlagStatus` while evaluating `checkDropped`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param dropped Dropped record; accesses `item`.
 function checkDropped(level,dropped)
   tag = modeItemTag(level,dropped.item)
   if tag == c.PW_REDFLAG then setFlagStatus(level,c.TEAM_RED,FLAG_DROPPED)
@@ -437,6 +574,9 @@ function checkDropped(level,dropped)
   else if tag == c.PW_NEUTRALFLAG then setFlagStatus(level,c.TEAM_FREE,FLAG_DROPPED) end if
   return void
 end function
+/// Update `ent.r.contents`, `ent.s.eFlags`, `ent.r.svFlags` and `ent.nextthink` during `respawn`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`, `team`, `teammaster`, `r` and `s` and related fields. May update `ent.r.contents`, `ent.s.eFlags` and `ent.r.svFlags` and additional fields in place.
 function respawn(level,ent)
   requireModeItem(level,ent.item)
   if ent.team != void then
@@ -463,9 +603,17 @@ function respawn(level,ent)
   events.add(level,ent,c.EV_ITEM_RESPAWN,0); ent.nextthink = 0
   return void
 end function
+/// Forward `use` to `mq3.game.items.respawn` and return the delegated result.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`, `team`, `teammaster`, `r` and `s` and related fields. May update `ent.r.contents`, `ent.s.eFlags` and `ent.r.svFlags` and additional fields in place.
+/// @param other Not read by this implementation; retained in the `use` signature.
+/// @param activator Not read by this implementation; retained in the `use` signature.
 function use(level,ent,other,activator)
   return respawn(level,ent)
 end function
+/// Update `ent.r.mins`, `ent.r.maxs`, `ent.s.eType` and `ent.s.modelindex` and related state during `finishSpawning`. Return paths include `game.link(level,ent)`.
+/// @param level Game-level state; accesses `gamePrintFn` and `time`.
+/// @param ent Game entity; accesses `item`, `r`, `s`, `touch` and `use` and related fields. May update `ent.r.mins`, `ent.r.maxs` and `ent.s.eType` and additional fields in place.
 function finishSpawning(level,ent)
   item = requireModeItem(level,ent.item)
   ent.r.mins = [-15.0,-15.0,-15.0]; ent.r.maxs = [15.0,15.0,15.0]
@@ -497,6 +645,10 @@ function finishSpawning(level,ent)
   end if
   return game.link(level,ent)
 end function
+/// Update `ent.random`, `ent.wait`, `ent.item` and `ent.nextthink` and related state during `spawnItem`.
+/// @param level Game-level state; accesses `spawner` and `time`.
+/// @param ent Game entity; accesses `random`, `wait`, `item`, `nextthink` and `think` and related fields. May update `ent.random`, `ent.wait` and `ent.item` and additional fields in place.
+/// @param item Index of the entry to access.
 function spawnItem(level,ent,item)
   item = requireModeItem(level,item)
   ent.random = values.getFloat(level.spawner,"random","0")[1]; ent.wait = values.getFloat(level.spawner,"wait","0")[1]
@@ -511,6 +663,10 @@ function spawnItem(level,ent,item)
   if modeItemType(level,item) == c.IT_PERSISTANT_POWERUP then ent.s.generic1 = ent.spawnflags end if
   return void
 end function
+/// Find the next active entity with a case-insensitive class-name match for items.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param after After record; accesses `slot`.
+/// @param name Name used to identify the requested entry.
 function findClass(level,after,name)
   index = 0
   if after != void then index = after.slot+1 end if
@@ -520,6 +676,9 @@ function findClass(level,after,name)
   end while
   return void
 end function
+/// Apply `mq3.game.items.findClass`, `mq3.game.entities.free` and `mq3.game.items.respawn` while evaluating `resetFlag`. Return paths include `rent`.
+/// @param level Game-level state; accesses `num_entities` and `entities`.
+/// @param team Team identifier used by the game rules.
 function resetFlag(level,team)
   name = void
   if team == c.TEAM_RED then name = "team_CTF_redflag"
@@ -536,6 +695,10 @@ function resetFlag(level,team)
   setFlagStatus(level,team,FLAG_ATBASE)
   return rent
 end function
+/// Use `level.gamePrintFn` to perform `returnFlagSound`.
+/// @param level Game-level state; accesses `gamePrintFn`.
+/// @param ent Game entity; accesses `s`.
+/// @param team Team identifier used by the game rules.
 function returnFlagSound(level,ent,team)
   if ent == void then
     if level.gamePrintFn != void then level.gamePrintFn(level,"Warning:  NULL passed to Team_ReturnFlagSound\n") end if
@@ -546,6 +709,9 @@ function returnFlagSound(level,ent,team)
   temp.r.svFlags = temp.r.svFlags | 32
   return void
 end function
+/// Use `level.teamMessageFn` to perform `returnFlag`.
+/// @param level Game-level state; accesses `teamMessageFn`.
+/// @param team Team identifier used by the game rules.
 function returnFlag(level,team)
   returnFlagSound(level,resetFlag(level,team),team)
   if level.teamMessageFn == void then return error(497,"Team_ReturnFlag requires a PrintMsg sink") end if
@@ -553,6 +719,9 @@ function returnFlag(level,team)
   else level.teamMessageFn(level,-1,"The "+bonuses.teamName(team)+" flag has returned!\n") end if
   return void
 end function
+/// Apply `mq3.game.items.modeItemTag` and `mq3.game.items.returnFlag` while evaluating `teamFree`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`.
 function teamFree(level,ent)
   tag = modeItemTag(level,ent.item)
   if tag == c.PW_REDFLAG then returnFlag(level,c.TEAM_RED)
@@ -560,12 +729,20 @@ function teamFree(level,ent)
   else if tag == c.PW_NEUTRALFLAG then returnFlag(level,c.TEAM_FREE) end if
   return void
 end function
+/// Apply `mq3.game.items.modeItemTag`, `mq3.game.items.returnFlagSound` and `mq3.game.items.resetFlag` while evaluating `droppedFlagThink`. Return paths include `returnFlagSound(level,resetFlag(level,team),team)`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param ent Game entity; accesses `item`.
 function droppedFlagThink(level,ent)
   team = c.TEAM_FREE; tag = modeItemTag(level,ent.item)
   if tag == c.PW_REDFLAG then team = c.TEAM_RED
   else if tag == c.PW_BLUEFLAG then team = c.TEAM_BLUE end if
   return returnFlagSound(level,resetFlag(level,team),team)
 end function
+/// Apply `mq3.game.items.requireModeItem`, `mq3.game.entities.spawn` and `mq3.game.items.modeItemName` while evaluating `launch`. Return paths include `dropped`.
+/// @param level Game-level state; accesses `time` and `spawner`.
+/// @param item Index of the entry to access.
+/// @param origin World-space position as three coordinates.
+/// @param velocity Three-component movement velocity.
 function launch(level,item,origin,velocity)
   item = requireModeItem(level,item); dropped = game.spawn(level)
   dropped.s.eType = c.ET_ITEM; dropped.s.modelindex = item; dropped.s.modelindex2 = 1
@@ -581,12 +758,21 @@ function launch(level,item,origin,velocity)
   dropped.flags = FL_DROPPED_ITEM; game.link(level,dropped)
   return dropped
 end function
+/// Apply `mq3.game.movement.copy`, `mq3.game.items.centeredRandom` and `mq3.game.items.launch` while evaluating `drop`. Return paths include `launch(level,item,ent.s.pos.trBase,velocity)`.
+/// @param level Game-level state; accesses `randSeed`. May update `level.randSeed` in place.
+/// @param ent Game entity; accesses `s`.
+/// @param item Index of the entry to access.
+/// @param angle Value passed as argument 2 to `mq3.compat.numeric.fadd`.
 function drop(level,ent,item,angle)
   angles = movement.copy(ent.s.apos.trBase); angles[1] = n.fadd(angles[1],angle); angles[0] = 0.0
   velocity = q.AngleVectors(angles)[0]; velocity = q.VectorScale(velocity,150.0)
   velocity[2] = n.f32(velocity[2]+200.0+centeredRandom(level)*50.0)
   return launch(level,item,ent.s.pos.trBase,velocity)
 end function
+/// Update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]`, `hit.endpos[2]` and `ent.s.groundEntityNum` and related state during `bounce`.
+/// @param level Game-level state; accesses `previousTime` and `time`.
+/// @param ent Game entity; accesses `s`, `physicsBounce` and `r`. May update `ent.s.pos.trDelta`, `ent.s.pos.trDelta[axis]` and `ent.s.groundEntityNum` and additional fields in place.
+/// @param hit Hit record; accesses `trace`, `endpos` and `entityNum`. May update `hit.endpos[2]` in place.
 function bounce(level,ent,hit)
   tr = hit.trace
   hitTime = n.trunc32(n.fadd(level.previousTime,n.fmul(n.i32(level.time-level.previousTime),tr.fraction)))
@@ -605,6 +791,9 @@ function bounce(level,ent,hit)
   ent.s.pos.trBase = movement.copy(ent.r.currentOrigin); ent.s.pos.trTime = level.time
   return void
 end function
+/// Update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` during `run`. Return paths include `bounce(level,ent,hit)`.
+/// @param level Game-level state; accesses `time` and `scene`.
+/// @param ent Game entity; accesses `item`, `physicsObject`, `s`, `clipmask` and `r`. May update `ent.s.pos.trType`, `ent.s.pos.trTime` and `ent.r.currentOrigin` in place.
 function run(level,ent)
   if ent.item != void then requireModeItem(level,ent.item)
   else if not ent.physicsObject then return error(497,"G_RunItem requires an item or physics object") end if

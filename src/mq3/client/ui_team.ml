@@ -12,9 +12,14 @@ const ID_JOINRED=100
 const ID_JOINBLUE=101
 const ID_JOINGAME=102
 const ID_SPECTATE=103
+/// Stores UI team team item record, including `id`, `label`, `y`, `grayed`.
 struct TeamItem id label y grayed end struct
+/// Stores UI team team menu record, including `wrapAround`, `fullscreen`, `items`, `assets`, `commands`, `actions`.
 struct TeamMenu wrapAround fullscreen items assets commands actions end struct
 // TeamMain_MenuEvent
+/// @param menu Mutable UI team record/storage; this routine assigns `menu.commands`, `menu.actions`.
+/// @param id Value used by `if id==ID_JOINRED then command="cmd team red\n" else if id==ID_JOINBLUE then command="cmd team blue\n" else if id==ID_JOINGAME then command="c...`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function event(menu,id,eventCode)
   if eventCode!=QM_ACTIVATED then return menu end if
   command=""
@@ -25,6 +30,7 @@ end function
 // TeamMain_Cache
 function cache() return ["menu/art/cut_frame"] end function
 // TeamMain_MenuInit
+/// @param gametype Quake III game-type identifier.
 function init(gametype)
   teamDisabled=gametype==GT_SINGLE_PLAYER or gametype==GT_FFA or gametype==GT_TOURNAMENT
   freeDisabled=not teamDisabled
@@ -32,4 +38,5 @@ function init(gametype)
   return TeamMenu(true,false,items,cache(),[],[])
 end function
 // UI_TeamMainMenu
+/// @param gametype Quake III game-type identifier.
 function open(gametype) menu=init(gametype);menu.actions=menu.actions+["push"];return menu end function

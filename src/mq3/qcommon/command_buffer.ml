@@ -12,6 +12,7 @@ const MAX_STRING_TOKENS = 1024
 const MAX_STRING_CHARS = 1024
 const BIG_INFO_STRING = 8192
 
+/// State record for qcommon.command_buffer, containing `buffer`, `argv`, `command`, `wait`, `executeFn`, `printFn`, and 14 further fields.
 struct State
   buffer
   argv
@@ -35,6 +36,7 @@ struct State
   freeFileFn
 end struct
 
+/// Command record for qcommon.command_buffer, containing `name`, `callback`, `contextCallback`, `callbackContext`.
 struct Command
   name
   callback
@@ -42,10 +44,13 @@ struct Command
   callbackContext
 end struct
 
+/// Create `mq3.qcommon.command_buffer.State` with buffer=""; argv=[]; command=""; wait=0; 16 further fields.
 function create()
   return State("",[],"",0,void,void,void,[],void,void,void,void,void,void,void,false,false,void,void,void)
 end function
 
+/// Compute visible bytes in qcommon.command_buffer; the normal completion returns `slice(data, 0, length)`.
+/// @param text Text used in `bytes(text)`.
 function visibleBytes(text)
   data = bytes(text); length = 0
   while length < len(data) and data[length] != 0
@@ -54,6 +59,9 @@ function visibleBytes(text)
   return slice(data,0,length)
 end function
 
+/// Copy string in qcommon.command_buffer; the normal completion returns `decode(slice(data, 0, length))`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`.
+/// @param capacity Capacity used in `(capacity < 1)` and `(capacity - 1)`.
 function copyString(text,capacity)
   if capacity < 1 then return "" end if
   data = visibleBytes(text); length = len(data)
@@ -61,16 +69,26 @@ function copyString(text,capacity)
   return decode(slice(data,0,length))
 end function
 
+/// Emit command buffer in qcommon.command_buffer.
+/// @param state Record exposing `printFn`.
+/// @param message Message used in `state.printFn(state, message)`.
 function emit(state,message)
   if state.printFn != void then state.printFn(state,message) end if
   return void
 end function
 
+/// Compute qcommon.command_buffer.isUnquotedWhitespace as `((value <= 32) or (value >= 128))`.
+/// @param value Value used in `(value <= 32)` and `(value >= 128)`.
 function isUnquotedWhitespace(value)
   // The frozen Windows Baseq3 target uses signed char for these comparisons.
   return value <= 32 or value >= 128
 end function
 
+/// Update `state.argv`, `state.command` in qcommon.command_buffer.
+///
+/// Direct state writes: `state.argv`, `state.command`.
+/// @param state Record exposing `argv`. Updated in place: `argv`, `command`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.copyString`.
 function tokenizeString(state,text)
   state.argv = []
   if text == void then return void end if
@@ -116,12 +134,24 @@ function tokenizeString(state,text)
   end while
 end function
 
+/// Return `len(state.argv)` from `qcommon.command_buffer.argc`.
+/// @param state Record exposing `argv`.
 function argc(state) return len(state.argv) end function
+/// Compute argv in qcommon.command_buffer; the normal completion returns `state.argv[index]`.
+/// @param state Record exposing `argv`.
+/// @param index Zero-based index into `state.argv`.
 function argv(state,index)
   if index < 0 or index >= len(state.argv) then return "" end if
   return state.argv[index]
 end function
+/// Return `mq3.qcommon.command_buffer.copyString(argv(state, index), capacity)` from `qcommon.command_buffer.argvBuffer`.
+/// @param state State passed as `state` to `mq3.qcommon.command_buffer.argv`.
+/// @param index Index passed as `index` to `mq3.qcommon.command_buffer.argv`.
+/// @param capacity Capacity passed as `capacity` to `mq3.qcommon.command_buffer.copyString`.
 function argvBuffer(state,index,capacity) return copyString(argv(state,index),capacity) end function
+/// Compute args from in qcommon.command_buffer; the normal completion returns `result`.
+/// @param state Record exposing `argv`.
+/// @param start Start used in `(start < 0)`.
 function argsFrom(state,start)
   if start < 0 then start = 0 end if
   result = ""; index = start
@@ -132,10 +162,22 @@ function argsFrom(state,start)
   end while
   return result
 end function
+/// Return `mq3.qcommon.command_buffer.argsFrom(state, 1)` from `qcommon.command_buffer.args`.
+/// @param state State passed as `state` to `mq3.qcommon.command_buffer.argsFrom`.
 function args(state) return argsFrom(state,1) end function
+/// Return `mq3.qcommon.command_buffer.copyString(args(state), capacity)` from `qcommon.command_buffer.argsBuffer`.
+/// @param state State passed as `state` to `mq3.qcommon.command_buffer.args`.
+/// @param capacity Capacity passed as `capacity` to `mq3.qcommon.command_buffer.copyString`.
 function argsBuffer(state,capacity) return copyString(args(state),capacity) end function
+/// Compute qcommon.command_buffer.cmd as `state.command`.
+/// @param state Record exposing `command`.
 function cmd(state) return state.command end function
 
+/// Add text in qcommon.command_buffer; the normal completion returns `true`.
+///
+/// Direct state writes: `state.buffer`.
+/// @param state Record exposing `buffer`. Updated in place: `buffer`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`.
 function addText(state,text)
   part = decode(visibleBytes(text))
   if len(bytes(state.buffer))+len(bytes(part)) >= MAX_CMD_BUFFER then
@@ -144,6 +186,11 @@ function addText(state,text)
   state.buffer = state.buffer+part; return true
 end function
 
+/// Update `state.buffer` in qcommon.command_buffer; the normal completion returns `true`.
+///
+/// Direct state writes: `state.buffer`.
+/// @param state Record exposing `buffer`. Updated in place: `buffer`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`.
 function insertText(state,text)
   part = decode(visibleBytes(text)); amount = len(bytes(part))+1
   if amount+len(bytes(state.buffer)) > MAX_CMD_BUFFER then
@@ -152,11 +199,18 @@ function insertText(state,text)
   state.buffer = part+"\n"+state.buffer; return true
 end function
 
+/// Execute line in qcommon.command_buffer.
+/// @param state Record exposing `executeFn`.
+/// @param line Line used in `state.executeFn(state, line)`.
 function executeLine(state,line)
   if state.executeFn != void then state.executeFn(state,line) end if
   return void
 end function
 
+/// Execute command buffer in qcommon.command_buffer; updates `state.wait`, `state.buffer`.
+///
+/// Direct state writes: `state.wait`, `state.buffer`.
+/// @param state Record exposing `buffer`, `wait`. Updated in place: `wait`, `buffer`.
 function execute(state)
   while len(bytes(state.buffer)) > 0
     if state.wait != 0 then state.wait = state.wait-1; return void end if
@@ -180,6 +234,12 @@ function execute(state)
   return void
 end function
 
+/// Execute text in qcommon.command_buffer; the normal completion returns `error(3511, "Cbuf_ExecuteText: bad exec_when")`.
+///
+/// Validation failures include `Cbuf_ExecuteText: bad exec_when`.
+/// @param state State passed as `state` to `mq3.qcommon.command_buffer.executeLine`.
+/// @param when When used in `(when == EXEC_NOW)` and `(when == EXEC_INSERT)`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.visibleBytes`.
 function executeText(state,when,text)
   if when == EXEC_NOW then
     if text != void and len(visibleBytes(text)) > 0 then executeLine(state,decode(visibleBytes(text))) else execute(state) end if
@@ -190,6 +250,10 @@ function executeText(state,when,text)
   return error(3511,"Cbuf_ExecuteText: bad exec_when")
 end function
 
+/// Update `state.wait` in qcommon.command_buffer.
+///
+/// Direct state writes: `state.wait`.
+/// @param state Updated in place: `wait`.
 function waitCommand(state)
   if argc(state) == 2 then
     // atoi-compatible decimal prefix behavior is supplied by the C runtime.
@@ -200,6 +264,12 @@ function waitCommand(state)
   return void
 end function
 
+/// Add command in qcommon.command_buffer; the normal completion returns `true`.
+///
+/// Direct state writes: `state.functions`.
+/// @param state Record exposing `functions`. Updated in place: `functions`.
+/// @param name Initial `name` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record.
+/// @param callback Initial `callback` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record.
 function addCommand(state,name,callback)
   for each entry in state.functions
     if entry.name == name then
@@ -212,6 +282,10 @@ end function
 
 // Context-bearing registrations keep subsystem state out of the global
 // command state while leaving the original Cmd_AddCommand surface unchanged.
+/// @param state Record exposing `functions`. Updated in place: `functions`.
+/// @param name Initial `name` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record.
+/// @param callback Initial `contextCallback` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record.
+/// @param context Initial `callbackContext` field stored in the returned or constructed `mq3.qcommon.command_buffer.Command` record.
 function addContextCommand(state,name,callback,context)
   for each entry in state.functions
     if entry.name == name then
@@ -222,6 +296,11 @@ function addContextCommand(state,name,callback,context)
   state.functions = [Command(name,void,callback,context)]+state.functions; return true
 end function
 
+/// Remove command in qcommon.command_buffer; the normal completion returns `found`.
+///
+/// Direct state writes: `state.functions`.
+/// @param state Record exposing `functions`. Updated in place: `functions`.
+/// @param name Name used in `(entry.name == name)` and `(not found and (entry.name == name))`.
 function removeCommand(state,name)
   result = []; found = false
   for each entry in state.functions
@@ -230,15 +309,23 @@ function removeCommand(state,name)
   state.functions = result; return found
 end function
 
+/// Compute command completion in qcommon.command_buffer.
+/// @param state Record exposing `functions`.
+/// @param callback Callback invoked for callback; the call sites below define the callback arguments.
 function commandCompletion(state,callback)
   for each entry in state.functions callback(state,entry.name) end for
   return void
 end function
 
+/// Compute lower ascii in qcommon.command_buffer; the normal completion returns `value`.
+/// @param value Value used in `(value + 32)` and `(value >= 65)`.
 function lowerAscii(value)
   if value >= 65 and value <= 90 then return value+32 end if
   return value
 end function
+/// Test same insensitive in qcommon.command_buffer; the normal completion returns `true`.
+/// @param left Left used in `bytes(left)`.
+/// @param right Right used in `bytes(right)`.
 function sameInsensitive(left,right)
   a = bytes(left); b = bytes(right)
   if len(a) != len(b) then return false end if
@@ -247,6 +334,10 @@ function sameInsensitive(left,right)
   end for
   return true
 end function
+/// Test insensitive in qcommon.command_buffer; the normal completion returns `- 1`.
+/// @param name Name used in `bytes(name)`.
+/// @param part Part used in `bytes(part)`.
+/// @param start Start used in `(start + 1)` and `(start + index)`.
 function containsInsensitive(name,part,start)
   source = bytes(name); wanted = bytes(part)
   if len(wanted) == 0 then return start end if
@@ -263,6 +354,8 @@ end function
 
 // Case-insensitive Com_Filter subset used by Cmd_List_f, including Baseq3's
 // *, ?, bracket ranges and doubled opening/closing bracket conventions.
+/// @param pattern Pattern used in `bytes(pattern)`.
+/// @param name Name passed as `name` to `mq3.qcommon.command_buffer.containsInsensitive`.
 function filterName(pattern,name)
   filter = bytes(pattern); source = bytes(name); fi = 0; ni = 0
   while fi < len(filter)
@@ -301,6 +394,9 @@ function filterName(pattern,name)
   return true
 end function
 
+/// Compute default extension in qcommon.command_buffer; the normal completion returns `(path + extension)`.
+/// @param path Path used in `bytes(path)` and `(path + extension)`.
+/// @param extension Extension used in `(path + extension)`.
 function defaultExtension(path,extension)
   data = bytes(path); index = len(data)-1
   while index >= 0 and data[index] != 47
@@ -310,6 +406,10 @@ function defaultExtension(path,extension)
   return path+extension
 end function
 
+/// Compute exec command in qcommon.command_buffer.
+///
+/// Validation failures include `exec requires FS_ReadFile service`.
+/// @param state Record exposing `readFileFn`, `freeFileFn`.
 function execCommand(state)
   if argc(state) != 2 then emit(state,"exec <filename> : execute a script file\n"); return void end if
   filename = defaultExtension(copyString(argv(state,1),64),".cfg")
@@ -320,16 +420,24 @@ function execCommand(state)
   if state.freeFileFn != void then state.freeFileFn(state,contents) end if
   return void
 end function
+/// Compute vstr command in qcommon.command_buffer; the normal completion returns `insertText(state, (state.cvarStringFn(state, argv(state, 1)) + "\n"))`.
+///
+/// Validation failures include `vstr requires Cvar_VariableString service`.
+/// @param state Record exposing `cvarStringFn`.
 function vstrCommand(state)
   if argc(state) != 2 then emit(state,"vstr <variablename> : execute a variable command\n"); return void end if
   if state.cvarStringFn == void then return error(3511,"vstr requires Cvar_VariableString service") end if
   return insertText(state,state.cvarStringFn(state,argv(state,1))+"\n")
 end function
+/// Compute echo command in qcommon.command_buffer.
+/// @param state State passed as `state` to `mq3.qcommon.command_buffer.argc`.
 function echoCommand(state)
   index = 1
   while index < argc(state) emit(state,argv(state,index)+" "); index = index+1 end while
   emit(state,"\n"); return void
 end function
+/// Compute list command in qcommon.command_buffer.
+/// @param state Record exposing `functions`.
 function listCommand(state)
   match = void; if argc(state) > 1 then match = argv(state,1) end if
   count = 0
@@ -339,6 +447,11 @@ function listCommand(state)
   emit(state,str(count)+" commands\n"); return void
 end function
 
+/// Execute string in qcommon.command_buffer; updates `state.functions`.
+///
+/// Direct state writes: `state.functions`.
+/// @param state Record exposing `functions`, `cvarCommandFn`, `cvarContextCommandFn`, `cvarCommandContext`, `clientRunning`, `clientGameCommandFn`, `serverRunning` and further fields. Updated in place: `functions`.
+/// @param text Text passed as `text` to `mq3.qcommon.command_buffer.tokenizeString`.
 function executeString(state,text)
   tokenizeString(state,text); if argc(state) == 0 then return void end if
   found = -1
@@ -361,10 +474,17 @@ function executeString(state,text)
   return void
 end function
 
+/// Update `state.executeFn` in qcommon.command_buffer.
+///
+/// Direct state writes: `state.executeFn`.
+/// @param state Updated in place: `executeFn`.
 function initCommands(state)
   addCommand(state,"cmdlist",listCommand); addCommand(state,"exec",execCommand)
   addCommand(state,"vstr",vstrCommand); addCommand(state,"echo",echoCommand); addCommand(state,"wait",waitCommand)
   state.executeFn = executeString; return void
 end function
 
+/// Convert a C-string signed decimal integer prefix for qcommon.command_buffer.
+/// @param text Null-terminated narrow numeric text accepted by the C runtime.
+/// @returns The converted signed integer; zero when no number is recognized.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32

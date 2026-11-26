@@ -9,6 +9,8 @@ import mq3.game.tournament as tournament
 import mq3.compat.textnumbers as textnum
 import std.string as strings
 const SVF_BOT = 0x00000008
+/// Normalize a client's team-leader value to the integer representation written into userinfo.
+/// @param client Client state; accesses `teamLeader`.
 function leaderValue(client)
   // Session sscanf can preserve a noncanonical qboolean integer verbatim.
   if typeof(client.teamLeader) == "int" then return client.teamLeader end if
@@ -16,6 +18,9 @@ function leaderValue(client)
   return 0
 end function
 
+/// Apply `mq3.shared.info.textBytes` and `mq3.shared.info.copy` while evaluating `cleanName`. Return paths include `decode(bytes(output))`.
+/// @param text Text to parse, format or deliver.
+/// @param capacity Maximum number of entries to allocate or retain.
 function cleanName(text,capacity)
   if capacity < 2 then return error(494,"Client name has no native fallback storage") end if
   data = infoStrings.textBytes(text); limit = capacity-1; output = []; colorless = 0; spaces = 0; index = 0
@@ -42,10 +47,15 @@ function cleanName(text,capacity)
   if len(output) == 0 or colorless == 0 then return infoStrings.copy("UnnamedPlayer",limit) end if
   return decode(bytes(output))
 end function
+/// Validate the client limit used for userinfo team selection.
+/// @param level Game-level state; accesses `maxclients`.
 function infoClientLimit(level)
   if level.maxclients < 0 or level.maxclients > 64 then return error(494,"Invalid userinfo team client limit") end if
   return void
 end function
+/// Apply `mq3.game.client_info.infoClientLimit` while evaluating `teamLeader`. Return paths include `-1`.
+/// @param level Game-level state; accesses `maxclients` and `clients`.
+/// @param team Team identifier used by the game rules.
 function teamLeader(level,team)
   infoClientLimit(level); index = 0
   while index < level.maxclients
@@ -55,6 +65,9 @@ function teamLeader(level,team)
   end while
   return -1
 end function
+/// Apply `mq3.game.tournament.teamCount` while evaluating `pickTeam`. Return paths include `c.TEAM_BLUE`.
+/// @param level Game-level state; accesses `teamScores`.
+/// @param ignoreClientNum Value used by `teamCount` in `if slot == ignoreClientNum then continue end if`.
 function pickTeam(level,ignoreClientNum)
   blue = tournament.teamCount(level,ignoreClientNum,c.TEAM_BLUE)
   red = tournament.teamCount(level,ignoreClientNum,c.TEAM_RED)
@@ -63,6 +76,9 @@ function pickTeam(level,ignoreClientNum)
   if level.teamScores[c.TEAM_BLUE] > level.teamScores[c.TEAM_RED] then return c.TEAM_RED end if
   return c.TEAM_BLUE
 end function
+/// Use `level.userinfoFn`, `level.serverCommandFn` and `level.gameLogFn` to perform `changed`.
+/// @param level Game-level state; accesses `entities`, `userinfoFn`, `serverCommandFn`, `spawner` and `gameLogFn`.
+/// @param slot Slot in the owning table or pool.
 function changed(level,slot)
   if slot < 0 or slot >= 64 then return error(494,"Invalid userinfo client slot") end if
   ent = level.entities[slot]; client = ent.client

@@ -85,9 +85,15 @@ const MASK_WATER=0x38
 const MASK_OPAQUE=0x19
 const MASK_SHOT=0x06000001
 
+/// `Pmove` record for bg public, containing `ps`, `cmd`, `tracemask`, `debugLevel` and `noFootsteps` and related fields.
 struct Pmove ps cmd tracemask debugLevel noFootsteps gauntletHit framecount numtouch touchents mins maxs watertype waterlevel xyspeed pmoveFixed pmoveMsec traceFn pointContentsFn end struct
+/// `Animation` record for bg public, containing `firstFrame`, `numFrames`, `loopFrames`, `frameLerp` and `initialLerp` and related fields.
 struct Animation firstFrame numFrames loopFrames frameLerp initialLerp reversed flipflop end struct
+/// `Gitem` record for bg public, containing `classname`, `pickupSound`, `worldModel`, `icon` and `pickupName` and related fields.
 struct Gitem classname pickupSound worldModel icon pickupName quantity giType giTag precaches sounds end struct
 
+/// Return `index` for `ITEM_INDEX`.
+/// @param index Index of the entry to access.
 function ITEM_INDEX(index) return index end function
+/// Return the ordered type names table for bg public: 20 entries beginning with `"pmove_t"` and `"animation_t"`.
 function typeNames() return ["pmove_t","animation_t","gitem_t","gametype_t","gender_t","pmtype_t","weaponstate_t","statIndex_t","persEnum_t","powerup_t","holdable_t","weapon_t","entity_event_t","global_team_sound_t","animNumber_t","team_t","teamtask_t","meansOfDeath_t","itemType_t","entityType_t"] end function

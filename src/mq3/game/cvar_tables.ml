@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Generated from pinned g_main.c, Baseq3 only. Build date is supplied by the module host.
 package mq3.game.cvar_tables
+/// Return the ordered entries table for cvar tables: 46 entries beginning with `["g_cheats","sv_cheats","",0,0,false,false]` and `["","gamename","baseq3",68,0,false,false]`.
+/// @param buildDate Value used by `entries` in `["","gamedate",buildDate,64,0,false,false],`.
 function entries(buildDate)
   return [
     ["g_cheats","sv_cheats","",0,0,false,false],

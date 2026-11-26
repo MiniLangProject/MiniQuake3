@@ -15,11 +15,63 @@ import mq3.qcommon.headers as qcommonHeaders
 import std.array as arrays
 import std.ds.list as worldTraceLists
 
+/// Classify or split one packed BSP trace segment against a plane, writing child-segment fractions in place.
+/// @param records Writable packed segment-record buffer.
+/// @param capacity Record-buffer byte capacity.
+/// @param offset Byte offset with room for the 64-byte segment workspace.
+/// @param axis Axial plane index 0..2, or 3 for the supplied general normal.
+/// @param nx General plane-normal X component.
+/// @param ny General plane-normal Y component.
+/// @param nz General plane-normal Z component.
+/// @param planeDistance Plane distance from the origin.
+/// @param extent Box extent projected onto the plane.
+/// @returns 0 or 1 for a single side, 2 or 3 for a split traversal order, or -1 for an invalid workspace or axis.
 extern function traceSegmentStep(records as ptr,capacity as i32,offset as i32,axis as i32,nx as double,ny as double,nz as double,planeDistance as double,extent as double) from "miniquake3_qvm.dll" symbol "mq3_trace_segment_step" returns i32
+/// Trace a moving box against an origin-translated temporary box and store five binary32 trace values.
+/// @param ax X component of the sweep start.
+/// @param ay Y component of the sweep start.
+/// @param az Z component of the sweep start.
+/// @param bx X component of the sweep end.
+/// @param by Y component of the sweep end.
+/// @param bz Z component of the sweep end.
+/// @param lx X component of the moving box minimum.
+/// @param ly Y component of the moving box minimum.
+/// @param lz Z component of the moving box minimum.
+/// @param hx X component of the moving box maximum.
+/// @param hy Y component of the moving box maximum.
+/// @param hz Z component of the moving box maximum.
+/// @param ox X component of the model origin.
+/// @param oy Y component of the model origin.
+/// @param oz Z component of the model origin.
+/// @param tx X component of the stationary box minimum.
+/// @param ty Y component of the stationary box minimum.
+/// @param tz Z component of the stationary box minimum.
+/// @param ux X component of the stationary box maximum.
+/// @param uy Y component of the stationary box maximum.
+/// @param uz Z component of the stationary box maximum.
+/// @param matchesMask Nonzero when the temporary box contents match the trace mask.
+/// @param output Writable buffer for five binary32 values (20 bytes).
+/// @returns The native trace status; nonnegative results write the output, while a negative result rejects invalid input.
 extern function traceTransformedBoxNative(ax as double,ay as double,az as double,bx as double,by as double,bz as double,lx as double,ly as double,lz as double,hx as double,hy as double,hz as double,ox as double,oy as double,oz as double,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double,matchesMask as i32,output as bytes) from "miniquake3_qvm.dll" symbol "mq3_trace_transformed_box" returns i32
+/// Read a QVM transformed-box trace request and write its temporary-box result directly to VM memory.
+/// @param data Mutable QVM data memory.
+/// @param capacity VM memory size in bytes.
+/// @param mask VM address mask.
+/// @param base Byte offset of the syscall argument frame.
+/// @param model Temporary collision-model handle.
+/// @param contents Temporary box content flags.
+/// @param tx X component of the stationary box minimum.
+/// @param ty Y component of the stationary box minimum.
+/// @param tz Z component of the stationary box minimum.
+/// @param ux X component of the stationary box maximum.
+/// @param uy Y component of the stationary box maximum.
+/// @param uz Z component of the stationary box maximum.
+/// @returns 1 when the 56-byte trace was written; 0 leaves VM memory unchanged so the checked MiniLang path can handle the request.
 extern function writeVmBoxTraceNative(data as bytes,capacity as i32,mask as u32,base as i32,model as i32,contents as u32,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double) from "miniquake3_qvm.dll" symbol "mq3_cgame_transformed_box_trace" returns i32
 
+/// Shader record for collision.world, containing `name`, `surfaceFlags`, `contentFlags`.
 struct Shader name surfaceFlags contentFlags end struct
+/// Brush record for collision.world, containing `planes`, `packedPlanes`, `contents`, `mins`, `maxs`.
 struct Brush
   planes
   packedPlanes
@@ -27,20 +79,24 @@ struct Brush
   mins
   maxs
 end struct
+/// Node record for collision.world, containing `plane`, `axis`, `children`.
 struct Node
   plane
   axis
   children
 end struct
+/// Leaf record for collision.world, containing `brushes`, `surfaces`.
 struct Leaf
   brushes
   surfaces
 end struct
+/// Surface record for collision.world, containing `patch`, `contents`, `flags`.
 struct Surface
   patch
   contents
   flags
 end struct
+/// World record for collision.world, containing `brushes`, `nodes`, `leaves`, `models`, `surfaces`, `patchesReady`, and 8 further fields.
 struct World
   brushes
   nodes
@@ -57,9 +113,13 @@ struct World
   checksum
   name
 end struct
+/// Submodels record for collision.world, containing `models`, `bounds`.
 struct Submodels models bounds end struct
+/// MapState record for collision.world, containing `world`, `name`, `checksum`, `lastChecksum`, `curves`.
 struct MapState world name checksum lastChecksum curves end struct
+/// LoadResult record for collision.world, containing `world`, `checksum`, `cached`.
 struct LoadResult world checksum cached end struct
+/// Temporary record for collision.world, containing `bounds`, `brush`, `capsuleReady`, `brushVisits`, `patchVisits`, `visitSerial`.
 struct Temporary
   bounds
   brush
@@ -68,6 +128,7 @@ struct Temporary
   patchVisits
   visitSerial
 end struct
+/// Work record for collision.world, containing `world`, `trace`, `start`, `finish`, `mins`, `maxs`, and 14 further fields.
 struct Work
   world
   trace
@@ -90,38 +151,55 @@ struct Work
   brushScratch
   curves
 end struct
+/// Result record for collision.world, containing `trace`, `endpos`.
 struct Result
   trace
   endpos
 end struct
+/// LeafList record for collision.world, containing `entries`, `lastLeaf`, `overflowed`.
 struct LeafList
   entries
   lastLeaf
   overflowed
 end struct
 
+/// Create the collision.world error for `fail` with 3503 and the supplied diagnostic text.
+/// @param message Message used in `("Collision: " + message)` and `error(3503, ("Collision: " + message))`.
 function fail(message)
   return error(3503, "Collision: " + message)
 end function
 
+/// Compute min in collision.world; the normal completion returns `b`.
+/// @param a A used in `(a < b)`.
+/// @param b B used in `(a < b)`.
 function min(a,b)
   if a < b then return a end if
   return b
 end function
+/// Compute max in collision.world; the normal completion returns `b`.
+/// @param a A used in `(a > b)`.
+/// @param b B used in `(a > b)`.
 function max(a,b)
   if a > b then return a end if
   return b
 end function
+/// Return `mq3.compat.numeric.bitsFloat((n.floatBits(a) & 2147483647))` from `collision.world.abs`.
+/// @param a Floating-point value to narrow and reinterpret.
 function abs(a)
   return n.bitsFloat(n.floatBits(a) & 0x7fffffff)
 end function
 
+/// Compute real in collision.world; the normal completion returns `n.bitsFloat(bits)`.
+/// @param data Data passed as `data` to `mq3.compat.numeric.readU32`.
+/// @param offset Offset passed as `offset` to `mq3.compat.numeric.readU32`.
 function real(data, offset)
   bits = n.readU32(data, offset)
   if (bits & 0x7f800000) == 0x7f800000 then return fail("non-finite map plane") end if
   return n.bitsFloat(bits)
 end function
 
+/// Compute plane type in collision.world; the normal completion returns `3`.
+/// @param normal Normal used in `normal[axis]` and `(normal[axis] == 1.0)`.
 function planeType(normal)
   for axis = 0 to 2
     if normal[axis] == 1.0 then return axis end if
@@ -129,6 +207,8 @@ function planeType(normal)
   return 3
 end function
 
+/// Compute plane metadata in collision.world; the normal completion returns `result`.
+/// @param normal Normal passed as `normal` to `mq3.collision.world.planeType`.
 function planeMetadata(normal)
   if normal[0] == 0 and normal[1] == 0 and normal[2] == 0 then return 0 end if
   result = planeType(normal)
@@ -139,44 +219,75 @@ function planeMetadata(normal)
 end function
 
 // BSPC's local SetPlaneSignbits and the qcommon loader use the same bit order.
+/// @param normal Normal used in `normal[axis]` and `(normal[axis] < 0.0)`.
 function SetPlaneSignbits(normal)
   bits=0;for axis=0 to 2 if normal[axis]<0.0 then bits=bits|(1<<axis) end if end for;return bits
 end function
+/// Compute shader name in collision.world; the normal completion returns `decode(slice(data, offset, count))`.
+/// @param data Data used in `data[(offset + count)]` and `slice(data, offset, count)`.
+/// @param offset Offset used in `(offset + count)` and `data[(offset + count)]`.
 function shaderName(data,offset)
   count=0;while count<64 and data[offset+count]!=0 count=count+1 end while;return decode(slice(data,offset,count))
 end function
+/// Compute c mod load shaders in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
 function CMod_LoadShaders(map)
   if map.counts[1]<1 then return fail("map has no shaders") end if
   values=array(map.counts[1],void);for index=0 to len(values)-1 off=map.offsets[1]+index*72;values[index]=Shader(shaderName(map.data,off),n.readI32(map.data,off+64),n.readI32(map.data,off+68)) end for;return values
 end function
+/// Compute c mod load planes in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
 function CMod_LoadPlanes(map)
   if map.counts[2]<1 then return fail("map has no planes") end if
   values=array(map.counts[2],void);for index=0 to len(values)-1 off=map.offsets[2]+index*16;normal=[real(map.data,off),real(map.data,off+4),real(map.data,off+8)];values[index]=brush.Plane(normal,real(map.data,off+12),SetPlaneSignbits(normal)) end for;return values
 end function
+/// Compute c mod load brush sides in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
+/// @param planes Planes used in `len(planes)` and `planes[planeNumber]`.
+/// @param shaders Shaders used in `len(shaders)` and `shaders[shaderNumber]`.
 function CMod_LoadBrushSides(map,planes,shaders)
   values=array(map.counts[9],void);index=0;while index<len(values) off=map.offsets[9]+index*8;planeNumber=n.readI32(map.data,off);shaderNumber=n.readI32(map.data,off+4);if planeNumber<0 or planeNumber>=len(planes) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush side reference") end if;plane=planes[planeNumber];values[index]=brush.Plane(plane.normal,plane.distance,shaders[shaderNumber].surfaceFlags);index=index+1 end while;return values
 end function
+/// Apply `mq3.collision.world.fail` for bound brush in collision.world.
+/// @param sides Sides used in `sides[0]` and `sides[2]`.
 function CM_BoundBrush(sides)
   if sides==void or len(sides)<6 then return fail("brush lacks six axial bounding planes") end if
   return [[0.0-sides[0].distance,0.0-sides[2].distance,0.0-sides[4].distance],[sides[1].distance,sides[3].distance,sides[5].distance]]
 end function
+/// Compute c mod load brushes in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
+/// @param sides Sides used in `len(sides)` and `((first + count) > len(sides))`.
+/// @param shaders Shaders used in `len(shaders)` and `shaders[shaderNumber]`.
 function CMod_LoadBrushes(map,sides,shaders)
   values=array(map.counts[8],void);index=0;while index<len(values) off=map.offsets[8]+index*12;first=n.readI32(map.data,off);count=n.readI32(map.data,off+4);shaderNumber=n.readI32(map.data,off+8);if count<6 or first<0 or first+count>len(sides) or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid brush record") end if;selected=arrays.slice(sides,first,count);bounds=CM_BoundBrush(selected);values[index]=Brush(selected,brush.packPlanes(selected),shaders[shaderNumber].contentFlags,bounds[0],bounds[1]);index=index+1 end while;return values
 end function
+/// Compute c mod load leaf brushes in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `data`, `offsets`.
 function CMod_LoadLeafBrushes(map)
   values=array(map.counts[6],0);index=0;while index<len(values) values[index]=n.readI32(map.data,map.offsets[6]+index*4);index=index+1 end while;return values
 end function
+/// Compute c mod load leaf surfaces in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `data`, `offsets`.
 function CMod_LoadLeafSurfaces(map)
   values=array(map.counts[5],0);index=0;while index<len(values) values[index]=n.readI32(map.data,map.offsets[5]+index*4);index=index+1 end while;return values
 end function
+/// Compute c mod load leafs in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
+/// @param leafBrushes Leaf brushes used in `len(leafBrushes)` and `((firstBrush + brushCount) > len(leafBrushes))`.
+/// @param leafSurfaces Leaf surfaces used in `len(leafSurfaces)` and `((firstSurface + surfaceCount) > len(leafSurfaces))`.
 function CMod_LoadLeafs(map,leafBrushes,leafSurfaces)
   if map.counts[4]<1 then return fail("map has no leaves") end if
   values=array(map.counts[4],void);for index=0 to len(values)-1 off=map.offsets[4]+index*48;firstSurface=n.readI32(map.data,off+32);surfaceCount=n.readI32(map.data,off+36);firstBrush=n.readI32(map.data,off+40);brushCount=n.readI32(map.data,off+44);if firstSurface<0 or surfaceCount<0 or firstSurface+surfaceCount>len(leafSurfaces) or firstBrush<0 or brushCount<0 or firstBrush+brushCount>len(leafBrushes) then return fail("invalid leaf range") end if;values[index]=Leaf(arrays.slice(leafBrushes,firstBrush,brushCount),arrays.slice(leafSurfaces,firstSurface,surfaceCount)) end for;return values
 end function
+/// Compute c mod load nodes in collision.world; the normal completion returns `values`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
+/// @param planes Planes used in `len(planes)` and `planes[planeNumber]`.
 function CMod_LoadNodes(map,planes)
   if map.counts[3]<1 then return fail("map has no nodes") end if
   values=array(map.counts[3],void);for index=0 to len(values)-1 off=map.offsets[3]+index*36;planeNumber=n.readI32(map.data,off);if planeNumber<0 or planeNumber>=len(planes) then return fail("invalid node plane") end if;plane=planes[planeNumber];values[index]=Node(plane,planeType(plane.normal),[n.readI32(map.data,off+4),n.readI32(map.data,off+8)]) end for;return values
 end function
+/// Compute c mod load submodels in collision.world; the normal completion returns `Submodels(models, bounds)`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
 function CMod_LoadSubmodels(map)
   if map.counts[7]<1 then return fail("map has no models") end if
   // Indices 254 and 255 are reserved clip handles. A map that reaches either
@@ -202,17 +313,32 @@ function CMod_LoadSubmodels(map)
   end for
   return Submodels(models,bounds)
 end function
+/// Return `decode(slice(map.data, map.offsets[0], map.lengths[0]))` from `collision.world.CMod_LoadEntityString`.
+/// @param map Record exposing `data`, `offsets`, `lengths`.
 function CMod_LoadEntityString(map) return decode(slice(map.data,map.offsets[0],map.lengths[0])) end function
+/// Return `mq3.collision.visibility.load(map)` from `collision.world.CMod_LoadVisibility`.
+/// @param map Map passed as `map` to `mq3.collision.visibility.load`.
 function CMod_LoadVisibility(map) return vis.load(map) end function
+/// Compute c mod load patches in collision.world; the normal completion returns `surfaces`.
+/// @param map Record exposing `counts`, `offsets`, `data`.
+/// @param shaders Shaders used in `len(shaders)` and `shaders[shaderNumber]`.
+/// @param curves Curves operand used by `CMod_LoadPatches`; its reads are shown in the implementation.
 function CMod_LoadPatches(map,shaders,curves)
   surfaces=array(map.counts[13],void);if not curves then return surfaces end if
   index=0;while index<len(surfaces) off=map.offsets[13]+index*104;if n.readI32(map.data,off+8)==2 then width=n.readI32(map.data,off+96);height=n.readI32(map.data,off+100);count=width*height;first=n.readI32(map.data,off+12);shaderNumber=n.readI32(map.data,off);if width<3 or height<3 or width>129 or height>129 or count>1024 or count>n.readI32(map.data,off+16) or first<0 or first+count>map.counts[10] or shaderNumber<0 or shaderNumber>=len(shaders) then return fail("invalid BSP patch") end if;points=array(count,void);cursor=0;while cursor<count location=map.offsets[10]+(first+cursor)*44;points[cursor]=[real(map.data,location),real(map.data,location+4),real(map.data,location+8)];cursor=cursor+1 end while;surfaces[index]=Surface(mesh.CM_GeneratePatchCollide(width,height,points),shaders[shaderNumber].contentFlags,shaders[shaderNumber].surfaceFlags) end if;index=index+1 end while;return surfaces
 end function
+/// Compute lump checksum in collision.world; the normal completion returns `md4.blockChecksum(slice(map.data, map.offsets[lump], map.lengths[lump]))`.
+/// @param map Record exposing `data`, `offsets`, `lengths`.
+/// @param lump Zero-based index into `map.offsets`, `map.lengths`.
 function CM_LumpChecksum(map,lump) if lump<0 or lump>=17 then return fail("invalid checksum lump") end if;return md4.blockChecksum(slice(map.data,map.offsets[lump],map.lengths[lump])) end function
+/// Compute checksum in collision.world; the normal completion returns `md4.blockChecksum(data)`.
+/// @param map Map passed as `map` to `mq3.collision.world.CM_LumpChecksum`.
 function CM_Checksum(map)
   order=[1,4,6,5,2,9,8,7,3,13,10];data=bytes(44,0);for index=0 to 10 n.writeU32(data,index*4,CM_LumpChecksum(map,order[index])) end for;return md4.blockChecksum(data)
 end function
 
+/// Check tree in collision.world; the normal completion returns `true`.
+/// @param nodes Nodes used in `len(nodes)` and `nodes[index]`.
 function checkTree(nodes)
   // Iterative DFS prevents malformed cycles from reaching trace/point walkers.
   colors = array(len(nodes), 0)
@@ -243,6 +369,9 @@ function checkTree(nodes)
   return true
 end function
 
+/// Load world in collision.world; the normal completion returns `world`.
+/// @param data Data passed as `data` to `mq3.format.bsp.load`.
+/// @param curves Curves passed as `curves` to `mq3.collision.world.CMod_LoadPatches`.
 function loadWorld(data,curves)
   map = bsp.load(data)
   shaders=CMod_LoadShaders(map);planes=CMod_LoadPlanes(map);sides=CMod_LoadBrushSides(map,planes,shaders);brushes=CMod_LoadBrushes(map,sides,shaders)
@@ -256,6 +385,9 @@ function loadWorld(data,curves)
   CM_InitBoxHull(world);return world
 end function
 
+/// Compute make box in collision.world; the normal completion returns `Brush(planes, void, 33554432, mins, maxs)`.
+/// @param mins Initial `mins` field stored in the returned or constructed `mq3.collision.world.Brush` record.
+/// @param maxs Initial `maxs` field stored in the returned or constructed `mq3.collision.world.Brush` record.
 function makeBox(mins,maxs)
   planes = array(6,void)
   // CM_InitBoxHull uses +X,-X,+Y,-Y,+Z,-Z, unlike map brush bounds.
@@ -268,6 +400,11 @@ function makeBox(mins,maxs)
   return Brush(planes,void,0x2000000,mins,maxs)
 end function
 
+/// Compute temp box model in collision.world; the normal completion returns `qcommonHeaders.BOX_MODEL_HANDLE`.
+/// @param world Record exposing `temporary`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param capsule Capsule operand used by `tempBoxModel`; its reads are shown in the implementation.
 function tempBoxModel(world,mins,maxs,capsule)
   mins = vector32(mins); maxs = vector32(maxs)
   // CM_TempBoxModel copies caller bounds and face distances verbatim. Network
@@ -288,11 +425,23 @@ function tempBoxModel(world,mins,maxs,capsule)
   return qcommonHeaders.BOX_MODEL_HANDLE
 end function
 
+/// Update `world.temporary` in collision.world.
+///
+/// Direct state writes: `world.temporary`.
+/// @param world Record exposing `brushes`, `surfaces`. Updated in place: `temporary`.
 function CM_InitBoxHull(world)
   if world==void then return fail("box hull requires a loaded map") end if;zero=[0.0,0.0,0.0];world.temporary=Temporary([zero,zero],makeBox(zero,zero),false,bytes(len(world.brushes),0),bytes(len(world.surfaces),0),0);return void
 end function
+/// Return `mq3.collision.world.tempBoxModel(world, mins, maxs, capsule)` from `collision.world.CM_TempBoxModel`.
+/// @param world World passed as `world` to `mq3.collision.world.tempBoxModel`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.tempBoxModel`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.tempBoxModel`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.tempBoxModel`.
 function CM_TempBoxModel(world,mins,maxs,capsule) return tempBoxModel(world,mins,maxs,capsule) end function
 
+/// Check model in collision.world; the normal completion returns `fail("invalid model handle")`.
+/// @param world Record exposing `models`, `temporary`.
+/// @param model Model used in `(model >= 0)` and `(model < len(world.models))`.
 function checkModel(world,model)
   // The capsule sentinel becomes valid only after CM_TempBoxModel has
   // supplied its shared bounds.  This keeps reciprocal box-vs-capsule traces
@@ -301,10 +450,17 @@ function checkModel(world,model)
   return fail("invalid model handle")
 end function
 
+/// Return `mq3.collision.world.checkModel(world, model)` from `collision.world.checkTraceModel`.
+/// @param world World passed as `world` to `mq3.collision.world.checkModel`.
+/// @param model Model passed as `model` to `mq3.collision.world.checkModel`.
+/// @param capsule Reserved argument; this implementation does not read its value.
 function checkTraceModel(world,model,capsule)
   return checkModel(world,model)
 end function
 
+/// Compute model bounds in collision.world; the normal completion returns `[arrays.slice(bounds[0], 0, 3), arrays.slice(bounds[1], 0, 3)]`.
+/// @param world Record exposing `temporary`, `models`, `bounds`.
+/// @param model Model passed as `model` to `mq3.collision.world.checkModel`.
 function modelBounds(world,model)
   checkModel(world,model)
   if model==qcommonHeaders.CAPSULE_MODEL_HANDLE then return fail("bad clip handle") end if
@@ -313,6 +469,9 @@ function modelBounds(world,model)
   return [arrays.slice(bounds[0],0,3),arrays.slice(bounds[1],0,3)]
 end function
 
+/// Compute clip handle to model in collision.world; the normal completion returns `fail("bad clip handle")`.
+/// @param world Record exposing `models`, `temporary`.
+/// @param handle Zero-based index into `world.models`.
 function CM_ClipHandleToModel(world,handle)
   if world==void or handle<0 then return fail("bad clip handle") end if
   if handle<len(world.models) then return world.models[handle] end if
@@ -321,21 +480,55 @@ function CM_ClipHandleToModel(world,handle)
   if handle==qcommonHeaders.BOX_MODEL_HANDLE then return world.temporary end if
   return fail("bad clip handle")
 end function
+/// Return `mq3.collision.world.modelBounds(world, model)` from `collision.world.CM_ModelBounds`.
+/// @param world World passed as `world` to `mq3.collision.world.modelBounds`.
+/// @param model Model passed as `model` to `mq3.collision.world.modelBounds`.
 function CM_ModelBounds(world,model) return modelBounds(world,model) end function
 
+/// Compute inline model in collision.world; the normal completion returns `index`.
+/// @param world Record exposing `models`.
+/// @param index Index used in `(index < 0)` and `(index >= len(world.models))`.
 function inlineModel(world,index)
   if index < 0 or index >= len(world.models) then return fail("invalid inline model") end if
   return index
 end function
+/// Return `mq3.collision.world.inlineModel(world, index)` from `collision.world.CM_InlineModel`.
+/// @param world World passed as `world` to `mq3.collision.world.inlineModel`.
+/// @param index Index passed as `index` to `mq3.collision.world.inlineModel`.
 function CM_InlineModel(world,index) return inlineModel(world,index) end function
+/// Compute num clusters in collision.world; the normal completion returns `world.visibility.numClusters`.
+/// @param world Record exposing `visibility`.
 function CM_NumClusters(world) if world==void then return 0 end if;return world.visibility.numClusters end function
+/// Compute num inline models in collision.world; the normal completion returns `len(world.models)`.
+/// @param world Record exposing `models`.
 function CM_NumInlineModels(world) if world==void then return 0 end if;return len(world.models) end function
+/// Compute entity string in collision.world; the normal completion returns `world.entityString`.
+/// @param world Record exposing `entityString`.
 function CM_EntityString(world) if world==void then return "" end if;return world.entityString end function
+/// Compute leaf cluster in collision.world; the normal completion returns `vis.leafCluster(world.visibility, leaf)`.
+/// @param world Record exposing `visibility`.
+/// @param leaf Leaf passed as `leaf` to `mq3.collision.visibility.leafCluster`.
 function CM_LeafCluster(world,leaf) if world==void then return fail("leaf cluster requires a loaded map") end if;return vis.leafCluster(world.visibility,leaf) end function
+/// Compute leaf area in collision.world; the normal completion returns `vis.leafArea(world.visibility, leaf)`.
+/// @param world Record exposing `visibility`.
+/// @param leaf Leaf passed as `leaf` to `mq3.collision.visibility.leafArea`.
 function CM_LeafArea(world,leaf) if world==void then return fail("leaf area requires a loaded map") end if;return vis.leafArea(world.visibility,leaf) end function
 
+/// Create `mq3.collision.world.MapState` with world=void; name=""; checksum=0; lastChecksum=0; curves=curves.
+/// @param curves Initial `curves` field stored in the returned or constructed `mq3.collision.world.MapState` record.
 function mapState(curves) return MapState(void,"",0,0,curves) end function
+/// Clear map in collision.world; updates `state.world`, `state.name`, `state.checksum`.
+///
+/// Direct state writes: `state.world`, `state.name`, `state.checksum`.
+/// @param state Updated in place: `world`, `name`, `checksum`.
 function CM_ClearMap(state) if state!=void then state.world=void;state.name="";state.checksum=0 end if;return void end function
+/// Load map in collision.world; the normal completion returns `LoadResult(world, checksum, false)`.
+///
+/// Direct state writes: `state.name`, `state.world`, `state.checksum`, `state.lastChecksum`.
+/// @param state Record exposing `world`, `name`, `lastChecksum`, `curves`. Updated in place: `name`, `world`, `checksum`, `lastChecksum`.
+/// @param name Name used in `(name == "")` and `(name == void)`.
+/// @param data Data passed as `data` to `mq3.collision.world.loadWorld`.
+/// @param clientload Clientload used in `(((state.world != void) and (state.name == name)) and clientload)`.
 function CM_LoadMap(state,name,data,clientload)
   if state==void then return fail("map state required") end if
   if name==void or name=="" then return fail("NULL map name") end if
@@ -346,14 +539,21 @@ function CM_LoadMap(state,name,data,clientload)
   state.world=world;state.checksum=checksum;state.lastChecksum=checksum;return LoadResult(world,checksum,false)
 end function
 
+/// Return `mq3.collision.world.loadWorld(data, false)` from `collision.world.loadBrushWorld`.
+/// @param data Data passed as `data` to `mq3.collision.world.loadWorld`.
 function loadBrushWorld(data)
   return loadWorld(data,false)
 end function
 
+/// Return `mq3.collision.world.loadWorld(data, true)` from `collision.world.load`.
+/// @param data Data passed as `data` to `mq3.collision.world.loadWorld`.
 function load(data)
   return loadWorld(data,true)
 end function
 
+/// Compute point leafnum in collision.world; the normal completion returns `(- 1 - num)`.
+/// @param world Record exposing `nodes`.
+/// @param point Value passed as `value` to `mq3.collision.world.vector32`.
 function pointLeafnum(world, point)
   point = vector32(point)
   num = 0
@@ -370,18 +570,29 @@ function pointLeafnum(world, point)
   return -1-num
 end function
 
+/// Compute model brushes in collision.world; the normal completion returns `world.models[model].brushes`.
+/// @param world Record exposing `models`, `leaves`.
+/// @param point Point passed as `point` to `mq3.collision.world.pointLeafnum`.
+/// @param model Zero-based index into `world.models`.
 function modelBrushes(world, point, model)
   if model < 0 or model >= len(world.models) then return fail("invalid inline model") end if
   if model == 0 then return world.leaves[pointLeafnum(world,point)].brushes end if
   return world.models[model].brushes
 end function
 
+/// Compute brush point contents in collision.world; the normal completion returns `b.contents`.
+/// @param point Left three-element vector.
+/// @param b Record exposing `planes`, `contents`.
 function brushPointContents(point,b)
   for each plane in b.planes
     if q.DotProduct(point,plane.normal) > plane.distance then return 0 end if
   end for
   return b.contents
 end function
+/// Compute point contents in collision.world; the normal completion returns `n.i32(contents)`.
+/// @param world Record exposing `models`, `temporary`, `brushes`.
+/// @param point Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param model Model passed as `model` to `mq3.collision.world.checkModel`.
 function pointContents(world, point, model)
   point = vector32(point)
   checkModel(world,model)
@@ -406,6 +617,9 @@ function pointContents(world, point, model)
   return n.i32(contents)
 end function
 
+/// Compute test in brush in collision.world.
+/// @param work Record exposing `boundsMin`, `boundsMax`, `start`, `capsule`, `radius`, `capsuleOffset`, `mins` and further fields.
+/// @param b Record exposing `maxs`, `mins`, `planes`, `contents`.
 function testInBrush(work, b)
   for axis = 0 to 2
     if work.boundsMin[axis] > b.maxs[axis] or work.boundsMax[axis] < b.mins[axis] then return void end if
@@ -435,6 +649,10 @@ function testInBrush(work, b)
   return void
 end function
 
+/// Compute through leaf in collision.world.
+/// @param work Record exposing `seen`, `visitSerial`, `world`, `mask`, `capsule`, `trace`, `start` and further fields.
+/// @param leaf Record exposing `brushes`, `surfaces`.
+/// @param positionTest Position test operand used by `throughLeaf`; its reads are shown in the implementation.
 function throughLeaf(work, leaf, positionTest)
   for each index in leaf.brushes
     if work.seen[index]==work.visitSerial then continue end if
@@ -472,6 +690,10 @@ function throughLeaf(work, leaf, positionTest)
   return void
 end function
 
+/// Compute box side in collision.world; the normal completion returns `result`.
+/// @param mins Mins used in `mins[axis]` and `(normal * mins[axis])`.
+/// @param maxs Maxs used in `maxs[axis]` and `(normal * maxs[axis])`.
+/// @param plane Record exposing `normal`, `distance`.
 function boxSide(mins, maxs, plane)
   // Win32's original BoxOnPlaneSide is x87 assembly. Its sums remain extended
   // until comparison, with no intermediate binary32 stores. Map coordinates
@@ -491,6 +713,8 @@ function boxSide(mins, maxs, plane)
   return result
 end function
 
+/// Compute position test in collision.world.
+/// @param work Record exposing `start`, `mins`, `maxs`, `world`, `trace`.
 function positionTest(work)
   mins = array(3,0.0)
   maxs = array(3,0.0)
@@ -524,6 +748,10 @@ function positionTest(work)
   return void
 end function
 
+/// Interpolate world in collision.world; the normal completion returns `result`.
+/// @param a A used in `a[axis]` and `n.fsub(b[axis], a[axis])`.
+/// @param b B used in `b[axis]` and `n.fsub(b[axis], a[axis])`.
+/// @param fraction Left floating-point operand.
 function interpolate(a,b,fraction)
   result = array(3,0.0)
   for axis = 0 to 2
@@ -532,6 +760,10 @@ function interpolate(a,b,fraction)
   return result
 end function
 
+/// Compute through tree in collision.world.
+///
+/// Validation failures include `Collision: invalid BSP trace interval`.
+/// @param work Record exposing `start`, `finish`, `trace`, `world`, `isPoint`, `maxs`.
 function throughTree(work)
   // Each pending far child owns two (x,y,z,fraction) tuples. Descending an
   // unsplit node keeps the same interval; only a split grows the frontier.
@@ -571,6 +803,9 @@ function throughTree(work)
   return void
 end function
 
+/// Compute capsule target in collision.world; the normal completion returns `[bounds, center, lo, hi, radius, halfheight, top, bottom]`.
+/// @param world Record exposing `temporary`.
+/// @param model Model passed as `model` to `mq3.collision.world.modelBounds`.
 function capsuleTarget(world,model)
   bounds = world.temporary.bounds
   if model!=qcommonHeaders.CAPSULE_MODEL_HANDLE then bounds=modelBounds(world,model) end if
@@ -585,11 +820,16 @@ function capsuleTarget(world,model)
   return [bounds,center,lo,hi,radius,halfheight,top,bottom]
 end function
 
+/// Compute mark capsule position hit in collision.world.
+/// @param work Record exposing `trace`.
 function markCapsulePositionHit(work)
   work.trace.startsolid=true;work.trace.allsolid=true;work.trace.fraction=n.f32(0)
   return void
 end function
 
+/// Compute test capsule in capsule in collision.world.
+/// @param work Record exposing `world`, `start`, `capsuleOffset`, `radius`.
+/// @param model Model passed as `model` to `mq3.collision.world.capsuleTarget`.
 function testCapsuleInCapsule(work,model)
   target=capsuleTarget(work.world,model);radius=target[4]
   top=[n.fadd(work.start[0],work.capsuleOffset[0]),n.fadd(work.start[1],work.capsuleOffset[1]),n.fadd(work.start[2],work.capsuleOffset[2])]
@@ -608,6 +848,11 @@ function testCapsuleInCapsule(work,model)
   return void
 end function
 
+/// Update `work.capsule`, `work.radius`, `work.halfheight`, `work.capsuleOffset` in collision.world; the normal completion returns `work.world.temporary.brush`.
+///
+/// Direct state writes: `work.capsule`, `work.radius`, `work.halfheight`, `work.capsuleOffset`.
+/// @param work Record exposing `world`, `start`, `finish`, `mins`, `maxs`. Updated in place: `capsule`, `radius`, `halfheight`, `capsuleOffset`.
+/// @param model Model passed as `model` to `mq3.collision.world.capsuleTarget`.
 function reciprocalCapsuleWork(work,model)
   target=capsuleTarget(work.world,model);center=target[1]
   for axis=0 to 2
@@ -619,12 +864,21 @@ function reciprocalCapsuleWork(work,model)
   return work.world.temporary.brush
 end function
 
+/// Compute test bounding box in capsule in collision.world.
+/// @param work Record exposing `mask`.
+/// @param model Model passed as `model` to `mq3.collision.world.reciprocalCapsuleWork`.
 function testBoundingBoxInCapsule(work,model)
   box=reciprocalCapsuleWork(work,model)
   if (box.contents & work.mask)!=0 then testInBrush(work,box) end if
   return void
 end function
 
+/// Trace through sphere in collision.world.
+/// @param work Record exposing `trace`, `modelOrigin`.
+/// @param origin Point passed as `point` to `mq3.collision.brush.distanceFromLineSquared`.
+/// @param radius Left floating-point operand.
+/// @param start Line start passed as `lineStart` to `mq3.collision.brush.distanceFromLineSquared`.
+/// @param finish Line end passed as `lineEnd` to `mq3.collision.brush.distanceFromLineSquared`.
 function traceThroughSphere(work,origin,radius,start,finish)
   direction=[n.fsub(start[0],origin[0]),n.fsub(start[1],origin[1]),n.fsub(start[2],origin[2])]
   lengthSquared=q.DotProduct(direction,direction);radiusSquared=n.fmul(radius,radius)
@@ -660,6 +914,13 @@ function traceThroughSphere(work,origin,radius,start,finish)
   return void
 end function
 
+/// Trace through vertical cylinder in collision.world.
+/// @param work Record exposing `trace`, `modelOrigin`.
+/// @param origin Origin used in `origin[0]` and `origin[1]`.
+/// @param radius Left floating-point operand.
+/// @param halfheight Right floating-point operand.
+/// @param start A passed as `a` to `mq3.shared.math.VectorMA`.
+/// @param finish Finish used in `finish[0]` and `finish[1]`.
 function traceThroughVerticalCylinder(work,origin,radius,halfheight,start,finish)
   start2d=[start[0],start[1],0.0];finish2d=[finish[0],finish[1],0.0];origin2d=[origin[0],origin[1],0.0]
   radiusSquared=n.fmul(radius,radius)
@@ -700,6 +961,9 @@ function traceThroughVerticalCylinder(work,origin,radius,halfheight,start,finish
   return void
 end function
 
+/// Trace capsule through capsule in collision.world.
+/// @param work Record exposing `world`, `boundsMin`, `boundsMax`, `start`, `capsuleOffset`, `finish`, `radius` and further fields.
+/// @param model Model passed as `model` to `mq3.collision.world.capsuleTarget`.
 function traceCapsuleThroughCapsule(work,model)
   target=capsuleTarget(work.world,model);bounds=target[0]
   for axis=0 to 2
@@ -719,19 +983,59 @@ function traceCapsuleThroughCapsule(work,model)
   return void
 end function
 
+/// Trace bounding box through capsule in collision.world.
+/// @param work Record exposing `mask`, `trace`, `start`, `finish`, `mins`, `maxs`, `radius` and further fields.
+/// @param model Model passed as `model` to `mq3.collision.world.reciprocalCapsuleWork`.
 function traceBoundingBoxThroughCapsule(work,model)
   box=reciprocalCapsuleWork(work,model)
   if (box.contents & work.mask)!=0 then brush.traceThroughBrush(work.trace,box.planes,box.contents,work.start,work.finish,work.mins,work.maxs,true,work.radius,work.capsuleOffset) end if
   return void
 end function
 
+/// Return `mq3.collision.world.testCapsuleInCapsule(work, model)` from `collision.world.CM_TestCapsuleInCapsule`.
+/// @param work Work passed as `work` to `mq3.collision.world.testCapsuleInCapsule`.
+/// @param model Model passed as `model` to `mq3.collision.world.testCapsuleInCapsule`.
 function CM_TestCapsuleInCapsule(work,model) return testCapsuleInCapsule(work,model) end function
+/// Return `mq3.collision.world.testBoundingBoxInCapsule(work, model)` from `collision.world.CM_TestBoundingBoxInCapsule`.
+/// @param work Work passed as `work` to `mq3.collision.world.testBoundingBoxInCapsule`.
+/// @param model Model passed as `model` to `mq3.collision.world.testBoundingBoxInCapsule`.
 function CM_TestBoundingBoxInCapsule(work,model) return testBoundingBoxInCapsule(work,model) end function
+/// Return `mq3.collision.world.traceThroughSphere(work, origin, radius, start, finish)` from `collision.world.CM_TraceThroughSphere`.
+/// @param work Work passed as `work` to `mq3.collision.world.traceThroughSphere`.
+/// @param origin Origin passed as `origin` to `mq3.collision.world.traceThroughSphere`.
+/// @param radius Radius passed as `radius` to `mq3.collision.world.traceThroughSphere`.
+/// @param start Start passed as `start` to `mq3.collision.world.traceThroughSphere`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.traceThroughSphere`.
 function CM_TraceThroughSphere(work,origin,radius,start,finish) return traceThroughSphere(work,origin,radius,start,finish) end function
+/// Return `mq3.collision.world.traceThroughVerticalCylinder(work, origin, radius, halfheight, start, finish)` from `collision.world.CM_TraceThroughVerticalCylinder`.
+/// @param work Work passed as `work` to `mq3.collision.world.traceThroughVerticalCylinder`.
+/// @param origin Origin passed as `origin` to `mq3.collision.world.traceThroughVerticalCylinder`.
+/// @param radius Radius passed as `radius` to `mq3.collision.world.traceThroughVerticalCylinder`.
+/// @param halfheight Halfheight passed as `halfheight` to `mq3.collision.world.traceThroughVerticalCylinder`.
+/// @param start Start passed as `start` to `mq3.collision.world.traceThroughVerticalCylinder`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.traceThroughVerticalCylinder`.
 function CM_TraceThroughVerticalCylinder(work,origin,radius,halfheight,start,finish) return traceThroughVerticalCylinder(work,origin,radius,halfheight,start,finish) end function
+/// Return `mq3.collision.world.traceCapsuleThroughCapsule(work, model)` from `collision.world.CM_TraceCapsuleThroughCapsule`.
+/// @param work Work passed as `work` to `mq3.collision.world.traceCapsuleThroughCapsule`.
+/// @param model Model passed as `model` to `mq3.collision.world.traceCapsuleThroughCapsule`.
 function CM_TraceCapsuleThroughCapsule(work,model) return traceCapsuleThroughCapsule(work,model) end function
+/// Return `mq3.collision.world.traceBoundingBoxThroughCapsule(work, model)` from `collision.world.CM_TraceBoundingBoxThroughCapsule`.
+/// @param work Work passed as `work` to `mq3.collision.world.traceBoundingBoxThroughCapsule`.
+/// @param model Model passed as `model` to `mq3.collision.world.traceBoundingBoxThroughCapsule`.
 function CM_TraceBoundingBoxThroughCapsule(work,model) return traceBoundingBoxThroughCapsule(work,model) end function
 
+/// Trace with sphere origin in collision.world; the normal completion returns `Result(work.trace, endpos)`.
+/// @param world Record exposing `patchesReady`, `models`, `temporary`, `brushes`, `surfaces`.
+/// @param start Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param finish Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param model Model passed as `model` to `mq3.collision.world.checkTraceModel`.
+/// @param mask Initial `mask` field stored in the returned or constructed `mq3.collision.world.Work` record.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.checkTraceModel`.
+/// @param curves Initial `curves` field stored in the returned or constructed `mq3.collision.world.Work` record.
+/// @param sphere Sphere used in `sphere[0]` and `sphere[1]`.
+/// @param modelOrigin Value passed as `value` to `mq3.collision.world.vector32`.
 function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, capsule,curves,sphere,modelOrigin)
   checkTraceModel(world,model,capsule)
   if curves and not world.patchesReady then return fail("patch geometry has not been loaded") end if
@@ -817,10 +1121,25 @@ function traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, ca
   return Result(work.trace,endpos)
 end function
 
+/// Return `mq3.collision.world.traceWithSphereOrigin(world, start, finish, mins, maxs, model, mask, capsule, curves, sphere, [0.0, 0.0, 0.0])` from `collision.world.traceWithSphere`.
+/// @param world World passed as `world` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param start Start passed as `start` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param model Model passed as `model` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param curves Curves passed as `curves` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param sphere Sphere passed as `sphere` to `mq3.collision.world.traceWithSphereOrigin`.
 function traceWithSphere(world,start,finish,mins,maxs,model,mask,capsule,curves,sphere)
   return traceWithSphereOrigin(world,start,finish,mins,maxs,model,mask,capsule,curves,sphere,[0.0,0.0,0.0])
 end function
 
+/// Compute enumerate leaves in collision.world; the normal completion returns `leaves.toArray()`.
+/// @param world Record exposing `nodes`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
 function enumerateLeaves(world,mins,maxs)
   mins = vector32(mins); maxs = vector32(maxs)
   for axis = 0 to 2
@@ -840,6 +1159,11 @@ function enumerateLeaves(world,mins,maxs)
   return leaves.toArray()
 end function
 
+/// Compute box leafnums in collision.world; the normal completion returns `result`.
+/// @param world Record exposing `visibility`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.enumerateLeaves`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.enumerateLeaves`.
+/// @param capacity B passed as `b` to `mq3.collision.world.min`.
 function boxLeafnums(world,mins,maxs,capacity)
   if capacity < 0 or capacity > 131072 then return fail("invalid leaf-list capacity") end if
   result = LeafList([],0,false);entries=worldTraceLists.List.withCapacity(min(32,capacity))
@@ -852,6 +1176,11 @@ function boxLeafnums(world,mins,maxs,capacity)
   return result
 end function
 
+/// Compute box brushes in collision.world; the normal completion returns `result`.
+/// @param world Record exposing `brushes`, `leaves`.
+/// @param mins Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param maxs Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param capacity B passed as `b` to `mq3.collision.world.min`.
 function boxBrushes(world,mins,maxs,capacity)
   if capacity < 0 or capacity > 131072 then return fail("invalid brush-list capacity") end if
   mins = vector32(mins); maxs = vector32(maxs)
@@ -872,10 +1201,22 @@ function boxBrushes(world,mins,maxs,capacity)
   return result
 end function
 
+/// Return `mq3.collision.world.traceWithSphere(world, start, finish, mins, maxs, model, mask, capsule, curves, void)` from `collision.world.trace`.
+/// @param world World passed as `world` to `mq3.collision.world.traceWithSphere`.
+/// @param start Start passed as `start` to `mq3.collision.world.traceWithSphere`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.traceWithSphere`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.traceWithSphere`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.traceWithSphere`.
+/// @param model Model passed as `model` to `mq3.collision.world.traceWithSphere`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.traceWithSphere`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.traceWithSphere`.
+/// @param curves Curves passed as `curves` to `mq3.collision.world.traceWithSphere`.
 function trace(world,start,finish,mins,maxs,model,mask,capsule,curves)
   return traceWithSphere(world,start,finish,mins,maxs,model,mask,capsule,curves,void)
 end function
 
+/// Compute rotation matrix in collision.world; the normal completion returns `matrix`.
+/// @param angles Three-element [pitch, yaw, roll] array in degrees.
 function rotationMatrix(angles)
   matrix = q.AngleVectors(angles)
   for axis = 0 to 2
@@ -884,14 +1225,25 @@ function rotationMatrix(angles)
   return matrix
 end function
 
+/// Compute collision.world.rotatePoint as `[q.DotProduct(matrix[0], point), q.DotProduct(matrix[1], point), q.DotProduct(matrix[2], point)]`.
+/// @param point Right three-element vector.
+/// @param matrix Matrix used in `matrix[0]` and `matrix[1]`.
 function rotatePoint(point,matrix)
   return [q.DotProduct(matrix[0],point),q.DotProduct(matrix[1],point),q.DotProduct(matrix[2],point)]
 end function
 
+/// Compute collision.world.transpose as `[[matrix[0][0], matrix[1][0], matrix[2][0]], [matrix[0][1], matrix[1][1], matrix[2][1]], [matrix[0][2], matrix[1][2], matrix[2][2]]]`.
+/// @param matrix Matrix used in `matrix[0]` and `matrix[1]`.
 function transpose(matrix)
   return [[matrix[0][0],matrix[1][0],matrix[2][0]],[matrix[0][1],matrix[1][1],matrix[2][1]],[matrix[0][2],matrix[1][2],matrix[2][2]]]
 end function
 
+/// Compute transformed point contents in collision.world; the normal completion returns `pointContents(world, localPoint, model)`.
+/// @param world World passed as `world` to `mq3.collision.world.pointContents`.
+/// @param point Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param model Model passed as `model` to `mq3.collision.world.pointContents`.
+/// @param origin Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param angles Value passed as `value` to `mq3.collision.world.vector32`.
 function transformedPointContents(world,point,model,origin,angles)
   point = vector32(point); origin = vector32(origin); angles = vector32(angles)
   localPoint = array(3,0.0)
@@ -906,6 +1258,10 @@ function transformedPointContents(world,point,model,origin,angles)
   return pointContents(world,localPoint,model)
 end function
 
+/// Write vm temporary box trace in collision.world.
+/// @param world Record exposing `models`, `temporary`.
+/// @param vm Record exposing `data`, `mask`.
+/// @param base Byte offset of the syscall argument frame.
 function writeVmTemporaryBoxTrace(world,vm,base)
   handle=qcommonHeaders.BOX_MODEL_HANDLE
   if world==void or handle<len(world.models) then return false end if
@@ -914,6 +1270,14 @@ function writeVmTemporaryBoxTrace(world,vm,base)
       lo[0],lo[1],lo[2],hi[0],hi[1],hi[2])==1
 end function
 
+/// Trace transformed box in collision.world.
+/// @param world Record exposing `temporary`.
+/// @param start Start used in `start[0]` and `start[1]`.
+/// @param finish Finish used in `finish[0]` and `finish[1]`.
+/// @param mins Mins used in `mins[0]` and `mins[1]`.
+/// @param maxs Maxs used in `maxs[0]` and `maxs[1]`.
+/// @param mask Mask used in `(target.contents & mask)` and `((target.contents & mask) != 0)`.
+/// @param origin Origin used in `origin[0]` and `origin[1]`.
 function traceTransformedBox(world,start,finish,mins,maxs,mask,origin)
   target=world.temporary.brush
   if mins==void then mins=[0.0,0.0,0.0] end if
@@ -940,6 +1304,18 @@ function traceTransformedBox(world,start,finish,mins,maxs,mask,origin)
   return Result(result,[n.bitsFloat(n.readU32(output,8)),n.bitsFloat(n.readU32(output,12)),n.bitsFloat(n.readU32(output,16))])
 end function
 
+/// Compute transformed trace in collision.world; the normal completion returns `result`.
+/// @param world Record exposing `models`, `patchesReady`.
+/// @param start Start passed as `start` to `mq3.collision.world.traceTransformedBox`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.traceTransformedBox`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.traceTransformedBox`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.traceTransformedBox`.
+/// @param model Model passed as `model` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.traceTransformedBox`.
+/// @param origin Origin passed as `origin` to `mq3.collision.world.traceTransformedBox`.
+/// @param angles Value passed as `value` to `mq3.collision.world.vector32`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.traceWithSphereOrigin`.
+/// @param curves Curves passed as `curves` to `mq3.collision.world.traceWithSphereOrigin`.
 function transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,capsule,curves)
   if not capsule and model==qcommonHeaders.BOX_MODEL_HANDLE and model>=len(world.models) and (not curves or world.patchesReady) then
     vector32(angles)
@@ -974,6 +1350,8 @@ function transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,
   return result
 end function
 
+/// Compute vector 32 in collision.world; the normal completion returns `result`.
+/// @param value Value used in `len(value)` and `value[axis]`.
 function vector32(value)
   if typeof(value) != "array" or len(value) != 3 then return fail("expected a three-component vector") end if
   result = array(3,0.0)
@@ -984,28 +1362,98 @@ function vector32(value)
   return result
 end function
 
+/// Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask, capsule, false)` from `collision.world.boxTraceNoCurves`.
+/// @param world World passed as `world` to `mq3.collision.world.trace`.
+/// @param start Start passed as `start` to `mq3.collision.world.trace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.trace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.trace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.trace`.
+/// @param model Model passed as `model` to `mq3.collision.world.trace`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.trace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.trace`.
 function boxTraceNoCurves(world,start,finish,mins,maxs,model,mask,capsule)
   return trace(world,start,finish,mins,maxs,model,mask,capsule,false)
 end function
 
+/// Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask, capsule, true)` from `collision.world.boxTrace`.
+/// @param world World passed as `world` to `mq3.collision.world.trace`.
+/// @param start Start passed as `start` to `mq3.collision.world.trace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.trace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.trace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.trace`.
+/// @param model Model passed as `model` to `mq3.collision.world.trace`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.trace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.trace`.
 function boxTrace(world,start,finish,mins,maxs,model,mask,capsule)
   return trace(world,start,finish,mins,maxs,model,mask,capsule,true)
 end function
 
 // Public spellings retained by the original qcommon collision API.
+/// @param work Work passed as `work` to `mq3.collision.world.testInBrush`.
+/// @param value B passed as `b` to `mq3.collision.world.testInBrush`.
 function CM_TestBoxInBrush(work,value) return testInBrush(work,value) end function
+/// Return `mq3.collision.world.throughLeaf(work, leaf, true)` from `collision.world.CM_TestInLeaf`.
+/// @param work Work passed as `work` to `mq3.collision.world.throughLeaf`.
+/// @param leaf Leaf passed as `leaf` to `mq3.collision.world.throughLeaf`.
 function CM_TestInLeaf(work,leaf) return throughLeaf(work,leaf,true) end function
+/// Return `mq3.collision.world.positionTest(work)` from `collision.world.CM_PositionTest`.
+/// @param work Work passed as `work` to `mq3.collision.world.positionTest`.
 function CM_PositionTest(work) return positionTest(work) end function
+/// Return `mq3.collision.world.throughLeaf(work, leaf, false)` from `collision.world.CM_TraceThroughLeaf`.
+/// @param work Work passed as `work` to `mq3.collision.world.throughLeaf`.
+/// @param leaf Leaf passed as `leaf` to `mq3.collision.world.throughLeaf`.
 function CM_TraceThroughLeaf(work,leaf) return throughLeaf(work,leaf,false) end function
+/// Trace through patch in collision.world.
+/// @param work Record exposing `trace`, `world`.
+/// @param surface Record exposing `patch`, `flags`, `contents`.
 function CM_TraceThroughPatch(work,surface)
   previous=work.trace.fraction;patches.CM_TraceThroughPatchCollide(work,surface.patch,work.world.playerCurveClip)
   if work.trace.fraction<previous then work.trace.surfaceFlags=surface.flags;work.trace.contents=surface.contents end if
   return void
 end function
+/// Return `mq3.collision.world.throughTree(work)` from `collision.world.CM_TraceThroughTree`.
+/// @param work Work passed as `work` to `mq3.collision.world.throughTree`.
 function CM_TraceThroughTree(work) return throughTree(work) end function
+/// Return `mq3.collision.world.trace(world, start, finish, mins, maxs, model, mask, capsule, curves)` from `collision.world.CM_Trace`.
+/// @param world World passed as `world` to `mq3.collision.world.trace`.
+/// @param start Start passed as `start` to `mq3.collision.world.trace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.trace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.trace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.trace`.
+/// @param model Model passed as `model` to `mq3.collision.world.trace`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.trace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.trace`.
+/// @param curves Curves passed as `curves` to `mq3.collision.world.trace`.
 function CM_Trace(world,start,finish,mins,maxs,model,mask,capsule,curves) return trace(world,start,finish,mins,maxs,model,mask,capsule,curves) end function
+/// Return `mq3.collision.world.boxTrace(world, start, finish, mins, maxs, model, mask, capsule)` from `collision.world.CM_BoxTrace`.
+/// @param world World passed as `world` to `mq3.collision.world.boxTrace`.
+/// @param start Start passed as `start` to `mq3.collision.world.boxTrace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.boxTrace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.boxTrace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.boxTrace`.
+/// @param model Model passed as `model` to `mq3.collision.world.boxTrace`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.boxTrace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.boxTrace`.
 function CM_BoxTrace(world,start,finish,mins,maxs,model,mask,capsule) return boxTrace(world,start,finish,mins,maxs,model,mask,capsule) end function
+/// Return `mq3.collision.world.transformedTrace(world, start, finish, mins, maxs, model, mask, origin, angles, capsule, true)` from `collision.world.CM_TransformedBoxTrace`.
+/// @param world World passed as `world` to `mq3.collision.world.transformedTrace`.
+/// @param start Start passed as `start` to `mq3.collision.world.transformedTrace`.
+/// @param finish Finish passed as `finish` to `mq3.collision.world.transformedTrace`.
+/// @param mins Mins passed as `mins` to `mq3.collision.world.transformedTrace`.
+/// @param maxs Maxs passed as `maxs` to `mq3.collision.world.transformedTrace`.
+/// @param model Model passed as `model` to `mq3.collision.world.transformedTrace`.
+/// @param mask Mask passed as `mask` to `mq3.collision.world.transformedTrace`.
+/// @param origin Origin passed as `origin` to `mq3.collision.world.transformedTrace`.
+/// @param angles Angles passed as `angles` to `mq3.collision.world.transformedTrace`.
+/// @param capsule Capsule passed as `capsule` to `mq3.collision.world.transformedTrace`.
 function CM_TransformedBoxTrace(world,start,finish,mins,maxs,model,mask,origin,angles,capsule) return transformedTrace(world,start,finish,mins,maxs,model,mask,origin,angles,capsule,true) end function
+/// Return `mq3.collision.world.rotationMatrix(angles)` from `collision.world.CreateRotationMatrix`.
+/// @param angles Angles passed as `angles` to `mq3.collision.world.rotationMatrix`.
 function CreateRotationMatrix(angles) return rotationMatrix(angles) end function
+/// Return `mq3.collision.world.rotatePoint(point, matrix)` from `collision.world.RotatePoint`.
+/// @param point Point passed as `point` to `mq3.collision.world.rotatePoint`.
+/// @param matrix Matrix passed as `matrix` to `mq3.collision.world.rotatePoint`.
 function RotatePoint(point,matrix) return rotatePoint(point,matrix) end function
+/// Return `mq3.collision.world.transpose(matrix)` from `collision.world.TransposeMatrix`.
+/// @param matrix Matrix passed as `matrix` to `mq3.collision.world.transpose`.
 function TransposeMatrix(matrix) return transpose(matrix) end function

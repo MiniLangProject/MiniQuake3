@@ -16,11 +16,16 @@ const ID_MODS=16
 const ID_EXIT=17
 const MAIN_BANNER_MODEL="models/mapobjects/banner/banner5.md3"
 
+/// Stores UI main menu main item record, including `id`, `label`, `y`.
 struct MainItem id label y end struct
+/// Stores UI main menu main draw record, including `bannerModel`, `yaw`, `errorMessage`, `demoVersion`, `actions`.
 struct MainDraw bannerModel yaw errorMessage demoVersion actions end struct
+/// Stores UI main menu main menu record, including `fullscreen`, `wrapAround`, `showlogo`, `items`, `assets`, `cvarWrites` and additional values.
 struct MainMenu fullscreen wrapAround showlogo items assets cvarWrites commands actions errorMessage end struct
 
 // MainMenu_ExitAction
+/// @param menu Mutable UI main menu record/storage; this routine assigns `menu.actions`.
+/// @param result Value used by `if not result then return menu end if`.
 function exitAction(menu,result)
   if not result then return menu end if
   menu.actions=menu.actions+["pop","credits"]
@@ -28,6 +33,9 @@ function exitAction(menu,result)
 end function
 
 // Main_MenuEvent
+/// @param menu Mutable UI main menu record/storage; this routine assigns `menu.actions`, `menu.cvarWrites`, `menu.commands`.
+/// @param id Value used by `if id==ID_SINGLEPLAYER then menu.actions=menu.actions+["spLevel"]`.
+/// @param eventCode Quake III event identifier selecting the event handler.
 function event(menu,id,eventCode)
   if eventCode!=QM_ACTIVATED then return menu end if
   if id==ID_SINGLEPLAYER then menu.actions=menu.actions+["spLevel"]
@@ -45,6 +53,8 @@ end function
 function cache() return [MAIN_BANNER_MODEL] end function
 
 // ErrorMessage_Key
+/// @param menu Mutable UI main menu record/storage; this routine assigns `menu.cvarWrites`, `menu.actions`.
+/// @param key Accepted for compatibility with `errorMessageKey`; the current implementation does not read it.
 function errorMessageKey(menu,key)
   menu.cvarWrites=menu.cvarWrites+["com_errorMessage="]
   menu.actions=menu.actions+["mainMenu","nullSound"]
@@ -52,6 +62,9 @@ function errorMessageKey(menu,key)
 end function
 
 // Main_MenuDraw
+/// @param menu Record read through `menu.errorMessage`.
+/// @param realtime Current client real-time clock in milliseconds.
+/// @param demoVersion Value used by `if demoVersion then actions=actions+["text:320,372:DEMO FOR MATURE AUDIENCES DEMO","text:320,400:copyright"]`.
 function draw(menu,realtime,demoVersion)
   yaw=180.0+5.0*trans.sin(realtime/5000.0)
   actions=["clearScene","addModel:"+MAIN_BANNER_MODEL,"renderScene:0,0,640,120:60,19.6875"]
@@ -63,6 +76,7 @@ function draw(menu,realtime,demoVersion)
 end function
 
 // UI_TeamArenaExists
+/// @param modNames Sequence read at `modNames[i]`.
 function teamArenaExists(modNames)
   i=0
   while i<len(modNames)
@@ -72,6 +86,8 @@ function teamArenaExists(modNames)
   return false
 end function
 
+/// Calls `mq3.client.ui_main_menu.MainItem` from UI main menu `buildItems`. The final path returns `items`.
+/// @param hasTeamArena Value used by `if hasTeamArena then y=y+34`.
 function buildItems(hasTeamArena)
   y=134;items=[]
   items=items+[MainItem(ID_SINGLEPLAYER,"SINGLE PLAYER",y)];y=y+34
@@ -86,6 +102,11 @@ function buildItems(hasTeamArena)
 end function
 
 // UI_MainMenu
+/// @param demoVersion Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`.
+/// @param cdKeyChecked Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`.
+/// @param cdKeyValid Value used by `if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"]`.
+/// @param errorMessage Value used by `menu=MainMenu(true,true,true,[],cache(),["sv_killserver=1"],[],[],errorMessage)`.
+/// @param modNames Value used by `menu.items=buildItems(teamArenaExists(modNames))`.
 function open(demoVersion,cdKeyChecked,cdKeyValid,errorMessage,modNames)
   menu=MainMenu(true,true,true,[],cache(),["sv_killserver=1"],[],[],errorMessage)
   if not demoVersion and not cdKeyChecked and not cdKeyValid then menu.actions=menu.actions+["cdKey"];return menu end if

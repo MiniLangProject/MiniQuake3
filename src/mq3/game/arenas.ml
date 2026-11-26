@@ -21,11 +21,16 @@ const ENTITYNUM_WORLD = 1022
 const ANIM_TOGGLEBIT = 128
 const TIMER_GESTURE = internal.TIMER_GESTURE
 
+/// Validate the arena client limit against the native sixty-four-client storage capacity.
+/// @param limit Operand used to evaluate the returned expression `limit`.
 function clientLimit(limit)
   if limit < 0 or limit > 64 then return error(498,"Invalid arena client limit") end if
   return limit
 end function
 
+/// Apply `mq3.qcommon.cvar.find` while evaluating `cvarInteger`. Return paths include `variable.integer`.
+/// @param level Game-level state; accesses `spawner`.
+/// @param name Name used to identify the requested entry.
 function cvarInteger(level,name)
   if level.spawner == void then return error(498,"Arena presentation requires game spawn state") end if
   variable = cv.find(level.spawner.cvars,name)
@@ -33,6 +38,8 @@ function cvarInteger(level,name)
   return variable.integer
 end function
 
+/// Use `level.consoleCommandFn` to perform `updateTournamentInfo`.
+/// @param level Game-level state; accesses `maxclients`, `entities`, `clients`, `spawner` and `numNonSpectatorClients` and related fields.
 function updateTournamentInfo(level)
   count = clientLimit(level.maxclients); slot = 0; player = void
   while slot < count
@@ -93,17 +100,31 @@ function updateTournamentInfo(level)
   level.consoleCommandFn(level,2,message); return void
 end function
 
+/// Transform a podium-local offset into world coordinates using the podium origin and view axes.
+/// @param pad Pad record; accesses `r`.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param angles Pitch, yaw and roll angles in degrees.
 function padPoint(pad,offset,angles)
   vectors = q.AngleVectors(angles); point = q.VectorMA(pad.r.currentOrigin,offset[0],vectors[0])
   point = q.VectorMA(point,offset[1],vectors[1]); return q.VectorMA(point,offset[2],vectors[2])
 end function
 
+/// Set `ent.s.apos.trBase` to `angles` in `mq3.game.arenas.faceFromPodium`. Return paths include `angles`.
+/// @param level Game-level state; accesses `intermission_origin`.
+/// @param podium Podium record; accesses `r`.
+/// @param ent Game entity; accesses `s`. May update `ent.s.apos.trBase` in place.
 function faceFromPodium(level,podium,ent)
   direction = [n.fsub(level.intermission_origin[0],podium.r.currentOrigin[0]),n.fsub(level.intermission_origin[1],podium.r.currentOrigin[1]),n.fsub(level.intermission_origin[2],podium.r.currentOrigin[2])]
   angles = q.vectoangles(direction); angles[0] = 0.0; angles[2] = 0.0; ent.s.apos.trBase = angles
   return angles
 end function
 
+/// Apply `mq3.game.entities.spawn`, `mq3.game.entitystate.copy` and `mq3.game.arenas.faceFromPodium` while evaluating `spawnModelOnVictoryPad`. Return paths include `body`.
+/// @param level Game-level state; accesses `time`.
+/// @param pad Podium record; accesses `r`.
+/// @param offset Offset into the buffer or sequence used by this operation.
+/// @param ent Game entity; accesses `client`, `s` and `r`.
+/// @param place Value used by `spawnModelOnVictoryPad` in `body.count = place`.
 function spawnModelOnVictoryPad(level,pad,offset,ent,place)
   if pad == void or ent == void or ent.client == void then return error(498,"Victory-pad model requires podium and client") end if
   body = game.spawn(level); body.classname = ent.client.netname; body.client = ent.client; body.s = entityState.copy(ent.s)
@@ -120,6 +141,9 @@ function spawnModelOnVictoryPad(level,pad,offset,ent,place)
   return body
 end function
 
+/// Set `player.s.torsoAnim` to `((player.s.torsoAnim & ANIM_TOGGLEBIT)^ANIM_TOGGLEBIT)|anim` in `mq3.game.arenas.celebrateStop`.
+/// @param level Not read by this implementation; retained in the `celebrateStop` signature.
+/// @param player Player entity; accesses `s`. May update `player.s.torsoAnim` in place.
 function celebrateStop(level,player)
   anim = c.TORSO_STAND
   if player.s.weapon == c.WP_GAUNTLET then anim = c.TORSO_STAND2 end if
@@ -127,12 +151,18 @@ function celebrateStop(level,player)
   return void
 end function
 
+/// Update `player.s.torsoAnim`, `player.nextthink` and `player.think` during `celebrateStart`.
+/// @param level Game-level state; accesses `time`.
+/// @param player Player entity; accesses `s`, `nextthink` and `think`. May update `player.s.torsoAnim`, `player.nextthink` and `player.think` in place.
 function celebrateStart(level,player)
   player.s.torsoAnim = ((player.s.torsoAnim & ANIM_TOGGLEBIT)^ANIM_TOGGLEBIT)|c.TORSO_GESTURE
   player.nextthink = n.add32(level.time,TIMER_GESTURE); player.think = celebrateStop; events.add(level,player,c.EV_TAUNT,0)
   return void
 end function
 
+/// Set `podium.nextthink` to `n.add32(level.time,100)` in `mq3.game.arenas.podiumPlacementThink`.
+/// @param level Game-level state; accesses `time`, `intermission_angle`, `intermission_origin`, `podium1` and `podium2` and related fields.
+/// @param podium Podium record; accesses `nextthink`. May update `podium.nextthink` in place.
 function podiumPlacementThink(level,podium)
   podium.nextthink = n.add32(level.time,100); vectors = q.AngleVectors(level.intermission_angle)
   origin = q.VectorMA(level.intermission_origin,cvarInteger(level,"g_podiumDist"),vectors[0]); origin[2] = n.fsub(origin[2],cvarInteger(level,"g_podiumDrop")); game.setOrigin(podium,origin)
@@ -142,6 +172,8 @@ function podiumPlacementThink(level,podium)
   return void
 end function
 
+/// Apply `mq3.game.entities.spawn`, `mq3.game.spawn_values.modelIndex` and `mq3.game.arenas.cvarInteger` while evaluating `spawnPodium`. Return paths include `podium`.
+/// @param level Game-level state; accesses `spawner`, `intermission_angle`, `intermission_origin` and `time`.
 function spawnPodium(level)
   podium = game.spawn(level); podium.classname = "podium"; podium.s.eType = c.ET_GENERAL; podium.s.number = podium.slot
   podium.clipmask = CONTENTS_SOLID; podium.r.contents = CONTENTS_SOLID; podium.s.modelindex = values.modelIndex(level.spawner,"models/mapobjects/podium/podium4.md3")
@@ -152,6 +184,8 @@ function spawnPodium(level)
   podium.think = podiumPlacementThink; podium.nextthink = n.add32(level.time,100); return podium
 end function
 
+/// Update `level.podium1`, `level.podium2` and `level.podium3` during `spawnModelsOnVictoryPads`.
+/// @param level Game-level state; accesses `podium1`, `podium2`, `podium3`, `sortedClients` and `entities` and related fields. May update `level.podium1`, `level.podium2` and `level.podium3` in place.
 function spawnModelsOnVictoryPads(level)
   level.podium1 = void; level.podium2 = void; level.podium3 = void; podium = spawnPodium(level)
   first = level.sortedClients[0]; second = level.sortedClients[1]
@@ -167,6 +201,9 @@ function spawnModelsOnVictoryPads(level)
   return void
 end function
 
+/// Set `level.podium1.nextthink` to `level.time` and `level.podium1.think` to `celebrateStop` in `mq3.game.arenas.abortPodium`.
+/// @param level Game-level state; accesses `spawner`, `podium1` and `time`. May update `level.podium1.nextthink` and `level.podium1.think` in place.
+/// @param argv Not read by this implementation; retained in the `abortPodium` signature.
 function abortPodium(level,argv)
   if level.spawner == void then return error(498,"Podium abort requires game spawn state") end if
   if level.spawner.gametype != 2 then return void end if
