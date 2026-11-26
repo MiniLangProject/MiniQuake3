@@ -3,8 +3,11 @@
 // FS_Seek semantics for the in-memory PK3 file handles used by local QVMs.
 package mq3.qcommon.memory_file_seek
 
+/// Seek-origin selector relative to the current file position.
 const FS_SEEK_CUR=0
+/// Seek-origin selector relative to the end of the file.
 const FS_SEEK_END=1
+/// Seek-origin selector relative to the beginning of the file.
 const FS_SEEK_SET=2
 
 /// Seek memory file seek in qcommon.memory_file_seek; the normal completion returns `0`.

@@ -6,7 +6,9 @@ import mq3.game.constants as c
 import mq3.server.world as sv
 import mq3.compat.numeric as n
 import mq3.shared.info as infoStrings
+/// Maximum number of players included in a team-overlay message.
 const TEAM_MAXOVERLAY = 32
+/// Interval in milliseconds between team-location information updates.
 const TEAM_LOCATION_UPDATE_TIME = 1000
 
 /// Apply `mq3.server.world.inPVS` while evaluating `getLocation`. Return paths include `best`.

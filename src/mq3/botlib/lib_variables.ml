@@ -5,7 +5,16 @@ package mq3.botlib.lib_variables
 import mq3.compat.numeric as n
 
 /// `Variable` record for lib variables, containing `name`, `value`, `numericValue` and `modified`.
-struct Variable name value numericValue modified end struct
+struct Variable
+  /// Bot-library variable name used by lookup and configuration.
+  name
+  /// Current text value of the bot-library variable.
+  value
+  /// Cached numeric interpretation of the variable's text.
+  numericValue
+  /// Set each time the cvar is changed.
+  modified
+end struct
 
 /// Parse the released botlib unsigned decimal-number syntax, returning zero for invalid text.
 /// @param text Text to parse, format or deliver.

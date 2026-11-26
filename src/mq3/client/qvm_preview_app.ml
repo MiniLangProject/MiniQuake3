@@ -56,33 +56,106 @@ import mq3.client.frame_timing as frameTiming
 import std.time as time
 import std.string as strings
 
+/// Texture-cache slot or starting slot reserved for the world rendering resources.
 const WORLD_TEXTURE_FIRST_SLOT=256
+/// Texture-cache slot or starting slot reserved for the qvm rendering resources.
 const QVM_TEXTURE_FIRST_SLOT=2048
+/// Capacity limit for the qvm texture slots collection or bounded storage used by this client module.
 const MAX_QVM_TEXTURE_SLOTS=1024
+/// Texture-cache slot or starting slot reserved for the qvm 2 d rendering resources.
 const QVM_2D_TEXTURE_FIRST_SLOT=3072
+/// Capacity limit for the qvm 2 d texture slots collection or bounded storage used by this client
+/// module.
 const MAX_QVM_2D_TEXTURE_SLOTS=980
+/// Texture-cache slot or starting slot reserved for the console background rendering resources.
 const CONSOLE_BACKGROUND_TEXTURE_SLOT=4052
+/// Texture-cache slot or starting slot reserved for the console font rendering resources.
 const CONSOLE_FONT_TEXTURE_SLOT=4054
+/// Texture-cache slot or starting slot reserved for the cinematic rendering resources.
 const CINEMATIC_TEXTURE_FIRST_SLOT=4055
+/// Nominal source-view width used when scaling QVM presentation into the preview target.
 const SOURCE_WIDTH=1280
+/// Nominal source-view height used when scaling QVM presentation into the preview target.
 const SOURCE_HEIGHT=720
 // Retention bound, not a scene/triangle budget: evicted poses are recomputed.
 const MD3_FRAME_CACHE_ENTRIES=32
 
 /// Stores QVM preview app prepared view record, including `source`, `geometry`, `batch`, `target`.
-struct PreparedView source geometry batch target end struct
+struct PreparedView
+  /// When constructing this record, `prepareViews` supplies `view` for this member.
+  source
+  /// When constructing this record, `prepareViews` supplies `expanded` for this member. Used by
+  /// `runMatchWithLoading` during subsequent processing.
+  geometry
+  /// When constructing this record, `prepareViews` supplies `batch` for this member.
+  batch
+  /// When constructing this record, `prepareViews` supplies `target` for this member.
+  target
+end struct
 /// Stores QVM preview app prepared portal record, including `plan`, `world`, `batch`, `target`, `source`.
-struct PreparedPortal plan world batch target source end struct
+struct PreparedPortal
+  /// When constructing this record, `preparePortal` supplies `plan` for this member.
+  plan
+  /// When constructing this record, `preparePortal` supplies `world` for this member. Used by
+  /// `runMatchWithLoading` during subsequent processing.
+  world
+  /// When constructing this record, `preparePortal` supplies `batch` for this member.
+  batch
+  /// When constructing this record, `preparePortal` supplies `target` for this member.
+  target
+  /// When constructing this record, `preparePortal` supplies `source.source` for this member.
+  source
+end struct
 /// Stores QVM preview app native input record, including `mouse`, `keys`.
-struct NativeInput mouse keys end struct
+struct NativeInput
+  /// When constructing this record, `runMatchWithLoading` supplies `[0,0]` for this member.
+  mouse
+  /// When constructing this record, `runMatchWithLoading` supplies `keys` for this member.
+  keys
+end struct
 /// Stores QVM preview app client input bridge record, including `frame`, `plan`, `ui`, `matchState`.
-struct ClientInputBridge frame plan ui matchState end struct
+struct ClientInputBridge
+  /// Client frame-input state retaining held controls, view angles, and command sequencing for event
+  /// translation.
+  frame
+  /// When constructing this record, `runMatchWithLoading` supplies `initialPlan` for this member.
+  plan
+  /// When constructing this record, `runMatchWithLoading` supplies `ui` for this member.
+  ui
+  /// When constructing this record, `runMatchWithLoading` supplies `state` for this member.
+  matchState
+end struct
 /// Stores QVM preview app pipeline profile record, including `expansion`, `material`, `batch`.
-struct PipelineProfile expansion material batch end struct
+struct PipelineProfile
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  expansion
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  material
+  /// When constructing this record, `runMatchWithLoading` supplies `0` for this member.
+  batch
+end struct
 /// Stores QVM preview app screen point record, including `x`, `y`, `depth`.
-struct ScreenPoint x y depth end struct
+struct ScreenPoint
+  /// Horizontal coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
+  x
+  /// Vertical coordinate of a textured quad vertex in the QVM gameplay preview's output coordinates.
+  y
+  /// When constructing this record, `drawCinematics` supplies `depth` for this member.
+  depth
+end struct
 /// Stores QVM preview app stream source record, including `transport`, `protocol`, `demo`, `name`, `systemInfo`.
-struct StreamSource transport protocol demo name systemInfo end struct
+struct StreamSource
+  /// Transport state passed to the live-network pump or the timed demo-advancement path.
+  transport
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// True when this source advances a recorded demo instead of pumping a live server connection.
+  demo
+  /// Virtual resource or definition name used to locate this entry in the client asset catalog.
+  name
+  /// Cached server system-info string used to detect changes that must be applied to the transport.
+  systemInfo
+end struct
 
 /// Creates the QVM preview app error `7682` with diagnostic text `"QVM preview: "+message`.
 /// @param message Argument 2 of `error`; passed as `"QVM preview: "+message`.

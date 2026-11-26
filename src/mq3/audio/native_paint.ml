@@ -50,7 +50,12 @@ extern function mixStreamNative(paint as ptr,paintBytes as i32,samples as ptr,sa
 extern function finishNative(paint as ptr,paintBytes as i32,output as ptr,outputBytes as i32,frames as i32) from "playable_ambient.dll" symbol "playable_ambient_finish_mix" returns i32
 
 /// Result record for audio.native_paint, containing `samples`, `peak`.
-struct Result samples peak end struct
+struct Result
+  /// Interleaved little-endian signed 16-bit stereo PCM output bytes.
+  samples
+  /// Largest absolute mixed sample magnitude measured before output clipping.
+  peak
+end struct
 
 /// Create the audio.native_paint error for `fail` with 7717 and the supplied diagnostic text.
 /// @param message Message used in `("native audio paint: " + message)` and `error(7717, ("native audio paint: " + message))`.

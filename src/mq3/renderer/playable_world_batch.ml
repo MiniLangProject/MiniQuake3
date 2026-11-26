@@ -16,17 +16,157 @@ import mq3.renderer.playable_dynamic_lights as dynamicLights
 import std.sort as sorting
 
 /// Data record for `mq3.renderer.playable_world_batch.Batch`; groups `commands`, `sourceTriangles`, `drawableTriangles`, `skippedSky`.
-struct Batch commands sourceTriangles drawableTriangles skippedSky end struct
+struct Batch
+  /// Operations or drawing commands queued by this record.
+  commands
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+  /// Number of source triangles that can be submitted for drawing.
+  drawableTriangles
+  /// Number of sky primitives handled outside the normal material batch.
+  skippedSky
+end struct
 /// Data record for `mq3.renderer.playable_world_batch.UvAffine`; groups `m00`, `m01`, `m10`, `m11`, `tx`, `ty`.
-struct UvAffine m00 m01 m10 m11 tx ty end struct
+struct UvAffine
+  /// Coefficient 0,0 of the affine texture-coordinate transform.
+  m00
+  /// Coefficient 0,1 of the affine texture-coordinate transform.
+  m01
+  /// Coefficient 1,0 of the affine texture-coordinate transform.
+  m10
+  /// Coefficient 1,1 of the affine texture-coordinate transform.
+  m11
+  /// Translation along the X texture-coordinate axis.
+  tx
+  /// Translation along the Y texture-coordinate axis.
+  ty
+end struct
 /// Data record for `mq3.renderer.playable_world_batch.VertexCache`; groups `slots`, `frames`, `positions`, `uvs`, `colors`.
-struct VertexCache slots frames positions uvs colors end struct
+struct VertexCache
+  /// Resource slots or backing arrays retained by this record.
+  slots
+  /// Generation stamps identifying valid cached vertex results.
+  frames
+  /// Evaluated vertex positions cached after the current material's deformation step.
+  positions
+  /// Texture coordinates generated for the pass or its vertices.
+  uvs
+  /// Evaluated stage colors cached for reusable source vertices in the current update generation.
+  colors
+end struct
 /// Data record for `mq3.renderer.playable_world_batch.VertexIndexScratch`; groups `visited`, `slots`, `serial`.
-struct VertexIndexScratch visited slots serial end struct
+struct VertexIndexScratch
+  /// Per-vertex visitation markers used to avoid repeated work.
+  visited
+  /// Resource slots or backing arrays retained by this record.
+  slots
+  /// Generation number used to invalidate earlier visitation or cache markers.
+  serial
+end struct
 /// Data record for `mq3.renderer.playable_world_batch.StagePass`; groups `commands`, `sourceUvs`, `sourceDeformUvs`, `sourcePositions`, `sourceIndexes`, `sourceNormals`, and 20 further fields.
-struct StagePass commands sourceUvs sourceDeformUvs sourcePositions sourceIndexes sourceNormals sourceColors sourceEntityColors sourceEntityTexCoords sourceShaderTimes fogIndexes fogAdjustment stage textureIndex deforms normalNoise vertexCache cacheSerial primary depthEqual sort polygonOffset timeOffset clampTime initialized specularNormals end struct
+struct StagePass
+  /// Operations or drawing commands queued by this record.
+  commands
+  /// Original texture coordinates retained for animated texture updates.
+  sourceUvs
+  /// Base texture coordinates retained for vertex-deformation calculations.
+  sourceDeformUvs
+  /// Original vertex positions retained for time-dependent updates.
+  sourcePositions
+  /// Original vertex identifiers retained for cache reuse.
+  sourceIndexes
+  /// Original normals retained for deformation and lighting calculations.
+  sourceNormals
+  /// Original vertex colors retained before shader color generation.
+  sourceColors
+  /// Entity color values retained for entity-driven shader stages.
+  sourceEntityColors
+  /// Entity texture offsets retained for entity-driven modifiers.
+  sourceEntityTexCoords
+  /// Entity shader-time offsets retained for time-dependent effects.
+  sourceShaderTimes
+  /// Fog-volume index associated with each retained primitive.
+  fogIndexes
+  /// Fog modulation applied to this material stage relative to the primary stage.
+  fogAdjustment
+  /// Runtime material stage executed by this drawing pass.
+  stage
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Ordered vertex deformations applied by the shader.
+  deforms
+  /// Noise data used by animated normal-deformation effects.
+  normalNoise
+  /// Reusable transformed-vertex data shared by compatible stage updates.
+  vertexCache
+  /// Generation number identifying valid entries in the vertex cache.
+  cacheSerial
+  /// Whether this is the material's primary drawing pass.
+  primary
+  /// Whether depth testing accepts only fragments at the existing surface depth.
+  depthEqual
+  /// Shader ordering category used to schedule this material relative to other surfaces.
+  sort
+  /// Whether polygon-offset depth bias is applied while drawing.
+  polygonOffset
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Whether initialization completed successfully.
+  initialized
+  /// Normals retained for view-dependent specular-alpha generation.
+  specularNormals
+end struct
 /// Data record for `mq3.renderer.playable_world_batch.MaterialBatch`; groups `base`, `passes`, `sourceTriangles`, `drawableTriangles`, `emittedTriangles`, `skippedSky`, and 17 further fields.
-struct MaterialBatch base passes sourceTriangles drawableTriangles emittedTriangles skippedSky animatedPasses uvModifiedPasses blendedPasses generatorPasses alphaTestPasses turbulentPasses stretchPasses environmentPasses filterPasses destinationAlphaPasses clampedPasses deformedPasses polygonOffsetPasses fogBatch fogCatalog dlightBatch dlightCatalog end struct
+struct MaterialBatch
+  /// Base pass or value from which the current effect is derived.
+  base
+  /// Drawing passes required by the material or retained batch.
+  passes
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+  /// Number of source triangles that can be submitted for drawing.
+  drawableTriangles
+  /// Number of triangles submitted after expanding material passes.
+  emittedTriangles
+  /// Number of sky primitives handled outside the normal material batch.
+  skippedSky
+  /// Number of drawing passes that use animated processing.
+  animatedPasses
+  /// Number of drawing passes that use uv modified processing.
+  uvModifiedPasses
+  /// Number of drawing passes that use blended processing.
+  blendedPasses
+  /// Number of drawing passes that use generator processing.
+  generatorPasses
+  /// Number of drawing passes that use alpha test processing.
+  alphaTestPasses
+  /// Number of drawing passes that use turbulent processing.
+  turbulentPasses
+  /// Number of drawing passes that use stretch processing.
+  stretchPasses
+  /// Number of drawing passes that use environment processing.
+  environmentPasses
+  /// Number of drawing passes that use filter processing.
+  filterPasses
+  /// Number of drawing passes that use destination alpha processing.
+  destinationAlphaPasses
+  /// Number of drawing passes that use clamped processing.
+  clampedPasses
+  /// Number of drawing passes that use deformed processing.
+  deformedPasses
+  /// Number of drawing passes that use polygon offset processing.
+  polygonOffsetPasses
+  /// Prepared geometry and commands for the fog contribution.
+  fogBatch
+  /// Fog volumes and shared fog resources used by the batch.
+  fogCatalog
+  /// Prepared geometry and commands for dynamic-light contributions.
+  dlightBatch
+  /// Shared textures and resources used by dynamic-light drawing.
+  dlightCatalog
+end struct
 
 /// Creates error `7490` with message `"playable world batch: "+text`.
 /// @param text Input used in the result expression `error(7490,"playable world batch: "+text)`.
@@ -39,6 +179,7 @@ function vertexLight(vertex) return (vertex.color[0]+vertex.color[1]+vertex.colo
 /// @param flags Boolean sky flags indexed by texture number.
 /// @returns True only for an in-range texture index whose sky flag is set.
 function inline isSky(triangle,flags as array) returns bool return triangle.textureIndex>=0 and triangle.textureIndex<len(flags) and flags[triangle.textureIndex] end function
+/// Maximum number of BSP lightmaps retained for material preparation.
 const MAX_BSP_LIGHTMAPS=256
 /// Returns `slot` from `mq3.renderer.playable_world_batch.resolvedLightmapSlot`; earlier branches return `-1`.
 /// @param triangle Record providing `triangle.lightmapIndex`.

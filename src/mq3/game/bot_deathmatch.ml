@@ -17,54 +17,243 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trig
 import std.string as strings
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Game-mode identifier selecting team rules.
 const GT_TEAM=3
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF=5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK=6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER=7
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Bot inventory slot used to read or update health.
 const INVENTORY_HEALTH=headers.INVENTORY_HEALTH
+/// Bot inventory slot used to read or update teleporter.
 const INVENTORY_TELEPORTER=headers.INVENTORY_TELEPORTER
+/// Bot inventory slot used to read or update medkit.
 const INVENTORY_MEDKIT=headers.INVENTORY_MEDKIT
+/// Bot inventory slot used to read or update kamikaze.
 const INVENTORY_KAMIKAZE=headers.INVENTORY_KAMIKAZE
+/// Bot inventory slot used to read or update invulnerability.
 const INVENTORY_INVULNERABILITY=headers.INVENTORY_INVULNERABILITY
+/// Bot inventory slot used to read or update environmentsuit.
 const INVENTORY_ENVIRONMENTSUIT=headers.INVENTORY_ENVIRONMENTSUIT
+/// Bot inventory slot used to read or update neutralflag.
 const INVENTORY_NEUTRALFLAG=headers.INVENTORY_NEUTRALFLAG
+/// Bot inventory slot used to read or update redcube.
 const INVENTORY_REDCUBE=headers.INVENTORY_REDCUBE
+/// Bot inventory slot used to read or update bluecube.
 const INVENTORY_BLUECUBE=headers.INVENTORY_BLUECUBE
+/// Bot inventory slot used to read or update scout.
 const INVENTORY_SCOUT=headers.INVENTORY_SCOUT
+/// Bot inventory slot used to read or update guard.
 const INVENTORY_GUARD=headers.INVENTORY_GUARD
+/// Bot inventory slot used to read or update doubler.
 const INVENTORY_DOUBLER=headers.INVENTORY_DOUBLER
+/// Bot inventory slot used to read or update ammoregen.
 const INVENTORY_AMMOREGEN=headers.INVENTORY_AMMOREGEN
+/// Network entity-type identifier representing missile.
 const ET_MISSILE=3
+/// Weapon identifier selecting grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER=11
+/// Network entity-flag bit indicating dead.
 const EF_DEAD=1
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE=0x100000
+/// Collision-contents bit identifying water space or objects.
 const CONTENTS_WATER=headers.CONTENTS_WATER
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
 
 /// `Goal` record for bot deathmatch, containing `number`, `entitynum`, `areanum`, `origin` and `mins` and related fields.
-struct Goal number entitynum areanum origin mins maxs end struct
+struct Goal
+  /// Botlib goal number identifying this navigation target.
+  number
+  /// Entity number associated with the goal used by deathmatch and team-task selection.
+  entitynum
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// World-space target position of the goal used by deathmatch and team-task selection.
+  origin
+  /// Lower local bounding-box corner of the goal used by deathmatch and team-task selection.
+  mins
+  /// Upper local bounding-box corner of the goal used by deathmatch and team-task selection.
+  maxs
+end struct
 /// `Entity` record for bot deathmatch, containing `number`, `valid`, `eType`, `weapon` and `flags` and related fields.
-struct Entity number valid eType weapon flags powerups generic1 origin mins maxs contents modelindex classname event eventParm otherEntityNum otherEntityNum2 eventTime end struct
+struct Entity
+  /// Entity number identifying the tracked game object.
+  number
+  /// True when this entity slot contains information usable by deathmatch-bot queries.
+  valid
+  /// Network entity category selected from the ET_* constants.
+  eType
+  /// Selected or reported weapon identifier.
+  weapon
+  /// Entity-flag mask supplied by the tracked game or botlib entity state.
+  flags
+  /// Powerup state or expiration values indexed by PW_* identifiers.
+  powerups
+  /// Protocol-defined auxiliary entity/player value whose interpretation depends on the game object
+  /// type.
+  generic1
+  /// Entity world-space position used by deathmatch goal and visibility queries.
+  origin
+  /// Lower local entity bound used by deathmatch model and collision queries.
+  mins
+  /// Upper local entity bound used by deathmatch model and collision queries.
+  maxs
+  /// CONTENTS_* mask describing the collision contents of this object or query result.
+  contents
+  /// Primary model index referenced by the entity snapshot.
+  modelindex
+  /// Map entity class name used to select a spawn function.
+  classname
+  /// Transient event identifier associated with the entity or snapshot.
+  event
+  /// Parameter accompanying the current entity event.
+  eventParm
+  /// Primary related entity number carried by an entity event or snapshot.
+  otherEntityNum
+  /// Secondary related entity number carried by an entity event or snapshot.
+  otherEntityNum2
+  /// Timestamp of the most recently recorded entity event.
+  eventTime
+end struct
 /// `Waypoint` record for bot deathmatch, containing `name`, `origin`, `areanum` and `next`.
-struct Waypoint name origin areanum next end struct
+struct Waypoint
+  /// Name used to refer to this navigation goal or waypoint in bot orders.
+  name
+  /// World-space position of this waypoint in a bot navigation route.
+  origin
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// Next waypoint in the linked navigation route.
+  next
+end struct
 /// `LastTask` record for bot deathmatch, containing `valid`, `decisionmaker`, `ltgtype`, `teamgoal` and `teammate`.
-struct LastTask valid decisionmaker ltgtype teamgoal teammate end struct
+struct LastTask
+  /// True while a previously ordered bot task is available for restoration.
+  valid
+  /// Client/entity currently responsible for the bot team decisions.
+  decisionmaker
+  /// Current long-term goal category selected from the LTG_* constants.
+  ltgtype
+  /// Navigation goal associated with the bot current team task.
+  teamgoal
+  /// Teammate entity/client selected for the current cooperative task.
+  teammate
+end struct
 /// `Action` record for bot deathmatch, containing `kind`, `client`, `text`, `value` and `point` and related fields.
-struct Action kind client text value point dispatched end struct
+struct Action
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the recorded deathmatch-bot action.
+  client
+  /// Text payload supplied to the recorded command, chat, or host action.
+  text
+  /// Numeric/result payload supplied to the recorded host action.
+  value
+  /// World-space point attached to a navigation or host action.
+  point
+  /// Nonzero after the action has been delivered to its host callback.
+  dispatched
+end struct
 /// `State` record for bot deathmatch, containing `gametype`, `missionpack`, `maxclients`, `mapname` and `configs` and related fields.
 struct State
-  gametype missionpack maxclients mapname configs skins entities snapshotEntities bspEntities
-  redFlag blueFlag neutralFlag redObelisk blueObelisk neutralObelisk
-  combatServices inventoryServices navigationServices teamState commandServices
-  now randomValue pointAreaFn traceAreasFn visibleFn strategyFn deathmatchFn
-  waypoints lastTasks orderTimes entityEventTimes kamikazeBodies soundNames actions hostActionFn
-  redAltGoals blueAltGoals setup maxBspModelIndex lastTeleportTime lastTeleportOrigin
+  /// GT_* game-mode identifier used for deathmatch, team, and capture-the-flag bot task selection.
+  gametype
+  /// Nonzero when mission-pack rules and content are enabled.
+  missionpack
+  /// Configured number of client slots active in this game state.
+  maxclients
+  /// Engine name/path identifier of the active map.
+  mapname
+  /// Configuration records associated with tracked clients or bot state.
+  configs
+  /// Registered or selected player skin resources.
+  skins
+  /// Game entity records indexed by entity number.
+  entities
+  /// Entity-state records supplied by the current snapshot.
+  snapshotEntities
+  /// Parsed map entity definitions from the BSP entity lump.
+  bspEntities
+  /// Goal/entity reference for the red flag.
+  redFlag
+  /// Goal/entity reference for the blue flag.
+  blueFlag
+  /// Goal/entity reference for the neutral flag.
+  neutralFlag
+  /// Goal/entity reference for the red team obelisk.
+  redObelisk
+  /// Goal/entity reference for the blue team obelisk.
+  blueObelisk
+  /// Goal/entity reference for the neutral harvester obelisk.
+  neutralObelisk
+  /// Callbacks and shared state used by bot combat decisions.
+  combatServices
+  /// Callbacks used to update or query bot inventory values.
+  inventoryServices
+  /// Callbacks and shared state used for bot navigation decisions.
+  navigationServices
+  /// Shared bot team-decision state.
+  teamState
+  /// Callbacks used to deliver or process game commands.
+  commandServices
+  /// Current clock value supplied to the bot decision step.
+  now
+  /// Deterministic random input supplied to the current bot decision.
+  randomValue
+  /// Injected callback for point area; invoked through the State service/state record.
+  pointAreaFn
+  /// Injected callback for trace areas; invoked through the State service/state record.
+  traceAreasFn
+  /// Injected callback for visible; invoked through the State service/state record.
+  visibleFn
+  /// Injected callback for strategy; invoked through the State service/state record.
+  strategyFn
+  /// Injected callback for deathmatch; invoked through the State service/state record.
+  deathmatchFn
+  /// Named waypoint records available to navigation and team orders.
+  waypoints
+  /// Most recently assigned tasks indexed by bot/client.
+  lastTasks
+  /// Order timestamps indexed by bot/client.
+  orderTimes
+  /// Most recently consumed event timestamp for each entity.
+  entityEventTimes
+  /// Corpse entities tracked for kamikaze effects.
+  kamikazeBodies
+  /// Resource names indexed by registered sound identifier.
+  soundNames
+  /// Recorded host actions emitted by bot decision logic.
+  actions
+  /// Injected callback for host action; invoked through the State service/state record.
+  hostActionFn
+  /// Alternate-route goals used when approaching the red base.
+  redAltGoals
+  /// Alternate-route goals used when approaching the blue base.
+  blueAltGoals
+  /// Nonzero after bot/game subsystem setup has completed.
+  setup
+  /// Largest BSP inline-model index available to bot world queries.
+  maxBspModelIndex
+  /// Timestamp of the most recently observed teleport.
+  lastTeleportTime
+  /// Position recorded for the most recently observed teleport.
+  lastTeleportOrigin
 end struct
 
 /// Create a `mq3.game.bot_deathmatch.Goal` record, initializing `origin` as `[0.0,0.0,0.0]`, `mins` as `[0.0,0.0,0.0]` and `maxs` as `[0.0,0.0,0.0]`.

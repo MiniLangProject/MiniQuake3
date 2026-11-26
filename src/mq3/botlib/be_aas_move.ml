@@ -10,18 +10,96 @@ import mq3.botlib.aas_client_movement as movement
 
 /// `Settings` record for be aas move, containing `gravityDirection`, `friction`, `stopSpeed`, `gravity` and `waterFriction` and related fields.
 struct Settings
-  gravityDirection friction stopSpeed gravity waterFriction waterGravity
-  maxVelocity maxWalkVelocity maxCrouchVelocity maxSwimVelocity
-  walkAccelerate airAccelerate swimAccelerate maxStep maxSteepness
-  maxWaterJump maxBarrier jumpVelocity fallDelta5 fallDelta10
-  rsWaterJump rsTeleport rsBarrierJump rsStartCrouch rsStartGrapple
-  rsStartWalkOffLedge rsStartJump rsRocketJump rsBfgJump rsJumpPad
-  rsAirControlledJumpPad rsFuncBob rsStartElevator rsFallDamage5
-  rsFallDamage10 rsMaxFallHeight rsMaxJumpFallHeight
+  /// Normalized direction in which gravity accelerates the moving bot.
+  gravityDirection
+  /// Ground-friction coefficient used by movement prediction.
+  friction
+  /// Minimum speed used when calculating ground-friction deceleration.
+  stopSpeed
+  /// Gravity magnitude used when predicting movement.
+  gravity
+  /// Friction coefficient applied while the bot is swimming.
+  waterFriction
+  /// Gravity magnitude used while the bot is submerged.
+  waterGravity
+  /// Upper bound on velocity used by movement prediction.
+  maxVelocity
+  /// Maximum walking speed allowed by movement prediction.
+  maxWalkVelocity
+  /// Maximum crouched movement speed allowed by movement prediction.
+  maxCrouchVelocity
+  /// Maximum swimming speed allowed by movement prediction.
+  maxSwimVelocity
+  /// Acceleration coefficient applied to grounded walking input.
+  walkAccelerate
+  /// Acceleration coefficient applied while the bot is airborne.
+  airAccelerate
+  /// Acceleration coefficient applied to swimming input.
+  swimAccelerate
+  /// Maximum obstacle height that can be crossed by stepping.
+  maxStep
+  /// Steepness threshold separating walkable ground from an impassable slope.
+  maxSteepness
+  /// Maximum obstacle height accepted by a jump out of water.
+  maxWaterJump
+  /// Maximum obstacle height accepted by a barrier-jump prediction.
+  maxBarrier
+  /// Initial upward velocity applied when beginning a jump.
+  jumpVelocity
+  /// Impact-velocity threshold for the lower fall-damage category.
+  fallDelta5
+  /// Impact-velocity threshold for the higher fall-damage category.
+  fallDelta10
+  /// Routing-cost setting for water jump.
+  rsWaterJump
+  /// Routing-cost setting for teleport.
+  rsTeleport
+  /// Routing-cost setting for barrier jump.
+  rsBarrierJump
+  /// Routing-cost setting for start crouch.
+  rsStartCrouch
+  /// Routing-cost setting for start grapple.
+  rsStartGrapple
+  /// Routing-cost setting for start walk off ledge.
+  rsStartWalkOffLedge
+  /// Routing-cost setting for start jump.
+  rsStartJump
+  /// Routing-cost setting for rocket jump.
+  rsRocketJump
+  /// Routing-cost setting for bfg jump.
+  rsBfgJump
+  /// Routing-cost setting for jump pad.
+  rsJumpPad
+  /// Routing-cost setting for air controlled jump pad.
+  rsAirControlledJumpPad
+  /// Routing-cost setting for func bob.
+  rsFuncBob
+  /// Routing-cost setting for start elevator.
+  rsStartElevator
+  /// Routing-cost setting for fall damage5.
+  rsFallDamage5
+  /// Routing-cost setting for fall damage10.
+  rsFallDamage10
+  /// Routing-cost setting for max fall height.
+  rsMaxFallHeight
+  /// Routing-cost setting for max jump fall height.
+  rsMaxJumpFallHeight
 end struct
 
 /// `Runtime` record for be aas move, containing `services`, `settings`, `againstLadderFn`, `debugClearFn` and `context`.
-struct Runtime services settings againstLadderFn debugClearFn context end struct
+struct Runtime
+  /// Prediction trace and contents services used by the AAS movement facade.
+  services
+  /// Area or runtime settings controlling navigation behavior.
+  settings
+  /// Host callback that reports whether the bot hull is against a climbable ladder.
+  againstLadderFn
+  /// Host callback that removes host-side navigation debug drawings.
+  debugClearFn
+  /// Caller-supplied data associated with ladder checks and debug cleanup around AAS movement
+  /// prediction.
+  context
+end struct
 
 /// Create a `mq3.botlib.be_aas_move.Settings` record, initializing `gravityDirection` as `[0.0,0.0,-1.0]`, `friction` as `6.0` and `stopSpeed` as `100.0`.
 function AAS_InitSettings()

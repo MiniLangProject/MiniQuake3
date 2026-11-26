@@ -6,9 +6,23 @@ package mq3.game.syscalls
 import mq3.compat.numeric as n
 
 /// `Call` record for syscalls, containing `opcode`, `arguments` and `result`.
-struct Call opcode arguments result end struct
+struct Call
+  /// Game syscall opcode recorded for dispatch or replay.
+  opcode
+  /// Token sequences supplied as actual macro arguments.
+  arguments
+  /// Return value of the recorded syscall or host operation.
+  result
+end struct
 /// `Binding` record for syscalls, containing `context`, `invokeFn` and `calls`.
-struct Binding context invokeFn calls end struct
+struct Binding
+  /// Opaque caller-supplied context available to the bound game-module syscall invocation callback.
+  context
+  /// Injected callback for invoke; invoked through the Binding service/state record.
+  invokeFn
+  /// Recorded syscall/host-call requests retained for inspection or replay.
+  calls
+end struct
 
 /// Create a `mq3.game.syscalls.Binding` record, initializing `context` from `context` and `invokeFn` from `syscallFn`.
 /// @param syscallFn Initial value stored in `mq3.game.syscalls.Binding.invokeFn`.
@@ -44,188 +58,371 @@ function invokeVoid(binding,opcode,arguments) result=invoke(binding,opcode,argum
 /// @param arguments Ordered arguments consumed by the call or formatter.
 function invokeFloat(binding,opcode,arguments) result=invoke(binding,opcode,arguments);if result is error then return result end if;return n.bitsFloat(result) end function
 
+/// Game-module syscall number selecting the host print service.
 const G_PRINT=0
+/// Game-module syscall number selecting the host error service.
 const G_ERROR=1
+/// Game-module syscall number selecting the host milliseconds service.
 const G_MILLISECONDS=2
+/// Game-module syscall number selecting the host console variable register service.
 const G_CVAR_REGISTER=3
+/// Game-module syscall number selecting the host console variable update service.
 const G_CVAR_UPDATE=4
+/// Game-module syscall number selecting the host console variable set service.
 const G_CVAR_SET=5
+/// Game-module syscall number selecting the host console variable variable integer value service.
 const G_CVAR_VARIABLE_INTEGER_VALUE=6
+/// Game-module syscall number selecting the host console variable variable string buffer service.
 const G_CVAR_VARIABLE_STRING_BUFFER=7
+/// Game-module syscall number selecting the host argc service.
 const G_ARGC=8
+/// Game-module syscall number selecting the host argv service.
 const G_ARGV=9
+/// Game-module syscall number selecting the host fs fopen file service.
 const G_FS_FOPEN_FILE=10
+/// Game-module syscall number selecting the host fs read service.
 const G_FS_READ=11
+/// Game-module syscall number selecting the host fs write service.
 const G_FS_WRITE=12
+/// Game-module syscall number selecting the host fs fclose file service.
 const G_FS_FCLOSE_FILE=13
+/// Game-module syscall number selecting the host send console command service.
 const G_SEND_CONSOLE_COMMAND=14
+/// Game-module syscall number selecting the host locate game data service.
 const G_LOCATE_GAME_DATA=15
+/// Game-module syscall number selecting the host drop client service.
 const G_DROP_CLIENT=16
+/// Game-module syscall number selecting the host send server command service.
 const G_SEND_SERVER_COMMAND=17
+/// Game-module syscall number selecting the host set configuration string service.
 const G_SET_CONFIGSTRING=18
+/// Game-module syscall number selecting the host get configuration string service.
 const G_GET_CONFIGSTRING=19
+/// Game-module syscall number selecting the host get user information service.
 const G_GET_USERINFO=20
+/// Game-module syscall number selecting the host set user information service.
 const G_SET_USERINFO=21
+/// Game-module syscall number selecting the host get server information service.
 const G_GET_SERVERINFO=22
+/// Game-module syscall number selecting the host set brush model service.
 const G_SET_BRUSH_MODEL=23
+/// Game-module syscall number selecting the host trace service.
 const G_TRACE=24
+/// Game-module syscall number selecting the host point contents service.
 const G_POINT_CONTENTS=25
+/// Game-module syscall number selecting the host in potential visibility set service.
 const G_IN_PVS=26
+/// Game-module syscall number selecting the host in potential visibility set ignore portals service.
 const G_IN_PVS_IGNORE_PORTALS=27
+/// Game-module syscall number selecting the host adjust area portal state service.
 const G_ADJUST_AREA_PORTAL_STATE=28
+/// Game-module syscall number selecting the host areas connected service.
 const G_AREAS_CONNECTED=29
+/// Game-module syscall number selecting the host linkentity service.
 const G_LINKENTITY=30
+/// Game-module syscall number selecting the host unlinkentity service.
 const G_UNLINKENTITY=31
+/// Game-module syscall number selecting the host entities in box service.
 const G_ENTITIES_IN_BOX=32
+/// Game-module syscall number selecting the host entity contact service.
 const G_ENTITY_CONTACT=33
+/// Game-module syscall number selecting the host bot allocate client service.
 const G_BOT_ALLOCATE_CLIENT=34
+/// Game-module syscall number selecting the host bot free client service.
 const G_BOT_FREE_CLIENT=35
+/// Game-module syscall number selecting the host get user command service.
 const G_GET_USERCMD=36
+/// Game-module syscall number selecting the host get entity token service.
 const G_GET_ENTITY_TOKEN=37
+/// Game-module syscall number selecting the host fs getfilelist service.
 const G_FS_GETFILELIST=38
+/// Game-module syscall number selecting the host debug polygon create service.
 const G_DEBUG_POLYGON_CREATE=39
+/// Game-module syscall number selecting the host debug polygon delete service.
 const G_DEBUG_POLYGON_DELETE=40
+/// Game-module syscall number selecting the host real time service.
 const G_REAL_TIME=41
+/// Game-module syscall number selecting the host snapvector service.
 const G_SNAPVECTOR=42
+/// Game-module syscall number selecting the host tracecapsule service.
 const G_TRACECAPSULE=43
+/// Game-module syscall number selecting the host entity contactcapsule service.
 const G_ENTITY_CONTACTCAPSULE=44
+/// Game-module syscall number selecting the host fs seek service.
 const G_FS_SEEK=45
+/// QVM botlib syscall number selecting the setup service.
 const BOTLIB_SETUP=200
+/// QVM botlib syscall number selecting the shutdown service.
 const BOTLIB_SHUTDOWN=201
+/// QVM botlib syscall number selecting the libvar set service.
 const BOTLIB_LIBVAR_SET=202
+/// QVM botlib syscall number selecting the libvar get service.
 const BOTLIB_LIBVAR_GET=203
+/// QVM botlib syscall number selecting the pc add global define service.
 const BOTLIB_PC_ADD_GLOBAL_DEFINE=204
+/// QVM botlib syscall number selecting the start frame service.
 const BOTLIB_START_FRAME=205
+/// QVM botlib syscall number selecting the load map service.
 const BOTLIB_LOAD_MAP=206
+/// QVM botlib syscall number selecting the updatentity service.
 const BOTLIB_UPDATENTITY=207
+/// QVM botlib syscall number selecting the test service.
 const BOTLIB_TEST=208
+/// QVM botlib syscall number selecting the get snapshot entity service.
 const BOTLIB_GET_SNAPSHOT_ENTITY=209
+/// QVM botlib syscall number selecting the get console message service.
 const BOTLIB_GET_CONSOLE_MESSAGE=210
+/// QVM botlib syscall number selecting the user command service.
 const BOTLIB_USER_COMMAND=211
+/// QVM botlib syscall number selecting the AAS enable routing area service.
 const BOTLIB_AAS_ENABLE_ROUTING_AREA=300
+/// QVM botlib syscall number selecting the AAS bbox areas service.
 const BOTLIB_AAS_BBOX_AREAS=301
+/// QVM botlib syscall number selecting the AAS area info service.
 const BOTLIB_AAS_AREA_INFO=302
+/// QVM botlib syscall number selecting the AAS entity info service.
 const BOTLIB_AAS_ENTITY_INFO=303
+/// QVM botlib syscall number selecting the AAS initialized service.
 const BOTLIB_AAS_INITIALIZED=304
+/// QVM botlib syscall number selecting the AAS presence type bounding box service.
 const BOTLIB_AAS_PRESENCE_TYPE_BOUNDING_BOX=305
+/// QVM botlib syscall number selecting the AAS time service.
 const BOTLIB_AAS_TIME=306
+/// QVM botlib syscall number selecting the AAS point area num service.
 const BOTLIB_AAS_POINT_AREA_NUM=307
+/// QVM botlib syscall number selecting the AAS trace areas service.
 const BOTLIB_AAS_TRACE_AREAS=308
+/// QVM botlib syscall number selecting the AAS point contents service.
 const BOTLIB_AAS_POINT_CONTENTS=309
+/// QVM botlib syscall number selecting the AAS next BSP entity service.
 const BOTLIB_AAS_NEXT_BSP_ENTITY=310
+/// QVM botlib syscall number selecting the AAS value for BSP epair key service.
 const BOTLIB_AAS_VALUE_FOR_BSP_EPAIR_KEY=311
+/// QVM botlib syscall number selecting the AAS vector for BSP epair key service.
 const BOTLIB_AAS_VECTOR_FOR_BSP_EPAIR_KEY=312
+/// QVM botlib syscall number selecting the AAS float for BSP epair key service.
 const BOTLIB_AAS_FLOAT_FOR_BSP_EPAIR_KEY=313
+/// QVM botlib syscall number selecting the AAS int for BSP epair key service.
 const BOTLIB_AAS_INT_FOR_BSP_EPAIR_KEY=314
+/// QVM botlib syscall number selecting the AAS area reachability service.
 const BOTLIB_AAS_AREA_REACHABILITY=315
+/// QVM botlib syscall number selecting the AAS area travel time to goal area service.
 const BOTLIB_AAS_AREA_TRAVEL_TIME_TO_GOAL_AREA=316
+/// QVM botlib syscall number selecting the AAS swimming service.
 const BOTLIB_AAS_SWIMMING=317
+/// QVM botlib syscall number selecting the AAS predict client movement service.
 const BOTLIB_AAS_PREDICT_CLIENT_MOVEMENT=318
+/// QVM botlib syscall number selecting the ea say service.
 const BOTLIB_EA_SAY=400
+/// QVM botlib syscall number selecting the ea say team service.
 const BOTLIB_EA_SAY_TEAM=401
+/// QVM botlib syscall number selecting the ea command service.
 const BOTLIB_EA_COMMAND=402
+/// QVM botlib syscall number selecting the ea action service.
 const BOTLIB_EA_ACTION=403
+/// QVM botlib syscall number selecting the ea gesture service.
 const BOTLIB_EA_GESTURE=404
+/// QVM botlib syscall number selecting the ea talk service.
 const BOTLIB_EA_TALK=405
+/// QVM botlib syscall number selecting the ea attack service.
 const BOTLIB_EA_ATTACK=406
+/// QVM botlib syscall number selecting the ea use service.
 const BOTLIB_EA_USE=407
+/// QVM botlib syscall number selecting the ea respawn service.
 const BOTLIB_EA_RESPAWN=408
+/// QVM botlib syscall number selecting the ea crouch service.
 const BOTLIB_EA_CROUCH=409
+/// QVM botlib syscall number selecting the ea move up service.
 const BOTLIB_EA_MOVE_UP=410
+/// QVM botlib syscall number selecting the ea move down service.
 const BOTLIB_EA_MOVE_DOWN=411
+/// QVM botlib syscall number selecting the ea move forward service.
 const BOTLIB_EA_MOVE_FORWARD=412
+/// QVM botlib syscall number selecting the ea move back service.
 const BOTLIB_EA_MOVE_BACK=413
+/// QVM botlib syscall number selecting the ea move left service.
 const BOTLIB_EA_MOVE_LEFT=414
+/// QVM botlib syscall number selecting the ea move right service.
 const BOTLIB_EA_MOVE_RIGHT=415
+/// QVM botlib syscall number selecting the ea select weapon service.
 const BOTLIB_EA_SELECT_WEAPON=416
+/// QVM botlib syscall number selecting the ea jump service.
 const BOTLIB_EA_JUMP=417
+/// QVM botlib syscall number selecting the ea delayed jump service.
 const BOTLIB_EA_DELAYED_JUMP=418
+/// QVM botlib syscall number selecting the ea move service.
 const BOTLIB_EA_MOVE=419
+/// QVM botlib syscall number selecting the ea view service.
 const BOTLIB_EA_VIEW=420
+/// QVM botlib syscall number selecting the ea end regular service.
 const BOTLIB_EA_END_REGULAR=421
+/// QVM botlib syscall number selecting the ea get input service.
 const BOTLIB_EA_GET_INPUT=422
+/// QVM botlib syscall number selecting the ea reset input service.
 const BOTLIB_EA_RESET_INPUT=423
+/// QVM botlib syscall number selecting the ai load character service.
 const BOTLIB_AI_LOAD_CHARACTER=500
+/// QVM botlib syscall number selecting the ai free character service.
 const BOTLIB_AI_FREE_CHARACTER=501
+/// QVM botlib syscall number selecting the ai characteristic float service.
 const BOTLIB_AI_CHARACTERISTIC_FLOAT=502
+/// QVM botlib syscall number selecting the ai characteristic bfloat service.
 const BOTLIB_AI_CHARACTERISTIC_BFLOAT=503
+/// QVM botlib syscall number selecting the ai characteristic integer service.
 const BOTLIB_AI_CHARACTERISTIC_INTEGER=504
+/// QVM botlib syscall number selecting the ai characteristic binteger service.
 const BOTLIB_AI_CHARACTERISTIC_BINTEGER=505
+/// QVM botlib syscall number selecting the ai characteristic string service.
 const BOTLIB_AI_CHARACTERISTIC_STRING=506
+/// QVM botlib syscall number selecting the ai alloc chat state service.
 const BOTLIB_AI_ALLOC_CHAT_STATE=507
+/// QVM botlib syscall number selecting the ai free chat state service.
 const BOTLIB_AI_FREE_CHAT_STATE=508
+/// QVM botlib syscall number selecting the ai queue console message service.
 const BOTLIB_AI_QUEUE_CONSOLE_MESSAGE=509
+/// QVM botlib syscall number selecting the ai remove console message service.
 const BOTLIB_AI_REMOVE_CONSOLE_MESSAGE=510
+/// QVM botlib syscall number selecting the ai next console message service.
 const BOTLIB_AI_NEXT_CONSOLE_MESSAGE=511
+/// QVM botlib syscall number selecting the ai num console message service.
 const BOTLIB_AI_NUM_CONSOLE_MESSAGE=512
+/// QVM botlib syscall number selecting the ai initial chat service.
 const BOTLIB_AI_INITIAL_CHAT=513
+/// QVM botlib syscall number selecting the ai reply chat service.
 const BOTLIB_AI_REPLY_CHAT=514
+/// QVM botlib syscall number selecting the ai chat length service.
 const BOTLIB_AI_CHAT_LENGTH=515
+/// QVM botlib syscall number selecting the ai enter chat service.
 const BOTLIB_AI_ENTER_CHAT=516
+/// QVM botlib syscall number selecting the ai string contains service.
 const BOTLIB_AI_STRING_CONTAINS=517
+/// QVM botlib syscall number selecting the ai find match service.
 const BOTLIB_AI_FIND_MATCH=518
+/// QVM botlib syscall number selecting the ai match variable service.
 const BOTLIB_AI_MATCH_VARIABLE=519
+/// QVM botlib syscall number selecting the ai unify white spaces service.
 const BOTLIB_AI_UNIFY_WHITE_SPACES=520
+/// QVM botlib syscall number selecting the ai replace synonyms service.
 const BOTLIB_AI_REPLACE_SYNONYMS=521
+/// QVM botlib syscall number selecting the ai load chat file service.
 const BOTLIB_AI_LOAD_CHAT_FILE=522
+/// QVM botlib syscall number selecting the ai set chat gender service.
 const BOTLIB_AI_SET_CHAT_GENDER=523
+/// QVM botlib syscall number selecting the ai set chat name service.
 const BOTLIB_AI_SET_CHAT_NAME=524
+/// QVM botlib syscall number selecting the ai reset goal state service.
 const BOTLIB_AI_RESET_GOAL_STATE=525
+/// QVM botlib syscall number selecting the ai reset avoid goals service.
 const BOTLIB_AI_RESET_AVOID_GOALS=526
+/// QVM botlib syscall number selecting the ai push goal service.
 const BOTLIB_AI_PUSH_GOAL=527
+/// QVM botlib syscall number selecting the ai pop goal service.
 const BOTLIB_AI_POP_GOAL=528
+/// QVM botlib syscall number selecting the ai empty goal stack service.
 const BOTLIB_AI_EMPTY_GOAL_STACK=529
+/// QVM botlib syscall number selecting the ai dump avoid goals service.
 const BOTLIB_AI_DUMP_AVOID_GOALS=530
+/// QVM botlib syscall number selecting the ai dump goal stack service.
 const BOTLIB_AI_DUMP_GOAL_STACK=531
+/// QVM botlib syscall number selecting the ai goal name service.
 const BOTLIB_AI_GOAL_NAME=532
+/// QVM botlib syscall number selecting the ai get top goal service.
 const BOTLIB_AI_GET_TOP_GOAL=533
+/// QVM botlib syscall number selecting the ai get second goal service.
 const BOTLIB_AI_GET_SECOND_GOAL=534
+/// QVM botlib syscall number selecting the ai choose ltg item service.
 const BOTLIB_AI_CHOOSE_LTG_ITEM=535
+/// QVM botlib syscall number selecting the ai choose nbg item service.
 const BOTLIB_AI_CHOOSE_NBG_ITEM=536
+/// QVM botlib syscall number selecting the ai touching goal service.
 const BOTLIB_AI_TOUCHING_GOAL=537
+/// QVM botlib syscall number selecting the ai item goal in vis but not visible service.
 const BOTLIB_AI_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE=538
+/// QVM botlib syscall number selecting the ai get level item goal service.
 const BOTLIB_AI_GET_LEVEL_ITEM_GOAL=539
+/// QVM botlib syscall number selecting the ai avoid goal time service.
 const BOTLIB_AI_AVOID_GOAL_TIME=540
+/// QVM botlib syscall number selecting the ai init level items service.
 const BOTLIB_AI_INIT_LEVEL_ITEMS=541
+/// QVM botlib syscall number selecting the ai update entity items service.
 const BOTLIB_AI_UPDATE_ENTITY_ITEMS=542
+/// QVM botlib syscall number selecting the ai load item weights service.
 const BOTLIB_AI_LOAD_ITEM_WEIGHTS=543
+/// QVM botlib syscall number selecting the ai free item weights service.
 const BOTLIB_AI_FREE_ITEM_WEIGHTS=544
+/// QVM botlib syscall number selecting the ai save goal fuzzy logic service.
 const BOTLIB_AI_SAVE_GOAL_FUZZY_LOGIC=545
+/// QVM botlib syscall number selecting the ai alloc goal state service.
 const BOTLIB_AI_ALLOC_GOAL_STATE=546
+/// QVM botlib syscall number selecting the ai free goal state service.
 const BOTLIB_AI_FREE_GOAL_STATE=547
+/// QVM botlib syscall number selecting the ai reset move state service.
 const BOTLIB_AI_RESET_MOVE_STATE=548
+/// QVM botlib syscall number selecting the ai move to goal service.
 const BOTLIB_AI_MOVE_TO_GOAL=549
+/// QVM botlib syscall number selecting the ai move in direction service.
 const BOTLIB_AI_MOVE_IN_DIRECTION=550
+/// QVM botlib syscall number selecting the ai reset avoid reach service.
 const BOTLIB_AI_RESET_AVOID_REACH=551
+/// QVM botlib syscall number selecting the ai reset last avoid reach service.
 const BOTLIB_AI_RESET_LAST_AVOID_REACH=552
+/// QVM botlib syscall number selecting the ai reachability area service.
 const BOTLIB_AI_REACHABILITY_AREA=553
+/// QVM botlib syscall number selecting the ai movement view target service.
 const BOTLIB_AI_MOVEMENT_VIEW_TARGET=554
+/// QVM botlib syscall number selecting the ai alloc move state service.
 const BOTLIB_AI_ALLOC_MOVE_STATE=555
+/// QVM botlib syscall number selecting the ai free move state service.
 const BOTLIB_AI_FREE_MOVE_STATE=556
+/// QVM botlib syscall number selecting the ai init move state service.
 const BOTLIB_AI_INIT_MOVE_STATE=557
+/// QVM botlib syscall number selecting the ai choose best fight weapon service.
 const BOTLIB_AI_CHOOSE_BEST_FIGHT_WEAPON=558
+/// QVM botlib syscall number selecting the ai get weapon info service.
 const BOTLIB_AI_GET_WEAPON_INFO=559
+/// QVM botlib syscall number selecting the ai load weapon weights service.
 const BOTLIB_AI_LOAD_WEAPON_WEIGHTS=560
+/// QVM botlib syscall number selecting the ai alloc weapon state service.
 const BOTLIB_AI_ALLOC_WEAPON_STATE=561
+/// QVM botlib syscall number selecting the ai free weapon state service.
 const BOTLIB_AI_FREE_WEAPON_STATE=562
+/// QVM botlib syscall number selecting the ai reset weapon state service.
 const BOTLIB_AI_RESET_WEAPON_STATE=563
+/// QVM botlib syscall number selecting the ai genetic parents and child selection service.
 const BOTLIB_AI_GENETIC_PARENTS_AND_CHILD_SELECTION=564
+/// QVM botlib syscall number selecting the ai interbreed goal fuzzy logic service.
 const BOTLIB_AI_INTERBREED_GOAL_FUZZY_LOGIC=565
+/// QVM botlib syscall number selecting the ai mutate goal fuzzy logic service.
 const BOTLIB_AI_MUTATE_GOAL_FUZZY_LOGIC=566
+/// QVM botlib syscall number selecting the ai get next camp spot goal service.
 const BOTLIB_AI_GET_NEXT_CAMP_SPOT_GOAL=567
+/// QVM botlib syscall number selecting the ai get map location goal service.
 const BOTLIB_AI_GET_MAP_LOCATION_GOAL=568
+/// QVM botlib syscall number selecting the ai num initial chats service.
 const BOTLIB_AI_NUM_INITIAL_CHATS=569
+/// QVM botlib syscall number selecting the ai get chat message service.
 const BOTLIB_AI_GET_CHAT_MESSAGE=570
+/// QVM botlib syscall number selecting the ai remove from avoid goals service.
 const BOTLIB_AI_REMOVE_FROM_AVOID_GOALS=571
+/// QVM botlib syscall number selecting the ai predict visible position service.
 const BOTLIB_AI_PREDICT_VISIBLE_POSITION=572
+/// QVM botlib syscall number selecting the ai set avoid goal time service.
 const BOTLIB_AI_SET_AVOID_GOAL_TIME=573
+/// QVM botlib syscall number selecting the ai add avoid spot service.
 const BOTLIB_AI_ADD_AVOID_SPOT=574
+/// QVM botlib syscall number selecting the AAS alternative route goal service.
 const BOTLIB_AAS_ALTERNATIVE_ROUTE_GOAL=575
+/// QVM botlib syscall number selecting the AAS predict route service.
 const BOTLIB_AAS_PREDICT_ROUTE=576
+/// QVM botlib syscall number selecting the AAS point reachability area index service.
 const BOTLIB_AAS_POINT_REACHABILITY_AREA_INDEX=577
+/// QVM botlib syscall number selecting the pc load source service.
 const BOTLIB_PC_LOAD_SOURCE=578
+/// QVM botlib syscall number selecting the pc free source service.
 const BOTLIB_PC_FREE_SOURCE=579
+/// QVM botlib syscall number selecting the pc read token service.
 const BOTLIB_PC_READ_TOKEN=580
+/// QVM botlib syscall number selecting the pc source file and line service.
 const BOTLIB_PC_SOURCE_FILE_AND_LINE=581
 
 // trap_Printf

@@ -10,13 +10,55 @@ import mq3.botlib.ai_goal_state as goals
 import mq3.botlib.ai_goal_selection as selection
 import mq3.botlib.ai_map_goals as mapGoals
 
+/// Minimum interval retained for a goal-avoidance request.
 const AVOID_MINIMUM_TIME=10.0
+/// Default interval for temporarily avoiding a selected goal.
 const AVOID_DEFAULT_TIME=30.0
 
 /// `Host` record for ai goal runtime, containing `userContext`, `timeFn`, `logFn`, `printFn` and `levelItems`.
-struct Host userContext timeFn logFn printFn levelItems end struct
+struct Host
+  /// Caller-owned context forwarded to the configured host services.
+  userContext
+  /// Host callback that supplies the current time used by the bot runtime.
+  timeFn
+  /// Host callback that writes a bot-runtime message to the host log.
+  logFn
+  /// Host callback that prints messages from the native-compatible bot goal API.
+  printFn
+  /// Current item goals discovered from the map and its dynamic entities.
+  levelItems
+end struct
 /// `State` record for ai goal runtime, containing `pools`, `itemWeights`, `levelItems`, `goals` and `selection` and related fields.
-struct State pools itemWeights levelItems goals selection mapGoals host aasEntities aas bspEntities gameType placeFn freeLevelItems setup end struct
+struct State
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// Fuzzy item-weight runtime used by the goal subsystem.
+  itemWeights
+  /// Current item goals discovered from the map and its dynamic entities.
+  levelItems
+  /// Per-bot goal-stack and avoidance-state runtime.
+  goals
+  /// Goal-selection runtime combining item weights with route costs.
+  selection
+  /// Named locations and camp spots parsed from the map.
+  mapGoals
+  /// Host callback interface supplying external services to this runtime.
+  host
+  /// Navigation entity information used to track live map items.
+  aasEntities
+  /// AAS navigation runtime used for area and route queries.
+  aas
+  /// Parsed key/value definitions from the BSP entity lump.
+  bspEntities
+  /// Game-mode identifier used when applying mode-specific rules.
+  gameType
+  /// Host callback that places a discovered item goal in a usable AAS area.
+  placeFn
+  /// Level-item records available for reuse.
+  freeLevelItems
+  /// True after the bot-library setup sequence has completed.
+  setup
+end struct
 
 /// Use `host.timeFn` to perform `hostTime`. Return paths include `host.timeFn(host.userContext)`.
 /// @param host Host service configuration; accesses `timeFn` and `userContext`.

@@ -7,150 +7,371 @@ import mq3.game.bot_ai_headers as aiheaders
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 
+/// Entity-number sentinel meaning that no entity was hit or referenced.
 const ENTITYNUM_NONE=1023
+/// Player movement-state bit indicating ducked.
 const PMF_DUCKED=1
+/// Player movement-state bit indicating time knockback.
 const PMF_TIME_KNOCKBACK=64
+/// Player movement-state bit indicating time waterjump.
 const PMF_TIME_WATERJUMP=256
+/// AAS presence-mask value selecting the normal collision shape.
 const PRESENCE_NORMAL=aiheaders.PRESENCE_NORMAL
+/// AAS presence-mask value selecting the crouch collision shape.
 const PRESENCE_CROUCH=aiheaders.PRESENCE_CROUCH
+/// Bot movement-state flag indicating onground.
 const MFL_ONGROUND=2
+/// Bot movement-state flag indicating waterjump.
 const MFL_WATERJUMP=16
+/// Bot movement-state flag indicating teleported.
 const MFL_TELEPORTED=32
+/// Bot movement-state flag indicating walk.
 const MFL_WALK=512
+/// Bot movement-type flag selecting walk.
 const MOVE_WALK=1
+/// Network entity-type identifier representing mover.
 const ET_MOVER=4
+/// AAS route-prediction stop-event flag for usetraveltype.
 const RSE_USETRAVELTYPE=2
+/// AAS route-prediction stop-event flag for entercontents.
 const RSE_ENTERCONTENTS=4
+/// AAS area-content flag marking mover.
 const AREACONTENTS_MOVER=1024
+/// AAS area-content flag marking modelnumshift.
 const AREACONTENTS_MODELNUMSHIFT=24
+/// AAS area-content flag marking modelnum.
 const AREACONTENTS_MODELNUM=0xff000000
+/// AAS travel-mask bit allowing the bridge travel category.
 const TFL_BRIDGE=0x04000000
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Upper bound on activatestack represented by mq3.game.bot_navigation.
 const MAX_ACTIVATESTACK=aiheaders.MAX_ACTIVATESTACK
+/// Upper bound on activateareas represented by mq3.game.bot_navigation.
 const MAX_ACTIVATEAREAS=aiheaders.MAX_ACTIVATEAREAS
+/// Bot-character characteristic index for camper. Definition: tendency to camp float [0, 1].
 const CHARACTERISTIC_CAMPER=headers.CHARACTERISTIC_CAMPER
+/// Bot-character characteristic index for croucher. Definition: movement tendency to crouch float [0,
+/// 1].
 const CHARACTERISTIC_CROUCHER=headers.CHARACTERISTIC_CROUCHER
+/// Long-term bot goal identifier selecting teamhelp behavior.
 const LTG_TEAMHELP=aiheaders.LTG_TEAMHELP
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=aiheaders.LTG_TEAMACCOMPANY
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=aiheaders.LTG_DEFENDKEYAREA
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=aiheaders.LTG_GETFLAG
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=aiheaders.LTG_RUSHBASE
+/// Long-term bot goal identifier selecting camp behavior.
 const LTG_CAMP=aiheaders.LTG_CAMP
+/// Long-term bot goal identifier selecting follow a camp order behavior.
 const LTG_CAMPORDER=aiheaders.LTG_CAMPORDER
+/// Long-term bot goal identifier selecting patrol behavior.
 const LTG_PATROL=aiheaders.LTG_PATROL
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=aiheaders.LTG_RETURNFLAG
+/// Long-term bot goal identifier selecting getitem behavior.
 const LTG_GETITEM=aiheaders.LTG_GETITEM
+/// Long-term bot goal identifier selecting kill behavior.
 const LTG_KILL=aiheaders.LTG_KILL
+/// Patrol behavior flag enabling back.
 const PATROL_BACK=aiheaders.PATROL_BACK
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Default combination of permitted AAS travel types used by bot movement queries.
 const TFL_DEFAULT=0x011c0fbe
+/// Bot inventory slot used to read or update rocket launcher.
 const INVENTORY_ROCKETLAUNCHER=headers.INVENTORY_ROCKETLAUNCHER
+/// Bot inventory slot used to read or update railgun.
 const INVENTORY_RAILGUN=headers.INVENTORY_RAILGUN
+/// Bot inventory slot used to read or update bfg10 k.
 const INVENTORY_BFG10K=headers.INVENTORY_BFG10K
+/// Bot inventory slot used to read or update slugs.
 const INVENTORY_SLUGS=headers.INVENTORY_SLUGS
+/// Bot inventory slot used to read or update bfgammo.
 const INVENTORY_BFGAMMO=headers.INVENTORY_BFGAMMO
+/// Bot goal flag marking the goal as item.
 const GFL_ITEM=1
+/// Bot goal flag marking the goal as dropped.
 const GFL_DROPPED=4
+/// Bot goal flag marking the goal as air.
 const GFL_AIR=128
+/// Collision-contents bit identifying solid space or objects.
 const CONTENTS_SOLID=headers.CONTENTS_SOLID
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Collision-contents bit identifying water space or objects.
 const CONTENTS_WATER=headers.CONTENTS_WATER
+/// Collision-contents bit identifying playerclip space or objects.
 const CONTENTS_PLAYERCLIP=headers.CONTENTS_PLAYERCLIP
 
 /// `InitMove` record for bot navigation, containing `origin`, `velocity`, `viewoffset`, `entitynum` and `client` and related fields.
 struct InitMove
+  /// Current bot position passed to botlib during movement-state initialization.
   origin
+  /// Velocity vector used to advance movement or predict a position.
   velocity
+  /// Offset from the entity origin to the bot viewing position.
   viewoffset
+  /// Entity number passed to botlib for movement and collision setup.
   entitynum
+  /// Client slot passed to botlib when initializing this bot's movement state.
   client
+  /// Time interval used for the current bot thinking/update step.
   thinktime
+  /// Additional movement flags ORed into the bot movement request.
   orMoveflags
+  /// Bot presence shape used when choosing navigation and collision bounds.
   presencetype
+  /// Player or bot viewing angles used for aiming and command generation.
   viewangles
 end struct
 /// `MoveResult` record for bot navigation, containing `failure`, `blocked`, `type`, `flags` and `blockentity` and related fields.
-struct MoveResult failure blocked type flags blockentity movedir end struct
+struct MoveResult
+  /// Nonzero when the bot movement operation could not be completed.
+  failure
+  /// Mover callback invoked when another object obstructs movement.
+  blocked
+  /// Movement-result type reported by the bot navigation operation.
+  type
+  /// MOVERESULT_* flags describing the result of the bot movement attempt.
+  flags
+  /// Entity number of the object blocking the bot movement attempt.
+  blockentity
+  /// Normalized direction along which the entity moves or fires.
+  movedir
+end struct
 /// `Route` record for bot navigation, containing `stopevent` and `endcontents`.
-struct Route stopevent endcontents end struct
+struct Route
+  /// Event or mask that caused movement/route prediction to stop.
+  stopevent
+  /// Contents mask at the final predicted movement position.
+  endcontents
+end struct
 /// `Goal` record for bot navigation, containing `areanum`, `entitynum`, `origin`, `mins` and `maxs` and related fields.
-struct Goal areanum entitynum origin mins maxs iteminfo number flags end struct
+struct Goal
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// Entity number associated with the bot navigation goal.
+  entitynum
+  /// World-space target position of the bot navigation goal.
+  origin
+  /// Lower local bounding-box corner of the bot navigation goal.
+  mins
+  /// Upper local bounding-box corner of the bot navigation goal.
+  maxs
+  /// Item-definition index or information attached to this navigation goal.
+  iteminfo
+  /// Botlib goal number identifying this navigation target.
+  number
+  /// GFL_* flags describing this bot navigation goal.
+  flags
+end struct
 /// `EntityInfo` record for bot navigation, containing `origin` and `modelindex`.
-struct EntityInfo origin modelindex end struct
+struct EntityInfo
+  /// Reported position of the entity inspected by navigation helpers.
+  origin
+  /// Primary model index referenced by the entity snapshot.
+  modelindex
+end struct
 /// `LongTermEntity` record for bot navigation, containing `valid`, `origin`, `mins`, `maxs` and `angles`.
-struct LongTermEntity valid origin mins maxs angles end struct
+struct LongTermEntity
+  /// True when entity information is available for long-term goal selection.
+  valid
+  /// Reported world-space position of the entity considered for a long-term goal.
+  origin
+  /// Lower local collision-bound corner of the entity considered for a long-term goal.
+  mins
+  /// Upper local collision-bound corner of the entity considered for a long-term goal.
+  maxs
+  /// Orientation angles used by the entity or movement operation.
+  angles
+end struct
 /// `Waypoint` record for bot navigation, containing `name`, `goal`, `next` and `prev`.
-struct Waypoint name goal next prev end struct
+struct Waypoint
+  /// Name used to refer to this navigation goal or waypoint in bot orders.
+  name
+  /// Navigation or activation goal associated with the current task.
+  goal
+  /// Next waypoint in the linked navigation route.
+  next
+  /// Previous waypoint in the linked navigation route.
+  prev
+end struct
 /// `NavTrace` record for bot navigation, containing `fraction`, `endpos` and `startsolid`.
-struct NavTrace fraction endpos startsolid end struct
+struct NavTrace
+  /// Fraction of the requested trace completed before the first blocking collision.
+  fraction
+  /// Final position reached by the collision trace.
+  endpos
+  /// Nonzero when the requested trace begins inside solid space.
+  startsolid
+end struct
 /// `ActivateGoal` record for bot navigation, containing `inuse`, `time`, `startTime`, `justusedTime` and `origin` and related fields.
-struct ActivateGoal inuse time startTime justusedTime origin goal numareas areas areasdisabled nextIndex shoot weapon target end struct
+struct ActivateGoal
+  /// Nonzero when this entity, client, or bot record currently represents a live allocated object.
+  inuse
+  /// Time limit associated with completing the activation goal.
+  time
+  /// Timestamp at which work on the activation goal began.
+  startTime
+  /// Timestamp at which this activation goal was most recently used.
+  justusedTime
+  /// World-space activation target used while approaching or triggering an obstacle.
+  origin
+  /// Navigation or activation goal associated with the current task.
+  goal
+  /// Number of AAS routing areas recorded for the activation goal.
+  numareas
+  /// AAS routing-area numbers affected by the blocking or activatable entity.
+  areas
+  /// Nonzero while the recorded AAS areas are disabled for routing.
+  areasdisabled
+  /// Index of the next activation-goal record in the active chain.
+  nextIndex
+  /// Nonzero when the activation goal must be triggered by shooting.
+  shoot
+  /// Selected or reported weapon identifier.
+  weapon
+  /// Target-name selector identifying entities activated by this entity.
+  target
+end struct
 /// `Services` record for bot navigation, containing `initMoveStateFn`, `moveInDirectionFn`, `randomFn`, `floatTimeFn` and `predictRouteFn` and related fields.
 struct Services
+  /// Injected callback for init move state; invoked through the Services service/state record.
   initMoveStateFn
+  /// Injected callback for move in direction; invoked through the Services service/state record.
   moveInDirectionFn
+  /// Injected callback for random; invoked through the Services service/state record.
   randomFn
+  /// Injected callback for float time; invoked through the Services service/state record.
   floatTimeFn
+  /// Injected callback for predict route; invoked through the Services service/state record.
   predictRouteFn
+  /// Injected callback for model entity; invoked through the Services service/state record.
   modelEntityFn
+  /// Injected callback for get activate goal; invoked through the Services service/state record.
   getActivateGoalFn
+  /// Injected callback for activation stack in use; invoked through the Services service/state record.
   activationStackInUseFn
+  /// Injected callback for clear activation stack; invoked through the Services service/state record.
   clearActivationStackFn
+  /// Injected callback for is going to activate; invoked through the Services service/state record.
   isGoingToActivateFn
+  /// Injected callback for go for activate goal; invoked through the Services service/state record.
   goForActivateGoalFn
+  /// Injected callback for enable activate goal areas; invoked through the Services service/state
+  /// record.
   enableActivateGoalAreasFn
+  /// Injected callback for area travel time; invoked through the Services service/state record.
   areaTravelTimeFn
+  /// Injected callback for enable routing area; invoked through the Services service/state record.
   enableRoutingAreaFn
+  /// Injected callback for entity info; invoked through the Services service/state record.
   entityInfoFn
+  /// Injected callback for enter activate node; invoked through the Services service/state record.
   enterActivateNodeFn
+  /// Injected callback for next BSP entity; invoked through the Services service/state record.
   nextBspEntityFn
+  /// Injected callback for string key; invoked through the Services service/state record.
   stringKeyFn
+  /// Injected callback for float key; invoked through the Services service/state record.
   floatKeyFn
+  /// Injected callback for int key; invoked through the Services service/state record.
   intKeyFn
+  /// Injected callback for vector key; invoked through the Services service/state record.
   vectorKeyFn
+  /// Injected callback for door activate goal; invoked through the Services service/state record.
   doorActivateGoalFn
+  /// Injected callback for button activate goal; invoked through the Services service/state record.
   buttonActivateGoalFn
+  /// Injected callback for trigger activate goal; invoked through the Services service/state record.
   triggerActivateGoalFn
+  /// Injected callback for model bounds; invoked through the Services service/state record.
   modelBoundsFn
+  /// Injected callback for bbox areas; invoked through the Services service/state record.
   bboxAreasFn
+  /// Injected callback for area reachability; invoked through the Services service/state record.
   areaReachabilityFn
+  /// Injected callback for area contents; invoked through the Services service/state record.
   areaContentsFn
+  /// Injected callback for diagnostic; invoked through the Services service/state record.
   diagnosticFn
+  /// Injected callback for characteristic; invoked through the Services service/state record.
   characteristicFn
+  /// Injected callback for aggression; invoked through the Services service/state record.
   aggressionFn
+  /// Injected callback for next camp spot; invoked through the Services service/state record.
   nextCampSpotFn
+  /// Injected callback for level item goal; invoked through the Services service/state record.
   levelItemGoalFn
+  /// Injected callback for remove avoid goal; invoked through the Services service/state record.
   removeAvoidGoalFn
+  /// Injected callback for trace; invoked through the Services service/state record.
   traceFn
+  /// Injected callback for point area; invoked through the Services service/state record.
   pointAreaFn
+  /// Injected callback for push goal; invoked through the Services service/state record.
   pushGoalFn
+  /// Injected callback for choose nbg; invoked through the Services service/state record.
   chooseNbgFn
+  /// Injected callback for top goal; invoked through the Services service/state record.
   topGoalFn
+  /// Injected callback for point contents; invoked through the Services service/state record.
   pointContentsFn
+  /// Injected callback for pop goal; invoked through the Services service/state record.
   popGoalFn
+  /// Injected callback for reset avoid goals; invoked through the Services service/state record.
   resetAvoidGoalsFn
+  /// Injected callback for carrying flag; invoked through the Services service/state record.
   carryingFlagFn
+  /// Injected callback for touching goal; invoked through the Services service/state record.
   touchingGoalFn
+  /// Injected callback for item not visible; invoked through the Services service/state record.
   itemNotVisibleFn
+  /// Injected callback for swimming; invoked through the Services service/state record.
   swimmingFn
+  /// Injected callback for set avoid goal time; invoked through the Services service/state record.
   setAvoidGoalTimeFn
+  /// Injected callback for choose weapon; invoked through the Services service/state record.
   chooseWeaponFn
+  /// Injected callback for choose ltg; invoked through the Services service/state record.
   chooseLtgFn
+  /// Injected callback for reset avoid reach; invoked through the Services service/state record.
   resetAvoidReachFn
+  /// Injected callback for entity long term info; invoked through the Services service/state record.
   entityLongTermInfoFn
+  /// Injected callback for entity visible; invoked through the Services service/state record.
   entityVisibleFn
+  /// Injected callback for notify; invoked through the Services service/state record.
   notifyFn
+  /// Injected callback for reset last avoid reach; invoked through the Services service/state record.
   resetLastAvoidReachFn
+  /// Injected callback for gesture; invoked through the Services service/state record.
   gestureFn
+  /// Injected callback for crouch; invoked through the Services service/state record.
   crouchFn
+  /// Injected callback for roam goal; invoked through the Services service/state record.
   roamGoalFn
+  /// Injected callback for point contents entity; invoked through the Services service/state record.
   pointContentsEntityFn
+  /// Injected callback for persistent powerup weapon; invoked through the Services service/state
+  /// record.
   persistentPowerupWeaponFn
+  /// Injected callback for team; invoked through the Services service/state record.
   teamFn
+  /// Injected callback for flag goal; invoked through the Services service/state record.
   flagGoalFn
+  /// Injected callback for enter seek nbg; invoked through the Services service/state record.
   enterSeekNbgFn
+  /// GT_* game-mode identifier used for mode-specific bot navigation and long-term goal decisions.
   gametype
+  /// Opaque caller-supplied context available to bot route prediction, movement, activation, and
+  /// goal-selection callbacks.
   context
 end struct
 

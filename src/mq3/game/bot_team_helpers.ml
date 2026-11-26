@@ -7,39 +7,74 @@ import std.string as strings
 import mq3.compat.numeric as n
 import mq3.game.bot_ai_headers as aiheaders
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Team identifier selecting the spectator team/category.
 const TEAM_SPECTATOR=3
+/// Bot team-task preference bit indicating a preference for attacker.
 const TEAMTP_ATTACKER=aiheaders.TEAMTP_ATTACKER
+/// Bot team-task preference bit indicating a preference for defender.
 const TEAMTP_DEFENDER=aiheaders.TEAMTP_DEFENDER
+/// Capture-the-flag strategy identifier selecting agressive.
 const CTFS_AGRESSIVE=aiheaders.CTFS_AGRESSIVE
 
 /// `State` record for bot team helpers, containing `names`, `preferenceNames`, `preferences`, `configs` and `maxclients` and related fields.
 struct State
+  /// Name strings indexed by the corresponding state-table entries.
   names
+  /// Names of the supported bot team-task preferences.
   preferenceNames
+  /// Stored bot team-task preference values.
   preferences
+  /// Configuration records associated with tracked clients or bot state.
   configs
+  /// Configured number of client slots active in this game state.
   maxclients
+  /// Injected callback for same team; invoked through the State service/state record.
   sameTeamFn
+  /// Injected callback for client from name; invoked through the State service/state record.
   clientFromNameFn
+  /// Injected callback for get chat message; invoked through the State service/state record.
   getChatMessageFn
+  /// Injected callback for queue console message; invoked through the State service/state record.
   queueConsoleMessageFn
+  /// Injected callback for enter chat; invoked through the State service/state record.
   enterChatFn
+  /// Injected callback for team; invoked through the State service/state record.
   teamFn
+  /// Injected callback for capture the flag both at base; invoked through the State service/state
+  /// record.
   ctfBothAtBaseFn
+  /// Injected callback for capture the flag enemy not at base; invoked through the State service/state
+  /// record.
   ctfEnemyNotAtBaseFn
+  /// Injected callback for capture the flag own not at base; invoked through the State service/state
+  /// record.
   ctfOwnNotAtBaseFn
+  /// Injected callback for capture the flag both not at base; invoked through the State service/state
+  /// record.
   ctfBothNotAtBaseFn
+  /// Injected callback for initial chat; invoked through the State service/state record.
   initialChatFn
+  /// Injected callback for order always; invoked through the State service/state record.
   orderAlwaysFn
+  /// Per-entity markers identifying allocated game entity slots.
   entityInUse
+  /// Server entity flags indexed by entity number.
   entitySvFlags
+  /// Markers identifying clients excluded from team-leader selection.
   notLeader
+  /// Injected callback for set last ordered task; invoked through the State service/state record.
   setLastOrderedTaskFn
+  /// Injected callback for defend; invoked through the State service/state record.
   defendFn
+  /// GT_* game-mode identifier used for team orders and capture-the-flag helper decisions.
   gametype
+  /// Injected callback for get client pm type; invoked through the State service/state record.
   getClientPmTypeFn
+  /// Opaque caller-supplied context available to bot team lookup, ordering, and team-chat callbacks.
   context
+  /// Injected callback for sort base; invoked through the State service/state record.
   sortBaseFn
 end struct
 

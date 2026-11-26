@@ -5,13 +5,51 @@ package mq3.video.roq_video
 import mq3.format.roq as roq
 import mq3.compat.numeric as numeric
 
+/// Upper bound on dimension represented by mq3.video.roq_video.
 const MAX_DIMENSION=1024
 /// Frame record for video.roq_video, containing `width`, `height`, `pixels`, `number`.
-struct Frame width height pixels number end struct
+struct Frame
+  /// Image/frame width in pixels.
+  width
+  /// Image/frame height in pixels.
+  height
+  /// Decoded image/frame pixel data.
+  pixels
+  /// Sequence number of this decoded video frame.
+  number
+end struct
 /// Decoder record for video.roq_video, containing `width`, `height`, `q2`, `q4`, `q8`, `buffers`, and 2 further fields.
-struct Decoder width height q2 q4 q8 buffers frameCount latest end struct
+struct Decoder
+  /// Image/frame width in pixels.
+  width
+  /// Image/frame height in pixels.
+  height
+  /// RoQ codebook entries containing decoded 2-by-2 pixel blocks.
+  q2
+  /// RoQ codebook entries containing assembled 4-by-4 pixel blocks.
+  q4
+  /// RoQ codebook entries containing expanded 8-by-8 pixel blocks.
+  q8
+  /// Frame buffers retained for RoQ motion compensation and frame output.
+  buffers
+  /// Number of video frames decoded so far.
+  frameCount
+  /// Most recently decoded output frame.
+  latest
+end struct
 /// Reader record for video.roq_video, containing `data`, `offset`, `limit`, `control`, `remaining`.
-struct Reader data offset limit control remaining end struct
+struct Reader
+  /// Bytes of the current RoQ input chunk.
+  data
+  /// Byte cursor of the next unread RoQ chunk byte.
+  offset
+  /// Exclusive byte boundary of the current RoQ chunk reader.
+  limit
+  /// Packed RoQ block-control word currently being consumed.
+  control
+  /// Number of block-control codes still available in the current control word.
+  remaining
+end struct
 
 /// Create the video.roq_video error for `fail` with 7691 and the supplied diagnostic text.
 /// @param message Message used in `("RoQ video: " + message)` and `error(7691, ("RoQ video: " + message))`.

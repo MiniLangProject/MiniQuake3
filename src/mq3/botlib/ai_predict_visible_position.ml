@@ -6,14 +6,33 @@ package mq3.botlib.ai_predict_visible_position
 import mq3.botlib.aas_routing as routing
 import mq3.botlib.ai_resource_pools as resources
 
+/// Bot-library syscall identifier for predict visible position.
 const OP_PREDICT_VISIBLE_POSITION=572
+/// Combined collision mask for solid geometry and player-only clipping volumes.
 const CONTENTS_SOLID_PLAYERCLIP=0x10001
+/// Maximum reachability transitions explored while predicting a visible goal position.
 const MAX_HOPS=20
 
 /// `Runtime` record for ai predict visible position, containing `router`, `context` and `traceFn`.
-struct Runtime router context traceFn end struct
+struct Runtime
+  /// AAS navigation state supplying area settings and reachabilities for route searches.
+  router
+  /// Caller-supplied data associated with visibility traces along a predicted navigation route.
+  context
+  /// Host callback that performs a collision sweep through the host world.
+  traceFn
+end struct
 /// `Result` record for ai predict visible position, containing `found`, `target`, `hops` and `reachNums`.
-struct Result found target hops reachNums end struct
+struct Result
+  /// True when the requested lookup produced a matching entry.
+  found
+  /// Predicted world-space position visible from the requested origin.
+  target
+  /// Number of reachability links followed while predicting a visible point.
+  hops
+  /// Reachability indexes followed while predicting a visible point.
+  reachNums
+end struct
 /// Create a `mq3.botlib.ai_predict_visible_position.Runtime` record, initializing `router` from `router`, `context` from `context` and `traceFn` from `traceFn`.
 /// @param router Initial value stored in `mq3.botlib.ai_predict_visible_position.Runtime.router`.
 /// @param context Context forwarded to the configured host callbacks.

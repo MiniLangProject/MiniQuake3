@@ -7,7 +7,9 @@ import mq3.botlib.aas_route_extras as extras
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Byte size of the predict route record in the bot VM ABI or serialized representation.
 const PREDICT_ROUTE_SIZE=36
+/// Byte size of the alternative goal record in the bot VM ABI or serialized representation.
 const ALTERNATIVE_GOAL_SIZE=24
 /// Write three float bit patterns to consecutive VM memory words for aas route extra syscalls.
 /// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.

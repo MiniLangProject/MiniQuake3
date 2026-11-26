@@ -6,110 +6,232 @@ package mq3.client.cgame_syscalls
 import mq3.compat.numeric as numeric
 import mq3.vm.syscall_cgame as syscallCgame
 
+/// CG engine-syscall ordinal used to print text through the engine console.
 const CG_PRINT=0
+/// CG engine-syscall ordinal used to raise an engine error.
 const CG_ERROR=1
+/// CG engine-syscall ordinal used to query the engine millisecond timer.
 const CG_MILLISECONDS=2
+/// CG engine-syscall ordinal used to register a configuration variable.
 const CG_CVAR_REGISTER=3
+/// CG engine-syscall ordinal used to refresh a mirrored configuration variable.
 const CG_CVAR_UPDATE=4
+/// CG engine-syscall ordinal used to set a configuration variable.
 const CG_CVAR_SET=5
+/// CG engine-syscall ordinal used to read a configuration variable as text.
 const CG_CVAR_VARIABLESTRINGBUFFER=6
+/// CG engine-syscall ordinal used to query the number of console-command arguments.
 const CG_ARGC=7
+/// CG engine-syscall ordinal used to read a console-command argument.
 const CG_ARGV=8
+/// CG engine-syscall ordinal used to read the remaining console-command argument text.
 const CG_ARGS=9
+/// CG engine-syscall ordinal used to open a file in the virtual filesystem.
 const CG_FS_FOPENFILE=10
+/// CG engine-syscall ordinal used to read bytes from a virtual file.
 const CG_FS_READ=11
+/// CG engine-syscall ordinal used to write bytes to a virtual file.
 const CG_FS_WRITE=12
+/// CG engine-syscall ordinal used to close a virtual file.
 const CG_FS_FCLOSEFILE=13
+/// CG engine-syscall ordinal used to queue an engine console command.
 const CG_SENDCONSOLECOMMAND=14
+/// CG engine-syscall ordinal used to register a console-command name.
 const CG_ADDCOMMAND=15
+/// CG engine-syscall ordinal used to send a reliable client command to the server.
 const CG_SENDCLIENTCOMMAND=16
+/// CG engine-syscall ordinal used to request an immediate screen update.
 const CG_UPDATESCREEN=17
+/// CG engine-syscall ordinal used to load the map's collision world.
 const CG_CM_LOADMAP=18
+/// CG engine-syscall ordinal used to query the number of inline collision models.
 const CG_CM_NUMINLINEMODELS=19
+/// CG engine-syscall ordinal used to resolve an inline collision-model handle.
 const CG_CM_INLINEMODEL=20
+/// CG engine-syscall ordinal used to load a collision model.
 const CG_CM_LOADMODEL=21
+/// CG engine-syscall ordinal used to construct a temporary box collision model.
 const CG_CM_TEMPBOXMODEL=22
+/// CG engine-syscall ordinal used to query collision contents at a world position.
 const CG_CM_POINTCONTENTS=23
+/// CG engine-syscall ordinal used to query point contents in a transformed model.
 const CG_CM_TRANSFORMEDPOINTCONTENTS=24
+/// CG engine-syscall ordinal used to sweep a box through the collision world.
 const CG_CM_BOXTRACE=25
+/// CG engine-syscall ordinal used to sweep a box against a transformed collision model.
 const CG_CM_TRANSFORMEDBOXTRACE=26
+/// CG engine-syscall ordinal used to clip decal geometry against world surfaces.
 const CG_CM_MARKFRAGMENTS=27
+/// CG engine-syscall ordinal used to play a positional sound event.
 const CG_S_STARTSOUND=28
+/// CG engine-syscall ordinal used to play a non-positional local sound.
 const CG_S_STARTLOCALSOUND=29
+/// CG engine-syscall ordinal used to clear the frame's looping-sound submissions.
 const CG_S_CLEARLOOPINGSOUNDS=30
+/// CG engine-syscall ordinal used to submit an entity's looping positional sound.
 const CG_S_ADDLOOPINGSOUND=31
+/// CG engine-syscall ordinal used to update an entity position used for sound spatialization.
 const CG_S_UPDATEENTITYPOSITION=32
+/// CG engine-syscall ordinal used to update the listener origin and orientation.
 const CG_S_RESPATIALIZE=33
+/// CG engine-syscall ordinal used to register a sound resource.
 const CG_S_REGISTERSOUND=34
+/// CG engine-syscall ordinal used to start the background music introduction and loop tracks.
 const CG_S_STARTBACKGROUNDTRACK=35
+/// CG engine-syscall ordinal used to load the level's renderer world data.
 const CG_R_LOADWORLDMAP=36
+/// CG engine-syscall ordinal used to register a model resource.
 const CG_R_REGISTERMODEL=37
+/// CG engine-syscall ordinal used to register a skin resource.
 const CG_R_REGISTERSKIN=38
+/// CG engine-syscall ordinal used to register a shader resource.
 const CG_R_REGISTERSHADER=39
+/// CG engine-syscall ordinal used to clear the renderer's pending scene.
 const CG_R_CLEARSCENE=40
+/// CG engine-syscall ordinal used to append a renderer entity to the pending scene.
 const CG_R_ADDREFENTITYTOSCENE=41
+/// CG engine-syscall ordinal used to append a polygon to the pending scene.
 const CG_R_ADDPOLYTOSCENE=42
+/// CG engine-syscall ordinal used to append a dynamic light to the pending scene.
 const CG_R_ADDLIGHTTOSCENE=43
+/// CG engine-syscall ordinal used to render the accumulated scene through a view definition.
 const CG_R_RENDERSCENE=44
+/// CG engine-syscall ordinal used to set the color modulation used by subsequent 2D drawing.
 const CG_R_SETCOLOR=45
+/// CG engine-syscall ordinal used to draw a shader-backed rectangle with texture coordinates.
 const CG_R_DRAWSTRETCHPIC=46
+/// CG engine-syscall ordinal used to query a model's axis-aligned bounds.
 const CG_R_MODELBOUNDS=47
+/// CG engine-syscall ordinal used to interpolate an attachment tag between model animation frames.
 const CG_R_LERPTAG=48
+/// CG engine-syscall ordinal used to read the renderer configuration.
 const CG_GETGLCONFIG=49
+/// CG engine-syscall ordinal used to read server configuration strings.
 const CG_GETGAMESTATE=50
+/// CG engine-syscall ordinal used to query the latest available snapshot sequence and server time.
 const CG_GETCURRENTSNAPSHOTNUMBER=51
+/// CG engine-syscall ordinal used to read a server snapshot.
 const CG_GETSNAPSHOT=52
+/// CG engine-syscall ordinal used to read a reliable server command.
 const CG_GETSERVERCOMMAND=53
+/// CG engine-syscall ordinal used to query the latest local user-command sequence.
 const CG_GETCURRENTCMDNUMBER=54
+/// CG engine-syscall ordinal used to read a local user command.
 const CG_GETUSERCMD=55
+/// CG engine-syscall ordinal used to set the CGame value and sensitivity multiplier attached to user
+/// commands.
 const CG_SETUSERCMDVALUE=56
+/// CG engine-syscall ordinal used to register a shader without mipmapped image sampling.
 const CG_R_REGISTERSHADERNOMIP=57
+/// CG engine-syscall ordinal used to query remaining VM memory.
 const CG_MEMORY_REMAINING=58
+/// CG engine-syscall ordinal used to register a font resource and its glyph metrics.
 const CG_R_REGISTERFONT=59
+/// CG engine-syscall ordinal used to query whether an engine key is currently pressed.
 const CG_KEY_ISDOWN=60
+/// CG engine-syscall ordinal used to read the active input-capture bitmask.
 const CG_KEY_GETCATCHER=61
+/// CG engine-syscall ordinal used to replace the active input-capture bitmask.
 const CG_KEY_SETCATCHER=62
+/// CG engine-syscall ordinal used to find a key bound to a command.
 const CG_KEY_GETKEY=63
+/// CG engine-syscall ordinal used to add a preprocessor definition to the script parser.
 const CG_PC_ADD_GLOBAL_DEFINE=64
+/// CG engine-syscall ordinal used to open a script-parser source handle.
 const CG_PC_LOAD_SOURCE=65
+/// CG engine-syscall ordinal used to release a script-parser source handle.
 const CG_PC_FREE_SOURCE=66
+/// CG engine-syscall ordinal used to read the next preprocessed source token.
 const CG_PC_READ_TOKEN=67
+/// CG engine-syscall ordinal used to query the source location for a parser handle.
 const CG_PC_SOURCE_FILE_AND_LINE=68
+/// CG engine-syscall ordinal used to stop background music playback.
 const CG_S_STOPBACKGROUNDTRACK=69
+/// CG engine-syscall ordinal used to read the host calendar and clock.
 const CG_REAL_TIME=70
+/// CG engine-syscall ordinal used to round a vector using the native protocol convention.
 const CG_SNAPVECTOR=71
+/// CG engine-syscall ordinal used to unregister a console-command name.
 const CG_REMOVECOMMAND=72
+/// CG engine-syscall ordinal used to sample renderer lighting at a world position.
 const CG_R_LIGHTFORPOINT=73
+/// CG engine-syscall ordinal used to open and start a cinematic stream.
 const CG_CIN_PLAYCINEMATIC=74
+/// CG engine-syscall ordinal used to stop a cinematic stream.
 const CG_CIN_STOPCINEMATIC=75
+/// CG engine-syscall ordinal used to advance a cinematic decoder.
 const CG_CIN_RUNCINEMATIC=76
+/// CG engine-syscall ordinal used to draw the current cinematic frame.
 const CG_CIN_DRAWCINEMATIC=77
+/// CG engine-syscall ordinal used to set a cinematic's screen rectangle.
 const CG_CIN_SETEXTENTS=78
+/// CG engine-syscall ordinal used to remap a shader to a replacement shader and time offset.
 const CG_R_REMAP_SHADER=79
+/// CG engine-syscall ordinal used to submit a continuous looping positional sound.
 const CG_S_ADDREALLOOPINGSOUND=80
+/// CG engine-syscall ordinal used to stop the looping sound associated with an entity.
 const CG_S_STOPLOOPINGSOUND=81
+/// CG engine-syscall ordinal used to construct a temporary capsule collision model.
 const CG_CM_TEMPCAPSULEMODEL=82
+/// CG engine-syscall ordinal used to sweep a capsule through the collision world.
 const CG_CM_CAPSULETRACE=83
+/// CG engine-syscall ordinal used to sweep a capsule against a transformed collision model.
 const CG_CM_TRANSFORMEDCAPSULETRACE=84
+/// CG engine-syscall ordinal used to append an additive dynamic light to the pending scene.
 const CG_R_ADDADDITIVELIGHTTOSCENE=85
+/// CG engine-syscall ordinal used to read the next map-entity token.
 const CG_GET_ENTITY_TOKEN=86
+/// CG engine-syscall ordinal used to append several polygons to the pending scene.
 const CG_R_ADDPOLYSTOSCENE=87
+/// CG engine-syscall ordinal used to test renderer potential visibility between positions.
 const CG_R_INPVS=88
+/// CG engine-syscall ordinal used to seek within a virtual file.
 const CG_FS_SEEK=89
 // These three were shipped commented out in both cg_public.h and cg_syscalls.c.
 // Their dormant sequential ABI slots are kept so the Ledger candidates remain callable.
 const CG_LOADCAMERA=90
+/// CG engine-syscall ordinal used to start playback of a scripted camera sequence.
 const CG_STARTCAMERA=91
+/// CG engine-syscall ordinal used to read position and view data from the camera system.
 const CG_GETCAMERAINFO=92
+/// CG engine-syscall ordinal used to print an integer through the VM diagnostic interface.
 const CG_TESTPRINTINT=109
+/// CG engine-syscall ordinal used to print a floating-point value through the VM diagnostic interface.
 const CG_TESTPRINTFLOAT=110
 
 /// Stores client game syscalls invocation record, including `opcode`, `arguments`, `result`, `dispatched`.
-struct Invocation opcode arguments result dispatched end struct
+struct Invocation
+  /// When constructing this record, `invoke` supplies `opcode` for this member.
+  opcode
+  /// When constructing this record, `invoke` supplies `arguments` for this member.
+  arguments
+  /// When constructing this record, `invoke` supplies `0` for this member.
+  result
+  /// True when this recorded CGame syscall invocation is dispatched through the native host gateway.
+  dispatched
+end struct
 /// Stores client game syscalls gateway record, including `context`, `syscallFn`, `retailActive`, `calls`.
-struct Gateway context syscallFn retailActive calls end struct
+struct Gateway
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the CGame syscall gateway.
+  context
+  /// Host callback for the syscall operation; an unset callback leaves that host operation unavailable.
+  syscallFn
+  /// True when the retail QVM owns the CGame syscall gateway, so the native observer records requests
+  /// without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `dllEntry` supplies an empty list for this member. Used by `invoke`
+  /// during subsequent processing.
+  calls
+end struct
 /// Stores client game syscalls dispatcher context record, including `host`, `vm`, `base`.
-struct DispatcherContext host vm base end struct
+struct DispatcherContext
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// When constructing this record, `qvmGateway` supplies `vm` for this member.
+  vm
+  /// When constructing this record, `qvmGateway` supplies `base` for this member.
+  base
+end struct
 
 /// Creates the client game syscalls error `7904` with diagnostic text `"cgame syscalls: "+message`.
 /// @param message Argument 2 of `error`; passed as `"cgame syscalls: "+message`.

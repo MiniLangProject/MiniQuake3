@@ -14,31 +14,159 @@ import mq3.renderer.shader_parser as shaderParser
 import mq3.renderer.world_patch_lod as patchLod
 import mq3.platform.playable_window as window
 
+/// Byte stride of one node record in the BSP node lump.
 const NODE_STRIDE=36
+/// Byte stride of one plane record in the BSP plane lump.
 const PLANE_STRIDE=16
+/// Byte stride of one leaf record in the BSP leaf lump.
 const LEAF_STRIDE=48
+/// Byte stride of one face record in the BSP surface lump.
 const FACE_STRIDE=104
+/// Default horizontal camera field of view, in degrees.
 const DEFAULT_HORIZONTAL_FOV=100.0
+/// Default distance of the camera's near clipping plane.
 const DEFAULT_NEAR_DISTANCE=1.0
+/// Default distance of the camera's far clipping plane.
 const DEFAULT_FAR_DISTANCE=8192.0
+/// Default limit on triangles retained by visible-world surface selection.
 const DEFAULT_TRIANGLE_BUDGET=12000
+/// Culling mode that keeps front-facing surfaces and rejects their back faces.
 const CULL_FRONT=0
+/// Culling mode that accepts both sides of a surface.
 const CULL_TWO_SIDED=1
+/// Culling mode that keeps back-facing surfaces and rejects their front faces.
 const CULL_BACK=2
+/// Tolerance used when classifying the camera against a planar face.
 const FACE_PLANE_EPSILON=8.0
 
 /// Data record for `mq3.renderer.world_surface_selection.SelectionConfig`; groups `width`, `height`, `horizontalFov`, `nearDistance`, `farDistance`, `triangleBudget`, and 6 further fields.
-struct SelectionConfig width height horizontalFov nearDistance farDistance triangleBudget backfaceCull patchError runtime verticalFov areaMask lodCurveError end struct
+struct SelectionConfig
+  /// Width in pixels of the camera viewport used for world visibility and detail selection.
+  width
+  /// Height in pixels of the camera viewport used for world visibility and detail selection.
+  height
+  /// Horizontal camera field of view, in degrees.
+  horizontalFov
+  /// Distance of the camera's near clipping plane.
+  nearDistance
+  /// Distance threshold for the most distant model-detail tier.
+  farDistance
+  /// Maximum triangle workload accepted by surface selection.
+  triangleBudget
+  /// Whether faces pointing away from the camera are rejected.
+  backfaceCull
+  /// Permitted geometric error when tessellating curved patches.
+  patchError
+  /// Runtime object used to execute the subsystem's operations.
+  runtime
+  /// Vertical camera field of view, in degrees.
+  verticalFov
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areaMask
+  /// View-dependent error threshold used to reduce patch detail.
+  lodCurveError
+end struct
 /// Data record for `mq3.renderer.world_surface_selection.Candidate`; groups `faceIndex`, `triangleCount`, `distanceSquared`, `importance`.
-struct Candidate faceIndex triangleCount distanceSquared importance end struct
+struct Candidate
+  /// Index of the source BSP face.
+  faceIndex
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+  /// Squared distance used for ordering or rejecting the candidate.
+  distanceSquared
+  /// Priority assigned to the surface when enforcing the triangle budget.
+  importance
+end struct
 /// Data record for `mq3.renderer.world_surface_selection.Selection`; groups `faceIndexes`, `candidateCount`, `selectedSurfaceCount`, `estimatedTriangleCount`, `pvsUsed`, `cameraLeaf`, and 6 further fields.
-struct Selection faceIndexes candidateCount selectedSurfaceCount estimatedTriangleCount pvsUsed cameraLeaf cameraCluster rejectedPvs rejectedFrustum rejectedBackface rejectedDistance rejectedBudget end struct
+struct Selection
+  /// Indices of BSP faces retained by the current selection.
+  faceIndexes
+  /// Number of surfaces considered by the selection pass.
+  candidateCount
+  /// Number of surfaces retained by the selection pass.
+  selectedSurfaceCount
+  /// Estimated number of triangles emitted by the selected surfaces.
+  estimatedTriangleCount
+  /// Whether the selection used BSP potentially-visible-set data.
+  pvsUsed
+  /// BSP leaf containing the camera position.
+  cameraLeaf
+  /// Visibility cluster containing the camera position.
+  cameraCluster
+  /// Number of candidates rejected by the potentially-visible-set mask.
+  rejectedPvs
+  /// Number of candidates rejected by the camera frustum.
+  rejectedFrustum
+  /// Number of candidates rejected by back-face culling.
+  rejectedBackface
+  /// Number of candidates rejected by distance limits.
+  rejectedDistance
+  /// Number of candidates rejected by the triangle budget.
+  rejectedBudget
+end struct
 /// Data record for `mq3.renderer.world_surface_selection.PreparedWorld`; groups `selection`, `renderData`.
-struct PreparedWorld selection renderData end struct
+struct PreparedWorld
+  /// Visible-world selection used to prepare the drawing data.
+  selection
+  /// Prepared triangle and vertex data used to render the world or model.
+  renderData
+end struct
 /// Data record for `mq3.renderer.world_surface_selection.Frustum`; groups `slopeX`, `slopeY`, `radiusScaleX`, `radiusScaleY`.
-struct Frustum slopeX slopeY radiusScaleX radiusScaleY end struct
+struct Frustum
+  /// Horizontal frustum slope derived from the camera field of view.
+  slopeX
+  /// Vertical frustum slope derived from the camera field of view.
+  slopeY
+  /// Horizontal bound expansion used when testing spheres against the frustum.
+  radiusScaleX
+  /// Vertical bound expansion used when testing spheres against the frustum.
+  radiusScaleY
+end struct
 /// Data record for `mq3.renderer.world_surface_selection.WorldCache`; groups `map`, `faceCenters`, `faceRadii`, `faceTriangleCounts`, `faceKinds`, `faceNormals`, and 15 further fields.
-struct WorldCache map faceCenters faceRadii faceTriangleCounts faceKinds faceNormals faceTextureIndexes cullModes trianglesByFace patchError totalTriangleCount pvsFaces pvsRejected pvsClusterCount nativeFaces nativeVisible nativeOutput nativePrevious nativeSelected areaMask patches end struct
+struct WorldCache
+  /// Parsed BSP map used by geometry, visibility, or lighting operations.
+  map
+  /// Cached center position of each BSP face.
+  faceCenters
+  /// Cached bounding-sphere radius of each BSP face.
+  faceRadii
+  /// Cached triangle workload associated with each BSP face.
+  faceTriangleCounts
+  /// BSP surface type associated with each face.
+  faceKinds
+  /// Cached normals used for planar-face culling.
+  faceNormals
+  /// BSP shader or texture index associated with each face.
+  faceTextureIndexes
+  /// Resolved face-culling mode for each material or face.
+  cullModes
+  /// Cached triangle geometry indexed by BSP face.
+  trianglesByFace
+  /// Permitted geometric error when tessellating curved patches.
+  patchError
+  /// Total number of triangles represented by the cached world geometry.
+  totalTriangleCount
+  /// Face indices retained by the cached visibility-cluster query.
+  pvsFaces
+  /// Number of faces rejected by the cached visibility-cluster query.
+  pvsRejected
+  /// Number of visibility clusters represented by the cached PVS state.
+  pvsClusterCount
+  /// Packed native representation of BSP face metadata used by visibility selection.
+  nativeFaces
+  /// Native visibility buffer used by accelerated world-surface selection.
+  nativeVisible
+  /// Native output buffer written by accelerated world-surface selection.
+  nativeOutput
+  /// Native buffer retaining the previous visible-face selection.
+  nativePrevious
+  /// Native buffer retaining the currently selected faces.
+  nativeSelected
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areaMask
+  /// Curved world patches and their cached detail variants.
+  patches
+end struct
 
 /// Creates error `7490` with message `"World surface selection: "+text`.
 /// @param text Input used in the result expression `error(7490,"World surface selection: "+text)`.

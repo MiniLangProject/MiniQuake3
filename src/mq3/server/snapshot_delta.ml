@@ -5,13 +5,18 @@ package mq3.server.snapshot_delta
 import mq3.qcommon.message as message
 import mq3.qcommon.message_state_delta as delta
 
+/// Internal entity-number sentinel used after a snapshot entity list is exhausted.
 const ENTITY_SENTINEL = 9999
+/// Server-to-client opcode introducing a delta-compressed world snapshot.
 const SVC_SNAPSHOT = 7
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP = 32
 
 /// SnapshotFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`.
 struct SnapshotFrame
+  /// First entity-state position for this snapshot in the shared circular snapshot buffer.
   firstEntity
+  /// Number of entity records currently represented by this state or snapshot.
   numEntities
 end struct
 
@@ -24,9 +29,13 @@ end function
 
 /// PacketFrame record for server.snapshot_delta, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`.
 struct PacketFrame
+  /// First entity-state position for this snapshot in the shared circular snapshot buffer.
   firstEntity
+  /// Number of entity records currently represented by this state or snapshot.
   numEntities
+  /// Bitset of map areas visible in this snapshot.
   areaBits
+  /// Authoritative player-state record used for snapshots and game simulation.
   playerState
 end struct
 

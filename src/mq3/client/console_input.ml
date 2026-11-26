@@ -3,40 +3,131 @@
 // Baseq3 cl_keys.c Field_*, Console_Key and Message_Key state machine.
 package mq3.client.console_input
 
+/// Maximum length of a console or editable input line.
 const MAX_EDIT_LINE=256
+/// Number of submitted console commands retained for history navigation.
 const COMMAND_HISTORY=32
+/// Input-capture bit that routes keyboard events to the console subsystem.
 const KEYCATCH_CONSOLE=1
+/// Input-capture bit that routes keyboard events to the message subsystem.
 const KEYCATCH_MESSAGE=4
+/// Connection-state value for normal gameplay after game-state loading, defined for deciding whether
+/// console and chat input can interact with an active game.
 const CA_ACTIVE=8
+/// Engine key code for the tab input, used by menu and client key-event handling.
 const K_TAB=9
+/// Engine key code for the enter input, used by menu and client key-event handling.
 const K_ENTER=13
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=127
+/// Engine key code for the uparrow input, used by menu and client key-event handling.
 const K_UPARROW=132
+/// Engine key code for the downarrow input, used by menu and client key-event handling.
 const K_DOWNARROW=133
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=134
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=135
+/// Engine key code for the ctrl input, used by menu and client key-event handling.
 const K_CTRL=137
+/// Engine key code for the shift input, used by menu and client key-event handling.
 const K_SHIFT=138
+/// Engine key code for the ins input, used by menu and client key-event handling.
 const K_INS=139
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=140
+/// Engine key code for the pgdn input, used by menu and client key-event handling.
 const K_PGDN=141
+/// Engine key code for the pgup input, used by menu and client key-event handling.
 const K_PGUP=142
+/// Engine key code for the home input, used by menu and client key-event handling.
 const K_HOME=143
+/// Engine key code for the end input, used by menu and client key-event handling.
 const K_END=144
+/// Engine key code for the kp uparrow input, used by menu and client key-event handling.
 const K_KP_UPARROW=161
+/// Engine key code for the kp downarrow input, used by menu and client key-event handling.
 const K_KP_DOWNARROW=167
+/// Engine key code for the kp enter input, used by menu and client key-event handling.
 const K_KP_ENTER=169
+/// Engine key code for the kp ins input, used by menu and client key-event handling.
 const K_KP_INS=170
+/// Engine key code for the mwheeldown input, used by menu and client key-event handling.
 const K_MWHEELDOWN=183
+/// Engine key code for the mwheelup input, used by menu and client key-event handling.
 const K_MWHEELUP=184
 
 /// Stores console input field record, including `cursor`, `scroll`, `widthInChars`, `text`.
-struct Field cursor scroll widthInChars text end struct
+struct Field
+  /// When constructing this record, `field` supplies `0` for this member.
+  cursor
+  /// When constructing this record, `field` supplies `0` for this member.
+  scroll
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// Editable or accumulated console text retained for drawing and command submission.
+  text
+end struct
 /// Stores console input host-service callbacks, including `context`, `commandFn`, `reliableFn`, `printFn`, `completeFn`, `clipboardFn` and additional values.
-struct Services context commandFn reliableFn printFn completeFn clipboardFn scrollFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for console editing and command
+  /// submission.
+  context
+  /// Host callback for the command operation; an unset callback leaves that host operation unavailable.
+  commandFn
+  /// Host callback for the reliable operation; an unset callback leaves that host operation
+  /// unavailable.
+  reliableFn
+  /// Host callback for the print operation; an unset callback leaves that host operation unavailable.
+  printFn
+  /// Host callback for the complete operation; an unset callback leaves that host operation
+  /// unavailable.
+  completeFn
+  /// Host callback for the clipboard operation; an unset callback leaves that host operation
+  /// unavailable.
+  clipboardFn
+  /// Host callback for the scroll operation; an unset callback leaves that host operation unavailable.
+  scrollFn
+end struct
 /// Stores console input state, including `console`, `chat`, `history`, `nextHistoryLine`, `historyLine`, `overstrike` and additional values.
-struct State console chat history nextHistoryLine historyLine overstrike catcher connectionState chatTeam chatPlayerNum services consoleRuntime end struct
+struct State
+  /// When constructing this record, `create` supplies `field(width)` for this member. Used by
+  /// `toggleConsole` and `consoleKey` during subsequent processing.
+  console
+  /// When constructing this record, `create` supplies `field(30)` for this member. Used by
+  /// `beginMessage` and `messageKey` during subsequent processing.
+  chat
+  /// When constructing this record, `create` supplies `history` for this member. Used by `consoleKey`
+  /// during subsequent processing.
+  history
+  /// When constructing this record, `create` supplies `0` for this member. Used by `consoleKey` during
+  /// subsequent processing.
+  nextHistoryLine
+  /// When constructing this record, `create` supplies `0` for this member. Used by `consoleKey` during
+  /// subsequent processing.
+  historyLine
+  /// When constructing this record, `create` supplies `false` for this member. Used by `insertByte` and
+  /// `fieldKeyDown` during subsequent processing.
+  overstrike
+  /// When constructing this record, `create` supplies `0` for this member. Used by `toggleConsole` and
+  /// `beginMessage` during subsequent processing.
+  catcher
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
+  connectionState
+  /// When constructing this record, `create` supplies `false` for this member. Used by `beginMessage`
+  /// and `messageKey` during subsequent processing.
+  chatTeam
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `beginMessage` and
+  /// `messageKey` during subsequent processing.
+  chatPlayerNum
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// Optional console rendering state attached by the console runtime constructor, linking line editing
+  /// to scrollback presentation.
+  consoleRuntime
+end struct
 
 /// Creates a `mq3.client.console_input.Field` record. Assigns `widthInChars` from `width`.
 /// @param width Value used to initialize `Field.widthInChars`.

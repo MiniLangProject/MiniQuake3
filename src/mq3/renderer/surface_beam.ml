@@ -8,9 +8,21 @@ import mq3.shared.math as qmath
 import mq3.renderer.surface_trails as trails
 
 /// Data record for `mq3.renderer.surface_beam.Vertex`; groups `xyz`, `uv`, `color`.
-struct Vertex xyz uv color end struct
+struct Vertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Texture coordinates associated with this vertex.
+  uv
+  /// Modulation color of a generated beam vertex.
+  color
+end struct
 /// Data record for `mq3.renderer.surface_beam.Submission`; groups `vertices`, `indexes`.
-struct Submission vertices indexes end struct
+struct Submission
+  /// Generated vertex records forming the beam's visible sides.
+  vertices
+  /// Triangle indices joining the generated beam vertices.
+  indexes
+end struct
 
 /// Creates error `7699` with message `"surface beam: "+message`.
 /// @param message Input used in the result expression `error(7699,"surface beam: "+message)`.

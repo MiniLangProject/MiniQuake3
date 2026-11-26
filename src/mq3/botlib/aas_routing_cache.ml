@@ -14,26 +14,164 @@ import std.ds.queue as queues
 import std.ds.list as lists
 import mq3.botlib.cache_lru as lru
 
+/// Routing-cache type identifier for routes within an AAS cluster.
 const CACHE_AREA=1
+/// Routing-cache type identifier for routes between cluster portals.
 const CACHE_PORTAL=2
+/// Default maximum number of routing-cache entries.
 const DEFAULT_MAX_ENTRIES=4096
+/// Magic value identifying the routing-cache file header.
 const RCD_IDENT=0x4352454d
+/// Serialized format or interface version expected by AAS routing cache.
 const RCD_VERSION=2
+/// Byte size of the legacy routing-cache file header.
 const RCD_HEADER_SIZE=32
+/// Magic value identifying the managed routing-cache payload.
 const RCD_PAYLOAD_IDENT=0x4d4c5243
+/// Serialized format or interface version expected by AAS routing cache.
 const RCD_PAYLOAD_VERSION=1
+/// Byte size of the fixed header preceding one routing-cache record.
 const RCD_RECORD_HEADER_SIZE=24
 
 /// `ItemQuery` record for aas routing cache, containing `cache`, `area`, `origin`, `flags` and `times` and related fields.
-struct ItemQuery cache area origin flags times enterTimes end struct
+struct ItemQuery
+  /// Cached lookup or routing data reused by subsequent requests.
+  cache
+  /// Starting AAS area for the cached group of item-route queries.
+  area
+  /// Bot position within the starting area used to include local travel cost in item queries.
+  origin
+  /// Travel permissions applied to every item destination in this query.
+  flags
+  /// Cached route travel costs used while evaluating item goals.
+  times
+  /// Costs of entering candidate goal areas from the query origin.
+  enterTimes
+end struct
 /// `Entry` record for aas routing cache, containing `type`, `cluster`, `areaNum`, `goalAreaNum` and `travelFlags` and related fields.
-struct Entry type cluster areaNum goalAreaNum travelFlags hasOrigin originBits route generation serial end struct
+struct Entry
+  /// Cache-entry discriminator selecting an area or portal route.
+  type
+  /// AAS cluster for which this cached route was calculated.
+  cluster
+  /// Starting navigation area of the route represented by this cache entry.
+  areaNum
+  /// AAS area containing the destination of this route or goal.
+  goalAreaNum
+  /// Combined AAS travel permissions used to select routes.
+  travelFlags
+  /// True when the cache key includes a specific within-area origin.
+  hasOrigin
+  /// Bit-preserving coordinate representation used in the route cache key.
+  originBits
+  /// Calculated route result retained by this entry.
+  route
+  /// Generation counter used to distinguish refreshed state from older entries.
+  generation
+  /// Serial number identifying the current update or allocation generation.
+  serial
+end struct
 /// `AreaCache` record for aas routing cache, containing `cluster`, `goalAreaNum`, `travelFlags`, `travelTimes` and `reachabilities` and related fields.
-struct AreaCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
+struct AreaCache
+  /// AAS cluster for which these within-cluster costs were computed.
+  cluster
+  /// AAS area containing the destination of this route or goal.
+  goalAreaNum
+  /// Combined AAS travel permissions used to select routes.
+  travelFlags
+  /// Travel time for every area (variable sized).
+  travelTimes
+  /// Reachabilities used for routing.
+  reachabilities
+  /// Generation counter used to distinguish refreshed state from older entries.
+  generation
+  /// Serial number identifying the current update or allocation generation.
+  serial
+end struct
 /// `PortalCache` record for aas routing cache, containing `cluster`, `goalAreaNum`, `travelFlags`, `travelTimes` and `reachabilities` and related fields.
-struct PortalCache cluster goalAreaNum travelFlags travelTimes reachabilities generation serial end struct
+struct PortalCache
+  /// Goal cluster for which these inter-portal costs were computed.
+  cluster
+  /// AAS area containing the destination of this route or goal.
+  goalAreaNum
+  /// Combined AAS travel permissions used to select routes.
+  travelFlags
+  /// Travel cost to the goal indexed by AAS portal number.
+  travelTimes
+  /// Reachabilities used for routing.
+  reachabilities
+  /// Generation counter used to distinguish refreshed state from older entries.
+  generation
+  /// Serial number identifying the current update or allocation generation.
+  serial
+end struct
 /// `Cache` record for aas routing cache, containing `router`, `entries`, `areaCaches`, `portalCaches` and `generation` and related fields.
-struct Cache router entries areaCaches portalCaches generation serial maxEntries hits misses evictions invalidations areaHits areaMisses areaUpdates areaEvictions portalHits portalMisses portalUpdates portalEvictions staticTables routeIndex areaIndex portalIndex scratch scratchBuilds routeLru areaLru portalLru destinationLru destinationCosts weightedBuilds weightedFallbacks end struct
+struct Cache
+  /// AAS navigation state supplying area settings and reachabilities for route searches.
+  router
+  /// Cached complete route results and their lookup keys.
+  entries
+  /// Cached travel-cost tables for routes inside a cluster.
+  areaCaches
+  /// Cached travel-cost tables between cluster portals.
+  portalCaches
+  /// Generation counter used to distinguish refreshed state from older entries.
+  generation
+  /// Serial number identifying the current update or allocation generation.
+  serial
+  /// Maximum number of complete route entries retained by the cache.
+  maxEntries
+  /// Complete-route lookups satisfied by an existing cache entry.
+  hits
+  /// Complete-route lookups requiring a new calculation.
+  misses
+  /// Complete-route entries removed to enforce cache capacity.
+  evictions
+  /// Cache invalidations caused by changed area or route state.
+  invalidations
+  /// Area-table lookups satisfied by an existing cached table.
+  areaHits
+  /// Area-table lookups requiring a new table.
+  areaMisses
+  /// Area routing tables built or refreshed.
+  areaUpdates
+  /// Area routing tables removed to enforce cache capacity.
+  areaEvictions
+  /// Portal-table lookups satisfied by an existing cached table.
+  portalHits
+  /// Portal-table lookups requiring a new table.
+  portalMisses
+  /// Portal routing tables built or refreshed.
+  portalUpdates
+  /// Portal routing tables removed to enforce cache capacity.
+  portalEvictions
+  /// Precomputed reverse-link and portal travel-time tables.
+  staticTables
+  /// Index from complete-route keys to cache entries.
+  routeIndex
+  /// Index from area-table keys to cached tables.
+  areaIndex
+  /// Lookup from cluster, goal-area, and travel-flag keys to cached portal-routing tables.
+  portalIndex
+  /// Reusable queues and temporary costs for routing-table construction.
+  scratch
+  /// Number of temporary routing workspaces constructed.
+  scratchBuilds
+  /// Least-recently-used ordering of complete-route entries.
+  routeLru
+  /// Least-recently-used ordering of area-routing tables.
+  areaLru
+  /// Least-recently-used ordering of portal-routing tables.
+  portalLru
+  /// Least-recently-used ordering of destination-specific cost maps.
+  destinationLru
+  /// Cached cost maps keyed by destination and travel restrictions.
+  destinationCosts
+  /// Weighted destination-cost maps built by the optimized route path.
+  weightedBuilds
+  /// Route queries that required the fallback weighted search.
+  weightedFallbacks
+end struct
 
 /// Build the `mq3.botlib.aas_routing_cache.Cache` result for `create`.
 /// @param router AAS routing state; accesses `runtime` and `reaches`.
@@ -126,9 +264,31 @@ function clearRouteEntries(cache)
 end function
 // Area and portal builders have separate scratch space: portal propagation
 // calls getAreaCache recursively and must not overwrite its own queue.
-struct PortalUpdate cluster area time end struct
+struct PortalUpdate
+  /// Cluster whose portal costs are being updated.
+  cluster
+  /// Portal or goal area from which this cluster update propagates routing costs.
+  area
+  /// Accumulated travel cost propagated by this portal update.
+  time
+end struct
 /// `Scratch` record for aas routing cache, containing `areaQueue`, `areaQueued`, `areaTimes`, `areaOutgoing` and `portalQueue` and related fields.
-struct Scratch areaQueue areaQueued areaTimes areaOutgoing portalQueue portalQueued portalUpdates end struct
+struct Scratch
+  /// Area indexes awaiting routing-cost propagation.
+  areaQueue
+  /// Membership flags for areas already queued for propagation.
+  areaQueued
+  /// Temporary travel costs accumulated for each area.
+  areaTimes
+  /// Temporary outgoing reachability lists used by the area solver.
+  areaOutgoing
+  /// Portal updates awaiting cost propagation.
+  portalQueue
+  /// Membership flags for portals already queued for propagation.
+  portalQueued
+  /// Reusable update records indexed by portal number.
+  portalUpdates
+end struct
 /// Set `cache.scratch` to `value` and `cache.scratchBuilds` to `cache.scratchBuilds+1` in `mq3.botlib.aas_routing_cache.scratchFor`.
 /// @param cache Routing cache state; accesses `router`, `scratch` and `scratchBuilds`. May update `cache.scratch` and `cache.scratchBuilds` in place.
 function scratchFor(cache)

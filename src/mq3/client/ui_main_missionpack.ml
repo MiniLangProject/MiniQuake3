@@ -7,87 +7,433 @@ import mq3.shared.info as info
 import mq3.compat.textnumbers as numbers
 import mq3.compat.numeric as n
 
+/// UI VM entry-point ordinal used to query the UI VM interface version.
 const UI_GETAPIVERSION=0
+/// UI VM entry-point ordinal used to initialize the UI VM.
 const UI_INIT=1
+/// UI VM entry-point ordinal used to shut down the UI VM.
 const UI_SHUTDOWN=2
+/// UI VM entry-point ordinal used to deliver a key event to the UI.
 const UI_KEY_EVENT=3
+/// UI VM entry-point ordinal used to deliver pointer motion to the UI.
 const UI_MOUSE_EVENT=4
+/// UI VM entry-point ordinal used to advance and render the UI.
 const UI_REFRESH=5
+/// UI VM entry-point ordinal used to query whether the UI covers the game view.
 const UI_IS_FULLSCREEN=6
+/// UI VM entry-point ordinal used to select the active UI menu.
 const UI_SET_ACTIVE_MENU=7
+/// UI VM entry-point ordinal used to handle a UI console command.
 const UI_CONSOLE_COMMAND=8
+/// UI VM entry-point ordinal used to render the connection-progress screen.
 const UI_DRAW_CONNECT_SCREEN=9
+/// UI VM entry-point ordinal used to query whether the UI requires a unique product key.
 const UI_HASUNIQUECDKEY=10
+/// UI virtual-machine interface version expected by the engine.
 const UI_API_VERSION=6
+/// Chat routing mode that sends the message to all players.
 const SAY_ALL=0
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when filtering arenas and servers and
+/// selecting Missionpack game modes.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when filtering arenas and servers
+/// and selecting Missionpack game modes.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when filtering arenas and servers and selecting
+/// Missionpack game modes.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when filtering arenas and servers and selecting
+/// Missionpack game modes.
 const GT_CTF=4
+/// Native game-type identifier selecting one-flag capture the flag.
 const GT_1FCTF=5
+/// Native game-type identifier selecting Overload.
 const GT_OBELISK=6
+/// Native game-type identifier selecting Harvester.
 const GT_HARVESTER=7
+/// Server-browser source selector for the local server list.
 const AS_LOCAL=0
+/// Server-browser source selector for the mplayer server list.
 const AS_MPLAYER=1
+/// Server-browser source selector for the global server list.
 const AS_GLOBAL=2
+/// Server-browser source selector for the favorites server list.
 const AS_FAVORITES=3
+/// Menu data-feeder identifier supplying the heads list.
 const FEEDER_HEADS=0
+/// Menu data-feeder identifier supplying the maps list.
 const FEEDER_MAPS=1
+/// Menu data-feeder identifier supplying the servers list.
 const FEEDER_SERVERS=2
+/// Menu data-feeder identifier supplying the allmaps list.
 const FEEDER_ALLMAPS=4
+/// Menu data-feeder identifier supplying the player list list.
 const FEEDER_PLAYER_LIST=7
+/// Menu data-feeder identifier supplying the team list list.
 const FEEDER_TEAM_LIST=8
+/// Menu data-feeder identifier supplying the mods list.
 const FEEDER_MODS=9
+/// Menu data-feeder identifier supplying the demos list.
 const FEEDER_DEMOS=10
+/// Menu data-feeder identifier supplying the q3 heads list.
 const FEEDER_Q3HEADS=12
+/// Menu data-feeder identifier supplying the serverstatus list.
 const FEEDER_SERVERSTATUS=13
+/// Menu data-feeder identifier supplying the findplayer list.
 const FEEDER_FINDPLAYER=14
+/// Menu data-feeder identifier supplying the cinematics list.
 const FEEDER_CINEMATICS=15
+/// Engine key code for the mouse1 input, used by menu and client key-event handling.
 const K_MOUSE1=178
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
+/// Owner-draw visibility flag requiring that the local player is the team leader.
 const UI_SHOW_LEADER=1
+/// Owner-draw visibility flag requiring that the local player is not the team leader.
 const UI_SHOW_NOTLEADER=2
+/// Owner-draw visibility flag requiring that the server browser displays the favorites source.
 const UI_SHOW_FAVORITESERVERS=4
+/// Owner-draw visibility flag requiring that the game mode has no teams.
 const UI_SHOW_ANYNONTEAMGAME=8
+/// Owner-draw visibility flag requiring that the game mode uses teams.
 const UI_SHOW_ANYTEAMGAME=16
+/// Owner-draw visibility flag requiring that the latest result established a new high score.
 const UI_SHOW_NEWHIGHSCORE=32
+/// Owner-draw visibility flag requiring that a recorded demo is available for the selected content.
 const UI_SHOW_DEMOAVAILABLE=64
+/// Owner-draw visibility flag requiring that the latest result established a new best completion time.
 const UI_SHOW_NEWBESTTIME=128
+/// Owner-draw visibility flag requiring that the selected game mode is free-for-all.
 const UI_SHOW_FFA=256
+/// Owner-draw visibility flag requiring that the selected game mode is not free-for-all.
 const UI_SHOW_NOTFFA=512
+/// Owner-draw visibility flag requiring that the selected network game mode has no teams.
 const UI_SHOW_NETANYNONTEAMGAME=1024
+/// Owner-draw visibility flag requiring that the selected network game mode uses teams.
 const UI_SHOW_NETANYTEAMGAME=2048
+/// Owner-draw visibility flag requiring that the server browser is not displaying favorites.
 const UI_SHOW_NOTFAVORITESERVERS=4096
 
 /// Stores UI main missionpack rectangle, including `x`, `y`, `w`, `h`.
-struct Rect x y w h end struct
+struct Rect
+  /// Horizontal position of the rectangle's origin in UI layout coordinates.
+  x
+  /// Vertical position of the rectangle's origin in UI layout coordinates.
+  y
+  /// Width of the rectangular display region.
+  w
+  /// Height of the rectangular display region.
+  h
+end struct
 /// Stores UI main missionpack queued engine action, including `boundary`, `kind`, `name`, `text`, `values`, `dispatched`.
-struct Action boundary kind name text values dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while running scripted Missionpack menus and
+  /// updating browser or game selections.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while running scripted
+  /// Missionpack menus and updating browser or game selections.
+  kind
+  /// Cvar, asset, menu-script target, or command named by a Missionpack UI host action.
+  name
+  /// Missionpack UI text argument used for displayed content, cvar values, menu scripts, and bot or
+  /// server commands.
+  text
+  /// When constructing this record, `emit` supplies `values` for this member.
+  values
+  /// True when this request is marked for native dispatch while running scripted Missionpack menus and
+  /// updating browser or game selections; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI main missionpack map info record, including `mapLoadName`, `mapName`, `imageName`, `typeBits`, `active`, `cinematic` and additional values.
-struct MapInfo mapLoadName mapName imageName typeBits active cinematic levelShot opponentName teamMembers timeToBeat end struct
+struct MapInfo
+  /// When constructing this record, `mapInfo` supplies `loadName` for this member.
+  mapLoadName
+  /// Virtual map identifier used by Missionpack arena selection and server launch commands.
+  mapName
+  /// Map preview image name used by Missionpack arena-selection widgets.
+  imageName
+  /// When constructing this record, `mapInfo` supplies `typeBits` for this member.
+  typeBits
+  /// When constructing this record, `mapInfo` supplies `true` for this member.
+  active
+  /// When constructing this record, `mapInfo` supplies `-1` for this member.
+  cinematic
+  /// True while producing the menu screenshot for the current level.
+  levelShot
+  /// When constructing this record, `mapInfo` supplies an empty string for this member.
+  opponentName
+  /// When constructing this record, `mapInfo` supplies `0` for this member.
+  teamMembers
+  /// When constructing this record, `mapInfo` supplies `array(8,0)` for this member.
+  timeToBeat
+end struct
 /// Stores UI main missionpack team info record, including `name`, `imageName`, `teamMembers`, `cinematic`.
-struct TeamInfo name imageName teamMembers cinematic end struct
+struct TeamInfo
+  /// Team or clan name used for selection, opponent labels, and its associated cinematic lookup.
+  name
+  /// Team icon image name used by Missionpack team-selection widgets.
+  imageName
+  /// When constructing this record, `teamInfo` supplies `members` for this member.
+  teamMembers
+  /// When constructing this record, `teamInfo` supplies `-1` for this member.
+  cinematic
+end struct
 /// Stores UI main missionpack character info record, including `name`, `base`, `imageName`, `active`, `headImage`.
-struct CharacterInfo name base imageName active headImage end struct
+struct CharacterInfo
+  /// Character-selection name returned by head selection and used when issuing addbot requests.
+  name
+  /// When constructing this record, `characterInfo` supplies `base` for this member.
+  base
+  /// Character portrait image name used by Missionpack roster and character widgets.
+  imageName
+  /// When constructing this record, `characterInfo` supplies `true` for this member.
+  active
+  /// Renderer resource handle used for head image; mirrors native `characterInfo.headImage`.
+  headImage
+end struct
 /// Stores UI main missionpack alias info record, including `name`, `ai`, `action`.
-struct AliasInfo name ai action end struct
+struct AliasInfo
+  /// Public bot alias matched without case sensitivity and translated to its associated AI profile.
+  name
+  /// When constructing this record, `Alias_Parse` supplies `tokens[at+2]` for this member.
+  ai
+  /// When constructing this record, `Alias_Parse` supplies `tokens[at+3]` for this member.
+  action
+end struct
 /// Stores UI main missionpack server info record, including `address`, `hostname`, `mapname`, `clients`, `maxClients`, `gametype` and additional values.
-struct ServerInfo address hostname mapname clients maxClients gametype ping nettype punkbuster visible favorite end struct
+struct ServerInfo
+  /// When constructing this record, `serverInfo` supplies `address` for this member.
+  address
+  /// When constructing this record, `serverInfo` supplies `hostname` for this member.
+  hostname
+  /// Map name parsed from server information or selected by the client UI.
+  mapname
+  /// Server player count used for empty/full filtering, sorting, and the browser player column.
+  clients
+  /// Maximum player slots advertised or supported by the connected server.
+  maxClients
+  /// Game type advertised by this browser server entry, used for filtering, sorting, and mode labels.
+  gametype
+  /// Server latency in milliseconds used for browser sorting and display; nonpositive values are
+  /// excluded by the visibility filter.
+  ping
+  /// When constructing this record, `serverInfo` supplies `0` for this member.
+  nettype
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+  /// When constructing this record, `serverInfo` supplies `false` for this member.
+  favorite
+end struct
 /// Stores UI main missionpack mod info record, including `name`, `description`.
-struct ModInfo name description end struct
+struct ModInfo
+  /// Mod directory name passed to the engine when selecting this modification.
+  name
+  /// When constructing this record, `UI_LoadMods` supplies `description` for this member.
+  description
+end struct
 /// Stores UI main missionpack parse result record, including `ok`, `next`.
-struct ParseResult ok next end struct
+struct ParseResult
+  /// True when the operation completed successfully and its result can be consumed.
+  ok
+  /// When constructing this record, `Asset_Parse` supplies `at` for this member.
+  next
+end struct
 /// Stores UI main missionpack dispatch result record, including `value`, `action`.
-struct DispatchResult value action end struct
+struct DispatchResult
+  /// Return value of the Missionpack UI entry point, separate from its host-operation trace.
+  value
+  /// When constructing this record, `vmMain` supplies an absent (`void`) value for this member.
+  action
+end struct
 /// Stores UI main missionpack state, including `actions`, `retailActive`, `hostFn`, `initialized`, `shutdown`, `ingameLoad` and additional values.
 struct State
-  actions retailActive hostFn initialized shutdown ingameLoad realtime frametime cursorx cursory activeMenu fullscreen keyCatcher paused
-  cvars assets menus maps teams characters aliases gameTypes joinGameTypes servers displayServers serverStatusLines foundPlayerNames foundPlayerAddresses
-  playerNames teamNames mods movies demos q3HeadNames q3HeadIcons
-  currentMap currentGameType currentNetGameType currentJoinGameType currentTeam currentOpponent currentBot currentBotSkill currentCrosshair currentNetSource currentNetFilter selectedPlayer
-  sortKey sortDir refreshActive refreshTime nextDisplayRefresh playerRefresh newHighScoreTime newBestTime demoAvailable numPlayersOnServers
-  serverMOTD serverRefreshDate glInfo fontWidths fontHeight lastConnState lastLoadingText
+  /// Host requests queued while running scripted Missionpack menus and updating browser or game
+  /// selections, retained in request order.
+  actions
+  /// True when the retail QVM owns Missionpack menus and server browsing, so the native observer
+  /// records requests without emitting duplicate host effects.
+  retailActive
+  /// Host callback for the host operation; an unset callback leaves that host operation unavailable.
+  hostFn
+  /// True after Missionpack UI initialization has established menu, cvar, and browser state, until UI
+  /// shutdown.
+  initialized
+  /// When constructing this record, `create` supplies `false` for this member. Used by `_UI_Init` and
+  /// `_UI_Shutdown` during subsequent processing.
+  shutdown
+  /// When constructing this record, `create` supplies `false` for this member. Used by `_UI_Init`
+  /// during subsequent processing.
+  ingameLoad
+  /// Current mission-pack UI refresh time in milliseconds used for browser and menu updates.
+  realtime
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+  /// Horizontal position of the UI pointer in the menu coordinate system.
+  cursorx
+  /// Vertical position of the UI pointer in the menu coordinate system.
+  cursory
+  /// When constructing this record, `create` supplies `0` for this member. Used by `_UI_KeyEvent` and
+  /// `_UI_SetActiveMenu` during subsequent processing.
+  activeMenu
+  /// Whether the Missionpack main menu covers the entire UI instead of appearing over the underlying
+  /// game view.
+  fullscreen
+  /// Input-capture bitmask selecting which client subsystem currently receives key events.
+  keyCatcher
+  /// When constructing this record, `create` supplies `false` for this member. Used by `UI_Pause`
+  /// during subsequent processing.
+  paused
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Missionpack UI media cache used by parsed menu definitions and owner-draw widgets.
+  assets
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_Report` and `UI_ParseMenu` during subsequent processing.
+  menus
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `currentMap` and `UI_DrawTierMap` during subsequent processing.
+  maps
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_TeamIndexFromName` and `teamAt` during subsequent processing.
+  teams
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_HeadCountByTeam` and `UI_SelectedHead` during subsequent processing.
+  characters
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_AIFromName` and `UI_AIIndex` during subsequent processing.
+  aliases
+  /// When constructing this record, `create` supplies `games` for this member. Used by
+  /// `UI_DrawGameType` and `UI_DrawNetGameType` during subsequent processing.
+  gameTypes
+  /// When constructing this record, `create` supplies `games` for this member. Used by
+  /// `UI_DrawJoinGameType` and `UI_JoinGameType_HandleKey` during subsequent processing.
+  joinGameTypes
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_ServersQsortCompare` and `UI_BuildServerDisplayList` during subsequent processing.
+  servers
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_ServersSort` and `UI_InsertServerIntoDisplayList` during subsequent processing.
+  displayServers
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_SortServerStatusInfo` and `UI_BuildServerStatus` during subsequent processing.
+  serverStatusLines
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_BuildFindPlayerList` and `UI_FeederCount` during subsequent processing.
+  foundPlayerNames
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_BuildFindPlayerList` and `UI_FeederSelection` during subsequent processing.
+  foundPlayerAddresses
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_BuildPlayerList` and `UI_FeederCount` during subsequent processing.
+  playerNames
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_BuildPlayerList` and `UI_DrawSelectedPlayer` during subsequent processing.
+  teamNames
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_FeederCount` and `UI_FeederItemText` during subsequent processing.
+  mods
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_FeederCount` and `UI_FeederItemText` during subsequent processing.
+  movies
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_FeederCount` and `UI_FeederItemText` during subsequent processing.
+  demos
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_FeederCount` and `UI_FeederItemText` during subsequent processing.
+  q3HeadNames
+  /// Image or shader resources used to draw the q3 head icon.
+  q3HeadIcons
+  /// When constructing this record, `create` supplies `0` for this member. Used by `currentMap` and
+  /// `UI_GameType_HandleKey` during subsequent processing.
+  currentMap
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawGameType`
+  /// and `UI_DrawMapTimeToBeat` during subsequent processing.
+  currentGameType
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawNetGameType`
+  /// and `UI_OwnerDrawVisible` during subsequent processing.
+  currentNetGameType
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_DrawJoinGameType` and `UI_JoinGameType_HandleKey` during subsequent processing.
+  currentJoinGameType
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawClanLogo`
+  /// and `UI_DrawClanCinematic` during subsequent processing.
+  currentTeam
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_OpponentLeaderName` and `UI_NextOpponent` during subsequent processing.
+  currentOpponent
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawBotName` and
+  /// `UI_OwnerDrawWidth` during subsequent processing.
+  currentBot
+  /// When constructing this record, `create` supplies `2` for this member. Used by `UI_DrawSkill` and
+  /// `UI_DrawBotSkill` during subsequent processing.
+  currentBotSkill
+  /// When constructing this record, `create` supplies `4` for this member. Used by `UI_DrawCrosshair`
+  /// and `UI_Crosshair_HandleKey` during subsequent processing.
+  currentCrosshair
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawNetSource`
+  /// and `UI_OwnerDrawVisible` during subsequent processing.
+  currentNetSource
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_DrawNetFilter`
+  /// and `UI_NetFilter_HandleKey` during subsequent processing.
+  currentNetFilter
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_DrawSelectedPlayer` and `UI_SelectedPlayer_HandleKey` during subsequent processing.
+  selectedPlayer
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_ServersQsortCompare` and `UI_ServersSort` during subsequent processing.
+  sortKey
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_ServersQsortCompare` and `UI_RunMenuScript` during subsequent processing.
+  sortDir
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `UI_UpdatePendingPings` and `UI_RunMenuScript` during subsequent processing.
+  refreshActive
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_UpdatePendingPings` and `UI_DoServerRefresh` during subsequent processing.
+  refreshTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_BuildFindPlayerList` and `UI_RunMenuScript` during subsequent processing.
+  nextDisplayRefresh
+  /// When constructing this record, `create` supplies `0` for this member. Used by `UI_BuildPlayerList`
+  /// during subsequent processing.
+  playerRefresh
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_OwnerDrawVisible` during subsequent processing.
+  newHighScoreTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_OwnerDrawVisible` during subsequent processing.
+  newBestTime
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `UI_OwnerDrawVisible` and `UI_RunMenuScript` during subsequent processing.
+  demoAvailable
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_BuildServerDisplayList` and `UI_StopServerRefresh` during subsequent processing.
+  numPlayersOnServers
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `UI_DrawServerMOTD` during subsequent processing.
+  serverMOTD
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `UI_DrawServerRefreshDate` and `UI_OwnerDrawWidth` during subsequent processing.
+  serverRefreshDate
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `UI_DrawGLInfo` during subsequent processing.
+  glInfo
+  /// When constructing this record, `create` supplies `widths` for this member. Used by `Font_Report`
+  /// and `Text_Width` during subsequent processing.
+  fontWidths
+  /// When constructing this record, `create` supplies `16.0` for this member. Used by `Font_Report` and
+  /// `Text_Height` during subsequent processing.
+  fontHeight
+  /// When constructing this record, `create` supplies `-1` for this member. Used by
+  /// `UI_DrawConnectScreen` during subsequent processing.
+  lastConnState
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `UI_DrawConnectScreen` during subsequent processing.
+  lastLoadingText
 end struct
 
 /// Creates a `mq3.client.ui_main_missionpack.MapInfo` record. Assigns `mapLoadName` from `loadName`, `mapName` from `name`, `typeBits` from `typeBits`.

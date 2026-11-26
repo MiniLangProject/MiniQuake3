@@ -14,6 +14,7 @@ import mq3.shared.directions as directions
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Maximum number of candidate choices collected before a random selection.
 const MAXCHOICES = 32
 
 /// Read a native string through its first zero byte and reject non-string values while preserving void.

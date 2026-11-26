@@ -6,13 +6,58 @@ import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 import std.ds.hashmap as maps
 
+/// Maximum number of trace results retained in the client-game FIFO cache.
 const TRACE_CAPACITY=64
+/// Maximum number of mark-fragment results retained in the client-game FIFO cache.
 const MARK_CAPACITY=32
+/// Upper bound on mark bytes represented by mq3.vm.cgame_collision_cache.
 const MAX_MARK_BYTES=65536
 /// Fifo record for vm.cgame_collision_cache, containing `table`, `keys`, `next`, `used`, `capacity`, `hits`, and 2 further fields.
-struct Fifo table keys next used capacity hits misses evictions end struct
+struct Fifo
+  /// Hash table mapping serialized query keys to cached results.
+  table
+  /// Circular eviction-order array of cached query keys.
+  keys
+  /// Index of the next circular eviction slot.
+  next
+  /// Number of currently occupied cache/table entries.
+  used
+  /// Maximum number of entries that the cache/table can retain.
+  capacity
+  /// Number of successful lookups served from the cache.
+  hits
+  /// Number of lookups that required a new result.
+  misses
+  /// Number of cache entries removed to make room for newer results.
+  evictions
+end struct
 /// Memo record for vm.cgame_collision_cache, containing `enabled`, `world`, `map`, `mapData`, `mapDataPointer`, `checksum`, and 6 further fields.
-struct Memo enabled world map mapData mapDataPointer checksum name patchesReady playerCurveClip traces marks invalidations end struct
+struct Memo
+  /// Nonzero when the optional cache or subsystem is enabled.
+  enabled
+  /// Collision-world object associated with the cached queries.
+  world
+  /// BSP/map object associated with the cached geometry.
+  map
+  /// Retained BSP data bytes whose identity participates in cache invalidation.
+  mapData
+  /// Native address used to detect replacement of the backing BSP buffer.
+  mapDataPointer
+  /// Map checksum used to detect changes in collision input.
+  checksum
+  /// Map name participating in cache invalidation.
+  name
+  /// Cached marker indicating whether curved patch collision data is prepared.
+  patchesReady
+  /// Cached curved-surface collision setting affecting player trace results.
+  playerCurveClip
+  /// FIFO cache of collision trace results.
+  traces
+  /// FIFO cache of projected mark-fragment results.
+  marks
+  /// Number of cache clears caused by changes to the input world or map.
+  invalidations
+end struct
 /// Create `mq3.vm.cgame_collision_cache.Fifo` with table=maps.HashMap.withCapacity((capacity * 2)); keys=array(capacity, void); next=0; used=0; capacity=capacity; hits=0; misses=0; evictions=0.
 /// @param capacity Initial `capacity` field stored in the returned or constructed `mq3.vm.cgame_collision_cache.Fifo` record.
 function fifo(capacity) return Fifo(maps.HashMap.withCapacity(capacity*2),array(capacity,void),0,0,capacity,0,0,0) end function

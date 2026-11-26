@@ -11,31 +11,115 @@ import mq3.renderer.model_tags as tags
 import mq3.renderer.model_bounds as bounds
 import std.string as strings
 
+/// Model-type sentinel identifying a missing or invalid model.
 const MOD_BAD=0
+/// Model type for an inline BSP brush model.
 const MOD_BRUSH=1
+/// Model type for an MD3 mesh model.
 const MOD_MESH=2
+/// Model type for an MD4 skeletal model.
 const MOD_MD4=3
+/// Maximum number of model records retained in the renderer's known-model table.
 const MAX_MOD_KNOWN=1024
+/// Capacity of a Quake virtual-path buffer, including the terminating byte in the native ABI.
 const MAX_QPATH=64
+/// Maximum number of MD3 level-of-detail variants loaded for one model.
 const MD3_MAX_LODS=3
+/// Magic identifier expected at the start of an MD4 model file.
 const MD4_IDENT=0x34504449
+/// MD4 binary format version accepted by the model loader.
 const MD4_VERSION=1
+/// Maximum number of bones accepted by the MD4 skeletal model loader.
 const MD4_MAX_BONES=128
+/// Vertex capacity of the renderer's shared tessellation buffer.
 const SHADER_MAX_VERTEXES=1000
+/// Index capacity of the renderer's shared tessellation buffer.
 const SHADER_MAX_INDEXES=6000
 
 /// Data record for `mq3.renderer.tr_model_runtime.Md4Lod`; groups `surfaces`.
-struct Md4Lod surfaces end struct
+struct Md4Lod
+  /// Surface records owned by the world, model, or drawing group.
+  surfaces
+end struct
 /// Data record for `mq3.renderer.tr_model_runtime.Md4Model`; groups `name`, `numFrames`, `numBones`, `frames`, `lods`, `bounds`, and 1 further field.
-struct Md4Model name numFrames numBones frames lods bounds dataSize end struct
+struct Md4Model
+  /// Asset name assigned to the loaded MD4 skeletal model.
+  name
+  /// Number of animation frames stored in the model surface.
+  numFrames
+  /// Number of bones stored in the skeletal model.
+  numBones
+  /// Per-frame animation data retained for model interpolation.
+  frames
+  /// Model surfaces grouped by level-of-detail tier.
+  lods
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Size in bytes of the loaded model or world data.
+  dataSize
+end struct
 /// Data record for `mq3.renderer.tr_model_runtime.Model`; groups `name`, `type`, `index`, `dataSize`, `brushBounds`, `md3`, and 2 further fields.
-struct Model name type index dataSize brushBounds md3 md4 numLods end struct
+struct Model
+  /// Model registration key shared by BSP, MD3, and MD4 resource lookup.
+  name
+  /// Model representation tag selecting invalid, BSP brush, MD3, or MD4 data.
+  type
+  /// Position of this record in its owning table or list.
+  index
+  /// Size in bytes of the loaded model or world data.
+  dataSize
+  /// Axis-aligned bounds of the inline brush model.
+  brushBounds
+  /// Loaded MD3 model data used for mesh animation and bounds queries.
+  md3
+  /// Loaded MD4 skeletal model data.
+  md4
+  /// Number of level-of-detail variants stored in the model.
+  numLods
+end struct
 /// Data record for `mq3.renderer.tr_model_runtime.State`; groups `models`, `numModels`, `maxModels`, `archives`, `registered`, `viewCluster`, and 6 further fields.
-struct State models numModels maxModels archives registered viewCluster initCount syncCount flareClears sceneClears stretchPrimes glConfig end struct
+struct State
+  /// Registered models or model parts available to the subsystem.
+  models
+  /// Number of model records registered in the model table.
+  numModels
+  /// Maximum number of model records accepted by the registry.
+  maxModels
+  /// Asset archives searched while resolving resources.
+  archives
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Visibility cluster used by the current world view.
+  viewCluster
+  /// Number of renderer model-system initialization operations.
+  initCount
+  /// Number of render-thread synchronization operations.
+  syncCount
+  /// Number of flare-state reset operations.
+  flareClears
+  /// Number of scene-buffer reset operations.
+  sceneClears
+  /// Number of initial two-dimensional draw operations used to prime renderer state.
+  stretchPrimes
+  /// Graphics configuration returned by renderer registration.
+  glConfig
+end struct
 /// Data record for `mq3.renderer.tr_model_runtime.ModelListEntry`; groups `dataSize`, `lods`, `name`.
-struct ModelListEntry dataSize lods name end struct
+struct ModelListEntry
+  /// Size in bytes of the loaded model or world data.
+  dataSize
+  /// Number of distinct loaded level-of-detail variants for this model.
+  lods
+  /// Registered model name displayed beside its memory size and level-of-detail count.
+  name
+end struct
 /// Data record for `mq3.renderer.tr_model_runtime.ModelList`; groups `entries`, `total`.
-struct ModelList entries total end struct
+struct ModelList
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Total size in bytes of the loaded model data represented by the listing.
+  total
+end struct
 
 /// Creates error `7790` with message `"tr_model: "+text`.
 /// @param text Input used in the result expression `error(7790,"tr_model: "+text)`.

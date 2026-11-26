@@ -8,28 +8,125 @@ import mq3.renderer.qgl as qgl
 import mq3.platform.win_headers as winHeaders
 import mq3.platform.win_qgl_runtime as winQgl
 
+/// Graphics-mode result indicating successful initialization.
 const RSERR_OK=0
+/// Graphics-mode result indicating that the requested fullscreen mode is unavailable.
 const RSERR_INVALID_FULLSCREEN=1
+/// Graphics-mode result indicating that the requested display mode is invalid.
 const RSERR_INVALID_MODE=2
+/// Graphics-mode result indicating an unclassified initialization failure.
 const RSERR_UNKNOWN=3
+/// Pixel-format selection result indicating success.
 const TRY_PFD_SUCCESS=0
+/// Pixel-format failure allowing another candidate format to be tried.
 const TRY_PFD_FAIL_SOFT=1
+/// Pixel-format failure requiring the current context-initialization attempt to stop.
 const TRY_PFD_FAIL_HARD=2
+/// Windows pixel-format flag requesting front and back buffers.
 const PFD_DOUBLEBUFFER=1
+/// Windows pixel-format flag requesting stereo drawing buffers.
 const PFD_STEREO=2
+/// Windows pixel-format flag permitting rendering to a window.
 const PFD_DRAW_TO_WINDOW=4
+/// Windows pixel-format flag indicating OpenGL support.
 const PFD_SUPPORT_OPENGL=32
+/// Windows pixel-format flag identifying the generic software implementation.
 const PFD_GENERIC_FORMAT=64
+/// Windows pixel-format selector for RGBA color pixels.
 const PFD_TYPE_RGBA=0
 
 /// Data record for `mq3.platform.win_glimp_runtime.PFD`; groups `flags`, `pixelType`, `colorBits`, `depthBits`, `stencilBits`, `layerType`, and 1 further field.
-struct PFD flags pixelType colorBits depthBits stencilBits layerType index end struct
+struct PFD
+  /// Windows pixel-format capability flags such as double buffering and OpenGL support.
+  flags
+  /// Pixel encoding selected by the Windows pixel-format descriptor.
+  pixelType
+  /// Color-buffer precision in bits.
+  colorBits
+  /// Depth-buffer precision in bits.
+  depthBits
+  /// Stencil-buffer precision in bits.
+  stencilBits
+  /// Layer type selected by the Windows pixel-format descriptor.
+  layerType
+  /// Native Windows pixel-format index selected for the rendering window.
+  index
+end struct
 /// Data record for `mq3.platform.win_glimp_runtime.Mode`; groups `width`, `height`, `aspect`, `frequency`, `fullscreen`.
-struct Mode width height aspect frequency fullscreen end struct
+struct Mode
+  /// Width in pixels of the requested Windows display mode.
+  width
+  /// Height in pixels of the requested Windows display mode.
+  height
+  /// Width-to-height aspect ratio of the selected display mode.
+  aspect
+  /// Requested display refresh frequency, in hertz.
+  frequency
+  /// Whether the selected video mode occupies the full display.
+  fullscreen
+end struct
 /// Data record for `mq3.platform.win_glimp_runtime.Extensions`; groups `textureCompression`, `textureEnvAdd`, `multitexture`, `compiledVertexArray`, `maxActiveTextures`, `swapControl`.
-struct Extensions textureCompression textureEnvAdd multitexture compiledVertexArray maxActiveTextures swapControl end struct
+struct Extensions
+  /// Selected texture-compression capability or mode.
+  textureCompression
+  /// Whether additive texture-environment combining is available.
+  textureEnvAdd
+  /// Whether multiple texture units may be used in one drawing pass.
+  multitexture
+  /// Whether the compiled-vertex-array extension is available.
+  compiledVertexArray
+  /// Number of simultaneous texture units supported by the driver.
+  maxActiveTextures
+  /// Whether the driver supports configurable vertical synchronization.
+  swapControl
+end struct
 /// Data record for `mq3.platform.win_glimp_runtime.Runtime`; groups `osSupported`, `driverLoaded`, `windowCreated`, `contextCreated`, `active`, `fullscreen`, and 16 further fields.
-struct Runtime osSupported driverLoaded windowCreated contextCreated active fullscreen displayChanged mode pfd extensions vendor renderer version extensionText swaps logs rendererThread renderCommands renderCompleted qglRegistry qglState glwState end struct
+struct Runtime
+  /// Whether the detected operating system satisfies the graphics backend requirements.
+  osSupported
+  /// Whether the graphics driver library loaded successfully.
+  driverLoaded
+  /// Whether the application window has been created.
+  windowCreated
+  /// Whether the graphics context has been created.
+  contextCreated
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Whether the selected video mode occupies the full display.
+  fullscreen
+  /// Whether the platform changed the desktop display mode.
+  displayChanged
+  /// Selected display mode and its dimensions, color depth, and refresh settings.
+  mode
+  /// Selected Windows pixel-format descriptor.
+  pfd
+  /// Graphics extension capabilities or extension names reported by the driver.
+  extensions
+  /// Graphics-driver vendor identification string.
+  vendor
+  /// Graphics-driver renderer identification string.
+  renderer
+  /// Version string reported by the loaded graphics implementation.
+  version
+  /// Space-separated graphics extension string returned by the driver.
+  extensionText
+  /// Number of buffer-swap operations performed by the graphics backend.
+  swaps
+  /// Diagnostic log entries retained by the platform layer.
+  logs
+  /// Render-thread handle or state owned by the platform backend.
+  rendererThread
+  /// Commands waiting to be executed by the render thread.
+  renderCommands
+  /// Completion state or count for render-thread work.
+  renderCompleted
+  /// Registry of loaded OpenGL entry points.
+  qglRegistry
+  /// Current OpenGL entry-point binding and logging state.
+  qglState
+  /// Native Windows graphics-window state.
+  glwState
+end struct
 
 /// Constructs `mq3.platform.win_glimp_runtime.Runtime` with `osSupported` = `true`, `driverLoaded` = `false`, `windowCreated` = `false`, `contextCreated` = `false` and the supplied remaining values.
 function create()

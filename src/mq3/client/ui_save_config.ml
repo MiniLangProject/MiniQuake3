@@ -3,9 +3,32 @@
 // Native semantic port of code/q3_ui/ui_saveconfig.c.
 package mq3.client.ui_save_config
 import std.string as strings
+/// Activation callback event accepted by the configuration-file saving menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
 /// Stores UI save config save config menu record, including `wrapAround`, `fullscreen`, `name`, `maxchars`, `widthInChars`, `assets` and additional values.
-struct SaveConfigMenu wrapAround fullscreen name maxchars widthInChars assets commands actions end struct
+struct SaveConfigMenu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the configuration-file
+  /// saving menu.
+  wrapAround
+  /// Whether the configuration-saving menu covers the entire UI instead of appearing over the
+  /// underlying game view.
+  fullscreen
+  /// Editable configuration filename; saving removes an existing extension and appends .cfg.
+  name
+  /// When constructing this record, `init` supplies `20` for this member.
+  maxchars
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// Media resources retained for registering and drawing the artwork used by the configuration-file
+  /// saving menu.
+  assets
+  /// When constructing this record, `init` supplies an empty list for this member.
+  commands
+  /// Host requests queued while accepting a filename and writing the current configuration, retained in
+  /// request order.
+  actions
+end struct
 /// Calls `std.string.lastIndexOf`, `std.string.substr` from UI save config `stripExtension`. The final path returns `name`.
 /// @param name Name used to select or register the corresponding UI save config resource.
 function stripExtension(name) at=strings.lastIndexOf(name,".");if at>=0 then return strings.substr(name,0,at) end if;return name end function

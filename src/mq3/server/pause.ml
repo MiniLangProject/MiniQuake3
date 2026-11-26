@@ -3,15 +3,27 @@
 // SV_CheckPaused from server/sv_main.c.
 package mq3.server.pause
 
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
+/// Client-state value identifying a vacant slot excluded from the pause decision.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying a playing client counted when deciding whether the server may pause.
 const CS_ACTIVE=4
 
 /// Client record for server.pause, containing `state`, `addressType`.
-struct Client state addressType end struct
+struct Client
+  /// Connection lifecycle value that determines whether this slot counts as a connected or playing
+  /// participant.
+  state
+  /// Network-address kind, such as loopback, IPv4, or bot.
+  addressType
+end struct
 /// Create `mq3.server.pause.Client` with state=state; addressType=addressType.
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.pause.Client` record.
 /// @param addressType Initial `addressType` field stored in the returned or constructed `mq3.server.pause.Client` record.
@@ -19,7 +31,14 @@ function client(state,addressType) return Client(state,addressType) end function
 
 // cvarSets is the number of Cvar_Set calls made by the original function.
 // The result carries the resulting sv_paused integer so callers can apply it.
-struct PauseResult paused svPaused cvarSets end struct
+struct PauseResult
+  /// True when the current server frame should remain paused.
+  paused
+  /// Server pause-variable value produced by the pause decision.
+  svPaused
+  /// Configuration-variable updates requested by the pause decision.
+  cvarSets
+end struct
 
 /// Check pause in server.pause; the normal completion returns `PauseResult(true, svPaused, 0)`.
 ///

@@ -5,37 +5,130 @@ package mq3.vm.pc_parser
 import mq3.compat.numeric as n
 import std.time as time
 
+/// Upper bound on sourcefiles represented by mq3.vm.pc_parser.
 const MAX_SOURCEFILES=64
+/// Upper bound on tokenlength represented by mq3.vm.pc_parser.
 const MAX_TOKENLENGTH=1024
+/// Byte size used for token storage or binary layout in mq3.vm.pc_parser.
 const TOKEN_SIZE=1040
+/// Token kind or token-subtype bit identifying string.
 const TT_STRING=1
+/// Token kind or token-subtype bit identifying literal.
 const TT_LITERAL=2
+/// Token kind or token-subtype bit identifying number.
 const TT_NUMBER=3
+/// Token kind or token-subtype bit identifying name.
 const TT_NAME=4
+/// Token kind or token-subtype bit identifying punctuation.
 const TT_PUNCTUATION=5
+/// Token kind or token-subtype bit identifying decimal.
 const TT_DECIMAL=0x0008
+/// Token kind or token-subtype bit identifying hex.
 const TT_HEX=0x0100
+/// Token kind or token-subtype bit identifying octal.
 const TT_OCTAL=0x0200
+/// Token kind or token-subtype bit identifying float.
 const TT_FLOAT=0x0800
+/// Token kind or token-subtype bit identifying integer.
 const TT_INTEGER=0x1000
+/// Parser punctuation identifier for the preprocessor hash marker.
 const P_PRECOMP=51
 
 /// Token record for vm.pc_parser, containing `type`, `subtype`, `intValue`, `floatValue`, `text`, `line`, and 1 further fields.
-struct Token type subtype intValue floatValue text line leadingSpace end struct
+struct Token
+  /// Primary parser token kind selected from TT_*.
+  type
+  /// Token subtype bits describing number representation or punctuation details.
+  subtype
+  /// Integer interpretation of the parsed numeric token.
+  intValue
+  /// Floating-point interpretation of the parsed numeric token.
+  floatValue
+  /// Token spelling after lexical processing.
+  text
+  /// Source line at which the token begins.
+  line
+  /// Nonzero when whitespace preceded the token in its source text.
+  leadingSpace
+end struct
 /// Source record for vm.pc_parser, containing `name`, `data`, `offset`, `line`, `pending`.
-struct Source name data offset line pending end struct
+struct Source
+  /// Name/path of the source supplied to the parser.
+  name
+  /// Source bytes being tokenized.
+  data
+  /// Byte cursor of the next source character to read.
+  offset
+  /// Current source line number.
+  line
+  /// Tokens queued for subsequent reading or macro expansion.
+  pending
+end struct
 /// Define record for vm.pc_parser, containing `name`, `parameters`, `tokens`, `functionLike`.
-struct Define name parameters tokens functionLike end struct
+struct Define
+  /// Identifier bound to this preprocessor macro.
+  name
+  /// Formal parameter names accepted by a function-like macro.
+  parameters
+  /// Token sequence forming the macro replacement or parser result.
+  tokens
+  /// Nonzero when the macro requires an argument list.
+  functionLike
+end struct
 /// Conditional record for vm.pc_parser, containing `parentActive`, `branchTaken`, `active`, `elseSeen`.
-struct Conditional parentActive branchTaken active elseSeen end struct
+struct Conditional
+  /// Whether the enclosing preprocessor conditional branch is active.
+  parentActive
+  /// Whether an earlier branch of this conditional group was selected.
+  branchTaken
+  /// Whether tokens in the current preprocessor branch should be emitted.
+  active
+  /// Whether this conditional group has encountered its else branch.
+  elseSeen
+end struct
 /// Expression record for vm.pc_parser, containing `registry`, `tokens`, `position`, `valid`, `depth`.
-struct Expression registry tokens position valid depth end struct
+struct Expression
+  /// Registry of currently loaded preprocessor/token sources.
+  registry
+  /// Token sequence forming the macro replacement or parser result.
+  tokens
+  /// Current position within the token or argument sequence.
+  position
+  /// Remains true while conditional-expression parsing and evaluation succeed; cleared on syntax or
+  /// arithmetic errors.
+  valid
+  /// Current nesting depth of macro expansion or parser evaluation.
+  depth
+end struct
 /// ArgumentResult record for vm.pc_parser, containing `valid`, `next`, `arguments`.
-struct ArgumentResult valid next arguments end struct
+struct ArgumentResult
+  /// True when a complete parenthesized macro-argument list was parsed successfully.
+  valid
+  /// Token position immediately after the parsed macro argument list.
+  next
+  /// Token sequences supplied as actual macro arguments.
+  arguments
+end struct
 /// MacroExpansion record for vm.pc_parser, containing `valid`, `invoked`, `tokens`.
-struct MacroExpansion valid invoked tokens end struct
+struct MacroExpansion
+  /// True for a valid macro-processing result, including a function-like macro that was not invoked.
+  valid
+  /// Nonzero when a function-like macro invocation has been recognized.
+  invoked
+  /// Token sequence forming the macro replacement or parser result.
+  tokens
+end struct
 /// Registry record for vm.pc_parser, containing `context`, `loadFn`, `sources`, `defines`.
-struct Registry context loadFn sources defines end struct
+struct Registry
+  /// Opaque caller-supplied context available to the precompiler source-file loading callback.
+  context
+  /// Injected callback for load; invoked through the Registry service/state record.
+  loadFn
+  /// Loaded source objects managed by the preprocessor registry.
+  sources
+  /// Active macro definitions available to the preprocessor.
+  defines
+end struct
 
 /// Create the vm.pc_parser error for `fail` with 7691 and the supplied diagnostic text.
 /// @param message Message used in `("PC parser: " + message)` and `error(7691, ("PC parser: " + message))`.

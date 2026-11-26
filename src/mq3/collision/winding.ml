@@ -6,17 +6,32 @@ import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.qcommon.headers as qcommonHeaders
 
+/// Plane-classification result for geometry in front of the plane.
 const SIDE_FRONT=qcommonHeaders.SIDE_FRONT
+/// Plane-classification result for geometry behind the plane.
 const SIDE_BACK=qcommonHeaders.SIDE_BACK
+/// Plane-classification result for geometry within the plane tolerance.
 const SIDE_ON=qcommonHeaders.SIDE_ON
+/// Plane-classification result for geometry crossing the plane.
 const SIDE_CROSS=qcommonHeaders.SIDE_CROSS
+/// Distance tolerance for classifying a point as lying on a plane.
 const ON_EPSILON=qcommonHeaders.ON_EPSILON
+/// Largest accepted absolute coordinate in a collision winding.
 const MAX_MAP_BOUNDS=qcommonHeaders.MAX_MAP_BOUNDS
+/// Maximum number of vertices in a clipped winding polygon.
 const MAX_POINTS_ON_WINDING=qcommonHeaders.MAX_POINTS_ON_WINDING
+/// Maximum number of points collected for a debug collision hull.
 const MAX_HULL_POINTS=128
 
 /// ManagedWinding record for collision.winding, containing `points`, `capacity`, `freed`.
-struct ManagedWinding points capacity freed end struct
+struct ManagedWinding
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// True after this managed resource has been released.
+  freed
+end struct
 
 /// Compute collision.winding.clonePoint as `[value[0], value[1], value[2]]`.
 /// @param value Value used in `value[0]` and `value[1]`.

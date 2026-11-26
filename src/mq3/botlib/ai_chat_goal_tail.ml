@@ -8,16 +8,30 @@ import mq3.botlib.ai_goal_state as goals
 import mq3.botlib.ai_item_weights as itemWeights
 import mq3.botlib.ai_resource_pools as pools
 
+/// Bot-library syscall identifier for number initial chats.
 const OP_NUM_INITIAL_CHATS=569
+/// Bot-library syscall identifier for get chat message.
 const OP_GET_CHAT_MESSAGE=570
+/// Bot-library syscall identifier for remove from avoid goals.
 const OP_REMOVE_FROM_AVOID_GOALS=571
+/// Bot-library syscall identifier for predict visible position.
 const OP_PREDICT_VISIBLE_POSITION=572
+/// Bot-library syscall identifier for set avoid goal time.
 const OP_SET_AVOID_GOAL_TIME=573
+/// Minimum interval retained for a goal-avoidance request.
 const AVOID_MINIMUM_TIME=10.0
+/// Default interval for temporarily avoiding a selected goal.
 const AVOID_DEFAULT_TIME=30.0
 
 /// `State` record for ai chat goal tail, containing `chatProfiles`, `goalRuntime` and `levelItems`.
-struct State chatProfiles goalRuntime levelItems end struct
+struct State
+  /// Initial-chat profile runtime used by the supplemental chat operations.
+  chatProfiles
+  /// Bot goal runtime used by the supplemental goal operations.
+  goalRuntime
+  /// Current item goals discovered from the map and its dynamic entities.
+  levelItems
+end struct
 /// Create a `mq3.botlib.ai_chat_goal_tail.State` record, initializing `chatProfiles` from `chatProfiles`, `goalRuntime` from `goalRuntime` and `levelItems` from `levelItems`.
 /// @param chatProfiles Initial value stored in `mq3.botlib.ai_chat_goal_tail.State.chatProfiles`.
 /// @param goalRuntime Initial value stored in `mq3.botlib.ai_chat_goal_tail.State.goalRuntime`.

@@ -7,23 +7,129 @@ import mq3.botlib.ai_item_weights as fuzzy
 import mq3.botlib.ai_resource_pools as pools
 import mq3.vm.pc_parser as pc
 
+/// Maximum number of weapon definitions in the bot weapon configuration.
 const MAX_WEAPONINFO=32
+/// Maximum number of projectile definitions in the bot weapon configuration.
 const MAX_PROJECTILEINFO=32
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that weapon weights could not be loaded.
 const BLERR_CANNOTLOADWEAPONWEIGHTS=11
+/// Bot-library error indicating that weapon configuration could not be loaded.
 const BLERR_CANNOTLOADWEAPONCONFIG=12
+/// Bot-library syscall identifier for load weapon weights.
 const OP_LOAD_WEAPON_WEIGHTS=560
 
 /// `Projectile` record for ai weapon weights, containing `name`, `model`, `flags`, `gravity` and `damage` and related fields.
-struct Projectile name model flags gravity damage radius visibleDamage damageType healthIncrease push detonation bounce bounceFriction bounceStop end struct
+struct Projectile
+  /// Projectile-definition name referenced by weapon configuration.
+  name
+  /// Asset model configured for the projectile.
+  model
+  /// Projectile behavior properties combined from PFL flags.
+  flags
+  /// Gravity magnitude used when predicting movement.
+  gravity
+  /// Base damage caused by the projectile.
+  damage
+  /// Radius of the represented sphere or capsule.
+  radius
+  /// Damage considered when the target has line of sight to the projectile.
+  visibleDamage
+  /// Bit mask describing impact, radial, or visibility-dependent damage.
+  damageType
+  /// Health adjustment associated with the projectile's effect.
+  healthIncrease
+  /// Push force associated with the projectile's impact.
+  push
+  /// Delay or condition value controlling projectile detonation.
+  detonation
+  /// Bounce coefficient used by the projectile simulation.
+  bounce
+  /// Velocity reduction applied when the projectile bounces.
+  bounceFriction
+  /// Speed threshold below which projectile bouncing stops.
+  bounceStop
+end struct
 /// `Weapon` record for ai weapon weights, containing `valid`, `number`, `name`, `model` and `level` and related fields.
-struct Weapon valid number name model level weaponIndex flags projectileName numProjectiles horizontalSpread verticalSpread speed acceleration recoil offset angleOffset extraZVelocity ammoAmount ammoIndex activate reload spinup spindown projectile end struct
+struct Weapon
+  /// True when the represented entry contains usable data.
+  valid
+  /// Game weapon identifier used to index this weapon definition.
+  number
+  /// Weapon-definition name used by fuzzy weight lookup.
+  name
+  /// Asset model configured for the weapon.
+  model
+  /// Configured weapon-selection level or priority classification.
+  level
+  /// Inventory or weapon-table index associated with the weapon.
+  weaponIndex
+  /// Weapon behavior properties combined from WFL flags.
+  flags
+  /// Name of the projectile definition fired by this weapon.
+  projectileName
+  /// Number of projectiles represented by this record.
+  numProjectiles
+  /// Horizontal angular spread of the weapon's projectiles.
+  horizontalSpread
+  /// Vertical angular spread of the weapon's projectiles.
+  verticalSpread
+  /// Initial projectile speed configured for this weapon.
+  speed
+  /// Acceleration applied to the fired projectile.
+  acceleration
+  /// Recoil vector applied when the weapon fires.
+  recoil
+  /// Position offset from the weapon origin at which projectiles are spawned.
+  offset
+  /// Angular offset between the weapon aim and projectile launch direction.
+  angleOffset
+  /// Additional vertical velocity imparted to the projectile.
+  extraZVelocity
+  /// Amount of ammunition consumed by a weapon shot.
+  ammoAmount
+  /// Inventory index of the ammunition consumed by the weapon.
+  ammoIndex
+  /// Delay before the selected weapon becomes ready to fire.
+  activate
+  /// Time required to reload or become ready for the next shot.
+  reload
+  /// Delay while the weapon spins up before firing.
+  spinup
+  /// Delay while the weapon spins down after firing.
+  spindown
+  /// Resolved projectile definition referenced by the weapon.
+  projectile
+end struct
 /// `WeaponConfig` record for ai weapon weights, containing `weapons` and `projectiles`.
-struct WeaponConfig weapons projectiles end struct
+struct WeaponConfig
+  /// Loaded weapon definitions indexed by weapon number.
+  weapons
+  /// Loaded projectile definitions referenced by weapon descriptions.
+  projectiles
+end struct
 /// `Reader` record for ai weapon weights, containing `registry` and `handle`.
-struct Reader registry handle end struct
+struct Reader
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Preprocessor source handle supplying the weapon configuration.
+  handle
+end struct
 /// `Runtime` record for ai weapon weights, containing `context`, `readFn`, `fuzzyRuntime`, `config` and `fileReads`.
-struct Runtime context readFn fuzzyRuntime config fileReads end struct
+struct Runtime
+  /// Caller-supplied data associated with loading projectile, weapon, and fuzzy weapon-weight
+  /// definitions.
+  context
+  /// Host callback that reads weapon, projectile, and weapon-weight configuration files.
+  readFn
+  /// Fuzzy-weight evaluator used to score available weapons.
+  fuzzyRuntime
+  /// Configuration object supplying the settings used by this runtime.
+  config
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
 /// Construct error `7580` with diagnostic text `"AI weapon weights: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

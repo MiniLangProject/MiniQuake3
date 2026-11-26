@@ -12,72 +12,393 @@ import mq3.compat.numeric as numeric
 /// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Capacity limit for the models collection or bounded storage used by this client module.
 const MAX_MODELS=256
+/// Capacity limit for the voicefiles collection or bounded storage used by this client module.
 const MAX_VOICEFILES=8
+/// Capacity limit for the voicechats collection or bounded storage used by this client module.
 const MAX_VOICECHATS=64
+/// Capacity limit for the voicesounds collection or bounded storage used by this client module.
 const MAX_VOICESOUNDS=64
+/// Capacity limit for the headmodels collection or bounded storage used by this client module.
 const MAX_HEADMODELS=64
+/// Capacity limit for the voicechatbuffer collection or bounded storage used by this client module.
 const MAX_VOICECHATBUFFER=32
+/// Maximum text length accepted for a chat message.
 const MAX_SAY_TEXT=150
+/// Maximum number of team-chat lines retained by the overlay history.
 const TEAMCHAT_HEIGHT=cgabi.TEAMCHAT_HEIGHT
+/// Maximum visible character count retained for one team-chat line.
 const TEAMCHAT_WIDTH=cgabi.TEAMCHAT_WIDTH
+/// Native game-type value for capture the flag, used when interpreting mode-specific server and
+/// flag-status updates.
 const GT_CTF=4
+/// Native game-type identifier selecting one-flag capture the flag.
 const GT_1FCTF=5
+/// Player-model gender identifier selecting male sound variants.
 const GENDER_MALE=0
+/// Player-model gender identifier selecting female sound variants.
 const GENDER_FEMALE=1
+/// Player-model gender identifier selecting neuter sound variants.
 const GENDER_NEUTER=2
+/// Chat routing mode that sends the message to all players.
 const SAY_ALL=0
+/// Chat routing mode that sends the message only to the player's team.
 const SAY_TEAM=1
+/// Chat routing mode that sends the message to one addressed player.
 const SAY_TELL=2
+/// Team-order identifier assigning the player the offense tactical role.
 const TEAMTASK_OFFENSE=1
+/// Team-order identifier assigning the player the defense tactical role.
 const TEAMTASK_DEFENSE=2
+/// Team-order identifier assigning the player the patrol tactical role.
 const TEAMTASK_PATROL=3
+/// Team-order identifier assigning the player the follow tactical role.
 const TEAMTASK_FOLLOW=4
+/// Team-order identifier assigning the player the retrieve tactical role.
 const TEAMTASK_RETRIEVE=5
+/// Team-order identifier assigning the player the escort tactical role.
 const TEAMTASK_ESCORT=6
+/// Team-order identifier assigning the player the camp tactical role.
 const TEAMTASK_CAMP=7
+/// Server configuration-string index for serverinfo; shared by the client and game protocol.
 const CS_SERVERINFO=0
+/// Server configuration-string index for music; shared by the client and game protocol.
 const CS_MUSIC=2
+/// Server configuration-string index for warmup; shared by the client and game protocol.
 const CS_WARMUP=5
+/// Server configuration-string index for scores1; shared by the client and game protocol.
 const CS_SCORES1=6
+/// Server configuration-string index for scores2; shared by the client and game protocol.
 const CS_SCORES2=7
+/// Server configuration-string index for vote time; shared by the client and game protocol.
 const CS_VOTE_TIME=8
+/// Server configuration-string index for vote string; shared by the client and game protocol.
 const CS_VOTE_STRING=9
+/// Server configuration-string index for vote yes; shared by the client and game protocol.
 const CS_VOTE_YES=10
+/// Server configuration-string index for vote no; shared by the client and game protocol.
 const CS_VOTE_NO=11
+/// Server configuration-string index for teamvote time; shared by the client and game protocol.
 const CS_TEAMVOTE_TIME=12
+/// Server configuration-string index for teamvote string; shared by the client and game protocol.
 const CS_TEAMVOTE_STRING=14
+/// Server configuration-string index for teamvote yes; shared by the client and game protocol.
 const CS_TEAMVOTE_YES=16
+/// Server configuration-string index for teamvote no; shared by the client and game protocol.
 const CS_TEAMVOTE_NO=18
+/// Server configuration-string index for level start time; shared by the client and game protocol.
 const CS_LEVEL_START_TIME=21
+/// Server configuration-string index for intermission; shared by the client and game protocol.
 const CS_INTERMISSION=22
+/// Server configuration-string index for flagstatus; shared by the client and game protocol.
 const CS_FLAGSTATUS=23
+/// Server configuration-string index for shaderstate; shared by the client and game protocol.
 const CS_SHADERSTATE=24
+/// Server configuration-string index for models; shared by the client and game protocol.
 const CS_MODELS=32
+/// Server configuration-string index for sounds; shared by the client and game protocol.
 const CS_SOUNDS=288
+/// Server configuration-string index for players; shared by the client and game protocol.
 const CS_PLAYERS=544
 
 /// Stores client game servercmds score record, including `client`, `score`, `ping`, `time`, `scoreFlags`, `powerups` and additional values.
-struct Score client score ping time scoreFlags powerups accuracy impressive excellent gauntlet defend assist perfect captures team end struct
+struct Score
+  /// Player slot associated with this score or client-side record.
+  client
+  /// Player score parsed from the server score command.
+  score
+  /// Player ping in milliseconds parsed from the server score command; -1 marks a connecting player.
+  ping
+  /// Elapsed player connection time reported by the server for scoreboard presentation.
+  time
+  /// Flags supplied with the server's scoreboard entry.
+  scoreFlags
+  /// Powerup bitmask reported for this player by the server score command.
+  powerups
+  /// Percentage of successful weapon hits reported in the scoreboard data.
+  accuracy
+  /// When constructing this record, `parseScores` supplies `integer(args,base+7)` for this member.
+  impressive
+  /// When constructing this record, `parseScores` supplies `integer(args,base+8)` for this member.
+  excellent
+  /// When constructing this record, `parseScores` supplies `integer(args,base+9)` for this member.
+  gauntlet
+  /// When constructing this record, `parseScores` supplies `integer(args,base+10)` for this member.
+  defend
+  /// When constructing this record, `parseScores` supplies `integer(args,base+11)` for this member.
+  assist
+  /// True or nonzero when the player's result qualifies as a perfect game.
+  perfect
+  /// Number of flag captures credited to this player.
+  captures
+  /// Team assigned to this parsed score entry from the corresponding client information.
+  team
+end struct
 /// Stores client game servercmds client record, including `name`, `team`, `score`, `powerups`, `location`, `health` and additional values.
-struct Client name team score powerups location health armor curWeapon gender headModelName headSkinName end struct
+struct Client
+  /// Player name retained from server configuration strings for client-game server-command
+  /// presentation.
+  name
+  /// Client team membership retained while interpreting scoreboard and team-information commands.
+  team
+  /// Latest reported player score copied into client information by score-command processing.
+  score
+  /// Latest player powerup bitmask copied from score or team-overlay server commands.
+  powerups
+  /// When constructing this record, `client` supplies `0` for this member.
+  location
+  /// Teammate health decoded from a server team-information command.
+  health
+  /// Teammate armor decoded from the server team-information payload.
+  armor
+  /// Currently selected weapon identifier for the client-information entry.
+  curWeapon
+  /// Model gender used when selecting gender-specific player sounds.
+  gender
+  /// Virtual model name selected for the player's head.
+  headModelName
+  /// Skin name selected for the player's head model.
+  headSkinName
+end struct
 /// Stores client game servercmds voice variant record, including `sound`, `chat`.
-struct VoiceVariant sound chat end struct
+struct VoiceVariant
+  /// Registered voice sound, or its virtual asset path when no sound-registration callback is supplied.
+  sound
+  /// When constructing this record, `parseVoiceChats` supplies `chat` for this member.
+  chat
+end struct
 /// Stores client game servercmds voice chat record, including `id`, `variants`.
-struct VoiceChat id variants end struct
+struct VoiceChat
+  /// Voice-chat command identifier used to find the requested sound and text alternatives.
+  id
+  /// When constructing this record, `parseVoiceChats` supplies `variants` for this member.
+  variants
+end struct
 /// Stores client game servercmds voice list record, including `name`, `gender`, `chats`.
-struct VoiceList name gender chats end struct
+struct VoiceList
+  /// Voice-script list name used to select the matching voice-chat definitions.
+  name
+  /// Model gender used when selecting gender-specific player sounds.
+  gender
+  /// When constructing this record, `parseVoiceChats` supplies an empty list for this member.
+  chats
+end struct
 /// Stores client game servercmds head voice record, including `headmodel`, `voiceChatNum`.
-struct HeadVoice headmodel voiceChatNum end struct
+struct HeadVoice
+  /// When constructing this record, `cacheHead` supplies `name` for this member.
+  headmodel
+  /// When constructing this record, `cacheHead` supplies `index` for this member.
+  voiceChatNum
+end struct
 /// Stores client game servercmds buffered voice record, including `clientNum`, `sound`, `voiceOnly`, `cmd`, `message`.
-struct BufferedVoice clientNum sound voiceOnly cmd message end struct
+struct BufferedVoice
+  /// Client slot of the speaker associated with this queued voice-chat message.
+  clientNum
+  /// Voice sound resource queued together with its speaker and chat message.
+  sound
+  /// When constructing this record, `voiceChatLocal` supplies `voiceOnly` for this member.
+  voiceOnly
+  /// When constructing this record, `voiceChatLocal` supplies `cmd` for this member.
+  cmd
+  /// When constructing this record, `voiceChatLocal` supplies `message` for this member.
+  message
+end struct
 /// Stores client game servercmds queued engine action, including `boundary`, `kind`, `value`, `value2`, `number`, `dispatched`.
-struct Action boundary kind value value2 number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while applying reliable server commands and
+  /// playing server-directed feedback.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while applying reliable
+  /// server commands and playing server-directed feedback.
+  kind
+  /// Value payload supplied to the selected host operation while applying reliable server commands and
+  /// playing server-directed feedback.
+  value
+  /// When constructing this record, `action` supplies `value2` for this member.
+  value2
+  /// Numeric argument interpreted by the selected host operation while applying reliable server
+  /// commands and playing server-directed feedback.
+  number
+  /// True when this request is marked for native dispatch while applying reliable server commands and
+  /// playing server-directed feedback; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game servercmds operation result, including `handled`, `actions`.
-struct Result handled actions end struct
+struct Result
+  /// When constructing this record, `result` supplies `handled` for this member.
+  handled
+  /// Host requests queued while applying reliable server commands and playing server-directed feedback,
+  /// retained in request order.
+  actions
+end struct
 /// Stores client game servercmds state, including `configstrings`, `clients`, `scores`, `numScores`, `teamScores`, `sortedTeamPlayers` and additional values.
-struct State configstrings clients scores numScores teamScores sortedTeamPlayers gametype dmflags teamflags fraglimit capturelimit timelimit maxclients mapname redTeam blueTeam scores1 scores2 levelStartTime redflag blueflag flagStatus warmup warmupCount voteTime voteYes voteNo voteString voteModified teamVoteTime teamVoteYes teamVoteNo teamVoteString teamVoteModified intermissionStarted teamChatHeight teamChatTime teamChatMsgs teamChatMsgTimes teamChatPos teamLastChatPos time fraglimitWarnings timelimitWarnings mapRestart levelShot serverCommandSequence voiceLists headVoices voiceBuffer voiceChatBufferIn voiceChatBufferOut voiceChatTime currentVoiceClient acceptOrderTime acceptVoice acceptTask acceptLeader teamChatsOnly noTaunt noVoiceChats noVoiceText localClientNum randomCursor end struct
+struct State
+  /// Server configuration strings indexed by the native protocol's configuration-string identifiers.
+  configstrings
+  /// Client records updated by player configstrings, score commands, and team-overlay commands.
+  clients
+  /// Scoreboard entries received from the server.
+  scores
+  /// Number of valid scoreboard entries received from the server.
+  numScores
+  /// Current score totals indexed by the two competing teams.
+  teamScores
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `parseTeamInfo` during subsequent processing.
+  sortedTeamPlayers
+  /// Game-rule identifier parsed from the current server-information configuration string.
+  gametype
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseServerinfo`
+  /// during subsequent processing.
+  dmflags
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseServerinfo`
+  /// during subsequent processing.
+  teamflags
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseServerinfo`
+  /// during subsequent processing.
+  fraglimit
+  /// Capture or objective-score limit parsed from the server's game information.
+  capturelimit
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseServerinfo`
+  /// during subsequent processing.
+  timelimit
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseServerinfo`
+  /// during subsequent processing.
+  maxclients
+  /// Map name parsed from server information or selected by the client UI.
+  mapname
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `parseServerinfo` during subsequent processing.
+  redTeam
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `parseServerinfo` during subsequent processing.
+  blueTeam
+  /// First team or leading player's score received through server configuration strings.
+  scores1
+  /// Second team or trailing player's score received through server configuration strings.
+  scores2
+  /// Server timestamp at which the level began, used by elapsed-match-time displays.
+  levelStartTime
+  /// Red-flag status received through server configuration strings.
+  redflag
+  /// Blue-flag status received through server configuration strings.
+  blueflag
+  /// Current flag-objective state used by capture-the-flag presentation.
+  flagStatus
+  /// Warmup deadline or state supplied by the server's warmup configuration.
+  warmup
+  /// Last warmup countdown value announced to the player.
+  warmupCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `configStringModified` and `mapRestart` during subsequent processing.
+  voteTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  voteYes
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  voteNo
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  voteString
+  /// True when vote information changed and the UI should refresh or play feedback.
+  voteModified
+  /// When constructing this record, `create` supplies `[0,0]` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  teamVoteTime
+  /// When constructing this record, `create` supplies `[0,0]` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  teamVoteYes
+  /// When constructing this record, `create` supplies `[0,0]` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  teamVoteNo
+  /// When constructing this record, `create` supplies `["",""]` for this member. Used by
+  /// `configStringModified` during subsequent processing.
+  teamVoteString
+  /// Per-team indicators that team-vote information changed.
+  teamVoteModified
+  /// True after intermission begins, suppressing gameplay-only presentation such as voice rewards.
+  intermissionStarted
+  /// When constructing this record, `create` supplies `TEAMCHAT_HEIGHT` for this member. Used by
+  /// `addToTeamChat` during subsequent processing.
+  teamChatHeight
+  /// When constructing this record, `create` supplies `3000` for this member. Used by `addToTeamChat`
+  /// during subsequent processing.
+  teamChatTime
+  /// Color-coded team-chat lines retained in the bounded team-chat history.
+  teamChatMsgs
+  /// Arrival timestamps corresponding to the stored team-chat lines.
+  teamChatMsgTimes
+  /// Next write position in the team-chat history ring.
+  teamChatPos
+  /// Oldest team-chat history position still eligible for display.
+  teamLastChatPos
+  /// Client-game timestamp in milliseconds used to schedule voice playback, orders, and server-command
+  /// feedback.
+  time
+  /// Bitset recording which frag-limit warning thresholds have already been announced.
+  fraglimitWarnings
+  /// Bitset recording which time-limit warning thresholds have already been announced.
+  timelimitWarnings
+  /// True after a map restart, causing presentation and prediction state to be reinitialized.
+  mapRestart
+  /// True while producing the menu screenshot for the current level.
+  levelShot
+  /// Last processed reliable server-command sequence, advanced while executing commands through the
+  /// requested sequence.
+  serverCommandSequence
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `loadVoiceChats` and `headModelVoiceChats` during subsequent processing.
+  voiceLists
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `cacheHead` and `voiceChatListForClient` during subsequent processing.
+  headVoices
+  /// When constructing this record, `create` supplies `array(MAX_VOICECHATBUFFER,void)` for this
+  /// member. Used by `playBufferedVoiceChats` and `addBufferedVoiceChat` during subsequent processing.
+  voiceBuffer
+  /// Write position in the buffered voice-chat announcement ring.
+  voiceChatBufferIn
+  /// Read position in the buffered voice-chat announcement ring.
+  voiceChatBufferOut
+  /// Next time at which a buffered voice-chat announcement may be played.
+  voiceChatTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `voiceChatLocal`
+  /// during subsequent processing.
+  currentVoiceClient
+  /// When constructing this record, `create` supplies `0` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  acceptOrderTime
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `playVoiceChat` during subsequent processing.
+  acceptVoice
+  /// When constructing this record, `create` supplies `0` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  acceptTask
+  /// When constructing this record, `create` supplies `0` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  acceptLeader
+  /// When constructing this record, `create` supplies `false` for this member. Used by `voiceChatLocal`
+  /// and `serverCommand` during subsequent processing.
+  teamChatsOnly
+  /// When constructing this record, `create` supplies `false` for this member. Used by `voiceChat`
+  /// during subsequent processing.
+  noTaunt
+  /// When constructing this record, `create` supplies `false` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  noVoiceChats
+  /// When constructing this record, `create` supplies `false` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  noVoiceText
+  /// When constructing this record, `create` supplies `0` for this member. Used by `playVoiceChat`
+  /// during subsequent processing.
+  localClientNum
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `voiceChatLocal`
+  /// during subsequent processing.
+  randomCursor
+end struct
 
 /// Creates a `mq3.client.cgame_servercmds.Client` record. Initializes the record with the defaults written in this constructor.
 function client() return Client("",0,0,0,0,0,0,0,GENDER_MALE,"","") end function

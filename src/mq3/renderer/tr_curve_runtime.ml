@@ -7,10 +7,37 @@ package mq3.renderer.tr_curve_runtime
 import mq3.compat.numeric as n
 import mq3.renderer.bsp_render_data as render
 
+/// Largest tessellated patch-grid dimension accepted by the renderer.
 const MAX_GRID_SIZE=65
+/// Surface-dispatch tag identifying a tessellated curved-patch grid.
 const SF_GRID=3
 /// Data record for `mq3.renderer.tr_curve_runtime.Grid`; groups `surfaceType`, `width`, `height`, `verts`, `widthLodError`, `heightLodError`, and 6 further fields.
-struct Grid surfaceType width height verts widthLodError heightLodError meshBounds localOrigin meshRadius lodOrigin lodRadius freed end struct
+struct Grid
+  /// Surface-dispatch tag identifying the concrete geometry representation.
+  surfaceType
+  /// Number of columns in the patch vertex grid.
+  width
+  /// Number of rows in the patch vertex grid.
+  height
+  /// Tessellated patch vertices retained with the grid's bounds and detail-error arrays.
+  verts
+  /// Per-column geometric error used when selecting patch detail.
+  widthLodError
+  /// Per-row geometric error used when selecting patch detail.
+  heightLodError
+  /// Axis-aligned bounds enclosing the tessellated patch mesh.
+  meshBounds
+  /// Center of the mesh's local-space bounding sphere.
+  localOrigin
+  /// Radius of the mesh's local-space bounding sphere.
+  meshRadius
+  /// Reference origin used when evaluating patch level of detail.
+  lodOrigin
+  /// Reference radius used when evaluating patch level of detail.
+  lodRadius
+  /// Whether the grid has been released and must no longer be used.
+  freed
+end struct
 
 /// Creates error `7730` with message `"tr_curve: "+message`.
 /// @param message Input used in the result expression `error(7730,"tr_curve: "+message)`.

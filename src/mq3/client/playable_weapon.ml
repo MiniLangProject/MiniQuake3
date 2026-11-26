@@ -7,35 +7,59 @@ import mq3.collision.world as collision
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used when tracing a weapon shot.
 const SHOT_MASK=0x6000001
+/// Fallback ammo setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_AMMO=10
+/// Default cooldown duration in milliseconds when the caller supplies no override.
 const DEFAULT_COOLDOWN_MILLISECONDS=900
+/// Fallback range setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_RANGE=8192.0
 
 /// Stores playable weapon weapon record, including `traceFn`, `context`, `ammo`, `capacity`, `cooldownMilliseconds`, `cooldownRemaining` and additional values.
 struct Weapon
+  /// Host callback for the trace operation; an unset callback leaves that host operation unavailable.
   traceFn
+  /// When constructing this record, `createWithTrace` supplies `context` for this member.
   context
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
   ammo
+  /// Maximum number of entries or allocation units supported by the bounded storage.
   capacity
+  /// When constructing this record, `createWithTrace` supplies `cooldownMilliseconds` for this member.
   cooldownMilliseconds
+  /// When constructing this record, `createWithTrace` supplies `0` for this member.
   cooldownRemaining
+  /// When constructing this record, `createWithTrace` supplies `numeric.f32(range)` for this member.
   range
+  /// When constructing this record, `createWithTrace` supplies `automatic` for this member.
   automatic
+  /// When constructing this record, `createWithTrace` supplies `false` for this member.
   triggerHeld
+  /// When constructing this record, `createWithTrace` supplies `0` for this member.
   shotsFired
+  /// Weapon item classname used to select firing behavior and corresponding weapon resources.
   classname
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
   damage
+  /// When constructing this record, `createWithTrace` supplies `false` for this member.
   noAmmoEvent
 end struct
 
 /// Stores playable weapon shot record, including `start`, `endPoint`, `hit`, `normal`, `distance`, `fraction`.
 struct Shot
+  /// When constructing this record, `shootRay` supplies `[startPoint[0],startPoint[1],startPoint[2]]`
+  /// for this member.
   start
+  /// World-space endpoint of the trace, beam, or projectile presentation segment.
   endPoint
+  /// When constructing this record, `shootRay` supplies `hit` for this member.
   hit
+  /// World-surface normal returned by the player's hitscan trace, retained for impact presentation.
   normal
+  /// When constructing this record, `shootRay` supplies `qmath.VectorLength(delta)` for this member.
   distance
+  /// When constructing this record, `shootRay` supplies `fraction` for this member.
   fraction
 end struct
 

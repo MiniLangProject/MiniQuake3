@@ -7,6 +7,7 @@ import mq3.audio.mixer_transfer as paintTransfer
 import mq3.audio.snd_compressed_paint as compressedPaint
 import mq3.compat.numeric as numeric
 
+/// Default fixed-point master gain used by the channel-paint pipeline.
 const DEFAULT_SND_VOLUME=204
 
 /// Create the audio.snd_paint_pipeline error for `fail` with 7666 and the supplied diagnostic text.

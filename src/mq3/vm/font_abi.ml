@@ -5,22 +5,54 @@ package mq3.vm.font_abi
 import mq3.format.pk3 as pk3
 import mq3.compat.numeric as n
 
+/// Number of character-glyph records stored in one legacy font description.
 const GLYPHS_PER_FONT=256
+/// Byte size used for glyph storage or binary layout in mq3.vm.font_abi.
 const GLYPH_SIZE=80
+/// Byte offset of the renderer handle inside a legacy glyphInfo record.
 const GLYPH_HANDLE_OFFSET=44
+/// Byte offset of the shader-name buffer inside a legacy glyphInfo record.
 const GLYPH_SHADER_OFFSET=48
+/// Byte size used for glyph shader storage or binary layout in mq3.vm.font_abi.
 const GLYPH_SHADER_BYTES=32
+/// Byte offset of glyphScale after the fontInfo glyph table.
 const GLYPH_SCALE_OFFSET=20480
+/// Byte offset of the font-name buffer inside a legacy fontInfo record.
 const FONT_NAME_OFFSET=20484
+/// Byte size used for font name storage or binary layout in mq3.vm.font_abi.
 const FONT_NAME_BYTES=64
+/// Byte size used for font info storage or binary layout in mq3.vm.font_abi.
 const FONT_INFO_SIZE=20548
 
 /// Cached record for vm.font_abi, containing `pointSize`, `data`, `registeredGlyphs`, `path`.
-struct Cached pointSize data registeredGlyphs path end struct
+struct Cached
+  /// Requested font point size associated with the font cache entry.
+  pointSize
+  /// Packed legacy fontInfo bytes retained in the font cache.
+  data
+  /// Renderer glyph handles registered while preparing the font record.
+  registeredGlyphs
+  /// Resource path associated with the cached font data.
+  path
+end struct
 /// Registry record for vm.font_abi, containing `archive`, `fonts`.
-struct Registry archive fonts end struct
+struct Registry
+  /// Archive or asset-source object used to load font resources.
+  archive
+  /// Font cache indexed by requested font/resource settings.
+  fonts
+end struct
 /// Result record for vm.font_abi, containing `found`, `data`, `registeredGlyphs`, `path`.
-struct Result found data registeredGlyphs path end struct
+struct Result
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Packed legacy fontInfo bytes returned for the requested font.
+  data
+  /// Renderer glyph handles registered while preparing the font record.
+  registeredGlyphs
+  /// Resource path associated with the cached font data.
+  path
+end struct
 
 /// Create the vm.font_abi error for `fail` with 7690 and the supplied diagnostic text.
 /// @param message Message used in `("font ABI: " + message)` and `error(7690, ("font ABI: " + message))`.

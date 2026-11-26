@@ -7,24 +7,40 @@ import mq3.compat.numeric as numeric
 import mq3.server.reliable_commands as reliable
 import mq3.server.snapshot_delta as sendSnapshotDelta
 
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP=32
+/// Mask converting a network sequence number into a circular packet-history slot.
 const PACKET_MASK=31
+/// Client-state value identifying a client eligible to receive a normal world snapshot.
 const CS_ACTIVE=4
+/// Snapshot flag indicating that transmission was delayed by rate limiting.
 const SNAPFLAG_RATE_DELAYED=1
+/// Snapshot used during connection and for zombies.
 const SNAPFLAG_NOT_ACTIVE=2
+/// Server-to-client no-operation opcode.
 const SVC_NOP=1
+/// Server-to-client opcode marking the end of a message.
 const SVC_EOF=8
+/// Estimated IP and transport header overhead charged when enforcing the send rate.
 const HEADER_RATE_BYTES=48
 
 /// SendFrame record for server.snapshot_send, containing `firstEntity`, `numEntities`, `areaBits`, `playerState`, `messageSent`, `messageAcked`, and 1 further fields.
 struct SendFrame
+  /// First entity-state position for this snapshot in the shared circular snapshot buffer.
   firstEntity
+  /// Number of entity records currently represented by this state or snapshot.
   numEntities
+  /// Bitset of map areas visible in this snapshot.
   areaBits
+  /// Authoritative player-state record used for snapshots and game simulation.
   playerState
+  /// Server timestamp when this snapshot message was transmitted, in milliseconds.
   messageSent
+  /// Server timestamp when this snapshot message was acknowledged, in milliseconds.
   messageAcked
+  /// Transmitted snapshot-message size in bytes, used for rate limiting.
   messageSize
 end struct
 
@@ -39,20 +55,35 @@ end function
 
 /// Client record for server.snapshot_send, containing `state`, `reliableCommands`, `reliableSequence`, `reliableAcknowledge`, `reliableSent`, `lastClientCommand`, and 9 further fields.
 struct Client
+  /// Connection lifecycle value that decides whether to build and send a normal snapshot.
   state
+  /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands
+  /// Sequence number of the newest queued reliable command.
   reliableSequence
+  /// Last reliable server command acknowledged when selecting commands to prefix to a snapshot.
   reliableAcknowledge
+  /// Sequence number of the newest reliable command transmitted to the peer.
   reliableSent
+  /// Sequence number of the last processed reliable client command.
   lastClientCommand
+  /// Acknowledged snapshot message selected as the base for delta compression.
   deltaMessage
+  /// Sequence number to place on the next outgoing network message.
   outgoingSequence
+  /// Updates can be delta'd from here.
   frames
+  /// True when rate limiting postponed the next snapshot beyond its normal interval.
   rateDelayed
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
   rate
+  /// Requested interval between snapshots, in milliseconds.
   snapshotMsec
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
   nextSnapshotTime
+  /// Requested asset download path, or an empty string when no download is active.
   downloadName
+  /// True when the client slot is controlled by an in-process bot.
   bot
 end struct
 
@@ -63,14 +94,24 @@ end function
 
 /// Server record for server.snapshot_send, containing `time`, `snapFlagServerBit`, `snapshotEntities`, `snapshotCapacity`, `nextSnapshotEntities`, `baselines`, and 3 further fields.
 struct Server
+  /// Server simulation time written into outgoing snapshots and used to schedule sends, in
+  /// milliseconds.
   time
+  /// Snapshot server-count bit toggled when a new server level is spawned.
   snapFlagServerBit
+  /// Entity states retained in the server snapshot ring.
   snapshotEntities
+  /// Number of entity states retained for snapshot delta references.
   snapshotCapacity
+  /// Next absolute insertion position in the circular snapshot-entity buffer.
   nextSnapshotEntities
+  /// Baseline entity states used as initial references for delta compression.
   baselines
+  /// Additional padding requested for outgoing snapshot messages.
   padPackets
+  /// Upper bound on the client transmission rate, in bytes per second.
   maxRate
+  /// True when LAN clients bypass the normal rate limit.
   lanForceRate
 end struct
 
@@ -87,7 +128,21 @@ function server(time,snapshotEntities,snapshotCapacity,baselines)
 end function
 
 /// Services record for server.snapshot_send, containing `buildSnapshotFn`, `writeDownloadFn`, `transmitFn`, `localAddressFn`, `lanAddressFn`, `context`.
-struct Services buildSnapshotFn writeDownloadFn transmitFn localAddressFn lanAddressFn context end struct
+struct Services
+  /// Host callback that builds the entity and player state for a client snapshot.
+  buildSnapshotFn
+  /// Host callback that appends the next download block to an outgoing message.
+  writeDownloadFn
+  /// Host callback that transmits a complete message through a sequenced channel.
+  transmitFn
+  /// Host callback that tests whether a network endpoint is local.
+  localAddressFn
+  /// Host callback that classifies whether a network endpoint belongs to the LAN.
+  lanAddressFn
+  /// Caller-supplied data associated with snapshot construction, download-block writing, and packet
+  /// transmission.
+  context
+end struct
 /// Create `mq3.server.snapshot_send.Services` with buildSnapshotFn=buildSnapshotFn; writeDownloadFn=writeDownloadFn; transmitFn=transmitFn; localAddressFn=localAddressFn; lanAddressFn=lanAddressFn; context=context.
 /// @param buildSnapshotFn Initial `buildSnapshotFn` field stored in the returned or constructed `mq3.server.snapshot_send.Services` record.
 /// @param writeDownloadFn Initial `writeDownloadFn` field stored in the returned or constructed `mq3.server.snapshot_send.Services` record.

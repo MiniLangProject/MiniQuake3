@@ -6,18 +6,48 @@ package mq3.renderer.draw_surfs
 import mq3.compat.numeric as n
 import std.sort as sort
 
+/// Maximum number of shader records registered by the renderer.
 const MAX_SHADERS=16384
+/// Capacity of the draw-surface ring used when queuing scene geometry.
 const MAX_DRAWSURFS=65536
+/// Bit position of the shader index in a packed draw-surface sort key.
 const QSORT_SHADERNUM_SHIFT=17
+/// Bit position of the entity number in a packed draw-surface sort key.
 const QSORT_ENTITYNUM_SHIFT=7
+/// Bit position of the fog number in a packed draw-surface sort key.
 const QSORT_FOGNUM_SHIFT=2
 
 /// Data record for `mq3.renderer.draw_surfs.SortFields`; groups `shaderIndex`, `entityNum`, `fogNum`, `dlightMap`.
-struct SortFields shaderIndex entityNum fogNum dlightMap end struct
+struct SortFields
+  /// Index of the resolved shader in the renderer's shader table.
+  shaderIndex
+  /// Entity number encoded into the packed draw-surface sort key.
+  entityNum
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Dynamic-light state encoded into the draw-surface sort key.
+  dlightMap
+end struct
 /// Data record for `mq3.renderer.draw_surfs.DrawSurf`; groups `sort`, `surface`, `ordinal`.
-struct DrawSurf sort surface ordinal end struct
+struct DrawSurf
+  /// Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
+  sort
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+  /// Original insertion order used to keep equal sort keys stable.
+  ordinal
+end struct
 /// Data record for `mq3.renderer.draw_surfs.Queue`; groups `drawSurfs`, `capacity`, `numDrawSurfs`, `nextOrdinal`.
-struct Queue drawSurfs capacity numDrawSurfs nextOrdinal end struct
+struct Queue
+  /// Surfaces queued for ordering and drawing.
+  drawSurfs
+  /// Maximum number of draw-surface records retained in the queue.
+  capacity
+  /// Number of draw surfaces currently queued.
+  numDrawSurfs
+  /// Insertion-order number assigned to the next queued surface.
+  nextOrdinal
+end struct
 
 /// Creates error `7340` with message `"draw surfaces: "+message`.
 /// @param message Input used in the result expression `error(7340,"draw surfaces: "+message)`.

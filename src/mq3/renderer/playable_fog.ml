@@ -10,19 +10,54 @@ import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import mq3.client.playable_viewer as viewer
 
+/// Byte stride of one fog record in the BSP fog lump.
 const FOG_STRIDE=72
+/// Byte stride of one brush record in the BSP brush lump.
 const BRUSH_STRIDE=12
+/// Byte stride of one brush-side record in the BSP brush-side lump.
 const BRUSH_SIDE_STRIDE=8
+/// Byte stride of one plane record in the BSP plane lump.
 const PLANE_STRIDE=16
+/// Width in pixels of the generated fog-density texture.
 const FOG_TEXTURE_WIDTH=256
+/// Height in pixels of the generated fog-density texture.
 const FOG_TEXTURE_HEIGHT=32
 
 /// Data record for `mq3.renderer.playable_fog.Fog`; groups `shaderName`, `color`, `depth`, `tcScale`, `bounds`, `surface`, and 1 further field.
-struct Fog shaderName color depth tcScale bounds surface hasSurface end struct
+struct Fog
+  /// Shader defining the fog volume's color and depth parameters.
+  shaderName
+  /// RGB fog color obtained from the volume's material shader.
+  color
+  /// Material fog-depth parameter used to scale the fog texture coordinates.
+  depth
+  /// Scale used to convert distance into fog texture coordinates.
+  tcScale
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Plane defining the visible boundary of the fog volume, when present.
+  surface
+  /// Whether the fog volume has a clipping surface at its boundary.
+  hasSurface
+end struct
 /// Data record for `mq3.renderer.playable_fog.Catalog`; groups `fogs`, `textureSlot`, `texture`.
-struct Catalog fogs textureSlot texture end struct
+struct Catalog
+  /// Fog volumes loaded from the world map.
+  fogs
+  /// Texture slot reserved for this effect's image.
+  textureSlot
+  /// Texture resource associated with the rendering effect.
+  texture
+end struct
 /// Data record for `mq3.renderer.playable_fog.FogBatch`; groups `commands`, `sourcePositions`, `fogIndexes`.
-struct FogBatch commands sourcePositions fogIndexes end struct
+struct FogBatch
+  /// Operations or drawing commands queued by this record.
+  commands
+  /// Original vertex positions retained for time-dependent updates.
+  sourcePositions
+  /// Fog-volume index associated with each retained primitive.
+  fogIndexes
+end struct
 
 /// Creates error `7620` with message `"playable fog: "+message`.
 /// @param message Input used in the result expression `error(7620,"playable fog: "+message)`.

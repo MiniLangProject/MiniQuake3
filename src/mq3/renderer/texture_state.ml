@@ -3,16 +3,55 @@
 // Texture-unit selection and binding cache from renderer/tr_backend.c.
 package mq3.renderer.texture_state
 
+/// OpenGL target for two-dimensional texture objects.
 const GL_TEXTURE_2D=0x0de1
+/// OpenGL multitexture selector for texture unit 0.
 const GL_TEXTURE0_ARB=0x84c0
+/// OpenGL multitexture selector for texture unit 1.
 const GL_TEXTURE1_ARB=0x84c1
 
 /// Data record for `mq3.renderer.texture_state.Image`; groups `texnum`, `frameUsed`.
-struct Image texnum frameUsed end struct
+struct Image
+  /// Graphics-driver texture object identifier.
+  texnum
+  /// Most recent renderer frame in which this image was used.
+  frameUsed
+end struct
 /// Callback table for `mq3.renderer.texture_state.Services`; exposes `bindTextureFn`, `activeTextureFn`, `clientActiveTextureFn`, `logFn`, `warningFn`, `dropFn`, and 1 further field.
-struct Services bindTextureFn activeTextureFn clientActiveTextureFn logFn warningFn dropFn context end struct
+struct Services
+  /// Host callback used to perform bind texture operations for this subsystem.
+  bindTextureFn
+  /// Host callback used to perform active texture operations for this subsystem.
+  activeTextureFn
+  /// Host callback used to perform client active texture operations for this subsystem.
+  clientActiveTextureFn
+  /// Host callback used to perform log operations for this subsystem.
+  logFn
+  /// Host callback used to perform warning operations for this subsystem.
+  warningFn
+  /// Host callback used to perform drop operations for this subsystem.
+  dropFn
+  /// Graphics-host state passed when binding textures, selecting texture units, or reporting state
+  /// errors.
+  context
+end struct
 /// Data record for `mq3.renderer.texture_state.State`; groups `currentTextures`, `currentTmu`, `defaultImage`, `dlightImage`, `noBind`, `frameCount`, and 1 further field.
-struct State currentTextures currentTmu defaultImage dlightImage noBind frameCount services end struct
+struct State
+  /// Texture object currently bound on each texture unit.
+  currentTextures
+  /// Index of the currently selected texture unit.
+  currentTmu
+  /// Fallback image used when a requested texture is unavailable.
+  defaultImage
+  /// Texture used when projecting dynamic-light contributions.
+  dlightImage
+  /// Debug setting that substitutes the selected debug texture for normal binds.
+  noBind
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Injected host operations used by this subsystem.
+  services
+end struct
 
 /// Creates error `7200` with message `"texture state: "+message`.
 /// @param message Input used in the result expression `error(7200,"texture state: "+message)`.

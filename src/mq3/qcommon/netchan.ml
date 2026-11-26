@@ -5,44 +5,86 @@ package mq3.qcommon.netchan
 import mq3.compat.numeric as n
 import mq3.qcommon.headers as qcommonHeaders
 
+/// Network socket-side selector for the client endpoint.
 const NS_CLIENT = 0
+/// Network socket-side selector for the server endpoint.
 const NS_SERVER = 1
+/// Maximum byte length of an individual network datagram.
 const MAX_PACKETLEN = 1400
+/// Maximum payload bytes carried by a single network-message fragment.
 const FRAGMENT_SIZE = 1300
+/// Byte size of the managed netchan packet header.
 const PACKET_HEADER = 10
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN = qcommonHeaders.MAX_MSGLEN
+/// Sequence-header bit indicating that a packet carries a message fragment.
 const FRAGMENT_BIT = 0x80000000
+/// Byte offset at which generic managed-channel payload scrambling begins.
 const SCRAMBLE_START = 6
 
 /// Address record for qcommon.netchan, containing `type`, `ip`, `port`.
-struct Address type ip port end struct
+struct Address
+  /// Network-address kind selecting loopback, IPv4, or another supported transport.
+  type
+  /// Address bytes identifying the remote IPv4 endpoint.
+  ip
+  /// Network port associated with the endpoint.
+  port
+end struct
 
 /// Runtime record for qcommon.netchan, containing `qport`, `sendPacketFn`, `context`.
 struct Runtime
+  /// Client-selected virtual port used to recognize a connection across address translation.
   qport
+  /// Host callback that sends a network datagram to the supplied endpoint.
   sendPacketFn
+  /// Caller-supplied data associated with network-channel packet transmission.
   context
 end struct
 
 /// Channel record for qcommon.netchan, containing `sock`, `dropped`, `remoteAddress`, `qport`, `incomingSequence`, `outgoingSequence`, and 7 further fields.
 struct Channel
+  /// Selector identifying the client-side or server-side network socket.
   sock
+  /// Number of missing sequence numbers between the previous and current accepted packet.
   dropped
+  /// Remote endpoint to which this channel sends sequenced messages.
   remoteAddress
+  /// Client-selected virtual port used to recognize a connection across address translation.
   qport
+  /// Sequence number of the most recently accepted incoming network message.
   incomingSequence
+  /// Sequence number to place on the next outgoing network message.
   outgoingSequence
+  /// Sequence number of the incoming message currently being reassembled.
   fragmentSequence
+  /// Number of bytes accumulated in the incoming fragment buffer.
   fragmentLength
+  /// Storage used to reassemble one incoming fragmented network message.
   fragmentBuffer
+  /// True while a large outgoing message still has fragments to transmit.
   unsentFragments
+  /// Byte offset of the next outgoing fragment within that message.
   unsentFragmentStart
+  /// Total byte length of the outgoing message being fragmented.
   unsentLength
+  /// Complete outgoing payload retained until all fragments have been sent.
   unsentBuffer
 end struct
 
 /// ProcessResult record for qcommon.netchan, containing `accepted`, `data`, `cursize`, `readcount`, `bit`.
-struct ProcessResult accepted data cursize readcount bit end struct
+struct ProcessResult
+  /// True when validation accepted the requested operation.
+  accepted
+  /// Accepted message payload after sequence and fragment processing.
+  data
+  /// Number of valid bytes currently stored in the message buffer.
+  cursize
+  /// Byte position reached while consuming the message.
+  readcount
+  /// Bit offset at which the accepted packet payload begins.
+  bit
+end struct
 
 /// Create `mq3.qcommon.netchan.Runtime` with qport=(port & 65535); sendPacketFn=void; context=void.
 /// @param port Port used in `(port & 65535)` and `Runtime((port & 65535), void, void)`.

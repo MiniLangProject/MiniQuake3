@@ -12,55 +12,327 @@ import mq3.compat.transcendental as crt
 import mq3.shared.directions as directions
 import mq3.shared.math as q
 
+/// Native weapon identifier selecting no selected weapon.
 const WP_NONE=0
+/// Native weapon identifier selecting the gauntlet.
 const WP_GAUNTLET=1
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// Native weapon identifier selecting the shotgun.
 const WP_SHOTGUN=3
+/// Native weapon identifier selecting the grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Native weapon identifier selecting the rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Native weapon identifier selecting the lightning gun.
 const WP_LIGHTNING=6
+/// Native weapon identifier selecting the railgun.
 const WP_RAILGUN=7
+/// Native weapon identifier selecting the plasma gun.
 const WP_PLASMAGUN=8
+/// Native weapon identifier selecting the BFG.
 const WP_BFG=9
+/// Native weapon identifier selecting the grappling hook.
 const WP_GRAPPLING_HOOK=10
+/// Native weapon identifier selecting the nailgun.
 const WP_NAILGUN=11
+/// Native weapon identifier selecting the proximity-mine launcher.
 const WP_PROX_LAUNCHER=12
+/// Native weapon identifier selecting the chaingun.
 const WP_CHAINGUN=13
+/// Number of native weapon slots, used to size weapon-indexed tables rather than select a weapon.
 const WP_NUM_WEAPONS=14
+/// Player powerup slot for quad, also used when constructing active-powerup bitsets.
 const PW_QUAD=1
+/// Player powerup slot for battlesuit, also used when constructing active-powerup bitsets.
 const PW_BATTLESUIT=2
+/// Player powerup slot for invis, also used when constructing active-powerup bitsets.
 const PW_INVIS=4
+/// Entity-state flag selecting firing behavior in client presentation.
 const EF_FIRING=0x100
+/// Player-movement state flag indicating follow.
 const PMF_FOLLOW=0x1000
+/// Weapon-impact sound category selecting default surface feedback.
 const IMPACTSOUND_DEFAULT=cgabi.IMPACTSOUND_DEFAULT
+/// Weapon-impact sound category selecting metal surface feedback.
 const IMPACTSOUND_METAL=cgabi.IMPACTSOUND_METAL
+/// Weapon-impact sound category selecting flesh surface feedback.
 const IMPACTSOUND_FLESH=cgabi.IMPACTSOUND_FLESH
+/// Collision-content bit identifying water volumes or surfaces during client traces.
 const CONTENTS_WATER=0x20
+/// Collision-content bit identifying slime volumes or surfaces during client traces.
 const CONTENTS_SLIME=0x10
+/// Collision-content bit identifying lava volumes or surfaces during client traces.
 const CONTENTS_LAVA=0x8
+/// Surface-property flag selecting noimpact client collision or effect behavior.
 const SURF_NOIMPACT=0x10
+/// Surface-property flag selecting metalsteps client collision or effect behavior.
 const SURF_METALSTEPS=0x1000
+/// Fallback shotgun count setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_SHOTGUN_COUNT=11
+/// Fallback shotgun spread setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_SHOTGUN_SPREAD=700
+/// Maximum world-space length of the lightning-gun beam trace.
 const LIGHTNING_RANGE=768.0
+/// Firing-state weapon-barrel rotation rate in degrees per millisecond.
 const SPIN_SPEED=0.9
+/// Duration in milliseconds over which the weapon barrel coasts after firing stops.
 const COAST_TIME=1000
+/// Milliseconds spent moving the view during the initial landing kick.
 const LAND_DEFLECT_TIME=cgabi.LAND_DEFLECT_TIME
+/// Milliseconds spent restoring the view after the landing kick.
 const LAND_RETURN_TIME=cgabi.LAND_RETURN_TIME
+/// Milliseconds for which a weapon muzzle flash remains visible.
 const MUZZLE_FLASH_TIME=cgabi.MUZZLE_FLASH_TIME
 
 /// Stores client game weapons boundary record, including `boundary`, `kind`, `weapon`, `entity`, `origin`, `finish` and additional values.
-struct Boundary boundary kind weapon entity origin finish velocity model shader sound radius light color value dispatched end struct
+struct Boundary
+  /// Host service category recorded with a request emitted while registering and presenting weapon
+  /// models, firing sounds, and impact effects.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while registering and
+  /// presenting weapon models, firing sounds, and impact effects.
+  kind
+  /// Native weapon identifier whose model, sound, trail, or firing effect this host request concerns.
+  weapon
+  /// When constructing this record, `action` supplies `entityNum` for this member.
+  entity
+  /// World-space location supplied with the queued weapon sound, projectile, muzzle, or impact effect.
+  origin
+  /// When constructing this record, `action` supplies `copy3(finish)` for this member.
+  finish
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// Model resource selected for rendering the object.
+  model
+  /// Material reference carried by a weapon trail, impact, muzzle, or registration request.
+  shader
+  /// Sound resource carried by a weapon audio action at the host dispatch boundary.
+  sound
+  /// World-space effect radius recorded for the weapon rendering or particle request.
+  radius
+  /// Dynamic-light intensity emitted by the local effect.
+  light
+  /// Color components carried by the weapon light, trail, or temporary-effect host request.
+  color
+  /// Value payload supplied to the selected host operation while registering and presenting weapon
+  /// models, firing sounds, and impact effects.
+  value
+  /// True when this request is marked for native dispatch while registering and presenting weapon
+  /// models, firing sounds, and impact effects; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game weapons weapon info record, including `number`, `registered`, `weaponModel`, `flashModel`, `barrelModel`, `handsModel` and additional values.
-struct WeaponInfo number registered weaponModel flashModel barrelModel handsModel missileModel weaponIcon ammoIcon readySound firingSound missileSound flashSounds flashColor missileColor missileDlight trailTime trailRadius trail ejectBrass loopFire pickupName end struct
+struct WeaponInfo
+  /// When constructing this record, `emptyWeapon` supplies `number` for this member.
+  number
+  /// True once the referenced media resources have been registered with the engine.
+  registered
+  /// Model resource selected for the weapon presentation.
+  weaponModel
+  /// Model resource selected for the flash presentation.
+  flashModel
+  /// Model resource selected for the barrel presentation.
+  barrelModel
+  /// Weapon-hand model used to position the first-person weapon, even when the hands are not drawn.
+  handsModel
+  /// Model resource selected for the missile presentation.
+  missileModel
+  /// Shader or image resource used to display the weapon in the HUD.
+  weaponIcon
+  /// Shader or image resource used to display this weapon's ammunition.
+  ammoIcon
+  /// Sound resource selected for the ready event or effect.
+  readySound
+  /// Sound resource selected for the firing event or effect.
+  firingSound
+  /// Sound resource selected for the missile event or effect.
+  missileSound
+  /// Sound resources selected for the flash event or effect.
+  flashSounds
+  /// When constructing this record, `emptyWeapon` supplies `zero3()` for this member.
+  flashColor
+  /// When constructing this record, `emptyWeapon` supplies `zero3()` for this member.
+  missileColor
+  /// Intensity of the dynamic light attached to the projectile.
+  missileDlight
+  /// Last trail-emission time, allowing missile trails to catch up across dropped packets.
+  trailTime
+  /// Radius used when emitting this weapon's projectile trail.
+  trailRadius
+  /// When constructing this record, `emptyWeapon` supplies an empty string for this member.
+  trail
+  /// When constructing this record, `emptyWeapon` supplies an empty string for this member.
+  ejectBrass
+  /// When constructing this record, `emptyWeapon` supplies `false` for this member.
+  loopFire
+  /// Human-readable item name shown by pickup notifications and item-selection UI.
+  pickupName
+end struct
 /// Stores client game weapons menu item, including `number`, `type`, `tag`, `worldModel`, `worldModel2`, `icon` and additional values.
-struct Item number type tag worldModel worldModel2 icon pickupName registered end struct
+struct Item
+  /// Index of the item in the game's item-definition table.
+  number
+  /// UI item kind selecting its type-specific behavior and payload.
+  type
+  /// Type-specific item tag selecting the associated weapon, ammunition, powerup, or holdable
+  /// identifier.
+  tag
+  /// Model resource selected for the world presentation.
+  worldModel
+  /// Secondary world-model asset associated with the item, such as an additional model component.
+  worldModel2
+  /// Virtual shader or image name used to register the item's HUD icon.
+  icon
+  /// Human-readable item name shown by pickup notifications and item-selection UI.
+  pickupName
+  /// True once the referenced media resources have been registered with the engine.
+  registered
+end struct
 /// Stores client game weapons barrel record, including `angle`, `time`, `spinning`.
-struct Barrel angle time spinning end struct
+struct Barrel
+  /// When constructing this record, `barrel` supplies `0.0` for this member. Used by
+  /// `machinegunSpinAngle` during subsequent processing.
+  angle
+  /// Timestamp in milliseconds of the last weapon-barrel spin-state change, paired with the stored
+  /// angle.
+  time
+  /// When constructing this record, `barrel` supplies `false` for this member. Used by
+  /// `machinegunSpinAngle` during subsequent processing.
+  spinning
+end struct
 /// Stores client game weapons entity record, including `number`, `clientNum`, `weapon`, `eFlags`, `powerups`, `origin` and additional values.
-struct Entity number clientNum weapon eFlags powerups origin angles trailTime muzzleFlashTime lightningFiring railgunFlash railgunImpact barrel currentValid legsAnim end struct
+struct Entity
+  /// When constructing this record, `entity` supplies `number` for this member.
+  number
+  /// Client slot identifying the player represented by this weapon-rendering entity.
+  clientNum
+  /// Native weapon identifier carried by the player or projectile entity being rendered.
+  weapon
+  /// When constructing this record, `entity` supplies `0` for this member.
+  eFlags
+  /// Active PW_* bitmask used when selecting weapon-related powerup effects.
+  powerups
+  /// World-space weapon-owner position used to derive muzzle and attached-weapon placement.
+  origin
+  /// Euler orientation used to place or animate the object.
+  angles
+  /// Last trail-emission time, allowing missile trails to catch up across dropped packets.
+  trailTime
+  /// Client timestamp at which the entity's muzzle-flash effect began.
+  muzzleFlashTime
+  /// True while the player is continuously firing the lightning gun.
+  lightningFiring
+  /// True while the railgun's muzzle-flash effect should be emitted.
+  railgunFlash
+  /// World-space endpoint of the last railgun impact used by the weapon effect.
+  railgunImpact
+  /// When constructing this record, `entity` supplies `barrel()` for this member.
+  barrel
+  /// True when the current snapshot contains a valid state for this entity.
+  currentValid
+  /// When constructing this record, `entity` supplies `0` for this member.
+  legsAnim
+end struct
 /// Stores client game weapons state, including `time`, `weaponSelect`, `weaponSelectTime`, `owned`, `ammo`, `health` and additional values.
-struct State time weaponSelect weaponSelectTime owned ammo health follow itemPickupTime noProjectileTrail oldRail oldPlasma oldRocket brassTime tracerChance tracerLength tracerWidth railTrailTime trueLightning drawGun fov gunX gunY gunZ renderingThirdPerson testGun random randomInts randomAt weapons items actions emitted suppressed errors end struct
+struct State
+  /// Current client-game time in milliseconds used for weapon animation, muzzle flashes, and barrel
+  /// effects.
+  time
+  /// Weapon identifier currently selected by the local player.
+  weaponSelect
+  /// Timestamp at which the weapon-selection display was last refreshed.
+  weaponSelectTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawWeaponSelect`
+  /// and `weaponSelectable` during subsequent processing.
+  owned
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Local-player health used to suppress the weapon-selection display after death.
+  health
+  /// When constructing this record, `create` supplies `false` for this member. Used by `nextWeapon` and
+  /// `prevWeapon` during subsequent processing.
+  follow
+  /// Timestamp at which the most recent item-pickup notification began.
+  itemPickupTime
+  /// When constructing this record, `create` supplies `false` for this member. Used by `smokeTrail` and
+  /// `plasmaTrail` during subsequent processing.
+  noProjectileTrail
+  /// When constructing this record, `create` supplies `false` for this member. Used by `railTrail`
+  /// during subsequent processing.
+  oldRail
+  /// When constructing this record, `create` supplies `false` for this member. Used by `plasmaTrail`
+  /// during subsequent processing.
+  oldPlasma
+  /// When constructing this record, `create` supplies `false` for this member. Used by `missileHitWall`
+  /// during subsequent processing.
+  oldRocket
+  /// When constructing this record, `create` supplies `2500` for this member. Used by
+  /// `machineGunEjectBrass` and `shotgunEjectBrass` during subsequent processing.
+  brassTime
+  /// When constructing this record, `create` supplies `0.4` for this member. Used by `bullet` during
+  /// subsequent processing.
+  tracerChance
+  /// When constructing this record, `create` supplies `160.0` for this member. Used by `tracer` during
+  /// subsequent processing.
+  tracerLength
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `tracer` during
+  /// subsequent processing.
+  tracerWidth
+  /// When constructing this record, `create` supplies `400.0` for this member. Used by `railTrail`
+  /// during subsequent processing.
+  railTrailTime
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `lightningBolt`
+  /// during subsequent processing.
+  trueLightning
+  /// When constructing this record, `create` supplies `true` for this member. Used by `addViewWeapon`
+  /// during subsequent processing.
+  drawGun
+  /// When constructing this record, `create` supplies `90` for this member. Used by `addViewWeapon`
+  /// during subsequent processing.
+  fov
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addViewWeapon`
+  /// during subsequent processing.
+  gunX
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addViewWeapon`
+  /// during subsequent processing.
+  gunY
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addViewWeapon`
+  /// during subsequent processing.
+  gunZ
+  /// True while the camera uses a third-person, chase, or death view.
+  renderingThirdPerson
+  /// True when the developer test model is positioned as a first-person weapon.
+  testGun
+  /// When constructing this record, `create` supplies `q.RandomState(1)` for this member. Used by
+  /// `randInt` during subsequent processing.
+  random
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `setRandomInts` and `randInt` during subsequent processing.
+  randomInts
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setRandomInts` and
+  /// `randInt` during subsequent processing.
+  randomAt
+  /// When constructing this record, `create` supplies `ws` for this member. Used by `registerWeapon`
+  /// and `addPlayerWeapon` during subsequent processing.
+  weapons
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `registerItemVisuals` during subsequent processing.
+  items
+  /// Host requests queued while registering and presenting weapon models, firing sounds, and impact
+  /// effects, retained in request order.
+  actions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `action` and
+  /// `clearActions` during subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while registering and presenting weapon models,
+  /// firing sounds, and impact effects because the retail QVM owns their effects.
+  suppressed
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+end struct
 
 /// Copies the X, Y and Z components into a fresh client game weapons vector.
 /// @param v Sequence read at `v[0]`, `v[1]`, `v[2]`.

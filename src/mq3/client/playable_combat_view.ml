@@ -6,18 +6,77 @@ import mq3.platform.playable_window as window
 import mq3.client.playable_hud as hud
 import mq3.compat.numeric as numeric
 
+/// Duration or timeout in milliseconds controlling fire flash.
 const FIRE_FLASH_MS=90
+/// Duration or timeout in milliseconds controlling recoil.
 const RECOIL_MS=180
+/// Duration or timeout in milliseconds controlling hit mark.
 const HIT_MARK_MS=160
+/// Duration or timeout in milliseconds controlling damage mark.
 const DAMAGE_MARK_MS=350
+/// Duration or timeout in milliseconds controlling kill mark.
 const KILL_MARK_MS=900
 
 /// Stores playable combat view combat view record, including `weaponName`, `score`, `kills`, `deaths`, `shots`, `hits` and additional values.
-struct CombatView weaponName score kills deaths shots hits lastFire lastHit lastDamage lastKill damageAmount damageSide end struct
+struct CombatView
+  /// When constructing this record, `state` supplies `weaponName` for this member.
+  weaponName
+  /// Current combat score exposed to the playable presentation layer.
+  score
+  /// Recorded kills displayed beside the death count in the combat overlay.
+  kills
+  /// Recorded player deaths displayed beside the kill count in the combat overlay.
+  deaths
+  /// Number of firing events recorded by the combat-feedback tracker.
+  shots
+  /// Number of successful hit notifications recorded by the combat-feedback tracker.
+  hits
+  /// When constructing this record, `state` supplies `-1000000` for this member.
+  lastFire
+  /// When constructing this record, `state` supplies `-1000000` for this member.
+  lastHit
+  /// When constructing this record, `state` supplies `-1000000` for this member.
+  lastDamage
+  /// When constructing this record, `state` supplies `-1000000` for this member.
+  lastKill
+  /// Nonnegative damage from the latest damage event, shown by the temporary damage indicator.
+  damageAmount
+  /// Signed side of the latest incoming damage: negative for left, positive for right, and zero for an
+  /// unspecified side.
+  damageSide
+end struct
 /// Stores playable combat view combat pulse record, including `recoil`, `muzzle`, `hit`, `damage`, `kill`.
-struct CombatPulse recoil muzzle hit damage kill end struct
+struct CombatPulse
+  /// When constructing this record, `pulse` supplies `remaining(now,view.lastFire,RECOIL_MS)` for this
+  /// member.
+  recoil
+  /// When constructing this record, `pulse` supplies `remaining(now,view.lastFire,FIRE_FLASH_MS)` for
+  /// this member.
+  muzzle
+  /// When constructing this record, `pulse` supplies `remaining(now,view.lastHit,HIT_MARK_MS)` for this
+  /// member.
+  hit
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `pulse` supplies `remaining(now,view.lastKill,KILL_MARK_MS)` for
+  /// this member.
+  kill
+end struct
 /// Stores playable combat view combat layout record, including `centerX`, `centerY`, `weaponX`, `weaponY`, `weaponWidth`, `weaponHeight`.
-struct CombatLayout centerX centerY weaponX weaponY weaponWidth weaponHeight end struct
+struct CombatLayout
+  /// When constructing this record, `layout` supplies `width/2` for this member.
+  centerX
+  /// When constructing this record, `layout` supplies `height/2` for this member.
+  centerY
+  /// When constructing this record, `layout` supplies `width/2-weaponWidth/2` for this member.
+  weaponX
+  /// When constructing this record, `layout` supplies `height-weaponHeight` for this member.
+  weaponY
+  /// When constructing this record, `layout` supplies `weaponWidth` for this member.
+  weaponWidth
+  /// When constructing this record, `layout` supplies `weaponHeight` for this member.
+  weaponHeight
+end struct
 
 /// Calls `mq3.client.playable_combat_view.CombatView` from playable combat view `state`. The final path returns `CombatView(weaponName,0,0,0,0,0,-1000000,-1000000,-1000000,-1000000,0,0)`.
 /// @param weaponName Sequence whose length/content is inspected by `state`.

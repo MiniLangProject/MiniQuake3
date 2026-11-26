@@ -7,22 +7,36 @@ import mq3.qcommon.cvar as cv
 
 /// `Row` record for cvars, containing `vmName`, `name`, `defaultString`, `flags` and `modificationCount` and related fields.
 struct Row
+  /// Name used for the console variable in the VM-facing cvar table.
   vmName
+  /// Engine console-variable name registered by this row.
   name
+  /// Default textual value registered for the console variable.
   defaultString
+  /// Console-variable registration flags supplied to the host.
   flags
+  /// Revision counter incremented when the console variable changes.
   modificationCount
+  /// Nonzero when changes to this console variable need processing or announcement.
   trackChange
+  /// Nonzero when changing this console variable requires refreshing team shaders.
   teamShader
+  /// VM instance or VM-facing console-variable record associated with this adapter.
   vm
 end struct
 /// `State` record for cvars, containing `level`, `registry`, `rows`, `effectFn` and `registered` and related fields.
 struct State
+  /// Game-level state shared with the operation or runtime.
   level
+  /// Registry of currently loaded preprocessor/token sources.
   registry
+  /// Console-variable table rows managed by the cvar subsystem.
   rows
+  /// Injected callback for effect; invoked through the State service/state record.
   effectFn
+  /// Nonzero after the relevant cvars or resources are registered.
   registered
+  /// State tracking password changes and dependent connection settings.
   passwordState
 end struct
 /// Set `level.gameCvars` to `state` and `level.cvarSetFn` to `set` in `mq3.game.cvars.attach`. Return paths include `state`.

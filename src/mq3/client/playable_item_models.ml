@@ -12,30 +12,163 @@ import mq3.renderer.surface_md3 as md3Mesh
 import mq3.renderer.view_math as viewMath
 import std.string as strings
 
+/// Fallback bob amplitude setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_BOB_AMPLITUDE=4.0
+/// Default spin angular rate, in degrees per second.
 const DEFAULT_SPIN_DEGREES_PER_SECOND=100.0
+/// Capacity limit for the catalog models collection or bounded storage used by this client module.
 const MAX_CATALOG_MODELS=64
+/// Capacity limit for the catalog textures collection or bounded storage used by this client module.
 const MAX_CATALOG_TEXTURES=96
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores playable item models definition record, including `classname`, `category`, `modelPath`, `skinPath`, `scale`, `heightOffset` and additional values.
-struct Definition classname category modelPath skinPath scale heightOffset bobAmplitude spinDegreesPerSecond end struct
+struct Definition
+  /// Native item classname that keys the world-model definition lookup.
+  classname
+  /// When constructing this record, `item` supplies `category` for this member.
+  category
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+  /// When constructing this record, `item` supplies an empty string for this member.
+  skinPath
+  /// When constructing this record, `item` supplies `scale` for this member.
+  scale
+  /// When constructing this record, `item` supplies `heightOffset` for this member.
+  heightOffset
+  /// When constructing this record, `item` supplies `DEFAULT_BOB_AMPLITUDE` for this member.
+  bobAmplitude
+  /// When constructing this record, `item` supplies `DEFAULT_SPIN_DEGREES_PER_SECOND` for this member.
+  spinDegreesPerSecond
+end struct
 /// Stores playable item models texture record, including `imageName`, `image`, `slot`.
-struct Texture imageName image slot end struct
+struct Texture
+  /// Resolved image path of a loaded texture available to world-item materials.
+  imageName
+  /// When constructing this record, `resolveBinding` supplies `loaded[1]` for this member.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores playable item models binding record, including `surfaceIndex`, `surfaceName`, `shaderName`, `imageName`, `image`, `textureSlot`.
-struct Binding surfaceIndex surfaceName shaderName imageName image textureSlot end struct
+struct Binding
+  /// When constructing this record, `resolveBinding` supplies `surfaceIndex` for this member.
+  surfaceIndex
+  /// When constructing this record, `resolveBinding` supplies `surface.name` for this member.
+  surfaceName
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// Image path bound to a model surface's shader for world-item drawing.
+  imageName
+  /// When constructing this record, `resolveBinding` supplies `texture.image` for this member.
+  image
+  /// Texture-cache slot assigned to the resource for renderer submission.
+  textureSlot
+end struct
 /// Stores playable item models cached surface record, including `positions`, `normals`, `triangleIndexes`, `triangleTexCoords`, `surfaceIndex`, `numTriangles`.
-struct CachedSurface positions normals triangleIndexes triangleTexCoords surfaceIndex numTriangles end struct
+struct CachedSurface
+  /// Ordered positions used to build the stored trail or spatial history.
+  positions
+  /// When constructing this record, `cacheModelTriangles` supplies `decoded[1]` for this member.
+  normals
+  /// When constructing this record, `cacheModelTriangles` supplies `triangleIndexes` for this member.
+  triangleIndexes
+  /// When constructing this record, `cacheModelTriangles` supplies `triangleTexCoords` for this member.
+  triangleTexCoords
+  /// When constructing this record, `cacheModelTriangles` supplies `surfaceIndex` for this member.
+  surfaceIndex
+  /// Number of triangles represented by the model or geometry collection.
+  numTriangles
+end struct
 /// Stores playable item models asset record, including `classname`, `category`, `modelPath`, `skinPath`, `model`, `bindings` and additional values.
-struct Asset classname category modelPath skinPath model bindings sourceTriangles scale heightOffset bobAmplitude spinDegreesPerSecond end struct
+struct Asset
+  /// Item classname that keys this loaded model asset in the world-item catalog.
+  classname
+  /// When constructing this record, `loadDefinition` supplies `def.category` for this member.
+  category
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+  /// When constructing this record, `loadDefinition` supplies `def.skinPath` for this member.
+  skinPath
+  /// Model resource selected for rendering the object.
+  model
+  /// Key-to-command associations available to the UI controls editor.
+  bindings
+  /// When constructing this record, `loadDefinition` supplies `sourceTriangles` for this member. Used
+  /// by `renderAsset` during subsequent processing.
+  sourceTriangles
+  /// When constructing this record, `loadDefinition` supplies `def.scale` for this member.
+  scale
+  /// When constructing this record, `loadDefinition` supplies `def.heightOffset` for this member.
+  heightOffset
+  /// When constructing this record, `loadDefinition` supplies `def.bobAmplitude` for this member.
+  bobAmplitude
+  /// When constructing this record, `loadDefinition` supplies `def.spinDegreesPerSecond` for this
+  /// member.
+  spinDegreesPerSecond
+end struct
 /// Stores playable item models catalog record, including `assets`, `textures`, `shaderIndex`, `scriptCount`, `firstTextureSlot`, `maxTextureSlots` and additional values.
-struct Catalog assets textures shaderIndex scriptCount firstTextureSlot maxTextureSlots skipped end struct
+struct Catalog
+  /// Loaded world-item render assets, looked up by the item's native classname.
+  assets
+  /// When constructing this record, `loadCatalog` supplies an empty list for this member. Used by
+  /// `textureByName` and `resolveBinding` during subsequent processing.
+  textures
+  /// When constructing this record, `loadCatalog` supplies `scripts[0]` for this member. Used by
+  /// `resolveBinding` during subsequent processing.
+  shaderIndex
+  /// When constructing this record, `loadCatalog` supplies `scripts[1]` for this member.
+  scriptCount
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// When constructing this record, `loadCatalog` supplies `maxTextureSlots` for this member. Used by
+  /// `resolveBinding` during subsequent processing.
+  maxTextureSlots
+  /// When constructing this record, `loadCatalog` supplies `0` for this member.
+  skipped
+end struct
 /// Stores playable item models transform record, including `origin`, `axis`, `scale`.
-struct Transform origin axis scale end struct
+struct Transform
+  /// World-space translation applied after rotating and scaling a world-item model vertex.
+  origin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// When constructing this record, `transform` supplies `scale` for this member.
+  scale
+end struct
 /// Stores playable item models triangle record, including `positions`, `texCoords`, `normals`, `textureSlot`, `imageName`, `shaderName` and additional values.
-struct Triangle positions texCoords normals textureSlot imageName shaderName classname surfaceIndex lightOrigin end struct
+struct Triangle
+  /// Ordered positions used to build the stored trail or spatial history.
+  positions
+  /// When constructing this record, `renderAsset` supplies `surface.triangleTexCoords[triangleIndex]`
+  /// for this member.
+  texCoords
+  /// When constructing this record, `renderAsset` supplies `normals` for this member.
+  normals
+  /// Texture-cache slot assigned to the resource for renderer submission.
+  textureSlot
+  /// Image path identifying the material used by this emitted world-item triangle.
+  imageName
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// Item classname identifying which world-item asset produced this rendered triangle.
+  classname
+  /// When constructing this record, `renderAsset` supplies `surface.surfaceIndex` for this member.
+  surfaceIndex
+  /// When constructing this record, `renderAsset` supplies `value.origin` for this member.
+  lightOrigin
+end struct
 /// Stores playable item models batch record, including `triangles`, `drawnItems`, `skippedItems`.
-struct Batch triangles drawnItems skippedItems end struct
+struct Batch
+  /// When constructing this record, `renderItems` supplies `result` for this member.
+  triangles
+  /// When constructing this record, `renderItems` supplies `drawn` for this member.
+  drawnItems
+  /// Number of candidate items omitted from the generated rendering batch.
+  skippedItems
+end struct
 
 /// Creates the playable item models error `7560` with diagnostic text `"preview item models: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview item models: "+message`.

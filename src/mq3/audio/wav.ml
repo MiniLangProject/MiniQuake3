@@ -2,12 +2,28 @@
 // Checked RIFF/WAVE PCM reader for sound assets loaded through the PK3 filesystem.
 package mq3.audio.wav
 
+/// Maximum PCM payload size accepted by the WAVE loader, in bytes.
 const MAX_PCM_BYTES=67108864
+/// Lowest WAVE sample rate accepted by the loader, in hertz.
 const MIN_SAMPLE_RATE=4000
+/// Highest WAVE sample rate accepted by the loader, in hertz.
 const MAX_SAMPLE_RATE=192000
 
 /// Sound record for audio.wav, containing `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`, `byteRate`, `samples`.
-struct Sound sampleRate channels bitsPerSample blockAlign byteRate samples end struct
+struct Sound
+  /// Source sample rate in hertz.
+  sampleRate
+  /// Number of interleaved PCM channels.
+  channels
+  /// Number of bits used for each sample in one channel.
+  bitsPerSample
+  /// Bytes occupied by one complete interleaved sample frame.
+  blockAlign
+  /// PCM byte rate computed from sample rate and block alignment.
+  byteRate
+  /// Raw PCM bytes extracted from the WAVE data chunk.
+  samples
+end struct
 
 /// Create the audio.wav error for `fail` with 7490 and the supplied diagnostic text.
 /// @param message Message used in `("WAV: " + message)` and `error(7490, ("WAV: " + message))`.

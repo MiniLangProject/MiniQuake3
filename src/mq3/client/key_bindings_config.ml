@@ -7,7 +7,16 @@ import mq3.qcommon.command_buffer as command
 import mq3.vm.cgame_key_traps as keys
 
 /// Stores key bindings config state, including `keys`, `printFn`, `printContext`.
-struct State keys printFn printContext end struct
+struct State
+  /// When constructing this record, `create` supplies `keyState` for this member. Used by `bindingText`
+  /// and `bindCommand` during subsequent processing.
+  keys
+  /// Host callback for the print operation; an unset callback leaves that host operation unavailable.
+  printFn
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `emit` during subsequent processing.
+  printContext
+end struct
 /// Creates a `mq3.client.key_bindings_config.State` record. Assigns `keys` from `keyState`.
 /// @param keyState Value used to initialize `State.keys`.
 function create(keyState) return State(keyState,void,void) end function

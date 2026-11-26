@@ -14,26 +14,113 @@ import mq3.game.entitystate as entitystate
 import mq3.server.reliable_commands as reliable
 import mq3.server.user_move as userMove
 
+/// Client-state value identifying a slot with no live client lifecycle to manage.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying a client that has completed entry into the game world.
 const CS_ACTIVE=4
+/// Server-to-client opcode introducing the initial configuration and entity baselines.
 const SVC_GAMESTATE=2
+/// Server-to-client opcode introducing an indexed configuration string.
 const SVC_CONFIGSTRING=3
+/// Server-to-client opcode introducing an entity state used as a delta baseline.
 const SVC_BASELINE=4
+/// Server-to-client opcode marking the end of a message.
 const SVC_EOF=8
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
 
 /// Client record for server.client_lifecycle, containing `state`, `name`, `userinfo`, `addressText`, `lan`, `local`, and 17 further fields.
-struct Client state name userinfo addressText lan local bot gentityNumber rate snapshotMsec nextSnapshotTime deltaMessage lastUsercmd pureAuthentic gotCP gamestateMessageNum outgoingSequence lastClientCommand reliableSequence reliableAcknowledge reliableSent reliableCommands downloadName end struct
+struct Client
+  /// Connection lifecycle value that records progression through connection, world entry, and
+  /// disconnection.
+  state
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+  /// Formatted network address retained in the client information.
+  addressText
+  /// True when this connection is classified as belonging to the local network.
+  lan
+  /// True when this connection or destination is local to the host.
+  local
+  /// True when the client slot is controlled by an in-process bot.
+  bot
+  /// Index of the client's entity in the game VM entity array.
+  gentityNumber
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Requested interval between snapshots, in milliseconds.
+  snapshotMsec
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
+  nextSnapshotTime
+  /// Acknowledged snapshot message selected as the base for delta compression.
+  deltaMessage
+  /// Most recent user-command record received or processed for this client.
+  lastUsercmd
+  /// True after the client has passed the pure-package authentication check.
+  pureAuthentic
+  /// True after the client has sent its pure-server checksum verification command.
+  gotCP
+  /// Outgoing network sequence number of the client gamestate message.
+  gamestateMessageNum
+  /// Sequence number to place on the next outgoing network message.
+  outgoingSequence
+  /// Sequence number of the last processed reliable client command.
+  lastClientCommand
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Acknowledged reliable sequence preserved while managing client entry and disconnection.
+  reliableAcknowledge
+  /// Sequence number of the newest reliable command transmitted to the peer.
+  reliableSent
+  /// Reliable command entries retained until the peer acknowledges them.
+  reliableCommands
+  /// Requested asset download path, or an empty string when no download is active.
+  downloadName
+end struct
 /// Create `mq3.server.client_lifecycle.Client` with state=CS_FREE; name=""; userinfo=""; addressText=""; 19 further fields.
 function createClient()
   return Client(CS_FREE,"","","",false,false,false,-1,3000,50,0,-1,userMove.zeroCommand(),0,false,-1,0,0,0,0,0,array(64,""),"")
 end function
 
 /// Server record for server.client_lifecycle, containing `time`, `checksumFeed`, `checksumFeedServerId`, `pure`, `configstrings`, `baselines`, and 8 further fields.
-struct Server time checksumFeed checksumFeedServerId pure configstrings baselines clients loadedPureChecksums cgameChecksum uiChecksum cgamePakFound uiPakFound dedicated lanForceRate end struct
+struct Server
+  /// Server time used when clients enter the world, update state, or disconnect, in milliseconds.
+  time
+  /// Server-supplied feed value used to calculate pure-package checksums.
+  checksumFeed
+  /// Server identifier associated with the current checksum feed.
+  checksumFeedServerId
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// Server configuration strings indexed by their protocol slot.
+  configstrings
+  /// Baseline entity states used as initial references for delta compression.
+  baselines
+  /// Client records whose entry, userinfo, and disconnection are managed by this lifecycle runtime.
+  clients
+  /// Package checksums accepted by the current pure server.
+  loadedPureChecksums
+  /// Checksum expected for the client-game VM package.
+  cgameChecksum
+  /// Checksum expected for the UI VM package.
+  uiChecksum
+  /// True when the required client-game package is available.
+  cgamePakFound
+  /// True when the required UI package is available.
+  uiPakFound
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// True when LAN clients bypass the normal rate limit.
+  lanForceRate
+end struct
 /// Create server in server.client_lifecycle; the normal completion returns `Server(0, 0, 0, 0, array(1024, ""), array(1024, void), clients, [], 0, 0, false, false, 0, 1)`.
 /// @param clientCount Client count used in `(clientCount - 1)`.
 function createServer(clientCount)
@@ -42,7 +129,37 @@ function createServer(clientCount)
 end function
 
 /// Services record for server.client_lifecycle, containing `context`, `transmitFn`, `snapshotFn`, `dropFn`, `gameBeginFn`, `gameDisconnectFn`, and 8 further fields.
-struct Services context transmitFn snapshotFn dropFn gameBeginFn gameDisconnectFn gameUserinfoFn closeDownloadFn broadcastFn sendCommandFn botFreeFn heartbeatFn challengeDisconnectFn setUserinfoFn end struct
+struct Services
+  /// Caller-supplied data associated with client admission, userinfo changes, disconnection, and final
+  /// messages.
+  context
+  /// Host callback that transmits a complete message through a sequenced channel.
+  transmitFn
+  /// Host callback that sends lifecycle snapshot state to a client.
+  snapshotFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that notifies the game VM that a client is entering play.
+  gameBeginFn
+  /// Host callback that notifies the game VM that a client has disconnected.
+  gameDisconnectFn
+  /// Host callback that notifies the game VM that client user information changed.
+  gameUserinfoFn
+  /// Host callback that closes the active client-download resource.
+  closeDownloadFn
+  /// Host callback that broadcasts a server command to the selected clients.
+  broadcastFn
+  /// Host callback that queues a reliable command for a client.
+  sendCommandFn
+  /// Host callback that releases a bot client and its associated resources.
+  botFreeFn
+  /// Host callback that sends a server heartbeat to the configured master.
+  heartbeatFn
+  /// Host callback that removes connection-challenge state when a client disconnects.
+  challengeDisconnectFn
+  /// Host callback that updates the server's information string for a client.
+  setUserinfoFn
+end struct
 /// Create `mq3.server.client_lifecycle.Services` with context=void; transmitFn=void; snapshotFn=void; dropFn=void; 10 further fields.
 function services() return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
 /// Compute call 2 in server.client_lifecycle.
@@ -268,7 +385,14 @@ function dispatchBuiltin(runtime,client,name,parser)
   return false
 end function
 /// Runtime record for server.client_lifecycle, containing `server`, `host`, `clientNum`.
-struct Runtime server host clientNum end struct
+struct Runtime
+  /// Server policy and package-checksum state used by client lifecycle operations.
+  server
+  /// Host callback interface supplying external services to this runtime.
+  host
+  /// Server client-slot number associated with this runtime.
+  clientNum
+end struct
 /// Create `mq3.server.client_lifecycle.Runtime` with server=server; host=host; clientNum=clientNum.
 /// @param server Initial `server` field stored in the returned or constructed `mq3.server.client_lifecycle.Runtime` record.
 /// @param host Initial `host` field stored in the returned or constructed `mq3.server.client_lifecycle.Runtime` record.

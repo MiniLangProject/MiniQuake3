@@ -6,12 +6,24 @@ package mq3.audio.snd_adpcm_runtime
 import mq3.audio.snd_compressed_paint as compressed
 import mq3.compat.numeric as n
 
+/// Maximum number of mono samples encoded in one ADPCM block.
 const BLOCK_SAMPLES=4096
+/// Bytes of predictor and step-index overhead reserved for each ADPCM block.
 const HEADER_BYTES=8
 /// State record for audio.snd_adpcm_runtime, containing `sample`, `index`.
-struct State sample index end struct
+struct State
+  /// Previous reconstructed sample used as the ADPCM predictor.
+  sample
+  /// Index into the ADPCM step-size table.
+  index
+end struct
 /// Encoded record for audio.snd_adpcm_runtime, containing `data`, `state`.
-struct Encoded data state end struct
+struct Encoded
+  /// Packed four-bit ADPCM codes, with two codes stored in each byte.
+  data
+  /// Final predictor sample and step index needed to continue encoding.
+  state
+end struct
 
 /// Clamp index in audio.snd_adpcm_runtime; the normal completion returns `value`.
 /// @param value Value used in `(value < 0)` and `(value > 88)`.

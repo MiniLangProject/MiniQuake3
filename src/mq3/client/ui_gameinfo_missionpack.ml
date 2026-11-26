@@ -7,25 +7,98 @@ import mq3.client.ui_gameinfo as base
 import mq3.shared.info as info
 import std.string as strings
 
+/// Capacity limit for the maps collection or bounded storage used by this client module.
 const MAX_MAPS=128
+/// Capacity limit for the arenas collection or bounded storage used by this client module.
 const MAX_ARENAS=1024
+/// Capacity limit for the bots collection or bounded storage used by this client module.
 const MAX_BOTS=1024
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when building Missionpack arena
+/// game-type masks.
 const GT_TOURNAMENT=1
+/// Single-player game-type identifier retained by the Missionpack arena metadata interface alongside
+/// its supported mode definitions.
 const GT_SINGLE_PLAYER=2
+/// Team-deathmatch game-type identifier retained by the Missionpack arena metadata interface alongside
+/// its supported mode definitions.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when building Missionpack arena game-type masks.
 const GT_CTF=4
+/// Native game-type identifier selecting one-flag capture the flag.
 const GT_1FCTF=5
+/// Native game-type identifier selecting Overload.
 const GT_OBELISK=6
+/// Native game-type identifier selecting Harvester.
 const GT_HARVESTER=7
+/// Upper game-type count used to bound the Missionpack UI's game-mode tables.
 const GT_MAX_GAME_TYPE=8
 
 /// Stores UI gameinfo missionpack map info record, including `cinematic`, `mapLoadName`, `mapName`, `levelShot`, `imageName`, `typeBits` and additional values.
-struct MapInfo cinematic mapLoadName mapName levelShot imageName typeBits skirmishNumber end struct
+struct MapInfo
+  /// When constructing this record, `mapInfo` supplies `-1` for this member.
+  cinematic
+  /// When constructing this record, `mapInfo` supplies `loadName` for this member.
+  mapLoadName
+  /// Virtual map name used to identify and launch this arena definition.
+  mapName
+  /// True while producing the menu screenshot for the current level.
+  levelShot
+  /// Levelshot image name associated with this Missionpack arena entry.
+  imageName
+  /// When constructing this record, `mapInfo` supplies `arenaTypeBits(info.value(arena,"type"))` for
+  /// this member.
+  typeBits
+  /// When constructing this record, `mapInfo` supplies `number` for this member.
+  skirmishNumber
+end struct
 /// Stores UI gameinfo missionpack queued engine action, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
-struct Action boundary kind name text number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while loading Missionpack arena and bot
+  /// definitions.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while loading Missionpack
+  /// arena and bot definitions.
+  kind
+  /// Arena or bot-definition filename referenced by the Missionpack filesystem request.
+  name
+  /// Definition-file category attached to the Missionpack read request: arena or bot.
+  text
+  /// Numeric argument interpreted by the selected host operation while loading Missionpack arena and
+  /// bot definitions.
+  number
+  /// True when this request is marked for native dispatch while loading Missionpack arena and bot
+  /// definitions; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI gameinfo missionpack state, including `data`, `arenaInfos`, `botInfos`, `maps`, `gameTypeCounts`, `diagnostics` and additional values.
-struct State data arenaInfos botInfos maps gameTypeCounts diagnostics actions retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `base.create()` for this member. Used by `sync`
+  /// and `UI_ParseInfos` during subsequent processing.
+  data
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `sync` and
+  /// `UI_LoadArenas` during subsequent processing.
+  arenaInfos
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `sync` and
+  /// `UI_LoadBots` during subsequent processing.
+  botInfos
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_LoadArenas` during subsequent processing.
+  maps
+  /// When constructing this record, `create` supplies `array(GT_MAX_GAME_TYPE,0)` for this member. Used
+  /// by `UI_LoadArenas` during subsequent processing.
+  gameTypeCounts
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `sync`
+  /// during subsequent processing.
+  diagnostics
+  /// Host requests queued while loading Missionpack arena and bot definitions, retained in request
+  /// order.
+  actions
+  /// True when the retail QVM owns Missionpack arena and bot metadata, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 
 /// Creates a `mq3.client.ui_gameinfo_missionpack.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.

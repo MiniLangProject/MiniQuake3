@@ -6,28 +6,137 @@ package mq3.client.ui_connect
 import mq3.compat.numeric as numeric
 import mq3.shared.info as info
 
+/// Client connection state before the client subsystem has been initialized.
 const CA_UNINITIALIZED=0
+/// Client connection state with no active server connection.
 const CA_DISCONNECTED=1
+/// Client connection state while waiting for authorization to contact the server.
 const CA_AUTHORIZING=2
+/// Client connection state while requesting a challenge from the server.
 const CA_CONNECTING=3
+/// Client connection state while replying to the server challenge and requesting connection.
 const CA_CHALLENGING=4
+/// Connection-state value for a completed handshake before game-state loading, defined for displaying
+/// the current connection and loading stage.
 const CA_CONNECTED=5
+/// Client connection state while level media and game state are being loaded.
 const CA_LOADING=6
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Native connection-state value for fully active gameplay, retained alongside the connection screen's
+/// loading-state definitions.
 const CA_ACTIVE=8
+/// Client connection state used for fullscreen cinematic playback.
 const CA_CINEMATIC=9
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Console execution mode that appends text to the pending command buffer.
 const EXEC_APPEND=2
+/// Horizontal anchor used to position the download-progress text.
 const DOWNLOAD_LEFT=262
 
 /// Stores UI connect queued engine action, including `boundary`, `kind`, `x`, `y`, `width`, `height` and additional values.
-struct Action boundary kind x y width height text style color asset value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while drawing connection status and download
+  /// progress.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while drawing connection
+  /// status and download progress.
+  kind
+  /// Horizontal position of this queued drawing operation in the virtual layout used by the connection
+  /// and download-progress screen.
+  x
+  /// Vertical position of this queued drawing operation in the virtual layout used by the connection
+  /// and download-progress screen.
+  y
+  /// Width of the image or rectangle drawn on the connection and download screen.
+  width
+  /// Height of the image or rectangle drawn on the connection and download screen.
+  height
+  /// Connection or download message to draw, or command text such as the disconnect request issued from
+  /// the connection screen.
+  text
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// Optional RGBA tint for the connection-screen drawing request.
+  color
+  /// When constructing this record, `emit` supplies `asset` for this member.
+  asset
+  /// Value payload supplied to the selected host operation while drawing connection status and download
+  /// progress.
+  value
+  /// True when this request is marked for native dispatch while drawing connection status and download
+  /// progress; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI connect client state record, including `connState`, `connectPacketCount`, `servername`, `updateInfoString`, `messageString`, `serverInfo`.
-struct ClientState connState connectPacketCount servername updateInfoString messageString serverInfo end struct
+struct ClientState
+  /// When constructing this record, `clientState` supplies `connState` for this member.
+  connState
+  /// Number of connection-handshake packets sent, also used by progress displays.
+  connectPacketCount
+  /// When constructing this record, `clientState` supplies `servername` for this member.
+  servername
+  /// When constructing this record, `clientState` supplies `updateInfoString` for this member.
+  updateInfoString
+  /// When constructing this record, `clientState` supplies `messageString` for this member.
+  messageString
+  /// When constructing this record, `clientState` supplies `serverInfo` for this member.
+  serverInfo
+end struct
 /// Stores UI connect download info record, including `name`, `percent`, `downloaded`, `total`, `estimate`, `copied` and additional values.
-struct DownloadInfo name percent downloaded total estimate copied transferRate rateText leftWidth end struct
+struct DownloadInfo
+  /// Virtual filename of the package or file currently being downloaded.
+  name
+  /// When constructing this record, `displayDownloadInfo` supplies `percent` for this member.
+  percent
+  /// When constructing this record, `displayDownloadInfo` supplies `downloaded` for this member.
+  downloaded
+  /// When constructing this record, `displayDownloadInfo` supplies `total` for this member.
+  total
+  /// When constructing this record, `displayDownloadInfo` supplies `estimate` for this member.
+  estimate
+  /// When constructing this record, `displayDownloadInfo` supplies `copied` for this member.
+  copied
+  /// When constructing this record, `displayDownloadInfo` supplies `rate` for this member.
+  transferRate
+  /// When constructing this record, `displayDownloadInfo` supplies `rateText` for this member.
+  rateText
+  /// When constructing this record, `displayDownloadInfo` supplies `left` for this member.
+  leftWidth
+end struct
 /// Stores UI connect state, including `client`, `realtime`, `downloadName`, `downloadSize`, `downloadCount`, `downloadTime` and additional values.
-struct State client realtime downloadName downloadSize downloadCount downloadTime lastConnState lastLoadingText actions retailActive cacheCalls end struct
+struct State
+  /// Player slot associated with this score or client-side record.
+  client
+  /// Current UI clock in milliseconds used to derive download rate and remaining-time estimates.
+  realtime
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `configure` and `drawConnectScreen` during subsequent processing.
+  downloadName
+  /// Expected total size in bytes of the active download.
+  downloadSize
+  /// Number of bytes accumulated for the active download.
+  downloadCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `displayDownloadInfo` and `configure` during subsequent processing.
+  downloadTime
+  /// When constructing this record, `create` supplies `CA_UNINITIALIZED` for this member. Used by
+  /// `drawConnectScreen` during subsequent processing.
+  lastConnState
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `drawConnectScreen` during subsequent processing.
+  lastLoadingText
+  /// Host requests queued while drawing connection status and download progress, retained in request
+  /// order.
+  actions
+  /// True when the retail QVM owns the connection and download-progress screen, so the native observer
+  /// records requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawConnectScreen`
+  /// during subsequent processing.
+  cacheCalls
+end struct
 
 /// Creates a `mq3.client.ui_connect.ClientState` record. Assigns `connState` from `connState`, `connectPacketCount` from `connectPacketCount`, `servername` from `servername`, `updateInfoString` from `updateInfoString`.
 /// @param connState Value used to initialize `ClientState.connState`.

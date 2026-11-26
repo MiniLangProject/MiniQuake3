@@ -7,29 +7,69 @@ import mq3.qcommon.netchan as netchan
 import mq3.qcommon.huffman as huffman
 import std.string as strings
 
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
+/// Network-address kind indicating an invalid or unsupported endpoint.
 const NA_BAD=1
+/// Network-address kind for local loopback delivery.
 const NA_LOOPBACK=2
+/// Network-address kind for an IPv4 broadcast destination.
 const NA_BROADCAST=3
+/// Network-address kind for an IPv4 endpoint.
 const NA_IP=4
+/// Legacy network-address kind for an IPX endpoint.
 const NA_IPX=5
+/// Legacy network-address kind for IPX broadcast delivery.
 const NA_BROADCAST_IPX=6
+/// Default UDP port used by a Quake III game server.
 const PORT_SERVER=27960
+/// Number of packet slots in each local loopback queue.
 const MAX_LOOPBACK=16
+/// Maximum byte length of an individual network datagram.
 const MAX_PACKETLEN=1400
 
 /// LoopMessage record for qcommon.net_transport, containing `data`.
-struct LoopMessage data end struct
+struct LoopMessage
+  /// Datagram bytes queued for in-process loopback delivery.
+  data
+end struct
 /// LoopQueue record for qcommon.net_transport, containing `messages`, `get`, `send`.
-struct LoopQueue messages get send end struct
+struct LoopQueue
+  /// Ring-buffer slots containing queued loopback datagrams.
+  messages
+  /// Absolute sequence position of the next loopback datagram to receive.
+  get
+  /// Absolute sequence position assigned to the next loopback datagram.
+  send
+end struct
 /// Loopbacks record for qcommon.net_transport, containing `queues`.
-struct Loopbacks queues end struct
+struct Loopbacks
+  /// Separate loopback queues for the client and server endpoints.
+  queues
+end struct
 /// Transport record for qcommon.net_transport, containing `socket`, `loopbacks`.
-struct Transport socket loopbacks end struct
+struct Transport
+  /// Host UDP socket used for datagram transport.
+  socket
+  /// In-process queues used when the destination is a loopback address.
+  loopbacks
+end struct
 /// Packet record for qcommon.net_transport, containing `received`, `address`, `data`.
-struct Packet received address data end struct
+struct Packet
+  /// True when a valid datagram was obtained from the transport.
+  received
+  /// Network address associated with the client or packet.
+  address
+  /// Datagram bytes returned by the transport receive operation.
+  data
+end struct
 /// AddressResult record for qcommon.net_transport, containing `ok`, `address`.
-struct AddressResult ok address end struct
+struct AddressResult
+  /// True when the address lookup or transport operation succeeded.
+  ok
+  /// Network address associated with the client or packet.
+  address
+end struct
 
 /// Return `mq3.qcommon.netchan.Address(kind, [0, 0, 0, 0], 0)` from `qcommon.net_transport.blankAddress`.
 /// @param kind Initial `type` field stored in the returned or constructed `mq3.qcommon.netchan.Address` record.

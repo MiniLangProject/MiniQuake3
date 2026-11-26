@@ -52,20 +52,33 @@ extern function setTextureClampNative(enabled as i32) from "playable_window.dll"
 /// @returns 1 when the polygon-offset request is accepted; 0 for invalid input.
 extern function setPolygonOffsetNative(enabled as i32) from "playable_window.dll" symbol "playable_window_set_polygon_offset" returns i32
 
+/// Blend mode that replaces destination color with the source color.
 const BLEND_OPAQUE=0
+/// Blend mode using source alpha and one minus source alpha as color factors.
 const BLEND_ALPHA=1
+/// Blend mode that adds source and destination colors.
 const BLEND_ADD=2
+/// Blend mode that multiplies source and destination colors.
 const BLEND_FILTER=3
+/// Blend mode using destination color and one minus destination alpha as factors.
 const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA=4
+/// Blend mode combining a dynamic-light contribution with existing surface color.
 const BLEND_DYNAMIC_LIGHT=5
+/// Blend mode multiplying destination color by one minus the source color for impact marks.
 const BLEND_MARK=6
+/// Blend mode combining premultiplied source color with destination color scaled by one minus source
+/// alpha.
 const BLEND_PREMULTIPLIED_ALPHA=7
 // Generic OpenGL blend state.  Low nibble is GLS_SRCBLEND_*, high nibble is
 // GLS_DSTBLEND_* and bit 8 distinguishes it from the optimized legacy modes.
 const BLEND_GL_STATE=256
+/// Alpha-test selector that accepts all fragment alpha values.
 const ALPHA_TEST_NONE=0
+/// Alpha-test selector that accepts alpha values greater than zero.
 const ALPHA_TEST_GT0=1
+/// Alpha-test selector that accepts byte alpha values below 128.
 const ALPHA_TEST_LT128=2
+/// Alpha-test selector that accepts byte alpha values of at least 128.
 const ALPHA_TEST_GE128=3
 
 /// Converts depth flags to native integers and applies the blend/depth raster state.

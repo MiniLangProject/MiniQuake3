@@ -10,21 +10,111 @@ import mq3.shared.info as info
 import mq3.compat.textnumbers as numbers
 import mq3.compat.numeric as numeric
 
+/// Capacity limit for the scoreboard clients collection or bounded storage used by this client module.
 const MAX_SCOREBOARD_CLIENTS=8
+/// Duration in milliseconds allocated to presenting one postgame award.
 const AWARD_PRESENTATION_TIME=2000
+/// Menu control identifier routed to the again action by the menu event handler.
 const ID_AGAIN=10
+/// Menu control identifier routed to the next action by the menu event handler.
 const ID_NEXT=11
+/// Menu control identifier routed to the menu action by the menu event handler.
 const ID_MENU=12
+/// Bit marking that the stored rank is tied with another player's rank.
 const RANK_TIED_FLAG=16384
+/// Postgame award identifier selecting the accuracy award category.
 const AWARD_ACCURACY=0
+/// Postgame award identifier selecting the impressive award category.
 const AWARD_IMPRESSIVE=1
+/// Postgame award identifier selecting the excellent award category.
 const AWARD_EXCELLENT=2
+/// Postgame award identifier selecting the gauntlet award category.
 const AWARD_GAUNTLET=3
+/// Postgame award identifier selecting the frags award category.
 const AWARD_FRAGS=4
+/// Postgame award identifier selecting the perfect award category.
 const AWARD_PERFECT=5
 
 /// Stores UI sppostgame postgame record, including `game`, `menu`, `itemAgain`, `itemNext`, `itemMenu`, `phase` and additional values.
-struct Postgame game menu itemAgain itemNext itemMenu phase ignoreKeysTime starttime scoreboardtime serverId clientNums ranks scores placeNames playerConfigs level numClients won numAwards awardsEarned awardsLevels playedSound lastTier winnerSound demoVersion scoreboardEnabled popped commands cvarWrites sounds starts drawRows assets pushed keyCatcher menuDepthReset end struct
+struct Postgame
+  /// When constructing this record, `create` supplies `game` for this member.
+  game
+  /// When constructing this record, `create` supplies `qmenu.menu(true,false)` for this member.
+  menu
+  /// Replay-button widget for launching the just-completed single-player arena again.
+  itemAgain
+  /// Next-arena button widget, enabled when progression allows the player to continue.
+  itemNext
+  /// Menu-button widget that leaves the postgame presentation for arena selection.
+  itemMenu
+  /// Postgame presentation stage controlling the podium sequence, award presentation, and final menu.
+  phase
+  /// UI timestamp before which key presses are ignored after opening or advancing a postgame stage.
+  ignoreKeysTime
+  /// UI timestamp at which the current postgame presentation stage began.
+  starttime
+  /// UI timestamp anchoring the periodic rotation of visible postgame scoreboard entries.
+  scoreboardtime
+  /// Server-instance identifier included in client messages to reject stale connections.
+  serverId
+  /// When constructing this record, `create` supplies `array(8,0)` for this member.
+  clientNums
+  /// When constructing this record, `create` supplies `array(8,0)` for this member.
+  ranks
+  /// Scoreboard entries received from the server.
+  scores
+  /// When constructing this record, `create` supplies `["","",""]` for this member.
+  placeNames
+  /// Player config strings indexed by client slot and used to resolve postgame names and models.
+  playerConfigs
+  /// Single-player arena number whose completion result and best score are being recorded.
+  level
+  /// Number of valid client entries represented by this record.
+  numClients
+  /// When constructing this record, `create` supplies `-1` for this member.
+  won
+  /// Number of populated entries in the earned-award and award-level arrays.
+  numAwards
+  /// When constructing this record, `create` supplies `array(6,0)` for this member.
+  awardsEarned
+  /// When constructing this record, `create` supplies `array(6,0)` for this member.
+  awardsLevels
+  /// Sound resource selected for the played event or effect.
+  playedSound
+  /// Final available single-player tier, used to detect campaign completion and select the ending
+  /// cinematic.
+  lastTier
+  /// Sound resource selected for the winner event or effect.
+  winnerSound
+  /// True when postgame progression must follow the demo edition's restricted arena and cinematic
+  /// paths.
+  demoVersion
+  /// When constructing this record, `create` supplies `true` for this member.
+  scoreboardEnabled
+  /// Records a request to remove the single-player postgame presentation from the active menu stack.
+  popped
+  /// Console commands queued by the postgame sequence, including podium, music, and cinematic
+  /// transitions.
+  commands
+  /// Cvar name/value changes queued by the single-player postgame presentation for the host to apply.
+  cvarWrites
+  /// Registered sound resources associated with the player model or media group.
+  sounds
+  /// Arena-launch requests queued by replay and next-arena choices.
+  starts
+  /// Drawing records generated for the current podium, awards, or final postgame display.
+  drawRows
+  /// Media resources retained for registering and drawing the artwork used by the single-player
+  /// postgame presentation.
+  assets
+  /// Records that the single-player postgame presentation has been opened on the active menu stack.
+  pushed
+  /// Input-capture bitmask selecting which client subsystem currently receives key events.
+  keyCatcher
+  /// True after postgame initialization requests clearing the previous menu stack before presenting its
+  /// own menu.
+  menuDepthReset
+end struct
 
 /// Creates a `mq3.client.ui_sppostgame.Postgame` record. Assigns `game` from `game`.
 /// @param game Value used to initialize `Postgame.game`.

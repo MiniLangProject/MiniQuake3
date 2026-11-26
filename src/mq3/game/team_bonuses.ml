@@ -9,6 +9,7 @@ import mq3.shared.math as q
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
 /// Exchange red and blue team identifiers for team bonuses, preserving other team values.
 /// @param team Team identifier used by the game rules.

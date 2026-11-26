@@ -6,6 +6,7 @@ import mq3.botlib.ai_goal_state_syscalls as goalAbi
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Number of inventory integer slots read from the bot VM ABI.
 const INVENTORY_COUNT=256
 /// Apply `mq3.vm.syscall_common.pointer` while evaluating `readInventory`.
 /// @param vm Vm record; accesses `data`.

@@ -8,74 +8,217 @@ import mq3.game.playerstate as playerstate
 import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 
+/// Index of the health value in the player state's statistics array.
 const STAT_HEALTH=0
+/// Index of the weapons value in the player state's statistics array.
 const STAT_WEAPONS=2
+/// Index of the hits value in the player state's persistent-statistics array.
 const PERS_HITS=1
+/// Index of the rank value in the player state's persistent-statistics array.
 const PERS_RANK=2
+/// Index of the team value in the player state's persistent-statistics array.
 const PERS_TEAM=3
+/// Index of the spawn count value in the player state's persistent-statistics array.
 const PERS_SPAWN_COUNT=4
+/// Index of the playerevents value in the player state's persistent-statistics array.
 const PERS_PLAYEREVENTS=5
+/// Index of the attackee armor value in the player state's persistent-statistics array.
 const PERS_ATTACKEE_ARMOR=7
+/// Index of the impressive count value in the player state's persistent-statistics array.
 const PERS_IMPRESSIVE_COUNT=9
+/// Index of the excellent count value in the player state's persistent-statistics array.
 const PERS_EXCELLENT_COUNT=10
+/// Index of the defend count value in the player state's persistent-statistics array.
 const PERS_DEFEND_COUNT=11
+/// Index of the assist count value in the player state's persistent-statistics array.
 const PERS_ASSIST_COUNT=12
+/// Index of the gauntlet frag count value in the player state's persistent-statistics array.
 const PERS_GAUNTLET_FRAG_COUNT=13
+/// Index of the captures value in the player state's persistent-statistics array.
 const PERS_CAPTURES=14
+/// Player powerup slot for redflag, also used when constructing active-powerup bitsets.
 const PW_REDFLAG=7
+/// Player powerup slot for blueflag, also used when constructing active-powerup bitsets.
 const PW_BLUEFLAG=8
+/// Player powerup slot for neutralflag, also used when constructing active-powerup bitsets.
 const PW_NEUTRALFLAG=9
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// Native weapon identifier selecting the shotgun.
 const WP_SHOTGUN=3
+/// Native weapon identifier selecting the grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Native weapon identifier selecting the rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Native weapon identifier selecting the railgun.
 const WP_RAILGUN=7
+/// Number of native weapon slots, used to size weapon-indexed tables rather than select a weapon.
 const WP_NUM_WEAPONS=11
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Native game-type value for team deathmatch, used when choosing score, lead-change, and team-result
+/// feedback.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when choosing score, lead-change, and team-result
+/// feedback.
 const GT_CTF=4
+/// Player-movement mode selecting intermission input and physics behavior.
 const PM_INTERMISSION=5
+/// Bit marking that the stored rank is tied with another player's rank.
 const RANK_TIED_FLAG=0x4000
+/// Player-event bit recording the deniedreward award condition.
 const PLAYEREVENT_DENIEDREWARD=1
+/// Player-event bit recording the gauntletreward award condition.
 const PLAYEREVENT_GAUNTLETREWARD=2
+/// Player-event bit recording the holyshit award condition.
 const PLAYEREVENT_HOLYSHIT=4
+/// Capacity limit for the ps events collection or bounded storage used by this client module.
 const MAX_PS_EVENTS=2
+/// Capacity limit for the predicted events collection or bounded storage used by this client module.
 const MAX_PREDICTED_EVENTS=cgabi.MAX_PREDICTED_EVENTS
+/// Capacity limit for the rewardstack collection or bounded storage used by this client module.
 const MAX_REWARDSTACK=cgabi.MAX_REWARDSTACK
+/// Total presentation duration in milliseconds of the damage indicator.
 const DAMAGE_TIME=cgabi.DAMAGE_TIME
 
 // The integer media values are observation tags.  They intentionally do not
 // call the renderer/audio traps a second time beside the real cgame QVM.
 const S_NO_AMMO=1
+/// Client sound-event slot for the hit feedback or announcement.
 const S_HIT=2
+/// Client sound-event slot for the hit team feedback or announcement.
 const S_HIT_TEAM=3
+/// Client sound-event slot for the capture feedback or announcement.
 const S_CAPTURE=4
+/// Client sound-event slot for the impressive feedback or announcement.
 const S_IMPRESSIVE=5
+/// Client sound-event slot for the excellent feedback or announcement.
 const S_EXCELLENT=6
+/// Client sound-event slot for the humiliation feedback or announcement.
 const S_HUMILIATION=7
+/// Client sound-event slot for the defend feedback or announcement.
 const S_DEFEND=8
+/// Client sound-event slot for the assist feedback or announcement.
 const S_ASSIST=9
+/// Client sound-event slot for the denied feedback or announcement.
 const S_DENIED=10
+/// Client sound-event slot for the holyshit feedback or announcement.
 const S_HOLYSHIT=11
+/// Client sound-event slot for the you have flag feedback or announcement.
 const S_YOU_HAVE_FLAG=12
+/// Client sound-event slot for the taken lead feedback or announcement.
 const S_TAKEN_LEAD=13
+/// Client sound-event slot for the tied lead feedback or announcement.
 const S_TIED_LEAD=14
+/// Client sound-event slot for the lost lead feedback or announcement.
 const S_LOST_LEAD=15
+/// Client sound-event slot for the sudden death feedback or announcement.
 const S_SUDDEN_DEATH=16
+/// Client sound-event slot for the one minute feedback or announcement.
 const S_ONE_MINUTE=17
+/// Client sound-event slot for the five minute feedback or announcement.
 const S_FIVE_MINUTE=18
+/// Client sound-event slot for the one frag feedback or announcement.
 const S_ONE_FRAG=19
+/// Client sound-event slot for the two frag feedback or announcement.
 const S_TWO_FRAG=20
+/// Client sound-event slot for the three frag feedback or announcement.
 const S_THREE_FRAG=21
+/// Reward-medal slot used to display the capture award.
 const M_CAPTURE=101
+/// Reward-medal slot used to display the impressive award.
 const M_IMPRESSIVE=102
+/// Reward-medal slot used to display the excellent award.
 const M_EXCELLENT=103
+/// Reward-medal slot used to display the gauntlet award.
 const M_GAUNTLET=104
+/// Reward-medal slot used to display the defend award.
 const M_DEFEND=105
+/// Reward-medal slot used to display the assist award.
 const M_ASSIST=106
 
 /// Stores client game playerstate state, including `time`, `serverTime`, `gametype`, `timelimit`, `levelStartTime`, `fraglimit` and additional values.
-struct State time serverTime gametype timelimit levelStartTime fraglimit scores1 warmup intermissionStarted mapRestart viewaxis lowAmmoWarning attackerTime damageX damageY vDmgRoll vDmgPitch damageValue vDmgTime damageTime thisFrameTeleport weaponSelectTime weaponSelect duckChange duckTime eventSequence predictableEvents rewardStack rewardSound rewardShader rewardCount timelimitWarnings fraglimitWarnings actions transitions end struct
+struct State
+  /// Client-game time in milliseconds used for damage feedback, respawn effects, and player-state
+  /// announcements.
+  time
+  /// Server-state timestamp in milliseconds used to anchor recorded damage feedback.
+  serverTime
+  /// Active game-rule identifier controlling rank, flag, reward, and frag-limit announcements.
+  gametype
+  /// When constructing this record, `create` supplies `0` for this member. Used by `checkLocalSounds`
+  /// during subsequent processing.
+  timelimit
+  /// Server timestamp at which the level began, used by elapsed-match-time displays.
+  levelStartTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `checkLocalSounds`
+  /// during subsequent processing.
+  fraglimit
+  /// First team or leading player's score received through server configuration strings.
+  scores1
+  /// Warmup deadline or state supplied by the server's warmup configuration.
+  warmup
+  /// True after intermission begins, suppressing gameplay-only presentation such as voice rewards.
+  intermissionStarted
+  /// True after a map restart, causing presentation and prediction state to be reinitialized.
+  mapRestart
+  /// When constructing this record, `create` supplies `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for
+  /// this member. Used by `damageFeedback` during subsequent processing.
+  viewaxis
+  /// Ammunition-warning state: one means low ammunition and two means empty.
+  lowAmmoWarning
+  /// Timestamp used to time the latest attacker's HUD indication.
+  attackerTime
+  /// Horizontal direction component of the latest damage indicator.
+  damageX
+  /// Vertical direction component of the latest damage indicator.
+  damageY
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `damageFeedback`
+  /// during subsequent processing.
+  vDmgRoll
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `damageFeedback`
+  /// during subsequent processing.
+  vDmgPitch
+  /// Magnitude of the latest damage event used to scale view kick and indicators.
+  damageValue
+  /// When constructing this record, `create` supplies `0` for this member. Used by `damageFeedback`
+  /// during subsequent processing.
+  vDmgTime
+  /// Timestamp used to fade the latest damage overlay or view-kick effect.
+  damageTime
+  /// True when the current snapshot transition represents a teleport.
+  thisFrameTeleport
+  /// Timestamp at which the weapon-selection display was last refreshed.
+  weaponSelectTime
+  /// Weapon identifier currently selected by the local player.
+  weaponSelect
+  /// Eye-height displacement being smoothed after a crouch transition.
+  duckChange
+  /// Client timestamp at which crouch-height smoothing began.
+  duckTime
+  /// Next sequence number in the predicted or entity event stream.
+  eventSequence
+  /// Ring of events generated by local player prediction.
+  predictableEvents
+  /// Number or top position of queued reward announcements awaiting presentation.
+  rewardStack
+  /// Sound resource associated with each queued reward announcement.
+  rewardSound
+  /// HUD shader associated with each queued reward announcement.
+  rewardShader
+  /// Award count associated with each queued reward announcement.
+  rewardCount
+  /// Bitset recording which time-limit warning thresholds have already been announced.
+  timelimitWarnings
+  /// Bitset recording which frag-limit warning thresholds have already been announced.
+  fraglimitWarnings
+  /// Host requests queued while handling player-state changes such as damage, pickups, and local
+  /// sounds, retained in request order.
+  actions
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `transitionPlayerState` during subsequent processing.
+  transitions
+end struct
 
 /// Creates a `mq3.client.cgame_playerstate.State` record. Initializes the record with the defaults written in this constructor.
 function create()

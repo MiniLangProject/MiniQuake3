@@ -7,28 +7,72 @@ import mq3.shared.info as info
 import mq3.qcommon.cvar as cvar
 import std.string as strings
 
+/// Number of indexed configuration-string slots in the game protocol.
 const MAX_CONFIGSTRINGS=1024
+/// Maximum number of client slots supported by these interfaces.
 const MAX_CLIENTS=64
+/// Maximum length of a backslash-delimited server or client information string.
 const MAX_INFO_STRING=1024
+/// Max length of a client name.
 const MAX_NAME_LENGTH=32
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS=1024
+/// Character capacity used when splitting a configuration string into reliable commands.
 const CONFIG_CHUNK=1000
+/// Maximum configuration-string text carried by one split command.
 const CONFIG_PAYLOAD=999
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP=32
+/// Maximum number of entity states associated with a protocol packet.
 const MAX_PACKET_ENTITIES=64
+/// Toggled every map_restart so transitions can be detected.
 const SNAPFLAG_SERVERCOUNT=4
+/// An info string with all the serverinfo cvars.
 const CS_SERVERINFO=0
+/// An info string for server system to client system configuration (timescale, etc).
 const CS_SYSTEMINFO=1
+/// Client-state value identifying a vacant connection slot created during server allocation.
 const CS_FREE=0
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying a client already playing when the server initializes or restarts a
+/// map.
 const CS_ACTIVE=4
+/// Server lifecycle state with no running map.
 const SS_DEAD=0
+/// Server lifecycle state while a new map and game VM are loading.
 const SS_LOADING=1
+/// Server lifecycle state for an active game map.
 const SS_GAME=2
 
 /// Client record for server.init_runtime, containing `state`, `userinfo`, `name`, `noServerInfo`, `bot`, `loopback`, and 5 further fields.
-struct Client state userinfo name noServerInfo bot loopback gentityNumber deltaMessage nextSnapshotTime tag commands end struct
+struct Client
+  /// Connection lifecycle value that preserves the client connection stage across map startup and
+  /// restart.
+  state
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// True when server-info updates should be withheld from this client.
+  noServerInfo
+  /// True when the client slot is controlled by an in-process bot.
+  bot
+  /// True when the connection uses the local loopback transport.
+  loopback
+  /// Index of the client's entity in the game VM entity array.
+  gentityNumber
+  /// Acknowledged snapshot message selected as the base for delta compression.
+  deltaMessage
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
+  nextSnapshotTime
+  /// Client identifier retained while preserving slots across a map transition.
+  tag
+  /// Reliable or pending commands collected for the associated client.
+  commands
+end struct
 /// Create `mq3.server.init_runtime.Client` with state=CS_FREE; userinfo=""; name=""; noServerInfo=false; bot=false; loopback=false; gentityNumber=- 1; deltaMessage=0; nextSnapshotTime=0; tag=tag; commands=[].
 /// @param tag Initial `tag` field stored in the returned or constructed `mq3.server.init_runtime.Client` record.
 function client(tag)
@@ -36,12 +80,42 @@ function client(tag)
 end function
 
 /// SharedEntity record for server.init_runtime, containing `linked`, `state`.
-struct SharedEntity linked state end struct
+struct SharedEntity
+  /// True when this entity or resource is linked into the world.
+  linked
+  /// Network-visible entity state shared with the game VM.
+  state
+end struct
 /// Create `mq3.server.init_runtime.SharedEntity` with linked=false; state=entitystate.create().
 function sharedEntity() return SharedEntity(false,entitystate.create()) end function
 
 /// Level record for server.init_runtime, containing `state`, `restarting`, `configstrings`, `entities`, `baselines`, `numEntities`, and 6 further fields.
-struct Level state restarting configstrings entities baselines numEntities checksumFeed serverId restartedServerId checksumFeedServerId mapChecksum mapname end struct
+struct Level
+  /// Server lifecycle state selecting dead, loading, or active gameplay.
+  state
+  /// True while the server performs an in-place map restart.
+  restarting
+  /// Server configuration strings indexed by their protocol slot.
+  configstrings
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+  /// Baseline entity states used as initial references for delta compression.
+  baselines
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// Server-supplied feed value used to calculate pure-package checksums.
+  checksumFeed
+  /// Identifier distinguishing the current server or map session.
+  serverId
+  /// Server identifier retained from before the latest map restart.
+  restartedServerId
+  /// Server identifier associated with the current checksum feed.
+  checksumFeedServerId
+  /// Checksum of the currently loaded BSP map.
+  mapChecksum
+  /// Name of the current game map.
+  mapname
+end struct
 /// Compute level in server.init_runtime; the normal completion returns `Level(SS_DEAD, false, array(MAX_CONFIGSTRINGS, ""), entities, baselines, 0, 0, 0, 0, 0, 0, "")`.
 function level()
   entities=array(1024,void);baselines=array(1024,void)
@@ -50,19 +124,73 @@ function level()
 end function
 
 /// Static record for server.init_runtime, containing `initialized`, `clients`, `numSnapshotEntities`, `snapshotEntities`, `nextSnapshotEntities`, `snapFlagServerBit`, and 1 further fields.
-struct Static initialized clients numSnapshotEntities snapshotEntities nextSnapshotEntities snapFlagServerBit time end struct
+struct Static
+  /// True after persistent server client and snapshot storage has been allocated.
+  initialized
+  /// Persistent client records allocated at server startup and retained across map changes.
+  clients
+  /// Number of entity-state slots reserved in the snapshot ring.
+  numSnapshotEntities
+  /// Entity states retained in the server snapshot ring.
+  snapshotEntities
+  /// Next absolute insertion position in the circular snapshot-entity buffer.
+  nextSnapshotEntities
+  /// Snapshot server-count bit toggled when a new server level is spawned.
+  snapFlagServerBit
+  /// Persistent server clock retained across level startup and restart, in milliseconds.
+  time
+end struct
 /// Create `mq3.server.init_runtime.Static` with initialized=false; clients=[]; numSnapshotEntities=0; snapshotEntities=[]; nextSnapshotEntities=0; snapFlagServerBit=0; time=0.
 function staticState() return Static(false,[],0,[],0,0,0) end function
 
 /// Runtime record for server.init_runtime, containing `sv`, `svs`, `registry`, `maxClients`, `dedicated`, `pure`, and 8 further fields.
-struct Runtime sv svs registry maxClients dedicated pure running errorEntered frameTime gametypeModified modifiedFlags operatorCommands botInitialized shutdown end struct
+struct Runtime
+  /// Current map-level server state.
+  sv
+  /// Persistent server state retained across map changes.
+  svs
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Requested client capacity bounded and allocated during server startup.
+  maxClients
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// True while the server or represented subsystem is running.
+  running
+  /// True while an error is being handled, preventing recursive error handling.
+  errorEntered
+  /// Host frame timestamp used while initializing or restarting the server.
+  frameTime
+  /// True when a changed game mode requires server reinitialization.
+  gametypeModified
+  /// Bit mask of configuration-variable categories modified since the last clear.
+  modifiedFlags
+  /// Registry of server operator-console commands.
+  operatorCommands
+  /// True after bot-library initialization has completed.
+  botInitialized
+  /// True after shutdown has been requested or completed.
+  shutdown
+end struct
 /// Create `mq3.server.init_runtime.Runtime` with sv=level(); svs=staticState(); registry=cvar.create(); maxClients=8; 10 further fields.
 function runtime()
   return Runtime(level(),staticState(),cvar.create(),8,0,1,false,false,0,false,0,false,false,false)
 end function
 
 /// Services record for server.init_runtime, containing `context`, `actionFn`, `randomFn`, `millisecondsFn`.
-struct Services context actionFn randomFn millisecondsFn end struct
+struct Services
+  /// Caller-supplied data associated with server startup actions, random values, and initialization
+  /// timing.
+  context
+  /// Host callback that dispatches a recorded subsystem action to the host.
+  actionFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+  /// Host callback that supplies the current host clock in milliseconds.
+  millisecondsFn
+end struct
 /// Create `mq3.server.init_runtime.Services` with context=void; actionFn=void; randomFn=void; millisecondsFn=void.
 function services() return Services(void,void,void,void) end function
 /// Compute action in server.init_runtime.

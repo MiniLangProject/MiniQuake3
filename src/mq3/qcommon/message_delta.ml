@@ -7,12 +7,19 @@ import mq3.qcommon.message as message
 
 /// UserCommand record for qcommon.message_delta, containing `serverTime`, `angles`, `buttons`, `weapon`, `forwardmove`, `rightmove`, and 1 further fields.
 struct UserCommand
+  /// Server simulation timestamp carried by this user command.
   serverTime
+  /// Pitch, yaw, and roll values carried by the entity or user command.
   angles
+  /// Bit mask of pressed user-command buttons.
   buttons
+  /// Weapon identifier selected by the bot or user command.
   weapon
+  /// Signed forward/backward movement input.
   forwardmove
+  /// Signed right/left movement input.
   rightmove
+  /// Signed upward/downward movement input.
   upmove
 end struct
 

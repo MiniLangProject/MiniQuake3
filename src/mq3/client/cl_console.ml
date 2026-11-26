@@ -9,33 +9,179 @@ import mq3.compat.numeric as numeric
 import std.fs as fs
 import std.ds.list as lists
 
+/// Number of recent console-line timestamps retained for notification fading.
 const NUM_CON_TIMES=4
+/// Capacity of the console scrollback text buffer.
 const CON_TEXTSIZE=32768
+/// Fallback console width setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_CONSOLE_WIDTH=78
+/// Smallchar font metric controlling width in virtual UI coordinates.
 const SMALLCHAR_WIDTH=8
+/// Smallchar font metric controlling height in virtual UI coordinates.
 const SMALLCHAR_HEIGHT=16
+/// Native UI keyboard-capture bit exposed alongside the console's input-catcher definitions.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the cgame subsystem.
 const KEYCATCH_CGAME=8
+/// Client connection state with no active server connection.
 const CA_DISCONNECTED=0
+/// Connection-state value for normal gameplay after game-state loading, defined for selecting in-game
+/// notification and console presentation.
 const CA_ACTIVE=8
+/// Native console palette index selecting white text.
 const COLOR_WHITE=7
+/// Native console palette index selecting red text.
 const COLOR_RED=1
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
 
 /// Stores engine client console host-service callbacks, including `context`, `startDemoLoopFn`, `crosshairPlayerFn`, `lastAttackerFn`.
-struct Services context startDemoLoopFn crosshairPlayerFn lastAttackerFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for console scrollback and
+  /// notification drawing.
+  context
+  /// Host callback for the start demo loop operation; an unset callback leaves that host operation
+  /// unavailable.
+  startDemoLoopFn
+  /// Host callback for the crosshair player operation; an unset callback leaves that host operation
+  /// unavailable.
+  crosshairPlayerFn
+  /// Host callback for the last attacker operation; an unset callback leaves that host operation
+  /// unavailable.
+  lastAttackerFn
+end struct
 /// Stores engine client console glyph record, including `x`, `y`, `ch`, `color`.
-struct Glyph x y ch color end struct
+struct Glyph
+  /// Horizontal coordinate of a console character in the target display.
+  x
+  /// Vertical coordinate of a console character in the target display.
+  y
+  /// When constructing this record, `lineGlyphs` supplies `ch` for this member.
+  ch
+  /// Console palette index from zero through seven encoded with this glyph character.
+  color
+end struct
 /// Stores engine client console console line record, including `line`, `text`, `glyphs`.
-struct ConsoleLine line text glyphs end struct
+struct ConsoleLine
+  /// When constructing this record, `Con_DrawNotify` supplies `line` for this member.
+  line
+  /// Character text of one console scrollback line, paired with separately positioned and colored
+  /// glyphs.
+  text
+  /// When constructing this record, `Con_DrawNotify` supplies
+  /// `lineGlyphs(state,line,SMALLCHAR_WIDTH,vertical)` for this member.
+  glyphs
+end struct
 /// Stores engine client console notify view record, including `lines`, `chat`.
-struct NotifyView lines chat end struct
+struct NotifyView
+  /// When constructing this record, `Con_DrawNotify` supplies `lines` for this member.
+  lines
+  /// When constructing this record, `Con_DrawNotify` supplies `chat` for this member.
+  chat
+end struct
 /// Stores engine client console solid view record, including `fraction`, `scanlines`, `rows`, `backscrolled`, `version`, `glyphs` and additional values.
-struct SolidView fraction scanlines rows backscrolled version glyphs input end struct
+struct SolidView
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `fraction` for this member.
+  fraction
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `lines` for this member.
+  scanlines
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `rows` for this member.
+  rows
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `back` for this member.
+  backscrolled
+  /// Graphics-driver or renderer version string exposed to the video-settings UI.
+  version
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `glyphs.toArray()` for this member.
+  glyphs
+  /// When constructing this record, `Con_DrawSolidConsole` supplies `Con_DrawInput(state)` for this
+  /// member.
+  input
+end struct
 /// Stores engine client console draw view record, including `mode`, `solid`, `notify`.
-struct DrawView mode solid notify end struct
+struct DrawView
+  /// When constructing this record, `Con_DrawConsole` supplies `"solid"` for this member.
+  mode
+  /// When constructing this record, `Con_DrawConsole` supplies
+  /// `Con_DrawSolidConsole(state,1.0,videoWidth,videoHeight,version)` for this member.
+  solid
+  /// When constructing this record, `Con_DrawConsole` supplies an absent (`void`) value for this
+  /// member.
+  notify
+end struct
 /// Stores engine client console state, including `initialized`, `text`, `current`, `x`, `display`, `linewidth` and additional values.
-struct State initialized text current x display linewidth totallines xadjust displayFrac finalFrac vislines times color notifyTime conSpeed realtime realFrametime noPrint connectionState keyCatchers uiOrCgameCatcher intermission clientRunning consoleInput host commands end struct
+struct State
+  /// True once console storage and line wrapping have been initialized for the current screen width.
+  initialized
+  /// Editable or accumulated console text retained for drawing and command submission.
+  text
+  /// When constructing this record, `create` supplies `0` for this member. Used by `Con_CheckResize`
+  /// and `Con_Linefeed` during subsequent processing.
+  current
+  /// Current character column in the console's output line, advanced as characters are appended to
+  /// scrollback.
+  x
+  /// When constructing this record, `create` supplies `0` for this member. Used by `Con_CheckResize`
+  /// and `Con_Linefeed` during subsequent processing.
+  display
+  /// When constructing this record, `create` supplies `0` for this member. Used by `lineOffset` and
+  /// `lineText` during subsequent processing.
+  linewidth
+  /// When constructing this record, `create` supplies `0` for this member. Used by `lineOffset` and
+  /// `lineText` during subsequent processing.
+  totallines
+  /// When constructing this record, `create` supplies `0.0` for this member.
+  xadjust
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `Con_DrawConsole`
+  /// and `Con_RunConsole` during subsequent processing.
+  displayFrac
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `Con_RunConsole`
+  /// and `Con_Close` during subsequent processing.
+  finalFrac
+  /// When constructing this record, `create` supplies `0` for this member. Used by `Con_DrawInput` and
+  /// `Con_DrawSolidConsole` during subsequent processing.
+  vislines
+  /// When constructing this record, `create` supplies `[0,0,0,0]` for this member. Used by
+  /// `Con_ClearNotify` and `Con_Linefeed` during subsequent processing.
+  times
+  /// RGBA console modulation color retained in the console runtime state.
+  color
+  /// When constructing this record, `create` supplies `3.0` for this member. Used by `Con_Init` and
+  /// `Con_DrawNotify` during subsequent processing.
+  notifyTime
+  /// When constructing this record, `create` supplies `3.0` for this member. Used by `Con_Init` and
+  /// `Con_RunConsole` during subsequent processing.
+  conSpeed
+  /// Local client clock in milliseconds used for console notification ages and input cursor blinking.
+  realtime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `Con_RunConsole`
+  /// during subsequent processing.
+  realFrametime
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_ConsolePrint` during subsequent processing.
+  noPrint
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
+  connectionState
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
+  keyCatchers
+  /// When constructing this record, `create` supplies `0` for this member. Used by `Con_DrawNotify` and
+  /// `Con_DrawConsole` during subsequent processing.
+  uiOrCgameCatcher
+  /// When constructing this record, `create` supplies `false` for this member. Used by `Con_DrawNotify`
+  /// during subsequent processing.
+  intermission
+  /// When constructing this record, `create` supplies `true` for this member. Used by `Con_Close`
+  /// during subsequent processing.
+  clientRunning
+  /// When constructing this record, `create` supplies `consoleInput` for this member. Used by
+  /// `setCatcher` and `Con_Init` during subsequent processing.
+  consoleInput
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `Con_Init`
+  /// during subsequent processing.
+  commands
+end struct
 
 /// Creates a `mq3.client.cl_console.Services` record. Assigns `context` from `context`.
 /// @param context Value used to initialize `Services.context`.

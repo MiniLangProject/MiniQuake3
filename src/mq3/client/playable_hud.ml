@@ -5,14 +5,41 @@ package mq3.client.playable_hud
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
+/// Horizontal cell width of the compact bitmap HUD font.
 const GLYPH_WIDTH=5
+/// Vertical cell height of the compact bitmap HUD font.
 const GLYPH_HEIGHT=7
+/// Largest numeric value accepted by the compact HUD number display.
 const VALUE_MAX=999
 
 /// Stores playable HUD hud state record, including `health`, `armor`, `ammo`, `status`, `helpText`.
-struct HudState health armor ammo status helpText end struct
+struct HudState
+  /// Player health value displayed by the lightweight playable-preview HUD.
+  health
+  /// Player armor value displayed alongside health in the lightweight preview HUD.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// When constructing this record, `state` supplies `status` for this member.
+  status
+  /// When constructing this record, `state` supplies `helpText` for this member.
+  helpText
+end struct
 /// Stores playable HUD hud layout record, including `margin`, `valueY`, `labelY`, `statusY`, `helpY`, `crosshairSize`.
-struct HudLayout margin valueY labelY statusY helpY crosshairSize end struct
+struct HudLayout
+  /// When constructing this record, `layout` supplies `18` for this member.
+  margin
+  /// When constructing this record, `layout` supplies `height-25*scale` for this member.
+  valueY
+  /// When constructing this record, `layout` supplies `height-16*scale` for this member.
+  labelY
+  /// When constructing this record, `layout` supplies `16` for this member.
+  statusY
+  /// When constructing this record, `layout` supplies `38` for this member.
+  helpY
+  /// When constructing this record, `layout` supplies `5*scale` for this member.
+  crosshairSize
+end struct
 
 /// Calls `mq3.platform.playable_window.lineNative`, `mq3.compat.numeric.trunc32` from playable HUD `line`.
 /// @param x0 Value used by `window.lineNative(numeric.trunc32(x0),numeric.trunc32(y0),numeric.trunc32(x1),numeric.trunc32(y1),red,green,blue)`.

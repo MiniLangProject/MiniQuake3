@@ -4,24 +4,42 @@
 package mq3.botlib.ai_resource_pools
 
 import mq3.botlib.public_headers as publicHeaders
+/// Maximum number of client slots supported by these interfaces.
 const MAX_CLIENTS=64
+/// Maximum number of goals stored on one bot goal stack.
 const MAX_GOALSTACK=publicHeaders.MAX_GOALSTACK
+/// Maximum number of temporarily avoided goal identifiers retained per bot.
 const MAX_AVOIDGOALS=publicHeaders.MAX_AVOIDGOALS
+/// Maximum number of temporarily avoided reachabilities retained per bot.
 const MAX_AVOIDREACH=publicHeaders.MAX_AVOIDREACH
+/// Maximum number of spatial avoidance spots retained per bot.
 const MAX_AVOIDSPOTS=publicHeaders.MAX_AVOIDSPOTS
 
+/// Bot-library syscall identifier for alloc chat state.
 const OP_ALLOC_CHAT_STATE=507
+/// Bot-library syscall identifier for free chat state.
 const OP_FREE_CHAT_STATE=508
+/// Bot-library syscall identifier for reset goal state.
 const OP_RESET_GOAL_STATE=525
+/// Bot-library syscall identifier for alloc goal state.
 const OP_ALLOC_GOAL_STATE=546
+/// Bot-library syscall identifier for free goal state.
 const OP_FREE_GOAL_STATE=547
+/// Bot-library syscall identifier for reset move state.
 const OP_RESET_MOVE_STATE=548
+/// Bot-library syscall identifier for reset avoid reach.
 const OP_RESET_AVOID_REACH=551
+/// Bot-library syscall identifier for reset last avoid reach.
 const OP_RESET_LAST_AVOID_REACH=552
+/// Bot-library syscall identifier for alloc move state.
 const OP_ALLOC_MOVE_STATE=555
+/// Bot-library syscall identifier for free move state.
 const OP_FREE_MOVE_STATE=556
+/// Bot-library syscall identifier for alloc weapon state.
 const OP_ALLOC_WEAPON_STATE=561
+/// Bot-library syscall identifier for free weapon state.
 const OP_FREE_WEAPON_STATE=562
+/// Bot-library syscall identifier for reset weapon state.
 const OP_RESET_WEAPON_STATE=563
 
 /// Test `op==OP_ALLOC_CHAT_STATE or op==OP_FREE_CHAT_STATE or op==OP_RESET_GOAL_STATE or op==OP_ALLOC_GOAL_STATE or op==OP_FREE_GOAL_STATE or op==OP_RESET_M...` as the condition for `supportsTrap`.
@@ -31,19 +49,140 @@ function supportsTrap(op)
 end function
 
 /// `ChatState` record for ai resource pools, containing `gender`, `client`, `name`, `chatMessage` and `handle` and related fields.
-struct ChatState gender client name chatMessage handle consoleMessages numConsoleMessages chat end struct
+struct ChatState
+  /// Gender identifier used by player sounds or bot chat selection.
+  gender
+  /// Server client number associated with the bot chat state.
+  client
+  /// Name of the bot.
+  name
+  /// Chat message string.
+  chatMessage
+  /// Managed handle identifying this allocated chat state.
+  handle
+  /// Queued console-message slots owned by this bot chat state.
+  consoleMessages
+  /// Number of queued console messages owned by this bot chat state.
+  numConsoleMessages
+  /// Loaded initial-chat profile selected for this bot.
+  chat
+end struct
 /// `Goal` record for ai resource pools, containing `origin`, `areaNum`, `mins`, `maxs` and `entityNum` and related fields.
-struct Goal origin areaNum mins maxs entityNum number flags itemInfo end struct
+struct Goal
+  /// World-space target position of this stored bot goal.
+  origin
+  /// Navigation area containing the position of this bot goal.
+  areaNum
+  /// Minimum XYZ corner of the bot goal volume relative to the goal position.
+  mins
+  /// Maximum XYZ corner of the bot goal volume relative to the goal position.
+  maxs
+  /// Number of the game entity associated with this result.
+  entityNum
+  /// Goal identifier associated with the level item or named destination.
+  number
+  /// Combined goal-property flags, including item, dropped, and roam markers.
+  flags
+  /// Item-configuration index associated with this bot goal.
+  itemInfo
+end struct
 /// `GoalState` record for ai resource pools, containing `itemWeightConfig`, `itemWeightIndex`, `client`, `lastReachabilityArea` and `goalStack` and related fields.
-struct GoalState itemWeightConfig itemWeightIndex client lastReachabilityArea goalStack goalStackTop avoidGoals avoidGoalTimes end struct
+struct GoalState
+  /// Fuzzy-weight configuration used to score item goals.
+  itemWeightConfig
+  /// Index from item to weight.
+  itemWeightIndex
+  /// Client using this goal state.
+  client
+  /// Last area with reachabilities the bot was in.
+  lastReachabilityArea
+  /// Stack of active and suspended goals for this bot.
+  goalStack
+  /// The top of the goal stack.
+  goalStackTop
+  /// Goals to avoid.
+  avoidGoals
+  /// Times to avoid the goals.
+  avoidGoalTimes
+end struct
 /// `AvoidSpot` record for ai resource pools, containing `origin`, `radius` and `type`.
-struct AvoidSpot origin radius type end struct
+struct AvoidSpot
+  /// World-space center of the spatial region the bot should avoid.
+  origin
+  /// Radius of the represented sphere or capsule.
+  radius
+  /// Avoidance policy deciding whether this spot blocks or only influences movement.
+  type
+end struct
 /// `MoveState` record for ai resource pools, containing `origin`, `velocity`, `viewOffset`, `entityNum` and `client` and related fields.
-struct MoveState origin velocity viewOffset entityNum client thinkTime presenceType viewAngles areaNum lastAreaNum lastGoalAreaNum lastReachNum lastOrigin reachAreaNum moveFlags jumpReach grappleVisibleTime lastGrappleDist reachabilityTime avoidReach avoidReachTimes avoidReachTries avoidSpots numAvoidSpots end struct
+struct MoveState
+  /// Current bot position used by navigation and movement decisions.
+  origin
+  /// World-space linear velocity associated with the moving entity.
+  velocity
+  /// Offset from the entity origin to the viewing position.
+  viewOffset
+  /// Number of the game entity associated with this result.
+  entityNum
+  /// Client number of the bot.
+  client
+  /// Time the bot thinks.
+  thinkTime
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Pitch, yaw, and roll angles describing the current view direction.
+  viewAngles
+  /// Navigation area currently occupied by the moving bot.
+  areaNum
+  /// Last area the bot was in.
+  lastAreaNum
+  /// Last goal area number.
+  lastGoalAreaNum
+  /// Last reachability number.
+  lastReachNum
+  /// Origin previous cycle.
+  lastOrigin
+  /// Area number of the reachabilty.
+  reachAreaNum
+  /// Bit mask describing the bot's current movement state.
+  moveFlags
+  /// Set when jumped.
+  jumpReach
+  /// Last time the grapple was visible.
+  grappleVisibleTime
+  /// Last distance to the grapple end.
+  lastGrappleDist
+  /// Time to use current reachability.
+  reachabilityTime
+  /// Reachabilities to avoid.
+  avoidReach
+  /// Times to avoid the reachabilities.
+  avoidReachTimes
+  /// Number of tries before avoiding.
+  avoidReachTries
+  /// Spots to avoid.
+  avoidSpots
+  /// Number of avoid spots represented by this record.
+  numAvoidSpots
+end struct
 /// `WeaponState` record for ai resource pools, containing `weaponWeightConfig` and `weaponWeightIndex`.
-struct WeaponState weaponWeightConfig weaponWeightIndex end struct
+struct WeaponState
+  /// Loaded fuzzy-weight configuration used to score weapon choices.
+  weaponWeightConfig
+  /// Mapping from weapon identifiers to fuzzy-weight configuration entries.
+  weaponWeightIndex
+end struct
 /// `Pools` record for ai resource pools, containing `chatStates`, `goalStates`, `moveStates` and `weaponStates`.
-struct Pools chatStates goalStates moveStates weaponStates end struct
+struct Pools
+  /// Allocated per-bot chat-state slots.
+  chatStates
+  /// Allocated per-bot goal-stack and avoidance-state slots.
+  goalStates
+  /// Allocated per-bot movement-state slots.
+  moveStates
+  /// Allocated per-bot weapon-selection-state slots.
+  weaponStates
+end struct
 
 /// Allocate an integer array of the requested length initialized to zero.
 /// @param count Number of entries or bytes processed by this call.

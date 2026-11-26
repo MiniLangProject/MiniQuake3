@@ -6,40 +6,86 @@ import mq3.game.game_headers as headers
 import mq3.game.constants as c
 import mq3.compat.numeric as n
 
+/// Bot inventory slot containing horizontal distance to the selected enemy.
 const ENEMY_HORIZONTAL_DIST=headers.ENEMY_HORIZONTAL_DIST
+/// Bot inventory slot containing the enemy height relative to the bot.
 const ENEMY_HEIGHT=headers.ENEMY_HEIGHT
+/// Bot inventory slot used to read or update armor.
 const INVENTORY_ARMOR=headers.INVENTORY_ARMOR
+/// Bot inventory slot used to read or update gauntlet.
 const INVENTORY_GAUNTLET=headers.INVENTORY_GAUNTLET
+/// Bot inventory slot used to read or update shotgun.
 const INVENTORY_SHOTGUN=headers.INVENTORY_SHOTGUN
+/// Bot inventory slot used to read or update machine gun.
 const INVENTORY_MACHINEGUN=headers.INVENTORY_MACHINEGUN
+/// Bot inventory slot used to read or update grenade launcher.
 const INVENTORY_GRENADELAUNCHER=headers.INVENTORY_GRENADELAUNCHER
+/// Bot inventory slot used to read or update rocket launcher.
 const INVENTORY_ROCKETLAUNCHER=headers.INVENTORY_ROCKETLAUNCHER
+/// Bot inventory slot used to read or update lightning gun.
 const INVENTORY_LIGHTNING=headers.INVENTORY_LIGHTNING
+/// Bot inventory slot used to read or update railgun.
 const INVENTORY_RAILGUN=headers.INVENTORY_RAILGUN
+/// Bot inventory slot used to read or update plasma gun.
 const INVENTORY_PLASMAGUN=headers.INVENTORY_PLASMAGUN
+/// Bot inventory slot used to read or update bfg10 k.
 const INVENTORY_BFG10K=headers.INVENTORY_BFG10K
+/// Bot inventory slot used to read or update grappling hook.
 const INVENTORY_GRAPPLINGHOOK=headers.INVENTORY_GRAPPLINGHOOK
+/// Bot inventory slot used to read or update shells.
 const INVENTORY_SHELLS=headers.INVENTORY_SHELLS
+/// Bot inventory slot used to read or update bullets.
 const INVENTORY_BULLETS=headers.INVENTORY_BULLETS
+/// Bot inventory slot used to read or update grenades.
 const INVENTORY_GRENADES=headers.INVENTORY_GRENADES
+/// Bot inventory slot used to read or update cells.
 const INVENTORY_CELLS=headers.INVENTORY_CELLS
+/// Bot inventory slot used to read or update lightningammo.
 const INVENTORY_LIGHTNINGAMMO=headers.INVENTORY_LIGHTNINGAMMO
+/// Bot inventory slot used to read or update rockets.
 const INVENTORY_ROCKETS=headers.INVENTORY_ROCKETS
+/// Bot inventory slot used to read or update slugs.
 const INVENTORY_SLUGS=headers.INVENTORY_SLUGS
+/// Bot inventory slot used to read or update bfgammo.
 const INVENTORY_BFGAMMO=headers.INVENTORY_BFGAMMO
+/// Bot inventory slot used to read or update health.
 const INVENTORY_HEALTH=headers.INVENTORY_HEALTH
+/// Bot inventory slot used to read or update teleporter.
 const INVENTORY_TELEPORTER=headers.INVENTORY_TELEPORTER
+/// Bot inventory slot used to read or update medkit.
 const INVENTORY_MEDKIT=headers.INVENTORY_MEDKIT
+/// Bot inventory slot used to read or update quad.
 const INVENTORY_QUAD=headers.INVENTORY_QUAD
+/// Bot inventory slot used to read or update environmentsuit.
 const INVENTORY_ENVIRONMENTSUIT=headers.INVENTORY_ENVIRONMENTSUIT
+/// Bot inventory slot used to read or update haste.
 const INVENTORY_HASTE=headers.INVENTORY_HASTE
+/// Bot inventory slot used to read or update invisibility.
 const INVENTORY_INVISIBILITY=headers.INVENTORY_INVISIBILITY
+/// Bot inventory slot used to read or update regen.
 const INVENTORY_REGEN=headers.INVENTORY_REGEN
+/// Bot inventory slot used to read or update flight.
 const INVENTORY_FLIGHT=headers.INVENTORY_FLIGHT
+/// Bot inventory slot used to read or update redflag.
 const INVENTORY_REDFLAG=headers.INVENTORY_REDFLAG
+/// Bot inventory slot used to read or update blueflag.
 const INVENTORY_BLUEFLAG=headers.INVENTORY_BLUEFLAG
 /// `Services` record for bot inventory ai, containing `chooseBestFn`, `selectWeaponFn`, `floatTimeFn`, `entityInfoFn` and `checkItemPickupFn` and related fields.
-struct Services chooseBestFn selectWeaponFn floatTimeFn entityInfoFn checkItemPickupFn context end struct
+struct Services
+  /// Injected callback for choose best; invoked through the Services service/state record.
+  chooseBestFn
+  /// Injected callback for select weapon; invoked through the Services service/state record.
+  selectWeaponFn
+  /// Injected callback for float time; invoked through the Services service/state record.
+  floatTimeFn
+  /// Injected callback for entity info; invoked through the Services service/state record.
+  entityInfoFn
+  /// Injected callback for check item pickup; invoked through the Services service/state record.
+  checkItemPickupFn
+  /// Opaque caller-supplied context available to bot weapon selection, entity lookup, and item-pickup
+  /// callbacks.
+  context
+end struct
 /// Create a `mq3.game.bot_inventory_ai.Services` record with the declared empty defaults.
 function create() return Services(void,void,void,void,void,void) end function
 /// Convert a truth value to the integer one or zero for inventory flags.

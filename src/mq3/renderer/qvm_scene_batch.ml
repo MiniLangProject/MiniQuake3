@@ -8,11 +8,28 @@ import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import std.ds.hashmap as maps
 
+/// Entity-rendering flag that uses the shortened depth range for first-person weapons.
 const RF_DEPTHHACK=8
+/// Builtin shader name used for projected entity shadows.
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
 
 /// Data record for `mq3.renderer.qvm_scene_batch.Prepared`; groups `geometry`, `batch`, `depthHackGeometry`, `depthHackBatch`, `dynamicGeometry`, `shadowBatch`, and 1 further field.
-struct Prepared geometry batch depthHackGeometry depthHackBatch dynamicGeometry shadowBatch shadowCount end struct
+struct Prepared
+  /// Prepared geometry used by the drawing operation.
+  geometry
+  /// Prepared drawing batch associated with the selected geometry.
+  batch
+  /// Geometry that requires the shortened weapon depth range.
+  depthHackGeometry
+  /// Drawing batch for geometry using the weapon depth hack.
+  depthHackBatch
+  /// Geometry retained for time-dependent or entity-dependent updates.
+  dynamicGeometry
+  /// Drawing batch containing shadow geometry.
+  shadowBatch
+  /// Number of shadow primitives prepared for submission.
+  shadowCount
+end struct
 
 /// Creates error `7681` with message `"QVM scene batch: "+message`.
 /// @param message Input used in the result expression `error(7681,"QVM scene batch: "+message)`.

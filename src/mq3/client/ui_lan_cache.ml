@@ -8,24 +8,47 @@ import std.string as strings
 import mq3.compat.numeric as n
 import mq3.client.ui_lan_browser as lan
 
+/// Filename used to persist the native server-browser cache.
 const CACHE_NAME="servercache.dat"
+/// Size in bytes of the native network-address record used by the compatibility ABI.
 const NETADR_SIZE=20
+/// Size in bytes reserved for a native server-information record during ABI marshalling.
 const SERVER_INFO_SIZE=152
+/// Byte length of the persisted server-cache header.
 const HEADER_SIZE=16
+/// Byte count used when storing or marshalling the global data.
 const GLOBAL_BYTES=lan.MAX_GLOBAL_SERVERS*SERVER_INFO_SIZE
+/// Byte count used when storing or marshalling the other data.
 const OTHER_BYTES=lan.MAX_OTHER_SERVERS*SERVER_INFO_SIZE
+/// Byte length of the server-list record blocks stored after the cache header.
 const PAYLOAD_SIZE=GLOBAL_BYTES+OTHER_BYTES+OTHER_BYTES
+/// Total byte length of the persisted cache header and server-list payload.
 const CACHE_SIZE=HEADER_SIZE+PAYLOAD_SIZE
 
+/// Network-address kind identifying a bad destination.
 const NA_BAD=1
+/// Network-address kind identifying a loopback destination.
 const NA_LOOPBACK=2
+/// Network-address kind identifying a broadcast destination.
 const NA_BROADCAST=3
+/// Network-address kind identifying a ip destination.
 const NA_IP=4
 
 /// Stores UI LAN cache host-service callbacks, including `readFn`, `writeFn`, `context`.
-struct Services readFn writeFn context end struct
+struct Services
+  /// Host callback for the read operation; an unset callback leaves that host operation unavailable.
+  readFn
+  /// Host callback for the write operation; an unset callback leaves that host operation unavailable.
+  writeFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server-browser cache
+  /// persistence.
+  context
+end struct
 /// Stores UI LAN cache disk context record, including `root`.
-struct DiskContext root end struct
+struct DiskContext
+  /// When constructing this record, `diskServices` supplies `root` for this member.
+  root
+end struct
 
 /// Creates a `mq3.client.ui_lan_cache.Services` record. Assigns `readFn` from `readFn`, `writeFn` from `writeFn`, `context` from `context`.
 /// @param readFn Value used to initialize `Services.readFn`.

@@ -6,62 +6,117 @@ import mq3.game.bot_combat_ai as fightCombat
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
+/// Bot decision-state identifier for the fight node.
 const NODE_FIGHT=1
+/// Bot decision-state identifier for the chase node.
 const NODE_CHASE=2
+/// Bot decision-state identifier for the seek node.
 const NODE_SEEK=3
+/// Bot decision-state identifier for the stand node.
 const NODE_STAND=4
+/// Bot decision-state identifier for the observer node.
 const NODE_OBSERVER=5
+/// Bot decision-state identifier for the intermission node.
 const NODE_INTERMISSION=6
+/// Bot decision-state identifier for the respawn node.
 const NODE_RESPAWN=7
+/// Bot decision-state identifier for the retreat node.
 const NODE_RETREAT=8
+/// Bot decision-state identifier for the nbg node.
 const NODE_NBG=9
+/// Bot decision-state identifier for the seek nbg node.
 const NODE_SEEK_NBG=10
+/// Bot-state flag marking fightsuicidal.
 const BFL_FIGHTSUICIDAL=64
+/// Bot-state flag marking idealviewset.
 const BFL_IDEALVIEWSET=32
+/// Bot movement-result flag reporting movementview.
 const MOVERESULT_MOVEMENTVIEW=1
+/// Bot movement-result flag reporting swimview.
 const MOVERESULT_SWIMVIEW=2
+/// Bot movement-result flag reporting movementviewset.
 const MOVERESULT_MOVEMENTVIEWSET=8
+/// Bot movement-result flag reporting movementweapon.
 const MOVERESULT_MOVEMENTWEAPON=16
+/// Default combination of permitted AAS travel types used by bot movement queries.
 const TFL_DEFAULT=0x11c0fbe
+/// AAS travel-mask bit allowing the rocketjump travel category.
 const TFL_ROCKETJUMP=0x1000
+/// AAS travel-mask bit allowing the grapplehook travel category.
 const TFL_GRAPPLEHOOK=0x4000
+/// AAS travel-mask bit allowing the slime travel category.
 const TFL_SLIME=0x200000
+/// AAS travel-mask bit allowing the lava travel category.
 const TFL_LAVA=0x400000
+/// Persistent player-state statistics index storing hits.
 const PERS_HITS=1
 
 /// `Services` record for bot fight state, containing `combatServices`, `observerFn`, `recordNodeFn`, `resetLastAvoidFn` and `enterNodeFn` and related fields.
 struct Services
+  /// Callbacks and shared state used by bot combat decisions.
   combatServices
+  /// Injected callback for observer; invoked through the Services service/state record.
   observerFn
+  /// Injected callback for record node; invoked through the Services service/state record.
   recordNodeFn
+  /// Injected callback for reset last avoid; invoked through the Services service/state record.
   resetLastAvoidFn
+  /// Injected callback for enter node; invoked through the Services service/state record.
   enterNodeFn
+  /// Injected callback for chat enemy suicide; invoked through the Services service/state record.
   chatEnemySuicideFn
+  /// Injected callback for chat kill; invoked through the Services service/state record.
   chatKillFn
+  /// Injected callback for chat hit no death; invoked through the Services service/state record.
   chatHitNoDeathFn
+  /// Injected callback for chat hit no kill; invoked through the Services service/state record.
   chatHitNoKillFn
+  /// Injected callback for chat time; invoked through the Services service/state record.
   chatTimeFn
+  /// Injected callback for point area; invoked through the Services service/state record.
   pointAreaFn
+  /// Injected callback for area reachable; invoked through the Services service/state record.
   areaReachableFn
+  /// Injected callback for update battle; invoked through the Services service/state record.
   updateBattleFn
+  /// Injected callback for battle use items; invoked through the Services service/state record.
   battleUseItemsFn
+  /// Grappling-hook movement support supplied to the bot controller.
   grapple
+  /// Injected callback for choose weapon; invoked through the Services service/state record.
   chooseWeaponFn
+  /// Injected callback for blocked; invoked through the Services service/state record.
   blockedFn
+  /// Injected callback for reset avoid; invoked through the Services service/state record.
   resetAvoidFn
+  /// Injected callback for map scripts; invoked through the Services service/state record.
   mapScriptsFn
+  /// Injected callback for touching goal; invoked through the Services service/state record.
   touchingGoalFn
+  /// Injected callback for nearby goal; invoked through the Services service/state record.
   nearbyGoalFn
+  /// Injected callback for top goal; invoked through the Services service/state record.
   topGoalFn
+  /// Injected callback for pop goal; invoked through the Services service/state record.
   popGoalFn
+  /// Injected callback for reached goal; invoked through the Services service/state record.
   reachedGoalFn
+  /// Injected callback for empty goal stack; invoked through the Services service/state record.
   emptyGoalStackFn
+  /// Injected callback for team goals; invoked through the Services service/state record.
   teamGoalsFn
+  /// Injected callback for long term goal; invoked through the Services service/state record.
   longTermGoalFn
+  /// Injected callback for movement view target; invoked through the Services service/state record.
   movementViewTargetFn
+  /// Injected callback for mission enemy target; invoked through the Services service/state record.
   missionEnemyTargetFn
+  /// Injected callback for mission nearby range; invoked through the Services service/state record.
   missionNearbyRangeFn
+  /// Callbacks used to execute the bot deathmatch decision network.
   dmnetServices
+  /// Opaque caller-supplied context available to bot fight-state transitions, battle actions, and
+  /// movement-goal callbacks.
   context
 end struct
 /// Create a `mq3.game.bot_fight_state.Services` record, initializing `combatServices` from `combatServices`.

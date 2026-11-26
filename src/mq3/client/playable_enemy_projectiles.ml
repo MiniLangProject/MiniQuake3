@@ -6,21 +6,119 @@ import mq3.collision.world as collision
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used when tracing a weapon shot.
 const SHOT_MASK=0x6000001
+/// Fallback speed setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_SPEED=420.0
+/// Default lifetime duration in milliseconds when the caller supplies no override.
 const DEFAULT_LIFETIME_MILLISECONDS=2500
+/// Fallback radius setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_RADIUS=3.0
+/// Player hit-volume kind selecting an axis-aligned bounding box.
 const PLAYER_AABB=0
+/// Player hit-volume kind selecting a spherical collision approximation.
 const PLAYER_SPHERE=1
 
 /// Stores playable enemy projectiles projectile record, including `id`, `attacker`, `origin`, `velocity`, `spawnedAt`, `expiresAt` and additional values.
-struct Projectile id attacker origin velocity spawnedAt expiresAt damage side radius end struct
+struct Projectile
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// When constructing this record, `spawnOne` supplies `attacker` for this member.
+  attacker
+  /// Current world-space position advanced by each enemy-projectile simulation step and retained for
+  /// expiration impacts.
+  origin
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// When constructing this record, `spawnOne` supplies `now` for this member. Used by
+  /// `updateWithTrace` during subsequent processing.
+  spawnedAt
+  /// When constructing this record, `spawnOne` supplies `now+state.lifetime` for this member. Used by
+  /// `updateWithTrace` during subsequent processing.
+  expiresAt
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `spawnOne` supplies `side` for this member.
+  side
+  /// Collision radius of this moving enemy projectile, used to expand player hit tests.
+  radius
+end struct
 /// Stores playable enemy projectiles trail record, including `projectileId`, `start`, `endPoint`, `fromTime`, `toTime`.
-struct Trail projectileId start endPoint fromTime toTime end struct
+struct Trail
+  /// Stable projectile identifier used to associate movement, trails, and impact presentation.
+  projectileId
+  /// When constructing this record, `updateWithTrace` supplies `startPoint` for this member.
+  start
+  /// World-space endpoint of the trace, beam, or projectile presentation segment.
+  endPoint
+  /// When constructing this record, `updateWithTrace` supplies `fromTime` for this member.
+  fromTime
+  /// When constructing this record, `updateWithTrace` supplies `hitTime` for this member.
+  toTime
+end struct
 /// Stores playable enemy projectiles impact record, including `projectileId`, `attacker`, `kind`, `point`, `normal`, `damage` and additional values.
-struct Impact projectileId attacker kind point normal damage side at end struct
+struct Impact
+  /// Stable projectile identifier used to associate movement, trails, and impact presentation.
+  projectileId
+  /// When constructing this record, `appendImpact` supplies `projectile.attacker` for this member.
+  attacker
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// When constructing this record, `appendImpact` supplies `copyPoint(point)` for this member.
+  point
+  /// Collision-plane normal at an enemy projectile impact, forwarded to impact presentation.
+  normal
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `appendImpact` supplies `projectile.side` for this member.
+  side
+  /// When constructing this record, `appendImpact` supplies `now` for this member.
+  at
+end struct
 /// Stores playable enemy projectiles state, including `projectiles`, `trails`, `impacts`, `nextId`, `lastTime`, `lastSpawnTime` and additional values.
-struct State projectiles trails impacts nextId lastTime lastSpawnTime speed lifetime radius playerShape playerMins playerMaxs playerRadius damageThisFrame end struct
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `spawnOne`
+  /// and `updateWithTrace` during subsequent processing.
+  projectiles
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `updateWithTrace` during subsequent processing.
+  trails
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `appendImpact` and `updateWithTrace` during subsequent processing.
+  impacts
+  /// When constructing this record, `create` supplies `0` for this member. Used by `spawnOne` during
+  /// subsequent processing.
+  nextId
+  /// When constructing this record, `create` supplies `now` for this member. Used by
+  /// `spawnAttacksFromMuzzles` and `updateWithTrace` during subsequent processing.
+  lastTime
+  /// When constructing this record, `create` supplies `-1` for this member. Used by
+  /// `spawnAttacksFromMuzzles` during subsequent processing.
+  lastSpawnTime
+  /// When constructing this record, `create` supplies `numeric.f32(speed)` for this member. Used by
+  /// `spawnOne` during subsequent processing.
+  speed
+  /// When constructing this record, `create` supplies `lifetime` for this member. Used by `spawnOne`
+  /// during subsequent processing.
+  lifetime
+  /// Default collision radius copied into newly spawned enemy projectiles.
+  radius
+  /// When constructing this record, `create` supplies `playerShape` for this member. Used by
+  /// `playerFraction` during subsequent processing.
+  playerShape
+  /// When constructing this record, `create` supplies `copyPoint(playerMins)` for this member. Used by
+  /// `playerFraction` during subsequent processing.
+  playerMins
+  /// When constructing this record, `create` supplies `copyPoint(playerMaxs)` for this member. Used by
+  /// `playerFraction` during subsequent processing.
+  playerMaxs
+  /// When constructing this record, `create` supplies `numeric.f32(playerRadius)` for this member. Used
+  /// by `playerFraction` during subsequent processing.
+  playerRadius
+  /// When constructing this record, `create` supplies `0` for this member. Used by `appendImpact` and
+  /// `updateWithTrace` during subsequent processing.
+  damageThisFrame
+end struct
 
 /// Creates the playable enemy projectiles error `7560` with diagnostic text `"preview enemy projectiles: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview enemy projectiles: "+message`.

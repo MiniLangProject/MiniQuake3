@@ -6,25 +6,150 @@ package mq3.client.cgame_event
 import mq3.client.cg_local as cgabi
 import mq3.game.trajectory as trajectory
 
+/// Mask selecting the event-toggle bits used to distinguish repeated entity events.
 const EV_EVENT_BITS=0x300
+/// Entity-state flag selecting player event behavior in client presentation.
 const EF_PLAYER_EVENT=0x10
+/// Entity-state flag selecting kamikaze behavior in client presentation.
 const EF_KAMIKAZE=0x00100000
+/// Base entity-type value for event-only entities; the event identifier is added to this value.
 const ET_EVENTS=13
+/// Bit marking that the stored rank is tied with another player's rank.
 const RANK_TIED_FLAG=0x4000
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Duration in milliseconds of camera smoothing after stepping onto a ledge.
 const STEP_TIME=cgabi.STEP_TIME
+/// Largest vertical step displacement accepted by stair-step view smoothing.
 const MAX_STEP_CHANGE=cgabi.MAX_STEP_CHANGE
+/// Sound-channel selector allowing the mixer to choose an available channel automatically.
 const CHAN_AUTO=0
+/// Sound channel used for an entity's voice and voice-chat playback.
 const CHAN_VOICE=2
+/// Sound channel used for item-related sounds associated with an entity.
 const CHAN_ITEM=3
+/// Sound channel used for an entity's body-related effects such as movement feedback.
 const CHAN_BODY=4
 
 /// Stores client game event queued engine action, including `boundary`, `kind`, `entity`, `channel`, `parm`, `origin` and additional values.
-struct Action boundary kind entity channel parm origin origin2 weapon other text dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while decoding entity events into audio,
+  /// rendering, HUD, and state changes.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while decoding entity
+  /// events into audio, rendering, HUD, and state changes.
+  kind
+  /// When constructing this record, `action` supplies `entity` for this member.
+  entity
+  /// When constructing this record, `action` supplies `channel` for this member.
+  channel
+  /// When constructing this record, `action` supplies `parm` for this member.
+  parm
+  /// World-space event position supplied to the selected sound, effect, or feedback operation.
+  origin
+  /// When constructing this record, `action` supplies `origin2` for this member.
+  origin2
+  /// Native weapon identifier copied from the triggering entity into a weapon-effect event request.
+  weapon
+  /// When constructing this record, `action` supplies `other` for this member.
+  other
+  /// Optional event text, populated with the event name for voice-chat HUD actions and empty for
+  /// ordinary sound or rendering actions.
+  text
+  /// True when this request is marked for native dispatch while decoding entity events into audio,
+  /// rendering, HUD, and state changes; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game event record, including `serverTime`, `sourceEntity`, `effectiveEntity`, `event`, `eventParm`, `position` and additional values.
-struct Record serverTime sourceEntity effectiveEntity event eventParm position actions suppressed end struct
+struct Record
+  /// Server snapshot timestamp in milliseconds at which the entity event position was evaluated.
+  serverTime
+  /// When constructing this record, `checkEvent` supplies `sourceEntity` for this member.
+  sourceEntity
+  /// When constructing this record, `checkEvent` supplies `effectiveEntity` for this member.
+  effectiveEntity
+  /// When constructing this record, `checkEvent` supplies `event` for this member.
+  event
+  /// When constructing this record, `checkEvent` supplies `es.eventParm` for this member.
+  eventParm
+  /// When constructing this record, `checkEvent` supplies `position` for this member.
+  position
+  /// Host operations produced by this single decoded entity event, in emission order.
+  actions
+  /// True when this event's effects were recorded without native dispatch because the retail CGame QVM
+  /// owns them.
+  suppressed
+end struct
 /// Stores client game event state, including `previousEvents`, `eventOnly`, `seenTime`, `painTime`, `painDirection`, `time` and additional values.
-struct State previousEvents eventOnly seenTime painTime painDirection time predictedClient demoPlayback follow noPredict synchronous stepTime stepChange landTime landChange itemPickup itemPickupTime itemPickupBlendTime weaponSelect weaponSelectTime powerupActive powerupTime records audio render hud stateActions errors decoded dispatched suppressed end struct
+struct State
+  /// When constructing this record, `create` supplies `array(maxEntities,0)` for this member.
+  previousEvents
+  /// When constructing this record, `create` supplies `array(maxEntities,false)` for this member.
+  eventOnly
+  /// When constructing this record, `create` supplies `array(maxEntities,0)` for this member.
+  seenTime
+  /// Client timestamp of the last pain reaction, used to animate the flinch.
+  painTime
+  /// Alternating direction selector used for the player's pain animation.
+  painDirection
+  /// Current event-processing time in milliseconds, set from the snapshot being consumed.
+  time
+  /// Client slot from the snapshot player state, used to restrict local pickup and movement feedback to
+  /// the viewed player.
+  predictedClient
+  /// True when snapshots and commands are being read from a recorded demo.
+  demoPlayback
+  /// True when the snapshot player state follows another client, disabling the local prediction-only
+  /// movement feedback path.
+  follow
+  /// Disables the prediction-only event feedback used for the local player's movement.
+  noPredict
+  /// Marks synchronous-client operation, which bypasses prediction-only local movement feedback.
+  synchronous
+  /// Client timestamp at which stair-step smoothing began.
+  stepTime
+  /// Vertical step displacement being smoothed by the first-person camera.
+  stepChange
+  /// Client timestamp at which the landing camera kick began.
+  landTime
+  /// Eye-height displacement used for the landing camera kick.
+  landChange
+  /// Item identifier shown by the most recent pickup notification.
+  itemPickup
+  /// Timestamp at which the most recent item-pickup notification began.
+  itemPickupTime
+  /// Independent timestamp for the pickup pulse around the crosshair.
+  itemPickupBlendTime
+  /// Weapon identifier currently selected by the local player.
+  weaponSelect
+  /// Timestamp at which the weapon-selection display was last refreshed.
+  weaponSelectTime
+  /// Powerup identifier currently emphasized by the HUD flash animation.
+  powerupActive
+  /// Timestamp at which the active powerup's HUD emphasis began.
+  powerupTime
+  /// Decoded entity-event records, including their effective source entity and generated host actions.
+  records
+  /// Decoded event actions addressed to sound playback, separated from rendering and HUD requests.
+  audio
+  /// Decoded event actions addressed to scene effects, separated from audio and HUD requests.
+  render
+  /// Decoded event actions that update the local HUD, including item and weapon feedback.
+  hud
+  /// Decoded event actions outside the audio, render, and HUD queues, retained for client-state
+  /// handling.
+  stateActions
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+  /// Number of entity events successfully decoded into event records.
+  decoded
+  /// Number of decoded event actions marked for native dispatch rather than suppressed by retail-QVM
+  /// ownership.
+  dispatched
+  /// Number of decoded event actions withheld from native dispatch because the retail QVM owns their
+  /// effects.
+  suppressed
+end struct
 
 /// Creates a `mq3.client.cgame_event.State` record.
 /// @param maxEntities Value used to initialize `State.previousEvents`, `State.eventOnly`, `State.seenTime`, `State.painTime`, `State.painDirection`.

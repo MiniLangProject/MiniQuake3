@@ -8,7 +8,9 @@ import mq3.botlib.aas_trace_areas as traceAreas
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Byte size of the bot entity state record in the bot VM ABI or serialized representation.
 const BOT_ENTITYSTATE_SIZE=112
+/// Byte size of the AAS entity information record in the bot VM ABI or serialized representation.
 const AAS_ENTITYINFO_SIZE=140
 
 /// Return a new array `[n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(data,address+4)),n.bitsFloat(n.readI32(data,address+8))]` for `vector`.

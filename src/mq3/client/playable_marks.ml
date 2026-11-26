@@ -13,23 +13,73 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import std.array as arrays
 
+/// Total lifetime in milliseconds of a persistent impact mark.
 const MARK_TOTAL_TIME=10000
+/// Duration in milliseconds of the final impact-mark fade-out phase.
 const MARK_FADE_TIME=1000
+/// Capacity limit for the marks collection or bounded storage used by this client module.
 const MAX_MARKS=256
+/// Effect or media category selecting the bullet presentation.
 const KIND_BULLET=1
+/// Effect or media category selecting the burn presentation.
 const KIND_BURN=2
+/// Effect or media category selecting the hole presentation.
 const KIND_HOLE=3
+/// Effect or media category selecting the energy presentation.
 const KIND_ENERGY=4
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores playable marks texture record, including `kind`, `name`, `image`, `slot`.
-struct Texture kind name image slot end struct
+struct Texture
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// Virtual resource or definition name used to locate this entry in the client asset catalog.
+  name
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores playable marks catalog record, including `textures`, `firstTextureSlot`, `textureCount`.
-struct Catalog textures firstTextureSlot textureCount end struct
+struct Catalog
+  /// When constructing this record, `load` supplies `textures` for this member. Used by `upload` and
+  /// `release` during subsequent processing.
+  textures
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+end struct
 /// Stores playable marks mark record, including `key`, `kind`, `origin`, `normal`, `radius`, `orientation` and additional values.
-struct Mark key kind origin normal radius orientation bornAt alphaFade end struct
+struct Mark
+  /// When constructing this record, `append` supplies `key` for this member. Used by `hasKey` during
+  /// subsequent processing.
+  key
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// World-space decal center used with the surface basis to construct the mark's corners.
+  origin
+  /// Supporting surface normal used to construct the decal's tangent basis.
+  normal
+  /// World-space half-size of the surface-aligned impact decal quad.
+  radius
+  /// When constructing this record, `append` supplies `orientation(key,bornAt)` for this member. Used
+  /// by `axes` during subsequent processing.
+  orientation
+  /// When constructing this record, `append` supplies `bornAt` for this member. Used by `hasKey` and
+  /// `update` during subsequent processing.
+  bornAt
+  /// True when the mark fades its alpha channel instead of its RGB components.
+  alphaFade
+end struct
 /// Stores playable marks state, including `marks`.
-struct State marks end struct
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `hasKey`
+  /// and `append` during subsequent processing.
+  marks
+end struct
 
 /// Creates the playable marks error `7640` with diagnostic text `"playable marks: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable marks: "+message`.

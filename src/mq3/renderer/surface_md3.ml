@@ -8,16 +8,62 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 import mq3.renderer.native_md3 as nativeMd3
 
+/// Scale converting packed MD3 vertex coordinates into model-space coordinates.
 const MD3_XYZ_SCALE=0.015625
+/// Number of samples in the periodic shader waveform lookup table.
 const FUNCTABLE_SIZE=1024
+/// Mask that wraps waveform-table indices to the power-of-two table size.
 const FUNCTABLE_MASK=1023
 
 /// Data record for `mq3.renderer.surface_md3.PackedVertex`; groups `xyz`, `packedNormal`.
-struct PackedVertex xyz packedNormal end struct
+struct PackedVertex
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// MD3 normal encoded as two angular bytes.
+  packedNormal
+end struct
 /// Data record for `mq3.renderer.surface_md3.MeshSurface`; groups `numFrames`, `numVerts`, `numTriangles`, `triangles`, `texCoords`, `frames`, and 1 further field.
-struct MeshSurface numFrames numVerts numTriangles triangles texCoords frames packedFrames end struct
+struct MeshSurface
+  /// Number of animation frames stored in the model surface.
+  numFrames
+  /// Number of vertices stored in the polygon or model surface.
+  numVerts
+  /// Number of triangles stored in the model surface.
+  numTriangles
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Per-vertex MD3 texture coordinates shared by all animation frames of the surface.
+  texCoords
+  /// Per-frame animation data retained for model interpolation.
+  frames
+  /// Packed MD3 vertex records for each animation frame.
+  packedFrames
+end struct
 /// Data record for `mq3.renderer.surface_md3.Submission`; groups `xyz`, `normals`, `texCoords`, `indexes`, `baseVertex`, `baseIndex`, and 5 further fields.
-struct Submission xyz normals texCoords indexes baseVertex baseIndex numVertexes numIndexes flushed dlightBits touchesDlights end struct
+struct Submission
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// MD3 surface texture coordinates copied alongside the interpolated vertex positions.
+  texCoords
+  /// MD3 triangle indices rebased to the interpolated vertices in the destination buffer.
+  indexes
+  /// First vertex slot used by the submitted geometry.
+  baseVertex
+  /// First index slot used by the submitted geometry.
+  baseIndex
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Whether the current batch was flushed before this geometry was appended.
+  flushed
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+  /// Whether the submitted geometry is affected by dynamic lighting.
+  touchesDlights
+end struct
 
 /// Constructs `mq3.renderer.surface_md3.PackedVertex` with `xyz` = `[numeric.i16(x),numeric.i16(y),numeric.i16(z)]`, `packedNormal` = `packedNormal&0xffff`.
 /// @param x Argument 1 supplied to `mq3.compat.numeric.i16`.

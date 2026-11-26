@@ -8,20 +8,95 @@ import mq3.compat.textnumbers as numbers
 import mq3.shared.info as info
 import std.string as strings
 
+/// Virtual shader or image asset name used for the menu's frame artwork.
 const ART_FRAME="menu/art/addbotframe"
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
+/// Menu control identifier routed to the list bots action by the menu event handler.
 const ID_LIST_BOTS=10
+/// Menu control identifier routed to the list ctf orders action by the menu event handler.
 const ID_LIST_CTF_ORDERS=11
+/// Menu control identifier routed to the list team orders action by the menu event handler.
 const ID_LIST_TEAM_ORDERS=12
+/// Native game-type value for team deathmatch, used when choosing the team-order choices appropriate to
+/// the current game mode.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when choosing the team-order choices appropriate
+/// to the current game mode.
 const GT_CTF=4
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
 
 /// Stores UI teamorders queued engine action, including `boundary`, `kind`, `name`, `text`, `x`, `y` and additional values.
-struct Action boundary kind name text x y number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while selecting a teammate and issuing a
+  /// predefined team order.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while selecting a teammate
+  /// and issuing a predefined team order.
+  kind
+  /// Team-chat command name, drawing color, menu target, or artwork resource selected by the
+  /// team-orders action.
+  name
+  /// Team-order label to draw or the complete say_team command sent for the selected recipient and
+  /// order.
+  text
+  /// Horizontal position of this queued drawing operation in the virtual layout used by the team-order
+  /// command menu.
+  x
+  /// Vertical position of this queued drawing operation in the virtual layout used by the team-order
+  /// command menu.
+  y
+  /// Numeric argument interpreted by the selected host operation while selecting a teammate and issuing
+  /// a predefined team order.
+  number
+  /// True when this request is marked for native dispatch while selecting a teammate and issuing a
+  /// predefined team order; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI teamorders state, including `menu`, `banner`, `frame`, `list`, `back`, `gametype` and additional values.
-struct State menu banner frame list back gametype numBots selectedBot bots botNames actions pushed popped retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `qmenu.menu(false,false)` for this member. Used
+  /// by `UI_TeamOrdersMenu_BackEvent` and `UI_TeamOrdersMenu_SetList` during subsequent processing.
+  menu
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_TeamOrdersMenu_Init` during subsequent processing.
+  banner
+  /// Decorative bitmap widget drawing the border around the team-orders menu.
+  frame
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_TeamOrdersMenu_SetList` and `UI_TeamOrdersMenu_ListEvent` during subsequent processing.
+  list
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_TeamOrdersMenu_Init` during subsequent processing.
+  back
+  /// Game-rule value parsed from server information to select capture-the-flag or general team orders.
+  gametype
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_TeamOrdersMenu_BuildBotList` during subsequent processing.
+  numBots
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_TeamOrdersMenu_ListEvent` during subsequent processing.
+  selectedBot
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_TeamOrdersMenu_SetList` and `UI_TeamOrdersMenu_BuildBotList` during subsequent processing.
+  bots
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_TeamOrdersMenu_ListEvent` and `UI_TeamOrdersMenu_BuildBotList` during subsequent processing.
+  botNames
+  /// Host requests queued while selecting a teammate and issuing a predefined team order, retained in
+  /// request order.
+  actions
+  /// Records that the team-order command menu has been opened on the active menu stack.
+  pushed
+  /// Records a request to remove the team-order command menu from the active menu stack.
+  popped
+  /// True when the retail QVM owns the team-order command menu, so the native observer records requests
+  /// without emitting duplicate host effects.
+  retailActive
+end struct
 
 /// Lists the 7 UI teamorders ctf orders strings in their declared order, beginning with `"I Am the Leader"`, `"Defend the Base"`, `"Follow Me"`.
 function ctfOrders() return ["I Am the Leader","Defend the Base","Follow Me","Get Enemy Flag","Camp Here","Report","I Relinquish Command"] end function

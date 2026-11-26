@@ -11,7 +11,14 @@ import mq3.client.download as download
 import mq3.client.system_info as systemInfo
 
 /// Stores engine client parse runtime runtime wiring and state, including `protocol`, `systemState`, `systemServices`.
-struct Runtime protocol systemState systemServices end struct
+struct Runtime
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// When constructing this record, `create` supplies `systemState` for this member.
+  systemState
+  /// When constructing this record, `create` supplies `systemServices` for this member.
+  systemServices
+end struct
 
 /// Calls `mq3.client.download.services`, `mq3.client.system_info.services`, `mq3.client.protocol_runtime.create` and additional helpers from engine client parse runtime `create`. The final path returns `Runtime(protocol,systemState,systemServices)`.
 /// @param downloadServices Value used by `if downloadServices==void then downloadServices=download.services() end if`.

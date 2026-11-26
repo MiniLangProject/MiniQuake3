@@ -3,13 +3,48 @@
 package mq3.qcommon.network_pump
 import mq3.qcommon.net_transport as transport
 
+/// Network-pump selector for the client side.
 const SIDE_CLIENT=0
+/// Network-pump selector for the server side.
 const SIDE_SERVER=1
 
 /// Runtime record for qcommon.network_pump, containing `clientSocket`, `serverSocket`, `capacity`, `nextSide`, `context`, `clientPacketFn`, and 5 further fields.
-struct Runtime clientSocket serverSocket capacity nextSide context clientPacketFn serverPacketFn clientBuffer serverBuffer clientMetadata serverMetadata end struct
+struct Runtime
+  /// Host UDP socket assigned to the client network endpoint.
+  clientSocket
+  /// Host UDP socket assigned to the server network endpoint.
+  serverSocket
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// Endpoint selected first by the next fair packet-pump iteration.
+  nextSide
+  /// Caller-supplied data associated with delivery of received packets to the client and server
+  /// handlers.
+  context
+  /// Host callback that delivers an incoming packet to the client network handler.
+  clientPacketFn
+  /// Host callback that delivers an incoming packet to the server network handler.
+  serverPacketFn
+  /// Reusable receive buffer for client-side datagrams.
+  clientBuffer
+  /// Reusable receive buffer for server-side datagrams.
+  serverBuffer
+  /// Reusable address and length metadata for client receives.
+  clientMetadata
+  /// Reusable address and length metadata for server receives.
+  serverMetadata
+end struct
 /// Step record for qcommon.network_pump, containing `processed`, `side`, `address`, `data`.
-struct Step processed side address data end struct
+struct Step
+  /// True when the pump delivered a datagram to an endpoint.
+  processed
+  /// Client or server endpoint that received the datagram.
+  side
+  /// Network address associated with the client or packet.
+  address
+  /// Datagram payload delivered during this pump step.
+  data
+end struct
 
 /// Create network pump in qcommon.network_pump.
 ///

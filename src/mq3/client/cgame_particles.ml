@@ -10,37 +10,213 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 import std.string as strings
 
+/// Particle color selector used by blood effects.
 const BLOODRED=2
+/// Particle presentation flag selecting emissive color fading.
 const EMISIVEFADE=3
+/// Particle color selector used by the gray smoke presentation.
 const GREY75=4
+/// Particle update/rendering kind selecting the none effect.
 const P_NONE=0
+/// Particle update/rendering kind selecting the weather effect.
 const P_WEATHER=1
+/// Particle update/rendering kind selecting the flat effect.
 const P_FLAT=2
+/// Particle update/rendering kind selecting the smoke effect.
 const P_SMOKE=3
+/// Particle update/rendering kind selecting the rotate effect.
 const P_ROTATE=4
+/// Particle update/rendering kind selecting the weather turbulent effect.
 const P_WEATHER_TURBULENT=5
+/// Particle update/rendering kind selecting the anim effect.
 const P_ANIM=6
+/// Particle update/rendering kind selecting the bat effect.
 const P_BAT=7
+/// Particle update/rendering kind selecting the bleed effect.
 const P_BLEED=8
+/// Particle update/rendering kind selecting the flat scaleup effect.
 const P_FLAT_SCALEUP=9
+/// Particle update/rendering kind selecting the flat scaleup fade effect.
 const P_FLAT_SCALEUP_FADE=10
+/// Particle update/rendering kind selecting the weather flurry effect.
 const P_WEATHER_FLURRY=11
+/// Particle update/rendering kind selecting the smoke impact effect.
 const P_SMOKE_IMPACT=12
+/// Particle update/rendering kind selecting the bubble effect.
 const P_BUBBLE=13
+/// Particle update/rendering kind selecting the bubble turbulent effect.
 const P_BUBBLE_TURBULENT=14
+/// Particle update/rendering kind selecting the sprite effect.
 const P_SPRITE=15
+/// Downward acceleration applied when integrating gravity-affected particles.
 const PARTICLE_GRAVITY=40.0
+/// Capacity limit for the particles collection or bounded storage used by this client module.
 const MAX_PARTICLES=8192
+/// Capacity limit for the entities collection or bounded storage used by this client module.
 const MAX_ENTITIES=1024
+/// Collision-content bit identifying solid volumes or surfaces during client traces.
 const CONTENTS_SOLID=1
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores client game particles particle record, including `id`, `active`, `time`, `endtime`, `org`, `vel` and additional values.
-struct Particle id active time endtime org vel accel color colorvel alpha alphavel type shader height width endheight endwidth start finish startfade rotate snum link shaderAnim roll accumroll end struct
+struct Particle
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// When constructing this record, `newParticle` supplies `false` for this member.
+  active
+  /// Client timestamp used as the creation or update reference for this temporary visual effect.
+  time
+  /// When constructing this record, `newParticle` supplies `0` for this member.
+  endtime
+  /// When constructing this record, `newParticle` supplies `zero3()` for this member.
+  org
+  /// When constructing this record, `newParticle` supplies `zero3()` for this member.
+  vel
+  /// When constructing this record, `newParticle` supplies `zero3()` for this member.
+  accel
+  /// Particle color-mode selector, including blood-red, gray, and emissive-fade behavior.
+  color
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  colorvel
+  /// Opacity or alpha modulation applied while drawing or fading the object.
+  alpha
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  alphavel
+  /// When constructing this record, `newParticle` supplies `P_NONE` for this member.
+  type
+  /// Particle material name, updated to the selected frame name for an animated particle.
+  shader
+  /// Initial vertical half-size of the particle quad in world units.
+  height
+  /// Initial horizontal half-size of the particle quad in world units.
+  width
+  /// Target particle height reached at the end of its lifetime.
+  endheight
+  /// Target particle width reached at the end of its lifetime.
+  endwidth
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  start
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  finish
+  /// When constructing this record, `newParticle` supplies `0` for this member.
+  startfade
+  /// When constructing this record, `newParticle` supplies `false` for this member.
+  rotate
+  /// When constructing this record, `newParticle` supplies `0` for this member.
+  snum
+  /// When constructing this record, `newParticle` supplies `false` for this member.
+  link
+  /// When constructing this record, `newParticle` supplies `0` for this member.
+  shaderAnim
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  roll
+  /// When constructing this record, `newParticle` supplies `0.0` for this member.
+  accumroll
+end struct
 /// Stores client game particles render action record, including `boundary`, `kind`, `particle`, `shader`, `vertexCount`, `vertices` and additional values.
-struct RenderAction boundary kind particle shader vertexCount vertices texcoords origin width height alpha color frame dispatched end struct
+struct RenderAction
+  /// Host service category recorded with a request emitted while registering particle media and
+  /// emitting particle geometry.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while registering particle
+  /// media and emitting particle geometry.
+  kind
+  /// When constructing this record, `action` supplies `p.id` for this member.
+  particle
+  /// Resolved particle material name used for the emitted quad or triangle geometry.
+  shader
+  /// When constructing this record, `action` supplies `len(vertices)` for this member.
+  vertexCount
+  /// When constructing this record, `action` supplies `vertices` for this member.
+  vertices
+  /// When constructing this record, `action` supplies `texcoords` for this member.
+  texcoords
+  /// World-space center of the particle geometry being submitted to the renderer.
+  origin
+  /// Evaluated horizontal half-size of the emitted particle quad in world units.
+  width
+  /// Evaluated vertical half-size of the emitted particle quad in world units.
+  height
+  /// Opacity or alpha modulation applied while drawing or fading the object.
+  alpha
+  /// Evaluated RGB particle tint; opacity is stored separately in the alpha field.
+  color
+  /// Zero-based image-sequence frame selected for an animated particle shader.
+  frame
+  /// True when this request is marked for native dispatch while registering particle media and emitting
+  /// particle geometry; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game particles state, including `capacity`, `particles`, `free`, `active`, `time`, `oldtime` and additional values.
-struct State capacity particles free active time oldtime roll initialized vieworg vforward vright vup retailActive ragePro randomSeed randomInts randomAt actions registrations rendered suppressed freed dropped errors end struct
+struct State
+  /// Maximum number of entries or allocation units supported by the bounded storage.
+  capacity
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `clearParticles` and `allocParticle` during subsequent processing.
+  particles
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `clearParticles` and `allocParticle` during subsequent processing.
+  free
+  /// Indices of allocated particles that still participate in simulation and rendering.
+  active
+  /// Current client-game time in milliseconds used to advance particle motion, animation, and lifetime.
+  time
+  /// When constructing this record, `create` supplies `0` for this member. Used by `clearParticles` and
+  /// `addParticles` during subsequent processing.
+  oldtime
+  /// When constructing this record, `create` supplies `0.0` for this member.
+  roll
+  /// True after the particle pool, active/free lists, and simulation timing have been reset for use.
+  initialized
+  /// When constructing this record, `create` supplies `zero3()` for this member. Used by
+  /// `addParticleToScene` and `addParticles` during subsequent processing.
+  vieworg
+  /// When constructing this record, `create` supplies `[1.0,0.0,0.0]` for this member. Used by
+  /// `addParticles` during subsequent processing.
+  vforward
+  /// When constructing this record, `create` supplies `[0.0,1.0,0.0]` for this member. Used by
+  /// `addParticleToScene` and `addParticles` during subsequent processing.
+  vright
+  /// When constructing this record, `create` supplies `[0.0,0.0,1.0]` for this member. Used by
+  /// `addParticleToScene` and `addParticles` during subsequent processing.
+  vup
+  /// True when the retail QVM owns the CGame particle simulation, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `addParticleToScene` during subsequent processing.
+  ragePro
+  /// When constructing this record, `create` supplies `0x92` for this member. Used by `randInt` during
+  /// subsequent processing.
+  randomSeed
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `setRandomInts` and `randInt` during subsequent processing.
+  randomInts
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setRandomInts` and
+  /// `randInt` during subsequent processing.
+  randomAt
+  /// Host requests queued while registering particle media and emitting particle geometry, retained in
+  /// request order.
+  actions
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `clearParticles` during subsequent processing.
+  registrations
+  /// When constructing this record, `create` supplies `0` for this member. Used by `action` during
+  /// subsequent processing.
+  rendered
+  /// Number of requests withheld from native dispatch while registering particle media and emitting
+  /// particle geometry because the retail QVM owns their effects.
+  suppressed
+  /// When constructing this record, `create` supplies `0` for this member. Used by `freeParticle` and
+  /// `addParticles` during subsequent processing.
+  freed
+  /// When constructing this record, `create` supplies `0` for this member. Used by `allocParticle`
+  /// during subsequent processing.
+  dropped
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+end struct
 
 /// Creates a three-component zero vector for client game particles.
 function zero3() return [0.0,0.0,0.0] end function

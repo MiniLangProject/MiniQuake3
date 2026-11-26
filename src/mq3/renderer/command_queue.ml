@@ -6,28 +6,99 @@ package mq3.renderer.command_queue
 import mq3.compat.numeric as n
 import std.ds.list as lists
 
+/// Render-command sentinel that terminates the command stream.
 const RC_END_OF_LIST=0
+/// Render-command identifier that changes the current two-dimensional modulation color.
 const RC_SET_COLOR=1
+/// Render-command identifier that draws a textured two-dimensional rectangle.
 const RC_STRETCH_PIC=2
+/// Render-command identifier that submits the sorted scene surfaces.
 const RC_DRAW_SURFS=3
+/// Render-command identifier that selects the graphics draw buffer.
 const RC_DRAW_BUFFER=4
+/// Render-command identifier that presents the completed frame.
 const RC_SWAP_BUFFERS=5
+/// Render-command identifier that captures pixels from the framebuffer.
 const RC_SCREENSHOT=6
+/// Byte capacity of the serialized renderer command buffer.
 const MAX_RENDER_COMMANDS=0x40000
+/// Serialized byte size of the end-of-list sentinel record.
 const END_COMMAND_BYTES=4
+/// Serialized byte size of the color-change command record.
 const SET_COLOR_BYTES=20
+/// Serialized byte size of the textured-rectangle command record.
 const STRETCH_PIC_BYTES=40
+/// Serialized byte size of the draw-buffer command record.
 const DRAW_BUFFER_BYTES=8
+/// Serialized byte size of the buffer-swap command record.
 const SWAP_BUFFERS_BYTES=4
 
 /// Data record for `mq3.renderer.command_queue.Command`; groups `id`, `bytes`, `values`, `shader`.
-struct Command id bytes values shader end struct
+struct Command
+  /// Command identifier selecting the renderer backend operation.
+  id
+  /// Serialized byte size reserved for this render command.
+  bytes
+  /// Numeric parameters interpreted according to the texture modifier's kind.
+  values
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+end struct
 /// Data record for `mq3.renderer.command_queue.Queue`; groups `commands`, `used`, `registered`, `shaderFn`, `shaderContext`, `commandList`.
-struct Queue commands used registered shaderFn shaderContext commandList end struct
+struct Queue
+  /// Operations or drawing commands queued by this record.
+  commands
+  /// Number of bytes reserved by the queued render commands.
+  used
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Host callback used to perform shader operations for this subsystem.
+  shaderFn
+  /// Host state supplied to the shader-resolution callback.
+  shaderContext
+  /// Serialized render-command list backing the queue.
+  commandList
+end struct
 /// Callback table for `mq3.renderer.command_queue.Services`; exposes `set2DFn`, `endSurfaceFn`, `beginSurfaceFn`, `quadFn`, `drawBufferFn`, `clearFn`, and 4 further fields.
-struct Services set2DFn endSurfaceFn beginSurfaceFn quadFn drawBufferFn clearFn finishFn endFrameFn diagnosticFn context end struct
+struct Services
+  /// Host callback used to perform set2 d operations for this subsystem.
+  set2DFn
+  /// Host callback used to perform end surface operations for this subsystem.
+  endSurfaceFn
+  /// Host callback used to perform begin surface operations for this subsystem.
+  beginSurfaceFn
+  /// Host callback used to perform quad operations for this subsystem.
+  quadFn
+  /// Host callback used to perform draw buffer operations for this subsystem.
+  drawBufferFn
+  /// Host callback used to perform clear operations for this subsystem.
+  clearFn
+  /// Host callback used to perform finish operations for this subsystem.
+  finishFn
+  /// Host callback used to perform end frame operations for this subsystem.
+  endFrameFn
+  /// Host callback used to perform diagnostic operations for this subsystem.
+  diagnosticFn
+  /// Backend state passed while executing queued 2D drawing and buffer-management commands.
+  context
+end struct
 /// Data record for `mq3.renderer.command_queue.Backend`; groups `color2D`, `projection2D`, `shader`, `numIndexes`, `finishCalled`, `clearOnDrawBuffer`, and 1 further field.
-struct Backend color2D projection2D shader numIndexes finishCalled clearOnDrawBuffer services end struct
+struct Backend
+  /// RGBA modulation color used for two-dimensional drawing.
+  color2D
+  /// Whether the backend currently uses its two-dimensional projection.
+  projection2D
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Whether a graphics completion barrier was already issued for this frame.
+  finishCalled
+  /// Whether selecting a draw buffer also clears it.
+  clearOnDrawBuffer
+  /// Injected host operations used by this subsystem.
+  services
+end struct
 
 /// Creates error `7260` with message `"render commands: "+message`.
 /// @param message Input used in the result expression `error(7260,"render commands: "+message)`.

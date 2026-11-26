@@ -3,13 +3,41 @@
 // CPU-side polygon fan submission from renderer/tr_surface.c RB_SurfacePolychain.
 package mq3.renderer.surface_polychain
 
+/// Vertex capacity of the renderer's shared tessellation buffer.
 const SHADER_MAX_VERTEXES=1000
+/// Index capacity of the renderer's shared tessellation buffer.
 const SHADER_MAX_INDEXES=6000
 
 /// Data record for `mq3.renderer.surface_polychain.Vertex`; groups `xyz`, `st`, `modulate`.
-struct Vertex xyz st modulate end struct
+struct Vertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Two-dimensional texture coordinates associated with the vertex.
+  st
+  /// Per-vertex RGBA color bytes that modulate the sampled texture.
+  modulate
+end struct
 /// Data record for `mq3.renderer.surface_polychain.Buffer`; groups `maxVertexes`, `maxIndexes`, `xyz`, `texCoords`, `colors`, `indexes`, and 3 further fields.
-struct Buffer maxVertexes maxIndexes xyz texCoords colors indexes numVertexes numIndexes flushes end struct
+struct Buffer
+  /// Maximum permitted number of vertexes used by this buffer record.
+  maxVertexes
+  /// Maximum permitted number of indexes used by this buffer record.
+  maxIndexes
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Texture-coordinate array accumulated while triangulating submitted polygons.
+  texCoords
+  /// Per-vertex modulation colors accumulated with the submitted polygon geometry.
+  colors
+  /// Triangle indices connecting the vertices accumulated from polygon-chain submissions.
+  indexes
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Number of batch flushes needed to submit the geometry.
+  flushes
+end struct
 
 /// Constructs `mq3.renderer.surface_polychain.Vertex` with `xyz` = `[x,y,z]`, `st` = `[s,t]`, `modulate` = `[r&255,g&255,b&255,a&255]`.
 /// @param x Input used in the result expression `Vertex([x,y,z],[s,t],[r&255,g&255,b&255,a&255])`.

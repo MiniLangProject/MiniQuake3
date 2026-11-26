@@ -12,27 +12,76 @@ import mq3.botlib.aas_trace_areas as routeExtraTraceAreas
 import mq3.compat.numeric as n
 import std.array as routeExtraArrays
 
+/// Bot-library syscall identifier for alternative route goal.
 const OP_ALTERNATIVE_ROUTE_GOAL=575
+/// Bot-library syscall identifier for predict route.
 const OP_PREDICT_ROUTE=576
+/// Bot-library syscall identifier for point area reachability area index.
 const OP_POINT_REACHABILITY_AREA_INDEX=577
+/// Alternative-route goal selector for all.
 const ALTROUTEGOAL_ALL=1
+/// Alternative-route goal selector for cluster portals.
 const ALTROUTEGOAL_CLUSTERPORTALS=2
+/// Alternative-route goal selector for view portals.
 const ALTROUTEGOAL_VIEWPORTALS=4
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking view portal.
 const AREACONTENTS_VIEWPORTAL=512
+/// Route-prediction result indicating that no requested stop event occurred.
 const RSE_NONE=0
+/// No route to goal.
 const RSE_NOROUTE=1
+/// Stop as soon as on of the given travel types is used.
 const RSE_USETRAVELTYPE=2
+/// Stop when entering the given contents.
 const RSE_ENTERCONTENTS=4
+/// Stop when entering the given area.
 const RSE_ENTERAREA=8
+/// Maximum number of AAS areas collected while tracing a reachability path.
 const MAX_REACHABILITY_PASS_AREAS=32
 
 /// `AlternativeRouteGoal` record for aas route extras, containing `origin`, `areaNum`, `startTravelTime`, `goalTravelTime` and `extraTravelTime`.
-struct AlternativeRouteGoal origin areaNum startTravelTime goalTravelTime extraTravelTime end struct
+struct AlternativeRouteGoal
+  /// World-space waypoint selected as the intermediate alternative-route goal.
+  origin
+  /// Navigation area selected as an intermediate goal for an alternative route.
+  areaNum
+  /// Travel time to start with.
+  startTravelTime
+  /// Travel cost from the alternative goal to the requested destination.
+  goalTravelTime
+  /// Additional travel cost caused by taking the alternative route.
+  extraTravelTime
+end struct
 /// `PredictRoute` record for aas route extras, containing `endPos`, `endArea`, `stopEvent`, `endContents` and `endTravelFlags` and related fields.
-struct PredictRoute endPos endArea stopEvent endContents endTravelFlags numAreas time end struct
+struct PredictRoute
+  /// End position reached by the collision trace.
+  endPos
+  /// Area at end of movement prediction.
+  endArea
+  /// Event that made the prediction stop.
+  stopEvent
+  /// Contents at the end of movement prediction.
+  endContents
+  /// Travel flags of the reachability or area at which route prediction ended.
+  endTravelFlags
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+  /// Time predicted ahead (in hundreth of a sec).
+  time
+end struct
 /// `AlternativeRoutingState` record for aas route extras, containing `valid`, `clusterAreas`, `numClusterAreas` and `initialized`.
-struct AlternativeRoutingState valid clusterAreas numClusterAreas initialized end struct
+struct AlternativeRoutingState
+  /// True when the represented entry contains usable data.
+  valid
+  /// Area indexes considered while generating alternative cluster routes.
+  clusterAreas
+  /// Number of cluster areas represented by this record.
+  numClusterAreas
+  /// True when alternative-route area membership and cluster working data are ready.
+  initialized
+end struct
 
 /// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas route extras.
 /// @param value Three-component array; components 0, 1 and 2 are used in their stored order.

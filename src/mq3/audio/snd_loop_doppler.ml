@@ -6,7 +6,14 @@ package mq3.audio.snd_loop_doppler
 import mq3.compat.numeric as n
 
 /// Doppler record for audio.snd_loop_doppler, containing `active`, `scale`, `oldScale`.
-struct Doppler active scale oldScale end struct
+struct Doppler
+  /// True when this movement requires Doppler-adjusted playback.
+  active
+  /// Current ratio used to advance through the source samples.
+  scale
+  /// Previous frame's Doppler ratio retained for continuous loop playback.
+  oldScale
+end struct
 
 /// Compute audio.snd_loop_doppler.validVector as `((value != void) and (len(value) == 3))`.
 /// @param value Value used in `len(value)` and `(value != void)`.

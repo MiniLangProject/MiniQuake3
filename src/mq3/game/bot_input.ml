@@ -6,55 +6,101 @@ import mq3.game.game_headers as headers
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
+/// Bot input-action bit requesting attack.
 const ACTION_ATTACK=0x0000001
+/// Bot input-action bit requesting use.
 const ACTION_USE=0x0000002
+/// Bot input-action bit requesting respawn.
 const ACTION_RESPAWN=0x0000008
+/// Bot input-action bit requesting jump.
 const ACTION_JUMP=0x0000010
+/// Bot input-action bit requesting crouch.
 const ACTION_CROUCH=0x0000080
+/// Bot input-action bit requesting moveforward.
 const ACTION_MOVEFORWARD=0x0000200
+/// Bot input-action bit requesting moveback.
 const ACTION_MOVEBACK=0x0000800
+/// Bot input-action bit requesting moveleft.
 const ACTION_MOVELEFT=0x0001000
+/// Bot input-action bit requesting moveright.
 const ACTION_MOVERIGHT=0x0002000
+/// Bot input-action bit requesting delayedjump.
 const ACTION_DELAYEDJUMP=0x0008000
+/// Bot input-action bit requesting talk.
 const ACTION_TALK=0x0010000
+/// Bot input-action bit requesting gesture.
 const ACTION_GESTURE=0x0020000
+/// Bot input-action bit requesting walk.
 const ACTION_WALK=0x0080000
+/// Bot input-action bit requesting affirmative.
 const ACTION_AFFIRMATIVE=0x0100000
+/// Bot input-action bit requesting negative.
 const ACTION_NEGATIVE=0x0200000
+/// Bot input-action bit requesting capture the flag.
 const ACTION_GETFLAG=0x0800000
+/// Bot input-action bit requesting guardbase.
 const ACTION_GUARDBASE=0x1000000
+/// Bot input-action bit requesting patrol.
 const ACTION_PATROL=0x2000000
+/// Bot input-action bit requesting followme.
 const ACTION_FOLLOWME=0x8000000
 
+/// User-command button-mask bit requesting attack.
 const BUTTON_ATTACK=1
+/// User-command button-mask bit requesting talk.
 const BUTTON_TALK=2
+/// User-command button-mask bit requesting use holdable.
 const BUTTON_USE_HOLDABLE=4
+/// User-command button-mask bit requesting gesture.
 const BUTTON_GESTURE=8
+/// User-command button-mask bit requesting walking.
 const BUTTON_WALKING=16
+/// User-command button-mask bit requesting affirmative.
 const BUTTON_AFFIRMATIVE=32
+/// User-command button-mask bit requesting negative.
 const BUTTON_NEGATIVE=64
+/// User-command button-mask bit requesting capture the flag.
 const BUTTON_GETFLAG=128
+/// User-command button-mask bit requesting guardbase.
 const BUTTON_GUARDBASE=256
+/// User-command button-mask bit requesting patrol.
 const BUTTON_PATROL=512
+/// User-command button-mask bit requesting followme.
 const BUTTON_FOLLOWME=1024
+/// Bot-character characteristic index for view factor. Definition: view angle difference to angle
+/// change factor float <0, 1].
 const CHARACTERISTIC_VIEW_FACTOR=headers.CHARACTERISTIC_VIEW_FACTOR
+/// Bot-character characteristic index for view maxchange. Definition: maximum view angle change float
+/// [1, 360].
 const CHARACTERISTIC_VIEW_MAXCHANGE=headers.CHARACTERISTIC_VIEW_MAXCHANGE
 
 /// `BotInput` record for bot input, containing `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields.
 struct BotInput
+  /// Time interval used for the current bot thinking/update step.
   thinktime
+  /// Requested movement direction vector supplied to bot input generation.
   dir
+  /// Movement or travel speed used by this game object.
   speed
+  /// Player or bot viewing angles used for aiming and command generation.
   viewangles
+  /// Bot action bits describing the requested buttons and movement actions.
   actionflags
+  /// Selected or reported weapon identifier.
   weapon
 end struct
 /// `Services` record for bot input, containing `challenge`, `characteristicFloatFn`, `viewFn`, `getInputFn` and `context`.
 struct Services
+  /// Connection challenge value associated with the client session.
   challenge
+  /// Injected callback for characteristic float; invoked through the Services service/state record.
   characteristicFloatFn
+  /// Injected callback for view; invoked through the Services service/state record.
   viewFn
+  /// Injected callback for get input; invoked through the Services service/state record.
   getInputFn
+  /// Opaque caller-supplied context available to bot characteristic, view-angle, and elementary-input
+  /// callbacks.
   context
 end struct
 /// Create a `mq3.game.bot_input.Services` record with the declared empty defaults.

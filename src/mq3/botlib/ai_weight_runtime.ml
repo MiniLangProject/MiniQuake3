@@ -9,7 +9,18 @@ import mq3.vm.pc_parser as pc
 import std.string as strings
 
 /// `State` record for ai weight runtime, containing `weights`, `context`, `writeFn`, `randomFn` and `diagnostics`.
-struct State weights context writeFn randomFn diagnostics end struct
+struct State
+  /// Fuzzy-weight configurations registered with the combined weight runtime.
+  weights
+  /// Caller-supplied data associated with saving fuzzy-weight files and choosing genetic mutations.
+  context
+  /// Host callback that writes data through the host output interface.
+  writeFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+  /// Diagnostics collected while processing the subsystem's requests.
+  diagnostics
+end struct
 
 /// Create a `mq3.botlib.ai_weight_runtime.State` record, initializing `weights` as `weights.create(context,readFn)`, `context` from `context` and `writeFn` from `writeFn`.
 /// @param context Context forwarded to the configured host callbacks.

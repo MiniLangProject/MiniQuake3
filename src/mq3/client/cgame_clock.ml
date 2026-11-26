@@ -6,9 +6,22 @@ package mq3.client.cgame_clock
 import mq3.client.cgame_time as timing
 
 /// Stores client game clock clock record, including `state`, `snapshotNumber`.
-struct Clock state snapshotNumber end struct
+struct Clock
+  /// When constructing this record, `create` supplies `state` for this member. Used by
+  /// `publishSnapshot` and `setTimeNudge` during subsequent processing.
+  state
+  /// When constructing this record, `create` supplies `snapshotNumber` for this member. Used by
+  /// `publishSnapshot` during subsequent processing.
+  snapshotNumber
+end struct
 /// Stores client game clock frame time record, including `draw`, `serverTime`.
-struct FrameTime draw serverTime end struct
+struct FrameTime
+  /// When constructing this record, `frame` supplies `draw` for this member.
+  draw
+  /// Synchronized server-domain presentation timestamp in milliseconds returned for the client-game
+  /// frame.
+  serverTime
+end struct
 
 /// Creates the client game clock error `7691` with diagnostic text `"cgame clock: "+message`.
 /// @param message Argument 2 of `error`; passed as `"cgame clock: "+message`.

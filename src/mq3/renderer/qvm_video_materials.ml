@@ -6,15 +6,48 @@ import mq3.client.cinematic_runtime as cinematics
 import mq3.compat.numeric as n
 import mq3.renderer.playable_materials as materials
 
+/// Width in pixels of a scratch texture used for cinematic frames.
 const SCRATCH_WIDTH=256
+/// Height in pixels of a scratch texture used for cinematic frames.
 const SCRATCH_HEIGHT=256
 
 /// Data record for `mq3.renderer.qvm_video_materials.Binding`; groups `path`, `handle`, `slot`.
-struct Binding path handle slot end struct
+struct Binding
+  /// Filesystem or virtual asset path associated with this record.
+  path
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+end struct
 /// Data record for `mq3.renderer.qvm_video_materials.Upload`; groups `path`, `handle`, `slot`, `pixels`, `width`, `height`.
-struct Upload path handle slot pixels width height end struct
+struct Upload
+  /// Filesystem or virtual asset path associated with this record.
+  path
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+  /// Decoded pixel data for the image or upload.
+  pixels
+  /// Width in pixels of the cinematic frame submitted for texture upload.
+  width
+  /// Height in pixels of the cinematic frame submitted for texture upload.
+  height
+end struct
 /// Data record for `mq3.renderer.qvm_video_materials.State`; groups `cinematics`, `firstScratchSlot`, `scratchSlotCount`, `bindings`, `failedBindings`.
-struct State cinematics firstScratchSlot scratchSlotCount bindings failedBindings end struct
+struct State
+  /// Active cinematic handles, decoded frames, and playback state.
+  cinematics
+  /// First texture slot reserved for cinematic frame uploads.
+  firstScratchSlot
+  /// Number of texture slots reserved for cinematic frame uploads.
+  scratchSlotCount
+  /// Bindings associating names or handles with their backing resources.
+  bindings
+  /// Cinematic or texture bindings that failed to initialize.
+  failedBindings
+end struct
 
 /// Creates error `7694` with message `"QVM video materials: "+message`.
 /// @param message Input used in the result expression `error(7694,"QVM video materials: "+message)`.

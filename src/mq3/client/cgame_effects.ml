@@ -9,50 +9,201 @@ import mq3.client.cg_local as cgabi
 import mq3.compat.numeric as n
 import mq3.shared.math as qmath
 
+/// Local-effect entity kind selecting an effect that moves, scales, and fades over its lifetime.
 const LE_MOVE_SCALE_FADE=cgabi.LE_MOVE_SCALE_FADE
+/// Local-effect entity kind selecting an effect that fades its RGB color components.
 const LE_FADE_RGB=cgabi.LE_FADE_RGB
+/// Local-effect entity kind selecting a model-based explosion.
 const LE_EXPLOSION=cgabi.LE_EXPLOSION
+/// Local-effect entity kind selecting a sprite-based explosion.
 const LE_SPRITE_EXPLOSION=cgabi.LE_SPRITE_EXPLOSION
+/// Local-effect entity kind selecting a moving fragment with collision and bounce handling.
 const LE_FRAGMENT=cgabi.LE_FRAGMENT
+/// Local-effect entity kind selecting a floating score indicator.
 const LE_SCOREPLUM=cgabi.LE_SCOREPLUM
+/// Local-effect entity kind selecting a renderer entity displayed without another local-effect update
+/// mode.
 const LE_SHOWREFENTITY=cgabi.LE_SHOWREFENTITY
+/// Local-effect entity kind selecting the Missionpack kamikaze explosion sequence.
 const LE_KAMIKAZE=cgabi.LE_KAMIKAZE
+/// Local-effect entity kind selecting an impact against the invulnerability shield.
 const LE_INVULIMPACT=cgabi.LE_INVULIMPACT
+/// Local-effect entity kind selecting the invulnerability elimination effect.
 const LE_INVULJUICED=cgabi.LE_INVULJUICED
+/// Local-effect flag controlling the puff dont scale behavior of the temporary entity.
 const LEF_PUFF_DONT_SCALE=cgabi.LEF_PUFF_DONT_SCALE
+/// Trajectory kind that advances from its base with constant velocity.
 const TR_LINEAR=2
+/// Trajectory kind that applies downward gravitational acceleration to ballistic motion.
 const TR_GRAVITY=5
+/// Renderer-entity type selecting the model primitive.
 const RT_MODEL=1
+/// Renderer-entity type selecting the sprite primitive.
 const RT_SPRITE=2
+/// Renderer-entity type selecting the lightning primitive.
 const RT_LIGHTNING=5
+/// Renderer flag excluding the entity from its own first-person view while allowing external or
+/// reflected views.
 const RF_THIRD_PERSON=2
+/// Local-fragment bounce-sound kind selecting none impact feedback.
 const LEBS_NONE=cgabi.LEBS_NONE
+/// Local-fragment bounce-sound kind selecting blood impact feedback.
 const LEBS_BLOOD=cgabi.LEBS_BLOOD
+/// Local-fragment bounce-sound kind selecting brass impact feedback.
 const LEBS_BRASS=cgabi.LEBS_BRASS
+/// Local-fragment impact-decal kind selecting none marks.
 const LEMT_NONE=cgabi.LEMT_NONE
+/// Local-fragment impact-decal kind selecting blood marks.
 const LEMT_BLOOD=cgabi.LEMT_BLOOD
+/// Entity-number sentinel representing no entity in the native game protocol.
 const ENTITYNUM_NONE=1023
+/// Sound channel used for an entity's body-related effects such as movement feedback.
 const CHAN_BODY=4
 
+/// Virtual asset path used to load the water bubble shader renderer or menu resource.
 const WATER_BUBBLE_SHADER="waterBubble"
+/// Virtual asset path used to load the smoke ragepro shader renderer or menu resource.
 const SMOKE_RAGEPRO_SHADER="smokePuffRagePro"
+/// Virtual asset path used to load the teleport shader renderer or menu resource.
 const TELEPORT_SHADER="teleportEffect"
+/// Virtual asset path used to load the teleport model renderer or menu resource.
 const TELEPORT_MODEL="models/misc/telep.md3"
+/// Virtual asset path used to load the teleport missionpack model renderer or menu resource.
 const TELEPORT_MISSIONPACK_MODEL="models/powerups/pop.md3"
+/// Virtual asset path used to load the lightning shader renderer or menu resource.
 const LIGHTNING_SHADER="lightningBoltNew"
+/// Virtual asset path used to load the kamikaze model renderer or menu resource.
 const KAMIKAZE_MODEL="models/weaphits/kamboom2.md3"
+/// Virtual asset path used to load the dish flash model renderer or menu resource.
 const DISH_FLASH_MODEL="models/weaphits/boom01.md3"
+/// Virtual asset path used to load the rocket explosion shader renderer or menu resource.
 const ROCKET_EXPLOSION_SHADER="rocketExplosion"
+/// Virtual asset path used to load the invul impact model renderer or menu resource.
 const INVUL_IMPACT_MODEL="models/powerups/shield/impact.md3"
+/// Virtual asset path used to load the invul juiced model renderer or menu resource.
 const INVUL_JUICED_MODEL="models/powerups/shield/juicer.md3"
+/// Virtual asset path used to load the blood explosion shader renderer or menu resource.
 const BLOOD_EXPLOSION_SHADER="bloodExplosion"
+/// Virtual asset path used to load the smoke2 model renderer or menu resource.
 const SMOKE2_MODEL="models/weapons2/shells/s_shell.md3"
 
 // An Effect contains every field written by cg_effects.c.  Unused scalar
 // fields are zero and unused names are empty strings.
-struct Effect boundary kind leType startTime fadeInTime endTime lifeRate flags trajectoryType position oldPosition velocity angles radius color shaderColor model shader shaderTime rotation bounceFactor bounceSound markType reType renderfx light lightColor entity channel dispatched end struct
+struct Effect
+  /// Host service category recorded with a request emitted while constructing smoke, bubble, debris,
+  /// and explosion effects.
+  boundary
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// Local-effect entity kind selecting its update and rendering behavior.
+  leType
+  /// When constructing this record, `effect` supplies `0` for this member.
+  startTime
+  /// When constructing this record, `effect` supplies `0` for this member.
+  fadeInTime
+  /// When constructing this record, `effect` supplies `0` for this member.
+  endTime
+  /// Reciprocal effect lifetime used to normalize the fade or growth fraction.
+  lifeRate
+  /// When constructing this record, `effect` supplies `0` for this member.
+  flags
+  /// When constructing this record, `effect` supplies `0` for this member.
+  trajectoryType
+  /// When constructing this record, `effect` supplies `[0.0,0.0,0.0]` for this member.
+  position
+  /// When constructing this record, `effect` supplies `[0.0,0.0,0.0]` for this member.
+  oldPosition
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// Euler orientation used to place or animate the object.
+  angles
+  /// World-space radius supplied when creating a smoke puff, bubble, or other temporary effect.
+  radius
+  /// Normalized RGBA tint and opacity from which the spawned effect computes its shader color.
+  color
+  /// When constructing this record, `effect` supplies `[0.0,0.0,0.0,0.0]` for this member.
+  shaderColor
+  /// Model resource selected for rendering the object.
+  model
+  /// Material selected for the spawned smoke, bubble, teleport, or other temporary visual effect.
+  shader
+  /// When constructing this record, `effect` supplies `0.0` for this member.
+  shaderTime
+  /// When constructing this record, `effect` supplies `0.0` for this member.
+  rotation
+  /// Velocity multiplier after an impact; zero stops the fragment and one preserves its speed.
+  bounceFactor
+  /// Sound resource selected for the bounce event or effect.
+  bounceSound
+  /// When constructing this record, `effect` supplies `LEMT_NONE` for this member.
+  markType
+  /// When constructing this record, `effect` supplies `0` for this member.
+  reType
+  /// Renderer-entity flags controlling lighting, view restrictions, depth handling, and related
+  /// effects.
+  renderfx
+  /// Dynamic-light intensity emitted by the local effect.
+  light
+  /// RGB components of the dynamic light emitted by the effect.
+  lightColor
+  /// When constructing this record, `effect` supplies `0` for this member.
+  entity
+  /// When constructing this record, `effect` supplies `0` for this member.
+  channel
+  /// True when this request is marked for native dispatch while constructing smoke, bubble, debris, and
+  /// explosion effects; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game effects state, including `time`, `predictedClient`, `blood`, `gibs`, `scorePlum`, `noProjectileTrail` and additional values.
-struct State time predictedClient blood gibs scorePlum noProjectileTrail missionpack ragePro randomSeed randomInts randomAt smokeSeed lastScorePosition actions emitted suppressed end struct
+struct State
+  /// Client-game timestamp in milliseconds used to initialize and schedule transient visual effects.
+  time
+  /// When constructing this record, `create` supplies `0` for this member. Used by `scorePlum` and
+  /// `bleed` during subsequent processing.
+  predictedClient
+  /// When constructing this record, `create` supplies `true` for this member. Used by `bleed` and
+  /// `gibPlayer` during subsequent processing.
+  blood
+  /// When constructing this record, `create` supplies `true` for this member. Used by `gibPlayer`
+  /// during subsequent processing.
+  gibs
+  /// When constructing this record, `create` supplies `true` for this member. Used by `scorePlum`
+  /// during subsequent processing.
+  scorePlum
+  /// When constructing this record, `create` supplies `false` for this member. Used by `bubbleTrail`
+  /// during subsequent processing.
+  noProjectileTrail
+  /// When constructing this record, `create` supplies `false` for this member. Used by `spawnEffect`
+  /// during subsequent processing.
+  missionpack
+  /// When constructing this record, `create` supplies `false` for this member. Used by `smokePuff`
+  /// during subsequent processing.
+  ragePro
+  /// When constructing this record, `create` supplies `1` for this member. Used by `randInt` during
+  /// subsequent processing.
+  randomSeed
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `setRandomInts` and `randInt` during subsequent processing.
+  randomInts
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setRandomInts` and
+  /// `randInt` during subsequent processing.
+  randomAt
+  /// When constructing this record, `create` supplies `0x92` for this member. Used by `smokeRandom`
+  /// during subsequent processing.
+  smokeSeed
+  /// When constructing this record, `create` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `scorePlum` during subsequent processing.
+  lastScorePosition
+  /// Host requests queued while constructing smoke, bubble, debris, and explosion effects, retained in
+  /// request order.
+  actions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `publish` during
+  /// subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while constructing smoke, bubble, debris, and
+  /// explosion effects because the retail QVM owns their effects.
+  suppressed
+end struct
 
 /// Creates a `mq3.client.cgame_effects.State` record. Initializes the record with the defaults written in this constructor.
 function create()

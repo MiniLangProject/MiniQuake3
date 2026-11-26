@@ -5,23 +5,66 @@ package mq3.format.roq
 import mq3.compat.numeric as numeric
 import std.ds.list as lists
 
+/// RoQ file signature identifying the video stream.
 const MAGIC=0x1084
+/// RoQ chunk identifier declaring video-frame dimensions.
 const QUAD_INFO=0x1001
+/// RoQ chunk identifier for a vector-quantization codebook update.
 const CODEBOOK=0x1002
+/// RoQ chunk identifier for a vector-quantized video frame.
 const QUAD_VQ=0x1011
+/// RoQ chunk identifier for a JPEG-compressed image.
 const QUAD_JPEG=0x1012
+/// RoQ chunk identifier that holds the previous video frame.
 const QUAD_HANG=0x1013
+/// RoQ chunk identifier for an embedded packet.
 const PACKET=0x1030
+/// RoQ chunk identifier for mono differential-PCM audio.
 const SOUND_MONO=0x1020
+/// RoQ chunk identifier for stereo differential-PCM audio.
 const SOUND_STEREO=0x1021
+/// Maximum payload size accepted for one RoQ video or audio chunk, in bytes.
 const MAX_CHUNK_SIZE=65536
 
 /// Chunk record for format.roq, containing `id`, `size`, `flags`, `dataOffset`.
-struct Chunk id size flags dataOffset end struct
+struct Chunk
+  /// RoQ chunk-kind identifier selecting the corresponding decoder.
+  id
+  /// Byte length of the chunk payload.
+  size
+  /// Chunk-specific flags or predictor data from the RoQ header.
+  flags
+  /// Byte offset of this chunk's payload within the movie file.
+  dataOffset
+end struct
 /// Movie record for format.roq, containing `data`, `fps`, `chunks`, `videoFrames`, `audioChunks`.
-struct Movie data fps chunks videoFrames audioChunks end struct
+struct Movie
+  /// Complete RoQ movie file bytes.
+  data
+  /// Requested server simulation frames per second.
+  fps
+  /// Parsed chunk directory in playback order.
+  chunks
+  /// Indexes of chunks that produce video frames.
+  videoFrames
+  /// Indexes of chunks carrying mono or stereo audio.
+  audioChunks
+end struct
 /// Audio record for format.roq, containing `samples`, `frames`, `sampleRate`, `channels`, `bitsPerSample`, `blockAlign`.
-struct Audio samples frames sampleRate channels bitsPerSample blockAlign end struct
+struct Audio
+  /// Decoded interleaved signed PCM sample bytes.
+  samples
+  /// Number of complete audio sample frames in the decoded chunk.
+  frames
+  /// Audio sample rate in hertz.
+  sampleRate
+  /// Number of interleaved audio channels.
+  channels
+  /// Number of bits stored for each sample in one channel.
+  bitsPerSample
+  /// Bytes occupied by one complete interleaved audio sample frame.
+  blockAlign
+end struct
 
 /// Create the format.roq error for `fail` with 7690 and the supplied diagnostic text.
 /// @param message Message used in `("RoQ: " + message)` and `error(7690, ("RoQ: " + message))`.

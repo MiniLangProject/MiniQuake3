@@ -3,19 +3,42 @@
 // Complete dynamically resolved OpenGL/WGL/GLX facade from renderer/qgl.h.
 package mq3.renderer.qgl
 
+/// OpenGL state-query selector for the active server-side texture unit.
 const GL_ACTIVE_TEXTURE_ARB=0x84e0
+/// OpenGL state-query selector for the active client texture-coordinate array unit.
 const GL_CLIENT_ACTIVE_TEXTURE_ARB=0x84e1
+/// OpenGL state-query selector for the maximum number of simultaneously active texture units.
 const GL_MAX_ACTIVE_TEXTURES_ARB=0x84e2
+/// OpenGL multitexture selector for texture unit 0.
 const GL_TEXTURE0_ARB=0x84c0
+/// OpenGL multitexture selector for texture unit 1.
 const GL_TEXTURE1_ARB=0x84c1
+/// OpenGL multitexture selector for texture unit 2.
 const GL_TEXTURE2_ARB=0x84c2
+/// OpenGL multitexture selector for texture unit 3.
 const GL_TEXTURE3_ARB=0x84c3
+/// OpenGL legacy S3TC compressed RGB texture-format selector.
 const GL_RGB_S3TC=0x83a0
+/// OpenGL legacy RGB4_S3TC compressed RGB texture-format selector.
 const GL_RGB4_S3TC=0x83a1
 /// Data record for `mq3.renderer.qgl.Binding`; groups `name`, `address`, `extension`.
-struct Binding name address extension end struct
+struct Binding
+  /// OpenGL function name whose native entry-point address is bound by the registry.
+  name
+  /// Network address used to identify the remote or local endpoint.
+  address
+  /// Whether the graphics entry point belongs to an optional extension.
+  extension
+end struct
 /// Data record for `mq3.renderer.qgl.Registry`; groups `bindings`, `loaded`, `driver`.
-struct Registry bindings loaded driver end struct
+struct Registry
+  /// Bindings associating names or handles with their backing resources.
+  bindings
+  /// Whether the selected graphics driver and entry points have been loaded.
+  loaded
+  /// Graphics driver selected or loaded by the platform layer.
+  driver
+end struct
 /// Lists the 341 declared names for `mq3.renderer.qgl.coreEntryPoints`, including `qglAccum`, `qglActiveTextureARB`, `qglAlphaFunc`, `qglAreTexturesResident`.
 function coreEntryPoints() return ["qglAccum","qglActiveTextureARB","qglAlphaFunc","qglAreTexturesResident","qglArrayElement","qglBegin","qglBindTexture","qglBitmap","qglBlendFunc","qglCallList","qglCallLists","qglClear","qglClearAccum","qglClearColor","qglClearDepth","qglClearIndex","qglClearStencil","qglClientActiveTextureARB","qglClipPlane","qglColor3b","qglColor3bv","qglColor3d","qglColor3dv","qglColor3f","qglColor3fv","qglColor3i","qglColor3iv","qglColor3s","qglColor3sv","qglColor3ub","qglColor3ubv","qglColor3ui","qglColor3uiv","qglColor3us","qglColor3usv","qglColor4b","qglColor4bv","qglColor4d","qglColor4dv","qglColor4f","qglColor4fv","qglColor4i","qglColor4iv","qglColor4s","qglColor4sv","qglColor4ub","qglColor4ubv","qglColor4ui","qglColor4uiv","qglColor4us","qglColor4usv","qglColorMask","qglColorMaterial","qglColorPointer","qglCopyPixels","qglCopyTexImage1D","qglCopyTexImage2D","qglCopyTexSubImage1D","qglCopyTexSubImage2D","qglCullFace","qglDeleteLists","qglDeleteTextures","qglDepthFunc","qglDepthMask","qglDepthRange","qglDisable","qglDisableClientState","qglDrawArrays","qglDrawBuffer","qglDrawElements","qglDrawPixels","qglEdgeFlag","qglEdgeFlagPointer","qglEdgeFlagv","qglEnable","qglEnableClientState","qglEnd","qglEndList","qglEvalCoord1d","qglEvalCoord1dv","qglEvalCoord1f","qglEvalCoord1fv","qglEvalCoord2d","qglEvalCoord2dv","qglEvalCoord2f","qglEvalCoord2fv","qglEvalMesh1","qglEvalMesh2","qglEvalPoint1","qglEvalPoint2","qglFeedbackBuffer","qglFinish","qglFlush","qglFogf","qglFogfv","qglFogi","qglFogiv","qglFrontFace","qglFrustum","qglGenLists","qglGenTextures","qglGetBooleanv","qglGetClipPlane","qglGetDoublev","qglGetError","qglGetFloatv","qglGetIntegerv","qglGetLightfv","qglGetLightiv","qglGetMapdv","qglGetMapfv","qglGetMapiv","qglGetMaterialfv","qglGetMaterialiv","qglGetPixelMapfv","qglGetPixelMapuiv","qglGetPixelMapusv","qglGetPointerv","qglGetPolygonStipple","qglGetString","qglGetTexEnvfv","qglGetTexEnviv","qglGetTexGendv","qglGetTexGenfv","qglGetTexGeniv","qglGetTexImage","qglGetTexLevelParameterfv","qglGetTexLevelParameteriv","qglGetTexParameterfv","qglGetTexParameteriv","qglHint","qglIndexMask","qglIndexPointer","qglIndexd","qglIndexdv","qglIndexf","qglIndexfv","qglIndexi","qglIndexiv","qglIndexs","qglIndexsv","qglIndexub","qglIndexubv","qglInitNames","qglInterleavedArrays","qglIsEnabled","qglIsList","qglIsTexture","qglLightModelf","qglLightModelfv","qglLightModeli","qglLightModeliv","qglLightf","qglLightfv","qglLighti","qglLightiv","qglLineStipple","qglLineWidth","qglListBase","qglLoadIdentity","qglLoadMatrixd","qglLoadMatrixf","qglLoadName","qglLockArraysEXT","qglLogicOp","qglMap1d","qglMap1f","qglMap2d","qglMap2f","qglMapGrid1d","qglMapGrid1f","qglMapGrid2d","qglMapGrid2f","qglMaterialf","qglMaterialfv","qglMateriali","qglMaterialiv","qglMatrixMode","qglMultMatrixd","qglMultMatrixf","qglMultiTexCoord2fARB","qglNewList","qglNormal3b","qglNormal3bv","qglNormal3d","qglNormal3dv","qglNormal3f","qglNormal3fv","qglNormal3i","qglNormal3iv","qglNormal3s","qglNormal3sv","qglNormalPointer","qglOrtho","qglPassThrough","qglPixelMapfv","qglPixelMapuiv","qglPixelMapusv","qglPixelStoref","qglPixelStorei","qglPixelTransferf","qglPixelTransferi","qglPixelZoom","qglPointSize","qglPolygonMode","qglPolygonOffset","qglPolygonStipple","qglPopAttrib","qglPopClientAttrib","qglPopMatrix","qglPopName","qglPrioritizeTextures","qglPushAttrib","qglPushClientAttrib","qglPushMatrix","qglPushName","qglRasterPos2d","qglRasterPos2dv","qglRasterPos2f","qglRasterPos2fv","qglRasterPos2i","qglRasterPos2iv","qglRasterPos2s","qglRasterPos2sv","qglRasterPos3d","qglRasterPos3dv","qglRasterPos3f","qglRasterPos3fv","qglRasterPos3i","qglRasterPos3iv","qglRasterPos3s","qglRasterPos3sv","qglRasterPos4d","qglRasterPos4dv","qglRasterPos4f","qglRasterPos4fv","qglRasterPos4i","qglRasterPos4iv","qglRasterPos4s","qglRasterPos4sv","qglReadBuffer","qglReadPixels","qglRectd","qglRectdv","qglRectf","qglRectfv","qglRecti","qglRectiv","qglRects","qglRectsv","qglRenderMode","qglRotated","qglRotatef","qglScaled","qglScalef","qglScissor","qglSelectBuffer","qglShadeModel","qglStencilFunc","qglStencilMask","qglStencilOp","qglTexCoord1d","qglTexCoord1dv","qglTexCoord1f","qglTexCoord1fv","qglTexCoord1i","qglTexCoord1iv","qglTexCoord1s","qglTexCoord1sv","qglTexCoord2d","qglTexCoord2dv","qglTexCoord2f","qglTexCoord2fv","qglTexCoord2i","qglTexCoord2iv","qglTexCoord2s","qglTexCoord2sv","qglTexCoord3d","qglTexCoord3dv","qglTexCoord3f","qglTexCoord3fv","qglTexCoord3i","qglTexCoord3iv","qglTexCoord3s","qglTexCoord3sv","qglTexCoord4d","qglTexCoord4dv","qglTexCoord4f","qglTexCoord4fv","qglTexCoord4i","qglTexCoord4iv","qglTexCoord4s","qglTexCoord4sv","qglTexCoordPointer","qglTexEnvf","qglTexEnvfv","qglTexEnvi","qglTexEnviv","qglTexGend","qglTexGendv","qglTexGenf","qglTexGenfv","qglTexGeni","qglTexGeniv","qglTexImage1D","qglTexImage2D","qglTexParameterf","qglTexParameterfv","qglTexParameteri","qglTexParameteriv","qglTexSubImage1D","qglTexSubImage2D","qglTranslated","qglTranslatef","qglUnlockArraysEXT","qglVertex2d","qglVertex2dv","qglVertex2f","qglVertex2fv","qglVertex2i","qglVertex2iv","qglVertex2s","qglVertex2sv","qglVertex3d","qglVertex3dv","qglVertex3f","qglVertex3fv","qglVertex3i","qglVertex3iv","qglVertex3s","qglVertex3sv","qglVertex4d","qglVertex4dv","qglVertex4f","qglVertex4fv","qglVertex4i","qglVertex4iv","qglVertex4s","qglVertex4sv","qglVertexPointer","qglViewport"] end function
 /// Lists the 24 declared names for `mq3.renderer.qgl.wglEntryPoints`, including `qwglChoosePixelFormat`, `qwglCopyContext`, `qwglCreateContext`, `qwglCreateLayerContext`.

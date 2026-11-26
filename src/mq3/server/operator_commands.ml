@@ -6,31 +6,149 @@ package mq3.server.operator_commands
 import mq3.compat.textnumbers as numbers
 import std.string as strings
 
+/// Client-state value identifying an empty slot excluded from operator player queries.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying an in-game client included in operator status and player management.
 const CS_ACTIVE=4
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
+/// Network-address kind indicating an invalid or unsupported endpoint.
 const NA_BAD=1
+/// Network-address kind for local loopback delivery.
 const NA_LOOPBACK=2
+/// Network-address kind for an IPv4 endpoint.
 const NA_IP=4
+/// Server lifecycle state with no running map.
 const SS_DEAD=0
+/// Server lifecycle state while a new map and game VM are loading.
 const SS_LOADING=1
+/// Server lifecycle state for an active game map.
 const SS_GAME=2
+/// Toggled every map_restart so transitions can be detected.
 const SNAPFLAG_SERVERCOUNT=4
+/// Game-mode identifier for free-for-all play.
 const GT_FFA=0
+/// Game-mode identifier for single-player progression.
 const GT_SINGLE_PLAYER=2
+/// Server time when the match will be restarted.
 const CS_WARMUP=5
+/// Host name of the legacy client-authorization service.
 const AUTHORIZE_SERVER_NAME="authorize.quake3arena.com"
+/// Default UDP port used by the authorization service.
 const PORT_AUTHORIZE=27952
 
 /// Client record for server.operator_commands, containing `state`, `name`, `userinfo`, `addressType`, `address`, `ip`, and 7 further fields.
-struct Client state name userinfo addressType address ip qport rate ping lastPacketTime score lastUsercmd denied end struct
+struct Client
+  /// Connection lifecycle value that determines which operator commands can address this player slot.
+  state
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+  /// Network-address kind, such as loopback, IPv4, or bot.
+  addressType
+  /// Network address associated with the client or packet.
+  address
+  /// Address bytes identifying the remote IPv4 endpoint.
+  ip
+  /// Client-selected virtual port used to recognize a connection across address translation.
+  qport
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Client score printed by operator status commands.
+  score
+  /// Most recent user-command record received or processed for this client.
+  lastUsercmd
+  /// Reason the client was denied or disconnected by an operator command.
+  denied
+end struct
 /// Action record for server.operator_commands, containing `boundary`, `kind`, `target`, `text`, `values`, `dispatched`.
-struct Action boundary kind target text values dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Operator-action discriminator used by the host dispatcher.
+  kind
+  /// Client, map, or other resource targeted by the operator action.
+  target
+  /// Command or diagnostic text carried by the operator action.
+  text
+  /// Additional argument values associated with the operator action.
+  values
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// State record for server.operator_commands, containing `running`, `dedicated`, `args`, `rawArgs`, `clients`, `maxclients`, and 23 further fields.
-struct State running dedicated args rawArgs clients maxclients gametype mapname cvars maxclientsModified gametypeModified mapFiles frameTime serverId restartTime time snapFlag serverState restarting nextHeartbeat authorizeType authorizeIp commandsInitialized commandNames actions prints configstrings hostFn hostContext end struct
+struct State
+  /// True while the server or represented subsystem is running.
+  running
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// Parsed command arguments supplied to the operator-command handler.
+  args
+  /// Unmodified command argument text supplied by the operator.
+  rawArgs
+  /// Player slots searched by operator lookup, status, kick, and administrative commands.
+  clients
+  /// Client-slot bound used by operator player lookup and status iteration.
+  maxclients
+  /// Game-mode identifier used when applying mode-specific rules.
+  gametype
+  /// Name of the current game map.
+  mapname
+  /// Configuration-variable registry consulted by this subsystem.
+  cvars
+  /// True when a changed client-slot limit requires server reinitialization.
+  maxclientsModified
+  /// True when a changed game mode requires server reinitialization.
+  gametypeModified
+  /// Available BSP map files used to validate map commands.
+  mapFiles
+  /// Host frame timestamp used when scheduling a map restart.
+  frameTime
+  /// Identifier distinguishing the current server or map session.
+  serverId
+  /// Scheduled time for restarting the current map.
+  restartTime
+  /// Current server time used for operator-visible player status and administrative actions, in
+  /// milliseconds.
+  time
+  /// Snapshot toggle bit changed when the server restarts a map.
+  snapFlag
+  /// Current server lifecycle state, including loading and active gameplay.
+  serverState
+  /// True while the server performs an in-place map restart.
+  restarting
+  /// Server time at which the next master heartbeat should be sent.
+  nextHeartbeat
+  /// Resolved network-address kind of the authorization service.
+  authorizeType
+  /// Resolved address bytes of the authorization service.
+  authorizeIp
+  /// True after server operator commands have been registered.
+  commandsInitialized
+  /// Names of the registered server operator commands.
+  commandNames
+  /// Recorded administrative requests such as player management, map changes, and console output.
+  actions
+  /// Console output recorded while executing operator commands.
+  prints
+  /// Server configuration strings indexed by their protocol slot.
+  configstrings
+  /// Host callback that dispatches a subsystem action to the embedding host.
+  hostFn
+  /// Opaque host data passed to the operator-action callback.
+  hostContext
+end struct
 
 /// Create `mq3.server.operator_commands.Client` with state=state; name=name; userinfo=""; addressType=addressType; address=address; ip=ip; qport=qport; rate=rate; ping=ping; lastPacketTime=lastPacketTime; score=score; lastUsercmd=void; denied="".
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.operator_commands.Client` record.

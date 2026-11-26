@@ -9,56 +9,184 @@ import mq3.game.bot_fight_state as fight
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Upper bound on nodeswitches represented by mq3.game.ai_dmnet.
 const MAX_NODESWITCHES=50
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF=5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK=6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER=7
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=5
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=6
+/// Long-term bot goal identifier selecting harvest behavior.
 const LTG_HARVEST=12
+/// Long-term bot goal identifier selecting attackenemybase behavior.
 const LTG_ATTACKENEMYBASE=13
+/// Bot movement-result flag reporting movementview.
 const MOVERESULT_MOVEMENTVIEW=1
+/// Bot movement-result flag reporting movementweapon.
 const MOVERESULT_MOVEMENTWEAPON=16
+/// Bot movement-result flag reporting blockedbyavoidspot.
 const MOVERESULT_BLOCKEDBYAVOIDSPOT=256
+/// Bot inventory slot used to read or update shotgun.
 const INVENTORY_SHOTGUN=headers.INVENTORY_SHOTGUN
+/// Bot inventory slot used to read or update machine gun.
 const INVENTORY_MACHINEGUN=headers.INVENTORY_MACHINEGUN
+/// Bot inventory slot used to read or update rocket launcher.
 const INVENTORY_ROCKETLAUNCHER=headers.INVENTORY_ROCKETLAUNCHER
+/// Bot inventory slot used to read or update lightning gun.
 const INVENTORY_LIGHTNING=headers.INVENTORY_LIGHTNING
+/// Bot inventory slot used to read or update railgun.
 const INVENTORY_RAILGUN=headers.INVENTORY_RAILGUN
+/// Bot inventory slot used to read or update plasma gun.
 const INVENTORY_PLASMAGUN=headers.INVENTORY_PLASMAGUN
+/// Bot inventory slot used to read or update bfg10 k.
 const INVENTORY_BFG10K=headers.INVENTORY_BFG10K
+/// Bot inventory slot used to read or update nailgun.
 const INVENTORY_NAILGUN=headers.INVENTORY_NAILGUN
+/// Bot inventory slot used to read or update chaingun.
 const INVENTORY_CHAINGUN=headers.INVENTORY_CHAINGUN
+/// Bot inventory slot used to read or update shells.
 const INVENTORY_SHELLS=headers.INVENTORY_SHELLS
+/// Bot inventory slot used to read or update bullets.
 const INVENTORY_BULLETS=headers.INVENTORY_BULLETS
+/// Bot inventory slot used to read or update cells.
 const INVENTORY_CELLS=headers.INVENTORY_CELLS
+/// Bot inventory slot used to read or update lightningammo.
 const INVENTORY_LIGHTNINGAMMO=headers.INVENTORY_LIGHTNINGAMMO
+/// Bot inventory slot used to read or update rockets.
 const INVENTORY_ROCKETS=headers.INVENTORY_ROCKETS
+/// Bot inventory slot used to read or update slugs.
 const INVENTORY_SLUGS=headers.INVENTORY_SLUGS
+/// Bot inventory slot used to read or update bfgammo.
 const INVENTORY_BFGAMMO=headers.INVENTORY_BFGAMMO
+/// Bot inventory slot used to read or update nails.
 const INVENTORY_NAILS=headers.INVENTORY_NAILS
+/// Bot inventory slot used to read or update belt.
 const INVENTORY_BELT=headers.INVENTORY_BELT
+/// Weapon-definition index identifying machine gun in bot weapon tables.
 const WEAPONINDEX_MACHINEGUN=headers.WEAPONINDEX_MACHINEGUN
+/// Weapon-definition index identifying shotgun in bot weapon tables.
 const WEAPONINDEX_SHOTGUN=headers.WEAPONINDEX_SHOTGUN
+/// Weapon-definition index identifying rocket launcher in bot weapon tables.
 const WEAPONINDEX_ROCKET_LAUNCHER=headers.WEAPONINDEX_ROCKET_LAUNCHER
+/// Weapon-definition index identifying lightning gun in bot weapon tables.
 const WEAPONINDEX_LIGHTNING=headers.WEAPONINDEX_LIGHTNING
+/// Weapon-definition index identifying railgun in bot weapon tables.
 const WEAPONINDEX_RAILGUN=headers.WEAPONINDEX_RAILGUN
+/// Weapon-definition index identifying plasma gun in bot weapon tables.
 const WEAPONINDEX_PLASMAGUN=headers.WEAPONINDEX_PLASMAGUN
+/// Weapon-definition index identifying BFG in bot weapon tables.
 const WEAPONINDEX_BFG=headers.WEAPONINDEX_BFG
+/// Weapon-definition index identifying nailgun in bot weapon tables.
 const WEAPONINDEX_NAILGUN=headers.WEAPONINDEX_NAILGUN
+/// Weapon-definition index identifying chaingun in bot weapon tables.
 const WEAPONINDEX_CHAINGUN=headers.WEAPONINDEX_CHAINGUN
 
 /// `NodeSwitch` record for ai dmnet, containing `client`, `name`, `time`, `node` and `detail` and related fields.
-struct NodeSwitch client name time node detail source end struct
+struct NodeSwitch
+  /// Client slot of the bot whose decision-network transition was recorded.
+  client
+  /// Bot/player name included in the node-switch diagnostic.
+  name
+  /// Time at which the decision-network transition occurred.
+  time
+  /// Name or identifier of the active bot decision-network node.
+  node
+  /// Additional diagnostic or action detail supplied by the bot controller.
+  detail
+  /// Source/condition label explaining why this node transition was recorded.
+  source
+end struct
 /// `Action` record for ai dmnet, containing `boundary`, `kind`, `subject`, `detail` and `dispatched`.
-struct Action boundary kind subject detail dispatched end struct
+struct Action
+  /// Decision/action boundary at which this bot operation was recorded.
+  boundary
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Entity/client or other subject to which the recorded action applies.
+  subject
+  /// Additional diagnostic or action detail supplied by the bot controller.
+  detail
+  /// Nonzero after the action has been delivered to its host callback.
+  dispatched
+end struct
 /// `MissionServices` record for ai dmnet, containing `missionpack`, `teamFn`, `neutralFlagGoalFn`, `redFlagGoalFn` and `blueFlagGoalFn` and related fields.
-struct MissionServices missionpack teamFn neutralFlagGoalFn redFlagGoalFn blueFlagGoalFn redObeliskGoalFn blueObeliskGoalFn neutralObeliskGoalFn carryingNeutralFn carryingCubesFn feelingBadFn alternateRouteFn goHarvestFn context end struct
+struct MissionServices
+  /// Nonzero when mission-pack rules and content are enabled.
+  missionpack
+  /// Injected callback for team; invoked through the MissionServices service/state record.
+  teamFn
+  /// Injected callback for neutral flag goal; invoked through the MissionServices service/state record.
+  neutralFlagGoalFn
+  /// Injected callback for red flag goal; invoked through the MissionServices service/state record.
+  redFlagGoalFn
+  /// Injected callback for blue flag goal; invoked through the MissionServices service/state record.
+  blueFlagGoalFn
+  /// Injected callback for red obelisk goal; invoked through the MissionServices service/state record.
+  redObeliskGoalFn
+  /// Injected callback for blue obelisk goal; invoked through the MissionServices service/state record.
+  blueObeliskGoalFn
+  /// Injected callback for neutral obelisk goal; invoked through the MissionServices service/state
+  /// record.
+  neutralObeliskGoalFn
+  /// Injected callback for carrying neutral; invoked through the MissionServices service/state record.
+  carryingNeutralFn
+  /// Injected callback for carrying cubes; invoked through the MissionServices service/state record.
+  carryingCubesFn
+  /// Injected callback for feeling bad; invoked through the MissionServices service/state record.
+  feelingBadFn
+  /// Injected callback for alternate route; invoked through the MissionServices service/state record.
+  alternateRouteFn
+  /// Injected callback for go harvest; invoked through the MissionServices service/state record.
+  goHarvestFn
+  /// Opaque caller-supplied context available to mission-pack team, objective, alternate-route, and
+  /// harvesting callbacks.
+  context
+end struct
 /// `Services` record for ai dmnet, containing `fightServices`, `seekServices`, `navigationServices`, `mission` and `nodeSwitches` and related fields.
-struct Services fightServices seekServices navigationServices mission nodeSwitches nameFn timeFn printFn entityStateFn traceFn attackFn inFovFn retailActive actions context end struct
+struct Services
+  /// Callbacks and shared state used by the bot fight node.
+  fightServices
+  /// Callbacks used by the bot seek/goal-acquisition node.
+  seekServices
+  /// Callbacks and shared state used for bot navigation decisions.
+  navigationServices
+  /// Additional service/state bundle for mission-pack game behavior.
+  mission
+  /// Recorded transitions between bot decision-network nodes.
+  nodeSwitches
+  /// Injected callback for name; invoked through the Services service/state record.
+  nameFn
+  /// Injected callback for time; invoked through the Services service/state record.
+  timeFn
+  /// Injected callback for print; invoked through the Services service/state record.
+  printFn
+  /// Injected callback for entity state; invoked through the Services service/state record.
+  entityStateFn
+  /// Injected callback for trace; invoked through the Services service/state record.
+  traceFn
+  /// Injected callback for attack; invoked through the Services service/state record.
+  attackFn
+  /// Injected callback for in field of view; invoked through the Services service/state record.
+  inFovFn
+  /// Nonzero when the retail-compatible bot decision path is active.
+  retailActive
+  /// Recorded host actions emitted by bot decision logic.
+  actions
+  /// Opaque caller-supplied context available to decision-network timing, diagnostics, entity, trace,
+  /// and attack callbacks.
+  context
+end struct
 
 /// Update `fightServices.missionEnemyTargetFn`, `fightServices.missionNearbyRangeFn`, `fightServices.dmnetServices` and `seekServices.missionNearbyRangeFn` and related state during `create`. Return paths include `services`.
 /// @param fightServices Fight services record; accesses `missionEnemyTargetFn`, `missionNearbyRangeFn` and `dmnetServices`. May update `fightServices.missionEnemyTargetFn`, `fightServices.missionNearbyRangeFn` and `fightServices.dmnetServices` in place.

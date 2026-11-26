@@ -4,16 +4,23 @@ package mq3.format.deflate
 
 /// Bits record for format.deflate, containing `data`, `offset`, `value`, `available`.
 struct Bits
+  /// Compressed input bytes consumed by the bit reader.
   data
+  /// Index of the next compressed byte to load.
   offset
+  /// Buffered low-order compressed bits awaiting consumption.
   value
+  /// Number of unread bits currently present in the bit buffer.
   available
 end struct
 
 /// Huffman record for format.deflate, containing `counts`, `symbols`, `prefix`.
 struct Huffman
+  /// Number of Huffman symbols assigned to each bit length.
   counts
+  /// Symbols ordered by canonical Huffman code.
   symbols
+  /// Lookup table for resolving short Huffman prefixes.
   prefix
 end struct
 

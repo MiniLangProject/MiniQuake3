@@ -7,23 +7,68 @@ import mq3.vm.pc_parser as pc
 import std.string as textStrings
 import std.ds.list as lists
 
+/// Bot-library syscall identifier for string contains.
 const OP_STRING_CONTAINS=517
+/// Bot-library syscall identifier for find match.
 const OP_FIND_MATCH=518
+/// Bot-library syscall identifier for match variable.
 const OP_MATCH_VARIABLE=519
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=256
+/// Maximum number of captured variables in a bot chat match.
 const MAX_MATCH_VARIABLES=8
+/// Byte size of the match ABI record in the bot VM ABI or serialized representation.
 const MATCH_ABI_SIZE=328
 
 /// `Piece` record for ai chat matches, containing `variable` and `alternatives`.
-struct Piece variable alternatives end struct
+struct Piece
+  /// Match-variable index captured by this template component.
+  variable
+  /// Accepted literal alternatives for this match-template component.
+  alternatives
+end struct
 /// `Template` record for ai chat matches, containing `context`, `pieces`, `type` and `subtype`.
-struct Template context pieces type subtype end struct
+struct Template
+  /// Bit mask selecting the chat contexts in which this message pattern may match.
+  context
+  /// Ordered literal and variable components of the match template.
+  pieces
+  /// Match-category bits associated with this chat template.
+  type
+  /// Chat match subtype assigned when this template matches a message.
+  subtype
+end struct
 /// `Match` record for ai chat matches, containing `string`, `type`, `subtype`, `offsets` and `lengths`.
-struct Match string type subtype offsets lengths end struct
+struct Match
+  /// Input message text matched against the chat templates.
+  string
+  /// Match-category bits reported by the successful template.
+  type
+  /// Subtype returned by the chat template that matched this message.
+  subtype
+  /// Start positions of captured variables within the matched message.
+  offsets
+  /// Character lengths of the captured match variables.
+  lengths
+end struct
 /// `Loader` record for ai chat matches, containing `state`.
-struct Loader state end struct
+struct Loader
+  /// Owning chat runtime supplying the file callback and file-read accounting.
+  state
+end struct
 /// `State` record for ai chat matches, containing `context`, `readFn`, `templates`, `loaded` and `fileReads`.
-struct State context readFn templates loaded fileReads end struct
+struct State
+  /// Caller-supplied data associated with loading chat patterns and their captured-variable templates.
+  context
+  /// Host callback that reads message-pattern files used by the chat matcher.
+  readFn
+  /// Registered chat-match templates searched by this runtime.
+  templates
+  /// True after chat message patterns have been loaded into the template table.
+  loaded
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
 /// Construct error `7597` with diagnostic text `"AI chat matches: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

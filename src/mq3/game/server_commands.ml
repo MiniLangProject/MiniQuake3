@@ -15,8 +15,11 @@ import std.string as strings
 
 /// `State` record for server commands, containing `addBotFn`, `botListFn` and `abortPodiumFn`.
 struct State
+  /// Injected callback for add bot; invoked through the State service/state record.
   addBotFn
+  /// Injected callback for bot list; invoked through the State service/state record.
   botListFn
+  /// Injected callback for abort podium; invoked through the State service/state record.
   abortPodiumFn
 end struct
 /// Set `level.serverCommands` to `State(void,void,void)` in `mq3.game.server_commands.get`. Return paths include `level.serverCommands`.

@@ -4,6 +4,7 @@
 package mq3.audio.channel_paint
 import mq3.compat.numeric as n
 
+/// Number of signed 16-bit mono samples stored in one sound-memory chunk.
 const SND_CHUNK_SIZE=1024
 
 /// Create the audio.channel_paint error for `fail` with 7250 and the supplied diagnostic text.

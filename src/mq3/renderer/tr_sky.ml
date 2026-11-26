@@ -19,25 +19,80 @@ extern function floor(value as double) from "ucrtbase.dll" returns double
 /// @returns The least integral floating-point value no smaller than the input.
 extern function ceil(value as double) from "ucrtbase.dll" returns double
 
+/// Number of subdivisions used when tessellating a skybox face.
 const SKY_SUBDIVISIONS=8
+/// Half of the skybox subdivision count, used to center the face grid.
 const HALF_SKY_SUBDIVISIONS=4
+/// Tolerance used when classifying sky vertices against clipping planes.
 const ON_EPSILON=0.1
+/// Maximum number of vertices retained while clipping a sky polygon.
 const MAX_CLIP_VERTS=64
 
 /// Data record for `mq3.renderer.tr_sky.Bounds`; groups `minS`, `minT`, `maxS`, `maxT`.
-struct Bounds minS minT maxS maxT end struct
+struct Bounds
+  /// Minimum horizontal texture coordinate reached on the clipped sky face.
+  minS
+  /// Minimum vertical texture coordinate reached on the clipped sky face.
+  minT
+  /// Maximum horizontal texture coordinate reached on the clipped sky face.
+  maxS
+  /// Maximum vertical texture coordinate reached on the clipped sky face.
+  maxT
+end struct
 /// Data record for `mq3.renderer.tr_sky.SkyVertex`; groups `xyz`, `st`.
-struct SkyVertex xyz st end struct
+struct SkyVertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Two-dimensional texture coordinates associated with the vertex.
+  st
+end struct
 /// Data record for `mq3.renderer.tr_sky.Mesh`; groups `vertices`, `indexes`.
-struct Mesh vertices indexes end struct
+struct Mesh
+  /// Skybox or cloud-grid vertices emitted before indexed sky rendering.
+  vertices
+  /// Triangle indices connecting tessellated skybox or cloud-mesh vertices.
+  indexes
+end struct
 /// Data record for `mq3.renderer.tr_sky.SkySide`; groups `image`, `axis`, `mesh`.
-struct SkySide image axis mesh end struct
+struct SkySide
+  /// Skybox texture selected for this oriented cube face.
+  image
+  /// Skybox cube-face index used to orient this side of the sky mesh.
+  axis
+  /// Vertex and index geometry prepared for the skybox face.
+  mesh
+end struct
 /// Data record for `mq3.renderer.tr_sky.CloudTable`; groups `coords`, `factors`.
-struct CloudTable coords factors end struct
+struct CloudTable
+  /// Precomputed texture coordinates used to project the cloud layer.
+  coords
+  /// Scaling factors used when projecting the animated cloud layer.
+  factors
+end struct
 /// Data record for `mq3.renderer.tr_sky.SkyShader`; groups `outerbox`, `cloudHeight`, `stages`.
-struct SkyShader outerbox cloudHeight stages end struct
+struct SkyShader
+  /// Six images forming the outer skybox.
+  outerbox
+  /// Height used to project moving cloud texture coordinates.
+  cloudHeight
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+end struct
 /// Data record for `mq3.renderer.tr_sky.StageResult`; groups `skybox`, `clouds`, `sun`, `skyRendered`, `depthMin`, `depthMax`.
-struct StageResult skybox clouds sun skyRendered depthMin depthMax end struct
+struct StageResult
+  /// Skybox geometry prepared for the current view.
+  skybox
+  /// Cloud-layer geometry prepared for the current view.
+  clouds
+  /// Sun geometry prepared for the current view.
+  sun
+  /// Whether sky geometry was emitted for this shader stage.
+  skyRendered
+  /// Lower bound of the depth range used by this rendering pass.
+  depthMin
+  /// Upper bound of the depth range used by this rendering pass.
+  depthMax
+end struct
 
 /// Constructs `mq3.renderer.tr_sky.Bounds` with `minS` = `array(6,9999.0)`, `minT` = `array(6,9999.0)`, `maxS` = `array(6,-9999.0)`, `maxT` = `array(6,-9999.0)`.
 function clearSkyBox()

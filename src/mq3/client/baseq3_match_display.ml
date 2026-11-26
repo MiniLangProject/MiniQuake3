@@ -10,27 +10,94 @@ import mq3.platform.playable_multitexture as raster
 import mq3.compat.numeric as numeric
 import std.string as strings
 
+/// Width of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_WIDTH=640.0
+/// Height of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_HEIGHT=480.0
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Bigchar font metric controlling height in virtual UI coordinates.
 const BIGCHAR_HEIGHT=16
+/// Width of a giant-font character in virtual screen coordinates.
 const GIANT_WIDTH=32
+/// Number of glyph columns in the character-image atlas.
 const ATLAS_COLUMNS=16
+/// Number of glyph rows in the character-image atlas.
 const ATLAS_ROWS=16
+/// Default virtual-screen Y coordinate for centered announcements.
 const CENTER_DEFAULT_Y=144
+/// Default lifetime in milliseconds of a centered announcement.
 const CENTER_DEFAULT_DURATION=3000
+/// Duration in milliseconds of the standard CGame presentation fade.
 const FADE_TIME=200
 
 /// Stores base Quake III match display media record, including `imageName`, `image`, `slot`, `glyphBatch`.
-struct Media imageName image slot glyphBatch end struct
+struct Media
+  /// Resolved font-atlas image path used to draw match messages and score overlays.
+  imageName
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+  /// When constructing this record, `load` supplies an absent (`void`) value for this member. Used by
+  /// `beginGlyphBatch` and `reserveGlyphBatch` during subsequent processing.
+  glyphBatch
+end struct
 /// Stores base Quake III match display center print record, including `text`, `startedAt`, `y`, `charWidth`, `duration`, `lines`.
-struct CenterPrint text startedAt y charWidth duration lines end struct
+struct CenterPrint
+  /// Multiline center-print message retained with its start time, screen position, and display
+  /// duration.
+  text
+  /// When constructing this record, `centerPrint` supplies `startedAt` for this member.
+  startedAt
+  /// Vertical coordinate of the center-print message in the virtual HUD layout.
+  y
+  /// When constructing this record, `centerPrint` supplies `charWidth` for this member.
+  charWidth
+  /// When constructing this record, `centerPrint` supplies `duration` for this member.
+  duration
+  /// When constructing this record, `centerPrint` supplies `lineCount(text)` for this member.
+  lines
+end struct
 /// Stores base Quake III match display countdown record, including `text`, `charWidth`, `charHeight`, `second`.
-struct Countdown text charWidth charHeight second end struct
+struct Countdown
+  /// Preformatted warmup label displaying how many seconds remain before the match starts.
+  text
+  /// When constructing this record, `countdown` supplies `charWidth` for this member.
+  charWidth
+  /// When constructing this record, `countdown` supplies `numeric.trunc32(charWidth*1.5)` for this
+  /// member.
+  charHeight
+  /// When constructing this record, `countdown` supplies `second` for this member.
+  second
+end struct
 /// Stores base Quake III match display score row record, including `name`, `score`, `deaths`, `localPlayer`, `red`, `green` and additional values.
-struct ScoreRow name score deaths localPlayer red green blue end struct
+struct ScoreRow
+  /// Player display name printed in this match-score row.
+  name
+  /// Player score displayed in this match scoreboard row.
+  score
+  /// When constructing this record, `scoreRows` supplies `playerDeaths` for this member.
+  deaths
+  /// When constructing this record, `scoreRows` supplies `true` for this member.
+  localPlayer
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 /// Stores base Quake III match display point record, including `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal coordinate of a match-message font vertex in the target window.
+  x
+  /// Vertical coordinate of a match-message font vertex in the target window.
+  y
+  /// When constructing this record, `point` supplies `0.001` for this member.
+  depth
+end struct
 
 /// Creates the base Quake III match display error `7583` with diagnostic text `"Baseq3 match display: "+message`.
 /// @param message Argument 2 of `error`; passed as `"Baseq3 match display: "+message`.

@@ -5,24 +5,80 @@ package mq3.renderer.bsp_render_data
 import mq3.compat.numeric as n
 import std.ds.list as lists
 
+/// BSP surface type for a planar polygon face.
 const MST_PLANAR = 1
+/// BSP surface type for a curved control-point patch.
 const MST_PATCH = 2
+/// BSP surface type for an indexed triangle mesh.
 const MST_TRIANGLE_SOUP = 3
+/// Default geometric error threshold used when tessellating BSP patches.
 const DEFAULT_PATCH_ERROR = 4.0
+/// Largest tessellated patch-grid dimension accepted by the renderer.
 const MAX_GRID_SIZE = 65
+/// Largest control-point patch dimension accepted from BSP data.
 const MAX_PATCH_SIZE = 32
+/// Byte stride of one vertex record in the BSP vertex lump.
 const VERTEX_STRIDE = 44
+/// Byte stride of one face record in the BSP surface lump.
 const FACE_STRIDE = 104
+/// Width in pixels of one BSP lightmap image.
 const LIGHTMAP_WIDTH = 128
+/// Height in pixels of one BSP lightmap image.
 const LIGHTMAP_HEIGHT = 128
+/// Number of RGB bytes stored for one BSP lightmap image.
 const LIGHTMAP_RGB_SIZE = 49152
 
 /// Data record for `mq3.renderer.bsp_render_data.RenderVertex`; groups `position`, `baseUV`, `lightmapUV`, `normal`, `color`, `entityColor`, and 3 further fields.
-struct RenderVertex position baseUV lightmapUV normal color entityColor entityTexCoord shaderTime sourceIndex end struct
+struct RenderVertex
+  /// Three-dimensional position of the vertex.
+  position
+  /// Base-material texture coordinates of the BSP vertex.
+  baseUV
+  /// Baked-lightmap texture coordinates of the BSP vertex.
+  lightmapUV
+  /// BSP surface vertex normal retained when constructing drawable world triangles.
+  normal
+  /// BSP vertex color supplied to the world material's color generators.
+  color
+  /// Entity-supplied color used by entity-driven shader stages.
+  entityColor
+  /// Entity-supplied texture offset used by texture-coordinate modifiers.
+  entityTexCoord
+  /// Time offset in seconds subtracted from the view time for entity shader effects.
+  shaderTime
+  /// Original vertex index retained for caching and deduplication.
+  sourceIndex
+end struct
 /// Data record for `mq3.renderer.bsp_render_data.RenderTriangle`; groups `vertices`, `textureIndex`, `lightmapIndex`, `fogIndex`, `faceIndex`, `triangleIndex`.
-struct RenderTriangle vertices textureIndex lightmapIndex fogIndex faceIndex triangleIndex end struct
+struct RenderTriangle
+  /// Three world vertex records carrying the triangle's positions, lighting, and material coordinates.
+  vertices
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Index or special selector identifying the surface's baked lightmap.
+  lightmapIndex
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Index of the source BSP face.
+  faceIndex
+  /// Index of the triangle within its source face or surface.
+  triangleIndex
+end struct
 /// Data record for `mq3.renderer.bsp_render_data.RenderData`; groups `triangles`, `surfaceCount`, `triangleCount`, `skippedSurfaceCount`, `truncated`, `patchSurfaceCount`.
-struct RenderData triangles surfaceCount triangleCount skippedSurfaceCount truncated patchSurfaceCount end struct
+struct RenderData
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Number of source surfaces represented by this result.
+  surfaceCount
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+  /// Number of surfaces omitted while constructing render data.
+  skippedSurfaceCount
+  /// Whether a configured limit prevented retaining every source primitive.
+  truncated
+  /// Number of curved patch surfaces represented by the render data.
+  patchSurfaceCount
+end struct
 
 /// Creates error `7410` with message `"BSP render data: "+text`.
 /// @param text Input used in the result expression `error(7410,"BSP render data: "+text)`.

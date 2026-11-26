@@ -6,22 +6,103 @@ package mq3.audio.snd_mem_runtime
 import mq3.audio.snd_mem_resample as resample
 import std.array as arrays
 
+/// Number of signed 16-bit mono samples stored in one sound-memory chunk.
 const SND_CHUNK_SIZE=1024
+/// Storage budget in bytes charged for each managed sound buffer.
 const BUFFER_BYTES=2052
+/// Default soundMegs setting used to calculate the sound-buffer pool size.
 const DEFAULT_SOUND_MEGS=8
 
 /// Buffer record for audio.snd_mem_runtime, containing `samples`, `next`.
-struct Buffer samples next end struct
+struct Buffer
+  /// Little-endian signed 16-bit mono PCM bytes stored in this sound-memory chunk.
+  samples
+  /// Next buffer in the free list or loaded sound chain.
+  next
+end struct
 /// Sfx record for audio.snd_mem_runtime, containing `soundName`, `soundCompressed`, `soundCompressionMethod`, `soundData`, `soundLength`, `lastTimeUsed`.
-struct Sfx soundName soundCompressed soundCompressionMethod soundData soundLength lastTimeUsed end struct
+struct Sfx
+  /// Quake asset path identifying the registered sound.
+  soundName
+  /// True when sound data is stored using a compressed representation.
+  soundCompressed
+  /// Compression-method identifier used to decode the sound buffers.
+  soundCompressionMethod
+  /// Head of the sample-buffer chain or loaded sample data for the sound.
+  soundData
+  /// Length of the sound in mono sample positions.
+  soundLength
+  /// Last-use timestamp used when selecting an old sound for eviction.
+  lastTimeUsed
+end struct
 /// WavInfo record for audio.snd_mem_runtime, containing `format`, `channels`, `rate`, `width`, `samples`, `dataofs`.
-struct WavInfo format channels rate width samples dataofs end struct
+struct WavInfo
+  /// RIFF WAVE format tag; uncompressed integer PCM uses tag one.
+  format
+  /// Number of interleaved source channels.
+  channels
+  /// Source sample rate in hertz.
+  rate
+  /// Bytes used to store one sample in one source channel.
+  width
+  /// Number of mono samples described by the WAVE data.
+  samples
+  /// Byte offset of the PCM payload from the start of the WAVE file.
+  dataofs
+end struct
 /// ChunkReader record for audio.snd_mem_runtime, containing `data`, `dataPos`, `iffEnd`, `lastChunk`, `iffData`, `chunkLen`.
-struct ChunkReader data dataPos iffEnd lastChunk iffData chunkLen end struct
+struct ChunkReader
+  /// Complete WAVE file bytes being parsed.
+  data
+  /// Current byte position while scanning RIFF chunks.
+  dataPos
+  /// Exclusive byte boundary of the enclosing RIFF payload.
+  iffEnd
+  /// Byte position of the most recently selected RIFF chunk.
+  lastChunk
+  /// Byte position of the currently selected chunk payload.
+  iffData
+  /// Length of the current RIFF chunk payload in bytes.
+  chunkLen
+end struct
 /// Services record for audio.snd_mem_runtime, containing `readFileFn`, `freeFileFn`, `millisecondsFn`, `adpcmEncodeFn`, `freeOldestFn`, `diagnosticFn`, and 1 further fields.
-struct Services readFileFn freeFileFn millisecondsFn adpcmEncodeFn freeOldestFn diagnosticFn context end struct
+struct Services
+  /// Host callback that reads the bytes of a sound asset through the host file interface.
+  readFileFn
+  /// Host callback that releases file data obtained through the host loading interface.
+  freeFileFn
+  /// Host callback that returns the host clock in milliseconds for cache aging.
+  millisecondsFn
+  /// Host callback that encodes loaded mono samples into the host ADPCM representation.
+  adpcmEncodeFn
+  /// Host callback that evicts the oldest eligible sound to release sample-buffer memory.
+  freeOldestFn
+  /// Host callback that reports an audio loading, allocation, or playback diagnostic to the host.
+  diagnosticFn
+  /// Opaque host data passed to the configured audio service callbacks.
+  context
+end struct
 /// State record for audio.snd_mem_runtime, containing `buffers`, `freelist`, `inUse`, `totalInUse`, `scratch`, `scratchPointer`, and 3 further fields.
-struct State buffers freelist inUse totalInUse scratch scratchPointer scratchIndex dmaSpeed services end struct
+struct State
+  /// All managed sound-buffer allocations.
+  buffers
+  /// List of sound buffers available for allocation.
+  freelist
+  /// Remaining free sound-buffer storage budget in bytes.
+  inUse
+  /// Cumulative bytes handed out by the sound-buffer allocator.
+  totalInUse
+  /// Temporary sample storage used while loading or decoding a sound.
+  scratch
+  /// Cached source-buffer reference associated with the scratch decoder state.
+  scratchPointer
+  /// Cached source-block index associated with the scratch decoder state.
+  scratchIndex
+  /// Target DMA sample rate in hertz used when loading sounds.
+  dmaSpeed
+  /// Host callbacks for loading assets, managing audio devices, and reporting diagnostics.
+  services
+end struct
 
 /// Create `mq3.audio.snd_mem_runtime.Services` with readFileFn=void; freeFileFn=void; millisecondsFn=void; adpcmEncodeFn=void; freeOldestFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void) end function

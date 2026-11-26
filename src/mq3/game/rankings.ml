@@ -6,141 +6,360 @@ package mq3.game.rankings
 import mq3.compat.numeric as n
 import mq3.game.game_internal_headers as internal
 
+/// Ranking protocol value selecting status new.
 const QGR_STATUS_NEW=0
+/// Ranking protocol value selecting status spectator.
 const QGR_STATUS_SPECTATOR=1
+/// Ranking protocol value selecting status active.
 const QGR_STATUS_ACTIVE=2
+/// Ranking protocol value selecting status pending.
 const QGR_STATUS_PENDING=4
+/// Ranking protocol value selecting status no user.
 const QGR_STATUS_NO_USER=6
+/// Ranking protocol value selecting status bad password.
 const QGR_STATUS_BAD_PASSWORD=7
+/// Ranking protocol value selecting status no membership.
 const QGR_STATUS_NO_MEMBERSHIP=9
+/// Ranking protocol value selecting status timeout.
 const QGR_STATUS_TIMEOUT=10
+/// Ranking protocol value selecting status invaliduser.
 const QGR_STATUS_INVALIDUSER=11
+/// Ranking protocol value selecting status error.
 const QGR_STATUS_ERROR=12
+/// Team identifier selecting the spectator team/category.
 const TEAM_SPECTATOR=3
+/// Spectator-state identifier selecting free.
 const SPECTATOR_FREE=1
+/// Server entity-flag bit controlling bot.
 const SVF_BOT=8
+/// Reserved entity number representing the BSP world.
 const ENTITYNUM_WORLD=1022
+/// Game-mode identifier selecting team rules.
 const GT_TEAM=3
 
+/// Weapon identifier selecting gauntlet.
 const WP_GAUNTLET=1
+/// Weapon identifier selecting machine gun.
 const WP_MACHINEGUN=2
+/// Weapon identifier selecting shotgun.
 const WP_SHOTGUN=3
+/// Weapon identifier selecting grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Weapon identifier selecting rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Weapon identifier selecting lightning gun.
 const WP_LIGHTNING=6
+/// Weapon identifier selecting railgun.
 const WP_RAILGUN=7
+/// Weapon identifier selecting plasma gun.
 const WP_PLASMAGUN=8
+/// Weapon identifier selecting BFG.
 const WP_BFG=9
+/// Weapon identifier selecting grappling hook.
 const WP_GRAPPLING_HOOK=10
+/// Weapon identifier selecting nailgun.
 const WP_NAILGUN=11
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER=12
+/// Weapon identifier selecting chaingun.
 const WP_CHAINGUN=13
+/// Powerup-table index identifying quad.
 const PW_QUAD=1
+/// Powerup-table index identifying battlesuit.
 const PW_BATTLESUIT=2
+/// Powerup-table index identifying haste.
 const PW_HASTE=3
+/// Powerup-table index identifying invis.
 const PW_INVIS=4
+/// Powerup-table index identifying regen.
 const PW_REGEN=5
+/// Powerup-table index identifying flight.
 const PW_FLIGHT=6
+/// Powerup-table index identifying redflag.
 const PW_REDFLAG=7
+/// Powerup-table index identifying blueflag.
 const PW_BLUEFLAG=8
+/// Powerup-table index identifying scout.
 const PW_SCOUT=10
+/// Powerup-table index identifying guard.
 const PW_GUARD=11
+/// Powerup-table index identifying doubler.
 const PW_DOUBLER=12
+/// Powerup-table index identifying ammoregen.
 const PW_AMMOREGEN=13
+/// Holdable-item identifier selecting teleporter.
 const HI_TELEPORTER=1
+/// Holdable-item identifier selecting medkit.
 const HI_MEDKIT=2
+/// Holdable-item identifier selecting kamikaze.
 const HI_KAMIKAZE=3
+/// Holdable-item identifier selecting portal.
 const HI_PORTAL=4
+/// Holdable-item identifier selecting invulnerability.
 const HI_INVULNERABILITY=5
+/// Network entity-flag bit indicating award excellent.
 const EF_AWARD_EXCELLENT=8
+/// Network entity-flag bit indicating award impressive.
 const EF_AWARD_IMPRESSIVE=32768
 
+/// Cause-of-death identifier attributing damage or a kill to unknown.
 const MOD_UNKNOWN=0
+/// Cause-of-death identifier attributing damage or a kill to shotgun.
 const MOD_SHOTGUN=1
+/// Cause-of-death identifier attributing damage or a kill to gauntlet.
 const MOD_GAUNTLET=2
+/// Cause-of-death identifier attributing damage or a kill to machine gun.
 const MOD_MACHINEGUN=3
+/// Cause-of-death identifier attributing damage or a kill to grenade.
 const MOD_GRENADE=4
+/// Cause-of-death identifier attributing damage or a kill to grenade splash.
 const MOD_GRENADE_SPLASH=5
+/// Cause-of-death identifier attributing damage or a kill to rocket.
 const MOD_ROCKET=6
+/// Cause-of-death identifier attributing damage or a kill to rocket splash.
 const MOD_ROCKET_SPLASH=7
+/// Cause-of-death identifier attributing damage or a kill to plasma.
 const MOD_PLASMA=8
+/// Cause-of-death identifier attributing damage or a kill to plasma splash.
 const MOD_PLASMA_SPLASH=9
+/// Cause-of-death identifier attributing damage or a kill to railgun.
 const MOD_RAILGUN=10
+/// Cause-of-death identifier attributing damage or a kill to lightning gun.
 const MOD_LIGHTNING=11
+/// Cause-of-death identifier attributing damage or a kill to BFG.
 const MOD_BFG=12
+/// Cause-of-death identifier attributing damage or a kill to BFG splash.
 const MOD_BFG_SPLASH=13
+/// Cause-of-death identifier attributing damage or a kill to water.
 const MOD_WATER=14
+/// Cause-of-death identifier attributing damage or a kill to slime.
 const MOD_SLIME=15
+/// Cause-of-death identifier attributing damage or a kill to lava.
 const MOD_LAVA=16
+/// Cause-of-death identifier attributing damage or a kill to crush.
 const MOD_CRUSH=17
+/// Cause-of-death identifier attributing damage or a kill to telefrag.
 const MOD_TELEFRAG=18
+/// Cause-of-death identifier attributing damage or a kill to falling.
 const MOD_FALLING=19
+/// Cause-of-death identifier attributing damage or a kill to suicide.
 const MOD_SUICIDE=20
+/// Cause-of-death identifier attributing damage or a kill to trigger hurt.
 const MOD_TRIGGER_HURT=22
+/// Cause-of-death identifier attributing damage or a kill to grapple.
 const MOD_GRAPPLE=28
 
+/// Ranking-report key for the match rating.
 const QGR_KEY_MATCH_RATING=internal.QGR_KEY_MATCH_RATING
+/// Ranking-report key for the pairing of participating players.
 const QGR_KEY_PLAYED_WITH=internal.QGR_KEY_PLAYED_WITH
+/// Ranking-report key for the server host name.
 const QGR_KEY_HOSTNAME=internal.QGR_KEY_HOSTNAME
+/// Ranking-report key for the played map.
 const QGR_KEY_MAP=internal.QGR_KEY_MAP
+/// Ranking-report key for the game modification.
 const QGR_KEY_MOD=internal.QGR_KEY_MOD
+/// Ranking-report key for the selected game mode.
 const QGR_KEY_GAMETYPE=internal.QGR_KEY_GAMETYPE
+/// Ranking-report key used to identify frag limit statistics.
 const QGR_KEY_FRAGLIMIT=internal.QGR_KEY_FRAGLIMIT
+/// Ranking-report key used to identify time limit statistics.
 const QGR_KEY_TIMELIMIT=internal.QGR_KEY_TIMELIMIT
+/// Ranking-report key used to identify client limit statistics.
 const QGR_KEY_MAXCLIENTS=internal.QGR_KEY_MAXCLIENTS
+/// Ranking-report key used to identify maximum network rate statistics.
 const QGR_KEY_MAXRATE=internal.QGR_KEY_MAXRATE
+/// Ranking-report key used to identify minimum ping statistics.
 const QGR_KEY_MINPING=internal.QGR_KEY_MINPING
+/// Ranking-report key used to identify maximum ping statistics.
 const QGR_KEY_MAXPING=internal.QGR_KEY_MAXPING
+/// Ranking-report key used to identify dedicated statistics.
 const QGR_KEY_DEDICATED=internal.QGR_KEY_DEDICATED
+/// Ranking-report key used to identify version statistics.
 const QGR_KEY_VERSION=internal.QGR_KEY_VERSION
+/// Ranking-report key for kills scored.
 const QGR_KEY_FRAG=internal.QGR_KEY_FRAG
+/// Ranking-report key for self-inflicted deaths.
 const QGR_KEY_SUICIDE=internal.QGR_KEY_SUICIDE
+/// Ranking-report key for shots fired.
 const QGR_KEY_SHOT_FIRED=internal.QGR_KEY_SHOT_FIRED
+/// Ranking-report key for hits delivered.
 const QGR_KEY_HIT_GIVEN=internal.QGR_KEY_HIT_GIVEN
+/// Ranking-report key for hits received.
 const QGR_KEY_HIT_TAKEN=internal.QGR_KEY_HIT_TAKEN
+/// Ranking-report key for damage dealt.
 const QGR_KEY_DAMAGE_GIVEN=internal.QGR_KEY_DAMAGE_GIVEN
+/// Ranking-report key for damage received.
 const QGR_KEY_DAMAGE_TAKEN=internal.QGR_KEY_DAMAGE_TAKEN
+/// Ranking-report key for splash damage dealt.
 const QGR_KEY_SPLASH_GIVEN=internal.QGR_KEY_SPLASH_GIVEN
+/// Ranking-report key for splash damage received.
 const QGR_KEY_SPLASH_TAKEN=internal.QGR_KEY_SPLASH_TAKEN
+/// Ranking-report key for weapon pickups.
 const QGR_KEY_PICKUP_WEAPON=internal.QGR_KEY_PICKUP_WEAPON
+/// Ranking-report key for time spent using the tracked item or weapon.
 const QGR_KEY_TIME=internal.QGR_KEY_TIME
+/// Ranking-report key used to identify boxes statistics.
 const QGR_KEY_BOXES=internal.QGR_KEY_BOXES
+/// Ranking-report key used to identify rounds statistics.
 const QGR_KEY_ROUNDS=internal.QGR_KEY_ROUNDS
+/// Ranking-report key used to identify health statistics.
 const QGR_KEY_HEALTH=internal.QGR_KEY_HEALTH
+/// Ranking-report key used to identify health total statistics.
 const QGR_KEY_HEALTH_TOTAL=internal.QGR_KEY_HEALTH_TOTAL
+/// Ranking-report key used to identify armor statistics.
 const QGR_KEY_ARMOR=internal.QGR_KEY_ARMOR
+/// Ranking-report key used to identify armor total statistics.
 const QGR_KEY_ARMOR_TOTAL=internal.QGR_KEY_ARMOR_TOTAL
+/// Ranking-report key used to identify powerup statistics.
 const QGR_KEY_POWERUP=internal.QGR_KEY_POWERUP
+/// Ranking-report key used to identify medkit statistics.
 const QGR_KEY_MEDKIT=internal.QGR_KEY_MEDKIT
+/// Ranking-report key used to identify medkit use statistics.
 const QGR_KEY_MEDKIT_USE=internal.QGR_KEY_MEDKIT_USE
+/// Ranking-report key used to identify teleporter statistics.
 const QGR_KEY_TELEPORTER=internal.QGR_KEY_TELEPORTER
+/// Ranking-report key used to identify teleporter use statistics.
 const QGR_KEY_TELEPORTER_USE=internal.QGR_KEY_TELEPORTER_USE
+/// Ranking-report key used to identify kamikaze statistics.
 const QGR_KEY_KAMIKAZE=internal.QGR_KEY_KAMIKAZE
+/// Ranking-report key used to identify kamikaze use statistics.
 const QGR_KEY_KAMIKAZE_USE=internal.QGR_KEY_KAMIKAZE_USE
+/// Ranking-report key used to identify portal statistics.
 const QGR_KEY_PORTAL=internal.QGR_KEY_PORTAL
+/// Ranking-report key used to identify portal use statistics.
 const QGR_KEY_PORTAL_USE=internal.QGR_KEY_PORTAL_USE
+/// Ranking-report key used to identify invulnerability statistics.
 const QGR_KEY_INVULNERABILITY=internal.QGR_KEY_INVULNERABILITY
+/// Ranking-report key used to identify invulnerability use statistics.
 const QGR_KEY_INVULNERABILITY_USE=internal.QGR_KEY_INVULNERABILITY_USE
+/// Ranking-report key used to identify hazard death statistics.
 const QGR_KEY_HAZARD_DEATH=internal.QGR_KEY_HAZARD_DEATH
+/// Ranking-report key used to identify teammate frag statistics.
 const QGR_KEY_TEAMMATE_FRAG=internal.QGR_KEY_TEAMMATE_FRAG
+/// Ranking-report key used to identify teammate hit given statistics.
 const QGR_KEY_TEAMMATE_HIT_GIVEN=internal.QGR_KEY_TEAMMATE_HIT_GIVEN
+/// Ranking-report key used to identify teammate hit taken statistics.
 const QGR_KEY_TEAMMATE_HIT_TAKEN=internal.QGR_KEY_TEAMMATE_HIT_TAKEN
+/// Ranking-report key used to identify teammate damage given statistics.
 const QGR_KEY_TEAMMATE_DAMAGE_GIVEN=internal.QGR_KEY_TEAMMATE_DAMAGE_GIVEN
+/// Ranking-report key used to identify teammate damage taken statistics.
 const QGR_KEY_TEAMMATE_DAMAGE_TAKEN=internal.QGR_KEY_TEAMMATE_DAMAGE_TAKEN
+/// Ranking-report key used to identify teammate splash given statistics.
 const QGR_KEY_TEAMMATE_SPLASH_GIVEN=internal.QGR_KEY_TEAMMATE_SPLASH_GIVEN
+/// Ranking-report key used to identify teammate splash taken statistics.
 const QGR_KEY_TEAMMATE_SPLASH_TAKEN=internal.QGR_KEY_TEAMMATE_SPLASH_TAKEN
+/// Ranking-report key used to identify team name statistics.
 const QGR_KEY_TEAM_NAME=internal.QGR_KEY_TEAM_NAME
+/// Ranking-report key used to identify flag pickup statistics.
 const QGR_KEY_FLAG_PICKUP=internal.QGR_KEY_FLAG_PICKUP
+/// Ranking-report key used to identify flag capture statistics.
 const QGR_KEY_FLAG_CAPTURE=internal.QGR_KEY_FLAG_CAPTURE
 
 /// `Client` record for rankings, containing `present`, `inuse`, `bot`, `name` and `team` and related fields.
-struct Client present inuse bot name team status spectatorState enterTime weaponChangeTime matchRating matchTime end struct
+struct Client
+  /// Nonzero when the client is present in the ranking/session snapshot.
+  present
+  /// Nonzero when this entity, client, or bot record currently represents a live allocated object.
+  inuse
+  /// Nonzero when the represented client is an AI-controlled bot.
+  bot
+  /// Player name used by ranking and administrative messages.
+  name
+  /// Team assignment associated with the client, bot, or action.
+  team
+  /// Current QGR_STATUS_* state returned by the ranking service.
+  status
+  /// Spectator mode selected from the SPECTATOR_* constants.
+  spectatorState
+  /// Game timestamp at which the client entered play.
+  enterTime
+  /// Timestamp of the most recent weapon change.
+  weaponChangeTime
+  /// Rating value retained for the current player/match report.
+  matchRating
+  /// Time value attributed to the current match in ranking reports.
+  matchTime
+end struct
 /// `Report` record for rankings, containing `stringValue`, `index1`, `index2`, `key` and `value` and related fields.
-struct Report stringValue index1 index2 key value text accum end struct
+struct Report
+  /// Nonzero when the ranking report carries text instead of an integer.
+  stringValue
+  /// Primary player/client index associated with the ranking report.
+  index1
+  /// Secondary player/client index associated with the ranking report.
+  index2
+  /// QGR_KEY_* identifier naming the reported ranking metric.
+  key
+  /// Integer ranking value supplied when stringValue is false.
+  value
+  /// Text ranking value supplied when stringValue is true.
+  text
+  /// Nonzero when the ranking value accumulates instead of replacing its predecessor.
+  accum
+end struct
 /// `Action` record for rankings, containing `kind`, `client`, `text` and `value`.
-struct Action kind client text value end struct
+struct Action
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the recorded ranking-service action.
+  client
+  /// Text payload supplied to the recorded command, chat, or host action.
+  text
+  /// Numeric/result payload supplied to the recorded host action.
+  value
+end struct
 /// `State` record for rankings, containing `warmupTime`, `time`, `framenum`, `maxclients` and `gametype` and related fields.
-struct State warmupTime time framenum maxclients gametype fraglimit timelimit intermissiontime clients reports actions cvars lastFrame lastSelf lastAttacker lastMod initialized active reportIntFn reportStrFn statusFn rankBeginFn rankPollFn rankResetFn end struct
+struct State
+  /// Warmup timing value supplied to ranking/match state.
+  warmupTime
+  /// Current server time supplied to ranking calculations.
+  time
+  /// Game frames processed since level initialization.
+  framenum
+  /// Configured number of client slots active in this game state.
+  maxclients
+  /// GT_* game-mode identifier used for classifying the active match in ranking reports.
+  gametype
+  /// Configured score/frag threshold that ends the match.
+  fraglimit
+  /// Configured match time limit in minutes.
+  timelimit
+  /// Timestamp at which the intermission began.
+  intermissiontime
+  /// Client records indexed by client slot.
+  clients
+  /// Ranking reports queued for or emitted to the ranking service.
+  reports
+  /// Recorded host actions emitted by bot decision logic.
+  actions
+  /// Console-variable registry or pending console-variable updates used by the module.
+  cvars
+  /// Most recent frame number processed by ranking/reporting state.
+  lastFrame
+  /// Victim/client identifier retained from the last reported combat event.
+  lastSelf
+  /// Attacker/client identifier retained from the last reported combat event.
+  lastAttacker
+  /// Damage-cause identifier retained from the last reported combat event.
+  lastMod
+  /// Nonzero after the game subsystem completes initialization.
+  initialized
+  /// Nonzero while the ranking service is active for this match.
+  active
+  /// Injected callback for report int; invoked through the State service/state record.
+  reportIntFn
+  /// Injected callback for report str; invoked through the State service/state record.
+  reportStrFn
+  /// Injected callback for status; invoked through the State service/state record.
+  statusFn
+  /// Injected callback for rank begin; invoked through the State service/state record.
+  rankBeginFn
+  /// Injected callback for rank poll; invoked through the State service/state record.
+  rankPollFn
+  /// Injected callback for rank reset; invoked through the State service/state record.
+  rankResetFn
+end struct
 
 /// Create a `mq3.game.rankings.Client` record, initializing `present` as `true`, `inuse` as `true` and `team` as `TEAM_SPECTATOR`.
 function client() return Client(true,true,false,"",TEAM_SPECTATOR,QGR_STATUS_NEW,SPECTATOR_FREE,0,0,0,0) end function

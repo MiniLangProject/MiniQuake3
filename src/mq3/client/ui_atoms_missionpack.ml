@@ -9,21 +9,118 @@ import mq3.compat.textnumbers as numbers
 import mq3.shared.info as info
 import std.string as strings
 
+/// Console execution mode that appends text to the pending command buffer.
 const EXEC_APPEND=2
+/// Virtual-filesystem open mode requesting read access.
 const FS_READ=0
+/// Virtual-filesystem open mode requesting write access.
 const FS_WRITE=1
+/// Server configuration-string index for serverinfo; shared by the client and game protocol.
 const CS_SERVERINFO=0
+/// Size in bytes of the native postgame-information record used by the compatibility ABI.
 const POSTGAME_INFO_SIZE=64
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Bigchar font metric controlling height in virtual UI coordinates.
 const BIGCHAR_HEIGHT=16
+/// Maximum length of a protocol, command, or configuration string.
 const MAX_STRING_CHARS=1024
 
 /// Stores UI atoms missionpack post game info record, including `score`, `redScore`, `blueScore`, `perfects`, `accuracy`, `impressives` and additional values.
-struct PostGameInfo score redScore blueScore perfects accuracy impressives excellents defends assists gauntlets captures time timeBonus shutoutBonus skillBonus baseScore end struct
+struct PostGameInfo
+  /// Final postgame score: base score plus shutout and time bonuses, multiplied by the skill bonus.
+  score
+  /// Red team's final score used in the postgame result text and victory or shutout checks.
+  redScore
+  /// Blue team's final score used in the postgame result text and victory or shutout checks.
+  blueScore
+  /// Perfect-game result count published to the postgame score cvars.
+  perfects
+  /// Percentage of successful weapon hits reported in the scoreboard data.
+  accuracy
+  /// Impressive-award count stored in the postgame score record and published to UI cvars.
+  impressives
+  /// Excellent-award count stored in the postgame score record and published to UI cvars.
+  excellents
+  /// Defense-award count stored in the postgame score record and published to UI cvars.
+  defends
+  /// Assist-award count stored in the postgame score record and published to UI cvars.
+  assists
+  /// Gauntlet-award count stored in the postgame score record and published to UI cvars.
+  gauntlets
+  /// Number of flag captures credited to this player.
+  captures
+  /// Completed match duration in seconds, computed from the match end time and ui_matchStartTime.
+  time
+  /// Bonus points for finishing before the map's target completion time, at ten points per remaining
+  /// second.
+  timeBonus
+  /// Bonus points granted when the red team wins while the blue team has no positive score.
+  shutoutBonus
+  /// Positive difficulty multiplier derived from the single-player skill setting and applied to the
+  /// postgame subtotal.
+  skillBonus
+  /// Unmodified match score parsed from the postgame command before time, shutout, and skill bonuses
+  /// are applied.
+  baseScore
+end struct
 /// Stores UI atoms missionpack queued engine action, including `kind`, `arguments`, `dispatched`.
-struct Action kind arguments dispatched end struct
+struct Action
+  /// Operation selector telling the host how to interpret a request emitted while updating postgame
+  /// cvars, cached score files, and Missionpack UI state.
+  kind
+  /// When constructing this record, `internal` supplies `arguments` for this member.
+  arguments
+  /// True when this request is marked for native dispatch while updating postgame cvars, cached score
+  /// files, and Missionpack UI state; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI atoms missionpack state, including `syscalls`, `xscale`, `yscale`, `realtime`, `frametime`, `cursorx` and additional values.
-struct State syscalls xscale yscale realtime frametime cursorx cursory whiteShader demoAvailable newHighScoreTime newBestTime timeToBeat actions internalFn internalContext newUI end struct
+struct State
+  /// When constructing this record, `create` supplies `syscalls` for this member. Used by `cvarSet` and
+  /// `Com_Error` during subsequent processing.
+  syscalls
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by
+  /// `setDisplayContext` and `UI_AdjustFrom640` during subsequent processing.
+  xscale
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by
+  /// `setDisplayContext` and `UI_AdjustFrom640` during subsequent processing.
+  yscale
+  /// Current mission-pack UI clock in milliseconds used for postgame feedback and display deadlines.
+  realtime
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+  /// Horizontal position of the UI pointer in the menu coordinate system.
+  cursorx
+  /// Vertical position of the UI pointer in the menu coordinate system.
+  cursory
+  /// Shader resource selected for white rendering.
+  whiteShader
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `UI_LoadBestScores` during subsequent processing.
+  demoAvailable
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_CalcPostGameStats` during subsequent processing.
+  newHighScoreTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `UI_CalcPostGameStats` during subsequent processing.
+  newBestTime
+  /// When constructing this record, `create` supplies `array(16,0)` for this member. Used by
+  /// `UI_CalcPostGameStats` during subsequent processing.
+  timeToBeat
+  /// Host requests queued while updating postgame cvars, cached score files, and Missionpack UI state,
+  /// retained in request order.
+  actions
+  /// Host callback for the internal operation; an unset callback leaves that host operation
+  /// unavailable.
+  internalFn
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `setInternalHandler` and `internal` during subsequent processing.
+  internalContext
+  /// Compatibility UI-mode flag initialized to false; the present helper paths do not branch on this
+  /// field.
+  newUI
+end struct
 
 /// Creates a `mq3.client.ui_atoms_missionpack.PostGameInfo` record. Initializes the record with the defaults written in this constructor.
 function postGameInfo() return PostGameInfo(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0) end function

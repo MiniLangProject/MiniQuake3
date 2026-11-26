@@ -9,92 +9,245 @@ import mq3.game.bot_ai_headers as aiheaders
 import mq3.compat.numeric as n
 import mq3.shared.math as q
 
+/// Game-mode identifier selecting team rules.
 const GT_TEAM=3
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Weapon identifier selecting gauntlet.
 const WP_GAUNTLET=1
+/// Weapon identifier selecting machine gun.
 const WP_MACHINEGUN=2
+/// Network entity-flag bit indicating teleport bit.
 const EF_TELEPORT_BIT=4
+/// Network entity-flag bit indicating firing.
 const EF_FIRING=0x100
+/// Network entity-flag bit indicating talk.
 const EF_TALK=0x1000
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Bot inventory slot used to read or update armor.
 const INVENTORY_ARMOR=headers.INVENTORY_ARMOR
+/// Bot inventory slot used to read or update shotgun.
 const INVENTORY_SHOTGUN=headers.INVENTORY_SHOTGUN
+/// Bot inventory slot used to read or update grenade launcher.
 const INVENTORY_GRENADELAUNCHER=headers.INVENTORY_GRENADELAUNCHER
+/// Bot inventory slot used to read or update rocket launcher.
 const INVENTORY_ROCKETLAUNCHER=headers.INVENTORY_ROCKETLAUNCHER
+/// Bot inventory slot used to read or update lightning gun.
 const INVENTORY_LIGHTNING=headers.INVENTORY_LIGHTNING
+/// Bot inventory slot used to read or update railgun.
 const INVENTORY_RAILGUN=headers.INVENTORY_RAILGUN
+/// Bot inventory slot used to read or update plasma gun.
 const INVENTORY_PLASMAGUN=headers.INVENTORY_PLASMAGUN
+/// Bot inventory slot used to read or update bfg10 k.
 const INVENTORY_BFG10K=headers.INVENTORY_BFG10K
+/// Bot inventory slot used to read or update shells.
 const INVENTORY_SHELLS=headers.INVENTORY_SHELLS
+/// Bot inventory slot used to read or update grenades.
 const INVENTORY_GRENADES=headers.INVENTORY_GRENADES
+/// Bot inventory slot used to read or update cells.
 const INVENTORY_CELLS=headers.INVENTORY_CELLS
+/// Bot inventory slot used to read or update lightningammo.
 const INVENTORY_LIGHTNINGAMMO=headers.INVENTORY_LIGHTNINGAMMO
+/// Bot inventory slot used to read or update rockets.
 const INVENTORY_ROCKETS=headers.INVENTORY_ROCKETS
+/// Bot inventory slot used to read or update slugs.
 const INVENTORY_SLUGS=headers.INVENTORY_SLUGS
+/// Bot inventory slot used to read or update bfgammo.
 const INVENTORY_BFGAMMO=headers.INVENTORY_BFGAMMO
+/// Bot inventory slot used to read or update health.
 const INVENTORY_HEALTH=headers.INVENTORY_HEALTH
+/// Bot inventory slot used to read or update quad.
 const INVENTORY_QUAD=headers.INVENTORY_QUAD
+/// Bot inventory slot used to read or update redflag.
 const INVENTORY_REDFLAG=headers.INVENTORY_REDFLAG
+/// Bot inventory slot used to read or update blueflag.
 const INVENTORY_BLUEFLAG=headers.INVENTORY_BLUEFLAG
+/// Bot inventory slot containing horizontal distance to the selected enemy.
 const ENEMY_HORIZONTAL_DIST=headers.ENEMY_HORIZONTAL_DIST
+/// Bot inventory slot containing the enemy height relative to the bot.
 const ENEMY_HEIGHT=headers.ENEMY_HEIGHT
+/// Bot-character characteristic index for weaponjumping. Definition: tendency to jump using a weapon
+/// float [0, 1].
 const CHARACTERISTIC_WEAPONJUMPING=headers.CHARACTERISTIC_WEAPONJUMPING
+/// Bot-character characteristic index for reactiontime. Definition: reaction time in seconds float [0,
+/// 5].
 const CHARACTERISTIC_REACTIONTIME=headers.CHARACTERISTIC_REACTIONTIME
+/// Bot-character characteristic index for aim accuracy. Definition: accuracy when aiming float [0, 1].
 const CHARACTERISTIC_AIM_ACCURACY=headers.CHARACTERISTIC_AIM_ACCURACY
+/// Bot-character characteristic index controlling aim skill.
 const CHARACTERISTIC_AIM_SKILL=headers.CHARACTERISTIC_AIM_SKILL
+/// Bot-character characteristic index for easy fragger. Definition: tendency to get easy frags float
+/// [0, 1].
 const CHARACTERISTIC_EASY_FRAGGER=headers.CHARACTERISTIC_EASY_FRAGGER
+/// Bot-character characteristic index for alertness. Definition: how alert the bot is (view distance)
+/// float [0, 1].
 const CHARACTERISTIC_ALERTNESS=headers.CHARACTERISTIC_ALERTNESS
+/// Bot-character characteristic index for firethrottle. Definition: how much the bot fires it's weapon
+/// float [0, 1].
 const CHARACTERISTIC_FIRETHROTTLE=headers.CHARACTERISTIC_FIRETHROTTLE
+/// Bot-state flag marking attacked.
 const BFL_ATTACKED=aiheaders.BFL_ATTACKED
+/// Bot weapon flag selecting firereleased.
 const WFL_FIRERELEASED=1
+/// Weapon damage-category bit identifying radial damage.
 const DAMAGETYPE_RADIAL=2
+/// Bot-character characteristic index controlling attack skill.
 const CHARACTERISTIC_ATTACK_SKILL=headers.CHARACTERISTIC_ATTACK_SKILL
+/// Bot-character characteristic index for jumper. Definition: tendency to jump float [0, 1].
 const CHARACTERISTIC_JUMPER=headers.CHARACTERISTIC_JUMPER
+/// Bot-character characteristic index for croucher. Definition: movement tendency to crouch float [0,
+/// 1].
 const CHARACTERISTIC_CROUCHER=headers.CHARACTERISTIC_CROUCHER
+/// Bot movement-type flag selecting walk.
 const MOVE_WALK=1
+/// Bot movement-type flag selecting crouch.
 const MOVE_CROUCH=2
+/// Bot movement-type flag selecting jump.
 const MOVE_JUMP=8
+/// Bot-state flag marking straferight.
 const BFL_STRAFERIGHT=aiheaders.BFL_STRAFERIGHT
 
 /// `EntityInfo` record for bot combat ai, containing `number`, `powerups` and `flags`.
-struct EntityInfo number powerups flags end struct
+struct EntityInfo
+  /// Entity number identifying the tracked game object.
+  number
+  /// Powerup state or expiration values indexed by PW_* identifiers.
+  powerups
+  /// Entity-flag mask supplied by the tracked game or botlib entity state.
+  flags
+end struct
 /// `TargetEntityInfo` record for bot combat ai, containing `number`, `powerups`, `flags`, `valid` and `origin` and related fields.
-struct TargetEntityInfo number powerups flags valid origin angles lastVisOrigin updateTime end struct
+struct TargetEntityInfo
+  /// Entity number identifying the tracked game object.
+  number
+  /// Powerup state or expiration values indexed by PW_* identifiers.
+  powerups
+  /// Entity-flag mask supplied by the tracked game or botlib entity state.
+  flags
+  /// True when the combat-target lookup returned usable entity information.
+  valid
+  /// Reported world-space position of the potential combat target.
+  origin
+  /// Orientation angles used by the entity or movement operation.
+  angles
+  /// Most recent position at which the tracked entity was visible.
+  lastVisOrigin
+  /// Timestamp at which the tracked information was last refreshed.
+  updateTime
+end struct
 /// `Trace` record for bot combat ai, containing `fraction`, `ent`, `endpos` and `startsolid`.
-struct Trace fraction ent endpos startsolid end struct
+struct Trace
+  /// Fraction of the requested trace completed before the first blocking collision.
+  fraction
+  /// Entity number hit by or blocking the spatial query.
+  ent
+  /// Final position reached by the collision trace.
+  endpos
+  /// Nonzero when the requested trace begins inside solid space.
+  startsolid
+end struct
 /// `WeaponInfo` record for bot combat ai, containing `number`, `speed`, `offset`, `vspread` and `hspread` and related fields.
-struct WeaponInfo number speed offset vspread hspread damageType radius damage flags end struct
+struct WeaponInfo
+  /// Weapon identifier associated with these combat characteristics.
+  number
+  /// Movement or travel speed used by this game object.
+  speed
+  /// Vector offset of the projectile launch position relative to the weapon origin.
+  offset
+  /// Vertical spread applied when generating a weapon shot direction.
+  vspread
+  /// Horizontal spread applied when generating a weapon shot direction.
+  hspread
+  /// Weapon damage-category flags describing the attack effect.
+  damageType
+  /// World-space radius used by the weapon or spatial effect.
+  radius
+  /// Damage amount applied by this entity, attack, or operation.
+  damage
+  /// WFL_* flags controlling bot weapon firing behavior.
+  flags
+end struct
 /// `CombatGoal` record for bot combat ai, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs`.
-struct CombatGoal entitynum areanum origin mins maxs end struct
+struct CombatGoal
+  /// Entity number associated with the goal used by bot combat movement.
+  entitynum
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// World-space target position of the goal used by bot combat movement.
+  origin
+  /// Lower local bounding-box corner of the goal used by bot combat movement.
+  mins
+  /// Upper local bounding-box corner of the goal used by bot combat movement.
+  maxs
+end struct
 /// `MoveResult` record for bot combat ai, containing `failure`, `flags`, `weapon`, `movedir` and `idealViewangles`.
-struct MoveResult failure flags weapon movedir idealViewangles end struct
+struct MoveResult
+  /// Nonzero when the bot movement operation could not be completed.
+  failure
+  /// MOVERESULT_* flags describing the result of the bot movement attempt.
+  flags
+  /// Selected or reported weapon identifier.
+  weapon
+  /// Normalized direction along which the entity moves or fires.
+  movedir
+  /// Target viewing angles toward which the bot should turn.
+  idealViewangles
+end struct
 /// `Services` record for bot combat ai, containing `gametype`, `rocketjump`, `intermissiontime`, `floatTimeFn` and `pointContentsFn` and related fields.
 struct Services
+  /// GT_* game-mode identifier used for mode-specific bot combat and team-relationship decisions.
   gametype
+  /// Nonzero when the bot is allowed or instructed to use a rocket jump.
   rocketjump
+  /// Timestamp at which the intermission began.
   intermissiontime
+  /// Injected callback for float time; invoked through the Services service/state record.
   floatTimeFn
+  /// Injected callback for point contents; invoked through the Services service/state record.
   pointContentsFn
+  /// Injected callback for characteristic float; invoked through the Services service/state record.
   characteristicFloatFn
+  /// Injected callback for entity info; invoked through the Services service/state record.
   entityInfoFn
+  /// Configured number of client slots active in this game state.
   maxclients
+  /// Timestamp of the most recently observed teleport.
   lastteleportTime
+  /// Position recorded for the most recently observed teleport.
   lastteleportOrigin
+  /// Injected callback for entity dead; invoked through the Services service/state record.
   entityDeadFn
+  /// Injected callback for same team; invoked through the Services service/state record.
   sameTeamFn
+  /// Injected callback for visible; invoked through the Services service/state record.
   visibleFn
+  /// Injected callback for update battle; invoked through the Services service/state record.
   updateBattleFn
+  /// Injected callback for random; invoked through the Services service/state record.
   randomFn
+  /// Injected callback for trace; invoked through the Services service/state record.
   traceFn
+  /// Injected callback for weapon info; invoked through the Services service/state record.
   weaponInfoFn
+  /// Injected callback for attack; invoked through the Services service/state record.
   attackFn
+  /// Injected callback for predict movement; invoked through the Services service/state record.
   predictMovementFn
+  /// Injected callback for predict visible; invoked through the Services service/state record.
   predictVisibleFn
+  /// Injected callback for setup movement; invoked through the Services service/state record.
   setupMovementFn
+  /// Injected callback for move to goal; invoked through the Services service/state record.
   moveToGoalFn
+  /// Injected callback for move direction; invoked through the Services service/state record.
   moveDirectionFn
+  /// Opaque caller-supplied context available to bot combat visibility, weapon, attack, and movement
+  /// callbacks.
   context
 end struct
 

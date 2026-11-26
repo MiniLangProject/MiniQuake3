@@ -8,17 +8,112 @@ import mq3.audio.snd_loop_channels as loops
 import mq3.audio.snd_raw_stream as raw
 import mq3.compat.numeric as n
 
+/// Number of game-entity slots whose origins can drive spatial sounds.
 const MAX_GENTITIES=1024
+/// Maximum number of registered sound-effect descriptors.
 const MAX_SFX=4096
+/// Maximum length of a Quake asset path in the sound registry.
 const MAX_QPATH=64
 /// Sfx record for audio.snd_dma_runtime, containing `handle`, `soundName`, `soundLength`, `soundData`, `defaultSound`, `inMemory`, and 2 further fields.
-struct Sfx handle soundName soundLength soundData defaultSound inMemory soundCompressed lastTimeUsed end struct
+struct Sfx
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// Quake asset path identifying the registered sound.
+  soundName
+  /// Length of the sound in mono sample positions.
+  soundLength
+  /// Head of the sample-buffer chain or loaded sample data for the sound.
+  soundData
+  /// True when a fallback sound substitutes for an asset that could not be loaded.
+  defaultSound
+  /// True when the sound sample data is currently resident in memory.
+  inMemory
+  /// True when sound data is stored using a compressed representation.
+  soundCompressed
+  /// Last-use timestamp used when selecting an old sound for eviction.
+  lastTimeUsed
+end struct
 /// Loop record for audio.snd_dma_runtime, containing `entity`, `origin`, `velocity`, `handle`, `realLoop`, `active`.
-struct Loop entity origin velocity handle realLoop active end struct
+struct Loop
+  /// Game-entity number to which the sound source or channel belongs.
+  entity
+  /// World-space XYZ position of the sound source.
+  origin
+  /// World-space velocity of the sound source used for Doppler adjustment.
+  velocity
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// True for a persistent real looping sound rather than a frame-submitted loop.
+  realLoop
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+end struct
 /// Services record for audio.snd_dma_runtime, containing `initDmaFn`, `shutdownDmaFn`, `loadFn`, `startFn`, `localFn`, `paintFn`, and 4 further fields.
-struct Services initDmaFn shutdownDmaFn loadFn startFn localFn paintFn musicFn stopMusicFn diagnosticFn context end struct
+struct Services
+  /// Host callback that initializes the host audio device and reports whether startup succeeded.
+  initDmaFn
+  /// Host callback that shuts down the host audio device and releases device resources.
+  shutdownDmaFn
+  /// Host callback that loads the PCM or compressed data for a registered sound asset.
+  loadFn
+  /// Host callback that starts an entity-attached or positioned one-shot sound on the host.
+  startFn
+  /// Host callback that starts a local sound that bypasses world-space attenuation.
+  localFn
+  /// Host callback that mixes or submits the next range of sound samples on the host.
+  paintFn
+  /// Host callback that starts introductory and looping background-music assets.
+  musicFn
+  /// Host callback that stops the active background-music stream.
+  stopMusicFn
+  /// Host callback that reports an audio loading, allocation, or playback diagnostic to the host.
+  diagnosticFn
+  /// Opaque host data passed to the configured audio service callbacks.
+  context
+end struct
 /// State record for audio.snd_dma_runtime, containing `services`, `started`, `muted`, `registered`, `soundTime`, `paintedTime`, and 14 further fields.
-struct State services started muted registered soundTime paintedTime channels rawStream knownSfx loops origins listenerEntity listenerOrigin listenerAxis inWater backgroundIntro backgroundLoop backgroundActive nextHandle outputRate end struct
+struct State
+  /// Host callbacks for loading assets, managing audio devices, and reporting diagnostics.
+  services
+  /// True after the audio device has been initialized.
+  started
+  /// True when sound output is temporarily suppressed.
+  muted
+  /// True while sound-registration state has been initialized.
+  registered
+  /// Absolute playback position reported by the audio device, in samples.
+  soundTime
+  /// Absolute sample position through which mixing has already been performed.
+  paintedTime
+  /// One-shot channel allocator and channel state.
+  channels
+  /// Raw stereo stream ring mixed with ordinary sound effects.
+  rawStream
+  /// Registered sound-effect descriptors keyed by handle or asset name.
+  knownSfx
+  /// Looping sound sources submitted by game entities.
+  loops
+  /// Entity-indexed source positions used for spatialization.
+  origins
+  /// Entity number associated with the current sound listener.
+  listenerEntity
+  /// World-space XYZ position of the listener.
+  listenerOrigin
+  /// Listener orientation axes used to calculate stereo gains.
+  listenerAxis
+  /// True when the listener is inside water.
+  inWater
+  /// Asset path of the introductory background-music clip.
+  backgroundIntro
+  /// Asset path of the repeating background-music clip.
+  backgroundLoop
+  /// True while background music has been requested.
+  backgroundActive
+  /// Handle assigned to the next newly registered sound.
+  nextHandle
+  /// Output sample rate in hertz.
+  outputRate
+end struct
 
 /// Create `mq3.audio.snd_dma_runtime.Services` with initDmaFn=void; shutdownDmaFn=void; loadFn=void; startFn=void; localFn=void; paintFn=void; musicFn=void; stopMusicFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void,void,void,void) end function

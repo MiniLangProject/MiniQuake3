@@ -11,45 +11,116 @@ import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 import std.string as strings
 
+/// Bot print-message category selecting message severity or formatting.
 const PRT_MESSAGE=1
+/// Bot print-message category selecting warning severity or formatting.
 const PRT_WARNING=2
+/// Bot print-message category selecting error severity or formatting.
 const PRT_ERROR=3
+/// Bot print-message category selecting fatal severity or formatting.
 const PRT_FATAL=4
+/// Bot print-message category selecting exit severity or formatting.
 const PRT_EXIT=5
+/// Game-mode identifier selecting tournament rules.
 const GT_TOURNAMENT=1
+/// Upper bound on matchvariables represented by mq3.game.ai_main.
 const MAX_MATCHVARIABLES=8
 
 /// `Action` record for ai main, containing `boundary`, `kind`, `subject`, `detail` and `number` and related fields.
-struct Action boundary kind subject detail number dispatched end struct
+struct Action
+  /// Decision/action boundary at which this bot operation was recorded.
+  boundary
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Entity/client or other subject to which the recorded action applies.
+  subject
+  /// Additional diagnostic or action detail supplied by the bot controller.
+  detail
+  /// Numeric argument attached to the recorded decision/host action.
+  number
+  /// Nonzero after the action has been delivered to its host callback.
+  dispatched
+end struct
 /// `AreaInfo` record for ai main, containing `cluster`.
-struct AreaInfo cluster end struct
+struct AreaInfo
+  /// AAS cluster associated with the spatial or routing state.
+  cluster
+end struct
 /// `SessionGoal` record for ai main, containing `areanum`, `entitynum`, `flags`, `iteminfo` and `number` and related fields.
-struct SessionGoal areanum entitynum flags iteminfo number origin mins maxs end struct
+struct SessionGoal
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// Entity number associated with the bot goal retained in session state.
+  entitynum
+  /// GFL_* flags describing this bot navigation goal.
+  flags
+  /// Item-definition index or information attached to this navigation goal.
+  iteminfo
+  /// Botlib goal number identifying this navigation target.
+  number
+  /// World-space target position of the bot goal retained in session state.
+  origin
+  /// Lower local bounding-box corner of the bot goal retained in session state.
+  mins
+  /// Upper local bounding-box corner of the bot goal retained in session state.
+  maxs
+end struct
 /// `SessionData` record for ai main, containing `decisionmaker`, `ltgtype`, `teammate` and `goal`.
-struct SessionData decisionmaker ltgtype teammate goal end struct
+struct SessionData
+  /// Client/entity currently responsible for the bot team decisions.
+  decisionmaker
+  /// Current long-term goal category selected from the LTG_* constants.
+  ltgtype
+  /// Teammate entity/client selected for the current cooperative task.
+  teammate
+  /// Navigation or activation goal associated with the current task.
+  goal
+end struct
 
 /// `Services` record for ai main, containing `lifecycleState`, `frameServices`, `clientServices`, `commandServices` and `inputServices` and related fields.
 struct Services
+  /// State shared by bot allocation, setup, shutdown, and frame processing.
   lifecycleState
+  /// Callbacks used to perform a game or bot frame update.
   frameServices
+  /// Callbacks used to manage bot/player client state.
   clientServices
+  /// Callbacks used to deliver or process game commands.
   commandServices
+  /// Callbacks used to translate bot decisions into input commands.
   inputServices
+  /// Per-client session records retained by the game runtime.
   sessions
+  /// Recorded host actions emitted by bot decision logic.
   actions
+  /// Nonzero when the retail-compatible bot decision path is active.
   retailActive
+  /// Injected callback for print; invoked through the Services service/state record.
   printFn
+  /// Injected callback for trace; invoked through the Services service/state record.
   traceFn
+  /// Injected callback for entity info; invoked through the Services service/state record.
   entityInfoFn
+  /// Injected callback for synonym context; invoked through the Services service/state record.
   synonymContextFn
+  /// Injected callback for initial chat; invoked through the Services service/state record.
   initialChatFn
+  /// Injected callback for point area; invoked through the Services service/state record.
   pointAreaFn
+  /// Injected callback for AAS initialized; invoked through the Services service/state record.
   aasInitializedFn
+  /// Injected callback for area info; invoked through the Services service/state record.
   areaInfoFn
+  /// Injected callback for client from name; invoked through the Services service/state record.
   clientFromNameFn
+  /// Injected callback for exit level; invoked through the Services service/state record.
   exitLevelFn
+  /// Injected callback for send console command; invoked through the Services service/state record.
   sendConsoleCommandFn
+  /// Injected callback for console variable string; invoked through the Services service/state record.
   cvarStringFn
+  /// Opaque caller-supplied context available to top-level bot AI entity, trace, chat, cvar, and level
+  /// callbacks.
   context
 end struct
 

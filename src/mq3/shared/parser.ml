@@ -5,8 +5,11 @@ package mq3.shared.parser
 
 /// Parser record for shared.parser, containing `data`, `offset`, `line`.
 struct Parser
+  /// Source bytes scanned by the shared token parser.
   data
+  /// Byte cursor of the next source character to scan.
   offset
+  /// Current source line number used in diagnostics.
   line
 end struct
 

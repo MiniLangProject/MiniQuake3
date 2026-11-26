@@ -5,23 +5,73 @@ package mq3.client.ui_main_menu
 import mq3.compat.transcendental as trans
 import std.string as strings
 
+/// Activation callback event accepted by the base-game main menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the singleplayer action by the menu event handler.
 const ID_SINGLEPLAYER=10
+/// Menu control identifier routed to the multiplayer action by the menu event handler.
 const ID_MULTIPLAYER=11
+/// Menu control identifier routed to the setup action by the menu event handler.
 const ID_SETUP=12
+/// Menu control identifier routed to the demos action by the menu event handler.
 const ID_DEMOS=13
+/// Menu control identifier routed to the cinematics action by the menu event handler.
 const ID_CINEMATICS=14
+/// Menu control identifier routed to the teamarena action by the menu event handler.
 const ID_TEAMARENA=15
+/// Menu control identifier routed to the mods action by the menu event handler.
 const ID_MODS=16
+/// Menu control identifier routed to the exit action by the menu event handler.
 const ID_EXIT=17
+/// Virtual asset path used to load the main banner model renderer or menu resource.
 const MAIN_BANNER_MODEL="models/mapobjects/banner/banner5.md3"
 
 /// Stores UI main menu main item record, including `id`, `label`, `y`.
-struct MainItem id label y end struct
+struct MainItem
+  /// Event-routing identifier of this selectable control in the base-game main menu.
+  id
+  /// Human-readable caption painted beside or inside the UI control.
+  label
+  /// Vertical position of this menu control in the virtual layout used by the base-game main menu.
+  y
+end struct
 /// Stores UI main menu main draw record, including `bannerModel`, `yaw`, `errorMessage`, `demoVersion`, `actions`.
-struct MainDraw bannerModel yaw errorMessage demoVersion actions end struct
+struct MainDraw
+  /// Model resource selected for the banner presentation.
+  bannerModel
+  /// When constructing this record, `draw` supplies `yaw` for this member.
+  yaw
+  /// When constructing this record, `draw` supplies `menu.errorMessage` for this member.
+  errorMessage
+  /// When constructing this record, `draw` supplies `demoVersion` for this member.
+  demoVersion
+  /// Host requests queued while drawing the main menu and opening its selected destination, retained in
+  /// request order.
+  actions
+end struct
 /// Stores UI main menu main menu record, including `fullscreen`, `wrapAround`, `showlogo`, `items`, `assets`, `cvarWrites` and additional values.
-struct MainMenu fullscreen wrapAround showlogo items assets cvarWrites commands actions errorMessage end struct
+struct MainMenu
+  /// Whether the main menu covers the entire UI instead of appearing over the underlying game view.
+  fullscreen
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the base-game main menu.
+  wrapAround
+  /// When constructing this record, `open` supplies `true` for this member.
+  showlogo
+  /// When constructing this record, `open` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the base-game main menu.
+  assets
+  /// Cvar name/value changes queued by the base-game main menu for the host to apply.
+  cvarWrites
+  /// When constructing this record, `open` supplies an empty list for this member.
+  commands
+  /// Host requests queued while drawing the main menu and opening its selected destination, retained in
+  /// request order.
+  actions
+  /// When constructing this record, `open` supplies `errorMessage` for this member.
+  errorMessage
+end struct
 
 // MainMenu_ExitAction
 /// @param menu Mutable UI main menu record/storage; this routine assigns `menu.actions`.

@@ -7,29 +7,96 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 import mq3.renderer.playable_light_grid as grids
 
+/// Entity-rendering flag that draws the entity only in first-person views.
 const RF_FIRST_PERSON=4
+/// Entity-rendering flag selecting the supplied alternate lighting origin.
 const RF_LIGHTING_ORIGIN=128
+/// View flag that renders submitted entities without the BSP world model.
 const RDF_NOWORLDMODEL=1
+/// Surface-dispatch tag identifying a planar BSP face.
 const SF_FACE=1
+/// Surface-dispatch tag identifying a tessellated curved-patch grid.
 const SF_GRID=2
+/// Surface-dispatch tag identifying indexed triangle geometry.
 const SF_TRIANGLES=3
+/// Dynamic-light contribution used at a distance equal to the light's radius.
 const DLIGHT_AT_RADIUS=16.0
+/// Lower bound applied to dynamic-light radius calculations.
 const DLIGHT_MINIMUM_RADIUS=16.0
 
 /// Data record for `mq3.renderer.tr_light_runtime.Orientation`; groups `origin`, `axis`.
-struct Orientation origin axis end struct
+struct Orientation
+  /// Entity origin used to transform world lighting into the object's local coordinates.
+  origin
+  /// Object basis used to rotate incoming light directions into entity-local space.
+  axis
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.Dlight`; groups `origin`, `transformed`, `radius`, `color`.
-struct Dlight origin transformed radius color end struct
+struct Dlight
+  /// Untransformed world-space center of the dynamic light.
+  origin
+  /// Dynamic-light origin expressed in the current entity's coordinate system.
+  transformed
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+  /// RGB light intensity accumulated into an entity's dynamic-light contribution.
+  color
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.Surface`; groups `surfaceType`, `dlightBits`.
-struct Surface surfaceType dlightBits end struct
+struct Surface
+  /// Surface-dispatch tag identifying the concrete geometry representation.
+  surfaceType
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.Bmodel`; groups `bounds`, `surfaces`.
-struct Bmodel bounds surfaces end struct
+struct Bmodel
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Surface records owned by the world, model, or drawing group.
+  surfaces
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.RefEntity`; groups `origin`, `lightingOrigin`, `axis`, `renderfx`, `lightingCalculated`, `ambientLight`, and 4 further fields.
-struct RefEntity origin lightingOrigin axis renderfx lightingCalculated ambientLight directedLight lightDir ambientLightInt needDlights end struct
+struct RefEntity
+  /// Entity placement used as the default point for baked-light-grid sampling.
+  origin
+  /// Alternate position used to give multipart models consistent lighting.
+  lightingOrigin
+  /// Rendered entity's orientation used to express its sampled lighting direction in local coordinates.
+  axis
+  /// Bit mask of entity rendering options, such as depth hack or shadow suppression.
+  renderfx
+  /// Whether entity lighting has already been computed for this frame.
+  lightingCalculated
+  /// Ambient light contribution applied to the entity.
+  ambientLight
+  /// Directional light contribution applied to the entity.
+  directedLight
+  /// Direction of the dominant light in the entity's coordinate system.
+  lightDir
+  /// Packed integer representation of the entity's ambient color.
+  ambientLightInt
+  /// Whether the entity must receive dynamic-light processing.
+  needDlights
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.Refdef`; groups `rdflags`, `dlights`.
-struct Refdef rdflags dlights end struct
+struct Refdef
+  /// Bit mask of view-level rendering options such as no-world or hyperspace rendering.
+  rdflags
+  /// Dynamic lights submitted to the current scene.
+  dlights
+end struct
 /// Data record for `mq3.renderer.tr_light_runtime.LightResult`; groups `found`, `ambientLight`, `directedLight`, `lightDir`.
-struct LightResult found ambientLight directedLight lightDir end struct
+struct LightResult
+  /// Whether the requested object or result was found.
+  found
+  /// Ambient light contribution applied to the entity.
+  ambientLight
+  /// Directional light contribution applied to the entity.
+  directedLight
+  /// Direction of the dominant light in the entity's coordinate system.
+  lightDir
+end struct
 
 /// Returns `[[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]]` for `mq3.renderer.tr_light_runtime.identityAxis`.
 function identityAxis() return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] end function

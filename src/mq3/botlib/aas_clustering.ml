@@ -5,40 +5,184 @@ package mq3.botlib.aas_clustering
 
 import mq3.format.aas as aas
 
+/// Maximum number of portal records produced by AAS clustering.
 const AAS_MAX_PORTALS=65536
+/// Maximum number of portal references in the cluster portal-index array.
 const AAS_MAX_PORTALINDEXSIZE=65536
+/// Maximum number of clusters produced by AAS clustering.
 const AAS_MAX_CLUSTERS=65536
+/// Maximum number of portal areas retained during AAS clustering.
 const MAX_PORTALAREAS=1024
+/// Just solid at the other side.
 const FACE_SOLID=1
+/// Bot can stand on the ground.
 const AREA_GROUNDED=1
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking teleportal.
 const AREACONTENTS_TELEPORTAL=16
+/// AAS area-contents bit marking routing portal.
 const AREACONTENTS_ROUTEPORTAL=32
+/// AAS area-contents bit marking view portal.
 const AREACONTENTS_VIEWPORTAL=512
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
 
 /// `Plane` record for aas clustering, containing `normal` and `dist`.
-struct Plane normal dist end struct
+struct Plane
+  /// Navigation plane normal used while analyzing cluster boundaries.
+  normal
+  /// Distance of the plane (normal vector * distance = point in plane).
+  dist
+end struct
 /// `Edge` record for aas clustering, containing `vertices`.
-struct Edge vertices end struct
+struct Edge
+  /// XYZ vertices defining the navigation or map geometry.
+  vertices
+end struct
 /// `Face` record for aas clustering, containing `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields.
-struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
+struct Face
+  /// Navigation plane index used to compare the faces of candidate cluster portals.
+  planeNum
+  /// AAS face properties such as solidity, grounding, or ladder membership.
+  flags
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Starting offset of this face in the signed edge-index array.
+  firstEdge
+  /// Area at the front of this face.
+  frontArea
+  /// Area at the back of this face.
+  backArea
+end struct
 /// `Area` record for aas clustering, containing `numFaces` and `firstFace`.
-struct Area numFaces firstFace end struct
+struct Area
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Starting offset of this area in the signed face-index array.
+  firstFace
+end struct
 /// `AreaSettings` record for aas clustering, containing `contents`, `areaFlags`, `presenceType`, `cluster` and `clusterAreaNum` and related fields.
-struct AreaSettings contents areaFlags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea end struct
+struct AreaSettings
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+  /// Several area flags.
+  areaFlags
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Cluster the area belongs to, if negative it's a portal.
+  cluster
+  /// Number of the area in the cluster.
+  clusterAreaNum
+  /// Number of outgoing reachability records belonging to this AAS area.
+  numReachableAreas
+  /// First outgoing reachability index for this area in the shared reachability array.
+  firstReachableArea
+end struct
 /// `Reachability` record for aas clustering, containing `areaNum` and `travelType`.
-struct Reachability areaNum travelType end struct
+struct Reachability
+  /// Destination area used when determining connected navigation clusters.
+  areaNum
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+end struct
 /// `Portal` record for aas clustering, containing `areaNum`, `frontCluster`, `backCluster` and `clusterAreaNums`.
-struct Portal areaNum frontCluster backCluster clusterAreaNums end struct
+struct Portal
+  /// Area assigned as a portal while building the navigation cluster graph.
+  areaNum
+  /// Cluster at front of portal.
+  frontCluster
+  /// Cluster at back of portal.
+  backCluster
+  /// Area indexes of this portal within its front and back clusters.
+  clusterAreaNums
+end struct
 /// `Cluster` record for aas clustering, containing `numAreas`, `numReachabilityAreas`, `numPortals` and `firstPortal`.
-struct Cluster numAreas numReachabilityAreas numPortals firstPortal end struct
+struct Cluster
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+  /// Number of areas with reachabilities.
+  numReachabilityAreas
+  /// Number of cluster portals.
+  numPortals
+  /// First cluster portal in the index.
+  firstPortal
+end struct
 /// `Entity` record for aas clustering, containing `className`, `target`, `targetName`, `origin` and `linkedAreas` and related fields.
-struct Entity className target targetName origin linkedAreas destinationArea valid end struct
+struct Entity
+  /// Map entity class used to identify navigation-related entity behavior.
+  className
+  /// Target name referenced by this map entity.
+  target
+  /// Name by which other map entities can target this entity.
+  targetName
+  /// Map entity position inspected while identifying navigation cluster and portal entities.
+  origin
+  /// AAS areas intersected by this entity's bounds.
+  linkedAreas
+  /// AAS area reached at the end of this movement link.
+  destinationArea
+  /// True when the represented entry contains usable data.
+  valid
+end struct
 /// `HostAction` record for aas clustering, containing `boundary`, `kind`, `subject`, `detail` and `value` and related fields.
-struct HostAction boundary kind subject detail value dispatched end struct
+struct HostAction
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator selecting the host clustering action.
+  kind
+  /// Map entity or navigation element affected by the action.
+  subject
+  /// Textual detail describing the clustering action.
+  detail
+  /// Additional scalar argument associated with the clustering action.
+  value
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `World` record for aas clustering, containing `loaded`, `forceClustering`, `forceReachability`, `noFaceFlood` and `planes` and related fields.
-struct World loaded forceClustering forceReachability noFaceFlood planes vertexes edges edgeIndex faces faceIndex areas settings reachabilities portals portalIndex clusters entities actions retailActive saveFile end struct
+struct World
+  /// True when navigation geometry is available for cluster construction.
+  loaded
+  /// True when AAS clusters must be rebuilt even if cached data is present.
+  forceClustering
+  /// True when AAS reachabilities must be rebuilt even if cached data is present.
+  forceReachability
+  /// True when clustering must avoid flooding through area faces.
+  noFaceFlood
+  /// Plane records used to classify or clip the represented geometry.
+  planes
+  /// XYZ vertices defining the navigation or map geometry.
+  vertexes
+  /// Vertex-index pairs defining edges of the map or navigation geometry.
+  edges
+  /// Signed edge references used by faces of the navigation mesh.
+  edgeIndex
+  /// Face records bounding AAS areas.
+  faces
+  /// Signed face references used to construct AAS area boundaries.
+  faceIndex
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// Area or runtime settings controlling navigation behavior.
+  settings
+  /// Reachabilities used for routing.
+  reachabilities
+  /// Portal records joining navigation clusters or visibility areas.
+  portals
+  /// Indexes of portals belonging to each navigation cluster.
+  portalIndex
+  /// Cluster records or assignments used to group navigation and visibility areas.
+  clusters
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+  /// Recorded host requests and diagnostics produced while building navigation clusters.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+  /// True when the current AAS data should be saved back to a file.
+  saveFile
+end struct
 
 /// Create a `mq3.botlib.aas_clustering.Plane` record, initializing `normal` from `normal` and `dist` from `dist`.
 /// @param normal Initial value stored in `mq3.botlib.aas_clustering.Plane.normal`.

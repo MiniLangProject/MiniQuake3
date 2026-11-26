@@ -3,32 +3,58 @@
 // Canonical native ownership of the legacy Missionpack code/ui headers and QVM assembly ABI.
 package mq3.client.ui_legacy_abi
 
+/// UI virtual-machine interface version expected by the engine.
 const UI_API_VERSION=6
+/// Size in bytes of the 32-bit native UI client-state structure.
 const UI_CLIENT_STATE_X86_SIZE=3084
 
+/// Engine-to-UI menu selector for the none screen or menu state.
 const UIMENU_NONE=0
+/// Engine-to-UI menu selector for the main screen or menu state.
 const UIMENU_MAIN=1
+/// Engine-to-UI menu selector for the ingame screen or menu state.
 const UIMENU_INGAME=2
+/// Engine-to-UI menu selector for the need cd screen or menu state.
 const UIMENU_NEED_CD=3
+/// Engine-to-UI menu selector for the bad cd key screen or menu state.
 const UIMENU_BAD_CD_KEY=4
+/// Engine-to-UI menu selector for the team screen or menu state.
 const UIMENU_TEAM=5
+/// Engine-to-UI menu selector for the postgame screen or menu state.
 const UIMENU_POSTGAME=6
+/// UI VM entry-point ordinal used to query the UI VM interface version.
 const UI_GETAPIVERSION=0
+/// UI VM entry-point ordinal used to initialize the UI VM.
 const UI_INIT=1
+/// UI VM entry-point ordinal used to shut down the UI VM.
 const UI_SHUTDOWN=2
+/// UI VM entry-point ordinal used to deliver a key event to the UI.
 const UI_KEY_EVENT=3
+/// UI VM entry-point ordinal used to deliver pointer motion to the UI.
 const UI_MOUSE_EVENT=4
+/// UI VM entry-point ordinal used to advance and render the UI.
 const UI_REFRESH=5
+/// UI VM entry-point ordinal used to query whether the UI covers the game view.
 const UI_IS_FULLSCREEN=6
+/// UI VM entry-point ordinal used to select the active UI menu.
 const UI_SET_ACTIVE_MENU=7
+/// UI VM entry-point ordinal used to handle a UI console command.
 const UI_CONSOLE_COMMAND=8
+/// UI VM entry-point ordinal used to render the connection-progress screen.
 const UI_DRAW_CONNECT_SCREEN=9
+/// UI VM entry-point ordinal used to query whether the UI requires a unique product key.
 const UI_HASUNIQUECDKEY=10
+/// Server-browser sort key comparing the host column.
 const SORT_HOST=0
+/// Server-browser sort key comparing the map column.
 const SORT_MAP=1
+/// Server-browser sort key comparing the clients column.
 const SORT_CLIENTS=2
+/// Server-browser sort key comparing the game column.
 const SORT_GAME=3
+/// Server-browser sort key comparing the ping column.
 const SORT_PING=4
+/// Server-browser sort key comparing the punkbuster column.
 const SORT_PUNKBUSTER=5
 
 /// Lists the key names catalog for UI legacy ABI in its declared source order.

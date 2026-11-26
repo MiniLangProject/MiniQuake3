@@ -7,20 +7,93 @@ import mq3.vm.jit_compat as jit
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Number of named VM slots available for the game, client game, and user interface.
 const MAX_VM=3
+/// VM execution mode that loads the native game-module implementation.
 const VMI_NATIVE=0
+/// VM execution mode that interprets Quake virtual-machine bytecode.
 const VMI_BYTECODE=1
+/// VM execution mode that requests the supported compiled execution path.
 const VMI_COMPILED=2
+/// Number of bytes reserved for the QVM program stack.
 const STACK_SIZE=0x20000
 
 /// Symbol record for vm.runtime, containing `value`, `name`, `profileCount`.
-struct Symbol value name profileCount end struct
+struct Symbol
+  /// Instruction/code address associated with this VM debug symbol.
+  value
+  /// Human-readable name of this VM debug symbol.
+  name
+  /// Execution/profile counter associated with this VM symbol.
+  profileCount
+end struct
 /// Slot record for vm.runtime, containing `name`, `image`, `machine`, `syscall`, `active`, `generation`, and 7 further fields.
-struct Slot name image machine syscall active generation symbols numSymbols compiled native codeLength tableLength compiledPlan end struct
+struct Slot
+  /// Name identifying the game, client-game, or UI VM slot.
+  name
+  /// Loaded QVM image associated with this slot.
+  image
+  /// Interpreter instance associated with the loaded bytecode image.
+  machine
+  /// Callback used to dispatch a QVM system call to its host implementation.
+  syscall
+  /// Nonzero while the slot contains a live VM instance.
+  active
+  /// Generation counter used to distinguish the current instance from an older reused instance.
+  generation
+  /// Loaded VM debug symbols used for symbolic lookup, diagnostics, and profiling.
+  symbols
+  /// Number of entries in the loaded VM debug-symbol table.
+  numSymbols
+  /// Nonzero when this VM has a prepared compiled execution path.
+  compiled
+  /// Nonzero when the slot executes a native module rather than bytecode.
+  native
+  /// Length of the VM code region in bytes.
+  codeLength
+  /// Byte length of the instruction-address table, calculated as four bytes per entry.
+  tableLength
+  /// Validated compiled execution plan retained for subsequent VM calls.
+  compiledPlan
+end struct
 /// Services record for vm.runtime, containing `loadFn`, `symbolFn`, `developerFn`, `diagnosticFn`, `registerCvarFn`, `addCommandFn`, and 2 further fields.
-struct Services loadFn symbolFn developerFn diagnosticFn registerCvarFn addCommandFn logFn context end struct
+struct Services
+  /// Injected callback for load; invoked through the Services service/state record.
+  loadFn
+  /// Injected callback for symbol; invoked through the Services service/state record.
+  symbolFn
+  /// Injected callback for developer; invoked through the Services service/state record.
+  developerFn
+  /// Injected callback for diagnostic; invoked through the Services service/state record.
+  diagnosticFn
+  /// Injected callback for register console variable; invoked through the Services service/state
+  /// record.
+  registerCvarFn
+  /// Injected callback for add command; invoked through the Services service/state record.
+  addCommandFn
+  /// Injected callback for log; invoked through the Services service/state record.
+  logFn
+  /// Opaque caller-supplied context available to VM image loading, symbol lookup, registration, and
+  /// diagnostics.
+  context
+end struct
 /// Runtime record for vm.runtime, containing `slots`, `services`, `current`, `last`, `debugLevel`, `syscallCount`, and 1 further fields.
-struct Runtime slots services current last debugLevel syscallCount syscallLog end struct
+struct Runtime
+  /// Named VM slots managed by this runtime.
+  slots
+  /// Injected service callbacks and state used to communicate with the surrounding engine.
+  services
+  /// VM currently executing a call, or void outside VM execution.
+  current
+  /// VM that most recently executed a call.
+  last
+  /// Diagnostic verbosity level used by the module.
+  debugLevel
+  /// Number of system calls observed by the VM runtime.
+  syscallCount
+  /// Recorded VM system-call entries retained for diagnostics.
+  syscallLog
+end struct
 
 /// Create `mq3.vm.runtime.Services` with loadFn=void; symbolFn=void; developerFn=void; diagnosticFn=void; registerCvarFn=void; addCommandFn=void; logFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void,void) end function

@@ -8,42 +8,182 @@ import mq3.renderer.shader_index as shaderIndex
 import mq3.shared.parser as parser
 import std.string as strings
 
+/// Packed renderer-state value selecting zero as the source blend factor.
 const GLS_SRCBLEND_ZERO=1
+/// Packed renderer-state value selecting one as the source blend factor.
 const GLS_SRCBLEND_ONE=2
+/// Packed renderer-state value selecting the destination color as the source blend factor.
 const GLS_SRCBLEND_DST_COLOR=3
+/// Packed renderer-state value selecting one minus the destination color as the source blend factor.
 const GLS_SRCBLEND_ONE_MINUS_DST_COLOR=4
+/// Packed renderer-state value selecting the source alpha as the source blend factor.
 const GLS_SRCBLEND_SRC_ALPHA=5
+/// Packed renderer-state value selecting one minus the source alpha as the source blend factor.
 const GLS_SRCBLEND_ONE_MINUS_SRC_ALPHA=6
+/// Packed renderer-state value selecting the destination alpha as the source blend factor.
 const GLS_SRCBLEND_DST_ALPHA=7
+/// Packed renderer-state value selecting one minus the destination alpha as the source blend factor.
 const GLS_SRCBLEND_ONE_MINUS_DST_ALPHA=8
+/// Packed renderer-state value selecting the smaller of source alpha and one minus destination alpha as
+/// the source blend factor.
 const GLS_SRCBLEND_ALPHA_SATURATE=9
+/// Packed renderer-state value selecting zero as the destination blend factor.
 const GLS_DSTBLEND_ZERO=16
+/// Packed renderer-state value selecting one as the destination blend factor.
 const GLS_DSTBLEND_ONE=32
+/// Packed renderer-state value selecting the source color as the destination blend factor.
 const GLS_DSTBLEND_SRC_COLOR=48
+/// Packed renderer-state value selecting one minus the source color as the destination blend factor.
 const GLS_DSTBLEND_ONE_MINUS_SRC_COLOR=64
+/// Packed renderer-state value selecting the source alpha as the destination blend factor.
 const GLS_DSTBLEND_SRC_ALPHA=80
+/// Packed renderer-state value selecting one minus the source alpha as the destination blend factor.
 const GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA=96
+/// Packed renderer-state value selecting the destination alpha as the destination blend factor.
 const GLS_DSTBLEND_DST_ALPHA=112
+/// Packed renderer-state value selecting one minus the destination alpha as the destination blend
+/// factor.
 const GLS_DSTBLEND_ONE_MINUS_DST_ALPHA=128
+/// Packed-state flag enabling writes to the depth buffer.
 const GLS_DEPTHMASK_TRUE=256
+/// Packed-state flag requiring equality with the existing depth value.
 const GLS_DEPTHFUNC_EQUAL=131072
+/// Packed alpha-test mode accepting fragments whose alpha is greater than zero.
 const GLS_ATEST_GT_0=268435456
+/// Packed alpha-test mode accepting fragments whose alpha is below one half.
 const GLS_ATEST_LT_80=536870912
+/// Packed alpha-test mode accepting fragments whose alpha is at least one half.
 const GLS_ATEST_GE_80=1073741824
+/// Maximum number of texture and color stages retained in one shader.
 const MAX_SHADER_STAGES=8
+/// Maximum number of texture-coordinate modifiers accepted by one shader stage.
 const TR_MAX_TEXMODS=4
+/// Maximum number of images in an animated shader map.
 const MAX_IMAGE_ANIMATIONS=8
 
 /// Data record for `mq3.renderer.shader_parser.Wave`; groups `func`, `base`, `amplitude`, `phase`, `frequency`.
-struct Wave func base amplitude phase frequency end struct
+struct Wave
+  /// Waveform function selected for the shader effect.
+  func
+  /// Constant value around which the waveform oscillates.
+  base
+  /// Magnitude by which the waveform varies around its base value.
+  amplitude
+  /// Offset applied to the waveform's periodic phase.
+  phase
+  /// Number of waveform cycles per second.
+  frequency
+end struct
 /// Data record for `mq3.renderer.shader_parser.TexMod`; groups `kind`, `values`, `wave`.
-struct TexMod kind values wave end struct
+struct TexMod
+  /// Parsed texture-coordinate operation selecting scale, scroll, rotate, transform, turbulence, or
+  /// another modifier.
+  kind
+  /// Numeric parameters interpreted according to the texture modifier's kind.
+  values
+  /// Waveform parameters driving this texture or vertex modification.
+  wave
+end struct
 /// Data record for `mq3.renderer.shader_parser.Deform`; groups `kind`, `spread`, `wave`, `vector`, `bulgeWidth`, `bulgeHeight`, and 1 further field.
-struct Deform kind spread wave vector bulgeWidth bulgeHeight bulgeSpeed end struct
+struct Deform
+  /// Vertex-deformation operation selecting wave, move, bulge, autosprite, text, or another shader
+  /// deformation.
+  kind
+  /// Spatial divisor controlling the phase spread of a vertex deformation.
+  spread
+  /// Waveform parameters driving this texture or vertex modification.
+  wave
+  /// Direction and magnitude used by the deformation.
+  vector
+  /// Spatial frequency of the texture-coordinate-driven bulge.
+  bulgeWidth
+  /// Maximum displacement produced by the bulge deformation.
+  bulgeHeight
+  /// Rate at which the bulge deformation moves over time.
+  bulgeSpeed
+end struct
 /// Data record for `mq3.renderer.shader_parser.Stage`; groups `active`, `mapMode`, `images`, `animationSpeed`, `isLightmap`, `blendSrc`, and 16 further fields.
-struct Stage active mapMode images animationSpeed isLightmap blendSrc blendDst rgbGen alphaGen rgbWave alphaWave constantColor portalRange tcGen tcGenVectors texMods depthWrite depthExplicit alphaFunc depthFunc detail stateBits end struct
+struct Stage
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Texture-map selection mode parsed from the shader stage.
+  mapMode
+  /// Image resources or image-animation frames retained by the record.
+  images
+  /// Rate at which animated shader images advance, in frames per second.
+  animationSpeed
+  /// Whether the stage samples a BSP lightmap.
+  isLightmap
+  /// Source blend factor encoded in the shader stage.
+  blendSrc
+  /// Destination blend factor encoded in the shader stage.
+  blendDst
+  /// Generator used to compute the stage's RGB color components.
+  rgbGen
+  /// Generator used to compute the stage's alpha component.
+  alphaGen
+  /// Waveform used by the RGB color generator.
+  rgbWave
+  /// Waveform used by the alpha generator.
+  alphaWave
+  /// Constant color components used by the shader stage's color generators.
+  constantColor
+  /// Distance over which portal alpha fades between transparent and opaque.
+  portalRange
+  /// Generator used to produce the stage's texture coordinates.
+  tcGen
+  /// Projection vectors used by vector-generated texture coordinates.
+  tcGenVectors
+  /// Ordered texture-coordinate modifiers applied by the shader stage.
+  texMods
+  /// Whether drawing this pass writes to the depth buffer.
+  depthWrite
+  /// Whether the shader text explicitly selected depth writing.
+  depthExplicit
+  /// Alpha comparison selected for fragment rejection.
+  alphaFunc
+  /// Depth comparison selected for the shader pass.
+  depthFunc
+  /// Whether this shader stage is an optional detail-texture pass.
+  detail
+  /// Packed renderer flags specifying blending, depth, and alpha state.
+  stateBits
+end struct
 /// Data record for `mq3.renderer.shader_parser.Shader`; groups `name`, `stages`, `sort`, `cull`, `surfaceParms`, `noMipMaps`, and 10 further fields.
-struct Shader name stages sort cull surfaceParms noMipMaps noPicMip polygonOffset entityMergable portalRange clampTime deforms fogColor fogDepth warnings cloudHeight end struct
+struct Shader
+  /// Material name declared at the start of the parsed shader definition.
+  name
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+  /// Shader ordering category used to schedule this material relative to other surfaces.
+  sort
+  /// Culling mode or classification applied to this geometry.
+  cull
+  /// Surface flags and material properties parsed from shader directives.
+  surfaceParms
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+  /// Whether the material bypasses the global texture downscaling setting.
+  noPicMip
+  /// Whether polygon-offset depth bias is applied while drawing.
+  polygonOffset
+  /// Whether surfaces from separate entities may share one shader batch.
+  entityMergable
+  /// Distance over which portal alpha fades between transparent and opaque.
+  portalRange
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Ordered vertex deformations applied by the shader.
+  deforms
+  /// Color of the fog volume defined by the material.
+  fogColor
+  /// Distance at which the shader's fog becomes opaque.
+  fogDepth
+  /// Nonfatal diagnostics retained by the subsystem.
+  warnings
+  /// Height used to project moving cloud texture coordinates.
+  cloudHeight
+end struct
 
 /// Calls `std.string.toLowerAscii` with `(text)` and returns its result.
 /// @param text Argument 1 supplied to `std.string.toLowerAscii`.

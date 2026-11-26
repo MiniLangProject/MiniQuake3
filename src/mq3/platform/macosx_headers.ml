@@ -29,17 +29,98 @@ end function
 /// Lists the 19 declared names for `mq3.platform.macosx_headers.timerSymbols`, including `rootNode`, `markFragmentsNode1`, `markFragmentsNode2`, `markFragmentsGrid`.
 function timerSymbols() return ["rootNode","markFragmentsNode1","markFragmentsNode2","markFragmentsGrid","markFragmentsNode4","addMarkFragmentsNode","chopPolyNode","boxTraceNode","boxOnPlaneSideNode","recursiveWorldNode","surfaceAnimNode","surfaceFaceNode","surfaceMeshNode","surfaceEndNode","shadowEndNode","stageIteratorGenericNode","computeColorAndTexNode","mp3DecodeNode","InitializeTimers"] end function
 
+/// Core Graphics Services notification identifier for mouse movement.
 const kCGSEventNotificationMouseMoved=715
+/// Core Graphics Services notification identifier for dragging with the left mouse button.
 const kCGSEventNotificationLeftMouseDragged=716
+/// Core Graphics Services notification identifier for dragging with the right mouse button.
 const kCGSEventNotificationRightMouseDragged=717
+/// Core Graphics Services notification identifier for dragging with another mouse button.
 const kCGSEventNotificationOtherMouseDragged=737
 
 /// Data record for `mq3.platform.macosx_headers.GammaTable`; groups `display`, `tableSize`, `red`, `blue`, `green`.
-struct GammaTable display tableSize red blue green end struct
+struct GammaTable
+  /// Display identifier used for video and gamma operations.
+  display
+  /// Number of samples in each gamma-ramp channel.
+  tableSize
+  /// Red-channel gamma-ramp samples.
+  red
+  /// Blue-channel gamma-ramp samples.
+  blue
+  /// Green-channel gamma-ramp samples.
+  green
+end struct
 /// Data record for `mq3.platform.macosx_headers.Event`; groups `time`, `kind`, `value1`, `value2`, `payload`.
-struct Event time kind value1 value2 payload end struct
+struct Event
+  /// Millisecond timestamp carried by the macOS platform event adapter.
+  time
+  /// System-event category selecting how the accompanying values are interpreted.
+  kind
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value1
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+  /// Operation-specific data interpreted according to the record's command or event type.
+  payload
+end struct
 /// Data record for `mq3.platform.macosx_headers.State`; groups `mouseInitialized`, `mouseDelta`, `notifications`, `bannerVisible`, `terminateRequested`, `quakeFrames`, and 21 further fields.
-struct State mouseInitialized mouseDelta notifications bannerVisible terminateRequested quakeFrames clipboard displayModes stretchedModes fadedDisplays gammaTables fadeFraction inputInitialized mouseRect display hidden events context cglContext contextCurrent pauseCount qglCalls qglErrors qglBeginStarted timers timerStack timerStamps end struct
+struct State
+  /// Whether the native mouse subsystem has initialized.
+  mouseInitialized
+  /// Accumulated relative mouse movement waiting for the next frame.
+  mouseDelta
+  /// Native input or display notifications registered by the platform layer.
+  notifications
+  /// Whether the platform startup banner is visible.
+  bannerVisible
+  /// Whether the native application requested termination.
+  terminateRequested
+  /// Number of engine frame callbacks processed by the platform layer.
+  quakeFrames
+  /// Text currently available through the platform clipboard adapter.
+  clipboard
+  /// Display modes enumerated from the native video subsystem.
+  displayModes
+  /// Display modes configured to stretch the rendering surface.
+  stretchedModes
+  /// Displays currently affected by a fade transition.
+  fadedDisplays
+  /// Saved or current gamma ramps indexed by display.
+  gammaTables
+  /// Interpolation fraction of the current display fade.
+  fadeFraction
+  /// Whether native input processing has initialized.
+  inputInitialized
+  /// Rectangle to which native mouse movement is constrained.
+  mouseRect
+  /// Display identifier used for video and gamma operations.
+  display
+  /// Whether the native window or application is hidden.
+  hidden
+  /// Pending input or system events awaiting delivery.
+  events
+  /// Native NSOpenGL context retained alongside its CGL context handle.
+  context
+  /// Native macOS OpenGL context handle.
+  cglContext
+  /// Whether the graphics context is current on the calling thread.
+  contextCurrent
+  /// Number of nested platform pause requests.
+  pauseCount
+  /// Graphics calls recorded by the platform OpenGL adapter.
+  qglCalls
+  /// Errors recorded while dispatching graphics calls.
+  qglErrors
+  /// Whether an immediate-mode graphics primitive is open.
+  qglBeginStarted
+  /// Named timing measurements collected by the platform adapter.
+  timers
+  /// Stack of currently active timing scopes.
+  timerStack
+  /// Clock samples associated with the timing measurements.
+  timerStamps
+end struct
 
 /// Constructs `mq3.platform.macosx_headers.State` with `mouseInitialized` = `false`, `mouseDelta` = `[0,0]`, `notifications` = `[]`, `bannerVisible` = `false` and the supplied remaining values.
 function create()

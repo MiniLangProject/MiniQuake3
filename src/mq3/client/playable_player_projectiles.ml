@@ -8,28 +8,144 @@ import mq3.client.playable_projectile_view as view
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used when tracing a weapon shot.
 const SHOT_MASK=0x6000001
+/// Downward acceleration used by the module's ballistic or movement integration.
 const GRAVITY=800.0
+/// Entity-state flag selecting bounce half behavior in client presentation.
 const EF_BOUNCE_HALF=0x10
+/// Velocity-retention multiplier applied when a native projectile bounces.
 const BOUNCE_SCALE=0.65
+/// Capacity limit for the bounces per frame collection or bounded storage used by this client module.
 const MAX_BOUNCES_PER_FRAME=8
+/// Weapon classname used to select the rocket projectile profile.
 const ROCKET="weapon_rocketlauncher"
+/// Weapon classname used to select the plasma projectile profile.
 const PLASMA="weapon_plasmagun"
+/// Weapon classname used to select the grenade projectile profile.
 const GRENADE="weapon_grenadelauncher"
+/// Weapon classname used to select the BFG projectile profile.
 const BFG="weapon_bfg"
 
 /// Stores playable player projectiles profile record, including `classname`, `style`, `speed`, `lifetime`, `directDamage`, `splashDamage` and additional values.
-struct Profile classname style speed lifetime directDamage splashDamage splashRadius gravity eFlags end struct
+struct Profile
+  /// Weapon classname selecting the projectile's simulation and presentation profile.
+  classname
+  /// Projectile presentation style selected by the weapon profile and copied into trail and impact
+  /// records.
+  style
+  /// When constructing this record, `profile` supplies `900.0` for this member.
+  speed
+  /// When constructing this record, `profile` supplies `15000` for this member.
+  lifetime
+  /// When constructing this record, `profile` supplies `100` for this member. Used by `damageAtImpact`
+  /// during subsequent processing.
+  directDamage
+  /// When constructing this record, `profile` supplies `100` for this member. Used by `damageAtImpact`
+  /// during subsequent processing.
+  splashDamage
+  /// When constructing this record, `profile` supplies `120.0` for this member. Used by
+  /// `damageAtImpact` during subsequent processing.
+  splashRadius
+  /// When constructing this record, `profile` supplies `false` for this member. Used by `stepEndpoint`
+  /// and `velocityAfter` during subsequent processing.
+  gravity
+  /// When constructing this record, `profile` supplies `0` for this member. Used by `updateWithTrace`
+  /// during subsequent processing.
+  eFlags
+end struct
 /// Stores playable player projectiles projectile record, including `id`, `profile`, `origin`, `velocity`, `spawnedAt`, `expiresAt` and additional values.
-struct Projectile id profile origin velocity spawnedAt expiresAt stopped end struct
+struct Projectile
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// When constructing this record, `spawnProfile` supplies `weaponProfile` for this member.
+  profile
+  /// Current world-space position from which the player's projectile advances its next movement step;
+  /// updated after travel and collisions.
+  origin
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// When constructing this record, `spawnProfile` supplies `now` for this member.
+  spawnedAt
+  /// When constructing this record, `spawnProfile` supplies `now+weaponProfile.lifetime` for this
+  /// member.
+  expiresAt
+  /// When constructing this record, `spawnProfile` supplies `false` for this member.
+  stopped
+end struct
 /// Stores playable player projectiles trail record, including `projectileId`, `style`, `start`, `endPoint`, `fromTime`, `toTime`.
-struct Trail projectileId style start endPoint fromTime toTime end struct
+struct Trail
+  /// Stable projectile identifier used to associate movement, trails, and impact presentation.
+  projectileId
+  /// Projectile style carried by this traveled segment so trail rendering can select the matching
+  /// effect.
+  style
+  /// When constructing this record, `updateWithTrace` supplies `startPoint` for this member.
+  start
+  /// World-space endpoint of the trace, beam, or projectile presentation segment.
+  endPoint
+  /// When constructing this record, `updateWithTrace` supplies `cursorTime` for this member.
+  fromTime
+  /// When constructing this record, `updateWithTrace` supplies `hitTime` for this member.
+  toTime
+end struct
 /// Stores playable player projectiles damage record, including `targetIndex`, `amount`, `direct`, `killed`, `awardedScore`.
-struct Damage targetIndex amount direct killed awardedScore end struct
+struct Damage
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// When constructing this record, `applyDamage` supplies `amount` for this member.
+  amount
+  /// When constructing this record, `applyDamage` supplies `direct` for this member.
+  direct
+  /// When constructing this record, `applyDamage` supplies `killed` for this member.
+  killed
+  /// When constructing this record, `applyDamage` supplies `awarded` for this member.
+  awardedScore
+end struct
 /// Stores playable player projectiles impact record, including `id`, `projectileId`, `classname`, `style`, `kind`, `point` and additional values.
-struct Impact id projectileId classname style kind point normal targetIndex damages at end struct
+struct Impact
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// Stable projectile identifier used to associate movement, trails, and impact presentation.
+  projectileId
+  /// Weapon classname copied from the projectile profile into its impact result.
+  classname
+  /// Projectile style retained at impact to select the corresponding explosion and hit presentation.
+  style
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// When constructing this record, `addImpact` supplies `copyPoint(point)` for this member.
+  point
+  /// Collision-plane normal at a player projectile's impact, used by its impact and explosion effects.
+  normal
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// When constructing this record, `addImpact` supplies `damages` for this member.
+  damages
+  /// When constructing this record, `addImpact` supplies `now` for this member.
+  at
+end struct
 /// Stores playable player projectiles state, including `projectiles`, `trails`, `impacts`, `nextProjectileId`, `nextImpactId`, `lastTime`.
-struct State projectiles trails impacts nextProjectileId nextImpactId lastTime end struct
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `spawnProfile` and `updateWithTrace` during subsequent processing.
+  projectiles
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `updateWithTrace` during subsequent processing.
+  trails
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `addImpact` and `updateWithTrace` during subsequent processing.
+  impacts
+  /// When constructing this record, `create` supplies `0` for this member. Used by `spawnProfile`
+  /// during subsequent processing.
+  nextProjectileId
+  /// When constructing this record, `create` supplies `0` for this member. Used by `addImpact` during
+  /// subsequent processing.
+  nextImpactId
+  /// When constructing this record, `create` supplies `now` for this member. Used by `spawnProfile` and
+  /// `updateWithTrace` during subsequent processing.
+  lastTime
+end struct
 
 /// Creates the playable player projectiles error `7590` with diagnostic text `"player projectiles: "+message`.
 /// @param message Argument 2 of `error`; passed as `"player projectiles: "+message`.

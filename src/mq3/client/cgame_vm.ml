@@ -5,49 +5,100 @@ package mq3.client.cgame_vm
 import mq3.shared.info as info
 import mq3.client.cgame_public as cgame_api
 
+/// CG VM entry-point ordinal used to initialize the CGame VM.
 const CG_INIT=cgame_api.CG_INIT
+/// CG VM entry-point ordinal used to shut down the CGame VM.
 const CG_SHUTDOWN=cgame_api.CG_SHUTDOWN
+/// CG VM entry-point ordinal used to handle a CGame console command.
 const CG_CONSOLE_COMMAND=cgame_api.CG_CONSOLE_COMMAND
+/// CG VM entry-point ordinal used to render a CGame frame.
 const CG_DRAW_ACTIVE_FRAME=cgame_api.CG_DRAW_ACTIVE_FRAME
+/// CG VM entry-point ordinal used to query the player currently under the crosshair.
 const CG_CROSSHAIR_PLAYER=cgame_api.CG_CROSSHAIR_PLAYER
+/// CG VM entry-point ordinal used to query the latest attacker.
 const CG_LAST_ATTACKER=cgame_api.CG_LAST_ATTACKER
+/// CG VM entry-point ordinal used to deliver a key event to CGame.
 const CG_KEY_EVENT=cgame_api.CG_KEY_EVENT
+/// CG VM entry-point ordinal used to deliver pointer motion to CGame.
 const CG_MOUSE_EVENT=cgame_api.CG_MOUSE_EVENT
+/// CG VM entry-point ordinal used to switch CGame event-handling mode.
 const CG_EVENT_HANDLING=cgame_api.CG_EVENT_HANDLING
+/// Client connection state while level media and game state are being loaded.
 const CA_LOADING=6
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Input-capture bit that routes keyboard events to the cgame subsystem.
 const KEYCATCH_CGAME=8
+/// VM execution mode selecting the engine's compiled VM path.
 const VMI_COMPILED=2
 
 /// Stores client game vm host-service callbacks, including `machineRuntime`, `syscall`, `loadFn`, `callFn`, `freeFn`, `context` and additional values.
 struct Services
+  /// When constructing this record, `services` supplies `machineRuntime` for this member.
   machineRuntime
+  /// When constructing this record, `services` supplies `syscall` for this member.
   syscall
+  /// Host callback for the load operation; an unset callback leaves that host operation unavailable.
   loadFn
+  /// Host callback for the call operation; an unset callback leaves that host operation unavailable.
   callFn
+  /// Host callback for the free operation; an unset callback leaves that host operation unavailable.
   freeFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for CGame virtual-machine
+  /// execution.
   context
+  /// Host callback for the milliseconds operation; an unset callback leaves that host operation
+  /// unavailable.
   millisecondsFn
+  /// Host callback for the close console operation; an unset callback leaves that host operation
+  /// unavailable.
   closeConsoleFn
+  /// Host callback for the server info operation; an unset callback leaves that host operation
+  /// unavailable.
   serverInfoFn
+  /// Host callback for the end registration operation; an unset callback leaves that host operation
+  /// unavailable.
   endRegistrationFn
+  /// Host callback for the low memory operation; an unset callback leaves that host operation
+  /// unavailable.
   lowMemoryFn
+  /// Host callback for the touch memory operation; an unset callback leaves that host operation
+  /// unavailable.
   touchMemoryFn
+  /// Host callback for the clear notify operation; an unset callback leaves that host operation
+  /// unavailable.
   clearNotifyFn
 end struct
 
 /// Stores client game vm state, including `host`, `slot`, `active`, `cgameStarted`, `connectionState`, `keyCatchers` and additional values.
 struct State
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
   host
+  /// VM slot index identifying the loaded CGame or UI module in the VM runtime.
   slot
+  /// When constructing this record, `create` supplies `false` for this member. Used by `requireActive`
+  /// and `initialize` during subsequent processing.
   active
+  /// When constructing this record, `create` supplies `false` for this member. Used by `initialize` and
+  /// `shutdown` during subsequent processing.
   cgameStarted
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
   connectionState
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
   keyCatchers
+  /// Map name parsed from server information or selected by the client UI.
   mapname
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initialize` during
+  /// subsequent processing.
   loadMilliseconds
+  /// When constructing this record, `create` supplies `0` for this member. Used by `invoke` during
+  /// subsequent processing.
   callCount
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `invoke` during
+  /// subsequent processing.
   lastExport
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `invoke`
+  /// during subsequent processing.
   lastArgs
 end struct
 

@@ -10,10 +10,52 @@ import mq3.client.ui_vm as uiVm
 import mq3.vm.syscall_ui as syscalls
 import mq3.compat.numeric as n
 
+/// Capacity limit for the configstrings collection or bounded storage used by this client module.
 const MAX_CONFIGSTRINGS=1024
+/// Configuration-variable attribute that persists the value in the user's saved configuration.
 const CVAR_ARCHIVE=1
 /// Stores engine client UI runtime state, including `browser`, `cacheHost`, `queryState`, `syscallHost`, `ui`, `clientState` and additional values.
-struct State browser cacheHost queryState syscallHost ui clientState glconfig configStrings clipboard cdKey fsGame modifiedFlags keyCatchers realtime end struct
+struct State
+  /// When constructing this record, `create` supplies `browser` for this member. Used by
+  /// `LAN_LoadCachedServers` and `LAN_SaveServersToCache` during subsequent processing.
+  browser
+  /// When constructing this record, `create` supplies `cacheHost` for this member. Used by
+  /// `LAN_LoadCachedServers` and `LAN_SaveServersToCache` during subsequent processing.
+  cacheHost
+  /// When constructing this record, `create` supplies `queryState` for this member. Used by
+  /// `LAN_UpdateVisiblePings` and `LAN_GetServerStatus` during subsequent processing.
+  queryState
+  /// When constructing this record, `create` supplies `syscallHost` for this member. Used by
+  /// `Key_KeynumToStringBuf` and `Key_GetBindingBuf` during subsequent processing.
+  syscallHost
+  /// When constructing this record, `create` supplies `ui` for this member. Used by `CL_ShutdownUI` and
+  /// `CL_InitUI` during subsequent processing.
+  ui
+  /// When constructing this record, `create` supplies `clientState` for this member. Used by
+  /// `GetClientState` during subsequent processing.
+  clientState
+  /// Renderer configuration reported by the engine for the current display.
+  glconfig
+  /// When constructing this record, `create` supplies `configStrings` for this member. Used by
+  /// `GetConfigString` during subsequent processing.
+  configStrings
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `GetClipboardData` during subsequent processing.
+  clipboard
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CLUI_GetCDKey` and `CLUI_SetCDKey` during subsequent processing.
+  cdKey
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CLUI_GetCDKey` and `CLUI_SetCDKey` during subsequent processing.
+  fsGame
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CLUI_SetCDKey`
+  /// during subsequent processing.
+  modifiedFlags
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
+  keyCatchers
+  /// Local client timestamp in milliseconds supplied to the UI runtime refresh path.
+  realtime
+end struct
 
 /// Creates the engine client UI runtime error `7801` with diagnostic text `"cl_ui: "+message`.
 /// @param message Argument 2 of `error`; passed as `"cl_ui: "+message`.

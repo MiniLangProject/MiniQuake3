@@ -18,24 +18,45 @@ import mq3.compat.numeric as n
 import std.string as strings
 /// `State` record for spawn, containing `level`, `parser`, `vars`, `chars` and `spawning` and related fields.
 struct State
+  /// Game-level state shared with the operation or runtime.
   level
+  /// Parser state retained for subsequent token-reading operations.
   parser
+  /// Map spawn variables for the entity currently being created.
   vars
+  /// Character storage for parsed map spawn variables.
   chars
+  /// Nonzero while map entities are being created during level initialization.
   spawning
+  /// GT_* game-mode identifier used for filtering and initializing map entities for the selected game
+  /// mode.
   gametype
+  /// Message-of-the-day text advertised by the server.
   motd
+  /// Nonzero while waiting for a requested map restart to take effect.
   restarted
+  /// Setting controlling whether matches use the warmup stage.
   doWarmup
+  /// Warmup timing value supplied to ranking/match state.
   warmupTime
+  /// Downward acceleration used by the player or entity movement simulation.
   gravity
+  /// Indexed game configuration strings advertised to connected clients.
   configstrings
+  /// Console-variable registry or pending console-variable updates used by the module.
   cvars
+  /// Injected callback for unported; invoked through the State service/state record.
   unportedFn
+  /// Injected callback for effect; invoked through the State service/state record.
   effectFn
+  /// Opaque caller-supplied context available to map-spawn effects and unported-entity notification
+  /// callbacks.
   context
+  /// Nonzero when mission-pack rules and content are enabled.
   missionpack
+  /// Nonzero when the game runs single-player arena rules.
   singlePlayer
+  /// Sequence number pairing successive client portal endpoints.
   portalSequence
 end struct
 /// Set `level.spawner` to `state` and `level.damageFn` to `combat.damage` in `mq3.game.spawn.create`. Return paths include `state`.

@@ -5,23 +5,66 @@ package mq3.server.client_message
 import mq3.qcommon.message as msgio
 import std.string as strings
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client-to-server opcode carrying user commands with snapshot delta acknowledgment.
 const CLC_MOVE=2
+/// Client-to-server opcode carrying user commands while requesting a full snapshot.
 const CLC_MOVE_NO_DELTA=3
+/// Client-to-server opcode introducing a reliable textual client command.
 const CLC_CLIENT_COMMAND=4
+/// Client-to-server opcode marking the end of a message.
 const CLC_EOF=5
 
 /// Server record for server.client_message, containing `serverId`, `restartedServerId`.
-struct Server serverId restartedServerId end struct
+struct Server
+  /// Identifier distinguishing the current server or map session.
+  serverId
+  /// Server identifier retained from before the latest map restart.
+  restartedServerId
+end struct
 /// Client record for server.client_message, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableSequence`, `gamestateMessageNum`, `downloadName`, and 4 further fields.
 struct Client
-  state messageAcknowledge reliableAcknowledge reliableSequence
-  gamestateMessageNum downloadName name lastClientCommand
-  lastClientCommandString nextReliableTime
+  /// Connection lifecycle value that controls which decoded commands and movement messages are
+  /// accepted.
+  state
+  /// Sequence number of the newest server message acknowledged by the client.
+  messageAcknowledge
+  /// Reliable server-command sequence acknowledged by the decoded client message.
+  reliableAcknowledge
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Outgoing network sequence number of the client gamestate message.
+  gamestateMessageNum
+  /// Requested asset download path, or an empty string when no download is active.
+  downloadName
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Sequence number of the last processed reliable client command.
+  lastClientCommand
+  /// Text of the last processed reliable client command.
+  lastClientCommandString
+  /// Earliest server timestamp when another reliable client command is accepted.
+  nextReliableTime
 end struct
 /// Services record for server.client_message, containing `clientCommandFn`, `userMoveFn`, `sendGamestateFn`, `dropFn`, `diagnosticFn`, `context`.
-struct Services clientCommandFn userMoveFn sendGamestateFn dropFn diagnosticFn context end struct
+struct Services
+  /// Host callback that delivers a command to the game client interface.
+  clientCommandFn
+  /// Host callback that decodes and processes client movement commands.
+  userMoveFn
+  /// Host callback that transmits the current gamestate to a client.
+  sendGamestateFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with client command decoding, movement dispatch, and gamestate
+  /// resends.
+  context
+end struct
 
 /// Create `mq3.server.client_message.Server` with serverId=serverId; restartedServerId=restartedServerId.
 /// @param serverId Initial `serverId` field stored in the returned or constructed `mq3.server.client_message.Server` record.

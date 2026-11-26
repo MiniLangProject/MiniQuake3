@@ -8,9 +8,13 @@ import mq3.format.qfiles as qfiles
 
 /// BSP record for format.bsp, containing `data`, `offsets`, `lengths`, `counts`.
 struct BSP
+  /// Complete BSP file bytes backing the lump readers.
   data
+  /// Byte offsets of BSP lump payloads, indexed by lump identifier.
   offsets
+  /// Byte lengths of BSP lump payloads, indexed by lump identifier.
   lengths
+  /// Decoded element counts for each BSP lump.
   counts
 end struct
 

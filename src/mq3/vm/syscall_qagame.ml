@@ -7,38 +7,72 @@ import mq3.vm.syscall_qagame_world as world
 import mq3.compat.numeric as n
 import mq3.shared.math as qmath
 
+/// Byte size used for qtime storage or binary layout in mq3.vm.syscall_qagame.
 const QTIME_SIZE=36
 
 /// TokenResult record for vm.syscall_qagame, containing `found`, `text`.
-struct TokenResult found text end struct
+struct TokenResult
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Spelling of the token returned by the host token-reading operation.
+  text
+end struct
 
 /// Services record for vm.syscall_qagame, containing `shared`, `context`, `locateGameDataFn`, `dropClientFn`, `sendServerCommandFn`, `setConfigstringFn`, and 20 further fields.
 struct Services
+  /// Shared host service bundle used by the VM syscall adapters.
   shared
+  /// Opaque caller-supplied context available to server game-VM entity, client, and configuration
+  /// services.
   context
+  /// Injected callback for locate game data; invoked through the Services service/state record.
   locateGameDataFn
+  /// Injected callback for drop client; invoked through the Services service/state record.
   dropClientFn
+  /// Injected callback for send server command; invoked through the Services service/state record.
   sendServerCommandFn
+  /// Injected callback for set configuration string; invoked through the Services service/state record.
   setConfigstringFn
+  /// Injected callback for get configuration string; invoked through the Services service/state record.
   getConfigstringFn
+  /// Injected callback for get user information; invoked through the Services service/state record.
   getUserinfoFn
+  /// Injected callback for set user information; invoked through the Services service/state record.
   setUserinfoFn
+  /// Injected callback for get server information; invoked through the Services service/state record.
   getServerinfoFn
+  /// Injected callback for set brush model; invoked through the Services service/state record.
   setBrushModelFn
+  /// Injected callback for in potential visibility set; invoked through the Services service/state
+  /// record.
   inPvsFn
+  /// Injected callback for adjust area portal; invoked through the Services service/state record.
   adjustAreaPortalFn
+  /// Injected callback for areas connected; invoked through the Services service/state record.
   areasConnectedFn
+  /// Injected callback for link entity; invoked through the Services service/state record.
   linkEntityFn
+  /// Injected callback for unlink entity; invoked through the Services service/state record.
   unlinkEntityFn
+  /// Injected callback for bot allocate client; invoked through the Services service/state record.
   botAllocateClientFn
+  /// Injected callback for bot free client; invoked through the Services service/state record.
   botFreeClientFn
+  /// Injected callback for entity token; invoked through the Services service/state record.
   entityTokenFn
+  /// Injected callback for file list; invoked through the Services service/state record.
   fileListFn
+  /// Injected callback for debug polygon create; invoked through the Services service/state record.
   debugPolygonCreateFn
+  /// Injected callback for debug polygon delete; invoked through the Services service/state record.
   debugPolygonDeleteFn
+  /// Injected callback for real time; invoked through the Services service/state record.
   realTimeFn
+  /// Injected callback for seek; invoked through the Services service/state record.
   seekFn
+  /// Injected world-query callbacks used for collision, visibility, and entity access.
   worldServices
+  /// Injected callback for extended; invoked through the Services service/state record.
   extendedFn
 end struct
 

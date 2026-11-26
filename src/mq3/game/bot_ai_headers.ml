@@ -3,60 +3,115 @@
 // Canonical contracts from the Baseq3 game AI headers.
 package mq3.game.bot_ai_headers
 
+/// Upper bound on nodeswitches represented by mq3.game.bot_ai_headers.
 const MAX_NODESWITCHES=50
+/// Capture-the-flag scoring or timing parameter for flag none.
 const CTF_FLAG_NONE=0
+/// Capture-the-flag scoring or timing parameter for flag red.
 const CTF_FLAG_RED=1
+/// Capture-the-flag scoring or timing parameter for flag blue.
 const CTF_FLAG_BLUE=2
+/// Capture-the-flag scoring or timing parameter for skin redteam.
 const CTF_SKIN_REDTEAM="red"
+/// Capture-the-flag scoring or timing parameter for skin blueteam.
 const CTF_SKIN_BLUETEAM="blue"
+/// Maximum number of item definitions indexed by the game and client game.
 const MAX_ITEMS=256
+/// Bot-state flag marking straferight.
 const BFL_STRAFERIGHT=1
+/// Bot-state flag marking attacked.
 const BFL_ATTACKED=2
+/// Bot-state flag marking attackjumped.
 const BFL_ATTACKJUMPED=4
+/// Bot-state flag marking aimatenemy.
 const BFL_AIMATENEMY=8
+/// Bot-state flag marking avoidright.
 const BFL_AVOIDRIGHT=16
+/// Bot-state flag marking idealviewset.
 const BFL_IDEALVIEWSET=32
+/// Bot-state flag marking fightsuicidal.
 const BFL_FIGHTSUICIDAL=64
+/// Long-term bot goal identifier selecting teamhelp behavior.
 const LTG_TEAMHELP=1
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=2
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=5
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=6
+/// Long-term bot goal identifier selecting camp behavior.
 const LTG_CAMP=7
+/// Long-term bot goal identifier selecting follow a camp order behavior.
 const LTG_CAMPORDER=8
+/// Long-term bot goal identifier selecting patrol behavior.
 const LTG_PATROL=9
+/// Long-term bot goal identifier selecting getitem behavior.
 const LTG_GETITEM=10
+/// Long-term bot goal identifier selecting kill behavior.
 const LTG_KILL=11
+/// Long-term bot goal identifier selecting harvest behavior.
 const LTG_HARVEST=12
+/// Long-term bot goal identifier selecting attackenemybase behavior.
 const LTG_ATTACKENEMYBASE=13
+/// Long-term bot goal identifier selecting makelove under behavior.
 const LTG_MAKELOVE_UNDER=14
+/// Long-term bot goal identifier selecting makelove ontop behavior.
 const LTG_MAKELOVE_ONTOP=15
+/// Duration in seconds allowed for the bot team task to help.
 const TEAM_HELP_TIME=60
+/// Duration in seconds allowed for the bot team task to accompany.
 const TEAM_ACCOMPANY_TIME=600
+/// Duration in seconds allowed for the bot team task to defend a key area.
 const TEAM_DEFENDKEYAREA_TIME=600
+/// Duration in seconds allowed for the bot team task to camp.
 const TEAM_CAMP_TIME=600
+/// Duration in seconds allowed for the bot team task to patrol.
 const TEAM_PATROL_TIME=600
+/// Duration in seconds allowed for the bot team task to lead.
 const TEAM_LEAD_TIME=600
+/// Duration in seconds allowed for the bot team task to getitem.
 const TEAM_GETITEM_TIME=60
+/// Lifetime in seconds of a bot order to kill a designated enemy.
 const TEAM_KILL_SOMEONE=180
+/// Duration in seconds allowed for the bot team task to attackenemybase.
 const TEAM_ATTACKENEMYBASE_TIME=600
+/// Duration in seconds allowed for the bot team task to harvest.
 const TEAM_HARVEST_TIME=120
+/// Capture-the-flag scoring or timing parameter for capture the flag time.
 const CTF_GETFLAG_TIME=600
+/// Capture-the-flag scoring or timing parameter for rush the base time.
 const CTF_RUSHBASE_TIME=120
+/// Capture-the-flag scoring or timing parameter for return the flag time.
 const CTF_RETURNFLAG_TIME=180
+/// Capture-the-flag scoring or timing parameter for roam time.
 const CTF_ROAM_TIME=60
+/// Patrol behavior flag enabling loop.
 const PATROL_LOOP=1
+/// Patrol behavior flag enabling reverse.
 const PATROL_REVERSE=2
+/// Patrol behavior flag enabling back.
 const PATROL_BACK=4
+/// Bot team-task preference bit indicating a preference for defender.
 const TEAMTP_DEFENDER=1
+/// Bot team-task preference bit indicating a preference for attacker.
 const TEAMTP_ATTACKER=2
+/// Capture-the-flag strategy identifier selecting agressive.
 const CTFS_AGRESSIVE=1
+/// AAS presence-mask value selecting the none collision shape.
 const PRESENCE_NONE=1
+/// AAS presence-mask value selecting the normal collision shape.
 const PRESENCE_NORMAL=2
+/// AAS presence-mask value selecting the crouch collision shape.
 const PRESENCE_CROUCH=4
+/// Upper bound on proxmines represented by mq3.game.bot_ai_headers.
 const MAX_PROXMINES=64
+/// Upper bound on activatestack represented by mq3.game.bot_ai_headers.
 const MAX_ACTIVATESTACK=8
+/// Upper bound on activateareas represented by mq3.game.bot_ai_headers.
 const MAX_ACTIVATEAREAS=32
 
 /// Return the ordered constant names table for bot ai headers: 55 entries beginning with `"MAX_NODESWITCHES"` and `"CTF_FLAG_NONE"`.

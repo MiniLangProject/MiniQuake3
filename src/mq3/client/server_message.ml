@@ -5,28 +5,55 @@ package mq3.client.server_message
 import mq3.qcommon.message as message
 import mq3.client.snapshot_command as snapshotCommand
 
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Server-message command byte selecting the bad protocol operation.
 const SVC_BAD=0
+/// Server-message command byte selecting the nop protocol operation.
 const SVC_NOP=1
+/// Server-message command byte selecting the gamestate protocol operation.
 const SVC_GAMESTATE=2
+/// Server-message command byte selecting the server command protocol operation.
 const SVC_SERVER_COMMAND=5
+/// Server-message command byte selecting the download protocol operation.
 const SVC_DOWNLOAD=6
+/// Server-message command byte selecting the snapshot protocol operation.
 const SVC_SNAPSHOT=7
+/// Server-message command byte selecting the eof protocol operation.
 const SVC_EOF=8
 
 /// Stores server message state, including `snapshotState`, `reliableAcknowledge`, `reliableSequence`, `serverCommandSequence`, `serverCommands`, `gamestateFn` and additional values.
 struct State
+  /// When constructing this record, `create` supplies `snapshotState` for this member. Used by
+  /// `parseServerMessage` during subsequent processing.
   snapshotState
+  /// Highest reliable-command sequence acknowledged as executed by the peer.
   reliableAcknowledge
+  /// Sequence number assigned to the latest queued reliable command.
   reliableSequence
+  /// Highest accepted reliable server-command sequence used to reject duplicates and index the command
+  /// ring.
   serverCommandSequence
+  /// Reliable server commands retained for ordered execution by the client.
   serverCommands
+  /// Host callback for the gamestate operation; an unset callback leaves that host operation
+  /// unavailable.
   gamestateFn
+  /// Host callback for the download operation; an unset callback leaves that host operation
+  /// unavailable.
   downloadFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server-message parsing.
   context
+  /// When constructing this record, `create` supplies `0` for this member. Used by `shownet` and
+  /// `parseServerMessage` during subsequent processing.
   shownetLevel
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `shownet`
+  /// and `emitShownet` during subsequent processing.
   shownetLines
+  /// Host callback for the shownet operation; an unset callback leaves that host operation unavailable.
   shownetFn
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `shownet` and `emitShownet` during subsequent processing.
   shownetContext
 end struct
 

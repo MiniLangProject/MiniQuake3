@@ -6,75 +6,239 @@ package mq3.game.bot_chat
 import mq3.game.game_headers as headers
 import mq3.compat.numeric as numeric
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Team identifier selecting the spectator team/category.
 const TEAM_SPECTATOR=3
+/// Chat-state value or flag selecting all.
 const CHAT_ALL=0
+/// Chat-state value or flag selecting team.
 const CHAT_TEAM=1
+/// Game-mode identifier selecting tournament rules.
 const GT_TOURNAMENT=1
+/// Minimum interval in seconds between ordinary bot chat messages.
 const TIME_BETWEENCHATTING=25.0
+/// Reserved entity number representing the BSP world.
 const ENTITYNUM_WORLD=1022
+/// Long-term bot goal identifier selecting teamhelp behavior.
 const LTG_TEAMHELP=1
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=2
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=5
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Combined CONTENTS_* mask used for water collision queries.
 const MASK_WATER=56
 
+/// Cause-of-death identifier attributing damage or a kill to unknown.
 const MOD_UNKNOWN=0
+/// Cause-of-death identifier attributing damage or a kill to shotgun.
 const MOD_SHOTGUN=1
+/// Cause-of-death identifier attributing damage or a kill to gauntlet.
 const MOD_GAUNTLET=2
+/// Cause-of-death identifier attributing damage or a kill to machine gun.
 const MOD_MACHINEGUN=3
+/// Cause-of-death identifier attributing damage or a kill to grenade.
 const MOD_GRENADE=4
+/// Cause-of-death identifier attributing damage or a kill to grenade splash.
 const MOD_GRENADE_SPLASH=5
+/// Cause-of-death identifier attributing damage or a kill to rocket.
 const MOD_ROCKET=6
+/// Cause-of-death identifier attributing damage or a kill to rocket splash.
 const MOD_ROCKET_SPLASH=7
+/// Cause-of-death identifier attributing damage or a kill to plasma.
 const MOD_PLASMA=8
+/// Cause-of-death identifier attributing damage or a kill to plasma splash.
 const MOD_PLASMA_SPLASH=9
+/// Cause-of-death identifier attributing damage or a kill to railgun.
 const MOD_RAILGUN=10
+/// Cause-of-death identifier attributing damage or a kill to lightning gun.
 const MOD_LIGHTNING=11
+/// Cause-of-death identifier attributing damage or a kill to BFG.
 const MOD_BFG=12
+/// Cause-of-death identifier attributing damage or a kill to BFG splash.
 const MOD_BFG_SPLASH=13
+/// Cause-of-death identifier attributing damage or a kill to water.
 const MOD_WATER=14
+/// Cause-of-death identifier attributing damage or a kill to slime.
 const MOD_SLIME=15
+/// Cause-of-death identifier attributing damage or a kill to lava.
 const MOD_LAVA=16
+/// Cause-of-death identifier attributing damage or a kill to crush.
 const MOD_CRUSH=17
+/// Cause-of-death identifier attributing damage or a kill to telefrag.
 const MOD_TELEFRAG=18
+/// Cause-of-death identifier attributing damage or a kill to falling.
 const MOD_FALLING=19
+/// Cause-of-death identifier attributing damage or a kill to suicide.
 const MOD_SUICIDE=20
+/// Cause-of-death identifier attributing damage or a kill to target laser.
 const MOD_TARGET_LASER=21
+/// Cause-of-death identifier attributing damage or a kill to trigger hurt.
 const MOD_TRIGGER_HURT=22
 // Baseq3 ends at 23. Missionpack inserts five values before its grapple (28).
 const MOD_GRAPPLE=23
+/// Cause-of-death identifier attributing damage or a kill to nail.
 const MOD_NAIL=23
+/// Cause-of-death identifier attributing damage or a kill to chaingun.
 const MOD_CHAINGUN=24
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE=25
+/// Cause-of-death identifier attributing damage or a kill to kamikaze.
 const MOD_KAMIKAZE=26
+/// Cause-of-death identifier attributing damage or a kill to juiced.
 const MOD_JUICED=27
+/// Cause-of-death identifier attributing damage or a kill to missionpack grapple.
 const MOD_MISSIONPACK_GRAPPLE=28
 
+/// Bot inventory slot used to read or update quad.
 const INVENTORY_QUAD=headers.INVENTORY_QUAD
+/// Bot inventory slot used to read or update haste.
 const INVENTORY_HASTE=headers.INVENTORY_HASTE
+/// Bot inventory slot used to read or update invisibility.
 const INVENTORY_INVISIBILITY=headers.INVENTORY_INVISIBILITY
+/// Bot inventory slot used to read or update regen.
 const INVENTORY_REGEN=headers.INVENTORY_REGEN
+/// Bot inventory slot used to read or update flight.
 const INVENTORY_FLIGHT=headers.INVENTORY_FLIGHT
 
 /// `Player` record for bot chat, containing `active`, `name`, `team` and `score`.
-struct Player active name team score end struct
+struct Player
+  /// Nonzero when this player participates in the tracked game state.
+  active
+  /// Player name used by bot chat composition.
+  name
+  /// Team assignment associated with the client, bot, or action.
+  team
+  /// Score currently recorded for the represented player or bot.
+  score
+end struct
 /// `Entity` record for bot chat, containing `valid`, `number`, `dead`, `invisible` and `shooting` and related fields.
-struct Entity valid number dead invisible shooting visible end struct
+struct Entity
+  /// True when the queried entity can participate in bot chat visibility decisions.
+  valid
+  /// Entity number identifying the tracked game object.
+  number
+  /// Nonzero when the represented player or bot is dead.
+  dead
+  /// Nonzero when the represented entity is concealed by invisibility.
+  invisible
+  /// Nonzero when the represented entity is firing a weapon.
+  shooting
+  /// Nonzero when the tracked target is visible to the observing bot.
+  visible
+end struct
 /// `HostAction` record for bot chat, containing `kind`, `client`, `channel`, `chat` and `variables` and related fields.
-struct HostAction kind client channel chat variables value dispatched end struct
+struct HostAction
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the recorded bot chat operation.
+  client
+  /// Delivery channel selected for the host chat/message action.
+  channel
+  /// Chat type or prepared chat entry selected for dispatch.
+  chat
+  /// Substitution values supplied when composing a bot chat message.
+  variables
+  /// Numeric/result payload supplied to the recorded host action.
+  value
+  /// Nonzero after the action has been delivered to its host callback.
+  dispatched
+end struct
 /// `Bot` record for bot chat, containing `client`, `entitynum`, `character`, `cs` and `score` and related fields.
 struct Bot
-  client entitynum character cs score lastchatTime chatto observer dead origin inventory
-  eye viewangles lastkilledby lastkilledplayer enemy botdeathtype enemydeathtype botsuicide
-  ltgtype thinktime lasthurtClient lasthurtMod
+  /// Client slot of the bot whose chat state and conversation are being evaluated.
+  client
+  /// Entity number used for visibility and opponent queries during bot chat decisions.
+  entitynum
+  /// Loaded bot-character handle used to query behavioral characteristics.
+  character
+  /// Botlib chat-state handle owned by this bot.
+  cs
+  /// Score currently recorded for the represented player or bot.
+  score
+  /// Timestamp of the last chat message emitted by the bot.
+  lastchatTime
+  /// Recipient mode selecting global, team, or other chat delivery.
+  chatto
+  /// Nonzero when the bot/client observes instead of participating in play.
+  observer
+  /// Nonzero when the represented player or bot is dead.
+  dead
+  /// Current bot position used by chat-related spatial and visibility checks.
+  origin
+  /// Bot inventory slots containing weapon ownership, ammunition, health, and tactical observations.
+  inventory
+  /// Eye position used as the origin of visibility and aiming queries.
+  eye
+  /// Player or bot viewing angles used for aiming and command generation.
+  viewangles
+  /// Client identifier of the player who most recently killed this bot.
+  lastkilledby
+  /// Client identifier of the player most recently killed by this bot.
+  lastkilledplayer
+  /// Current enemy entity selected by the bot decision logic.
+  enemy
+  /// Cause-of-death identifier for the bot most recent death.
+  botdeathtype
+  /// Cause-of-death identifier for the enemy most recent death.
+  enemydeathtype
+  /// Nonzero when the bot most recent death was a suicide.
+  botsuicide
+  /// Current long-term goal category selected from the LTG_* constants.
+  ltgtype
+  /// Time interval used for the current bot thinking/update step.
+  thinktime
+  /// Client identifier credited with the most recent incoming damage.
+  lasthurtClient
+  /// Cause-of-damage identifier for the most recent incoming damage.
+  lasthurtMod
 end struct
 /// `State` record for bot chat, containing `players`, `entities`, `maxclients`, `mapTitle` and `teamplay` and related fields.
 struct State
-  players entities maxclients mapTitle teamplay gametype botNoChat fastChat now
-  randomValues randomIndex characteristics pointBelow pointAbove groundEntity hurtMods
-  missionpack initialChatCounts actions hostActionFn
+  /// Player records indexed by client slot.
+  players
+  /// Game entity records indexed by entity number.
+  entities
+  /// Configured number of client slots active in this game state.
+  maxclients
+  /// Human-readable title of the active map.
+  mapTitle
+  /// Nonzero when the active game mode uses teams.
+  teamplay
+  /// GT_* game-mode identifier used for mode-appropriate bot chat and team-message decisions.
+  gametype
+  /// Nonzero when automatic bot chat is disabled.
+  botNoChat
+  /// Nonzero when bot chat delays are reduced for immediate output.
+  fastChat
+  /// Current clock value supplied to the bot decision step.
+  now
+  /// Deterministic random-value sequence supplied to bot decisions.
+  randomValues
+  /// Next position to consume in the supplied random-value sequence.
+  randomIndex
+  /// Bot-character values controlling personality and decision behavior.
+  characteristics
+  /// World point sampled below the bot when checking hazards and ground.
+  pointBelow
+  /// World point sampled above the bot when checking movement or visibility.
+  pointAbove
+  /// Entity currently supporting the tracked movement state.
+  groundEntity
+  /// Damage-cause values retained for bot damage/chat decisions.
+  hurtMods
+  /// Nonzero when mission-pack rules and content are enabled.
+  missionpack
+  /// Available initial-chat counts indexed by chat category.
+  initialChatCounts
+  /// Recorded host actions emitted by bot decision logic.
+  actions
+  /// Injected callback for host action; invoked through the State service/state record.
+  hostActionFn
 end struct
 
 /// Create a `mq3.game.bot_chat.Player` record, initializing `active` as `name!=""`, `name` from `name` and `team` from `team`.

@@ -8,47 +8,204 @@ import mq3.botlib.aas_runtime as runtime
 import mq3.botlib.aas_routing as routing
 import mq3.compat.numeric as n
 
+/// Standing on ground when in this face.
 const FACE_GROUND=4
+/// Bot can stand on the ground.
 const AREA_GROUNDED=1
+/// Area contains one or more ladder faces.
 const AREA_LADDER=2
+/// Area contains a liquid.
 const AREA_LIQUID=4
+/// Valid area to weapon jump to.
 const AREA_WEAPONJUMP=8192
+/// AAS area-contents bit marking lava.
 const AREACONTENTS_LAVA=2
+/// AAS area-contents bit marking slime.
 const AREACONTENTS_SLIME=4
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking teleporter.
 const AREACONTENTS_TELEPORTER=64
+/// AAS area-contents bit marking jump pad.
 const AREACONTENTS_JUMPPAD=128
+/// AAS area-contents bit marking do-not-enter area.
 const AREACONTENTS_DONOTENTER=256
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
+/// AAS movement-type identifier for walk.
 const TRAVEL_WALK=2
+/// AAS movement-type identifier for crouch.
 const TRAVEL_CROUCH=3
+/// Jumping onto a barrier.
 const TRAVEL_BARRIERJUMP=4
+/// AAS movement-type identifier for jump.
 const TRAVEL_JUMP=5
+/// Climbing a ladder.
 const TRAVEL_LADDER=6
+/// Walking of a ledge.
 const TRAVEL_WALKOFFLEDGE=7
+/// AAS movement-type identifier for swim.
 const TRAVEL_SWIM=8
+/// Jump out of the water.
 const TRAVEL_WATERJUMP=9
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// Rocket jumping required for travel.
 const TRAVEL_ROCKETJUMP=12
+/// Grappling hook required for travel.
 const TRAVEL_GRAPPLEHOOK=14
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
+/// Additional AAS travel restriction for team-one restriction.
 const TRAVELFLAG_NOTTEAM1=0x01000000
+/// Additional AAS travel restriction for team-two restriction.
 const TRAVELFLAG_NOTTEAM2=0x02000000
 
 /// `Physics` record for aas reachability, containing `gravity`, `jumpVelocity`, `maxVelocity`, `maxJumpFallHeight` and `step` and related fields.
-struct Physics gravity jumpVelocity maxVelocity maxJumpFallHeight step barrier waterJump startWalkOff fallDelta5 fallDelta10 fallDamage5 fallDamage10 end struct
+struct Physics
+  /// Gravity magnitude used when predicting movement.
+  gravity
+  /// Initial upward velocity applied when beginning a jump.
+  jumpVelocity
+  /// Upper bound on velocity used by movement prediction.
+  maxVelocity
+  /// Maximum descent considered acceptable after a jump.
+  maxJumpFallHeight
+  /// Maximum height crossed by an ordinary walking step.
+  step
+  /// Maximum height crossed by a barrier jump.
+  barrier
+  /// Maximum obstacle height crossed when jumping out of water.
+  waterJump
+  /// Initial routing-cost penalty assigned when walking off a ledge.
+  startWalkOff
+  /// Impact-velocity threshold for the lower fall-damage category.
+  fallDelta5
+  /// Impact-velocity threshold for the higher fall-damage category.
+  fallDelta10
+  /// Routing penalty assigned to the lower fall-damage category.
+  fallDamage5
+  /// Routing penalty assigned to the higher fall-damage category.
+  fallDamage10
+end struct
 /// `Reach` record for aas reachability, containing `sourceArea`, `areaNum`, `faceNum`, `edgeNum` and `start` and related fields.
-struct Reach sourceArea areaNum faceNum edgeNum start finish travelType travelTime allocated end struct
+struct Reach
+  /// AAS area from which this reachability or route begins.
+  sourceArea
+  /// Destination area assigned to the generated movement connection.
+  areaNum
+  /// Index of the AAS face associated with the movement link.
+  faceNum
+  /// Index of the AAS edge associated with the movement link.
+  edgeNum
+  /// Generated departure point for this candidate movement connection.
+  start
+  /// Generated arrival point for this candidate movement connection.
+  finish
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+  /// True when the represented object currently owns a live allocation.
+  allocated
+end struct
 /// `Special` record for aas reachability, containing `kind`, `sourceArea`, `destinationArea`, `entity` and `model` and related fields.
-struct Special kind sourceArea destinationArea entity model start finish velocity team end struct
+struct Special
+  /// Special movement feature type, such as a teleporter, jump pad, or mover.
+  kind
+  /// AAS area from which this reachability or route begins.
+  sourceArea
+  /// AAS area reached at the end of this movement link.
+  destinationArea
+  /// Game entity associated with this special movement feature.
+  entity
+  /// Inline BSP model identifier associated with this movement entity.
+  model
+  /// Source position of the entity-driven movement connection.
+  start
+  /// Destination position of the entity-driven movement connection.
+  finish
+  /// World-space linear velocity associated with the moving entity.
+  velocity
+  /// Team restriction applied to this special movement feature.
+  team
+end struct
 /// `Action` record for aas reachability, containing `boundary`, `kind`, `source`, `destination` and `detail` and related fields.
-struct Action boundary kind source destination detail dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator identifying the recorded reachability-generation action.
+  kind
+  /// Source area or entity associated with the action.
+  source
+  /// Destination area or entity associated with the action.
+  destination
+  /// Additional diagnostic information about the generated movement link.
+  detail
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `World` record for aas reachability, containing `runtime`, `map`, `settings`, `areas` and `reachesByArea` and related fields.
-struct World runtime map settings areas reachesByArea stored heapCapacity heapUsed loaded saveFile numReachabilityAreas forceReachability calcGrapple physics specials services actions retailActive end struct
+struct World
+  /// Navigation geometry runtime used to measure areas and construct movement links.
+  runtime
+  /// Parsed AAS map used while constructing movement links.
+  map
+  /// Area or runtime settings controlling navigation behavior.
+  settings
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// Generated reachability lists indexed by their source area.
+  reachesByArea
+  /// Number of reachability records already copied into persistent map storage.
+  stored
+  /// Maximum number of temporary reachability records available in the heap.
+  heapCapacity
+  /// Number of temporary reachability records currently allocated.
+  heapUsed
+  /// True when the navigation map is available for generating movement connections.
+  loaded
+  /// True when the current AAS data should be saved back to a file.
+  saveFile
+  /// Number of areas with reachabilities.
+  numReachabilityAreas
+  /// True when AAS reachabilities must be rebuilt even if cached data is present.
+  forceReachability
+  /// True when grappling-hook reachabilities should be generated.
+  calcGrapple
+  /// Movement-physics settings used when constructing reachabilities.
+  physics
+  /// Special movers, teleporters, and jump pads considered during reachability generation.
+  specials
+  /// Host geometry and timing queries used while generating area connections.
+  services
+  /// Recorded generation events describing source and destination navigation areas.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+end struct
 /// `Services` record for aas reachability, containing `pointAreaFn`, `pointContentsFn`, `bboxAreasFn`, `traceFn` and `teamFn` and related fields.
-struct Services pointAreaFn pointContentsFn bboxAreasFn traceFn teamFn timeFn context end struct
+struct Services
+  /// Host callback that returns the AAS area containing a point.
+  pointAreaFn
+  /// Host callback that queries world contents at a supplied point.
+  pointContentsFn
+  /// Host callback that finds AAS areas intersected by a bounding box.
+  bboxAreasFn
+  /// Host callback that performs a collision sweep through the host world.
+  traceFn
+  /// Host callback that returns team restrictions needed when generating reachabilities.
+  teamFn
+  /// Host callback that supplies the current time used by the bot runtime.
+  timeFn
+  /// Caller-supplied data associated with geometry, collision, team, and time queries during
+  /// reachability generation.
+  context
+end struct
 
 /// Create a `mq3.botlib.aas_reachability.Physics` record, initializing `gravity` as `800.0`, `jumpVelocity` as `270.0` and `maxVelocity` as `320.0`.
 function defaultPhysics() return Physics(800.0,270.0,320.0,450.0,18.0,32.0,42.0,1,40.0,60.0,5,10) end function

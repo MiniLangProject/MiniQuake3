@@ -10,20 +10,57 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 import mq3.renderer.bsp_render_data as renderData
 
+/// Default light-grid cell spacing along the world X axis.
 const DEFAULT_X=64.0
+/// Default light-grid cell spacing along the world Y axis.
 const DEFAULT_Y=64.0
+/// Default light-grid cell spacing along the world Z axis.
 const DEFAULT_Z=128.0
+/// Ratio of a circle's circumference to its diameter, used for angle conversion.
 const PI=3.14159265358979323846
+/// Minimum ambient contribution enforced for entities requesting minimum lighting.
 const MINLIGHT=32.0
+/// Dynamic-light contribution used at a distance equal to the light's radius.
 const DLIGHT_AT_RADIUS=16.0
+/// Lower bound applied to dynamic-light radius calculations.
 const DLIGHT_MINIMUM_RADIUS=16.0
+/// Fallback ambient-light contribution when rendering without a world light grid.
 const NOWORLD_AMBIENT=182.0
+/// Fallback directional-light contribution when rendering without a world light grid.
 const NOWORLD_DIRECTED=150.0
 
 /// Data record for `mq3.renderer.playable_light_grid.Grid`; groups `data`, `offset`, `length`, `origin`, `size`, `inverse`, and 3 further fields.
-struct Grid data offset length origin size inverse bounds valid dynamicLights end struct
+struct Grid
+  /// Packed BSP light-grid sample bytes containing ambient, directed, and angular lighting data.
+  data
+  /// Byte offset of the current cursor or data range.
+  offset
+  /// Number of bytes in the data range represented by this record.
+  length
+  /// World-space position of the first sample in the BSP lighting grid.
+  origin
+  /// World-space spacing between light-grid samples along each axis.
+  size
+  /// Reciprocal grid-cell dimensions used to locate a light-grid sample.
+  inverse
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Whether the record contains usable data for the requested operation.
+  valid
+  /// Dynamic lights considered in addition to baked grid lighting.
+  dynamicLights
+end struct
 /// Data record for `mq3.renderer.playable_light_grid.Sample`; groups `ambient`, `directed`, `direction`, `totalFactor`.
-struct Sample ambient directed direction totalFactor end struct
+struct Sample
+  /// Ambient light contribution sampled or applied by the renderer.
+  ambient
+  /// Directional light contribution sampled or applied by the renderer.
+  directed
+  /// Direction of the dominant light contribution.
+  direction
+  /// Accumulated weight used to normalize interpolated light-grid samples.
+  totalFactor
+end struct
 
 /// Creates error `7660` with message `"playable light grid: "+message`.
 /// @param message Input used in the result expression `error(7660,"playable light grid: "+message)`.

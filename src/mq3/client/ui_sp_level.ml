@@ -10,33 +10,187 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import std.string as strings
 
+/// Number of arenas grouped into one single-player progression tier.
 const ARENAS_PER_TIER=4
+/// Activation callback event accepted by the single-player arena selection menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the leftarrow action by the menu event handler.
 const ID_LEFTARROW=10
+/// Menu control identifier routed to the picture0 action by the menu event handler.
 const ID_PICTURE0=11
+/// Menu control identifier routed to the rightarrow action by the menu event handler.
 const ID_RIGHTARROW=15
+/// Menu control identifier routed to the playerpic action by the menu event handler.
 const ID_PLAYERPIC=16
+/// Menu control identifier routed to the award1 action by the menu event handler.
 const ID_AWARD1=17
+/// Native Back-control identifier exposed by single-player arena selection for returning to the
+/// previous menu.
 const ID_BACK=23
+/// Menu control identifier routed to the reset action by the menu event handler.
 const ID_RESET=24
+/// Menu control identifier routed to the custom action by the menu event handler.
 const ID_CUSTOM=25
+/// Menu control identifier routed to the next action by the menu event handler.
 const ID_NEXT=26
+/// UI keyboard-capture mask used when returning keyboard focus to single-player arena selection.
 const KEYCATCH_UI=2
+/// Postgame award identifier selecting the frags award category.
 const AWARD_FRAGS=4
+/// Virtual shader or image asset name used for the menu's levelframe focus artwork.
 const ART_LEVELFRAME_FOCUS="menu/art/maps_select"
+/// Virtual shader or image asset name used for the menu's levelframe selected artwork.
 const ART_LEVELFRAME_SELECTED="menu/art/maps_selected"
+/// Virtual shader or image asset name used for the menu's arrow artwork.
 const ART_ARROW="menu/art/narrow_0"
+/// Virtual shader or image asset name used for the menu's arrow focus artwork.
 const ART_ARROW_FOCUS="menu/art/narrow_1"
+/// Virtual shader or image asset name used for the menu's map unknown artwork.
 const ART_MAP_UNKNOWN="menu/art/unknownmap"
 
 /// Stores UI sp level map slot record, including `active`, `grayed`, `x`, `y`, `map`, `longname` and additional values.
-struct MapSlot active grayed x y map longname picture score skill end struct
+struct MapSlot
+  /// When constructing this record, `emptyMap` supplies `false` for this member.
+  active
+  /// When constructing this record, `emptyMap` supplies `false` for this member.
+  grayed
+  /// Horizontal coordinate of an arena levelshot tile in the single-player selection layout.
+  x
+  /// Vertical coordinate of an arena levelshot tile in the single-player selection layout.
+  y
+  /// When constructing this record, `emptyMap` supplies an empty string for this member.
+  map
+  /// When constructing this record, `emptyMap` supplies an empty string for this member.
+  longname
+  /// When constructing this record, `emptyMap` supplies an empty string for this member.
+  picture
+  /// Best recorded finishing place for this arena; first place enables its completion artwork and zero
+  /// means no result.
+  score
+  /// When constructing this record, `emptyMap` supplies `0` for this member.
+  skill
+end struct
 /// Stores UI sp level bot record, including `name`, `picture`.
-struct Bot name picture end struct
+struct Bot
+  /// Opponent name shown in the selected single-player arena's bot lineup.
+  name
+  /// When constructing this record, `setBots` supplies `picture` for this member.
+  picture
+end struct
 /// Stores UI sp level queued engine action, including `boundary`, `kind`, `x`, `y`, `w`, `h` and additional values.
-struct Action boundary kind x y w h text asset value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while selecting an unlocked arena and
+  /// presenting its bots and best result.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while selecting an unlocked
+  /// arena and presenting its bots and best result.
+  kind
+  /// Horizontal position of this queued drawing operation in the virtual layout used by the
+  /// single-player arena selection menu.
+  x
+  /// Vertical position of this queued drawing operation in the virtual layout used by the single-player
+  /// arena selection menu.
+  y
+  /// Width of the rectangular display region.
+  w
+  /// Height of the rectangular display region.
+  h
+  /// Arena-selection text payload, including labels, confirmation prompts, menu targets, or serialized
+  /// cvar assignments.
+  text
+  /// When constructing this record, `emit` supplies `asset` for this member.
+  asset
+  /// Value payload supplied to the selected host operation while selecting an unlocked arena and
+  /// presenting its bots and best result.
+  value
+  /// True when this request is marked for native dispatch while selecting an unlocked arena and
+  /// presenting its bots and best result; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI sp level state, including `data`, `selectedArenaSet`, `selectedArena`, `currentSet`, `currentGame`, `trainingTier` and additional values.
-struct State data selectedArenaSet selectedArena currentSet currentGame trainingTier finalTier minTier maxTier selectedArenaInfo numMaps maps bots playerModel playerPic awardLevels awardSounds reinit cached cacheAssets actions cvars menuEvents retailActive realtime cursor playerName pushed keyCatcher end struct
+struct State
+  /// When constructing this record, `create` supplies `data` for this member. Used by `cvar` and
+  /// `setCvar` during subsequent processing.
+  data
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setBots` and
+  /// `setMenuArena` during subsequent processing.
+  selectedArenaSet
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setMenuItems` and
+  /// `levelEvent` during subsequent processing.
+  selectedArena
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setBots` and
+  /// `setMenuArena` during subsequent processing.
+  currentSet
+  /// When constructing this record, `create` supplies `0` for this member. Used by `init` and
+  /// `spLevelMenu` during subsequent processing.
+  currentGame
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `setMenuItems` and
+  /// `levelEvent` during subsequent processing.
+  trainingTier
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setMenuItems` and
+  /// `levelEvent` during subsequent processing.
+  finalTier
+  /// When constructing this record, `create` supplies `0` for this member. Used by `leftArrowEvent` and
+  /// `spLevelMenu` during subsequent processing.
+  minTier
+  /// When constructing this record, `create` supplies `0` for this member. Used by `rightArrowEvent`
+  /// and `spLevelMenu` during subsequent processing.
+  maxTier
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `setBots` and `setMenuItems` during subsequent processing.
+  selectedArenaInfo
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setMenuItems` and
+  /// `menuDraw` during subsequent processing.
+  numMaps
+  /// When constructing this record, `create` supplies
+  /// `[emptyMap(46),emptyMap(186),emptyMap(326),emptyMap(466)]` for this member. Used by `setMenuArena`
+  /// and `clearExtraMaps` during subsequent processing.
+  maps
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `setBots`
+  /// and `menuDraw` during subsequent processing.
+  bots
+  /// Model resource selected for the player presentation.
+  playerModel
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `menuDraw` and `init` during subsequent processing.
+  playerPic
+  /// When constructing this record, `create` supplies `[0,0,0,0,0,0]` for this member. Used by
+  /// `menuDraw` and `init` during subsequent processing.
+  awardLevels
+  /// Sound resources selected for the award event or effect.
+  awardSounds
+  /// When constructing this record, `create` supplies `false` for this member. Used by `menuDraw` and
+  /// `init` during subsequent processing.
+  reinit
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `cache`
+  /// during subsequent processing.
+  cacheAssets
+  /// Host requests queued while selecting an unlocked arena and presenting its bots and best result,
+  /// retained in request order.
+  actions
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+  /// True when the retail QVM owns the single-player arena selection menu, so the native observer
+  /// records requests without emitting duplicate host effects.
+  retailActive
+  /// UI timestamp in milliseconds used to pulse and animate the single-player arena selection.
+  realtime
+  /// When constructing this record, `create` supplies `ID_NEXT` for this member. Used by `spLevelMenu`
+  /// during subsequent processing.
+  cursor
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `menuDraw` during subsequent processing.
+  playerName
+  /// Records that the single-player arena selection menu has been opened on the active menu stack.
+  pushed
+  /// Input-capture bitmask selecting which client subsystem currently receives key events.
+  keyCatcher
+end struct
 
 /// Creates a `mq3.client.ui_sp_level.MapSlot` record. Assigns `x` from `x`.
 /// @param x Value used to initialize `MapSlot.x`.

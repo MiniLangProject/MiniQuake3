@@ -7,27 +7,142 @@ import std.ds.list as lists
 import mq3.compat.numeric as n
 import mq3.renderer.tr_types as trtypes
 
+/// Maximum number of dynamic lights represented by the renderer's light bit masks.
 const MAX_DLIGHTS=trtypes.MAX_DLIGHTS
+/// Reserved entity number identifying static world geometry.
 const ENTITYNUM_WORLD=1022
+/// Exclusive upper bound of valid renderer entity types; not a drawable entity kind.
 const RT_MAX_REF_ENTITY_TYPE=trtypes.RT_MAX_REF_ENTITY_TYPE
+/// Hardware category selecting RIVA 128 alpha-interpolation workarounds.
 const GLHW_RIVA128=trtypes.GLHW_RIVA128
+/// Hardware category selecting Rage Pro alpha-texture workarounds.
 const GLHW_RAGEPRO=trtypes.GLHW_RAGEPRO
+/// Hardware category selecting Permedia2 blending workarounds.
 const GLHW_PERMEDIA2=trtypes.GLHW_PERMEDIA2
 
 /// Data record for `mq3.renderer.scene_queue.PolyVert`; groups `xyz`, `st`, `modulate`.
-struct PolyVert xyz st modulate end struct
+struct PolyVert
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Two-dimensional texture coordinates associated with the vertex.
+  st
+  /// Per-vertex RGBA color bytes that modulate the sampled texture.
+  modulate
+end struct
 /// Data record for `mq3.renderer.scene_queue.Poly`; groups `hShader`, `verts`, `fogIndex`.
-struct Poly hShader verts fogIndex end struct
+struct Poly
+  /// Registered shader handle used to draw the polygon.
+  hShader
+  /// Submitted polygon vertices retained until the queued scene is rendered.
+  verts
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+end struct
 /// Data record for `mq3.renderer.scene_queue.RefEntity`; groups `reType`, `payload`, `lightingCalculated`.
-struct RefEntity reType payload lightingCalculated end struct
+struct RefEntity
+  /// Renderer entity type selecting the model, sprite, beam, or portal path.
+  reType
+  /// Operation-specific data interpreted according to the record's command or event type.
+  payload
+  /// Whether entity lighting has already been computed for this frame.
+  lightingCalculated
+end struct
 /// Data record for `mq3.renderer.scene_queue.DecodedRefEntity`; groups `reType`, `renderfx`, `hModel`, `lightingOrigin`, `shadowPlane`, `axis`, and 14 further fields.
-struct DecodedRefEntity reType renderfx hModel lightingOrigin shadowPlane axis nonNormalizedAxes origin frame oldorigin oldframe backlerp skinNum customSkin customShader shaderRGBA shaderTexCoord shaderTime radius rotation end struct
+struct DecodedRefEntity
+  /// Renderer entity type selecting the model, sprite, beam, or portal path.
+  reType
+  /// Bit mask of entity rendering options, such as depth hack or shadow suppression.
+  renderfx
+  /// Registered model handle used to obtain the entity's geometry.
+  hModel
+  /// Alternate position used to give multipart models consistent lighting.
+  lightingOrigin
+  /// Plane height onto which projection shadows are placed.
+  shadowPlane
+  /// Entity basis decoded from the VM record, including scaling when non-normalized axes are permitted.
+  axis
+  /// Whether the orientation basis also contains scaling.
+  nonNormalizedAxes
+  /// World-space placement read from the submitted entity's VM renderer record.
+  origin
+  /// Current model animation-frame index.
+  frame
+  /// Previous entity position used by interpolation or beam geometry.
+  oldorigin
+  /// Previous animation frame used for interpolation.
+  oldframe
+  /// Interpolation weight of the previous frame: zero selects current, one selects previous.
+  backlerp
+  /// Model skin index selected for this entity.
+  skinNum
+  /// Explicit skin handle overriding the model's default skin.
+  customSkin
+  /// Shader handle overriding the entity's normal surface shaders.
+  customShader
+  /// Entity RGBA color bytes used by entity-driven shader generators.
+  shaderRGBA
+  /// Entity texture-coordinate offset used by entity-driven texture modifiers.
+  shaderTexCoord
+  /// Time offset in seconds subtracted from the view time for entity shader effects.
+  shaderTime
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+  /// Sprite rotation angle in degrees.
+  rotation
+end struct
 /// Data record for `mq3.renderer.scene_queue.DLight`; groups `origin`, `radius`, `color`, `additive`.
-struct DLight origin radius color additive end struct
+struct DLight
+  /// World-space center of a dynamic light submitted to the scene queue.
+  origin
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+  /// RGB contribution requested for a dynamic light added to the scene queue.
+  color
+  /// Whether the dynamic light contributes additively rather than modulating the surface.
+  additive
+end struct
 /// Data record for `mq3.renderer.scene_queue.View`; groups `entities`, `dlights`, `polys`.
-struct View entities dlights polys end struct
+struct View
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Dynamic lights submitted to the current scene.
+  dlights
+  /// Polygons submitted to the current scene.
+  polys
+end struct
 /// Data record for `mq3.renderer.scene_queue.State`; groups `registered`, `hardwareType`, `worldLoaded`, `fogBounds`, `maxPolys`, `maxPolyVerts`, and 9 further fields.
-struct State registered hardwareType worldLoaded fogBounds maxPolys maxPolyVerts entities dlights polys numPolyVerts firstSceneEntity firstSceneDlight firstScenePoly diagnosticFn context end struct
+struct State
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Detected graphics-hardware family used to select compatibility behavior.
+  hardwareType
+  /// Whether a world map is available to the renderer.
+  worldLoaded
+  /// World-space bounds of fog volumes used to classify submitted polygons.
+  fogBounds
+  /// Maximum number of polygons accepted by the scene buffer.
+  maxPolys
+  /// Maximum number of polygon vertices accepted by the scene buffer.
+  maxPolyVerts
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Dynamic lights submitted to the current scene.
+  dlights
+  /// Polygons submitted to the current scene.
+  polys
+  /// Number of polygon vertices currently stored in the scene.
+  numPolyVerts
+  /// First entity belonging to the current scene within the shared frame buffer.
+  firstSceneEntity
+  /// First dynamic light belonging to the current scene within the shared frame buffer.
+  firstSceneDlight
+  /// First polygon belonging to the current scene within the shared frame buffer.
+  firstScenePoly
+  /// Host callback used to perform diagnostic operations for this subsystem.
+  diagnosticFn
+  /// Host state supplied when reporting invalid or rejected scene submissions.
+  context
+end struct
 
 /// Builds `mq3.renderer.scene_queue.State` for `mq3.renderer.scene_queue.create`.
 /// @param maxPolys Initial value for `mq3.renderer.scene_queue.State.maxPolys`.

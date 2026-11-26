@@ -8,7 +8,22 @@ import mq3.format.roq as roq
 import mq3.video.roq_video as video
 
 /// Stores engine client cin runtime state, including `runtime`, `currentHandle`, `yuvTable`, `rllTable`, `screenDraws`.
-struct State runtime currentHandle yuvTable rllTable screenDraws end struct
+struct State
+  /// When constructing this record, `create` supplies `runtime` for this member. Used by
+  /// `CIN_HandleForVideo` and `CIN_PlayCinematic` during subsequent processing.
+  runtime
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `CIN_PlayCinematic`
+  /// and `CIN_StopCinematic` during subsequent processing.
+  currentHandle
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `ROQ_GenYUVTables` during subsequent processing.
+  yuvTable
+  /// When constructing this record, `create` supplies `RllSetupTable()` for this member.
+  rllTable
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `SCR_DrawCinematic` during subsequent processing.
+  screenDraws
+end struct
 /// Creates a `mq3.client.cl_cin_runtime.State` record. Assigns `runtime` from `runtime`.
 /// @param runtime Value used to initialize `State.runtime`.
 function create(runtime) return State(runtime,-1,[],RllSetupTable(),[]) end function

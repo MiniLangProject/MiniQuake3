@@ -11,101 +11,195 @@ import mq3.client.cgame_drawtools as drawtools
 import mq3.client.keycodes as q3keys
 import mq3.client.ui_local as q3local
 
+/// Menu-widget kind selecting null behavior and widget-specific data.
 const MTYPE_NULL=q3local.MTYPE_NULL
+/// Menu-widget kind selecting slider behavior and widget-specific data.
 const MTYPE_SLIDER=q3local.MTYPE_SLIDER
+/// Menu-widget kind selecting action behavior and widget-specific data.
 const MTYPE_ACTION=q3local.MTYPE_ACTION
+/// Menu-widget kind selecting spincontrol behavior and widget-specific data.
 const MTYPE_SPINCONTROL=q3local.MTYPE_SPINCONTROL
+/// Menu-widget kind selecting field behavior and widget-specific data.
 const MTYPE_FIELD=q3local.MTYPE_FIELD
+/// Menu-widget kind selecting radiobutton behavior and widget-specific data.
 const MTYPE_RADIOBUTTON=q3local.MTYPE_RADIOBUTTON
+/// Menu-widget kind selecting bitmap behavior and widget-specific data.
 const MTYPE_BITMAP=q3local.MTYPE_BITMAP
+/// Menu-widget kind selecting text behavior and widget-specific data.
 const MTYPE_TEXT=q3local.MTYPE_TEXT
+/// Menu-widget kind selecting scrolllist behavior and widget-specific data.
 const MTYPE_SCROLLLIST=q3local.MTYPE_SCROLLLIST
+/// Menu-widget kind selecting ptext behavior and widget-specific data.
 const MTYPE_PTEXT=q3local.MTYPE_PTEXT
+/// Menu-widget kind selecting btext behavior and widget-specific data.
 const MTYPE_BTEXT=q3local.MTYPE_BTEXT
+/// Menu-item flag used to blink the item while it is drawn.
 const QMF_BLINK=q3local.QMF_BLINK
+/// Menu-item flag used to draw the item's text with the small font.
 const QMF_SMALLFONT=q3local.QMF_SMALLFONT
+/// Menu-item flag used to align the item to the left of its horizontal anchor.
 const QMF_LEFT_JUSTIFY=q3local.QMF_LEFT_JUSTIFY
+/// Menu-item flag used to center the item around its horizontal anchor.
 const QMF_CENTER_JUSTIFY=q3local.QMF_CENTER_JUSTIFY
+/// Menu-item flag used to align the item to the right of its horizontal anchor.
 const QMF_RIGHT_JUSTIFY=q3local.QMF_RIGHT_JUSTIFY
+/// Menu-item flag used to restrict editable text to numeric input.
 const QMF_NUMBERSONLY=q3local.QMF_NUMBERSONLY
+/// Menu-item flag used to draw the item in its highlighted style.
 const QMF_HIGHLIGHT=q3local.QMF_HIGHLIGHT
+/// Menu-item flag used to highlight the item only while it has focus.
 const QMF_HIGHLIGHT_IF_FOCUS=q3local.QMF_HIGHLIGHT_IF_FOCUS
+/// Menu-item flag used to pulse the item only while it has focus.
 const QMF_PULSEIFFOCUS=q3local.QMF_PULSEIFFOCUS
+/// Menu-item flag used to record that the pointer currently focuses this item.
 const QMF_HASMOUSEFOCUS=q3local.QMF_HASMOUSEFOCUS
+/// Menu-item flag used to suppress the ordinary on/off text for a radio button.
 const QMF_NOONOFFTEXT=q3local.QMF_NOONOFFTEXT
+/// Menu-item flag used to allow selection through the pointer but skip keyboard navigation.
 const QMF_MOUSEONLY=q3local.QMF_MOUSEONLY
+/// Menu-item flag used to omit the item from display and normal selection.
 const QMF_HIDDEN=q3local.QMF_HIDDEN
+/// Menu-item flag used to display the item as unavailable.
 const QMF_GRAYED=q3local.QMF_GRAYED
+/// Menu-item flag used to exclude the item from interactive activation.
 const QMF_INACTIVE=q3local.QMF_INACTIVE
+/// Menu-item flag used to preserve the item's caller-supplied initialization.
 const QMF_NODEFAULTINIT=q3local.QMF_NODEFAULTINIT
+/// Menu-item flag used to delegate rendering to the item's owner-draw callback.
 const QMF_OWNERDRAW=q3local.QMF_OWNERDRAW
+/// Menu-item flag used to animate the item's color or brightness with a pulse.
 const QMF_PULSE=q3local.QMF_PULSE
+/// Menu-item flag used to convert entered characters to lowercase.
 const QMF_LOWERCASE=q3local.QMF_LOWERCASE
+/// Menu-item flag used to convert entered characters to uppercase.
 const QMF_UPPERCASE=q3local.QMF_UPPERCASE
+/// Menu-item flag used to suppress ordinary menu feedback sounds for this item.
 const QMF_SILENT=q3local.QMF_SILENT
+/// Menu callback event reporting that the item was gotfocus.
 const QM_GOTFOCUS=q3local.QM_GOTFOCUS
+/// Menu callback event reporting that the item was lostfocus.
 const QM_LOSTFOCUS=q3local.QM_LOSTFOCUS
+/// Activation callback event accepted by the shared base-game menu-widget toolkit before it processes
+/// the selected control action.
 const QM_ACTIVATED=q3local.QM_ACTIVATED
 
+/// Engine key code for the tab input, used by menu and client key-event handling.
 const K_TAB=q3keys.K_TAB
+/// Engine key code for the enter input, used by menu and client key-event handling.
 const K_ENTER=q3keys.K_ENTER
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=q3keys.K_ESCAPE
+/// Engine key code for the space input, used by menu and client key-event handling.
 const K_SPACE=q3keys.K_SPACE
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=q3keys.K_BACKSPACE
+/// Engine key code for the uparrow input, used by menu and client key-event handling.
 const K_UPARROW=q3keys.K_UPARROW
+/// Engine key code for the downarrow input, used by menu and client key-event handling.
 const K_DOWNARROW=q3keys.K_DOWNARROW
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=q3keys.K_LEFTARROW
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=q3keys.K_RIGHTARROW
+/// Engine key code for the ins input, used by menu and client key-event handling.
 const K_INS=q3keys.K_INS
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=q3keys.K_DEL
+/// Engine key code for the pgdn input, used by menu and client key-event handling.
 const K_PGDN=q3keys.K_PGDN
+/// Engine key code for the pgup input, used by menu and client key-event handling.
 const K_PGUP=q3keys.K_PGUP
+/// Engine key code for the home input, used by menu and client key-event handling.
 const K_HOME=q3keys.K_HOME
+/// Engine key code for the end input, used by menu and client key-event handling.
 const K_END=q3keys.K_END
+/// Engine key code for the f11 input, used by menu and client key-event handling.
 const K_F11=q3keys.K_F11
+/// Engine key code for the f12 input, used by menu and client key-event handling.
 const K_F12=q3keys.K_F12
+/// Engine key code for the kp home input, used by menu and client key-event handling.
 const K_KP_HOME=q3keys.K_KP_HOME
+/// Engine key code for the kp uparrow input, used by menu and client key-event handling.
 const K_KP_UPARROW=q3keys.K_KP_UPARROW
+/// Engine key code for the kp pgup input, used by menu and client key-event handling.
 const K_KP_PGUP=q3keys.K_KP_PGUP
+/// Engine key code for the kp leftarrow input, used by menu and client key-event handling.
 const K_KP_LEFTARROW=q3keys.K_KP_LEFTARROW
+/// Engine key code for the kp rightarrow input, used by menu and client key-event handling.
 const K_KP_RIGHTARROW=q3keys.K_KP_RIGHTARROW
+/// Engine key code for the kp end input, used by menu and client key-event handling.
 const K_KP_END=q3keys.K_KP_END
+/// Engine key code for the kp downarrow input, used by menu and client key-event handling.
 const K_KP_DOWNARROW=q3keys.K_KP_DOWNARROW
+/// Engine key code for the kp pgdn input, used by menu and client key-event handling.
 const K_KP_PGDN=q3keys.K_KP_PGDN
+/// Engine key code for the kp enter input, used by menu and client key-event handling.
 const K_KP_ENTER=q3keys.K_KP_ENTER
+/// Engine key code for the kp ins input, used by menu and client key-event handling.
 const K_KP_INS=q3keys.K_KP_INS
+/// Engine key code for the kp del input, used by menu and client key-event handling.
 const K_KP_DEL=q3keys.K_KP_DEL
+/// Engine key code for the mouse1 input, used by menu and client key-event handling.
 const K_MOUSE1=q3keys.K_MOUSE1
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=q3keys.K_MOUSE2
+/// Engine key code for the mouse3 input, used by menu and client key-event handling.
 const K_MOUSE3=q3keys.K_MOUSE3
+/// Engine key code for the joy1 input, used by menu and client key-event handling.
 const K_JOY1=q3keys.K_JOY1
+/// Engine key code for the joy2 input, used by menu and client key-event handling.
 const K_JOY2=q3keys.K_JOY2
+/// Engine key code for the joy3 input, used by menu and client key-event handling.
 const K_JOY3=q3keys.K_JOY3
+/// Engine key code for the joy4 input, used by menu and client key-event handling.
 const K_JOY4=q3keys.K_JOY4
+/// Engine key code for the aux1 input, used by menu and client key-event handling.
 const K_AUX1=q3keys.K_AUX1
+/// Engine key code for the aux16 input, used by menu and client key-event handling.
 const K_AUX16=q3keys.K_AUX16
+/// Engine key code for the char flag input, used by menu and client key-event handling.
 const K_CHAR_FLAG=q3keys.K_CHAR_FLAG
 
+/// UI text-style flag selecting left-aligned text.
 const UI_LEFT=0
+/// UI text-style flag selecting horizontally centered text.
 const UI_CENTER=1
+/// UI text-style flag selecting right-aligned text.
 const UI_RIGHT=2
+/// UI text-style flag selecting the small fixed-width font.
 const UI_SMALLFONT=16
+/// UI text-style flag selecting periodic visibility blinking.
 const UI_BLINK=32
+/// UI text-style flag selecting a pulsing text color or brightness.
 const UI_PULSE=64
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Bigchar font metric controlling height in virtual UI coordinates.
 const BIGCHAR_HEIGHT=16
+/// Smallchar font metric controlling width in virtual UI coordinates.
 const SMALLCHAR_WIDTH=8
+/// Smallchar font metric controlling height in virtual UI coordinates.
 const SMALLCHAR_HEIGHT=16
+/// Prop font metric controlling height in virtual UI coordinates.
 const PROP_HEIGHT=27
+/// Prop font metric controlling gap width in virtual UI coordinates.
 const PROP_GAP_WIDTH=3
+/// Logical step range used to map a menu slider between its minimum and maximum.
 const SLIDER_RANGE=10
+/// Capacity limit for the menuitems collection or bounded storage used by this client module.
 const MAX_MENUITEMS=64
 
+/// Menu feedback-sound selector for the none interaction.
 const SOUND_NONE=0
+/// Menu feedback-sound selector for the in interaction.
 const SOUND_IN=1
+/// Menu feedback-sound selector for the move interaction.
 const SOUND_MOVE=2
+/// Menu feedback-sound selector for the out interaction.
 const SOUND_OUT=3
+/// Menu feedback-sound selector for the buzz interaction.
 const SOUND_BUZZ=4
+/// Menu feedback-sound selector for the null interaction.
 const SOUND_NULL=-1
 
 /// Builds the UI qmenu `colorText` sequence from `[1.0,1.0,1.0,1.0]`.
@@ -120,11 +214,119 @@ function colorHighlight() return [1.0,1.0,0.0,1.0] end function
 function colorListbar() return [1.0,0.43,0.0,0.30] end function
 
 /// Stores UI qmenu menu, including `cursor`, `cursor_prev`, `items`, `wrapAround`, `fullscreen`, `showlogo` and additional values.
-struct Menu cursor cursor_prev items wrapAround fullscreen showlogo popped debug commands end struct
+struct Menu
+  /// When constructing this record, `menu` supplies `0` for this member.
+  cursor
+  /// When constructing this record, `menu` supplies `-1` for this member.
+  cursor_prev
+  /// Ordered child items participating in this menu's rendering and navigation.
+  items
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the shared base-game
+  /// menu-widget toolkit.
+  wrapAround
+  /// Whether the active menu covers the entire UI instead of appearing over the underlying game view.
+  fullscreen
+  /// When constructing this record, `menu` supplies `false` for this member.
+  showlogo
+  /// Records a request to remove the shared base-game menu-widget toolkit from the active menu stack.
+  popped
+  /// When constructing this record, `menu` supplies `false` for this member.
+  debug
+  /// When constructing this record, `menu` supplies an empty list for this member.
+  commands
+end struct
 /// Stores UI qmenu menu item, including `type`, `name`, `id`, `x`, `y`, `left` and additional values.
-struct Item type name id x y left top right bottom menuPosition flags callback statusbar ownerdraw string style color focuspic errorpic shader focusshader width height focuscolor minvalue maxvalue curvalue range oldvalue numitems listTop itemnames columns separation fieldCursor fieldScroll widthInChars buffer maxchars events end struct
+struct Item
+  /// UI item kind selecting its type-specific behavior and payload.
+  type
+  /// Item label or bitmap asset path selected by the menu widget's type.
+  name
+  /// Event-routing identifier of this selectable control in the shared base-game menu-widget toolkit.
+  id
+  /// Horizontal position of this menu control in the virtual layout used by the shared base-game
+  /// menu-widget toolkit.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the shared base-game
+  /// menu-widget toolkit.
+  y
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// Bottom boundary of the interactive or clipped region.
+  bottom
+  /// Index of this item within its owning menu's item list.
+  menuPosition
+  /// When constructing this record, `item` supplies `flags` for this member.
+  flags
+  /// When constructing this record, `item` supplies an absent (`void`) value for this member.
+  callback
+  /// When constructing this record, `item` supplies an absent (`void`) value for this member.
+  statusbar
+  /// When constructing this record, `item` supplies an absent (`void`) value for this member.
+  ownerdraw
+  /// When constructing this record, `item` supplies an empty string for this member.
+  string
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// Base RGBA item color used before disabled, focused, or pulsing menu styling.
+  color
+  /// When constructing this record, `item` supplies an empty string for this member.
+  focuspic
+  /// Fallback image asset used when the menu bitmap's requested image cannot be loaded.
+  errorpic
+  /// Normal bitmap material cache slot, reset to zero when the menu bitmap is initialized.
+  shader
+  /// When constructing this record, `item` supplies `0` for this member.
+  focusshader
+  /// Bitmap width in UI units, or character-cell column width for a scrolling-list item.
+  width
+  /// Bitmap height in UI units, or visible row count per column for a scrolling-list item.
+  height
+  /// When constructing this record, `item` supplies an absent (`void`) value for this member.
+  focuscolor
+  /// When constructing this record, `item` supplies `0.0` for this member.
+  minvalue
+  /// When constructing this record, `item` supplies `0.0` for this member.
+  maxvalue
+  /// When constructing this record, `item` supplies `0.0` for this member.
+  curvalue
+  /// When constructing this record, `item` supplies `0.0` for this member.
+  range
+  /// When constructing this record, `item` supplies `0` for this member.
+  oldvalue
+  /// Number of entries currently present in the menu or selection list.
+  numitems
+  /// When constructing this record, `item` supplies `0` for this member.
+  listTop
+  /// When constructing this record, `item` supplies an empty list for this member.
+  itemnames
+  /// Column descriptors used to lay out a listbox's displayed data.
+  columns
+  /// When constructing this record, `item` supplies `0` for this member.
+  separation
+  /// When constructing this record, `item` supplies `0` for this member.
+  fieldCursor
+  /// Character offset used to scroll the editable field's visible text.
+  fieldScroll
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// When constructing this record, `item` supplies an empty string for this member.
+  buffer
+  /// When constructing this record, `item` supplies `0` for this member.
+  maxchars
+  /// When constructing this record, `item` supplies an empty list for this member.
+  events
+end struct
 /// Stores UI qmenu key result record, including `sound`, `key`.
-struct KeyResult sound key end struct
+struct KeyResult
+  /// Menu SOUND_* feedback code selected by key handling for navigation, activation, or rejected input.
+  sound
+  /// When constructing this record, `MenuField_Key` supplies `key` for this member.
+  key
+end struct
 
 /// Creates a `mq3.client.ui_qmenu.Menu` record. Assigns `wrapAround` from `wrapAround`, `fullscreen` from `fullscreen`.
 /// @param wrapAround Value used to initialize `Menu.wrapAround`.

@@ -14,42 +14,73 @@ import std.ds.list as spatialAreaLists
 
 /// Entity record for server.world, containing `number`, `modelindex`, `solid`, `origin`, `angles`, `linked`, and 18 further fields.
 struct Entity
+  /// Game-entity number used by collision and linking queries.
   number
+  /// Model index used to associate this entity or item with registered model data.
   modelindex
+  /// Encoded collision-hull or solidity value associated with the entity.
   solid
+  /// World-space reference position used to link the server entity collision hull.
   origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
   angles
+  /// True when this entity or resource is linked into the world.
   linked
+  /// Number of times the entity has been linked or relinked into the world.
   linkcount
+  /// Server-side visibility and entity-behavior flags.
   svFlags
+  /// True when the entity uses a brush-model collision hull.
   bmodel
+  /// Minimum XYZ corner of the linked server entity collision hull relative to its origin.
   mins
+  /// Maximum XYZ corner of the linked server entity collision hull relative to its origin.
   maxs
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// Minimum corner of the entity's world-space collision bounds.
   absmin
+  /// Maximum corner of the entity's world-space collision bounds.
   absmax
+  /// Current world-space position used for collision and mover queries.
   currentOrigin
+  /// Current orientation angles used for collision and mover queries.
   currentAngles
+  /// Entity number of the owner excluded from selected collision tests.
   ownerNum
+  /// Spatial sector containing this linked entity.
   sector
+  /// Next entity in the same spatial-sector linked list.
   nextEntity
+  /// Cluster records or assignments used to group navigation and visibility areas.
   clusters
+  /// Final visibility cluster used when the explicit cluster list overflows.
   lastCluster
+  /// Primary collision area reached while linking this entity into the server world.
   areanum
+  /// Second AAS area number used by the operation.
   areanum2
+  /// Client number selected or excluded by the entity's single-client visibility flags.
   singleClient
 end struct
 /// Sector record for server.world, containing `axis`, `distance`, `children`, `head`.
 struct Sector
+  /// Coordinate-axis index along which this spatial sector is split.
   axis
+  /// Coordinate value of the sector's splitting plane.
   distance
+  /// Child sector indexes on either side of the split.
   children
+  /// First entity linked into this sector.
   head
 end struct
 /// Scene record for server.world, containing `world`, `entities`, `sectors`.
 struct Scene
+  /// Collision or navigation world used by this operation.
   world
+  /// Game or BSP entity records tracked by this subsystem.
   entities
+  /// Spatial partition sectors used to find linked game entities.
   sectors
 end struct
 

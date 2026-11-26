@@ -12,22 +12,45 @@ import mq3.qcommon.message as message
 import std.fs as fs
 import std.string as strings
 
+/// Filename suffix used for demos encoded with this client's network protocol version.
 const EXTENSION=".dm_68"
+/// Capacity limit for the archived demo collection or bounded storage used by this client module.
 const MAX_ARCHIVED_DEMO=64*1024*1024
+/// Capacity limit for the start packets collection or bounded storage used by this client module.
 const MAX_START_PACKETS=1024
+/// Capacity limit for the frame packets collection or bounded storage used by this client module.
 const MAX_FRAME_PACKETS=128
 
 /// Stores demo playback playback record, including `protocol`, `mapName`, `completed`, `handle`, `archiveData`, `offset` and additional values.
 struct Playback
+  /// Network protocol version advertised or required by the client connection.
   protocol
+  /// Map name extracted from the demo's initial game state.
   mapName
+  /// When constructing this record, `open` supplies `false` for this member. Used by `close` and
+  /// `advance` during subsequent processing.
   completed
+  /// When constructing this record, `open` supplies `handle` for this member. Used by `close` and
+  /// `read` during subsequent processing.
   handle
+  /// When constructing this record, `open` supplies `archiveData` for this member. Used by `close` and
+  /// `read` during subsequent processing.
   archiveData
+  /// When constructing this record, `open` supplies `0` for this member. Used by `read` during
+  /// subsequent processing.
   offset
+  /// When constructing this record, `open` supplies `bytes(8,0)` for this member. Used by `readPacket`
+  /// during subsequent processing.
   header
+  /// When constructing this record, `open` supplies `payload` for this member. Used by `readPacket`
+  /// during subsequent processing.
   payload
+  /// When constructing this record, `open` supplies `bytes(4,0)` for this member. Used by `read` during
+  /// subsequent processing.
   transferred
+  /// When constructing this record, `open` supplies
+  /// `message.initStorage(payload,demo.MAX_MSGLEN,false)` for this member. Used by `readPacket` during
+  /// subsequent processing.
   msg
 end struct
 

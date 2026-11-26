@@ -8,19 +8,111 @@ import mq3.client.ui_players as players
 import mq3.client.ui_qmenu as qmenu
 import mq3.compat.numeric as numeric
 
+/// Menu control identifier routed to the name action by the menu event handler.
 const ID_NAME=10
+/// Menu control identifier routed to the handicap action by the menu event handler.
 const ID_HANDICAP=11
+/// Menu control identifier routed to the effects action by the menu event handler.
 const ID_EFFECTS=12
+/// Event identifier of the Back control used to leave the player name, handicap, and color menu and
+/// return to its parent menu.
 const ID_BACK=13
+/// Menu control identifier routed to the model action by the menu event handler.
 const ID_MODEL=14
+/// Length limit used for a player or menu display name.
 const MAX_NAMELENGTH=20
 
 /// Stores UI player settings host action record, including `boundary`, `kind`, `name`, `text`, `number`, `x` and additional values.
-struct HostAction boundary kind name text number x y width height dispatched end struct
+struct HostAction
+  /// Host service category recorded with a request emitted while saving player identity and color
+  /// settings or drawing the player preview.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while saving player
+  /// identity and color settings or drawing the player preview.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// Player-setting text or cvar value sent to the host, such as the edited name, handicap, or effect
+  /// color.
+  text
+  /// When constructing this record, `emit` supplies `number` for this member.
+  number
+  /// Horizontal coordinate of the player-settings host drawing request in virtual menu coordinates.
+  x
+  /// Vertical coordinate of the player-settings host drawing request in virtual menu coordinates.
+  y
+  /// Destination width recorded for a player-settings renderer request.
+  width
+  /// Destination height recorded for a player-settings renderer request.
+  height
+  /// True when this request is marked for native dispatch while saving player identity and color
+  /// settings or drawing the player preview; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI player settings draw command record, including `kind`, `text`, `x`, `y`, `width`, `height` and additional values.
-struct DrawCommand kind text x y width height style color asset end struct
+struct DrawCommand
+  /// Player-settings drawing operation selecting how its text, artwork, bounds, and color are
+  /// interpreted.
+  kind
+  /// Text portion of a player-settings drawing command, such as the cleaned name or a handicap label.
+  text
+  /// Horizontal coordinate of the player-settings text or image command in the virtual menu layout.
+  x
+  /// Vertical coordinate of the player-settings text or image command in the virtual menu layout.
+  y
+  /// Width of the character or image quad in a player-settings draw command.
+  width
+  /// Height of the character or image quad in a player-settings draw command.
+  height
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// RGBA text or cursor color selected for the player-settings draw command.
+  color
+  /// When constructing this record, `visibleNameCommands` supplies an empty string for this member.
+  asset
+end struct
 /// Stores UI player settings state, including `source`, `menu`, `name`, `handicap`, `effects`, `currentFx` and additional values.
-struct State source menu name handicap effects currentFx playerModel playerinfo assets actions cvarWrites popped pushed modelMenu drawCommands realtime frametime end struct
+struct State
+  /// When constructing this record, `create` supplies `source` for this member.
+  source
+  /// When constructing this record, `create` supplies `qmenu.menu(true,true)` for this member.
+  menu
+  /// Player display name currently edited by the player-settings menu.
+  name
+  /// Player handicap setting used by the user-info and team-display paths.
+  handicap
+  /// UI palette index for the selected effects color; converted to the game's color code when saving
+  /// color1.
+  effects
+  /// Additional effect-selection slot initialized to zero; current color drawing and saving use the
+  /// effects field.
+  currentFx
+  /// Model resource selected for the player presentation.
+  playerModel
+  /// When constructing this record, `create` supplies `players.create()` for this member.
+  playerinfo
+  /// Media resources retained for registering and drawing the artwork used by the player name,
+  /// handicap, and color menu.
+  assets
+  /// Host requests queued while saving player identity and color settings or drawing the player
+  /// preview, retained in request order.
+  actions
+  /// Cvar name/value changes queued by the player name, handicap, and color menu for the host to apply.
+  cvarWrites
+  /// Records a request to remove the player name, handicap, and color menu from the active menu stack.
+  popped
+  /// Records that the player name, handicap, and color menu has been opened on the active menu stack.
+  pushed
+  /// True after saving current player settings and requesting the player-model selection menu.
+  modelMenu
+  /// Drawing records accumulated for the player-settings labels, editable name, effects selector, and
+  /// preview.
+  drawCommands
+  /// UI timestamp in milliseconds used to animate the player-settings menu and its preview.
+  realtime
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+end struct
 
 /// Lists the 14 UI player settings art list strings in their declared order, beginning with `"menu/art/frame2_l"`, `"menu/art/frame1_r"`, `"menu/art/model_0"`.
 function artList() return ["menu/art/frame2_l","menu/art/frame1_r","menu/art/model_0","menu/art/model_1","menu/art/back_0","menu/art/back_1","menu/art/fx_base","menu/art/fx_red","menu/art/fx_yel","menu/art/fx_grn","menu/art/fx_teal","menu/art/fx_blue","menu/art/fx_cyan","menu/art/fx_white"] end function

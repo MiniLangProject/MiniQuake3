@@ -11,13 +11,69 @@ import std.sort as sorting
 import mq3.renderer.world_surface_selection as worldSelection
 
 /// Data record for `mq3.renderer.portal_render_pass.Refdef`; groups `x`, `y`, `width`, `height`, `fovX`, `fovY`, and 5 further fields.
-struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
+struct Refdef
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the viewport rendered through the secondary portal camera.
+  width
+  /// Height in pixels of the viewport rendered through the secondary portal camera.
+  height
+  /// Horizontal camera field of view, in degrees.
+  fovX
+  /// Vertical camera field of view, in degrees.
+  fovY
+  /// Camera origin in world coordinates.
+  vieworg
+  /// Camera orientation represented by three basis vectors.
+  viewaxis
+  /// Scene time in milliseconds preserved when constructing the secondary portal view.
+  time
+  /// View-definition flags applied when rendering the portal camera.
+  flags
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areaMask
+end struct
 /// Data record for `mq3.renderer.portal_render_pass.Surface`; groups `normal`, `dist`, `faceIndex`, `textureIndex`, `distanceSquared`.
-struct Surface normal dist faceIndex textureIndex distanceSquared end struct
+struct Surface
+  /// Normalized portal-surface plane normal derived from its candidate world triangle.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+  /// Index of the source BSP face.
+  faceIndex
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Squared distance used for ordering or rejecting the candidate.
+  distanceSquared
+end struct
 /// Data record for `mq3.renderer.portal_render_pass.Plan`; groups `surface`, `view`, `refdef`.
-struct Plan surface view refdef end struct
+struct Plan
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+  /// Derived camera orientation and clipping state for a portal view.
+  view
+  /// Camera, viewport, timing, and rendering flags for the view.
+  refdef
+end struct
 /// Data record for `mq3.renderer.portal_render_pass.WorldBatchCache`; groups `faces`, `normal`, `dist`, `batch`, `builds`, `hits`, and 1 further field.
-struct WorldBatchCache faces normal dist batch builds hits clippedFaces end struct
+struct WorldBatchCache
+  /// BSP faces retained for the current geometry or visibility selection.
+  faces
+  /// Portal clipping-plane normal included in the retained world-batch cache key.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+  /// Prepared drawing batch associated with the selected geometry.
+  batch
+  /// Number of cache entries or batches rebuilt from source data.
+  builds
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of BSP faces clipped against the portal plane.
+  clippedFaces
+end struct
 
 /// Constructs `mq3.renderer.portal_render_pass.WorldBatchCache` with `faces` = `void`, `normal` = `void`, `dist` = `0.0`, `batch` = `void` and the supplied remaining values.
 function worldBatchCache() return WorldBatchCache(void,void,0.0,void,0,0,void) end function
@@ -143,7 +199,17 @@ function prepare(renderData,catalog,geometry,sourceRefdef,isPortal)
 end function
 
 /// Callback table for `mq3.renderer.portal_render_pass.ComposeServices`; exposes `drawPortalFn`, `clearDepthFn`, `drawMainFn`, `context`.
-struct ComposeServices drawPortalFn clearDepthFn drawMainFn context end struct
+struct ComposeServices
+  /// Host callback used to perform draw portal operations for this subsystem.
+  drawPortalFn
+  /// Host callback used to perform clear depth operations for this subsystem.
+  clearDepthFn
+  /// Host callback used to perform draw main operations for this subsystem.
+  drawMainFn
+  /// Drawing-host state shared by portal rendering, depth clearing, and main-view composition
+  /// callbacks.
+  context
+end struct
 /// Computes `compose` from `drawn+value` using `services.drawPortalFn`, `services.clearDepthFn`, `services.drawMainFn`.
 /// @param services Record providing `services.clearDepthFn`, `services.drawMainFn`, `services.drawPortalFn`, `services.context`.
 /// @param portal Argument 2 supplied to `services.drawPortalFn`.

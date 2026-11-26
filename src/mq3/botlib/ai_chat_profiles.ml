@@ -8,35 +8,99 @@ import mq3.botlib.ai_resource_pools as pools
 import mq3.vm.pc_parser as pc
 import std.string as strings
 
+/// Bot-library syscall identifier for load chat file.
 const OP_LOAD_CHAT_FILE=522
+/// Bot-library syscall identifier for set chat gender.
 const OP_SET_CHAT_GENDER=523
+/// Bot-library syscall identifier for set chat name.
 const OP_SET_CHAT_NAME=524
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=publicHeaders.BLERR_NOERROR
+/// Bot-library error indicating that an initial-chat script could not be loaded.
 const BLERR_CANNOTLOADICHAT=publicHeaders.BLERR_CANNOTLOADICHAT
+/// Chat gender selector for neutral or unspecified pronoun choices.
 const CHAT_GENDERLESS=publicHeaders.CHAT_GENDERLESS
+/// Chat gender selector for female pronoun choices.
 const CHAT_GENDERFEMALE=publicHeaders.CHAT_GENDERFEMALE
+/// Chat gender selector for male pronoun choices.
 const CHAT_GENDERMALE=publicHeaders.CHAT_GENDERMALE
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=publicHeaders.MAX_MESSAGE_SIZE
+/// Maximum length of a bot name used by the chat subsystem.
 const MAX_CHAT_NAME=32
 
+/// Chat-template component containing literal text.
 const COMPONENT_FIXED=1
+/// Chat-template component substituting a captured match variable.
 const COMPONENT_VARIABLE=2
+/// Chat-template component selecting a named random-text list.
 const COMPONENT_RANDOM=3
 
 /// `Component` record for ai chat profiles, containing `kind`, `text` and `number`.
-struct Component kind text number end struct
+struct Component
+  /// Template component discriminator selecting literal, variable, or random text.
+  kind
+  /// Literal text or random-list name associated with the component.
+  text
+  /// Captured-variable index used by a variable-substitution component.
+  number
+end struct
 /// `Message` record for ai chat profiles, containing `encoded`, `components` and `recentTime`.
-struct Message encoded components recentTime end struct
+struct Message
+  /// Encoded chat-message template retained for expansion.
+  encoded
+  /// Parsed literal, variable, and random-list components of the message.
+  components
+  /// Next time at which the chat message may be selected again.
+  recentTime
+end struct
 /// `ChatType` record for ai chat profiles, containing `name` and `messages`.
-struct ChatType name messages end struct
+struct ChatType
+  /// Name of the chat category selected by bot AI.
+  name
+  /// Alternative messages available within this chat category.
+  messages
+end struct
 /// `Profile` record for ai chat profiles, containing `filename`, `chatName`, `types` and `messageCount`.
-struct Profile filename chatName types messageCount end struct
+struct Profile
+  /// Path of the file associated with this operation.
+  filename
+  /// Name identifying the initial-chat profile selected from its source file.
+  chatName
+  /// Named chat categories and their available messages.
+  types
+  /// Total number of chat messages contained in the loaded profile.
+  messageCount
+end struct
 /// `Cached` record for ai chat profiles, containing `filename`, `chatName` and `profile`.
-struct Cached filename chatName profile end struct
+struct Cached
+  /// Path of the file associated with this operation.
+  filename
+  /// Name identifying the initial-chat profile selected from its source file.
+  chatName
+  /// Parsed initial-chat profile retained in the cache.
+  profile
+end struct
 /// `Loader` record for ai chat profiles, containing `state`.
-struct Loader state end struct
+struct Loader
+  /// Owning chat runtime supplying the file callback and file-read accounting.
+  state
+end struct
 /// `State` record for ai chat profiles, containing `pools`, `context`, `readFn`, `cache` and `reload` and related fields.
-struct State pools context readFn cache reload fileReads end struct
+struct State
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// Caller-supplied data associated with loading initial-chat profiles and their included files.
+  context
+  /// Host callback that reads initial-chat profile definitions and included chat sources.
+  readFn
+  /// Cached lookup or routing data reused by subsequent requests.
+  cache
+  /// True when chat profiles should be reloaded instead of reused from cache.
+  reload
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
 /// Construct error `7570` with diagnostic text `"AI chat: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

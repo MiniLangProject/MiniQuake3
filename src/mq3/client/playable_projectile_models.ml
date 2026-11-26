@@ -10,26 +10,119 @@ import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 
+/// Effect or media category selecting the model presentation.
 const KIND_MODEL=1
+/// Effect or media category selecting the sprite presentation.
 const KIND_SPRITE=2
+/// Capacity limit for the texture slots collection or bounded storage used by this client module.
 const MAX_TEXTURE_SLOTS=16
+/// Capacity limit for the triangles per projectile collection or bounded storage used by this client
+/// module.
 const MAX_TRIANGLES_PER_PROJECTILE=4096
+/// World-space size used to construct the plasma projectile presentation.
 const PLASMA_RADIUS=16.0
+/// Angular rotation rate applied to the projectile presentation for each elapsed millisecond.
 const SPIN_DEGREES_PER_MILLISECOND=0.25
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores playable projectile models definition record, including `style`, `kind`, `modelPath`, `shaderName`, `radius`, `expectedTextures`.
-struct Definition style kind modelPath shaderName radius expectedTextures end struct
+struct Definition
+  /// Projectile style that selects this model or sprite resource definition.
+  style
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// World-space sprite radius configured for this projectile style; model-backed styles use zero.
+  radius
+  /// When constructing this record, `definition` supplies `4` for this member.
+  expectedTextures
+end struct
 /// Stores playable projectile models asset record, including `style`, `kind`, `modelPath`, `shaderName`, `modelAsset`, `textureSlot` and additional values.
-struct Asset style kind modelPath shaderName modelAsset textureSlot imageName image radius end struct
+struct Asset
+  /// Projectile style used as the lookup key for this loaded render asset.
+  style
+  /// Effect or media category selecting the matching geometry, texture, or presentation behavior.
+  kind
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// When constructing this record, `loadSprite` supplies an absent (`void`) value for this member.
+  /// Used by `renderModel` during subsequent processing.
+  modelAsset
+  /// Texture-cache slot assigned to the resource for renderer submission.
+  textureSlot
+  /// Resolved image path used by this loaded projectile sprite or model material.
+  imageName
+  /// When constructing this record, `loadSprite` supplies `texture.image` for this member.
+  image
+  /// World-space billboard radius retained with a loaded projectile sprite asset.
+  radius
+end struct
 /// Stores playable projectile models catalog record, including `assets`, `textures`, `shaderIndex`, `scriptCount`, `firstTextureSlot`, `maxTextureSlots` and additional values.
-struct Catalog assets textures shaderIndex scriptCount firstTextureSlot maxTextureSlots skipped end struct
+struct Catalog
+  /// Loaded projectile model and sprite assets, looked up by projectile style.
+  assets
+  /// When constructing this record, `loadCatalog` supplies an empty list for this member. Used by
+  /// `textureByName` and `loadSprite` during subsequent processing.
+  textures
+  /// When constructing this record, `loadCatalog` supplies `scripts[0]` for this member. Used by
+  /// `loadSprite` and `loadModel` during subsequent processing.
+  shaderIndex
+  /// When constructing this record, `loadCatalog` supplies `scripts[1]` for this member. Used by
+  /// `loadModel` during subsequent processing.
+  scriptCount
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// When constructing this record, `loadCatalog` supplies `maxTextureSlots` for this member. Used by
+  /// `loadSprite` and `loadModel` during subsequent processing.
+  maxTextureSlots
+  /// When constructing this record, `loadCatalog` supplies an empty list for this member. Used by
+  /// `appendFallback` during subsequent processing.
+  skipped
+end struct
 /// Stores playable projectile models triangle record, including `positions`, `texCoords`, `normals`, `textureSlot`, `imageName`, `shaderName` and additional values.
-struct Triangle positions texCoords normals textureSlot imageName shaderName style surfaceIndex lightOrigin end struct
+struct Triangle
+  /// Ordered positions used to build the stored trail or spatial history.
+  positions
+  /// When constructing this record, `wrapModelTriangle` supplies `source.texCoords` for this member.
+  texCoords
+  /// When constructing this record, `wrapModelTriangle` supplies `source.normals` for this member.
+  normals
+  /// Texture-cache slot assigned to the resource for renderer submission.
+  textureSlot
+  /// Image path identifying the texture used by this emitted projectile triangle.
+  imageName
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// Projectile style identifying the render asset that produced this textured triangle.
+  style
+  /// When constructing this record, `wrapModelTriangle` supplies `source.surfaceIndex` for this member.
+  surfaceIndex
+  /// When constructing this record, `wrapModelTriangle` supplies `source.lightOrigin` for this member.
+  lightOrigin
+end struct
 /// Stores playable projectile models rendered record, including `triangles`, `fallback`, `style`.
-struct Rendered triangles fallback style end struct
+struct Rendered
+  /// When constructing this record, `renderSnapshot` supplies an empty list for this member.
+  triangles
+  /// When constructing this record, `renderSnapshot` supplies `true` for this member. Used by
+  /// `renderSnapshots` during subsequent processing.
+  fallback
+  /// Projectile style associated with the completed model-or-sprite rendering result.
+  style
+end struct
 /// Stores playable projectile models batch record, including `triangles`, `fallbackSnapshots`.
-struct Batch triangles fallbackSnapshots end struct
+struct Batch
+  /// When constructing this record, `renderSnapshots` supplies `result` for this member.
+  triangles
+  /// When constructing this record, `renderSnapshots` supplies `fallback` for this member.
+  fallbackSnapshots
+end struct
 
 /// Creates the playable projectile models error `7600` with diagnostic text `"preview projectile models: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview projectile models: "+message`.

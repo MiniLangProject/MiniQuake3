@@ -3,70 +3,182 @@
 // Complete internal renderer declaration facade from renderer/tr_local.h.
 package mq3.renderer.tr_local
 
+/// Number of frame buffers exchanged between frontend and render thread.
 const SMP_FRAMES=2
+/// Maximum number of shader records registered by the renderer.
 const MAX_SHADERS=16384
+/// Maximum number of alternate states declared for one shader.
 const MAX_STATES_PER_SHADER=32
+/// Character capacity of an alternate shader-state name.
 const MAX_STATE_NAME=32
+/// Maximum number of texture and color stages retained in one shader.
 const MAX_SHADER_STAGES=8
+/// Maximum number of texture-coordinate modifiers accepted by one shader stage.
 const TR_MAX_TEXMODS=4
+/// Maximum number of vertex-deformation stages accepted by one shader.
 const MAX_SHADER_DEFORMS=3
+/// Maximum number of images in an animated shader map.
 const MAX_IMAGE_ANIMATIONS=8
+/// Number of texture bundles available to a shader stage for multitexture combining.
 const NUM_TEXTURE_BUNDLES=2
+/// Negative lightmap selector used for two-dimensional drawing shaders.
 const LIGHTMAP_2D=-4
+/// Negative lightmap selector requesting vertex lighting instead of a lightmap image.
 const LIGHTMAP_BY_VERTEX=-3
+/// Negative lightmap selector substituting the renderer's white image.
 const LIGHTMAP_WHITEIMAGE=-2
+/// Negative lightmap selector for a shader that does not use baked lighting.
 const LIGHTMAP_NONE=-1
+/// Maximum number of points accepted by the legacy planar-face representation.
 const MAX_FACE_POINTS=64
+/// Largest control-point patch dimension accepted from BSP data.
 const MAX_PATCH_SIZE=32
+/// Largest tessellated patch-grid dimension accepted by the renderer.
 const MAX_GRID_SIZE=65
+/// Number of scalar slots in the legacy packed face-vertex layout.
 const VERTEXSIZE=8
+/// Plane-classification result indicating the front half-space.
 const SIDE_FRONT=0
+/// Plane-classification result indicating the back half-space.
 const SIDE_BACK=1
+/// Plane-classification result indicating that the point lies on the plane within tolerance.
 const SIDE_ON=2
+/// Negative marker identifying an internal BSP node rather than a leaf.
 const CONTENTS_NODE=-1
+/// Maximum number of model records retained in the renderer's known-model table.
 const MAX_MOD_KNOWN=1024
+/// Maximum number of images retained by the renderer's image registry.
 const MAX_DRAWIMAGES=2048
+/// Maximum number of baked lightmap images retained by the renderer.
 const MAX_LIGHTMAPS=256
+/// Maximum number of registered skin definitions retained by the renderer.
 const MAX_SKINS=1024
+/// Capacity of the draw-surface ring used when queuing scene geometry.
 const MAX_DRAWSURFS=65536
+/// Mask that wraps indices into the power-of-two draw-surface ring.
 const DRAWSURF_MASK=65535
+/// Bit position of the shader index in a packed draw-surface sort key.
 const QSORT_SHADERNUM_SHIFT=17
+/// Bit position of the entity number in a packed draw-surface sort key.
 const QSORT_ENTITYNUM_SHIFT=7
+/// Bit position of the fog number in a packed draw-surface sort key.
 const QSORT_FOGNUM_SHIFT=2
+/// Number of samples in the fog-density lookup table.
 const FOG_TABLE_SIZE=256
+/// Number of samples in the periodic shader waveform lookup table.
 const FUNCTABLE_SIZE=1024
+/// Base-two exponent of the waveform-table size, used by fixed-point indexing.
 const FUNCTABLE_SIZE2=10
+/// Mask that wraps waveform-table indices to the power-of-two table size.
 const FUNCTABLE_MASK=1023
+/// Bounds classification indicating that the object lies entirely inside the view frustum.
 const CULL_IN=0
+/// Bounds classification indicating that the object intersects the view frustum.
 const CULL_CLIP=1
+/// Bounds classification indicating that the object lies entirely outside the view frustum.
 const CULL_OUT=2
+/// Bit mask selecting the source blend-factor field in packed renderer state.
 const GLS_SRCBLEND_BITS=0x0000000f
+/// Bit mask selecting the destination blend-factor field in packed renderer state.
 const GLS_DSTBLEND_BITS=0x000000f0
+/// Packed-state flag enabling writes to the depth buffer.
 const GLS_DEPTHMASK_TRUE=0x00000100
+/// Packed-state flag selecting wireframe polygon drawing.
 const GLS_POLYMODE_LINE=0x00001000
+/// Packed-state flag disabling depth-buffer comparison.
 const GLS_DEPTHTEST_DISABLE=0x00010000
+/// Packed-state flag requiring equality with the existing depth value.
 const GLS_DEPTHFUNC_EQUAL=0x00020000
+/// Bit mask selecting the alpha-test mode in packed renderer state.
 const GLS_ATEST_BITS=0x70000000
+/// Default packed renderer state, with depth-buffer writes enabled.
 const GLS_DEFAULT=GLS_DEPTHMASK_TRUE
+/// Byte capacity of the serialized renderer command buffer.
 const MAX_RENDER_COMMANDS=262144
+/// Capacity of the submitted scene polygon array.
 const MAX_POLYS=600
+/// Capacity of the submitted scene polygon-vertex array.
 const MAX_POLYVERTS=3000
 /// Data record for `mq3.renderer.tr_local.DrawSurf`; groups `sort`, `surface`.
-struct DrawSurf sort surface end struct
+struct DrawSurf
+  /// Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
+  sort
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+end struct
 /// Data record for `mq3.renderer.tr_local.RenderCommandList`; groups `cmds`, `used`.
-struct RenderCommandList cmds used end struct
+struct RenderCommandList
+  /// Serialized bytes of the renderer command list.
+  cmds
+  /// Number of occupied bytes in the serialized render-command buffer.
+  used
+end struct
 /// Data record for `mq3.renderer.tr_local.SetColorCommand`; groups `commandId`, `color`.
-struct SetColorCommand commandId color end struct
+struct SetColorCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+  /// RGBA modulation value installed for subsequent two-dimensional renderer commands.
+  color
+end struct
 /// Data record for `mq3.renderer.tr_local.DrawBufferCommand`; groups `commandId`, `buffer`.
-struct DrawBufferCommand commandId buffer end struct
+struct DrawBufferCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+  /// OpenGL draw-buffer selector to activate when this command executes.
+  buffer
+end struct
 /// Data record for `mq3.renderer.tr_local.SwapBuffersCommand`; groups `commandId`.
-struct SwapBuffersCommand commandId end struct
+struct SwapBuffersCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+end struct
 /// Data record for `mq3.renderer.tr_local.EndFrameCommand`; groups `commandId`, `buffer`.
-struct EndFrameCommand commandId buffer end struct
+struct EndFrameCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+  /// Buffer selector carried by the end-of-frame command.
+  buffer
+end struct
 /// Data record for `mq3.renderer.tr_local.StretchPicCommand`; groups `commandId`, `shader`, `x`, `y`, `w`, `h`, and 4 further fields.
-struct StretchPicCommand commandId shader x y w h s1 t1 s2 t2 end struct
+struct StretchPicCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width of the textured drawing rectangle, in pixels.
+  w
+  /// Height of the textured drawing rectangle, in pixels.
+  h
+  /// Horizontal normalized texture coordinate of the first corner of the textured rectangle.
+  s1
+  /// Vertical normalized texture coordinate of the first corner of the textured rectangle.
+  t1
+  /// Horizontal normalized texture coordinate of the second corner of the textured rectangle.
+  s2
+  /// Vertical normalized texture coordinate of the second corner of the textured rectangle.
+  t2
+end struct
 /// Data record for `mq3.renderer.tr_local.ScreenshotCommand`; groups `commandId`, `x`, `y`, `width`, `height`, `fileName`, and 1 further field.
-struct ScreenshotCommand commandId x y width height fileName jpeg end struct
+struct ScreenshotCommand
+  /// Renderer command identifier selecting the backend operation.
+  commandId
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the framebuffer rectangle captured by this screenshot command.
+  width
+  /// Height in pixels of the framebuffer rectangle captured by this screenshot command.
+  height
+  /// Output path of the screenshot or generated file.
+  fileName
+  /// Whether screenshot output uses JPEG encoding.
+  jpeg
+end struct
 /// Lists the 73 declared names for `mq3.renderer.tr_local.macroNames`, including `CONTENTS_NODE`, `CULL_CLIP`, `CULL_IN`, `CULL_OUT`.
 function macroNames() return ["CONTENTS_NODE","CULL_CLIP","CULL_IN","CULL_OUT","DRAWSURF_MASK","FOG_TABLE_SIZE","FUNCTABLE_MASK","FUNCTABLE_SIZE","FUNCTABLE_SIZE2","GLS_ATEST_BITS","GLS_ATEST_GE_80","GLS_ATEST_GT_0","GLS_ATEST_LT_80","GLS_DEFAULT","GLS_DEPTHFUNC_EQUAL","GLS_DEPTHMASK_TRUE","GLS_DEPTHTEST_DISABLE","GLS_DSTBLEND_BITS","GLS_DSTBLEND_DST_ALPHA","GLS_DSTBLEND_ONE","GLS_DSTBLEND_ONE_MINUS_DST_ALPHA","GLS_DSTBLEND_ONE_MINUS_SRC_ALPHA","GLS_DSTBLEND_ONE_MINUS_SRC_COLOR","GLS_DSTBLEND_SRC_ALPHA","GLS_DSTBLEND_SRC_COLOR","GLS_DSTBLEND_ZERO","GLS_POLYMODE_LINE","GLS_SRCBLEND_ALPHA_SATURATE","GLS_SRCBLEND_BITS","GLS_SRCBLEND_DST_ALPHA","GLS_SRCBLEND_DST_COLOR","GLS_SRCBLEND_ONE","GLS_SRCBLEND_ONE_MINUS_DST_ALPHA","GLS_SRCBLEND_ONE_MINUS_DST_COLOR","GLS_SRCBLEND_ONE_MINUS_SRC_ALPHA","GLS_SRCBLEND_SRC_ALPHA","GLS_SRCBLEND_ZERO","GL_INDEX_TYPE","LIGHTMAP_2D","LIGHTMAP_BY_VERTEX","LIGHTMAP_NONE","LIGHTMAP_WHITEIMAGE","MAX_DRAWIMAGES","MAX_DRAWSURFS","MAX_FACE_POINTS","MAX_GRID_SIZE","MAX_IMAGE_ANIMATIONS","MAX_LIGHTMAPS","MAX_MOD_KNOWN","MAX_PATCH_SIZE","MAX_POLYS","MAX_POLYVERTS","MAX_RENDER_COMMANDS","MAX_SHADERS","MAX_SHADER_DEFORMS","MAX_SHADER_STAGES","MAX_SKINS","MAX_STATES_PER_SHADER","MAX_STATE_NAME","NUM_TEXTURE_BUNDLES","PATCH_STITCHING","QSORT_ENTITYNUM_SHIFT","QSORT_FOGNUM_SHIFT","QSORT_SHADERNUM_SHIFT","RB_CHECKOVERFLOW","SIDE_BACK","SIDE_FRONT","SIDE_ON","SMP_FRAMES","TR_LOCAL_H","TR_MAX_TEXMODS","VERTEXSIZE","myftol"] end function
 /// Lists the 111 declared names for `mq3.renderer.tr_local.enumNames`, including `ACFF_MODULATE_ALPHA`, `ACFF_MODULATE_RGB`, `ACFF_MODULATE_RGBA`, `ACFF_NONE`.

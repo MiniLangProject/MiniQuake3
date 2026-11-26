@@ -10,61 +10,244 @@ import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 
+/// Capacity limit for the local entities collection or bounded storage used by this client module.
 const MAX_LOCAL_ENTITIES=512
+/// Duration in milliseconds over which an expiring local entity sinks away.
 const SINK_TIME=cgabi.SINK_TIME
+/// Collision-content bit identifying nodrop volumes or surfaces during client traces.
 const CONTENTS_NODROP=0x80000000
+/// Trajectory kind whose position remains at its stored base value.
 const TR_STATIONARY=0
+/// Renderer-entity type selecting the sprite primitive.
 const RT_SPRITE=2
+/// Renderer flag that samples lighting at the entity's explicit lighting-origin position.
 const RF_LIGHTING_ORIGIN=0x80
+/// Local-effect entity kind selecting a persistent impact decal.
 const LE_MARK=cgabi.LE_MARK
+/// Local-effect entity kind selecting a model-based explosion.
 const LE_EXPLOSION=cgabi.LE_EXPLOSION
+/// Local-effect entity kind selecting a sprite-based explosion.
 const LE_SPRITE_EXPLOSION=cgabi.LE_SPRITE_EXPLOSION
+/// Local-effect entity kind selecting a moving fragment with collision and bounce handling.
 const LE_FRAGMENT=cgabi.LE_FRAGMENT
+/// Local-effect entity kind selecting an effect that moves, scales, and fades over its lifetime.
 const LE_MOVE_SCALE_FADE=cgabi.LE_MOVE_SCALE_FADE
+/// Local-effect entity kind selecting an effect that falls while scaling and fading.
 const LE_FALL_SCALE_FADE=cgabi.LE_FALL_SCALE_FADE
+/// Local-effect entity kind selecting an effect that fades its RGB color components.
 const LE_FADE_RGB=cgabi.LE_FADE_RGB
+/// Local-effect entity kind selecting an effect that scales and fades in place.
 const LE_SCALE_FADE=cgabi.LE_SCALE_FADE
+/// Local-effect entity kind selecting a floating score indicator.
 const LE_SCOREPLUM=cgabi.LE_SCOREPLUM
+/// Local-effect entity kind selecting the Missionpack kamikaze explosion sequence.
 const LE_KAMIKAZE=cgabi.LE_KAMIKAZE
+/// Local-effect entity kind selecting an impact against the invulnerability shield.
 const LE_INVULIMPACT=cgabi.LE_INVULIMPACT
+/// Local-effect entity kind selecting the invulnerability elimination effect.
 const LE_INVULJUICED=cgabi.LE_INVULJUICED
+/// Local-effect entity kind selecting a renderer entity displayed without another local-effect update
+/// mode.
 const LE_SHOWREFENTITY=cgabi.LE_SHOWREFENTITY
+/// Local-effect flag controlling the puff dont scale behavior of the temporary entity.
 const LEF_PUFF_DONT_SCALE=cgabi.LEF_PUFF_DONT_SCALE
+/// Local-effect flag controlling the tumble behavior of the temporary entity.
 const LEF_TUMBLE=cgabi.LEF_TUMBLE
+/// Local-effect flag controlling the sound1 behavior of the temporary entity.
 const LEF_SOUND1=cgabi.LEF_SOUND1
+/// Local-effect flag controlling the sound2 behavior of the temporary entity.
 const LEF_SOUND2=cgabi.LEF_SOUND2
+/// Local-fragment impact-decal kind selecting none marks.
 const LEMT_NONE=cgabi.LEMT_NONE
+/// Local-fragment impact-decal kind selecting burn marks.
 const LEMT_BURN=cgabi.LEMT_BURN
+/// Local-fragment impact-decal kind selecting blood marks.
 const LEMT_BLOOD=cgabi.LEMT_BLOOD
+/// Local-fragment bounce-sound kind selecting none impact feedback.
 const LEBS_NONE=cgabi.LEBS_NONE
+/// Local-fragment bounce-sound kind selecting blood impact feedback.
 const LEBS_BLOOD=cgabi.LEBS_BLOOD
+/// Local-fragment bounce-sound kind selecting brass impact feedback.
 const LEBS_BRASS=cgabi.LEBS_BRASS
+/// World-space digit size used by floating score indicators.
 const NUMBER_SIZE=8
+/// Kamikaze-effect phase timing for shockwave starttime, measured from effect start in milliseconds.
 const KAMI_SHOCKWAVE_STARTTIME=0
+/// Kamikaze-effect phase timing for shockwavefade starttime, measured from effect start in
+/// milliseconds.
 const KAMI_SHOCKWAVEFADE_STARTTIME=1500
+/// Kamikaze-effect phase timing for shockwave endtime, measured from effect start in milliseconds.
 const KAMI_SHOCKWAVE_ENDTIME=2000
+/// Kamikaze-effect phase timing for explode starttime, measured from effect start in milliseconds.
 const KAMI_EXPLODE_STARTTIME=250
+/// Kamikaze-effect phase timing for implode starttime, measured from effect start in milliseconds.
 const KAMI_IMPLODE_STARTTIME=2000
+/// Kamikaze-effect phase timing for implode endtime, measured from effect start in milliseconds.
 const KAMI_IMPLODE_ENDTIME=2250
+/// Kamikaze-effect phase timing for shockwave2 starttime, measured from effect start in milliseconds.
 const KAMI_SHOCKWAVE2_STARTTIME=2000
+/// Kamikaze-effect phase timing for shockwave2 fade starttime, measured from effect start in
+/// milliseconds.
 const KAMI_SHOCKWAVE2FADE_STARTTIME=2500
+/// Kamikaze-effect phase timing for shockwave2 endtime, measured from effect start in milliseconds.
 const KAMI_SHOCKWAVE2_ENDTIME=3000
+/// Kamikaze-effect radius parameter for shockwavemodel geometry, in world units.
 const KAMI_SHOCKWAVEMODEL_RADIUS=88.0
+/// Kamikaze-effect radius parameter for boomspheremodel geometry, in world units.
 const KAMI_BOOMSPHEREMODEL_RADIUS=72.0
+/// Kamikaze-effect radius parameter for shockwave ma geometry, in world units.
 const KAMI_SHOCKWAVE_MAXRADIUS=1320.0
+/// Kamikaze-effect radius parameter for boomsphere ma geometry, in world units.
 const KAMI_BOOMSPHERE_MAXRADIUS=720.0
+/// Kamikaze-effect radius parameter for shockwave2 ma geometry, in world units.
 const KAMI_SHOCKWAVE2_MAXRADIUS=704.0
 
 /// Stores client game localents ref entity record, including `reType`, `origin`, `lightingOrigin`, `axis`, `shaderRGBA`, `radius` and additional values.
-struct RefEntity reType origin lightingOrigin axis shaderRGBA radius hModel customShader shaderTime renderfx nonNormalizedAxes end struct
+struct RefEntity
+  /// When constructing this record, `newRefEntity` supplies `0` for this member.
+  reType
+  /// Current renderer-facing position of a local fragment, sprite, or other temporary effect.
+  origin
+  /// When constructing this record, `newRefEntity` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `addFragment` during subsequent processing.
+  lightingOrigin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// When constructing this record, `newRefEntity` supplies `[255,255,255,255]` for this member. Used
+  /// by `addFragment` and `addFadeRGB` during subsequent processing.
+  shaderRGBA
+  /// Current world-space sprite radius submitted for a temporary local effect.
+  radius
+  /// Model resource selected for the h presentation.
+  hModel
+  /// Shader resource selected for custom rendering.
+  customShader
+  /// When constructing this record, `newRefEntity` supplies `0.0` for this member.
+  shaderTime
+  /// Renderer-entity flags controlling lighting, view restrictions, depth handling, and related
+  /// effects.
+  renderfx
+  /// When constructing this record, `newRefEntity` supplies `false` for this member.
+  nonNormalizedAxes
+end struct
 /// Stores client game localents local entity record, including `id`, `active`, `leType`, `leFlags`, `startTime`, `endTime` and additional values.
-struct LocalEntity id active leType leFlags startTime endTime fadeInTime lifeRate pos angles bounceFactor color radius light lightColor leMarkType leBounceSoundType refEntity end struct
+struct LocalEntity
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// When constructing this record, `newLocalEntity` supplies `false` for this member.
+  active
+  /// Local-effect entity kind selecting its update and rendering behavior.
+  leType
+  /// Local-effect flags controlling fading, scaling, tumbling, or sound behavior.
+  leFlags
+  /// When constructing this record, `newLocalEntity` supplies `0` for this member.
+  startTime
+  /// When constructing this record, `newLocalEntity` supplies `0` for this member.
+  endTime
+  /// When constructing this record, `newLocalEntity` supplies `0` for this member.
+  fadeInTime
+  /// Reciprocal effect lifetime used to normalize the fade or growth fraction.
+  lifeRate
+  /// When constructing this record, `newLocalEntity` supplies `newTrajectory()` for this member.
+  pos
+  /// Euler orientation used to place or animate the object.
+  angles
+  /// Velocity multiplier after an impact; zero stops the fragment and one preserves its speed.
+  bounceFactor
+  /// Normalized RGBA base color used to compute the temporary effect fade.
+  color
+  /// Base world-space effect radius used when computing temporary sprite growth.
+  radius
+  /// Dynamic-light intensity emitted by the local effect.
+  light
+  /// RGB components of the dynamic light emitted by the effect.
+  lightColor
+  /// Decal category to leave when an effect fragment strikes a surface.
+  leMarkType
+  /// Impact-sound category used when an effect fragment bounces.
+  leBounceSoundType
+  /// Renderer-facing entity description submitted for this local effect.
+  refEntity
+end struct
 /// Stores client game localents queued engine action, including `boundary`, `kind`, `entity`, `origin`, `normal`, `scalar` and additional values.
-struct Action boundary kind entity origin normal scalar color data dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while advancing temporary fragments, puffs,
+  /// marks, and other local effects.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while advancing temporary
+  /// fragments, puffs, marks, and other local effects.
+  kind
+  /// When constructing this record, `boundary` supplies `le.id` for this member.
+  entity
+  /// World-space location at which the local-entity update requests a render, mark, or sound effect.
+  origin
+  /// Collision-surface normal supplied when a local effect requests a blood or burn mark.
+  normal
+  /// When constructing this record, `boundary` supplies `scalar` for this member.
+  scalar
+  /// Color payload of the local-effect host action, such as faded shader RGBA or light RGB.
+  color
+  /// When constructing this record, `boundary` supplies `data` for this member.
+  data
+  /// True when this request is marked for native dispatch while advancing temporary fragments, puffs,
+  /// marks, and other local effects; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game localents host-service callbacks, including `traceFn`, `pointContentsFn`, `randomFn`, `context`.
-struct Services traceFn pointContentsFn randomFn context end struct
+struct Services
+  /// Host callback for the trace operation; an unset callback leaves that host operation unavailable.
+  traceFn
+  /// Host callback for the point contents operation; an unset callback leaves that host operation
+  /// unavailable.
+  pointContentsFn
+  /// Host callback for the random operation; an unset callback leaves that host operation unavailable.
+  randomFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for short-lived client effect
+  /// entities.
+  context
+end struct
 /// Stores client game localents state, including `entities`, `free`, `active`, `time`, `frametime`, `vieworg` and additional values.
-struct State entities free active time frametime vieworg retailActive services actions rendered audio marks spawned freed errors end struct
+struct State
+  /// Entity-state or renderer-entity entries represented by the current snapshot or scene.
+  entities
+  /// When constructing this record, `initLocalEntities` supplies `free` for this member. Used by
+  /// `freeLocalEntity` and `allocLocalEntity` during subsequent processing.
+  free
+  /// When constructing this record, `initLocalEntities` supplies an empty list for this member.
+  active
+  /// Current client-game time in milliseconds used to update, fade, and expire local entities.
+  time
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+  /// When constructing this record, `initLocalEntities` supplies `[0.0,0.0,0.0]` for this member. Used
+  /// by `nearView` and `addScorePlum` during subsequent processing.
+  vieworg
+  /// True when the retail QVM owns short-lived client effect entities, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// Host requests queued while advancing temporary fragments, puffs, marks, and other local effects,
+  /// retained in request order.
+  actions
+  /// When constructing this record, `initLocalEntities` supplies `0` for this member. Used by
+  /// `boundary` and `clearBoundaryActions` during subsequent processing.
+  rendered
+  /// When constructing this record, `initLocalEntities` supplies `0` for this member. Used by
+  /// `boundary` and `clearBoundaryActions` during subsequent processing.
+  audio
+  /// When constructing this record, `initLocalEntities` supplies `0` for this member. Used by
+  /// `boundary` and `clearBoundaryActions` during subsequent processing.
+  marks
+  /// When constructing this record, `initLocalEntities` supplies `0` for this member. Used by
+  /// `allocLocalEntity` during subsequent processing.
+  spawned
+  /// When constructing this record, `initLocalEntities` supplies `0` for this member. Used by
+  /// `freeLocalEntity` during subsequent processing.
+  freed
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+end struct
 
 /// Creates the three orthonormal unit axes used as the identity orientation in client game localents.
 function identityAxis() return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] end function

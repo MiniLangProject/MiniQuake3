@@ -3,123 +3,238 @@
 // Canonical declaration and ABI facade for the six QCommon headers.
 package mq3.qcommon.headers
 
+/// Maximum number of inline collision models accepted from a BSP map.
 const MAX_SUBMODELS=256
+/// Reserved collision-model handle for a temporary axis-aligned box.
 const BOX_MODEL_HANDLE=255
+/// Reserved collision-model handle for a temporary capsule.
 const CAPSULE_MODEL_HANDLE=254
+/// Distance tolerance used when clipping against patch facets.
 const SURFACE_CLIP_EPSILON=0.125
+/// Maximum number of convex collision facets generated for one patch.
 const MAX_FACETS=1024
+/// Maximum number of collision planes retained for one patch.
 const MAX_PATCH_PLANES=2048
+/// Maximum control-grid dimension used while subdividing a collision patch.
 const MAX_GRID_SIZE=129
+/// Maximum patch-curvature deviation accepted before further subdivision.
 const SUBDIVIDE_DISTANCE=16
+/// Tolerance used when validating a plane against triangle vertices.
 const PLANE_TRI_EPSILON=0.1
+/// Tolerance for recognizing matching endpoints of a wrapping patch grid.
 const WRAP_POINT_EPSILON=0.1
+/// Maximum number of vertices in a clipped winding polygon.
 const MAX_POINTS_ON_WINDING=64
+/// Plane-classification result for geometry in front of the plane.
 const SIDE_FRONT=0
+/// Plane-classification result for geometry behind the plane.
 const SIDE_BACK=1
+/// Plane-classification result for geometry within the plane tolerance.
 const SIDE_ON=2
+/// Plane-classification result for geometry crossing the plane.
 const SIDE_CROSS=3
+/// Distance tolerance used when clipping a trace against a plane.
 const CLIP_EPSILON=0.1
+/// Largest accepted absolute coordinate in a collision winding.
 const MAX_MAP_BOUNDS=65535
+/// Distance tolerance for classifying a point as lying on a plane.
 const ON_EPSILON=0.1
 
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP=32
+/// Mask converting a network sequence number into a circular packet-history slot.
 const PACKET_MASK=31
+/// Max number of usercmd_t in a packet.
 const MAX_PACKET_USERCMDS=32
+/// Socket-port selector asking the host to choose an available port.
 const PORT_ANY=-1
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
+/// Max of eight download frames.
 const MAX_DOWNLOAD_WINDOW=8
+/// 2048 byte block chunks.
 const MAX_DOWNLOAD_BLKSIZE=2048
+/// Protocol version placed in Quake III connection and discovery messages.
 const PROTOCOL_VERSION=68
+/// Host name of the legacy game-update service.
 const UPDATE_SERVER_NAME="update.quake3arena.com"
+/// Host name of the master-server directory service.
 const MASTER_SERVER_NAME="master.quake3arena.com"
+/// Host name of the legacy client-authorization service.
 const AUTHORIZE_SERVER_NAME="authorize.quake3arena.com"
+/// Default UDP port used by the master-server directory.
 const PORT_MASTER=27950
+/// Default UDP port used by the update service.
 const PORT_UPDATE=27951
+/// Default UDP port used by the authorization service.
 const PORT_AUTHORIZE=27952
+/// Default UDP port used by a Quake III game server.
 const PORT_SERVER=27960
+/// Broadcast scan this many ports after.
 const NUM_SERVER_PORTS=4
+/// Package-reference bit recording ordinary asset use.
 const FS_GENERAL_REF=1
+/// Package-reference bit recording use by the UI VM.
 const FS_UI_REF=2
+/// Package-reference bit recording use by the client-game VM.
 const FS_CGAME_REF=4
+/// Package-reference bit recording use by the server game VM.
 const FS_QAGAME_REF=8
+/// Number of original game packages recognized by the filesystem policy.
 const NUM_ID_PAKS=9
+/// Maximum number of simultaneous virtual-filesystem file handles.
 const MAX_FILE_HANDLES=64
+/// Name of the base-game asset directory searched by the filesystem.
 const BASEGAME="baseq3"
+/// Capacity of the editable console input line.
 const MAX_EDIT_LINE=256
+/// Any unrecognized processor.
 const CPUID_GENERIC=0
+/// Legacy CPU classification for the Alpha AXP architecture.
 const CPUID_AXP=16
+/// Legacy CPU classification for an unsupported Intel instruction set.
 const CPUID_INTEL_UNSUPPORTED=32
+/// Intel Pentium or PPro.
 const CPUID_INTEL_PENTIUM=33
+/// Intel Pentium/MMX or P2/MMX.
 const CPUID_INTEL_MMX=34
+/// Legacy CPU classification for Intel processors with Katmai-era extensions.
 const CPUID_INTEL_KATMAI=35
+/// AMD K6 3DNOW!
 const CPUID_AMD_3DNOW=48
+/// Maximum character capacity of a formatted engine diagnostic message.
 const MAXPRINTMSG=4096
+/// Number of byte values in the Huffman symbol alphabet.
 const HMAX=256
+/// NYT = Not Yet Transmitted.
 const NYT=256
+/// Huffman symbol code reserved for an internal tree node.
 const INTERNAL_NODE=257
+/// Byte offset at which server-to-client payload obfuscation begins.
 const SV_ENCODE_START=4
+/// Byte offset at which client-to-server payload decoding begins.
 const SV_DECODE_START=12
+/// Byte offset at which client-to-server payload obfuscation begins.
 const CL_ENCODE_START=12
+/// Byte offset at which server-to-client payload decoding begins.
 const CL_DECODE_START=4
 
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
+/// Network-address kind indicating an invalid or unsupported endpoint.
 const NA_BAD=1
+/// Network-address kind for local loopback delivery.
 const NA_LOOPBACK=2
+/// Network-address kind for an IPv4 broadcast destination.
 const NA_BROADCAST=3
+/// Network-address kind for an IPv4 endpoint.
 const NA_IP=4
+/// Legacy network-address kind for an IPX endpoint.
 const NA_IPX=5
+/// Legacy network-address kind for IPX broadcast delivery.
 const NA_BROADCAST_IPX=6
+/// Network socket-side selector for the client endpoint.
 const NS_CLIENT=0
+/// Network socket-side selector for the server endpoint.
 const NS_SERVER=1
+/// VM execution-mode identifier for a native game module.
 const VMI_NATIVE=0
+/// VM execution-mode identifier for interpreted bytecode.
 const VMI_BYTECODE=1
+/// VM execution-mode identifier for compiled bytecode.
 const VMI_COMPILED=2
+/// Game-VM trap identifier for memset.
 const TRAP_MEMSET=100
+/// Game-VM trap identifier for memcpy.
 const TRAP_MEMCPY=101
+/// Game-VM trap identifier for strncpy.
 const TRAP_STRNCPY=102
+/// Game-VM trap identifier for sin.
 const TRAP_SIN=103
+/// Game-VM trap identifier for cos.
 const TRAP_COS=104
+/// Game-VM trap identifier for atan2.
 const TRAP_ATAN2=105
+/// Game-VM trap identifier for sqrt.
 const TRAP_SQRT=106
+/// Game-VM trap identifier for matrixmultiply.
 const TRAP_MATRIXMULTIPLY=107
+/// Game-VM trap identifier for anglevectors.
 const TRAP_ANGLEVECTORS=108
+/// Game-VM trap identifier for perpendicularvector.
 const TRAP_PERPENDICULARVECTOR=109
+/// Game-VM trap identifier for floor.
 const TRAP_FLOOR=110
+/// Game-VM trap identifier for ceil.
 const TRAP_CEIL=111
+/// Game-VM trap identifier for testprintint.
 const TRAP_TESTPRINTINT=112
+/// Game-VM trap identifier for testprintfloat.
 const TRAP_TESTPRINTFLOAT=113
+/// Memory-tag value marking an unused allocation block.
 const TAG_FREE=0
+/// Memory-tag value for ordinary engine allocations.
 const TAG_GENERAL=1
+/// Memory-tag value for bot-library allocations.
 const TAG_BOTLIB=2
+/// Memory-tag value for renderer allocations.
 const TAG_RENDERER=3
+/// Memory-tag value for allocations in the small-block zone.
 const TAG_SMALL=4
+/// Memory-tag value for static data that must not be freed normally.
 const TAG_STATIC=5
+/// Vector-component index used for side movement input.
 const AXIS_SIDE=0
+/// Vector-component index used for forward movement input.
 const AXIS_FORWARD=1
+/// Vector-component index used for vertical movement input.
 const AXIS_UP=2
+/// Angle-component index used for roll.
 const AXIS_ROLL=3
+/// Angle-component index used for yaw.
 const AXIS_YAW=4
+/// Angle-component index used for pitch.
 const AXIS_PITCH=5
+/// Number of supported joystick axes in system input events.
 const MAX_JOYSTICK_AXIS=6
+/// System-event type identifying no pending system event.
 const SE_NONE=0
+/// System-event type identifying a key press or release.
 const SE_KEY=1
+/// System-event type identifying a typed character.
 const SE_CHAR=2
+/// System-event type identifying relative mouse motion.
 const SE_MOUSE=3
+/// System-event type identifying a joystick-axis update.
 const SE_JOYSTICK_AXIS=4
+/// System-event type identifying console command input.
 const SE_CONSOLE=5
+/// System-event type identifying an incoming network packet.
 const SE_PACKET=6
 
+/// ZIP-reader result indicating success.
 const UNZ_OK=0
+/// ZIP-reader result indicating that the central-directory enumeration is exhausted.
 const UNZ_END_OF_LIST_OF_FILE=-100
+/// ZIP-reader error caused by an underlying file operation.
 const UNZ_ERRNO=-1
+/// ZIP-reader result indicating end of the current entry.
 const UNZ_EOF=0
+/// ZIP-reader error indicating invalid input parameters.
 const UNZ_PARAMERROR=-102
+/// ZIP-reader error indicating malformed or unsupported ZIP data.
 const UNZ_BADZIPFILE=-103
+/// ZIP-reader error indicating an internal decoding failure.
 const UNZ_INTERNALERROR=-104
+/// ZIP-reader error indicating a mismatch in the entry CRC-32 checksum.
 const UNZ_CRCERROR=-105
+/// ZIP filename-comparison selector requiring matching letter case.
 const UNZ_CASESENSITIVE=1
+/// ZIP filename-comparison selector ignoring letter case.
 const UNZ_NOTCASESENSITIVE=2
+/// ZIP filename-comparison selector using the platform default case policy.
 const UNZ_OSDEFAULTCASE=0
 
 /// List the 4 names in qcommon.headers.cmlocalMacroNames, beginning with `BOX_MODEL_HANDLE`, `CAPSULE_MODEL_HANDLE`, `MAX_SUBMODELS`, `SURFACE_CLIP_EPSILON`.

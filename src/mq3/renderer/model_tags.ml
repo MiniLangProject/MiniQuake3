@@ -7,13 +7,37 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 
 /// Data record for `mq3.renderer.model_tags.Tag`; groups `name`, `origin`, `axis`.
-struct Tag name origin axis end struct
+struct Tag
+  /// MD3 attachment label used to locate a tag such as tag_torso or tag_weapon.
+  name
+  /// Attachment-tag translation in the coordinate system of its MD3 model frame.
+  origin
+  /// Attachment-tag basis vectors stored for one MD3 model frame.
+  axis
+end struct
 /// Data record for `mq3.renderer.model_tags.Md3`; groups `frames`, `bounds`.
-struct Md3 frames bounds end struct
+struct Md3
+  /// Per-frame animation data retained for model interpolation.
+  frames
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+end struct
 /// Data record for `mq3.renderer.model_tags.Model`; groups `brushBounds`, `md3`.
-struct Model brushBounds md3 end struct
+struct Model
+  /// Axis-aligned bounds of the inline brush model.
+  brushBounds
+  /// Loaded MD3 model data used for mesh animation and bounds queries.
+  md3
+end struct
 /// Data record for `mq3.renderer.model_tags.Orientation`; groups `found`, `origin`, `axis`.
-struct Orientation found origin axis end struct
+struct Orientation
+  /// Whether the requested object or result was found.
+  found
+  /// Interpolated attachment-tag translation returned when blending two MD3 animation frames.
+  origin
+  /// Normalized attachment basis produced by interpolating the requested model tag.
+  axis
+end struct
 
 /// Constructs `mq3.renderer.model_tags.Tag` from `name`, `origin`, `axis`.
 /// @param name Initial value for `mq3.renderer.model_tags.Tag.name`.

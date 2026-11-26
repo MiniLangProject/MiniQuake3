@@ -8,25 +8,86 @@ import mq3.botlib.aas_trace_areas as traceAreas
 import mq3.botlib.aas_client_trace as clientTrace
 import mq3.compat.numeric as n
 
+/// AAS presence-mask value selecting none.
 const PRESENCE_NONE=1
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
+/// AAS presence-mask value selecting crouch.
 const PRESENCE_CROUCH=4
+/// Standing on ground when in this face.
 const FACE_GROUND=4
+/// Collision contents bit marking water.
 const CONTENTS_WATER=32
+/// Collision contents bit marking slime.
 const CONTENTS_SLIME=16
+/// Collision contents bit marking lava.
 const CONTENTS_LAVA=8
+/// Combined collision-contents mask for water, slime, and lava volumes.
 const MASK_WATER=56
+/// Combined collision-contents mask for solid geometry and player clipping.
 const MASK_SOLID_PLAYERCLIP=65537
+/// Tolerance used when classifying a bounding box against an AAS plane.
 const BBOX_NORMAL_EPSILON=0.001
 
 /// `Link` record for aas sample, containing `id`, `entNum`, `areaNum` and `allocated`.
-struct Link id entNum areaNum allocated end struct
+struct Link
+  /// Identifier of this allocated entity-to-area link.
+  id
+  /// Game-entity number associated with the area link.
+  entNum
+  /// Navigation area associated with this entity-to-area link.
+  areaNum
+  /// True when the represented object currently owns a live allocation.
+  allocated
+end struct
 /// `Services` record for aas sample, containing `entityCollisionFn`, `pointContentsFn` and `context`.
-struct Services entityCollisionFn pointContentsFn context end struct
+struct Services
+  /// Host callback that tests collision against a game entity.
+  entityCollisionFn
+  /// Host callback that queries world contents at a supplied point.
+  pointContentsFn
+  /// Caller-supplied data associated with dynamic entity collisions and contents sampling around the
+  /// navigation mesh.
+  context
+end struct
 /// `World` record for aas sample, containing `runtime`, `map`, `heap`, `links` and `freeIds` and related fields.
-struct World runtime map heap links freeIds numFree areaLinked linkedEntities services retailActive actions end struct
+struct World
+  /// Loaded AAS geometry runtime used for area queries and static navigation traces.
+  runtime
+  /// Parsed AAS map supplying areas and partition nodes.
+  map
+  /// Managed storage allocated for entity-to-area links.
+  heap
+  /// Entity-to-area link records indexed by their link identifiers.
+  links
+  /// Link identifiers available for reuse.
+  freeIds
+  /// Number of free represented by this record.
+  numFree
+  /// Heads of entity-link chains for each AAS area.
+  areaLinked
+  /// Entities currently represented in the AAS area-link tables.
+  linkedEntities
+  /// Dynamic collision and contents callbacks supplementing static AAS sampling.
+  services
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+  /// Recorded sampling and entity-link operations exposed to the navigation host.
+  actions
+end struct
 /// `Action` record for aas sample, containing `boundary`, `kind`, `subject`, `detail` and `dispatched`.
-struct Action boundary kind subject detail dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator identifying the recorded area-linking operation.
+  kind
+  /// Entity or area identifier affected by the recorded operation.
+  subject
+  /// Additional diagnostic information about the recorded operation.
+  detail
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 
 /// Build the `mq3.botlib.aas_sample.World` result for `create`. Return paths include `World(rt,rt.map,[],[],[],0,array(count,void),[],Services(void,void,void),false,[])`.
 /// @param rt Rt record; accesses `initialized` and `map`.

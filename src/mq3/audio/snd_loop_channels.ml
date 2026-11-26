@@ -4,12 +4,47 @@ package mq3.audio.snd_loop_channels
 
 import mq3.audio.snd_spatialize as loopSpatial
 
+/// Maximum number of simultaneously allocated sound channels.
 const MAX_CHANNELS=96
 
 /// Entry record for audio.snd_loop_channels, containing `id`, `handle`, `origin`, `realLoop`, `doppler`, `dopplerScale`, and 2 further fields.
-struct Entry id handle origin realLoop doppler dopplerScale oldDopplerScale active end struct
+struct Entry
+  /// Caller-supplied identifier used to find or update this sound source.
+  id
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// World-space XYZ position of the sound source.
+  origin
+  /// True for a persistent real looping sound rather than a frame-submitted loop.
+  realLoop
+  /// True when Doppler resampling is enabled for this source.
+  doppler
+  /// Current Doppler scale applied to the source sample-advance rate.
+  dopplerScale
+  /// Previous Doppler scale retained when continuing a loop between frames.
+  oldDopplerScale
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+end struct
 /// Group record for audio.snd_loop_channels, containing `handle`, `primary`, `ids`, `left`, `right`, `doppler`, and 2 further fields.
-struct Group handle primary ids left right doppler dopplerScale oldDopplerScale end struct
+struct Group
+  /// Sound handle shared by the loop sources in this group.
+  handle
+  /// Index of the source whose playback cursor leads the merged group.
+  primary
+  /// Identifiers of all sources contributing to this merged loop.
+  ids
+  /// Combined left-channel gain for the merged looping sources.
+  left
+  /// Combined right-channel gain for the merged looping sources.
+  right
+  /// True when Doppler resampling is enabled for this source.
+  doppler
+  /// Current Doppler scale applied to the source sample-advance rate.
+  dopplerScale
+  /// Previous Doppler scale retained when continuing a loop between frames.
+  oldDopplerScale
+end struct
 
 /// Group active loop sounds by matching source while accumulating their spatialized channel volumes.
 /// @param entries Entries used in `len(entries)` and `entries[index]`.

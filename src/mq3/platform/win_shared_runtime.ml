@@ -5,17 +5,39 @@ package mq3.platform.win_shared_runtime
 import mq3.compat.numeric as n
 import mq3.shared.math as math
 
+/// Processor category using the generic implementation path.
 const CPUID_GENERIC=0
+/// Processor category marking an unsupported legacy Intel CPU.
 const CPUID_INTEL_UNSUPPORTED=0x20
+/// Processor category selecting the Pentium-compatible implementation path.
 const CPUID_INTEL_PENTIUM=0x21
+/// Processor category indicating Intel MMX support.
 const CPUID_INTEL_MMX=0x22
+/// Processor category indicating the Intel Katmai/SSE implementation path.
 const CPUID_INTEL_KATMAI=0x23
+/// Processor category indicating AMD 3DNow support.
 const CPUID_AMD_3DNOW=0x30
 
 /// Data record for `mq3.platform.win_shared_runtime.Cpu`; groups `maximum`, `extendedMaximum`, `featureEDX`, `extendedFeatureEDX`, `cpuidSupported`.
-struct Cpu maximum extendedMaximum featureEDX extendedFeatureEDX cpuidSupported end struct
+struct Cpu
+  /// Highest supported basic CPUID leaf.
+  maximum
+  /// Highest supported extended CPUID leaf.
+  extendedMaximum
+  /// Processor feature flags returned in EDX by the basic CPUID query.
+  featureEDX
+  /// Processor feature flags returned in EDX by the extended CPUID query.
+  extendedFeatureEDX
+  /// Whether the processor supports the CPUID instruction.
+  cpuidSupported
+end struct
 /// Data record for `mq3.platform.win_shared_runtime.Clock`; groups `initialized`, `timeBase`.
-struct Clock initialized timeBase end struct
+struct Clock
+  /// Whether initialization completed successfully.
+  initialized
+  /// Clock origin subtracted to produce elapsed platform milliseconds.
+  timeBase
+end struct
 
 /// Constructs `mq3.platform.win_shared_runtime.Cpu` from `maximum`, `extendedMaximum`, `featureEDX`, `extendedFeatureEDX`, `cpuidSupported`.
 /// @param maximum Initial value for `mq3.platform.win_shared_runtime.Cpu.maximum`.

@@ -16,39 +16,263 @@ import mq3.compat.numeric as n
 /// @returns The principal angle in radians, with C-runtime domain handling outside [-1, 1].
 extern function acos(value as double) from "ucrtbase.dll" returns double
 
+/// Engine error-severity identifier for fatal.
 const ERR_FATAL=0
+/// Engine error-severity identifier for drop.
 const ERR_DROP=1
+/// Engine error-severity identifier for a server-triggered disconnection.
 const ERR_SERVERDISCONNECT=2
+/// Engine error-severity identifier for disconnect.
 const ERR_DISCONNECT=3
+/// Engine error-severity identifier for need cd.
 const ERR_NEED_CD=4
+/// Number of entries in the circular queue of pushed system events.
 const MAX_PUSHED_EVENTS=1024
+/// Capacity of the editable console input line.
 const MAX_EDIT_LINE=qcommonHeaders.MAX_EDIT_LINE
+/// Max length of an individual token.
 const MAX_TOKEN_CHARS=1024
+/// Memory-tag value marking an unused allocation block.
 const TAG_FREE=0
+/// Memory-tag value for ordinary engine allocations.
 const TAG_GENERAL=1
+/// Memory-tag value for bot-library allocations.
 const TAG_BOTLIB=2
+/// Memory-tag value for renderer allocations.
 const TAG_RENDERER=3
+/// Hunk allocation preference selecting the low-address bank.
 const HUNK_LOW=0
+/// Hunk allocation preference selecting the high-address bank.
 const HUNK_HIGH=1
 
 /// Services record for qcommon.common, containing `context`, `printFn`, `errorFn`, `quitFn`, `clockFn`, `realTimeFn`, and 12 further fields.
-struct Services context printFn errorFn quitFn clockFn realTimeFn realEventFn readFn writeFn appendFn validateKeyFn shutdownClientFn shutdownServerFn shutdownFsFn initFn shutdownFn consoleEventFn packetEventFn end struct
+struct Services
+  /// Caller-supplied data associated with common-engine output, events, file access, timing, and
+  /// subsystem lifecycle.
+  context
+  /// Host callback that writes common-engine console messages to the host output channel.
+  printFn
+  /// Host callback that reports a host error using the requested error severity.
+  errorFn
+  /// Host callback that terminates the host application.
+  quitFn
+  /// Host callback that returns the host clock used for frame scheduling.
+  clockFn
+  /// Host callback that returns the host calendar time.
+  realTimeFn
+  /// Host callback that obtains the next event from the host event queue.
+  realEventFn
+  /// Host callback that reads common-engine files such as event journals and configuration data.
+  readFn
+  /// Host callback that writes data through the host output interface.
+  writeFn
+  /// Host callback that appends text to the host command buffer.
+  appendFn
+  /// Host callback that checks the supplied game key.
+  validateKeyFn
+  /// Host callback that shuts down the host client subsystem.
+  shutdownClientFn
+  /// Host callback that shuts down the host server subsystem.
+  shutdownServerFn
+  /// Host callback that shuts down the host filesystem.
+  shutdownFsFn
+  /// Host callback that initializes the host subsystem.
+  initFn
+  /// Host callback that shuts down the host subsystem and releases its resources.
+  shutdownFn
+  /// Host callback that handles a host console-input event.
+  consoleEventFn
+  /// Host callback that handles an incoming host network event.
+  packetEventFn
+end struct
 /// SysEvent record for qcommon.common, containing `time`, `type`, `value`, `value2`, `data`.
-struct SysEvent time type value value2 data end struct
+struct SysEvent
+  /// Host timestamp attached to this input or network event.
+  time
+  /// Event-kind identifier selecting the interpretation of the payload.
+  type
+  /// First integer event argument, such as a key or movement value.
+  value
+  /// Second integer event argument associated with the event kind.
+  value2
+  /// Optional event payload, such as console text or packet bytes.
+  data
+end struct
 /// Redirect record for qcommon.common, containing `capacity`, `text`, `flushFn`, `context`.
-struct Redirect capacity text flushFn context end struct
+struct Redirect
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// Buffered console output awaiting delivery to the redirect callback.
+  text
+  /// Host callback that flushes buffered text to its host destination.
+  flushFn
+  /// Caller-supplied data associated with flushing a completed redirected console-output buffer.
+  context
+end struct
 /// CommonError record for qcommon.common, containing `code`, `message`, `fatal`.
-struct CommonError code message fatal end struct
+struct CommonError
+  /// Engine error-severity code associated with the failure.
+  code
+  /// Text associated with the reported event or diagnostic.
+  message
+  /// True when the failure requires terminating the application.
+  fatal
+end struct
 /// Allocation record for qcommon.common, containing `handle`, `data`, `size`, `tag`, `temporary`, `bank`, and 2 further fields.
-struct Allocation handle data size tag temporary bank freed label end struct
+struct Allocation
+  /// Managed identifier of this memory allocation.
+  handle
+  /// Usable byte storage owned by this allocation.
+  data
+  /// Allocated byte count charged to the owning memory arena.
+  size
+  /// Allocation category used for selective freeing and accounting.
+  tag
+  /// True when the allocation belongs to temporary hunk storage.
+  temporary
+  /// Low or high hunk bank charged for this allocation.
+  bank
+  /// True after this managed resource has been released.
+  freed
+  /// Human-readable label identifying the allocation.
+  label
+end struct
 /// Zone record for qcommon.common, containing `capacity`, `used`, `nextHandle`, `allocations`.
-struct Zone capacity used nextHandle allocations end struct
+struct Zone
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// Bytes currently charged to active allocations in this zone.
+  used
+  /// Handle to assign to the next allocated managed resource.
+  nextHandle
+  /// Managed allocations owned by this memory zone.
+  allocations
+end struct
 /// Hunk record for qcommon.common, containing `capacity`, `lowPermanent`, `highPermanent`, `lowTemp`, `highTemp`, `markLow`, and 6 further fields.
-struct Hunk capacity lowPermanent highPermanent lowTemp highTemp markLow markHigh markHandle nextHandle allocations permanentBank tempBank end struct
+struct Hunk
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+  /// Permanent bytes allocated from the low hunk bank.
+  lowPermanent
+  /// Permanent bytes allocated from the high hunk bank.
+  highPermanent
+  /// Temporary bytes allocated from the low hunk bank.
+  lowTemp
+  /// Temporary bytes allocated from the high hunk bank.
+  highTemp
+  /// Low-bank allocation position saved at the hunk mark.
+  markLow
+  /// High-bank allocation position saved at the hunk mark.
+  markHigh
+  /// Allocation handle saved at the hunk mark.
+  markHandle
+  /// Handle to assign to the next allocated managed resource.
+  nextHandle
+  /// Managed allocations owned by the hunk.
+  allocations
+  /// Bank selected for subsequent permanent hunk allocations.
+  permanentBank
+  /// Bank selected for subsequent temporary hunk allocations.
+  tempBank
+end struct
 /// Field record for qcommon.common, containing `buffer`, `cursor`, `scroll`.
-struct Field buffer cursor scroll end struct
+struct Field
+  /// Editable console input text.
+  buffer
+  /// Character position of the console input cursor.
+  cursor
+  /// Horizontal character offset of the visible input region.
+  scroll
+end struct
 /// State record for qcommon.common, containing `services`, `commandState`, `startupState`, `configState`, `networkPump`, `engineRuntime`, and 37 further fields.
-struct State services commandState startupState configState networkPump engineRuntime redirect developer errorEntered errorMessage lastErrorTime errorCount buildScript fullyInitialized pushed head tail journalMode journalEvents journalIndex journalPath journalDirty frameTime frameMsec frameNumber lastTime dedicated maxFps timedemo fixedTime timescale cameraMode svRunning zone smallZone hunk cdKey shutdown lastPrint completionString shortestMatch matchCount completionField end struct
+struct State
+  /// Common-engine host operations for console output, files, events, timing, and lifecycle.
+  services
+  /// Console-command buffer and registered command handlers.
+  commandState
+  /// Parsed startup arguments and commands.
+  startupState
+  /// Configuration persistence state.
+  configState
+  /// Network event pump shared by the engine endpoints.
+  networkPump
+  /// Bound engine runtime receiving common lifecycle events.
+  engineRuntime
+  /// Active console-output redirection buffer and callback.
+  redirect
+  /// True when developer diagnostics are enabled.
+  developer
+  /// True while an error is being handled, preventing recursive error handling.
+  errorEntered
+  /// Text of the error currently being handled.
+  errorMessage
+  /// Timestamp of the previous engine error.
+  lastErrorTime
+  /// Number of error recorded by this state.
+  errorCount
+  /// True when running in asset-build script mode.
+  buildScript
+  /// True after common engine initialization has completed.
+  fullyInitialized
+  /// Buffered host events waiting to be dispatched.
+  pushed
+  /// Monotonic write position in the circular queue of pushed system events.
+  head
+  /// Read position in the buffered host-event queue.
+  tail
+  /// Event-journal mode selecting disabled, recording, or replay behavior.
+  journalMode
+  /// Recorded or replayable host events.
+  journalEvents
+  /// Next journal event to consume during replay.
+  journalIndex
+  /// Filesystem path of the event journal.
+  journalPath
+  /// True when recorded journal changes need to be saved.
+  journalDirty
+  /// Host timestamp associated with the current engine frame.
+  frameTime
+  /// Elapsed milliseconds supplied to the current engine frame.
+  frameMsec
+  /// Number of engine frames processed since initialization.
+  frameNumber
+  /// Host timestamp retained from the preceding frame.
+  lastTime
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// Frame-rate limit used when calculating the minimum frame interval.
+  maxFps
+  /// True when timed-demo playback disables ordinary frame pacing.
+  timedemo
+  /// Fixed frame-time override used when deterministic stepping is requested.
+  fixedTime
+  /// Multiplier applied to the elapsed simulation time.
+  timescale
+  /// True when camera playback enables its special frame-time policy.
+  cameraMode
+  /// True when a local server is active.
+  svRunning
+  /// General-purpose managed memory zone.
+  zone
+  /// Managed memory zone for small allocations.
+  smallZone
+  /// Low/high-bank managed hunk allocator.
+  hunk
+  /// Configured game key used by the host validation interface.
+  cdKey
+  /// True after shutdown has been requested or completed.
+  shutdown
+  /// Most recently emitted console diagnostic text.
+  lastPrint
+  /// Prefix currently being matched by console completion.
+  completionString
+  /// Common prefix shared by all console-completion candidates.
+  shortestMatch
+  /// Number of match recorded by this state.
+  matchCount
+  /// Editable console field receiving the completion result.
+  completionField
+end struct
 
 /// Create `mq3.qcommon.common.Services` with context=context; printFn=void; errorFn=void; quitFn=void; 14 further fields.
 /// @param context Initial `context` field stored in the returned or constructed `mq3.qcommon.common.Services` record.

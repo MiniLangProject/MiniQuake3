@@ -7,14 +7,53 @@ import mq3.format.aas as aas
 import mq3.compat.numeric as n
 import std.array as arrays
 
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
+/// AAS presence-mask value selecting crouch.
 const PRESENCE_CROUCH=4
+/// Area is disabled for routing when set.
 const AREA_DISABLED=8
 
 /// `Runtime` record for aas runtime, containing `map`, `initialized`, `disabled`, `time` and `cacheInvalidations` and related fields.
-struct Runtime map initialized disabled time cacheInvalidations nodeCache planeCache end struct
+struct Runtime
+  /// Parsed AAS navigation map used by the runtime.
+  map
+  /// True when the loaded navigation map is ready for area and reachability queries.
+  initialized
+  /// Area-indexed flags excluding selected areas from route calculations.
+  disabled
+  /// Current AAS simulation time supplied by the bot frame.
+  time
+  /// Number of routing-cache invalidations caused by area changes.
+  cacheInvalidations
+  /// Cached decoded BSP/AAS node records.
+  nodeCache
+  /// Cached decoded AAS plane records.
+  planeCache
+end struct
 /// `AreaInfo` record for aas runtime, containing `contents`, `flags`, `presenceType`, `cluster` and `clusterAreaNum` and related fields.
-struct AreaInfo contents flags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea mins maxs center end struct
+struct AreaInfo
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+  /// Combined AAS area-property flags read from the area settings.
+  flags
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Navigation cluster containing this area, or a portal-cluster marker.
+  cluster
+  /// Index of the area within its containing navigation cluster.
+  clusterAreaNum
+  /// Number of outgoing reachability records belonging to this AAS area.
+  numReachableAreas
+  /// First outgoing reachability index for this area in the shared reachability array.
+  firstReachableArea
+  /// Minimum XYZ corner of the navigation area returned by this runtime query.
+  mins
+  /// Maximum XYZ corner of the navigation area returned by this runtime query.
+  maxs
+  /// 'center' of the area.
+  center
+end struct
 
 /// Construct error `7520` with diagnostic text `"AAS runtime: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

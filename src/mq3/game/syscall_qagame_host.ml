@@ -8,7 +8,14 @@ import mq3.vm.syscall_qagame as qagame
 import mq3.compat.numeric as n
 
 /// `Context` record for syscall qagame host, containing `services`, `vm` and `base`.
-struct Context services vm base end struct
+struct Context
+  /// Injected service callbacks and state used to communicate with the surrounding engine.
+  services
+  /// VM instance or VM-facing console-variable record associated with this adapter.
+  vm
+  /// Byte offset in QVM data memory where the syscall argument vector is written.
+  base
+end struct
 
 /// Build the `mq3.game.syscall_qagame_host.Context` result for `context`. Return paths include `Context(services,vm,base)`.
 /// @param services Initial value stored in `mq3.game.syscall_qagame_host.Context.services`.

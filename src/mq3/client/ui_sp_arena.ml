@@ -7,13 +7,40 @@ import mq3.shared.info as arenaInfo
 import mq3.compat.textnumbers as textNumbers
 import std.string as strings
 
+/// Number of arenas grouped into one single-player progression tier.
 const ARENAS_PER_TIER=4
+/// Console execution mode that appends text to the pending command buffer.
 const EXEC_APPEND=2
 
 /// Stores UI sp arena host-service callbacks, including `context`, `variableValueFn`, `setValueFn`, `numTiersFn`, `executeTextFn`.
-struct Services context variableValueFn setValueFn numTiersFn executeTextFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for single-player arena
+  /// launching.
+  context
+  /// Host callback for the variable value operation; an unset callback leaves that host operation
+  /// unavailable.
+  variableValueFn
+  /// Host callback for the set value operation; an unset callback leaves that host operation
+  /// unavailable.
+  setValueFn
+  /// Host callback for the num tiers operation; an unset callback leaves that host operation
+  /// unavailable.
+  numTiersFn
+  /// Host callback for the execute text operation; an unset callback leaves that host operation
+  /// unavailable.
+  executeTextFn
+end struct
 /// Stores UI sp arena operation result, including `maxClientsRaised`, `selection`, `map`, `command`.
-struct Result maxClientsRaised selection map command end struct
+struct Result
+  /// When constructing this record, `start` supplies `raised` for this member.
+  maxClientsRaised
+  /// When constructing this record, `start` supplies `level` for this member.
+  selection
+  /// When constructing this record, `start` supplies `map` for this member.
+  map
+  /// When constructing this record, `start` supplies `command` for this member.
+  command
+end struct
 
 /// Creates a `mq3.client.ui_sp_arena.Services` record. Assigns `context` from `context`, `variableValueFn` from `variableValueFn`, `setValueFn` from `setValueFn`, `numTiersFn` from `numTiersFn`.
 /// @param context Value used to initialize `Services.context`.

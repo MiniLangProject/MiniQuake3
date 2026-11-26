@@ -4,36 +4,66 @@
 package mq3.game.entitystate
 import mq3.compat.numeric as n
 import mq3.game.trajectory as tr
+/// Byte size used for byte storage or binary layout in mq3.game.entitystate.
 const BYTE_SIZE = 208
 /// `EntityState` record for entitystate, containing `number`, `eType`, `eFlags`, `pos` and `apos` and related fields.
 struct EntityState
+  /// Network entity slot number.
   number
+  /// Network entity category selected from the ET_* constants.
   eType
+  /// Network-visible entity flags selected from the EF_* constants.
   eFlags
+  /// Position trajectory carried by the network entity state.
   pos
+  /// Angular trajectory carried by the network entity state.
   apos
+  /// Primary game timestamp carried by the network entity state.
   time
+  /// Secondary game timestamp carried by the entity state.
   time2
+  /// Entity origin carried by the networked entity-state record.
   origin
+  /// Secondary position/vector channel carried by the entity state.
   origin2
+  /// Orientation angles used by the entity or movement operation.
   angles
+  /// Secondary angular channel carried by the entity state.
   angles2
+  /// Primary related entity number carried by an entity event or snapshot.
   otherEntityNum
+  /// Secondary related entity number carried by an entity event or snapshot.
   otherEntityNum2
+  /// Entity number supporting the player, or ENTITYNUM_NONE while airborne.
   groundEntityNum
+  /// Packed constant-light color and intensity associated with the entity.
   constantLight
+  /// Continuously playing sound identifier associated with the entity state.
   loopSound
+  /// Primary model index referenced by the entity snapshot.
   modelindex
+  /// Secondary model index referenced by the entity snapshot.
   modelindex2
+  /// Client slot number represented by this player state.
   clientNum
+  /// Model animation frame carried by the entity state.
   frame
+  /// Encoded collision representation advertised by the entity state.
   solid
+  /// Transient event identifier associated with the entity or snapshot.
   event
+  /// Parameter accompanying the current entity event.
   eventParm
+  /// Powerup state or expiration values indexed by PW_* identifiers.
   powerups
+  /// Selected or reported weapon identifier.
   weapon
+  /// Leg-animation identifier including its restart toggle bit.
   legsAnim
+  /// Torso-animation identifier including its restart toggle bit.
   torsoAnim
+  /// Protocol-defined auxiliary entity/player value whose interpretation depends on the game object
+  /// type.
   generic1
 end struct
 

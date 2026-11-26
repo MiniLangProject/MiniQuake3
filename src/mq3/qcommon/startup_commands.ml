@@ -4,15 +4,23 @@
 package mq3.qcommon.startup_commands
 import mq3.qcommon.command_buffer as commands
 
+/// Maximum number of command lines retained for startup console processing.
 const MAX_CONSOLE_LINES = 32
+/// Created by a set command.
 const CVAR_USER_CREATED = 128
 
 /// State record for qcommon.startup_commands, containing `commandState`, `lines`, `cvarSetFn`, `cvarGetFn`, `context`.
 struct State
+  /// Command buffer receiving commands parsed from the startup arguments.
   commandState
+  /// Startup command lines split from the process command line.
   lines
+  /// Host callback that sets a configuration variable in the host registry.
   cvarSetFn
+  /// Host callback that retrieves a configuration variable from the host registry.
   cvarGetFn
+  /// Caller-supplied data associated with configuration-variable access while processing startup
+  /// commands.
   context
 end struct
 

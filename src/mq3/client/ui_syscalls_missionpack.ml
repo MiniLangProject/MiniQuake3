@@ -10,97 +10,201 @@ package mq3.client.ui_syscalls_missionpack
 
 import mq3.compat.numeric as n
 
+/// UI engine-syscall ordinal used to raise an engine error.
 const UI_ERROR=0
+/// UI engine-syscall ordinal used to print text through the engine console.
 const UI_PRINT=1
+/// UI engine-syscall ordinal used to query the engine millisecond timer.
 const UI_MILLISECONDS=2
+/// UI engine-syscall ordinal used to set a configuration variable.
 const UI_CVAR_SET=3
+/// UI engine-syscall ordinal used to read a configuration variable as a number.
 const UI_CVAR_VARIABLEVALUE=4
+/// UI engine-syscall ordinal used to read a configuration variable as text.
 const UI_CVAR_VARIABLESTRINGBUFFER=5
+/// UI engine-syscall ordinal used to set a configuration variable from a numeric value.
 const UI_CVAR_SETVALUE=6
+/// UI engine-syscall ordinal used to restore a configuration variable's default value.
 const UI_CVAR_RESET=7
+/// UI engine-syscall ordinal used to create a configuration variable with a default value and flags.
 const UI_CVAR_CREATE=8
+/// UI engine-syscall ordinal used to collect configuration variables into an info string.
 const UI_CVAR_INFOSTRINGBUFFER=9
+/// UI engine-syscall ordinal used to query the number of console-command arguments.
 const UI_ARGC=10
+/// UI engine-syscall ordinal used to read a console-command argument.
 const UI_ARGV=11
+/// UI engine-syscall ordinal used to execute or queue console-command text.
 const UI_CMD_EXECUTETEXT=12
+/// UI engine-syscall ordinal used to open a file in the virtual filesystem.
 const UI_FS_FOPENFILE=13
+/// UI engine-syscall ordinal used to read bytes from a virtual file.
 const UI_FS_READ=14
+/// UI engine-syscall ordinal used to write bytes to a virtual file.
 const UI_FS_WRITE=15
+/// UI engine-syscall ordinal used to close a virtual file.
 const UI_FS_FCLOSEFILE=16
+/// UI engine-syscall ordinal used to enumerate virtual filesystem entries.
 const UI_FS_GETFILELIST=17
+/// UI engine-syscall ordinal used to register a model resource.
 const UI_R_REGISTERMODEL=18
+/// UI engine-syscall ordinal used to register a skin resource.
 const UI_R_REGISTERSKIN=19
+/// UI engine-syscall ordinal used to register a shader without mipmapped image sampling.
 const UI_R_REGISTERSHADERNOMIP=20
+/// UI engine-syscall ordinal used to clear the renderer's pending scene.
 const UI_R_CLEARSCENE=21
+/// UI engine-syscall ordinal used to append a renderer entity to the pending scene.
 const UI_R_ADDREFENTITYTOSCENE=22
+/// UI engine-syscall ordinal used to append a polygon to the pending scene.
 const UI_R_ADDPOLYTOSCENE=23
+/// UI engine-syscall ordinal used to append a dynamic light to the pending scene.
 const UI_R_ADDLIGHTTOSCENE=24
+/// UI engine-syscall ordinal used to render the accumulated scene through a view definition.
 const UI_R_RENDERSCENE=25
+/// UI engine-syscall ordinal used to set the color modulation used by subsequent 2D drawing.
 const UI_R_SETCOLOR=26
+/// UI engine-syscall ordinal used to draw a shader-backed rectangle with texture coordinates.
 const UI_R_DRAWSTRETCHPIC=27
+/// UI engine-syscall ordinal used to request an immediate screen update.
 const UI_UPDATESCREEN=28
+/// UI engine-syscall ordinal used to interpolate a model attachment tag for the UI preview.
 const UI_CM_LERPTAG=29
+/// UI engine-syscall ordinal used to load a collision model.
 const UI_CM_LOADMODEL=30
+/// UI engine-syscall ordinal used to register a sound resource.
 const UI_S_REGISTERSOUND=31
+/// UI engine-syscall ordinal used to play a non-positional local sound.
 const UI_S_STARTLOCALSOUND=32
+/// UI engine-syscall ordinal used to convert an engine key code to a display name.
 const UI_KEY_KEYNUMTOSTRINGBUF=33
+/// UI engine-syscall ordinal used to read the command bound to an engine key.
 const UI_KEY_GETBINDINGBUF=34
+/// UI engine-syscall ordinal used to set the command bound to an engine key.
 const UI_KEY_SETBINDING=35
+/// UI engine-syscall ordinal used to query whether an engine key is currently pressed.
 const UI_KEY_ISDOWN=36
+/// UI engine-syscall ordinal used to query whether text editing uses overwrite mode.
 const UI_KEY_GETOVERSTRIKEMODE=37
+/// UI engine-syscall ordinal used to change text-editing overwrite mode.
 const UI_KEY_SETOVERSTRIKEMODE=38
+/// UI engine-syscall ordinal used to release all tracked key states.
 const UI_KEY_CLEARSTATES=39
+/// UI engine-syscall ordinal used to read the active input-capture bitmask.
 const UI_KEY_GETCATCHER=40
+/// UI engine-syscall ordinal used to replace the active input-capture bitmask.
 const UI_KEY_SETCATCHER=41
+/// UI engine-syscall ordinal used to read available clipboard text.
 const UI_GETCLIPBOARDDATA=42
+/// UI engine-syscall ordinal used to read the renderer configuration.
 const UI_GETGLCONFIG=43
+/// UI engine-syscall ordinal used to read the engine's connection-state summary.
 const UI_GETCLIENTSTATE=44
+/// UI engine-syscall ordinal used to read one server configuration string.
 const UI_GETCONFIGSTRING=45
+/// UI server-browser syscall ordinal used to query the number of outstanding browser ping requests.
 const UI_LAN_GETPINGQUEUECOUNT=46
+/// UI server-browser syscall ordinal used to release a completed or canceled ping request slot.
 const UI_LAN_CLEARPING=47
+/// UI server-browser syscall ordinal used to read the address and latency from a ping request slot.
 const UI_LAN_GETPING=48
+/// UI server-browser syscall ordinal used to read server-info text returned by a ping request.
 const UI_LAN_GETPINGINFO=49
+/// UI engine-syscall ordinal used to register a configuration variable.
 const UI_CVAR_REGISTER=50
+/// UI engine-syscall ordinal used to refresh a mirrored configuration variable.
 const UI_CVAR_UPDATE=51
+/// UI engine-syscall ordinal used to query remaining VM memory.
 const UI_MEMORY_REMAINING=52
+/// UI engine-syscall ordinal used to read the configured product key.
 const UI_GET_CDKEY=53
+/// UI engine-syscall ordinal used to write the configured product key.
 const UI_SET_CDKEY=54
+/// UI engine-syscall ordinal used to register a font resource and its glyph metrics.
 const UI_R_REGISTERFONT=55
+/// UI engine-syscall ordinal used to query a model's axis-aligned bounds.
 const UI_R_MODELBOUNDS=56
+/// UI engine-syscall ordinal used to add a preprocessor definition to the script parser.
 const UI_PC_ADD_GLOBAL_DEFINE=57
+/// UI engine-syscall ordinal used to open a script-parser source handle.
 const UI_PC_LOAD_SOURCE=58
+/// UI engine-syscall ordinal used to release a script-parser source handle.
 const UI_PC_FREE_SOURCE=59
+/// UI engine-syscall ordinal used to read the next preprocessed source token.
 const UI_PC_READ_TOKEN=60
+/// UI engine-syscall ordinal used to query the source location for a parser handle.
 const UI_PC_SOURCE_FILE_AND_LINE=61
+/// UI engine-syscall ordinal used to stop background music playback.
 const UI_S_STOPBACKGROUNDTRACK=62
+/// UI engine-syscall ordinal used to start the background music introduction and loop tracks.
 const UI_S_STARTBACKGROUNDTRACK=63
+/// UI engine-syscall ordinal used to read the host calendar and clock.
 const UI_REAL_TIME=64
+/// UI server-browser syscall ordinal used to query the number of servers in a browser source list.
 const UI_LAN_GETSERVERCOUNT=65
+/// UI server-browser syscall ordinal used to read a browser server's network address.
 const UI_LAN_GETSERVERADDRESSSTRING=66
+/// UI server-browser syscall ordinal used to read a browser server's info-string properties.
 const UI_LAN_GETSERVERINFO=67
+/// UI server-browser syscall ordinal used to include or exclude a server from visible ping updates.
 const UI_LAN_MARKSERVERVISIBLE=68
+/// UI server-browser syscall ordinal used to advance pending pings for visible browser servers.
 const UI_LAN_UPDATEVISIBLEPINGS=69
+/// UI server-browser syscall ordinal used to clear latency results for a browser source list.
 const UI_LAN_RESETPINGS=70
+/// UI server-browser syscall ordinal used to restore saved browser and favorite-server lists.
 const UI_LAN_LOADCACHEDSERVERS=71
+/// UI server-browser syscall ordinal used to persist browser and favorite-server lists.
 const UI_LAN_SAVECACHEDSERVERS=72
+/// UI server-browser syscall ordinal used to add a server to a browser source list.
 const UI_LAN_ADDSERVER=73
+/// UI server-browser syscall ordinal used to remove a server from a browser source list.
 const UI_LAN_REMOVESERVER=74
+/// UI engine-syscall ordinal used to open and start a cinematic stream.
 const UI_CIN_PLAYCINEMATIC=75
+/// UI engine-syscall ordinal used to stop a cinematic stream.
 const UI_CIN_STOPCINEMATIC=76
+/// UI engine-syscall ordinal used to advance a cinematic decoder.
 const UI_CIN_RUNCINEMATIC=77
+/// UI engine-syscall ordinal used to draw the current cinematic frame.
 const UI_CIN_DRAWCINEMATIC=78
+/// UI engine-syscall ordinal used to set a cinematic's screen rectangle.
 const UI_CIN_SETEXTENTS=79
+/// UI engine-syscall ordinal used to remap a shader to a replacement shader and time offset.
 const UI_R_REMAP_SHADER=80
+/// UI engine-syscall ordinal used to validate a product key.
 const UI_VERIFY_CDKEY=81
+/// UI server-browser syscall ordinal used to request or read a server-status response.
 const UI_LAN_SERVERSTATUS=82
+/// UI server-browser syscall ordinal used to read a browser server's measured latency.
 const UI_LAN_GETSERVERPING=83
+/// UI server-browser syscall ordinal used to query whether a server participates in visible ping
+/// updates.
 const UI_LAN_SERVERISVISIBLE=84
+/// UI server-browser syscall ordinal used to compare two browser servers using a selected sort key.
 const UI_LAN_COMPARESERVERS=85
+/// UI engine-syscall ordinal used to seek within a virtual file.
 const UI_FS_SEEK=86
+/// UI engine-syscall ordinal used to set the legacy client anti-cheat status flag.
 const UI_SET_PBCLSTATUS=87
 
 /// Stores UI syscalls missionpack state, including `syscallFn`, `context`, `calls`, `lastOpcode`, `lastArguments`.
-struct State syscallFn context calls lastOpcode lastArguments end struct
+struct State
+  /// Host callback for the syscall operation; an unset callback leaves that host operation unavailable.
+  syscallFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the Missionpack UI syscall
+  /// gateway.
+  context
+  /// When constructing this record, `dllEntry` supplies `0` for this member. Used by `invoke` during
+  /// subsequent processing.
+  calls
+  /// When constructing this record, `dllEntry` supplies `-1` for this member. Used by `invoke` during
+  /// subsequent processing.
+  lastOpcode
+  /// When constructing this record, `dllEntry` supplies an empty list for this member. Used by `invoke`
+  /// during subsequent processing.
+  lastArguments
+end struct
 
 /// Calls `mq3.client.ui_syscalls_missionpack.State` from UI syscalls missionpack `dllEntry`. The final path returns `State(syscallptr,context,0,-1,[])`.
 /// @param syscallptr Value used by `if syscallptr==void then return error(7820,"UI syscalls: missing syscall entry") end if`.

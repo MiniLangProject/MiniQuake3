@@ -5,12 +5,34 @@ package mq3.engine.user_files
 import mq3.format.pk3 as pk3
 import std.fs as fs
 import mq3.vm.syscall_common as common
+/// Maximum number of simultaneously open user-file handles.
 const MAX_HANDLES=64
+/// Maximum number of bytes accepted by one user-file operation or buffer.
 const MAX_BYTES=67108864
 /// Cursor record for engine.user_files, containing `data`, `offset`, `size`, `mode`, `path`, `dirty`.
-struct Cursor data offset size mode path dirty end struct
+struct Cursor
+  /// Buffered contents of the opened user file.
+  data
+  /// Byte offset of the current cursor or data range.
+  offset
+  /// Logical file length in bytes.
+  size
+  /// Access mode selected when the user file was opened.
+  mode
+  /// Filesystem or virtual asset path associated with this record.
+  path
+  /// Whether the stored image differs from the graphics-driver copy.
+  dirty
+end struct
 /// Store record for engine.user_files, containing `archive`, `root`, `files`.
-struct Store archive root files end struct
+struct Store
+  /// Asset archive used to resolve game resources by virtual path.
+  archive
+  /// Root directory under which user-file operations are resolved.
+  root
+  /// Open VM file handles and their associated cursors.
+  files
+end struct
 /// Encode the selected MiniQuake3 writable user directory as UTF-8.
 /// @param output Writable UTF-8 destination buffer.
 /// @param capacity Destination capacity in bytes.

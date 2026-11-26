@@ -22,12 +22,19 @@ import mq3.collision.visibility as vis
 import mq3.server.world as sv
 import std.string as strings
 
+/// Mover-state identifier representing the pos1 position or transition.
 const MOVER_POS1 = 0
+/// Mover-state identifier representing the pos2 position or transition.
 const MOVER_POS2 = 1
+/// Mover-state identifier representing the 1 to2 position or transition.
 const MOVER_1TO2 = 2
+/// Mover-state identifier representing the 2 to1 position or transition.
 const MOVER_2TO1 = 3
+/// Game entity-flag bit enabling or marking teamslave.
 const FL_TEAMSLAVE = 0x400
+/// Server entity-flag bit controlling use current origin.
 const SVF_USE_CURRENT_ORIGIN = 0x80
+/// Network entity-flag bit indicating mover stop.
 const EF_MOVER_STOP = 0x400
 
 /// Update `ent.s.modelindex`, `ent.r.mins`, `ent.r.maxs` and `ent.r.bmodel` and related state during `setBrushModel`.

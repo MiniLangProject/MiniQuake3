@@ -27,20 +27,31 @@ extern function clipConvexNative(planes as ptr,planeBytes as i32,ax as double,ay
 
 /// Plane record for collision.brush, containing `normal`, `distance`, `flags`.
 struct Plane
+  /// Outward normal of the brush boundary plane used by convex clipping.
   normal
+  /// Signed plane distance from the coordinate origin.
   distance
+  /// Surface flags associated with this clipping plane.
   flags
 end struct
 
 /// Trace record for collision.brush, containing `fraction`, `normal`, `distance`, `surfaceFlags`, `contents`, `startsolid`, and 2 further fields.
 struct Trace
+  /// Fraction of the requested trace segment completed before the first collision.
   fraction
+  /// Normal of the brush plane hit by the swept collision test.
   normal
+  /// Distance term of the impact plane.
   distance
+  /// Surface-property flags reported for the intersected surface.
   surfaceFlags
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// True when the initial trace position lies inside solid geometry.
   startsolid
+  /// True when the entire trace begins and remains within solid geometry.
   allsolid
+  /// Auxiliary classification and surface data for the impact plane.
   planeMetadata
 end struct
 

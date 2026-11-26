@@ -8,29 +8,115 @@ import mq3.shared.info as info
 import mq3.compat.textnumbers as numbers
 import std.string as strings
 
+/// Activation callback event accepted by the Add Bots menu before it processes the selected control
+/// action.
 const QM_ACTIVATED=3
+/// Native game-type value for team deathmatch, used when deciding whether bot additions require a team
+/// selection.
 const GT_TEAM=3
+/// Native Back-control identifier exposed by the Add Bots menu for returning to the surrounding menu.
 const ID_BACK=10
+/// Menu control identifier routed to the go action by the menu event handler.
 const ID_GO=11
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=12
+/// Menu control identifier routed to the up action by the menu event handler.
 const ID_UP=13
+/// Menu control identifier routed to the down action by the menu event handler.
 const ID_DOWN=14
+/// Menu control identifier routed to the skill action by the menu event handler.
 const ID_SKILL=15
+/// Menu control identifier routed to the team action by the menu event handler.
 const ID_TEAM=16
+/// Menu control identifier routed to the botname0 action by the menu event handler.
 const ID_BOTNAME0=20
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
+/// Virtual shader or image asset name used for the menu's fight0 artwork.
 const ART_FIGHT0="menu/art/accept_0"
+/// Virtual shader or image asset name used for the menu's fight1 artwork.
 const ART_FIGHT1="menu/art/accept_1"
+/// Virtual shader or image asset name used for the menu's background artwork.
 const ART_BACKGROUND="menu/art/addbotframe"
+/// Virtual shader or image asset name used for the menu's arrows artwork.
 const ART_ARROWS="menu/art/arrows_vert_0"
+/// Virtual shader or image asset name used for the menu's arrowup artwork.
 const ART_ARROWUP="menu/art/arrows_vert_top"
+/// Virtual shader or image asset name used for the menu's arrowdown artwork.
 const ART_ARROWDOWN="menu/art/arrows_vert_bot"
 
 /// Stores UI add bots queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `dispatched`.
-struct Action boundary kind name text value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while populating bot choices and issuing
+  /// bot-addition commands.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while populating bot
+  /// choices and issuing bot-addition commands.
+  kind
+  /// Bot-menu target or media asset, or the addbot command name, selected by the action kind.
+  name
+  /// Complete addbot command assembled from the selected bot, skill, team, and delay; empty for menu
+  /// and asset actions.
+  text
+  /// Value payload supplied to the selected host operation while populating bot choices and issuing
+  /// bot-addition commands.
+  value
+  /// True when this request is marked for native dispatch while populating bot choices and issuing
+  /// bot-addition commands; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI add bots state, including `data`, `numBots`, `delay`, `baseBotNum`, `selectedBotNum`, `sortedBotNums` and additional values.
-struct State data numBots delay baseBotNum selectedBotNum sortedBotNums botnames skill team teamNames teamGrayed visibleCount actions retailActive pushed cached menuEvents end struct
+struct State
+  /// When constructing this record, `create` supplies `data` for this member. Used by `sortCompare` and
+  /// `setBotNames` during subsequent processing.
+  data
+  /// When constructing this record, `create` supplies `0` for this member. Used by `getSortedBotNums`
+  /// and `downEvent` during subsequent processing.
+  numBots
+  /// When constructing this record, `create` supplies `1000` for this member. Used by `fightEvent` and
+  /// `init` during subsequent processing.
+  delay
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setBotNames` and
+  /// `upEvent` during subsequent processing.
+  baseBotNum
+  /// When constructing this record, `create` supplies `0` for this member. Used by `fightEvent` and
+  /// `botEvent` during subsequent processing.
+  selectedBotNum
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `getSortedBotNums` and `setBotNames` during subsequent processing.
+  sortedBotNums
+  /// When constructing this record, `create` supplies `["","","","","","",""]` for this member. Used by
+  /// `setBotNames` and `fightEvent` during subsequent processing.
+  botnames
+  /// When constructing this record, `create` supplies `0` for this member. Used by `fightEvent` and
+  /// `init` during subsequent processing.
+  skill
+  /// Selected index into the team-name menu used when constructing an addbot command.
+  team
+  /// When constructing this record, `create` supplies `["Free"]` for this member. Used by `fightEvent`
+  /// and `init` during subsequent processing.
+  teamNames
+  /// When constructing this record, `create` supplies `true` for this member. Used by `init` during
+  /// subsequent processing.
+  teamGrayed
+  /// When constructing this record, `create` supplies `0` for this member. Used by `botEvent` and
+  /// `draw` during subsequent processing.
+  visibleCount
+  /// Host requests queued while populating bot choices and issuing bot-addition commands, retained in
+  /// request order.
+  actions
+  /// True when the retail QVM owns the Add Bots menu, so the native observer records requests without
+  /// emitting duplicate host effects.
+  retailActive
+  /// Records that the Add Bots menu has been opened on the active menu stack.
+  pushed
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+end struct
 
 /// Creates a `mq3.client.ui_add_bots.State` record. Assigns `data` from `data`, `retailActive` from `retailActive`.
 /// @param data Value used to initialize `State.data`.

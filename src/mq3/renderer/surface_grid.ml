@@ -6,13 +6,69 @@ package mq3.renderer.surface_grid
 import mq3.compat.numeric as numeric
 
 /// Data record for `mq3.renderer.surface_grid.GridVertex`; groups `xyz`, `normal`, `st`, `lightmap`, `color`.
-struct GridVertex xyz normal st lightmap color end struct
+struct GridVertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Interpolated normal of a tessellated curved-patch vertex.
+  normal
+  /// Two-dimensional texture coordinates associated with the vertex.
+  st
+  /// Baked-lighting texture coordinates or resource associated with this vertex or patch.
+  lightmap
+  /// Vertex color interpolated across the curved-patch control grid.
+  color
+end struct
 /// Data record for `mq3.renderer.surface_grid.Grid`; groups `width`, `height`, `widthLodError`, `heightLodError`, `verts`.
-struct Grid width height widthLodError heightLodError verts end struct
+struct Grid
+  /// Number of columns in the patch vertex grid.
+  width
+  /// Number of rows in the patch vertex grid.
+  height
+  /// Per-column geometric error used when selecting patch detail.
+  widthLodError
+  /// Per-row geometric error used when selecting patch detail.
+  heightLodError
+  /// Row-major vertex grid used for curved-patch detail selection and tessellation.
+  verts
+end struct
 /// Data record for `mq3.renderer.surface_grid.Batch`; groups `xyz`, `normals`, `texCoords`, `colors`, `vertexDlightBits`, `indexes`, and 3 further fields.
-struct Batch xyz normals texCoords colors vertexDlightBits indexes numVertexes numIndexes dlightBits end struct
+struct Batch
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Base and lightmap coordinates emitted for the selected rows and columns of a patch grid.
+  texCoords
+  /// Interpolated vertex colors for the tessellated curved-patch batch.
+  colors
+  /// Per-vertex mask of dynamic lights that can affect the geometry.
+  vertexDlightBits
+  /// Triangle indices connecting adjacent cells of the selected patch-grid tessellation.
+  indexes
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 /// Data record for `mq3.renderer.surface_grid.Submission`; groups `widthTable`, `heightTable`, `batches`, `flushes`, `numVertexes`, `numIndexes`, and 1 further field.
-struct Submission widthTable heightTable batches flushes numVertexes numIndexes dlightBits end struct
+struct Submission
+  /// Selected grid columns retained at the current patch detail level.
+  widthTable
+  /// Selected grid rows retained at the current patch detail level.
+  heightTable
+  /// Geometry batches produced when the surface exceeds a single buffer.
+  batches
+  /// Number of batch flushes needed to submit the geometry.
+  flushes
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 
 /// Constructs `mq3.renderer.surface_grid.GridVertex` with `color` = `[color[0]&255,color[1]&255,color[2]&255,color[3]&255]` and the supplied remaining values.
 /// @param xyz Initial value for `mq3.renderer.surface_grid.GridVertex.xyz`.

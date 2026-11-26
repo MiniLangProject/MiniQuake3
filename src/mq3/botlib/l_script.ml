@@ -7,92 +7,226 @@ package mq3.botlib.l_script
 import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 
+/// Maximum character capacity reserved for a scanner token spelling.
 const MAX_TOKEN=1024
+/// Scanner flag suppressing error diagnostics.
 const SCFL_NOERRORS=0x0001
+/// Scanner flag suppressing warning diagnostics.
 const SCFL_NOWARNINGS=0x0002
+/// Scanner flag preventing whitespace-separated string literals from being joined.
 const SCFL_NOSTRINGWHITESPACES=0x0004
+/// Scanner flag disabling escape-sequence interpretation inside string literals.
 const SCFL_NOSTRINGESCAPECHARS=0x0008
+/// Scanner flag selecting primitive tokenization rules.
 const SCFL_PRIMITIVE=0x0010
+/// Scanner flag disabling binary-number literal syntax.
 const SCFL_NOBINARYNUMBERS=0x0020
+/// Scanner flag preventing numeric token values from being calculated.
 const SCFL_NONUMBERVALUES=0x0040
 
+/// Token-kind identifier for a quoted string literal.
 const TT_STRING=1
+/// Token-kind identifier for a quoted character literal.
 const TT_LITERAL=2
+/// Token-kind identifier for a numeric literal.
 const TT_NUMBER=3
+/// Token-kind identifier for an identifier or unquoted name.
 const TT_NAME=4
+/// Token-kind identifier for an operator or punctuation spelling.
 const TT_PUNCTUATION=5
+/// Numeric-token subtype flag for decimal notation.
 const TT_DECIMAL=0x0008
+/// Numeric-token subtype flag for hexadecimal notation.
 const TT_HEX=0x0100
+/// Numeric-token subtype flag for octal notation.
 const TT_OCTAL=0x0200
+/// Numeric-token subtype flag for binary notation.
 const TT_BINARY=0x0400
+/// Numeric-token subtype flag for a floating-point value.
 const TT_FLOAT=0x0800
+/// Numeric-token subtype flag for an integer value.
 const TT_INTEGER=0x1000
+/// Numeric-token subtype flag for an integer with a long suffix.
 const TT_LONG=0x2000
+/// Numeric-token subtype flag for an unsigned integer.
 const TT_UNSIGNED=0x4000
 
+/// Scanner punctuation identifier for `>>=`.
 const P_RSHIFT_ASSIGN=1
+/// Scanner punctuation identifier for `<<=`.
 const P_LSHIFT_ASSIGN=2
+/// Scanner punctuation identifier for `...`.
 const P_PARMS=3
+/// Scanner punctuation identifier for `##`.
 const P_PRECOMPMERGE=4
+/// Scanner punctuation identifier for `&&`.
 const P_LOGIC_AND=5
+/// Scanner punctuation identifier for `||`.
 const P_LOGIC_OR=6
+/// Scanner punctuation identifier for `>=`.
 const P_LOGIC_GEQ=7
+/// Scanner punctuation identifier for `<=`.
 const P_LOGIC_LEQ=8
+/// Scanner punctuation identifier for `==`.
 const P_LOGIC_EQ=9
+/// Scanner punctuation identifier for `!=`.
 const P_LOGIC_UNEQ=10
+/// Scanner punctuation identifier for `*=`.
 const P_MUL_ASSIGN=11
+/// Scanner punctuation identifier for `/=`.
 const P_DIV_ASSIGN=12
+/// Scanner punctuation identifier for `%=`.
 const P_MOD_ASSIGN=13
+/// Scanner punctuation identifier for `+=`.
 const P_ADD_ASSIGN=14
+/// Scanner punctuation identifier for `-=`.
 const P_SUB_ASSIGN=15
+/// Scanner punctuation identifier for `++`.
 const P_INC=16
+/// Scanner punctuation identifier for `--`.
 const P_DEC=17
+/// Scanner punctuation identifier for `&=`.
 const P_BIN_AND_ASSIGN=18
+/// Scanner punctuation identifier for `|=`.
 const P_BIN_OR_ASSIGN=19
+/// Scanner punctuation identifier for `^=`.
 const P_BIN_XOR_ASSIGN=20
+/// Scanner punctuation identifier for `>>`.
 const P_RSHIFT=21
+/// Scanner punctuation identifier for `<<`.
 const P_LSHIFT=22
+/// Scanner punctuation identifier for `->`.
 const P_POINTERREF=23
+/// Scanner punctuation identifier for `::`.
 const P_CPP1=24
+/// Scanner punctuation identifier for `.*`.
 const P_CPP2=25
+/// Scanner punctuation identifier for `*`.
 const P_MUL=26
+/// Scanner punctuation identifier for `/`.
 const P_DIV=27
+/// Scanner punctuation identifier for `%`.
 const P_MOD=28
+/// Scanner punctuation identifier for `+`.
 const P_ADD=29
+/// Scanner punctuation identifier for `-`.
 const P_SUB=30
+/// Scanner punctuation identifier for `=`.
 const P_ASSIGN=31
+/// Scanner punctuation identifier for `&`.
 const P_BIN_AND=32
+/// Scanner punctuation identifier for `|`.
 const P_BIN_OR=33
+/// Scanner punctuation identifier for `^`.
 const P_BIN_XOR=34
+/// Scanner punctuation identifier for `~`.
 const P_BIN_NOT=35
+/// Scanner punctuation identifier for `!`.
 const P_LOGIC_NOT=36
+/// Scanner punctuation identifier for `>`.
 const P_LOGIC_GREATER=37
+/// Scanner punctuation identifier for `<`.
 const P_LOGIC_LESS=38
+/// Scanner punctuation identifier for `.`.
 const P_REF=39
+/// Scanner punctuation identifier for `,`.
 const P_COMMA=40
+/// Scanner punctuation identifier for `;`.
 const P_SEMICOLON=41
+/// Scanner punctuation identifier for `:`.
 const P_COLON=42
+/// Scanner punctuation identifier for `?`.
 const P_QUESTIONMARK=43
+/// Scanner punctuation identifier for `(`.
 const P_PARENTHESESOPEN=44
+/// Scanner punctuation identifier for `)`.
 const P_PARENTHESESCLOSE=45
+/// Scanner punctuation identifier for `{`.
 const P_BRACEOPEN=46
+/// Scanner punctuation identifier for `}`.
 const P_BRACECLOSE=47
+/// Scanner punctuation identifier for `[`.
 const P_SQBRACKETOPEN=48
+/// Scanner punctuation identifier for `]`.
 const P_SQBRACKETCLOSE=49
+/// Scanner punctuation identifier for `\\`.
 const P_BACKSLASH=50
+/// Scanner punctuation identifier for `#`.
 const P_PRECOMP=51
+/// Scanner punctuation identifier for `$`.
 const P_DOLLAR=52
 
 /// `Punctuation` record for l script, containing `p` and `n`.
-struct Punctuation p n end struct
+struct Punctuation
+  /// Operator or punctuation spelling recognized by the scanner.
+  p
+  /// Token identifier assigned to the recognized punctuation spelling.
+  n
+end struct
 /// `Token` record for l script, containing `string`, `type`, `subtype`, `intValue` and `floatValue` and related fields.
-struct Token string type subtype intValue floatValue whitespaceStart whitespaceEnd line linescrossed next end struct
+struct Token
+  /// Token spelling copied from the script source.
+  string
+  /// Last read token type.
+  type
+  /// Last read token sub type.
+  subtype
+  /// Integer interpretation of a numeric or character token.
+  intValue
+  /// Floating point value.
+  floatValue
+  /// Source offset at the beginning of whitespace preceding the token.
+  whitespaceStart
+  /// Source offset immediately after whitespace preceding the token.
+  whitespaceEnd
+  /// Source-line number associated with the token, diagnostic, or allocation.
+  line
+  /// Lines crossed in white space.
+  linescrossed
+  /// Next token in a retained token chain.
+  next
+end struct
 /// `ScriptHost` record for l script, containing `loadFn`, `actionFn` and `context`.
-struct ScriptHost loadFn actionFn context end struct
+struct ScriptHost
+  /// Host callback that loads the requested resource through the host interface.
+  loadFn
+  /// Host callback that dispatches a recorded subsystem action to the host.
+  actionFn
+  /// Caller-supplied data associated with lexical source loading and scanner diagnostics.
+  context
+end struct
 /// `Runtime` record for l script, containing `host` and `baseFolder`.
-struct Runtime host baseFolder end struct
+struct Runtime
+  /// Host callback interface supplying external services to this runtime.
+  host
+  /// Base folder prepended when resolving bot script paths.
+  baseFolder
+end struct
 /// `Script` record for l script, containing `runtime`, `source`, `lastOffset`, `lastLine` and `whitespaceStart` and related fields.
-struct Script runtime source lastOffset lastLine whitespaceStart whitespaceEnd tokenAvailable flags punctuations token freed end struct
+struct Script
+  /// Owning scanner runtime providing source services and diagnostic callbacks.
+  runtime
+  /// Source text and scanner state consumed by this script reader.
+  source
+  /// Source offset retained so the most recently read token can be unread.
+  lastOffset
+  /// Line before reading token.
+  lastLine
+  /// Source offset at the beginning of whitespace preceding the token.
+  whitespaceStart
+  /// Source offset immediately after whitespace preceding the token.
+  whitespaceEnd
+  /// True when the last token has been unread and will be returned again.
+  tokenAvailable
+  /// Scanner options controlling accepted syntax and diagnostics.
+  flags
+  /// The punctuations used in the script.
+  punctuations
+  /// Most recently scanned token retained for unread or lookahead operations.
+  token
+  /// True after this managed resource has been released.
+  freed
+end struct
 
 /// Create a `mq3.botlib.l_script.ScriptHost` record with the declared empty defaults.
 function host() return ScriptHost(void,void,void) end function

@@ -11,19 +11,33 @@ import mq3.game.scores as scores
 import mq3.compat.numeric as n
 import mq3.server.world as sv
 
+/// Game-mode identifier selecting team rules.
 const GT_TEAM = 3
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF = 5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK = 6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER = 7
+/// Collision-contents bit identifying solid space or objects.
 const CONTENTS_SOLID=headers.CONTENTS_SOLID
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Combined CONTENTS_* mask used for solid collision queries.
 const MASK_SOLID = 1
+/// Entity-number sentinel meaning that no entity was hit or referenced.
 const ENTITYNUM_NONE = 1023
+/// Game entity-flag bit enabling or marking no knockback.
 const FL_NO_KNOCKBACK = 0x800
+/// Server entity-flag bit controlling broadcast.
 const SVF_BROADCAST = 32
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
+/// Capture-the-flag scoring or timing parameter for capture bonus.
 const CTF_CAPTURE_BONUS=headers.CTF_CAPTURE_BONUS
+/// Duration in milliseconds for which a player reward sprite remains visible.
 const REWARD_SPRITE_TIME = 2000
+/// Minimum interval in milliseconds between base-under-attack announcements.
 const OVERLOAD_ATTACK_BASE_SOUND_TIME=headers.OVERLOAD_ATTACK_BASE_SOUND_TIME
 
 /// Read the Team Arena game type from the spawner, returning zero when the spawner is absent.

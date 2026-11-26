@@ -2,7 +2,9 @@
 // Native MiniLang port of botlib/l_crc.c (CRC-16/CCITT-XMODEM form).
 package mq3.botlib.crc16
 
+/// Initial CRC-16 accumulator value before input bytes are processed.
 const INIT_VALUE=0xffff
+/// Final XOR applied to the CRC-16 accumulator.
 const XOR_VALUE=0
 
 /// Compute one CRC-16 lookup-table entry using polynomial 0x1021 and eight shift steps.

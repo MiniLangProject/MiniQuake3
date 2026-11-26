@@ -3,10 +3,31 @@
 package mq3.client.playable_fps_title
 import mq3.compat.numeric as numeric
 
+/// Duration or scheduling interval in milliseconds controlling update interval.
 const UPDATE_INTERVAL_MILLISECONDS=500
 
 /// Stores playable FPS title state, including `mapName`, `sampleStart`, `frameCount`, `smoothedFps`, `initialized`, `lastTime` and additional values.
-struct State mapName sampleStart frameCount smoothedFps initialized lastTime currentTitle end struct
+struct State
+  /// Map identifier included in the playable window title beside the current FPS estimate.
+  mapName
+  /// When constructing this record, `create` supplies `now` for this member. Used by `frame` during
+  /// subsequent processing.
+  sampleStart
+  /// When constructing this record, `create` supplies `0` for this member. Used by `frame` during
+  /// subsequent processing.
+  frameCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `frame` during
+  /// subsequent processing.
+  smoothedFps
+  /// True after the first FPS measurement seeds the smoothed estimate shown in the window title.
+  initialized
+  /// When constructing this record, `create` supplies `now` for this member. Used by `frame` during
+  /// subsequent processing.
+  lastTime
+  /// When constructing this record, `create` supplies `title(mapName,-1)` for this member. Used by
+  /// `frame` and `initialTitle` during subsequent processing.
+  currentTitle
+end struct
 
 /// Creates the playable FPS title error `7590` with diagnostic text `"preview FPS title: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview FPS title: "+message`.

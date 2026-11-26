@@ -9,7 +9,12 @@ import mq3.game.entitystate as entitystate
 import std.array as arrays
 
 /// Runtime record for server.snapshot_runtime, containing `scene`, `buildWorld`.
-struct Runtime scene buildWorld end struct
+struct Runtime
+  /// Linked collision scene used to determine snapshot visibility.
+  scene
+  /// Snapshot-builder world containing entity states and visibility data.
+  buildWorld
+end struct
 
 /// Return `mq3.collision.world.pointLeafnum(host.context.world, origin)` from `server.snapshot_runtime.pointLeaf`.
 /// @param host Record exposing `context`.

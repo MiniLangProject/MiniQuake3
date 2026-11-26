@@ -11,22 +11,65 @@ import mq3.botlib.aas_runtime as moveAas
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// These are sent over the net as 8 bits.
 const MAX_MODELS=256
+/// Bot mover-model classification for none.
 const MODELTYPE_NONE=0
+/// Bot mover-model classification for func plat.
 const MODELTYPE_FUNC_PLAT=1
+/// Bot mover-model classification for func bob.
 const MODELTYPE_FUNC_BOB=2
+/// Bot mover-model classification for func door.
 const MODELTYPE_FUNC_DOOR=3
+/// Bot mover-model classification for func static.
 const MODELTYPE_FUNC_STATIC=4
+/// Avoidance-spot mode that removes the previously registered spots.
 const AVOID_CLEAR=0
+/// Avoidance-spot mode that always rejects paths through the spot.
 const AVOID_ALWAYS=1
+/// Avoidance-spot mode that influences path choice without blocking all movement.
 const AVOID_DONTBLOCK=2
 
 /// `BrushEntity` record for be ai move, containing `classname` and `modelNum`.
-struct BrushEntity classname modelNum end struct
+struct BrushEntity
+  /// Classname of the item.
+  classname
+  /// Brush-model number associated with the mover or collision entity.
+  modelNum
+end struct
 /// `MoverInfo` record for be ai move, containing `mins`, `maxs`, `origin` and `currentOrigin`.
-struct MoverInfo mins maxs origin currentOrigin end struct
+struct MoverInfo
+  /// Minimum XYZ corner of the moving brush model in its local coordinate system.
+  mins
+  /// Maximum XYZ corner of the moving brush model in its local coordinate system.
+  maxs
+  /// Reference origin supplied with the moving brush model geometry.
+  origin
+  /// Current world-space position used for collision and mover queries.
+  currentOrigin
+end struct
 /// `Adapter` record for be ai move, containing `runtime`, `modelTypes`, `context`, `visibleTraceFn` and `moverInfoFn` and related fields.
-struct Adapter runtime modelTypes context visibleTraceFn moverInfoFn onMoverFn onTopFn setupFn shutdownFn end struct
+struct Adapter
+  /// Bot movement runtime delegated to by the native-compatible movement API.
+  runtime
+  /// Movement classifications assigned to brush models.
+  modelTypes
+  /// Caller-supplied data associated with host mover inspection, visibility checks, and movement-AI
+  /// setup.
+  context
+  /// Host callback that traces visibility to a potential movement target.
+  visibleTraceFn
+  /// Host callback that retrieves the position and behavior of a moving platform.
+  moverInfoFn
+  /// Host callback that tests whether the bot is standing on a moving entity.
+  onMoverFn
+  /// Host callback that tests whether the bot is above the specified obstacle.
+  onTopFn
+  /// Host callback that initializes the supplied bot-library adapter.
+  setupFn
+  /// Host callback that shuts down the host subsystem and releases its resources.
+  shutdownFn
+end struct
 
 /// Create a `mq3.botlib.be_ai_move.Adapter` record, initializing `runtime` from `runtime` and `modelTypes` as `array(MAX_MODELS,MODELTYPE_NONE)`.
 /// @param runtime Initial value stored in `mq3.botlib.be_ai_move.Adapter.runtime`.

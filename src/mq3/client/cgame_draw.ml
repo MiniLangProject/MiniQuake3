@@ -7,48 +7,323 @@ package mq3.client.cgame_draw
 
 import mq3.compat.numeric as n
 
+/// Native team identifier for free, used by player and team presentation.
 const TEAM_FREE=0
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when choosing team, tournament, and
+/// single-player HUD presentation.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when choosing team, tournament, and
+/// single-player HUD presentation.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when choosing team, tournament, and single-player
+/// HUD presentation.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when choosing team, tournament, and single-player
+/// HUD presentation.
 const GT_CTF=4
+/// Player-movement mode selecting intermission input and physics behavior.
 const PM_INTERMISSION=5
+/// Player-movement state flag indicating follow.
 const PMF_FOLLOW=0x1000
+/// Player-movement state flag indicating scoreboard.
 const PMF_SCOREBOARD=0x2000
+/// Snapshot flag indicating that rate limiting delayed the snapshot.
 const SNAPFLAG_RATE_DELAYED=1
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Capacity limit for the locations collection or bounded storage used by this client module.
 const MAX_LOCATIONS=64
+/// Number of frame or packet samples retained by the lagometer history.
 const LAG_SAMPLES=128
+/// Duration in milliseconds of a server or team vote.
 const VOTE_TIME=30000
+/// Duration in milliseconds of the standard CGame presentation fade.
 const FADE_TIME=200
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Bigchar font metric controlling height in virtual UI coordinates.
 const BIGCHAR_HEIGHT=16
+/// Width of a giant-font character in virtual screen coordinates.
 const GIANT_WIDTH=32
+/// Height of a giant-font character in virtual screen coordinates.
 const GIANT_HEIGHT=48
+/// Tinychar font metric controlling width in virtual UI coordinates.
 const TINYCHAR_WIDTH=8
+/// Tinychar font metric controlling height in virtual UI coordinates.
 const TINYCHAR_HEIGHT=8
+/// Default square HUD icon size in virtual screen coordinates.
 const ICON_SIZE=48
+/// Duration in milliseconds of the pickup-icon emphasis effect.
 const ITEM_BLOB_TIME=200
+/// Milliseconds for which the latest attacker's head icon is displayed.
 const ATTACKER_HEAD_TIME=10000
 
 /// Stores client game draw queued engine action, including `kind`, `x`, `y`, `width`, `height`, `text` and additional values.
-struct Action kind x y width height text shader color value client dispatched end struct
+struct Action
+  /// Operation selector telling the host how to interpret a request emitted while drawing status
+  /// indicators, crosshairs, votes, and timed HUD feedback.
+  kind
+  /// Horizontal coordinate of a base-game HUD drawing request in the virtual screen layout.
+  x
+  /// Vertical coordinate of a base-game HUD drawing request in the virtual screen layout.
+  y
+  /// Width of the image, bar, or rectangle requested by this HUD action.
+  width
+  /// Height of the image, bar, or rectangle requested by this HUD action.
+  height
+  /// HUD string to draw, or serialized texture coordinates when the action describes a font glyph.
+  text
+  /// Image material selected by a HUD picture or textured-rectangle action.
+  shader
+  /// RGBA tint associated with this HUD text, image, or fill request.
+  color
+  /// Value payload supplied to the selected host operation while drawing status indicators, crosshairs,
+  /// votes, and timed HUD feedback.
+  value
+  /// Player slot associated with this score or client-side record.
+  client
+  /// True when this request is marked for native dispatch while drawing status indicators, crosshairs,
+  /// votes, and timed HUD feedback; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game draw glyph record, including `xSkip`, `height`, `imageWidth`, `imageHeight`, `top`, `s` and additional values.
-struct Glyph xSkip height imageWidth imageHeight top s t s2 t2 shader end struct
+struct Glyph
+  /// Horizontal pen advance applied after drawing this font glyph.
+  xSkip
+  /// Unscaled font-metric height used to size the rendered HUD glyph quad.
+  height
+  /// Width of the glyph's image region in the font atlas.
+  imageWidth
+  /// Height of the glyph's image region in the font atlas.
+  imageHeight
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Left texture coordinate of this glyph's region in the font atlas.
+  s
+  /// Top texture coordinate of this glyph's region in the font atlas.
+  t
+  /// Right texture coordinate of this glyph's region in the font atlas.
+  s2
+  /// Bottom texture coordinate of this glyph's region in the font atlas.
+  t2
+  /// Font atlas material used to render this glyph with its stored texture coordinates.
+  shader
+end struct
 /// Stores client game draw client record, including `name`, `team`, `infoValid`, `health`, `armor`, `location` and additional values.
-struct Client name team infoValid health armor location weapon powerups deferred headModel headSkin modelIcon end struct
+struct Client
+  /// Player display name available to the ordinary HUD and team-overlay drawing code.
+  name
+  /// Reported team membership used to include this client in the local team overlay.
+  team
+  /// True when the client-information entry has been populated from valid server data.
+  infoValid
+  /// Health reported for this teammate and displayed in the team overlay.
+  health
+  /// Armor reported for this teammate and shown beside health in the team overlay.
+  armor
+  /// When constructing this record, `client` supplies `0` for this member.
+  location
+  /// Native weapon identifier reported for this teammate and used by the team-overlay weapon icon.
+  weapon
+  /// Player powerup bitmask used by HUD and team-overlay icon rendering.
+  powerups
+  /// True while the player's full media registration is deferred to a later load step.
+  deferred
+  /// Head-model resource used when drawing a player, head icon, or preview.
+  headModel
+  /// Skin resource applied to the player's head model.
+  headSkin
+  /// Image or shader resource used to draw the model icon.
+  modelIcon
+end struct
 /// Stores client game draw powerup record, including `expires`, `icon`.
-struct Powerup expires icon end struct
+struct Powerup
+  /// When constructing this record, `powerup` supplies `expires` for this member.
+  expires
+  /// When constructing this record, `powerup` supplies `icon` for this member.
+  icon
+end struct
 /// Stores client game draw trace result record, including `entityNum`, `fog`, `invisible`.
-struct TraceResult entityNum fog invisible end struct
+struct TraceResult
+  /// Entity identifier hit by the crosshair trace, used to select a player-name display.
+  entityNum
+  /// True when fog obscures the crosshair trace and player-name identification should be suppressed.
+  fog
+  /// True when the traced entity is invisible and should not reveal its player name.
+  invisible
+end struct
 /// Stores client game draw lagometer record, including `frameSamples`, `snapshotSamples`, `snapshotFlags`, `frameCount`, `snapshotCount`.
-struct Lagometer frameSamples snapshotSamples snapshotFlags frameCount snapshotCount end struct
+struct Lagometer
+  /// When constructing this record, `lagometer` supplies an empty list for this member.
+  frameSamples
+  /// When constructing this record, `lagometer` supplies an empty list for this member.
+  snapshotSamples
+  /// When constructing this record, `lagometer` supplies an empty list for this member.
+  snapshotFlags
+  /// When constructing this record, `lagometer` supplies `0` for this member.
+  frameCount
+  /// When constructing this record, `lagometer` supplies `0` for this member.
+  snapshotCount
+end struct
 /// Stores client game draw state, including `time`, `levelStartTime`, `serverTime`, `latestSnapshotNum`, `serverCommandSequence`, `team` and additional values.
-struct State time levelStartTime serverTime latestSnapshotNum serverCommandSequence team gametype clientNum health armor ammo weapon weaponTime weaponFiring showScores levelShot draw2D drawStatus drawIcons draw3dIcons drawCrosshair drawCrosshairNames crosshairHealth renderingThirdPerson crosshairSize crosshairX crosshairY itemPickupBlendTime crosshairClientNum crosshairClientTime attackerTime attackerNum warmup warmupCount lowAmmoWarning scoreBoardShowing voteTime voteModified voteString voteYes voteNo teamVoteTime teamVoteModified teamVoteString teamVoteYes teamVoteNo pmType pmFlags noPredict synchronous stereoSeparation refX refY refWidth refHeight centerPrint centerPrintTime centerPrintY centerPrintCharWidth centerPrintLines voiceTime frameTime previousFrameTimes fpsIndex clients locations sortedTeamPlayers powerups lag actions emitted suppressed end struct
+struct State
+  /// Client-game timestamp in milliseconds used to animate and expire HUD indicators.
+  time
+  /// Server timestamp at which the level began, used by elapsed-match-time displays.
+  levelStartTime
+  /// Server snapshot time in milliseconds displayed in the HUD snapshot diagnostic line.
+  serverTime
+  /// Sequence number of the latest snapshot received from the engine.
+  latestSnapshotNum
+  /// Reliable server-command sequence shown by the HUD snapshot diagnostic display.
+  serverCommandSequence
+  /// Local-player team membership used to select HUD colors, teammate rows, and spectator presentation.
+  team
+  /// Game-rule identifier selecting team overlays, score layout, and spectator HUD instructions.
+  gametype
+  /// Client slot of the player whose HUD and head are displayed, including a followed player.
+  clientNum
+  /// Local-player health used by the main HUD status, crosshair, and spectator decisions.
+  health
+  /// Local-player armor used by the main HUD status bar and health-color calculations.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Native identifier of the local-player weapon shown by the main HUD ammo and weapon indicators.
+  weapon
+  /// Compatibility weapon-timing slot initialized to zero; the current HUD drawing paths do not consult
+  /// it.
+  weaponTime
+  /// When constructing this record, `state` supplies `false` for this member.
+  weaponFiring
+  /// True while the player explicitly requests the scoreboard overlay.
+  showScores
+  /// True while producing the menu screenshot for the current level.
+  levelShot
+  /// When constructing this record, `state` supplies `true` for this member.
+  draw2D
+  /// When constructing this record, `state` supplies `true` for this member.
+  drawStatus
+  /// Image or shader resources used to draw the draw icon.
+  drawIcons
+  /// Image or shader resources used to draw the draw3d icon.
+  draw3dIcons
+  /// When constructing this record, `state` supplies `1` for this member.
+  drawCrosshair
+  /// When constructing this record, `state` supplies `true` for this member.
+  drawCrosshairNames
+  /// When constructing this record, `state` supplies `true` for this member.
+  crosshairHealth
+  /// True while the camera uses a third-person, chase, or death view.
+  renderingThirdPerson
+  /// When constructing this record, `state` supplies `32.0` for this member.
+  crosshairSize
+  /// Horizontal crosshair offset from the center of the active view rectangle.
+  crosshairX
+  /// Vertical crosshair offset from the center of the active view rectangle.
+  crosshairY
+  /// Independent timestamp for the pickup pulse around the crosshair.
+  itemPickupBlendTime
+  /// Client slot most recently identified under the crosshair.
+  crosshairClientNum
+  /// Timestamp of the last valid crosshair-player identification.
+  crosshairClientTime
+  /// Timestamp used to time the latest attacker's HUD indication.
+  attackerTime
+  /// Client slot of the last attacker whose portrait and name can appear in the HUD.
+  attackerNum
+  /// Warmup deadline or state supplied by the server's warmup configuration.
+  warmup
+  /// Last warmup countdown value announced to the player.
+  warmupCount
+  /// Ammunition-warning state: one means low ammunition and two means empty.
+  lowAmmoWarning
+  /// True while the scoreboard is actually being rendered.
+  scoreBoardShowing
+  /// Start time of the active vote in milliseconds; zero suppresses the vote display.
+  voteTime
+  /// True when vote information changed and the UI should refresh or play feedback.
+  voteModified
+  /// When constructing this record, `state` supplies an empty string for this member.
+  voteString
+  /// Number of affirmative votes displayed for the current server vote.
+  voteYes
+  /// Number of negative votes displayed for the current server vote.
+  voteNo
+  /// When constructing this record, `state` supplies `[0,0]` for this member.
+  teamVoteTime
+  /// Per-team indicators that team-vote information changed.
+  teamVoteModified
+  /// When constructing this record, `state` supplies `["",""]` for this member.
+  teamVoteString
+  /// When constructing this record, `state` supplies `[0,0]` for this member.
+  teamVoteYes
+  /// When constructing this record, `state` supplies `[0,0]` for this member.
+  teamVoteNo
+  /// Player movement mode used to select death, intermission, and ordinary HUD presentation.
+  pmType
+  /// Player movement flags used for follow-mode text and spectator or scoreboard presentation.
+  pmFlags
+  /// When constructing this record, `state` supplies `false` for this member.
+  noPredict
+  /// When constructing this record, `state` supplies `false` for this member.
+  synchronous
+  /// When constructing this record, `state` supplies `0.4` for this member.
+  stereoSeparation
+  /// Left coordinate of the active view rectangle used to position the crosshair and tiled border.
+  refX
+  /// Top coordinate of the active view rectangle used to position the crosshair and tiled border.
+  refY
+  /// When constructing this record, `state` supplies `640` for this member.
+  refWidth
+  /// When constructing this record, `state` supplies `480` for this member.
+  refHeight
+  /// Text of the current centered announcement.
+  centerPrint
+  /// Client timestamp at which the current centered announcement began.
+  centerPrintTime
+  /// Vertical display position of the centered announcement.
+  centerPrintY
+  /// Character width selected for the centered announcement.
+  centerPrintCharWidth
+  /// Number of lines in the centered announcement.
+  centerPrintLines
+  /// Timestamp used to schedule the current voice announcement or portrait.
+  voiceTime
+  /// Previous FPS sampling timestamp in milliseconds, retained to measure the next HUD frame interval.
+  frameTime
+  /// When constructing this record, `state` supplies `[0,0,0,0]` for this member.
+  previousFrameTimes
+  /// Total FPS samples collected; modulo four selects the next frame-duration history slot.
+  fpsIndex
+  /// Client information indexed by player slot for HUD heads, names, and team-overlay entries.
+  clients
+  /// When constructing this record, `state` supplies an empty list for this member.
+  locations
+  /// When constructing this record, `state` supplies an empty list for this member.
+  sortedTeamPlayers
+  /// Powerup display entries carrying expiry times and icons for the local HUD countdown list.
+  powerups
+  /// When constructing this record, `state` supplies `lagometer()` for this member.
+  lag
+  /// Host requests queued while drawing status indicators, crosshairs, votes, and timed HUD feedback,
+  /// retained in request order.
+  actions
+  /// When constructing this record, `state` supplies `0` for this member. Used by `publish` during
+  /// subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while drawing status indicators, crosshairs,
+  /// votes, and timed HUD feedback because the retail QVM owns their effects.
+  suppressed
+end struct
 
 /// Creates a `mq3.client.cgame_draw.Action` record. Assigns `kind` from `kind`, `x` from `x`, `y` from `y`, `width` from `width`.
 /// @param kind Value used to initialize `Action.kind`.

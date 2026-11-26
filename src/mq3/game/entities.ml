@@ -14,294 +14,579 @@ import mq3.compat.numeric as n
 import std.string as strings
 /// `Client` record for entities, containing `ps`, `team`, `cmdAngles`, `noclip` and `damage_armor` and related fields.
 struct Client
+  /// Authoritative player state used for movement, prediction, and snapshot delivery.
   ps
+  /// Team assignment associated with the client, bot, or action.
   team
+  /// View-angle values supplied by the current input command.
   cmdAngles
+  /// Nonzero when movement bypasses normal world collision.
   noclip
+  /// Accumulated damage absorbed by armor before the damage feedback is emitted.
   damage_armor
+  /// Accumulated damage applied to health before the damage feedback is emitted.
   damage_blood
+  /// Accumulated knockback contribution of recent damage.
   damage_knockback
+  /// Direction or position used to calculate the incoming-damage indicator.
   damage_from
+  /// Nonzero when the accumulated damage came from the world rather than an ordinary attacker.
   damage_fromWorld
+  /// Client identifier credited with the most recent incoming damage.
   lasthurt_client
+  /// Cause-of-damage identifier for the most recent incoming damage.
   lasthurt_mod
+  /// Timestamp at which this player last damaged the flag carrier.
   lasthurtcarrier
+  /// Number of accuracy-eligible weapon hits credited to the client.
   accuracy_hits
+  /// Active grappling-hook entity associated with the client.
   hook
+  /// Client connection state used to distinguish disconnected, connecting, and active clients.
   connected
+  /// Spectator mode selected from the SPECTATOR_* constants.
   spectatorState
+  /// Client slot being followed by a spectator.
   spectatorClient
+  /// Timestamp used to order spectators waiting to enter play.
   spectatorTime
+  /// Game timestamp at which the client entered play.
   enterTime
+  /// Number of accuracy-eligible shots fired by the client.
   accuracy_shots
+  /// Player name advertised in user information and score/chat messages.
   netname
+  /// Nonzero when this client or match is ready to leave the intermission.
   readyToExit
+  /// Client identifier of the most recent player killed by this client.
   lastkilled_client
+  /// Timestamp associated with the client or bot next respawn decision.
   respawnTime
+  /// Timestamp at which the current player award/reward display expires.
   rewardTime
+  /// Timestamp of the most recent kill credited to this client.
   lastKillTime
+  /// Weapon selection requested by the input command.
   cmdWeapon
+  /// Timestamp at which this player last killed an enemy flag carrier.
   lastfraggedcarrier
+  /// Number of enemy flag-carrier kills credited to the player.
   fragcarrier
+  /// Count of flag-carrier defense awards credited to the player.
   carrierdefense
+  /// Count of base-defense awards credited to the player.
   basedefense
+  /// Nonzero when the client is allowed to predict item pickups.
   predictItemPickup
+  /// Number of flag captures credited to the player.
   captures
+  /// Number of own-flag recoveries credited to the player.
   flagrecovery
+  /// Number of capture assists credited to the player.
   assists
+  /// Timestamp at which the player last returned its team flag.
   lastreturnedflag
+  /// Timestamp at which the player started carrying the flag.
   flagsince
+  /// Nonzero when this client is the local listen-server client.
   localClient
+  /// Nonzero while selecting or performing the client first spawn.
   initialSpawn
+  /// Nonzero when player movement uses a fixed simulation step.
   pmoveFixed
+  /// Maximum normal health used when spawning or replenishing the client.
   maxHealth
+  /// Team participation state used by spawn/team rules.
   teamStateState
+  /// Team-location identifier advertised for the client.
   teamStateLocation
+  /// Number of global votes initiated by the client.
   voteCount
+  /// Number of team votes initiated by the client.
   teamVoteCount
+  /// Nonzero when this client requests team-overlay information.
   teamInfo
+  /// Tournament wins retained in the client session.
   wins
+  /// Tournament losses retained in the client session.
   losses
+  /// Nonzero when this client is the designated leader of its team.
   teamLeader
+  /// Server-time value carried by the current input command.
   cmdServerTime
+  /// Button bits supplied by the current input command.
   cmdButtons
+  /// Forward/backward movement request carried by the input command.
   cmdForwardmove
+  /// Right/left movement request carried by the input command.
   cmdRightmove
+  /// Up/down movement request carried by the input command.
   cmdUpmove
+  /// Timestamp of the most recently received user command.
   lastCmdTime
+  /// Button bits from the current user command.
   buttons
+  /// Button bits from the preceding user command.
   oldbuttons
+  /// Button presses retained until game logic consumes the transition.
   latched_buttons
+  /// Previously recorded origin, used to compare or interpolate movement.
   oldOrigin
+  /// Consecutive accuracy/hit count used by player award logic.
   accurateCount
+  /// Deadline after which an inactive client is removed or moved to spectators.
   inactivityTime
+  /// Nonzero after the client has received its inactivity warning.
   inactivityWarning
+  /// Game timestamp at which the player runs out of breathable air.
   airOutTime
+  /// Nonzero while the weapon firing control is held across frames.
   fireHeld
+  /// Deadline before which the client may not switch teams again.
   switchTeamTime
+  /// Unconsumed time accumulated for periodic client effects.
   timeResidual
+  /// Persistent team-arena powerup currently associated with the client.
   persistantPowerup
+  /// Per-weapon timing state used while replenishing or consuming ammunition.
   ammoTimes
+  /// Expiration time of the mission-pack invulnerability effect.
   invulnerabilityTime
+  /// Identifier linking a client portal source and destination.
   portalID
 end struct
 /// `Entity` record for entities, containing `slot`, `s`, `r`, `client` and `inuse` and related fields.
 struct Entity
+  /// Index of the entity/client slot represented by this record.
   slot
+  /// Network-visible entity state used to build snapshots for clients.
   s
+  /// Engine-shared entity state used for world linking, collision, and visibility.
   r
+  /// Client record attached to a player entity, or void for a non-player entity.
   client
+  /// Nonzero when this entity, client, or bot record currently represents a live allocated object.
   inuse
+  /// Map entity class name used to select a spawn function.
   classname
+  /// Game timestamp at which the entity slot was last released.
   freetime
+  /// Nonzero when ordinary entity cleanup must retain this entity slot.
   neverFree
+  /// Timestamp of the most recently recorded entity event.
   eventTime
+  /// Nonzero when the entity should be freed after its transient event expires.
   freeAfterEvent
+  /// Entity callback invoked when another entity touches it.
   touch
+  /// Target-name selector identifying entities activated by this entity.
   target
+  /// Name by which other map entities can target this entity.
   targetname
+  /// Class-specific bit flags read from the map entity definition.
   spawnflags
+  /// Primary model resource name read from a map entity definition.
   model
+  /// Secondary model resource name read from a map entity definition.
   model2
+  /// Movement or travel speed used by this game object.
   speed
+  /// Text associated with the map entity or trigger action.
   message
+  /// Team assignment associated with the client, bot, or action.
   team
+  /// Configured delay between repeated uses of the map entity.
   wait
+  /// Random variation added to the map entity activation/repeat delay.
   random
+  /// Class-specific count/amount read from the map entity definition.
   count
+  /// Current health value used by damage, death, and healing logic.
   health
+  /// Damage amount applied by this entity, attack, or operation.
   damage
+  /// Shader name selected for a map-triggered remapping operation.
   targetShaderName
+  /// Replacement shader name applied by the map-triggered remapping operation.
   targetShaderNewName
+  /// FL_* game entity flags controlling gameplay behavior.
   flags
+  /// Normalized direction along which the entity moves or fires.
   movedir
+  /// Game timestamp at which the entity think callback should next run.
   nextthink
+  /// Entity callback invoked when its nextthink deadline is reached.
   think
+  /// Entity callback invoked when the entity is activated by another object.
   use
+  /// Entity that triggered the current activation chain.
   activator
+  /// Nonzero when the entity should be unlinked after its transient event expires.
   unlinkAfterEvent
+  /// Nonzero when generic entity physics should advance this object.
   physicsObject
+  /// Registered sound index used by this map entity.
   noise_index
+  /// Deadline preventing repeated fly/mover sound emission.
   fly_sound_debounce_time
+  /// Next path or train entity in the mover route.
   nextTrain
+  /// Nonzero when damage processing is allowed to reduce this entity health.
   takedamage
+  /// Current position/transition state of a moving map object.
   moverState
+  /// First mover endpoint in world coordinates.
   pos1
+  /// Second mover endpoint in world coordinates.
   pos2
+  /// Mover callback invoked when the mover reaches an endpoint.
   reached
+  /// Mover callback invoked when another object obstructs movement.
   blocked
+  /// Sound played when the mover arrives at its first endpoint.
   soundPos1
+  /// Sound played while the mover travels from its first endpoint to its second.
   sound1to2
+  /// Sound played while the mover travels from its second endpoint to its first.
   sound2to1
+  /// Sound played when the mover arrives at its second endpoint.
   soundPos2
+  /// Looping sound selected while the entity is active or moving.
   soundLoop
+  /// Current enemy entity selected by the bot decision logic.
   enemy
+  /// Entity callback invoked when a damage event causes a pain response.
   pain
+  /// Entity callback invoked when damage kills the entity.
   die
+  /// Game timestamp retained by the entity behavior.
   timestamp
+  /// Entity that created or owns this transient object.
   parent
+  /// Entity currently resolved as the active target.
   target_ent
+  /// Damage at the center of the radial splash-damage effect.
   splashDamage
+  /// Maximum world-space radius affected by splash damage.
   splashRadius
+  /// MOD_* identifier used to attribute direct damage and death.
   methodOfDeath
+  /// MOD_* identifier used to attribute splash damage and death.
   splashMethodOfDeath
+  /// Contents mask used to select surfaces/entities that can block this object.
   clipmask
+  /// Bounce factor used when this physics object collides with a surface.
   physicsBounce
+  /// Item definition associated with this pickup entity.
   item
+  /// Master entity coordinating this entity team or mover group.
   teammaster
+  /// Next entity linked into this entity team or mover group.
   teamchain
+  /// Depth classification of the player immersion in liquid.
   waterlevel
+  /// CONTENTS_* mask identifying the liquid around the player.
   watertype
+  /// Deadline preventing repeated pain responses in rapid succession.
   pain_debounce_time
 end struct
 /// `Level` record for entities, containing `scene`, `entities`, `num_entities`, `time` and `startTime` and related fields.
 struct Level
+  /// Shared scene/world representation used by game entities and collision.
   scene
+  /// Game entity records indexed by entity number.
   entities
+  /// Number of entity slots currently included in the level entity table.
   num_entities
+  /// Current server game time in milliseconds.
   time
+  /// Server timestamp at which the level began.
   startTime
+  /// Pseudo-random seed carried by the game state for repeatable random choices.
   randSeed
+  /// Injected callback for damage; invoked through the Level service/state record.
   damageFn
+  /// Door-touch handler retained by the level for mover interaction.
   doorTouch
+  /// Injected callback for observe; invoked through the Level service/state record.
   observeFn
+  /// Opaque caller-supplied context available to level simulation, entity, client, match, and
+  /// host-observation callbacks.
   context
+  /// Map-entity spawning state or dispatcher associated with the level.
   spawner
+  /// Accumulated shader-name remappings applied by map targets.
   shaderRemaps
+  /// Injected callback for run entity; invoked through the Level service/state record.
   runEntityFn
+  /// Nonzero after target-location entities have been linked.
   locationLinked
+  /// Head of the linked list of level location entities.
   locationHead
+  /// Timestamp/marker recording that an intermission transition has been queued.
   intermissionQueued
+  /// Configured scale applied to damage-induced knockback.
   knockback
+  /// Nonzero when teammates may damage each other.
   friendlyFire
+  /// Injected callback for trace observe; invoked through the Level service/state record.
   traceObserveFn
+  /// Previous game-frame time used for motion and rollback calculations.
   previousTime
+  /// Per-item registration markers used to advertise required pickup assets.
   itemRegistered
+  /// Setting controlling blood and gib effects.
   blood
+  /// Next corpse-queue slot to reuse when a player body is copied.
   bodyQueIndex
+  /// Reusable corpse-entity slots maintained by the level.
   bodyQue
+  /// Camera position chosen for the intermission view.
   intermission_origin
+  /// Camera orientation chosen for the intermission view.
   intermission_angle
+  /// Client records indexed by client slot.
   clients
+  /// Configured number of client slots active in this game state.
   maxclients
+  /// VM console-variable record controlling the active client limit.
   maxclientsCvar
+  /// Client slot numbers ordered by the current rank/score calculation.
   sortedClients
+  /// Scores indexed by the active team identifiers.
   teamScores
+  /// First active client automatically selected for spectator following.
   follow1
+  /// Second active client automatically selected for spectator following.
   follow2
+  /// Number of clients currently connected to the game.
   numConnectedClients
+  /// Number of connected clients assigned to a playing team rather than spectators.
   numNonSpectatorClients
+  /// Number of clients currently participating in play.
   numPlayingClients
+  /// Number of clients eligible to participate in the global vote.
   numVotingClients
+  /// Counts of clients eligible to participate in each team vote.
   numteamVotingClients
+  /// Timestamp at which the intermission began.
   intermissiontime
+  /// Configured match time limit in minutes.
   timelimit
+  /// Configured score/frag threshold that ends the match.
   fraglimit
+  /// Configured number of flag captures that ends the match.
   capturelimit
+  /// Nonzero when this client or match is ready to leave the intermission.
   readyToExit
+  /// Timestamp controlling the transition out of intermission.
   exitTime
+  /// Injected callback for server command; invoked through the Level service/state record.
   serverCommandFn
+  /// Injected callback for game log; invoked through the Level service/state record.
   gameLogFn
+  /// Injected callback for match transition; invoked through the Level service/state record.
   matchTransitionFn
+  /// Next death-animation variant selected by game death logic.
   deathAnimIndex
+  /// Injected callback for item drop; invoked through the Level service/state record.
   itemDropFn
+  /// Injected callback for flag return; invoked through the Level service/state record.
   flagReturnFn
+  /// Injected callback for team message; invoked through the Level service/state record.
   teamMessageFn
+  /// Injected callback for client spawn; invoked through the Level service/state record.
   clientSpawnFn
+  /// Current capture-the-flag state of the red flag.
   redFlagStatus
+  /// Current capture-the-flag state of the blue flag.
   blueFlagStatus
+  /// Current state of the neutral flag in one-flag capture the flag.
   neutralFlagStatus
+  /// Timestamp at which the red flag was most recently taken.
   redTakenTime
+  /// Timestamp at which the blue flag was most recently taken.
   blueTakenTime
+  /// Timestamp of the most recent flag capture.
   lastFlagCapture
+  /// Team credited with the most recent flag capture.
   lastCaptureTeam
+  /// Configured respawn delay for weapon pickups.
   weaponRespawn
+  /// Configured weapon-pickup respawn delay in team games.
   weaponTeamRespawn
+  /// Configured inactivity timeout applied to clients.
   inactivity
+  /// Injected callback for user information; invoked through the Level service/state record.
   userinfoFn
+  /// Injected callback for user command; invoked through the Level service/state record.
   usercmdFn
+  /// Injected callback for client think; invoked through the Level service/state record.
   clientThinkFn
+  /// Injected callback for client end frame; invoked through the Level service/state record.
   clientEndFrameFn
+  /// Injected callback for move intermission; invoked through the Level service/state record.
   moveIntermissionFn
+  /// Registered sound index for the environmental frying sound.
   sndFry
+  /// Setting controlling client movement extrapolation/smoothing.
   smoothClients
+  /// Injected callback for client begin; invoked through the Level service/state record.
   clientBeginFn
+  /// Downward acceleration used by the player or entity movement simulation.
   gravity
+  /// Configured normal player movement speed.
   playerSpeed
+  /// Deathmatch-option bit mask supplied by server configuration.
   dmflags
+  /// Nonzero when player movement uses a fixed simulation step.
   pmoveFixed
+  /// Fixed movement-step duration in milliseconds.
   pmoveMsec
+  /// Nonzero when commands are processed synchronously with game frames.
   synchronousClients
+  /// Configured delay after which a dead client is forced to respawn.
   forceRespawn
+  /// Injected callback for console variable set; invoked through the Level service/state record.
   cvarSetFn
+  /// Injected callback for drop client; invoked through the Level service/state record.
   dropClientFn
+  /// Injected callback for follow cycle; invoked through the Level service/state record.
   followCycleFn
+  /// Injected callback for gauntlet attack; invoked through the Level service/state record.
   gauntletAttackFn
+  /// Injected callback for fire weapon; invoked through the Level service/state record.
   fireWeaponFn
+  /// Injected callback for bot test AAS; invoked through the Level service/state record.
   botTestAasFn
+  /// Injected callback for respawn; invoked through the Level service/state record.
   respawnFn
+  /// Injected callback for player die; invoked through the Level service/state record.
   playerDieFn
+  /// Game frames processed since level initialization.
   framenum
+  /// Nonzero while waiting for a requested map restart to take effect.
   restarted
+  /// Injected callback for frame stage; invoked through the Level service/state record.
   frameStageFn
+  /// Control value requesting a listing of allocated entities.
   listEntity
+  /// Warmup deadline/state advertised to clients.
   warmup
+  /// Warmup-setting revision already processed by game logic.
   warmupModificationCount
+  /// Current revision of the warmup console variable.
   warmupCvarModificationCount
+  /// Injected callback for tournament add; invoked through the Level service/state record.
   tournamentAddFn
+  /// Injected callback for console command; invoked through the Level service/state record.
   consoleCommandFn
+  /// Console command or text associated with the active global vote.
   voteString
+  /// Timestamp at which the active global vote began.
   voteTime
+  /// Scheduled time for executing a successful vote command.
   voteExecuteTime
+  /// Number of yes votes received for the active global vote.
   voteYes
+  /// Number of no votes received for the active global vote.
   voteNo
+  /// Per-team commands/text associated with active team votes.
   teamVoteString
+  /// Per-team start timestamps of active team votes.
   teamVoteTime
+  /// Per-team counts of yes votes.
   teamVoteYes
+  /// Per-team counts of no votes.
   teamVoteNo
+  /// Injected callback for client user information changed; invoked through the Level service/state
+  /// record.
   clientUserinfoChangedFn
+  /// Timestamp of the most recent team-location broadcast.
   lastTeamLocationTime
+  /// State for periodic cvar synchronization and side effects.
   cvarMaintenance
+  /// Game cvar table and its VM-facing variable records.
   gameCvars
+  /// Injected callback for update console variables; invoked through the Level service/state record.
   updateCvarsFn
+  /// Human-readable description advertised for the active global vote.
   voteDisplayString
+  /// Setting controlling whether clients may initiate votes.
   allowVote
+  /// Nonzero when prior session data must be discarded during level setup.
   newSession
+  /// Setting allowing clients to join a playing team automatically.
   teamAutoJoin
+  /// Maximum number of clients permitted to participate in play.
   maxGameClients
+  /// Injected callback for filter packet; invoked through the Level service/state record.
   filterPacketFn
+  /// Injected callback for bot connect; invoked through the Level service/state record.
   botConnectFn
+  /// Injected callback for game print; invoked through the Level service/state record.
   gamePrintFn
+  /// Injected callback for console variable string; invoked through the Level service/state record.
   cvarStringFn
+  /// Setting requiring balanced player counts when changing teams.
   teamForceBalance
+  /// Injected callback for remove queued bot begin; invoked through the Level service/state record.
   removeQueuedBotBeginFn
+  /// Injected callback for bot shutdown; invoked through the Level service/state record.
   botShutdownFn
+  /// Map name selected for the next level transition.
   changemap
+  /// Injected callback for bot interbreed end match; invoked through the Level service/state record.
   botInterbreedEndMatchFn
+  /// Injected callback for update tournament info; invoked through the Level service/state record.
   updateTournamentInfoFn
+  /// Injected callback for spawn victory pads; invoked through the Level service/state record.
   spawnVictoryPadsFn
+  /// Setting controlling whether cheat commands are allowed.
   cheats
+  /// Setting selecting dedicated-server operation and its mode.
   dedicated
+  /// Injected callback for user information set; invoked through the Level service/state record.
   userinfoSetFn
+  /// Damage multiplier applied by the active quad-damage effect.
   quadfactor
+  /// Shared weapon firing/projectile state maintained by the level.
   weaponState
+  /// IP filtering state used by connection checks and server commands.
   ipFilters
+  /// Fixed game-arena allocation state owned by the level.
   memoryState
+  /// Server-command dispatcher and associated game command state.
   serverCommands
+  /// Next allowed red-base-under-attack announcement time.
   redObeliskAttackedTime
+  /// Next allowed blue-base-under-attack announcement time.
   blueObeliskAttackedTime
+  /// State shared by bot allocation, setup, shutdown, and frame processing.
   lifecycleState
+  /// Handle of the game event log file.
   logFile
+  /// Injected callback for log write; invoked through the Level service/state record.
   logWriteFn
+  /// Entity representing first place on the victory podium.
   podium1
+  /// Entity representing second place on the victory podium.
   podium2
+  /// Entity representing third place on the victory podium.
   podium3
+  /// Level-owned bot creation, initialization, and cleanup state.
   botLifecycleState
+  /// Goal/entity reference for the neutral harvester obelisk.
   neutralObelisk
+  /// Configured maximum health of a mission-pack obelisk.
   obeliskHealth
+  /// Interval between obelisk health regeneration steps.
   obeliskRegenPeriod
+  /// Health restored by one obelisk regeneration step.
   obeliskRegenAmount
+  /// Delay before a destroyed obelisk becomes active again.
   obeliskRespawnDelay
+  /// Injected callback for obelisk attack; invoked through the Level service/state record.
   obeliskAttackFn
 end struct
 /// Create a client record with initialized player state, session data, statistics and gameplay timers.

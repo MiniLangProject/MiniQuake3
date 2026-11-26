@@ -5,11 +5,26 @@ package mq3.client.playable_spatial_ambient
 import mq3.audio.spatial_mixer as mixer
 import mq3.platform.playable_ambient as output
 
+/// Sample rate in frames per second used by native spatial ambient-audio output.
 const OUTPUT_RATE=22050
+/// Number of sample frames produced in one ambient-audio output chunk.
 const CHUNK_FRAMES=1024
 
 /// Stores playable spatial ambient runtime wiring and state, including `mix`, `submitted`, `dropped`, `started`.
-struct Runtime mix submitted dropped started end struct
+struct Runtime
+  /// When constructing this record, `create` supplies `state` for this member. Used by `start` and
+  /// `pump` during subsequent processing.
+  mix
+  /// When constructing this record, `create` supplies `0` for this member. Used by `pump` during
+  /// subsequent processing.
+  submitted
+  /// When constructing this record, `create` supplies `0` for this member. Used by `pump` during
+  /// subsequent processing.
+  dropped
+  /// When constructing this record, `create` supplies `false` for this member. Used by `start` and
+  /// `pump` during subsequent processing.
+  started
+end struct
 
 /// Calls `mq3.audio.spatial_mixer.create`, `mq3.audio.spatial_mixer.addSharedLoop`, `mq3.client.playable_spatial_ambient.Runtime` from playable spatial ambient `create`. The final path returns `Runtime(state,0,0,false)`.
 /// @param catalog Asset catalog used to resolve names to loaded resources. Record read through `catalog.speakers`.

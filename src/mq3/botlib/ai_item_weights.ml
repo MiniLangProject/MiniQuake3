@@ -8,30 +8,113 @@ import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that an item-weight script could not be loaded.
 const BLERR_CANNOTLOADITEMWEIGHTS=9
+/// Maximum number of item definitions in the bot item configuration.
 const MAX_ITEMINFO=256
+/// Maximum number of named fuzzy-weight expressions in a configuration.
 const MAX_WEIGHTS=128
+/// Maximum number of fuzzy-weight files retained by the bot configuration cache.
 const MAX_WEIGHT_FILES=128
+/// Upper inventory threshold used when evaluating fuzzy-weight separators.
 const MAX_INVENTORYVALUE=999999
+/// Fuzzy-weight node kind whose value can be adjusted during weight balancing.
 const WT_BALANCE=1
+/// Bot-library syscall identifier for load item weights.
 const OP_LOAD_ITEM_WEIGHTS=543
+/// Bot-library syscall identifier for free item weights.
 const OP_FREE_ITEM_WEIGHTS=544
 
 /// `ItemInfo` record for ai item weights, containing `classname`, `name`, `model`, `modelIndex` and `type` and related fields.
-struct ItemInfo classname name model modelIndex type inventoryIndex respawnTime mins maxs number end struct
+struct ItemInfo
+  /// Classname of the item.
+  classname
+  /// Name of the item.
+  name
+  /// Model of the item.
+  model
+  /// Model index used to associate this entity or item with registered model data.
+  modelIndex
+  /// Configured item category used by the goal-selection rules.
+  type
+  /// Index of the bot inventory value used by this item or weight rule.
+  inventoryIndex
+  /// Configured interval before this item is expected to respawn.
+  respawnTime
+  /// Minimum XYZ corner of the pickup volume specified by this item definition.
+  mins
+  /// Maximum XYZ corner of the pickup volume specified by this item definition.
+  maxs
+  /// Identifier of this item definition in the loaded configuration.
+  number
+end struct
 /// `Separator` record for ai item weights, containing `inventoryIndex`, `value`, `type`, `weight` and `minWeight` and related fields.
-struct Separator inventoryIndex value type weight minWeight maxWeight child end struct
+struct Separator
+  /// Index of the bot inventory value used by this item or weight rule.
+  inventoryIndex
+  /// Inventory comparison threshold used to choose a decision-tree branch.
+  value
+  /// Fuzzy-weight node type, including balanceable leaf nodes.
+  type
+  /// Fuzzy score returned at this separator when no child expression is selected.
+  weight
+  /// Lower bound used when balancing a fuzzy-weight leaf.
+  minWeight
+  /// Upper bound used when balancing a fuzzy-weight leaf.
+  maxWeight
+  /// Child decision-tree node reached by this separator.
+  child
+end struct
 /// `Weight` record for ai item weights, containing `name` and `separators`.
-struct Weight name separators end struct
+struct Weight
+  /// Item or weapon weight name used to find its fuzzy decision tree.
+  name
+  /// Decision-tree separators used to evaluate this fuzzy item weight.
+  separators
+end struct
 /// `WeightConfig` record for ai item weights, containing `filename` and `weights`.
-struct WeightConfig filename weights end struct
+struct WeightConfig
+  /// Path of the file associated with this operation.
+  filename
+  /// Named fuzzy-weight decision trees loaded from the configuration.
+  weights
+end struct
 /// `Reader` record for ai item weights, containing `registry` and `handle`.
-struct Reader registry handle end struct
+struct Reader
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Preprocessor source handle used to read the weight configuration.
+  handle
+end struct
 /// `Eval` record for ai item weights, containing `tokens`, `position` and `valid`.
-struct Eval tokens position valid end struct
+struct Eval
+  /// Token sequence being evaluated by the parser.
+  tokens
+  /// Current cursor within the parsed token sequence or open file.
+  position
+  /// True when the represented entry contains usable data.
+  valid
+end struct
 /// `Runtime` record for ai item weights, containing `context`, `readFn`, `items`, `configs` and `fileReads` and related fields.
-struct Runtime context readFn items configs fileReads reloadCharacters qvmInventory end struct
+struct Runtime
+  /// Caller-supplied data associated with loading item definitions and fuzzy item-weight
+  /// configurations.
+  context
+  /// Host callback that reads item configuration and fuzzy-weight source files.
+  readFn
+  /// Item definitions available to the goal-weight evaluator.
+  items
+  /// Loaded fuzzy-weight configurations retained for reuse.
+  configs
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+  /// True when bot definitions should be reloaded instead of reused from cache.
+  reloadCharacters
+  /// Inventory integer values imported from the bot VM call.
+  qvmInventory
+end struct
 
 /// Construct error `7570` with diagnostic text `"AI item weights: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

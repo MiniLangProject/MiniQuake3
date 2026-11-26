@@ -6,18 +6,94 @@ package mq3.client.ui_serverinfo
 import mq3.client.ui_qmenu as qmenu
 import std.string as strings
 
+/// Virtual asset path used to load the serverinfo framel renderer or menu resource.
 const SERVERINFO_FRAMEL="menu/art/frame2_l"
+/// Virtual asset path used to load the serverinfo framer renderer or menu resource.
 const SERVERINFO_FRAMER="menu/art/frame1_r"
+/// Virtual asset path used to load the serverinfo back0 renderer or menu resource.
 const SERVERINFO_BACK0="menu/art/back_0"
+/// Virtual asset path used to load the serverinfo back1 renderer or menu resource.
 const SERVERINFO_BACK1="menu/art/back_1"
+/// Menu control identifier routed to the add action by the menu event handler.
 const ID_ADD=100
+/// Event identifier of the Back control used to leave the server-information dialog and return to its
+/// parent menu.
 const ID_BACK=101
+/// Capacity limit for the favoriteservers collection or bounded storage used by this client module.
 const MAX_FAVORITESERVERS=16
 
 /// Stores UI serverinfo queued engine action, including `boundary`, `kind`, `name`, `text`, `x`, `y` and additional values.
-struct Action boundary kind name text x y number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while displaying current server cvars and
+  /// handling the dialog controls.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while displaying current
+  /// server cvars and handling the dialog controls.
+  kind
+  /// Favorite-server cvar, drawing color, menu target, or artwork resource selected by the
+  /// server-information action.
+  name
+  /// Server-info label or value to draw, or the server address written into a favorite slot.
+  text
+  /// Horizontal position of this queued drawing operation in the virtual layout used by the
+  /// server-information dialog.
+  x
+  /// Vertical position of this queued drawing operation in the virtual layout used by the
+  /// server-information dialog.
+  y
+  /// Numeric argument interpreted by the selected host operation while displaying current server cvars
+  /// and handling the dialog controls.
+  number
+  /// True when this request is marked for native dispatch while displaying current server cvars and
+  /// handling the dialog controls; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI serverinfo state, including `menu`, `banner`, `framel`, `framer`, `back`, `add` and additional values.
-struct State menu banner framel framer back add info pairs numlines currentAddress favorites actions pushed popped retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `qmenu.menu(true,true)` for this member. Used by
+  /// `ServerInfo_Event` and `ServerInfo_MenuKey` during subsequent processing.
+  menu
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  banner
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  framel
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  framer
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  back
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  add
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `UI_ServerInfoMenu` during subsequent processing.
+  info
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `ServerInfo_MenuDraw` and `UI_ServerInfoMenu` during subsequent processing.
+  pairs
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `ServerInfo_MenuDraw` and `UI_ServerInfoMenu` during subsequent processing.
+  numlines
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `Favorites_Add` and `UI_ServerInfoMenu` during subsequent processing.
+  currentAddress
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `Favorites_Add` and `UI_ServerInfoMenu` during subsequent processing.
+  favorites
+  /// Host requests queued while displaying current server cvars and handling the dialog controls,
+  /// retained in request order.
+  actions
+  /// Records that the server-information dialog has been opened on the active menu stack.
+  pushed
+  /// Records a request to remove the server-information dialog from the active menu stack.
+  popped
+  /// True when the retail QVM owns the server-information dialog, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 
 /// Creates a `mq3.client.ui_serverinfo.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.

@@ -8,20 +8,82 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 import std.string as strings
 
+/// Fallback health setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_HEALTH=100
+/// Fallback damage setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_DAMAGE=34
+/// Fallback radius setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_RADIUS=15.0
+/// Fallback min z setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_MIN_Z=-24.0
+/// Fallback max z setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_MAX_Z=32.0
+/// Default respawn duration in milliseconds when the caller supplies no override.
 const DEFAULT_RESPAWN_MILLISECONDS=3000
+/// Fallback patrol radius setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_PATROL_RADIUS=24.0
 
 /// Stores playable targets target record, including `origin`, `health`, `maxHealth`, `alive`, `respawnAt`, `score` and additional values.
-struct Target origin health maxHealth alive respawnAt score spawnOrigin spawnIndex end struct
+struct Target
+  /// World-space center from which the target's hit-test bounds are constructed.
+  origin
+  /// Remaining target health used to apply shot damage and trigger target death.
+  health
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_HEALTH` for this member. Used by
+  /// `update` during subsequent processing.
+  maxHealth
+  /// True while the simulated player or target remains alive and can participate in gameplay.
+  alive
+  /// Client simulation timestamp at which the entity becomes eligible to respawn.
+  respawnAt
+  /// Points awarded when this target is killed.
+  score
+  /// When constructing this record, `fromEntities` supplies `[origin[0],origin[1],origin[2]]` for this
+  /// member. Used by `update` during subsequent processing.
+  spawnOrigin
+  /// When constructing this record, `fromEntities` supplies `spawnIndex` for this member. Used by
+  /// `update` during subsequent processing.
+  spawnIndex
+end struct
 /// Stores playable targets state, including `targets`, `score`, `lastTime`, `respawnMilliseconds`, `radius`, `minZ` and additional values.
-struct State targets score lastTime respawnMilliseconds radius minZ maxZ end struct
+struct State
+  /// When constructing this record, `fromEntities` supplies `targets` for this member. Used by
+  /// `activeCount` and `applyShot` during subsequent processing.
+  targets
+  /// Accumulated points earned from targets killed in the playable target simulation.
+  score
+  /// When constructing this record, `fromEntities` supplies `0` for this member. Used by `update`
+  /// during subsequent processing.
+  lastTime
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_RESPAWN_MILLISECONDS` for this
+  /// member. Used by `applyShot` during subsequent processing.
+  respawnMilliseconds
+  /// Horizontal collision radius used when testing shots against playable targets.
+  radius
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_MIN_Z` for this member. Used by
+  /// `applyShot` during subsequent processing.
+  minZ
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_MAX_Z` for this member. Used by
+  /// `applyShot` during subsequent processing.
+  maxZ
+end struct
 /// Stores playable targets hit record, including `targetIndex`, `damage`, `killed`, `point`, `distance`, `awardedScore`.
-struct Hit targetIndex damage killed point distance awardedScore end struct
+struct Hit
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `applyShot` supplies `killed` for this member.
+  killed
+  /// When constructing this record, `applyShot` supplies `point` for this member.
+  point
+  /// When constructing this record, `applyShot` supplies `qmath.VectorLength(delta)*bestFraction` for
+  /// this member.
+  distance
+  /// When constructing this record, `applyShot` supplies `awarded` for this member.
+  awardedScore
+end struct
 
 /// Creates the playable targets error `7520` with diagnostic text `"preview targets: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview targets: "+message`.

@@ -107,6 +107,7 @@ end function
 
 /// RandomState record for shared.math, containing `seed`.
 struct RandomState
+  /// Current pseudo-random generator state, updated whenever a random value is drawn.
   seed
 end struct
 
@@ -220,7 +221,16 @@ end function
 
 // Remaining code/game/q_math.c runtime surface. Arrays own the output that the
 // C API writes through pointer arguments; mutating variants retain C behavior.
-struct Plane normal dist type signbits end struct
+struct Plane
+  /// Plane normal used by geometric distance and side-of-plane calculations.
+  normal
+  /// Signed plane distance from the coordinate origin.
+  dist
+  /// Axial/general plane classification used to accelerate plane tests.
+  type
+  /// Bit mask encoding which components of the plane normal are negative.
+  signbits
+end struct
 
 /// Compute shared.math.VectorCompare as `(((a[0] == b[0]) and (a[1] == b[1])) and (a[2] == b[2]))`.
 /// @param a A used in `a[0]` and `a[1]`.

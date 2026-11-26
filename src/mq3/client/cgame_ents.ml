@@ -16,35 +16,192 @@ import mq3.shared.bytedirs as bytedirs
 import mq3.shared.directions as directions
 import mq3.shared.math as q
 
+/// Encoded solid value indicating that the entity uses an inline brush collision model.
 const SOLID_BMODEL=0xFFFFFF
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Highest range bound reserved for ordinary entities before protocol sentinel values.
 const ENTITYNUM_MAX_NORMAL=1022
+/// Duration in milliseconds of the item-pickup scale animation.
 const ITEM_SCALEUP_TIME=1000
+/// Entity-state flag selecting nodraw behavior in client presentation.
 const EF_NODRAW=0x80
+/// Renderer flag excluding the entity from its own first-person view while allowing external or
+/// reflected views.
 const RF_THIRD_PERSON=2
+/// Renderer flag guaranteeing a minimum amount of lighting for the entity.
 const RF_MINLIGHT=1
+/// Renderer flag suppressing shadow generation for the entity.
 const RF_NOSHADOW=0x40
+/// Renderer-entity type selecting the model primitive.
 const RT_MODEL=0
+/// Renderer-entity type selecting the sprite primitive.
 const RT_SPRITE=2
+/// Renderer-entity type selecting the beam primitive.
 const RT_BEAM=4
+/// Renderer-entity type selecting the portalsurface primitive.
 const RT_PORTALSURFACE=6
+/// Native game-type value for capture the flag, used when selecting flag and item presentation for
+/// snapshot entities.
 const GT_CTF=4
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Sound channel used for item-related sounds associated with an entity.
 const CHAN_ITEM=3
+/// Native weapon identifier selecting the plasma gun.
 const WP_PLASMAGUN=8
+/// Number of native weapon slots, used to size weapon-indexed tables rather than select a weapon.
 const WP_NUM_WEAPONS=11
 
 /// Stores client game ents render entity record, including `reType`, `origin`, `oldorigin`, `lightingOrigin`, `axis`, `frame` and additional values.
-struct RenderEntity reType origin oldorigin lightingOrigin axis frame oldframe backlerp model model2 shader skin radius rotation renderfx nonNormalized end struct
+struct RenderEntity
+  /// When constructing this record, `renderEntity` supplies `RT_MODEL` for this member.
+  reType
+  /// Interpolated world-space origin of the entity submitted to the renderer.
+  origin
+  /// Previous position used for interpolation, trails, or rendering a line segment.
+  oldorigin
+  /// When constructing this record, `renderEntity` supplies `[0.0,0.0,0.0]` for this member.
+  lightingOrigin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// Current model frame submitted when presenting the client-game entity.
+  frame
+  /// Previous model frame used as the interpolation starting point.
+  oldframe
+  /// Previous-frame weight used to interpolate the submitted model entity presented by snapshot-entity
+  /// presentation.
+  backlerp
+  /// Model resource selected for rendering the object.
+  model
+  /// When constructing this record, `renderEntity` supplies `0` for this member.
+  model2
+  /// Scene-kind-dependent payload holding an item or weapon selector, or packed RGB for a
+  /// constant-light request.
+  shader
+  /// Skin resource selected for rendering the model.
+  skin
+  /// World-space sprite radius carried by this client entity render submission.
+  radius
+  /// When constructing this record, `renderEntity` supplies `0.0` for this member.
+  rotation
+  /// Renderer-entity flags controlling lighting, view restrictions, depth handling, and related
+  /// effects.
+  renderfx
+  /// When constructing this record, `renderEntity` supplies `false` for this member.
+  nonNormalized
+end struct
 /// Stores client game ents boundary record, including `boundary`, `kind`, `entity`, `origin`, `velocity`, `render` and additional values.
-struct Boundary boundary kind entity origin velocity render sound value dispatched end struct
+struct Boundary
+  /// Host service category recorded with a request emitted while presenting snapshot entities through
+  /// scene and sound services.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while presenting snapshot
+  /// entities through scene and sound services.
+  kind
+  /// When constructing this record, `boundary` supplies `entity` for this member.
+  entity
+  /// World-space position accompanying a snapshot entity's scene or sound request.
+  origin
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// When constructing this record, `boundary` supplies `renderValue` for this member.
+  render
+  /// Sound resource carried by an entity audio action at the host dispatch boundary.
+  sound
+  /// Value payload supplied to the selected host operation while presenting snapshot entities through
+  /// scene and sound services.
+  value
+  /// True when this request is marked for native dispatch while presenting snapshot entities through
+  /// scene and sound services; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game ents cent record, including `currentState`, `nextState`, `interpolate`, `lerpOrigin`, `lerpAngles`, `miscTime`.
-struct Cent currentState nextState interpolate lerpOrigin lerpAngles miscTime end struct
+struct Cent
+  /// Entity state received in the current server snapshot.
+  currentState
+  /// Entity state from the following snapshot, used when interpolation is available.
+  nextState
+  /// True when a valid following snapshot permits interpolation of this entity.
+  interpolate
+  /// Entity position after snapshot interpolation and smoothing.
+  lerpOrigin
+  /// Entity orientation after snapshot interpolation and smoothing.
+  lerpAngles
+  /// When constructing this record, `cent` supplies `0` for this member.
+  miscTime
+end struct
 /// Stores client game ents snapshot metadata and contents, including `serverTime`, `playerState`, `entities`.
-struct Snapshot serverTime playerState entities end struct
+struct Snapshot
+  /// Server simulation timestamp in milliseconds used when interpolating rendered entity snapshots.
+  serverTime
+  /// Player-state record associated with this client snapshot.
+  playerState
+  /// Entity-state or renderer-entity entries represented by the current snapshot or scene.
+  entities
+end struct
 /// Stores client game ents state, including `time`, `snap`, `nextSnap`, `frameInterpolation`, `smoothClients`, `simpleItems` and additional values.
-struct State time snap nextSnap frameInterpolation smoothClients simpleItems gametype localClient predictedEntity entities inlineMidpoints weaponMidpoints missileLights missileSounds random actions scene audio soundPositions errors suppressed dispatched end struct
+struct State
+  /// Client presentation time in milliseconds used to evaluate and interpolate entity rendering and
+  /// sound.
+  time
+  /// Current snapshot used as the lower endpoint of client interpolation.
+  snap
+  /// Following snapshot used as the upper endpoint of client interpolation, when available.
+  nextSnap
+  /// Fraction between the current and following snapshot times used for interpolation.
+  frameInterpolation
+  /// When constructing this record, `create` supplies `true` for this member. Used by
+  /// `calcEntityLerpPositions` during subsequent processing.
+  smoothClients
+  /// When constructing this record, `create` supplies `false` for this member. Used by `item` during
+  /// subsequent processing.
+  simpleItems
+  /// Active game-rule identifier used to decide whether capture-the-flag base entities are rendered.
+  gametype
+  /// When constructing this record, `create` supplies `0` for this member. Used by `general` and
+  /// `addPacketEntities` during subsequent processing.
+  localClient
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `addPacketEntities` during subsequent processing.
+  predictedEntity
+  /// Entity-state or renderer-entity entries represented by the current snapshot or scene.
+  entities
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `setEntitySoundPosition` during subsequent processing.
+  inlineMidpoints
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `weaponMidpoint` during subsequent processing.
+  weaponMidpoints
+  /// When constructing this record, `create` supplies `array(WP_NUM_WEAPONS+1,0.0)` for this member.
+  /// Used by `missile` during subsequent processing.
+  missileLights
+  /// Sound resources selected for the missile event or effect.
+  missileSounds
+  /// When constructing this record, `create` supplies `q.RandomState(1)` for this member. Used by
+  /// `speaker` during subsequent processing.
+  random
+  /// Host requests queued while presenting snapshot entities through scene and sound services, retained
+  /// in request order.
+  actions
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  scene
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  audio
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  soundPositions
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+  /// Number of snapshot-entity requests withheld because the retail CGame QVM owns their presentation.
+  suppressed
+  /// Number of snapshot-entity scene and sound requests marked for native dispatch.
+  dispatched
+end struct
 
 /// Creates the three orthonormal unit axes used as the identity orientation in client game ents.
 function identityAxis() return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] end function

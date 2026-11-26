@@ -7,74 +7,160 @@ import mq3.botlib.public_headers as publicHeaders
 import mq3.format.aas as aas
 import mq3.botlib.aas_runtime as rt
 
+/// Mask selecting the movement-type identifier from an encoded AAS travel type.
 const TRAVELTYPE_MASK=0xffffff
+/// Additional AAS travel restriction for team-one restriction.
 const TRAVELFLAG_NOTTEAM1=0x01000000
+/// Additional AAS travel restriction for team-two restriction.
 const TRAVELFLAG_NOTTEAM2=0x02000000
+/// AAS travel-type value for a reachability that cannot currently be traversed.
 const TRAVEL_INVALID=1
+/// AAS movement-type identifier for walk.
 const TRAVEL_WALK=2
+/// AAS movement-type identifier for crouch.
 const TRAVEL_CROUCH=3
+/// Jumping onto a barrier.
 const TRAVEL_BARRIERJUMP=4
+/// AAS movement-type identifier for jump.
 const TRAVEL_JUMP=5
+/// Climbing a ladder.
 const TRAVEL_LADDER=6
+/// Walking of a ledge.
 const TRAVEL_WALKOFFLEDGE=7
+/// AAS movement-type identifier for swim.
 const TRAVEL_SWIM=8
+/// Jump out of the water.
 const TRAVEL_WATERJUMP=9
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// Rocket jumping required for travel.
 const TRAVEL_ROCKETJUMP=12
+/// Bfg jumping required for travel.
 const TRAVEL_BFGJUMP=13
+/// Grappling hook required for travel.
 const TRAVEL_GRAPPLEHOOK=14
+/// AAS movement-type identifier for double jump.
 const TRAVEL_DOUBLEJUMP=15
+/// AAS movement-type identifier for ramp jump.
 const TRAVEL_RAMPJUMP=16
+/// AAS movement-type identifier for strafe jump.
 const TRAVEL_STRAFEJUMP=17
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
 
+/// Traveling temporary not possible.
 const TFL_INVALID=publicHeaders.TFL_INVALID
+/// AAS route-permission bit for walk.
 const TFL_WALK=publicHeaders.TFL_WALK
+/// AAS route-permission bit for crouch.
 const TFL_CROUCH=publicHeaders.TFL_CROUCH
+/// Jumping onto a barrier.
 const TFL_BARRIERJUMP=publicHeaders.TFL_BARRIERJUMP
+/// AAS route-permission bit for jump.
 const TFL_JUMP=publicHeaders.TFL_JUMP
+/// Climbing a ladder.
 const TFL_LADDER=publicHeaders.TFL_LADDER
+/// Walking of a ledge.
 const TFL_WALKOFFLEDGE=publicHeaders.TFL_WALKOFFLEDGE
+/// AAS route-permission bit for swim.
 const TFL_SWIM=publicHeaders.TFL_SWIM
+/// Jumping out of the water.
 const TFL_WATERJUMP=publicHeaders.TFL_WATERJUMP
+/// AAS route-permission bit for teleport.
 const TFL_TELEPORT=publicHeaders.TFL_TELEPORT
+/// AAS route-permission bit for elevator.
 const TFL_ELEVATOR=publicHeaders.TFL_ELEVATOR
+/// AAS route-permission bit for rocket jump.
 const TFL_ROCKETJUMP=publicHeaders.TFL_ROCKETJUMP
+/// AAS route-permission bit for BFG jump.
 const TFL_BFGJUMP=publicHeaders.TFL_BFGJUMP
+/// AAS route-permission bit for grappling hook.
 const TFL_GRAPPLEHOOK=publicHeaders.TFL_GRAPPLEHOOK
+/// AAS route-permission bit for double jump.
 const TFL_DOUBLEJUMP=publicHeaders.TFL_DOUBLEJUMP
+/// AAS route-permission bit for ramp jump.
 const TFL_RAMPJUMP=publicHeaders.TFL_RAMPJUMP
+/// AAS route-permission bit for strafe jump.
 const TFL_STRAFEJUMP=publicHeaders.TFL_STRAFEJUMP
+/// AAS route-permission bit for jump pad.
 const TFL_JUMPPAD=publicHeaders.TFL_JUMPPAD
+/// Travel through air.
 const TFL_AIR=publicHeaders.TFL_AIR
+/// Travel through water.
 const TFL_WATER=publicHeaders.TFL_WATER
+/// Travel through slime.
 const TFL_SLIME=publicHeaders.TFL_SLIME
+/// Travel through lava.
 const TFL_LAVA=publicHeaders.TFL_LAVA
+/// Travel through donotenter area.
 const TFL_DONOTENTER=publicHeaders.TFL_DONOTENTER
+/// AAS route-permission bit for bobbing mover.
 const TFL_FUNCBOB=publicHeaders.TFL_FUNCBOB
+/// AAS route-permission bit for flight.
 const TFL_FLIGHT=publicHeaders.TFL_FLIGHT
+/// Move over a bridge.
 const TFL_BRIDGE=publicHeaders.TFL_BRIDGE
+/// AAS travel restriction marking an area or reachability unavailable to team one.
 const TFL_NOTTEAM1=publicHeaders.TFL_NOTTEAM1
+/// AAS travel restriction marking an area or reachability unavailable to team two.
 const TFL_NOTTEAM2=publicHeaders.TFL_NOTTEAM2
+/// Combined mask of the travel permissions enabled for an ordinary bot route.
 const TFL_DEFAULT=publicHeaders.TFL_DEFAULT
 
+/// AAS area-contents bit marking water.
 const AREACONTENTS_WATER=1
+/// AAS area-contents bit marking lava.
 const AREACONTENTS_LAVA=2
+/// AAS area-contents bit marking slime.
 const AREACONTENTS_SLIME=4
+/// AAS area-contents bit marking do-not-enter area.
 const AREACONTENTS_DONOTENTER=256
+/// AAS area-contents bit marking team-one restriction.
 const AREACONTENTS_NOTTEAM1=2048
+/// AAS area-contents bit marking team-two restriction.
 const AREACONTENTS_NOTTEAM2=4096
+/// Area contains a liquid.
 const AREA_LIQUID=4
+/// Area ontop of a bridge.
 const AREA_BRIDGE=16
 
 /// `Router` record for aas routing, containing `runtime`, `settings`, `reaches`, `travelTypeFlags` and `areaFlags`.
-struct Router runtime settings reaches travelTypeFlags areaFlags end struct
+struct Router
+  /// AAS geometry and area-availability runtime used by route searches.
+  runtime
+  /// Area or runtime settings controlling navigation behavior.
+  settings
+  /// Reachability records and their source areas used by route searches.
+  reaches
+  /// Mapping from travel-type identifiers to required route-permission masks.
+  travelTypeFlags
+  /// Per-area travel-permission masks derived from area contents.
+  areaFlags
+end struct
 /// `Route` record for aas routing, containing `travelTime` and `reachNum`.
-struct Route travelTime reachNum end struct
+struct Route
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+  /// First reachability selected along the calculated route.
+  reachNum
+end struct
 /// `Heap` record for aas routing, containing `times`, `reaches`, `firstReaches`, `positions` and `size`.
-struct Heap times reaches firstReaches positions size end struct
+struct Heap
+  /// Travel costs stored in the route-search priority queue.
+  times
+  /// Reachability indexes associated with queued search entries.
+  reaches
+  /// First-hop reachability retained for each queued route.
+  firstReaches
+  /// Lookup from queued items to their current heap positions.
+  positions
+  /// Number of routing candidates currently stored in the priority heap.
+  size
+end struct
 
 /// Construct error `7530` with diagnostic text `"AAS routing: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

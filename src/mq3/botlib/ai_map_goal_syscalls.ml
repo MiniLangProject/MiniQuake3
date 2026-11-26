@@ -6,6 +6,7 @@ import mq3.botlib.ai_map_goals as mapGoals
 import mq3.compat.numeric as n
 import mq3.vm.syscall_common as common
 
+/// Byte size of the bot goal record in the bot VM ABI or serialized representation.
 const BOT_GOAL_SIZE=56
 /// Write three float bit patterns to consecutive VM memory words for ai map goal syscalls.
 /// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.

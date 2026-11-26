@@ -10,7 +10,34 @@ import mq3.qcommon.config_persistence as configPersistence
 import mq3.qcommon.cvar_commands as cvarCommands
 
 /// Data record for `mq3.platform.engine_loop.Runtime`; groups `inputQueue`, `inputHandlers`, `inputBudget`, `serverState`, `serverServices`, `clientState`, and 7 further fields.
-struct Runtime inputQueue inputHandlers inputBudget serverState serverServices clientState clientServices inputCount lastServerResult lastClientResult frameCount configState commandState end struct
+struct Runtime
+  /// Queue from which the engine drains input events.
+  inputQueue
+  /// Callbacks that receive keyboard, text, mouse, and joystick events.
+  inputHandlers
+  /// Maximum number of queued input events handled in one frame.
+  inputBudget
+  /// Mutable state of the server frame pipeline.
+  serverState
+  /// Host operations supplied to the server frame pipeline.
+  serverServices
+  /// Mutable state of the client frame pipeline.
+  clientState
+  /// Host operations supplied to the client frame pipeline.
+  clientServices
+  /// Number of input events delivered by the engine loop.
+  inputCount
+  /// Result returned by the most recent server frame.
+  lastServerResult
+  /// Result returned by the most recent client frame.
+  lastClientResult
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Runtime state of the console-variable configuration subsystem.
+  configState
+  /// Runtime state of the command parser and command buffer.
+  commandState
+end struct
 
 /// Builds `mq3.platform.engine_loop.Runtime` for `mq3.platform.engine_loop.create`.
 /// @param inputQueue Initial value for `mq3.platform.engine_loop.Runtime.inputQueue`.

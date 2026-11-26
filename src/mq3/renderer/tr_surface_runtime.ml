@@ -15,22 +15,62 @@ import mq3.renderer.surface_entities as entities
 import mq3.renderer.surface_trails as trails
 import mq3.renderer.surface_beam as beam
 
+/// Renderer entity type for a camera-facing sprite.
 const RT_SPRITE=2
+/// Renderer entity type for a beam between two endpoints.
 const RT_BEAM=3
+/// Renderer entity type for the core of a railgun trail.
 const RT_RAIL_CORE=4
+/// Renderer entity type for rings around a railgun trail.
 const RT_RAIL_RINGS=5
+/// Renderer entity type for the lightning-gun beam.
 const RT_LIGHTNING=6
 
 /// Data record for `mq3.renderer.tr_surface_runtime.AxisLine`; groups `start`, `finish`, `color`.
-struct AxisLine start finish color end struct
+struct AxisLine
+  /// Beginning point or position of the represented segment.
+  start
+  /// Ending point or position of the represented segment.
+  finish
+  /// Color identifying one segment of the debug coordinate-axis drawing.
+  color
+end struct
 /// Data record for `mq3.renderer.tr_surface_runtime.AxisSurface`; groups `lines`, `lineWidth`.
-struct AxisSurface lines lineWidth end struct
+struct AxisSurface
+  /// Line segments generated for the wireframe or debug drawing.
+  lines
+  /// Width used when drawing the debug axis lines.
+  lineWidth
+end struct
 /// Data record for `mq3.renderer.tr_surface_runtime.DisplayListCall`; groups `listNum`.
-struct DisplayListCall listNum end struct
+struct DisplayListCall
+  /// Graphics display-list identifier selected for execution.
+  listNum
+end struct
 /// Data record for `mq3.renderer.tr_surface_runtime.EntityInput`; groups `reType`, `origin`, `oldOrigin`, `radius`, `rotation`, `shaderRGBA`.
-struct EntityInput reType origin oldOrigin radius rotation shaderRGBA end struct
+struct EntityInput
+  /// Renderer entity type selecting the model, sprite, beam, or portal path.
+  reType
+  /// Entity position used when constructing sprite, beam, rail, or lightning surface geometry.
+  origin
+  /// Previous entity position used by interpolation or beam geometry.
+  oldOrigin
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+  /// Sprite rotation angle in degrees.
+  rotation
+  /// Entity RGBA color bytes used by entity-driven shader generators.
+  shaderRGBA
+end struct
 /// Data record for `mq3.renderer.tr_surface_runtime.ViewInput`; groups `origin`, `axis`, `isMirror`.
-struct ViewInput origin axis isMirror end struct
+struct ViewInput
+  /// Eye position used to orient generated entity surfaces toward the viewer.
+  origin
+  /// View basis supplying the facing directions for generated billboards and beam geometry.
+  axis
+  /// Whether the view is reflected across a mirror surface.
+  isMirror
+end struct
 
 /// Creates error `7780` with message `"tr_surface: "+text`.
 /// @param text Input used in the result expression `error(7780,"tr_surface: "+text)`.

@@ -3,24 +3,64 @@
 // Window-system input boundary with Baseq3 Sys_QueEvent ring semantics.
 package mq3.platform.input_events
 
+/// Event-queue result indicating that no input or system event is available.
 const SE_NONE=0
+/// System-event type carrying a key code and its press or release state.
 const SE_KEY=1
+/// System-event type carrying a character for text input.
 const SE_CHAR=2
+/// System-event type carrying relative horizontal and vertical mouse movement.
 const SE_MOUSE=3
+/// System-event type carrying a joystick axis identifier and value.
 const SE_JOYSTICK_AXIS=4
+/// Capacity of the bounded system-event queue.
 const MAX_QUED_EVENTS=256
 
 // Baseq3 key numbers from keys.h. A wheel notch is represented as a complete
 // key press so bindings cannot remain stuck when a host only reports deltas.
 const K_MWHEELDOWN=183
+/// Engine input key code for the upward mouse-wheel step.
 const K_MWHEELUP=184
 
 /// Data record for `mq3.platform.input_events.Event`; groups `time`, `type`, `value`, `value2`.
-struct Event time type value value2 end struct
+struct Event
+  /// Input occurrence time in milliseconds used when dispatching the queued event.
+  time
+  /// System-event category selecting how the accompanying values are interpreted.
+  type
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+end struct
 /// Data record for `mq3.platform.input_events.Queue`; groups `events`, `head`, `tail`, `overflows`, `clockFn`, `clockContext`.
-struct Queue events head tail overflows clockFn clockContext end struct
+struct Queue
+  /// Pending input or system events awaiting delivery.
+  events
+  /// Producer cursor of the next event slot to fill.
+  head
+  /// Consumer position of the next event to remove from the queue.
+  tail
+  /// Number of events lost because the queue reached capacity.
+  overflows
+  /// Host callback used to perform clock operations for this subsystem.
+  clockFn
+  /// Host state passed to the clock callback.
+  clockContext
+end struct
 /// Callback table for `mq3.platform.input_events.Handlers`; exposes `context`, `keyFn`, `charFn`, `mouseFn`, `joystickFn`.
-struct Handlers context keyFn charFn mouseFn joystickFn end struct
+struct Handlers
+  /// Input-consumer state passed to the keyboard, character, mouse, and joystick handlers.
+  context
+  /// Host callback used to perform key operations for this subsystem.
+  keyFn
+  /// Host callback used to perform char operations for this subsystem.
+  charFn
+  /// Host callback used to perform mouse operations for this subsystem.
+  mouseFn
+  /// Host callback used to perform joystick operations for this subsystem.
+  joystickFn
+end struct
 
 /// Constructs `mq3.platform.input_events.Queue` with `events` = `array(MAX_QUED_EVENTS,void)`, `head` = `0`, `tail` = `0`, `overflows` = `0` and the supplied remaining values.
 /// @param clockContext Initial value for `mq3.platform.input_events.Queue.clockContext`.

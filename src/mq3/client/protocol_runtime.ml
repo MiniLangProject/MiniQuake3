@@ -10,9 +10,17 @@ import mq3.client.download as download
 
 /// Stores protocol runtime runtime wiring and state, including `dispatcher`, `gamestateState`, `downloadState`, `downloadServices`.
 struct Runtime
+  /// When constructing this record, `create` supplies `dispatcher` for this member. Used by `parse`
+  /// during subsequent processing.
   dispatcher
+  /// When constructing this record, `create` supplies `gamestate.create()` for this member. Used by
+  /// `gamestateCommand` during subsequent processing.
   gamestateState
+  /// When constructing this record, `create` supplies `download.create()` for this member. Used by
+  /// `downloadCommand` during subsequent processing.
   downloadState
+  /// When constructing this record, `create` supplies `downloadServices` for this member. Used by
+  /// `downloadCommand` during subsequent processing.
   downloadServices
 end struct
 

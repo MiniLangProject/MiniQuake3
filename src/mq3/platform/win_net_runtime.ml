@@ -7,25 +7,97 @@ import mq3.platform.udp as udp
 import mq3.qcommon.net_transport as transport
 import mq3.qcommon.netchan as netchan
 
+/// Network-address type identifying a bot client without an external transport.
 const NA_BOT=0
+/// Network-address sentinel identifying an invalid or unresolved address.
 const NA_BAD=1
+/// Network-address type for in-process loopback transport.
 const NA_LOOPBACK=2
+/// Network-address type for IPv4 broadcast delivery.
 const NA_BROADCAST=3
+/// Network-address type for an IPv4 endpoint.
 const NA_IP=4
+/// Network-address type for the legacy IPX transport.
 const NA_IPX=5
+/// Network-address type for broadcast delivery on the legacy IPX transport.
 const NA_BROADCAST_IPX=6
+/// Port selector requesting an automatically assigned local transport port.
 const PORT_ANY=-1
+/// Default UDP port used for Quake III server communication.
 const PORT_SERVER=27960
+/// Maximum number of local interface addresses retained by the network adapter.
 const MAX_IPS=16
 
 /// Data record for `mq3.platform.win_net_runtime.SockAddr`; groups `family`, `address`, `port`, `ipx`.
-struct SockAddr family address port ipx end struct
+struct SockAddr
+  /// Address family stored in the native socket address.
+  family
+  /// Network address used to identify the remote or local endpoint.
+  address
+  /// Transport port number associated with the endpoint.
+  port
+  /// Legacy IPX address bytes used by the native network adapter.
+  ipx
+end struct
 /// Data record for `mq3.platform.win_net_runtime.Cvars`; groups `noudp`, `noipx`, `socksEnabled`, `socksServer`, `socksPort`, `socksUsername`, and 4 further fields.
-struct Cvars noudp noipx socksEnabled socksServer socksPort socksUsername socksPassword netInterface port generation end struct
+struct Cvars
+  /// Whether UDP networking is disabled by configuration.
+  noudp
+  /// Whether legacy IPX networking is disabled by configuration.
+  noipx
+  /// Whether networking is routed through a SOCKS proxy.
+  socksEnabled
+  /// Host name of the configured SOCKS proxy.
+  socksServer
+  /// Transport port of the configured SOCKS proxy.
+  socksPort
+  /// User name supplied for SOCKS proxy authentication.
+  socksUsername
+  /// Password supplied for SOCKS proxy authentication.
+  socksPassword
+  /// Network interface or local address selected for binding.
+  netInterface
+  /// Transport port number associated with the endpoint.
+  port
+  /// Configuration generation used to detect network-setting changes.
+  generation
+end struct
 /// Data record for `mq3.platform.win_net_runtime.Runtime`; groups `initialized`, `networkingEnabled`, `socket`, `socksSocket`, `socksRelay`, `ipxSocket`, and 5 further fields.
-struct Runtime initialized networkingEnabled socket socksSocket socksRelay ipxSocket usingSocks localIPs cvars recvfromCount logs end struct
+struct Runtime
+  /// Whether initialization completed successfully.
+  initialized
+  /// Whether the runtime currently accepts network operations.
+  networkingEnabled
+  /// UDP socket used by the network runtime.
+  socket
+  /// Control connection used to negotiate the SOCKS proxy.
+  socksSocket
+  /// UDP relay endpoint assigned by the SOCKS proxy.
+  socksRelay
+  /// Socket used by the legacy IPX transport.
+  ipxSocket
+  /// Whether outgoing UDP packets currently use the SOCKS relay.
+  usingSocks
+  /// Local interface addresses discovered by the network runtime.
+  localIPs
+  /// Console variables and their current runtime values.
+  cvars
+  /// Number of receive attempts made through the native socket adapter.
+  recvfromCount
+  /// Diagnostic log entries retained by the platform layer.
+  logs
+end struct
 /// Data record for `mq3.platform.win_net_runtime.Packet`; groups `received`, `source`, `data`, `readcount`.
-struct Packet received source data readcount end struct
+struct Packet
+  /// Whether a datagram was successfully received.
+  received
+  /// Network address from which the packet was received.
+  source
+  /// Payload bytes of the received network packet.
+  data
+  /// Read cursor into the received packet payload.
+  readcount
+end struct
 
 /// Constructs `mq3.platform.win_net_runtime.Cvars` with `noudp` = `false`, `noipx` = `true`, `socksEnabled` = `false`, `socksServer` = `""` and the supplied remaining values.
 function cvars() return Cvars(false,true,false,"",1080,"","","localhost",PORT_SERVER,0) end function

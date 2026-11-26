@@ -10,15 +10,62 @@ import mq3.compat.numeric as numeric
 
 // code/game/bg_public.h and code/game/g_weapon.c.
 const SHOT_MASK=0x6000001
+/// Fallback shotgun spread setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_SHOTGUN_SPREAD=700.0
+/// Fallback shotgun count setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_SHOTGUN_COUNT=11
+/// Fallback shotgun damage setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_SHOTGUN_DAMAGE=10
+/// Forward ray distance used to construct the deterministic shotgun pellet pattern.
 const PATTERN_RANGE=131072.0
 
 /// Stores playable shotgun pellet record, including `start`, `endPoint`, `intended`, `hit`, `normal`, `distance` and additional values.
-struct Pellet start endPoint intended hit normal distance fraction targetIndex damage killed end struct
+struct Pellet
+  /// When constructing this record, `tracePellets` supplies `copyPoint(origin)` for this member.
+  start
+  /// World-space endpoint of the trace, beam, or projectile presentation segment.
+  endPoint
+  /// When constructing this record, `tracePellets` supplies `copyPoint(intended)` for this member.
+  intended
+  /// When constructing this record, `tracePellets` supplies `worldHit` for this member.
+  hit
+  /// World-surface normal at this pellet's trace impact, used to orient its hit effect.
+  normal
+  /// When constructing this record, `tracePellets` supplies `qmath.VectorLength(delta)` for this
+  /// member.
+  distance
+  /// When constructing this record, `tracePellets` supplies `fraction` for this member.
+  fraction
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `tracePellets` supplies `false` for this member. Used by
+  /// `fireWithTrace` during subsequent processing.
+  killed
+end struct
 /// Stores playable shotgun blast record, including `pellets`, `hits`, `totalDamage`, `kills`, `awardedScore`, `accuracyHit` and additional values.
-struct Blast pellets hits totalDamage kills awardedScore accuracyHit seed seedEnd end struct
+struct Blast
+  /// When constructing this record, `fireWithTrace` supplies `pellets` for this member.
+  pellets
+  /// When constructing this record, `fireWithTrace` supplies `hits` for this member.
+  hits
+  /// When constructing this record, `fireWithTrace` supplies `totalDamage` for this member.
+  totalDamage
+  /// When constructing this record, `fireWithTrace` supplies `kills` for this member.
+  kills
+  /// When constructing this record, `fireWithTrace` supplies `awardedScore` for this member.
+  awardedScore
+  /// When constructing this record, `fireWithTrace` supplies `accuracyHit` for this member.
+  accuracyHit
+  /// When constructing this record, `fireWithTrace` supplies `numeric.i32(seed)` for this member.
+  seed
+  /// When constructing this record, `fireWithTrace` supplies `pattern[1]` for this member.
+  seedEnd
+end struct
 
 /// Creates the playable shotgun error `7595` with diagnostic text `"playable shotgun: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable shotgun: "+message`.

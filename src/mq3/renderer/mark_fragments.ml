@@ -9,27 +9,84 @@ import mq3.collision.world as collision
 import std.ds.list as lists
 import std.ds.set as sets
 
+/// Maximum number of points accepted by the projected-polygon clipper.
 const MAX_VERTS_ON_POLY=64
+/// Maximum number of candidate surfaces retained for one projected mark.
 const MAX_MARK_SURFACES=64
+/// Maximum number of triangles retained in the mark-projection geometry cache.
 const MAX_CACHED_MARK_TRIANGLES=4096
+/// Maximum number of triangles retained in the per-face mark cache.
 const MAX_CACHED_FACE_TRIANGLES=16384
+/// Minimum triangle workload for which the per-face mark cache is worthwhile.
 const MIN_FACE_CACHE_TRIANGLES=768
+/// Surface flag suppressing impact effects on the material.
 const SURF_NOIMPACT=0x10
+/// Surface flag suppressing persistent impact marks on the material.
 const SURF_NOMARKS=0x20
+/// Contents bit identifying a fog volume.
 const CONTENTS_FOG=0x40
+/// Byte stride of one face record in the BSP surface lump.
 const FACE_STRIDE=104
+/// Byte stride of one shader record in the BSP shader lump.
 const SHADER_STRIDE=72
 
 /// Data record for `mq3.renderer.mark_fragments.Plane`; groups `normal`, `distance`.
-struct Plane normal distance end struct
+struct Plane
+  /// Clipping-plane normal used to bound the projection volume of an impact mark.
+  normal
+  /// Signed distance from the plane or reference position.
+  distance
+end struct
 /// Data record for `mq3.renderer.mark_fragments.Fragment`; groups `firstPoint`, `numPoints`.
-struct Fragment firstPoint numPoints end struct
+struct Fragment
+  /// Offset of the fragment's first point in the shared point array.
+  firstPoint
+  /// Number of points belonging to the clipped fragment.
+  numPoints
+end struct
 /// Data record for `mq3.renderer.mark_fragments.Result`; groups `points`, `fragments`, `candidateSurfaces`, `testedTriangles`.
-struct Result points fragments candidateSurfaces testedTriangles end struct
+struct Result
+  /// Points defining the face, polygon, or clipping result.
+  points
+  /// Clipped polygon fragments produced by mark projection.
+  fragments
+  /// Number of world surfaces considered when projecting marks.
+  candidateSurfaces
+  /// Number of triangles tested while clipping projected marks.
+  testedTriangles
+end struct
 /// Data record for `mq3.renderer.mark_fragments.GeometryCache`; groups `map`, `data`, `dataPointer`, `slots`, `faceVisits`, `faceSerial`, and 5 further fields.
-struct GeometryCache map data dataPointer slots faceVisits faceSerial faceMap faceDataPointer faceTriangles faceTriangleCount faceCacheEnabled end struct
+struct GeometryCache
+  /// Parsed BSP map used by geometry, visibility, or lighting operations.
+  map
+  /// Packed triangle geometry used by accelerated projected-mark queries.
+  data
+  /// Native address of the geometry buffer used by accelerated mark queries.
+  dataPointer
+  /// Resource slots or backing arrays retained by this record.
+  slots
+  /// Per-face visitation stamps used to avoid repeated mark queries.
+  faceVisits
+  /// Current generation of the face-visitation stamps.
+  faceSerial
+  /// Map from BSP faces to cached mark-projection geometry.
+  faceMap
+  /// Native address of the cached per-face triangle data.
+  faceDataPointer
+  /// Cached triangles used for projecting marks onto BSP faces.
+  faceTriangles
+  /// Number of triangles retained in the per-face mark cache.
+  faceTriangleCount
+  /// Whether the per-face triangle cache is used by mark queries.
+  faceCacheEnabled
+end struct
 /// Data record for `mq3.renderer.mark_fragments.FaceBatch`; groups `faces`, `triangles`.
-struct FaceBatch faces triangles end struct
+struct FaceBatch
+  /// BSP faces retained for the current geometry or visibility selection.
+  faces
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+end struct
 
 /// Constructs `mq3.renderer.mark_fragments.GeometryCache` with `map` = `void`, `data` = `void`, `dataPointer` = `0`, `slots` = `array(32,void)` and the supplied remaining values.
 function geometryCache() return GeometryCache(void,void,0,array(32,void),void,0,void,0,void,0,false) end function

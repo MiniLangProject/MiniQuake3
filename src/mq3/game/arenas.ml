@@ -14,11 +14,17 @@ import mq3.qcommon.cvar as cv
 import mq3.compat.numeric as n
 import mq3.game.game_internal_headers as internal
 
+/// Collision-contents bit identifying solid space or objects.
 const CONTENTS_SOLID=headers.CONTENTS_SOLID
+/// Collision-contents bit identifying playerclip space or objects.
 const CONTENTS_PLAYERCLIP=headers.CONTENTS_PLAYERCLIP
+/// Collision-contents bit identifying body space or objects.
 const CONTENTS_BODY=headers.CONTENTS_BODY
+/// Reserved entity number representing the BSP world.
 const ENTITYNUM_WORLD = 1022
+/// Animation bit toggled to restart an animation even when its index is unchanged.
 const ANIM_TOGGLEBIT = 128
+/// Gesture animation duration in milliseconds.
 const TIMER_GESTURE = internal.TIMER_GESTURE
 
 /// Validate the arena client limit against the native sixty-four-client storage capacity.

@@ -7,25 +7,97 @@ import mq3.qcommon.network_pump as networkPump
 import mq3.server.network_ingress as networkIngress
 
 /// Data record for `mq3.platform.desktop_frame_host.Config`; groups `clientEndpoint`, `serverEndpoint`, `packetCapacity`, `packetBudget`, `maxFrameMsec`.
-struct Config clientEndpoint serverEndpoint packetCapacity packetBudget maxFrameMsec end struct
+struct Config
+  /// Local or remote endpoint used by the client transport.
+  clientEndpoint
+  /// Local or remote endpoint used by the server transport.
+  serverEndpoint
+  /// Maximum payload size accepted by the frame host's packet buffer.
+  packetCapacity
+  /// Maximum number of packets drained during one host frame.
+  packetBudget
+  /// Upper bound on the elapsed milliseconds passed to one frame step.
+  maxFrameMsec
+end struct
 
 // All effects are explicit so startup rollback and frame ordering can be
 // checked without substituting the protocol or UDP implementations.
 struct Services
-  startupFn openFn bindFn closeFn cleanupFn
-  createPumpFn setTimeFn drainFn serverFrameFn clientFrameFn
+  /// Host callback used to perform startup operations for this subsystem.
+  startupFn
+  /// Host callback used to perform open operations for this subsystem.
+  openFn
+  /// Host callback used to perform bind operations for this subsystem.
+  bindFn
+  /// Host callback used to perform close operations for this subsystem.
+  closeFn
+  /// Host callback used to perform cleanup operations for this subsystem.
+  cleanupFn
+  /// Host callback used to perform create pump operations for this subsystem.
+  createPumpFn
+  /// Host callback used to perform set time operations for this subsystem.
+  setTimeFn
+  /// Host callback used to perform drain operations for this subsystem.
+  drainFn
+  /// Host callback used to perform server frame operations for this subsystem.
+  serverFrameFn
+  /// Host callback used to perform client frame operations for this subsystem.
+  clientFrameFn
+  /// State supplied to the UDP lifecycle, packet-pump, and engine-frame callbacks.
   context
 end struct
 
 /// Callback table for `mq3.platform.desktop_frame_host.LiveContext`; exposes `ingress`, `frameContext`, `commonFrameFn`, `serverFrameFn`, `clientFrameFn`.
-struct LiveContext ingress frameContext commonFrameFn serverFrameFn clientFrameFn end struct
+struct LiveContext
+  /// Ingress adapter that delivers received packets to the common frame loop.
+  ingress
+  /// Host state passed to common, server, and client frame callbacks.
+  frameContext
+  /// Host callback used to perform common frame operations for this subsystem.
+  commonFrameFn
+  /// Host callback used to perform server frame operations for this subsystem.
+  serverFrameFn
+  /// Host callback used to perform client frame operations for this subsystem.
+  clientFrameFn
+end struct
 /// Data record for `mq3.platform.desktop_frame_host.Runtime`; groups `config`, `services`, `clientSocket`, `serverSocket`, `clientEndpoint`, `serverEndpoint`, and 6 further fields.
 struct Runtime
-  config services clientSocket serverSocket clientEndpoint serverEndpoint pump
-  time frameNumber packetCount active udpStarted
+  /// Configuration values used to initialize or drive this subsystem.
+  config
+  /// Injected host operations used by this subsystem.
+  services
+  /// Socket used for the client side of the local host.
+  clientSocket
+  /// Socket used for the server side of the local host.
+  serverSocket
+  /// Local or remote endpoint used by the client transport.
+  clientEndpoint
+  /// Local or remote endpoint used by the server transport.
+  serverEndpoint
+  /// Packet pump used to drain transport events into the engine.
+  pump
+  /// Current host clock in milliseconds, advanced before packet draining and engine frame callbacks.
+  time
+  /// Sequence number identifying the current host frame.
+  frameNumber
+  /// Number of packets processed by the frame host.
+  packetCount
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Whether the UDP transport has completed startup.
+  udpStarted
 end struct
 /// Data record for `mq3.platform.desktop_frame_host.FrameResult`; groups `number`, `time`, `msec`, `packets`.
-struct FrameResult number time msec packets end struct
+struct FrameResult
+  /// Sequence number of the host frame represented by this result.
+  number
+  /// Host clock in milliseconds recorded for the completed desktop frame.
+  time
+  /// Elapsed duration of the operation or frame, in milliseconds.
+  msec
+  /// Network packets received or processed by this result.
+  packets
+end struct
 
 /// Constructs `mq3.platform.desktop_frame_host.Config` from `clientEndpoint`, `serverEndpoint`, `packetCapacity`, `packetBudget`, `maxFrameMsec`.
 /// @param clientEndpoint Initial value for `mq3.platform.desktop_frame_host.Config.clientEndpoint`.

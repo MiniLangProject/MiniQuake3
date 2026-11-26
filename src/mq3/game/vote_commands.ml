@@ -10,7 +10,9 @@ import mq3.qcommon.cvar as cv
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
+/// Network entity-flag bit indicating voted.
 const EF_VOTED = 0x00004000
+/// Network entity-flag bit indicating teamvoted.
 const EF_TEAMVOTED = 0x00080000
 
 /// Validate vote argument storage and reject embedded zero bytes, truncating text to leave space for the terminator.

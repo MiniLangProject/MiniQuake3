@@ -29,13 +29,27 @@ import mq3.client.frame_timing as frameTiming
 import std.time as time
 import std.string as strings
 
+/// Nominal source-view width used when scaling QVM presentation into the preview target.
 const SOURCE_WIDTH=1280
+/// Nominal source-view height used when scaling QVM presentation into the preview target.
 const SOURCE_HEIGHT=720
+/// Texture-cache slot or starting slot reserved for the first rendering resources.
 const FIRST_TEXTURE_SLOT=1
+/// Capacity limit for the texture slots collection or bounded storage used by this client module.
 const MAX_TEXTURE_SLOTS=300
+/// Texture-cache slot or starting slot reserved for the cinematic rendering resources.
 const CINEMATIC_TEXTURE_SLOT=4055
 /// Stores QVM menu app screen point record, including `x`, `y`, `depth`.
-struct ScreenPoint x y depth end struct
+struct ScreenPoint
+  /// Horizontal coordinate of a textured quad vertex in the standalone QVM menu viewer's output
+  /// coordinates.
+  x
+  /// Vertical coordinate of a textured quad vertex in the standalone QVM menu viewer's output
+  /// coordinates.
+  y
+  /// When constructing this record, `runCinematic` supplies `depth` for this member.
+  depth
+end struct
 
 /// Creates the QVM menu app error `7688` with diagnostic text `"QVM menu: "+message`.
 /// @param message Argument 2 of `error`; passed as `"QVM menu: "+message`.

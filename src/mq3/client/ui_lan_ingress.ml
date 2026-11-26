@@ -10,15 +10,44 @@ import mq3.qcommon.message as message
 import mq3.shared.info as info
 import mq3.compat.textnumbers as textnumbers
 
+/// Quake network protocol version required by this client implementation.
 const PROTOCOL_VERSION=68
+/// Capacity limit for the serversperpacket collection or bounded storage used by this client module.
 const MAX_SERVERSPERPACKET=256
+/// Network-address kind identifying a broadcast destination.
 const NA_BROADCAST=3
+/// Network-address kind identifying a ip destination.
 const NA_IP=4
 
 /// Stores UI LAN ingress pending ping record, including `address`, `start`, `queueIndex`.
-struct PendingPing address start queueIndex end struct
+struct PendingPing
+  /// When constructing this record, `requestPing` supplies `address` for this member.
+  address
+  /// When constructing this record, `requestPing` supplies `start` for this member.
+  start
+  /// When constructing this record, `requestPing` supplies `index` for this member.
+  queueIndex
+end struct
 /// Stores UI LAN ingress state, including `browser`, `realtime`, `pingUpdateSource`, `masterNum`, `pendingPings`, `pendingStatuses`.
-struct State browser realtime pingUpdateSource masterNum pendingPings pendingStatuses end struct
+struct State
+  /// When constructing this record, `create` supplies `browser` for this member. Used by `requestPing`
+  /// and `responseInfo` during subsequent processing.
+  browser
+  /// Local clock in milliseconds used to measure elapsed time for incoming LAN query responses.
+  realtime
+  /// When constructing this record, `create` supplies `lan.AS_GLOBAL` for this member. Used by
+  /// `setPingUpdateSource` and `responseInfo` during subsequent processing.
+  pingUpdateSource
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setMaster` and
+  /// `responseServers` during subsequent processing.
+  masterNum
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `requestPing` and `consumePendingPing` during subsequent processing.
+  pendingPings
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `requestStatus` and `consumePendingStatus` during subsequent processing.
+  pendingStatuses
+end struct
 
 /// Calls `mq3.client.ui_lan_ingress.State` from UI LAN ingress `create`. The final path returns `State(browser,0,lan.AS_GLOBAL,0,[],[])`.
 /// @param browser Value used by `if browser==void then return error(7698,"UI LAN ingress: missing browser") end if`.

@@ -25,24 +25,43 @@ import mq3.server.world as sv
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 
+/// User-command button-mask bit requesting attack.
 const BUTTON_ATTACK = 1
+/// User-command button-mask bit requesting talk.
 const BUTTON_TALK = 2
+/// User-command button-mask bit requesting use holdable.
 const BUTTON_USE_HOLDABLE = 4
+/// User-command button-mask bit requesting gesture.
 const BUTTON_GESTURE = 8
+/// Network entity-flag bit indicating firing.
 const EF_FIRING = 0x00000100
+/// Network entity-flag bit indicating talk.
 const EF_TALK = 0x00001000
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x00038848
+/// Game entity-flag bit enabling or marking force gesture.
 const FL_FORCE_GESTURE = 0x00008000
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
+/// Collision-contents bit identifying body space or objects.
 const CONTENTS_BODY=headers.CONTENTS_BODY
+/// Collision-contents bit identifying botclip space or objects.
 const CONTENTS_BOTCLIP=headers.CONTENTS_BOTCLIP
+/// Combined CONTENTS_* mask used for playersolid collision queries.
 const MASK_PLAYERSOLID = 0x02010001
+/// Deathmatch-option bit enabling no falling.
 const DF_NO_FALLING = 8
+/// Deathmatch-option bit enabling no footsteps.
 const DF_NO_FOOTSTEPS = 32
+/// Spectator-state identifier selecting follow.
 const SPECTATOR_FOLLOW = 2
+/// Spectator-state identifier selecting scoreboard.
 const SPECTATOR_SCOREBOARD = 3
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
+/// Player movement-state bit indicating invulexpand.
 const PMF_INVULEXPAND = 0x00004000
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER = 7
 
 /// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.

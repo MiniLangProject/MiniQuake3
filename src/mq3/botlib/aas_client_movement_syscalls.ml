@@ -6,6 +6,8 @@ import mq3.botlib.aas_client_movement as aasClientMovement
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Byte size of the AAS client movement prediction record in the bot VM ABI or serialized
+/// representation.
 const AAS_CLIENTMOVE_SIZE=84
 /// Write three float bit patterns to consecutive VM memory words for aas client movement syscalls.
 /// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.

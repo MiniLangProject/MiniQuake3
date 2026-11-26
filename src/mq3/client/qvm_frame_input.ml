@@ -9,13 +9,61 @@ import mq3.vm.syscall_qagame_world as qvmFrameWorld
 import mq3.compat.numeric as qvmFrameNumeric
 import mq3.qcommon.cvar as qvmFrameCvars
 
+/// Input-capture bit that routes keyboard events to the console subsystem.
 const KEYCATCH_CONSOLE=1
+/// UI keyboard-capture mask used when preventing gameplay key expansion while the QVM menu captures
+/// input.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the cgame subsystem.
 const KEYCATCH_CGAME=8
 /// Stores QVM frame input state, including `input`, `config`, `oldFrameTime`, `lastCommandTime`, `sequence`, `produced` and additional values.
-struct State input config oldFrameTime lastCommandTime sequence produced epochs variables end struct
+struct State
+  /// When constructing this record, `create` supplies
+  /// `qvmFrameCommands.create(localAngles[0],localAngles[1],localAngles[2])` for this member. Used by
+  /// `handlesAction` and `applyBound` during subsequent processing.
+  input
+  /// When constructing this record, `create` supplies `qvmFrameCommands.defaults()` for this member.
+  /// Used by `syncConfig` and `finish` during subsequent processing.
+  config
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// When constructing this record, `create` supplies `commandTime` for this member. Used by
+  /// `commandTime` and `finish` during subsequent processing.
+  lastCommandTime
+  /// Monotonically increasing input-plan sequence copied into each newly generated frame plan.
+  sequence
+  /// When constructing this record, `create` supplies `0` for this member. Used by `finish` during
+  /// subsequent processing.
+  produced
+  /// When constructing this record, `create` supplies `0` for this member. Used by `finish` during
+  /// subsequent processing.
+  epochs
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `bindConfig` and `syncConfig` during subsequent processing.
+  variables
+end struct
 /// Stores QVM frame input plan record, including `realtime`, `rawMsec`, `integrationMsec`, `commandNumber`, `send`, `sequence` and additional values.
-struct Plan realtime rawMsec integrationMsec commandNumber send sequence used end struct
+struct Plan
+  /// Local frame timestamp in milliseconds passed to command creation and retained as the previous
+  /// input-frame time.
+  realtime
+  /// When constructing this record, `prepare` supplies `0` for this member. Used by `applyBound` and
+  /// `releaseAll` during subsequent processing.
+  rawMsec
+  /// When constructing this record, `prepare` supplies `1` for this member. Used by `finish` during
+  /// subsequent processing.
+  integrationMsec
+  /// When constructing this record, `prepare` supplies `commandNumber` for this member.
+  commandNumber
+  /// When constructing this record, `prepare` supplies `false` for this member. Used by `finish` during
+  /// subsequent processing.
+  send
+  /// When constructing this record, `prepare` supplies `state.sequence` for this member.
+  sequence
+  /// When constructing this record, `prepare` supplies `false` for this member. Used by `finish` during
+  /// subsequent processing.
+  used
+end struct
 /// Creates the QVM frame input error `7696` with diagnostic text `"client frame input: "+text`.
 /// @param text Argument 2 of `error`; passed as `"client frame input: "+text`.
 function fail(text) return error(7696,"client frame input: "+text) end function

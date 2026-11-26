@@ -15,12 +15,24 @@ import std.sort as pureSort
 import std.string as pureStrings
 import std.string_builder as pureBuilder
 
+/// Capacity limit for the pure packages collection or bounded storage used by this client module.
 const MAX_PURE_PACKAGES=128
 
 /// Stores remote pure package record, including `archive`, `pureChecksum`.
-struct Package archive pureChecksum end struct
+struct Package
+  /// When constructing this record, `verify` supplies `archive` for this member.
+  archive
+  /// When constructing this record, `verify` supplies `pureMd4.blockChecksumKey(header,checksumFeed)`
+  /// for this member.
+  pureChecksum
+end struct
 /// Stores remote pure verification record, including `archive`, `command`.
-struct Verification archive command end struct
+struct Verification
+  /// When constructing this record, `verify` supplies `archive` for this member.
+  archive
+  /// When constructing this record, `verify` supplies `builder.toString()` for this member.
+  command
+end struct
 
 /// Calls `mq3.qcommon.command_buffer.create`, `mq3.qcommon.command_buffer.tokenizeString`, `mq3.qcommon.command_buffer.argc` and additional helpers from remote pure `advertisedChecksums`. The final path returns `checksums`.
 /// @param text Text consumed or emitted by `advertisedChecksums` in the remote pure path.

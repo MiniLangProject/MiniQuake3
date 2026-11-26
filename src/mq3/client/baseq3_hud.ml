@@ -8,31 +8,113 @@ import mq3.platform.playable_window as window
 import mq3.client.playable_hud as textHud
 import std.string as strings
 
+/// Width of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_WIDTH=640.0
+/// Height of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_HEIGHT=480.0
+/// Width of a standard character in virtual screen coordinates.
 const CHAR_WIDTH=32.0
+/// Height of a standard character in virtual screen coordinates.
 const CHAR_HEIGHT=48.0
+/// Default square HUD icon size in virtual screen coordinates.
 const ICON_SIZE=48.0
+/// Horizontal gap between text and its adjacent HUD icon.
 const TEXT_ICON_SPACE=4.0
 // CG_DrawStatusBarHead uses ICON_SIZE * 1.25 and anchors it to y=480-size.
 const STATUS_HEAD_SIZE=60.0
+/// Virtual-screen Y coordinate used to place the HUD status-head model.
 const STATUS_HEAD_Y=420.0
+/// Number of texture slots required by the module's fixed media layout.
 const REQUIRED_TEXTURES=39
+/// Duration in milliseconds of temporary HUD feedback emphasis.
 const FEEDBACK_TIME=3000
+/// Milliseconds for which the weapon-selection HUD remains visible.
 const WEAPON_SELECT_TIME=1400
+/// Normal weapon-icon size in virtual HUD coordinates.
 const WEAPON_ICON_SIZE=40.0
+/// Enlarged icon size used to emphasize the currently selected weapon.
 const SELECTED_WEAPON_ICON_SIZE=48.0
 
 /// Stores base Quake III HUD asset record, including `key`, `imageName`, `image`, `slot`.
-struct Asset key imageName image slot end struct
+struct Asset
+  /// When constructing this record, `load` supplies `item[0]` for this member. Used by `find` during
+  /// subsequent processing.
+  key
+  /// Resolved artwork path for a status-bar digit, icon, or other base-game HUD asset.
+  imageName
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores base Quake III HUD catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
-struct Catalog assets firstTextureSlot textureCount end struct
+struct Catalog
+  /// Loaded base-game HUD artwork indexed for status digits, icons, and other status-bar drawing.
+  assets
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+end struct
 /// Stores base Quake III HUD state, including `health`, `armor`, `ammo`, `weapon`, `score`, `kills` and additional values.
-struct State health armor ammo weapon score kills deaths pickupClass pickupName pickupTime fragTime ownedWeapons weaponAmmo weaponSelectTime end struct
+struct State
+  /// Player health supplied to the base-game-style numeric status display.
+  health
+  /// Player armor supplied to the base-game-style armor icon and numeric display.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Selected weapon classname used to highlight the base-game-style weapon selection strip.
+  weapon
+  /// Player score displayed by the base-game HUD.
+  score
+  /// When constructing this record, `state` supplies `kills` for this member.
+  kills
+  /// When constructing this record, `state` supplies `deaths` for this member.
+  deaths
+  /// When constructing this record, `state` supplies an empty string for this member.
+  pickupClass
+  /// Human-readable item name shown by pickup notifications and item-selection UI.
+  pickupName
+  /// Timestamp of the last item pickup, used with the feedback lifetime to hide its temporary HUD
+  /// notification.
+  pickupTime
+  /// Timestamp of the last frag notification, used to expire the HUD's kill feedback.
+  fragTime
+  /// When constructing this record, `state` supplies an empty list for this member.
+  ownedWeapons
+  /// When constructing this record, `state` supplies an empty list for this member.
+  weaponAmmo
+  /// Timestamp at which the weapon-selection display was last refreshed.
+  weaponSelectTime
+end struct
 /// Stores base Quake III HUD point record, including `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal coordinate of a status-HUD image vertex in the target window.
+  x
+  /// Vertical coordinate of a status-HUD image vertex in the target window.
+  y
+  /// When constructing this record, `point` supplies `0.001` for this member.
+  depth
+end struct
 /// Stores base Quake III HUD layout record, including `scaleX`, `scaleY`, `ammoX`, `healthX`, `armorX`, `statusY` and additional values.
-struct Layout scaleX scaleY ammoX healthX armorX statusY iconY end struct
+struct Layout
+  /// Horizontal scale used to transform virtual UI coordinates to the actual display.
+  scaleX
+  /// Vertical scale used to transform virtual UI coordinates to the actual display.
+  scaleY
+  /// When constructing this record, `layout` supplies `0.0` for this member.
+  ammoX
+  /// When constructing this record, `layout` supplies `185.0` for this member.
+  healthX
+  /// When constructing this record, `layout` supplies `370.0` for this member.
+  armorX
+  /// When constructing this record, `layout` supplies `432.0` for this member.
+  statusY
+  /// When constructing this record, `layout` supplies `432.0` for this member.
+  iconY
+end struct
 
 /// Creates the base Quake III HUD error `7580` with diagnostic text `"Baseq3 HUD: "+message`.
 /// @param message Argument 2 of `error`; passed as `"Baseq3 HUD: "+message`.

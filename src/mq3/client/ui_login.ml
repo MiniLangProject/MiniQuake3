@@ -4,17 +4,77 @@
 package mq3.client.ui_login
 import mq3.client.ui_qmenu as q
 import mq3.client.ui_rankings as rankings
+/// Virtual asset path used to load the login frame renderer or menu resource.
 const LOGIN_FRAME="menu/art/cut_frame"
+/// Menu control identifier routed to the name action by the menu event handler.
 const ID_NAME=100
+/// Menu control identifier routed to the name box action by the menu event handler.
 const ID_NAME_BOX=101
+/// Menu control identifier routed to the password action by the menu event handler.
 const ID_PASSWORD=102
+/// Menu control identifier routed to the password box action by the menu event handler.
 const ID_PASSWORD_BOX=103
+/// Menu control identifier routed to the login action by the menu event handler.
 const ID_LOGIN=104
+/// Menu control identifier routed to the cancel action by the menu event handler.
 const ID_CANCEL=105
 /// Stores UI login queued engine action, including `boundary`, `kind`, `name`, `text`, `text2`, `dispatched`.
-struct Action boundary kind name text text2 dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while submitting account credentials or
+  /// closing the login dialog.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while submitting account
+  /// credentials or closing the login dialog.
+  kind
+  /// Login-menu target, account-operation label, or artwork resource referenced by the host action.
+  name
+  /// Sanitized account name passed to the rankings login operation; menu and asset actions leave it
+  /// empty.
+  text
+  /// When constructing this record, `emit` supplies `text2` for this member.
+  text2
+  /// True when this request is marked for native dispatch while submitting account credentials or
+  /// closing the login dialog; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI login state, including `menu`, `frame`, `name`, `nameBox`, `password`, `passwordBox` and additional values.
-struct State menu frame name nameBox password passwordBox login cancel actions pushed forcedOff popped retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `q.menu(true,false)` for this member. Used by
+  /// `Login_MenuEvent` and `Login_MenuInit` during subsequent processing.
+  menu
+  /// Decorative bitmap widget drawing the border around the login menu.
+  frame
+  /// Account name entered in the ranking-service login or signup form.
+  name
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Login_MenuEvent` and `Login_MenuInit` during subsequent processing.
+  nameBox
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Login_MenuInit` during subsequent processing.
+  password
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Login_MenuEvent` and `Login_MenuInit` during subsequent processing.
+  passwordBox
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Login_MenuInit` during subsequent processing.
+  login
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Login_MenuInit` during subsequent processing.
+  cancel
+  /// Host requests queued while submitting account credentials or closing the login dialog, retained in
+  /// request order.
+  actions
+  /// Records that the ranked-play login dialog has been opened on the active menu stack.
+  pushed
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `Login_MenuEvent` during subsequent processing.
+  forcedOff
+  /// Records a request to remove the ranked-play login dialog from the active menu stack.
+  popped
+  /// True when the retail QVM owns the ranked-play login dialog, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 /// Creates a `mq3.client.ui_login.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive) return State(q.menu(true,false),void,void,void,void,void,void,void,[],false,false,false,retailActive) end function

@@ -12,18 +12,86 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 import std.string as strings
 
+/// OpenGL texture-wrap mode that periodically repeats the image.
 const GL_REPEAT=10497
+/// OpenGL legacy texture-wrap mode that clamps coordinates at the image border.
 const GL_CLAMP=10496
+/// Number of samples in the fog-density lookup table.
 const FOG_TABLE_SIZE=256
+/// Maximum number of registered skin definitions retained by the renderer.
 const MAX_SKINS=1024
 /// Callback table for `mq3.renderer.tr_image_runtime.Services`; exposes `skinLoadFn`, `writeJpegFn`, `deleteTextureFn`, `gammaFn`, `diagnosticFn`, `context`.
-struct Services skinLoadFn writeJpegFn deleteTextureFn gammaFn diagnosticFn context end struct
+struct Services
+  /// Host callback used to perform skin load operations for this subsystem.
+  skinLoadFn
+  /// Host callback used to perform write jpeg operations for this subsystem.
+  writeJpegFn
+  /// Host callback used to perform delete texture operations for this subsystem.
+  deleteTextureFn
+  /// Host callback used to perform gamma operations for this subsystem.
+  gammaFn
+  /// Host callback used to perform diagnostic operations for this subsystem.
+  diagnosticFn
+  /// Image-service state passed to skin loading, JPEG output, texture deletion, and gamma updates.
+  context
+end struct
 /// Data record for `mq3.renderer.tr_image_runtime.SkinRecord`; groups `name`, `skin`, `surfaces`.
-struct SkinRecord name skin surfaces end struct
+struct SkinRecord
+  /// Registered skin name or shader fallback name used by skin lookup.
+  name
+  /// Parsed skin definition assigning shaders to model surfaces.
+  skin
+  /// Pairs mapping lower-case model-surface names to shader names.
+  surfaces
+end struct
 /// Data record for `mq3.renderer.tr_image_runtime.Destination`; groups `bytes`, `capacity`, `used`.
-struct Destination bytes capacity used end struct
+struct Destination
+  /// Backing byte buffer receiving the encoded image.
+  bytes
+  /// Allocated byte capacity of the encoded-image output buffer.
+  capacity
+  /// Number of encoded output bytes currently written to the destination buffer.
+  used
+end struct
 /// Data record for `mq3.renderer.tr_image_runtime.State`; groups `images`, `services`, `skins`, `fogTable`, `gammaTable`, `intensityTable`, and 12 further fields.
-struct State images services skins fogTable gammaTable intensityTable overbrightBits identityLight identityLightByte filterName filterMin filterMax defaultImage whiteImage identityLightImage scratchImages dlightImage fogImage end struct
+struct State
+  /// Image registry containing uploaded textures and image-name lookup state.
+  images
+  /// Injected host operations used by this subsystem.
+  services
+  /// Registered skin definitions and their surface mappings.
+  skins
+  /// Lookup table used to compute distance-based fog intensity.
+  fogTable
+  /// Lookup table used to apply gamma correction to color samples.
+  gammaTable
+  /// Lookup table used to scale texture intensity.
+  intensityTable
+  /// Number of additional brightness bits used by color mapping.
+  overbrightBits
+  /// Identity lighting scale after accounting for overbright settings.
+  identityLight
+  /// Identity lighting scale represented as an eight-bit color component.
+  identityLightByte
+  /// Configured texture-filtering mode name.
+  filterName
+  /// Graphics filtering mode used when textures are minified.
+  filterMin
+  /// Graphics filtering mode used when textures are magnified.
+  filterMax
+  /// Fallback image used when a requested texture is unavailable.
+  defaultImage
+  /// Solid-white texture used by color-only drawing paths.
+  whiteImage
+  /// Texture containing the renderer's identity-light color.
+  identityLightImage
+  /// Reusable image slots used by cinematics and temporary uploads.
+  scratchImages
+  /// Texture used when projecting dynamic-light contributions.
+  dlightImage
+  /// Texture used to evaluate fog density during rendering.
+  fogImage
+end struct
 
 /// Constructs `mq3.renderer.tr_image_runtime.Services` with `skinLoadFn` = `void`, `writeJpegFn` = `void`, `deleteTextureFn` = `void`, `gammaFn` = `void` and the supplied remaining values.
 function services() return Services(void,void,void,void,void,void) end function

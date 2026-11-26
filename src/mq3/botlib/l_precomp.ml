@@ -11,46 +11,127 @@ import mq3.botlib.l_script as lex
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Number of hash buckets used for preprocessor definitions.
 const DEFINEHASHSIZE=1024
+/// Preprocessor nesting-kind identifier for if.
 const INDENT_IF=botlibHeaders.INDENT_IF
+/// Preprocessor nesting-kind identifier for else.
 const INDENT_ELSE=botlibHeaders.INDENT_ELSE
+/// Preprocessor nesting-kind identifier for elif.
 const INDENT_ELIF=botlibHeaders.INDENT_ELIF
+/// Preprocessor nesting-kind identifier for ifdef.
 const INDENT_IFDEF=botlibHeaders.INDENT_IFDEF
+/// Preprocessor nesting-kind identifier for ifndef.
 const INDENT_IFNDEF=botlibHeaders.INDENT_IFNDEF
 
+/// Scanner punctuation identifier for `&&`.
 const P_LOGIC_AND=5
+/// Scanner punctuation identifier for `||`.
 const P_LOGIC_OR=6
+/// Scanner punctuation identifier for `>=`.
 const P_LOGIC_GEQ=7
+/// Scanner punctuation identifier for `<=`.
 const P_LOGIC_LEQ=8
+/// Scanner punctuation identifier for `==`.
 const P_LOGIC_EQ=9
+/// Scanner punctuation identifier for `!=`.
 const P_LOGIC_UNEQ=10
+/// Scanner punctuation identifier for `>>`.
 const P_RSHIFT=21
+/// Scanner punctuation identifier for `<<`.
 const P_LSHIFT=22
+/// Scanner punctuation identifier for `*`.
 const P_MUL=26
+/// Scanner punctuation identifier for `/`.
 const P_DIV=27
+/// Scanner punctuation identifier for `%`.
 const P_MOD=28
+/// Scanner punctuation identifier for `+`.
 const P_ADD=29
+/// Scanner punctuation identifier for `-`.
 const P_SUB=30
+/// Scanner punctuation identifier for `&`.
 const P_BIN_AND=32
+/// Scanner punctuation identifier for `|`.
 const P_BIN_OR=33
+/// Scanner punctuation identifier for `^`.
 const P_BIN_XOR=34
+/// Scanner punctuation identifier for `~`.
 const P_BIN_NOT=35
+/// Scanner punctuation identifier for `!`.
 const P_LOGIC_NOT=36
+/// Scanner punctuation identifier for `>`.
 const P_LOGIC_GREATER=37
+/// Scanner punctuation identifier for `<`.
 const P_LOGIC_LESS=38
+/// Scanner punctuation identifier for `:`.
 const P_COLON=42
+/// Scanner punctuation identifier for `?`.
 const P_QUESTIONMARK=43
 
 /// `Action` record for l precomp, containing `kind`, `message`, `file`, `line` and `dispatched`.
-struct Action kind message file line dispatched end struct
+struct Action
+  /// Diagnostic or lifecycle action emitted by the preprocessor.
+  kind
+  /// Text associated with the reported event or diagnostic.
+  message
+  /// Source file associated with the diagnostic or allocation.
+  file
+  /// Source-line number associated with the token, diagnostic, or allocation.
+  line
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `PrecompHost` record for l precomp, containing `loadFn`, `actionFn` and `context`.
-struct PrecompHost loadFn actionFn context end struct
+struct PrecompHost
+  /// Host callback that loads the requested resource through the host interface.
+  loadFn
+  /// Host callback that dispatches a recorded subsystem action to the host.
+  actionFn
+  /// Caller-supplied data associated with preprocessor source loading and preprocessing diagnostics.
+  context
+end struct
 /// `Runtime` record for l precomp, containing `registry`, `host`, `baseFolder`, `globalDefines` and `actions` and related fields.
-struct Runtime registry host baseFolder globalDefines actions retailActive tokenHeapInitialized end struct
+struct Runtime
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Host callback interface supplying external services to this runtime.
+  host
+  /// Base folder prepended when resolving bot script paths.
+  baseFolder
+  /// Preprocessor definitions inherited by newly loaded source files.
+  globalDefines
+  /// Recorded preprocessing diagnostics with source filenames and line numbers.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+  /// True after storage for preprocessor tokens has been initialized.
+  tokenHeapInitialized
+end struct
 /// `Source` record for l precomp, containing `runtime`, `handle`, `includePath`, `punctuations` and `lastToken` and related fields.
-struct Source runtime handle includePath punctuations lastToken indents scripts end struct
+struct Source
+  /// Owning preprocessor runtime containing the source registry and diagnostic actions.
+  runtime
+  /// Registry handle identifying this loaded preprocessor source.
+  handle
+  /// Path to include files.
+  includePath
+  /// Punctuations to use.
+  punctuations
+  /// Most recently returned preprocessor token.
+  lastToken
+  /// Active stack of conditional-preprocessor nesting records.
+  indents
+  /// Script inputs currently stacked by include processing.
+  scripts
+end struct
 /// `Indent` record for l precomp, containing `type` and `skip`.
-struct Indent type skip end struct
+struct Indent
+  /// Conditional-directive kind represented by this nesting level.
+  type
+  /// True when tokens in this conditional-preprocessor branch should be skipped.
+  skip
+end struct
 
 /// Create a `mq3.botlib.l_precomp.PrecompHost` record with the declared empty defaults.
 function host() return PrecompHost(void,void,void) end function

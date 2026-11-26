@@ -13,36 +13,75 @@ import mq3.server.snapshot_send as snapshotSend
 import mq3.server.game_interface as gameInterface
 import std.array as arrays
 
+/// !!! MUST NOT CHANGE, SERVER AND.
 const PERS_SCORE=0
+/// Maximum number of visibility clusters explicitly recorded for one entity.
 const MAX_ENT_CLUSTERS=16
+/// Server lifecycle state with no running map.
 const SS_DEAD=0
+/// Server lifecycle state while a new map and game VM are loading.
 const SS_LOADING=1
+/// Server lifecycle state for an active game map.
 const SS_GAME=2
+/// Client-state value identifying an unused entry in the native client-state enumeration.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying an active gameplay connection in the native client-state enumeration.
 const CS_ACTIVE=4
+/// Number of pending connection-challenge entries retained by the server.
 const MAX_CHALLENGES=1024
+/// Wait limit before the connection policy stops waiting for authorization.
 const AUTHORIZE_TIMEOUT=5000
+/// Max recipients for heartbeat packets.
 const MAX_MASTERS=8
+/// Number of configured master-server entries supported by the server.
 const MAX_MASTER_SERVERS=5
 
+/// These are sent over the net as 8 bits.
 const MAX_MODELS=256
+/// Number of indexed configuration-string slots in the game protocol.
 const MAX_CONFIGSTRINGS=1024
+/// Maximum number of addressable game-entity slots.
 const MAX_GENTITIES=1024
+/// Bit vector of area visibility.
 const MAX_MAP_AREA_BYTES=32
+/// Maximum length of a backslash-delimited server or client information string.
 const MAX_INFO_STRING=1024
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS=1024
+/// Max length of a client name.
 const MAX_NAME_LENGTH=32
+/// Maximum character capacity reserved for a Quake asset path.
 const MAX_QPATH=64
+/// Max of eight download frames.
 const MAX_DOWNLOAD_WINDOW=8
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
+/// Number of old messages that must be kept on client and.
 const PACKET_BACKUP=32
 
 /// Layout record for server.abi, containing `name`, `size`, `fields`, `offsets`, `arrayFields`, `arrayCounts`.
-struct Layout name size fields offsets arrayFields arrayCounts end struct
+struct Layout
+  /// Native C record name whose byte offsets are described by this ABI layout.
+  name
+  /// Total byte size of the described server ABI record.
+  size
+  /// Field names included in the ABI layout descriptor.
+  fields
+  /// Byte offsets of fields from the beginning of the ABI record.
+  offsets
+  /// Names of fields represented as fixed-size ABI arrays.
+  arrayFields
+  /// Element counts corresponding to the fixed-size array fields.
+  arrayCounts
+end struct
 /// Create `mq3.server.abi.Layout` with name=name; size=size; fields=fields; offsets=offsets; arrayFields=arrayFields; arrayCounts=arrayCounts.
 /// @param name Initial `name` field stored in the returned or constructed `mq3.server.abi.Layout` record.
 /// @param size Initial `size` field stored in the returned or constructed `mq3.server.abi.Layout` record.
@@ -81,7 +120,26 @@ function prototypeNames()
 end function
 
 /// SvEntity record for server.abi, containing `worldSector`, `nextEntityInWorldSector`, `baseline`, `numClusters`, `clusternums`, `lastCluster`, and 3 further fields.
-struct SvEntity worldSector nextEntityInWorldSector baseline numClusters clusternums lastCluster areanum areanum2 snapshotCounter end struct
+struct SvEntity
+  /// Spatial world-sector record containing this linked entity.
+  worldSector
+  /// Next entity in the sector's linked list.
+  nextEntityInWorldSector
+  /// For delta compression of initial sighting.
+  baseline
+  /// Number of visibility clusters associated with this entity or map.
+  numClusters
+  /// Visibility-cluster indexes intersected by the entity's bounds.
+  clusternums
+  /// Final visibility cluster used when the explicit cluster list overflows.
+  lastCluster
+  /// Primary collision area recorded in the native server-entity visibility bookkeeping.
+  areanum
+  /// Second AAS area number used by the operation.
+  areanum2
+  /// Generation marker used to avoid adding an entity twice to one snapshot.
+  snapshotCounter
+end struct
 /// Create `mq3.server.abi.SvEntity` with worldSector=void; nextEntityInWorldSector=void; baseline=entitystate.create(); numClusters=0; clusternums=array(MAX_ENT_CLUSTERS, 0); lastCluster=0; areanum=0; areanum2=0; snapshotCounter=0.
 function svEntity()
   return SvEntity(void,void,entitystate.create(),0,array(MAX_ENT_CLUSTERS,0),0,0,0,0)
@@ -108,7 +166,46 @@ function clusters(value)
 end function
 
 /// Server record for server.abi, containing `state`, `restarting`, `serverId`, `restartedServerId`, `checksumFeed`, `checksumFeedServerId`, and 13 further fields.
-struct Server state restarting serverId restartedServerId checksumFeed checksumFeedServerId snapshotCounter timeResidual nextFrameTime models configstrings svEntities entityParsePoint gentities gentitySize numEntities gameClients gameClientSize restartTime end struct
+struct Server
+  /// Server lifecycle state selecting dead, loading, or active gameplay.
+  state
+  /// True while the server performs an in-place map restart.
+  restarting
+  /// Identifier distinguishing the current server or map session.
+  serverId
+  /// Server identifier retained from before the latest map restart.
+  restartedServerId
+  /// Server-supplied feed value used to calculate pure-package checksums.
+  checksumFeed
+  /// Server identifier associated with the current checksum feed.
+  checksumFeedServerId
+  /// Generation marker used to avoid adding an entity twice to one snapshot.
+  snapshotCounter
+  /// Unconsumed elapsed milliseconds carried into the next server simulation frame.
+  timeResidual
+  /// When time > nextFrameTime, process world.
+  nextFrameTime
+  /// Submodel records associated with the loaded map.
+  models
+  /// Server configuration strings indexed by their protocol slot.
+  configstrings
+  /// Server-owned visibility and collision bookkeeping for game entities.
+  svEntities
+  /// Current position in the map entity text supplied to the game VM.
+  entityParsePoint
+  /// Game-VM entity array exposed to server-side collision and snapshot code.
+  gentities
+  /// Byte stride between game-VM entity records.
+  gentitySize
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// Game-VM client records associated with the server client slots.
+  gameClients
+  /// Will be > sizeof(playerState_t) due to game private data.
+  gameClientSize
+  /// Scheduled time for restarting the current map.
+  restartTime
+end struct
 /// Apply `mq3.server.abi.svEntity`, `mq3.server.abi.Server` for server in server.abi.
 function server()
   entities=[];for index=0 to MAX_GENTITIES-1 entities=entities+[svEntity()] end for
@@ -116,18 +213,128 @@ function server()
 end function
 
 /// ClientSnapshot record for server.abi, containing `areabytes`, `areabits`, `ps`, `numEntities`, `firstEntity`, `messageSent`, and 2 further fields.
-struct ClientSnapshot areabytes areabits ps numEntities firstEntity messageSent messageAcked messageSize end struct
+struct ClientSnapshot
+  /// Number of valid bytes in the snapshot's area-visibility mask.
+  areabytes
+  /// Bitset of map areas visible in this snapshot.
+  areabits
+  /// Player-state payload stored in a client snapshot.
+  ps
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// First entity-state position for this snapshot in the shared circular snapshot buffer.
+  firstEntity
+  /// Server timestamp when this snapshot message was transmitted, in milliseconds.
+  messageSent
+  /// Server timestamp when this snapshot message was acknowledged, in milliseconds.
+  messageAcked
+  /// Transmitted snapshot-message size in bytes, used for rate limiting.
+  messageSize
+end struct
 /// Create `mq3.server.abi.ClientSnapshot` with areabytes=0; areabits=bytes(MAX_MAP_AREA_BYTES, 0); ps=playerstate.create(); numEntities=0; firstEntity=0; messageSent=0; messageAcked=0; messageSize=0.
 function clientSnapshot() return ClientSnapshot(0,bytes(MAX_MAP_AREA_BYTES,0),playerstate.create(),0,0,0,0,0) end function
 
 /// NetchanBuffer record for server.abi, containing `msg`, `msgBuffer`, `next`.
-struct NetchanBuffer msg msgBuffer next end struct
+struct NetchanBuffer
+  /// Message descriptor for this queued network payload.
+  msg
+  /// Backing byte buffer containing the queued message.
+  msgBuffer
+  /// Next queued message waiting for network-channel transmission.
+  next
+end struct
 /// Create `mq3.server.abi.NetchanBuffer` with msg=msg; msgBuffer=bytes(MAX_MSGLEN, 0); next=void.
 /// @param msg Initial `msg` field stored in the returned or constructed `mq3.server.abi.NetchanBuffer` record.
 function netchanBuffer(msg) return NetchanBuffer(msg,bytes(MAX_MSGLEN,0),void) end function
 
 /// Client record for server.abi, containing `state`, `userinfo`, `reliableCommands`, `reliableSequence`, `reliableAcknowledge`, `reliableSent`, and 36 further fields.
-struct Client state userinfo reliableCommands reliableSequence reliableAcknowledge reliableSent messageAcknowledge gamestateMessageNum challenge lastUsercmd lastMessageNum lastClientCommand lastClientCommandString gentity name downloadName download downloadSize downloadCount downloadClientBlock downloadCurrentBlock downloadXmitBlock downloadBlocks downloadBlockSize downloadEOF downloadSendTime deltaMessage nextReliableTime lastPacketTime lastConnectTime nextSnapshotTime rateDelayed timeoutCount frames ping rate snapshotMsec pureAuthentic gotCP netchan netchanStartQueue netchanEndQueue end struct
+struct Client
+  /// Connection lifecycle value that mirrors the native client connection-state field across the server
+  /// ABI.
+  state
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+  /// Reliable command entries retained until the peer acknowledges them.
+  reliableCommands
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Native client-record cursor for reliable server commands acknowledged by the client.
+  reliableAcknowledge
+  /// Sequence number of the newest reliable command transmitted to the peer.
+  reliableSent
+  /// Sequence number of the newest server message acknowledged by the client.
+  messageAcknowledge
+  /// Outgoing network sequence number of the client gamestate message.
+  gamestateMessageNum
+  /// Challenge value used to authenticate a connection attempt.
+  challenge
+  /// Most recent user-command record received or processed for this client.
+  lastUsercmd
+  /// Sequence number of the last client message retained for delta handling.
+  lastMessageNum
+  /// Sequence number of the last processed reliable client command.
+  lastClientCommand
+  /// Text of the last processed reliable client command.
+  lastClientCommandString
+  /// Game-VM entity associated with this client.
+  gentity
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Requested asset download path, or an empty string when no download is active.
+  downloadName
+  /// Open file handle used by the active asset download.
+  download
+  /// Total byte length of the requested download.
+  downloadSize
+  /// Number of download recorded by this state.
+  downloadCount
+  /// First download block still awaiting client acknowledgment.
+  downloadClientBlock
+  /// Index of the next download block to load from the file.
+  downloadCurrentBlock
+  /// Index of the next buffered block to transmit.
+  downloadXmitBlock
+  /// Ring buffer of payload data for outstanding download blocks.
+  downloadBlocks
+  /// Valid byte lengths of blocks retained in the download window.
+  downloadBlockSize
+  /// True after the end-of-file marker has been queued for the download.
+  downloadEOF
+  /// Server timestamp used to schedule download retransmissions.
+  downloadSendTime
+  /// Acknowledged snapshot message selected as the base for delta compression.
+  deltaMessage
+  /// Earliest server timestamp when another reliable client command is accepted.
+  nextReliableTime
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Server timestamp when this client connection began, in milliseconds.
+  lastConnectTime
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
+  nextSnapshotTime
+  /// True when rate limiting postponed the next snapshot beyond its normal interval.
+  rateDelayed
+  /// Consecutive timeout checks exceeded before disconnecting the client.
+  timeoutCount
+  /// Updates can be delta'd from here.
+  frames
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Requested interval between snapshots, in milliseconds.
+  snapshotMsec
+  /// True after the client has passed the pure-package authentication check.
+  pureAuthentic
+  /// True after the client has sent its pure-server checksum verification command.
+  gotCP
+  /// Sequenced network channel used to exchange this client's packets.
+  netchan
+  /// First queued message waiting for outstanding fragments to finish.
+  netchanStartQueue
+  /// Last queued message waiting for outstanding fragments to finish.
+  netchanEndQueue
+end struct
 /// Apply `mq3.server.abi.clientSnapshot`, `mq3.server.abi.Client`, `mq3.qcommon.message_delta.userCommand` for client in server.abi.
 function client()
   frames=[];for index=0 to PACKET_BACKUP-1 frames=frames+[clientSnapshot()] end for
@@ -135,12 +342,48 @@ function client()
 end function
 
 /// Challenge record for server.abi, containing `address`, `challenge`, `time`, `pingTime`, `firstTime`, `connected`.
-struct Challenge address challenge time pingTime firstTime connected end struct
+struct Challenge
+  /// Network address associated with the client or packet.
+  address
+  /// Challenge value used to authenticate a connection attempt.
+  challenge
+  /// Challenge creation timestamp in the native record, used for replacement ordering.
+  time
+  /// Server timestamp of the challenge response used to measure connection latency.
+  pingTime
+  /// Server timestamp when this challenge address was first registered.
+  firstTime
+  /// True after the connection challenge has been accepted by a client.
+  connected
+end struct
 /// Create `mq3.server.abi.Challenge` with address=void; challenge=0; time=0; pingTime=0; firstTime=0; connected=false.
 function challenge() return Challenge(void,0,0,0,0,false) end function
 
 /// ServerStatic record for server.abi, containing `initialized`, `time`, `snapFlagServerBit`, `clients`, `numSnapshotEntities`, `nextSnapshotEntities`, and 5 further fields.
-struct ServerStatic initialized time snapFlagServerBit clients numSnapshotEntities nextSnapshotEntities snapshotEntities nextHeartbeatTime challenges redirectAddress authorizeAddress end struct
+struct ServerStatic
+  /// Native server-static flag indicating that persistent server storage is available.
+  initialized
+  /// Persistent server clock represented in the native server-static ABI, in milliseconds.
+  time
+  /// Snapshot server-count bit toggled when a new server level is spawned.
+  snapFlagServerBit
+  /// Native-compatible client array referenced by the persistent server-static state.
+  clients
+  /// Number of entity-state slots reserved in the snapshot ring.
+  numSnapshotEntities
+  /// Next absolute insertion position in the circular snapshot-entity buffer.
+  nextSnapshotEntities
+  /// Entity states retained in the server snapshot ring.
+  snapshotEntities
+  /// Server time at which the next master heartbeat should be sent.
+  nextHeartbeatTime
+  /// Pending connection challenges used to validate connecting client addresses.
+  challenges
+  /// For rcon return messages.
+  redirectAddress
+  /// Network address of the external client-authorization server.
+  authorizeAddress
+end struct
 /// Apply `mq3.server.abi.client`, `mq3.server.abi.challenge`, `mq3.server.abi.ServerStatic` for server static in server.abi.
 ///
 /// Validation failures include `server ABI: invalid persistent sizes`.
@@ -154,11 +397,71 @@ function serverStatic(maxClients,numSnapshotEntities)
 end function
 
 /// Cvars record for server.abi, containing `fps`, `timeout`, `zombietime`, `rconPassword`, `privatePassword`, `allowDownload`, and 19 further fields.
-struct Cvars fps timeout zombietime rconPassword privatePassword allowDownload maxclients privateClients hostname masters reconnectlimit showloss padPackets killserver mapname mapChecksum serverid maxRate minPing maxPing gametype pure floodProtect lanForceRate strictAuth end struct
+struct Cvars
+  /// Requested server simulation frames per second.
+  fps
+  /// Configuration variable controlling client inactivity timeout.
+  timeout
+  /// Configuration variable controlling disconnected-client retention.
+  zombietime
+  /// Password required to accept a remote-console command.
+  rconPassword
+  /// Password required to use the reserved private client slots.
+  privatePassword
+  /// True when clients may request files from the server.
+  allowDownload
+  /// Native-compatible server configuration value controlling the client-slot limit.
+  maxclients
+  /// Number of client slots reserved for clients with the private password.
+  privateClients
+  /// Server display name advertised to clients and directory services.
+  hostname
+  /// Configured master-server addresses receiving heartbeats.
+  masters
+  /// Minimum interval required before a client may reconnect.
+  reconnectlimit
+  /// Configuration variable enabling packet-loss diagnostics.
+  showloss
+  /// Additional padding requested for outgoing snapshot messages.
+  padPackets
+  /// Configuration variable requesting server shutdown.
+  killserver
+  /// Name of the current game map.
+  mapname
+  /// Checksum of the currently loaded BSP map.
+  mapChecksum
+  /// Identifier distinguishing the current server or map session.
+  serverid
+  /// Upper bound on the client transmission rate, in bytes per second.
+  maxRate
+  /// Minimum client latency accepted by the connection policy.
+  minPing
+  /// Maximum client latency accepted by the connection policy.
+  maxPing
+  /// Game-mode identifier used when applying mode-specific rules.
+  gametype
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// True when repeated client commands are rate limited.
+  floodProtect
+  /// True when LAN clients bypass the normal rate limit.
+  lanForceRate
+  /// True when the server requires successful external authorization.
+  strictAuth
+end struct
 /// Create `mq3.server.abi.Cvars` with fps=void; timeout=void; zombietime=void; rconPassword=void; 21 further fields.
 function cvars() return Cvars(void,void,void,void,void,void,void,void,void,array(MAX_MASTER_SERVERS,void),void,void,void,void,void,void,void,void,void,void,void,void,void,void,void) end function
 /// Globals record for server.abi, containing `svs`, `sv`, `gvm`, `cvars`.
-struct Globals svs sv gvm cvars end struct
+struct Globals
+  /// Persistent server state shared across map loads.
+  svs
+  /// Map-level server state for the current world.
+  sv
+  /// Loaded game-VM instance providing server game logic.
+  gvm
+  /// Configuration-variable registry consulted by this subsystem.
+  cvars
+end struct
 /// Create `mq3.server.abi.Globals` with svs=serverStatic(maxClients, numSnapshotEntities); sv=server(); gvm=void; cvars=cvars().
 /// @param maxClients Max clients passed as `maxClients` to `mq3.server.abi.serverStatic`.
 /// @param numSnapshotEntities Num snapshot entities passed as `numSnapshotEntities` to `mq3.server.abi.serverStatic`.

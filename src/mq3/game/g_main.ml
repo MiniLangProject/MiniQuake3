@@ -21,36 +21,62 @@ import mq3.game.client_commands as clientCommands
 import mq3.game.server_commands as serverCommands
 import mq3.shared.q_shared_runtime as shared
 
+/// Game-module VM command identifier selecting init.
 const GAME_INIT = 0
+/// Game-module VM command identifier selecting shutdown.
 const GAME_SHUTDOWN = 1
+/// Game-module VM command identifier selecting client connect.
 const GAME_CLIENT_CONNECT = 2
+/// Game-module VM command identifier selecting client begin.
 const GAME_CLIENT_BEGIN = 3
+/// Game-module VM command identifier selecting client user information changed.
 const GAME_CLIENT_USERINFO_CHANGED = 4
+/// Game-module VM command identifier selecting client disconnect.
 const GAME_CLIENT_DISCONNECT = 5
+/// Game-module VM command identifier selecting client command.
 const GAME_CLIENT_COMMAND = 6
+/// Game-module VM command identifier selecting client think.
 const GAME_CLIENT_THINK = 7
+/// Game-module VM command identifier selecting run frame.
 const GAME_RUN_FRAME = 8
+/// Game-module VM command identifier selecting console command.
 const GAME_CONSOLE_COMMAND = 9
+/// VM command requesting one bot-AI frame from the game module.
 const BOTAI_START_FRAME = 10
 
 // Runtime keeps the engine-owned inputs which native qagame obtains through
 // traps.  Function slots default to the real port, while making the ABI switch
 // independently differential-testable without replacing gameplay code.
 struct Runtime
+  /// Game-level state shared with the operation or runtime.
   level
+  /// Map entity text supplied to game-module initialization.
   gmainEntityText
+  /// Arguments supplied to the current game-module command dispatch.
   gmainArgv
+  /// Caller context retained for game-module entry-point callbacks.
   gmainContext
+  /// Injected callback for gmain init; invoked through the Runtime service/state record.
   gmainInitFn
+  /// Injected callback for gmain shutdown; invoked through the Runtime service/state record.
   gmainShutdownFn
+  /// Injected callback for gmain connect; invoked through the Runtime service/state record.
   gmainConnectFn
+  /// Injected callback for gmain think; invoked through the Runtime service/state record.
   gmainThinkFn
+  /// Injected callback for gmain user information; invoked through the Runtime service/state record.
   gmainUserinfoFn
+  /// Injected callback for gmain disconnect; invoked through the Runtime service/state record.
   gmainDisconnectFn
+  /// Injected callback for gmain begin; invoked through the Runtime service/state record.
   gmainBeginFn
+  /// Injected callback for gmain command; invoked through the Runtime service/state record.
   gmainCommandFn
+  /// Injected callback for gmain frame; invoked through the Runtime service/state record.
   gmainFrameFn
+  /// Injected callback for gmain console; invoked through the Runtime service/state record.
   gmainConsoleFn
+  /// Injected callback for gmain bot frame; invoked through the Runtime service/state record.
   gmainBotFrameFn
 end struct
 

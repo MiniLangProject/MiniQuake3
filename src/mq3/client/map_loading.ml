@@ -19,9 +19,39 @@ import std.string as strings
 
 // The map screen releases its textures before the match uploads its HUD.
 const FIRST_TEXTURE=3072
+/// Texture-cache capacity reserved for the indexed map-loading screen renderer.
 const TEXTURE_COUNT=980
 /// Stores map loading screen record, including `archive`, `scripts`, `assets`, `kinds`, `mapName`, `serverName` and additional values.
-struct Screen archive scripts assets kinds mapName serverName localGame catalog loadingInfo startedAt indexMillis end struct
+struct Screen
+  /// When constructing this record, `create` supplies `archive` for this member. Used by `hasImage` and
+  /// `show` during subsequent processing.
+  archive
+  /// When constructing this record, `create` supplies `scripts` for this member. Used by `hasImage` and
+  /// `show` during subsequent processing.
+  scripts
+  /// Artwork resources retained by the map-loading screen for its preview and loading presentation.
+  assets
+  /// When constructing this record, `create` supplies `["shaderNoMip","shader","shaderNoMip"]` for this
+  /// member. Used by `collectIcons` and `show` during subsequent processing.
+  kinds
+  /// Level name displayed while map assets and the playable scene are being prepared.
+  mapName
+  /// Display or connection name of the selected game server.
+  serverName
+  /// When constructing this record, `create` supplies `localGame` for this member. Used by `layout`
+  /// during subsequent processing.
+  localGame
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `show` and `release` during subsequent processing.
+  catalog
+  /// When constructing this record, `create` supplies `cgameInfo.create()` for this member. Used by
+  /// `collectIcons` and `layout` during subsequent processing.
+  loadingInfo
+  /// When constructing this record, `create` supplies `startedAt` for this member.
+  startedAt
+  /// When constructing this record, `create` supplies `indexMillis` for this member.
+  indexMillis
+end struct
 
 /// Calls `mq3.platform.playable_window.milliseconds`, `mq3.renderer.playable_materials.buildScriptIndex`, `mq3.renderer.shader_index.find` and additional helpers from map loading `create`.
 /// @param archive Opened game archive supplying maps, models, textures or other assets.

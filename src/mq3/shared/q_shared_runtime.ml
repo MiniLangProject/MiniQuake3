@@ -9,13 +9,30 @@ import mq3.shared.info as info
 import mq3.shared.parser as parser
 import std.string as strings
 
+/// Maximum character-buffer size for one parsed token.
 const MAX_TOKEN_CHARS=1024
+/// Byte limit for a normal backslash-delimited information string.
 const MAX_INFO_STRING=1024
+/// Byte limit for an extended backslash-delimited information string.
 const BIG_INFO_STRING=8192
 /// ParseSession record for shared.q_shared_runtime, containing `name`, `state`, `diagnostics`.
-struct ParseSession name state diagnostics end struct
+struct ParseSession
+  /// Diagnostic name of the active parse session.
+  name
+  /// Shared token-parser state retained across parse calls.
+  state
+  /// Collected parser or operation diagnostics retained for the caller.
+  diagnostics
+end struct
 /// InfoPair record for shared.q_shared_runtime, containing `head`, `key`, `value`.
-struct InfoPair head key value end struct
+struct InfoPair
+  /// Unconsumed remainder of the backslash-delimited information string.
+  head
+  /// Key extracted from the current information-string pair.
+  key
+  /// Value extracted from the current information-string pair.
+  value
+end struct
 
 /// Clamp q shared runtime in shared.q_shared_runtime; the normal completion returns `value`.
 /// @param minimum Minimum used in `(value < minimum)`.

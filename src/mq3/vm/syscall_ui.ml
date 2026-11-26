@@ -6,19 +6,124 @@ import mq3.vm.syscall_common as common
 import mq3.vm.syscall_ui_media as media
 import mq3.compat.numeric as n
 
+/// Byte size used for client state storage or binary layout in mq3.vm.syscall_ui.
 const CLIENT_STATE_SIZE = 3084
+/// Byte size used for glconfig storage or binary layout in mq3.vm.syscall_ui.
 const GLCONFIG_SIZE = 11332
 
 /// ClientServices record for vm.syscall_ui, containing `clipboardFn`, `glconfigFn`, `clientStateFn`, `configStringFn`.
-struct ClientServices clipboardFn glconfigFn clientStateFn configStringFn end struct
+struct ClientServices
+  /// Injected callback for clipboard; invoked through the ClientServices service/state record.
+  clipboardFn
+  /// Injected callback for glconfig; invoked through the ClientServices service/state record.
+  glconfigFn
+  /// Injected callback for client state; invoked through the ClientServices service/state record.
+  clientStateFn
+  /// Injected callback for config string; invoked through the ClientServices service/state record.
+  configStringFn
+end struct
 /// KeyServices record for vm.syscall_ui, containing `keyNameFn`, `bindingFn`, `setBindingFn`, `isDownFn`, `getOverstrikeFn`, `setOverstrikeFn`, and 3 further fields.
-struct KeyServices keyNameFn bindingFn setBindingFn isDownFn getOverstrikeFn setOverstrikeFn clearFn getCatcherFn setCatcherFn end struct
+struct KeyServices
+  /// Injected callback for key name; invoked through the KeyServices service/state record.
+  keyNameFn
+  /// Injected callback for binding; invoked through the KeyServices service/state record.
+  bindingFn
+  /// Injected callback for set binding; invoked through the KeyServices service/state record.
+  setBindingFn
+  /// Injected callback for is down; invoked through the KeyServices service/state record.
+  isDownFn
+  /// Injected callback for get overstrike; invoked through the KeyServices service/state record.
+  getOverstrikeFn
+  /// Injected callback for set overstrike; invoked through the KeyServices service/state record.
+  setOverstrikeFn
+  /// Injected callback for clear; invoked through the KeyServices service/state record.
+  clearFn
+  /// Injected callback for get catcher; invoked through the KeyServices service/state record.
+  getCatcherFn
+  /// Injected callback for set catcher; invoked through the KeyServices service/state record.
+  setCatcherFn
+end struct
 /// RendererServices record for vm.syscall_ui, containing `registerModelFn`, `registerSkinFn`, `registerShaderNoMipFn`, `clearSceneFn`, `setColorFn`, `drawStretchPicFn`, and 1 further fields.
-struct RendererServices registerModelFn registerSkinFn registerShaderNoMipFn clearSceneFn setColorFn drawStretchPicFn updateScreenFn end struct
+struct RendererServices
+  /// Injected callback for register model; invoked through the RendererServices service/state record.
+  registerModelFn
+  /// Injected callback for register skin; invoked through the RendererServices service/state record.
+  registerSkinFn
+  /// Injected callback for register shader no mip; invoked through the RendererServices service/state
+  /// record.
+  registerShaderNoMipFn
+  /// Injected callback for clear scene; invoked through the RendererServices service/state record.
+  clearSceneFn
+  /// Injected callback for set color; invoked through the RendererServices service/state record.
+  setColorFn
+  /// Injected callback for draw stretch pic; invoked through the RendererServices service/state record.
+  drawStretchPicFn
+  /// Injected callback for update screen; invoked through the RendererServices service/state record.
+  updateScreenFn
+end struct
 /// LanServices record for vm.syscall_ui, containing `loadFn`, `saveFn`, `addFn`, `removeFn`, `pingQueueCountFn`, `clearPingFn`, and 12 further fields.
-struct LanServices loadFn saveFn addFn removeFn pingQueueCountFn clearPingFn getPingFn getPingInfoFn serverCountFn serverAddressFn serverInfoFn serverPingFn markVisibleFn isVisibleFn updatePingsFn resetPingsFn serverStatusFn compareFn end struct
+struct LanServices
+  /// Injected callback for load; invoked through the LanServices service/state record.
+  loadFn
+  /// Injected callback for save; invoked through the LanServices service/state record.
+  saveFn
+  /// Injected callback for add; invoked through the LanServices service/state record.
+  addFn
+  /// Injected callback for remove; invoked through the LanServices service/state record.
+  removeFn
+  /// Injected callback for ping queue count; invoked through the LanServices service/state record.
+  pingQueueCountFn
+  /// Injected callback for clear ping; invoked through the LanServices service/state record.
+  clearPingFn
+  /// Injected callback for get ping; invoked through the LanServices service/state record.
+  getPingFn
+  /// Injected callback for get ping info; invoked through the LanServices service/state record.
+  getPingInfoFn
+  /// Injected callback for server count; invoked through the LanServices service/state record.
+  serverCountFn
+  /// Injected callback for server address; invoked through the LanServices service/state record.
+  serverAddressFn
+  /// Injected callback for server info; invoked through the LanServices service/state record.
+  serverInfoFn
+  /// Injected callback for server ping; invoked through the LanServices service/state record.
+  serverPingFn
+  /// Injected callback for mark visible; invoked through the LanServices service/state record.
+  markVisibleFn
+  /// Injected callback for is visible; invoked through the LanServices service/state record.
+  isVisibleFn
+  /// Injected callback for update pings; invoked through the LanServices service/state record.
+  updatePingsFn
+  /// Injected callback for reset pings; invoked through the LanServices service/state record.
+  resetPingsFn
+  /// Injected callback for server status; invoked through the LanServices service/state record.
+  serverStatusFn
+  /// Injected callback for compare; invoked through the LanServices service/state record.
+  compareFn
+end struct
 /// Services record for vm.syscall_ui, containing `shared`, `context`, `client`, `keys`, `renderer`, `lan`, and 4 further fields.
-struct Services shared context client keys renderer lan fileListFn memoryRemainingFn mediaServices extendedFn end struct
+struct Services
+  /// Shared host service bundle used by the VM syscall adapters.
+  shared
+  /// Opaque caller-supplied context available to UI VM client, keyboard, renderer, and server-browser
+  /// services.
+  context
+  /// Client-state service bundle supplied to UI syscalls.
+  client
+  /// Keyboard-state service bundle supplied to UI operations.
+  keys
+  /// Renderer service bundle used to register media and submit drawing operations.
+  renderer
+  /// Local-network browser service bundle used by the UI.
+  lan
+  /// Injected callback for file list; invoked through the Services service/state record.
+  fileListFn
+  /// Injected callback for memory remaining; invoked through the Services service/state record.
+  memoryRemainingFn
+  /// Media-registration and rendering callback bundle.
+  mediaServices
+  /// Injected callback for extended; invoked through the Services service/state record.
+  extendedFn
+end struct
 
 /// Create `mq3.vm.syscall_ui.ClientServices` with clipboardFn=void; glconfigFn=void; clientStateFn=void; configStringFn=void.
 function clientServices() return ClientServices(void,void,void,void) end function

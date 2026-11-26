@@ -21,36 +21,236 @@ import mq3.compat.numeric as numeric
 import std.array as arrays
 import std.ds.list as lists
 
+/// Renderer entity type for an animated or inline model.
 const RT_MODEL=0
+/// Renderer entity type for a camera-facing sprite.
 const RT_SPRITE=2
+/// Renderer entity type for a beam between two endpoints.
 const RT_BEAM=3
+/// Renderer entity type for the core of a railgun trail.
 const RT_RAIL_CORE=4
+/// Renderer entity type for rings around a railgun trail.
 const RT_RAIL_RINGS=5
+/// Renderer entity type for the lightning-gun beam.
 const RT_LIGHTNING=6
+/// Entity-rendering flag that uses the shortened depth range for first-person weapons.
 const RF_DEPTHHACK=8
+/// Entity-rendering flag that suppresses shadow generation.
 const RF_NOSHADOW=64
+/// Entity-rendering flag that enables projection onto the supplied shadow plane.
 const RF_SHADOW_PLANE=256
+/// Builtin shader name used for projected entity shadows.
 const PROJECTION_SHADOW_SHADER="$mq3/projectionShadow"
+/// Maximum number of adjacency records retained for one shadow-mesh edge.
 const MAX_SHADOW_EDGE_DEFS=32
 
 /// Data record for `mq3.renderer.qvm_scene_geometry.Triangle`; groups `positions`, `texCoords`, `normals`, `colors`, `entityColor`, `entityTexCoord`, and 17 further fields.
-struct Triangle positions texCoords normals colors entityColor entityTexCoord shaderTime modelHandle customSkin shaderHandle shaderName surfaceName entityIndex surfaceIndex renderfx lightmapCoords lightmapIndex fogIndex dynamicLight dynamicLightOrigin dynamicLightAxis dynamicLightBounds vertexIds end struct
+struct Triangle
+  /// Three world-space corners produced by expansion of a VM-submitted scene entity.
+  positions
+  /// Texture coordinates of the three corners after expanding a submitted scene entity into triangles.
+  texCoords
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Corner colors carried by the expanded scene triangle for material color generation.
+  colors
+  /// Entity-supplied color used by entity-driven shader stages.
+  entityColor
+  /// Entity-supplied texture offset used by texture-coordinate modifiers.
+  entityTexCoord
+  /// Time offset in seconds subtracted from the view time for entity shader effects.
+  shaderTime
+  /// Registered model handle used to identify cached mesh data.
+  modelHandle
+  /// Explicit skin handle overriding the model's default skin.
+  customSkin
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Material name resolved for the expanded entity or model-surface triangle.
+  shaderName
+  /// Model-surface name used to select a skin or material mapping.
+  surfaceName
+  /// Index of the scene entity that produced this geometry.
+  entityIndex
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Bit mask of entity rendering options, such as depth hack or shadow suppression.
+  renderfx
+  /// Coordinates used to sample the baked lightmap.
+  lightmapCoords
+  /// Index or special selector identifying the surface's baked lightmap.
+  lightmapIndex
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Dynamic-light selection or state used when drawing this geometry.
+  dynamicLight
+  /// Dynamic-light origin expressed in the geometry's coordinate system.
+  dynamicLightOrigin
+  /// Orientation basis used to transform dynamic-light coordinates.
+  dynamicLightAxis
+  /// Bounds used to reject dynamic lights that cannot affect the geometry.
+  dynamicLightBounds
+  /// Source vertex identifiers retained for sharing or caching transformed results.
+  vertexIds
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.ShadowTriangle`; groups `positions`, `entityIndex`, `surfaceIndex`.
-struct ShadowTriangle positions entityIndex surfaceIndex end struct
+struct ShadowTriangle
+  /// World-space corners retained for projected or stencil-shadow processing.
+  positions
+  /// Index of the scene entity that produced this geometry.
+  entityIndex
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.ShadowEdge`; groups `i2`, `facing`.
-struct ShadowEdge i2 facing end struct
+struct ShadowEdge
+  /// Index of the second vertex of a directed shadow edge.
+  i2
+  /// Whether the shadow triangle faces the light.
+  facing
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.Geometry`; groups `triangles`, `triangleCount`, `modelEntities`, `spriteEntities`, `polySurfaces`, `skippedInline`, and 7 further fields.
-struct Geometry triangles triangleCount modelEntities spriteEntities polySurfaces skippedInline skippedUnsupported sourceVertices vertexTransforms portals culledInline shadowTriangles shadowTriangleCount end struct
+struct Geometry
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+  /// Number of model entities converted into renderable geometry.
+  modelEntities
+  /// Number of sprite entities converted into renderable geometry.
+  spriteEntities
+  /// Number of submitted polygon surfaces converted into triangles.
+  polySurfaces
+  /// Number of inline model entities omitted from geometry conversion.
+  skippedInline
+  /// Number of entity types unsupported by the geometry converter.
+  skippedUnsupported
+  /// Number of source vertices considered by geometry conversion.
+  sourceVertices
+  /// Number of vertex transformations performed during geometry conversion.
+  vertexTransforms
+  /// Portal entities or surfaces collected while preparing the scene.
+  portals
+  /// Number of inline model entities rejected by visibility or bounds checks.
+  culledInline
+  /// Triangles collected for the stencil or projection shadow pass.
+  shadowTriangles
+  /// Number of triangles collected for shadow rendering.
+  shadowTriangleCount
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.InlineModel`; groups `index`, `renderData`, `shaderNames`, `bounds`, `dynamicLightFlags`.
-struct InlineModel index renderData shaderNames bounds dynamicLightFlags end struct
+struct InlineModel
+  /// Position of this record in its owning table or list.
+  index
+  /// Prepared triangle and vertex data used to render the world or model.
+  renderData
+  /// Shader names associated with the model's surfaces.
+  shaderNames
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Dynamic-light eligibility flags associated with the inline model.
+  dynamicLightFlags
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.Md3Selection`; groups `model`, `lod`, `frames`, `cull`.
-struct Md3Selection model lod frames cull end struct
+struct Md3Selection
+  /// Loaded model selected for animation or drawing.
+  model
+  /// Level-of-detail selection used for this model or draw result.
+  lod
+  /// Validated current and previous MD3 frame selection used for interpolation.
+  frames
+  /// Culling mode or classification applied to this geometry.
+  cull
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.FrameEntry`; groups `modelHandle`, `surfaceIndex`, `frame`, `oldFrame`, `backlerp`, `xyz`, and 3 further fields.
-struct FrameEntry modelHandle surfaceIndex frame oldFrame backlerp xyz normals packed vertexCount end struct
+struct FrameEntry
+  /// Registered model handle used to identify cached mesh data.
+  modelHandle
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Current model animation-frame index.
+  frame
+  /// Previous animation frame used for interpolation.
+  oldFrame
+  /// Interpolation weight of the previous frame: zero selects current, one selects previous.
+  backlerp
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Whether the cached frame uses the model's packed vertex representation.
+  packed
+  /// Number of vertices represented by the cached frame.
+  vertexCount
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.TransformEntry`; groups `modelHandle`, `surfaceIndex`, `frame`, `oldFrame`, `backlerp`, `origin`, and 8 further fields.
-struct TransformEntry modelHandle surfaceIndex frame oldFrame backlerp origin axis positions normals lightAmbient lightDirected lightDirection lightAlpha colors end struct
+struct TransformEntry
+  /// Registered model handle used to identify cached mesh data.
+  modelHandle
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Current model animation-frame index.
+  frame
+  /// Previous animation frame used for interpolation.
+  oldFrame
+  /// Interpolation weight of the previous frame: zero selects current, one selects previous.
+  backlerp
+  /// Entity translation included in the cache key for transformed model geometry.
+  origin
+  /// Entity orientation basis included in the transformed-geometry cache key.
+  axis
+  /// Model vertex positions cached after the entity orientation and translation are applied.
+  positions
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Ambient light contribution used when calculating vertex colors.
+  lightAmbient
+  /// Directional light contribution used when calculating vertex colors.
+  lightDirected
+  /// Direction from which the entity's dominant light arrives.
+  lightDirection
+  /// Alpha component retained when applying entity lighting.
+  lightAlpha
+  /// Lit vertex colors cached with the entity's transformed model geometry.
+  colors
+end struct
 /// Data record for `mq3.renderer.qvm_scene_geometry.FrameCache`; groups `normalTable`, `entries`, `maxEntries`, `hits`, `misses`, `transforms`, and 11 further fields.
-struct FrameCache normalTable entries maxEntries hits misses transforms transformHits transformMisses entryCount entryNext transformCount transformNext packedNormalTable frameIndex transformIndex frameLookupSteps transformLookupSteps end struct
+struct FrameCache
+  /// Lookup table used to decode packed model normals.
+  normalTable
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Maximum number of entries retained by the cache.
+  maxEntries
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+  /// Cached transformed geometry reused across compatible entity draws.
+  transforms
+  /// Number of transformed-geometry cache hits.
+  transformHits
+  /// Number of transformed-geometry cache misses.
+  transformMisses
+  /// Number of valid entries currently stored in the cache.
+  entryCount
+  /// Next cache slot selected for insertion or replacement.
+  entryNext
+  /// Number of valid transformed-geometry entries in the cache.
+  transformCount
+  /// Next transformed-geometry slot selected for replacement.
+  transformNext
+  /// Packed lookup table used to decode model normal angles.
+  packedNormalTable
+  /// Index used to look up cached animation-frame data.
+  frameIndex
+  /// Index used to look up cached entity transforms.
+  transformIndex
+  /// Number of probe steps performed by frame-cache lookups.
+  frameLookupSteps
+  /// Number of probe steps performed by transform-cache lookups.
+  transformLookupSteps
+end struct
 
 /// Creates error `7670` with message `"QVM scene geometry: "+message`.
 /// @param message Input used in the result expression `error(7670,"QVM scene geometry: "+message)`.

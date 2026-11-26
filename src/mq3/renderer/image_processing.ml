@@ -4,6 +4,7 @@
 package mq3.renderer.image_processing
 import mq3.compat.numeric as n
 
+/// Largest scanline width supported by the image resampling workspace.
 const MAX_RESAMPLE_WIDTH=2048
 
 /// Creates error `7160` with message `"image processing: "+message`.

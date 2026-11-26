@@ -10,40 +10,70 @@ import mq3.game.constants as c
 import mq3.game.game_internal_headers as internal
 import mq3.collision.brush as brush
 
+/// Combined movement mask for landing, knockback, and water-jump timers.
 const ALL_TIMES = 352
+/// Small collision-plane overbounce factor that prevents motion from sticking to a surface.
 const OVERCLIP = internal.OVERCLIP
 /// `Command` record for pmove, containing `serverTime`, `angles`, `buttons`, `weapon` and `forwardmove` and related fields.
 struct Command
+  /// Server timestamp carried by the current user command.
   serverTime
+  /// Orientation angles used by the entity or movement operation.
   angles
+  /// Button bits from the current user command.
   buttons
+  /// Selected or reported weapon identifier.
   weapon
+  /// Requested forward/backward movement component.
   forwardmove
+  /// Requested right/left movement component.
   rightmove
+  /// Requested upward/downward movement component.
   upmove
 end struct
 /// `PmoveContext` record for pmove, containing `ps`, `cmd`, `k`, `noFootsteps` and `gauntletHit` and related fields.
 struct PmoveContext
+  /// Authoritative player state used for movement, prediction, and snapshot delivery.
   ps
+  /// Current user-command input supplied to movement or client processing.
   cmd
+  /// Low-level kinematic state used by the player movement solver.
   k
+  /// Nonzero when server/game settings suppress footstep events.
   noFootsteps
+  /// Nonzero when the current gauntlet attack can hit a target.
   gauntletHit
+  /// Nonzero when movement uses fixed-duration simulation steps.
   fixed
+  /// Nonzero when mission-pack rules and content are enabled.
   missionpack
+  /// Fixed movement-step duration in milliseconds.
   fixedMsec
+  /// CONTENTS_* mask identifying the liquid around the player.
   watertype
+  /// Horizontal speed used to select movement and footstep behavior.
   xyspeed
+  /// Forward direction vector derived from the current view orientation.
   forward
+  /// Right direction vector derived from the current view orientation.
   right
+  /// Up direction vector derived from the current view orientation.
   up
+  /// Duration of the current movement step in milliseconds.
   msec
+  /// Trace result used to determine ground contact for the current movement step.
   groundTrace
+  /// Position retained from the preceding movement step.
   previousOrigin
+  /// Velocity retained from the preceding movement step.
   previousVelocity
+  /// Liquid-immersion classification retained from the preceding step.
   previousWaterlevel
+  /// Injected callback for trace; invoked through the PmoveContext service/state record.
   traceFn
+  /// Injected callback for point; invoked through the PmoveContext service/state record.
   pointFn
+  /// Opaque caller-supplied context available to player-movement trace and point-contents callbacks.
   context
 end struct
 

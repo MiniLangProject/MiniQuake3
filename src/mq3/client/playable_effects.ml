@@ -7,23 +7,69 @@ import mq3.platform.playable_window as window
 import std.string as strings
 import mq3.compat.numeric as numeric
 
+/// Pickup category used to classify unknown items for HUD presentation.
 const ITEM_UNKNOWN=0
+/// Pickup category used to classify health items for HUD presentation.
 const ITEM_HEALTH=1
+/// Pickup category used to classify armor items for HUD presentation.
 const ITEM_ARMOR=2
+/// Pickup category used to classify weapon items for HUD presentation.
 const ITEM_WEAPON=3
+/// Pickup category used to classify ammo items for HUD presentation.
 const ITEM_AMMO=4
+/// Pickup category used to classify powerup items for HUD presentation.
 const ITEM_POWERUP=5
+/// Pickup category used to classify holdable items for HUD presentation.
 const ITEM_HOLDABLE=6
+/// Pickup category used to classify team items for HUD presentation.
 const ITEM_TEAM=7
+/// Default effect duration in milliseconds when the caller supplies no override.
 const DEFAULT_EFFECT_MILLISECONDS=180
+/// Upper duration bound in milliseconds for effect processing.
 const MAX_EFFECT_MILLISECONDS=2000
 
 /// Stores playable effects item marker record, including `classname`, `origin`, `active`.
-struct ItemMarker classname origin active end struct
+struct ItemMarker
+  /// Item classname used to choose the appearance of the projected pickup marker.
+  classname
+  /// World-space item position projected to place the pickup marker on screen.
+  origin
+  /// When constructing this record, `item` supplies `true` for this member.
+  active
+end struct
 /// Stores playable effects shot effect record, including `startPoint`, `impactPoint`, `bornAt`, `expiresAt`, `key`, `classname` and additional values.
-struct ShotEffect startPoint impactPoint bornAt expiresAt key classname normal worldHit end struct
+struct ShotEffect
+  /// When constructing this record, `shot` supplies `startPoint` for this member.
+  startPoint
+  /// When constructing this record, `shot` supplies `impactPoint` for this member.
+  impactPoint
+  /// When constructing this record, `shot` supplies `nowMilliseconds` for this member.
+  bornAt
+  /// When constructing this record, `shot` supplies `nowMilliseconds+durationMilliseconds` for this
+  /// member.
+  expiresAt
+  /// When constructing this record, `shot` supplies `nowMilliseconds` for this member.
+  key
+  /// Weapon classname retained with a shot effect to select its hit-feedback appearance.
+  classname
+  /// Impact-surface normal retained with the shot-feedback effect for decal and hit presentation.
+  normal
+  /// When constructing this record, `shot` supplies `false` for this member.
+  worldHit
+end struct
 /// Stores playable effects line command record, including `a`, `b`, `red`, `green`, `blue`.
-struct LineCommand a b red green blue end struct
+struct LineCommand
+  /// Alpha component controlling opacity or blending.
+  a
+  /// Blue component of the stored color.
+  b
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
 /// Computes `point!=void and len(point)==3` for playable effects `validPoint`.
 /// @param point Sequence whose length/content is inspected by `validPoint`.

@@ -7,22 +7,66 @@ import mq3.shared.math as qmath
 import mq3.compat.transcendental as trans
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used for line-of-sight queries.
 const SIGHT_MASK=0x6000001
+/// Duration or scheduling interval in milliseconds controlling think.
 const THINK_MILLISECONDS=100
+/// Duration or scheduling interval in milliseconds controlling attack cooldown.
 const ATTACK_COOLDOWN_MILLISECONDS=100
+/// Maximum target distance at which the native enemy AI attempts to attack.
 const ATTACK_RANGE=900.0
+/// Target-distance threshold controlling the native enemy's chase movement.
 const CHASE_DISTANCE=280.0
+/// Movement speed used when advancing a native enemy toward its target.
 const MOVE_SPEED=105.0
+/// Lateral movement speed used by the native enemy's strafe behavior.
 const STRAFE_SPEED=72.0
+/// Radius used by the native enemy's local patrol movement.
 const PATROL_RADIUS=30.0
+/// Fallback damage setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_DAMAGE=7
 
 /// Stores playable enemy ai brain record, including `mode`, `nextThink`, `nextAttack`, `strafeSide`, `lastSeen`, `visible`.
-struct Brain mode nextThink nextAttack strafeSide lastSeen visible end struct
+struct Brain
+  /// When constructing this record, `state` supplies `"patrol"` for this member. Used by `moveTarget`
+  /// and `stepWithTrace` during subsequent processing.
+  mode
+  /// When constructing this record, `state` supplies `now+(index%3)*17` for this member. Used by
+  /// `stepWithTrace` during subsequent processing.
+  nextThink
+  /// When constructing this record, `state` supplies `now+350+(index%4)*90` for this member. Used by
+  /// `stepWithTrace` during subsequent processing.
+  nextAttack
+  /// When constructing this record, `state` supplies `side` for this member. Used by `moveTarget` and
+  /// `stepWithTrace` during subsequent processing.
+  strafeSide
+  /// When constructing this record, `state` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `stepWithTrace` during subsequent processing.
+  lastSeen
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+end struct
 /// Stores playable enemy ai state, including `brains`, `lastTime`, `events`, `visibleCount`.
-struct State brains lastTime events visibleCount end struct
+struct State
+  /// When constructing this record, `state` supplies `brains` for this member.
+  brains
+  /// When constructing this record, `state` supplies `now` for this member.
+  lastTime
+  /// When constructing this record, `state` supplies an empty list for this member.
+  events
+  /// Number of enemies that can see the player during the current AI update; cleared before each
+  /// visibility pass.
+  visibleCount
+end struct
 /// Stores playable enemy ai event record, including `damage`, `side`, `attacker`.
-struct Event damage side attacker end struct
+struct Event
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `stepWithTrace` supplies `brain.strafeSide` for this member.
+  side
+  /// When constructing this record, `stepWithTrace` supplies `index` for this member.
+  attacker
+end struct
 
 /// Creates the playable enemy ai error `7540` with diagnostic text `"preview enemy AI: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview enemy AI: "+message`.

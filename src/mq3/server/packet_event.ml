@@ -8,26 +8,59 @@ import mq3.server.netchan as serverNetchan
 import mq3.qcommon.netchan as netchan
 import mq3.compat.numeric as numeric
 
+/// Client-state value identifying an unused slot excluded from sequenced-packet matching.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Network-address kind for local loopback delivery.
 const NA_LOOPBACK=2
+/// Network-address kind for an IPv4 endpoint.
 const NA_IP=4
 
 /// Client record for server.packet_event, containing `state`, `netchan`, `lastPacketTime`.
-struct Client state netchan lastPacketTime end struct
+struct Client
+  /// Connection lifecycle value that determines whether a sequenced packet may belong to this
+  /// connection.
+  state
+  /// Sequenced network channel used to exchange this client's packets.
+  netchan
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+end struct
 /// Create `mq3.server.packet_event.Client` with state=state; netchan=serverNetchanState; lastPacketTime=0.
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.packet_event.Client` record.
 /// @param serverNetchanState Initial `netchan` field stored in the returned or constructed `mq3.server.packet_event.Client` record.
 function client(state,serverNetchanState) return Client(state,serverNetchanState,0) end function
 
 /// Runtime record for server.packet_event, containing `time`, `clients`.
-struct Runtime time clients end struct
+struct Runtime
+  /// Server timestamp attached to accepted client packets for activity tracking, in milliseconds.
+  time
+  /// Client slots matched against source addresses and packet channel identifiers.
+  clients
+end struct
 /// Create `mq3.server.packet_event.Runtime` with time=0; clients=clients.
 /// @param clients Initial `clients` field stored in the returned or constructed `mq3.server.packet_event.Runtime` record.
 function runtime(clients) return Runtime(0,clients) end function
 
 /// Services record for server.packet_event, containing `connectionlessRuntime`, `connectionlessHost`, `processFn`, `executeFn`, `disconnectFn`, `diagnosticFn`, and 1 further fields.
-struct Services connectionlessRuntime connectionlessHost processFn executeFn disconnectFn diagnosticFn context end struct
+struct Services
+  /// Runtime used to dispatch out-of-band packets.
+  connectionlessRuntime
+  /// Host services used by the connectionless packet dispatcher.
+  connectionlessHost
+  /// Host callback that processes a sequenced incoming client packet.
+  processFn
+  /// Host callback that executes a routed command or operation on the host.
+  executeFn
+  /// Host callback that processes a client disconnection through the host network lifecycle.
+  disconnectFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with sequenced packet processing, message execution, and
+  /// disconnect handling.
+  context
+end struct
 /// Create `mq3.server.packet_event.Services` with connectionlessRuntime=connectionlessRuntime; connectionlessHost=connectionlessHost; processFn=processNetchan; executeFn=void; disconnectFn=void; diagnosticFn=void; context=void.
 /// @param connectionlessRuntime Initial `connectionlessRuntime` field stored in the returned or constructed `mq3.server.packet_event.Services` record.
 /// @param connectionlessHost Initial `connectionlessHost` field stored in the returned or constructed `mq3.server.packet_event.Services` record.

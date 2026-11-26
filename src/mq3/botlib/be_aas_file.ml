@@ -7,22 +7,96 @@ import mq3.format.aas as aas
 import mq3.compat.numeric as n
 import std.fs as fs
 
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that the AAS map file could not be opened.
 const BLERR_CANNOTOPENAASFILE=4
+/// Bot-library error indicating an invalid AAS file signature.
 const BLERR_WRONGAASFILEID=5
+/// Bot-library error indicating an unsupported or mismatched AAS map version.
 const BLERR_WRONGAASFILEVERSION=6
+/// Bot-library error indicating an unreadable or malformed AAS data lump.
 const BLERR_CANNOTREADAASLUMP=7
 
 /// `Services` record for be aas file, containing `context`, `readFileFn`, `writeFileFn` and `printFn`.
-struct Services context readFileFn writeFileFn printFn end struct
+struct Services
+  /// Caller-supplied data associated with AAS file reads, writes, and file diagnostics.
+  context
+  /// Host callback that reads a requested file through the host filesystem.
+  readFileFn
+  /// Host callback that writes a complete file through the host filesystem.
+  writeFileFn
+  /// Host callback that prints navigation-file loading and serialization diagnostics.
+  printFn
+end struct
 /// `State` record for be aas file, containing `services`, `map`, `loaded`, `initialized` and `saveFile` and related fields.
-struct State services map loaded initialized saveFile bspChecksum lastError end struct
+struct State
+  /// File access and diagnostic callbacks used by the AAS loader and serializer.
+  services
+  /// Parsed AAS map currently owned by the file subsystem.
+  map
+  /// True after an AAS file has been loaded and its map data accepted.
+  loaded
+  /// Initialization status retained alongside the loaded AAS file state.
+  initialized
+  /// True when the current AAS data should be saved back to a file.
+  saveFile
+  /// Checksum of the BSP map associated with the navigation data.
+  bspChecksum
+  /// Most recent error code reported by this subsystem.
+  lastError
+end struct
 /// `LumpLoad` record for be aas file, containing `data`, `nextOffset` and `sequential`.
-struct LumpLoad data nextOffset sequential end struct
+struct LumpLoad
+  /// Bytes decoded or copied from the requested AAS lump.
+  data
+  /// Byte position immediately after the loaded lump.
+  nextOffset
+  /// True when this lump begins where the preceding lump ended.
+  sequential
+end struct
 /// `Writer` record for be aas file, containing `header`, `chunks` and `offset`.
-struct Writer header chunks offset end struct
+struct Writer
+  /// AAS file-header bytes containing the lump directory.
+  header
+  /// Serialized lump payloads accumulated in output order.
+  chunks
+  /// Next byte offset for appending a serialized AAS lump.
+  offset
+end struct
 /// `FileInfo` record for be aas file, containing `version`, `numVertexes`, `numPlanes`, `numEdges` and `edgeIndexSize` and related fields.
-struct FileInfo version numVertexes numPlanes numEdges edgeIndexSize numFaces faceIndexSize numAreas numAreaSettings reachabilitySize numNodes numPortals portalIndexSize numClusters groundedAreas end struct
+struct FileInfo
+  /// AAS file-format version reported by the loaded map.
+  version
+  /// Number of vertexes represented by this record.
+  numVertexes
+  /// Number of planes represented by this record.
+  numPlanes
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Number of signed edge references in the AAS edge-index lump.
+  edgeIndexSize
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Number of signed face references in the AAS face-index lump.
+  faceIndexSize
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+  /// Number of area settings represented by this record.
+  numAreaSettings
+  /// Number of records in the AAS reachability lump.
+  reachabilitySize
+  /// Number of nodes represented by this record.
+  numNodes
+  /// Number of cluster portals.
+  numPortals
+  /// Number of portal references in the AAS portal-index lump.
+  portalIndexSize
+  /// Number of visibility clusters associated with this entity or map.
+  numClusters
+  /// Number of AAS areas marked as grounded.
+  groundedAreas
+end struct
 
 /// Create a `mq3.botlib.be_aas_file.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.

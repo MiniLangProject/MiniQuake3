@@ -6,9 +6,15 @@ package mq3.audio.snd_wavelet_runtime
 import mq3.audio.snd_compressed_paint as compressed
 import mq3.compat.numeric as n
 
+/// Maximum number of mono samples encoded in one wavelet or mu-law block.
 const BLOCK_SAMPLES=2048
 /// Stream record for audio.snd_wavelet_runtime, containing `data`, `count`.
-struct Stream data count end struct
+struct Stream
+  /// Encoded byte stream supplied to the wavelet or mu-law decoder.
+  data
+  /// Number of logical source samples represented by the encoded stream.
+  count
+end struct
 
 /// Compute mu law encode in audio.snd_wavelet_runtime; the normal completion returns `(~ ((sign | (exponent << 4)) | mantissa) & 255)`.
 /// @param sample Sample used in `(sample >= 0)`.

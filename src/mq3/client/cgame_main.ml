@@ -15,51 +15,292 @@ extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 /// @returns The parsed floating-point value; a string with no initial numeric conversion yields zero.
 extern function atof(text as cstr) from "ucrtbase.dll" returns double
 
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Capacity limit for the configstrings collection or bounded storage used by this client module.
 const MAX_CONFIGSTRINGS=1024
+/// Server configuration-string index for music; shared by the client and game protocol.
 const CS_MUSIC=2
+/// Server configuration-string index for game version; shared by the client and game protocol.
 const CS_GAME_VERSION=20
+/// Server configuration-string index for level start time; shared by the client and game protocol.
 const CS_LEVEL_START_TIME=21
+/// Server configuration-string index for items; shared by the client and game protocol.
 const CS_ITEMS=27
+/// Server configuration-string index for models; shared by the client and game protocol.
 const CS_MODELS=32
+/// Server configuration-string index for sounds; shared by the client and game protocol.
 const CS_SOUNDS=288
+/// Server configuration-string index for players; shared by the client and game protocol.
 const CS_PLAYERS=544
+/// Native team identifier for free, used by player and team presentation.
 const TEAM_FREE=0
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Native game-type value for one-on-one tournament play, used when selecting mode-specific CGame media
+/// and initialization.
 const GT_TOURNAMENT=1
+/// Native game-type value for team deathmatch, used when selecting mode-specific CGame media and
+/// initialization.
 const GT_TEAM=3
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// CG VM entry-point ordinal used to initialize the CGame VM.
 const CG_INIT=0
+/// CG VM entry-point ordinal used to shut down the CGame VM.
 const CG_SHUTDOWN=1
+/// CG VM entry-point ordinal used to handle a CGame console command.
 const CG_CONSOLE_COMMAND=2
+/// CG VM entry-point ordinal used to render a CGame frame.
 const CG_DRAW_ACTIVE_FRAME=3
+/// CG VM entry-point ordinal used to query the player currently under the crosshair.
 const CG_CROSSHAIR_PLAYER=4
+/// CG VM entry-point ordinal used to query the latest attacker.
 const CG_LAST_ATTACKER=5
+/// CG VM entry-point ordinal used to deliver a key event to CGame.
 const CG_KEY_EVENT=6
+/// CG VM entry-point ordinal used to deliver pointer motion to CGame.
 const CG_MOUSE_EVENT=7
+/// CG VM entry-point ordinal used to switch CGame event-handling mode.
 const CG_EVENT_HANDLING=8
+/// Menu data-feeder identifier supplying the redteam list list.
 const FEEDER_REDTEAM_LIST=1
+/// Menu data-feeder identifier supplying the blueteam list list.
 const FEEDER_BLUETEAM_LIST=2
+/// Menu data-feeder identifier supplying the scoreboard list.
 const FEEDER_SCOREBOARD=3
 
 /// Stores client game main queued engine action, including `boundary`, `kind`, `name`, `value`, `value2`, `number` and additional values.
-struct Action boundary kind name value value2 number flags dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while initializing CGame, registering media,
+  /// and updating shared client information.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while initializing CGame,
+  /// registering media, and updating shared client information.
+  kind
+  /// Cvar, media asset, command, or other named target referenced by a client-game initialization
+  /// action.
+  name
+  /// Value payload supplied to the selected host operation while initializing CGame, registering media,
+  /// and updating shared client information.
+  value
+  /// When constructing this record, `action` supplies `value2` for this member.
+  value2
+  /// Numeric argument interpreted by the selected host operation while initializing CGame, registering
+  /// media, and updating shared client information.
+  number
+  /// When constructing this record, `action` supplies `flags` for this member.
+  flags
+  /// True when this request is marked for native dispatch while initializing CGame, registering media,
+  /// and updating shared client information; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game main operation result, including `handled`, `value`, `actions`.
-struct Result handled value actions end struct
+struct Result
+  /// When constructing this record, `result` supplies `handled` for this member.
+  handled
+  /// Result of a CGame lifecycle or entry-point operation, returned alongside its recorded host
+  /// requests.
+  value
+  /// Host requests queued while initializing CGame, registering media, and updating shared client
+  /// information, retained in request order.
+  actions
+end struct
 /// Stores client game main cvar record, including `name`, `defaultValue`, `flags`, `value`, `integer`, `modificationCount`.
-struct Cvar name defaultValue flags value integer modificationCount end struct
+struct Cvar
+  /// Engine configuration-variable name used to read, update, or register this setting.
+  name
+  /// When constructing this record, `cvarSpec` supplies `defaultValue` for this member.
+  defaultValue
+  /// When constructing this record, `cvarSpec` supplies `flags` for this member.
+  flags
+  /// Current or default setting value held by this configuration variable or UI control.
+  value
+  /// When constructing this record, `cvarSpec` supplies `atoi(defaultValue)` for this member.
+  integer
+  /// When constructing this record, `cvarSpec` supplies `0` for this member.
+  modificationCount
+end struct
 /// Stores client game main menu item, including `classname`, `pickupSound`, `sounds`, `icon`.
-struct Item classname pickupSound sounds icon end struct
+struct Item
+  /// Native item classname used when registering and resolving CGame item media.
+  classname
+  /// Sound resource selected for the pickup event or effect.
+  pickupSound
+  /// Registered sound resources associated with the player model or media group.
+  sounds
+  /// Virtual shader or image name requested when registering the item's HUD icon.
+  icon
+end struct
 /// Stores client game main client record, including `infoValid`, `team`, `name`, `powerups`, `botSkill`, `handicap` and additional values.
-struct Client infoValid team name powerups botSkill handicap teamTask wins losses teamLeader score end struct
+struct Client
+  /// True when the client-information entry has been populated from valid server data.
+  infoValid
+  /// Client team affiliation used by scoreboard feeders and player-status text.
+  team
+  /// Configured player name retained with the client-game startup and client-information state.
+  name
+  /// Player powerup bitmask retained with the client-game client-information record.
+  powerups
+  /// Bot difficulty level; zero denotes a human player and native bot levels range from one to five.
+  botSkill
+  /// Player handicap setting used by the user-info and team-display paths.
+  handicap
+  /// Team-order role identifying the player's current tactical assignment.
+  teamTask
+  /// Tournament victories reported for this player.
+  wins
+  /// Tournament losses reported for this player.
+  losses
+  /// True when this client is the designated leader of its team.
+  teamLeader
+  /// Reported player score retained with the client-game client-information entry.
+  score
+end struct
 /// Stores client game main score record, including `client`, `team`, `score`, `time`, `ping`.
-struct Score client team score time ping end struct
+struct Score
+  /// Player slot associated with this score or client-side record.
+  client
+  /// Team grouping associated with this score row in the client-game UI feeder.
+  team
+  /// Player score retained in the client-game scoreboard entry.
+  score
+  /// Elapsed player connection time reported by the server for scoreboard presentation.
+  time
+  /// Player latency value retained in the client-game score entry, in milliseconds.
+  ping
+end struct
 /// Stores client game main hud assets record, including `textFont`, `smallFont`, `bigFont`, `gradientBar`, `cursor`, `fadeClamp` and additional values.
-struct HudAssets textFont smallFont bigFont gradientBar cursor fadeClamp fadeCycle fadeAmount shadowX shadowY shadowColor shadowFadeClamp end struct
+struct HudAssets
+  /// When constructing this record, `hudAssets` supplies an empty string for this member. Used by
+  /// `assetParse` during subsequent processing.
+  textFont
+  /// When constructing this record, `hudAssets` supplies an empty string for this member. Used by
+  /// `assetParse` during subsequent processing.
+  smallFont
+  /// When constructing this record, `hudAssets` supplies an empty string for this member. Used by
+  /// `assetParse` during subsequent processing.
+  bigFont
+  /// When constructing this record, `hudAssets` supplies an empty string for this member. Used by
+  /// `assetParse` during subsequent processing.
+  gradientBar
+  /// When constructing this record, `hudAssets` supplies an empty string for this member. Used by
+  /// `assetParse` during subsequent processing.
+  cursor
+  /// Target alpha limit used by the menu's fade animation.
+  fadeClamp
+  /// Interval controlling how often the menu fade alpha is advanced.
+  fadeCycle
+  /// Alpha increment applied by each menu fade update.
+  fadeAmount
+  /// When constructing this record, `hudAssets` supplies `0.0` for this member. Used by `assetParse`
+  /// during subsequent processing.
+  shadowX
+  /// When constructing this record, `hudAssets` supplies `0.0` for this member. Used by `assetParse`
+  /// during subsequent processing.
+  shadowY
+  /// When constructing this record, `hudAssets` supplies an empty list for this member. Used by
+  /// `assetParse` during subsequent processing.
+  shadowColor
+  /// When constructing this record, `hudAssets` supplies `0.0` for this member. Used by `assetParse`
+  /// during subsequent processing.
+  shadowFadeClamp
+end struct
 /// Stores client game main state, including `initialized`, `loading`, `clientNum`, `processedSnapshotNum`, `serverCommandSequence`, `weaponSelect` and additional values.
-struct State initialized loading clientNum processedSnapshotNum serverCommandSequence weaponSelect redflag blueflag flagStatus levelStartTime gametype mapname screenXScale screenYScale time crosshairClientTime crosshairClientNum attackerTime attackerNum forceModelModificationCount drawTeamOverlayModificationCount cvars configstrings clients scores numScores selectedScore spectatorList spectatorLen spectatorWidth infoScreenText gameVersion hudFile hudAssets menuFiles eventType cursorX cursorY nextCinematicHandle end struct
+struct State
+  /// True between CGame initialization and shutdown, while the game module owns its loaded client
+  /// state.
+  initialized
+  /// True while initial game media and client information are being loaded.
+  loading
+  /// Local client slot supplied when initializing the client-game state.
+  clientNum
+  /// Highest snapshot sequence already requested or processed by CGame.
+  processedSnapshotNum
+  /// Initial reliable server-command sequence supplied when the client-game module is initialized.
+  serverCommandSequence
+  /// Weapon identifier currently selected by the local player.
+  weaponSelect
+  /// Red-flag status received through server configuration strings.
+  redflag
+  /// Blue-flag status received through server configuration strings.
+  blueflag
+  /// Current flag-objective state used by capture-the-flag presentation.
+  flagStatus
+  /// Server timestamp at which the level began, used by elapsed-match-time displays.
+  levelStartTime
+  /// Game-rule identifier used to organize scoreboard feeders and interpret player score rows.
+  gametype
+  /// Map name parsed from server information or selected by the client UI.
+  mapname
+  /// Horizontal virtual-screen scaling factor derived from the renderer configuration.
+  screenXScale
+  /// Vertical virtual-screen scaling factor derived from the renderer configuration.
+  screenYScale
+  /// Current client-game frame time in milliseconds retained by the main runtime state.
+  time
+  /// Timestamp of the last valid crosshair-player identification.
+  crosshairClientTime
+  /// Client slot most recently identified under the crosshair.
+  crosshairClientNum
+  /// Timestamp used to time the latest attacker's HUD indication.
+  attackerTime
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `lastAttacker`
+  /// during subsequent processing.
+  attackerNum
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `registerCvars` and
+  /// `updateCvars` during subsequent processing.
+  forceModelModificationCount
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `updateCvars`
+  /// during subsequent processing.
+  drawTeamOverlayModificationCount
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Server configuration strings indexed by the native protocol's configuration-string identifiers.
+  configstrings
+  /// Client-information records retained by the client-game state, indexed by player slot.
+  clients
+  /// Scoreboard entries received from the server.
+  scores
+  /// Number of valid scoreboard entries received from the server.
+  numScores
+  /// Index of the scoreboard entry currently selected in the UI.
+  selectedScore
+  /// Concatenated spectator display names used by the scrolling scoreboard banner.
+  spectatorList
+  /// Number of characters in the concatenated spectator-name banner.
+  spectatorLen
+  /// Rendered width of the spectator-name banner in display coordinates.
+  spectatorWidth
+  /// Status text displayed while connecting, loading, or waiting for a game view.
+  infoScreenText
+  /// When constructing this record, `create` supplies `"baseq3-1"` for this member. Used by `init`
+  /// during subsequent processing.
+  gameVersion
+  /// When constructing this record, `create` supplies `"ui/hud.txt"` for this member. Used by
+  /// `loadHudMenu` during subsequent processing.
+  hudFile
+  /// When constructing this record, `create` supplies `hudAssets()` for this member. Used by
+  /// `assetParse` during subsequent processing.
+  hudAssets
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `parseMenu` during subsequent processing.
+  menuFiles
+  /// When constructing this record, `create` supplies `0` for this member. Used by `eventHandling`
+  /// during subsequent processing.
+  eventType
+  /// Horizontal position of the pointer in the local display coordinate system.
+  cursorX
+  /// Vertical position of the pointer in the local display coordinate system.
+  cursorY
+  /// When constructing this record, `create` supplies `1` for this member. Used by `playCinematic`
+  /// during subsequent processing.
+  nextCinematicHandle
+end struct
 
 /// Creates a `mq3.client.cgame_main.Client` record. Initializes the record with the defaults written in this constructor.
 function client() return Client(false,TEAM_FREE,"",0,0,100,0,0,0,false,0) end function

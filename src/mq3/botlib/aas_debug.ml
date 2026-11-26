@@ -5,55 +5,202 @@ package mq3.botlib.aas_debug
 
 import mq3.shared.math as q
 
+/// Maximum number of line handles retained for bot navigation debug drawing.
 const MAX_DEBUGLINES=1024
+/// Maximum number of polygon handles retained for bot navigation debug drawing.
 const MAX_DEBUGPOLYGONS=8192
+/// Debug-drawing palette identifier for none.
 const LINECOLOR_NONE=-1
+/// Debug-drawing palette identifier for red.
 const LINECOLOR_RED=1
+/// Debug-drawing palette identifier for green.
 const LINECOLOR_GREEN=2
+/// Debug-drawing palette identifier for blue.
 const LINECOLOR_BLUE=3
+/// Debug-drawing palette identifier for yellow.
 const LINECOLOR_YELLOW=4
+/// Standing on ground when in this face.
 const FACE_GROUND=4
+/// AAS face-property bit marking ladder.
 const FACE_LADDER=2
+/// AAS area-contents bit marking view portal.
 const AREACONTENTS_VIEWPORTAL=512
+/// Mask selecting the movement-type identifier from an encoded AAS travel type.
 const TRAVELTYPE_MASK=16777215
+/// AAS travel-type value for a reachability that cannot currently be traversed.
 const TRAVEL_INVALID=1
+/// AAS movement-type identifier for walk.
 const TRAVEL_WALK=2
+/// AAS movement-type identifier for crouch.
 const TRAVEL_CROUCH=3
+/// Jumping onto a barrier.
 const TRAVEL_BARRIERJUMP=4
+/// AAS movement-type identifier for jump.
 const TRAVEL_JUMP=5
+/// Climbing a ladder.
 const TRAVEL_LADDER=6
+/// Walking of a ledge.
 const TRAVEL_WALKOFFLEDGE=7
+/// AAS movement-type identifier for swim.
 const TRAVEL_SWIM=8
+/// Jump out of the water.
 const TRAVEL_WATERJUMP=9
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// Rocket jumping required for travel.
 const TRAVEL_ROCKETJUMP=12
+/// Bfg jumping required for travel.
 const TRAVEL_BFGJUMP=13
+/// Grappling hook required for travel.
 const TRAVEL_GRAPPLEHOOK=14
+/// AAS movement-type identifier for double jump.
 const TRAVEL_DOUBLEJUMP=15
+/// AAS movement-type identifier for ramp jump.
 const TRAVEL_RAMPJUMP=16
+/// AAS movement-type identifier for strafe jump.
 const TRAVEL_STRAFEJUMP=17
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
 
 /// `Action` record for aas debug, containing `boundary`, `kind`, `id`, `color` and `points` and related fields.
-struct Action boundary kind id color points values dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator selecting a navigation debug-drawing operation.
+  kind
+  /// Handle of the debug line or polygon affected by the action.
+  id
+  /// Color components associated with the vertex or debug primitive.
+  color
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+  /// Additional scalar drawing parameters associated with the debug action.
+  values
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `Edge` record for aas debug, containing `vertices`.
-struct Edge vertices end struct
+struct Edge
+  /// XYZ vertices defining the navigation or map geometry.
+  vertices
+end struct
 /// `Face` record for aas debug, containing `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields.
-struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
+struct Face
+  /// Navigation plane index used to reconstruct the face for debug drawing.
+  planeNum
+  /// AAS face properties used to classify and draw navigation boundaries.
+  flags
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Starting offset of this face in the signed edge-index array.
+  firstEdge
+  /// Area at the front of this face.
+  frontArea
+  /// Area at the back of this face.
+  backArea
+end struct
 /// `Plane` record for aas debug, containing `normal` and `dist`.
-struct Plane normal dist end struct
+struct Plane
+  /// Navigation plane normal used to reconstruct and draw debug geometry.
+  normal
+  /// Distance of the plane (normal vector * distance = point in plane).
+  dist
+end struct
 /// `Area` record for aas debug, containing `numFaces` and `firstFace`.
-struct Area numFaces firstFace end struct
+struct Area
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Starting offset of this area in the signed face-index array.
+  firstFace
+end struct
 /// `AreaSettings` record for aas debug, containing `contents`, `cluster`, `numReachableAreas` and `firstReachableArea`.
-struct AreaSettings contents cluster numReachableAreas firstReachableArea end struct
+struct AreaSettings
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+  /// Cluster the area belongs to, if negative it's a portal.
+  cluster
+  /// Number of outgoing reachability records belonging to this AAS area.
+  numReachableAreas
+  /// First outgoing reachability index for this area in the shared reachability array.
+  firstReachableArea
+end struct
 /// `Reachability` record for aas debug, containing `areaNum`, `faceNum`, `edgeNum`, `start` and `finish` and related fields.
-struct Reachability areaNum faceNum edgeNum start finish travelType travelTime end struct
+struct Reachability
+  /// Destination navigation area highlighted for this debug connection.
+  areaNum
+  /// Index of the AAS face associated with the movement link.
+  faceNum
+  /// Index of the AAS edge associated with the movement link.
+  edgeNum
+  /// Departure point drawn for this navigation connection.
+  start
+  /// Arrival point drawn for this navigation connection.
+  finish
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+end struct
 /// `World` record for aas debug, containing `vertexes`, `edges`, `edgeIndex`, `faces` and `faceIndex` and related fields.
-struct World vertexes edges edgeIndex faces faceIndex planes areas areaSettings reachabilities pointArea loaded actions retailActive end struct
+struct World
+  /// XYZ vertices defining the navigation or map geometry.
+  vertexes
+  /// Vertex-index pairs defining edges of the map or navigation geometry.
+  edges
+  /// Signed edge references used by faces of the navigation mesh.
+  edgeIndex
+  /// Face records bounding AAS areas.
+  faces
+  /// Signed face references used to construct AAS area boundaries.
+  faceIndex
+  /// Plane records used to classify or clip the represented geometry.
+  planes
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// Navigation settings associated with each AAS area.
+  areaSettings
+  /// Reachabilities used for routing.
+  reachabilities
+  /// Area lookup interface used to locate debug positions in the navigation map.
+  pointArea
+  /// True when the navigation map is available for debug drawing and inspection.
+  loaded
+  /// Host-action collection associated with the navigation world being visualized.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+end struct
 /// `State` record for aas debug, containing `lines`, `visible`, `polygons`, `numDebugLines` and `nextLine` and related fields.
-struct State lines visible polygons numDebugLines nextLine nextPolygon reachIndex lastAreaNum lastTime reach actions retailActive end struct
+struct State
+  /// Allocated navigation debug-line records.
+  lines
+  /// Visibility state of the managed debug primitives.
+  visible
+  /// Allocated navigation debug-polygon records.
+  polygons
+  /// Number of debug lines represented by this record.
+  numDebugLines
+  /// Identifier assigned to the next debug line.
+  nextLine
+  /// Identifier assigned to the next debug polygon.
+  nextPolygon
+  /// Current reachability position used by interactive debug iteration.
+  reachIndex
+  /// Last area the bot was in.
+  lastAreaNum
+  /// Timestamp retained for pacing debug reachability display.
+  lastTime
+  /// Reachability currently selected for debug drawing.
+  reach
+  /// Recorded debug drawing requests, including line and polygon handles and geometry.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+end struct
 
 /// Create a `mq3.botlib.aas_debug.Edge` record, initializing `vertices` as `[a,b]`.
 /// @param a Operand used to evaluate the returned expression `Edge([a,b])`.

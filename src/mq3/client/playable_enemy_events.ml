@@ -3,25 +3,73 @@ package mq3.client.playable_enemy_events
 // Per-opponent preview events and Q3 animation-state inputs.
 
 const BOTH_DEATH1=0
+/// Native upper-body animation slot for the gesture sequence.
 const TORSO_GESTURE=6
+/// Native upper-body animation slot for the attack sequence.
 const TORSO_ATTACK=7
+/// Native upper-body animation slot for the raise sequence.
 const TORSO_RAISE=10
+/// Native upper-body animation slot for the stand sequence.
 const TORSO_STAND=11
+/// Native lower-body animation slot for the walk sequence.
 const LEGS_WALK=14
+/// Native lower-body animation slot for the run sequence.
 const LEGS_RUN=15
+/// Native lower-body animation slot for the idle sequence.
 const LEGS_IDLE=22
 
+/// Duration or scheduling interval in milliseconds controlling pain.
 const PAIN_MILLISECONDS=350
+/// Duration or scheduling interval in milliseconds controlling attack.
 const ATTACK_MILLISECONDS=450
 
 /// Stores playable enemy events track record, including `health`, `alive`, `origin`, `action`, `actionSince`.
-struct Track health alive origin action actionSince end struct
+struct Track
+  /// Previously observed enemy health used to detect a new hurt event.
+  health
+  /// True while the simulated player or target remains alive and can participate in gameplay.
+  alive
+  /// Previous observed enemy position, retained to detect movement between event updates.
+  origin
+  /// When constructing this record, `state` supplies `action` for this member.
+  action
+  /// When constructing this record, `state` supplies `now` for this member. Used by `beginAction` and
+  /// `appendInput` during subsequent processing.
+  actionSince
+end struct
 /// Stores playable enemy events state, including `tracks`, `lastTime`, `inputs`, `events`.
-struct State tracks lastTime inputs events end struct
+struct State
+  /// When constructing this record, `state` supplies `tracks` for this member.
+  tracks
+  /// When constructing this record, `state` supplies `now` for this member.
+  lastTime
+  /// When constructing this record, `state` supplies an empty list for this member.
+  inputs
+  /// When constructing this record, `state` supplies an empty list for this member.
+  events
+end struct
 /// Stores playable enemy events input record, including `targetIndex`, `lowerAnimation`, `upperAnimation`, `elapsedMilliseconds`, `action`.
-struct Input targetIndex lowerAnimation upperAnimation elapsedMilliseconds action end struct
+struct Input
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// When constructing this record, `appendInput` supplies `lower` for this member.
+  lowerAnimation
+  /// When constructing this record, `appendInput` supplies `upper` for this member.
+  upperAnimation
+  /// When constructing this record, `appendInput` supplies `elapsed` for this member.
+  elapsedMilliseconds
+  /// When constructing this record, `appendInput` supplies `track.action` for this member.
+  action
+end struct
 /// Stores playable enemy events event record, including `kind`, `targetIndex`, `at`.
-struct Event kind targetIndex at end struct
+struct Event
+  /// Enemy-state event category selected by comparing the current target with its previous observation.
+  kind
+  /// Index identifying the selected target in the owning target collection.
+  targetIndex
+  /// When constructing this record, `beginAction` supplies `now` for this member.
+  at
+end struct
 
 /// Creates the playable enemy events error `7550` with diagnostic text `"preview enemy events: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview enemy events: "+message`.

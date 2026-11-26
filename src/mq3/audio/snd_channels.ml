@@ -4,15 +4,46 @@ package mq3.audio.snd_channels
 
 import mq3.audio.snd_local as sndLocal
 
+/// Maximum number of simultaneously allocated sound channels.
 const MAX_CHANNELS=sndLocal.MAX_CHANNELS
+/// Entity-channel identifier reserved for announcer audio.
 const CHAN_ANNOUNCER=7
 
 /// Channel record for audio.snd_channels, containing `active`, `entity`, `handle`, `entchannel`, `allocTime`.
-struct Channel active entity handle entchannel allocTime end struct
+struct Channel
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+  /// Game-entity number to which the sound source or channel belongs.
+  entity
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// Entity-channel identifier used when replacing an existing sound.
+  entchannel
+  /// Timestamp at which the playback channel was allocated.
+  allocTime
+end struct
 /// State record for audio.snd_channels, containing `channels`, `freeSlots`, `listener`, `time`.
-struct State channels freeSlots listener time end struct
+struct State
+  /// Fixed-size channel records used for allocation and replacement.
+  channels
+  /// Indexes of channel slots available for new playback requests.
+  freeSlots
+  /// Entity number treated as the local listener by allocation priority rules.
+  listener
+  /// Current allocation timestamp used to select the oldest replaceable channel.
+  time
+end struct
 /// Start record for audio.snd_channels, containing `accepted`, `slot`, `replaced`, `reason`.
-struct Start accepted slot replaced reason end struct
+struct Start
+  /// True when a channel was assigned to the requested sound.
+  accepted
+  /// Index of the channel slot allocated for this playback voice.
+  slot
+  /// True when accepting the sound displaced an existing channel.
+  replaced
+  /// Explanation of the allocation or rejection decision.
+  reason
+end struct
 
 /// Create snd channels in audio.snd_channels; the normal completion returns `State(channels, free, 0, 0)`.
 function create()

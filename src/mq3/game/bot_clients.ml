@@ -6,31 +6,48 @@ import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textNumbers
 
+/// Client connection-state identifier representing connected.
 const CON_CONNECTED = 2
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 8
+/// Game-mode identifier selecting single player rules.
 const GT_SINGLE_PLAYER = 2
+/// Number of delayed bot-begin requests retained by the spawn queue.
 const BOT_SPAWN_QUEUE_DEPTH = 16
 
 /// `SpawnEntry` record for bot clients, containing `clientNum` and `spawnTime`.
 struct SpawnEntry
+  /// Client slot number represented by this player state.
   clientNum
+  /// Timestamp used to schedule a bot/client spawn.
   spawnTime
 end struct
 /// `BotSettings` record for bot clients, containing `characterfile`, `skill` and `team`.
 struct BotSettings
+  /// Path of the bot-character definition used to configure this bot.
   characterfile
+  /// Configured bot skill level supplied to character and decision logic.
   skill
+  /// Team assignment associated with the client, bot, or action.
   team
 end struct
 /// `State` record for bot clients, containing `queue`, `minimumPlayersFn`, `clientBeginFn`, `userinfoFn` and `introSoundFn` and related fields.
 struct State
+  /// Pending bot/client requests waiting to be processed.
   queue
+  /// Injected callback for minimum players; invoked through the State service/state record.
   minimumPlayersFn
+  /// Injected callback for client begin; invoked through the State service/state record.
   clientBeginFn
+  /// Injected callback for user information; invoked through the State service/state record.
   userinfoFn
+  /// Injected callback for intro sound; invoked through the State service/state record.
   introSoundFn
+  /// Injected callback for print; invoked through the State service/state record.
   printFn
+  /// Injected callback for drop client; invoked through the State service/state record.
   dropClientFn
+  /// Injected callback for setup client; invoked through the State service/state record.
   setupClientFn
 end struct
 

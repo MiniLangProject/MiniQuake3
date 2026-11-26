@@ -19,6 +19,7 @@ import mq3.shared.math as q
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
 /// Find the next active entity with a case-insensitive class-name match for deaths.
 /// @param level Game-level state; accesses `num_entities` and `entities`.

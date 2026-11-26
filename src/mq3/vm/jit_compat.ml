@@ -14,7 +14,21 @@ import mq3.compat.numeric as n
 import mq3.vm.interpreter as interpreter
 
 /// Compiled record for vm.jit_compat, containing `machine`, `architecture`, `instructionPointers`, `codeLength`, `tableLength`, `nativeCode`.
-struct Compiled machine architecture instructionPointers codeLength tableLength nativeCode end struct
+struct Compiled
+  /// Interpreter/VM instance associated with the prepared compilation plan.
+  machine
+  /// Architecture identifier associated with the native VM execution plan.
+  architecture
+  /// QVM code-byte offsets indexed by instruction number, retained by the compatibility dispatch plan.
+  instructionPointers
+  /// Length of the VM code region in bytes.
+  codeLength
+  /// Byte length of the prepared instruction-address table, calculated as four bytes per entry.
+  tableLength
+  /// True only when native machine code has been emitted; false for this compatibility plan, which
+  /// executes through the fast interpreter.
+  nativeCode
+end struct
 
 /// List the 15 names in vm.jit_compat.x86Symbols, beginning with `AsmCall`, `Constant1`, `Constant4`, `Emit1`.
 function x86Symbols() return ["AsmCall","Constant1","Constant4","Emit1","Emit2","Emit4","EmitAddEDI4","EmitCommand","EmitMovEAXEDI","EmitMovEBXEDI","EmitString","Hex","VM_CallCompiled","VM_Compile","callAsmCall"] end function

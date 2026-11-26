@@ -4,20 +4,100 @@
 package mq3.client.ui_specifyleague
 import mq3.client.ui_qmenu as q
 import std.string as strings
+/// Capacity limit for the listboxitems collection or bounded storage used by this client module.
 const MAX_LISTBOXITEMS=128
+/// Maximum display width reserved for a listbox entry.
 const MAX_LISTBOXWIDTH=40
+/// Length limit for the legacy ranking-service league name.
 const MAX_LEAGUENAME=80
+/// Menu control identifier routed to the specifyleaguename action by the menu event handler.
 const ID_SPECIFYLEAGUENAME=100
+/// Menu control identifier routed to the specifyleaguelist action by the menu event handler.
 const ID_SPECIFYLEAGUELIST=101
+/// Menu control identifier routed to the specifyleagueup action by the menu event handler.
 const ID_SPECIFYLEAGUEUP=102
+/// Menu control identifier routed to the specifyleaguedown action by the menu event handler.
 const ID_SPECIFYLEAGUEDOWN=103
+/// Menu control identifier routed to the specifyleagueback action by the menu event handler.
 const ID_SPECIFYLEAGUEBACK=104
 /// Lists the 9 UI specifyleague art list strings in their declared order, beginning with `"menu/art/frame2_l"`, `"menu/art/frame1_r"`, `"menu/art/arrows_vert_0"`.
 function artList() return ["menu/art/frame2_l","menu/art/frame1_r","menu/art/arrows_vert_0","menu/art/arrows_vert_top","menu/art/arrows_vert_bot","menu/art/back_0","menu/art/back_1","menu/art/gr/grlogo","menu/art/gr/grletters"] end function
 /// Stores UI specifyleague queued engine action, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
-struct Action boundary kind name text number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while accepting a league identifier for
+  /// ranked play.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while accepting a league
+  /// identifier for ranked play.
+  kind
+  /// League-query label, selected-league cvar, menu target, or artwork resource named by the operation.
+  name
+  /// Player name used for league lookup or selected league name written to the server setting.
+  text
+  /// Numeric argument interpreted by the selected host operation while accepting a league identifier
+  /// for ranked play.
+  number
+  /// True when this request is marked for native dispatch while accepting a league identifier for
+  /// ranked play; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI specifyleague state, including `menu`, `banner`, `framel`, `framer`, `rankname`, `list` and additional values.
-struct State menu banner framel framer rankname list arrows up down back grlogo playername leagueNames displayNames actions pushed popped selected retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `q.menu(true,true)` for this member. Used by
+  /// `SpecifyLeague_Event` and `SpecifyLeague_MenuInit` during subsequent processing.
+  menu
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  banner
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  framel
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  framer
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_GetList` and `SpecifyLeague_Event` during subsequent processing.
+  rankname
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_GetList` and `SpecifyLeague_Event` during subsequent processing.
+  list
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  arrows
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  up
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  down
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  back
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SpecifyLeague_MenuInit` during subsequent processing.
+  grlogo
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `SpecifyLeague_GetList` and `SpecifyLeague_Event` during subsequent processing.
+  playername
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `SpecifyLeague_GetList` and `SpecifyLeague_Event` during subsequent processing.
+  leagueNames
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `SpecifyLeague_GetList` during subsequent processing.
+  displayNames
+  /// Host requests queued while accepting a league identifier for ranked play, retained in request
+  /// order.
+  actions
+  /// Records that the ranked-play league dialog has been opened on the active menu stack.
+  pushed
+  /// Records a request to remove the ranked-play league dialog from the active menu stack.
+  popped
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// True when the retail QVM owns the ranked-play league dialog, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 /// Creates a `mq3.client.ui_specifyleague.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive) return State(q.menu(true,true),void,void,void,void,void,void,void,void,void,void,"",[],[],[],false,false,"",retailActive) end function

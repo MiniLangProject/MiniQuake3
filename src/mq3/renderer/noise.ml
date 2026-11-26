@@ -4,11 +4,18 @@
 package mq3.renderer.noise
 import mq3.compat.numeric as n
 
+/// Number of samples in the periodic procedural-noise table.
 const NOISE_SIZE=256
+/// Mask that wraps indices into the power-of-two noise table.
 const NOISE_MASK=255
 
 /// Data record for `mq3.renderer.noise.Noise`; groups `table`, `permutation`.
-struct Noise table permutation end struct
+struct Noise
+  /// Lookup samples used by the procedural noise function.
+  table
+  /// Permutation table used to decorrelate procedural noise coordinates.
+  permutation
+end struct
 
 // Baseq3's Windows build obtains rand() from the Microsoft C runtime.  Keep
 // that 15-bit sequence here so normal deformations do not depend on the host.

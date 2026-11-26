@@ -13,20 +13,104 @@ import std.string as strings
 /// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Team-order identifier assigning the player the offense tactical role.
 const TEAMTASK_OFFENSE=1
+/// Team-order identifier assigning the player the defense tactical role.
 const TEAMTASK_DEFENSE=2
+/// Team-order identifier assigning the player the patrol tactical role.
 const TEAMTASK_PATROL=3
+/// Team-order identifier assigning the player the follow tactical role.
 const TEAMTASK_FOLLOW=4
+/// Team-order identifier assigning the player the retrieve tactical role.
 const TEAMTASK_RETRIEVE=5
+/// Team-order identifier assigning the player the escort tactical role.
 const TEAMTASK_ESCORT=6
+/// Team-order identifier assigning the player the camp tactical role.
 const TEAMTASK_CAMP=7
+/// Native game-type value for capture the flag, used when determining which team and flag commands are
+/// available.
 const GT_CTF=4
+/// Native game-type identifier selecting one-flag capture the flag.
 const GT_1FCTF=5
 
 /// Stores client game console commands state, including `scoresRequestTime`, `showScores`, `numScores`, `scoreFadeTime`, `currentOrder`, `orderPending` and additional values.
-struct State scoresRequestTime showScores numScores scoreFadeTime currentOrder orderPending orderTime acceptLeader acceptTask acceptOrderTime selectedPlayer teamPlayerCount teamLeader selectedIsSelf gametype otherTeamHasFlag yourTeamHasFlag scoreboardShowing hudFile viewsize cameraOrbit end struct
+struct State
+  /// Timestamp of the most recent request for updated server scores.
+  scoresRequestTime
+  /// True while the player explicitly requests the scoreboard overlay.
+  showScores
+  /// Number of valid scoreboard entries received from the server.
+  numScores
+  /// Timestamp used to fade the scoreboard after its display request ends.
+  scoreFadeTime
+  /// Team-order identifier currently selected for issuing to a teammate.
+  currentOrder
+  /// When constructing this record, `create` supplies `false` for this member. Used by `nextOrder`
+  /// during subsequent processing.
+  orderPending
+  /// When constructing this record, `create` supplies `0` for this member. Used by `nextOrder` during
+  /// subsequent processing.
+  orderTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `confirmOrder` and
+  /// `denyOrder` during subsequent processing.
+  acceptLeader
+  /// When constructing this record, `create` supplies `0` for this member. Used by `confirmOrder`
+  /// during subsequent processing.
+  acceptTask
+  /// When constructing this record, `create` supplies `0` for this member. Used by `confirmOrder` and
+  /// `denyOrder` during subsequent processing.
+  acceptOrderTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `nextTeamMember` and
+  /// `prevTeamMember` during subsequent processing.
+  selectedPlayer
+  /// When constructing this record, `create` supplies `0` for this member. Used by `nextTeamMember` and
+  /// `prevTeamMember` during subsequent processing.
+  teamPlayerCount
+  /// True when this client is the designated leader of its team.
+  teamLeader
+  /// When constructing this record, `create` supplies `true` for this member. Used by `nextOrder`
+  /// during subsequent processing.
+  selectedIsSelf
+  /// Active game-rule identifier used to choose the meaning of team offense commands.
+  gametype
+  /// When constructing this record, `create` supplies `false` for this member. Used by `nextOrder`
+  /// during subsequent processing.
+  otherTeamHasFlag
+  /// When constructing this record, `create` supplies `false` for this member. Used by `nextOrder`
+  /// during subsequent processing.
+  yourTeamHasFlag
+  /// When constructing this record, `create` supplies `false` for this member. Used by `scrollScores`
+  /// during subsequent processing.
+  scoreboardShowing
+  /// When constructing this record, `create` supplies `"ui/hud.txt"` for this member. Used by `loadHud`
+  /// during subsequent processing.
+  hudFile
+  /// When constructing this record, `create` supplies `100` for this member. Used by `sizeUpState` and
+  /// `sizeDownState` during subsequent processing.
+  viewsize
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `startOrbitState`
+  /// and `syncVmCvars` during subsequent processing.
+  cameraOrbit
+end struct
 /// Stores client game console commands operation result, including `handled`, `cvarSets`, `consoleCommands`, `clientCommands`, `prints`, `sounds` and additional values.
-struct Result handled cvarSets consoleCommands clientCommands prints sounds centerPrint menuActions end struct
+struct Result
+  /// When constructing this record, `result` supplies `handled` for this member.
+  handled
+  /// When constructing this record, `result` supplies an empty list for this member.
+  cvarSets
+  /// When constructing this record, `result` supplies an empty list for this member.
+  consoleCommands
+  /// When constructing this record, `result` supplies an empty list for this member.
+  clientCommands
+  /// When constructing this record, `result` supplies an empty list for this member.
+  prints
+  /// Registered sound resources associated with the player model or media group.
+  sounds
+  /// Text of the current centered announcement.
+  centerPrint
+  /// When constructing this record, `result` supplies an empty list for this member.
+  menuActions
+end struct
 
 /// Creates a `mq3.client.cgame_console_commands.State` record. Initializes the record with the defaults written in this constructor.
 function create()
@@ -275,9 +359,78 @@ end function
 // Typed host boundary used by the fully native command dispatcher.  The
 // retail QVM host sets retailActive so the native mirror can still be checked
 // without sending a command, changing a Cvar, or drawing the same UI twice.
-struct Action boundary kind name text text2 number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while executing local CGame commands,
+  /// including score, view, and weapon-selection requests.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while executing local CGame
+  /// commands, including score, view, and weapon-selection requests.
+  kind
+  /// Cvar, console command, client command, or sound resource targeted by the client-game command
+  /// effect.
+  name
+  /// Cvar value, executable command text, or console message produced by a client-game console command.
+  text
+  /// When constructing this record, `emit` supplies `text2` for this member.
+  text2
+  /// Numeric argument interpreted by the selected host operation while executing local CGame commands,
+  /// including score, view, and weapon-selection requests.
+  number
+  /// True when this request is marked for native dispatch while executing local CGame commands,
+  /// including score, view, and weapon-selection requests; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game console commands runtime wiring and state, including `commandState`, `registry`, `state`, `targetNum`, `attackerNum`, `time` and additional values.
-struct Runtime commandState registry state targetNum attackerNum time missionpack retailActive registeredCommands actions viewOrigin viewYaw keyCatcher eventHandling cameraLoadSucceeded cameraMode cameraStartTime end struct
+struct Runtime
+  /// When constructing this record, `createRuntime` supplies `commands.create()` for this member. Used
+  /// by `absorb` and `Cmd_Argv` during subsequent processing.
+  commandState
+  /// When constructing this record, `createRuntime` supplies `registry` for this member. Used by
+  /// `absorb` and `CG_LoadHud_f` during subsequent processing.
+  registry
+  /// When constructing this record, `createRuntime` supplies `create()` for this member. Used by
+  /// `CG_SizeUp_f` and `CG_SizeDown_f` during subsequent processing.
+  state
+  /// When constructing this record, `createRuntime` supplies `-1` for this member. Used by
+  /// `CG_TargetCommand_f` and `CG_TellTarget_f` during subsequent processing.
+  targetNum
+  /// When constructing this record, `createRuntime` supplies `-1` for this member. Used by
+  /// `CG_TellAttacker_f` and `CG_VoiceTellAttacker_f` during subsequent processing.
+  attackerNum
+  /// Client-game time in milliseconds supplied to scoreboard and team-order console-command handlers.
+  time
+  /// When constructing this record, `createRuntime` supplies `missionpack` for this member. Used by
+  /// `CG_InitConsoleCommands` and `CG_ConsoleCommand` during subsequent processing.
+  missionpack
+  /// True when the retail QVM owns CGame console-command handling, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `createRuntime` supplies an empty list for this member. Used by
+  /// `CG_InitConsoleCommands` during subsequent processing.
+  registeredCommands
+  /// Host requests queued while executing local CGame commands, including score, view, and
+  /// weapon-selection requests, retained in request order.
+  actions
+  /// When constructing this record, `createRuntime` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `CG_Viewpos_f` during subsequent processing.
+  viewOrigin
+  /// When constructing this record, `createRuntime` supplies `0.0` for this member. Used by
+  /// `CG_Viewpos_f` during subsequent processing.
+  viewYaw
+  /// Input-capture bitmask selecting which client subsystem currently receives key events.
+  keyCatcher
+  /// When constructing this record, `createRuntime` supplies `0` for this member. Used by
+  /// `CG_TeamMenu_f` and `CG_EditHud_f` during subsequent processing.
+  eventHandling
+  /// When constructing this record, `createRuntime` supplies `false` for this member. Used by
+  /// `CG_Camera_f` during subsequent processing.
+  cameraLoadSucceeded
+  /// When constructing this record, `createRuntime` supplies `false` for this member. Used by
+  /// `CG_Camera_f` during subsequent processing.
+  cameraMode
+  /// Client timestamp at which the scripted camera sequence began.
+  cameraStartTime
+end struct
 
 /// Creates a `mq3.client.cgame_console_commands.Runtime` record. Assigns `registry` from `registry`, `missionpack` from `missionpack`, `retailActive` from `retailActive`.
 /// @param registry Value used to initialize `Runtime.registry`.

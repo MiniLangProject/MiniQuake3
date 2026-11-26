@@ -9,12 +9,48 @@ import mq3.client.netchan as clientNetchanRuntime
 import mq3.client.protocol_runtime as protocolRuntime
 
 /// Stores network ingress host-service callbacks, including `connectionlessHost`, `demoFn`, `serverPacketFn`, `context`.
-struct Services connectionlessHost demoFn serverPacketFn context end struct
+struct Services
+  /// When constructing this record, `services` supplies `connectionlessHost` for this member.
+  connectionlessHost
+  /// Host callback for the demo operation; an unset callback leaves that host operation unavailable.
+  demoFn
+  /// Host callback for the server packet operation; an unset callback leaves that host operation
+  /// unavailable.
+  serverPacketFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for client packet ingestion.
+  context
+end struct
 
 /// Stores network ingress runtime wiring and state, including `connection`, `packetState`, `packetHost`, `netchanRuntime`, `protocol`, `services` and additional values.
 struct Runtime
-  connection packetState packetHost netchanRuntime protocol services
-  lastPacketResult lastParseResult packetCount codec
+  /// When constructing this record, `create` supplies `connectionState` for this member. Used by
+  /// `process` during subsequent processing.
+  connection
+  /// When constructing this record, `create` supplies `packetState` for this member. Used by
+  /// `setRealtime` and `clientPacket` during subsequent processing.
+  packetState
+  /// When constructing this record, `create` supplies `packetHost` for this member. Used by
+  /// `clientPacket` during subsequent processing.
+  packetHost
+  /// When constructing this record, `create` supplies `netchanRuntime` for this member. Used by
+  /// `process` and `parse` during subsequent processing.
+  netchanRuntime
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `clientPacket` during subsequent processing.
+  lastPacketResult
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `parse` during subsequent processing.
+  lastParseResult
+  /// When constructing this record, `create` supplies `0` for this member. Used by `clientPacket`
+  /// during subsequent processing.
+  packetCount
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `clientPacket` during subsequent processing.
+  codec
 end struct
 
 /// Creates a `mq3.client.network_ingress.Services` record. Assigns `connectionlessHost` from `connectionlessHost`.

@@ -50,24 +50,99 @@ extern function drawSkyLayerNative(records as ptr,capacity as i32,firstTriangle 
 /// @returns The principal arc cosine in radians for a valid argument in the range minus one through one.
 extern function acos(value as double) from "ucrtbase.dll" returns double
 
+/// Virtual shader name selected for this module's background surface.
 const SHADER_NAME="textures/skies/tim_hell"
+/// Number of texture slots required by the module's fixed media layout.
 const REQUIRED_TEXTURES=2
+/// Number of horizontal cells used to tessellate the native sky layer.
 const GRID_COLUMNS=12
+/// Number of vertical cells used to tessellate the native sky layer.
 const GRID_ROWS=8
+/// Depth value used to place the native sky layer behind world geometry.
 const SKY_DEPTH=1000000.0
+/// Capacity limit for the cached views collection or bounded storage used by this client module.
 const MAX_CACHED_VIEWS=8
+/// Byte count used when storing or marshalling the source vertex data.
 const SOURCE_VERTEX_BYTES=32
 
 /// Stores playable sky layer record, including `imageName`, `image`, `slot`, `scaleU`, `scaleV`, `scrollU` and additional values.
-struct Layer imageName image slot scaleU scaleV scrollU scrollV additive end struct
+struct Layer
+  /// Resolved image path for this textured sky layer.
+  imageName
+  /// When constructing this record, `layerFromStage` supplies `image` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+  /// When constructing this record, `layerFromStage` supplies `scaleU` for this member. Used by
+  /// `vertex` and `mappedVertex` during subsequent processing.
+  scaleU
+  /// When constructing this record, `layerFromStage` supplies `scaleV` for this member. Used by
+  /// `vertex` and `mappedVertex` during subsequent processing.
+  scaleV
+  /// When constructing this record, `layerFromStage` supplies `scrollU` for this member. Used by
+  /// `vertex` and `mappedVertex` during subsequent processing.
+  scrollU
+  /// When constructing this record, `layerFromStage` supplies `scrollV` for this member. Used by
+  /// `vertex` and `mappedVertex` during subsequent processing.
+  scrollV
+  /// When constructing this record, `layerFromStage` supplies `additive` for this member.
+  additive
+end struct
 /// Stores playable sky catalog record, including `layers`, `firstTextureSlot`, `textureCount`, `shaderName`, `cloudHeight`, `cache`.
-struct Catalog layers firstTextureSlot textureCount shaderName cloudHeight cache end struct
+struct Catalog
+  /// When constructing this record, `loadIndexed` supplies `layers` for this member. Used by `upload`
+  /// and `release` during subsequent processing.
+  layers
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// When constructing this record, `loadIndexed` supplies `parsed.cloudHeight` for this member. Used
+  /// by `buildBatchPrepared` and `retainedBatchPrepared` during subsequent processing.
+  cloudHeight
+  /// When constructing this record, `loadIndexed` supplies an absent (`void`) value for this member.
+  /// Used by `release` and `retainedBatchPrepared` during subsequent processing.
+  cache
+end struct
 /// Stores playable sky vertex record, including `point`, `uv`.
-struct Vertex point uv end struct
+struct Vertex
+  /// When constructing this record, `vertex` supplies `viewer.ScreenPoint(x,y,depth)` for this member.
+  /// Used by `retainedBatchPrepared` during subsequent processing.
+  point
+  /// When constructing this record, `vertex` supplies `mapped` for this member. Used by
+  /// `retainedBatchPrepared` during subsequent processing.
+  uv
+end struct
 /// Stores playable sky cached view record, including `basis`, `left`, `top`, `width`, `height`, `source` and additional values.
-struct CachedView basis left top width height source batch end struct
+struct CachedView
+  /// When constructing this record, `retainedBatchPrepared` supplies `copyBasis(basis)` for this
+  /// member.
+  basis
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Pixel width of the sky viewport for which this projected-geometry cache was built.
+  width
+  /// Pixel height of the sky viewport for which this projected-geometry cache was built.
+  height
+  /// When constructing this record, `retainedBatchPrepared` supplies
+  /// `bytes(len(grid)*SOURCE_VERTEX_BYTES,0)` for this member.
+  source
+  /// When constructing this record, `retainedBatchPrepared` supplies `batch` for this member.
+  batch
+end struct
 /// Stores playable sky view cache record, including `entries`, `next`.
-struct ViewCache entries next end struct
+struct ViewCache
+  /// When constructing this record, `retainedBatchPrepared` supplies `array(MAX_CACHED_VIEWS,void)` for
+  /// this member.
+  entries
+  /// When constructing this record, `retainedBatchPrepared` supplies `0` for this member.
+  next
+end struct
 
 /// Creates the playable sky error `7610` with diagnostic text `"playable sky: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable sky: "+message`.

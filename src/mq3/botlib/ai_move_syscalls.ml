@@ -8,7 +8,9 @@ import mq3.botlib.ai_goal_state_syscalls as goalAbi
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Byte size of the init move record in the bot VM ABI or serialized representation.
 const INIT_MOVE_SIZE=68
+/// Byte size of the move result record in the bot VM ABI or serialized representation.
 const MOVE_RESULT_SIZE=52
 /// Write a movement vector as three consecutive float words in VM memory.
 /// @param data Value passed as argument 1 to `mq3.compat.numeric.writeU32`.

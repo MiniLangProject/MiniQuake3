@@ -7,12 +7,31 @@ import mq3.format.pk3 as pk3
 import mq3.audio.wav as wav
 import std.string as strings
 
+/// Marker indicating that the looping animation or media path is enabled.
 const LOOPED_ON=1
 
 /// Stores playable ambient sounds speaker record, including `noise`, `origin`, `globalSound`, `sound`.
-struct Speaker noise origin globalSound sound end struct
+struct Speaker
+  /// When constructing this record, `loopDefinitions` supplies `path` for this member. Used by `load`
+  /// and `globalLoops` during subsequent processing.
+  noise
+  /// Map-space source position used to spatialize an ambient speaker's sound.
+  origin
+  /// Sound resource selected for the global event or effect.
+  globalSound
+  /// Decoded WAV sound data resolved for this map speaker; absent until its asset loads.
+  sound
+end struct
 /// Stores playable ambient sounds catalog record, including `speakers`, `uniqueSounds`, `skipped`.
-struct Catalog speakers uniqueSounds skipped end struct
+struct Catalog
+  /// When constructing this record, `load` supplies `loaded` for this member. Used by `globalLoops`
+  /// during subsequent processing.
+  speakers
+  /// Sound resources selected for the unique event or effect.
+  uniqueSounds
+  /// When constructing this record, `load` supplies `skipped` for this member.
+  skipped
+end struct
 
 /// Creates the playable ambient sounds error `7610` with diagnostic text `"preview ambience: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview ambience: "+message`.

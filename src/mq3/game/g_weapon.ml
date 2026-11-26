@@ -18,17 +18,29 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 import mq3.server.world as sv
 
+/// Weapon identifier selecting nailgun.
 const WP_NAILGUN = 11
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER = 12
+/// Weapon identifier selecting chaingun.
 const WP_CHAINGUN = 13
+/// Cause-of-death identifier attributing damage or a kill to nail.
 const MOD_NAIL = 24
+/// Cause-of-death identifier attributing damage or a kill to chaingun.
 const MOD_CHAINGUN = 25
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to kamikaze.
 const MOD_KAMIKAZE = 27
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE = 0x200
+/// Damage-processing flag enabling radius.
 const DAMAGE_RADIUS = 1
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
+/// Damage-processing flag enabling no team protection.
 const DAMAGE_NO_TEAM_PROTECTION = 16
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
 
 /// Forward `G_BounceProjectile` to `mq3.game.weapons.bounceProjectile` and return the delegated result.

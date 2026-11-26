@@ -3,31 +3,118 @@
 // Native semantic port of code/q3_ui/ui_main.c (the UI QVM export surface).
 package mq3.client.ui_main
 
+/// UI VM entry-point ordinal used to query the UI VM interface version.
 const UI_GETAPIVERSION=0
+/// UI VM entry-point ordinal used to initialize the UI VM.
 const UI_INIT=1
+/// UI VM entry-point ordinal used to shut down the UI VM.
 const UI_SHUTDOWN=2
+/// UI VM entry-point ordinal used to deliver a key event to the UI.
 const UI_KEY_EVENT=3
+/// UI VM entry-point ordinal used to deliver pointer motion to the UI.
 const UI_MOUSE_EVENT=4
+/// UI VM entry-point ordinal used to advance and render the UI.
 const UI_REFRESH=5
+/// UI VM entry-point ordinal used to query whether the UI covers the game view.
 const UI_IS_FULLSCREEN=6
+/// UI VM entry-point ordinal used to select the active UI menu.
 const UI_SET_ACTIVE_MENU=7
+/// UI VM entry-point ordinal used to handle a UI console command.
 const UI_CONSOLE_COMMAND=8
+/// UI VM entry-point ordinal used to render the connection-progress screen.
 const UI_DRAW_CONNECT_SCREEN=9
+/// UI VM entry-point ordinal used to query whether the UI requires a unique product key.
 const UI_HASUNIQUECDKEY=10
+/// UI virtual-machine interface version expected by the engine.
 const UI_API_VERSION=6
+/// Configuration-variable attribute that persists the value in the user's saved configuration.
 const CVAR_ARCHIVE=1
+/// Configuration-variable attribute allowing initialization-time assignment but rejecting later
+/// ordinary changes.
 const CVAR_INIT=16
+/// Configuration-variable attribute deferring a changed value until the relevant restart or
+/// reinitialization.
 const CVAR_LATCH=32
+/// Configuration-variable attribute restricting writes to engine-controlled updates.
 const CVAR_ROM=64
 
 /// Stores UI main cvar spec record, including `name`, `defaultValue`, `flags`, `value`, `modificationCount`, `registered` and additional values.
-struct CvarSpec name defaultValue flags value modificationCount registered updateCount end struct
+struct CvarSpec
+  /// Engine configuration-variable name used to read, update, or register this setting.
+  name
+  /// When constructing this record, `spec` supplies `defaultValue` for this member.
+  defaultValue
+  /// When constructing this record, `spec` supplies `flags` for this member.
+  flags
+  /// Current or default setting value held by this configuration variable or UI control.
+  value
+  /// When constructing this record, `spec` supplies `0` for this member.
+  modificationCount
+  /// True once the referenced media resources have been registered with the engine.
+  registered
+  /// When constructing this record, `spec` supplies `0` for this member.
+  updateCount
+end struct
 /// Stores UI main host action record, including `boundary`, `kind`, `name`, `args`, `dispatched`.
-struct HostAction boundary kind name args dispatched end struct
+struct HostAction
+  /// Host service category recorded with a request emitted while dispatching base-game UI entry points
+  /// to engine services.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while dispatching base-game
+  /// UI entry points to engine services.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// When constructing this record, `hostAction` supplies `args` for this member.
+  args
+  /// True when this request is marked for native dispatch while dispatching base-game UI entry points
+  /// to engine services; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI main dispatch result record, including `value`, `action`.
-struct DispatchResult value action end struct
+struct DispatchResult
+  /// Return value of the dispatched base-game UI entry point, separate from the host action it records.
+  value
+  /// When constructing this record, `result` supplies `action` for this member.
+  action
+end struct
 /// Stores UI main state, including `cvars`, `actions`, `initialized`, `shutdown`, `keyEvents`, `mouseEvents` and additional values.
-struct State cvars actions initialized shutdown keyEvents mouseEvents refreshTimes activeMenus connectScreens fullscreenResult consoleResult retailQvmActive end struct
+struct State
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Host requests queued while dispatching base-game UI entry points to engine services, retained in
+  /// request order.
+  actions
+  /// True after the UI_INIT entry point and cleared by UI_SHUTDOWN in the base-game dispatcher.
+  initialized
+  /// When constructing this record, `create` supplies `false` for this member. Used by `vmMain` during
+  /// subsequent processing.
+  shutdown
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `vmMain`
+  /// during subsequent processing.
+  keyEvents
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `vmMain`
+  /// during subsequent processing.
+  mouseEvents
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `vmMain`
+  /// during subsequent processing.
+  refreshTimes
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `vmMain`
+  /// during subsequent processing.
+  activeMenus
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `vmMain`
+  /// during subsequent processing.
+  connectScreens
+  /// When constructing this record, `create` supplies `0` for this member. Used by `vmMain` during
+  /// subsequent processing.
+  fullscreenResult
+  /// When constructing this record, `create` supplies `0` for this member. Used by `vmMain` during
+  /// subsequent processing.
+  consoleResult
+  /// When constructing this record, `create` supplies `retailQvmActive` for this member. Used by
+  /// `hostAction` during subsequent processing.
+  retailQvmActive
+end struct
 
 /// Creates a `mq3.client.ui_main.CvarSpec` record. Assigns `name` from `name`, `defaultValue` from `defaultValue`, `flags` from `flags`, `value` from `defaultValue`.
 /// @param name Value used to initialize `CvarSpec.name`.

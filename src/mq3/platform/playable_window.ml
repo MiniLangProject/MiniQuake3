@@ -514,57 +514,147 @@ extern function worldTriangleBatchViewportNative(records as ptr,byteCount as i32
 
 // Matches PLAYABLE_TEXTURE_SLOTS in native/playable_win32.c.
 const NATIVE_TEXTURE_SLOTS=4096
+/// Windows virtual-key code for Escape.
 const VK_ESCAPE=27
+/// Windows virtual-key code for left mouse button.
 const VK_LBUTTON=1
+/// Windows virtual-key code for right mouse button.
 const VK_RBUTTON=2
+/// Windows virtual-key code for middle mouse button.
 const VK_MBUTTON=4
+/// Windows virtual-key code for first extended mouse button.
 const VK_XBUTTON1=5
+/// Windows virtual-key code for second extended mouse button.
 const VK_XBUTTON2=6
+/// Engine input key code for mouse button 1.
 const K_MOUSE1=178
+/// Engine input key code for mouse button 2.
 const K_MOUSE2=179
+/// Engine input key code for mouse button 3.
 const K_MOUSE3=180
+/// Engine input key code for mouse button 4.
 const K_MOUSE4=181
+/// Engine input key code for mouse button 5.
 const K_MOUSE5=182
+/// Engine input key code for the downward mouse-wheel step.
 const K_MWHEELDOWN=183
+/// Engine input key code for the upward mouse-wheel step.
 const K_MWHEELUP=184
+/// Windows virtual-key code for Enter.
 const VK_RETURN=13
+/// Windows virtual-key code for Space.
 const VK_SPACE=32
+/// Windows virtual-key code for up arrow.
 const VK_UP=38
+/// Windows virtual-key code for down arrow.
 const VK_DOWN=40
+/// Windows virtual-key code for A.
 const VK_A=65
+/// Windows virtual-key code for D.
 const VK_D=68
+/// Windows virtual-key code for E.
 const VK_E=69
+/// Windows virtual-key code for Q.
 const VK_Q=81
+/// Windows virtual-key code for S.
 const VK_S=83
+/// Windows virtual-key code for W.
 const VK_W=87
+/// Windows virtual-key code for Shift.
 const VK_SHIFT=16
+/// Windows virtual-key code for 1.
 const VK_1=49
+/// Windows virtual-key code for 2.
 const VK_2=50
+/// Windows virtual-key code for 3.
 const VK_3=51
+/// Windows virtual-key code for 4.
 const VK_4=52
+/// Windows virtual-key code for 5.
 const VK_5=53
+/// Windows virtual-key code for 6.
 const VK_6=54
+/// Windows virtual-key code for 7.
 const VK_7=55
+/// Windows virtual-key code for 8.
 const VK_8=56
+/// Windows virtual-key code for 9.
 const VK_9=57
+/// Native input record type carrying a key code and pressed state.
 const INPUT_KEY=1
+/// Native input record type carrying a text-input character.
 const INPUT_CHAR=2
+/// Native input record type carrying relative mouse movement.
 const INPUT_MOUSE=3
+/// Byte size of one packed triangle record consumed by the native drawing backend.
 const TRIANGLE_BATCH_RECORD_BYTES=128
+/// Maximum number of packed triangle records accepted by one native batch.
 const TRIANGLE_BATCH_MAX_COUNT=65536
 
 /// Data record for `mq3.platform.playable_window.TriangleBatch`; groups `data`, `capacity`, `count`.
-struct TriangleBatch data capacity count end struct
+struct TriangleBatch
+  /// Packed triangle records passed directly to the native graphics backend.
+  data
+  /// Maximum number of packed triangle records that fit in the batch buffer.
+  capacity
+  /// Number of initialized triangle records in the native batch buffer.
+  count
+end struct
 /// Data record for `mq3.platform.playable_window.Viewport`; groups `x`, `y`, `width`, `height`.
-struct Viewport x y width height end struct
+struct Viewport
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the native drawing viewport.
+  width
+  /// Height in pixels of the native drawing viewport.
+  height
+end struct
 /// Data record for `mq3.platform.playable_window.LoadingPoint`; groups `x`, `y`.
-struct LoadingPoint x y end struct
+struct LoadingPoint
+  /// Horizontal screen-space coordinate of the projected or drawn point.
+  x
+  /// Vertical screen-space coordinate of the projected or drawn point.
+  y
+end struct
 /// Data record for `mq3.platform.playable_window.InputEvent`; groups `time`, `type`, `value`, `value2`.
-struct InputEvent time type value value2 end struct
+struct InputEvent
+  /// Timestamp in milliseconds attached to a native window input record.
+  time
+  /// System-event category selecting how the accompanying values are interpreted.
+  type
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+end struct
 /// Data record for `mq3.platform.playable_window.WindowState`; groups `active`, `minimized`, `x`, `y`, `fullscreen`, `altTabDisabled`, and 1 further field.
-struct WindowState active minimized x y fullscreen altTabDisabled soundActivationSerial end struct
+struct WindowState
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Whether the application window is minimized.
+  minimized
+  /// Horizontal position of the native window, in desktop coordinates.
+  x
+  /// Vertical position of the native window, in desktop coordinates.
+  y
+  /// Whether the selected video mode occupies the full display.
+  fullscreen
+  /// Whether task switching is disabled while the window is active.
+  altTabDisabled
+  /// Generation incremented whenever window activation changes sound playback.
+  soundActivationSerial
+end struct
 /// Data record for `mq3.platform.playable_window.DisplayMode`; groups `width`, `height`, `fullscreen`.
-struct DisplayMode width height fullscreen end struct
+struct DisplayMode
+  /// Width in pixels of the enumerated native display mode.
+  width
+  /// Height in pixels of the enumerated native display mode.
+  height
+  /// Whether the selected video mode occupies the full display.
+  fullscreen
+end struct
 
 /// Builds `mq3.platform.playable_window.DisplayMode` for `mq3.platform.playable_window.setMode`.
 /// @param width Value forwarded as `width` to `mq3.platform.playable_window.setModeNative`.

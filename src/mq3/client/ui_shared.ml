@@ -10,88 +10,432 @@ import mq3.compat.transcendental as crt
 import mq3.shared.parser as parser
 import std.string as strings
 
+/// Window-state flag used to include the window in menu rendering.
 const WINDOW_VISIBLE=4
+/// Window-state flag used to record that the pointer is inside the window.
 const WINDOW_MOUSEOVER=1
+/// Window-state flag used to record that the window owns keyboard focus.
 const WINDOW_HASFOCUS=2
+/// Window-state flag used to treat the window as noninteractive decoration.
 const WINDOW_DECORATION=16
+/// Window-state flag used to advance the window's fade-out animation.
 const WINDOW_FADINGOUT=32
+/// Window-state flag used to advance the window's fade-in animation.
 const WINDOW_FADINGIN=64
+/// Window-state flag used to record that the pointer is inside the text rectangle.
 const WINDOW_MOUSEOVERTEXT=128
+/// Window-state flag used to advance a rectangle transition for the window.
 const WINDOW_INTRANSITION=256
+/// Window-state flag used to retain the window's explicitly specified foreground color.
 const WINDOW_FORECOLORSET=512
+/// Window-state flag used to use horizontal layout or scrolling for the window.
 const WINDOW_HORIZONTAL=1024
+/// Window-state flag used to advance the window's orbit animation.
 const WINDOW_ORBITING=65536
+/// Menu-item type selecting text interaction and type-specific data.
 const ITEM_TYPE_TEXT=0
+/// Menu-item type selecting button interaction and type-specific data.
 const ITEM_TYPE_BUTTON=1
+/// Menu-item type selecting radiobutton interaction and type-specific data.
 const ITEM_TYPE_RADIOBUTTON=2
+/// Menu-item type selecting checkbox interaction and type-specific data.
 const ITEM_TYPE_CHECKBOX=3
+/// Menu-item type selecting editfield interaction and type-specific data.
 const ITEM_TYPE_EDITFIELD=4
+/// Menu-item type selecting combo interaction and type-specific data.
 const ITEM_TYPE_COMBO=5
+/// Menu-item type selecting listbox interaction and type-specific data.
 const ITEM_TYPE_LISTBOX=6
+/// Menu-item type selecting model interaction and type-specific data.
 const ITEM_TYPE_MODEL=7
+/// Menu-item type selecting ownerdraw interaction and type-specific data.
 const ITEM_TYPE_OWNERDRAW=8
+/// Menu-item type selecting numericfield interaction and type-specific data.
 const ITEM_TYPE_NUMERICFIELD=9
+/// Menu-item type selecting slider interaction and type-specific data.
 const ITEM_TYPE_SLIDER=10
+/// Menu-item type selecting yesno interaction and type-specific data.
 const ITEM_TYPE_YESNO=11
+/// Menu-item type selecting multi interaction and type-specific data.
 const ITEM_TYPE_MULTI=12
+/// Menu-item type selecting bind interaction and type-specific data.
 const ITEM_TYPE_BIND=13
+/// Menu-item alignment value selecting left horizontal alignment.
 const ITEM_ALIGN_LEFT=0
+/// Menu-item alignment value selecting center horizontal alignment.
 const ITEM_ALIGN_CENTER=1
+/// Menu-item alignment value selecting right horizontal alignment.
 const ITEM_ALIGN_RIGHT=2
+/// Cursor-display value selecting no visible pointer shape.
 const CURSOR_NONE=1
+/// Cursor-display value selecting the ordinary arrow pointer.
 const CURSOR_ARROW=2
+/// Cursor-display value selecting the resizing pointer shape.
 const CURSOR_SIZER=4
+/// Engine key code for the tab input, used by menu and client key-event handling.
 const K_TAB=9
+/// Engine key code for the enter input, used by menu and client key-event handling.
 const K_ENTER=13
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Engine key code for the space input, used by menu and client key-event handling.
 const K_SPACE=32
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=127
+/// Engine key code for the uparrow input, used by menu and client key-event handling.
 const K_UPARROW=132
+/// Engine key code for the downarrow input, used by menu and client key-event handling.
 const K_DOWNARROW=133
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=134
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=135
+/// Engine key code for the alt input, used by menu and client key-event handling.
 const K_ALT=136
+/// Engine key code for the ctrl input, used by menu and client key-event handling.
 const K_CTRL=137
+/// Engine key code for the shift input, used by menu and client key-event handling.
 const K_SHIFT=138
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=140
+/// Engine key code for the pgdn input, used by menu and client key-event handling.
 const K_PGDN=141
+/// Engine key code for the end input, used by menu and client key-event handling.
 const K_END=144
+/// Engine key code for the f1 input, used by menu and client key-event handling.
 const K_F1=145
+/// Engine key code for the f2 input, used by menu and client key-event handling.
 const K_F2=146
+/// Engine key code for the f3 input, used by menu and client key-event handling.
 const K_F3=147
+/// Engine key code for the f4 input, used by menu and client key-event handling.
 const K_F4=148
+/// Engine key code for the f5 input, used by menu and client key-event handling.
 const K_F5=149
+/// Engine key code for the kp pgup input, used by menu and client key-event handling.
 const K_KP_PGUP=162
+/// Engine key code for the kp pgdn input, used by menu and client key-event handling.
 const K_KP_PGDN=168
+/// Engine key code for the mouse1 input, used by menu and client key-event handling.
 const K_MOUSE1=178
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
+/// Engine key code for the mouse3 input, used by menu and client key-event handling.
 const K_MOUSE3=180
+/// Engine key code for the mouse4 input, used by menu and client key-event handling.
 const K_MOUSE4=181
+/// Maximum editable text length supported by the UI field implementation.
 const MAX_EDITFIELD=256
+/// Capacity limit for the menuitems collection or bounded storage used by this client module.
 const MAX_MENUITEMS=96
+/// Capacity limit for the menus collection or bounded storage used by this client module.
 const MAX_MENUS=64
+/// Width or height of the menu scrollbar controls in UI layout coordinates.
 const SCROLLBAR_SIZE=16.0
 
 /// Stores UI shared queued engine action, including `boundary`, `kind`, `name`, `detail`, `number`, `vector` and additional values.
-struct Action boundary kind name detail number vector dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while evaluating menu scripts, registering
+  /// resources, and issuing widget draw requests.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while evaluating menu
+  /// scripts, registering resources, and issuing widget draw requests.
+  kind
+  /// Resource, menu or item, cvar, or command target referenced by the parsed-menu host action.
+  name
+  /// Additional text payload required by the selected host operation.
+  detail
+  /// Numeric argument interpreted by the selected host operation while evaluating menu scripts,
+  /// registering resources, and issuing widget draw requests.
+  number
+  /// Vector argument interpreted according to the queued operation's kind.
+  vector
+  /// True when this request is marked for native dispatch while evaluating menu scripts, registering
+  /// resources, and issuing widget draw requests; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI shared rectangle, including `x`, `y`, `w`, `h`.
-struct Rect x y w h end struct
+struct Rect
+  /// Horizontal position of the rectangle's origin in UI layout coordinates.
+  x
+  /// Vertical position of the rectangle's origin in UI layout coordinates.
+  y
+  /// Width of the rectangular display region.
+  w
+  /// Height of the rectangular display region.
+  h
+end struct
 /// Stores UI shared color, including `r`, `g`, `b`, `a`.
-struct Color r g b a end struct
+struct Color
+  /// Red component of the UI color.
+  r
+  /// Green component of the UI color.
+  g
+  /// Blue component of the UI color.
+  b
+  /// Alpha component controlling UI opacity.
+  a
+end struct
 /// Stores UI shared source record, including `scan`, `name`, `warnings`, `errors`.
-struct Source scan name warnings errors end struct
+struct Source
+  /// Token-scanner state used to read the menu or script source.
+  scan
+  /// Source name included in parser diagnostics.
+  name
+  /// Nonfatal diagnostic messages collected while processing the input.
+  warnings
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+end struct
 /// Stores UI shared memory record, including `capacity`, `used`, `strings`, `outOfMemory`.
-struct Memory capacity used strings outOfMemory end struct
+struct Memory
+  /// Maximum number of entries or allocation units supported by the bounded storage.
+  capacity
+  /// When constructing this record, `memory` supplies `0` for this member. Used by `String_Report`
+  /// during subsequent processing.
+  used
+  /// When constructing this record, `memory` supplies an empty list for this member. Used by
+  /// `String_Alloc` and `String_Report` during subsequent processing.
+  strings
+  /// True when the bounded allocation or string-storage pool could not satisfy a request.
+  outOfMemory
+end struct
 /// Stores UI shared window record, including `name`, `group`, `rect`, `rectClient`, `rectEffects`, `rectEffects2` and additional values.
-struct Window name group rect rectClient rectEffects rectEffects2 style border borderSize flags foreColor backColor borderColor outlineColor background cinematic offsetTime nextTime alpha end struct
+struct Window
+  /// Window name used by menu scripts and named-item lookup.
+  name
+  /// Optional group name used to address several menu windows together.
+  group
+  /// Primary rectangle used to position and size the UI element.
+  rect
+  /// Secondary rectangle used when transforming the element between menu and screen coordinates.
+  rectClient
+  /// Rectangle holding the current transition or animation extent.
+  rectEffects
+  /// Additional rectangle used by menu transition and orbit effects.
+  rectEffects2
+  /// Window drawing style selecting the background presentation.
+  style
+  /// Border style selected for the menu window.
+  border
+  /// Thickness of the UI element's border in its layout coordinate system.
+  borderSize
+  /// Window flags controlling visibility, focus, mouseover, and animation state.
+  flags
+  /// Foreground text or image color used by the UI element.
+  foreColor
+  /// Background fill color used by the UI element.
+  backColor
+  /// Color used to draw the UI element's border.
+  borderColor
+  /// Color used to draw the UI element's outline.
+  outlineColor
+  /// Virtual shader or image asset used for the window background.
+  background
+  /// Handle of the cinematic playing inside the window, or a negative value when inactive.
+  cinematic
+  /// Time offset used while updating a window animation or transition.
+  offsetTime
+  /// Next scheduled time at which a window animation or transition advances.
+  nextTime
+  /// Opacity or alpha modulation applied while drawing or fading the object.
+  alpha
+end struct
 /// Stores UI shared type data record, including `startPos`, `endPos`, `cursorPos`, `maxChars`, `maxPaintChars`, `minVal` and additional values.
-struct TypeData startPos endPos cursorPos maxChars maxPaintChars minVal maxVal defVal feeder elementWidth elementHeight horizontal columns settings values stringValues modelOrigin modelFovX modelFovY modelRotation modelAngle doubleClick notselectable end struct
+struct TypeData
+  /// When constructing this record, `typeData` supplies `0` for this member. Used by
+  /// `Item_ListBox_ThumbPosition` and `Item_ListBox_MouseEnter` during subsequent processing.
+  startPos
+  /// When constructing this record, `typeData` supplies `0` for this member.
+  endPos
+  /// Insertion or selection position within the editable text field.
+  cursorPos
+  /// Maximum number of characters accepted by the editable text field.
+  maxChars
+  /// Maximum number of field characters painted at once before scrolling.
+  maxPaintChars
+  /// Lower numeric bound accepted by the edit or slider control.
+  minVal
+  /// Upper numeric bound accepted by the edit or slider control.
+  maxVal
+  /// Default numeric value used by the edit or slider control.
+  defVal
+  /// Feeder identifier supplying data rows to this list or menu control.
+  feeder
+  /// Horizontal size of one item in the list or feeder layout.
+  elementWidth
+  /// Vertical size of one item in the list or feeder layout.
+  elementHeight
+  /// True when the control lays out or scrolls its elements horizontally.
+  horizontal
+  /// Column descriptors used to lay out a listbox's displayed data.
+  columns
+  /// When constructing this record, `typeData` supplies an empty list for this member. Used by
+  /// `Item_Multi_CountSettings` and `Item_Multi_Setting` during subsequent processing.
+  settings
+  /// When constructing this record, `typeData` supplies an empty list for this member. Used by
+  /// `Item_Multi_FindCvarByValue` and `Item_Multi_HandleKey` during subsequent processing.
+  values
+  /// When constructing this record, `typeData` supplies an empty list for this member.
+  stringValues
+  /// Position offset used when framing the model preview.
+  modelOrigin
+  /// Horizontal field of view, in degrees, used for the model preview.
+  modelFovX
+  /// Vertical field of view, in degrees, used for the model preview.
+  modelFovY
+  /// Rate or mode used to rotate the model preview over time.
+  modelRotation
+  /// Current yaw angle used to render the rotating model preview.
+  modelAngle
+  /// Script executed when the list item receives a double-click event.
+  doubleClick
+  /// True when list entries may be displayed but cannot be selected.
+  notselectable
+end struct
 /// Stores UI shared menu item, including `window`, `parent`, `text`, `textRect`, `type`, `alignment` and additional values.
-struct Item window parent text textRect type alignment textalignment textalignx textaligny textscale textStyle action cvar cvarTest enableCvar cvarFlags typeData special ownerDraw ownerDrawFlags focusSound onFocus leaveFocus mouseEnter mouseExit mouseEnterText mouseExitText properties colorRanges end struct
+struct Item
+  /// When constructing this record, `item` supplies `window()` for this member.
+  window
+  /// Owning menu or container used to route this item's events and layout.
+  parent
+  /// Display text painted by this menu item.
+  text
+  /// Rectangle occupied by the laid-out text within the UI item.
+  textRect
+  /// UI item kind selecting its type-specific behavior and payload.
+  type
+  /// Horizontal alignment mode for the item within its layout region.
+  alignment
+  /// Horizontal alignment mode for text within the item's text rectangle.
+  textalignment
+  /// Horizontal offset applied when positioning the item's text.
+  textalignx
+  /// Vertical offset applied when positioning the item's text.
+  textaligny
+  /// Scale factor applied to the UI text font metrics.
+  textscale
+  /// Text-rendering style selecting effects such as shadows or blinking.
+  textStyle
+  /// Script executed when the menu item is activated.
+  action
+  /// Configuration-variable name bound to this UI control.
+  cvar
+  /// Configuration-variable name consulted by the control's enable or visibility test.
+  cvarTest
+  /// Accepted configuration-variable values used by the enable or visibility expression.
+  enableCvar
+  /// Flags selecting whether a cvar condition enables, disables, shows, or hides the item.
+  cvarFlags
+  /// Type-specific payload for the edit, slider, listbox, model, or other UI control.
+  typeData
+  /// Additional numeric parameter interpreted by the selected item or owner-draw type.
+  special
+  /// Owner-draw identifier selecting the specialized renderer for the UI element.
+  ownerDraw
+  /// Visibility and presentation flags evaluated by the owner-draw renderer.
+  ownerDrawFlags
+  /// Sound resource selected for the focus event or effect.
+  focusSound
+  /// Script executed when the UI item acquires keyboard focus.
+  onFocus
+  /// Script executed when the UI item loses keyboard focus.
+  leaveFocus
+  /// Script executed when the pointer enters the item's rectangle.
+  mouseEnter
+  /// Script executed when the pointer leaves the item's rectangle.
+  mouseExit
+  /// Script executed when the pointer enters the item's text rectangle.
+  mouseEnterText
+  /// Script executed when the pointer leaves the item's text rectangle.
+  mouseExitText
+  /// Parsed property entries retained for type-specific menu behavior.
+  properties
+  /// Value ranges selecting conditional colors for the displayed item.
+  colorRanges
+end struct
 /// Stores UI shared menu, including `window`, `items`, `cursorItem`, `font`, `fullScreen`, `onOpen` and additional values.
-struct Menu window items cursorItem font fullScreen onOpen onClose onESC soundLoop focusColor disableColor fadeClamp fadeAmount fadeCycle ownerDraw ownerDrawFlags popup outOfBounds properties end struct
+struct Menu
+  /// When constructing this record, `menu` supplies `window()` for this member.
+  window
+  /// Ordered child items participating in this menu's rendering and navigation.
+  items
+  /// Index of the menu item that currently owns keyboard focus.
+  cursorItem
+  /// Font resource or font name selected for this menu.
+  font
+  /// Whether the parsed menu fills the 640 by 480 virtual UI canvas and counts as a visible full-screen
+  /// menu.
+  fullScreen
+  /// Script executed when the menu is opened.
+  onOpen
+  /// Script executed when the menu is closed.
+  onClose
+  /// Script executed when the menu receives the Escape key.
+  onESC
+  /// Sound resource continuously played while this menu is active.
+  soundLoop
+  /// Color used to display the currently focused menu item.
+  focusColor
+  /// Color used to display disabled menu items.
+  disableColor
+  /// Target alpha limit used by the menu's fade animation.
+  fadeClamp
+  /// Alpha increment applied by each menu fade update.
+  fadeAmount
+  /// Interval controlling how often the menu fade alpha is advanced.
+  fadeCycle
+  /// Owner-draw identifier selecting the specialized renderer for the UI element.
+  ownerDraw
+  /// Visibility and presentation flags evaluated by the owner-draw renderer.
+  ownerDrawFlags
+  /// True when this menu behaves as a modal popup over its parent menu.
+  popup
+  /// True when clicking outside the menu can dismiss or redirect the menu interaction.
+  outOfBounds
+  /// Parsed menu property entries retained for script and display behavior.
+  properties
+end struct
 /// Stores UI shared display record, including `menus`, `focus`, `capture`, `cursorx`, `cursory`, `scaleX` and additional values.
-struct Display menus focus capture cursorx cursory scaleX scaleY bias realtime frameTime keyBindPending actions cvars bindings assets memory retailActive end struct
+struct Display
+  /// Parsed menus available for activation and display.
+  menus
+  /// Menu or item currently owning keyboard focus.
+  focus
+  /// Item currently capturing pointer motion or a drag operation.
+  capture
+  /// Horizontal position of the UI pointer in the menu coordinate system.
+  cursorx
+  /// Vertical position of the UI pointer in the menu coordinate system.
+  cursory
+  /// Horizontal scale used to transform virtual UI coordinates to the actual display.
+  scaleX
+  /// Vertical scale used to transform virtual UI coordinates to the actual display.
+  scaleY
+  /// Horizontal adjustment used when centering the virtual UI on a wider display.
+  bias
+  /// UI display clock in milliseconds used to advance window fades, orbiting, and transitions.
+  realtime
+  /// Elapsed UI frame-time slot retained alongside the absolute realtime clock.
+  frameTime
+  /// True while the UI is waiting for a key to assign to a binding.
+  keyBindPending
+  /// Host requests queued while evaluating menu scripts, registering resources, and issuing widget draw
+  /// requests, retained in request order.
+  actions
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Key-to-command associations available to the UI controls editor.
+  bindings
+  /// Registered shader, font, sound, and other display resources shared by scripted Missionpack
+  /// widgets.
+  assets
+  /// Bounded storage used for menu strings and parsed UI allocations.
+  memory
+  /// True when the retail QVM owns the scripted Missionpack menu runtime, so the native observer
+  /// records requests without emitting duplicate host effects.
+  retailActive
+end struct
 
 /// Creates a `mq3.client.ui_shared.Rect` record. Assigns `x` from `x`, `y` from `y`, `w` from `w`, `h` from `h`.
 /// @param x Value used to initialize `Rect.x`.

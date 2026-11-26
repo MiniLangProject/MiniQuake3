@@ -8,26 +8,99 @@ import mq3.game.playerstate as playerstate
 import std.sort as sorts
 import std.ds.list as snapshotLists
 
+/// Maximum number of entity states gathered for one snapshot.
 const MAX_SNAPSHOT_ENTITIES=1024
+/// Bit vector of area visibility.
 const MAX_MAP_AREA_BYTES=32
+/// Maximum number of addressable game-entity slots.
 const MAX_GENTITIES=1024
+/// Don't send entity to clients, even if it has effects.
 const SVF_NOCLIENT=gpublic.SVF_NOCLIENT
+/// Entity visibility flag interpreting the single-client field as a recipient bit mask.
 const SVF_CLIENTMASK=gpublic.SVF_CLIENTMASK
+/// Send to all connected clients.
 const SVF_BROADCAST=gpublic.SVF_BROADCAST
+/// Merge a second pvs at origin2 into snapshots.
 const SVF_PORTAL=gpublic.SVF_PORTAL
+/// Only send to a single client (entityShared_t->singleClient).
 const SVF_SINGLECLIENT=gpublic.SVF_SINGLECLIENT
+/// Send entity to everyone but one client.
 const SVF_NOTSINGLECLIENT=gpublic.SVF_NOTSINGLECLIENT
 
 /// Services record for server.snapshot_build, containing `pointLeafFn`, `leafAreaFn`, `leafClusterFn`, `writeAreaBitsFn`, `clusterPvsFn`, `areasConnectedFn`, and 1 further fields.
-struct Services pointLeafFn leafAreaFn leafClusterFn writeAreaBitsFn clusterPvsFn areasConnectedFn context end struct
+struct Services
+  /// Host callback that returns the BSP leaf containing a point.
+  pointLeafFn
+  /// Host callback that returns the portal area containing a BSP leaf.
+  leafAreaFn
+  /// Host callback that returns the visibility cluster containing a BSP leaf.
+  leafClusterFn
+  /// Host callback that serializes the area-visibility mask for a snapshot.
+  writeAreaBitsFn
+  /// Host callback that returns the potentially visible set for a visibility cluster.
+  clusterPvsFn
+  /// Host callback that tests whether two portal areas are connected.
+  areasConnectedFn
+  /// Caller-supplied data associated with collision visibility queries used to gather snapshot
+  /// entities.
+  context
+end struct
 /// SnapshotEntity record for server.snapshot_build, containing `state`, `linked`, `svFlags`, `singleClient`, `clusters`, `lastCluster`, and 3 further fields.
-struct SnapshotEntity state linked svFlags singleClient clusters lastCluster areaNum areaNum2 snapshotCounter end struct
+struct SnapshotEntity
+  /// Network entity-state payload considered for inclusion in a snapshot.
+  state
+  /// True when this entity or resource is linked into the world.
+  linked
+  /// Server-side visibility and entity-behavior flags.
+  svFlags
+  /// Client number selected or excluded by the entity's single-client visibility flags.
+  singleClient
+  /// Cluster records or assignments used to group navigation and visibility areas.
+  clusters
+  /// Final visibility cluster used when the explicit cluster list overflows.
+  lastCluster
+  /// Primary collision-map area containing this entity, used for snapshot area visibility.
+  areaNum
+  /// Second AAS area number used by the operation.
+  areaNum2
+  /// Generation marker used to avoid adding an entity twice to one snapshot.
+  snapshotCounter
+end struct
 /// World record for server.snapshot_build, containing `active`, `snapshotCounter`, `entities`, `ring`, `ringCapacity`, `nextSnapshotEntities`.
-struct World active snapshotCounter entities ring ringCapacity nextSnapshotEntities end struct
+struct World
+  /// True while this entry participates in the active runtime.
+  active
+  /// Generation marker used to avoid adding an entity twice to one snapshot.
+  snapshotCounter
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+  /// Circular storage retaining entity states referenced by sent snapshots.
+  ring
+  /// Number of entity-state slots in the snapshot ring.
+  ringCapacity
+  /// Next absolute insertion position in the circular snapshot-entity buffer.
+  nextSnapshotEntities
+end struct
 /// Frame record for server.snapshot_build, containing `areaBytes`, `areaBits`, `playerState`, `numEntities`, `firstEntity`.
-struct Frame areaBytes areaBits playerState numEntities firstEntity end struct
+struct Frame
+  /// Number of valid bytes in the snapshot's area-visibility mask.
+  areaBytes
+  /// Bitset of map areas visible in this snapshot.
+  areaBits
+  /// Authoritative player-state record used for snapshots and game simulation.
+  playerState
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// First entity-state position for this snapshot in the shared circular snapshot buffer.
+  firstEntity
+end struct
 /// EntityNumbers record for server.snapshot_build, containing `values`, `count`.
-struct EntityNumbers values count end struct
+struct EntityNumbers
+  /// Sorted entity numbers selected for the snapshot.
+  values
+  /// Number of valid entries represented by this result.
+  count
+end struct
 
 /// Create `mq3.server.snapshot_build.Services` with pointLeafFn=pointLeafFn; leafAreaFn=leafAreaFn; leafClusterFn=leafClusterFn; writeAreaBitsFn=writeAreaBitsFn; clusterPvsFn=clusterPvsFn; areasConnectedFn=areasConnectedFn; context=context.
 /// @param pointLeafFn Initial `pointLeafFn` field stored in the returned or constructed `mq3.server.snapshot_build.Services` record.

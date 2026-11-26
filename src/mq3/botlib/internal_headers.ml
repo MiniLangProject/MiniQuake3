@@ -3,115 +3,225 @@
 // Canonical contract facade for the internal Baseq3 botlib headers.
 package mq3.botlib.internal_headers
 
+/// Maximum character capacity of a BSP entity key or value.
 const MAX_EPAIRKEY=128
+/// Maximum number of client slots supported by these interfaces.
 const MAX_CLIENTS=64
+/// These are sent over the net as 8 bits.
 const MAX_MODELS=256
+/// So they cannot be blindly increased.
 const MAX_SOUNDS=256
+/// Number of indexed configuration-string slots in the game protocol.
 const MAX_CONFIGSTRINGS=1024
+/// Configuration-string slot used to publish score information.
 const CS_SCORES=32
+/// First configuration-string slot reserved for registered model names.
 const CS_MODELS=96
+/// First configuration-string slot reserved for registered sound names.
 const CS_SOUNDS=352
+/// Byte capacity of a bot-library path string.
 const MAX_PATH=64
+/// Routing-cache type identifier for routes between cluster portals.
 const CACHETYPE_PORTAL=0
+/// Routing-cache type identifier for routes within an AAS cluster.
 const CACHETYPE_AREA=1
+/// Fuzzy-weight node kind whose value can be adjusted during weight balancing.
 const WT_BALANCE=1
+/// Maximum number of named fuzzy-weight expressions in a configuration.
 const MAX_WEIGHTS=128
+/// String used to separate path components in botlib file names.
 const PATHSEPERATOR_STR="\\"
+/// Character used to separate path components in botlib file names.
 const PATHSEPERATOR_CHAR=92
+/// Preprocessor-definition flag preventing removal or ordinary replacement.
 const DEFINE_FIXED=1
+/// Preprocessor built-in macro identifier for line.
 const BUILTIN_LINE=1
+/// Preprocessor built-in macro identifier for file.
 const BUILTIN_FILE=2
+/// Preprocessor built-in macro identifier for date.
 const BUILTIN_DATE=3
+/// Preprocessor built-in macro identifier for time.
 const BUILTIN_TIME=4
+/// Preprocessor built-in macro identifier for C standard compatibility.
 const BUILTIN_STDC=5
+/// Preprocessor nesting-kind identifier for if.
 const INDENT_IF=1
+/// Preprocessor nesting-kind identifier for else.
 const INDENT_ELSE=2
+/// Preprocessor nesting-kind identifier for elif.
 const INDENT_ELIF=4
+/// Preprocessor nesting-kind identifier for ifdef.
 const INDENT_IFDEF=8
+/// Preprocessor nesting-kind identifier for ifndef.
 const INDENT_IFNDEF=16
+/// Maximum character capacity reserved for a scanner token spelling.
 const MAX_TOKENLENGTH=1024
+/// Maximum character capacity reserved for a scanner token spelling.
 const MAX_TOKEN=1024
+/// Scanner flag suppressing error diagnostics.
 const SCFL_NOERRORS=1
+/// Scanner flag suppressing warning diagnostics.
 const SCFL_NOWARNINGS=2
+/// Scanner flag preventing whitespace-separated string literals from being joined.
 const SCFL_NOSTRINGWHITESPACES=4
+/// Scanner flag disabling escape-sequence interpretation inside string literals.
 const SCFL_NOSTRINGESCAPECHARS=8
+/// Scanner flag selecting primitive tokenization rules.
 const SCFL_PRIMITIVE=16
+/// Scanner flag disabling binary-number literal syntax.
 const SCFL_NOBINARYNUMBERS=32
+/// Scanner flag preventing numeric token values from being calculated.
 const SCFL_NONUMBERVALUES=64
+/// Token-kind identifier for a quoted string literal.
 const TT_STRING=1
+/// Token-kind identifier for a quoted character literal.
 const TT_LITERAL=2
+/// Token-kind identifier for a numeric literal.
 const TT_NUMBER=3
+/// Token-kind identifier for an identifier or unquoted name.
 const TT_NAME=4
+/// Token-kind identifier for an operator or punctuation spelling.
 const TT_PUNCTUATION=5
+/// Numeric-token subtype flag for decimal notation.
 const TT_DECIMAL=8
+/// Numeric-token subtype flag for hexadecimal notation.
 const TT_HEX=256
+/// Numeric-token subtype flag for octal notation.
 const TT_OCTAL=512
+/// Numeric-token subtype flag for binary notation.
 const TT_BINARY=1024
+/// Numeric-token subtype flag for a floating-point value.
 const TT_FLOAT=2048
+/// Numeric-token subtype flag for an integer value.
 const TT_INTEGER=4096
+/// Numeric-token subtype flag for an integer with a long suffix.
 const TT_LONG=8192
+/// Numeric-token subtype flag for an unsigned integer.
 const TT_UNSIGNED=16384
+/// Scanner punctuation identifier for `>>=`.
 const P_RSHIFT_ASSIGN=1
+/// Scanner punctuation identifier for `<<=`.
 const P_LSHIFT_ASSIGN=2
+/// Scanner punctuation identifier for `...`.
 const P_PARMS=3
+/// Scanner punctuation identifier for `##`.
 const P_PRECOMPMERGE=4
+/// Scanner punctuation identifier for `&&`.
 const P_LOGIC_AND=5
+/// Scanner punctuation identifier for `||`.
 const P_LOGIC_OR=6
+/// Scanner punctuation identifier for `>=`.
 const P_LOGIC_GEQ=7
+/// Scanner punctuation identifier for `<=`.
 const P_LOGIC_LEQ=8
+/// Scanner punctuation identifier for `==`.
 const P_LOGIC_EQ=9
+/// Scanner punctuation identifier for `!=`.
 const P_LOGIC_UNEQ=10
+/// Scanner punctuation identifier for `*=`.
 const P_MUL_ASSIGN=11
+/// Scanner punctuation identifier for `/=`.
 const P_DIV_ASSIGN=12
+/// Scanner punctuation identifier for `%=`.
 const P_MOD_ASSIGN=13
+/// Scanner punctuation identifier for `+=`.
 const P_ADD_ASSIGN=14
+/// Scanner punctuation identifier for `-=`.
 const P_SUB_ASSIGN=15
+/// Scanner punctuation identifier for `++`.
 const P_INC=16
+/// Scanner punctuation identifier for `--`.
 const P_DEC=17
+/// Scanner punctuation identifier for `&=`.
 const P_BIN_AND_ASSIGN=18
+/// Scanner punctuation identifier for `|=`.
 const P_BIN_OR_ASSIGN=19
+/// Scanner punctuation identifier for `^=`.
 const P_BIN_XOR_ASSIGN=20
+/// Scanner punctuation identifier for `>>`.
 const P_RSHIFT=21
+/// Scanner punctuation identifier for `<<`.
 const P_LSHIFT=22
+/// Scanner punctuation identifier for `->`.
 const P_POINTERREF=23
+/// Scanner punctuation identifier for `::`.
 const P_CPP1=24
+/// Scanner punctuation identifier for `.*`.
 const P_CPP2=25
+/// Scanner punctuation identifier for `*`.
 const P_MUL=26
+/// Scanner punctuation identifier for `/`.
 const P_DIV=27
+/// Scanner punctuation identifier for `%`.
 const P_MOD=28
+/// Scanner punctuation identifier for `+`.
 const P_ADD=29
+/// Scanner punctuation identifier for `-`.
 const P_SUB=30
+/// Scanner punctuation identifier for `=`.
 const P_ASSIGN=31
+/// Scanner punctuation identifier for `&`.
 const P_BIN_AND=32
+/// Scanner punctuation identifier for `|`.
 const P_BIN_OR=33
+/// Scanner punctuation identifier for `^`.
 const P_BIN_XOR=34
+/// Scanner punctuation identifier for `~`.
 const P_BIN_NOT=35
+/// Scanner punctuation identifier for `!`.
 const P_LOGIC_NOT=36
+/// Scanner punctuation identifier for `>`.
 const P_LOGIC_GREATER=37
+/// Scanner punctuation identifier for `<`.
 const P_LOGIC_LESS=38
+/// Scanner punctuation identifier for `.`.
 const P_REF=39
+/// Scanner punctuation identifier for `,`.
 const P_COMMA=40
+/// Scanner punctuation identifier for `;`.
 const P_SEMICOLON=41
+/// Scanner punctuation identifier for `:`.
 const P_COLON=42
+/// Scanner punctuation identifier for `?`.
 const P_QUESTIONMARK=43
+/// Scanner punctuation identifier for `(`.
 const P_PARENTHESESOPEN=44
+/// Scanner punctuation identifier for `)`.
 const P_PARENTHESESCLOSE=45
+/// Scanner punctuation identifier for `{`.
 const P_BRACEOPEN=46
+/// Scanner punctuation identifier for `}`.
 const P_BRACECLOSE=47
+/// Scanner punctuation identifier for `[`.
 const P_SQBRACKETOPEN=48
+/// Scanner punctuation identifier for `]`.
 const P_SQBRACKETCLOSE=49
+/// Scanner punctuation identifier for `\\`.
 const P_BACKSLASH=50
+/// Scanner punctuation identifier for `#`.
 const P_PRECOMP=51
+/// Scanner punctuation identifier for `$`.
 const P_DOLLAR=52
+/// Character capacity of a fixed-size botlib ABI string field.
 const MAX_STRINGFIELD=80
+/// Structure-reader type code for a character-sized integer.
 const FT_CHAR=1
+/// Structure-reader type code for an integer field.
 const FT_INT=2
+/// Structure-reader type code for a floating-point field.
 const FT_FLOAT=3
+/// Structure-reader type code for a fixed-size string field.
 const FT_STRING=4
+/// Structure-reader type code for a nested structure.
 const FT_STRUCT=6
+/// Mask selecting the base field type in a structure-reader descriptor.
 const FT_TYPE=255
+/// Structure-reader modifier identifying an array field.
 const FT_ARRAY=256
+/// Structure-reader modifier enforcing numeric minimum and maximum bounds.
 const FT_BOUNDED=512
+/// Structure-reader modifier selecting unsigned integer interpretation.
 const FT_UNSIGNED=1024
 
 /// Return the ordered header names table for internal headers: 22 entries beginning with `"be_aas_bsp.h"` and `"be_aas_cluster.h"`.

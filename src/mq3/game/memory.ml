@@ -3,17 +3,24 @@
 // g_mem.c arena and g_spawn.c G_NewString. Module-owned byte storage.
 package mq3.game.memory
 
+/// Byte capacity of the fixed game-module allocation pool.
 const POOLSIZE = 262144
 /// `State` record for memory, containing `pool`, `allocPoint` and `debugAlloc`.
 struct State
+  /// Backing byte buffer of the fixed game allocation arena.
   pool
+  /// Next free byte offset in the game allocation arena.
   allocPoint
+  /// Diagnostic setting enabling game-arena allocation reporting.
   debugAlloc
 end struct
 /// `Block` record for memory, containing `state`, `offset` and `size`.
 struct Block
+  /// Owning game-arena allocation state.
   state
+  /// Starting byte offset of the allocation in the arena pool.
   offset
+  /// Requested byte length of this allocation.
   size
 end struct
 /// Set `level.memoryState` to `State(bytes(POOLSIZE,0),0,0)` in `mq3.game.memory.get`. Return paths include `level.memoryState`.

@@ -67,37 +67,97 @@ import std.time as time
 // Baseq3's virtual screen and default cg_fov are 640x480 and 90 degrees.
 // Using them directly avoids HUD/aspect distortion and lowers software fill cost.
 const WIDTH=640
+/// Default render-target height used by the native playable preview.
 const HEIGHT=480
+/// Horizontal preview-camera field of view in degrees.
 const HORIZONTAL_FOV=90.0
+/// Capacity limit for the lines collection or bounded storage used by this client module.
 const MAX_LINES=0
+/// Number of rendered frames between periodic world-selection updates.
 const WORLD_SELECTION_INTERVAL=15
+/// Number of texture slots reserved for the world's BSP lightmaps.
 const LIGHTMAP_SLOTS=playableWorldBatch.MAX_BSP_LIGHTMAPS
+/// Texture-cache slot or starting slot reserved for the player rendering resources.
 const PLAYER_TEXTURE_FIRST_SLOT=LIGHTMAP_SLOTS+272
+/// Maximum triangle budget allocated to one animated player-model surface.
 const PLAYER_TRIANGLES_PER_SURFACE=8192
+/// Capacity limit for the detailed player models collection or bounded storage used by this client
+/// module.
 const MAX_DETAILED_PLAYER_MODELS=5
+/// Capacity limit for the target weapon triangles collection or bounded storage used by this client
+/// module.
 const MAX_TARGET_WEAPON_TRIANGLES=512
+/// Capacity limit for the native texture slots collection or bounded storage used by this client
+/// module.
 const MAX_NATIVE_TEXTURE_SLOTS=PLAYER_TEXTURE_FIRST_SLOT+176
+/// Capacity limit for the item models collection or bounded storage used by this client module.
 const MAX_ITEM_MODELS=48
+/// Capacity limit for the item textures collection or bounded storage used by this client module.
 const MAX_ITEM_TEXTURES=64
+/// Capacity limit for the visible items collection or bounded storage used by this client module.
 const MAX_VISIBLE_ITEMS=24
+/// Capacity limit for the item triangles collection or bounded storage used by this client module.
 const MAX_ITEM_TRIANGLES=5000
+/// Capacity limit for the triangles per item collection or bounded storage used by this client module.
 const MAX_TRIANGLES_PER_ITEM=512
+/// Capacity limit for the viewmodel triangles collection or bounded storage used by this client module.
 const MAX_VIEWMODEL_TRIANGLES=2048
 // The optimized indexed-MD3 path keeps stock bob/spin transforms affordable
 // at render cadence instead of visibly stepping the pickup animation.
 const ITEM_POSE_INTERVAL=1
+/// Capacity limit for the projectile textures collection or bounded storage used by this client module.
 const MAX_PROJECTILE_TEXTURES=8
+/// Capacity limit for the projectile triangles collection or bounded storage used by this client
+/// module.
 const MAX_PROJECTILE_TRIANGLES=1024
+/// Capacity limit for the triangles per projectile collection or bounded storage used by this client
+/// module.
 const MAX_TRIANGLES_PER_PROJECTILE=256
 
 /// Stores playable app player texture record, including `part`, `surface`, `imageName`, `image`, `slot`.
-struct PlayerTexture part surface imageName image slot end struct
+struct PlayerTexture
+  /// When constructing this record, `appendSkinTextures` supplies `part` for this member.
+  part
+  /// When constructing this record, `appendSkinTextures` supplies `binding.surface` for this member.
+  surface
+  /// Virtual image path associated with a loaded player-model texture slot.
+  imageName
+  /// When constructing this record, `appendSkinTextures` supplies `binding.image` for this member.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores playable app player skin set record, including `lower`, `upper`, `head`.
-struct PlayerSkinSet lower upper head end struct
+struct PlayerSkinSet
+  /// When constructing this record, `archivePlayerAssets` supplies `lowerSkin` for this member.
+  lower
+  /// When constructing this record, `archivePlayerAssets` supplies `upperSkin` for this member.
+  upper
+  /// When constructing this record, `archivePlayerAssets` supplies `headSkin` for this member.
+  head
+end struct
 /// Stores playable app player model assets record, including `models`, `animation`, `textures`, `cache`, `barrelStates`.
-struct PlayerModelAssets models animation textures cache barrelStates end struct
+struct PlayerModelAssets
+  /// When constructing this record, `archivePlayerAssets` supplies `modelSet` for this member.
+  models
+  /// Animation description supplying frame ranges and playback timing.
+  animation
+  /// When constructing this record, `archivePlayerAssets` supplies `textures` for this member.
+  textures
+  /// When constructing this record, `archivePlayerAssets` supplies `cache` for this member.
+  cache
+  /// When constructing this record, `archivePlayerAssets` supplies `barrelStates` for this member.
+  barrelStates
+end struct
 /// Stores playable app render runtime record, including `lightGrid`, `collisionWorld`, `shadowCatalog`.
-struct RenderRuntime lightGrid collisionWorld shadowCatalog end struct
+struct RenderRuntime
+  /// When constructing this record, `runLimited` supplies `lightGrid` for this member.
+  lightGrid
+  /// When constructing this record, `runLimited` supplies `world` for this member.
+  collisionWorld
+  /// When constructing this record, `runLimited` supplies an absent (`void`) value for this member.
+  shadowCatalog
+end struct
 
 /// Evaluates playable app `captureEnemyPositions` and returns `result` according to its guard/selection conditions.
 /// @param targetState Record read through `targetState.targets`.

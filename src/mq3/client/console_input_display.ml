@@ -9,7 +9,22 @@ import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
 /// Stores console input display presentation record, including `active`, `kind`, `text`, `x`, `y`, `panelTop` and additional values.
-struct Presentation active kind text x y panelTop panelBottom end struct
+struct Presentation
+  /// When constructing this record, `present` supplies `false` for this member.
+  active
+  /// Drawing primitive or presentation category selecting how this record is rendered.
+  kind
+  /// Visible console or chat input string, including the prompt and cursor marker.
+  text
+  /// Horizontal coordinate of the visible console or chat input text in the target display.
+  x
+  /// Vertical coordinate of the visible console or chat input text in the target display.
+  y
+  /// When constructing this record, `present` supplies `0` for this member.
+  panelTop
+  /// When constructing this record, `present` supplies `0` for this member.
+  panelBottom
+end struct
 
 /// Evaluates console input display `bounded` and returns `low`, `high`, `value` according to its guard/selection conditions.
 /// @param value Value tested by `value<low`, `value>high` before the calculation continues.

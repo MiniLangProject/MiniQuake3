@@ -6,8 +6,11 @@ package mq3.audio.snd_mem_resample
 import mq3.audio.wav as wav
 import mq3.compat.numeric as numeric
 
+/// Lowest accepted source or output sample rate, in hertz.
 const MIN_RATE=4000
+/// Highest accepted source or output sample rate, in hertz.
 const MAX_RATE=192000
+/// Upper bound on samples allocated for a resampled sound.
 const MAX_OUTPUT_SAMPLES=67108864
 
 /// Create the audio.snd_mem_resample error for `fail` with 7660 and the supplied diagnostic text.

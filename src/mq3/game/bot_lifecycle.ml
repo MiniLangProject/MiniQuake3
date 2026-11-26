@@ -7,159 +7,307 @@ import mq3.qcommon.cvar as cv
 import mq3.shared.info as infoStrings
 import mq3.compat.numeric as n
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS = 64
+/// Maximum number of entity slots represented by the original game protocol.
 const MAX_GENTITIES = 1024
 
 /// `BotState` record for bot lifecycle, containing `inuse`, `client`, `entitynum`, `settings` and `curPs` and related fields.
 struct BotState
+  /// Nonzero when this entity, client, or bot record currently represents a live allocated object.
   inuse
+  /// Client slot assigned to this live bot lifecycle record.
   client
+  /// Game entity number assigned to the bot represented by this lifecycle state.
   entitynum
+  /// Bot creation settings containing character file, skill, and team choices.
   settings
+  /// Most recently retrieved player state for this bot.
   curPs
+  /// Loaded bot-character handle used to query behavioral characteristics.
   character
+  /// Botlib movement-state handle owned by this bot.
   ms
+  /// Botlib goal-state handle owned by this bot.
   gs
+  /// Botlib chat-state handle owned by this bot.
   cs
+  /// Botlib weapon-state handle owned by this bot.
   ws
+  /// Timestamp at which this bot entered the game.
   entergameTime
+  /// Nonzero when the bot movement preference is to walk.
   walker
+  /// Counter controlling initial bot setup before normal decision processing.
   setupcount
+  /// Linked or indexed checkpoint goals available to the bot.
   checkpoints
+  /// Patrol goals traversed by the bot patrol behavior.
   patrolpoints
+  /// Number of kills credited to this bot.
   numKills
+  /// Number of deaths recorded for this bot.
   numDeaths
+  /// Transient input/decision state reset independently of persistent bot data.
   transient
+  /// Player or bot viewing angles used for aiming and command generation.
   viewangles
+  /// Target viewing angles toward which the bot should turn.
   idealViewangles
+  /// Current angular turn speed used by the bot view controller.
   viewanglespeed
+  /// Current enemy entity selected by the bot decision logic.
   enemy
+  /// Name or identifier of the current bot-team leader.
   teamleader
+  /// Current long-term goal category selected from the LTG_* constants.
   ltgtype
+  /// Teammate entity/client selected for the current cooperative task.
   teammate
+  /// Goal number associated with the bot current team task.
   teamgoalNumber
+  /// Entity number associated with the bot current team task.
   teamgoalEntitynum
+  /// Bot inventory slots containing weapon ownership, ammunition, health, and tactical observations.
   inventory
+  /// Weapon identifier selected by the bot weapon state.
   weaponnum
+  /// Entity-flag value retained from the preceding bot update.
   lastEFlags
+  /// Time of the last teleport detected by the bot.
   teleportTime
+  /// Current world-space position retained in the live bot lifecycle state.
   origin
+  /// AAS area containing the bot or spatial goal.
   areanum
+  /// Time interval used for the current bot thinking/update step.
   thinktime
+  /// Travel flags controlling which AAS travel types the bot may use.
   tfl
+  /// Goal AAS area used by the latest obstacle-prediction query.
   predictobstaclesGoalareanum
+  /// Time controlling when obstacle prediction is refreshed.
   predictobstaclesTime
+  /// Intermediate goal selected to approach the main target by an alternate route.
   altRouteGoal
+  /// Timestamp at which the alternate-route waypoint was reached.
   reachedAltRouteGoalTime
+  /// Eye position used as the origin of visibility and aiming queries.
   eye
+  /// World-space point toward which the bot aims its weapon.
   aimTarget
+  /// Enemy position retained from the previous observation.
   lastEnemyOrigin
+  /// Health value retained from the preceding bot update.
   lastHealth
+  /// Timestamp associated with acquiring the selected enemy.
   enemySightTime
+  /// Nonzero when the tracked enemy death was a suicide.
   enemySuicide
+  /// Timestamp associated with the tracked enemy death.
   enemyDeathTime
+  /// Most recent time at which the selected enemy was visible.
   enemyVisibleTime
+  /// Timestamp of the most recent weapon change.
   weaponchangeTime
+  /// Deadline of the current pause between bot firing bursts.
   firethrottlewaitTime
+  /// Deadline of the current bot firing burst.
   firethrottleshootTime
+  /// Bit flags describing bot combat behavior and transient combat conditions.
   combatFlags
+  /// Deadline associated with chasing an enemy during combat.
   attackchaseTime
+  /// AAS area of the last observed enemy position.
   lastEnemyAreaNum
+  /// Time controlling a combat crouch interval.
   attackcrouchTime
+  /// Time controlling a combat jump interval.
   attackjumpTime
+  /// Time controlling a combat strafe interval.
   attackstrafeTime
+  /// Storage for activation goals required to traverse interactive obstacles.
   activateGoalHeap
+  /// Top/current index in the bot activation-goal stack.
   activateStackIndex
+  /// Most recently tracked position of the selected enemy.
   enemyOrigin
+  /// Most recently tracked velocity of the selected enemy.
   enemyVelocity
+  /// Timestamp of the most recently recorded enemy position.
   enemyPositionTime
+  /// Number of teammates considered by the team decision logic.
   numteammates
+  /// Client/entity currently carrying the flag of interest.
   flagcarrier
+  /// Selected capture-the-flag team strategy.
   ctfstrategy
+  /// Client/entity currently responsible for the bot team decisions.
   decisionmaker
+  /// Time controlling the next bot team message.
   teammessageTime
+  /// Navigation goal associated with the bot current team task.
   teamGoal
+  /// Deadline associated with the current cooperative team goal.
   teamgoalTime
+  /// Deadline associated with the current camping behavior.
   campTime
+  /// Timestamp at which the bot arrived at the current team goal.
   arriveTime
+  /// Nonzero when a teammate explicitly ordered the current team task.
   ordered
+  /// Deadline or timing value associated with the current long-term goal.
   ltgTime
+  /// Current bot decision-network node or its callable entry point.
   aiNode
+  /// Client identifier of the player most recently killed by this bot.
   lastKilledPlayer
+  /// Deadline associated with temporary standing/waiting behavior.
   standTime
+  /// Health value retained from the preceding bot frame.
   lastframeHealth
+  /// Hit counter retained from the preceding bot frame.
   lastHitCount
+  /// Deadline associated with the current enemy chase.
   chaseTime
+  /// Most recent time at which the bot had breathable air.
   lastairTime
+  /// Last time the teammate associated with the task was visible.
   teammatevisibleTime
+  /// Desired separation from the teammate or formation leader.
   formationDist
+  /// Time controlling how long the bot may leave its defense goal.
   defendawayTime
+  /// Maximum distance for an excursion from a defense goal.
   defendawayRange
+  /// Long-term goal type retained from the preceding team task.
   lastgoalLtgtype
+  /// Allowed movement radius around the camp goal.
   campRange
+  /// Patrol goal currently being approached.
   curpatrolpoint
+  /// PATROL_* behavior flags associated with the current patrol route.
   patrolflags
+  /// Bot-tracked status of the red flag.
   redflagstatus
+  /// Bot-tracked status of the blue flag.
   blueflagstatus
+  /// Time controlling temporary excursions from a rush-base goal.
   rushbaseawayTime
+  /// Deadline associated with leading a teammate toward a goal.
   leadTime
+  /// Client/entity identifier of the teammate being led.
   leadTeammate
+  /// Time controlling the next message to the teammate being led.
   leadmessageTime
+  /// Navigation goal toward which the bot is leading a teammate.
   leadTeamGoal
+  /// Last time the teammate being led was visible.
   leadvisibleTime
+  /// Time controlling when the bot backs up to help a trailing teammate.
   leadbackupTime
+  /// Deadline for the next periodic condition check.
   checkTime
+  /// Deadline associated with the current nearby-item goal.
   nbgTime
+  /// Timestamp at which the bot killed its selected enemy.
   killedEnemyTime
+  /// Time controlling the next enemy search while standing.
   standFindEnemyTime
+  /// Timestamp associated with the client or bot next respawn decision.
   respawnTime
+  /// Time controlling a chat message associated with respawning.
   respawnChatTime
+  /// Nonzero while the bot waits to issue its respawn action.
   respawnWait
+  /// Recipient mode selecting global, team, or other chat delivery.
   chatto
+  /// Time controlling temporary excursions from an attack-base goal.
   attackawayTime
+  /// Time controlling temporary excursions from a harvesting goal.
   harvestawayTime
+  /// Corpse/entity selected for kamikaze-related handling.
   kamikazeBody
+  /// Time of the last movement blockage caused by an avoid spot.
   blockedByAvoidSpotTime
+  /// Proximity mines tracked by bot hazard logic.
   proxMines
 end struct
 
 /// `State` record for bot lifecycle, containing `registry`, `botstates`, `numbots`, `interbreed` and `interbreedMatchCount` and related fields.
 struct State
+  /// Registry of currently loaded preprocessor/token sources.
   registry
+  /// Bot-state records indexed by client slot.
   botstates
+  /// Number of allocated bot-state records.
   numbots
+  /// Nonzero while genetic interbreeding of bot characters is enabled.
   interbreed
+  /// Matches accumulated toward the next interbreeding cycle.
   interbreedMatchCount
+  /// Time interval used for the current bot thinking/update step.
   thinktime
+  /// Control value requesting botlib memory diagnostics.
   memorydump
+  /// Control value requesting persistence of the AAS routing cache.
   saveroutingcache
+  /// Control value that pauses bot thinking.
   pause
+  /// Control value enabling bot-state diagnostic reporting.
   report
+  /// Control value enabling bot/AAS solidity diagnostics.
   testsolid
+  /// Control value enabling AAS cluster diagnostics.
   testclusters
+  /// Developer diagnostic setting exposed to the bot/game subsystem.
   developer
+  /// Character definition used as input to bot interbreeding.
   interbreedchar
+  /// Number of bots participating in an interbreeding run.
   interbreedbots
+  /// Number of matches between bot interbreeding cycles.
   interbreedcycle
+  /// Output character-file setting for the interbreeding result.
   interbreedwrite
+  /// Injected callback for console variable effect; invoked through the State service/state record.
   cvarEffectFn
+  /// Injected callback for bot lib var set; invoked through the State service/state record.
   botLibVarSetFn
+  /// Injected callback for bot lib setup; invoked through the State service/state record.
   botLibSetupFn
+  /// Injected callback for bot lib shutdown; invoked through the State service/state record.
   botLibShutdownFn
+  /// Injected callback for bot lib load map; invoked through the State service/state record.
   botLibLoadMapFn
+  /// Injected callback for free waypoints; invoked through the State service/state record.
   freeWaypointsFn
+  /// Injected callback for reset move state; invoked through the State service/state record.
   resetMoveStateFn
+  /// Injected callback for reset goal state; invoked through the State service/state record.
   resetGoalStateFn
+  /// Injected callback for reset weapon state; invoked through the State service/state record.
   resetWeaponStateFn
+  /// Injected callback for reset avoid goals; invoked through the State service/state record.
   resetAvoidGoalsFn
+  /// Injected callback for reset avoid reach; invoked through the State service/state record.
   resetAvoidReachFn
+  /// Injected callback for deathmatch setup; invoked through the State service/state record.
   deathmatchSetupFn
+  /// Injected callback for shutdown client; invoked through the State service/state record.
   shutdownClientFn
+  /// Injected callback for genetic selection; invoked through the State service/state record.
   geneticSelectionFn
+  /// Injected callback for interbreed goal; invoked through the State service/state record.
   interbreedGoalFn
+  /// Injected callback for mutate goal; invoked through the State service/state record.
   mutateGoalFn
+  /// Injected callback for save goal; invoked through the State service/state record.
   saveGoalFn
+  /// Opaque caller-supplied context available to botlib setup, map loading, shutdown, and bot-state
+  /// reset callbacks.
   context
+  /// Per-client botlib resource handles and lifecycle state.
   clientResources
 end struct
 

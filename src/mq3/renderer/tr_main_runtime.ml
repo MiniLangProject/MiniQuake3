@@ -13,33 +13,114 @@ import mq3.renderer.entity_surface_policy as policy
 import mq3.renderer.portal_view as portals
 import mq3.renderer.view_math as viewmath
 
+/// Renderer entity type for an animated or inline model.
 const RT_MODEL=0
+/// Renderer entity type for submitted polygon geometry.
 const RT_POLY=1
+/// Renderer entity type for a camera-facing sprite.
 const RT_SPRITE=2
+/// Renderer entity type for a beam between two endpoints.
 const RT_BEAM=3
+/// Renderer entity type for the core of a railgun trail.
 const RT_RAIL_CORE=4
+/// Renderer entity type for rings around a railgun trail.
 const RT_RAIL_RINGS=5
+/// Renderer entity type for the lightning-gun beam.
 const RT_LIGHTNING=6
+/// Renderer entity type carrying portal-view information without directly drawing geometry.
 const RT_PORTALSURFACE=7
+/// Surface-dispatch tag identifying a planar BSP face.
 const SF_FACE=2
+/// Surface-dispatch tag identifying indexed triangle geometry.
 const SF_TRIANGLES=4
+/// Surface-dispatch tag identifying a submitted polygon.
 const SF_POLY=5
+/// View flag that renders submitted entities without the BSP world model.
 const RDF_NOWORLDMODEL=1
 
 /// Data record for `mq3.renderer.tr_main_runtime.Plane`; groups `normal`, `dist`.
-struct Plane normal dist end struct
+struct Plane
+  /// Frontend frustum-plane normal used to classify model and surface bounds.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+end struct
 /// Data record for `mq3.renderer.tr_main_runtime.Orientation`; groups `origin`, `axis`, `viewOrigin`, `modelMatrix`.
-struct Orientation origin axis viewOrigin modelMatrix end struct
+struct Orientation
+  /// World-space translation associated with the frontend model transform.
+  origin
+  /// Frontend orientation basis used to construct the model matrix and local viewing origin.
+  axis
+  /// Camera origin expressed in the current model's coordinate system.
+  viewOrigin
+  /// Matrix placing the model in the current view or world coordinate system.
+  modelMatrix
+end struct
 /// Data record for `mq3.renderer.tr_main_runtime.EntitySurface`; groups `entityIndex`, `reType`, `fogNum`, `payload`.
-struct EntitySurface entityIndex reType fogNum payload end struct
+struct EntitySurface
+  /// Index of the scene entity that produced this geometry.
+  entityIndex
+  /// Renderer entity type selecting the model, sprite, beam, or portal path.
+  reType
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Operation-specific data interpreted according to the record's command or event type.
+  payload
+end struct
 /// Data record for `mq3.renderer.tr_main_runtime.DebugPass`; groups `color`, `points`, `wireframe`, `depthMin`, `depthMax`.
-struct DebugPass color points wireframe depthMin depthMax end struct
+struct DebugPass
+  /// Uniform color selected for the filled or wireframe debug polygon pass.
+  color
+  /// Points defining the face, polygon, or clipping result.
+  points
+  /// Whether polygon edges are drawn instead of filled triangles.
+  wireframe
+  /// Lower bound of the depth range used by this rendering pass.
+  depthMin
+  /// Upper bound of the depth range used by this rendering pass.
+  depthMax
+end struct
 /// Data record for `mq3.renderer.tr_main_runtime.DebugPolygonResult`; groups `solid`, `outline`.
-struct DebugPolygonResult solid outline end struct
+struct DebugPolygonResult
+  /// Filled geometry used by the debug polygon pass.
+  solid
+  /// Outline geometry used by the debug polygon pass.
+  outline
+end struct
 /// Callback table for `mq3.renderer.tr_main_runtime.RenderServices`; exposes `addWorldFn`, `addPolygonsFn`, `setupProjectionFn`, `addEntitiesFn`, `addCommandFn`, `debugFn`, and 1 further field.
-struct RenderServices addWorldFn addPolygonsFn setupProjectionFn addEntitiesFn addCommandFn debugFn context end struct
+struct RenderServices
+  /// Host callback used to perform add world operations for this subsystem.
+  addWorldFn
+  /// Host callback used to perform add polygons operations for this subsystem.
+  addPolygonsFn
+  /// Host callback used to perform setup projection operations for this subsystem.
+  setupProjectionFn
+  /// Host callback used to perform add entities operations for this subsystem.
+  addEntitiesFn
+  /// Host callback used to perform add command operations for this subsystem.
+  addCommandFn
+  /// Host callback used to perform debug operations for this subsystem.
+  debugFn
+  /// Frontend host state passed while collecting world, polygon, entity, and debug drawing commands.
+  context
+end struct
 /// Data record for `mq3.renderer.tr_main_runtime.RenderState`; groups `viewCount`, `frameSceneNum`, `frameCount`, `numDrawSurfs`, `viewParms`, `queue`, and 1 further field.
-struct RenderState viewCount frameSceneNum frameCount numDrawSurfs viewParms queue services end struct
+struct RenderState
+  /// Generation number used to avoid processing a surface twice in one view.
+  viewCount
+  /// Sequence number of the scene within the current frame.
+  frameSceneNum
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Number of draw surfaces currently queued.
+  numDrawSurfs
+  /// Derived camera matrices, clipping planes, and viewport settings.
+  viewParms
+  /// Queue holding operations waiting to be executed.
+  queue
+  /// Injected host operations used by this subsystem.
+  services
+end struct
 
 /// Creates error `7760` with message `"tr_main: "+message`.
 /// @param message Input used in the result expression `error(7760,"tr_main: "+message)`.

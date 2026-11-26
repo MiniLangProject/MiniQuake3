@@ -7,106 +7,337 @@ import mq3.vm.cgame_key_traps as keys
 import mq3.compat.textnumbers as numbers
 import std.string as strings
 
+/// Save-confirmation result selecting the noop response.
 const SAVE_NOOP=0
+/// Save-confirmation result selecting the yes response.
 const SAVE_YES=1
+/// Save-confirmation result selecting the no response.
 const SAVE_NO=2
+/// Save-confirmation result selecting the cancel response.
 const SAVE_CANCEL=3
+/// Controls-menu category grouping the movement bindings.
 const C_MOVEMENT=0
+/// Controls-menu category grouping the looking bindings.
 const C_LOOKING=1
+/// Controls-menu category grouping the weapons bindings.
 const C_WEAPONS=2
+/// Controls-menu category grouping the misc bindings.
 const C_MISC=3
+/// Number of controls-menu categories, used to bound category-indexed tables.
 const C_MAX=4
+/// Menu control identifier routed to the movement action by the menu event handler.
 const ID_MOVEMENT=100
+/// Menu control identifier routed to the looking action by the menu event handler.
 const ID_LOOKING=101
+/// Menu control identifier routed to the weapons action by the menu event handler.
 const ID_WEAPONS=102
+/// Menu control identifier routed to the misc action by the menu event handler.
 const ID_MISC=103
+/// Menu control identifier routed to the defaults action by the menu event handler.
 const ID_DEFAULTS=104
+/// Event identifier of the Back control used to leave the controls and key-bindings menu and return to
+/// its parent menu.
 const ID_BACK=105
+/// Menu control identifier routed to the saveandexit action by the menu event handler.
 const ID_SAVEANDEXIT=106
+/// Menu control identifier routed to the exit action by the menu event handler.
 const ID_EXIT=107
+/// Menu control identifier routed to the freelook action by the menu event handler.
 const ID_FREELOOK=34
+/// Menu control identifier routed to the invertmouse action by the menu event handler.
 const ID_INVERTMOUSE=35
+/// Menu control identifier routed to the alwaysrun action by the menu event handler.
 const ID_ALWAYSRUN=36
+/// Menu control identifier routed to the autoswitch action by the menu event handler.
 const ID_AUTOSWITCH=37
+/// Menu control identifier routed to the mousespeed action by the menu event handler.
 const ID_MOUSESPEED=38
+/// Menu control identifier routed to the joyenable action by the menu event handler.
 const ID_JOYENABLE=39
+/// Menu control identifier routed to the joythreshold action by the menu event handler.
 const ID_JOYTHRESHOLD=40
+/// Menu control identifier routed to the smoothmouse action by the menu event handler.
 const ID_SMOOTHMOUSE=41
+/// Menu callback event reporting that the item was gotfocus.
 const QM_GOTFOCUS=1
+/// Menu callback event reporting that the item was lostfocus.
 const QM_LOSTFOCUS=2
+/// Activation callback event accepted by the controls and key-bindings menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=127
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=140
+/// Engine key code for the kp del input, used by menu and client key-event handling.
 const K_KP_DEL=171
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
+/// Engine key code for the char flag input, used by menu and client key-event handling.
 const K_CHAR_FLAG=1024
+/// Controls-menu player-preview selector for the idle animation or weapon pose.
 const ANIM_IDLE=0
+/// Controls-menu player-preview selector for the run animation or weapon pose.
 const ANIM_RUN=1
+/// Controls-menu player-preview selector for the walk animation or weapon pose.
 const ANIM_WALK=2
+/// Controls-menu player-preview selector for the back animation or weapon pose.
 const ANIM_BACK=3
+/// Controls-menu player-preview selector for the jump animation or weapon pose.
 const ANIM_JUMP=4
+/// Controls-menu player-preview selector for the crouch animation or weapon pose.
 const ANIM_CROUCH=5
+/// Controls-menu player-preview selector for the stepleft animation or weapon pose.
 const ANIM_STEPLEFT=6
+/// Controls-menu player-preview selector for the stepright animation or weapon pose.
 const ANIM_STEPRIGHT=7
+/// Controls-menu player-preview selector for the turnleft animation or weapon pose.
 const ANIM_TURNLEFT=8
+/// Controls-menu player-preview selector for the turnright animation or weapon pose.
 const ANIM_TURNRIGHT=9
+/// Controls-menu player-preview selector for the lookup animation or weapon pose.
 const ANIM_LOOKUP=10
+/// Controls-menu player-preview selector for the lookdown animation or weapon pose.
 const ANIM_LOOKDOWN=11
+/// Controls-menu player-preview selector for the weapon1 animation or weapon pose.
 const ANIM_WEAPON1=12
+/// Controls-menu player-preview selector for the weapon2 animation or weapon pose.
 const ANIM_WEAPON2=13
+/// Controls-menu player-preview selector for the weapon3 animation or weapon pose.
 const ANIM_WEAPON3=14
+/// Controls-menu player-preview selector for the weapon4 animation or weapon pose.
 const ANIM_WEAPON4=15
+/// Controls-menu player-preview selector for the weapon5 animation or weapon pose.
 const ANIM_WEAPON5=16
+/// Controls-menu player-preview selector for the weapon6 animation or weapon pose.
 const ANIM_WEAPON6=17
+/// Controls-menu player-preview selector for the weapon7 animation or weapon pose.
 const ANIM_WEAPON7=18
+/// Controls-menu player-preview selector for the weapon8 animation or weapon pose.
 const ANIM_WEAPON8=19
+/// Controls-menu player-preview selector for the weapon9 animation or weapon pose.
 const ANIM_WEAPON9=20
+/// Controls-menu player-preview selector for the weapon10 animation or weapon pose.
 const ANIM_WEAPON10=21
+/// Controls-menu player-preview selector for the attack animation or weapon pose.
 const ANIM_ATTACK=22
+/// Controls-menu player-preview selector for the gesture animation or weapon pose.
 const ANIM_GESTURE=23
+/// Controls-menu player-preview selector for the die animation or weapon pose.
 const ANIM_DIE=24
+/// Controls-menu player-preview selector for the chat animation or weapon pose.
 const ANIM_CHAT=25
 
+/// Native lower-body animation slot for the walk sequence.
 const LEGS_WALK=14
+/// Native lower-body animation slot for the run sequence.
 const LEGS_RUN=15
+/// Native lower-body animation slot for the back sequence.
 const LEGS_BACK=16
+/// Native lower-body animation slot for the jump sequence.
 const LEGS_JUMP=18
+/// Native lower-body animation slot for the idle sequence.
 const LEGS_IDLE=22
+/// Native lower-body animation slot for the idlecr sequence.
 const LEGS_IDLECR=23
+/// Native upper-body animation slot for the gesture sequence.
 const TORSO_GESTURE=6
+/// Native upper-body animation slot for the attack sequence.
 const TORSO_ATTACK=7
+/// Native upper-body animation slot for the stand sequence.
 const TORSO_STAND=11
+/// Native whole-body animation slot for the death1 sequence.
 const BOTH_DEATH1=0
+/// Native weapon identifier selecting no selected weapon.
 const WP_NONE=0
+/// Native weapon identifier selecting the gauntlet.
 const WP_GAUNTLET=1
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// Native weapon identifier selecting the shotgun.
 const WP_SHOTGUN=3
+/// Native weapon identifier selecting the grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Native weapon identifier selecting the rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Native weapon identifier selecting the lightning gun.
 const WP_LIGHTNING=6
+/// Native weapon identifier selecting the railgun.
 const WP_RAILGUN=7
+/// Native weapon identifier selecting the plasma gun.
 const WP_PLASMAGUN=8
+/// Native weapon identifier selecting the BFG.
 const WP_BFG=9
+/// Native weapon identifier selecting the grappling hook.
 const WP_GRAPPLING_HOOK=10
 
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
+/// Virtual shader or image asset name used for the menu's framel artwork.
 const ART_FRAMEL="menu/art/frame2_l"
+/// Virtual shader or image asset name used for the menu's framer artwork.
 const ART_FRAMER="menu/art/frame1_r"
 
 /// Stores UI controls binding record, including `command`, `label`, `id`, `anim`, `default1`, `default2` and additional values.
-struct Binding command label id anim default1 default2 bind1 bind2 end struct
+struct Binding
+  /// When constructing this record, `binding` supplies `command` for this member.
+  command
+  /// Human-readable caption painted beside or inside the UI control.
+  label
+  /// Control identifier linking this command binding to the corresponding entry in the controls menu.
+  id
+  /// When constructing this record, `binding` supplies `anim` for this member.
+  anim
+  /// When constructing this record, `binding` supplies `key` for this member.
+  default1
+  /// When constructing this record, `binding` supplies `-1` for this member.
+  default2
+  /// When constructing this record, `binding` supplies `-1` for this member.
+  bind1
+  /// When constructing this record, `binding` supplies `-1` for this member.
+  bind2
+end struct
 /// Stores UI controls config record, including `name`, `defaultValue`, `value`.
-struct Config name defaultValue value end struct
+struct Config
+  /// Engine configuration-variable name used to read, update, or register this setting.
+  name
+  /// When constructing this record, `initCvars` supplies `fallback` for this member.
+  defaultValue
+  /// Current or default setting value held by this configuration variable or UI control.
+  value
+end struct
 /// Stores UI controls control record, including `id`, `group`, `visible`, `inactive`, `grayed`, `highlighted` and additional values.
-struct Control id group visible inactive grayed highlighted x y end struct
+struct Control
+  /// Event-routing identifier of this selectable control in the controls and key-bindings menu.
+  id
+  /// Controls-menu section to which this binding belongs, as selected by the control identifier.
+  group
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+  /// When constructing this record, `makeControls` supplies `true` for this member.
+  inactive
+  /// When constructing this record, `makeControls` supplies `true` for this member.
+  grayed
+  /// When constructing this record, `makeControls` supplies `false` for this member.
+  highlighted
+  /// Horizontal position of this menu control in the virtual layout used by the controls and
+  /// key-bindings menu.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the controls and key-bindings
+  /// menu.
+  y
+end struct
 /// Stores UI controls draw binding record, including `label`, `keys`, `selected`, `grayed`, `waiting`.
-struct DrawBinding label keys selected grayed waiting end struct
+struct DrawBinding
+  /// Human-readable caption painted beside or inside the UI control.
+  label
+  /// When constructing this record, `drawKeyBinding` supplies `"???"` for this member.
+  keys
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// When constructing this record, `drawKeyBinding` supplies `true` for this member.
+  grayed
+  /// When constructing this record, `drawKeyBinding` supplies `state.waitingForKey` for this member.
+  waiting
+end struct
 /// Stores UI controls queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `number` and additional values.
-struct Action boundary kind name text value number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while applying key bindings and mouse or
+  /// movement settings.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while applying key bindings
+  /// and mouse or movement settings.
+  kind
+  /// Binding command, key name, cvar, preview model, or menu resource targeted by the controls action.
+  name
+  /// Binding value, control-setting value, help message, or command text emitted by the controls menu.
+  text
+  /// Value payload supplied to the selected host operation while applying key bindings and mouse or
+  /// movement settings.
+  value
+  /// Numeric argument interpreted by the selected host operation while applying key bindings and mouse
+  /// or movement settings.
+  number
+  /// True when this request is marked for native dispatch while applying key bindings and mouse or
+  /// movement settings; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI controls state, including `keyState`, `bindings`, `configs`, `controls`, `section`, `waitingForKey` and additional values.
-struct State keyState bindings configs controls section waitingForKey changesMade cursorId cvarValues cvarDefaults settings actions retailActive playerModel playerName playerViewangles playerMoveangles playerLegs playerTorso playerWeapon playerChat pushed cached weaponModels menuEvents end struct
+struct State
+  /// When constructing this record, `create` supplies `keys.create()` for this member. Used by
+  /// `getKeyAssignment` and `setKey` during subsequent processing.
+  keyState
+  /// Key-to-command associations available to the UI controls editor.
+  bindings
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `initCvars` and `getCvarDefault` during subsequent processing.
+  configs
+  /// When constructing this record, `create` supplies `makeControls()` for this member. Used by
+  /// `control` and `update` during subsequent processing.
+  controls
+  /// When constructing this record, `create` supplies `C_LOOKING` for this member. Used by `update` and
+  /// `menuEvent` during subsequent processing.
+  section
+  /// When constructing this record, `create` supplies `false` for this member. Used by `update` and
+  /// `drawKeyBinding` during subsequent processing.
+  waitingForKey
+  /// When constructing this record, `create` supplies `false` for this member. Used by `menuKey` and
+  /// `resetDefaultsAction` during subsequent processing.
+  changesMade
+  /// When constructing this record, `create` supplies `0` for this member. Used by `update` and
+  /// `menuKey` during subsequent processing.
+  cursorId
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `cvar` and
+  /// `setCvar` during subsequent processing.
+  cvarValues
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `defaultCvar` during subsequent processing.
+  cvarDefaults
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `setting`
+  /// and `setSetting` during subsequent processing.
+  settings
+  /// Host requests queued while applying key bindings and mouse or movement settings, retained in
+  /// request order.
+  actions
+  /// True when the retail QVM owns the controls and key-bindings menu, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// Model resource selected for the player presentation.
+  playerModel
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `menuInit` during subsequent processing.
+  playerName
+  /// When constructing this record, `create` supplies `[0.0,150.0,0.0]` for this member. Used by
+  /// `updateModel` during subsequent processing.
+  playerViewangles
+  /// When constructing this record, `create` supplies `[0.0,150.0,0.0]` for this member. Used by
+  /// `updateModel` during subsequent processing.
+  playerMoveangles
+  /// When constructing this record, `create` supplies `LEGS_IDLE` for this member. Used by
+  /// `updateModel` during subsequent processing.
+  playerLegs
+  /// When constructing this record, `create` supplies `TORSO_STAND` for this member. Used by
+  /// `updateModel` during subsequent processing.
+  playerTorso
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `updateModel`
+  /// during subsequent processing.
+  playerWeapon
+  /// When constructing this record, `create` supplies `false` for this member. Used by `updateModel`
+  /// during subsequent processing.
+  playerChat
+  /// Records that the controls and key-bindings menu has been opened on the active menu stack.
+  pushed
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// Model resources selected for the weapon presentation.
+  weaponModels
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+end struct
 
 /// Creates a `mq3.client.ui_controls.Binding` record. Assigns `command` from `command`, `label` from `label`, `id` from `id`, `anim` from `anim`.
 /// @param command Value used to initialize `Binding.command`.

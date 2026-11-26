@@ -6,20 +6,135 @@ package mq3.botlib.aas_entities
 import mq3.botlib.aas_runtime as aasRuntime
 import mq3.compat.numeric as n
 
+/// Entity collision-kind identifier for a brush-model collision hull.
 const SOLID_BSP=3
+/// Entity collision-kind identifier for bounding-box geometry.
 const SOLID_BBOX=2
+/// Network entity-type identifier for a moving brush model.
 const ET_MOVER=4
+/// Reserved entity number identifying world geometry.
 const ENTITYNUM_WORLD=1022
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
 
 /// `EntityState` record for aas entities, containing `type`, `flags`, `origin`, `angles` and `oldOrigin` and related fields.
-struct EntityState type flags origin angles oldOrigin mins maxs groundent solid modelindex modelindex2 frame event eventParm powerups weapon legsAnim torsoAnim end struct
+struct EntityState
+  /// Network entity-type identifier reported to the navigation system.
+  type
+  /// Network entity flags reported to the navigation system.
+  flags
+  /// World-space entity position received from the game for the next AAS update.
+  origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
+  angles
+  /// Entity origin retained from the previous update.
+  oldOrigin
+  /// Minimum XYZ corner of the incoming game entity collision box relative to its origin.
+  mins
+  /// Maximum XYZ corner of the incoming game entity collision box relative to its origin.
+  maxs
+  /// Entity number of the ground supporting this entity.
+  groundent
+  /// Encoded collision-hull or solidity value associated with the entity.
+  solid
+  /// Model index used to associate this entity or item with registered model data.
+  modelindex
+  /// Secondary game model index, commonly used for carried weapons or flags.
+  modelindex2
+  /// Current animation-frame number reported by the entity.
+  frame
+  /// Transient entity event identifier, such as a footstep or muzzle flash.
+  event
+  /// Parameter value associated with the current network entity event.
+  eventParm
+  /// Bit mask of powerup effects currently associated with the entity.
+  powerups
+  /// Weapon identifier selected by the bot or user command.
+  weapon
+  /// Leg animation identifier, including the animation-toggle bit.
+  legsAnim
+  /// Torso animation identifier, including the animation-toggle bit.
+  torsoAnim
+end struct
 /// `EntityInfo` record for aas entities, containing `valid`, `type`, `flags`, `ltime` and `updateTime` and related fields.
-struct EntityInfo valid type flags ltime updateTime number origin angles oldOrigin lastVisOrigin mins maxs groundent solid modelindex modelindex2 frame event eventParm powerups weapon legsAnim torsoAnim end struct
+struct EntityInfo
+  /// True when the represented entry contains usable data.
+  valid
+  /// Network entity-type identifier retained by the navigation system.
+  type
+  /// Network entity flags retained by the navigation system.
+  flags
+  /// Timestamp of the previous entity-information update.
+  ltime
+  /// Time between last and current update.
+  updateTime
+  /// Game-entity number identifying this navigation entity record.
+  number
+  /// Most recently cached world-space position of this AAS-tracked game entity.
+  origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
+  angles
+  /// Entity origin retained from the previous update.
+  oldOrigin
+  /// Most recent recorded position at which this entity was visible.
+  lastVisOrigin
+  /// Minimum XYZ corner of the cached AAS entity collision box relative to its origin.
+  mins
+  /// Maximum XYZ corner of the cached AAS entity collision box relative to its origin.
+  maxs
+  /// Entity number of the ground supporting this entity.
+  groundent
+  /// Encoded collision-hull or solidity value associated with the entity.
+  solid
+  /// Model index used to associate this entity or item with registered model data.
+  modelindex
+  /// Secondary game model index, commonly used for carried weapons or flags.
+  modelindex2
+  /// Current animation-frame number retained for the entity.
+  frame
+  /// Transient entity event identifier, such as a footstep or muzzle flash.
+  event
+  /// Parameter value associated with the current network entity event.
+  eventParm
+  /// Bit mask of powerup effects currently associated with the entity.
+  powerups
+  /// Weapon identifier selected by the bot or user command.
+  weapon
+  /// Leg animation identifier, including the animation-toggle bit.
+  legsAnim
+  /// Torso animation identifier, including the animation-toggle bit.
+  torsoAnim
+end struct
 /// `BspData` record for aas entities, containing `origin`, `angles`, `absmins`, `absmaxs` and `solid` and related fields.
-struct BspData origin angles absmins absmaxs solid modelnum end struct
+struct BspData
+  /// Origin parsed from the map entity key/value data.
+  origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
+  angles
+  /// Minimum corner of the model's world-space collision bounds.
+  absmins
+  /// Maximum corner of the model's world-space collision bounds.
+  absmaxs
+  /// Encoded collision-hull or solidity value associated with the entity.
+  solid
+  /// Brush-model number associated with the mover or collision entity.
+  modelnum
+end struct
 /// `State` record for aas entities, containing `entities`, `maxEntities`, `time`, `frames` and `areaLinks` and related fields.
-struct State entities maxEntities time frames areaLinks runtime end struct
+struct State
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+  /// Maximum number of entities.
+  maxEntities
+  /// Current navigation time used to timestamp entity updates.
+  time
+  /// Number of AAS entity-update frames processed by this state.
+  frames
+  /// AAS area-link information associated with the tracked entities.
+  areaLinks
+  /// AAS map runtime used to relink updated game entities to navigation areas.
+  runtime
+end struct
 
 /// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas entities.
 /// @param value Three-component array; components 0, 1 and 2 are used in their stored order.

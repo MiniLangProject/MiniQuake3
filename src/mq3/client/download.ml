@@ -4,11 +4,55 @@
 package mq3.client.download
 import mq3.qcommon.message as message
 
+/// Maximum byte length accepted for a native network message.
 const MAX_MSGLEN=16384
 /// Stores download state, including `downloadSize`, `downloadBlock`, `download`, `downloadTempName`, `downloadName`, `downloadCount`.
-struct State downloadSize downloadBlock download downloadTempName downloadName downloadCount end struct
+struct State
+  /// Expected total size in bytes of the active download.
+  downloadSize
+  /// Download-block number the client is currently waiting to receive.
+  downloadBlock
+  /// When constructing this record, `create` supplies `0` for this member. Used by `parseDownload`
+  /// during subsequent processing.
+  download
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `parseDownload` during subsequent processing.
+  downloadTempName
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `parseDownload` during subsequent processing.
+  downloadName
+  /// Number of bytes accumulated for the active download.
+  downloadCount
+end struct
 /// Stores download host-service callbacks, including `cvarValueFn`, `cvarStringFn`, `reliableFn`, `openFn`, `writeFn`, `closeFn` and additional values.
-struct Services cvarValueFn cvarStringFn reliableFn openFn writeFn closeFn renameFn packetFn nextFn printFn context end struct
+struct Services
+  /// Host callback for the cvar value operation; an unset callback leaves that host operation
+  /// unavailable.
+  cvarValueFn
+  /// Host callback for the cvar string operation; an unset callback leaves that host operation
+  /// unavailable.
+  cvarStringFn
+  /// Host callback for the reliable operation; an unset callback leaves that host operation
+  /// unavailable.
+  reliableFn
+  /// Host callback for the open operation; an unset callback leaves that host operation unavailable.
+  openFn
+  /// Host callback for the write operation; an unset callback leaves that host operation unavailable.
+  writeFn
+  /// Host callback for the close operation; an unset callback leaves that host operation unavailable.
+  closeFn
+  /// Host callback for the rename operation; an unset callback leaves that host operation unavailable.
+  renameFn
+  /// Host callback for the packet operation; an unset callback leaves that host operation unavailable.
+  packetFn
+  /// Host callback for the next operation; an unset callback leaves that host operation unavailable.
+  nextFn
+  /// Host callback for the print operation; an unset callback leaves that host operation unavailable.
+  printFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server-directed file
+  /// downloads.
+  context
+end struct
 
 /// Creates a `mq3.client.download.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State(0,0,0,"","",0) end function

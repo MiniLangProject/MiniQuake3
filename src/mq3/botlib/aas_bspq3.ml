@@ -9,11 +9,24 @@ import mq3.botlib.server_imports as imports
 import mq3.shared.parser as parser
 import mq3.compat.textnumbers as numbers
 
+/// Maximum number of map entities parsed for bot navigation.
 const MAX_BSPENTITIES=2048
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
 
 /// `State` record for aas bspq3, containing `loaded`, `entDataSize`, `dentData`, `numEntities` and `entities`.
-struct State loaded entDataSize dentData numEntities entities end struct
+struct State
+  /// True after BSP entity text has been read and parsed into navigation entity records.
+  loaded
+  /// Byte length of the loaded BSP entity text.
+  entDataSize
+  /// BSP entity text used to parse navigation-relevant map entities.
+  dentData
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+end struct
 /// Create a `mq3.botlib.aas_bspq3.State` record with the declared empty defaults.
 function create() return State(false,0,"",0,[]) end function
 

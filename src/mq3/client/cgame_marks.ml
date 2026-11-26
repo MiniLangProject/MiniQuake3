@@ -11,25 +11,124 @@ import mq3.shared.math as qmath
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 
+/// Capacity limit for the mark polys collection or bounded storage used by this client module.
 const MAX_MARK_POLYS=cgabi.MAX_MARK_POLYS
+/// Capacity limit for the mark fragments collection or bounded storage used by this client module.
 const MAX_MARK_FRAGMENTS=128
+/// Capacity limit for the mark points collection or bounded storage used by this client module.
 const MAX_MARK_POINTS=384
+/// Capacity limit for the verts on poly collection or bounded storage used by this client module.
 const MAX_VERTS_ON_POLY=cgabi.MAX_VERTS_ON_POLY
+/// Total lifetime in milliseconds of a persistent impact mark.
 const MARK_TOTAL_TIME=10000
+/// Duration in milliseconds of the final impact-mark fade-out phase.
 const MARK_FADE_TIME=1000
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores client game marks vertex record, including `xyz`, `st`, `modulate`.
-struct Vertex xyz st modulate end struct
+struct Vertex
+  /// When constructing this record, `makeVertex` supplies `copy3(point)` for this member.
+  xyz
+  /// When constructing this record, `makeVertex` supplies
+  /// `[0.5+qmath.DotProduct(delta,axis1)*scale,0.5+qmath.DotProduct(delta,axis2)*scale]` for this
+  /// member.
+  st
+  /// When constructing this record, `makeVertex` supplies `[color[0],color[1],color[2],color[3]]` for
+  /// this member.
+  modulate
+end struct
 /// Stores client game marks fragment record, including `points`.
-struct Fragment points end struct
+struct Fragment
+  /// When constructing this record, `impactMark` supplies `quad` for this member.
+  points
+end struct
 /// Stores client game marks mark record, including `id`, `active`, `time`, `alphaFade`, `shader`, `color` and additional values.
-struct Mark id active time alphaFade shader color verts end struct
+struct Mark
+  /// Stable effect identifier used to track or replace this projectile, particle, or mark.
+  id
+  /// When constructing this record, `freshMark` supplies `false` for this member.
+  active
+  /// Client timestamp used as the creation or update reference for this temporary visual effect.
+  time
+  /// True when the mark fades its alpha channel instead of its RGB components.
+  alphaFade
+  /// Material retained for rendering and fading this clipped persistent surface mark.
+  shader
+  /// Base RGBA tint retained for fading this persistent surface mark.
+  color
+  /// Vertex records forming the polygon or rendered geometry.
+  verts
+end struct
 // Projection and polygon submission are explicit engine boundaries.  A Retail
 // QVM observer records them but leaves dispatched=false, avoiding double draw.
-struct Boundary boundary kind shader points projection vertices dispatched temporary end struct
+struct Boundary
+  /// Host service category recorded with a request emitted while projecting impact decals and
+  /// submitting their fading polygons.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while projecting impact
+  /// decals and submitting their fading polygons.
+  kind
+  /// Mark material carried by a polygon-rendering request; empty for a fragment-projection query.
+  shader
+  /// When constructing this record, `pushBoundary` supplies `points` for this member.
+  points
+  /// When constructing this record, `pushBoundary` supplies `projection` for this member.
+  projection
+  /// When constructing this record, `pushBoundary` supplies `vertices` for this member.
+  vertices
+  /// True when this request is marked for native dispatch while projecting impact decals and submitting
+  /// their fading polygons; false when its native effect is suppressed.
+  dispatched
+  /// When constructing this record, `pushBoundary` supplies `temporary` for this member.
+  temporary
+end struct
 /// Stores client game marks state, including `capacity`, `marks`, `free`, `active`, `time`, `addMarks` and additional values.
-struct State capacity marks free active time addMarks retailActive energyMarkShader actions projected rendered suppressed allocated freed evicted errors end struct
+struct State
+  /// Maximum number of entries or allocation units supported by the bounded storage.
+  capacity
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `initMarkPolys` and `allocMark` during subsequent processing.
+  marks
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `initMarkPolys` and `freeMarkPoly` during subsequent processing.
+  free
+  /// Indices of live mark polygons, ordered for rendering, expiration, and oldest-mark eviction.
+  active
+  /// Client-game timestamp in milliseconds used to create, age, and fade surface marks.
+  time
+  /// When constructing this record, `create` supplies `true` for this member. Used by `impactMark` and
+  /// `addMarks` during subsequent processing.
+  addMarks
+  /// True when the retail QVM owns surface-impact mark projection, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// Shader resource selected for energy mark rendering.
+  energyMarkShader
+  /// Host requests queued while projecting impact decals and submitting their fading polygons, retained
+  /// in request order.
+  actions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initMarkPolys` and
+  /// `impactMark` during subsequent processing.
+  projected
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initMarkPolys` and
+  /// `pushBoundary` during subsequent processing.
+  rendered
+  /// Number of requests withheld from native dispatch while projecting impact decals and submitting
+  /// their fading polygons because the retail QVM owns their effects.
+  suppressed
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initMarkPolys` and
+  /// `allocMark` during subsequent processing.
+  allocated
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initMarkPolys` and
+  /// `freeMarkPoly` during subsequent processing.
+  freed
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initMarkPolys` and
+  /// `allocMark` during subsequent processing.
+  evicted
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+end struct
 
 /// Creates a three-component zero vector for client game marks.
 function zero3() return [0.0,0.0,0.0] end function

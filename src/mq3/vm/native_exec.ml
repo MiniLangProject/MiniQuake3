@@ -35,6 +35,7 @@ extern function beginNative(control as ptr,count as i32,original as i32,bottom a
 /// @param resume Nonzero to resume the pending syscall using value.
 /// @returns 0 for normal return, a positive syscall-continuation status, or a negative validation/execution error; the control block carries the result.
 extern function runNative(plan as ptr,planBytes as i32,data as ptr,dataBytes as i32,control as ptr,controlBytes as i32,value as i32,resume as i32) from "miniquake3_qvm.dll" symbol "mq3_qvm_run" returns i32
+/// Byte size used for control storage or binary layout in mq3.vm.native_exec.
 const CONTROL_BYTES=1080
 /// Create the vm.native_exec error for `fail` with 3400 and the supplied diagnostic text.
 /// @param text Text used in `("QVM: " + text)` and `error(3400, ("QVM: " + text))`.

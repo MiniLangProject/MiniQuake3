@@ -8,21 +8,49 @@ import mq3.botlib.lifecycle_runtime as botlibRuntime
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Bot-library syscall identifier for queue console message.
 const OP_QUEUE_CONSOLE_MESSAGE=509
+/// Bot-library syscall identifier for remove console message.
 const OP_REMOVE_CONSOLE_MESSAGE=510
+/// Bot-library syscall identifier for next console message.
 const OP_NEXT_CONSOLE_MESSAGE=511
+/// Bot-library syscall identifier for number console message.
 const OP_NUM_CONSOLE_MESSAGE=512
 // be_ai_chat.c obtains this from LibVarValue("max_messages", "1024").
 const DEFAULT_MAX_MESSAGES=1024
 // Compatibility name for callers that used the old fixed-capacity constant.
 const MAX_CONSOLE_MESSAGES=DEFAULT_MAX_MESSAGES
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=256
+/// Byte size of the console message record in the bot VM ABI or serialized representation.
 const CONSOLE_MESSAGE_SIZE=276
 
 /// `Message` record for ai console messages, containing `slot`, `handle`, `time`, `type` and `data`.
-struct Message slot handle time type data end struct
+struct Message
+  /// Index identifying this entry in its owning slot table.
+  slot
+  /// Identifier used to remove or advance past this queued console message.
+  handle
+  /// Bot-runtime timestamp at which this console message was queued.
+  time
+  /// Console-message category distinguishing ordinary output from chat.
+  type
+  /// Text of the queued console or chat message.
+  data
+end struct
 /// `State` record for ai console messages, containing `pools`, `nodes`, `freeSlots`, `time` and `capacity`.
-struct State pools nodes freeSlots time capacity end struct
+struct State
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// BSP nodes used to partition the collision or navigation world.
+  nodes
+  /// Indexes of resource slots available for reuse.
+  freeSlots
+  /// Current bot-runtime timestamp assigned to newly queued messages.
+  time
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+end struct
 
 /// Build the initial free-slot list in ascending order from zero to capacity minus one.
 /// @param capacity Maximum number of entries to allocate or retain.

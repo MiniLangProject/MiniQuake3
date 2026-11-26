@@ -6,28 +6,82 @@ import mq3.botlib.server_bridge as bridge
 import mq3.compat.numeric as n
 import mq3.shared.math as qmath
 
+/// Client-state value identifying an unoccupied server slot available for bot allocation.
 const CS_FREE=0
+/// Client-state value identifying an in-game client available through the bot-library server imports.
 const CS_ACTIVE=4
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
+/// Set if the entity is a bot.
 const SVF_BOT=8
+/// User-command button bit for attack.
 const BUTTON_ATTACK=1
+/// Bot-library diagnostic severity for message.
 const PRT_MESSAGE=1
+/// Bot-library diagnostic severity for warning.
 const PRT_WARNING=2
+/// Bot-library diagnostic severity for error.
 const PRT_ERROR=3
+/// Bot-library diagnostic severity for fatal.
 const PRT_FATAL=4
+/// Bot-library diagnostic severity for exit.
 const PRT_EXIT=5
+/// Can not be changed if cheats are disabled.
 const CVAR_CHEAT=512
 
 /// `Client` record for server imports, containing `state`, `entityNumber`, `name`, `svFlags` and `lastPacketTime` and related fields.
-struct Client state entityNumber name svFlags lastPacketTime addressType rate buttons origin angles end struct
+struct Client
+  /// Connection lifecycle value that controls allocation and access to bot-visible server client slots.
+  state
+  /// Game-entity number assigned to this bot client.
+  entityNumber
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Server-side visibility and entity-behavior flags.
+  svFlags
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Network-address kind, such as loopback, IPv4, or bot.
+  addressType
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Bit mask of pressed user-command buttons.
+  buttons
+  /// Server-side bot position supplied through the bot client import record.
+  origin
+  /// Pitch, yaw, and roll values carried by the entity or user command.
+  angles
+end struct
 /// Create a `mq3.botlib.server_imports.Client` record, initializing `state` as `CS_FREE`, `entityNumber` as `-1` and `origin` as `[0.0,0.0,0.0]`.
 function client() return Client(CS_FREE,-1,"",0,0,0,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0]) end function
 /// `DebugPolygon` record for server imports, containing `inuse`, `color` and `points`.
-struct DebugPolygon inuse color points end struct
+struct DebugPolygon
+  /// True when this debug polygon or managed entry owns an active slot.
+  inuse
+  /// Color components associated with the vertex or debug primitive.
+  color
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+end struct
 /// Create a `mq3.botlib.server_imports.DebugPolygon` record with the declared empty defaults.
 function polygon() return DebugPolygon(false,0,[]) end function
 /// `State` record for server imports, containing `clients`, `now`, `botEnable`, `gameVmActive` and `botlibReady` and related fields.
-struct State clients now botEnable gameVmActive botlibReady debugPolygons maxDebugPolys end struct
+struct State
+  /// Server client records exposed through bot allocation and bot command imports.
+  clients
+  /// Current time supplied to server-side bot-library services.
+  now
+  /// True when server-side bot processing is enabled.
+  botEnable
+  /// True when a game VM is available to service bot calls.
+  gameVmActive
+  /// True after the bot library has been initialized successfully.
+  botlibReady
+  /// Allocated navigation debug polygons exposed to the host renderer.
+  debugPolygons
+  /// Maximum number of host navigation debug polygons retained.
+  maxDebugPolys
+end struct
 /// Build the `mq3.botlib.server_imports.State` result for `create`. Return paths include `State(clients,0,0,false,false,polys,maxDebugPolys)`.
 /// @param maxClients Value used by `create` in `if maxClients<0 or maxDebugPolys<0 then return error(7590,"bot server imports: invalid capacity") end if`.
 /// @param maxDebugPolys Initial value stored in `mq3.botlib.server_imports.State.maxDebugPolys`.
@@ -39,7 +93,53 @@ function create(maxClients,maxDebugPolys)
 end function
 
 /// `Services` record for server imports, containing `printFn`, `errorFn`, `traceFn`, `entityTraceFn` and `pointContentsFn` and related fields.
-struct Services printFn errorFn traceFn entityTraceFn pointContentsFn inPvsFn entityDataFn modelBoundsFn allocFn freeFn hunkMarkFn hunkAllocFn drawPolyFn executeClientCommandFn gameFrameFn setupFn shutdownFn cvarGetFn varSetFn testFn getApiFn context end struct
+struct Services
+  /// Host callback that forwards bot-library diagnostic output through the engine import table.
+  printFn
+  /// Host callback that reports a host error using the requested error severity.
+  errorFn
+  /// Host callback that performs a collision sweep through the host world.
+  traceFn
+  /// Host callback that traces movement against an individual entity.
+  entityTraceFn
+  /// Host callback that queries world contents at a supplied point.
+  pointContentsFn
+  /// Host callback that tests whether two positions are potentially visible.
+  inPvsFn
+  /// Host callback that retrieves the host representation of a game entity.
+  entityDataFn
+  /// Host callback that returns bounds of a collision model.
+  modelBoundsFn
+  /// Host callback that allocates host-managed memory.
+  allocFn
+  /// Host callback that releases host-managed memory.
+  freeFn
+  /// Host callback that records the host hunk allocation mark.
+  hunkMarkFn
+  /// Host callback that allocates permanent hunk memory.
+  hunkAllocFn
+  /// Host callback that submits a navigation debug polygon to the host renderer.
+  drawPolyFn
+  /// Host callback that dispatches a validated client command.
+  executeClientCommandFn
+  /// Host callback that runs the game VM for one server simulation frame.
+  gameFrameFn
+  /// Host callback that initializes the supplied bot-library adapter.
+  setupFn
+  /// Host callback that shuts down the host subsystem and releases its resources.
+  shutdownFn
+  /// Host callback that retrieves a configuration variable from the host registry.
+  cvarGetFn
+  /// Host callback that sets a bot-library configuration variable.
+  varSetFn
+  /// Host callback that invokes the bot-library diagnostic entry point.
+  testFn
+  /// Host callback that retrieves the host bot-library API interface.
+  getApiFn
+  /// Caller-supplied data associated with engine services imported by the bot library, including traces
+  /// and memory access.
+  context
+end struct
 /// Create a `mq3.botlib.server_imports.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.
 function services(context) return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,void,context) end function
@@ -79,7 +179,34 @@ function BotImport_Print(type,text,host)
 end function
 
 /// `BspTrace` record for server imports, containing `allsolid`, `startsolid`, `fraction`, `endpos` and `planeDist` and related fields.
-struct BspTrace allsolid startsolid fraction endpos planeDist planeNormal planeSignbits planeType surfaceValue ent expDist sidenum contents end struct
+struct BspTrace
+  /// True when the entire trace begins and remains within solid geometry.
+  allsolid
+  /// True when the initial trace position lies inside solid geometry.
+  startsolid
+  /// Fraction of the requested trace segment completed before the first collision.
+  fraction
+  /// End position reached by the collision trace.
+  endpos
+  /// Distance term of the plane reported by the trace.
+  planeDist
+  /// Normal vector of the plane reported by the trace.
+  planeNormal
+  /// Sign-bit mask of the trace plane's normal components.
+  planeSignbits
+  /// Axis classification of the plane reported by the trace.
+  planeType
+  /// Surface value associated with the trace result.
+  surfaceValue
+  /// Number of entity hit.
+  ent
+  /// Expanded plane distance.
+  expDist
+  /// Number of the brush side hit.
+  sidenum
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+end struct
 /// Build the `mq3.botlib.server_imports.BspTrace` result for `convertTrace`.
 /// @param value Value record; accesses `allsolid`, `startsolid`, `fraction`, `endpos` and `planeDist` and related fields.
 function convertTrace(value)

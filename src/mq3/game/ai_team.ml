@@ -9,56 +9,111 @@ import mq3.compat.numeric as n
 import mq3.shared.info as info
 import std.string as strings
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Team identifier selecting the spectator team/category.
 const TEAM_SPECTATOR=3
+/// Game-mode identifier selecting team rules.
 const GT_TEAM=3
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF=5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK=6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER=7
+/// Capture-the-flag strategy identifier selecting agressive.
 const CTFS_AGRESSIVE=aiheaders.CTFS_AGRESSIVE
+/// Bot team-task preference bit indicating a preference for attacker.
 const TEAMTP_ATTACKER=aiheaders.TEAMTP_ATTACKER
+/// Bot team-task preference bit indicating a preference for defender.
 const TEAMTP_DEFENDER=aiheaders.TEAMTP_DEFENDER
 
 /// `Action` record for ai team, containing `kind`, `client`, `target`, `text` and `args` and related fields.
-struct Action kind client target text args suppressed end struct
+struct Action
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the recorded team-order or team-chat action.
+  client
+  /// Target-name selector identifying entities activated by this entity.
+  target
+  /// Text payload supplied to the recorded command, chat, or host action.
+  text
+  /// Arguments attached to the recorded command or host action.
+  args
+  /// Nonzero when an action was deliberately withheld from dispatch.
+  suppressed
+end struct
 /// `State` record for ai team, containing `helper`, `gametype`, `now`, `randomValue` and `maxclients` and related fields.
 struct State
+  /// Injected helper object used by the bot decision adapter.
   helper
+  /// GT_* game-mode identifier used for team-leader strategy and distribution of team objectives.
   gametype
+  /// Current clock value supplied to the bot decision step.
   now
+  /// Deterministic random input supplied to the current bot decision.
   randomValue
+  /// Configured number of client slots active in this game state.
   maxclients
+  /// Name strings indexed by the corresponding state-table entries.
   names
+  /// Configuration records associated with tracked clients or bot state.
   configs
+  /// AAS travel times used to compare candidate routes or goals.
   travelTimes
+  /// Recorded host actions emitted by bot decision logic.
   actions
+  /// Nonzero when an action was deliberately withheld from dispatch.
   suppressed
+  /// Nonzero when mission-pack rules and content are enabled.
   missionpack
+  /// Injected callback for client state; invoked through the State service/state record.
   clientStateFn
+  /// Injected callback for point area; invoked through the State service/state record.
   pointAreaFn
+  /// Injected callback for travel time; invoked through the State service/state record.
   travelTimeFn
 end struct
 
 /// `Bot` record for ai team, containing `client`, `cs`, `teamleader`, `entergameTime` and `askteamleaderTime` and related fields.
 struct Bot
+  /// Client slot of the bot participating in team-strategy decisions.
   client
+  /// Botlib chat-state handle owned by this bot.
   cs
+  /// Name or identifier of the current bot-team leader.
   teamleader
+  /// Timestamp at which this bot entered the game.
   entergameTime
+  /// Deadline for the bot next request for a team leader.
   askteamleaderTime
+  /// Time controlling when the bot may volunteer as team leader.
   becometeamleaderTime
+  /// Number of teammates considered by the team decision logic.
   numteammates
+  /// Client/entity currently carrying the flag of interest.
   flagcarrier
+  /// Selected capture-the-flag team strategy.
   ctfstrategy
+  /// Bot-tracked status of the neutral flag.
   neutralflagstatus
+  /// Bot-tracked status of the red flag.
   redflagstatus
+  /// Bot-tracked status of the blue flag.
   blueflagstatus
+  /// Nonzero after a tracked flag status changes and needs processing.
   flagstatuschanged
+  /// Nonzero when the team leader must issue new orders.
   forceorders
+  /// Next time at which the bot team leader should issue orders.
   teamgiveordersTime
+  /// Timestamp of the last flag capture observed by the bot.
   lastflagcaptureTime
 end struct
 

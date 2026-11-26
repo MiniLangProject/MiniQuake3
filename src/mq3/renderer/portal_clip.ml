@@ -81,7 +81,16 @@ end function
 
 // A face's vertices, including each patch LOD variant, are immutable within
 // its world. Only the selection and the portal plane vary between views.
-struct FaceCache world normal dist byFace end struct
+struct FaceCache
+  /// Loaded world geometry and associated scene state.
+  world
+  /// Clipping-plane normal associated with the cached portal-clipped face set.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+  /// Portal-clipped geometry cached by original BSP face index.
+  byFace
+end struct
 /// Constructs `mq3.renderer.portal_clip.FaceCache` with `normal` = `void`, `dist` = `0.0`, `byFace` = `void` and the supplied remaining values.
 /// @param world Initial value for `mq3.renderer.portal_clip.FaceCache.world`.
 function createFaceCache(world) return FaceCache(world,void,0.0,void) end function
@@ -117,7 +126,20 @@ function clipSelection(cache,chosen,normal,dist)
 end function
 
 /// Data record for `mq3.renderer.portal_clip.SceneVertex`; groups `position`, `texCoord`, `lightmapCoord`, `normal`, `color`, `entityColor`.
-struct SceneVertex position texCoord lightmapCoord normal color entityColor end struct
+struct SceneVertex
+  /// Three-dimensional position of the vertex.
+  position
+  /// Base texture coordinates of the clipped scene vertex.
+  texCoord
+  /// Baked-lightmap coordinates of the clipped scene vertex.
+  lightmapCoord
+  /// Scene vertex normal preserved or interpolated while clipping geometry against a portal plane.
+  normal
+  /// Vertex color retained and interpolated as scene geometry is clipped at the portal boundary.
+  color
+  /// Entity-supplied color used by entity-driven shader stages.
+  entityColor
+end struct
 /// Constructs `mq3.renderer.portal_clip.SceneVertex` with `position` = `triangle.positions[corner]`, `texCoord` = `triangle.texCoords[corner]`, `lightmapCoord` = `triangle.lightmapCoords[corner]`, `normal` = `triangle.normals[corner]` and the supplied remaining values.
 /// @param triangle Record providing `triangle.positions`, `triangle.texCoords`, `triangle.lightmapCoords`, `triangle.normals`, `triangle.colors`, `triangle.entityColor`.
 /// @param corner Vertex index used consistently across the triangle position/UV/normal/color arrays.

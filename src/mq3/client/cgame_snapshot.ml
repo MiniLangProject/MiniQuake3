@@ -4,18 +4,109 @@
 package mq3.client.cgame_snapshot
 import mq3.game.entitystate as entitystate
 
+/// Maximum event age in milliseconds before an entity event is considered stale.
 const EVENT_VALID_MSEC=300
+/// Entity-state type selecting the player protocol interpretation.
 const ET_PLAYER=1
+/// Entity-state flag selecting teleport bit behavior in client presentation.
 const EF_TELEPORT_BIT=4
+/// Player-movement state flag indicating follow.
 const PMF_FOLLOW=0x1000
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
 const SNAPFLAG_NOT_ACTIVE=1
+/// Snapshot bit toggled on server/map restarts so clients can recognize a new server state.
 const SNAPFLAG_SERVERCOUNT=4
 /// Stores client game snapshot snapshot metadata and contents, including `number`, `serverTime`, `snapFlags`, `serverCommandSequence`, `playerState`, `entities`.
-struct Snapshot number serverTime snapFlags serverCommandSequence playerState entities end struct
+struct Snapshot
+  /// When constructing this record, `wrap` supplies `number` for this member.
+  number
+  /// Server simulation time in milliseconds used to order and transition client-game snapshots.
+  serverTime
+  /// Snapshot flags describing rate delay and dropped-command conditions.
+  snapFlags
+  /// Reliable server-command sequence executed when this snapshot is installed or becomes current.
+  serverCommandSequence
+  /// Player-state record associated with this client snapshot.
+  playerState
+  /// Entity-state or renderer-entity entries represented by the current snapshot or scene.
+  entities
+end struct
 /// Stores client game snapshot cent record, including `currentState`, `nextState`, `currentValid`, `interpolate`, `previousEvent`, `trailTime` and additional values.
-struct Cent currentState nextState currentValid interpolate previousEvent trailTime lerpOrigin lerpAngles snapShotTime playerResets events end struct
+struct Cent
+  /// Entity state received in the current server snapshot.
+  currentState
+  /// Entity state from the following snapshot, used when interpolation is available.
+  nextState
+  /// True when the current snapshot contains a valid state for this entity.
+  currentValid
+  /// True when a valid following snapshot permits interpolation of this entity.
+  interpolate
+  /// Last processed entity event, retained to avoid replaying the same event.
+  previousEvent
+  /// Last trail-emission time, allowing missile trails to catch up across dropped packets.
+  trailTime
+  /// Entity position after snapshot interpolation and smoothing.
+  lerpOrigin
+  /// Entity orientation after snapshot interpolation and smoothing.
+  lerpAngles
+  /// Timestamp of the most recent snapshot containing this entity.
+  snapShotTime
+  /// When constructing this record, `cent` supplies `0` for this member.
+  playerResets
+  /// When constructing this record, `cent` supplies `0` for this member.
+  events
+end struct
 /// Stores client game snapshot state, including `time`, `latestSnapshotNum`, `latestSnapshotTime`, `processedSnapshotNum`, `snap`, `nextSnap` and additional values.
-struct State time latestSnapshotNum latestSnapshotTime processedSnapshotNum snap nextSnap snapshots entities thisFrameTeleport nextFrameTeleport solidBuilds respawns executedSequences lagometer errors playerStateTransitions demoPlayback noPredict synchronousClients prediction end struct
+struct State
+  /// Client presentation time in milliseconds used to process and transition between server snapshots.
+  time
+  /// Sequence number of the latest snapshot received from the engine.
+  latestSnapshotNum
+  /// Server timestamp associated with the latest received snapshot.
+  latestSnapshotTime
+  /// Highest snapshot sequence already requested or processed by CGame.
+  processedSnapshotNum
+  /// Current snapshot used as the lower endpoint of client interpolation.
+  snap
+  /// Following snapshot used as the upper endpoint of client interpolation, when available.
+  nextSnap
+  /// Snapshot history indexed by sequence number for interpolation and delta decoding.
+  snapshots
+  /// Entity-state or renderer-entity entries represented by the current snapshot or scene.
+  entities
+  /// True when the current snapshot transition represents a teleport.
+  thisFrameTeleport
+  /// True when the following snapshot transition must bypass interpolation.
+  nextFrameTeleport
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setInitialSnapshot`
+  /// and `setNextSnap` during subsequent processing.
+  solidBuilds
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setInitialSnapshot`
+  /// during subsequent processing.
+  respawns
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `executeSequence` during subsequent processing.
+  executedSequences
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `readNextSnapshot` during subsequent processing.
+  lagometer
+  /// Diagnostic messages collected while parsing or processing the input.
+  errors
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `transitionSnapshot` during subsequent processing.
+  playerStateTransitions
+  /// True when snapshots and commands are being read from a recorded demo.
+  demoPlayback
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `transitionSnapshot` during subsequent processing.
+  noPredict
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `transitionSnapshot` during subsequent processing.
+  synchronousClients
+  /// Optional prediction attachment retained by the snapshot record; the snapshot factory initializes
+  /// it to an absent value.
+  prediction
+end struct
 /// Creates a client entity with separate current/next entity states and cleared interpolation/event history.
 function cent() return Cent(entitystate.create(),entitystate.create(),false,false,0,0,[0.0,0.0,0.0],[0.0,0.0,0.0],0,0,0) end function
 /// Creates the client-game snapshot transition state and allocates the requested entity slots.

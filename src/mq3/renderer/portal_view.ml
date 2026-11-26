@@ -8,12 +8,37 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 import mq3.renderer.surface_trails as trails
 
+/// Renderer entity type carrying portal-view information without directly drawing geometry.
 const RT_PORTALSURFACE=7
 
 /// Data record for `mq3.renderer.portal_view.Orientation`; groups `origin`, `axis`.
-struct Orientation origin axis end struct
+struct Orientation
+  /// Reference point of a portal coordinate frame used to map positions between the surface and camera.
+  origin
+  /// Portal-frame basis used to project source vectors into the destination camera frame.
+  axis
+end struct
 /// Data record for `mq3.renderer.portal_view.View`; groups `surface`, `camera`, `pvsOrigin`, `mirror`, `origin`, `axis`, and 3 further fields.
-struct View surface camera pvsOrigin mirror origin axis planeNormal planeDist entityIndex end struct
+struct View
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+  /// Camera position and orientation used for the portal view.
+  camera
+  /// Position used to choose the visibility cluster for this view.
+  pvsOrigin
+  /// Whether the view reflects handedness across a portal or mirror plane.
+  mirror
+  /// Virtual camera position obtained by mapping the source eye through the portal frames.
+  origin
+  /// Camera basis obtained by transforming the source view directions through the portal.
+  axis
+  /// Normal of the portal or clipping plane.
+  planeNormal
+  /// Signed distance of the portal or clipping plane from the origin.
+  planeDist
+  /// Index of the scene entity that produced this geometry.
+  entityIndex
+end struct
 
 /// Creates error `7700` with message `"portal view: "+message`.
 /// @param message Input used in the result expression `error(7700,"portal view: "+message)`.

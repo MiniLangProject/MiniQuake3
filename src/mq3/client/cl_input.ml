@@ -8,15 +8,78 @@ import mq3.client.send_cmd as send
 import mq3.client.command_ring as commandRing
 import mq3.qcommon.command_buffer as command
 
+/// UI keyboard-capture mask used when marking commands and suppressing ordinary movement input while
+/// menus capture the keyboard.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the cgame subsystem.
 const KEYCATCH_CGAME=8
 
 // The callbacks are the only VM/host boundary in this module.  Supplying void
 // suppresses the corresponding side effect, which makes deterministic native
 // and headless clients use the same input state machine as the windowed host.
-struct Host uiMouseFn cgameMouseFn debugGraphFn printFn context end struct
+struct Host
+  /// Host callback for the ui mouse operation; an unset callback leaves that host operation
+  /// unavailable.
+  uiMouseFn
+  /// Host callback for the cgame mouse operation; an unset callback leaves that host operation
+  /// unavailable.
+  cgameMouseFn
+  /// Host callback for the debug graph operation; an unset callback leaves that host operation
+  /// unavailable.
+  debugGraphFn
+  /// Host callback for the print operation; an unset callback leaves that host operation unavailable.
+  printFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for engine input sampling and
+  /// user-command construction.
+  context
+end struct
 /// Stores engine client input state, including `inputState`, `config`, `sendState`, `sendHost`, `commandState`, `host` and additional values.
-struct State inputState config sendState sendHost commandState host frameTime frameMsec serverTime weapon cgameSensitivity keyCatchers anyKeyDown deltaPitch debugMove initialized end struct
+struct State
+  /// When constructing this record, `create` supplies `input.create(0.0,0.0,0.0)` for this member. Used
+  /// by `IN_MLookDown` and `IN_MLookUp` during subsequent processing.
+  inputState
+  /// When constructing this record, `create` supplies `input.defaults()` for this member. Used by
+  /// `IN_MLookUp` and `CL_AdjustAngles` during subsequent processing.
+  config
+  /// When constructing this record, `create` supplies `sendState` for this member. Used by
+  /// `CL_CreateNewCommands` and `CL_ReadyToSendPacket` during subsequent processing.
+  sendState
+  /// When constructing this record, `create` supplies `sendHost` for this member. Used by
+  /// `CL_ReadyToSendPacket` and `CL_WritePacket` during subsequent processing.
+  sendHost
+  /// When constructing this record, `create` supplies `commandState` for this member. Used by
+  /// `CL_InitInput` during subsequent processing.
+  commandState
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// Absolute input-frame timestamp in milliseconds used to integrate held controls and construct the
+  /// next user command.
+  frameTime
+  /// When constructing this record, `create` supplies `1` for this member. Used by `IN_KeyUp` and
+  /// `CL_KeyState` during subsequent processing.
+  frameMsec
+  /// Current synchronized server-domain time in milliseconds used when constructing input commands.
+  serverTime
+  /// Requested weapon identifier copied into each generated user command with an eight-bit mask.
+  weapon
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `CL_MouseMove`
+  /// during subsequent processing.
+  cgameSensitivity
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
+  keyCatchers
+  /// When constructing this record, `create` supplies `false` for this member. Used by `CL_CmdButtons`
+  /// during subsequent processing.
+  anyKeyDown
+  /// When constructing this record, `create` supplies `0` for this member. Used by `IN_CenterView`
+  /// during subsequent processing.
+  deltaPitch
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_CreateCmd`
+  /// during subsequent processing.
+  debugMove
+  /// True after input commands and input-related cvars have been registered, preventing duplicate
+  /// initialization.
+  initialized
+end struct
 
 /// Creates a `mq3.client.cl_input.Host` record. Initializes the record with the defaults written in this constructor.
 function hostServices() return Host(void,void,void,void,void) end function

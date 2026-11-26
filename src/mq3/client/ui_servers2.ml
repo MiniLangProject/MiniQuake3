@@ -11,66 +11,265 @@ import mq3.compat.numeric as numeric
 /// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Capacity limit for the globalservers collection or bounded storage used by this client module.
 const MAX_GLOBALSERVERS=128
+/// Capacity limit for the pingrequests collection or bounded storage used by this client module.
 const MAX_PINGREQUESTS=32
+/// Capacity limit for the favoriteservers collection or bounded storage used by this client module.
 const MAX_FAVORITESERVERS=16
+/// Capacity limit for the listboxitems collection or bounded storage used by this client module.
 const MAX_LISTBOXITEMS=128
+/// Capacity limit for the localservers collection or bounded storage used by this client module.
 const MAX_LOCALSERVERS=128
+/// Menu callback event reporting that the item was gotfocus.
 const QM_GOTFOCUS=1
+/// Activation callback event accepted by the base-game server browser before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the master action by the menu event handler.
 const ID_MASTER=10
+/// Menu control identifier routed to the gametype action by the menu event handler.
 const ID_GAMETYPE=11
+/// Menu control identifier routed to the sortkey action by the menu event handler.
 const ID_SORTKEY=12
+/// Menu control identifier routed to the show full action by the menu event handler.
 const ID_SHOW_FULL=13
+/// Menu control identifier routed to the show empty action by the menu event handler.
 const ID_SHOW_EMPTY=14
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=15
+/// Menu control identifier routed to the scroll up action by the menu event handler.
 const ID_SCROLL_UP=16
+/// Menu control identifier routed to the scroll down action by the menu event handler.
 const ID_SCROLL_DOWN=17
+/// Event identifier of the Back control used to leave the base-game server browser and return to its
+/// parent menu.
 const ID_BACK=18
+/// Menu control identifier routed to the refresh action by the menu event handler.
 const ID_REFRESH=19
+/// Menu control identifier routed to the specify action by the menu event handler.
 const ID_SPECIFY=20
+/// Menu control identifier routed to the create action by the menu event handler.
 const ID_CREATE=21
+/// Menu control identifier routed to the connect action by the menu event handler.
 const ID_CONNECT=22
+/// Menu control identifier routed to the remove action by the menu event handler.
 const ID_REMOVE=23
+/// Menu control identifier routed to the punkbuster action by the menu event handler.
 const ID_PUNKBUSTER=24
+/// Server-browser source selector for the local server list.
 const AS_LOCAL=0
+/// Server-browser source selector for the mplayer server list.
 const AS_MPLAYER=1
+/// Server-browser source selector for the global server list.
 const AS_GLOBAL=2
+/// Server-browser source selector for the favorites server list.
 const AS_FAVORITES=3
+/// Server-browser sort key comparing the host column.
 const SORT_HOST=0
+/// Server-browser sort key comparing the map column.
 const SORT_MAP=1
+/// Server-browser sort key comparing the clients column.
 const SORT_CLIENTS=2
+/// Server-browser sort key comparing the game column.
 const SORT_GAME=3
+/// Server-browser sort key comparing the ping column.
 const SORT_PING=4
+/// Server-browser game-mode filter selecting all entries.
 const GAMES_ALL=0
+/// Server-browser game-mode filter selecting ffa entries.
 const GAMES_FFA=1
+/// Server-browser game-mode filter selecting teamplay entries.
 const GAMES_TEAMPLAY=2
+/// Server-browser game-mode filter selecting tourney entries.
 const GAMES_TOURNEY=3
+/// Server-browser game-mode filter selecting ctf entries.
 const GAMES_CTF=4
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when filtering and labeling
+/// server-browser entries by game mode.
 const GT_TOURNAMENT=1
+/// Native game-type value for team deathmatch, used when filtering and labeling server-browser entries
+/// by game mode.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when filtering and labeling server-browser entries
+/// by game mode.
 const GT_CTF=4
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
+/// Engine key code for the space input, used by menu and client key-event handling.
 const K_SPACE=32
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=140
+/// Engine key code for the kp del input, used by menu and client key-event handling.
 const K_KP_DEL=171
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
 
 /// Stores UI servers2 host action record, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
-struct HostAction boundary kind name text number dispatched end struct
+struct HostAction
+  /// Host service category recorded with a request emitted while refreshing, filtering, and selecting
+  /// servers for connection.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while refreshing,
+  /// filtering, and selecting servers for connection.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// Command or configuration text emitted by the server browser, including connect and ping requests.
+  text
+  /// When constructing this record, `action` supplies `number` for this member.
+  number
+  /// True when this request is marked for native dispatch while refreshing, filtering, and selecting
+  /// servers for connection; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI servers2 server node record, including `address`, `hostname`, `mapName`, `numClients`, `maxClients`, `pingTime` and additional values.
-struct ServerNode address hostname mapName numClients maxClients pingTime gameType gameName netType minPing maxPing punkbuster end struct
+struct ServerNode
+  /// When constructing this record, `node` supplies `address` for this member.
+  address
+  /// When constructing this record, `node` supplies `hostname` for this member.
+  hostname
+  /// Advertised map name used to format, sort, and preview this server-browser entry.
+  mapName
+  /// Number of valid client entries represented by this record.
+  numClients
+  /// Maximum player slots advertised or supported by the connected server.
+  maxClients
+  /// When constructing this record, `node` supplies `pingTime` for this member.
+  pingTime
+  /// When constructing this record, `node` supplies `gameType` for this member.
+  gameType
+  /// When constructing this record, `node` supplies `gameName` for this member.
+  gameName
+  /// When constructing this record, `node` supplies `netType` for this member.
+  netType
+  /// When constructing this record, `node` supplies `minPing` for this member.
+  minPing
+  /// Maximum acceptable server-browser latency in milliseconds.
+  maxPing
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+end struct
 /// Stores UI servers2 ping request record, including `address`, `start`.
-struct PingRequest address start end struct
+struct PingRequest
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  address
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  start
+end struct
 /// Stores UI servers2 ping result record, including `slot`, `address`, `time`, `infoText`.
-struct PingResult slot address time infoText end struct
+struct PingResult
+  /// Ping-request slot associated with the browser latency result.
+  slot
+  /// Network-address string identifying the server that answered the ping request.
+  address
+  /// Ping timing value used to record latency or completion of the browser request.
+  time
+  /// Server information string associated with the browser query result.
+  infoText
+end struct
 /// Stores UI servers2 menu item, including `id`, `kind`, `name`, `x`, `y`, `fallback`.
-struct Item id kind name x y fallback end struct
+struct Item
+  /// Event-routing identifier of this selectable control in the base-game server browser.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork resource identifying the server-browser control.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the base-game server
+  /// browser.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the base-game server browser.
+  y
+  /// When constructing this record, `item` supplies an empty string for this member.
+  fallback
+end struct
 /// Stores UI servers2 choice list record, including `name`, `values`.
-struct ChoiceList name values end struct
+struct ChoiceList
+  /// Caption for a server-browser choice group, such as server source, game type, or sort order.
+  name
+  /// When constructing this record, `browserChoices` supplies `["Local","Internet","Favorites"]` for
+  /// this member.
+  values
+end struct
 /// Stores UI servers2 browser state record, including `source`, `masterSelection`, `gameFilter`, `sortKey`, `showFull`, `showEmpty` and additional values.
-struct BrowserState source masterSelection gameFilter sortKey showFull showEmpty punkbuster servers localServers globalServers mplayerServers favoriteServers favoriteAddresses visibleIndices rows selected top mapPicture status statusBar numQueried currentPing refreshing nextPingTime maxServers refreshTime pingRequests removeVisible controlsGrayed listGrayed goGrayed choices assets items actions end struct
+struct BrowserState
+  /// When constructing this record, `browserState` supplies `-1` for this member.
+  source
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  masterSelection
+  /// When constructing this record, `browserState` supplies `GAMES_ALL` for this member.
+  gameFilter
+  /// When constructing this record, `browserState` supplies `SORT_HOST` for this member.
+  sortKey
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  showFull
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  showEmpty
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+  /// Working server list for the selected discovery source, sorted and filtered to produce the visible
+  /// rows.
+  servers
+  /// Saved server list for LAN discovery, restored when the browser switches to the local source.
+  localServers
+  /// Saved server list for the primary Internet master, restored when that source is selected.
+  globalServers
+  /// Saved server list for the alternate MPlayer master source.
+  mplayerServers
+  /// Saved server list corresponding to the user's favorite server addresses.
+  favoriteServers
+  /// Persistent address strings used to construct and update the browser's favorite-server list.
+  favoriteAddresses
+  /// Indices into the working server list for rows that pass the current browser filters.
+  visibleIndices
+  /// Formatted text rows corresponding to the filtered visible server indices.
+  rows
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  mapPicture
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  status
+  /// When constructing this record, `browserState` supplies an empty string for this member.
+  statusBar
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  numQueried
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  currentPing
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  refreshing
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  nextPingTime
+  /// When constructing this record, `browserState` supplies `MAX_GLOBALSERVERS` for this member.
+  maxServers
+  /// When constructing this record, `browserState` supplies `0` for this member.
+  refreshTime
+  /// When constructing this record, `browserState` supplies `requests` for this member.
+  pingRequests
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  removeVisible
+  /// When constructing this record, `browserState` supplies `false` for this member.
+  controlsGrayed
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  listGrayed
+  /// When constructing this record, `browserState` supplies `true` for this member.
+  goGrayed
+  /// Choice-list definitions for browser source, filters, and sorting controls.
+  choices
+  /// Media resources retained for registering and drawing the artwork used by the base-game server
+  /// browser.
+  assets
+  /// Interactive menu widgets installed by the server-browser initializer.
+  items
+  /// Host requests queued while refreshing, filtering, and selecting servers for connection, retained
+  /// in request order.
+  actions
+end struct
 
 /// Computes `actions+[HostAction(boundary,kind,name,text,number,not retailActive)]` for UI servers2 `action`.
 /// @param actions Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.

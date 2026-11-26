@@ -5,16 +5,50 @@ import mq3.format.pk3 as pk3
 import mq3.audio.wav as wav
 import mq3.platform.playable_audio as audio
 
+/// Virtual asset path used to load the pickup path renderer or menu resource.
 const PICKUP_PATH="sound/misc/w_pkup.wav"
 
 /// Stores playable weapon sounds definition record, including `weapon`, `classname`, `firePaths`, `impactPaths`, `pickupPath`.
-struct Definition weapon classname firePaths impactPaths pickupPath end struct
+struct Definition
+  /// Weapon classname associated with this firing, impact, and pickup sound definition.
+  weapon
+  /// Weapon classname used to resolve the corresponding firing, reload, and other weapon sounds.
+  classname
+  /// When constructing this record, `definitions` supplies `["sound/weapons/melee/fstrun.wav"]` for
+  /// this member.
+  firePaths
+  /// When constructing this record, `definitions` supplies an empty list for this member.
+  impactPaths
+  /// When constructing this record, `definitions` supplies `PICKUP_PATH` for this member.
+  pickupPath
+end struct
 /// Stores playable weapon sounds clip record, including `path`, `sound`.
-struct Clip path sound end struct
+struct Clip
+  /// When constructing this record, `decodeClip` supplies `path` for this member. Used by `findClip`
+  /// during subsequent processing.
+  path
+  /// Decoded WAV sound data associated with this weapon audio asset.
+  sound
+end struct
 /// Stores playable weapon sounds weapon sounds record, including `definition`, `fire`, `impact`, `pickup`.
-struct WeaponSounds definition fire impact pickup end struct
+struct WeaponSounds
+  /// When constructing this record, `load` supplies `def` for this member.
+  definition
+  /// When constructing this record, `load` supplies `fire` for this member.
+  fire
+  /// When constructing this record, `load` supplies `impact` for this member.
+  impact
+  /// When constructing this record, `load` supplies `pickup` for this member.
+  pickup
+end struct
 /// Stores playable weapon sounds catalog record, including `weapons`, `clips`.
-struct Catalog weapons clips end struct
+struct Catalog
+  /// When constructing this record, `load` supplies `weapons` for this member. Used by `find` during
+  /// subsequent processing.
+  weapons
+  /// When constructing this record, `load` supplies `clips` for this member.
+  clips
+end struct
 
 /// Creates the playable weapon sounds error `7570` with diagnostic text `"Weapon sounds: "+message`.
 /// @param message Argument 2 of `error`; passed as `"Weapon sounds: "+message`.

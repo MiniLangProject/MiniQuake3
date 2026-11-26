@@ -4,31 +4,115 @@
 package mq3.client.ui_rankings
 import mq3.client.ui_qmenu as q
 
+/// Virtual asset path used to load the rankings frame renderer or menu resource.
 const RANKINGS_FRAME="menu/art/cut_frame"
+/// Menu control identifier routed to the login action by the menu event handler.
 const ID_LOGIN=100
+/// Menu control identifier routed to the logout action by the menu event handler.
 const ID_LOGOUT=101
+/// Menu control identifier routed to the create action by the menu event handler.
 const ID_CREATE=102
+/// Menu control identifier routed to the spectate action by the menu event handler.
 const ID_SPECTATE=103
+/// Menu control identifier routed to the setup action by the menu event handler.
 const ID_SETUP=104
+/// Menu control identifier routed to the leave action by the menu event handler.
 const ID_LEAVE=105
+/// Legacy ranking-service status code indicating the new state.
 const QGR_STATUS_NEW=0
+/// Legacy ranking-service status code indicating the spectator state.
 const QGR_STATUS_SPECTATOR=1
+/// Legacy ranking-service status code indicating the active state.
 const QGR_STATUS_ACTIVE=2
+/// Legacy ranking-service status code indicating the validating state.
 const QGR_STATUS_VALIDATING=3
+/// Legacy ranking-service status code indicating the pending state.
 const QGR_STATUS_PENDING=4
+/// Legacy ranking-service status code indicating the leaving state.
 const QGR_STATUS_LEAVING=5
+/// Legacy ranking-service status code indicating the no user state.
 const QGR_STATUS_NO_USER=6
+/// Legacy ranking-service status code indicating the bad password state.
 const QGR_STATUS_BAD_PASSWORD=7
+/// Legacy ranking-service status code indicating the user exists state.
 const QGR_STATUS_USER_EXISTS=8
+/// Legacy ranking-service status code indicating the no membership state.
 const QGR_STATUS_NO_MEMBERSHIP=9
+/// Legacy ranking-service status code indicating the timeout state.
 const QGR_STATUS_TIMEOUT=10
+/// Legacy ranking-service status code indicating the invaliduser state.
 const QGR_STATUS_INVALIDUSER=11
+/// Legacy ranking-service status code indicating the error state.
 const QGR_STATUS_ERROR=12
 
 /// Stores UI rankings queued engine action, including `boundary`, `kind`, `name`, `text`, `x`, `y` and additional values.
-struct Action boundary kind name text x y value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while offering account login, logout,
+  /// signup, and ranked-play choices.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while offering account
+  /// login, logout, signup, and ranked-play choices.
+  kind
+  /// Menu destination, command label, drawing color, or artwork resource referenced by the rankings
+  /// action.
+  name
+  /// Drawn account-field character or rankings command text carried by the selected host operation.
+  text
+  /// Horizontal position of this queued drawing operation in the virtual layout used by the ranked-play
+  /// account menu.
+  x
+  /// Vertical position of this queued drawing operation in the virtual layout used by the ranked-play
+  /// account menu.
+  y
+  /// Value payload supplied to the selected host operation while offering account login, logout,
+  /// signup, and ranked-play choices.
+  value
+  /// True when this request is marked for native dispatch while offering account login, logout, signup,
+  /// and ranked-play choices; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI rankings state, including `menu`, `frame`, `login`, `logout`, `createAccount`, `spectate` and additional values.
-struct State menu frame login logout createAccount spectate setup leave status actions pushed forcedOff popped retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `q.menu(true,false)` for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  menu
+  /// Decorative bitmap widget drawing the border around the rankings menu.
+  frame
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  login
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  logout
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  createAccount
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  spectate
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  setup
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  leave
+  /// When constructing this record, `create` supplies `QGR_STATUS_NEW` for this member. Used by
+  /// `Rankings_MenuInit` during subsequent processing.
+  status
+  /// Host requests queued while offering account login, logout, signup, and ranked-play choices,
+  /// retained in request order.
+  actions
+  /// Records that the ranked-play account menu has been opened on the active menu stack.
+  pushed
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `Rankings_MenuEvent` during subsequent processing.
+  forcedOff
+  /// Records a request to remove the ranked-play account menu from the active menu stack.
+  popped
+  /// True when the retail QVM owns the ranked-play account menu, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 /// Creates a `mq3.client.ui_rankings.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive) return State(q.menu(true,false),void,void,void,void,void,void,void,QGR_STATUS_NEW,[],false,false,false,retailActive) end function

@@ -6,7 +6,16 @@ import mq3.qcommon.cvar as cvar
 import mq3.renderer.tr_init as renderer
 
 /// Stores desktop video active mode record, including `width`, `height`, `fullscreen`, `picmip`.
-struct ActiveMode width height fullscreen picmip end struct
+struct ActiveMode
+  /// Horizontal pixel resolution of the active desktop video mode.
+  width
+  /// Vertical pixel resolution of the active desktop video mode.
+  height
+  /// Whether the active native display mode uses a fullscreen window.
+  fullscreen
+  /// Texture mip-level reduction setting; larger values select lower-resolution texture data.
+  picmip
+end struct
 
 /// Calls `mq3.qcommon.cvar.get`, `mq3.qcommon.cvar.set2`, `mq3.renderer.tr_init.getModeInfo` and additional helpers from desktop video `requestedMode`. The final path returns `window.DisplayMode(dimensions[0],dimensions[1],fullscreen)`.
 /// @param registry Value used by `mode=cvar.get(registry,"r_mode","-1",cvar.ARCHIVE).integer`.

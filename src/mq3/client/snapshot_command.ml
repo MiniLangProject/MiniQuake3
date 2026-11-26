@@ -7,45 +7,82 @@ import mq3.qcommon.message as message
 import mq3.qcommon.message_state_delta as delta
 import mq3.game.playerstate as playerstate
 
+/// Number of packet records retained in the client packet-history ring.
 const PACKET_BACKUP=32
+/// Mask that maps a packet sequence number into the packet-history ring.
 const PACKET_MASK=31
+/// Capacity limit for the parse entities collection or bounded storage used by this client module.
 const MAX_PARSE_ENTITIES=2048
+/// Number of bytes available for the snapshot's portal-area visibility bitset.
 const MAX_MAP_AREA_BYTES=32
 
 /// Stores snapshot command out packet record, including `serverTime`, `realtime`.
 struct OutPacket
+  /// Timestamp in milliseconds of the user command carried by this packet, compared with the snapshot
+  /// command acknowledgement.
   serverTime
+  /// Local send timestamp in milliseconds used to calculate latency when a snapshot acknowledges this
+  /// packet.
   realtime
 end struct
 
 /// Stores snapshot command snapshot metadata and contents, including `valid`, `snapFlags`, `serverTime`, `messageNum`, `deltaNum`, `ping` and additional values.
 struct Snapshot
+  /// True when the stored data passed the validation required by its consumer.
   valid
+  /// Snapshot flags describing rate delay and dropped-command conditions.
   snapFlags
+  /// Authoritative simulation timestamp in milliseconds decoded from the server snapshot.
   serverTime
+  /// Incoming network-message sequence number associated with the snapshot.
   messageNum
+  /// Sequence number of the earlier message used as this snapshot's delta base.
   deltaNum
+  /// Snapshot latency in milliseconds, derived from acknowledged outgoing packets; 999 is used when no
+  /// matching packet is found.
   ping
+  /// Portal-area visibility bitset associated with the current snapshot or rendered view.
   areaMask
+  /// Player-state record associated with this client snapshot.
   playerState
+  /// Number of entity-state entries represented by the snapshot or scene.
   numEntities
+  /// Absolute position in the parsed-entity ring at which this snapshot's entities begin.
   parseEntitiesNum
+  /// Server-command sequence that must be executed before presenting this snapshot.
   serverCommandNum
 end struct
 
 /// Stores snapshot command state, including `entityState`, `snapshots`, `snap`, `outPackets`, `serverMessageSequence`, `serverCommandSequence` and additional values.
 struct State
+  /// When constructing this record, `create` supplies `snapshotEntities.createState()` for this member.
+  /// Used by `oldFrameFor` and `parseSnapshot` during subsequent processing.
   entityState
+  /// Snapshot history indexed by sequence number for interpolation and delta decoding.
   snapshots
+  /// Current snapshot used as the lower endpoint of client interpolation.
   snap
+  /// History of outgoing packet metadata used to estimate acknowledgement timing.
   outPackets
+  /// Highest server network-message sequence observed by the client.
   serverMessageSequence
+  /// Latest received reliable server-command sequence copied into newly decoded snapshots.
   serverCommandSequence
+  /// When constructing this record, `create` supplies `0` for this member. Used by `calculatePing`
+  /// during subsequent processing.
   outgoingSequence
+  /// Current local client clock in milliseconds used to calculate received-snapshot latency.
   realtime
+  /// When constructing this record, `create` supplies `true` for this member. Used by `parseSnapshot`
+  /// during subsequent processing.
   demoWaiting
+  /// True after parsing a new valid snapshot that has not yet been consumed.
   newSnapshots
+  /// When constructing this record, `create` supplies `0` for this member. Used by `shownet` and
+  /// `parseSnapshot` during subsequent processing.
   shownetLevel
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `shownet`
+  /// and `parseSnapshot` during subsequent processing.
   shownetLines
 end struct
 

@@ -5,10 +5,26 @@ package mq3.server.client_command_dispatch
 import mq3.qcommon.command_buffer as commandBuffer
 import mq3.server.client_lifecycle as lifecycle
 
+/// Server lifecycle state for an active game map.
 const SS_GAME=2
 
 /// Services record for server.client_command_dispatch, containing `builtinFn`, `downloadFn`, `gameFn`, `ignoredFn`, `context`, `downloadContext`, and 1 further fields.
-struct Services builtinFn downloadFn gameFn ignoredFn context downloadContext lifecycleRuntime end struct
+struct Services
+  /// Host callback that handles a built-in server-side client command.
+  builtinFn
+  /// Host callback that handles a client file-download command.
+  downloadFn
+  /// Host callback that dispatches a lifecycle request to the game VM.
+  gameFn
+  /// Host callback that observes a client command intentionally ignored by the dispatcher.
+  ignoredFn
+  /// Caller-supplied data associated with dispatch of built-in, download, and game client commands.
+  context
+  /// Bound context for handling client download commands.
+  downloadContext
+  /// Server/client lifecycle state used by disconnect and entry commands.
+  lifecycleRuntime
+end struct
 /// Create `mq3.server.client_command_dispatch.Services` with builtinFn=void; downloadFn=void; gameFn=void; ignoredFn=void; context=void; downloadContext=void; lifecycleRuntime=void.
 function services() return Services(void,void,void,void,void,void,void) end function
 

@@ -10,49 +10,301 @@ import mq3.client.connectionless as connectionless
 import mq3.client.network_ingress as networkIngress
 import mq3.client.client_abi as clientAbi
 
+/// Client connection state before the client subsystem has been initialized.
 const CA_UNINITIALIZED=0
+/// Client connection state with no active server connection.
 const CA_DISCONNECTED=1
+/// Client connection state while waiting for authorization to contact the server.
 const CA_AUTHORIZING=2
+/// Client connection state while requesting a challenge from the server.
 const CA_CONNECTING=3
+/// Client connection state while replying to the server challenge and requesting connection.
 const CA_CHALLENGING=4
+/// Connection-state value for a completed handshake before game-state loading, defined for coordinating
+/// connection, demo, and client lifecycle transitions.
 const CA_CONNECTED=5
+/// Client connection state while level media and game state are being loaded.
 const CA_LOADING=6
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Connection-state value for normal gameplay after game-state loading, defined for coordinating
+/// connection, demo, and client lifecycle transitions.
 const CA_ACTIVE=8
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Capacity limit for the pingrequests collection or bounded storage used by this client module.
 const MAX_PINGREQUESTS=32
+/// Capacity limit for the serverstatusrequests collection or bounded storage used by this client
+/// module.
 const MAX_SERVERSTATUSREQUESTS=16
+/// Maximum length of a protocol, command, or configuration string.
 const MAX_STRING_CHARS=1024
+/// Default UDP port used by a Quake game server.
 const PORT_SERVER=27960
+/// Connection-handshake retransmission interval in milliseconds.
 const RETRANSMIT_TIMEOUT=clientAbi.RETRANSMIT_TIMEOUT
+/// Required number of characters in the native product key.
 const CDKEY_LEN=16
+/// Number of characters in the product-key checksum suffix.
 const CDCHKSUM_LEN=2
 
 /// Stores client main queued engine action, including `kind`, `text`, `address`, `dispatched`.
-struct Action kind text address dispatched end struct
+struct Action
+  /// Operation selector telling the host how to interpret a request emitted while processing client
+  /// lifecycle, connection, demo, and console commands.
+  kind
+  /// Client host-operation text, including diagnostic messages, demo names, or outgoing connection
+  /// command payloads.
+  text
+  /// When constructing this record, `emit` supplies `address` for this member.
+  address
+  /// True when this request is marked for native dispatch while processing client lifecycle,
+  /// connection, demo, and console commands; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client main reliable record, including `sequence`, `acknowledge`, `commands`.
-struct Reliable sequence acknowledge commands end struct
+struct Reliable
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `CL_AddReliableCommand` and `CL_ChangeReliableCommand` during subsequent processing.
+  sequence
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `CL_AddReliableCommand` during subsequent processing.
+  acknowledge
+  /// When constructing this record, `create` supplies `array(MAX_RELIABLE_COMMANDS,"")` for this
+  /// member. Used by `CL_AddReliableCommand` and `CL_ChangeReliableCommand` during subsequent
+  /// processing.
+  commands
+end struct
 /// Stores client main ping record, including `address`, `start`, `time`, `info`.
-struct Ping address start time info end struct
+struct Ping
+  /// When constructing this record, `CL_GetFreePing` supplies an empty string for this member.
+  address
+  /// When constructing this record, `CL_GetFreePing` supplies `0` for this member.
+  start
+  /// Ping timing value used to record latency or completion of the browser request.
+  time
+  /// When constructing this record, `CL_GetFreePing` supplies an empty string for this member.
+  info
+end struct
 /// Stores client main server info record, including `address`, `clients`, `hostName`, `mapName`, `maxClients`, `maxPing` and additional values.
-struct ServerInfo address clients hostName mapName maxClients maxPing minPing ping game gameType netType visible end struct
+struct ServerInfo
+  /// When constructing this record, `CL_InitServerInfo` supplies `address` for this member.
+  address
+  /// Connected-client count parsed from the server information response.
+  clients
+  /// When constructing this record, `CL_InitServerInfo` supplies an empty string for this member.
+  hostName
+  /// Map name parsed from the server's information response for browser display.
+  mapName
+  /// Maximum player slots advertised or supported by the connected server.
+  maxClients
+  /// Maximum acceptable server-browser latency in milliseconds.
+  maxPing
+  /// When constructing this record, `CL_InitServerInfo` supplies `0` for this member.
+  minPing
+  /// Server latency in milliseconds recorded by the client server-list machinery.
+  ping
+  /// When constructing this record, `CL_InitServerInfo` supplies an empty string for this member.
+  game
+  /// When constructing this record, `CL_InitServerInfo` supplies `0` for this member.
+  gameType
+  /// When constructing this record, `CL_InitServerInfo` supplies `0` for this member.
+  netType
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+end struct
 /// Stores client main server status record, including `address`, `text`, `start`, `pending`, `retrieved`.
-struct ServerStatus address text start pending retrieved end struct
+struct ServerStatus
+  /// When constructing this record, `CL_ServerStatus` supplies `address` for this member.
+  address
+  /// Cached server-status reply returned to the browser after the status request completes.
+  text
+  /// When constructing this record, `CL_ServerStatus` supplies `state.lifecycle.realtime` for this
+  /// member.
+  start
+  /// When constructing this record, `CL_ServerStatus` supplies `true` for this member.
+  pending
+  /// When constructing this record, `CL_ServerStatus` supplies `false` for this member.
+  retrieved
+end struct
 /// Stores client main downloads record, including `queue`, `index`, `name`, `tempName`, `restarted`, `completed`.
-struct Downloads queue index name tempName restarted completed end struct
+struct Downloads
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `CL_NextDownload` and `CL_InitDownloads` during subsequent processing.
+  queue
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_NextDownload`
+  /// and `CL_InitDownloads` during subsequent processing.
+  index
+  /// Virtual filename of the package or file currently being downloaded.
+  name
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_BeginDownload` and `CL_DownloadsComplete` during subsequent processing.
+  tempName
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_DownloadsComplete` during subsequent processing.
+  restarted
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_BeginDownload` and `CL_InitDownloads` during subsequent processing.
+  completed
+end struct
 /// Stores client main demo state record, including `recording`, `playing`, `file`, `name`, `nextDemo`, `serverMessageSequence` and additional values.
-struct DemoState recording playing file name nextDemo serverMessageSequence offset end struct
+struct DemoState
+  /// True while outgoing demo records are being written to the open recording file.
+  recording
+  /// True while the client is consuming a recorded demo instead of a live server connection.
+  playing
+  /// Open demo-recording handle passed to the host's write and close callbacks; absent before recording
+  /// starts.
+  file
+  /// Virtual filename identifying the current demo recording or playback stream.
+  name
+  /// When constructing this record, `create` supplies an empty string for this member.
+  nextDemo
+  /// Highest server network-message sequence observed by the client.
+  serverMessageSequence
+  /// Current byte position retained for demo playback and reset when playback starts or completes.
+  offset
+end struct
 /// Stores client main lifecycle record, including `initialized`, `state`, `renderer`, `sound`, `hunk`, `realtime` and additional values.
-struct Lifecycle initialized state renderer sound hunk realtime framecount lastPacketTime timeoutCount timeoutSeconds serverRunning uiStarted cgameStarted connectTime connectPacketCount end struct
+struct Lifecycle
+  /// True between client startup and shutdown; guards duplicate lifecycle initialization and teardown.
+  initialized
+  /// When constructing this record, `create` supplies `CA_UNINITIALIZED` for this member. Used by
+  /// `CL_Record_f` and `CL_PlayDemo_f` during subsequent processing.
+  state
+  /// Renderer implementation name reported by the graphics driver.
+  renderer
+  /// True while the client sound subsystem is initialized; cleared during sound shutdown or restart.
+  sound
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_StartHunkUsers` and `CL_Vid_Restart_f` during subsequent processing.
+  hunk
+  /// Local client lifecycle clock in milliseconds used by networking, demo playback, and fallback time
+  /// queries.
+  realtime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_Frame` and
+  /// `packets` during subsequent processing.
+  framecount
+  /// Client timestamp of the latest received server packet, used to detect timeouts.
+  lastPacketTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_ClearState` and
+  /// `CL_CheckTimeout` during subsequent processing.
+  timeoutCount
+  /// When constructing this record, `create` supplies `30` for this member. Used by `CL_CheckTimeout`
+  /// during subsequent processing.
+  timeoutSeconds
+  /// True when a local game server is running in the same engine instance.
+  serverRunning
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_Vid_Restart_f` and `CL_ShutdownAll` during subsequent processing.
+  uiStarted
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `CL_Vid_Restart_f` and `CL_ShutdownAll` during subsequent processing.
+  cgameStarted
+  /// Timestamp of the most recent connection attempt or handshake retransmission.
+  connectTime
+  /// Number of connection-handshake packets sent, also used by progress displays.
+  connectPacketCount
+end struct
 
 // Platform-specific I/O remains explicit. The native state changes are always
 // performed; actionFn is skipped when a retail QVM already owns the operation.
-struct Host actionFn millisecondsFn allocFn freeFn readFn writeFn closeFn existsFn context end struct
+struct Host
+  /// Host callback for the action operation; an unset callback leaves that host operation unavailable.
+  actionFn
+  /// Host callback for the milliseconds operation; an unset callback leaves that host operation
+  /// unavailable.
+  millisecondsFn
+  /// Host callback for the alloc operation; an unset callback leaves that host operation unavailable.
+  allocFn
+  /// Host callback for the free operation; an unset callback leaves that host operation unavailable.
+  freeFn
+  /// Host callback for the read operation; an unset callback leaves that host operation unavailable.
+  readFn
+  /// Host callback for the write operation; an unset callback leaves that host operation unavailable.
+  writeFn
+  /// Host callback for the close operation; an unset callback leaves that host operation unavailable.
+  closeFn
+  /// Host callback for the exists operation; an unset callback leaves that host operation unavailable.
+  existsFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for client connection and
+  /// lifecycle commands.
+  context
+end struct
 /// Creates a `mq3.client.client_main.Host` record. Initializes the record with the defaults written in this constructor.
 function host() return Host(void,void,void,void,void,void,void,void,void) end function
 
 /// Stores client main state, including `lifecycle`, `reliable`, `pings`, `servers`, `statuses`, `downloads` and additional values.
-struct State lifecycle reliable pings servers statuses downloads demo cvars configstrings actions serverName reconnectName userinfo pureChecksums openedPaks referencedPaks retailActive frameRuntime frameHost connectionRuntime connectionHost packetRuntime packetHost lanRuntime end struct
+struct State
+  /// When constructing this record, `create` supplies `life` for this member. Used by `now` and
+  /// `CL_PacketEventLive` during subsequent processing.
+  lifecycle
+  /// When constructing this record, `create` supplies `reliable` for this member. Used by
+  /// `CL_AddReliableCommand` and `CL_ChangeReliableCommand` during subsequent processing.
+  reliable
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `CL_UpdateServerInfo` and `CL_GetPingQueueCount` during subsequent processing.
+  pings
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `findServer` and `CL_SetServerInfoByAddress` during subsequent processing.
+  servers
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `findStatus` and `CL_ServerStatus` during subsequent processing.
+  statuses
+  /// When constructing this record, `create` supplies `downloads` for this member. Used by
+  /// `CL_BeginDownload` and `CL_NextDownload` during subsequent processing.
+  downloads
+  /// When constructing this record, `create` supplies `demos` for this member. Used by
+  /// `CL_WriteDemoMessage` and `CL_StopRecord_f` during subsequent processing.
+  demo
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Server configuration strings indexed by the native protocol's configuration-string identifiers.
+  configstrings
+  /// Host requests queued while processing client lifecycle, connection, demo, and console commands,
+  /// retained in request order.
+  actions
+  /// Display or connection name of the selected game server.
+  serverName
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_Reconnect_f` and `CL_Connect_f` during subsequent processing.
+  reconnectName
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_CheckForResend` and `CL_MapLoading` during subsequent processing.
+  userinfo
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_SendPureChecksums` during subsequent processing.
+  pureChecksums
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_OpenedPK3List_f` during subsequent processing.
+  openedPaks
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `CL_ReferencedPK3List_f` during subsequent processing.
+  referencedPaks
+  /// True when the retail QVM owns client connection and lifecycle commands, so the native observer
+  /// records requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `attachFrame` and `CL_CheckUserinfo` during subsequent processing.
+  frameRuntime
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `attachFrame` and `CL_CheckUserinfo` during subsequent processing.
+  frameHost
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `attachConnection` and `CL_CheckForResend` during subsequent processing.
+  connectionRuntime
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `attachConnection` and `CL_CheckForResend` during subsequent processing.
+  connectionHost
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `attachNetworkIngress` and `CL_PacketEventLive` during subsequent processing.
+  packetRuntime
+  /// Optional host attachment reserved for client packet handling; the client factory leaves it absent.
+  packetHost
+  /// Optional LAN-browser runtime attachment retained by the client state; the client factory leaves it
+  /// absent.
+  lanRuntime
+end struct
 
 /// Initializes the outer client lifecycle, reliable-command ring, server-browser collections, downloads and demo state.
 function create()

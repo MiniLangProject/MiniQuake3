@@ -9,21 +9,63 @@ import mq3.client.ui_lan_browser as lan
 import mq3.client.ui_lan_ingress as ingress
 import mq3.qcommon.netchan as netchan
 
+/// Default UDP port used to contact the master-server directory.
 const PORT_MASTER=27950
+/// Default UDP port used by a Quake game server.
 const PORT_SERVER=27960
+/// Number of consecutive server ports scanned by the LAN discovery path.
 const NUM_SERVER_PORTS=4
+/// Capacity limit for the pingrequests collection or bounded storage used by this client module.
 const MAX_PINGREQUESTS=32
+/// Network-address kind identifying a broadcast destination.
 const NA_BROADCAST=3
+/// Network-address kind identifying a ip destination.
 const NA_IP=4
+/// Default hostname of the master-server directory queried by the server browser.
 const MASTER_SERVER_NAME="master.quake3arena.com"
 
 // sendFn(context,sock,address,packet) owns the actual UDP socket. resolveFn
 // returns a netchan.Address and is only needed for DNS names.
-struct Services sendFn resolveFn context end struct
+struct Services
+  /// Host callback for the send operation; an unset callback leaves that host operation unavailable.
+  sendFn
+  /// Host callback for the resolve operation; an unset callback leaves that host operation unavailable.
+  resolveFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for LAN server status and ping
+  /// queries.
+  context
+end struct
 /// Stores UI LAN queries status request record, including `address`, `start`.
-struct StatusRequest address start end struct
+struct StatusRequest
+  /// When constructing this record, `serverStatus` supplies `canonical` for this member.
+  address
+  /// When constructing this record, `serverStatus` supplies `state.realtime` for this member.
+  start
+end struct
 /// Stores UI LAN queries state, including `browser`, `ingress`, `services`, `realtime`, `maxPing`, `statusResendTime` and additional values.
-struct State browser ingress services realtime maxPing statusResendTime masterHost statusRequests end struct
+struct State
+  /// When constructing this record, `create` supplies `browser` for this member. Used by `scanLocal`
+  /// and `scanGlobal` during subsequent processing.
+  browser
+  /// When constructing this record, `create` supplies `ingressState` for this member. Used by
+  /// `setRealtime` and `scanLocal` during subsequent processing.
+  ingress
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// Local clock in milliseconds used to timestamp server-browser requests and detect query timeouts.
+  realtime
+  /// Maximum acceptable server-browser latency in milliseconds.
+  maxPing
+  /// When constructing this record, `create` supplies `750` for this member. Used by
+  /// `setStatusResendTime` and `serverStatus` during subsequent processing.
+  statusResendTime
+  /// When constructing this record, `create` supplies `MASTER_SERVER_NAME` for this member. Used by
+  /// `setMasterHost` and `scanGlobal` during subsequent processing.
+  masterHost
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `findStatusRequest` and `serverStatus` during subsequent processing.
+  statusRequests
+end struct
 
 /// Creates a `mq3.client.ui_lan_queries.Services` record. Initializes the record with the defaults written in this constructor.
 function services() return Services(void,void,void) end function

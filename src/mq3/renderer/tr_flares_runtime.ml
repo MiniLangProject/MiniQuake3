@@ -9,15 +9,100 @@ import mq3.client.playable_viewer as viewer
 import mq3.renderer.playable_flares as playable
 import std.array as arrays
 
+/// Capacity of the renderer's active and inactive flare-slot pool.
 const MAX_FLARES=128
 /// Data record for `mq3.renderer.tr_flares_runtime.Flare`; groups `slot`, `addedFrame`, `inPortal`, `frameSceneNum`, `surface`, `fogNum`, and 9 further fields.
-struct Flare slot addedFrame inPortal frameSceneNum surface fogNum fadeTime visible drawIntensity windowX windowY eyeZ color origin normal end struct
+struct Flare
+  /// Slot reserved for this record in its resource table or buffer.
+  slot
+  /// Most recent frame in which this flare was submitted.
+  addedFrame
+  /// Whether the flare belongs to a portal view.
+  inPortal
+  /// Sequence number of the scene within the current frame.
+  frameSceneNum
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Timestamp of the last visibility transition used to fade a flare.
+  fadeTime
+  /// Whether the flare passed its most recent visibility test.
+  visible
+  /// Current flare intensity after visibility fading.
+  drawIntensity
+  /// Horizontal screen coordinate of the projected flare, in pixels.
+  windowX
+  /// Vertical screen coordinate of the projected flare, in pixels.
+  windowY
+  /// View-space depth used when testing flare visibility.
+  eyeZ
+  /// Source flare tint retained separately from its visibility-dependent draw intensity.
+  color
+  /// World-space source position retained for flare projection, fogging, and visibility updates.
+  origin
+  /// Optional facing normal used to attenuate a flare according to its angle to the viewer.
+  normal
+end struct
 /// Data record for `mq3.renderer.tr_flares_runtime.Light`; groups `origin`, `color`.
-struct Light origin color end struct
+struct Light
+  /// Dynamic-light position used when adding a flare for the current view.
+  origin
+  /// Dynamic-light RGB value used when creating its flare contribution.
+  color
+end struct
 /// Data record for `mq3.renderer.tr_flares_runtime.Quad`; groups `fogNum`, `positions`, `texCoords`, `color`, `indexes`.
-struct Quad fogNum positions texCoords color indexes end struct
+struct Quad
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Screen-facing corners constructed around the projected flare center.
+  positions
+  /// Texture corners used to map the flare image onto its screen-facing quad.
+  texCoords
+  /// Final flare-quad modulation after intensity and fog adjustments.
+  color
+  /// Indices splitting the four flare vertices into drawable triangles.
+  indexes
+end struct
 /// Data record for `mq3.renderer.tr_flares_runtime.State`; groups `slots`, `active`, `inactive`, `projection`, `area`, `frameCount`, and 12 further fields.
-struct State slots active inactive projection area frameCount frameSceneNum isPortal time fadeRate sizeValue identityLight enabled fogCatalog adds tests renders finishCalled end struct
+struct State
+  /// Resource slots or backing arrays retained by this record.
+  slots
+  /// Indices of flare slots currently participating in visibility and fade updates.
+  active
+  /// Indices of flare slots currently available for allocation.
+  inactive
+  /// Projection parameters or matrix used to map the view into the viewport.
+  projection
+  /// Viewport rectangle used to project and depth-test flares.
+  area
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Sequence number of the scene within the current frame.
+  frameSceneNum
+  /// Whether this view renders through a portal surface.
+  isPortal
+  /// Current view time in milliseconds used to update flare visibility transitions and fading.
+  time
+  /// Rate used to fade flare intensity after visibility changes.
+  fadeRate
+  /// Configured flare size used to construct its screen-space quad.
+  sizeValue
+  /// Identity lighting scale after accounting for overbright settings.
+  identityLight
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+  /// Fog volumes and shared fog resources used by the batch.
+  fogCatalog
+  /// Number of flare additions processed by the flare system.
+  adds
+  /// Number of visibility tests performed by the flare system.
+  tests
+  /// Number of flare quads submitted by the flare system.
+  renders
+  /// Whether a graphics completion barrier was already issued for this frame.
+  finishCalled
+end struct
 
 /// Creates error `7740` with message `"tr_flares: "+message`.
 /// @param message Input used in the result expression `error(7740,"tr_flares: "+message)`.

@@ -8,18 +8,51 @@ import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
 
+/// Width and height in pixels of the generated dynamic-light texture.
 const DLIGHT_SIZE=16
 /// Data record for `mq3.renderer.playable_dynamic_lights.Catalog`; groups `textureSlot`, `image`.
-struct Catalog textureSlot image end struct
+struct Catalog
+  /// Texture slot reserved for this effect's image.
+  textureSlot
+  /// Generated radial light texture shared by projected dynamic-light passes.
+  image
+end struct
 // origins/axes are parallel to triangles for moving brush models.  The
 // original R_DlightBmodel transforms each world-space light into the model's
 // local orientation before ProjectDlightTexture derives S/T and attenuation.
 // Static world batches keep both arrays void and retain the cheaper path.
-struct Batch commands triangles origins axes bounds end struct
+struct Batch
+  /// Operations or drawing commands queued by this record.
+  commands
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Light or entity origins associated with the prepared batch.
+  origins
+  /// Orientation bases associated with the prepared batch.
+  axes
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+end struct
 /// Data record for `mq3.renderer.playable_dynamic_lights.VertexResult`; groups `uv`, `color`, `clip`.
-struct VertexResult uv color clip end struct
+struct VertexResult
+  /// Texture coordinates associated with this vertex.
+  uv
+  /// Computed dynamic-light color contribution for the projected surface vertex.
+  color
+  /// Clipping flags identifying vertices outside the light's projected region.
+  clip
+end struct
 /// Data record for `mq3.renderer.playable_dynamic_lights.Light`; groups `origin`, `radius`, `color`, `additive`.
-struct Light origin radius color additive end struct
+struct Light
+  /// World-space light center used when projecting dynamic lighting onto triangle vertices.
+  origin
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+  /// RGB intensity of the light projected onto affected world or model triangles.
+  color
+  /// Whether the dynamic light contributes additively rather than modulating the surface.
+  additive
+end struct
 
 /// Creates error `7630` with message `"playable dynamic lights: "+message`.
 /// @param message Input used in the result expression `error(7630,"playable dynamic lights: "+message)`.

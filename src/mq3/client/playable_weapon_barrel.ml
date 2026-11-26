@@ -7,13 +7,30 @@ import mq3.client.playable_muzzle_flash as attachmentMath
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 
+/// Firing-state weapon-barrel rotation rate in degrees per millisecond.
 const SPIN_SPEED=0.9
+/// Duration in milliseconds over which the weapon barrel coasts after firing stops.
 const COAST_TIME=1000
 
 /// Stores playable weapon barrel definition record, including `weaponClass`, `barrelClass`, `modelPath`.
-struct Definition weaponClass barrelClass modelPath end struct
+struct Definition
+  /// When constructing this record, `definitions` supplies `"weapon_gauntlet"` for this member.
+  weaponClass
+  /// When constructing this record, `definitions` supplies `"barrel_gauntlet"` for this member.
+  barrelClass
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+end struct
 /// Stores playable weapon barrel state, including `angle`, `time`, `spinning`.
-struct State angle time spinning end struct
+struct State
+  /// When constructing this record, `state` supplies `0.0` for this member.
+  angle
+  /// Timestamp in milliseconds of the last transition between spinning and coasting, anchoring the
+  /// stored barrel angle.
+  time
+  /// When constructing this record, `state` supplies `false` for this member.
+  spinning
+end struct
 
 /// Creates the playable weapon barrel error `7630` with diagnostic text `"playable weapon barrel: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable weapon barrel: "+message`.

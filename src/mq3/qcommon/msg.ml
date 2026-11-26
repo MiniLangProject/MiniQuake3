@@ -9,9 +9,23 @@ import mq3.qcommon.message_state_delta as stateDelta
 import mq3.qcommon.huffman as huffman
 
 /// ChangeReport record for qcommon.msg, containing `counts`, `printFn`, `context`.
-struct ChangeReport counts printFn context end struct
+struct ChangeReport
+  /// Per-field counters recording which network fields changed.
+  counts
+  /// Host callback that prints per-field delta-compression change counts.
+  printFn
+  /// Caller-supplied data associated with printing statistics about changed network delta fields.
+  context
+end struct
 /// NUHuffman record for qcommon.msg, containing `compressor`, `decompressor`, `frequencies`.
-struct NUHuffman compressor decompressor frequencies end struct
+struct NUHuffman
+  /// Huffman state used to encode outgoing message data.
+  compressor
+  /// Huffman state used to decode incoming message data.
+  decompressor
+  /// Reference symbol frequencies used to initialize both codec directions.
+  frequencies
+end struct
 
 /// Compute init in qcommon.msg; the normal completion returns `message.initStorage(data, length, false)`.
 /// @param data Data passed as `data` to `mq3.qcommon.message.initStorage`.

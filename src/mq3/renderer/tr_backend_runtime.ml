@@ -12,55 +12,262 @@ import mq3.renderer.texture_state as textures
 import mq3.renderer.tr_local as trLocal
 import mq3.renderer.qgl as qgl
 
+/// Cull type that keeps the front-facing side of a surface.
 const CT_FRONT_SIDED=0
+/// Cull type that keeps the back-facing side of a surface.
 const CT_BACK_SIDED=1
+/// Cull type that renders both sides of a surface.
 const CT_TWO_SIDED=2
+/// View flag that renders submitted entities without the BSP world model.
 const RDF_NOWORLDMODEL=1
+/// View flag selecting the special hyperspace rendering effect.
 const RDF_HYPERSPACE=4
+/// Entity-rendering flag that uses the shortened depth range for first-person weapons.
 const RF_DEPTHHACK=8
+/// Reserved entity number identifying static world geometry.
 const ENTITYNUM_WORLD=1022
+/// OpenGL texture-environment mode that multiplies texture color by incoming color.
 const GL_MODULATE=0x2100
+/// OpenGL texture-environment mode that applies the texture as a decal over incoming color.
 const GL_DECAL=0x2101
+/// OpenGL texture-environment mode that replaces incoming color with texture color.
 const GL_REPLACE=0x1e01
+/// OpenGL texture-environment mode that adds texture color to incoming color.
 const GL_ADD=0x0104
+/// Bit mask selecting the source blend-factor field in packed renderer state.
 const GLS_SRCBLEND_BITS=trLocal.GLS_SRCBLEND_BITS
+/// Bit mask selecting the destination blend-factor field in packed renderer state.
 const GLS_DSTBLEND_BITS=trLocal.GLS_DSTBLEND_BITS
+/// Packed-state flag enabling writes to the depth buffer.
 const GLS_DEPTHMASK_TRUE=trLocal.GLS_DEPTHMASK_TRUE
+/// Packed-state flag selecting wireframe polygon drawing.
 const GLS_POLYMODE_LINE=trLocal.GLS_POLYMODE_LINE
+/// Packed-state flag disabling depth-buffer comparison.
 const GLS_DEPTHTEST_DISABLE=trLocal.GLS_DEPTHTEST_DISABLE
+/// Packed-state flag requiring equality with the existing depth value.
 const GLS_DEPTHFUNC_EQUAL=trLocal.GLS_DEPTHFUNC_EQUAL
+/// Bit mask selecting the alpha-test mode in packed renderer state.
 const GLS_ATEST_BITS=trLocal.GLS_ATEST_BITS
+/// Packed alpha-test mode accepting fragments whose alpha is greater than zero.
 const GLS_ATEST_GT_0=0x10000000
+/// Packed alpha-test mode accepting fragments whose alpha is below one half.
 const GLS_ATEST_LT_80=0x20000000
+/// Packed alpha-test mode accepting fragments whose alpha is at least one half.
 const GLS_ATEST_GE_80=0x40000000
+/// Default packed renderer state, with depth-buffer writes enabled.
 const GLS_DEFAULT=GLS_DEPTHMASK_TRUE
 
 /// Data record for `mq3.renderer.tr_backend_runtime.GLState`; groups `faceCulling`, `texEnv`, `stateBits`, `depthEqual`, `blendEnabled`, `srcBlend`, and 6 further fields.
-struct GLState faceCulling texEnv stateBits depthEqual blendEnabled srcBlend dstBlend depthWrite wireframe depthTest alphaTest mirror end struct
+struct GLState
+  /// Current front-face, back-face, or two-sided culling selection.
+  faceCulling
+  /// Texture-environment combine mode cached for each texture unit.
+  texEnv
+  /// Packed renderer flags specifying blending, depth, and alpha state.
+  stateBits
+  /// Whether depth testing accepts only fragments at the existing surface depth.
+  depthEqual
+  /// Whether framebuffer blending is enabled.
+  blendEnabled
+  /// Source factor used by framebuffer blending.
+  srcBlend
+  /// Destination factor used by framebuffer blending.
+  dstBlend
+  /// Whether drawing this pass writes to the depth buffer.
+  depthWrite
+  /// Whether polygon edges are drawn instead of filled triangles.
+  wireframe
+  /// Whether depth-buffer comparison is enabled.
+  depthTest
+  /// Alpha comparison used to reject fragments in this pass.
+  alphaTest
+  /// Whether the view reflects handedness across a portal or mirror plane.
+  mirror
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.ViewParms`; groups `projectionMatrix`, `viewportX`, `viewportY`, `viewportWidth`, `viewportHeight`, `isPortal`, and 6 further fields.
-struct ViewParms projectionMatrix viewportX viewportY viewportWidth viewportHeight isPortal isMirror portalNormal portalDist orientationOrigin orientationAxis worldMatrix end struct
+struct ViewParms
+  /// Matrix mapping view-space coordinates into clip space.
+  projectionMatrix
+  /// Horizontal origin of the viewport, in pixels.
+  viewportX
+  /// Vertical origin of the viewport, in pixels.
+  viewportY
+  /// Width of the viewport, in pixels.
+  viewportWidth
+  /// Height of the viewport, in pixels.
+  viewportHeight
+  /// Whether this view renders through a portal surface.
+  isPortal
+  /// Whether the view is reflected across a mirror surface.
+  isMirror
+  /// Normal of the plane clipping the portal view.
+  portalNormal
+  /// Signed distance of the plane clipping the portal view.
+  portalDist
+  /// Origin of the current model orientation.
+  orientationOrigin
+  /// Basis vectors of the current model orientation.
+  orientationAxis
+  /// Matrix transforming world coordinates for the current view.
+  worldMatrix
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.Entity`; groups `shaderTime`, `renderfx`, `needDlights`, `modelMatrix`.
-struct Entity shaderTime renderfx needDlights modelMatrix end struct
+struct Entity
+  /// Time offset in seconds subtracted from the view time for entity shader effects.
+  shaderTime
+  /// Bit mask of entity rendering options, such as depth hack or shadow suppression.
+  renderfx
+  /// Whether the entity must receive dynamic-light processing.
+  needDlights
+  /// Matrix placing the model in the current view or world coordinate system.
+  modelMatrix
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.Refdef`; groups `time`, `floatTime`, `rdflags`, `entities`, `dlights`.
-struct Refdef time floatTime rdflags entities dlights end struct
+struct Refdef
+  /// Backend view time in milliseconds, also converted to floating-point seconds for shader evaluation.
+  time
+  /// View time expressed in seconds for shader calculations.
+  floatTime
+  /// Bit mask of view-level rendering options such as no-world or hyperspace rendering.
+  rdflags
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Dynamic lights submitted to the current scene.
+  dlights
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.Shader`; groups `name`, `entityMergable`, `timeOffset`.
-struct Shader name entityMergable timeOffset end struct
+struct Shader
+  /// Material name attached to the backend shader batch for identification and diagnostics.
+  name
+  /// Whether surfaces from separate entities may share one shader batch.
+  entityMergable
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.Surface`; groups `sort`, `surface`.
-struct Surface sort surface end struct
+struct Surface
+  /// Packed draw-order key containing the shader, entity, fog, and dynamic-light selectors.
+  sort
+  /// Surface record, handle, or identifier associated with the drawing operation.
+  surface
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.DrawPayload`; groups `refdef`, `viewParms`, `drawSurfs`, `shaders`.
-struct DrawPayload refdef viewParms drawSurfs shaders end struct
+struct DrawPayload
+  /// Camera, viewport, timing, and rendering flags for the view.
+  refdef
+  /// Derived camera matrices, clipping planes, and viewport settings.
+  viewParms
+  /// Surfaces queued for ordering and drawing.
+  drawSurfs
+  /// Shader records available to resolve the queued drawing surfaces.
+  shaders
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.RawUpload`; groups `client`, `width`, `height`, `pixels`, `fullUpload`, `dirty`.
-struct RawUpload client width height pixels fullUpload dirty end struct
+struct RawUpload
+  /// Cinematic client or scratch-image slot associated with the raw image.
+  client
+  /// Width in pixels of the raw or cinematic image being uploaded to its scratch texture.
+  width
+  /// Height in pixels of the raw or cinematic image being uploaded to its scratch texture.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+  /// Whether all image pixels must be uploaded to the graphics backend.
+  fullUpload
+  /// Whether the stored image differs from the graphics-driver copy.
+  dirty
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.RawQuad`; groups `positions`, `texCoords`, `client`.
-struct RawQuad positions texCoords client end struct
+struct RawQuad
+  /// Four screen-space corners used to draw an uploaded raw image or cinematic frame.
+  positions
+  /// Texture corners used to sample an uploaded raw image or cinematic frame.
+  texCoords
+  /// Cinematic client or scratch-image slot associated with the raw image.
+  client
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.ImageInfo`; groups `image`, `uploadWidth`, `uploadHeight`.
-struct ImageInfo image uploadWidth uploadHeight end struct
+struct ImageInfo
+  /// Registered image reference included in the backend image-display listing.
+  image
+  /// Width in pixels of the image submitted to the graphics driver.
+  uploadWidth
+  /// Height in pixels of the image submitted to the graphics driver.
+  uploadHeight
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.Command`; groups `id`, `payload`.
-struct Command id payload end struct
+struct Command
+  /// Command identifier selecting the renderer backend operation.
+  id
+  /// Operation-specific data interpreted according to the record's command or event type.
+  payload
+end struct
 /// Callback table for `mq3.renderer.tr_backend_runtime.Services`; exposes `eventFn`, `surfaceFn`, `screenshotFn`, `sleepFn`, `context`.
-struct Services eventFn surfaceFn screenshotFn sleepFn context end struct
+struct Services
+  /// Host callback used to perform event operations for this subsystem.
+  eventFn
+  /// Host callback used to perform surface operations for this subsystem.
+  surfaceFn
+  /// Host callback used to perform screenshot operations for this subsystem.
+  screenshotFn
+  /// Host callback used to perform sleep operations for this subsystem.
+  sleepFn
+  /// Render-backend host state supplied to event, surface, screenshot, and sleep callbacks.
+  context
+end struct
 /// Data record for `mq3.renderer.tr_backend_runtime.State`; groups `textureState`, `gl`, `commandBackend`, `services`, `width`, `height`, and 19 further fields.
-struct State textureState gl commandBackend services width height projection2D finishCalled isHyperspace skyRenderedThisView smpFrame refdef viewParms worldEntity currentEntity tessShader tessFog tessDlight numIndexes color2D overdraw msec rawImages uploads frames end struct
+struct State
+  /// Cached texture bindings and active texture-unit state.
+  textureState
+  /// Cached graphics state used by the renderer backend.
+  gl
+  /// Backend state used to execute queued renderer commands.
+  commandBackend
+  /// Injected host operations used by this subsystem.
+  services
+  /// Width in pixels of the framebuffer used to establish the backend 2D projection.
+  width
+  /// Height in pixels of the framebuffer used to establish the backend 2D projection.
+  height
+  /// Whether the backend currently uses its two-dimensional projection.
+  projection2D
+  /// Whether a graphics completion barrier was already issued for this frame.
+  finishCalled
+  /// Whether the special hyperspace rendering effect is active.
+  isHyperspace
+  /// Whether the sky pass has already been submitted for this view.
+  skyRenderedThisView
+  /// Index of the frame buffer shared between frontend and render thread.
+  smpFrame
+  /// Camera, viewport, timing, and rendering flags for the view.
+  refdef
+  /// Derived camera matrices, clipping planes, and viewport settings.
+  viewParms
+  /// Renderer entity representing static world geometry.
+  worldEntity
+  /// Renderer entity whose surfaces are currently being processed.
+  currentEntity
+  /// Shader currently selected for the tessellation buffer.
+  tessShader
+  /// Fog volume currently selected for the tessellation buffer.
+  tessFog
+  /// Dynamic-light state currently selected for the tessellation buffer.
+  tessDlight
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// RGBA modulation color used for two-dimensional drawing.
+  color2D
+  /// Accumulated overdraw measurement for the rendered frame.
+  overdraw
+  /// Elapsed duration of the operation or frame, in milliseconds.
+  msec
+  /// Cinematic or raw image resources retained by the backend.
+  rawImages
+  /// Image uploads recorded or prepared by the backend.
+  uploads
+  /// Number of completed backend frames.
+  frames
+end struct
 
 /// Creates error `7720` with message `"tr_backend: "+message`.
 /// @param message Input used in the result expression `error(7720,"tr_backend: "+message)`.

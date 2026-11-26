@@ -9,18 +9,50 @@ import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 import std.ds.list as lists
 
+/// Bot-library syscall identifier for get snapshot entity.
 const OP_GET_SNAPSHOT_ENTITY=209
+/// Bot-library syscall identifier for get console message.
 const OP_GET_CONSOLE_MESSAGE=210
+/// Bot-library syscall identifier for user command.
 const OP_USER_COMMAND=211
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Byte size of the user command record in the bot VM ABI or serialized representation.
 const USERCMD_SIZE=24
 
 /// `Client` record for server bridge, containing `snapshotEntities`, `reliableCommands`, `reliableSequence`, `reliableAcknowledge` and `lastPacketTime` and related fields.
-struct Client snapshotEntities reliableCommands reliableSequence reliableAcknowledge lastPacketTime userCommand pending end struct
+struct Client
+  /// Entity states retained in the server snapshot ring.
+  snapshotEntities
+  /// Reliable command entries retained until the peer acknowledges them.
+  reliableCommands
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Reliable server-command acknowledgment mirrored for the bot-server bridge.
+  reliableAcknowledge
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Most recent user command supplied for this bot client.
+  userCommand
+  /// Saved token or command awaiting consumption by the next operation.
+  pending
+end struct
 /// `State` record for server bridge, containing `clients`, `now` and `lastFrameTime`.
-struct State clients now lastFrameTime end struct
+struct State
+  /// Mirrored server clients used to transfer bot commands and client input state.
+  clients
+  /// Timestamp supplied by the current server-side bot frame.
+  now
+  /// Timestamp retained from the preceding server-side bot frame.
+  lastFrameTime
+end struct
 /// `ConsoleResult` record for server bridge, containing `available` and `text`.
-struct ConsoleResult available text end struct
+struct ConsoleResult
+  /// True when a console message was returned for the bot.
+  available
+  /// Console message delivered to the bot client.
+  text
+end struct
 
 /// Create a `mq3.botlib.server_bridge.Client` record, initializing `reliableCommands` as `array(MAX_RELIABLE_COMMANDS,"")`.
 function emptyClient() return Client([],array(MAX_RELIABLE_COMMANDS,""),0,0,0,void,false) end function

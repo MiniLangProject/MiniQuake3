@@ -7,7 +7,12 @@ import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
 /// Data record for `mq3.renderer.qvm_viewport.Prepared`; groups `area`, `projection`.
-struct Prepared area projection end struct
+struct Prepared
+  /// Pixel rectangle of the viewport prepared for native drawing.
+  area
+  /// Projection parameters or matrix used to map the view into the viewport.
+  projection
+end struct
 
 /// Creates error `7691` with message `"QVM viewport: "+message`.
 /// @param message Input used in the result expression `error(7691,"QVM viewport: "+message)`.

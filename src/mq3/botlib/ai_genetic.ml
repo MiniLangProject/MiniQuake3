@@ -5,6 +5,7 @@ package mq3.botlib.ai_genetic
 
 import mq3.compat.numeric as geneticNumeric
 
+/// Maximum number of fitness ranks processed by genetic parent and child selection.
 const MAX_RANKS=256
 
 /// Update `runtime.randomSeed` during `randomFloat`. Return paths include `geneticNumeric.fdiv((geneticNumeric.u32(runtime.randomSeed)>>16)&32767,32767.0)`.

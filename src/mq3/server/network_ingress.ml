@@ -8,22 +8,62 @@ import mq3.server.packet_event as packetEvent
 import mq3.server.client_message as clientMessage
 
 /// Binding record for server.network_ingress, containing `packetClient`, `messageClient`.
-struct Binding packetClient messageClient end struct
+struct Binding
+  /// Client record used by the packet sequence handler.
+  packetClient
+  /// Client record used while decoding the accepted message payload.
+  messageClient
+end struct
 
 // The game-facing command and movement callbacks remain explicit host
 // services. This lets the ingress path run before the concrete game module is
 // installed and avoids coupling the protocol parser to game state.
 struct Services
-  connectionlessRuntime connectionlessHost
-  clientPacketFn clientCommandFn userMoveFn
-  sendGamestateFn dropFn clientDiagnosticFn
-  disconnectFn packetDiagnosticFn context
+  /// Runtime used to dispatch out-of-band packets.
+  connectionlessRuntime
+  /// Host services used by the connectionless packet dispatcher.
+  connectionlessHost
+  /// Host callback that delivers an incoming packet to the client network handler.
+  clientPacketFn
+  /// Host callback that delivers a command to the game client interface.
+  clientCommandFn
+  /// Host callback that decodes and processes client movement commands.
+  userMoveFn
+  /// Host callback that transmits the current gamestate to a client.
+  sendGamestateFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that reports diagnostics associated with one client.
+  clientDiagnosticFn
+  /// Host callback that processes a client disconnection through the host network lifecycle.
+  disconnectFn
+  /// Host callback that reports packet-validation diagnostics.
+  packetDiagnosticFn
+  /// Caller-supplied data associated with routing received server packets into connection and message
+  /// handlers.
+  context
 end struct
 
 /// Runtime record for server.network_ingress, containing `server`, `bindings`, `services`, `packetState`, `packetHost`, `messageHost`, and 3 further fields.
 struct Runtime
-  server bindings services packetState packetHost messageHost
-  lastPacketResult lastClientResult packetCount
+  /// Server runtime receiving the incoming datagrams.
+  server
+  /// Associations between packet-channel clients and message-decoder clients.
+  bindings
+  /// Host entry points used to route packets into connectionless and sequenced client handling.
+  services
+  /// State used to validate packet sequence and fragment headers.
+  packetState
+  /// Host callbacks used by the packet event handler.
+  packetHost
+  /// Host callbacks used by the client-message decoder.
+  messageHost
+  /// Most recent packet-validation and dispatch result.
+  lastPacketResult
+  /// Most recent client-message decoding result.
+  lastClientResult
+  /// Number of packet recorded by this state.
+  packetCount
 end struct
 
 /// Compute binding in server.network_ingress; the normal completion returns `Binding(packetClient, messageClient)`.

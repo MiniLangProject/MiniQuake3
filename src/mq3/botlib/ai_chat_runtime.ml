@@ -14,13 +14,50 @@ import mq3.botlib.ai_chat_output as output
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=256
+/// Maximum number of captured variables in a bot chat match.
 const MAX_MATCH_VARIABLES=8
 
 /// `State` record for ai chat runtime, containing `pools`, `profiles`, `strings`, `matches` and `output` and related fields.
-struct State pools profiles strings matches output console context readFn timeFn randomFn actions diagnostics setup end struct
+struct State
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// Loaded initial-chat profiles and their cached message selections.
+  profiles
+  /// Whitespace and synonym-normalization runtime used by chat processing.
+  strings
+  /// Chat-match template runtime used by the combined chat interface.
+  matches
+  /// Runtime that expands and dispatches initial-chat and reply-chat messages.
+  output
+  /// Queued-console-message runtime used by the combined chat interface.
+  console
+  /// Caller-supplied data associated with shared chat-resource loading, chat timing, and random reply
+  /// selection.
+  context
+  /// Host callback that provides shared file loading to the assembled bot chat runtimes.
+  readFn
+  /// Host callback that supplies the current time used by the bot runtime.
+  timeFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+  /// Shared elementary-action runtime passed to the assembled chat output handlers.
+  actions
+  /// Diagnostics collected while processing the subsystem's requests.
+  diagnostics
+  /// True after the bot-library setup sequence has completed.
+  setup
+end struct
 /// `AliasContext` record for ai chat runtime, containing `runtime`, `requested` and `canonical`.
-struct AliasContext runtime requested canonical end struct
+struct AliasContext
+  /// Chat runtime whose file reader supplies the aliased chat resource.
+  runtime
+  /// Operation name requested by the caller before alias resolution.
+  requested
+  /// Canonical operation name selected after alias resolution.
+  canonical
+end struct
 
 /// Build the `mq3.botlib.ai_chat_runtime.State` result for `create`.
 /// @param context Context forwarded to the configured host callbacks.

@@ -11,31 +11,119 @@ import mq3.format.pk3 as pk3
 import mq3.shared.math as qmath
 import std.string as strings
 
+/// Fallback fov setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_FOV=90.0
+/// Milliseconds spent moving the view during the initial landing kick.
 const LAND_DEFLECT_TIME=150
+/// Milliseconds spent restoring the view after the landing kick.
 const LAND_RETURN_TIME=300
+/// Phase-advance factor used when updating running weapon bob.
 const RUN_BOB_ADVANCE=0.4
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
+/// Forward viewmodel offset used by the software-renderer first-person weapon transform.
 const SOFTWARE_DEPTHHACK_FORWARD=25.0
+/// Sideways viewmodel offset used by the software-renderer first-person weapon transform.
 const SOFTWARE_DEPTHHACK_SIDE=-1.1
+/// Vertical viewmodel offset used by the software-renderer first-person weapon transform.
 const SOFTWARE_DEPTHHACK_UP=2.0
 
 /// Stores playable viewmodel settings record, including `horizontalFov`, `gunX`, `gunY`, `gunZ`, `modelScale`.
-struct Settings horizontalFov gunX gunY gunZ modelScale end struct
+struct Settings
+  /// When constructing this record, `defaults` supplies `DEFAULT_FOV` for this member.
+  horizontalFov
+  /// When constructing this record, `defaults` supplies `0.0` for this member.
+  gunX
+  /// When constructing this record, `defaults` supplies `0.0` for this member.
+  gunY
+  /// When constructing this record, `defaults` supplies `0.0` for this member.
+  gunZ
+  /// When constructing this record, `defaults` supplies `1.0` for this member.
+  modelScale
+end struct
 /// Stores playable viewmodel tracker record, including `bobPhase`, `lastTime`, `initialized`.
-struct Tracker bobPhase lastTime initialized end struct
+struct Tracker
+  /// When constructing this record, `tracker` supplies `0.0` for this member.
+  bobPhase
+  /// When constructing this record, `tracker` supplies `0` for this member.
+  lastTime
+  /// True after the first animation update establishes the previous timestamp used for subsequent frame
+  /// deltas.
+  initialized
+end struct
 /// Stores playable viewmodel bob sample record, including `cycle`, `fraction`, `xySpeed`.
-struct BobSample cycle fraction xySpeed end struct
+struct BobSample
+  /// When constructing this record, `advance` supplies `cycle` for this member.
+  cycle
+  /// When constructing this record, `advance` supplies `fraction` for this member.
+  fraction
+  /// When constructing this record, `advance` supplies `numeric.f32(speed)` for this member.
+  xySpeed
+end struct
 /// Stores playable viewmodel pose record, including `origin`, `axis`, `scale`, `fovOffset`, `bobCycle`, `bobFraction` and additional values.
-struct Pose origin axis scale fovOffset bobCycle bobFraction xySpeed end struct
+struct Pose
+  /// Origin of the first-person weapon pose used to construct its model transform.
+  origin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// When constructing this record, `calculate` supplies `config.modelScale` for this member. Used by
+  /// `transform` and `attachWeapon` during subsequent processing.
+  scale
+  /// When constructing this record, `calculate` supplies `fovOffset(config.horizontalFov)` for this
+  /// member. Used by `withRecoil` during subsequent processing.
+  fovOffset
+  /// When constructing this record, `calculate` supplies `bob.cycle` for this member. Used by
+  /// `withRecoil` during subsequent processing.
+  bobCycle
+  /// When constructing this record, `calculate` supplies `bob.fraction` for this member. Used by
+  /// `withRecoil` during subsequent processing.
+  bobFraction
+  /// When constructing this record, `calculate` supplies `bob.xySpeed` for this member.
+  xySpeed
+end struct
 /// Stores playable viewmodel attachment record, including `classname`, `path`, `frames`.
-struct Attachment classname path frames end struct
+struct Attachment
+  /// Weapon classname identifying the first-person model attachment being prepared.
+  classname
+  /// When constructing this record, `loadCatalog` supplies `path` for this member.
+  path
+  /// When constructing this record, `loadCatalog` supplies `model.tags` for this member. Used by
+  /// `attachmentTag` during subsequent processing.
+  frames
+end struct
 /// Stores playable viewmodel catalog record, including `attachments`, `skipped`.
-struct Catalog attachments skipped end struct
+struct Catalog
+  /// When constructing this record, `loadCatalog` supplies an empty list for this member. Used by
+  /// `findAttachment` during subsequent processing.
+  attachments
+  /// When constructing this record, `loadCatalog` supplies `0` for this member.
+  skipped
+end struct
 /// Stores playable viewmodel weapon animation record, including `displayedClass`, `targetClass`, `transitionStart`, `switching`.
-struct WeaponAnimation displayedClass targetClass transitionStart switching end struct
+struct WeaponAnimation
+  /// When constructing this record, `weaponAnimation` supplies `initialClass` for this member.
+  displayedClass
+  /// When constructing this record, `weaponAnimation` supplies `initialClass` for this member.
+  targetClass
+  /// When constructing this record, `weaponAnimation` supplies `0` for this member.
+  transitionStart
+  /// When constructing this record, `weaponAnimation` supplies `false` for this member.
+  switching
+end struct
 /// Stores playable viewmodel frame sample record, including `classname`, `oldFrame`, `frame`, `backlerp`, `switching`.
-struct FrameSample classname oldFrame frame backlerp switching end struct
+struct FrameSample
+  /// Weapon classname identifying the model whose animation frames were sampled.
+  classname
+  /// Previous animation frame used as the interpolation starting point.
+  oldFrame
+  /// Current weapon-model animation frame selected for interpolation with oldFrame.
+  frame
+  /// Previous-frame weight used to interpolate the submitted model entity presented by first-person
+  /// weapon animation.
+  backlerp
+  /// When constructing this record, `animatedFrames` supplies `switching` for this member.
+  switching
+end struct
 
 /// Creates the playable viewmodel error `7620` with diagnostic text `"playable viewmodel: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable viewmodel: "+message`.

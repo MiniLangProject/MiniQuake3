@@ -7,31 +7,83 @@ import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Number of indexed personality characteristics available to one bot.
 const MAX_CHARACTERISTICS=80
+/// Bot characteristic-value type for none.
 const CT_NONE=0
+/// Bot characteristic-value type for integer.
 const CT_INTEGER=1
+/// Bot characteristic-value type for floating-point.
 const CT_FLOAT=2
+/// Bot characteristic-value type for string.
 const CT_STRING=3
+/// Fallback bot character definition loaded when a requested characteristic is missing.
 const DEFAULT_CHARACTER="bots/default_c.c"
 
+/// Bot-library syscall identifier for load character.
 const OP_LOAD_CHARACTER=500
+/// Bot-library syscall identifier for free character.
 const OP_FREE_CHARACTER=501
+/// Bot-library syscall identifier for characteristic floating-point.
 const OP_CHARACTERISTIC_FLOAT=502
+/// Bot-library syscall identifier for characteristic bfloat.
 const OP_CHARACTERISTIC_BFLOAT=503
+/// Bot-library syscall identifier for characteristic integer.
 const OP_CHARACTERISTIC_INTEGER=504
+/// Bot-library syscall identifier for characteristic binteger.
 const OP_CHARACTERISTIC_BINTEGER=505
+/// Bot-library syscall identifier for characteristic string.
 const OP_CHARACTERISTIC_STRING=506
 
 /// `Characteristic` record for ai characters, containing `type`, `integer`, `floatValue` and `stringValue`.
-struct Characteristic type integer floatValue stringValue end struct
+struct Characteristic
+  /// Characteristic-value discriminator selecting integer, float, or string storage.
+  type
+  /// Integer representation of the configured or parsed value.
+  integer
+  /// Floating point value.
+  floatValue
+  /// Text representation of a string-valued bot characteristic.
+  stringValue
+end struct
 /// `Character` record for ai characters, containing `filename`, `skill` and `values`.
-struct Character filename skill values end struct
+struct Character
+  /// Path of the file associated with this operation.
+  filename
+  /// Bot skill level used when selecting or interpolating characteristics.
+  skill
+  /// Characteristic values indexed by their configured characteristic number.
+  values
+end struct
 /// `Loader` record for ai characters, containing `context` and `readFn`.
-struct Loader context readFn end struct
+struct Loader
+  /// Caller-supplied data associated with loading bot character files through this parser adapter.
+  context
+  /// Host callback that reads a requested character source through the character-parser adapter.
+  readFn
+end struct
 /// `State` record for ai characters, containing `maxClients`, `characters`, `context`, `readFn` and `reloadCharacters` and related fields.
-struct State maxClients characters context readFn reloadCharacters fileReads end struct
+struct State
+  /// Client limit used to size and bound the bot character-handle cache.
+  maxClients
+  /// Loaded bot-character definitions retained for reuse.
+  characters
+  /// Caller-supplied data associated with reading and caching bot personality definitions.
+  context
+  /// Host callback that loads bot personality files for the character cache.
+  readFn
+  /// True when bot definitions should be reloaded instead of reused from cache.
+  reloadCharacters
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 /// `Parsed` record for ai characters, containing `found` and `character`.
-struct Parsed found character end struct
+struct Parsed
+  /// True when the requested lookup produced a matching entry.
+  found
+  /// Bot-character definition produced by the parser.
+  character
+end struct
 
 /// Construct error `7550` with diagnostic text `"AI character: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

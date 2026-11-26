@@ -8,10 +8,15 @@ import mq3.shared.math as q
 import mq3.game.movement as movement
 /// `Trajectory` record for trajectory, containing `trType`, `trTime`, `trDuration`, `trBase` and `trDelta`.
 struct Trajectory
+  /// Trajectory evaluation mode, selected from the TR_* constants.
   trType
+  /// Game time in milliseconds at which the trajectory starts.
   trTime
+  /// Trajectory duration or sinusoidal period in milliseconds.
   trDuration
+  /// Base position or angle vector from which the trajectory is evaluated.
   trBase
+  /// Trajectory velocity or amplitude vector, interpreted according to trType.
   trDelta
 end struct
 /// Calculate the sine-trajectory phase in radians at the supplied game time; reject a zero trajectory duration.

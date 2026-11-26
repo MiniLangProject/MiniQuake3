@@ -6,18 +6,28 @@ import mq3.qcommon.netchan as net
 import mq3.qcommon.message as message
 import std.ds.queue as queues
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Byte offset at which server-to-client payload obfuscation begins.
 const SV_ENCODE_START=4
+/// Byte offset at which client-to-server payload decoding begins.
 const SV_DECODE_START=12
+/// Server-to-client opcode marking the end of a message.
 const SVC_EOF=8
 
 /// Client record for server.netchan, containing `challenge`, `lastClientCommandString`, `reliableCommands`, `channel`, `queue`, `queueInitialized`.
 struct Client
+  /// Challenge value used to authenticate a connection attempt.
   challenge
+  /// Text of the last processed reliable client command.
   lastClientCommandString
+  /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands
+  /// Sequenced network channel used to send this client's messages.
   channel
+  /// Messages waiting for earlier fragments to finish transmitting.
   queue
+  /// True after the pending-message queue has been initialized.
   queueInitialized
 end struct
 

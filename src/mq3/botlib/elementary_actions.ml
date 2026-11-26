@@ -6,63 +6,136 @@ package mq3.botlib.elementary_actions
 import mq3.botlib.public_headers as publicHeaders
 import mq3.compat.numeric as n
 
+/// Maximum movement speed accepted by elementary bot input.
 const MAX_USERMOVE=400.0
+/// Byte size of the input record in the bot VM ABI or serialized representation.
 const INPUT_SIZE=40
 
+/// Bot input-action bit requesting attack.
 const ACTION_ATTACK=publicHeaders.ACTION_ATTACK
+/// Bot input-action bit requesting use.
 const ACTION_USE=publicHeaders.ACTION_USE
+/// Bot input-action bit requesting respawn.
 const ACTION_RESPAWN=publicHeaders.ACTION_RESPAWN
+/// Bot input-action bit requesting jump.
 const ACTION_JUMP=publicHeaders.ACTION_JUMP
+/// Bot input-action bit requesting upward movement.
 const ACTION_MOVEUP=publicHeaders.ACTION_MOVEUP
+/// Bot input-action bit requesting crouch.
 const ACTION_CROUCH=publicHeaders.ACTION_CROUCH
+/// Bot input-action bit requesting downward movement.
 const ACTION_MOVEDOWN=publicHeaders.ACTION_MOVEDOWN
+/// Bot input-action bit requesting forward movement.
 const ACTION_MOVEFORWARD=publicHeaders.ACTION_MOVEFORWARD
+/// Bot input-action bit requesting backward movement.
 const ACTION_MOVEBACK=publicHeaders.ACTION_MOVEBACK
+/// Bot input-action bit requesting leftward movement.
 const ACTION_MOVELEFT=publicHeaders.ACTION_MOVELEFT
+/// Bot input-action bit requesting rightward movement.
 const ACTION_MOVERIGHT=publicHeaders.ACTION_MOVERIGHT
+/// Bot input-action bit requesting a delayed jump.
 const ACTION_DELAYEDJUMP=publicHeaders.ACTION_DELAYEDJUMP
+/// Bot input-action bit requesting talk.
 const ACTION_TALK=publicHeaders.ACTION_TALK
+/// Bot input-action bit requesting gesture.
 const ACTION_GESTURE=publicHeaders.ACTION_GESTURE
+/// Bot input-action bit requesting walk.
 const ACTION_WALK=publicHeaders.ACTION_WALK
+/// Bot input-action bit requesting affirmative.
 const ACTION_AFFIRMATIVE=publicHeaders.ACTION_AFFIRMATIVE
+/// Bot input-action bit requesting negative.
 const ACTION_NEGATIVE=publicHeaders.ACTION_NEGATIVE
+/// Bot input-action bit requesting a capture-the-flag order.
 const ACTION_GETFLAG=publicHeaders.ACTION_GETFLAG
+/// Bot input-action bit requesting a base-defense order.
 const ACTION_GUARDBASE=publicHeaders.ACTION_GUARDBASE
+/// Bot input-action bit requesting patrol.
 const ACTION_PATROL=publicHeaders.ACTION_PATROL
+/// Bot input-action bit requesting a follow-me order.
 const ACTION_FOLLOWME=publicHeaders.ACTION_FOLLOWME
 
 // Private be_ea.c latch. Its collision with ACTION_CROUCH is original.
 const ACTION_JUMPEDLASTFRAME=128
 
+/// Bot-library syscall identifier for say.
 const OP_SAY=400
+/// Bot-library syscall identifier for say team.
 const OP_SAY_TEAM=401
+/// Bot-library syscall identifier for command.
 const OP_COMMAND=402
+/// Bot-library syscall identifier for action.
 const OP_ACTION=403
+/// Bot-library syscall identifier for gesture.
 const OP_GESTURE=404
+/// Bot-library syscall identifier for talk.
 const OP_TALK=405
+/// Bot-library syscall identifier for attack.
 const OP_ATTACK=406
+/// Bot-library syscall identifier for use.
 const OP_USE=407
+/// Bot-library syscall identifier for respawn.
 const OP_RESPAWN=408
+/// Bot-library syscall identifier for crouch.
 const OP_CROUCH=409
+/// Bot-library syscall identifier for move up.
 const OP_MOVE_UP=410
+/// Bot-library syscall identifier for move down.
 const OP_MOVE_DOWN=411
+/// Bot-library syscall identifier for move forward.
 const OP_MOVE_FORWARD=412
+/// Bot-library syscall identifier for move back.
 const OP_MOVE_BACK=413
+/// Bot-library syscall identifier for move left.
 const OP_MOVE_LEFT=414
+/// Bot-library syscall identifier for move right.
 const OP_MOVE_RIGHT=415
+/// Bot-library syscall identifier for select weapon.
 const OP_SELECT_WEAPON=416
+/// Bot-library syscall identifier for jump.
 const OP_JUMP=417
+/// Bot-library syscall identifier for delayed jump.
 const OP_DELAYED_JUMP=418
+/// Bot-library syscall identifier for move.
 const OP_MOVE=419
+/// Bot-library syscall identifier for view.
 const OP_VIEW=420
+/// Bot-library syscall identifier for end regular.
 const OP_END_REGULAR=421
+/// Bot-library syscall identifier for get input.
 const OP_GET_INPUT=422
+/// Bot-library syscall identifier for reset input.
 const OP_RESET_INPUT=423
 
 /// `ElementaryInput` record for elementary actions, containing `thinktime`, `dir`, `speed`, `viewangles` and `actionflags` and related fields.
-struct ElementaryInput thinktime dir speed viewangles actionflags weapon end struct
+struct ElementaryInput
+  /// Time interval over which the bot input should be applied.
+  thinktime
+  /// Normalized movement direction requested by the bot.
+  dir
+  /// Speed in the range [0, 400].
+  speed
+  /// Pitch, yaw, and roll angles describing the current view direction.
+  viewangles
+  /// One of the ACTION_? flags.
+  actionflags
+  /// Weapon identifier selected by the bot or user command.
+  weapon
+end struct
 /// `State` record for elementary actions, containing `initialized`, `maxClients`, `inputs`, `commandFn` and `context` and related fields.
-struct State initialized maxClients inputs commandFn context commandCount end struct
+struct State
+  /// True after the per-client elementary bot input storage has been created.
+  initialized
+  /// Number of client input slots allocated for elementary bot actions.
+  maxClients
+  /// Elementary input records indexed by bot client number.
+  inputs
+  /// Host callback that executes a command through the host command interface.
+  commandFn
+  /// Caller-supplied data associated with issuing textual game commands for elementary bot actions.
+  context
+  /// Number of command recorded by this state.
+  commandCount
+end struct
 
 /// Construct error `7540` with diagnostic text `"Elementary Actions: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

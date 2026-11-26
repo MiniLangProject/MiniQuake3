@@ -8,22 +8,75 @@ import mq3.format.md3 as md3
 import mq3.renderer.model_tags as modelTags
 import mq3.renderer.view_math as viewMath
 
+/// Player-model component identifier for the lower body and legs.
 const LOWER_PART=0
+/// Player-model component identifier for the upper body and torso.
 const UPPER_PART=1
+/// Player-model component identifier for the head.
 const HEAD_PART=2
 
 /// Data record for `mq3.renderer.player_model_assembly.Animation`; groups `frame`, `oldFrame`, `backlerp`.
-struct Animation frame oldFrame backlerp end struct
+struct Animation
+  /// Current model animation-frame index.
+  frame
+  /// Previous animation frame used for interpolation.
+  oldFrame
+  /// Interpolation weight of the previous frame: zero selects current, one selects previous.
+  backlerp
+end struct
 /// Data record for `mq3.renderer.player_model_assembly.Transform`; groups `origin`, `axis`.
-struct Transform origin axis end struct
+struct Transform
+  /// Translation applied when placing a player-model body part through its parent attachment.
+  origin
+  /// Composed orientation basis that places a player-model part relative to its parent.
+  axis
+end struct
 /// Data record for `mq3.renderer.player_model_assembly.Models`; groups `lower`, `upper`, `head`.
-struct Models lower upper head end struct
+struct Models
+  /// Lower-body player model or its assembled animation state.
+  lower
+  /// Upper-body player model or its assembled animation state.
+  upper
+  /// Head player model or its assembled animation state.
+  head
+end struct
 /// Data record for `mq3.renderer.player_model_assembly.Part`; groups `kind`, `name`, `model`, `animation`, `transform`.
-struct Part kind name model animation transform end struct
+struct Part
+  /// Player-body component selector distinguishing the lower body, upper body, and head.
+  kind
+  /// Body-part label identifying the assembled lower, upper, or head model.
+  name
+  /// Loaded model selected for animation or drawing.
+  model
+  /// Animation frame pair and interpolation weight used by the model part.
+  animation
+  /// Position and orientation used to place the model part.
+  transform
+end struct
 /// Data record for `mq3.renderer.player_model_assembly.Assembly`; groups `lower`, `upper`, `head`.
-struct Assembly lower upper head end struct
+struct Assembly
+  /// Lower-body player model or its assembled animation state.
+  lower
+  /// Upper-body player model or its assembled animation state.
+  upper
+  /// Head player model or its assembled animation state.
+  head
+end struct
 /// Data record for `mq3.renderer.player_model_assembly.Triangle`; groups `positions`, `texCoords`, `normals`, `part`, `surfaceIndex`, `shaderName`.
-struct Triangle positions texCoords normals part surfaceIndex shaderName end struct
+struct Triangle
+  /// Triangle corners after attaching and transforming the player's lower, upper, or head model.
+  positions
+  /// MD3 texture coordinates carried by an assembled player-body triangle.
+  texCoords
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Player-model component from which this geometry originated.
+  part
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Shader name carried from the MD3 surface of the assembled player component.
+  shaderName
+end struct
 
 /// Creates error `7520` with message `"player model assembly: "+message`.
 /// @param message Input used in the result expression `error(7520,"player model assembly: "+message)`.

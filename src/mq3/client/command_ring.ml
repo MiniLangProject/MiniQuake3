@@ -5,12 +5,26 @@ package mq3.client.command_ring
 
 import mq3.compat.numeric as n
 
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Mask that maps a user-command sequence number into the command-history ring.
 const CMD_MASK=63
 
 /// Stores command ring advance result record, including `created`, `frameMsec`, `oldFrameTime`, `commandNumber`, `slot`.
-struct AdvanceResult created frameMsec oldFrameTime commandNumber slot end struct
+struct AdvanceResult
+  /// When constructing this record, `advance` supplies `false` for this member.
+  created
+  /// When constructing this record, `advance` supplies `0` for this member.
+  frameMsec
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// When constructing this record, `advance` supplies `commandNumber` for this member.
+  commandNumber
+  /// Ring-buffer slot selected for the newly advanced command sequence.
+  slot
+end struct
 
 /// Creates an array from `CMD_BACKUP, void` for command ring `create`.
 function create() return array(CMD_BACKUP,void) end function

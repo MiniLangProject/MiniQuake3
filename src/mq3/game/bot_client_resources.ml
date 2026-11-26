@@ -6,57 +6,105 @@ import mq3.game.game_headers as headers
 import mq3.game.bot_lifecycle as botLifecycle
 import mq3.compat.numeric as n
 
+/// Bot-character characteristic index for gender. Definition: gender of the bot string ("male",
+/// "female", "it").
 const CHARACTERISTIC_GENDER=headers.CHARACTERISTIC_GENDER
+/// Bot-character characteristic index for weaponweights. Definition: weapon weight file string.
 const CHARACTERISTIC_WEAPONWEIGHTS=headers.CHARACTERISTIC_WEAPONWEIGHTS
+/// Bot-character characteristic index for chat file. Definition: chat file with chats string.
 const CHARACTERISTIC_CHAT_FILE=headers.CHARACTERISTIC_CHAT_FILE
+/// Bot-character characteristic index for chat name. Definition: name of the chat character string.
 const CHARACTERISTIC_CHAT_NAME=headers.CHARACTERISTIC_CHAT_NAME
+/// Bot-character characteristic index for itemweights. Definition: goal item weight file string.
 const CHARACTERISTIC_ITEMWEIGHTS=headers.CHARACTERISTIC_ITEMWEIGHTS
+/// Bot-character characteristic index for walker. Definition: tendency to walk float [0, 1].
 const CHARACTERISTIC_WALKER=headers.CHARACTERISTIC_WALKER
+/// Chat-state value or flag selecting genderless.
 const CHAT_GENDERLESS = 0
+/// Chat-state value or flag selecting genderfemale.
 const CHAT_GENDERFEMALE = 1
+/// Chat-state value or flag selecting gendermale.
 const CHAT_GENDERMALE = 2
+/// Chat-state value or flag selecting all.
 const CHAT_ALL = 0
 
 /// `Settings` record for bot client resources, containing `characterfile`, `skill` and `team`.
 struct Settings
+  /// Path of the bot-character definition used to configure this bot.
   characterfile
+  /// Configured bot skill level supplied to character and decision logic.
   skill
+  /// Team assignment associated with the client, bot, or action.
   team
 end struct
 
 /// `Services` record for bot client resources, containing `lifecycleState`, `aasInitializedFn`, `diagnosticFn`, `loadCharacterFn` and `allocGoalStateFn` and related fields.
 struct Services
+  /// State shared by bot allocation, setup, shutdown, and frame processing.
   lifecycleState
+  /// Injected callback for AAS initialized; invoked through the Services service/state record.
   aasInitializedFn
+  /// Injected callback for diagnostic; invoked through the Services service/state record.
   diagnosticFn
+  /// Injected callback for load character; invoked through the Services service/state record.
   loadCharacterFn
+  /// Injected callback for alloc goal state; invoked through the Services service/state record.
   allocGoalStateFn
+  /// Injected callback for characteristic string; invoked through the Services service/state record.
   characteristicStringFn
+  /// Injected callback for load item weights; invoked through the Services service/state record.
   loadItemWeightsFn
+  /// Injected callback for free goal state; invoked through the Services service/state record.
   freeGoalStateFn
+  /// Injected callback for alloc weapon state; invoked through the Services service/state record.
   allocWeaponStateFn
+  /// Injected callback for load weapon weights; invoked through the Services service/state record.
   loadWeaponWeightsFn
+  /// Injected callback for free weapon state; invoked through the Services service/state record.
   freeWeaponStateFn
+  /// Injected callback for alloc chat state; invoked through the Services service/state record.
   allocChatStateFn
+  /// Injected callback for load chat file; invoked through the Services service/state record.
   loadChatFileFn
+  /// Injected callback for free chat state; invoked through the Services service/state record.
   freeChatStateFn
+  /// Injected callback for set chat gender; invoked through the Services service/state record.
   setChatGenderFn
+  /// Injected callback for float time; invoked through the Services service/state record.
   floatTimeFn
+  /// Injected callback for alloc move state; invoked through the Services service/state record.
   allocMoveStateFn
+  /// Injected callback for characteristic float; invoked through the Services service/state record.
   characteristicFloatFn
+  /// Injected callback for integer query; invoked through the Services service/state record.
   integerQueryFn
+  /// Injected callback for bot lib var set; invoked through the Services service/state record.
   botLibVarSetFn
+  /// Injected callback for chat test; invoked through the Services service/state record.
   chatTestFn
+  /// Injected callback for schedule think; invoked through the Services service/state record.
   scheduleThinkFn
+  /// Injected callback for mutate goal; invoked through the Services service/state record.
   mutateGoalFn
+  /// Injected callback for read session; invoked through the Services service/state record.
   readSessionFn
+  /// Injected callback for write session; invoked through the Services service/state record.
   writeSessionFn
+  /// Injected callback for chat exit game; invoked through the Services service/state record.
   chatExitGameFn
+  /// Injected callback for enter chat; invoked through the Services service/state record.
   enterChatFn
+  /// Injected callback for free move state; invoked through the Services service/state record.
   freeMoveStateFn
+  /// Injected callback for free character; invoked through the Services service/state record.
   freeCharacterFn
+  /// Injected callback for free waypoints; invoked through the Services service/state record.
   freeWaypointsFn
+  /// Injected callback for clear activate goal stack; invoked through the Services service/state
+  /// record.
   clearActivateGoalStackFn
+  /// Opaque caller-supplied context available to bot character, goal, weapon, chat, and movement
+  /// resource callbacks.
   context
 end struct
 

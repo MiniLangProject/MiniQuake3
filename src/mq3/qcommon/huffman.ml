@@ -2,32 +2,52 @@
 // Adaptive Huffman tree and LSB-first bit I/O from Baseq3 qcommon/huffman.c.
 package mq3.qcommon.huffman
 
+/// NYT = Not Yet Transmitted.
 const NYT = 256
+/// Huffman symbol code reserved for an internal tree node.
 const INTERNAL_NODE = 257
+/// Maximum number of nodes reserved for the adaptive Huffman tree.
 const NODE_CAPACITY = 768
 
 /// Node record for qcommon.huffman, containing `code`, `weight`, `next`, `prev`, `parent`, `left`, and 2 further fields.
 struct Node
+  /// Symbol identifier or internal-node marker represented by this node.
   code
+  /// Occurrence count used to order nodes in the adaptive Huffman tree.
   weight
+  /// Next node in the adaptive Huffman weight-order list.
   next
+  /// Previous node in the adaptive Huffman weight-order list.
   prev
+  /// Index of the parent Huffman tree node.
   parent
+  /// Index of the child selected by a zero bit.
   left
+  /// Index of the child selected by a one bit.
   right
+  /// Highest ranked node in block.
   head
 end struct
 
 /// Huff record for qcommon.huffman, containing `nodes`, `loc`, `tree`, `lhead`, `ltail`, `blocNode`, and 3 further fields.
 struct Huff
+  /// BSP nodes used to partition the collision or navigation world.
   nodes
+  /// Lookup table from byte symbols to their current tree nodes.
   loc
+  /// Index of the root of the adaptive Huffman tree.
   tree
+  /// First node in the Huffman weight-order list.
   lhead
+  /// Last node in the Huffman weight-order list.
   ltail
+  /// Next unused slot in the fixed node pool.
   blocNode
+  /// Head-node references for groups of equal Huffman weight.
   headValues
+  /// Next unused slot in the weight-group pointer pool.
   blocPtrs
+  /// Reusable slots in the weight-group pointer pool.
   freelist
 end struct
 

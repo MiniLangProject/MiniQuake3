@@ -4,13 +4,56 @@
 package mq3.platform.null_runtime
 
 /// Data record for `mq3.platform.null_runtime.Address`; groups `type`, `host`, `port`.
-struct Address type host port end struct
+struct Address
+  /// Network address kind selecting loopback, IPv4, broadcast, or another supported transport.
+  type
+  /// Host address or host-service adapter associated with the operation.
+  host
+  /// Transport port number associated with the endpoint.
+  port
+end struct
 /// Data record for `mq3.platform.null_runtime.Packet`; groups `destination`, `data`.
-struct Packet destination data end struct
+struct Packet
+  /// Network endpoint to which the packet will be sent.
+  destination
+  /// Payload bytes carried by the queued headless-platform packet.
+  data
+end struct
 /// Data record for `mq3.platform.null_runtime.State`; groups `clientInitialized`, `inputInitialized`, `glInitialized`, `qglInitialized`, `logging`, `frames`, and 8 further fields.
-struct State clientInitialized inputInitialized glInitialized qglInitialized logging frames inputFrames glFrames soundRegistrations localSounds sentPackets consoleText quitRequested errors end struct
+struct State
+  /// Whether client-side platform services have initialized.
+  clientInitialized
+  /// Whether native input processing has initialized.
+  inputInitialized
+  /// Whether the platform graphics context has initialized.
+  glInitialized
+  /// Whether graphics entry-point binding has initialized.
+  qglInitialized
+  /// Whether graphics or platform call logging is enabled.
+  logging
+  /// Number of headless platform frames processed.
+  frames
+  /// Number of input-frame updates processed by the platform adapter.
+  inputFrames
+  /// Number of graphics-frame updates processed by the platform adapter.
+  glFrames
+  /// Sound resource registrations recorded by the platform adapter.
+  soundRegistrations
+  /// Local sound playback requests recorded by the platform adapter.
+  localSounds
+  /// Network packets submitted through the platform adapter.
+  sentPackets
+  /// Text accumulated in the platform console buffer.
+  consoleText
+  /// Whether application shutdown has been requested.
+  quitRequested
+  /// Errors recorded by this subsystem or its host callbacks.
+  errors
+end struct
 
+/// Network-address sentinel identifying an invalid or unresolved address.
 const NA_BAD=1
+/// Network-address type for in-process loopback transport.
 const NA_LOOPBACK=2
 
 /// Lists the 3 declared names for `mq3.platform.null_runtime.macNetSymbols`, including `NET_StringToAdr`, `Sys_GetPacket`, `Sys_SendPacket`.

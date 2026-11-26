@@ -4,6 +4,7 @@
 package mq3.game.g_mem
 import mq3.game.memory as memory
 
+/// Byte capacity of the fixed game-module allocation pool.
 const POOLSIZE = 262144
 
 /// Forward `G_Alloc` to `mq3.game.memory.allocate` and return the delegated result.

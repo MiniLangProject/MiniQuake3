@@ -2,35 +2,59 @@
 // Baseq3-compatible weapon ownership, ammo pickups and client weapon cycling.
 package mq3.client.playable_weapon_inventory
 
+/// Capacity limit for the weapons collection or bounded storage used by this client module.
 const MAX_WEAPONS=16
+/// Maximum ammunition quantity retained for a weapon inventory slot.
 const MAX_AMMO=200
+/// Native weapon identifier selecting no selected weapon.
 const WP_NONE=0
+/// Native weapon identifier selecting the gauntlet.
 const WP_GAUNTLET=1
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// Native weapon identifier selecting the shotgun.
 const WP_SHOTGUN=3
+/// Native weapon identifier selecting the grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Native weapon identifier selecting the rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Native weapon identifier selecting the lightning gun.
 const WP_LIGHTNING=6
+/// Native weapon identifier selecting the railgun.
 const WP_RAILGUN=7
+/// Native weapon identifier selecting the plasma gun.
 const WP_PLASMAGUN=8
+/// Native weapon identifier selecting the BFG.
 const WP_BFG=9
+/// Native weapon identifier selecting the grappling hook.
 const WP_GRAPPLING_HOOK=10
 
 /// Stores playable weapon inventory definition record, including `id`, `name`, `classname`, `ammoClassname`, `weaponQuantity`, `ammoQuantity`.
 struct Definition
+  /// Native item or powerup identifier associated with this definition.
   id
+  /// Virtual resource or definition name used to locate this entry in the client asset catalog.
   name
+  /// Native weapon classname associated with this inventory definition's weapon identifier.
   classname
+  /// When constructing this record, `definitions` supplies `"ammo_bullets"` for this member.
   ammoClassname
+  /// When constructing this record, `definitions` supplies `40` for this member.
   weaponQuantity
+  /// When constructing this record, `definitions` supplies `50` for this member.
   ammoQuantity
 end struct
 
 /// Stores playable weapon inventory inventory record, including `ownedBits`, `ammo`, `selectedWeapon`, `spawnCount`.
 struct Inventory
+  /// Weapon-ownership bitset tested with one bit per weapon identifier; respawning installs the default
+  /// gauntlet and machinegun loadout.
   ownedBits
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
   ammo
+  /// When constructing this record, `create` supplies `WP_MACHINEGUN` for this member.
   selectedWeapon
+  /// Number of spawn-loadout resets applied to this weapon inventory.
   spawnCount
 end struct
 

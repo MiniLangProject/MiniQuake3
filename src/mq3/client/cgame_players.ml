@@ -14,65 +14,325 @@ import mq3.compat.textnumbers as numbers
 /// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Capacity limit for the clients collection or bounded storage used by this client module.
 const MAX_CLIENTS=64
+/// Capacity limit for the animations collection or bounded storage used by this client module.
 const MAX_ANIMATIONS=31
+/// Capacity limit for the totalanimations collection or bounded storage used by this client module.
 const MAX_TOTALANIMATIONS=36
+/// Bit toggled when restarting an animation so repeated identifiers still trigger a transition.
 const ANIM_TOGGLEBIT=128
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Native game-type value for team deathmatch, used when selecting team-dependent player models,
+/// colors, and effects.
 const GT_TEAM=3
+/// Native lower-body animation slot for the walkcr sequence.
 const LEGS_WALKCR=13
+/// Native lower-body animation slot for the walk sequence.
 const LEGS_WALK=14
+/// Native lower-body animation slot for the run sequence.
 const LEGS_RUN=15
+/// Native lower-body animation slot for the back sequence.
 const LEGS_BACK=16
+/// Native lower-body animation slot for the land sequence.
 const LEGS_LAND=19
+/// Native lower-body animation slot for the landb sequence.
 const LEGS_LANDB=21
+/// Native lower-body animation slot for the idle sequence.
 const LEGS_IDLE=22
+/// Native lower-body animation slot for the idlecr sequence.
 const LEGS_IDLECR=23
+/// Native lower-body animation slot for the turn sequence.
 const LEGS_TURN=24
+/// Native lower-body animation slot for the backcr sequence.
 const LEGS_BACKCR=31
+/// Native lower-body animation slot for the backwalk sequence.
 const LEGS_BACKWALK=32
+/// Player-carried flag animation slot for the run sequence.
 const FLAG_RUN=33
+/// Player-carried flag animation slot for the stand sequence.
 const FLAG_STAND=34
+/// Player-carried flag animation slot for the stand2 run sequence.
 const FLAG_STAND2RUN=35
+/// Native upper-body animation slot for the gesture sequence.
 const TORSO_GESTURE=6
+/// Player powerup slot for quad, also used when constructing active-powerup bitsets.
 const PW_QUAD=1
+/// Player powerup slot for battlesuit, also used when constructing active-powerup bitsets.
 const PW_BATTLESUIT=2
+/// Player powerup slot for haste, also used when constructing active-powerup bitsets.
 const PW_HASTE=3
+/// Player powerup slot for invis, also used when constructing active-powerup bitsets.
 const PW_INVIS=4
+/// Player powerup slot for regen, also used when constructing active-powerup bitsets.
 const PW_REGEN=5
+/// Player powerup slot for flight, also used when constructing active-powerup bitsets.
 const PW_FLIGHT=6
+/// Player powerup slot for redflag, also used when constructing active-powerup bitsets.
 const PW_REDFLAG=7
+/// Player powerup slot for blueflag, also used when constructing active-powerup bitsets.
 const PW_BLUEFLAG=8
+/// Player powerup slot for neutralflag, also used when constructing active-powerup bitsets.
 const PW_NEUTRALFLAG=9
+/// Entity-state flag selecting dead behavior in client presentation.
 const EF_DEAD=1
+/// Entity-state flag selecting award excellent behavior in client presentation.
 const EF_AWARD_EXCELLENT=8
+/// Entity-state flag selecting award gauntlet behavior in client presentation.
 const EF_AWARD_GAUNTLET=64
+/// Entity-state flag selecting award cap behavior in client presentation.
 const EF_AWARD_CAP=2048
+/// Entity-state flag selecting talk behavior in client presentation.
 const EF_TALK=4096
+/// Entity-state flag selecting connection behavior in client presentation.
 const EF_CONNECTION=8192
+/// Entity-state flag selecting award impressive behavior in client presentation.
 const EF_AWARD_IMPRESSIVE=32768
+/// Entity-state flag selecting award defend behavior in client presentation.
 const EF_AWARD_DEFEND=65536
+/// Entity-state flag selecting award assist behavior in client presentation.
 const EF_AWARD_ASSIST=131072
+/// Duration in milliseconds of the player-model pain twitch.
 const PAIN_TWITCH_TIME=cgabi.PAIN_TWITCH_TIME
 
 /// Stores client game players queued engine action, including `boundary`, `kind`, `entity`, `name`, `value`, `origin` and additional values.
-struct Action boundary kind entity name value origin color dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while loading player media and submitting
+  /// animated body parts and powerup effects.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while loading player media
+  /// and submitting animated body parts and powerup effects.
+  kind
+  /// When constructing this record, `effect` supplies `entityNum` for this member.
+  entity
+  /// Model, skin, sound, shader, or player-effect resource named by the presentation action.
+  name
+  /// Value payload supplied to the selected host operation while loading player media and submitting
+  /// animated body parts and powerup effects.
+  value
+  /// World-space position supplied with a player-model, powerup, trail, or sound operation.
+  origin
+  /// Color components associated with the player render, light, or auxiliary-effect request.
+  color
+  /// True when this request is marked for native dispatch while loading player media and submitting
+  /// animated body parts and powerup effects; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game players animation record, including `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`, `reversed` and additional values.
-struct Animation firstFrame numFrames loopFrames frameLerp initialLerp reversed flipflop end struct
+struct Animation
+  /// Index of the first model frame belonging to the animation sequence.
+  firstFrame
+  /// Number of model frames belonging to the animation sequence.
+  numFrames
+  /// Number of trailing animation frames repeated after the initial sequence; zero disables looping.
+  loopFrames
+  /// Interval in milliseconds between successive animation frames.
+  frameLerp
+  /// Time in milliseconds used to reach the first frame of a newly selected animation.
+  initialLerp
+  /// True when animation frames are traversed in reverse order.
+  reversed
+  /// True when the animation returns through its frames in reverse after reaching the end.
+  flipflop
+end struct
 /// Stores client game players lerp frame record, including `oldFrame`, `frame`, `oldFrameTime`, `frameTime`, `backlerp`, `animationNumber` and additional values.
-struct LerpFrame oldFrame frame oldFrameTime frameTime backlerp animationNumber animationTime animation yawAngle yawing pitchAngle pitching end struct
+struct LerpFrame
+  /// Previous animation frame used as the interpolation starting point.
+  oldFrame
+  /// Current player-model animation frame being approached by interpolation from oldFrame.
+  frame
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// Client presentation timestamp in milliseconds at which interpolation reaches the current model
+  /// frame.
+  frameTime
+  /// Previous-frame weight used to interpolate the tracked animation presented by in-game player model
+  /// presentation.
+  backlerp
+  /// Selected animation identifier, including the animation-toggle bit when present.
+  animationNumber
+  /// Client time in milliseconds at which the first frame of the animation becomes exact.
+  animationTime
+  /// Animation description supplying frame ranges and playback timing.
+  animation
+  /// Smoothed yaw angle used to orient the animated body part.
+  yawAngle
+  /// True while the body part is turning toward its target yaw.
+  yawing
+  /// Smoothed pitch angle used to orient the animated body part.
+  pitchAngle
+  /// True while the body part is turning toward its target pitch.
+  pitching
+end struct
 /// Stores client game players client info record, including `infoValid`, `deferred`, `name`, `team`, `modelName`, `skinName` and additional values.
-struct ClientInfo infoValid deferred name team modelName skinName headModelName headSkinName redTeam blueTeam color1 color2 footsteps headOffset gender fixedlegs fixedtorso newAnims legsModel torsoModel headModel legsSkin torsoSkin headSkin modelIcon sounds animations score powerups breathPuffTime end struct
+struct ClientInfo
+  /// True when the client-information entry has been populated from valid server data.
+  infoValid
+  /// True while the player's full media registration is deferred to a later load step.
+  deferred
+  /// Player display name received from the server's client-information string.
+  name
+  /// Player team affiliation used to choose model skins, team colors, and friend markers.
+  team
+  /// Virtual model name selected for the player or preview model.
+  modelName
+  /// Skin name selected for the player's body model.
+  skinName
+  /// Virtual model name selected for the player's head.
+  headModelName
+  /// Skin name selected for the player's head model.
+  headSkinName
+  /// Red-team model or identity name used by the player's media selection.
+  redTeam
+  /// Blue-team model or identity name used by the player's media selection.
+  blueTeam
+  /// Primary player color used for team and weapon-effect presentation.
+  color1
+  /// Secondary player color used for team and weapon-effect presentation.
+  color2
+  /// Footstep-sound category selected by the player model.
+  footsteps
+  /// Offset applied to position the head model in icon or preview views.
+  headOffset
+  /// Model gender used when selecting gender-specific player sounds.
+  gender
+  /// True when the model requires leg yaw to remain aligned with torso yaw.
+  fixedlegs
+  /// True when the model requires the torso to keep a fixed yaw.
+  fixedtorso
+  /// True when the player model uses the Missionpack animation set.
+  newAnims
+  /// Model resource selected for the legs presentation.
+  legsModel
+  /// Model resource selected for the torso presentation.
+  torsoModel
+  /// Head-model resource used when drawing a player, head icon, or preview.
+  headModel
+  /// Skin resource applied to the legs model presentation.
+  legsSkin
+  /// Skin resource applied to the torso model presentation.
+  torsoSkin
+  /// Skin resource applied to the player's head model.
+  headSkin
+  /// Image or shader resource used to draw the model icon.
+  modelIcon
+  /// Registered sound resources associated with the player model or media group.
+  sounds
+  /// Animation descriptions indexed by the native player-animation identifiers.
+  animations
+  /// Reported player score cached alongside the player model and identity information.
+  score
+  /// Reported player powerup bitmask stored alongside model and identity information.
+  powerups
+  /// When constructing this record, `clientInfo` supplies `0` for this member.
+  breathPuffTime
+end struct
 /// Stores client game players entity record, including `number`, `clientNum`, `eFlags`, `powerups`, `legsAnim`, `torsoAnim` and additional values.
-struct Entity number clientNum eFlags powerups legsAnim torsoAnim generic1 origin angles velocity painTime painDirection trailTime dustTrailTime legs torso flag end struct
+struct Entity
+  /// When constructing this record, `entity` supplies `number` for this member.
+  number
+  /// Index into the player client-information table used to select models, skins, and animations.
+  clientNum
+  /// When constructing this record, `entity` supplies `0` for this member.
+  eFlags
+  /// Entity powerup bitmask used for haste animation, flag attachments, and player visual effects.
+  powerups
+  /// When constructing this record, `entity` supplies `LEGS_IDLE` for this member.
+  legsAnim
+  /// When constructing this record, `entity` supplies `11` for this member.
+  torsoAnim
+  /// When constructing this record, `entity` supplies `0` for this member.
+  generic1
+  /// Interpolated world-space player position used for body models and attached effects.
+  origin
+  /// Euler orientation used to place or animate the object.
+  angles
+  /// Linear rate of change of position used by movement or effect integration.
+  velocity
+  /// Client timestamp of the last pain reaction, used to animate the flinch.
+  painTime
+  /// Alternating direction selector used for the player's pain animation.
+  painDirection
+  /// Last trail-emission time, allowing missile trails to catch up across dropped packets.
+  trailTime
+  /// Last time a running player's ground-contact dust effect was emitted.
+  dustTrailTime
+  /// Animation and interpolation state for the player's legs.
+  legs
+  /// Animation and interpolation state for the player's torso.
+  torso
+  /// When constructing this record, `entity` supplies `lerpFrame()` for this member.
+  flag
+end struct
 /// Stores client game players trace record, including `fraction`, `endpos`, `normal`, `startsolid`, `allsolid`, `surfaceFlags`.
-struct Trace fraction endpos normal startsolid allsolid surfaceFlags end struct
+struct Trace
+  /// Fraction of the requested trace distance completed before the first collision.
+  fraction
+  /// Final world-space position reached by the collision trace.
+  endpos
+  /// Ground-trace plane normal available to player-shadow and contact-effect calculations.
+  normal
+  /// True when the collision trace begins inside solid geometry.
+  startsolid
+  /// True when the trace remains fully enclosed by solid geometry.
+  allsolid
+  /// Surface-property bits returned by the collision trace.
+  surfaceFlags
+end struct
 /// Stores client game players vertex record, including `origin`, `color`.
-struct Vertex origin color end struct
+struct Vertex
+  /// World-space vertex position for player-associated polygon geometry.
+  origin
+  /// Per-vertex RGBA modulation stored as four byte-range channel values.
+  color
+end struct
 /// Stores client game players state, including `time`, `frameTime`, `gametype`, `localClientNum`, `renderingThirdPerson`, `shadows` and additional values.
-struct State time frameTime gametype localClientNum renderingThirdPerson shadows drawFriend noPlayerAnims animSpeed swingSpeed enableBreath enableDust clients files actions end struct
+struct State
+  /// Current client-game time in milliseconds used for player animation and player-attached effects.
+  time
+  /// Elapsed frame-time slot retained with the player-presentation state.
+  frameTime
+  /// Game-rule identifier controlling team model skins and teammate marker sprites.
+  gametype
+  /// When constructing this record, `create` supplies `0` for this member. Used by `breathPuffs` during
+  /// subsequent processing.
+  localClientNum
+  /// True while the camera uses a third-person, chase, or death view.
+  renderingThirdPerson
+  /// When constructing this record, `create` supplies `1` for this member. Used by `playerShadow` and
+  /// `playerSplash` during subsequent processing.
+  shadows
+  /// When constructing this record, `create` supplies `true` for this member. Used by `playerSprites`
+  /// during subsequent processing.
+  drawFriend
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `playerAnimation` during subsequent processing.
+  noPlayerAnims
+  /// When constructing this record, `create` supplies `1` for this member. Used by `runLerpFrame`
+  /// during subsequent processing.
+  animSpeed
+  /// When constructing this record, `create` supplies `0.3` for this member.
+  swingSpeed
+  /// When constructing this record, `create` supplies `false` for this member. Used by `breathPuffs`
+  /// during subsequent processing.
+  enableBreath
+  /// When constructing this record, `create` supplies `false` for this member. Used by `dustTrail`
+  /// during subsequent processing.
+  enableDust
+  /// Client model, skin, identity, and animation information indexed by player slot.
+  clients
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `fileExists` during subsequent processing.
+  files
+  /// Host requests queued while loading player media and submitting animated body parts and powerup
+  /// effects, retained in request order.
+  actions
+end struct
 
 /// Creates a `mq3.client.cgame_players.Animation` record. Assigns `firstFrame` from `firstFrame`, `numFrames` from `numFrames`, `loopFrames` from `loopFrames`, `frameLerp` from `frameLerp`.
 /// @param firstFrame Value used to initialize `Animation.firstFrame`.

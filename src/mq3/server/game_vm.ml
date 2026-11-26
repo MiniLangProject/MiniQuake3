@@ -4,42 +4,72 @@
 package mq3.server.game_vm
 import mq3.game.g_public as gpublic
 
+/// Game-VM export identifier for init.
 const GAME_INIT=gpublic.GAME_INIT
+/// Game-VM export identifier for shutdown.
 const GAME_SHUTDOWN=gpublic.GAME_SHUTDOWN
+/// Game-VM export identifier for client connect.
 const GAME_CLIENT_CONNECT=gpublic.GAME_CLIENT_CONNECT
+/// Game-VM export identifier for client begin.
 const GAME_CLIENT_BEGIN=gpublic.GAME_CLIENT_BEGIN
+/// Game-VM export identifier for client user information changed.
 const GAME_CLIENT_USERINFO_CHANGED=gpublic.GAME_CLIENT_USERINFO_CHANGED
+/// Game-VM export identifier for client disconnect.
 const GAME_CLIENT_DISCONNECT=gpublic.GAME_CLIENT_DISCONNECT
+/// Game-VM export identifier for client command.
 const GAME_CLIENT_COMMAND=gpublic.GAME_CLIENT_COMMAND
+/// Game-VM export identifier for client think.
 const GAME_CLIENT_THINK=gpublic.GAME_CLIENT_THINK
+/// Game-VM export identifier for run frame.
 const GAME_RUN_FRAME=gpublic.GAME_RUN_FRAME
+/// Game-VM export identifier for console command.
 const GAME_CONSOLE_COMMAND=gpublic.GAME_CONSOLE_COMMAND
+/// Game-VM export identifier used to begin bot AI work for a frame.
 const BOTAI_START_FRAME=gpublic.BOTAI_START_FRAME
 
 /// Services record for server.game_vm, containing `machineRuntime`, `syscall`, `loadFn`, `callFn`, `restartFn`, `freeFn`, and 5 further fields.
 struct Services
+  /// Runtime used to load and execute the game VM.
   machineRuntime
+  /// Dispatcher handling game-VM calls back into the server.
   syscall
+  /// Host callback that loads the requested resource through the host interface.
   loadFn
+  /// Host callback that invokes a game-VM export with the supplied arguments.
   callFn
+  /// Host callback that restarts the game VM for a map restart.
   restartFn
+  /// Host callback that releases host-managed memory.
   freeFn
+  /// Caller-supplied data associated with game VM loading, invocation, restart, and release.
   context
+  /// Host callback that supplies the current host clock in milliseconds.
   millisecondsFn
+  /// Host callback that returns the textual BSP entity definitions.
   entityStringFn
+  /// Host callback that clears the game-entity association for a client slot.
   clearClientEntityFn
+  /// Host callback that reports whether server bot processing is enabled.
   botEnableFn
 end struct
 
 /// State record for server.game_vm, containing `host`, `slot`, `active`, `entityParsePoint`, `botEnable`, `callCount`, and 2 further fields.
 struct State
+  /// Host callback interface supplying external services to this runtime.
   host
+  /// Index identifying this entry in its owning slot table.
   slot
+  /// True while this entry participates in the active runtime.
   active
+  /// Current position in the map entity text supplied to the game VM.
   entityParsePoint
+  /// True when server-side bot processing is enabled.
   botEnable
+  /// Number of call recorded by this state.
   callCount
+  /// Game-VM export identifier invoked most recently.
   lastExport
+  /// Argument values supplied to the most recently invoked game export.
   lastArgs
 end struct
 

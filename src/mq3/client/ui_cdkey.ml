@@ -5,22 +5,94 @@ package mq3.client.ui_cdkey
 
 import std.string as strings
 
+/// Activation callback event accepted by the product-key entry menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the cdkey action by the menu event handler.
 const ID_CDKEY=10
+/// Menu control identifier routed to the accept action by the menu event handler.
 const ID_ACCEPT=11
+/// Event identifier of the Back control used to leave the product-key entry menu and return to its
+/// parent menu.
 const ID_BACK=12
+/// Virtual shader or image asset name used for the menu's frame artwork.
 const ART_FRAME="menu/art/cut_frame"
+/// Virtual shader or image asset name used for the menu's accept0 artwork.
 const ART_ACCEPT0="menu/art/accept_0"
+/// Virtual shader or image asset name used for the menu's accept1 artwork.
 const ART_ACCEPT1="menu/art/accept_1"
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
 
 /// Stores UI cdkey queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `dispatched`.
-struct Action boundary kind name text value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while validating and storing the entered
+  /// product key.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while validating and
+  /// storing the entered product key.
+  kind
+  /// CD-key menu control, console variable, or artwork resource targeted by the host action.
+  name
+  /// Entered CD-key text, validation message, or cvar value emitted by the key-entry menu.
+  text
+  /// Value payload supplied to the selected host operation while validating and storing the entered
+  /// product key.
+  value
+  /// True when this request is marked for native dispatch while validating and storing the entered
+  /// product key; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI cdkey draw record, including `buffer`, `focus`, `cursorChar`, `message`, `status`.
-struct Draw buffer focus cursorChar message status end struct
+struct Draw
+  /// When constructing this record, `drawKey` supplies `state.buffer` for this member.
+  buffer
+  /// When constructing this record, `drawKey` supplies `state.focus` for this member.
+  focus
+  /// When constructing this record, `drawKey` supplies `cursor` for this member.
+  cursorChar
+  /// When constructing this record, `drawKey` supplies `message` for this member.
+  message
+  /// When constructing this record, `drawKey` supplies `value` for this member.
+  status
+end struct
 /// Stores UI cdkey state, including `buffer`, `cursor`, `focus`, `overstrike`, `menuDepth`, `backVisible` and additional values.
-struct State buffer cursor focus overstrike menuDepth backVisible verified actions retailActive cached pushed menuEvents end struct
+struct State
+  /// When constructing this record, `create` supplies an empty string for this member.
+  buffer
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawKey` and `init`
+  /// during subsequent processing.
+  cursor
+  /// True when the product-key entry field has keyboard focus, enabling its insert or overstrike cursor
+  /// glyph.
+  focus
+  /// When constructing this record, `create` supplies `false` for this member. Used by `drawKey` during
+  /// subsequent processing.
+  overstrike
+  /// When constructing this record, `create` supplies `0` for this member. Used by `init` during
+  /// subsequent processing.
+  menuDepth
+  /// When constructing this record, `create` supplies `false` for this member. Used by `init` during
+  /// subsequent processing.
+  backVisible
+  /// When constructing this record, `create` supplies `false` for this member. Used by `init` during
+  /// subsequent processing.
+  verified
+  /// Host requests queued while validating and storing the entered product key, retained in request
+  /// order.
+  actions
+  /// True when the retail QVM owns the product-key entry menu, so the native observer records requests
+  /// without emitting duplicate host effects.
+  retailActive
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// Records that the product-key entry menu has been opened on the active menu stack.
+  pushed
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+end struct
 
 /// Creates a `mq3.client.ui_cdkey.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.

@@ -14,14 +14,23 @@ import mq3.compat.textnumbers as textnum
 /// @param value Floating-point value to round toward positive infinity.
 /// @returns The least integer-valued double greater than or equal to value.
 extern function ceil(value as double) from "ucrtbase.dll" returns double
+/// Damage-processing flag enabling radius.
 const DAMAGE_RADIUS = 1
+/// Damage-processing flag enabling no armor.
 const DAMAGE_NO_ARMOR = 2
+/// Damage-processing flag enabling no knockback.
 const DAMAGE_NO_KNOCKBACK = 4
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
+/// Game entity-flag bit enabling or marking godmode.
 const FL_GODMODE = 0x10
+/// Game entity-flag bit enabling or marking no knockback.
 const FL_NO_KNOCKBACK = 0x800
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to juiced.
 const MOD_JUICED = 28
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
 /// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.
 /// @param level Game-level state; accesses `spawner`.

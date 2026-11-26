@@ -8,38 +8,60 @@ import std.fs as hostfs
 import std.sort as sort
 import std.string as strings
 
+/// Package-reference bit recording ordinary asset use.
 const FS_GENERAL_REF = 1
+/// Package-reference bit recording use by the UI VM.
 const FS_UI_REF = 2
+/// Package-reference bit recording use by the client-game VM.
 const FS_CGAME_REF = 4
+/// Package-reference bit recording use by the server game VM.
 const FS_QAGAME_REF = 8
 
 /// Pak record for qcommon.filesystem, containing `archive`, `basename`, `gameName`, `checksum`, `pureChecksum`, `referenced`.
 struct Pak
+  /// Parsed PK3 archive containing the package entries.
   archive
+  /// Package filename without its containing filesystem directory.
   basename
+  /// Game directory to which this package belongs.
   gameName
+  /// Checksum used to validate or identify the represented data.
   checksum
+  /// Feed-dependent checksum used to validate this package in pure mode.
   pureChecksum
+  /// Combined flags recording which VM or asset subsystem used the package.
   referenced
 end struct
 
 /// SearchPath record for qcommon.filesystem, containing `kind`, `pak`, `root`, `gameName`, `looseFiles`.
 struct SearchPath
+  /// Search-path discriminator selecting a package or loose-file directory.
   kind
+  /// Package descriptor when this search path refers to a PK3 archive.
   pak
+  /// Filesystem root of a loose-file search path.
   root
+  /// Game directory searched by this path entry.
   gameName
+  /// Loose files made available through this search-path entry.
   looseFiles
 end struct
 
 /// FileSystem record for qcommon.filesystem, containing `paths`, `serverPakChecksums`, `serverPakNames`, `serverReferencedPakChecksums`, `serverReferencedPakNames`, `checksumFeed`, and 1 further fields.
 struct FileSystem
+  /// Mounted search paths in asset lookup precedence order.
   paths
+  /// Package checksums approved by the connected pure server.
   serverPakChecksums
+  /// Package names approved by the connected pure server.
   serverPakNames
+  /// Checksums of packages referenced by the connected server.
   serverReferencedPakChecksums
+  /// Names of packages referenced by the connected server.
   serverReferencedPakNames
+  /// Server-supplied feed value used to calculate pure-package checksums.
   checksumFeed
+  /// Fallback checksum used when loose-file access affects pure validation.
   fakeChecksum
 end struct
 
@@ -489,7 +511,9 @@ end function
 
 /// PakComparison record for qcommon.filesystem, containing `needed`, `text`.
 struct PakComparison
+  /// Missing or mismatched packages required by the connected server.
   needed
+  /// Formatted package-comparison result for diagnostics or download requests.
   text
 end struct
 

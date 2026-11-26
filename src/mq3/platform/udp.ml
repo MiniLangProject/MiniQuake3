@@ -85,11 +85,28 @@ extern function mq3_udp_wait_readable(socket as ptr,milliseconds as i32) from "m
 extern function mq3_udp_local_ipv4_count(addresses as bytes,capacity as i32) from "miniquake3_udp.dll" returns i32
 
 /// Data record for `mq3.platform.udp.Endpoint`; groups `address`, `port`.
-struct Endpoint address port end struct
+struct Endpoint
+  /// Network address used to identify the remote or local endpoint.
+  address
+  /// Transport port number associated with the endpoint.
+  port
+end struct
 /// Data record for `mq3.platform.udp.Datagram`; groups `received`, `endpoint`, `data`.
-struct Datagram received endpoint data end struct
+struct Datagram
+  /// Whether a datagram was successfully received.
+  received
+  /// Network endpoint from which the datagram was received.
+  endpoint
+  /// Payload bytes returned by the UDP receive operation.
+  data
+end struct
 /// Data record for `mq3.platform.udp.Socks5`; groups `control`, `relay`.
-struct Socks5 control relay end struct
+struct Socks5
+  /// TCP control connection that owns the SOCKS5 UDP association.
+  control
+  /// UDP relay endpoint returned by the SOCKS5 handshake.
+  relay
+end struct
 
 /// Returns `(a<<24)|(b<<16)|(c<<8)|d` from `mq3.platform.udp.ipv4`; earlier branches return `error(6960,"udp: invalid IPv4 octet")`.
 /// @param a Input tested by `a<0 or a>255 or b<0 or b>255 or c<0 or c>255 or d<0 or d>255`.

@@ -11,13 +11,57 @@ import std.ds.list as lists
 import std.sort as sorting
 
 /// Data record for `mq3.renderer.world_patch_lod.WorldLodPatch`; groups `face`, `texture`, `lightmap`, `fog`, `grid`, `variants`.
-struct WorldLodPatch face texture lightmap fog grid variants end struct
+struct WorldLodPatch
+  /// Source BSP face index identifying this patch.
+  face
+  /// BSP shader index assigned to the patch surface.
+  texture
+  /// BSP lightmap index assigned to the patch, or a negative no-lightmap selector.
+  lightmap
+  /// Renderer fog index for this patch; zero means no fog volume.
+  fog
+  /// Tessellated curved-patch grid and its detail-selection data.
+  grid
+  /// Cached tessellation variants for different patch detail thresholds.
+  variants
+end struct
 /// Data record for `mq3.renderer.world_patch_lod.WorldPatchGrid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
-struct WorldPatchGrid control width height widthLodError heightLodError lodOrigin lodRadius lodFixed lodStitched end struct
+struct WorldPatchGrid
+  /// Original control-point grid retained for patch retessellation.
+  control
+  /// Number of columns in the patch vertex grid.
+  width
+  /// Number of rows in the patch vertex grid.
+  height
+  /// Per-column geometric error used when selecting patch detail.
+  widthLodError
+  /// Per-row geometric error used when selecting patch detail.
+  heightLodError
+  /// Reference origin used when evaluating patch level of detail.
+  lodOrigin
+  /// Reference radius used when evaluating patch level of detail.
+  lodRadius
+  /// Whether patch edge detail has been reconciled with neighboring patches.
+  lodFixed
+  /// Whether the patch grid has been stitched to adjacent geometry.
+  lodStitched
+end struct
 /// Data record for `mq3.renderer.world_patch_lod.WorldLodVariant`; groups `minimum`, `face`.
-struct WorldLodVariant minimum face end struct
+struct WorldLodVariant
+  /// Minimum geometric error or detail threshold represented by this variant.
+  minimum
+  /// Prepared face geometry for this patch level-of-detail variant.
+  face
+end struct
 /// Data record for `mq3.renderer.world_patch_lod.WorldLodAxis`; groups `minimum`, `columns`, `rows`.
-struct WorldLodAxis minimum columns rows end struct
+struct WorldLodAxis
+  /// Minimum geometric error or detail threshold represented by this variant.
+  minimum
+  /// Indices of grid columns retained for this level-of-detail threshold.
+  columns
+  /// Indices of grid rows retained for this level-of-detail threshold.
+  rows
+end struct
 
 /// Creates error `7490` with message `"World patch LOD: "+message`.
 /// @param message Input used in the result expression `error(7490,"World patch LOD: "+message)`.

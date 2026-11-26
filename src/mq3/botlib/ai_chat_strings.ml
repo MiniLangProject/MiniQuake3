@@ -6,18 +6,45 @@ package mq3.botlib.ai_chat_strings
 import mq3.vm.pc_parser as pc
 import std.string as textStrings
 
+/// Bot-library syscall identifier for unify white spaces.
 const OP_UNIFY_WHITE_SPACES=520
+/// Bot-library syscall identifier for replace synonyms.
 const OP_REPLACE_SYNONYMS=521
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=256
 
 /// `Synonym` record for ai chat strings, containing `value` and `weight`.
-struct Synonym value weight end struct
+struct Synonym
+  /// Text spelling used as a synonym or replacement in the group.
+  value
+  /// Selection weight stored with this synonym in the chat synonym table.
+  weight
+end struct
 /// `Group` record for ai chat strings, containing `context` and `synonyms`.
-struct Group context synonyms end struct
+struct Group
+  /// Bit mask selecting the chat contexts in which this synonym group is applied.
+  context
+  /// Alternative spellings and their replacement weights in this synonym group.
+  synonyms
+end struct
 /// `Loader` record for ai chat strings, containing `state`.
-struct Loader state end struct
+struct Loader
+  /// Owning chat runtime supplying the file callback and file-read accounting.
+  state
+end struct
 /// `State` record for ai chat strings, containing `context`, `readFn`, `groups`, `loaded` and `fileReads`.
-struct State context readFn groups loaded fileReads end struct
+struct State
+  /// Caller-supplied data associated with loading the synonym groups used to normalize chat text.
+  context
+  /// Host callback that reads synonym tables used by chat text normalization.
+  readFn
+  /// Synonym groups used when normalizing and varying bot chat text.
+  groups
+  /// True after the chat synonym file has been parsed into context groups.
+  loaded
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
 /// Construct error `7595` with diagnostic text `"AI chat strings: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

@@ -14,16 +14,51 @@ import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 
+/// Capacity limit for the textures collection or bounded storage used by this client module.
 const MAX_TEXTURES=15
+/// Capacity limit for the triangles collection or bounded storage used by this client module.
 const MAX_TRIANGLES=4096
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores playable explosions texture record, including `name`, `image`, `slot`.
-struct Texture name image slot end struct
+struct Texture
+  /// Virtual resource or definition name used to locate this entry in the client asset catalog.
+  name
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores playable explosions profile record, including `style`, `frequency`, `frames`, `sprite`, `duration`.
-struct Profile style frequency frames sprite duration end struct
+struct Profile
+  /// Projectile style selecting this explosion's model, sprite, and presentation parameters.
+  style
+  /// When constructing this record, `profile` supplies `8.0` for this member.
+  frequency
+  /// When constructing this record, `profile` supplies `["models/weaphits/plasmaboom"]` for this
+  /// member.
+  frames
+  /// When constructing this record, `profile` supplies `true` for this member.
+  sprite
+  /// When constructing this record, `profile` supplies `1000` for this member.
+  duration
+end struct
 /// Stores playable explosions catalog record, including `textures`, `profiles`, `plasmaModel`, `firstTextureSlot`, `textureCount`.
-struct Catalog textures profiles plasmaModel firstTextureSlot textureCount end struct
+struct Catalog
+  /// When constructing this record, `load` supplies `textures` for this member. Used by `textureFor`
+  /// and `upload` during subsequent processing.
+  textures
+  /// When constructing this record, `load` supplies `profiles` for this member.
+  profiles
+  /// Model resource selected for the plasma presentation.
+  plasmaModel
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+end struct
 
 /// Creates the playable explosions error `7650` with diagnostic text `"playable explosions: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable explosions: "+message`.

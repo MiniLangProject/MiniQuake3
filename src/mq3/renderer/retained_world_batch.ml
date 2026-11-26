@@ -37,9 +37,69 @@ extern function gatherNative(source as ptr,sourceBytes as i32,sourceCount as i32
 /// @returns Gathered record count; -1 invalid buffers, -2 face index, -3 source span, -4 capacity, or -5 overlap.
 extern function gatherSpecularNative(source as ptr,sourceBytes as i32,sourceCount as i32,target as ptr,targetBytes as i32,runs as ptr,runBytes as i32,selected as ptr,selectedBytes as i32,selectedCount as i32) from "playable_window.dll" symbol "playable_window_gather_specular_normals" returns i32
 /// Data record for `mq3.renderer.retained_world_batch.Stream`; groups `source`, `count`, `runs`, `firsts`, `counts`, `draw`, and 3 further fields.
-struct Stream source count runs firsts counts draw fullPass activePass primed end struct
+struct Stream
+  /// Packed source triangle records retained before visibility filtering.
+  source
+  /// Number of packed triangle records in the complete retained source stream.
+  count
+  /// Contiguous primitive ranges grouped for retained drawing or material submission.
+  runs
+  /// First primitive index of each retained drawing run.
+  firsts
+  /// Number of primitive records in each retained drawing run.
+  counts
+  /// Prepared drawing commands for the currently selected geometry.
+  draw
+  /// Complete material-stage pass retained before visibility filtering.
+  fullPass
+  /// Material-stage pass restricted to the current visible subset.
+  activePass
+  /// Whether the retained stream has completed its initial native-buffer preparation.
+  primed
+end struct
 /// Data record for `mq3.renderer.retained_world_batch.Cache`; groups `world`, `catalog`, `skyFlags`, `fogCatalog`, `lightCatalog`, `receiveFlags`, and 14 further fields.
-struct Cache world catalog skyFlags fogCatalog lightCatalog receiveFlags full base streams fogStream dlightCommands fallbackFaces faces active last enabled reason selections fallbacks staticPrimes end struct
+struct Cache
+  /// Loaded world geometry and associated scene state.
+  world
+  /// Resolved resources used by the current rendering operation.
+  catalog
+  /// Per-material flags indicating that normal world drawing must skip sky geometry.
+  skyFlags
+  /// Fog volumes and shared fog resources used by the batch.
+  fogCatalog
+  /// Shared resources used when drawing dynamic-light contributions.
+  lightCatalog
+  /// Per-surface flags controlling reception of dynamic lights and effects.
+  receiveFlags
+  /// Complete geometry batch retained before visibility filtering.
+  full
+  /// Base pass or value from which the current effect is derived.
+  base
+  /// Open streamed-file records managed by the platform runtime.
+  streams
+  /// Retained geometry stream used to update the fog contribution.
+  fogStream
+  /// Drawing commands retained for the dynamic-light contribution.
+  dlightCommands
+  /// Faces that must use the ordinary drawing path instead of retained geometry.
+  fallbackFaces
+  /// BSP faces retained for the current geometry or visibility selection.
+  faces
+  /// Material batch containing only the currently selected visible geometry.
+  active
+  /// Most recently selected or submitted retained geometry state.
+  last
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+  /// Explanation of why retained rendering is unavailable or was bypassed.
+  reason
+  /// Number of visibility selections applied to the retained geometry cache.
+  selections
+  /// Number of times drawing fell back to the ordinary geometry path.
+  fallbacks
+  /// Number of static native-buffer preparations performed by the retained cache.
+  staticPrimes
+end struct
 /// Creates error `7494` with message `"retained world batch: "+text`.
 /// @param text Input used in the result expression `error(7494,"retained world batch: "+text)`.
 function fail(text) return error(7494,"retained world batch: "+text) end function

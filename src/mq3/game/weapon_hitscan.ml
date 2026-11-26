@@ -15,8 +15,11 @@ import mq3.shared.directions as directions
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
+/// Compiled surface-flag bit marking noimpact behavior.
 const SURF_NOIMPACT=headers.SURF_NOIMPACT
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
 
 /// Require and return a client state for hitscan weapon accuracy bookkeeping.

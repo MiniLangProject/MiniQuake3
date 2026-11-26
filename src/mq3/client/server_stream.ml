@@ -8,10 +8,21 @@ import mq3.client.snapshot_parse as entities
 import mq3.shared.info as info
 import mq3.compat.textnumbers as streamNumbers
 
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
 const SNAPFLAG_NOT_ACTIVE = 2
 
 /// Stores server stream stream record, including `protocol`, `epoch`, `demoPlaying`, `pure`.
-struct Stream protocol epoch demoPlaying pure end struct
+struct Stream
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// When constructing this record, `attach` supplies `protocol.dispatcher.snapshotState` for this
+  /// member. Used by `at` and `entity` during subsequent processing.
+  epoch
+  /// True while the client receives its game data from a recorded demo.
+  demoPlaying
+  /// When constructing this record, `attach` supplies `pure` for this member.
+  pure
+end struct
 
 /// Evaluates server stream `ready` and returns `false`, `snap.valid and (snap.snapFlags&SNAPFLAG_NOT_ACTIVE)==0` according to its guard/selection conditions.
 /// @param protocol Record read through `protocol.dispatcher.snapshotState.snap`.

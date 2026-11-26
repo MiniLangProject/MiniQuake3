@@ -5,54 +5,114 @@ package mq3.platform.win_qgl_runtime
 
 import mq3.renderer.qgl as qgl
 
+/// OpenGL boolean false value accepted by OpenGL calls.
 const GL_FALSE=0
+/// OpenGL boolean true value accepted by OpenGL calls.
 const GL_TRUE=1
+/// OpenGL comparison function that always rejects the fragment.
 const GL_NEVER=0x0200
+/// OpenGL comparison function requiring a value smaller than the reference.
 const GL_LESS=0x0201
+/// OpenGL comparison function requiring equality with the reference.
 const GL_EQUAL=0x0202
+/// OpenGL comparison function requiring a value no greater than the reference.
 const GL_LEQUAL=0x0203
+/// OpenGL comparison function requiring a value greater than the reference.
 const GL_GREATER=0x0204
+/// OpenGL comparison function requiring inequality with the reference.
 const GL_NOTEQUAL=0x0205
+/// OpenGL comparison function requiring a value no smaller than the reference.
 const GL_GEQUAL=0x0206
+/// OpenGL comparison function that always accepts the fragment.
 const GL_ALWAYS=0x0207
+/// OpenGL primitive mode that draws independent points.
 const GL_POINTS=0x0000
+/// OpenGL primitive mode that draws independent line segments.
 const GL_LINES=0x0001
+/// OpenGL primitive mode that draws a closed chain of line segments.
 const GL_LINE_LOOP=0x0002
+/// OpenGL primitive mode that draws a connected chain of line segments.
 const GL_LINE_STRIP=0x0003
+/// OpenGL primitive mode that draws independent triangles.
 const GL_TRIANGLES=0x0004
+/// OpenGL primitive mode that draws a connected strip of triangles.
 const GL_TRIANGLE_STRIP=0x0005
+/// OpenGL primitive mode that draws triangles sharing the first vertex.
 const GL_TRIANGLE_FAN=0x0006
+/// OpenGL primitive mode that draws independent four-vertex polygons.
 const GL_QUADS=0x0007
+/// OpenGL primitive mode that draws a connected strip of four-vertex polygons.
 const GL_QUAD_STRIP=0x0008
+/// OpenGL primitive mode that draws one convex polygon.
 const GL_POLYGON=0x0009
+/// OpenGL scalar type for signed eight-bit components.
 const GL_BYTE=0x1400
+/// OpenGL scalar type for unsigned eight-bit components.
 const GL_UNSIGNED_BYTE=0x1401
+/// OpenGL scalar type for signed sixteen-bit components.
 const GL_SHORT=0x1402
+/// OpenGL scalar type for unsigned sixteen-bit components.
 const GL_UNSIGNED_SHORT=0x1403
+/// OpenGL scalar type for signed thirty-two-bit components.
 const GL_INT=0x1404
+/// OpenGL scalar type for unsigned thirty-two-bit components.
 const GL_UNSIGNED_INT=0x1405
+/// OpenGL scalar type for single-precision floating-point components.
 const GL_FLOAT=0x1406
+/// OpenGL scalar type for double-precision floating-point components.
 const GL_DOUBLE=0x140a
+/// OpenGL blend-factor selector using zero.
 const GL_ZERO=0
+/// OpenGL blend-factor selector using one.
 const GL_ONE=1
+/// OpenGL blend-factor selector using the source alpha.
 const GL_SRC_ALPHA=0x0302
+/// OpenGL blend-factor selector using one minus the source alpha.
 const GL_ONE_MINUS_SRC_ALPHA=0x0303
+/// OpenGL blend-factor selector using the destination alpha.
 const GL_DST_ALPHA=0x0304
+/// OpenGL blend-factor selector using the destination color.
 const GL_DST_COLOR=0x0306
+/// OpenGL blend-factor selector using one minus the destination color.
 const GL_ONE_MINUS_DST_COLOR=0x0307
+/// OpenGL target for two-dimensional texture objects.
 const GL_TEXTURE_2D=0x0de1
+/// OpenGL capability selector controlling source/destination color blending.
 const GL_BLEND=0x0be2
+/// OpenGL capability selector controlling depth-buffer comparison.
 const GL_DEPTH_TEST=0x0b71
+/// OpenGL capability selector controlling face culling.
 const GL_CULL_FACE=0x0b44
+/// OpenGL capability selector for the first user-defined clipping plane.
 const GL_CLIP_PLANE0=0x3000
+/// OpenGL client-array selector for per-vertex colors.
 const GL_COLOR_ARRAY=0x8076
+/// OpenGL client-array selector for texture coordinates.
 const GL_TEXTURE_COORD_ARRAY=0x8078
+/// OpenGL client-array selector for vertex positions.
 const GL_VERTEX_ARRAY=0x8074
+/// OpenGL capability selector controlling alpha comparison.
 const GL_ALPHA_TEST=0x0bc0
+/// OpenGL capability selector controlling stencil comparison.
 const GL_STENCIL_TEST=0x0b90
 
 /// Data record for `mq3.platform.win_qgl_runtime.State`; groups `loaded`, `driver`, `logging`, `logCounter`, `logOpen`, `logLines`, and 1 further field.
-struct State loaded driver logging logCounter logOpen logLines calls end struct
+struct State
+  /// Whether the selected OpenGL driver library is loaded.
+  loaded
+  /// Graphics driver selected or loaded by the platform layer.
+  driver
+  /// Whether graphics or platform call logging is enabled.
+  logging
+  /// Number of frames or operations included in graphics-call logging.
+  logCounter
+  /// Whether the graphics-call log is open.
+  logOpen
+  /// Graphics-call log lines accumulated by the adapter.
+  logLines
+  /// Graphics entry-point calls recorded by the adapter.
+  calls
+end struct
 
 /// Constructs `mq3.platform.win_qgl_runtime.State` with `loaded` = `false`, `driver` = `""`, `logging` = `false`, `logCounter` = `0` and the supplied remaining values.
 function create() return State(false,"",false,0,false,[],[]) end function

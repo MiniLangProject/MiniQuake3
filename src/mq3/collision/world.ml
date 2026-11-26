@@ -70,96 +70,184 @@ extern function traceTransformedBoxNative(ax as double,ay as double,az as double
 extern function writeVmBoxTraceNative(data as bytes,capacity as i32,mask as u32,base as i32,model as i32,contents as u32,tx as double,ty as double,tz as double,ux as double,uy as double,uz as double) from "miniquake3_qvm.dll" symbol "mq3_cgame_transformed_box_trace" returns i32
 
 /// Shader record for collision.world, containing `name`, `surfaceFlags`, `contentFlags`.
-struct Shader name surfaceFlags contentFlags end struct
+struct Shader
+  /// Shader asset name used to identify the collision surface.
+  name
+  /// Surface-property flags reported for the intersected surface.
+  surfaceFlags
+  /// Contents bits describing collision and volume behavior.
+  contentFlags
+end struct
 /// Brush record for collision.world, containing `planes`, `packedPlanes`, `contents`, `mins`, `maxs`.
 struct Brush
+  /// Plane records used to classify or clip the represented geometry.
   planes
+  /// Compact plane representation used by accelerated brush traces.
   packedPlanes
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// Minimum XYZ corner of the static convex brush in world coordinates.
   mins
+  /// Maximum XYZ corner of the static convex brush in world coordinates.
   maxs
 end struct
 /// Node record for collision.world, containing `plane`, `axis`, `children`.
 struct Node
+  /// BSP splitting plane used to classify positions between the two child nodes.
   plane
+  /// Coordinate-axis index used by the optimized BSP split test.
   axis
+  /// Child BSP node indices; negative values encode leaf indices as minus one minus the leaf number.
   children
 end struct
 /// Leaf record for collision.world, containing `brushes`, `surfaces`.
 struct Leaf
+  /// Brush indexes referenced by this collision leaf.
   brushes
+  /// Indices of patch collision surfaces referenced by this BSP leaf.
   surfaces
 end struct
 /// Surface record for collision.world, containing `patch`, `contents`, `flags`.
 struct Surface
+  /// Patch-collision mesh associated with the surface.
   patch
+  /// Collision or AAS contents flags describing the represented volume.
   contents
+  /// Surface-property flags returned when this surface is hit.
   flags
 end struct
 /// World record for collision.world, containing `brushes`, `nodes`, `leaves`, `models`, `surfaces`, `patchesReady`, and 8 further fields.
 struct World
+  /// Convex collision brushes loaded from the BSP.
   brushes
+  /// BSP nodes used to partition the collision or navigation world.
   nodes
+  /// BSP leaves referencing collision brushes and patch surfaces.
   leaves
+  /// Submodel records associated with the loaded map.
   models
+  /// Collision-surface records indexed by BSP surface number; non-patch entries have no patch geometry.
   surfaces
+  /// True after curved-surface collision meshes have been built.
   patchesReady
+  /// True when player traces include curved patch collision.
   playerCurveClip
+  /// Minimum and maximum bounds for each inline collision model.
   bounds
+  /// Reusable temporary box and capsule collision-model state.
   temporary
+  /// Cluster and portal-area visibility data for the loaded map.
   visibility
+  /// Textual entity definitions extracted from the BSP entity lump.
   entityString
+  /// Shader flags and contents used by collision surfaces.
   shaders
+  /// Checksum used to validate or identify the represented data.
   checksum
+  /// Name of the currently loaded collision map.
   name
 end struct
 /// Submodels record for collision.world, containing `models`, `bounds`.
-struct Submodels models bounds end struct
+struct Submodels
+  /// Submodel records associated with the loaded map.
+  models
+  /// Minimum and maximum bounds for each loaded inline model.
+  bounds
+end struct
 /// MapState record for collision.world, containing `world`, `name`, `checksum`, `lastChecksum`, `curves`.
-struct MapState world name checksum lastChecksum curves end struct
+struct MapState
+  /// Collision or navigation world used by this operation.
+  world
+  /// Map name used to identify the cached collision world.
+  name
+  /// Checksum used to validate or identify the represented data.
+  checksum
+  /// Checksum returned for the most recently loaded collision map.
+  lastChecksum
+  /// True when collision tests include curved patch surfaces.
+  curves
+end struct
 /// LoadResult record for collision.world, containing `world`, `checksum`, `cached`.
-struct LoadResult world checksum cached end struct
+struct LoadResult
+  /// Collision or navigation world used by this operation.
+  world
+  /// Checksum used to validate or identify the represented data.
+  checksum
+  /// True when an existing collision world was reused.
+  cached
+end struct
 /// Temporary record for collision.world, containing `bounds`, `brush`, `capsuleReady`, `brushVisits`, `patchVisits`, `visitSerial`.
 struct Temporary
+  /// Minimum and maximum corners of the temporary box or capsule model.
   bounds
+  /// Reusable brush geometry for temporary box traces.
   brush
+  /// True after the temporary capsule parameters have been initialized.
   capsuleReady
+  /// Visit markers used by temporary brush traces.
   brushVisits
+  /// Visit markers used by temporary patch traces.
   patchVisits
+  /// Serial number used to avoid visiting the same collision element twice.
   visitSerial
 end struct
 /// Work record for collision.world, containing `world`, `trace`, `start`, `finish`, `mins`, `maxs`, and 14 further fields.
 struct Work
+  /// Collision or navigation world used by this operation.
   world
+  /// Collision trace result or active trace state for this operation.
   trace
+  /// Reference position at the beginning of the swept world-collision test.
   start
+  /// Reference position requested at the end of the swept world-collision test.
   finish
+  /// Minimum XYZ corner of the swept collision box relative to its reference position.
   mins
+  /// Maximum XYZ corner of the swept collision box relative to its reference position.
   maxs
+  /// Minimum XYZ corner of the enclosing bounds.
   boundsMin
+  /// Maximum XYZ corner of the enclosing bounds.
   boundsMax
+  /// True when collision testing uses a capsule instead of a box.
   capsule
+  /// Radius of the represented sphere or capsule.
   radius
+  /// Half of the capsule height measured along its principal axis.
   halfheight
+  /// Offset of the capsule's end spheres from its center.
   capsuleOffset
+  /// World-space origin of the collision model.
   modelOrigin
+  /// Combined contents mask selecting collidable geometry.
   mask
+  /// True when the trace volume has zero extent and can use point tests.
   isPoint
+  /// Visit markers preventing duplicate brush tests.
   seen
+  /// Visit markers preventing duplicate patch tests.
   seenPatches
+  /// Serial number used to avoid visiting the same collision element twice.
   visitSerial
+  /// Reusable temporary storage for brush-clipping calculations.
   brushScratch
+  /// True when collision tests include curved patch surfaces.
   curves
 end struct
 /// Result record for collision.world, containing `trace`, `endpos`.
 struct Result
+  /// Collision trace result or active trace state for this operation.
   trace
+  /// End position reached by the collision trace.
   endpos
 end struct
 /// LeafList record for collision.world, containing `entries`, `lastLeaf`, `overflowed`.
 struct LeafList
+  /// BSP leaf indexes intersected by the requested bounds.
   entries
+  /// Last non-opaque leaf visited, retained when the bounded leaf list overflows.
   lastLeaf
+  /// True when more leaves were found than the result capacity allows.
   overflowed
 end struct
 

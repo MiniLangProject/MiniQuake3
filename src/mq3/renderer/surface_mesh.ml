@@ -4,13 +4,65 @@
 package mq3.renderer.surface_mesh
 
 /// Data record for `mq3.renderer.surface_mesh.Vertex`; groups `xyz`, `normal`, `st`, `lightmap`, `color`.
-struct Vertex xyz normal st lightmap color end struct
+struct Vertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Static mesh vertex normal used by lighting and material coordinate generation.
+  normal
+  /// Two-dimensional texture coordinates associated with the vertex.
+  st
+  /// Baked-lighting texture coordinates or resource associated with this vertex or patch.
+  lightmap
+  /// Authored vertex color retained with the static mesh position and texture coordinates.
+  color
+end struct
 /// Data record for `mq3.renderer.surface_mesh.TriangleSurface`; groups `verts`, `indexes`, `dlightBits`.
-struct TriangleSurface verts indexes dlightBits end struct
+struct TriangleSurface
+  /// Source vertex records referenced by the static triangle surface's index list.
+  verts
+  /// Source triangle index list referencing the static surface's vertex records.
+  indexes
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 /// Data record for `mq3.renderer.surface_mesh.FaceSurface`; groups `normal`, `points`, `indexes`, `dlightBits`.
-struct FaceSurface normal points indexes dlightBits end struct
+struct FaceSurface
+  /// Plane normal shared by the vertices of this planar face.
+  normal
+  /// Points defining the face, polygon, or clipping result.
+  points
+  /// Triangle index list defining the planar face's polygon tessellation.
+  indexes
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 /// Data record for `mq3.renderer.surface_mesh.Submission`; groups `xyz`, `normals`, `texCoords`, `colors`, `vertexDlightBits`, `indexes`, and 6 further fields.
-struct Submission xyz normals texCoords colors vertexDlightBits indexes baseVertex baseIndex numVertexes numIndexes dlightBits flushed end struct
+struct Submission
+  /// Three-dimensional vertex positions used by this geometry record.
+  xyz
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Texture-coordinate arrays emitted with the submitted static mesh vertices.
+  texCoords
+  /// Vertex colors emitted from a static mesh into the tessellation submission.
+  colors
+  /// Per-vertex mask of dynamic lights that can affect the geometry.
+  vertexDlightBits
+  /// Mesh triangle indices rebased into the destination tessellation buffer.
+  indexes
+  /// First vertex slot used by the submitted geometry.
+  baseVertex
+  /// First index slot used by the submitted geometry.
+  baseIndex
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+  /// Whether the current batch was flushed before this geometry was appended.
+  flushed
+end struct
 
 /// Constructs `mq3.renderer.surface_mesh.Vertex` with `color` = `[color[0]&255,color[1]&255,color[2]&255,color[3]&255]` and the supplied remaining values.
 /// @param xyz Initial value for `mq3.renderer.surface_mesh.Vertex.xyz`.

@@ -15,14 +15,28 @@ package mq3.renderer.tga
 /// @returns 1 on success; negative codes identify invalid bounds, unsupported pixels, output overflow, or truncated packets.
 extern function decodePixels(input as bytes,inputBytes as i32,offset as i32,width as i32,height as i32,pixelBytes as i32,rle as i32,output as bytes,outputBytes as i32) from "playable_window.dll" symbol "playable_decode_tga_pixels" returns i32
 
+/// TGA image type for uncompressed true-color pixels.
 const TYPE_TRUECOLOR=2
+/// TGA image type for uncompressed grayscale pixels.
 const TYPE_GRAYSCALE=3
+/// TGA image type for run-length-encoded true-color pixels.
 const TYPE_RLE_TRUECOLOR=10
+/// Largest image width or height accepted by the decoder.
 const MAX_DIMENSION=16384
+/// Maximum decoded pixel count accepted by the image loader.
 const MAX_PIXELS=67108864
 
 /// Data record for `mq3.renderer.tga.Image`; groups `width`, `height`, `pixels`, `topDownDeclared`.
-struct Image width height pixels topDownDeclared end struct
+struct Image
+  /// Width in pixels of the decoded TGA pixel array.
+  width
+  /// Height in pixels of the decoded TGA pixel array.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+  /// Whether the image header declares a top-to-bottom pixel order.
+  topDownDeclared
+end struct
 
 /// Creates error `7120` with message `"TGA: "+message`.
 /// @param message Input used in the result expression `error(7120,"TGA: "+message)`.

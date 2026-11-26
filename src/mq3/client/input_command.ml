@@ -5,20 +5,152 @@ package mq3.client.input_command
 
 import mq3.compat.numeric as n
 
+/// User-command button bit recording the attack input action.
 const BUTTON_ATTACK=1
+/// User-command button bit recording the talk input action.
 const BUTTON_TALK=2
+/// User-command button bit recording the walking input action.
 const BUTTON_WALKING=16
+/// User-command button bit recording the any input action.
 const BUTTON_ANY=2048
+/// Capacity limit for the joystick axis collection or bounded storage used by this client module.
 const MAX_JOYSTICK_AXIS=16
 
 /// Stores input command button record, including `down0`, `down1`, `downtime`, `msec`, `active`, `wasPressed`.
-struct Button down0 down1 downtime msec active wasPressed end struct
+struct Button
+  /// When constructing this record, `button` supplies `0` for this member.
+  down0
+  /// When constructing this record, `button` supplies `0` for this member.
+  down1
+  /// When constructing this record, `button` supplies `0` for this member.
+  downtime
+  /// When constructing this record, `button` supplies `0` for this member.
+  msec
+  /// When constructing this record, `button` supplies `false` for this member.
+  active
+  /// When constructing this record, `button` supplies `false` for this member.
+  wasPressed
+end struct
 /// Stores input command config record, including `forwardSpeed`, `sideSpeed`, `upSpeed`, `yawSpeed`, `pitchSpeed`, `angleSpeedKey` and additional values.
-struct Config forwardSpeed sideSpeed upSpeed yawSpeed pitchSpeed angleSpeedKey run filter sensitivity mouseAccel mouseYaw mousePitch mouseForward mouseSide freelook end struct
+struct Config
+  /// When constructing this record, `defaults` supplies `127.0` for this member.
+  forwardSpeed
+  /// When constructing this record, `defaults` supplies `127.0` for this member.
+  sideSpeed
+  /// When constructing this record, `defaults` supplies `127.0` for this member.
+  upSpeed
+  /// When constructing this record, `defaults` supplies `140.0` for this member. Used by `adjustAngles`
+  /// and `joystickMove` during subsequent processing.
+  yawSpeed
+  /// When constructing this record, `defaults` supplies `140.0` for this member. Used by `adjustAngles`
+  /// and `joystickMove` during subsequent processing.
+  pitchSpeed
+  /// When constructing this record, `defaults` supplies `1.5` for this member. Used by `adjustAngles`
+  /// and `joystickMove` during subsequent processing.
+  angleSpeedKey
+  /// When constructing this record, `defaults` supplies `true` for this member. Used by `keyMove` and
+  /// `joystickMove` during subsequent processing.
+  run
+  /// When constructing this record, `defaults` supplies `false` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  filter
+  /// When constructing this record, `defaults` supplies `5.0` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  sensitivity
+  /// When constructing this record, `defaults` supplies `0.0` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  mouseAccel
+  /// When constructing this record, `defaults` supplies `0.022` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  mouseYaw
+  /// When constructing this record, `defaults` supplies `0.022` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  mousePitch
+  /// When constructing this record, `defaults` supplies `0.25` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  mouseForward
+  /// When constructing this record, `defaults` supplies `0.25` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  mouseSide
+  /// When constructing this record, `defaults` supplies `true` for this member. Used by `mouseMove`
+  /// during subsequent processing.
+  freelook
+end struct
 /// Stores input command state, including `left`, `right`, `forward`, `back`, `lookup`, `lookdown` and additional values.
-struct State left right forward back lookup lookdown moveleft moveright strafe speed up down buttons mlooking viewangles mouseDx mouseDy mouseIndex joystickAxis end struct
+struct State
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  forward
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  back
+  /// When constructing this record, `create` supplies `button()` for this member. Used by
+  /// `adjustAngles` during subsequent processing.
+  lookup
+  /// When constructing this record, `create` supplies `button()` for this member. Used by
+  /// `adjustAngles` during subsequent processing.
+  lookdown
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  moveleft
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  moveright
+  /// When constructing this record, `create` supplies `button()` for this member. Used by
+  /// `adjustAngles` and `keyMove` during subsequent processing.
+  strafe
+  /// When constructing this record, `create` supplies `button()` for this member. Used by
+  /// `adjustAngles` and `keyMove` during subsequent processing.
+  speed
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  up
+  /// When constructing this record, `create` supplies `button()` for this member. Used by `keyMove`
+  /// during subsequent processing.
+  down
+  /// When constructing this record, `create` supplies `values` for this member.
+  buttons
+  /// When constructing this record, `create` supplies `false` for this member. Used by `mouseMove` and
+  /// `joystickMove` during subsequent processing.
+  mlooking
+  /// Locally accumulated view angles used when constructing outgoing user commands.
+  viewangles
+  /// Buffered horizontal mouse movement awaiting user-command generation.
+  mouseDx
+  /// Buffered vertical mouse movement awaiting user-command generation.
+  mouseDy
+  /// When constructing this record, `create` supplies `0` for this member. Used by `accumulateMouse`
+  /// and `mouseMove` during subsequent processing.
+  mouseIndex
+  /// Latest sampled joystick-axis values used by user-command generation.
+  joystickAxis
+end struct
 /// Stores input command command data, including `angles`, `buttons`, `weapon`, `forwardmove`, `rightmove`, `upmove` and additional values.
-struct Command angles buttons weapon forwardmove rightmove upmove serverTime viewangles end struct
+struct Command
+  /// Euler orientation used to place or animate the object.
+  angles
+  /// When constructing this record, `createCommand` supplies `0` for this member.
+  buttons
+  /// Weapon selection encoded as an unsigned byte in the outgoing user command.
+  weapon
+  /// When constructing this record, `createCommand` supplies `0` for this member. Used by `keyMove` and
+  /// `mouseMove` during subsequent processing.
+  forwardmove
+  /// When constructing this record, `createCommand` supplies `0` for this member. Used by `keyMove` and
+  /// `mouseMove` during subsequent processing.
+  rightmove
+  /// When constructing this record, `createCommand` supplies `0` for this member. Used by `keyMove` and
+  /// `joystickMove` during subsequent processing.
+  upmove
+  /// Server-domain timestamp in milliseconds assigned to this generated user command.
+  serverTime
+  /// Locally accumulated view angles used when constructing outgoing user commands.
+  viewangles
+end struct
 
 /// Creates a `mq3.client.input_command.Button` record. Initializes the record with the defaults written in this constructor.
 function button() return Button(0,0,0,0,false,false) end function

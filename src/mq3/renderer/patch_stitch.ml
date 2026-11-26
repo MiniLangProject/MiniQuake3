@@ -5,6 +5,7 @@ package mq3.renderer.patch_stitch
 
 import mq3.renderer.bsp_render_data as render
 
+/// Largest tessellated patch-grid dimension accepted by the renderer.
 const MAX_GRID_SIZE=65
 
 /// Returns `value` from `mq3.renderer.patch_stitch.abs`; earlier branches return `0.0-value`.

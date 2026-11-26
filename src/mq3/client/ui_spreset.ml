@@ -8,12 +8,43 @@ import mq3.client.ui_qmenu as qmenu
 import mq3.client.cgame_drawtools as drawtools
 import mq3.compat.numeric as numeric
 
+/// Menu control identifier routed to the no action by the menu event handler.
 const ID_NO=100
+/// Menu control identifier routed to the yes action by the menu event handler.
 const ID_YES=101
+/// Connection-state value for a completed handshake before game-state loading, defined for retaining
+/// the native connection-state vocabulary used by the progress-reset UI.
 const CA_CONNECTED=5
 
 /// Stores UI spreset reset record, including `game`, `menu`, `no`, `yes`, `slashX`, `popped` and additional values.
-struct Reset game menu no yes slashX popped popCount levelMenuOpened cvarWrites assets drawRows pushed end struct
+struct Reset
+  /// When constructing this record, `create` supplies `game` for this member.
+  game
+  /// When constructing this record, `create` supplies `qmenu.menu(true,true)` for this member.
+  menu
+  /// Focusable NO choice that closes the progress-reset dialog without clearing single-player progress.
+  no
+  /// Focusable YES choice that clears single-player progress and reopens arena selection.
+  yes
+  /// Horizontal position of the slash separating the centered YES/NO choices.
+  slashX
+  /// Records a request to remove the single-player progress-reset dialog from the active menu stack.
+  popped
+  /// Number of menu-pop requests recorded while dismissing the reset dialog and its surrounding
+  /// selection menu.
+  popCount
+  /// True after accepting the reset and requesting a fresh single-player level menu.
+  levelMenuOpened
+  /// Cvar name/value changes queued by the single-player progress-reset dialog for the host to apply.
+  cvarWrites
+  /// Media resources retained for registering and drawing the artwork used by the single-player
+  /// progress-reset dialog.
+  assets
+  /// Drawing commands for the reset prompt, frame artwork, and YES/NO separator.
+  drawRows
+  /// Records that the single-player progress-reset dialog has been opened on the active menu stack.
+  pushed
+end struct
 
 /// Creates a `mq3.client.ui_spreset.Reset` record. Assigns `game` from `game`.
 /// @param game Value used to initialize `Reset.game`.

@@ -7,16 +7,34 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 
+/// Bounds classification indicating that the object lies entirely inside the view frustum.
 const CULL_IN=0
+/// Bounds classification indicating that the object intersects the view frustum.
 const CULL_CLIP=1
+/// Bounds classification indicating that the object lies entirely outside the view frustum.
 const CULL_OUT=2
 
 /// Data record for `mq3.renderer.view_math.Plane`; groups `normal`, `dist`.
-struct Plane normal dist end struct
+struct Plane
+  /// Plane normal transformed between the object's local basis and world space.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+end struct
 /// Data record for `mq3.renderer.view_math.Orientation`; groups `origin`, `axis`.
-struct Orientation origin axis end struct
+struct Orientation
+  /// Translation used when converting points between the object's local basis and world space.
+  origin
+  /// Object basis used for local-to-world point, direction, and plane transformations.
+  axis
+end struct
 /// Data record for `mq3.renderer.view_math.ClipWindow`; groups `normalized`, `window`.
-struct ClipWindow normalized window end struct
+struct ClipWindow
+  /// Position expressed in normalized device coordinates after projection.
+  normalized
+  /// Position expressed in viewport pixel coordinates after projection.
+  window
+end struct
 
 /// Constructs `mq3.renderer.view_math.Plane` with `dist` = `numeric.f32(dist)` and the supplied remaining values.
 /// @param normal Initial value for `mq3.renderer.view_math.Plane.normal`.

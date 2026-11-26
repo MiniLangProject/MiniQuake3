@@ -9,28 +9,132 @@ import mq3.renderer.shader_remap as shaderRemap
 import mq3.shared.parser as parser
 import std.string as strings
 
+/// Negative lightmap selector for a shader that does not use baked lighting.
 const LIGHTMAP_NONE=-1
+/// Negative lightmap selector requesting vertex lighting instead of a lightmap image.
 const LIGHTMAP_BY_VERTEX=-2
+/// Negative lightmap selector used for two-dimensional drawing shaders.
 const LIGHTMAP_2D=-3
+/// Negative lightmap selector substituting the renderer's white image.
 const LIGHTMAP_WHITEIMAGE=-4
+/// Shader sort order reserved for portal surfaces.
 const SS_PORTAL=1.0
+/// Shader sort order reserved for environment and sky surfaces.
 const SS_ENVIRONMENT=2.0
+/// Shader sort order for opaque surfaces.
 const SS_OPAQUE=3.0
+/// Shader sort order for decals placed over opaque geometry.
 const SS_DECAL=4.0
+/// Shader sort order for surfaces with cutout transparency.
 const SS_SEE_THROUGH=5.0
+/// Shader sort order for the first general blended-surface category.
 const SS_BLEND0=9.0
+/// Shader sort order reserved for fog surfaces.
 const SS_FOG=7.0
 
 /// Data record for `mq3.renderer.shader_runtime.ShaderSource`; groups `name`, `text`.
-struct ShaderSource name text end struct
+struct ShaderSource
+  /// Shader script source name retained with the text supplied for indexing.
+  name
+  /// Text payload, script source, or message associated with this record.
+  text
+end struct
 /// Data record for `mq3.renderer.shader_runtime.SkyParms`; groups `outerBox`, `cloudHeight`, `innerBox`.
-struct SkyParms outerBox cloudHeight innerBox end struct
+struct SkyParms
+  /// Six images forming the outer skybox.
+  outerBox
+  /// Height used to project moving cloud texture coordinates.
+  cloudHeight
+  /// Six images forming the inner skybox layer.
+  innerBox
+end struct
 /// Data record for `mq3.renderer.shader_runtime.CollapseResult`; groups `collapsed`, `environment`, `blend`, `first`, `second`.
-struct CollapseResult collapsed environment blend first second end struct
+struct CollapseResult
+  /// Whether two compatible material stages were merged into one pass.
+  collapsed
+  /// Texture-environment combine mode selected for the merged pass.
+  environment
+  /// Blend mode selected for the material or merged stage.
+  blend
+  /// First shader stage participating in the attempted multitexture collapse.
+  first
+  /// Second shader stage participating in the attempted multitexture collapse.
+  second
+end struct
 /// Data record for `mq3.renderer.shader_runtime.PermanentShader`; groups `handle`, `name`, `lightmapIndex`, `mipRawImage`, `shader`, `image`, and 10 further fields.
-struct PermanentShader handle name lightmapIndex mipRawImage shader image defaultShader explicitlyDefined internal iteratorName collapse vertexCollapsed passes sortedIndex remappedName timeOffset end struct
+struct PermanentShader
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// Registered material name used to find the permanent shader and its remappings.
+  name
+  /// Index or special selector identifying the surface's baked lightmap.
+  lightmapIndex
+  /// Whether a shader's implicit image is loaded with mipmap generation enabled.
+  mipRawImage
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+  /// Image associated with the registered shader's implicit or fallback material path.
+  image
+  /// Whether shader resolution fell back to the renderer's default material.
+  defaultShader
+  /// Whether the material was defined in a shader script.
+  explicitlyDefined
+  /// Whether the shader is an internal renderer resource.
+  internal
+  /// Backend iterator selected to execute the shader's drawing stages.
+  iteratorName
+  /// Result of combining compatible shader stages into fewer drawing passes.
+  collapse
+  /// Whether stage colors and lighting were collapsed to the vertex-lighting path.
+  vertexCollapsed
+  /// Drawing passes required by the material or retained batch.
+  passes
+  /// Position of this shader in the renderer's sort order.
+  sortedIndex
+  /// Shader name selected after applying active remaps.
+  remappedName
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+end struct
 /// Data record for `mq3.renderer.shader_runtime.State`; groups `text`, `index`, `shaders`, `sorted`, `remaps`, `assets`, and 12 further fields.
-struct State text index shaders sorted remaps assets kinds context loadImageFn commandFixFn numLightmaps detailTextures vertexLight ignoreFastPath textureEnvAdd multitexture initialized warnings end struct
+struct State
+  /// Text payload, script source, or message associated with this record.
+  text
+  /// Parsed shader-text index used to find definitions by material name.
+  index
+  /// Shader records available to resolve the queued drawing surfaces.
+  shaders
+  /// Shader records ordered by their rendering sort keys.
+  sorted
+  /// Shader remapping entries applied during material lookup.
+  remaps
+  /// Registered resource handles and their backing asset data.
+  assets
+  /// Resource categories associated with the registered shader assets.
+  kinds
+  /// Asset-host state passed when loading shader images or repairing queued shader references.
+  context
+  /// Host callback used to perform load image operations for this subsystem.
+  loadImageFn
+  /// Host callback used to perform command fix operations for this subsystem.
+  commandFixFn
+  /// Number of BSP lightmaps available to shader registration.
+  numLightmaps
+  /// Whether optional detail-texture stages are enabled.
+  detailTextures
+  /// Whether lighting is reduced to the vertex-lighting path.
+  vertexLight
+  /// Whether optimized single-stage drawing paths are disabled.
+  ignoreFastPath
+  /// Whether additive texture-environment combining is available.
+  textureEnvAdd
+  /// Whether multiple texture units may be used in one drawing pass.
+  multitexture
+  /// Whether initialization completed successfully.
+  initialized
+  /// Nonfatal diagnostics retained by the subsystem.
+  warnings
+end struct
 
 /// Returns `strings.toLowerAscii(value)` from `mq3.renderer.shader_runtime.lower`; earlier branches return `""`.
 /// @param value Argument 1 supplied to `std.string.toLowerAscii`.

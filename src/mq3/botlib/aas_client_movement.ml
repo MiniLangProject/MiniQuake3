@@ -6,42 +6,158 @@ package mq3.botlib.aas_client_movement
 import mq3.compat.numeric as n
 import mq3.botlib.aas_runtime as aasRuntime
 
+/// An eye is never valid in a solid.
 const CONTENTS_SOLID=1
+/// Collision contents bit marking lava.
 const CONTENTS_LAVA=8
+/// Collision contents bit marking slime.
 const CONTENTS_SLIME=16
+/// Collision contents bit marking water.
 const CONTENTS_WATER=32
+/// AAS area-contents bit marking water.
 const AREACONTENTS_WATER=1
+/// AAS area-contents bit marking lava.
 const AREACONTENTS_LAVA=2
+/// AAS area-contents bit marking slime.
 const AREACONTENTS_SLIME=4
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking teleporter.
 const AREACONTENTS_TELEPORTER=64
+/// AAS area-contents bit marking jump pad.
 const AREACONTENTS_JUMPPAD=128
 
+/// Zero movement-prediction event mask, requesting no event-specific stop.
 const SE_NONE=0
+/// The ground is hit.
 const SE_HITGROUND=1
+/// There's no ground.
 const SE_LEAVEGROUND=2
+/// Water is entered.
 const SE_ENTERWATER=4
+/// Slime is entered.
 const SE_ENTERSLIME=8
+/// Lava is entered.
 const SE_ENTERLAVA=16
+/// The ground is hit with damage.
 const SE_HITGROUNDDAMAGE=32
+/// There's a gap.
 const SE_GAP=64
+/// Touching a jump pad area.
 const SE_TOUCHJUMPPAD=128
+/// Movement-prediction stop-event bit for touching a teleporter.
 const SE_TOUCHTELEPORTER=256
+/// The given stoparea is entered.
 const SE_ENTERAREA=512
+/// A ground face in the area is hit.
 const SE_HITGROUNDAREA=1024
+/// Touching a cluster portal.
 const SE_TOUCHCLUSTERPORTAL=4096
+/// Hit the specified bounding box.
 const SE_HITBOUNDINGBOX=2048
 
 /// `Settings` record for aas client movement, containing `friction`, `stopspeed`, `gravity`, `waterfriction` and `watergravity` and related fields.
-struct Settings friction stopspeed gravity waterfriction watergravity maxwalkvelocity maxcrouchvelocity maxswimvelocity walkaccelerate airaccelerate swimaccelerate maxstep maxsteepness maxbarrier jumpvel end struct
+struct Settings
+  /// Ground-friction coefficient used by movement prediction.
+  friction
+  /// Minimum speed used when calculating ground-friction deceleration.
+  stopspeed
+  /// Gravity magnitude used when predicting movement.
+  gravity
+  /// Friction coefficient applied while the bot is swimming.
+  waterfriction
+  /// Gravity magnitude used while the bot is submerged.
+  watergravity
+  /// Maximum walking speed allowed by movement prediction.
+  maxwalkvelocity
+  /// Maximum crouched movement speed allowed by movement prediction.
+  maxcrouchvelocity
+  /// Maximum swimming speed allowed by movement prediction.
+  maxswimvelocity
+  /// Acceleration coefficient applied to grounded walking input.
+  walkaccelerate
+  /// Acceleration coefficient applied while the bot is airborne.
+  airaccelerate
+  /// Acceleration coefficient applied to swimming input.
+  swimaccelerate
+  /// Maximum obstacle height that can be crossed by stepping.
+  maxstep
+  /// Steepness threshold separating walkable ground from an impassable slope.
+  maxsteepness
+  /// Maximum obstacle height accepted by a barrier-jump prediction.
+  maxbarrier
+  /// Initial upward velocity applied when beginning a jump.
+  jumpvel
+end struct
 /// `Trace` record for aas client movement, containing `startsolid`, `fraction`, `endpos`, `ent` and `lastarea` and related fields.
-struct Trace startsolid fraction endpos ent lastarea area planenum normal end struct
+struct Trace
+  /// True when the initial trace position lies inside solid geometry.
+  startsolid
+  /// Fraction of the requested trace segment completed before the first collision.
+  fraction
+  /// End position reached by the collision trace.
+  endpos
+  /// Entity blocking the trace.
+  ent
+  /// Last area the trace was in (zero if none).
+  lastarea
+  /// Area blocking the trace (zero if none).
+  area
+  /// Navigation plane identifier returned by the collision query used in movement prediction.
+  planenum
+  /// Collision-plane normal returned to the client movement predictor.
+  normal
+end struct
 /// `AreaTrace` record for aas client movement, containing `areas` and `points`.
-struct AreaTrace areas points end struct
+struct AreaTrace
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+end struct
 /// `Movement` record for aas client movement, containing `success`, `endpos`, `endarea`, `velocity` and `trace` and related fields.
-struct Movement success endpos endarea velocity trace presencetype stopevent endcontents time frames end struct
+struct Movement
+  /// True when movement prediction reached its requested stopping condition.
+  success
+  /// End position reached by the collision trace.
+  endpos
+  /// Area at end of movement prediction.
+  endarea
+  /// World-space linear velocity associated with the moving entity.
+  velocity
+  /// Collision trace result or active trace state for this operation.
+  trace
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presencetype
+  /// Event that made the prediction stop.
+  stopevent
+  /// Contents at the end of movement prediction.
+  endcontents
+  /// Total time simulated by this movement prediction.
+  time
+  /// Number of frames predicted ahead.
+  frames
+end struct
 /// `Services` record for aas client movement, containing `context`, `traceFn`, `pointContentsFn`, `pointAreaFn` and `pointPresenceFn` and related fields.
-struct Services context traceFn pointContentsFn pointAreaFn pointPresenceFn areaContentsFn traceAreasFn settings end struct
+struct Services
+  /// Caller-supplied data associated with collision, contents, presence, and area queries during
+  /// movement prediction.
+  context
+  /// Host callback that performs a collision sweep through the host world.
+  traceFn
+  /// Host callback that queries world contents at a supplied point.
+  pointContentsFn
+  /// Host callback that returns the AAS area containing a point.
+  pointAreaFn
+  /// Host callback that returns the presence types allowed at a position.
+  pointPresenceFn
+  /// Host callback that returns the contents flags for an AAS area.
+  areaContentsFn
+  /// Host callback that finds AAS areas crossed by a line segment.
+  traceAreasFn
+  /// Area or runtime settings controlling navigation behavior.
+  settings
+end struct
 
 /// Create a `mq3.botlib.aas_client_movement.Settings` record, initializing `friction` as `6.0`, `stopspeed` as `100.0` and `gravity` as `800.0`.
 function settings() return Settings(6.0,100.0,800.0,1.0,400.0,320.0,100.0,150.0,10.0,1.0,4.0,19.0,0.7,33.0,270.0) end function

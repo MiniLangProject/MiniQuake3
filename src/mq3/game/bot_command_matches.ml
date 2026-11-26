@@ -8,127 +8,411 @@ import mq3.botlib.ai_chat_matches as chat
 import std.string as strings
 import mq3.compat.numeric as n
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF=5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK=6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER=7
+/// Chat-state value or flag selecting team.
 const CHAT_TEAM=1
+/// Chat-state value or flag selecting tell.
 const CHAT_TELL=2
+/// Bot message-matching context bit enabling misc patterns.
 const MTCONTEXT_MISC=headers.MTCONTEXT_MISC
+/// Bot message-matching context bit enabling initialteamchat patterns.
 const MTCONTEXT_INITIALTEAMCHAT=headers.MTCONTEXT_INITIALTEAMCHAT
+/// Bot message-matching context bit enabling time patterns.
 const MTCONTEXT_TIME=headers.MTCONTEXT_TIME
+/// Bot message-matching context bit enabling teammate patterns.
 const MTCONTEXT_TEAMMATE=headers.MTCONTEXT_TEAMMATE
+/// Bot message-matching context bit enabling addressee patterns.
 const MTCONTEXT_ADDRESSEE=headers.MTCONTEXT_ADDRESSEE
+/// Bot message-matching context bit enabling patrolkeyarea patterns.
 const MTCONTEXT_PATROLKEYAREA=headers.MTCONTEXT_PATROLKEYAREA
+/// Bot message-matching context bit enabling replychat patterns.
 const MTCONTEXT_REPLYCHAT=headers.MTCONTEXT_REPLYCHAT
+/// Bot message-matching context bit enabling capture the flag patterns.
 const MTCONTEXT_CTF=headers.MTCONTEXT_CTF
+/// Bot chat-message type used to recognize or dispatch newleader messages.
 const MSG_NEWLEADER=headers.MSG_NEWLEADER
+/// Bot chat-message type used to recognize or dispatch entergame messages.
 const MSG_ENTERGAME=headers.MSG_ENTERGAME
+/// Bot chat-message type used to recognize or dispatch help messages.
 const MSG_HELP=headers.MSG_HELP
+/// Bot chat-message type used to recognize or dispatch accompany messages.
 const MSG_ACCOMPANY=headers.MSG_ACCOMPANY
+/// Bot chat-message type used to recognize or dispatch defend a key area messages.
 const MSG_DEFENDKEYAREA=headers.MSG_DEFENDKEYAREA
+/// Bot chat-message type used to recognize or dispatch rush the base messages.
 const MSG_RUSHBASE=headers.MSG_RUSHBASE
+/// Bot chat-message type used to recognize or dispatch capture the flag messages.
 const MSG_GETFLAG=headers.MSG_GETFLAG
+/// Bot chat-message type used to recognize or dispatch startteamleadership messages.
 const MSG_STARTTEAMLEADERSHIP=headers.MSG_STARTTEAMLEADERSHIP
+/// Bot chat-message type used to recognize or dispatch stopteamleadership messages.
 const MSG_STOPTEAMLEADERSHIP=headers.MSG_STOPTEAMLEADERSHIP
+/// Bot chat-message type used to recognize or dispatch whoisteamlaeder messages.
 const MSG_WHOISTEAMLAEDER=headers.MSG_WHOISTEAMLAEDER
+/// Bot chat-message type used to recognize or dispatch wait messages.
 const MSG_WAIT=headers.MSG_WAIT
+/// Bot chat-message type used to recognize or dispatch whatareyoudoing messages.
 const MSG_WHATAREYOUDOING=headers.MSG_WHATAREYOUDOING
+/// Bot chat-message type used to recognize or dispatch joinsubteam messages.
 const MSG_JOINSUBTEAM=headers.MSG_JOINSUBTEAM
+/// Bot chat-message type used to recognize or dispatch leavesubteam messages.
 const MSG_LEAVESUBTEAM=headers.MSG_LEAVESUBTEAM
+/// Bot chat-message type used to recognize or dispatch createnewformation messages.
 const MSG_CREATENEWFORMATION=headers.MSG_CREATENEWFORMATION
+/// Bot chat-message type used to recognize or dispatch formationposition messages.
 const MSG_FORMATIONPOSITION=headers.MSG_FORMATIONPOSITION
+/// Bot chat-message type used to recognize or dispatch formationspace messages.
 const MSG_FORMATIONSPACE=headers.MSG_FORMATIONSPACE
+/// Bot chat-message type used to recognize or dispatch doformation messages.
 const MSG_DOFORMATION=headers.MSG_DOFORMATION
+/// Bot chat-message type used to recognize or dispatch dismiss messages.
 const MSG_DISMISS=headers.MSG_DISMISS
+/// Bot chat-message type used to recognize or dispatch camp messages.
 const MSG_CAMP=headers.MSG_CAMP
+/// Bot chat-message type used to recognize or dispatch checkpoint messages.
 const MSG_CHECKPOINT=headers.MSG_CHECKPOINT
+/// Bot chat-message type used to recognize or dispatch patrol messages.
 const MSG_PATROL=headers.MSG_PATROL
+/// Bot chat-message type used to recognize or dispatch leadtheway messages.
 const MSG_LEADTHEWAY=headers.MSG_LEADTHEWAY
+/// Bot chat-message type used to recognize or dispatch getitem messages.
 const MSG_GETITEM=headers.MSG_GETITEM
+/// Bot chat-message type used to recognize or dispatch kill messages.
 const MSG_KILL=headers.MSG_KILL
+/// Bot chat-message type used to recognize or dispatch whereareyou messages.
 const MSG_WHEREAREYOU=headers.MSG_WHEREAREYOU
+/// Bot chat-message type used to recognize or dispatch return the flag messages.
 const MSG_RETURNFLAG=headers.MSG_RETURNFLAG
+/// Bot chat-message type used to recognize or dispatch whatismycommand messages.
 const MSG_WHATISMYCOMMAND=headers.MSG_WHATISMYCOMMAND
+/// Bot chat-message type used to recognize or dispatch whichteam messages.
 const MSG_WHICHTEAM=headers.MSG_WHICHTEAM
+/// Bot chat-message type used to recognize or dispatch taskpreference messages.
 const MSG_TASKPREFERENCE=headers.MSG_TASKPREFERENCE
+/// Bot chat-message type used to recognize or dispatch attackenemybase messages.
 const MSG_ATTACKENEMYBASE=headers.MSG_ATTACKENEMYBASE
+/// Bot chat-message type used to recognize or dispatch harvest messages.
 const MSG_HARVEST=headers.MSG_HARVEST
+/// Bot chat-message type used to recognize or dispatch suicide messages.
 const MSG_SUICIDE=headers.MSG_SUICIDE
+/// Bot chat-message type used to recognize or dispatch me messages.
 const MSG_ME=headers.MSG_ME
+/// Bot chat-message type used to recognize or dispatch everyone messages.
 const MSG_EVERYONE=headers.MSG_EVERYONE
+/// Bot chat-message type used to recognize or dispatch multiplenames messages.
 const MSG_MULTIPLENAMES=headers.MSG_MULTIPLENAMES
+/// Bot chat-message type used to recognize or dispatch minutes messages.
 const MSG_MINUTES=headers.MSG_MINUTES
+/// Bot chat-message type used to recognize or dispatch seconds messages.
 const MSG_SECONDS=headers.MSG_SECONDS
+/// Bot chat-message type used to recognize or dispatch forever messages.
 const MSG_FOREVER=headers.MSG_FOREVER
+/// Bot chat-message type used to recognize or dispatch foralongtime messages.
 const MSG_FORALONGTIME=headers.MSG_FORALONGTIME
+/// Bot chat-message type used to recognize or dispatch forawhile messages.
 const MSG_FORAWHILE=headers.MSG_FORAWHILE
+/// Bot chat-message type used to recognize or dispatch chattell messages.
 const MSG_CHATTELL=headers.MSG_CHATTELL
+/// Bot chat-message type used to recognize or dispatch capture the flag messages.
 const MSG_CTF=headers.MSG_CTF
+/// Bot chat-match subtype flag used to refine nearitem instructions.
 const ST_NEARITEM=headers.ST_NEARITEM
+/// Bot chat-match subtype flag used to refine addressed instructions.
 const ST_ADDRESSED=headers.ST_ADDRESSED
+/// Bot chat-match subtype flag used to refine feet instructions.
 const ST_FEET=headers.ST_FEET
+/// Bot chat-match subtype flag used to refine time instructions.
 const ST_TIME=headers.ST_TIME
+/// Bot chat-match subtype flag used to refine here instructions.
 const ST_HERE=headers.ST_HERE
+/// Bot chat-match subtype flag used to refine there instructions.
 const ST_THERE=headers.ST_THERE
+/// Bot chat-match subtype flag used to refine i instructions.
 const ST_I=headers.ST_I
+/// Bot chat-match subtype flag used to refine more instructions.
 const ST_MORE=headers.ST_MORE
+/// Bot chat-match subtype flag used to refine back instructions.
 const ST_BACK=headers.ST_BACK
+/// Bot chat-match subtype flag used to refine reverse instructions.
 const ST_REVERSE=headers.ST_REVERSE
+/// Bot chat-match subtype flag used to refine someone instructions.
 const ST_SOMEONE=headers.ST_SOMEONE
+/// Bot chat-match subtype flag used to refine gotflag instructions.
 const ST_GOTFLAG=headers.ST_GOTFLAG
+/// Bot chat-match subtype flag used to refine capturedflag instructions.
 const ST_CAPTUREDFLAG=headers.ST_CAPTUREDFLAG
+/// Bot chat-match subtype flag used to refine returnedflag instructions.
 const ST_RETURNEDFLAG=headers.ST_RETURNEDFLAG
+/// Bot chat-match subtype flag used to refine 1 fctfgotflag instructions.
 const ST_1FCTFGOTFLAG=headers.ST_1FCTFGOTFLAG
+/// Bot chat-match subtype flag used to refine defender instructions.
 const ST_DEFENDER=headers.ST_DEFENDER
+/// Bot chat-match subtype flag used to refine attacker instructions.
 const ST_ATTACKER=headers.ST_ATTACKER
+/// Bot chat-match subtype flag used to refine roamer instructions.
 const ST_ROAMER=headers.ST_ROAMER
+/// Chat-match variable slot containing a player network name.
 const NETNAME=headers.NETNAME
+/// Chat-match variable slot containing a flag reference.
 const FLAG=headers.FLAG
+/// Chat-match variable slot containing the intended recipient.
 const ADDRESSEE=headers.ADDRESSEE
+/// Chat-match variable slot containing an item reference.
 const ITEM=headers.ITEM
+/// Chat-match variable slot containing the selected teammate.
 const TEAMMATE=headers.TEAMMATE
+/// Chat-match variable slot containing a team name.
 const TEAMNAME=headers.TEAMNAME
+/// Chat-match variable slot containing the selected enemy.
 const ENEMY=headers.ENEMY
+/// Chat-match variable slot containing an area to defend or visit.
 const KEYAREA=headers.KEYAREA
+/// Chat-match variable slot containing a position reference.
 const POSITION=headers.POSITION
+/// Chat-match variable slot containing a numeric argument.
 const NUMBER=headers.NUMBER
+/// Chat-match variable slot containing a duration or time.
 const TIME=headers.TIME
+/// Chat-match variable slot containing a named subject.
 const NAME=headers.NAME
+/// Chat-match variable slot retaining the remaining argument text.
 const MORE=headers.MORE
+/// Long-term bot goal identifier selecting teamhelp behavior.
 const LTG_TEAMHELP=1
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=2
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=5
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=6
+/// Long-term bot goal identifier selecting camp behavior.
 const LTG_CAMP=7
+/// Long-term bot goal identifier selecting follow a camp order behavior.
 const LTG_CAMPORDER=8
+/// Long-term bot goal identifier selecting patrol behavior.
 const LTG_PATROL=9
+/// Long-term bot goal identifier selecting getitem behavior.
 const LTG_GETITEM=10
+/// Long-term bot goal identifier selecting kill behavior.
 const LTG_KILL=11
+/// Long-term bot goal identifier selecting harvest behavior.
 const LTG_HARVEST=12
+/// Long-term bot goal identifier selecting attackenemybase behavior.
 const LTG_ATTACKENEMYBASE=13
+/// Bot team-task preference bit indicating a preference for defender.
 const TEAMTP_DEFENDER=1
+/// Bot team-task preference bit indicating a preference for attacker.
 const TEAMTP_ATTACKER=2
+/// Patrol behavior flag enabling loop.
 const PATROL_LOOP=1
+/// Patrol behavior flag enabling reverse.
 const PATROL_REVERSE=2
 
 /// `Goal` record for bot command matches, containing `number`, `entitynum`, `areanum`, `origin` and `mins` and related fields.
-struct Goal number entitynum areanum origin mins maxs flags name end struct
+struct Goal
+  /// Botlib goal number identifying this navigation target.
+  number
+  /// Entity number associated with the goal selected by a matched bot text command.
+  entitynum
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// World-space target position of the goal selected by a matched bot text command.
+  origin
+  /// Lower local bounding-box corner of the goal selected by a matched bot text command.
+  mins
+  /// Upper local bounding-box corner of the goal selected by a matched bot text command.
+  maxs
+  /// GFL_* flags describing this bot navigation goal.
+  flags
+  /// Name used to refer to this navigation goal or waypoint in bot orders.
+  name
+end struct
 /// `Waypoint` record for bot command matches, containing `name` and `goal`.
-struct Waypoint name goal end struct
+struct Waypoint
+  /// Name used to refer to this navigation goal or waypoint in bot orders.
+  name
+  /// Navigation or activation goal associated with the current task.
+  goal
+end struct
 /// `EntityInfo` record for bot command matches, containing `valid` and `origin`.
-struct EntityInfo valid origin end struct
+struct EntityInfo
+  /// True when entity information was found for resolving a matched text command.
+  valid
+  /// Position returned for an entity referenced by a matched text command.
+  origin
+end struct
 /// `HostAction` record for bot command matches, containing `kind`, `client`, `channel`, `text` and `arg` and related fields.
-struct HostAction kind client channel text arg value suppressed end struct
+struct HostAction
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the host action produced by a matched text order.
+  client
+  /// Delivery channel selected for the host chat/message action.
+  channel
+  /// Text payload supplied to the recorded command, chat, or host action.
+  text
+  /// Additional argument attached to a host action.
+  arg
+  /// Numeric/result payload supplied to the recorded host action.
+  value
+  /// Nonzero when an action was deliberately withheld from dispatch.
+  suppressed
+end struct
 /// `Bot` record for bot command matches, containing `client`, `entitynum`, `cs`, `team` and `origin` and related fields.
-struct Bot client entitynum cs team origin eye areanum subteam teamleader decisionmaker ordered orderTime teammessageTime teamgoalTime ltgtype lastgoalLtgtype leadTime leadTeammate leadTeamgoal leadvisibleTime leadmessageTime teammate teammatevisibleTime formationDist arriveTime defendawayTime attackawayTime harvestawayTime rushbaseawayTime teamgoal patrolpoints curpatrolpoint patrolflags checkpoints forceorders redflagstatus blueflagstatus flagcarrier flagstatuschanged lastflagcaptureTime end struct
+struct Bot
+  /// Client slot of the bot receiving and interpreting text commands.
+  client
+  /// Entity number of the bot interpreting a matched text order.
+  entitynum
+  /// Botlib chat-state handle owned by this bot.
+  cs
+  /// Team assignment associated with the client, bot, or action.
+  team
+  /// Current bot position used to resolve locations and goals in text commands.
+  origin
+  /// Eye position used as the origin of visibility and aiming queries.
+  eye
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// Name of the bot current cooperative subteam.
+  subteam
+  /// Name or identifier of the current bot-team leader.
+  teamleader
+  /// Client/entity currently responsible for the bot team decisions.
+  decisionmaker
+  /// Nonzero when a teammate explicitly ordered the current team task.
+  ordered
+  /// Timestamp at which the bot order was received.
+  orderTime
+  /// Time controlling the next bot team message.
+  teammessageTime
+  /// Deadline associated with the current cooperative team goal.
+  teamgoalTime
+  /// Current long-term goal category selected from the LTG_* constants.
+  ltgtype
+  /// Long-term goal type retained from the preceding team task.
+  lastgoalLtgtype
+  /// Deadline associated with leading a teammate toward a goal.
+  leadTime
+  /// Client/entity identifier of the teammate being led.
+  leadTeammate
+  /// Navigation goal toward which the bot is leading a teammate.
+  leadTeamgoal
+  /// Last time the teammate being led was visible.
+  leadvisibleTime
+  /// Time controlling the next message to the teammate being led.
+  leadmessageTime
+  /// Teammate entity/client selected for the current cooperative task.
+  teammate
+  /// Last time the teammate associated with the task was visible.
+  teammatevisibleTime
+  /// Desired separation from the teammate or formation leader.
+  formationDist
+  /// Timestamp at which the bot arrived at the current team goal.
+  arriveTime
+  /// Time controlling how long the bot may leave its defense goal.
+  defendawayTime
+  /// Time controlling temporary excursions from an attack-base goal.
+  attackawayTime
+  /// Time controlling temporary excursions from a harvesting goal.
+  harvestawayTime
+  /// Time controlling temporary excursions from a rush-base goal.
+  rushbaseawayTime
+  /// Navigation goal associated with the bot current team task.
+  teamgoal
+  /// Patrol goals traversed by the bot patrol behavior.
+  patrolpoints
+  /// Patrol goal currently being approached.
+  curpatrolpoint
+  /// PATROL_* behavior flags associated with the current patrol route.
+  patrolflags
+  /// Linked or indexed checkpoint goals available to the bot.
+  checkpoints
+  /// Nonzero when the team leader must issue new orders.
+  forceorders
+  /// Bot-tracked status of the red flag.
+  redflagstatus
+  /// Bot-tracked status of the blue flag.
+  blueflagstatus
+  /// Client/entity currently carrying the flag of interest.
+  flagcarrier
+  /// Nonzero after a tracked flag status changes and needs processing.
+  flagstatuschanged
+  /// Timestamp of the last flag capture observed by the bot.
+  lastflagcaptureTime
+end struct
 /// `State` record for bot command matches, containing `teamplay`, `missionpack`, `gametype`, `now` and `randomValue` and related fields.
-struct State teamplay missionpack gametype now randomValue maxclients names teams configs entityInfos pointAreas itemGoals taskPreferences preferenceNames notleader redFlag blueFlag neutralFlag redObelisk blueObelisk neutralObelisk matchState actions hostActionFn traceVisibleFn travelTimeFn end struct
+struct State
+  /// Nonzero when the active game mode uses teams.
+  teamplay
+  /// Nonzero when mission-pack rules and content are enabled.
+  missionpack
+  /// GT_* game-mode identifier used for matching text orders to supported team objectives.
+  gametype
+  /// Current clock value supplied to the bot decision step.
+  now
+  /// Deterministic random input supplied to the current bot decision.
+  randomValue
+  /// Configured number of client slots active in this game state.
+  maxclients
+  /// Name strings indexed by the corresponding state-table entries.
+  names
+  /// Team identifiers indexed by tracked clients.
+  teams
+  /// Configuration records associated with tracked clients or bot state.
+  configs
+  /// Botlib entity-information records used for tactical queries.
+  entityInfos
+  /// AAS area results associated with sampled world points.
+  pointAreas
+  /// Pickup goals available to bot decision logic.
+  itemGoals
+  /// Team-task preference values indexed by client or category.
+  taskPreferences
+  /// Names of the supported bot team-task preferences.
+  preferenceNames
+  /// Markers identifying clients excluded from team-leader selection.
+  notleader
+  /// Goal/entity reference for the red flag.
+  redFlag
+  /// Goal/entity reference for the blue flag.
+  blueFlag
+  /// Goal/entity reference for the neutral flag.
+  neutralFlag
+  /// Goal/entity reference for the red team obelisk.
+  redObelisk
+  /// Goal/entity reference for the blue team obelisk.
+  blueObelisk
+  /// Goal/entity reference for the neutral harvester obelisk.
+  neutralObelisk
+  /// Shared match-processing state used by bot command/chat matching.
+  matchState
+  /// Recorded host actions emitted by bot decision logic.
+  actions
+  /// Injected callback for host action; invoked through the State service/state record.
+  hostActionFn
+  /// Injected callback for trace visible; invoked through the State service/state record.
+  traceVisibleFn
+  /// Injected callback for travel time; invoked through the State service/state record.
+  travelTimeFn
+end struct
 
 /// Create a `mq3.game.bot_command_matches.Goal` record, initializing `number` from `number`, `entitynum` from `entitynum` and `areanum` from `areanum`.
 /// @param number Initial value stored in `mq3.game.bot_command_matches.Goal.number`.

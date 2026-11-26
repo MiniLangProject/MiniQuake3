@@ -7,9 +7,13 @@ import mq3.qcommon.message as message
 import mq3.game.entitystate as entitystate
 import mq3.game.playerstate as playerstate
 
+/// Don't need to send any more.
 const GENTITYNUM_BITS = 10
+/// Maximum number of addressable game-entity slots.
 const MAX_GENTITIES = 1024
+/// Number of payload bits used when a delta-compressed float is represented as an integer.
 const FLOAT_INT_BITS = 13
+/// Bias added to signed integer-like floats before compact delta encoding.
 const FLOAT_INT_BIAS = 4096
 
 // Struct byte offsets in the exact, deliberately hand-tuned wire order of msg.c.

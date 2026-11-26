@@ -3,15 +3,45 @@
 // Native semantic port of code/q3_ui/ui_loadconfig.c.
 package mq3.client.ui_load_config
 import std.string as strings
+/// Activation callback event accepted by the configuration-file loading menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Event identifier of the Back control used to leave the configuration-file loading menu and return to
+/// its parent menu.
 const ID_BACK=10
+/// Menu control identifier routed to the go action by the menu event handler.
 const ID_GO=11
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=12
+/// Menu control identifier routed to the left action by the menu event handler.
 const ID_LEFT=13
+/// Menu control identifier routed to the right action by the menu event handler.
 const ID_RIGHT=14
+/// Capacity limit for the configs collection or bounded storage used by this client module.
 const MAX_CONFIGS=128
 /// Stores UI load config load config menu record, including `wrapAround`, `fullscreen`, `names`, `selected`, `goHidden`, `assets` and additional values.
-struct LoadConfigMenu wrapAround fullscreen names selected goHidden assets commands actions end struct
+struct LoadConfigMenu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the configuration-file
+  /// loading menu.
+  wrapAround
+  /// Whether the configuration-loading menu covers the entire UI instead of appearing over the
+  /// underlying game view.
+  fullscreen
+  /// When constructing this record, `init` supplies `names` for this member.
+  names
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// When constructing this record, `init` supplies `hidden` for this member.
+  goHidden
+  /// Media resources retained for registering and drawing the artwork used by the configuration-file
+  /// loading menu.
+  assets
+  /// When constructing this record, `init` supplies an empty list for this member.
+  commands
+  /// Host requests queued while listing configuration files and executing the selected file, retained
+  /// in request order.
+  actions
+end struct
 /// Calls `std.string.toLowerAscii`, `std.string.endsWith`, `std.string.substr` and additional helpers from UI load config `displayName`. The final path returns `strings.toUpperAscii(name)`.
 /// @param name Name whose length/content is inspected by `displayName`.
 function displayName(name) lower=strings.toLowerAscii(name);if strings.endsWith(lower,".cfg") then name=strings.substr(name,0,len(name)-4) end if;return strings.toUpperAscii(name) end function

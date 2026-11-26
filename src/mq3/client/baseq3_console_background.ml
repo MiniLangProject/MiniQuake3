@@ -8,15 +8,43 @@ import mq3.platform.playable_window as window
 import mq3.platform.playable_multitexture as raster
 import std.string as strings
 
+/// Virtual shader name selected for this module's background surface.
 const SHADER_NAME="console"
+/// Number of texture slots required by the module's fixed media layout.
 const REQUIRED_TEXTURES=2
 
 /// Stores base Quake III console background layer record, including `stage`, `imageName`, `image`, `slot`.
-struct Layer stage imageName image slot end struct
+struct Layer
+  /// When constructing this record, `load` supplies `stage` for this member. Used by `drawLayer` during
+  /// subsequent processing.
+  stage
+  /// Resolved image path for one stage of the retail console-background shader.
+  imageName
+  /// When constructing this record, `load` supplies `stage.images[0]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores base Quake III console background media record, including `shaderName`, `layers`, `firstTextureSlot`.
-struct Media shaderName layers firstTextureSlot end struct
+struct Media
+  /// Virtual shader name used to register or resolve the displayed resource.
+  shaderName
+  /// When constructing this record, `load` supplies `layers` for this member. Used by `upload` and
+  /// `release` during subsequent processing.
+  layers
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+end struct
 /// Stores base Quake III console background point record, including `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal coordinate of a console-background texture vertex in the target window.
+  x
+  /// Vertical coordinate of a console-background texture vertex in the target window.
+  y
+  /// When constructing this record, `point` supplies `0.0001` for this member.
+  depth
+end struct
 
 /// Creates the base Quake III console background error `7745` with diagnostic text `"Baseq3 console background: "+message`.
 /// @param message Argument 2 of `error`; passed as `"Baseq3 console background: "+message`.

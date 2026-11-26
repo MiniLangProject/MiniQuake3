@@ -11,22 +11,97 @@ import std.string as strings
 /// @returns The smallest integral-valued double greater than or equal to the argument.
 extern function ceil(value as double) from "ucrtbase.dll" returns double
 
+/// Fallback health setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_HEALTH=100
+/// Fallback armor setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_ARMOR=0
+/// Fallback ammo setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_AMMO=50
+/// Fallback weapon setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_WEAPON="weapon_machinegun"
+/// Default respawn duration in milliseconds when the caller supplies no override.
 const DEFAULT_RESPAWN_MILLISECONDS=1700
+/// Default invulnerability duration in milliseconds when the caller supplies no override.
 const DEFAULT_INVULNERABILITY_MILLISECONDS=1000
+/// Vertical camera offset above the player origin in the native preview.
 const CAMERA_EYE_HEIGHT=48.0
 
 /// Stores playable player spawn record, including `origin`, `yaw`.
-struct Spawn origin yaw end struct
+struct Spawn
+  /// World-space spawn position copied into the player's state when selecting a spawn point.
+  origin
+  /// When constructing this record, `collectSpawns` supplies `yaw` for this member.
+  yaw
+end struct
 /// Stores playable player state, including `spawns`, `spawnIndex`, `position`, `yaw`, `health`, `maxHealth` and additional values.
-struct State spawns spawnIndex position yaw health maxHealth armor ammo weapon alive deaths respawnAt invulnerableUntil respawnMilliseconds invulnerabilityMilliseconds end struct
+struct State
+  /// When constructing this record, `fromEntities` supplies `spawns` for this member. Used by
+  /// `pollRespawn` during subsequent processing.
+  spawns
+  /// When constructing this record, `fromEntities` supplies `0` for this member.
+  spawnIndex
+  /// When constructing this record, `fromEntities` supplies
+  /// `[first.origin[0],first.origin[1],first.origin[2]]` for this member.
+  position
+  /// When constructing this record, `fromEntities` supplies `first.yaw` for this member.
+  yaw
+  /// Current local-player health governing damage, death, and respawn in the playable preview.
+  health
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_HEALTH` for this member. Used by
+  /// `setStats` and `pollRespawn` during subsequent processing.
+  maxHealth
+  /// Current local-player armor available to absorb incoming preview damage.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Weapon classname restored and tracked with the local preview player loadout.
+  weapon
+  /// True while the simulated player or target remains alive and can participate in gameplay.
+  alive
+  /// When constructing this record, `fromEntities` supplies `0` for this member. Used by `applyDamage`
+  /// during subsequent processing.
+  deaths
+  /// Client simulation timestamp at which the entity becomes eligible to respawn.
+  respawnAt
+  /// When constructing this record, `fromEntities` supplies `0` for this member.
+  invulnerableUntil
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_RESPAWN_MILLISECONDS` for this
+  /// member. Used by `configure` and `applyDamage` during subsequent processing.
+  respawnMilliseconds
+  /// When constructing this record, `fromEntities` supplies `DEFAULT_INVULNERABILITY_MILLISECONDS` for
+  /// this member. Used by `configure` and `pollRespawn` during subsequent processing.
+  invulnerabilityMilliseconds
+end struct
 /// Stores playable player damage record, including `requested`, `saved`, `taken`, `killed`, `ignored`, `health` and additional values.
-struct Damage requested saved taken killed ignored health armor end struct
+struct Damage
+  /// When constructing this record, `applyDamage` supplies `0` for this member.
+  requested
+  /// When constructing this record, `applyDamage` supplies `0` for this member.
+  saved
+  /// When constructing this record, `applyDamage` supplies `0` for this member.
+  taken
+  /// When constructing this record, `applyDamage` supplies `false` for this member.
+  killed
+  /// When constructing this record, `applyDamage` supplies `false` for this member.
+  ignored
+  /// Player health remaining after this damage attempt, including an ignored or invulnerable hit.
+  health
+  /// Player armor remaining after armor absorption for this damage attempt.
+  armor
+end struct
 /// Stores playable player respawn record, including `respawned`, `spawnIndex`, `position`, `yaw`, `invulnerableUntil`.
-struct Respawn respawned spawnIndex position yaw invulnerableUntil end struct
+struct Respawn
+  /// When constructing this record, `pollRespawn` supplies `false` for this member.
+  respawned
+  /// When constructing this record, `pollRespawn` supplies `state.spawnIndex` for this member.
+  spawnIndex
+  /// When constructing this record, `pollRespawn` supplies `state.position` for this member.
+  position
+  /// When constructing this record, `pollRespawn` supplies `state.yaw` for this member.
+  yaw
+  /// When constructing this record, `pollRespawn` supplies `state.invulnerableUntil` for this member.
+  invulnerableUntil
+end struct
 
 /// Creates the playable player error `7540` with diagnostic text `"preview player: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview player: "+message`.

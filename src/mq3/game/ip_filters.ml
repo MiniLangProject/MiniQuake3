@@ -9,19 +9,30 @@ import mq3.compat.textnumbers as textnum
 
 /// `Filter` record for ip filters, containing `mask` and `compare`.
 struct Filter
+  /// Mask selecting the collision or filter categories used by the operation.
   mask
+  /// IP address bits compared after applying the filter mask.
   compare
 end struct
 /// `State` record for ip filters, containing `filters`, `count`, `banBuffer`, `banVm` and `filterBanVm` and related fields.
 struct State
+  /// Configured IP address filter records.
   filters
+  /// Number of active IP address filter entries.
   count
+  /// Text buffer containing the serialized IP filter list.
   banBuffer
+  /// VM cvar record containing the serialized IP filter list.
   banVm
+  /// VM cvar record selecting blacklist or whitelist interpretation.
   filterBanVm
+  /// VM cvar record associated with the exposed filter-list buffer.
   bufferVm
+  /// Revision of the serialized IP filter buffer.
   bufferVersion
+  /// Serialized filter-list string last observed in the bound VM console variable.
   bufferVisible
+  /// Copy-generation value last observed in the bound VM console variable.
   bufferCopyGeneration
 end struct
 /// Set `level.ipFilters` to `State(filters,0,bytes(256,0),void,void,void,0,"",0)` in `mq3.game.ip_filters.get`. Return paths include `level.ipFilters`.

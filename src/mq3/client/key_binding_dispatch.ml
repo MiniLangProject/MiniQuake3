@@ -6,7 +6,21 @@ package mq3.client.key_binding_dispatch
 import std.string as bindingStrings
 
 /// Stores key binding dispatch command data, including `text`, `action`, `button`, `down`, `key`, `time`.
-struct Command text action button down key time end struct
+struct Command
+  /// Expanded console command ready for execution, including button press or release arguments when
+  /// required.
+  text
+  /// When constructing this record, `emit` supplies `action` for this member.
+  action
+  /// When constructing this record, `emit` supplies `true` for this member.
+  button
+  /// When constructing this record, `emit` supplies `down` for this member.
+  down
+  /// When constructing this record, `emit` supplies `key` for this member.
+  key
+  /// Input event timestamp in milliseconds appended to generated button press or release commands.
+  time
+end struct
 
 /// Calls `std.string.trim`, `decode`, `slice` and additional helpers from key binding dispatch `emit`. The final path returns `Command(segment+"\n",segment,false,down,key,time)`.
 /// @param segment Sequence read at `segment[0]`.

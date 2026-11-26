@@ -18,7 +18,12 @@ import mq3.game.vote_commands as voteCommands
 import mq3.qcommon.command_buffer as commands
 
 /// `Runtime` record for g cmds, containing `level` and `commandState`.
-struct Runtime level commandState end struct
+struct Runtime
+  /// Game-level state shared with the operation or runtime.
+  level
+  /// Game command-dispatch state retained by the runtime or level.
+  commandState
+end struct
 
 /// Create a `mq3.game.g_cmds.Runtime` record, initializing `level` from `level` and `commandState` as `commands.create()`.
 /// @param level Initial value stored in `mq3.game.g_cmds.Runtime.level`.

@@ -9,38 +9,164 @@ import mq3.compat.numeric as n
 import mq3.qcommon.message as message
 import mq3.qcommon.message_delta as usercmdDelta
 
+/// Connection-state value for a completed handshake before game-state loading, defined for deciding
+/// when client user commands and command packets can be sent.
 const CA_CONNECTED=5
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Connection-state value for normal gameplay after game-state loading, defined for deciding when
+/// client user commands and command packets can be sent.
 const CA_ACTIVE=8
+/// Client connection state used for fullscreen cinematic playback.
 const CA_CINEMATIC=9
+/// Network-address kind identifying a loopback destination.
 const NA_LOOPBACK=2
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Mask that maps a user-command sequence number into the command-history ring.
 const CMD_MASK=63
+/// Number of packet records retained in the client packet-history ring.
 const PACKET_BACKUP=32
+/// Mask that maps a packet sequence number into the packet-history ring.
 const PACKET_MASK=31
+/// Capacity limit for the packet usercmds collection or bounded storage used by this client module.
 const MAX_PACKET_USERCMDS=32
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Client-message command byte selecting the move protocol operation.
 const CLC_MOVE=2
+/// Client-message command byte selecting the move no delta protocol operation.
 const CLC_MOVE_NO_DELTA=3
+/// Client-message command byte selecting the client command protocol operation.
 const CLC_CLIENT_COMMAND=4
 
 /// Stores send cmd out packet record, including `serverTime`, `realtime`, `cmdNumber`.
-struct OutPacket serverTime realtime cmdNumber end struct
+struct OutPacket
+  /// Timestamp in milliseconds of the latest user command included in this outgoing packet.
+  serverTime
+  /// Local timestamp in milliseconds at which this outgoing user-command packet was sent.
+  realtime
+  /// Monotonically advancing user-command sequence number for the client.
+  cmdNumber
+end struct
 /// Stores send cmd state, including `connectionState`, `realtime`, `oldFrameTime`, `frameMsec`, `lastPacketSentTime`, `demoPlaying` and additional values.
 struct State
-  connectionState realtime oldFrameTime frameMsec lastPacketSentTime
-  demoPlaying demoWaiting downloadTempName remoteAddressType lanAddress
-  maxPackets packetDup noDelta serverRunning serverPaused clientPaused
-  serverId serverMessageSequence serverCommandSequence reliableAcknowledge reliableSequence
-  reliableCommands serverCommands checksumFeed snapValid snapMessageNum outgoingSequence
-  cmdNumber commands outPackets codec
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
+  connectionState
+  /// Current local client clock in milliseconds used for command-packet scheduling and send timestamps.
+  realtime
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `createNewCommand`
+  /// during subsequent processing.
+  frameMsec
+  /// Client timestamp of the latest outgoing packet, used to schedule retransmission.
+  lastPacketSentTime
+  /// True while the client receives its game data from a recorded demo.
+  demoPlaying
+  /// When constructing this record, `create` supplies `false` for this member. Used by `writePacket`
+  /// during subsequent processing.
+  demoWaiting
+  /// When constructing this record, `create` supplies an empty string for this member. Used by `ready`
+  /// during subsequent processing.
+  downloadTempName
+  /// When constructing this record, `create` supplies `0` for this member. Used by `ready` during
+  /// subsequent processing.
+  remoteAddressType
+  /// When constructing this record, `create` supplies `false` for this member. Used by `ready` during
+  /// subsequent processing.
+  lanAddress
+  /// When constructing this record, `create` supplies `30` for this member. Used by `ready` during
+  /// subsequent processing.
+  maxPackets
+  /// When constructing this record, `create` supplies `1` for this member. Used by `writePacket` during
+  /// subsequent processing.
+  packetDup
+  /// When constructing this record, `create` supplies `false` for this member. Used by `writePacket`
+  /// during subsequent processing.
+  noDelta
+  /// True when a local game server is running in the same engine instance.
+  serverRunning
+  /// When constructing this record, `create` supplies `false` for this member. Used by `send` during
+  /// subsequent processing.
+  serverPaused
+  /// When constructing this record, `create` supplies `false` for this member. Used by `send` during
+  /// subsequent processing.
+  clientPaused
+  /// Server-instance identifier included in client messages to reject stale connections.
+  serverId
+  /// Highest server network-message sequence observed by the client.
+  serverMessageSequence
+  /// Latest received reliable server-command sequence acknowledged in outgoing packets and used to
+  /// select command text for encoding.
+  serverCommandSequence
+  /// Highest reliable-command sequence acknowledged as executed by the peer.
+  reliableAcknowledge
+  /// Sequence number assigned to the latest queued reliable command.
+  reliableSequence
+  /// Ring of reliable command strings awaiting acknowledgement or execution.
+  reliableCommands
+  /// Reliable server commands retained for ordered execution by the client.
+  serverCommands
+  /// Server-provided seed used when calculating the client's content checksums.
+  checksumFeed
+  /// When constructing this record, `create` supplies `false` for this member. Used by `writePacket`
+  /// during subsequent processing.
+  snapValid
+  /// When constructing this record, `create` supplies `0` for this member. Used by `writePacket` during
+  /// subsequent processing.
+  snapMessageNum
+  /// When constructing this record, `create` supplies `1` for this member. Used by `ready` and
+  /// `writePacket` during subsequent processing.
+  outgoingSequence
+  /// Monotonically advancing user-command sequence number for the client.
+  cmdNumber
+  /// When constructing this record, `create` supplies `commands` for this member. Used by
+  /// `createNewCommand` and `writePacket` during subsequent processing.
+  commands
+  /// History of outgoing packet metadata used to estimate acknowledgement timing.
+  outPackets
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `writePacket` during subsequent processing.
+  codec
 end struct
 /// Stores send cmd host-service callbacks, including `createCommandFn`, `transmitFn`, `cvarFn`, `diagnosticFn`, `context`.
-struct Services createCommandFn transmitFn cvarFn diagnosticFn context end struct
+struct Services
+  /// Host callback for the create command operation; an unset callback leaves that host operation
+  /// unavailable.
+  createCommandFn
+  /// Host callback for the transmit operation; an unset callback leaves that host operation
+  /// unavailable.
+  transmitFn
+  /// Host callback for the cvar operation; an unset callback leaves that host operation unavailable.
+  cvarFn
+  /// Host callback for the diagnostic operation; an unset callback leaves that host operation
+  /// unavailable.
+  diagnosticFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for client command-packet
+  /// transmission.
+  context
+end struct
 /// Stores send cmd write result record, including `sent`, `message`, `commandCount`, `moveType`, `key`.
-struct WriteResult sent message commandCount moveType key end struct
+struct WriteResult
+  /// When constructing this record, `writePacket` supplies `false` for this member.
+  sent
+  /// When constructing this record, `writePacket` supplies an absent (`void`) value for this member.
+  message
+  /// When constructing this record, `writePacket` supplies `0` for this member.
+  commandCount
+  /// When constructing this record, `writePacket` supplies `0` for this member.
+  moveType
+  /// When constructing this record, `writePacket` supplies `0` for this member.
+  key
+end struct
 /// Stores send cmd live transport record, including `runtime`, `channel`.
-struct LiveTransport runtime channel end struct
+struct LiveTransport
+  /// When constructing this record, `liveServices` supplies `runtime` for this member.
+  runtime
+  /// When constructing this record, `liveServices` supplies `channel` for this member.
+  channel
+end struct
 
 /// Adapts `mq3.qcommon.message_delta.userCommand` to send cmd `zeroCommand`, returning its result for `0, 0, 0, 0, 0, 0, 0, 0, 0`.
 function zeroCommand() return usercmdDelta.userCommand(0,0,0,0,0,0,0,0,0) end function

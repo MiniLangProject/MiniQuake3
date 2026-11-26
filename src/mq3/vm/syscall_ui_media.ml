@@ -4,17 +4,63 @@
 package mq3.vm.syscall_ui_media
 import mq3.vm.syscall_common as common
 
+/// Byte size used for qtime storage or binary layout in mq3.vm.syscall_ui_media.
 const QTIME_SIZE = 36
+/// Number of characters stored in the legacy CD-key value.
 const CDKEY_CHARS = 16
 
 /// SoundServices record for vm.syscall_ui_media, containing `registerFn`, `startLocalFn`, `stopBackgroundFn`, `startBackgroundFn`.
-struct SoundServices registerFn startLocalFn stopBackgroundFn startBackgroundFn end struct
+struct SoundServices
+  /// Injected callback for register; invoked through the SoundServices service/state record.
+  registerFn
+  /// Injected callback for start local; invoked through the SoundServices service/state record.
+  startLocalFn
+  /// Injected callback for stop background; invoked through the SoundServices service/state record.
+  stopBackgroundFn
+  /// Injected callback for start background; invoked through the SoundServices service/state record.
+  startBackgroundFn
+end struct
 /// CinematicServices record for vm.syscall_ui_media, containing `playFn`, `stopFn`, `runFn`, `drawFn`, `setExtentsFn`.
-struct CinematicServices playFn stopFn runFn drawFn setExtentsFn end struct
+struct CinematicServices
+  /// Injected callback for play; invoked through the CinematicServices service/state record.
+  playFn
+  /// Injected callback for stop; invoked through the CinematicServices service/state record.
+  stopFn
+  /// Injected callback for run; invoked through the CinematicServices service/state record.
+  runFn
+  /// Injected callback for draw; invoked through the CinematicServices service/state record.
+  drawFn
+  /// Injected callback for set extents; invoked through the CinematicServices service/state record.
+  setExtentsFn
+end struct
 /// PlatformServices record for vm.syscall_ui_media, containing `realTimeFn`, `remapShaderFn`, `getCdKeyFn`, `setCdKeyFn`, `verifyCdKeyFn`, `seekFn`, and 1 further fields.
-struct PlatformServices realTimeFn remapShaderFn getCdKeyFn setCdKeyFn verifyCdKeyFn seekFn pbStatusFn end struct
+struct PlatformServices
+  /// Injected callback for real time; invoked through the PlatformServices service/state record.
+  realTimeFn
+  /// Injected callback for remap shader; invoked through the PlatformServices service/state record.
+  remapShaderFn
+  /// Injected callback for get cd key; invoked through the PlatformServices service/state record.
+  getCdKeyFn
+  /// Injected callback for set cd key; invoked through the PlatformServices service/state record.
+  setCdKeyFn
+  /// Injected callback for verify cd key; invoked through the PlatformServices service/state record.
+  verifyCdKeyFn
+  /// Injected callback for seek; invoked through the PlatformServices service/state record.
+  seekFn
+  /// Injected callback for pb status; invoked through the PlatformServices service/state record.
+  pbStatusFn
+end struct
 /// Services record for vm.syscall_ui_media, containing `context`, `sound`, `cinematic`, `platform`.
-struct Services context sound cinematic platform end struct
+struct Services
+  /// Opaque caller-supplied context available to UI VM sound, cinematic, and platform services.
+  context
+  /// Sound service bundle used by media and playback operations.
+  sound
+  /// Cinematic playback service bundle used by UI media calls.
+  cinematic
+  /// Platform service bundle providing operating-system operations.
+  platform
+end struct
 
 /// Create `mq3.vm.syscall_ui_media.SoundServices` with registerFn=void; startLocalFn=void; stopBackgroundFn=void; startBackgroundFn=void.
 function soundServices() return SoundServices(void,void,void,void) end function

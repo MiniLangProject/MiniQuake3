@@ -35,14 +35,72 @@ function unixSharedSymbols() return ["Sys_Cwd","Sys_DefaultCDPath","Sys_DefaultH
 function unixVmX86Symbols() return ["VM_CallCompiled","VM_Compile"] end function
 
 /// Data record for `mq3.platform.unix_runtime.Address`; groups `type`, `host`, `port`.
-struct Address type host port end struct
+struct Address
+  /// Network address kind selecting loopback, IPv4, broadcast, or another supported transport.
+  type
+  /// Host address or host-service adapter associated with the operation.
+  host
+  /// Transport port number associated with the endpoint.
+  port
+end struct
 /// Data record for `mq3.platform.unix_runtime.Event`; groups `kind`, `value1`, `value2`, `time`.
-struct Event kind value1 value2 time end struct
+struct Event
+  /// System-event category selecting how the accompanying values are interpreted.
+  kind
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value1
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+  /// Millisecond timestamp retained with a Unix keyboard, mouse, or system event.
+  time
+end struct
 /// Data record for `mq3.platform.unix_runtime.State`; groups `glInitialized`, `inputInitialized`, `joystickInitialized`, `soundInitialized`, `logging`, `gamma`, and 13 further fields.
-struct State glInitialized inputInitialized joystickInitialized soundInitialized logging gamma active signals currentTime paths user events systemEvents packets history historyCursor warnings errors quitRequested end struct
+struct State
+  /// Whether the platform graphics context has initialized.
+  glInitialized
+  /// Whether native input processing has initialized.
+  inputInitialized
+  /// Whether the joystick input subsystem has initialized.
+  joystickInitialized
+  /// Whether the platform sound subsystem has initialized.
+  soundInitialized
+  /// Whether graphics or platform call logging is enabled.
+  logging
+  /// Configured gamma correction or platform gamma-ramp state.
+  gamma
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Operating-system signals recorded by the platform adapter.
+  signals
+  /// Current platform clock value in milliseconds.
+  currentTime
+  /// Filesystem paths used to locate user data and game resources.
+  paths
+  /// Operating-system user information used by platform services.
+  user
+  /// Pending input or system events awaiting delivery.
+  events
+  /// Native system events waiting to be translated into engine events.
+  systemEvents
+  /// Network packets received or processed by this result.
+  packets
+  /// Previously entered console commands retained for recall.
+  history
+  /// Current position while browsing console command history.
+  historyCursor
+  /// Nonfatal diagnostics retained by the subsystem.
+  warnings
+  /// Errors recorded by this subsystem or its host callbacks.
+  errors
+  /// Whether application shutdown has been requested.
+  quitRequested
+end struct
 
+/// Network-address sentinel identifying an invalid or unresolved address.
 const NA_BAD=1
+/// Network-address type for in-process loopback transport.
 const NA_LOOPBACK=2
+/// Network-address type for an IPv4 endpoint.
 const NA_IP=4
 
 /// Constructs `mq3.platform.unix_runtime.State` with `glInitialized` = `false`, `inputInitialized` = `false`, `joystickInitialized` = `false`, `soundInitialized` = `false` and the supplied remaining values.

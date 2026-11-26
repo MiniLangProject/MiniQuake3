@@ -11,31 +11,54 @@ import mq3.compat.textnumbers as textnum
 import mq3.qcommon.cvar as cv
 import std.string as strings
 
+/// Game-mode identifier selecting ffa rules.
 const GT_FFA = 0
+/// Game-mode identifier selecting tournament rules.
 const GT_TOURNAMENT = 1
+/// Game-mode identifier selecting single player rules.
 const GT_SINGLE_PLAYER = 2
+/// Game-mode identifier selecting team rules.
 const GT_TEAM = 3
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 8
+/// Console-command execution mode selecting insert scheduling.
 const EXEC_INSERT = 1
+/// Initial delay in milliseconds before queued bots begin playing.
 const BOT_BEGIN_DELAY_BASE = 2000
+/// Additional delay in milliseconds used to stagger consecutive bot starts.
 const BOT_BEGIN_DELAY_INCREMENT = 1500
 
 /// `State` record for bot population, containing `registry`, `clients`, `checkTime`, `minimumPlayers` and `minimumVm` and related fields.
 struct State
+  /// Registry of currently loaded preprocessor/token sources.
   registry
+  /// Client records indexed by client slot.
   clients
+  /// Deadline for the next periodic condition check.
   checkTime
+  /// Target minimum player count maintained by bot population logic.
   minimumPlayers
+  /// VM console-variable record controlling the minimum-player target.
   minimumVm
+  /// Single-player bot skill setting.
   spSkill
+  /// Setting controlling bot creation and bot-AI processing.
   botEnable
+  /// Setting indicating whether a local client is running.
   clRunning
+  /// Injected callback for allocate client; invoked through the State service/state record.
   allocateClientFn
+  /// Injected callback for connect client; invoked through the State service/state record.
   connectClientFn
+  /// Injected callback for set user information; invoked through the State service/state record.
   setUserinfoFn
+  /// Injected callback for console; invoked through the State service/state record.
   consoleFn
+  /// Injected callback for server command; invoked through the State service/state record.
   serverCommandFn
+  /// Injected callback for print; invoked through the State service/state record.
   printFn
+  /// Injected callback for console variable set; invoked through the State service/state record.
   cvarSetFn
 end struct
 

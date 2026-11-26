@@ -6,15 +6,26 @@ import mq3.compat.numeric as n
 
 /// Visibility record for collision.visibility, containing `clusters`, `areas`, `numClusters`, `numAreas`, `clusterBytes`, `data`, and 4 further fields.
 struct Visibility
+  /// Cluster records or assignments used to group navigation and visibility areas.
   clusters
+  /// Area records or area assignments used by navigation and visibility queries.
   areas
+  /// Number of visibility clusters associated with this entity or map.
   numClusters
+  /// Number of portal or navigation areas represented by the loaded map.
   numAreas
+  /// Byte stride of one cluster's visibility bit vector.
   clusterBytes
+  /// Packed potentially-visible-set bits read from the BSP visibility lump.
   data
+  /// True when the map provides per-cluster visibility data; otherwise all clusters are treated as
+  /// visible.
   vised
+  /// Portal records joining navigation clusters or visibility areas.
   portals
+  /// Connected-area group numbers calculated by portal flood filling.
   floodnums
+  /// True when portal-area visibility restrictions are disabled.
   noAreas
 end struct
 

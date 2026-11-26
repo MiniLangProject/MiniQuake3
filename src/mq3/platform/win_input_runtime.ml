@@ -3,27 +3,102 @@
 package mq3.platform.win_input_runtime
 import mq3.compat.numeric as numeric
 
+/// System-event type carrying a key code and its press or release state.
 const SE_KEY=1
+/// System-event type carrying relative horizontal and vertical mouse movement.
 const SE_MOUSE=3
+/// Engine input key code for the left arrow.
 const K_LEFTARROW=134
+/// Engine input key code for the right arrow.
 const K_RIGHTARROW=135
+/// Engine input key code for the up arrow.
 const K_UPARROW=132
+/// Engine input key code for the down arrow.
 const K_DOWNARROW=133
+/// Engine input key code for mouse button 1.
 const K_MOUSE1=178
+/// Engine input key code for joystick button 1.
 const K_JOY1=185
+/// Engine input key code for joystick button 16.
 const K_JOY16=200
+/// Engine input key code for auxiliary input button 1.
 const K_AUX1=217
 
 /// Data record for `mq3.platform.win_input_runtime.InputEvent`; groups `time`, `type`, `value`, `value2`.
-struct InputEvent time type value value2 end struct
+struct InputEvent
+  /// Millisecond timestamp attached to translated mouse, joystick, or MIDI input.
+  time
+  /// System-event category selecting how the accompanying values are interpreted.
+  type
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+end struct
 /// Data record for `mq3.platform.win_input_runtime.Mouse`; groups `initialized`, `active`, `directInput`, `startupDelayed`, `oldButtonState`, `dx`, and 1 further field.
-struct Mouse initialized active directInput startupDelayed oldButtonState dx dy end struct
+struct Mouse
+  /// Whether initialization completed successfully.
+  initialized
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Whether mouse input uses the DirectInput path.
+  directInput
+  /// Whether mouse startup is postponed until the window can acquire input.
+  startupDelayed
+  /// Mouse-button bit mask retained from the preceding input sample.
+  oldButtonState
+  /// Relative horizontal mouse movement accumulated for the current sample.
+  dx
+  /// Relative vertical mouse movement accumulated for the current sample.
+  dy
+end struct
 /// Data record for `mq3.platform.win_input_runtime.Joystick`; groups `enabled`, `available`, `buttonCount`, `axisCount`, `hasPov`, `oldButtons`, and 3 further fields.
-struct Joystick enabled available buttonCount axisCount hasPov oldButtons oldDirections threshold ballScale end struct
+struct Joystick
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+  /// Whether the requested input device is present and usable.
+  available
+  /// Number of buttons reported by the input device.
+  buttonCount
+  /// Number of axes reported by the joystick.
+  axisCount
+  /// Whether the joystick provides a point-of-view hat control.
+  hasPov
+  /// Joystick button mask retained from the preceding sample.
+  oldButtons
+  /// Joystick or hat directions retained from the preceding sample.
+  oldDirections
+  /// Dead-zone threshold used when translating joystick axes into directions.
+  threshold
+  /// Scale applied to joystick trackball movement.
+  ballScale
+end struct
 /// Data record for `mq3.platform.win_input_runtime.Midi`; groups `enabled`, `active`, `device`, `channel`, `deviceCount`.
-struct Midi enabled active device channel deviceCount end struct
+struct Midi
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Selected MIDI or native input-device identifier.
+  device
+  /// Selected sound or MIDI channel associated with the operation.
+  channel
+  /// Number of available MIDI devices.
+  deviceCount
+end struct
 /// Data record for `mq3.platform.win_input_runtime.Runtime`; groups `appActive`, `mouse`, `joystick`, `midi`, `events`.
-struct Runtime appActive mouse joystick midi events end struct
+struct Runtime
+  /// Whether the application has focus and may acquire input devices.
+  appActive
+  /// Mouse device state and pending relative input.
+  mouse
+  /// Joystick device state and previous input samples.
+  joystick
+  /// MIDI device selection and input state.
+  midi
+  /// Pending input or system events awaiting delivery.
+  events
+end struct
 
 /// Constructs `mq3.platform.win_input_runtime.Runtime` with `appActive` = `false`, `mouse` = `Mouse(false,false,false,false,0,0,0)`, `joystick` = `Joystick(false,false,0,0,false,0,0,0.15,0.02)`, `midi` = `Midi(false,false,0,1,0)` and the supplied remaining values.
 function create()

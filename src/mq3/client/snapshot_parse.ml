@@ -6,23 +6,36 @@ import mq3.qcommon.message as message
 import mq3.qcommon.message_state_delta as delta
 import mq3.game.entitystate as entitystate
 
+/// Capacity limit for the parse entities collection or bounded storage used by this client module.
 const MAX_PARSE_ENTITIES=2048
+/// Capacity limit for the gentities collection or bounded storage used by this client module.
 const MAX_GENTITIES=1024
+/// Number of bits allocated to an entity number in the native network protocol.
 const GENTITYNUM_BITS=10
+/// Terminating entity identifier used to mark the end of the entity sequence.
 const ENTITY_SENTINEL=1023
 
 /// Stores snapshot parse frame data, including `parseEntitiesNum`, `numEntities`.
 struct Frame
+  /// Absolute position in the parsed-entity ring at which this snapshot's entities begin.
   parseEntitiesNum
+  /// Number of entity-state entries represented by the snapshot or scene.
   numEntities
 end struct
 
 /// Stores snapshot parse state, including `parseEntities`, `parseEntitiesNum`, `entityBaselines`, `shownetLevel`, `shownetLines`.
 struct State
+  /// Parsed entity-state ring used to reconstruct snapshots from their absolute entity positions.
   parseEntities
+  /// Absolute position in the parsed-entity ring at which this snapshot's entities begin.
   parseEntitiesNum
+  /// Baseline entity states used when delta decoding has no previous snapshot state.
   entityBaselines
+  /// When constructing this record, `createState` supplies `0` for this member. Used by `trace` during
+  /// subsequent processing.
   shownetLevel
+  /// When constructing this record, `createState` supplies an empty list for this member. Used by
+  /// `trace` during subsequent processing.
   shownetLines
 end struct
 

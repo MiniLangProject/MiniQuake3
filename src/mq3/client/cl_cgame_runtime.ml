@@ -17,50 +17,111 @@ import mq3.vm.syscall_cgame as cgameSyscall
 import mq3.game.playerstate as playerstate
 import mq3.game.entitystate as entitystate
 
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Number of packet records retained in the client packet-history ring.
 const PACKET_BACKUP=32
+/// Capacity limit for the parse entities collection or bounded storage used by this client module.
 const MAX_PARSE_ENTITIES=2048
+/// Capacity limit for the entities in snapshot collection or bounded storage used by this client
+/// module.
 const MAX_ENTITIES_IN_SNAPSHOT=256
+/// Capacity limit for the configstrings collection or bounded storage used by this client module.
 const MAX_CONFIGSTRINGS=1024
+/// Capacity of the packed server configuration-string character storage.
 const MAX_GAMESTATE_CHARS=16000
+/// Server configuration-string index for systeminfo; shared by the client and game protocol.
 const CS_SYSTEMINFO=1
 
 /// Stores engine client client game runtime host-service callbacks, including `context`, `addCommandFn`, `errorFn`, `loadMapFn`, `systemInfoFn`, `debugFn` and additional values.
 struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the engine-side CGame
+  /// runtime.
   context
+  /// Host callback for the add command operation; an unset callback leaves that host operation
+  /// unavailable.
   addCommandFn
+  /// Host callback for the error operation; an unset callback leaves that host operation unavailable.
   errorFn
+  /// Host callback for the load map operation; an unset callback leaves that host operation
+  /// unavailable.
   loadMapFn
+  /// Host callback for the system info operation; an unset callback leaves that host operation
+  /// unavailable.
   systemInfoFn
+  /// Host callback for the debug operation; an unset callback leaves that host operation unavailable.
   debugFn
+  /// Host callback for the clear notify operation; an unset callback leaves that host operation
+  /// unavailable.
   clearNotifyFn
+  /// Host callback for the close console operation; an unset callback leaves that host operation
+  /// unavailable.
   closeConsoleFn
+  /// Host callback for the queue console operation; an unset callback leaves that host operation
+  /// unavailable.
   queueConsoleFn
+  /// True when a local game server is running in the same engine instance.
   serverRunning
 end struct
 /// Stores engine client client game runtime entity result record, including `found`, `value`.
-struct EntityResult found value end struct
+struct EntityResult
+  /// True when the requested parse-entity state is still present in the history ring.
+  found
+  /// Parsed entity-state record returned by a successful history lookup; absent when the requested
+  /// entity has expired from the ring buffer.
+  value
+end struct
 /// Stores engine client client game runtime state, including `host`, `gameState`, `glconfig`, `configstrings`, `commands`, `cmdNumber` and additional values.
 struct State
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
   host
+  /// Server configuration strings and associated game-state storage.
   gameState
+  /// Renderer configuration reported by the engine for the current display.
   glconfig
+  /// Server configuration strings indexed by the native protocol's configuration-string identifiers.
   configstrings
+  /// When constructing this record, `create` supplies `commandRing.create()` for this member. Used by
+  /// `CL_GetUserCmd` and `streamClearCommands` during subsequent processing.
   commands
+  /// Monotonically advancing user-command sequence number for the client.
   cmdNumber
+  /// Snapshot history indexed by sequence number for interpolation and delta decoding.
   snapshots
+  /// When constructing this record, `create` supplies `stream` for this member. Used by
+  /// `CL_GetServerCommand` during subsequent processing.
   commandStream
+  /// When constructing this record, `create` supplies `cgameUsercmd.create()` for this member. Used by
+  /// `CL_SetUserCmdValue` during subsequent processing.
   usercmd
+  /// When constructing this record, `create` supplies `vmState` for this member. Used by
+  /// `CL_ShutdownCGame` and `CL_InitCGame` during subsequent processing.
   vm
+  /// When constructing this record, `create` supplies `timingState` for this member. Used by
+  /// `CL_CGameRendering` and `CL_AdjustTimeDelta` during subsequent processing.
   timing
+  /// When constructing this record, `create` supplies `syscallHost` for this member. Used by
+  /// `CL_CgameSystemCalls` and `wireSyscalls` during subsequent processing.
   syscallHost
+  /// When constructing this record, `create` supplies `syscallVm` for this member. Used by
+  /// `CL_CgameSystemCalls` and `wireSyscalls` during subsequent processing.
   syscallVm
+  /// Highest server network-message sequence observed by the client.
   serverMessageSequence
+  /// Highest server-command sequence already retrieved or executed by the client.
   lastExecutedServerCommand
+  /// Local client slot passed to the client-game VM initialization call.
   clientNum
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_InitCGame`
+  /// during subsequent processing.
   connectedToPureServer
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_InitCGame`
+  /// during subsequent processing.
   vmCgame
+  /// True while the client receives its game data from a recorded demo.
   demoPlaying
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_CM_LoadMap`
+  /// during subsequent processing.
   mapChecksum
 end struct
 

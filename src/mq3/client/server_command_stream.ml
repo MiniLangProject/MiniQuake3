@@ -5,31 +5,62 @@ package mq3.client.server_command_stream
 
 import mq3.qcommon.command_buffer as command
 
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Capacity limit for extended engine info strings.
 const BIG_INFO_STRING=8192
+/// Capacity limit for the configstrings collection or bounded storage used by this client module.
 const MAX_CONFIGSTRINGS=1024
+/// Server configuration-string index for systeminfo; shared by the client and game protocol.
 const CS_SYSTEMINFO=1
 
 /// Stores server command stream host-service callbacks, including `context`, `configstringFn`, `systemInfoFn`, `clearNotifyFn`, `clearUsercmdsFn`, `closeConsoleFn` and additional values.
 struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for reliable server-command
+  /// delivery.
   context
+  /// Host callback for the configstring operation; an unset callback leaves that host operation
+  /// unavailable.
   configstringFn
+  /// Host callback for the system info operation; an unset callback leaves that host operation
+  /// unavailable.
   systemInfoFn
+  /// Host callback for the clear notify operation; an unset callback leaves that host operation
+  /// unavailable.
   clearNotifyFn
+  /// Host callback for the clear usercmds operation; an unset callback leaves that host operation
+  /// unavailable.
   clearUsercmdsFn
+  /// Host callback for the close console operation; an unset callback leaves that host operation
+  /// unavailable.
   closeConsoleFn
+  /// Host callback for the queue console operation; an unset callback leaves that host operation
+  /// unavailable.
   queueConsoleFn
+  /// True when a local game server is running in the same engine instance.
   serverRunning
 end struct
 
 /// Stores server command stream state, including `commandState`, `configstrings`, `commandSequence`, `lastExecuted`, `commands`, `demoPlaying` and additional values.
 struct State
+  /// When constructing this record, `create` supplies `commandState` for this member. Used by
+  /// `updateConfigstring` and `get` during subsequent processing.
   commandState
+  /// Server configuration strings indexed by the native protocol's configuration-string identifiers.
   configstrings
+  /// When constructing this record, `create` supplies `0` for this member. Used by `queue` and
+  /// `setSequence` during subsequent processing.
   commandSequence
+  /// When constructing this record, `create` supplies `0` for this member. Used by `get` during
+  /// subsequent processing.
   lastExecuted
+  /// When constructing this record, `create` supplies `array(MAX_RELIABLE_COMMANDS,"")` for this
+  /// member. Used by `queue` and `setSequence` during subsequent processing.
   commands
+  /// True while the client receives its game data from a recorded demo.
   demoPlaying
+  /// When constructing this record, `create` supplies an empty string for this member. Used by `get`
+  /// during subsequent processing.
   bigConfigString
 end struct
 

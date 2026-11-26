@@ -145,44 +145,368 @@ import std.string as strings
 import std.ds.list as lists
 import mq3.format.mod_stack as modStack
 
+/// Number of server configuration-string slots exposed through VM traps.
 const MAX_CONFIGSTRINGS=1024
+/// Maximum number of client slots supported by this interface.
 const MAX_CLIENTS=64
 // The pinned 1.32b g_public.h intentionally embeds entityState_t at the start
 // of entityShared_t. gentity_t consequently contains s followed by r.s and the
 // engine-owned shared fields below. These are QVM byte offsets, not host layout.
 const R_LINKED=416
+/// Byte offset of the link count field in the QVM shared-entity record.
 const R_LINKCOUNT=420
+/// Byte offset of the server flags field in the QVM shared-entity record.
 const R_SVFLAGS=424
+/// Byte offset of the single-client selector field in the QVM shared-entity record.
 const R_SINGLECLIENT=428
+/// Byte offset of the brush-model flag field in the QVM shared-entity record.
 const R_BMODEL=432
+/// Byte offset of the local minimum bounds field in the QVM shared-entity record.
 const R_MINS=436
+/// Byte offset of the local maximum bounds field in the QVM shared-entity record.
 const R_MAXS=448
+/// Byte offset of the contents flags field in the QVM shared-entity record.
 const R_CONTENTS=460
+/// Byte offset of the absolute minimum bounds field in the QVM shared-entity record.
 const R_ABSMIN=464
+/// Byte offset of the absolute maximum bounds field in the QVM shared-entity record.
 const R_ABSMAX=476
+/// Byte offset of the current origin field in the QVM shared-entity record.
 const R_CURRENTORIGIN=488
+/// Byte offset of the current angles field in the QVM shared-entity record.
 const R_CURRENTANGLES=500
+/// Byte offset of the owner entity number field in the QVM shared-entity record.
 const R_OWNERNUM=512
 
 /// FileCursor record for engine.local_qvm_match, containing `data`, `offset`, `writePath`.
-struct FileCursor data offset writePath end struct
+struct FileCursor
+  /// Buffered contents of the file opened through the VM filesystem traps.
+  data
+  /// Byte offset of the current cursor or data range.
+  offset
+  /// Destination path used when the file cursor is closed or flushed.
+  writePath
+end struct
 /// Refdef record for engine.local_qvm_match, containing `x`, `y`, `width`, `height`, `fovX`, `fovY`, and 5 further fields.
-struct Refdef x y width height fovX fovY vieworg viewaxis time flags areaMask end struct
+struct Refdef
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the client-game viewport decoded from the VM request.
+  width
+  /// Height in pixels of the client-game viewport decoded from the VM request.
+  height
+  /// Horizontal camera field of view, in degrees.
+  fovX
+  /// Vertical camera field of view, in degrees.
+  fovY
+  /// Camera origin in world coordinates.
+  vieworg
+  /// Camera orientation represented by three basis vectors.
+  viewaxis
+  /// Client-game view time in milliseconds decoded from the VM rendering request.
+  time
+  /// View-definition flags controlling world and special-effect rendering.
+  flags
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areaMask
+end struct
 /// SoundCommand record for engine.local_qvm_match, containing `kind`, `entity`, `channel`, `handle`, `origin`, `velocity`, and 4 further fields.
-struct SoundCommand kind entity channel handle origin velocity axis flag text text2 end struct
+struct SoundCommand
+  /// Sound request operation, such as starting playback, updating the listener, or stopping music.
+  kind
+  /// Entity identifier associated with the VM sound request.
+  entity
+  /// Selected sound or MIDI channel associated with the operation.
+  channel
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// World position supplied by a positional sound, looping sound, entity update, or listener request.
+  origin
+  /// Velocity supplied with the sound or entity update.
+  velocity
+  /// Listener orientation basis carried by a spatial-sound listener update.
+  axis
+  /// Operation-specific Boolean or flag passed through the VM sound request.
+  flag
+  /// Text payload, script source, or message associated with this record.
+  text
+  /// Second text argument carried by the VM sound request.
+  text2
+end struct
 /// RenderView record for engine.local_qvm_match, containing `refdef`, `scene`.
-struct RenderView refdef scene end struct
+struct RenderView
+  /// Camera, viewport, timing, and rendering flags for the view.
+  refdef
+  /// Scene entities, lights, and polygons collected for drawing.
+  scene
+end struct
 /// Context record for engine.local_qvm_match, containing `archive`, `entityParser`, `cvars`, `commandState`, `configstrings`, `userinfos`, and 106 further fields.
-struct Context archive entityParser cvars commandState configstrings userinfos usercmds files nextFile prints errors console gameEntities gameClients entityCount entityStride clientStride now frames linked assets assetKinds modelAssets markGeometry soundCommands latestSnapshot snapshotNumber latestRefdef scene renderQueue qvmRoot collisionWorld spatialScene machineRuntime commandNumber usercmdHistory cgameCollisionQueries cgameTagQueries lightGrid uiKeyCatcher uiFrames renderViews markMap fontRegistry pcRegistry cinematics cgameTrapCounts botlib aas aasRouter aasRouteCache aasCachePath botBspEntities shaderRemaps clientStates botAllocations botFrees elementaryActions lastBotTrap aasEntities aiCharacters aiResources aasMovement aiItemWeights aiChat aiWeaponWeights botServer aiConsole rendererEntityTokens aiLevelItems aiGoalState aiGoalSelection aiChatStrings aiChatMatches aiChatGoalTail aiMoveRuntime aiVisiblePosition aiChatOutput aiMapGoals uiLan cgameKeys uiLanCacheHost cgameUsercmd uiLanIngress uiLanQueries uiLanUdp cgameServerCommands uiClient nativeCgameCommands clientTextInput nativeSnapshots nativePlayerState nativeEvents nativeEntities nativeLocalEntities nativeEffects nativeWeapons nativeView nativeDrawtools nativeDraw nativeParticles nativeServerCmds nativeMain nativeMarks nativePlayers game cgameQueryMemo inputClearContext inputClearFn pendingClientCommands cgameSnapshotScratch serverStream end struct
+struct Context
+  /// Asset archive used to resolve game resources by virtual path.
+  archive
+  /// Cursor used to read key/value entities from the BSP entity lump.
+  entityParser
+  /// Console variables and their current runtime values.
+  cvars
+  /// Runtime state of the command parser and command buffer.
+  commandState
+  /// Server configuration strings exposed to game and client VMs.
+  configstrings
+  /// Per-client user-information strings exposed through VM traps.
+  userinfos
+  /// Latest input commands supplied to the game VM for each client.
+  usercmds
+  /// Open VM file handles and their associated cursors.
+  files
+  /// Next handle identifier allocated when a VM opens a file.
+  nextFile
+  /// Messages captured from diagnostic print operations.
+  prints
+  /// Errors recorded by this subsystem or its host callbacks.
+  errors
+  /// Console output and commands exchanged with the VM host.
+  console
+  /// Game entity records shared with the game VM.
+  gameEntities
+  /// Game client records shared with the game VM.
+  gameClients
+  /// Number of game entities currently exposed by the VM.
+  entityCount
+  /// Distance in bytes between consecutive game entity records.
+  entityStride
+  /// Distance in bytes between consecutive game client records.
+  clientStride
+  /// Current host time in milliseconds.
+  now
+  /// Number of local game-host frames executed.
+  frames
+  /// Entity-link state used by server collision and spatial queries.
+  linked
+  /// Registered resource handles and their backing asset data.
+  assets
+  /// Resource kinds associated with registered asset handles.
+  assetKinds
+  /// Model data associated with registered model handles.
+  modelAssets
+  /// Cached world geometry used when projecting impact marks.
+  markGeometry
+  /// Sound requests collected from game or client VM traps.
+  soundCommands
+  /// Most recently published client snapshot.
+  latestSnapshot
+  /// Sequence number of the latest available client snapshot.
+  snapshotNumber
+  /// Most recent camera and viewport definition submitted by the client VM.
+  latestRefdef
+  /// Scene entities, lights, and polygons collected for drawing.
+  scene
+  /// Queued scene and drawing commands produced by the client VM.
+  renderQueue
+  /// Filesystem root used to resolve game, client-game, and UI QVM modules.
+  qvmRoot
+  /// Loaded world data used for point contents and collision traces.
+  collisionWorld
+  /// Spatial index containing entities used by collision queries.
+  spatialScene
+  /// Runtime services used to execute the loaded QVM machines.
+  machineRuntime
+  /// Sequence number of the current client user command.
+  commandNumber
+  /// Ring or history buffer containing recent client user commands.
+  usercmdHistory
+  /// Client-game collision query adapter and scratch state.
+  cgameCollisionQueries
+  /// Client-game model-tag lookup adapter and scratch state.
+  cgameTagQueries
+  /// Baked lighting grid used to light dynamic entities.
+  lightGrid
+  /// Input-capture flags controlling which keys are routed to the UI VM.
+  uiKeyCatcher
+  /// Number of UI frame updates processed by the host.
+  uiFrames
+  /// Camera and scene submissions collected for rendering.
+  renderViews
+  /// World-surface map used when clipping projected marks.
+  markMap
+  /// Font assets and glyph metadata registered by the VMs.
+  fontRegistry
+  /// Parser-source handles used by the VM parser traps.
+  pcRegistry
+  /// Active cinematic handles, decoded frames, and playback state.
+  cinematics
+  /// Invocation counts for client-game VM system calls.
+  cgameTrapCounts
+  /// Bot-library state exposed to game VM system calls.
+  botlib
+  /// Loaded area-awareness navigation data used by bot queries.
+  aas
+  /// Routing state used to find paths through the AAS navigation graph.
+  aasRouter
+  /// Cached travel-time and route results for the AAS graph.
+  aasRouteCache
+  /// File path used to load or persist the AAS routing cache.
+  aasCachePath
+  /// BSP entity data exposed to bot-library queries.
+  botBspEntities
+  /// Shader name substitutions and associated effect-time offsets.
+  shaderRemaps
+  /// Per-client state maintained by the local game host.
+  clientStates
+  /// Number of bot-client allocations requested through VM traps.
+  botAllocations
+  /// Number of bot-client releases requested through VM traps.
+  botFrees
+  /// Movement and button actions accumulated by bot elementary-action traps.
+  elementaryActions
+  /// Most recently dispatched bot-library system-call identifier.
+  lastBotTrap
+  /// Dynamic entity states supplied to the AAS navigation subsystem.
+  aasEntities
+  /// Loaded bot-character profiles and characteristic values.
+  aiCharacters
+  /// Handle pools and resources owned by the bot AI subsystems.
+  aiResources
+  /// State and scratch data for predicted AAS movement queries.
+  aasMovement
+  /// Item desirability weights used by bot goal selection.
+  aiItemWeights
+  /// Bot chat contexts and conversation state.
+  aiChat
+  /// Weapon preference weights used by bot combat decisions.
+  aiWeaponWeights
+  /// Server-side adapter for bot clients and bot frame updates.
+  botServer
+  /// Console-message queues consumed by bot AI.
+  aiConsole
+  /// Cursor over map entity text exposed by renderer traps.
+  rendererEntityTokens
+  /// Level item catalog used by bot goal queries.
+  aiLevelItems
+  /// Goal stacks and avoid-goal state for active bots.
+  aiGoalState
+  /// State used to select long-term and nearby bot goals.
+  aiGoalSelection
+  /// Named chat strings and substitution data for bot conversations.
+  aiChatStrings
+  /// Chat-message matching rules and captured variables.
+  aiChatMatches
+  /// Extended chat and goal trap state maintained by the host.
+  aiChatGoalTail
+  /// Bot movement contexts used by movement decision traps.
+  aiMoveRuntime
+  /// State used to predict positions visible to a bot.
+  aiVisiblePosition
+  /// Generated chat messages awaiting delivery to the game.
+  aiChatOutput
+  /// Map-defined goal records used by bot navigation.
+  aiMapGoals
+  /// LAN server browser state exposed to the UI VM.
+  uiLan
+  /// Key bindings and key-capture state exposed to the client-game VM.
+  cgameKeys
+  /// Host adapter used to persist or restore the UI server cache.
+  uiLanCacheHost
+  /// Client-game overrides applied when constructing user commands.
+  cgameUsercmd
+  /// Incoming network data routed to the UI LAN browser.
+  uiLanIngress
+  /// Outstanding LAN server-information and status queries.
+  uiLanQueries
+  /// UDP transport used by UI LAN browser requests.
+  uiLanUdp
+  /// Server-command history exposed to the client-game VM.
+  cgameServerCommands
+  /// Client connection state exposed to UI system calls.
+  uiClient
+  /// Native client-game command processing state.
+  nativeCgameCommands
+  /// Text-entry state for client console and UI input.
+  clientTextInput
+  /// Native client-game snapshot processing state.
+  nativeSnapshots
+  /// Native client-game player-state transition state.
+  nativePlayerState
+  /// Native client-game entity-event processing state.
+  nativeEvents
+  /// Native client-game entity presentation state.
+  nativeEntities
+  /// Native client-game temporary and local entity state.
+  nativeLocalEntities
+  /// Native client-game transient visual-effect state.
+  nativeEffects
+  /// Native client-game weapon rendering and effect state.
+  nativeWeapons
+  /// Native client-game camera and view calculation state.
+  nativeView
+  /// Native client-game drawing primitives and HUD helpers.
+  nativeDrawtools
+  /// Native client-game HUD and overlay drawing state.
+  nativeDraw
+  /// Native client-game particle simulation state.
+  nativeParticles
+  /// Native client-game server-command dispatch state.
+  nativeServerCmds
+  /// Native client-game lifecycle and frame orchestration state.
+  nativeMain
+  /// Native client-game persistent impact-mark state.
+  nativeMarks
+  /// Native client-game player model and animation state.
+  nativePlayers
+  /// Loaded game VM instance or native game state used by the local match.
+  game
+  /// Memoized client-game queries reused within the current frame.
+  cgameQueryMemo
+  /// Host state supplied when captured input must be cleared.
+  inputClearContext
+  /// Host callback used to perform input clear operations for this subsystem.
+  inputClearFn
+  /// Client console commands waiting for execution.
+  pendingClientCommands
+  /// Reusable storage for client-game snapshot trap results.
+  cgameSnapshotScratch
+  /// Stream that carries local server messages to the client.
+  serverStream
+end struct
 /// Boot record for engine.local_qvm_match, containing `game`, `runtime`, `context`, `cgame`, `ui`.
-struct Boot game runtime context cgame ui end struct
+struct Boot
+  /// Loaded game VM instance or native game state used by the local match.
+  game
+  /// Runtime object used to execute the subsystem's operations.
+  runtime
+  /// Shared local-match host state used by the loaded game, client-game, and UI VMs.
+  context
+  /// Loaded client-game VM instance used by the local match.
+  cgame
+  /// Loaded user-interface VM instance used by the local match.
+  ui
+end struct
 /// Snapshot record for engine.local_qvm_match, containing `serverTime`, `playerState`, `entities`, `areaBits`.
-struct Snapshot serverTime playerState entities areaBits end struct
+struct Snapshot
+  /// Server timestamp of the snapshot, in milliseconds.
+  serverTime
+  /// Player movement and gameplay state carried by the snapshot.
+  playerState
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Bit mask describing the snapshot's visible or accessible areas.
+  areaBits
+end struct
 // The original engine keeps one cvar/key/userinfo store alive while moving
 // from ui.qvm into a local game.  MiniQuake3 boots the heavy game host only
 // after the UI selects a map, so explicitly carry that persistent state across
 // the host boundary instead of silently reverting menu choices and bindings.
-struct UserSettings cvars bindings userinfos pendingBotCommands end struct
+struct UserSettings
+  /// Console variables and their current runtime values.
+  cvars
+  /// Bindings associating names or handles with their backing resources.
+  bindings
+  /// Per-client user-information strings exposed through VM traps.
+  userinfos
+  /// Bot-related console commands awaiting execution.
+  pendingBotCommands
+end struct
 
 /// Create the engine.local_qvm_match error for `fail` with 7640 and the supplied diagnostic text.
 /// @param message Message used in `("local QVM match: " + message)` and `error(7640, ("local QVM match: " + message))`.
@@ -1917,7 +2241,14 @@ function observeNativeWeapons(context,renderStart,retailActive,ps)
 end function
 
 /// SnapshotInput record for engine.local_qvm_match, containing `world`, `host`, `decodedEntities`.
-struct SnapshotInput world host decodedEntities end struct
+struct SnapshotInput
+  /// Loaded world geometry and associated scene state.
+  world
+  /// Host address or host-service adapter associated with the operation.
+  host
+  /// Entity records decoded from the current snapshot.
+  decodedEntities
+end struct
 /// Compute snapshot input in engine.local_qvm_match; the normal completion returns `SnapshotInput(buildWorld, host, decoded)`.
 /// @param value Record exposing `game`, `context`.
 function snapshotInput(value)

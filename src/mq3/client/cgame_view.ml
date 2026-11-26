@@ -17,58 +17,367 @@ import mq3.shared.math as q
 /// @returns The tangent of the supplied angle.
 extern function tan(value as double) from "ucrtbase.dll" returns double
 
+/// Player-movement state flag indicating ducked.
 const PMF_DUCKED=1
+/// Deathmatch-option bit requiring the client to use the fixed field of view.
 const DF_FIXED_FOV=16
+/// Collision-content bit identifying lava volumes or surfaces during client traces.
 const CONTENTS_LAVA=8
+/// Collision-content bit identifying slime volumes or surfaces during client traces.
 const CONTENTS_SLIME=16
+/// Collision-content bit identifying water volumes or surfaces during client traces.
 const CONTENTS_WATER=32
+/// Combined collision-content mask selecting water-like volumes.
 const MASK_WATER=56
+/// Renderer flag guaranteeing a minimum amount of lighting for the entity.
 const RF_MINLIGHT=1
+/// Renderer flag restricting the entity to the first-person view, as used by the view weapon.
 const RF_FIRST_PERSON=4
+/// Renderer flag that compresses the viewmodel depth range to reduce first-person weapon clipping.
 const RF_DEPTHHACK=8
+/// Renderer-entity type selecting the sprite primitive.
 const RT_SPRITE=2
+/// View-rendering flag controlling noworldmodel scene presentation.
 const RDF_NOWORLDMODEL=1
+/// View-rendering flag controlling hyperspace scene presentation.
 const RDF_HYPERSPACE=4
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
 const SNAPFLAG_NOT_ACTIVE=2
+/// Stereo-view selector for the right-eye camera view.
 const STEREO_RIGHT=2
+/// Sound channel used for item-related sounds associated with an entity.
 const CHAN_ITEM=4
+/// Sound channel reserved for global announcer feedback.
 const CHAN_ANNOUNCER=7
+/// Capacity limit for the powerups collection or bounded storage used by this client module.
 const MAX_POWERUPS=16
+/// Capacity limit for the soundbuffer collection or bounded storage used by this client module.
 const MAX_SOUNDBUFFER=cgabi.MAX_SOUNDBUFFER
+/// Duration in milliseconds of camera smoothing after stepping onto a ledge.
 const STEP_TIME=cgabi.STEP_TIME
+/// Duration in milliseconds of eye-height smoothing after a crouch transition.
 const DUCK_TIME=cgabi.DUCK_TIME
+/// Milliseconds spent moving the view during the initial landing kick.
 const LAND_DEFLECT_TIME=cgabi.LAND_DEFLECT_TIME
+/// Milliseconds spent restoring the view after the landing kick.
 const LAND_RETURN_TIME=cgabi.LAND_RETURN_TIME
+/// Milliseconds spent deflecting the camera at the start of damage kick.
 const DAMAGE_DEFLECT_TIME=cgabi.DAMAGE_DEFLECT_TIME
+/// Milliseconds spent returning the camera after damage deflection.
 const DAMAGE_RETURN_TIME=cgabi.DAMAGE_RETURN_TIME
+/// Total presentation duration in milliseconds of the damage indicator.
 const DAMAGE_TIME=cgabi.DAMAGE_TIME
+/// Duration in milliseconds of the transition into or out of the zoomed view.
 const ZOOM_TIME=cgabi.ZOOM_TIME
+/// Number of warning blinks played before a timed powerup expires.
 const POWERUP_BLINKS=cgabi.POWERUP_BLINKS
+/// Duration in milliseconds of one powerup-expiration blink interval.
 const POWERUP_BLINK_TIME=cgabi.POWERUP_BLINK_TIME
+/// Forward aim distance used to calculate the third-person camera's focus point.
 const FOCUS_DISTANCE=512.0
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores client game view render entity record, including `reType`, `origin`, `axis`, `frame`, `oldframe`, `backlerp` and additional values.
-struct RenderEntity reType origin axis frame oldframe backlerp model skinNum renderfx radius shader rgba dispatched end struct
+struct RenderEntity
+  /// When constructing this record, `renderEntity` supplies `0` for this member.
+  reType
+  /// World-space placement of a view-submitted entity, such as a test model or damage sprite.
+  origin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// Model animation frame selected for the view or test-model render entity.
+  frame
+  /// Previous model frame used as the interpolation starting point.
+  oldframe
+  /// Previous-frame weight used to interpolate the submitted model entity presented by first-person
+  /// view construction.
+  backlerp
+  /// Model resource selected for rendering the object.
+  model
+  /// When constructing this record, `renderEntity` supplies `0` for this member.
+  skinNum
+  /// Renderer-entity flags controlling lighting, view restrictions, depth handling, and related
+  /// effects.
+  renderfx
+  /// World-space sprite radius represented in the view-rendering entity record.
+  radius
+  /// Material reference assigned to the view-space damage-blend sprite.
+  shader
+  /// Red, green, blue, and alpha components used for color modulation.
+  rgba
+  /// True when this request is marked for native dispatch while building the camera view and submitting
+  /// scene-related work; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game view ref def record, including `x`, `y`, `width`, `height`, `fovX`, `fovY` and additional values.
-struct RefDef x y width height fovX fovY vieworg viewaxis rdflags time areamask end struct
+struct RefDef
+  /// Horizontal coordinate of the rendered view rectangle in framebuffer pixels.
+  x
+  /// Vertical coordinate of the rendered view rectangle in framebuffer pixels.
+  y
+  /// Pixel width of the 3D viewport submitted for this client-game view.
+  width
+  /// Pixel height of the 3D viewport submitted for this client-game view.
+  height
+  /// When constructing this record, `refDef` supplies `90.0` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  fovX
+  /// When constructing this record, `refDef` supplies `90.0` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  fovY
+  /// When constructing this record, `refDef` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `testModel` and `addTestModel` during subsequent processing.
+  vieworg
+  /// When constructing this record, `refDef` supplies `identityAxis()` for this member. Used by
+  /// `testModel` and `addTestModel` during subsequent processing.
+  viewaxis
+  /// When constructing this record, `refDef` supplies `0` for this member. Used by `calcViewValues`
+  /// during subsequent processing.
+  rdflags
+  /// Client-game timestamp in milliseconds submitted with the rendered view for time-dependent
+  /// rendering.
+  time
+  /// Portal-area visibility bitset associated with the current snapshot or rendered view.
+  areamask
+end struct
 /// Stores client game view snapshot metadata and contents, including `ps`, `snapFlags`, `areamask`.
-struct Snapshot ps snapFlags areamask end struct
+struct Snapshot
+  /// Complete player-state record carried by the snapshot.
+  ps
+  /// Snapshot flags describing rate delay and dropped-command conditions.
+  snapFlags
+  /// Portal-area visibility bitset associated with the current snapshot or rendered view.
+  areamask
+end struct
 /// Stores client game view trace record, including `fraction`, `endpos`.
-struct Trace fraction endpos end struct
+struct Trace
+  /// When constructing this record, `nextTrace` supplies `1.0` for this member.
+  fraction
+  /// Final world-space position reached by the collision trace.
+  endpos
+end struct
 /// Stores client game view boundary record, including `domain`, `kind`, `entity`, `sound`, `value`, `dispatched`.
-struct Boundary domain kind entity sound value dispatched end struct
+struct Boundary
+  /// When constructing this record, `boundary` supplies `domain` for this member.
+  domain
+  /// Operation selector telling the host how to interpret a request emitted while building the camera
+  /// view and submitting scene-related work.
+  kind
+  /// When constructing this record, `boundary` supplies `entity` for this member.
+  entity
+  /// Sound resource carried by a view or announcer audio action at the host dispatch boundary.
+  sound
+  /// Value payload supplied to the selected host operation while building the camera view and
+  /// submitting scene-related work.
+  value
+  /// True when this request is marked for native dispatch while building the camera view and submitting
+  /// scene-related work; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game view state, including `time`, `oldTime`, `frameTime`, `demoPlayback`, `infoScreenText`, `snap` and additional values.
 struct State
-  time oldTime frameTime demoPlayback infoScreenText snap predicted refdef viewAngles
-  vidWidth vidHeight viewsize fov zoomFov dmflags contents zoomed zoomTime zoomSensitivity
-  renderingThirdPerson thirdPerson thirdPersonAngle thirdPersonRange cameraMode cameraOrbit cameraOrbitDelay nextOrbitTime
-  kickAngles kickOrigin damageTime damagePitch damageRoll damageValue damageX damageY ragePro viewBloodShader
-  xySpeed bobCycle bobFracSin runPitch runRoll bobPitch bobRoll bobUp duckTime duckChange landTime landChange stepTime stepChange
-  predictedError predictedErrorTime errorDecay hyperspace weaponSelect clientFrame
-  testModelName testModel testGun gunX gunY gunZ
-  soundBuffer soundBufferIn soundBufferOut soundTime wearOffSound
-  timescale timescaleFadeEnd timescaleFadeSpeed traces traceAt actions scene audio system emitted suppressed
+  /// Presentation timestamp in milliseconds supplied for the current client-game view frame.
+  time
+  /// Client time of the preceding frame, retained for integration and effect updates.
+  oldTime
+  /// Elapsed milliseconds between client view frames, clamped to zero when the presentation clock moves
+  /// backward.
+  frameTime
+  /// True when snapshots and commands are being read from a recorded demo.
+  demoPlayback
+  /// Status text displayed while connecting, loading, or waiting for a game view.
+  infoScreenText
+  /// Current snapshot used as the lower endpoint of client interpolation.
+  snap
+  /// When constructing this record, `create` supplies `ps` for this member. Used by `calcVrect` and
+  /// `offsetThirdPersonView` during subsequent processing.
+  predicted
+  /// Renderer view definition for the current frame.
+  refdef
+  /// Euler camera angles used to construct the client view.
+  viewAngles
+  /// When constructing this record, `create` supplies `640` for this member. Used by `calcVrect` during
+  /// subsequent processing.
+  vidWidth
+  /// When constructing this record, `create` supplies `480` for this member. Used by `calcVrect` during
+  /// subsequent processing.
+  vidHeight
+  /// When constructing this record, `create` supplies `100` for this member. Used by `calcVrect` during
+  /// subsequent processing.
+  viewsize
+  /// When constructing this record, `create` supplies `90.0` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  fov
+  /// When constructing this record, `create` supplies `22.5` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  zoomFov
+  /// When constructing this record, `create` supplies `0` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  dmflags
+  /// When constructing this record, `create` supplies `0` for this member. Used by `calcFov` during
+  /// subsequent processing.
+  contents
+  /// True while the local player requests the zoomed view.
+  zoomed
+  /// Timestamp used to interpolate the transition into or out of zoom.
+  zoomTime
+  /// Mouse-sensitivity multiplier derived from the current zoom field of view.
+  zoomSensitivity
+  /// True while the camera uses a third-person, chase, or death view.
+  renderingThirdPerson
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `drawActiveFrame` during subsequent processing.
+  thirdPerson
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by
+  /// `offsetThirdPersonView` and `calcViewValues` during subsequent processing.
+  thirdPersonAngle
+  /// When constructing this record, `create` supplies `80.0` for this member. Used by
+  /// `offsetThirdPersonView` during subsequent processing.
+  thirdPersonRange
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `offsetThirdPersonView` during subsequent processing.
+  cameraMode
+  /// When constructing this record, `create` supplies `0` for this member. Used by `calcViewValues`
+  /// during subsequent processing.
+  cameraOrbit
+  /// When constructing this record, `create` supplies `0` for this member. Used by `calcViewValues`
+  /// during subsequent processing.
+  cameraOrbitDelay
+  /// Next timestamp at which the automatic camera orbit advances.
+  nextOrbitTime
+  /// When constructing this record, `create` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  kickAngles
+  /// When constructing this record, `create` supplies `[0.0,0.0,0.0]` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  kickOrigin
+  /// Timestamp used to fade the latest damage overlay or view-kick effect.
+  damageTime
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  damagePitch
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  damageRoll
+  /// Magnitude of the latest damage event used to scale view kick and indicators.
+  damageValue
+  /// Horizontal direction component of the latest damage indicator.
+  damageX
+  /// Vertical direction component of the latest damage indicator.
+  damageY
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `damageBlendBlob` during subsequent processing.
+  ragePro
+  /// Shader resource selected for view blood rendering.
+  viewBloodShader
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by
+  /// `offsetFirstPersonView` and `calcViewValues` during subsequent processing.
+  xySpeed
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `offsetFirstPersonView` and `calcViewValues` during subsequent processing.
+  bobCycle
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by
+  /// `offsetFirstPersonView` and `calcViewValues` during subsequent processing.
+  bobFracSin
+  /// When constructing this record, `create` supplies `0.002` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  runPitch
+  /// When constructing this record, `create` supplies `0.005` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  runRoll
+  /// When constructing this record, `create` supplies `0.002` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  bobPitch
+  /// When constructing this record, `create` supplies `0.002` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  bobRoll
+  /// When constructing this record, `create` supplies `0.005` for this member. Used by
+  /// `offsetFirstPersonView` during subsequent processing.
+  bobUp
+  /// Client timestamp at which crouch-height smoothing began.
+  duckTime
+  /// Eye-height displacement being smoothed after a crouch transition.
+  duckChange
+  /// Client timestamp at which the landing camera kick began.
+  landTime
+  /// Eye-height displacement used for the landing camera kick.
+  landChange
+  /// Client timestamp at which stair-step smoothing began.
+  stepTime
+  /// Vertical step displacement being smoothed by the first-person camera.
+  stepChange
+  /// Positional discrepancy between predicted and authoritative player state.
+  predictedError
+  /// Timestamp from which the stored player-prediction error is smoothed away.
+  predictedErrorTime
+  /// When constructing this record, `create` supplies `100.0` for this member. Used by `calcViewValues`
+  /// during subsequent processing.
+  errorDecay
+  /// True when prediction has entered a teleport trigger requiring the hyperspace view effect.
+  hyperspace
+  /// Weapon identifier currently selected by the local player.
+  weaponSelect
+  /// Client-frame counter incremented for each CGame frame.
+  clientFrame
+  /// Virtual asset name of the model selected by the test-model console commands.
+  testModelName
+  /// Model resource selected for the test presentation.
+  testModel
+  /// True when the developer test model is positioned as a first-person weapon.
+  testGun
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addTestModel`
+  /// during subsequent processing.
+  gunX
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addTestModel`
+  /// during subsequent processing.
+  gunY
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `addTestModel`
+  /// during subsequent processing.
+  gunZ
+  /// Ring buffer of announcement sounds waiting to be played.
+  soundBuffer
+  /// Write position in the queued-announcement sound ring.
+  soundBufferIn
+  /// Read position in the queued-announcement sound ring.
+  soundBufferOut
+  /// Next time at which a queued announcement sound may be played.
+  soundTime
+  /// Sound resource selected for the wear off event or effect.
+  wearOffSound
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `drawActiveFrame`
+  /// during subsequent processing.
+  timescale
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `drawActiveFrame`
+  /// during subsequent processing.
+  timescaleFadeEnd
+  /// When constructing this record, `create` supplies `0.0` for this member. Used by `drawActiveFrame`
+  /// during subsequent processing.
+  timescaleFadeSpeed
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `nextTrace` during subsequent processing.
+  traces
+  /// When constructing this record, `create` supplies `0` for this member. Used by `nextTrace` during
+  /// subsequent processing.
+  traceAt
+  /// Host requests queued while building the camera view and submitting scene-related work, retained in
+  /// request order.
+  actions
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  scene
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  audio
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `boundary`
+  /// and `clearBoundaries` during subsequent processing.
+  system
+  /// When constructing this record, `create` supplies `0` for this member. Used by `boundary` during
+  /// subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while building the camera view and submitting
+  /// scene-related work because the retail QVM owns their effects.
+  suppressed
 end struct
 
 /// Copies the X, Y and Z components into a fresh client game view vector.

@@ -9,19 +9,65 @@ import std.string as strings
 /// @param text NUL-terminated C string containing the decimal numeric text.
 /// @returns The converted integer; a string with no initial numeric conversion yields zero.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
+/// Capacity limit for the loading player icons collection or bounded storage used by this client
+/// module.
 const MAX_LOADING_PLAYER_ICONS=16
+/// Capacity limit for the loading item icons collection or bounded storage used by this client module.
 const MAX_LOADING_ITEM_ICONS=26
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when composing the loading screen's
+/// game-mode and rules text.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when composing the loading screen's
+/// game-mode and rules text.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when composing the loading screen's game-mode and
+/// rules text.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when composing the loading screen's game-mode and
+/// rules text.
 const GT_CTF=4
 /// Stores client game info state, including `playerIcons`, `itemIcons`, `infoScreenText`, `updates`, `registeredShaders`, `registeredSounds`.
-struct State playerIcons itemIcons infoScreenText updates registeredShaders registeredSounds end struct
+struct State
+  /// Image or shader resources used to draw the player icon.
+  playerIcons
+  /// Image or shader resources used to draw the item icon.
+  itemIcons
+  /// Status text displayed while connecting, loading, or waiting for a game view.
+  infoScreenText
+  /// When constructing this record, `create` supplies `0` for this member. Used by `loadingString`
+  /// during subsequent processing.
+  updates
+  /// Shader resources selected for registered rendering.
+  registeredShaders
+  /// Sound resources selected for the registered event or effect.
+  registeredSounds
+end struct
 /// Stores client game info draw record, including `kind`, `x`, `y`, `width`, `height`, `text` and additional values.
-struct Draw kind x y width height text asset end struct
+struct Draw
+  /// Drawing primitive or presentation category selecting how this record is rendered.
+  kind
+  /// Horizontal coordinate of a loading-information drawing command in the virtual screen layout.
+  x
+  /// Vertical coordinate of a loading-information drawing command in the virtual screen layout.
+  y
+  /// Width of the loading-screen image or detail overlay in virtual screen coordinates.
+  width
+  /// Height of the loading-screen image or detail overlay in virtual screen coordinates.
+  height
+  /// Status or information string drawn on the map-loading screen.
+  text
+  /// When constructing this record, `drawLoadingIcons` supplies `handle` for this member.
+  asset
+end struct
 /// Stores client game info information record, including `commands`, `requestedShaders`.
-struct Information commands requestedShaders end struct
+struct Information
+  /// When constructing this record, `drawInformationWithShot` supplies an empty list for this member.
+  commands
+  /// Shader resources selected for requested rendering.
+  requestedShaders
+end struct
 /// Creates a `mq3.client.cgame_info.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State([],[],"",0,[],[]) end function
 /// Calls `decode` from client game info `clean`. The final path returns `decode(bytes(result))`.

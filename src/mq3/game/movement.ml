@@ -9,36 +9,64 @@ import mq3.game.game_internal_headers as internal
 
 /// `Collision` record for movement, containing `trace`, `endpos` and `entityNum`.
 struct Collision
+  /// Collision trace result or callback used by the movement calculation.
   trace
+  /// Final position reached by the collision trace.
   endpos
+  /// Entity number returned by or associated with this operation.
   entityNum
 end struct
 /// `Movement` record for movement, containing `origin`, `velocity`, `mins`, `maxs` and `clientNum` and related fields.
 struct Movement
+  /// Working player position updated by collision-aware movement integration.
   origin
+  /// Velocity vector used to advance movement or predict a position.
   velocity
+  /// Lower player collision-box corner relative to the working movement origin.
   mins
+  /// Upper player collision-box corner relative to the working movement origin.
   maxs
+  /// Client slot number represented by this player state.
   clientNum
+  /// Mask selecting the collision or filter categories used by the operation.
   mask
+  /// Downward acceleration used by the player or entity movement simulation.
   gravity
+  /// Remaining movement timer supplied to the bot or movement adapter.
   pmTime
+  /// Player movement flags supplied to the bot or movement adapter.
   pmFlags
+  /// Player movement mode supplied to the bot or movement adapter.
   pmType
+  /// Movement or travel speed used by this game object.
   speed
+  /// Nonzero while the flight powerup changes player movement behavior.
   flight
+  /// Depth classification of the player immersion in liquid.
   waterlevel
+  /// Duration of the current movement or simulation step.
   frametime
+  /// Nonzero when the movement controller established walkable ground contact.
   walking
+  /// Nonzero when a usable ground plane has been detected.
   groundPlane
+  /// Surface normal of the detected supporting ground.
   groundNormal
+  /// Flags associated with the supporting surface or ground contact.
   groundFlags
+  /// Speed projected onto a collision normal for impact handling.
   impactSpeed
+  /// Entity contacts collected during the movement step.
   touches
+  /// Event identifiers retained by this player or game-state record.
   events
+  /// Parameters paired with the predictable event identifiers.
   eventParms
+  /// Sequence number used to distinguish new predictable player events.
   eventSequence
+  /// Injected callback for trace; invoked through the Movement service/state record.
   traceFn
+  /// Opaque caller-supplied context available to the movement collision-trace callback.
   context
 end struct
 

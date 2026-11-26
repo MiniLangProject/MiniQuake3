@@ -6,83 +6,457 @@ package mq3.client.ui_local
 
 import mq3.client.keycodes as q3keys
 
+/// UI virtual-machine interface version expected by the engine.
 const UI_API_VERSION=4
+/// Horizontal offset used to position the right-hand menu text column.
 const RCOLUMN_OFFSET=16
+/// Horizontal offset used to position the left-hand menu text column.
 const LCOLUMN_OFFSET=-16
+/// Logical step range used to map a menu slider between its minimum and maximum.
 const SLIDER_RANGE=10
+/// Maximum length of a console or editable input line.
 const MAX_EDIT_LINE=256
+/// Capacity limit for the menudepth collection or bounded storage used by this client module.
 const MAX_MENUDEPTH=8
+/// Capacity limit for the menuitems collection or bounded storage used by this client module.
 const MAX_MENUITEMS=64
+/// Capacity limit for the favoriteservers collection or bounded storage used by this client module.
 const MAX_FAVORITESERVERS=16
 
+/// Menu-widget kind selecting null behavior and widget-specific data.
 const MTYPE_NULL=0
+/// Menu-widget kind selecting slider behavior and widget-specific data.
 const MTYPE_SLIDER=1
+/// Menu-widget kind selecting action behavior and widget-specific data.
 const MTYPE_ACTION=2
+/// Menu-widget kind selecting spincontrol behavior and widget-specific data.
 const MTYPE_SPINCONTROL=3
+/// Menu-widget kind selecting field behavior and widget-specific data.
 const MTYPE_FIELD=4
+/// Menu-widget kind selecting radiobutton behavior and widget-specific data.
 const MTYPE_RADIOBUTTON=5
+/// Menu-widget kind selecting bitmap behavior and widget-specific data.
 const MTYPE_BITMAP=6
+/// Menu-widget kind selecting text behavior and widget-specific data.
 const MTYPE_TEXT=7
+/// Menu-widget kind selecting scrolllist behavior and widget-specific data.
 const MTYPE_SCROLLLIST=8
+/// Menu-widget kind selecting ptext behavior and widget-specific data.
 const MTYPE_PTEXT=9
+/// Menu-widget kind selecting btext behavior and widget-specific data.
 const MTYPE_BTEXT=10
+/// Menu-item flag used to blink the item while it is drawn.
 const QMF_BLINK=1
+/// Menu-item flag used to draw the item's text with the small font.
 const QMF_SMALLFONT=2
+/// Menu-item flag used to align the item to the left of its horizontal anchor.
 const QMF_LEFT_JUSTIFY=4
+/// Menu-item flag used to center the item around its horizontal anchor.
 const QMF_CENTER_JUSTIFY=8
+/// Menu-item flag used to align the item to the right of its horizontal anchor.
 const QMF_RIGHT_JUSTIFY=16
+/// Menu-item flag used to restrict editable text to numeric input.
 const QMF_NUMBERSONLY=32
+/// Menu-item flag used to draw the item in its highlighted style.
 const QMF_HIGHLIGHT=64
+/// Menu-item flag used to highlight the item only while it has focus.
 const QMF_HIGHLIGHT_IF_FOCUS=128
+/// Menu-item flag used to pulse the item only while it has focus.
 const QMF_PULSEIFFOCUS=256
+/// Menu-item flag used to record that the pointer currently focuses this item.
 const QMF_HASMOUSEFOCUS=512
+/// Menu-item flag used to suppress the ordinary on/off text for a radio button.
 const QMF_NOONOFFTEXT=1024
+/// Menu-item flag used to allow selection through the pointer but skip keyboard navigation.
 const QMF_MOUSEONLY=2048
+/// Menu-item flag used to omit the item from display and normal selection.
 const QMF_HIDDEN=4096
+/// Menu-item flag used to display the item as unavailable.
 const QMF_GRAYED=8192
+/// Menu-item flag used to exclude the item from interactive activation.
 const QMF_INACTIVE=16384
+/// Menu-item flag used to preserve the item's caller-supplied initialization.
 const QMF_NODEFAULTINIT=32768
+/// Menu-item flag used to delegate rendering to the item's owner-draw callback.
 const QMF_OWNERDRAW=65536
+/// Menu-item flag used to animate the item's color or brightness with a pulse.
 const QMF_PULSE=131072
+/// Menu-item flag used to convert entered characters to lowercase.
 const QMF_LOWERCASE=262144
+/// Menu-item flag used to convert entered characters to uppercase.
 const QMF_UPPERCASE=524288
+/// Menu-item flag used to suppress ordinary menu feedback sounds for this item.
 const QMF_SILENT=1048576
+/// Menu callback event reporting that the item was gotfocus.
 const QM_GOTFOCUS=1
+/// Menu callback event reporting that the item was lostfocus.
 const QM_LOSTFOCUS=2
+/// Activation event exported by the native UI compatibility declarations for consumers implementing
+/// menu-item callbacks.
 const QM_ACTIVATED=3
+/// Postgame award identifier selecting the accuracy award category.
 const AWARD_ACCURACY=0
+/// Postgame award identifier selecting the impressive award category.
 const AWARD_IMPRESSIVE=1
+/// Postgame award identifier selecting the excellent award category.
 const AWARD_EXCELLENT=2
+/// Postgame award identifier selecting the gauntlet award category.
 const AWARD_GAUNTLET=3
+/// Postgame award identifier selecting the frags award category.
 const AWARD_FRAGS=4
+/// Postgame award identifier selecting the perfect award category.
 const AWARD_PERFECT=5
 
 /// Stores UI local menu framework record, including `cursor`, `cursor_prev`, `nitems`, `items`, `draw`, `key` and additional values.
-struct MenuFramework cursor cursor_prev nitems items draw key wrapAround fullscreen showlogo end struct
+struct MenuFramework
+  /// Compatibility member corresponding to native `menuframework_s.cursor`; the original declaration is
+  /// `int cursor`.
+  cursor
+  /// Compatibility member corresponding to native `menuframework_s.cursor_prev`; the original
+  /// declaration is `int cursor_prev`.
+  cursor_prev
+  /// Number of entries currently present in the menu or selection list.
+  nitems
+  /// Compatibility member corresponding to native `menuframework_s.items`; the original declaration is
+  /// `void *items[MAX_MENUITEMS]`.
+  items
+  /// Compatibility member corresponding to native `menuframework_s.draw`; the original declaration is
+  /// `void (*draw) (void)`.
+  draw
+  /// Registered sound handle used for key; mirrors native `menuframework_s.key`.
+  key
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the original UI
+  /// compatibility records.
+  wrapAround
+  /// Whether the menu framework covers the entire UI instead of appearing over the underlying game
+  /// view.
+  fullscreen
+  /// Compatibility member corresponding to native `menuframework_s.showlogo`; the original declaration
+  /// is `qboolean showlogo`.
+  showlogo
+end struct
 /// Stores UI local menu common record, including `type`, `name`, `id`, `x`, `y`, `left` and additional values.
-struct MenuCommon type name id x y left top right bottom parent menuPosition flags callback statusbar ownerdraw end struct
+struct MenuCommon
+  /// Compatibility member corresponding to native `menucommon_s.type`; the original declaration is `int
+  /// type`.
+  type
+  /// Menu item label or bitmap resource name interpreted according to the common item's type.
+  name
+  /// Event-routing identifier of this selectable control in the original UI compatibility records.
+  id
+  /// Horizontal position of this menu control in the virtual layout used by the original UI
+  /// compatibility records.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the original UI compatibility
+  /// records.
+  y
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// Bottom boundary of the interactive or clipped region.
+  bottom
+  /// Owning menu or container used to route this item's events and layout.
+  parent
+  /// Index of this item within its owning menu's item list.
+  menuPosition
+  /// Compatibility member corresponding to native `menucommon_s.flags`; the original declaration is
+  /// `unsigned flags`.
+  flags
+  /// Compatibility member corresponding to native `menucommon_s.callback`; the original declaration is
+  /// `void (*callback)( void *self, int event )`.
+  callback
+  /// Optional callback used to draw the item's status-bar help or contextual information.
+  statusbar
+  /// Compatibility member corresponding to native `menucommon_s.ownerdraw`; the original declaration is
+  /// `void (*ownerdraw)( void *self )`.
+  ownerdraw
+end struct
 /// Stores UI local m field record, including `cursor`, `scroll`, `widthInChars`, `buffer`, `maxchars`.
-struct MField cursor scroll widthInChars buffer maxchars end struct
+struct MField
+  /// Compatibility member corresponding to native `mfield_t.cursor`; the original declaration is `int
+  /// cursor`.
+  cursor
+  /// Compatibility member corresponding to native `mfield_t.scroll`; the original declaration is `int
+  /// scroll`.
+  scroll
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// Compatibility member corresponding to native `mfield_t.buffer`; the original declaration is `char
+  /// buffer[MAX_EDIT_LINE]`.
+  buffer
+  /// Compatibility member corresponding to native `mfield_t.maxchars`; the original declaration is `int
+  /// maxchars`.
+  maxchars
+end struct
 /// Stores UI local menu field record, including `generic`, `field`.
-struct MenuField generic field end struct
+struct MenuField
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menufield_s.field`; the original declaration is
+  /// `mfield_t field`.
+  field
+end struct
 /// Stores UI local menu slider record, including `generic`, `minvalue`, `maxvalue`, `curvalue`, `range`.
-struct MenuSlider generic minvalue maxvalue curvalue range end struct
+struct MenuSlider
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menuslider_s.minvalue`; the original declaration is
+  /// `float minvalue`.
+  minvalue
+  /// Compatibility member corresponding to native `menuslider_s.maxvalue`; the original declaration is
+  /// `float maxvalue`.
+  maxvalue
+  /// Compatibility member corresponding to native `menuslider_s.curvalue`; the original declaration is
+  /// `float curvalue`.
+  curvalue
+  /// Compatibility member corresponding to native `menuslider_s.range`; the original declaration is
+  /// `float range`.
+  range
+end struct
 /// Stores UI local menu list record, including `generic`, `oldvalue`, `curvalue`, `numitems`, `top`, `itemnames` and additional values.
-struct MenuList generic oldvalue curvalue numitems top itemnames width height columns seperation end struct
+struct MenuList
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menulist_s.oldvalue`; the original declaration is
+  /// `int oldvalue`.
+  oldvalue
+  /// Compatibility member corresponding to native `menulist_s.curvalue`; the original declaration is
+  /// `int curvalue`.
+  curvalue
+  /// Number of entries currently present in the menu or selection list.
+  numitems
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Compatibility member corresponding to native `menulist_s.itemnames`; the original declaration is
+  /// `const char **itemnames`.
+  itemnames
+  /// Character-cell width of each column in the native-compatible scrolling list.
+  width
+  /// Number of visible item rows per column in the native-compatible scrolling list.
+  height
+  /// Column descriptors used to lay out a listbox's displayed data.
+  columns
+  /// Compatibility member corresponding to native `menulist_s.seperation`; the original declaration is
+  /// `int seperation`.
+  seperation
+end struct
 /// Stores UI local menu action record, including `generic`.
-struct MenuAction generic end struct
+struct MenuAction
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+end struct
 /// Stores UI local menu radio button record, including `generic`, `curvalue`.
-struct MenuRadioButton generic curvalue end struct
+struct MenuRadioButton
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menuradiobutton_s.curvalue`; the original
+  /// declaration is `int curvalue`.
+  curvalue
+end struct
 /// Stores UI local menu bitmap record, including `generic`, `focuspic`, `errorpic`, `shader`, `focusshader`, `width` and additional values.
-struct MenuBitmap generic focuspic errorpic shader focusshader width height focuscolor end struct
+struct MenuBitmap
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menubitmap_s.focuspic`; the original declaration is
+  /// `char* focuspic`.
+  focuspic
+  /// Fallback image asset used when the menu bitmap's requested image cannot be loaded.
+  errorpic
+  /// Cached renderer material handle for the normal bitmap image, separate from the focus-image handle.
+  shader
+  /// Renderer resource handle used for focusshader; mirrors native `menubitmap_s.focusshader`.
+  focusshader
+  /// Bitmap drawing width in the native-compatible menu coordinate system.
+  width
+  /// Bitmap drawing height in the native-compatible menu coordinate system.
+  height
+  /// Compatibility member corresponding to native `menubitmap_s.focuscolor`; the original declaration
+  /// is `float* focuscolor`.
+  focuscolor
+end struct
 /// Stores UI local menu text record, including `generic`, `style`, `color`.
-struct MenuText generic string style color end struct
+struct MenuText
+  /// Common menu-item record containing the shared identity, layout, and callback data.
+  generic
+  /// Compatibility member corresponding to native `menutext_s.string`; the original declaration is
+  /// `char* string`.
+  string
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// RGBA text color referenced by the native-compatible menu text item.
+  color
+end struct
 /// Stores UI local lerp frame record, including `oldFrame`, `oldFrameTime`, `frame`, `frameTime`, `backlerp`, `yawAngle` and additional values.
-struct LerpFrame oldFrame oldFrameTime frame frameTime backlerp yawAngle yawing pitchAngle pitching animationNumber animation animationTime end struct
+struct LerpFrame
+  /// Previous animation frame used as the interpolation starting point.
+  oldFrame
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// Current menu preview-model frame being approached by interpolation from oldFrame.
+  frame
+  /// UI realtime timestamp in milliseconds at which interpolation reaches the current menu
+  /// preview-model frame.
+  frameTime
+  /// Previous-frame weight used to interpolate the tracked animation presented by the original UI
+  /// compatibility records.
+  backlerp
+  /// Smoothed yaw angle used to orient the animated body part.
+  yawAngle
+  /// True while the body part is turning toward its target yaw.
+  yawing
+  /// Smoothed pitch angle used to orient the animated body part.
+  pitchAngle
+  /// True while the body part is turning toward its target pitch.
+  pitching
+  /// Selected animation identifier, including the animation-toggle bit when present.
+  animationNumber
+  /// Animation description supplying frame ranges and playback timing.
+  animation
+  /// Client time in milliseconds at which the first frame of the animation becomes exact.
+  animationTime
+end struct
 /// Stores UI local player info record, including `legsModel`, `legsSkin`, `legs`, `torsoModel`, `torsoSkin`, `torso` and additional values.
-struct PlayerInfo legsModel legsSkin legs torsoModel torsoSkin torso headModel headSkin animations weaponModel barrelModel flashModel flashDlightColor muzzleFlashTime viewAngles moveAngles currentWeapon legsAnim torsoAnim weapon lastWeapon pendingWeapon weaponTimer pendingLegsAnim torsoAnimationTimer pendingTorsoAnim legsAnimationTimer chat newModel barrelSpinning barrelAngle barrelTime realWeapon end struct
+struct PlayerInfo
+  /// Model resource selected for the legs presentation.
+  legsModel
+  /// Skin resource applied to the legs model presentation.
+  legsSkin
+  /// Animation and interpolation state for the player's legs.
+  legs
+  /// Model resource selected for the torso presentation.
+  torsoModel
+  /// Skin resource applied to the torso model presentation.
+  torsoSkin
+  /// Animation and interpolation state for the player's torso.
+  torso
+  /// Head-model resource used when drawing a player, head icon, or preview.
+  headModel
+  /// Skin resource applied to the player's head model.
+  headSkin
+  /// Animation descriptions indexed by the native player-animation identifiers.
+  animations
+  /// Model resource selected for the weapon presentation.
+  weaponModel
+  /// Model resource selected for the barrel presentation.
+  barrelModel
+  /// Model resource selected for the flash presentation.
+  flashModel
+  /// RGB components of the weapon's muzzle-flash dynamic light.
+  flashDlightColor
+  /// Client timestamp at which the entity's muzzle-flash effect began.
+  muzzleFlashTime
+  /// Euler camera angles used to construct the client view.
+  viewAngles
+  /// Compatibility member corresponding to native `playerInfo_t.moveAngles`; the original declaration
+  /// is `vec3_t moveAngles`.
+  moveAngles
+  /// Compatibility member corresponding to native `playerInfo_t.currentWeapon`; the original
+  /// declaration is `weapon_t currentWeapon`.
+  currentWeapon
+  /// Compatibility member corresponding to native `playerInfo_t.legsAnim`; the original declaration is
+  /// `int legsAnim`.
+  legsAnim
+  /// Compatibility member corresponding to native `playerInfo_t.torsoAnim`; the original declaration is
+  /// `int torsoAnim`.
+  torsoAnim
+  /// Requested preview weapon identifier retained in the native-compatible player-info record during a
+  /// weapon switch.
+  weapon
+  /// Compatibility member corresponding to native `playerInfo_t.lastWeapon`; the original declaration
+  /// is `weapon_t lastWeapon`.
+  lastWeapon
+  /// Compatibility member corresponding to native `playerInfo_t.pendingWeapon`; the original
+  /// declaration is `weapon_t pendingWeapon`.
+  pendingWeapon
+  /// Compatibility member corresponding to native `playerInfo_t.weaponTimer`; the original declaration
+  /// is `int weaponTimer`.
+  weaponTimer
+  /// Compatibility member corresponding to native `playerInfo_t.pendingLegsAnim`; the original
+  /// declaration is `int pendingLegsAnim`.
+  pendingLegsAnim
+  /// Compatibility member corresponding to native `playerInfo_t.torsoAnimationTimer`; the original
+  /// declaration is `int torsoAnimationTimer`.
+  torsoAnimationTimer
+  /// Compatibility member corresponding to native `playerInfo_t.pendingTorsoAnim`; the original
+  /// declaration is `int pendingTorsoAnim`.
+  pendingTorsoAnim
+  /// Compatibility member corresponding to native `playerInfo_t.legsAnimationTimer`; the original
+  /// declaration is `int legsAnimationTimer`.
+  legsAnimationTimer
+  /// Compatibility member corresponding to native `playerInfo_t.chat`; the original declaration is
+  /// `qboolean chat`.
+  chat
+  /// Model resource selected for the new presentation.
+  newModel
+  /// True while the weapon barrel is in its spinning state.
+  barrelSpinning
+  /// Current rotational angle of the spinning weapon barrel.
+  barrelAngle
+  /// Client timestamp used to advance or stop weapon-barrel rotation.
+  barrelTime
+  /// Compatibility member corresponding to native `playerInfo_t.realWeapon`; the original declaration
+  /// is `int realWeapon`.
+  realWeapon
+end struct
 /// Stores UI local ui static record, including `frametime`, `realtime`, `cursorx`, `cursory`, `menusp`, `activemenu` and additional values.
-struct UIStatic frametime realtime cursorx cursory menusp activemenu stack glconfig debug whiteShader menuBackShader menuBackNoLogoShader charset charsetProp charsetPropGlow charsetPropB cursor rb_on rb_off scale bias demoversion firstdraw end struct
+struct UIStatic
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+  /// Most recent UI refresh timestamp in milliseconds retained in the shared UI state.
+  realtime
+  /// Horizontal position of the UI pointer in the menu coordinate system.
+  cursorx
+  /// Vertical position of the UI pointer in the menu coordinate system.
+  cursory
+  /// Compatibility member corresponding to native `uiStatic_t.menusp`; the original declaration is `int
+  /// menusp`.
+  menusp
+  /// Compatibility member corresponding to native `uiStatic_t.activemenu`; the original declaration is
+  /// `menuframework_s* activemenu`.
+  activemenu
+  /// Compatibility member corresponding to native `uiStatic_t.stack`; the original declaration is
+  /// `menuframework_s* stack[MAX_MENUDEPTH]`.
+  stack
+  /// Renderer configuration reported by the engine for the current display.
+  glconfig
+  /// Compatibility member corresponding to native `uiStatic_t.debug`; the original declaration is
+  /// `qboolean debug`.
+  debug
+  /// Shader resource selected for white rendering.
+  whiteShader
+  /// Shader resource selected for menu back rendering.
+  menuBackShader
+  /// Shader resource selected for menu back no logo rendering.
+  menuBackNoLogoShader
+  /// Renderer resource handle used for charset; mirrors native `uiStatic_t.charset`.
+  charset
+  /// Renderer resource handle used for charset prop; mirrors native `uiStatic_t.charsetProp`.
+  charsetProp
+  /// Renderer resource handle used for charset prop glow; mirrors native `uiStatic_t.charsetPropGlow`.
+  charsetPropGlow
+  /// Renderer resource handle used for charset prop b; mirrors native `uiStatic_t.charsetPropB`.
+  charsetPropB
+  /// Renderer resource handle used for cursor; mirrors native `uiStatic_t.cursor`.
+  cursor
+  /// Renderer resource handle used for rb on; mirrors native `uiStatic_t.rb_on`.
+  rb_on
+  /// Renderer resource handle used for rb off; mirrors native `uiStatic_t.rb_off`.
+  rb_off
+  /// Compatibility member corresponding to native `uiStatic_t.scale`; the original declaration is
+  /// `float scale`.
+  scale
+  /// Horizontal adjustment used when centering the virtual UI on a wider display.
+  bias
+  /// Compatibility member corresponding to native `uiStatic_t.demoversion`; the original declaration is
+  /// `qboolean demoversion`.
+  demoversion
+  /// Compatibility member corresponding to native `uiStatic_t.firstdraw`; the original declaration is
+  /// `qboolean firstdraw`.
+  firstdraw
+end struct
 
 /// Lists the type names catalog for UI local in its declared source order.
 function typeNames() return ["menuframework_s","menucommon_s","mfield_t","menufield_s","menuslider_s","menulist_s","menuaction_s","menuradiobutton_s","menubitmap_s","menutext_s","lerpFrame_t","playerInfo_t","uiStatic_t","awardType_t","voidfunc_f"] end function

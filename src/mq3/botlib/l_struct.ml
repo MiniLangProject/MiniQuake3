@@ -7,28 +7,79 @@ import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 
+/// Character capacity of a fixed-size botlib ABI string field.
 const MAX_STRINGFIELD=80
+/// Structure-reader type code for a character-sized integer.
 const FT_CHAR=1
+/// Structure-reader type code for an integer field.
 const FT_INT=2
+/// Structure-reader type code for a floating-point field.
 const FT_FLOAT=3
+/// Structure-reader type code for a fixed-size string field.
 const FT_STRING=4
+/// Structure-reader type code for a nested structure.
 const FT_STRUCT=6
+/// Mask selecting the base field type in a structure-reader descriptor.
 const FT_TYPE=0x00ff
+/// Structure-reader modifier identifying an array field.
 const FT_ARRAY=0x0100
+/// Structure-reader modifier enforcing numeric minimum and maximum bounds.
 const FT_BOUNDED=0x0200
+/// Structure-reader modifier selecting unsigned integer interpretation.
 const FT_UNSIGNED=0x0400
 
 /// `FieldDef` record for l struct, containing `name`, `offset`, `type`, `maxarray` and `floatmin` and related fields.
-struct FieldDef name offset type maxarray floatmin floatmax substruct end struct
+struct FieldDef
+  /// Name of the field.
+  name
+  /// Offset in the structure.
+  offset
+  /// Type of the field.
+  type
+  /// Maximum array size.
+  maxarray
+  /// Minimum allowed value of a bounded floating-point field.
+  floatmin
+  /// Maximum accepted numeric value for this field when range checking is enabled.
+  floatmax
+  /// Descriptor of the nested structure stored in this field.
+  substruct
+end struct
 /// `StructDef` record for l struct, containing `size` and `fields`.
-struct StructDef size fields end struct
+struct StructDef
+  /// Byte size of the native record described by this structure definition.
+  size
+  /// Field descriptors defining the accepted structured-data layout.
+  fields
+end struct
 /// `FieldValue` record for l struct, containing `definition` and `values`.
-struct FieldValue definition values end struct
+struct FieldValue
+  /// Structure or field descriptor used to interpret this parsed value.
+  definition
+  /// Parsed scalar or array elements stored for this field.
+  values
+end struct
 /// `Structure` record for l struct, containing `definition` and `fields`.
-struct Structure definition fields end struct
+struct Structure
+  /// Structure or field descriptor used to interpret this parsed value.
+  definition
+  /// Parsed field-value records associated with the structure definition.
+  fields
+end struct
 // A reader can consume either a raw pc_parser Source or a precompiled handle.
 // pending is local because l_struct.c needs exactly one-token pushback.
-struct Reader source registry sourceHandle pending diagnostics end struct
+struct Reader
+  /// Script input supplying the structured-data tokens.
+  source
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Handle of the preprocessor source being read.
+  sourceHandle
+  /// Saved token or command awaiting consumption by the next operation.
+  pending
+  /// Diagnostics collected while processing the subsystem's requests.
+  diagnostics
+end struct
 
 /// Set `reader.diagnostics` to `reader.diagnostics+[message]` in `mq3.botlib.l_struct.fail`.
 /// @param reader Token-reader state; accesses `diagnostics`. May update `reader.diagnostics` in place.

@@ -8,10 +8,15 @@ import mq3.shared.math as qmath
 import mq3.qcommon.cvar as cvar
 import mq3.qcommon.command_buffer as command
 
+/// ABI selector for the server game VM.
 const ABI_QAGAME = 0
+/// ABI selector for the client game VM.
 const ABI_CGAME = 1
+/// ABI selector for the user-interface VM.
 const ABI_UI = 2
+/// Upper bound on VM string represented by mq3.vm.syscall_common.
 const MAX_VM_STRING = 8192
+/// Byte size used for VM console variable storage or binary layout in mq3.vm.syscall_common.
 const VM_CVAR_SIZE = 272
 
 /// Round down to the greatest integral double no larger than the input.
@@ -29,21 +34,37 @@ extern function acos(value as double) from "ucrtbase.dll" returns double
 
 /// Services record for vm.syscall_common, containing `cvars`, `commands`, `context`, `printFn`, `errorFn`, `millisecondsFn`, and 5 further fields.
 struct Services
+  /// Console-variable registry or pending console-variable updates used by the module.
   cvars
+  /// Registered console commands exposed by the module.
   commands
+  /// Opaque caller-supplied context available to shared QVM console, clock, and file-system services.
   context
+  /// Injected callback for print; invoked through the Services service/state record.
   printFn
+  /// Injected callback for error; invoked through the Services service/state record.
   errorFn
+  /// Injected callback for milliseconds; invoked through the Services service/state record.
   millisecondsFn
+  /// Injected callback for console; invoked through the Services service/state record.
   consoleFn
+  /// Injected callback for open; invoked through the Services service/state record.
   openFn
+  /// Injected callback for read; invoked through the Services service/state record.
   readFn
+  /// Injected callback for write; invoked through the Services service/state record.
   writeFn
+  /// Injected callback for close; invoked through the Services service/state record.
   closeFn
 end struct
 
 /// OpenResult record for vm.syscall_common, containing `handle`, `length`.
-struct OpenResult handle length end struct
+struct OpenResult
+  /// Host file handle returned by the open operation.
+  handle
+  /// File length reported by the host open operation.
+  length
+end struct
 
 /// Create `mq3.vm.syscall_common.Services` with cvars=registry; commands=commands; context=context; printFn=void; errorFn=void; millisecondsFn=void; consoleFn=void; openFn=void; readFn=void; writeFn=void; closeFn=void.
 /// @param registry Initial `cvars` field stored in the returned or constructed `mq3.vm.syscall_common.Services` record.

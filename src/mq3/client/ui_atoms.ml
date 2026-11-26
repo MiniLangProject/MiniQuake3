@@ -9,34 +9,133 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import std.string as strings
 
+/// UI text-style flag selecting left-aligned text.
 const UI_LEFT=0
+/// UI text-style flag selecting horizontally centered text.
 const UI_CENTER=1
+/// UI text-style flag selecting right-aligned text.
 const UI_RIGHT=2
+/// UI text-style flag selecting the horizontal-alignment bits.
 const UI_FORMATMASK=7
+/// UI text-style flag selecting the small fixed-width font.
 const UI_SMALLFONT=16
+/// UI text-style flag selecting the large fixed-width font.
 const UI_BIGFONT=32
+/// UI text-style flag selecting the giant fixed-width font.
 const UI_GIANTFONT=64
+/// UI text-style flag selecting a shadow behind the text.
 const UI_DROPSHADOW=2048
+/// UI text-style flag selecting periodic visibility blinking.
 const UI_BLINK=4096
+/// UI text-style flag selecting the subdued inverse text style.
 const UI_INVERSE=8192
+/// UI text-style flag selecting a pulsing text color or brightness.
 const UI_PULSE=16384
+/// Prop font metric controlling gap width in virtual UI coordinates.
 const PROP_GAP_WIDTH=3
+/// Prop font metric controlling space width in virtual UI coordinates.
 const PROP_SPACE_WIDTH=8
+/// Prop font metric controlling height in virtual UI coordinates.
 const PROP_HEIGHT=27
+/// Prop font metric controlling small size scale in virtual UI coordinates.
 const PROP_SMALL_SIZE_SCALE=0.75
+/// Engine-to-UI menu selector for the none screen or menu state.
 const UIMENU_NONE=0
+/// Engine-to-UI menu selector for the main screen or menu state.
 const UIMENU_MAIN=1
+/// Engine-to-UI menu selector for the ingame screen or menu state.
 const UIMENU_INGAME=2
+/// Engine-to-UI menu selector for the need cd screen or menu state.
 const UIMENU_NEED_CD=3
+/// Engine-to-UI menu selector for the bad cd key screen or menu state.
 const UIMENU_BAD_CD_KEY=4
+/// Engine-to-UI menu selector for the team screen or menu state.
 const UIMENU_TEAM=5
+/// Engine-to-UI menu selector for the postgame screen or menu state.
 const UIMENU_POSTGAME=6
+/// UI keyboard-capture mask used when acquiring or releasing keyboard ownership when the base-game menu
+/// stack changes.
 const KEYCATCH_UI=2
 
 /// Stores UI atoms queued engine action, including `boundary`, `kind`, `name`, `text`, `values`, `color` and additional values.
-struct Action boundary kind name text values color dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while drawing base-game UI primitives and
+  /// changing the active menu stack.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while drawing base-game UI
+  /// primitives and changing the active menu stack.
+  kind
+  /// Menu sound, command, rendering resource, or other named target used by the common UI host
+  /// operation.
+  name
+  /// Text or serialized value supplied by a common UI drawing, command, diagnostic, or menu-stack
+  /// operation.
+  text
+  /// When constructing this record, `emit` supplies `values` for this member.
+  values
+  /// Optional RGBA modulation recorded with a shared UI drawing action.
+  color
+  /// True when this request is marked for native dispatch while drawing base-game UI primitives and
+  /// changing the active menu stack; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI atoms state, including `scale`, `bias`, `vidWidth`, `vidHeight`, `realtime`, `frametime` and additional values.
-struct State scale bias vidWidth vidHeight realtime frametime cursorx cursory keyCatcher stack activeMenu firstdraw enterSound actions args cvars mainState cacheNames whiteShader menuBackShader menuBackNoLogoShader cursorShader end struct
+struct State
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by
+  /// `UI_DrawBannerString2` and `UI_DrawProportionalString2` during subsequent processing.
+  scale
+  /// Horizontal adjustment used when centering the virtual UI on a wider display.
+  bias
+  /// When constructing this record, `create` supplies `640` for this member. Used by `UI_Init` during
+  /// subsequent processing.
+  vidWidth
+  /// When constructing this record, `create` supplies `480` for this member. Used by `UI_Init` during
+  /// subsequent processing.
+  vidHeight
+  /// Current base-game UI clock in milliseconds used by menu animation and feedback.
+  realtime
+  /// Elapsed client time in milliseconds since the preceding frame.
+  frametime
+  /// Horizontal position of the UI pointer in the menu coordinate system.
+  cursorx
+  /// Vertical position of the UI pointer in the menu coordinate system.
+  cursory
+  /// Input-capture bitmask selecting which client subsystem currently receives key events.
+  keyCatcher
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_PushMenu` and `UI_PopMenu` during subsequent processing.
+  stack
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `UI_PushMenu` and `UI_PopMenu` during subsequent processing.
+  activeMenu
+  /// When constructing this record, `create` supplies `false` for this member. Used by `UI_PushMenu`
+  /// and `UI_PopMenu` during subsequent processing.
+  firstdraw
+  /// Sound resource selected for the enter event or effect.
+  enterSound
+  /// Host requests queued while drawing base-game UI primitives and changing the active menu stack,
+  /// retained in request order.
+  actions
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `UI_Argv`
+  /// during subsequent processing.
+  args
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// When constructing this record, `create` supplies `uiMain.create(retailActive)` for this member.
+  /// Used by `emit` and `UI_Init` during subsequent processing.
+  mainState
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `UI_Cache_f` during subsequent processing.
+  cacheNames
+  /// Shader resource selected for white rendering.
+  whiteShader
+  /// Shader resource selected for menu back rendering.
+  menuBackShader
+  /// Shader resource selected for menu back no logo rendering.
+  menuBackNoLogoShader
+  /// Shader resource selected for cursor rendering.
+  cursorShader
+end struct
 /// Creates a `mq3.client.ui_atoms.State` record.
 /// @param retailActive Value used to initialize `State.mainState`.
 function create(retailActive) return State(1.0,0.0,640,480,0,0,320,240,0,[],void,false,false,[],[],[],uiMain.create(retailActive),[],"white","menuback","menubacknologo","menu/art/3_cursor2") end function

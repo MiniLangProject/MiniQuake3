@@ -3,44 +3,77 @@
 // Baseq3 qcommon/cmd.c token state and command text buffer.
 package mq3.qcommon.command_buffer
 
+/// Command-execution mode that runs the supplied command immediately.
 const EXEC_NOW = 0
+/// Command-execution mode that inserts text before pending commands.
 const EXEC_INSERT = 1
+/// Command-execution mode that appends text to the end of the command buffer.
 const EXEC_APPEND = 2
+/// Maximum byte capacity of the queued console command text.
 const MAX_CMD_BUFFER = 16384
+/// Maximum length of one console command line.
 const MAX_CMD_LINE = 1024
+/// Max tokens resulting from Cmd_TokenizeString.
 const MAX_STRING_TOKENS = 1024
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS = 1024
+/// Used for system info key only.
 const BIG_INFO_STRING = 8192
 
 /// State record for qcommon.command_buffer, containing `buffer`, `argv`, `command`, `wait`, `executeFn`, `printFn`, and 14 further fields.
 struct State
+  /// Pending console-command text in execution order.
   buffer
+  /// Parsed arguments of the command currently being executed.
   argv
+  /// Text of the console command currently being executed.
   command
+  /// Number of command-buffer execution passes to defer before continuing.
   wait
+  /// Host callback that executes a routed command or operation on the host.
   executeFn
+  /// Host callback that prints console command errors and command-list output.
   printFn
+  /// Caller-supplied data associated with console command execution, script loading, and command
+  /// diagnostics.
   context
+  /// Registered command names and their bound handlers.
   functions
+  /// Host callback that handles a console command naming a configuration variable.
   cvarCommandFn
+  /// Host callback that handles a configuration-variable command using the bound callback context.
   cvarContextCommandFn
+  /// Opaque context passed to the configuration-variable command handler.
   cvarCommandContext
+  /// Host callback that offers a console command to the client-game VM.
   clientGameCommandFn
+  /// Host callback that offers a console command to the server game VM.
   serverGameCommandFn
+  /// Host callback that offers a console command to the UI VM.
   uiGameCommandFn
+  /// Host callback that forwards an unhandled console command to the connected server.
   forwardCommandFn
+  /// True while a local client is available to process commands.
   clientRunning
+  /// True while a local server is available to process commands.
   serverRunning
+  /// Host callback that reads the text value of a host configuration variable.
   cvarStringFn
+  /// Host callback that reads a requested file through the host filesystem.
   readFileFn
+  /// Host callback that releases file bytes supplied by the host loader.
   freeFileFn
 end struct
 
 /// Command record for qcommon.command_buffer, containing `name`, `callback`, `contextCallback`, `callbackContext`.
 struct Command
+  /// Console-command name used to find this handler.
   name
+  /// Command handler invoked without an explicit context parameter.
   callback
+  /// Command handler invoked with its bound callback context.
   contextCallback
+  /// Opaque host data passed to the bound callback.
   callbackContext
 end struct
 

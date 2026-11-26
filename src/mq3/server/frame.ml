@@ -8,20 +8,101 @@ import mq3.server.client_pings as clientPings
 import mq3.server.timeouts as serverTimeouts
 import mq3.server.snapshot_schedule as snapshotSchedule
 
+/// Sent in response to front end requests.
 const CVAR_SERVERINFO=4
+/// These cvars will be duplicated on all clients.
 const CVAR_SYSTEMINFO=8
+/// An info string with all the serverinfo cvars.
 const CS_SERVERINFO=0
+/// An info string for server system to client system configuration (timescale, etc).
 const CS_SYSTEMINFO=1
 
 /// Runtime record for server.frame, containing `killServer`, `running`, `clPaused`, `svPaused`, `fps`, `dedicated`, and 14 further fields.
-struct Runtime killServer running clPaused svPaused fps dedicated speeds modifiedFlags timeGame timeResidual time restartTime nextSnapshotEntities numSnapshotEntities maxRate pauseClients pingClients playerStates timeoutState snapshotClients end struct
+struct Runtime
+  /// True when the current frame should shut down the server.
+  killServer
+  /// True while the server or represented subsystem is running.
+  running
+  /// Current local-client pause setting.
+  clPaused
+  /// Current server pause setting.
+  svPaused
+  /// Requested server simulation frames per second.
+  fps
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// True when detailed frame-timing diagnostics are enabled.
+  speeds
+  /// Bit mask of configuration-variable categories modified since the last clear.
+  modifiedFlags
+  /// Host execution time accumulated while running the game frame.
+  timeGame
+  /// Unconsumed elapsed milliseconds carried into the next server simulation frame.
+  timeResidual
+  /// Simulation clock advanced by completed server frames, in milliseconds.
+  time
+  /// Scheduled time for restarting the current map.
+  restartTime
+  /// Next absolute insertion position in the circular snapshot-entity buffer.
+  nextSnapshotEntities
+  /// Number of entity-state slots reserved in the snapshot ring.
+  numSnapshotEntities
+  /// Upper bound on the client transmission rate, in bytes per second.
+  maxRate
+  /// Client records used to decide whether pausing is allowed.
+  pauseClients
+  /// Client acknowledgment histories used to update latency estimates.
+  pingClients
+  /// Current game player-state records used by server frame processing.
+  playerStates
+  /// Client timeout state examined during the server frame.
+  timeoutState
+  /// Client scheduling state used to send the next snapshots.
+  snapshotClients
+end struct
 /// Create `mq3.server.frame.Runtime` with killServer=0; running=0; clPaused=0; svPaused=0; 16 further fields.
 function runtime()
   return Runtime(0,0,0,0,20,0,0,0,0,0,0,0,0,0,0,[],[],[],void,[])
 end function
 
 /// Services record for server.frame, containing `shutdownFn`, `cvarSetFn`, `botFrameFn`, `sleepFn`, `commandFn`, `infoStringFn`, and 11 further fields.
-struct Services shutdownFn cvarSetFn botFrameFn sleepFn commandFn infoStringFn setConfigstringFn millisecondsFn gameFrameFn heartbeatFn pauseObservedFn pingsObservedFn timeoutObservedFn messagesObservedFn timeoutServices snapshotServices context end struct
+struct Services
+  /// Host callback that shuts down the host subsystem and releases its resources.
+  shutdownFn
+  /// Host callback that sets a configuration variable in the host registry.
+  cvarSetFn
+  /// Host callback that runs bot-library work for the current server frame.
+  botFrameFn
+  /// Host callback that waits for the requested interval through the host scheduler.
+  sleepFn
+  /// Host callback that executes a command through the host command interface.
+  commandFn
+  /// Host callback that returns an indexed host information string.
+  infoStringFn
+  /// Host callback that updates an indexed server configuration string.
+  setConfigstringFn
+  /// Host callback that supplies the current host clock in milliseconds.
+  millisecondsFn
+  /// Host callback that runs the game VM for one server simulation frame.
+  gameFrameFn
+  /// Host callback that sends a server heartbeat to the configured master.
+  heartbeatFn
+  /// Host callback that observes the server pause decision.
+  pauseObservedFn
+  /// Host callback that observes updated client latency estimates.
+  pingsObservedFn
+  /// Host callback that observes client timeout decisions.
+  timeoutObservedFn
+  /// Host callback that observes messages sent during a server frame.
+  messagesObservedFn
+  /// Host callbacks used when clients time out.
+  timeoutServices
+  /// Host callbacks used while scheduling or sending client snapshots.
+  snapshotServices
+  /// Caller-supplied data associated with server frame timing, game updates, heartbeat work, and frame
+  /// observations.
+  context
+end struct
 /// Create `mq3.server.frame.Services` with shutdownFn=void; cvarSetFn=void; botFrameFn=void; sleepFn=void; 13 further fields.
 function services()
   return Services(void,void,void,void,void,void,void,void,void,void,void,void,void,void,serverTimeouts.services(),void,void)

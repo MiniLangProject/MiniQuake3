@@ -6,14 +6,42 @@ import mq3.client.playable_viewer as viewer
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
+/// Fallback max health setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_MAX_HEALTH=100
+/// Default respawn duration in milliseconds when the caller supplies no override.
 const DEFAULT_RESPAWN_MILLISECONDS=3000
+/// Default hit flash duration in milliseconds when the caller supplies no override.
 const DEFAULT_HIT_FLASH_MILLISECONDS=120
 
 /// Stores playable target render preview target record, including `origin`, `health`, `maxHealth`, `alive`, `respawnAt`, `hitFlashUntil`.
-struct PreviewTarget origin health maxHealth alive respawnAt hitFlashUntil end struct
+struct PreviewTarget
+  /// World-space location at which the enemy target model is drawn.
+  origin
+  /// Preview target health used to compute its health fraction and rendered alive state.
+  health
+  /// When constructing this record, `target` supplies `maxHealth` for this member.
+  maxHealth
+  /// True while the simulated player or target remains alive and can participate in gameplay.
+  alive
+  /// Client simulation timestamp at which the entity becomes eligible to respawn.
+  respawnAt
+  /// When constructing this record, `target` supplies `0` for this member.
+  hitFlashUntil
+end struct
 /// Stores playable target render line command record, including `a`, `b`, `red`, `green`, `blue`.
-struct LineCommand a b red green blue end struct
+struct LineCommand
+  /// Alpha component controlling opacity or blending.
+  a
+  /// Blue component of the stored color.
+  b
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
 /// Computes `point!=void and len(point)==3` for playable target render `validPoint`.
 /// @param point Sequence whose length/content is inspected by `validPoint`.

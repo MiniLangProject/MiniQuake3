@@ -5,15 +5,25 @@ package mq3.platform.win_main_runtime
 
 import std.string as strings
 
+/// Physical-memory threshold used by the platform's low-memory startup heuristic.
 const MEM_THRESHOLD=100663296
+/// Maximum number of filesystem search results retained by the platform adapter.
 const MAX_FOUND_FILES=4096
+/// Capacity of the bounded system-event queue.
 const MAX_QUED_EVENTS=256
+/// Event-queue result indicating that no input or system event is available.
 const SE_NONE=0
+/// System-event type carrying a key code and its press or release state.
 const SE_KEY=1
+/// System-event type carrying a character for text input.
 const SE_CHAR=2
+/// System-event type carrying relative horizontal and vertical mouse movement.
 const SE_MOUSE=3
+/// System-event type carrying a joystick axis identifier and value.
 const SE_JOYSTICK_AXIS=4
+/// System-event type carrying a completed console command line.
 const SE_CONSOLE=5
+/// System-event type carrying a received network packet.
 const SE_PACKET=6
 
 /// Tests the legacy low-memory threshold of at most 96 MiB total physical memory.
@@ -87,21 +97,135 @@ extern function dllAttachNative(handle as ptr,systemCalls as ptr) from "miniquak
 extern function dllUnloadNative(handle as ptr) from "miniquake3_winmain.dll" symbol "mq3_winmain_dll_unload" returns i32
 
 /// Data record for `mq3.platform.win_main_runtime.Event`; groups `time`, `type`, `value`, `value2`, `ptrLength`, `data`.
-struct Event time type value value2 ptrLength data end struct
+struct Event
+  /// Windows system-event timestamp in milliseconds, filled from the host clock when needed.
+  time
+  /// System-event category selecting how the accompanying values are interpreted.
+  type
+  /// Primary event value: a key or character code, horizontal motion, or joystick-axis selector.
+  value
+  /// Secondary event value: key press state, vertical motion, or joystick-axis magnitude.
+  value2
+  /// Length in bytes of the optional payload carried by the system event.
+  ptrLength
+  /// Optional byte payload carried by a console or network system event.
+  data
+end struct
 /// Data record for `mq3.platform.win_main_runtime.Dll`; groups `handle`, `entryPoint`, `path`.
-struct Dll handle entryPoint path end struct
+struct Dll
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// Loaded module entry point used to call into the dynamic library.
+  entryPoint
+  /// Filesystem or virtual asset path associated with this record.
+  path
+end struct
 /// Data record for `mq3.platform.win_main_runtime.Stream`; groups `file`, `data`, `position`, `active`, `readFn`, `seekFn`, and 1 further field.
-struct Stream file data position active readFn seekFn context end struct
+struct Stream
+  /// Open file object used by the stream or cursor.
+  file
+  /// Buffered bytes backing the streamed-file adapter.
+  data
+  /// Current byte position in the streamed file.
+  position
+  /// Whether this object is currently active and accepts processing.
+  active
+  /// Host callback used to perform read operations for this subsystem.
+  readFn
+  /// Host callback used to perform seek operations for this subsystem.
+  seekFn
+  /// File-backend state passed to the stream's read and seek callbacks.
+  context
+end struct
 /// Data record for `mq3.platform.win_main_runtime.StreamRead`; groups `data`, `count`.
-struct StreamRead data count end struct
+struct StreamRead
+  /// Bytes returned by the streamed-file read operation.
+  data
+  /// Number of bytes returned by the streamed-file read.
+  count
+end struct
 /// Data record for `mq3.platform.win_main_runtime.Runtime`; groups `commandLine`, `events`, `head`, `tail`, `overflows`, `printed`, and 34 further fields.
 struct Runtime
-  commandLine events head tail overflows printed fatal errorText quitCode initialized
-  arch cpuString cpuId username consoleVisible inputStarted networkStarted streamStarted
-  dlls streams frameCount totalMsec actions
-  clockFn pumpFn consoleFn packetFn inputInitFn inputShutdownFn inputFrameFn
-  networkInitFn networkRestartFn commonInitFn commonFrameFn createConsoleFn destroyConsoleFn
-  showConsoleFn errorConsoleFn sleepFn context
+  /// Command-line text supplied when initializing the platform runtime.
+  commandLine
+  /// Pending input or system events awaiting delivery.
+  events
+  /// Producer cursor of the next native system-event slot to fill.
+  head
+  /// Consumer position of the next event to remove from the queue.
+  tail
+  /// Number of events lost because the queue reached capacity.
+  overflows
+  /// Console text captured from platform print calls.
+  printed
+  /// Whether a fatal platform error has occurred.
+  fatal
+  /// Text describing the most recent platform error.
+  errorText
+  /// Exit status requested when terminating the application.
+  quitCode
+  /// Whether initialization completed successfully.
+  initialized
+  /// Processor or platform architecture identifier used during startup.
+  arch
+  /// Human-readable processor description used by platform initialization.
+  cpuString
+  /// Processor feature category selected by platform detection.
+  cpuId
+  /// Operating-system user name used for user-specific settings.
+  username
+  /// Whether the native console window is visible.
+  consoleVisible
+  /// Whether platform input services have started.
+  inputStarted
+  /// Whether platform network services have started.
+  networkStarted
+  /// Whether the streamed-file subsystem has started.
+  streamStarted
+  /// Loaded dynamic libraries and their entry-point records.
+  dlls
+  /// Open streamed-file records managed by the platform runtime.
+  streams
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Total elapsed milliseconds accumulated by the runtime.
+  totalMsec
+  /// Platform operations recorded for dispatch or inspection.
+  actions
+  /// Host callback used to perform clock operations for this subsystem.
+  clockFn
+  /// Host callback used to perform pump operations for this subsystem.
+  pumpFn
+  /// Host callback used to perform console operations for this subsystem.
+  consoleFn
+  /// Host callback used to perform packet operations for this subsystem.
+  packetFn
+  /// Host callback used to perform input init operations for this subsystem.
+  inputInitFn
+  /// Host callback used to perform input shutdown operations for this subsystem.
+  inputShutdownFn
+  /// Host callback used to perform input frame operations for this subsystem.
+  inputFrameFn
+  /// Host callback used to perform network init operations for this subsystem.
+  networkInitFn
+  /// Host callback used to perform network restart operations for this subsystem.
+  networkRestartFn
+  /// Host callback used to perform common init operations for this subsystem.
+  commonInitFn
+  /// Host callback used to perform common frame operations for this subsystem.
+  commonFrameFn
+  /// Host callback used to perform create console operations for this subsystem.
+  createConsoleFn
+  /// Host callback used to perform destroy console operations for this subsystem.
+  destroyConsoleFn
+  /// Host callback used to perform show console operations for this subsystem.
+  showConsoleFn
+  /// Host callback used to perform error console operations for this subsystem.
+  errorConsoleFn
+  /// Host callback used to perform sleep operations for this subsystem.
+  sleepFn
+  /// Windows host state supplied to console, error-display, sleep, and frame callbacks.
+  context
 end struct
 
 /// Constructs `mq3.platform.win_main_runtime.Runtime` with `commandLine` = `""`, `events` = `array(MAX_QUED_EVENTS,void)`, `head` = `0`, `tail` = `0` and the supplied remaining values.

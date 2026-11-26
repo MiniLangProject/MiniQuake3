@@ -19,18 +19,31 @@ import mq3.shared.math as q
 import mq3.shared.directions as directions
 import mq3.compat.numeric as n
 
+/// Weapon identifier selecting nailgun.
 const WP_NAILGUN = 11
+/// Weapon identifier selecting prox launcher.
 const WP_PROX_LAUNCHER = 12
+/// Cause-of-death identifier attributing damage or a kill to proximity mine.
 const MOD_PROXIMITY_MINE = 26
+/// Cause-of-death identifier attributing damage or a kill to juiced.
 const MOD_JUICED = 28
+/// Network entity-flag bit indicating ticking.
 const EF_TICKING = 0x00000002
+/// Network entity-flag bit indicating bounce half.
 const EF_BOUNCE_HALF = 0x00000020
+/// Network entity-flag bit indicating nodraw.
 const EF_NODRAW = 0x00000080
+/// Server entity-flag bit controlling noclient.
 const SVF_NOCLIENT = 0x00000001
+/// Server entity-flag bit controlling use current origin.
 const SVF_USE_CURRENT_ORIGIN = 0x00000080
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Combined CONTENTS_* mask used for shot collision queries.
 const MASK_SHOT = 0x06000001
+/// Entity-number sentinel meaning that no entity was hit or referenced.
 const ENTITYNUM_NONE = 1023
+/// Damage-processing flag enabling no knockback.
 const DAMAGE_NO_KNOCKBACK = 4
 
 /// Forward `G_BounceMissile` to `mq3.game.missiles.bounce` and return the delegated result.

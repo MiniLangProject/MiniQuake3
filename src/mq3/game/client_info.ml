@@ -8,6 +8,7 @@ import mq3.game.spawn_values as values
 import mq3.game.tournament as tournament
 import mq3.compat.textnumbers as textnum
 import std.string as strings
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
 /// Normalize a client's team-leader value to the integer representation written into userinfo.
 /// @param client Client state; accesses `teamLeader`.

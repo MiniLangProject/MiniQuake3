@@ -10,19 +10,27 @@ import mq3.collision.winding as w
 
 /// Adjusted record for collision.patchtrace, containing `plane`, `start`, `finish`.
 struct Adjusted
+  /// Facet plane shifted to account for the swept collision shape.
   plane
+  /// Trace start translated for clipping against an expanded patch facet.
   start
+  /// Trace endpoint translated for clipping against an expanded patch facet.
   finish
 end struct
 /// Clip record for collision.patchtrace, containing `enter`, `leave`, `hit`.
 struct Clip
+  /// Earliest fraction at which the trace enters the facet volume.
   enter
+  /// Latest fraction at which the trace leaves the facet volume.
   leave
+  /// True when clipping produces a valid intersection interval.
   hit
 end struct
 /// DebugState record for collision.patchtrace, containing `patch`, `facet`.
 struct DebugState
+  /// Patch mesh selected for collision-debug inspection.
   patch
+  /// Facet selected for collision-debug inspection.
   facet
 end struct
 

@@ -9,21 +9,126 @@ import mq3.renderer.command_queue as commands
 import mq3.client.ui_host_lifecycle as lifecycle
 import mq3.compat.numeric as n
 
+/// Width of the native UI coordinate space used by the screen-scaling adapter.
 const SCREEN_WIDTH=640.0
+/// Height of the native UI coordinate space used by the screen-scaling adapter.
 const SCREEN_HEIGHT=480.0
+/// Smallchar font metric controlling width in virtual UI coordinates.
 const SMALLCHAR_WIDTH=8
+/// Smallchar font metric controlling height in virtual UI coordinates.
 const SMALLCHAR_HEIGHT=16
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Stereo-view selector for the centered, non-offset camera view.
 const STEREO_CENTER=0
+/// Stereo-view selector for the left-eye camera view.
 const STEREO_LEFT=1
+/// Stereo-view selector for the right-eye camera view.
 const STEREO_RIGHT=2
 
 /// Stores engine client scrn runtime host-service callbacks, including `context`, `registerShaderFn`, `stopSoundsFn`, `consoleFn`, `fileTellFn`, `diagnosticFn`.
-struct Services context registerShaderFn stopSoundsFn consoleFn fileTellFn diagnosticFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for screen refresh and
+  /// debug-graph drawing.
+  context
+  /// Host callback for the register shader operation; an unset callback leaves that host operation
+  /// unavailable.
+  registerShaderFn
+  /// Host callback for the stop sounds operation; an unset callback leaves that host operation
+  /// unavailable.
+  stopSoundsFn
+  /// Host callback for the console operation; an unset callback leaves that host operation unavailable.
+  consoleFn
+  /// Host callback for the file tell operation; an unset callback leaves that host operation
+  /// unavailable.
+  fileTellFn
+  /// Host callback for the diagnostic operation; an unset callback leaves that host operation
+  /// unavailable.
+  diagnosticFn
+end struct
 /// Stores engine client scrn runtime graph sample record, including `value`, `color`.
-struct GraphSample value color end struct
+struct GraphSample
+  /// Measured graph sample used to determine the height of the debug-graph column.
+  value
+  /// Palette color index recorded with this debug-graph sample.
+  color
+end struct
 /// Stores engine client scrn runtime state, including `renderer`, `lifecycle`, `services`, `vidWidth`, `vidHeight`, `charSetShader` and additional values.
-struct State renderer lifecycle services vidWidth vidHeight charSetShader whiteShader initialized timegraph debuggraph debugMove graphheight graphscale graphshift graphCurrent graphValues connectionState realtime uiLoaded keyCatchers stereoEnabled demoRecording spDemoRecording demoName demoFile recursive currentStereo end struct
+struct State
+  /// Renderer implementation name reported by the graphics driver.
+  renderer
+  /// When constructing this record, `create` supplies `uiLifecycle` for this member. Used by
+  /// `SCR_DrawScreenField` during subsequent processing.
+  lifecycle
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// When constructing this record, `create` supplies `width` for this member. Used by
+  /// `SCR_AdjustFrom640` and `SCR_DrawDebugGraph` during subsequent processing.
+  vidWidth
+  /// When constructing this record, `create` supplies `height` for this member. Used by
+  /// `SCR_AdjustFrom640` and `SCR_DrawDebugGraph` during subsequent processing.
+  vidHeight
+  /// Shader resource selected for char set rendering.
+  charSetShader
+  /// Shader resource selected for white rendering.
+  whiteShader
+  /// True after screen-refresh settings and debug-graph defaults are initialized, permitting screen
+  /// updates.
+  initialized
+  /// When constructing this record, `create` supplies `0` for this member. Used by `SCR_Init` and
+  /// `SCR_DrawScreenField` during subsequent processing.
+  timegraph
+  /// When constructing this record, `create` supplies `0` for this member. Used by `SCR_Init` and
+  /// `SCR_DrawScreenField` during subsequent processing.
+  debuggraph
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `SCR_DrawScreenField` during subsequent processing.
+  debugMove
+  /// When constructing this record, `create` supplies `32` for this member. Used by
+  /// `SCR_DrawDebugGraph` and `SCR_Init` during subsequent processing.
+  graphheight
+  /// When constructing this record, `create` supplies `1` for this member. Used by `SCR_DrawDebugGraph`
+  /// and `SCR_Init` during subsequent processing.
+  graphscale
+  /// When constructing this record, `create` supplies `0` for this member. Used by `SCR_DrawDebugGraph`
+  /// and `SCR_Init` during subsequent processing.
+  graphshift
+  /// When constructing this record, `create` supplies `0` for this member. Used by `SCR_DebugGraph` and
+  /// `SCR_DrawDebugGraph` during subsequent processing.
+  graphCurrent
+  /// When constructing this record, `create` supplies `values` for this member. Used by
+  /// `SCR_DebugGraph` and `SCR_DrawDebugGraph` during subsequent processing.
+  graphValues
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
+  connectionState
+  /// Current local client clock in milliseconds supplied to screen and UI presentation.
+  realtime
+  /// When constructing this record, `create` supplies `true` for this member. Used by
+  /// `SCR_DrawScreenField` during subsequent processing.
+  uiLoaded
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
+  keyCatchers
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `SCR_UpdateScreen` during subsequent processing.
+  stereoEnabled
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `SCR_DrawDemoRecording` during subsequent processing.
+  demoRecording
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `SCR_DrawDemoRecording` during subsequent processing.
+  spDemoRecording
+  /// Virtual demo filename associated with the current recording or playback operation.
+  demoName
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `SCR_DrawDemoRecording` during subsequent processing.
+  demoFile
+  /// When constructing this record, `create` supplies `0` for this member. Used by `SCR_UpdateScreen`
+  /// during subsequent processing.
+  recursive
+  /// When constructing this record, `create` supplies `STEREO_CENTER` for this member. Used by
+  /// `SCR_DrawScreenField` during subsequent processing.
+  currentStereo
+end struct
 
 /// Creates the engine client scrn runtime error `7810` with diagnostic text `"cl_scrn: "+message`.
 /// @param message Argument 2 of `error`; passed as `"cl_scrn: "+message`.

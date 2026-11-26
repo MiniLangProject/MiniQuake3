@@ -6,30 +6,69 @@ import mq3.compat.numeric as n
 import mq3.qcommon.message as message
 import mq3.qcommon.message_delta as userCommandDelta
 
+/// Max number of usercmd_t in a packet.
 const MAX_PACKET_USERCMDS=32
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Mask converting a network sequence number into a circular packet-history slot.
 const PACKET_MASK=31
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying a client whose user commands advance its in-game entity.
 const CS_ACTIVE=4
 
 /// ClientFrame record for server.user_move, containing `messageAcked`.
-struct ClientFrame messageAcked end struct
+struct ClientFrame
+  /// Server timestamp when this snapshot message was acknowledged, in milliseconds.
+  messageAcked
+end struct
 /// Client record for server.user_move, containing `state`, `messageAcknowledge`, `reliableAcknowledge`, `reliableCommands`, `deltaMessage`, `pureAuthentic`, and 3 further fields.
 struct Client
+  /// Connection lifecycle value that distinguishes entering the world from advancing an already active
+  /// player.
   state
+  /// Sequence number of the newest server message acknowledged by the client.
   messageAcknowledge
+  /// Reliable command acknowledgment used while validating movement-message state.
   reliableAcknowledge
+  /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands
+  /// Acknowledged snapshot message selected as the base for delta compression.
   deltaMessage
+  /// True after the client has passed the pure-package authentication check.
   pureAuthentic
+  /// True after the client has sent its pure-server checksum verification command.
   gotCP
+  /// Updates can be delta'd from here.
   frames
+  /// Most recent user-command record received or processed for this client.
   lastUsercmd
 end struct
 /// Server record for server.user_move, containing `checksumFeed`, `time`, `pure`.
-struct Server checksumFeed time pure end struct
+struct Server
+  /// Server-supplied feed value used to calculate pure-package checksums.
+  checksumFeed
+  /// Current simulation time used while validating and executing client user commands, in milliseconds.
+  time
+  /// True when clients must use the server-approved package checksums.
+  pure
+end struct
 /// Services record for server.user_move, containing `sendGamestateFn`, `enterWorldFn`, `dropFn`, `thinkFn`, `diagnosticFn`, `context`.
-struct Services sendGamestateFn enterWorldFn dropFn thinkFn diagnosticFn context end struct
+struct Services
+  /// Host callback that transmits the current gamestate to a client.
+  sendGamestateFn
+  /// Host callback that transitions a connected client into active world simulation.
+  enterWorldFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that passes a validated user command to game simulation.
+  thinkFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with entry into the game world and execution of client movement
+  /// commands.
+  context
+end struct
 
 /// Return `mq3.qcommon.message_delta.userCommand(0, 0, 0, 0, 0, 0, 0, 0, 0)` from `server.user_move.zeroCommand`.
 function zeroCommand() return userCommandDelta.userCommand(0,0,0,0,0,0,0,0,0) end function

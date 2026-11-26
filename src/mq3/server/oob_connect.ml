@@ -6,15 +6,28 @@ import mq3.shared.info as info
 import mq3.compat.numeric as numeric
 import std.string as strings
 
+/// Number of pending connection-challenge entries retained by the server.
 const MAX_CHALLENGES=1024
+/// Wait limit before the connection policy stops waiting for authorization.
 const AUTHORIZE_TIMEOUT=5000
+/// Protocol version placed in Quake III connection and discovery messages.
 const PROTOCOL_VERSION=68
+/// Client-state value identifying a vacant slot available for accepting a new connection.
 const CS_FREE=0
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Network-address kind reserved for an in-process bot client.
 const NA_BOT=0
 
 /// Address record for server.oob_connect, containing `type`, `ip`, `port`.
-struct Address type ip port end struct
+struct Address
+  /// Network-address kind used when validating the connection source.
+  type
+  /// Address bytes identifying the remote IPv4 endpoint.
+  ip
+  /// Network port associated with the endpoint.
+  port
+end struct
 /// Create `mq3.server.oob_connect.Address` with type=type; ip=ip; port=port.
 /// @param type Initial `type` field stored in the returned or constructed `mq3.server.oob_connect.Address` record.
 /// @param ip Initial `ip` field stored in the returned or constructed `mq3.server.oob_connect.Address` record.
@@ -30,19 +43,104 @@ function sameBase(a,b) return a!=void and b!=void and a.type==b.type and a.ip==b
 function sameAddress(a,b) return sameBase(a,b) and a.port==b.port end function
 
 /// Challenge record for server.oob_connect, containing `address`, `challenge`, `time`, `pingTime`, `firstTime`, `connected`.
-struct Challenge address challenge time pingTime firstTime connected end struct
+struct Challenge
+  /// Network address associated with the client or packet.
+  address
+  /// Challenge value used to authenticate a connection attempt.
+  challenge
+  /// Server timestamp when this challenge entry was assigned, used to select the oldest reusable entry.
+  time
+  /// Server timestamp of the challenge response used to measure connection latency.
+  pingTime
+  /// Server timestamp when this challenge address was first registered.
+  firstTime
+  /// True after the connection challenge has been accepted by a client.
+  connected
+end struct
 /// Create `mq3.server.oob_connect.Challenge` with address=void; challenge=0; time=0; pingTime=0; firstTime=0; connected=false.
 function emptyChallenge() return Challenge(void,0,0,0,0,false) end function
 /// Client record for server.oob_connect, containing `state`, `address`, `qport`, `lastConnectTime`, `reliableAcknowledge`, `reliableSequence`, and 6 further fields.
-struct Client state address qport lastConnectTime reliableAcknowledge reliableSequence challenge userinfo nextSnapshotTime lastPacketTime gamestateMessageNum bot end struct
+struct Client
+  /// Connection lifecycle value that tracks slot availability and progress through connection
+  /// admission.
+  state
+  /// Network address associated with the client or packet.
+  address
+  /// Client-selected virtual port used to recognize a connection across address translation.
+  qport
+  /// Server timestamp when this client connection began, in milliseconds.
+  lastConnectTime
+  /// Reliable command acknowledgment reset when this connection slot is admitted or reused.
+  reliableAcknowledge
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Challenge value used to authenticate a connection attempt.
+  challenge
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
+  nextSnapshotTime
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Outgoing network sequence number of the client gamestate message.
+  gamestateMessageNum
+  /// True when the client slot is controlled by an in-process bot.
+  bot
+end struct
 /// Create `mq3.server.oob_connect.Client` with state=CS_FREE; address=void; qport=0; lastConnectTime=0; reliableAcknowledge=0; reliableSequence=0; challenge=0; userinfo=""; nextSnapshotTime=0; lastPacketTime=0; gamestateMessageNum=0; bot=false.
 function emptyClient() return Client(CS_FREE,void,0,0,0,0,0,"",0,0,0,false) end function
 /// Config record for server.oob_connect, containing `singlePlayer`, `reconnectLimit`, `minPing`, `maxPing`, `privateClients`, `privatePassword`.
-struct Config singlePlayer reconnectLimit minPing maxPing privateClients privatePassword end struct
+struct Config
+  /// True when the connection policy is configured for single-player operation.
+  singlePlayer
+  /// Minimum interval required before a client may reconnect.
+  reconnectLimit
+  /// Minimum client latency accepted by the connection policy.
+  minPing
+  /// Maximum client latency accepted by the connection policy.
+  maxPing
+  /// Number of client slots reserved for clients with the private password.
+  privateClients
+  /// Password required to use the reserved private client slots.
+  privatePassword
+end struct
 /// Create `mq3.server.oob_connect.Config` with singlePlayer=false; reconnectLimit=3; minPing=0; maxPing=0; privateClients=0; privatePassword="".
 function config() return Config(false,3,0,0,0,"") end function
 /// Runtime record for server.oob_connect, containing `time`, `challenges`, `clients`, `config`, `randFn`, `lanFn`, and 9 further fields.
-struct Runtime time challenges clients config randFn lanFn localFn sendFn authorizeFn gameConnectFn dropFn heartbeatFn context authorizeAddress diagnosticFn end struct
+struct Runtime
+  /// Server clock used for challenge expiration, authorization waits, and connection admission, in
+  /// milliseconds.
+  time
+  /// Pending connection challenges used to validate connecting client addresses.
+  challenges
+  /// Connection slots searched for reconnecting clients and available admission capacity.
+  clients
+  /// Configuration object supplying the settings used by this runtime.
+  config
+  /// Host callback that supplies random values used for connection challenges.
+  randFn
+  /// Host callback that classifies a network address for LAN connection policy.
+  lanFn
+  /// Host callback that classifies a connection address as local or remote.
+  localFn
+  /// Host callback that transmits the supplied message through the host network interface.
+  sendFn
+  /// Host callback that performs the host-side client authorization exchange.
+  authorizeFn
+  /// Host callback that asks the game VM to accept or reject a client.
+  gameConnectFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that sends a server heartbeat to the configured master.
+  heartbeatFn
+  /// Caller-supplied data associated with connection challenges, authorization, and connection
+  /// admission.
+  context
+  /// Network address of the external client-authorization server.
+  authorizeAddress
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+end struct
 /// Create oob connect in server.oob_connect; the normal completion returns `Runtime(0, challenges, clients, settings, void, void, void, void, void, void, void, void, void, void, void)`.
 ///
 /// Validation failures include `oob connect: invalid maxclients`.
@@ -55,7 +153,18 @@ function create(maxClients,settings)
   return Runtime(0,challenges,clients,settings,void,void,void,void,void,void,void,void,void,void,void)
 end function
 /// Result record for server.oob_connect, containing `accepted`, `reason`, `slot`, `challengeIndex`, `userinfo`.
-struct Result accepted reason slot challengeIndex userinfo end struct
+struct Result
+  /// True when validation accepted the requested operation.
+  accepted
+  /// Diagnostic explaining the result or rejection of this operation.
+  reason
+  /// Index identifying this entry in its owning slot table.
+  slot
+  /// Index of the challenge-table entry used by the connection attempt.
+  challengeIndex
+  /// Backslash-delimited client information string, including name and connection settings.
+  userinfo
+end struct
 /// Create `mq3.server.oob_connect.Result` with accepted=ok; reason=reason; slot=slot; challengeIndex=index; userinfo=userinfo.
 /// @param ok Initial `accepted` field stored in the returned or constructed `mq3.server.oob_connect.Result` record.
 /// @param reason Initial `reason` field stored in the returned or constructed `mq3.server.oob_connect.Result` record.

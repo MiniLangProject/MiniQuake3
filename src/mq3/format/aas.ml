@@ -5,137 +5,363 @@ package mq3.format.aas
 
 import mq3.compat.numeric as n
 
+/// Magic value identifying the AAS navigation-file format.
 const AAS_ID=0x53414145
+/// Legacy AAS format version accepted by the navigation loader.
 const AAS_VERSION_OLD=4
+/// Serialized format or interface version expected by AAS.
 const AAS_VERSION=5
+/// Serialized byte size of header in this file format.
 const HEADER_SIZE=124
+/// Number of entries in the serialized map's lump directory.
 const LUMP_COUNT=14
+/// Lump-directory index for bboxes in the serialized map.
 const LUMP_BBOXES=0
+/// Lump-directory index for vertexes in the serialized map.
 const LUMP_VERTEXES=1
+/// Lump-directory index for planes in the serialized map.
 const LUMP_PLANES=2
+/// Lump-directory index for edges in the serialized map.
 const LUMP_EDGES=3
+/// Lump-directory index for edgeindex in the serialized map.
 const LUMP_EDGEINDEX=4
+/// Lump-directory index for faces in the serialized map.
 const LUMP_FACES=5
+/// Lump-directory index for faceindex in the serialized map.
 const LUMP_FACEINDEX=6
+/// Lump-directory index for areas in the serialized map.
 const LUMP_AREAS=7
+/// Lump-directory index for areasettings in the serialized map.
 const LUMP_AREASETTINGS=8
+/// Lump-directory index for area reachability in the serialized map.
 const LUMP_REACHABILITY=9
+/// Lump-directory index for nodes in the serialized map.
 const LUMP_NODES=10
+/// Lump-directory index for portals in the serialized map.
 const LUMP_PORTALS=11
+/// Lump-directory index for portalindex in the serialized map.
 const LUMP_PORTALINDEX=12
+/// Lump-directory index for clusters in the serialized map.
 const LUMP_CLUSTERS=13
+/// Magic value identifying the AAS navigation-file format.
 const AASID=AAS_ID
+/// Legacy AAS format version accepted by the navigation loader.
 const AASVERSION_OLD=AAS_VERSION_OLD
+/// Serialized format or interface version expected by AAS.
 const AASVERSION=AAS_VERSION
+/// Number of entries in the AAS file lump directory.
 const AAS_LUMPS=LUMP_COUNT
+/// Lump-directory index for bboxes in the serialized map.
 const AASLUMP_BBOXES=LUMP_BBOXES
+/// Lump-directory index for vertexes in the serialized map.
 const AASLUMP_VERTEXES=LUMP_VERTEXES
+/// Lump-directory index for planes in the serialized map.
 const AASLUMP_PLANES=LUMP_PLANES
+/// Lump-directory index for edges in the serialized map.
 const AASLUMP_EDGES=LUMP_EDGES
+/// Lump-directory index for edgeindex in the serialized map.
 const AASLUMP_EDGEINDEX=LUMP_EDGEINDEX
+/// Lump-directory index for faces in the serialized map.
 const AASLUMP_FACES=LUMP_FACES
+/// Lump-directory index for faceindex in the serialized map.
 const AASLUMP_FACEINDEX=LUMP_FACEINDEX
+/// Lump-directory index for areas in the serialized map.
 const AASLUMP_AREAS=LUMP_AREAS
+/// Lump-directory index for areasettings in the serialized map.
 const AASLUMP_AREASETTINGS=LUMP_AREASETTINGS
+/// Lump-directory index for area reachability in the serialized map.
 const AASLUMP_REACHABILITY=LUMP_REACHABILITY
+/// Lump-directory index for nodes in the serialized map.
 const AASLUMP_NODES=LUMP_NODES
+/// Lump-directory index for portals in the serialized map.
 const AASLUMP_PORTALS=LUMP_PORTALS
+/// Lump-directory index for portalindex in the serialized map.
 const AASLUMP_PORTALINDEX=LUMP_PORTALINDEX
+/// Lump-directory index for clusters in the serialized map.
 const AASLUMP_CLUSTERS=LUMP_CLUSTERS
 
 // Complete code/botlib/aasfile.h public ABI.
 const PRESENCE_NONE=1
+/// AAS presence-mask value selecting normal.
 const PRESENCE_NORMAL=2
+/// AAS presence-mask value selecting crouch.
 const PRESENCE_CROUCH=4
+/// Number of slots reserved for the AAS travel-type lookup table.
 const MAX_TRAVELTYPES=32
+/// AAS travel-type value for a reachability that cannot currently be traversed.
 const TRAVEL_INVALID=1
+/// AAS movement-type identifier for walk.
 const TRAVEL_WALK=2
+/// AAS movement-type identifier for crouch.
 const TRAVEL_CROUCH=3
+/// Jumping onto a barrier.
 const TRAVEL_BARRIERJUMP=4
+/// AAS movement-type identifier for jump.
 const TRAVEL_JUMP=5
+/// Climbing a ladder.
 const TRAVEL_LADDER=6
+/// Walking of a ledge.
 const TRAVEL_WALKOFFLEDGE=7
+/// AAS movement-type identifier for swim.
 const TRAVEL_SWIM=8
+/// Jump out of the water.
 const TRAVEL_WATERJUMP=9
+/// AAS movement-type identifier for teleport.
 const TRAVEL_TELEPORT=10
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// Rocket jumping required for travel.
 const TRAVEL_ROCKETJUMP=12
+/// Bfg jumping required for travel.
 const TRAVEL_BFGJUMP=13
+/// Grappling hook required for travel.
 const TRAVEL_GRAPPLEHOOK=14
+/// AAS movement-type identifier for double jump.
 const TRAVEL_DOUBLEJUMP=15
+/// AAS movement-type identifier for ramp jump.
 const TRAVEL_RAMPJUMP=16
+/// AAS movement-type identifier for strafe jump.
 const TRAVEL_STRAFEJUMP=17
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
+/// Mask selecting the movement-type identifier from an encoded AAS travel type.
 const TRAVELTYPE_MASK=0xffffff
+/// Additional AAS travel restriction for team-one restriction.
 const TRAVELFLAG_NOTTEAM1=0x01000000
+/// Additional AAS travel restriction for team-two restriction.
 const TRAVELFLAG_NOTTEAM2=0x02000000
+/// Just solid at the other side.
 const FACE_SOLID=1
+/// AAS face-property bit marking ladder.
 const FACE_LADDER=2
+/// Standing on ground when in this face.
 const FACE_GROUND=4
+/// Gap in the ground.
 const FACE_GAP=8
+/// Face seperating two areas with liquid.
 const FACE_LIQUID=16
+/// Face seperating liquid and air.
 const FACE_LIQUIDSURFACE=32
+/// Can walk over this face if bridge is closed.
 const FACE_BRIDGE=64
+/// AAS area-contents bit marking water.
 const AREACONTENTS_WATER=1
+/// AAS area-contents bit marking lava.
 const AREACONTENTS_LAVA=2
+/// AAS area-contents bit marking slime.
 const AREACONTENTS_SLIME=4
+/// AAS area-contents bit marking cluster portal.
 const AREACONTENTS_CLUSTERPORTAL=8
+/// AAS area-contents bit marking teleportal.
 const AREACONTENTS_TELEPORTAL=16
+/// AAS area-contents bit marking routing portal.
 const AREACONTENTS_ROUTEPORTAL=32
+/// AAS area-contents bit marking teleporter.
 const AREACONTENTS_TELEPORTER=64
+/// AAS area-contents bit marking jump pad.
 const AREACONTENTS_JUMPPAD=128
+/// AAS area-contents bit marking do-not-enter area.
 const AREACONTENTS_DONOTENTER=256
+/// AAS area-contents bit marking view portal.
 const AREACONTENTS_VIEWPORTAL=512
+/// AAS area-contents bit marking mover.
 const AREACONTENTS_MOVER=1024
+/// AAS area-contents bit marking team-one restriction.
 const AREACONTENTS_NOTTEAM1=2048
+/// AAS area-contents bit marking team-two restriction.
 const AREACONTENTS_NOTTEAM2=4096
+/// Bit position at which a mover model number is stored in area contents.
 const AREACONTENTS_MODELNUMSHIFT=24
+/// Largest mover model number representable in area-contents flags.
 const AREACONTENTS_MAXMODELNUM=0xff
+/// Mask selecting the mover model number from area-contents flags.
 const AREACONTENTS_MODELNUM=0xff000000
+/// Bot can stand on the ground.
 const AREA_GROUNDED=1
+/// Area contains one or more ladder faces.
 const AREA_LADDER=2
+/// Area contains a liquid.
 const AREA_LIQUID=4
+/// Area is disabled for routing when set.
 const AREA_DISABLED=8
+/// Area ontop of a bridge.
 const AREA_BRIDGE=16
 
+/// Serialized byte size of bbox in this file format.
 const BBOX_SIZE=32
+/// Serialized byte size of vertex in this file format.
 const VERTEX_SIZE=12
+/// Serialized byte size of plane in this file format.
 const PLANE_SIZE=20
+/// Serialized byte size of edge in this file format.
 const EDGE_SIZE=8
+/// Serialized byte size of index in this file format.
 const INDEX_SIZE=4
+/// Serialized byte size of an AAS face record.
 const FACE_SIZE=24
+/// Serialized byte size of an AAS area record.
 const AREA_SIZE=48
+/// Serialized byte size of an AAS area-settings record.
 const AREA_SETTINGS_SIZE=28
+/// Serialized byte size of area reachability in this file format.
 const REACHABILITY_SIZE=44
+/// Serialized byte size of node in this file format.
 const NODE_SIZE=12
+/// Serialized byte size of portal in this file format.
 const PORTAL_SIZE=20
+/// Serialized byte size of cluster in this file format.
 const CLUSTER_SIZE=16
 
 /// AAS record for format.aas, containing `data`, `version`, `bspChecksum`, `offsets`, `lengths`, `counts`, and 1 further fields.
-struct AAS data version bspChecksum offsets lengths counts sequential end struct
+struct AAS
+  /// Complete AAS file bytes backing the navigation readers.
+  data
+  /// AAS file-format version selected by the loader.
+  version
+  /// Checksum of the BSP map associated with the navigation data.
+  bspChecksum
+  /// Byte offsets of AAS lump payloads indexed by lump identifier.
+  offsets
+  /// Byte lengths of AAS lump payloads indexed by lump identifier.
+  lengths
+  /// Decoded record counts for each AAS lump.
+  counts
+  /// True when lump data follows the expected sequential file layout.
+  sequential
+end struct
 /// BBox record for format.aas, containing `presenceType`, `flags`, `mins`, `maxs`.
-struct BBox presenceType flags mins maxs end struct
+struct BBox
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Presence-box flags retained from the AAS navigation file.
+  flags
+  /// Minimum XYZ corner of the AAS presence shape relative to the moving entity origin.
+  mins
+  /// Maximum XYZ corner of the AAS presence shape relative to the moving entity origin.
+  maxs
+end struct
 /// Plane record for format.aas, containing `normal`, `dist`, `type`.
-struct Plane normal dist type end struct
+struct Plane
+  /// Unit normal stored with a navigation BSP plane in the AAS file.
+  normal
+  /// Distance of the plane (normal vector * distance = point in plane).
+  dist
+  /// Axis classification used to accelerate AAS plane tests.
+  type
+end struct
 /// Face record for format.aas, containing `planeNum`, `flags`, `numEdges`, `firstEdge`, `frontArea`, `backArea`.
-struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
+struct Face
+  /// AAS plane index containing this serialized navigation face.
+  planeNum
+  /// AAS face-property flags, such as solid, ground, ladder, or liquid.
+  flags
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Starting offset of this face in the signed edge-index array.
+  firstEdge
+  /// Area at the front of this face.
+  frontArea
+  /// Area at the back of this face.
+  backArea
+end struct
 /// Area record for format.aas, containing `areaNum`, `numFaces`, `firstFace`, `mins`, `maxs`, `center`.
-struct Area areaNum numFaces firstFace mins maxs center end struct
+struct Area
+  /// Area identifier stored in this serialized AAS area record.
+  areaNum
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Starting offset of this area in the signed face-index array.
+  firstFace
+  /// Minimum XYZ corner of the navigation area stored in the AAS area lump.
+  mins
+  /// Maximum XYZ corner of the navigation area stored in the AAS area lump.
+  maxs
+  /// 'center' of the area.
+  center
+end struct
 /// AreaSettings record for format.aas, containing `contents`, `flags`, `presenceType`, `cluster`, `clusterAreaNum`, `numReachableAreas`, and 1 further fields.
-struct AreaSettings contents flags presenceType cluster clusterAreaNum numReachableAreas firstReachableArea end struct
+struct AreaSettings
+  /// Collision or AAS contents flags describing the represented volume.
+  contents
+  /// AAS area-property flags controlling movement and route availability.
+  flags
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Cluster the area belongs to, if negative it's a portal.
+  cluster
+  /// Number of the area in the cluster.
+  clusterAreaNum
+  /// Number of outgoing reachability records belonging to this AAS area.
+  numReachableAreas
+  /// First outgoing reachability index for this area in the shared reachability array.
+  firstReachableArea
+end struct
 /// Reachability record for format.aas, containing `areaNum`, `faceNum`, `edgeNum`, `start`, `finish`, `travelType`, and 1 further fields.
-struct Reachability areaNum faceNum edgeNum start finish travelType travelTime end struct
+struct Reachability
+  /// Destination area reached by this serialized navigation connection.
+  areaNum
+  /// Index of the AAS face associated with the movement link.
+  faceNum
+  /// Index of the AAS edge associated with the movement link.
+  edgeNum
+  /// Departure position stored for this serialized area-to-area connection.
+  start
+  /// Arrival position stored for this serialized area-to-area connection.
+  finish
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+end struct
 /// Node record for format.aas, containing `planeNum`, `children`.
-struct Node planeNum children end struct
+struct Node
+  /// AAS plane index dividing the child regions of this serialized node.
+  planeNum
+  /// Child nodes of this node, or areas as leaves when negative.
+  children
+end struct
 /// Portal record for format.aas, containing `areaNum`, `frontCluster`, `backCluster`, `clusterAreaNums`.
-struct Portal areaNum frontCluster backCluster clusterAreaNums end struct
+struct Portal
+  /// Navigation area forming the portal between two serialized clusters.
+  areaNum
+  /// Cluster at front of portal.
+  frontCluster
+  /// Cluster at back of portal.
+  backCluster
+  /// Area indexes of this portal within its front and back clusters.
+  clusterAreaNums
+end struct
 /// Cluster record for format.aas, containing `numAreas`, `numReachabilityAreas`, `numPortals`, `firstPortal`.
-struct Cluster numAreas numReachabilityAreas numPortals firstPortal end struct
+struct Cluster
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+  /// Number of areas with reachabilities.
+  numReachabilityAreas
+  /// Number of cluster portals.
+  numPortals
+  /// First cluster portal in the index.
+  firstPortal
+end struct
 /// Lump record for format.aas, containing `fileOffset`, `fileLength`.
-struct Lump fileOffset fileLength end struct
+struct Lump
+  /// Byte offset of the lump from the beginning of the file.
+  fileOffset
+  /// Length of the serialized lump in bytes.
+  fileLength
+end struct
 /// Header record for format.aas, containing `ident`, `version`, `bspChecksum`, `lumps`.
-struct Header ident version bspChecksum lumps end struct
+struct Header
+  /// Magic value identifying the AAS navigation file.
+  ident
+  /// AAS navigation-file format version.
+  version
+  /// Checksum of the BSP map associated with the navigation data.
+  bspChecksum
+  /// Directory records locating the AAS navigation sections.
+  lumps
+end struct
 
 /// Create the format.aas error for `fail` with 7510 and the supplied diagnostic text.
 /// @param message Message used in `("AAS: " + message)` and `error(7510, ("AAS: " + message))`.

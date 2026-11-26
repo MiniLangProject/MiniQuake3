@@ -7,21 +7,86 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.ds.list as lists
 
+/// Distance in world units within which distance attenuation is not applied.
 const SOUND_FULLVOLUME=80.0
+/// Linear gain reduction per world unit beyond the full-volume distance.
 const SOUND_ATTENUATE=0.0008
+/// Maximum number of loop sources registered with the spatial mixer.
 const MAX_SOURCES=64
+/// Maximum number of stereo output frames produced by one mixer chunk.
 const MAX_FRAMES=4096
 
 /// Source record for audio.spatial_mixer, containing `id`, `key`, `origin`, `sound`, `volume`, `globalSound`, and 2 further fields.
-struct Source id key origin sound volume globalSound cursor enabled end struct
+struct Source
+  /// Caller-supplied identifier used to find or update this sound source.
+  id
+  /// Grouping key identifying sources that share a loop and playback cursor.
+  key
+  /// World-space XYZ position of the sound source.
+  origin
+  /// Decoded WAVE sound descriptor supplying the source PCM data.
+  sound
+  /// Source gain before distance attenuation, in the range zero through one.
+  volume
+  /// True when source gain is independent of listener position.
+  globalSound
+  /// Current playback position in source sample frames.
+  cursor
+  /// True when this registered source is included in the next mixing pass.
+  enabled
+end struct
 /// State record for audio.spatial_mixer, containing `outputRate`, `chunkFrames`, `sources`.
-struct State outputRate chunkFrames sources end struct
+struct State
+  /// Output sample rate in hertz.
+  outputRate
+  /// Number of stereo sample frames produced by one mixing pass.
+  chunkFrames
+  /// Registered loop sources and their independent enable states.
+  sources
+end struct
 /// Chunk record for audio.spatial_mixer, containing `samples`, `frames`, `audibleSources`, `peak`, `limiterGain`.
-struct Chunk samples frames audibleSources peak limiterGain end struct
+struct Chunk
+  /// Interleaved little-endian signed 16-bit stereo PCM output bytes.
+  samples
+  /// Number of stereo sample frames contained in this output chunk.
+  frames
+  /// Number of enabled sources that contributed audible output.
+  audibleSources
+  /// Largest absolute mixed sample magnitude measured before output clipping.
+  peak
+  /// Gain applied to keep the mixed output within the supported sample range.
+  limiterGain
+end struct
 /// Spatial record for audio.spatial_mixer, containing `left`, `right`, `distance`, `attenuation`.
-struct Spatial left right distance attenuation end struct
+struct Spatial
+  /// Left-channel floating-point gain after spatialization.
+  left
+  /// Right-channel floating-point gain after spatialization.
+  right
+  /// Distance in world units from the source to the listener.
+  distance
+  /// Distance-dependent gain remaining after the full-volume region.
+  attenuation
+end struct
 /// Group record for audio.spatial_mixer, containing `key`, `sound`, `cursor`, `step`, `sourceFrames`, `left`, and 2 further fields.
-struct Group key sound cursor step sourceFrames left right sourceIndexes end struct
+struct Group
+  /// Shared-loop grouping key for these sources.
+  key
+  /// Decoded WAVE sound descriptor supplying the source PCM data.
+  sound
+  /// Current playback position in source sample frames.
+  cursor
+  /// Fractional source-frame advance for each output frame.
+  step
+  /// Number of sample frames in the source sound.
+  sourceFrames
+  /// Sum of the left-channel gains for sources in this shared loop.
+  left
+  /// Sum of the right-channel gains for sources in this shared loop.
+  right
+  /// Indexes of registered sources represented by this shared playback group.
+  sourceIndexes
+end struct
 
 /// Create the audio.spatial_mixer error for `fail` with 7620 and the supplied diagnostic text.
 /// @param message Message used in `("spatial mixer: " + message)` and `error(7620, ("spatial mixer: " + message))`.

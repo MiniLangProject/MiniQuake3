@@ -17,24 +17,154 @@ import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 import std.ds.list as lists
 
+/// Number of entity slots for sound origins and entity-attached playback.
 const MAX_ENTITIES=1024
+/// Maximum number of active one-shot playback voices.
 const MAX_VOICES=96
+/// Maximum number of entity-attached looping sound sources.
 const MAX_LOOPS=1024
 
 /// Listener record for audio.qvm_playback, containing `entity`, `origin`, `axis`, `inWater`.
-struct Listener entity origin axis inWater end struct
+struct Listener
+  /// Entity number whose local sounds are heard without attenuation.
+  entity
+  /// World-space XYZ position of the listener.
+  origin
+  /// Three listener orientation axes used to spatialize sounds.
+  axis
+  /// True when the listener is inside water.
+  inWater
+end struct
 /// Voice record for audio.qvm_playback, containing `id`, `slot`, `entity`, `channel`, `handle`, `origin`, and 7 further fields.
-struct Voice id slot entity channel handle origin fixedOrigin localSound sound compressed mono cursor active end struct
+struct Voice
+  /// Caller-supplied identifier used to find or update this sound source.
+  id
+  /// Index of the channel slot allocated for this playback voice.
+  slot
+  /// Game-entity number to which the sound source or channel belongs.
+  entity
+  /// Entity-channel identifier used when replacing an existing sound.
+  channel
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// World-space XYZ position of the sound source.
+  origin
+  /// True when playback uses the stored origin instead of the current entity origin.
+  fixedOrigin
+  /// True when the sound bypasses world-distance spatialization.
+  localSound
+  /// Decoded WAVE sound descriptor supplying the source PCM data.
+  sound
+  /// Compressed sound descriptor when playback uses encoded sample blocks.
+  compressed
+  /// Decoded signed mono samples cached for channel painting.
+  mono
+  /// Current playback position in source sample frames.
+  cursor
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+end struct
 /// LoopSource record for audio.qvm_playback, containing `entity`, `handle`, `origin`, `velocity`, `realLoop`, `sound`, and 7 further fields.
-struct LoopSource entity handle origin velocity realLoop sound compressed mono cursor active doppler dopplerScale oldDopplerScale end struct
+struct LoopSource
+  /// Game-entity number to which the sound source or channel belongs.
+  entity
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// World-space XYZ position of the sound source.
+  origin
+  /// World-space velocity of the sound source used for Doppler adjustment.
+  velocity
+  /// True for a persistent real looping sound rather than a frame-submitted loop.
+  realLoop
+  /// Decoded WAVE sound descriptor supplying the source PCM data.
+  sound
+  /// Compressed sound descriptor when playback uses encoded sample blocks.
+  compressed
+  /// Decoded signed mono samples cached for channel painting.
+  mono
+  /// Current playback position in source sample frames.
+  cursor
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+  /// True when Doppler resampling is enabled for this source.
+  doppler
+  /// Current Doppler scale applied to the source sample-advance rate.
+  dopplerScale
+  /// Previous Doppler scale retained when continuing a loop between frames.
+  oldDopplerScale
+end struct
 /// Music record for audio.qvm_playback, containing `introSound`, `loopSound`, `cursor`, `inIntro`, `active`.
-struct Music introSound loopSound cursor inIntro active end struct
+struct Music
+  /// Decoded introductory music clip played once before the loop.
+  introSound
+  /// Decoded music clip repeated after the introduction.
+  loopSound
+  /// Current playback position in source sample frames.
+  cursor
+  /// True while the introductory clip is still playing.
+  inIntro
+  /// True while this sound, channel, or music stream participates in playback.
+  active
+end struct
 /// State record for audio.qvm_playback, containing `outputRate`, `chunkFrames`, `catalog`, `listener`, `entityOrigins`, `voices`, and 10 further fields.
-struct State outputRate chunkFrames catalog listener entityOrigins voices loops nextVoice music commandCursor channels loopPaintedFrames rawStream monoCache clipHandles monoHandles end struct
+struct State
+  /// Output sample rate in hertz.
+  outputRate
+  /// Number of stereo sample frames produced by one mixing pass.
+  chunkFrames
+  /// Registered sound assets and any failures encountered while loading them.
+  catalog
+  /// Current listener position, orientation, entity number, and water state.
+  listener
+  /// Entity-indexed world positions used by sounds without a fixed origin.
+  entityOrigins
+  /// Allocated one-shot sound voices and their playback cursors.
+  voices
+  /// Entity-indexed looping sound sources retained between frames.
+  loops
+  /// Identifier assigned to the next one-shot playback voice.
+  nextVoice
+  /// Current introductory and looping background-music playback state.
+  music
+  /// Next audio command to consume from the VM-issued command sequence.
+  commandCursor
+  /// Channel allocator used to enforce entity-channel replacement rules.
+  channels
+  /// Absolute number of output frames already painted for loop playback.
+  loopPaintedFrames
+  /// Streaming stereo sample ring used for continuous audio input.
+  rawStream
+  /// Cached mono PCM used to avoid repeatedly decoding registered clips.
+  monoCache
+  /// Sound handles corresponding to catalog clip entries.
+  clipHandles
+  /// Sound handles corresponding to cached mono PCM entries.
+  monoHandles
+end struct
 /// ApplyResult record for audio.qvm_playback, containing `applied`, `missing`, `ignored`.
-struct ApplyResult applied missing ignored end struct
+struct ApplyResult
+  /// Number of audio commands successfully applied.
+  applied
+  /// Number of commands whose referenced sound asset was unavailable.
+  missing
+  /// Number of commands skipped because they were unsupported or inapplicable.
+  ignored
+end struct
 /// Chunk record for audio.qvm_playback, containing `samples`, `frames`, `audibleVoices`, `audibleLoops`, `peak`, `limiterGain`.
-struct Chunk samples frames audibleVoices audibleLoops peak limiterGain end struct
+struct Chunk
+  /// Interleaved little-endian signed 16-bit stereo PCM output bytes.
+  samples
+  /// Number of stereo sample frames contained in this output chunk.
+  frames
+  /// Number of one-shot voices that contributed to this chunk.
+  audibleVoices
+  /// Number of looping sources that contributed to this chunk.
+  audibleLoops
+  /// Largest absolute mixed sample magnitude measured before output clipping.
+  peak
+  /// Gain applied to keep the mixed output within the supported sample range.
+  limiterGain
+end struct
 
 /// Create the audio.qvm_playback error for `fail` with 7651 and the supplied diagnostic text.
 /// @param message Message used in `("QVM playback: " + message)` and `error(7651, ("QVM playback: " + message))`.

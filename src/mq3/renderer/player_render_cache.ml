@@ -9,26 +9,157 @@ import mq3.renderer.player_skins as skins
 import mq3.renderer.view_math as viewMath
 import std.array as arrays
 
+/// Level-of-detail result indicating that the model is not drawn.
 const LOD_CULLED=0
+/// Level-of-detail tier used for distant player models.
 const LOD_FAR=1
+/// Level-of-detail tier used for intermediate-distance player models.
 const LOD_MEDIUM=2
+/// Level-of-detail tier retaining full player-model geometry.
 const LOD_FULL=3
+/// Triangle-count threshold used when retaining full detail for a model surface.
 const FULL_SURFACE_TRIANGLE_LIMIT=8192
 
 /// Data record for `mq3.renderer.player_render_cache.Key`; groups `lowerOldFrame`, `lowerFrame`, `lowerPhase`, `upperOldFrame`, `upperFrame`, `upperPhase`.
-struct Key lowerOldFrame lowerFrame lowerPhase upperOldFrame upperFrame upperPhase end struct
+struct Key
+  /// Previous animation frame of the lower-body model used in the animation cache key.
+  lowerOldFrame
+  /// Current animation frame of the lower-body model used in the animation cache key.
+  lowerFrame
+  /// Quantized frame-interpolation phase of the lower-body model used in the animation cache key.
+  lowerPhase
+  /// Previous animation frame of the upper-body model used in the animation cache key.
+  upperOldFrame
+  /// Current animation frame of the upper-body model used in the animation cache key.
+  upperFrame
+  /// Quantized frame-interpolation phase of the upper-body model used in the animation cache key.
+  upperPhase
+end struct
 /// Data record for `mq3.renderer.player_render_cache.Entry`; groups `key`, `triangles`.
-struct Entry key triangles end struct
+struct Entry
+  /// Animation-frame and interpolation-phase values used to identify a cache entry.
+  key
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+end struct
 /// Data record for `mq3.renderer.player_render_cache.LodPolicy`; groups `fullDistance`, `mediumDistance`, `farDistance`, `mediumStride`, `farStride`.
-struct LodPolicy fullDistance mediumDistance farDistance mediumStride farStride end struct
+struct LodPolicy
+  /// Maximum distance at which full model detail is retained.
+  fullDistance
+  /// Distance threshold for the medium model-detail tier.
+  mediumDistance
+  /// Distance threshold for the most distant model-detail tier.
+  farDistance
+  /// Triangle sampling stride used by the medium detail tier.
+  mediumStride
+  /// Triangle sampling stride used by the distant detail tier.
+  farStride
+end struct
 /// Data record for `mq3.renderer.player_render_cache.Lighting`; groups `direction`, `ambient`, `directed`.
-struct Lighting direction ambient directed end struct
+struct Lighting
+  /// Direction of the dominant light contribution.
+  direction
+  /// Ambient light contribution sampled or applied by the renderer.
+  ambient
+  /// Directional light contribution sampled or applied by the renderer.
+  directed
+end struct
 /// Data record for `mq3.renderer.player_render_cache.DrawTriangle`; groups `positions`, `texCoords`, `normals`, `lights`, `part`, `surfaceIndex`, and 4 further fields.
-struct DrawTriangle positions texCoords normals lights part surfaceIndex surfaceName shaderName imageName lod end struct
+struct DrawTriangle
+  /// Cached player-triangle positions reused for the selected animation and detail level.
+  positions
+  /// Cached texture coordinates reused when drawing a player-model triangle at the selected detail
+  /// level.
+  texCoords
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Lighting contributions applied to the cached draw triangle.
+  lights
+  /// Player-model component from which this geometry originated.
+  part
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Model-surface name used to select a skin or material mapping.
+  surfaceName
+  /// Material name retained with the cached player-model triangle for drawing.
+  shaderName
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Level-of-detail selection used for this model or draw result.
+  lod
+end struct
 /// Data record for `mq3.renderer.player_render_cache.Cache`; groups `models`, `phaseCount`, `maxEntries`, `maxTrianglesPerTarget`, `maxTargetsPerFrame`, `entries`, and 15 further fields.
-struct Cache models phaseCount maxEntries maxTrianglesPerTarget maxTargetsPerFrame entries hits misses builds evictions frameTargets frameTriangles detailed skinSet lodPolicy lighting frameCulled frameFull frameMedium frameFar sourceTriangles end struct
+struct Cache
+  /// Registered models or model parts available to the subsystem.
+  models
+  /// Number of interpolation phases represented by the animation cache.
+  phaseCount
+  /// Maximum number of entries retained by the cache.
+  maxEntries
+  /// Maximum triangle detail retained for one cached draw target.
+  maxTrianglesPerTarget
+  /// Maximum number of draw targets prepared during one frame.
+  maxTargetsPerFrame
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+  /// Number of cache entries or batches rebuilt from source data.
+  builds
+  /// Number of cache entries discarded to make room for newer data.
+  evictions
+  /// Number of model draw targets prepared during the current frame.
+  frameTargets
+  /// Number of triangles submitted for cached model targets this frame.
+  frameTriangles
+  /// Whether the cache retains the more detailed geometry variant.
+  detailed
+  /// Resolved skin bindings for the player model's three body parts.
+  skinSet
+  /// Distance and stride thresholds controlling player-model detail.
+  lodPolicy
+  /// Lighting values applied to the assembled player model.
+  lighting
+  /// Number of player-model targets rejected this frame.
+  frameCulled
+  /// Number of player-model targets drawn at full detail this frame.
+  frameFull
+  /// Number of player-model targets drawn at medium detail this frame.
+  frameMedium
+  /// Number of player-model targets drawn at distant detail this frame.
+  frameFar
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+end struct
 /// Data record for `mq3.renderer.player_render_cache.Stats`; groups `entries`, `hits`, `misses`, `builds`, `evictions`, `frameTargets`, and 6 further fields.
-struct Stats entries hits misses builds evictions frameTargets frameTriangles frameCulled frameFull frameMedium frameFar sourceTriangles end struct
+struct Stats
+  /// Number of player-render cache entries currently retained.
+  entries
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+  /// Number of cache entries or batches rebuilt from source data.
+  builds
+  /// Number of cache entries discarded to make room for newer data.
+  evictions
+  /// Number of model draw targets prepared during the current frame.
+  frameTargets
+  /// Number of triangles submitted for cached model targets this frame.
+  frameTriangles
+  /// Number of player-model targets rejected this frame.
+  frameCulled
+  /// Number of player-model targets drawn at full detail this frame.
+  frameFull
+  /// Number of player-model targets drawn at medium detail this frame.
+  frameMedium
+  /// Number of player-model targets drawn at distant detail this frame.
+  frameFar
+  /// Number of source triangles considered when preparing the batch.
+  sourceTriangles
+end struct
 
 /// Creates error `7540` with message `"player render cache: "+message`.
 /// @param message Input used in the result expression `error(7540,"player render cache: "+message)`.

@@ -4,14 +4,27 @@
 package mq3.server.timeouts
 import mq3.compat.numeric as numeric
 
+/// Client-state value identifying a released slot that no longer needs inactivity checks.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying a playing client monitored for inactivity timeouts.
 const CS_ACTIVE=4
 
 /// Client record for server.timeouts, containing `state`, `lastPacketTime`, `timeoutCount`.
-struct Client state lastPacketTime timeoutCount end struct
+struct Client
+  /// Connection lifecycle value that selects inactivity handling for connected, active, and lingering
+  /// zombie slots.
+  state
+  /// Server timestamp of the most recently received client packet, in milliseconds.
+  lastPacketTime
+  /// Consecutive timeout checks exceeded before disconnecting the client.
+  timeoutCount
+end struct
 /// Create `mq3.server.timeouts.Client` with state=state; lastPacketTime=lastPacketTime; timeoutCount=timeoutCount.
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.timeouts.Client` record.
 /// @param lastPacketTime Initial `lastPacketTime` field stored in the returned or constructed `mq3.server.timeouts.Client` record.
@@ -19,7 +32,18 @@ struct Client state lastPacketTime timeoutCount end struct
 function client(state,lastPacketTime,timeoutCount) return Client(state,lastPacketTime,timeoutCount) end function
 
 /// Runtime record for server.timeouts, containing `time`, `timeoutSeconds`, `zombieSeconds`, `maxClients`, `clients`.
-struct Runtime time timeoutSeconds zombieSeconds maxClients clients end struct
+struct Runtime
+  /// Server clock against which client inactivity and zombie retention are checked, in milliseconds.
+  time
+  /// Maximum inactivity interval for a connected client, in seconds.
+  timeoutSeconds
+  /// Retention interval for a disconnected zombie client, in seconds.
+  zombieSeconds
+  /// Number of configured client slots inspected by the timeout pass.
+  maxClients
+  /// Client slots inspected for inactivity and lingering disconnected connections.
+  clients
+end struct
 /// Compute runtime in server.timeouts; the normal completion returns `Runtime(0, 200, 2, size, clients)`.
 /// @param clients Initial `clients` field stored in the returned or constructed `mq3.server.timeouts.Runtime` record.
 function runtime(clients)
@@ -28,7 +52,14 @@ function runtime(clients)
 end function
 
 /// Services record for server.timeouts, containing `dropFn`, `diagnosticFn`, `context`.
-struct Services dropFn diagnosticFn context end struct
+struct Services
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with client timeout disconnection and timeout diagnostics.
+  context
+end struct
 /// Create `mq3.server.timeouts.Services` with dropFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void) end function
 

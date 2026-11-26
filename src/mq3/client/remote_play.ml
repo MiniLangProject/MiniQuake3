@@ -17,21 +17,85 @@ import mq3.qcommon.netchan as remoteNetchan
 import mq3.shared.info as remoteInfo
 import std.string as remoteStrings
 
+/// Server configuration-string index for serverinfo; shared by the client and game protocol.
 const CS_SERVERINFO=0
+/// Server configuration-string index for systeminfo; shared by the client and game protocol.
 const CS_SYSTEMINFO=1
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
 const SNAPFLAG_NOT_ACTIVE=2
+/// Duration or timeout in milliseconds controlling connect timeout.
 const CONNECT_TIMEOUT_MS=12000
+/// Duration or timeout in milliseconds controlling server timeout.
 const SERVER_TIMEOUT_MS=30000
 
 /// Stores remote play server endpoint record, including `host`, `port`.
-struct ServerEndpoint host port end struct
+struct ServerEndpoint
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// When constructing this record, `parseEndpoint` supplies `port` for this member.
+  port
+end struct
 /// Stores remote play connection host record, including `socket`, `userinfo`.
-struct ConnectionHost socket userinfo end struct
+struct ConnectionHost
+  /// When constructing this record, `create` supplies `socket` for this member.
+  socket
+  /// When constructing this record, `create` supplies `userinfo` for this member.
+  userinfo
+end struct
 /// Stores remote play live record, including `socket`, `connection`, `connectionHost`, `ingress`, `protocol`, `outgoing` and additional values.
 struct Live
-  socket connection connectionHost ingress protocol outgoing sendHost
-  receiveBytes receiveMetadata epoch map game baseDirectory verifiedArchive
-  connectStarted gamestateStarted lastAccepted lastCommandSequence
+  /// When constructing this record, `create` supplies `socket` for this member.
+  socket
+  /// When constructing this record, `create` supplies `state` for this member. Used by `primed` and
+  /// `status` during subsequent processing.
+  connection
+  /// When constructing this record, `create` supplies `host` for this member. Used by `pump` and
+  /// `updateUserinfo` during subsequent processing.
+  connectionHost
+  /// When constructing this record, `create` supplies `input` for this member. Used by
+  /// `updateSendState` and `acceptPacket` during subsequent processing.
+  ingress
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// When constructing this record, `create` supplies `outgoing` for this member. Used by
+  /// `updateSendState` and `appendCommand` during subsequent processing.
+  outgoing
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `status` and `writePacket` during subsequent processing.
+  sendHost
+  /// When constructing this record, `create` supplies `bytes(65535,0)` for this member. Used by `pump`
+  /// during subsequent processing.
+  receiveBytes
+  /// When constructing this record, `create` supplies `bytes(8,0)` for this member. Used by `pump`
+  /// during subsequent processing.
+  receiveMetadata
+  /// When constructing this record, `create` supplies `protocol.dispatcher.snapshotState` for this
+  /// member. Used by `enterGamestate` and `acceptPacket` during subsequent processing.
+  epoch
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `mapName` and `status` during subsequent processing.
+  map
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `gameDirectory` and `enterGamestate` during subsequent processing.
+  game
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `setBasePackages` and `enterGamestate` during subsequent processing.
+  baseDirectory
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `approvedArchive` and `enterGamestate` during subsequent processing.
+  verifiedArchive
+  /// When constructing this record, `create` supplies `now` for this member. Used by `pump` during
+  /// subsequent processing.
+  connectStarted
+  /// When constructing this record, `create` supplies `now` for this member. Used by `enterGamestate`
+  /// and `pump` during subsequent processing.
+  gamestateStarted
+  /// When constructing this record, `create` supplies `now` for this member. Used by `acceptPacket` and
+  /// `pump` during subsequent processing.
+  lastAccepted
+  /// When constructing this record, `create` supplies `0` for this member. Used by `enterGamestate` and
+  /// `checkServerCommands` during subsequent processing.
+  lastCommandSequence
 end struct
 
 /// Calls `std.string.indexOf`, `std.string.substr`, `mq3.client.remote_play.ServerEndpoint` from remote play `parseEndpoint`. The final path returns `ServerEndpoint(host,port)`.

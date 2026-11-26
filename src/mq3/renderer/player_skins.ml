@@ -5,21 +5,64 @@ import mq3.format.pk3 as pk3
 import mq3.renderer.playable_materials as materials
 import std.string as strings
 
+/// Capacity of a Quake virtual-path buffer, including the terminating byte in the native ABI.
 const MAX_QPATH=64
+/// Default virtual path of the Sarge lower-body MD3 model.
 const SARGE_LOWER="models/players/sarge/lower_default.skin"
+/// Default virtual path of the Sarge upper-body MD3 model.
 const SARGE_UPPER="models/players/sarge/upper_default.skin"
+/// Default virtual path of the Sarge head MD3 model.
 const SARGE_HEAD="models/players/sarge/head_default.skin"
 
 /// Data record for `mq3.renderer.player_skins.Mapping`; groups `surface`, `shaderName`.
-struct Mapping surface shaderName end struct
+struct Mapping
+  /// Model-surface name to which the skin assigns its shader.
+  surface
+  /// Shader assigned by the skin file to its named model surface.
+  shaderName
+end struct
 /// Data record for `mq3.renderer.player_skins.Skin`; groups `path`, `mappings`, `tags`.
-struct Skin path mappings tags end struct
+struct Skin
+  /// Filesystem or virtual asset path associated with this record.
+  path
+  /// Surface-name to shader-name assignments read from the skin file.
+  mappings
+  /// Attachment tag names discovered while loading the skin or model.
+  tags
+end struct
 /// Data record for `mq3.renderer.player_skins.Binding`; groups `surface`, `shaderName`, `imageName`, `image`.
-struct Binding surface shaderName imageName image end struct
+struct Binding
+  /// Model-surface name associated with the resolved shader and image.
+  surface
+  /// Resolved skin shader whose image is bound to the model surface.
+  shaderName
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Decoded image selected by the skin's resolved surface shader.
+  image
+end struct
 /// Data record for `mq3.renderer.player_skins.ResolvedSkin`; groups `path`, `bindings`, `tags`.
-struct ResolvedSkin path bindings tags end struct
+struct ResolvedSkin
+  /// Filesystem or virtual asset path associated with this record.
+  path
+  /// Bindings associating names or handles with their backing resources.
+  bindings
+  /// Attachment tag names discovered while loading the skin or model.
+  tags
+end struct
 /// Data record for `mq3.renderer.player_skins.SargeDefault`; groups `lower`, `upper`, `head`, `uniqueImages`, `scriptCount`.
-struct SargeDefault lower upper head uniqueImages scriptCount end struct
+struct SargeDefault
+  /// Lower-body player model or its assembled animation state.
+  lower
+  /// Upper-body player model or its assembled animation state.
+  upper
+  /// Head player model or its assembled animation state.
+  head
+  /// Distinct images used by the resolved multipart player skin.
+  uniqueImages
+  /// Number of shader script sources loaded into the catalog.
+  scriptCount
+end struct
 
 /// Creates error `7520` with message `"player skin: "+message`.
 /// @param message Input used in the result expression `error(7520,"player skin: "+message)`.

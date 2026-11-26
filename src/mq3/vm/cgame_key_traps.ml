@@ -5,16 +5,43 @@ package mq3.vm.cgame_key_traps
 
 import mq3.vm.syscall_common as common
 
+/// Client-game syscall number selecting the host key isdown service.
 const CG_KEY_ISDOWN=60
+/// Client-game syscall number selecting the host key getcatcher service.
 const CG_KEY_GETCATCHER=61
+/// Client-game syscall number selecting the host key setcatcher service.
 const CG_KEY_SETCATCHER=62
+/// Client-game syscall number selecting the host key getkey service.
 const CG_KEY_GETKEY=63
+/// Upper bound on keys represented by mq3.vm.cgame_key_traps.
 const MAX_KEYS=256
 
 /// Services record for vm.cgame_key_traps, containing `context`, `isDownFn`, `getCatcherFn`, `setCatcherFn`, `getKeyFn`.
-struct Services context isDownFn getCatcherFn setCatcherFn getKeyFn end struct
+struct Services
+  /// Opaque caller-supplied context available to client-game key-state and input-catcher callbacks.
+  context
+  /// Injected callback for is down; invoked through the Services service/state record.
+  isDownFn
+  /// Injected callback for get catcher; invoked through the Services service/state record.
+  getCatcherFn
+  /// Injected callback for set catcher; invoked through the Services service/state record.
+  setCatcherFn
+  /// Injected callback for get key; invoked through the Services service/state record.
+  getKeyFn
+end struct
 /// State record for vm.cgame_key_traps, containing `down`, `bindings`, `catcher`, `overstrike`, `bindingSerial`.
-struct State down bindings catcher overstrike bindingSerial end struct
+struct State
+  /// Per-key pressed/released states.
+  down
+  /// Command strings associated with keyboard keys.
+  bindings
+  /// Key-catcher mask selecting the component that receives input.
+  catcher
+  /// Nonzero when text editing overwrites existing characters instead of inserting.
+  overstrike
+  /// Revision counter incremented when keyboard bindings change.
+  bindingSerial
+end struct
 
 /// Create `mq3.vm.cgame_key_traps.Services` with context=context; isDownFn=void; getCatcherFn=void; setCatcherFn=void; getKeyFn=void.
 /// @param context Initial `context` field stored in the returned or constructed `mq3.vm.cgame_key_traps.Services` record.

@@ -8,14 +8,33 @@ import mq3.qcommon.message_state_delta as delta
 import mq3.game.entitystate as entitystate
 import mq3.client.gamestate as gamestate
 
+/// Maximum byte length accepted for a native network message.
 const MAX_MSGLEN=16384
+/// Server-message command byte selecting the gamestate protocol operation.
 const SVC_GAMESTATE=2
+/// Server-message command byte selecting the configstring protocol operation.
 const SVC_CONFIGSTRING=3
+/// Server-message command byte selecting the baseline protocol operation.
 const SVC_BASELINE=4
+/// Server-message command byte selecting the eof protocol operation.
 const SVC_EOF=8
 
 /// Stores demo record, including `completed`, `truncated`, `sequence`, `payload`, `nextOffset`.
-struct Record completed truncated sequence payload nextOffset end struct
+struct Record
+  /// When constructing this record, `completed` supplies `true` for this member.
+  completed
+  /// When constructing this record, `completed` supplies `truncated` for this member.
+  truncated
+  /// When constructing this record, `completed` supplies `0` for this member. Used by `readDemoMessage`
+  /// during subsequent processing.
+  sequence
+  /// When constructing this record, `completed` supplies `bytes(0,0)` for this member. Used by
+  /// `readDemoMessage` during subsequent processing.
+  payload
+  /// When constructing this record, `completed` supplies `offset` for this member. Used by
+  /// `readDemoMessage` during subsequent processing.
+  nextOffset
+end struct
 
 /// Calls `mq3.compat.numeric.writeU32`, `mq3.compat.numeric.i32` from demo `writeLong`.
 /// @param data Value used by `numeric.writeU32(data,offset,numeric.i32(value))`.
@@ -79,7 +98,18 @@ function demoFilename(number)
 end function
 
 /// Stores demo playback record, including `serverMessageSequence`, `lastPacketTime`, `offset`, `completed`, `truncated`.
-struct Playback serverMessageSequence lastPacketTime offset completed truncated end struct
+struct Playback
+  /// Highest server network-message sequence observed by the client.
+  serverMessageSequence
+  /// Client timestamp of the latest received server packet, used to detect timeouts.
+  lastPacketTime
+  /// When constructing this record, `playback` supplies `0` for this member.
+  offset
+  /// When constructing this record, `playback` supplies `false` for this member.
+  completed
+  /// When constructing this record, `playback` supplies `false` for this member.
+  truncated
+end struct
 /// Creates a `mq3.client.demo.Playback` record. Initializes the record with the defaults written in this constructor.
 function playback() return Playback(0,0,0,false,false) end function
 

@@ -6,17 +6,113 @@ package mq3.renderer.tr_init
 import mq3.compat.numeric as n
 import mq3.renderer.tr_public as trPublic
 
+/// Renderer import/export ABI version expected by the engine.
 const REF_API_VERSION=trPublic.REF_API_VERSION
 /// Data record for `mq3.renderer.tr_init.Action`; groups `boundary`, `kind`, `name`, `value`, `number`, `dispatched`.
-struct Action boundary kind name value number dispatched end struct
+struct Action
+  /// Host operation boundary at which this platform action is dispatched.
+  boundary
+  /// Renderer lifecycle operation to dispatch through the named platform boundary.
+  kind
+  /// Resource, command, or console-variable name targeted by the renderer lifecycle action.
+  name
+  /// Value carried by the event, configuration item, or requested operation.
+  value
+  /// Numeric argument supplied to the platform action handler.
+  number
+  /// Whether the recorded action was delivered to its host implementation.
+  dispatched
+end struct
 /// Data record for `mq3.renderer.tr_init.Cvar`; groups `name`, `value`, `integer`, `flags`.
-struct Cvar name value integer flags end struct
+struct Cvar
+  /// Console-variable name registered or queried by renderer initialization.
+  name
+  /// Value carried by the event, configuration item, or requested operation.
+  value
+  /// Integer interpretation of the console variable's value.
+  integer
+  /// Console-variable flags governing persistence and runtime modification.
+  flags
+end struct
 /// Data record for `mq3.renderer.tr_init.Mode`; groups `description`, `width`, `height`, `pixelAspect`.
-struct Mode description width height pixelAspect end struct
+struct Mode
+  /// Human-readable description of the selected video mode.
+  description
+  /// Width in pixels of the renderer video-mode table entry.
+  width
+  /// Height in pixels of the renderer video-mode table entry.
+  height
+  /// Pixel aspect ratio associated with the video mode.
+  pixelAspect
+end struct
 /// Data record for `mq3.renderer.tr_init.Config`; groups `vendor`, `renderer`, `version`, `extensions`, `maxTextureSize`, `maxActiveTextures`, and 12 further fields.
-struct Config vendor renderer version extensions maxTextureSize maxActiveTextures colorBits depthBits stencilBits vidWidth vidHeight displayFrequency fullscreen gamma hardwareType smpActive textureEnvAddAvailable textureCompression end struct
+struct Config
+  /// Graphics-driver vendor identification string.
+  vendor
+  /// Graphics-driver renderer identification string.
+  renderer
+  /// Version string reported by the loaded graphics implementation.
+  version
+  /// Graphics extension capabilities or extension names reported by the driver.
+  extensions
+  /// Largest supported texture dimension reported by the graphics driver.
+  maxTextureSize
+  /// Number of simultaneous texture units supported by the driver.
+  maxActiveTextures
+  /// Color-buffer precision in bits.
+  colorBits
+  /// Depth-buffer precision in bits.
+  depthBits
+  /// Stencil-buffer precision in bits.
+  stencilBits
+  /// Width of the active video mode in pixels.
+  vidWidth
+  /// Height of the active video mode in pixels.
+  vidHeight
+  /// Refresh frequency of the selected display mode, in hertz.
+  displayFrequency
+  /// Whether the selected video mode occupies the full display.
+  fullscreen
+  /// Configured gamma correction or platform gamma-ramp state.
+  gamma
+  /// Detected graphics-hardware family used to select compatibility behavior.
+  hardwareType
+  /// Whether a separate render thread is currently active.
+  smpActive
+  /// Whether the driver supports additive texture-environment combining.
+  textureEnvAddAvailable
+  /// Selected texture-compression capability or mode.
+  textureCompression
+end struct
 /// Data record for `mq3.renderer.tr_init.State`; groups `registered`, `cvars`, `commands`, `config`, `textureMode`, `overbrightBits`, and 7 further fields.
-struct State registered cvars commands config textureMode overbrightBits maxPolys maxPolyVerts glError actions lastScreenshot lastScreenshotJpeg apiExports end struct
+struct State
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Console variables and their current runtime values.
+  cvars
+  /// Console commands registered by the renderer lifecycle.
+  commands
+  /// Configuration values used to initialize or drive this subsystem.
+  config
+  /// Configured texture-filtering mode applied to registered images.
+  textureMode
+  /// Number of additional brightness bits used by color mapping.
+  overbrightBits
+  /// Maximum number of polygons accepted by the scene buffer.
+  maxPolys
+  /// Maximum number of polygon vertices accepted by the scene buffer.
+  maxPolyVerts
+  /// Most recently observed graphics-driver error code.
+  glError
+  /// Platform operations recorded for dispatch or inspection.
+  actions
+  /// Path or result of the latest ordinary screenshot request.
+  lastScreenshot
+  /// Path or result of the latest JPEG screenshot request.
+  lastScreenshotJpeg
+  /// Renderer functions exposed through the refresh API.
+  apiExports
+end struct
 
 /// Constructs `mq3.renderer.tr_init.State` with `registered` = `false`, `cvars` = `[]`, `commands` = `[]`, `config` = `Config("","","","",0,0,0,0,0,0,0,0,false,false,0,false,false,0)` and the supplied remaining values.
 function create() return State(false,[],[],Config("","","","",0,0,0,0,0,0,0,0,false,false,0,false,false,0),"GL_LINEAR_MIPMAP_NEAREST",0,600,3000,0,[],0,0,[]) end function

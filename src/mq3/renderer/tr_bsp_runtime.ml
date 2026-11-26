@@ -15,34 +15,186 @@ import mq3.renderer.playable_flares as playableFlares
 import mq3.renderer.qvm_scene_geometry as sceneGeometry
 import mq3.renderer.patch_stitch as patchStitch
 
+/// BSP surface type for a planar polygon face.
 const MST_PLANAR=1
+/// BSP surface type for a curved control-point patch.
 const MST_PATCH=2
+/// BSP surface type for an indexed triangle mesh.
 const MST_TRIANGLE_SOUP=3
+/// BSP surface type for a map-defined light flare.
 const MST_FLARE=4
+/// Negative marker identifying an internal BSP node rather than a leaf.
 const CONTENTS_NODE=-1
+/// Negative lightmap selector requesting vertex lighting instead of a lightmap image.
 const LIGHTMAP_BY_VERTEX=-3
+/// Negative lightmap selector substituting the renderer's white image.
 const LIGHTMAP_WHITEIMAGE=-2
+/// Negative lightmap selector for a shader that does not use baked lighting.
 const LIGHTMAP_NONE=-1
+/// Largest tessellated patch-grid dimension accepted by the renderer.
 const MAX_GRID_SIZE=65
 
 /// Data record for `mq3.renderer.tr_bsp_runtime.Shader`; groups `name`, `surfaceFlags`, `contentFlags`, `lightmapIndex`, `defaultShader`.
-struct Shader name surfaceFlags contentFlags lightmapIndex defaultShader end struct
+struct Shader
+  /// Shader path stored in the BSP material table for this surface material.
+  name
+  /// Surface behavior flags carried by the BSP shader or material.
+  surfaceFlags
+  /// Collision and volume-content flags carried by the BSP shader.
+  contentFlags
+  /// Index or special selector identifying the surface's baked lightmap.
+  lightmapIndex
+  /// Whether shader resolution fell back to the renderer's default material.
+  defaultShader
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Plane`; groups `normal`, `dist`, `type`, `signbits`.
-struct Plane normal dist type signbits end struct
+struct Plane
+  /// BSP plane direction loaded for partition, surface, and visibility calculations.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+  /// Plane classification used to select axial or general distance calculations.
+  type
+  /// Sign-bit mask of the plane normal used for fast bounds classification.
+  signbits
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Surface`; groups `index`, `kind`, `shader`, `fogIndex`, `data`, `flare`.
-struct Surface index kind shader fogIndex data flare end struct
+struct Surface
+  /// Position of this record in its owning table or list.
+  index
+  /// BSP surface representation selecting face, patch grid, triangle mesh, or flare payload data.
+  kind
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Geometry payload interpreted according to the surface kind.
+  data
+  /// Map flare data attached to the BSP surface.
+  flare
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Model`; groups `index`, `name`, `bounds`, `firstSurface`, `numSurfaces`, `renderData`.
-struct Model index name bounds firstSurface numSurfaces renderData end struct
+struct Model
+  /// Position of this record in its owning table or list.
+  index
+  /// Inline BSP model name used to resolve the model's world-surface range.
+  name
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Index of the model's first surface in the world surface array.
+  firstSurface
+  /// Number of surfaces belonging to the model or draw group.
+  numSurfaces
+  /// Prepared triangle and vertex data used to render the world or model.
+  renderData
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Node`; groups `index`, `planeIndex`, `children`, `mins`, `maxs`, `parent`, and 5 further fields.
-struct Node index planeIndex children mins maxs parent contents cluster area firstMarkSurface numMarkSurfaces end struct
+struct Node
+  /// Position of this record in its owning table or list.
+  index
+  /// Index of the splitting plane associated with the BSP node.
+  planeIndex
+  /// Child node or leaf references of the BSP partition.
+  children
+  /// Minimum horizontal texture coordinate reached on the clipped sky face.
+  mins
+  /// Maximum horizontal texture coordinate reached on the clipped sky face.
+  maxs
+  /// Parent node in the BSP hierarchy.
+  parent
+  /// BSP node marker or collision-content bits for this record.
+  contents
+  /// Visibility cluster containing the BSP leaf.
+  cluster
+  /// BSP area number used by area-visibility masking.
+  area
+  /// First referenced surface in the leaf's marksurface list.
+  firstMarkSurface
+  /// Number of surface references associated with the BSP leaf.
+  numMarkSurfaces
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Visibility`; groups `numClusters`, `clusterBytes`, `data`, `novis`, `external`.
-struct Visibility numClusters clusterBytes data novis external end struct
+struct Visibility
+  /// Number of clusters represented by the visibility table.
+  numClusters
+  /// Number of bytes in one potentially-visible-cluster bitset.
+  clusterBytes
+  /// Packed potentially-visible-cluster bitsets loaded from the BSP visibility lump.
+  data
+  /// Fallback visibility mask used when no valid PVS data is available.
+  novis
+  /// Whether visibility bytes are supplied by the collision subsystem.
+  external
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.Grid`; groups `control`, `width`, `height`, `widthLodError`, `heightLodError`, `lodOrigin`, and 3 further fields.
-struct Grid control width height widthLodError heightLodError lodOrigin lodRadius lodFixed lodStitched end struct
+struct Grid
+  /// Original BSP patch control points used to construct the tessellated grid.
+  control
+  /// Number of columns in the patch vertex grid.
+  width
+  /// Number of rows in the patch vertex grid.
+  height
+  /// Per-column geometric error used when selecting patch detail.
+  widthLodError
+  /// Per-row geometric error used when selecting patch detail.
+  heightLodError
+  /// Reference origin used when evaluating patch level of detail.
+  lodOrigin
+  /// Reference radius used when evaluating patch level of detail.
+  lodRadius
+  /// Whether patch edge detail has been reconciled with neighboring patches.
+  lodFixed
+  /// Whether the patch grid has been stitched to adjacent geometry.
+  lodStitched
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.World`; groups `name`, `baseName`, `map`, `shaders`, `lightmaps`, `planes`, and 11 further fields.
-struct World name baseName map shaders lightmaps planes fogs surfaces marksurfaces nodes models visibility entities entityParser lightGrid flareCatalog dataSize end struct
+struct World
+  /// Map resource name associated with the loaded BSP world.
+  name
+  /// Map name with directory and extension removed.
+  baseName
+  /// Parsed BSP map used by geometry, visibility, or lighting operations.
+  map
+  /// Shader records available to resolve the queued drawing surfaces.
+  shaders
+  /// Baked lightmap images referenced by BSP surfaces.
+  lightmaps
+  /// Planes defining BSP partitions or clipping boundaries.
+  planes
+  /// Fog volumes loaded from the world map.
+  fogs
+  /// Surface records owned by the world, model, or drawing group.
+  surfaces
+  /// Surface references associated with BSP leaves.
+  marksurfaces
+  /// Nodes and leaves of the BSP hierarchy.
+  nodes
+  /// Registered models or model parts available to the subsystem.
+  models
+  /// Potentially-visible-cluster information loaded for the world.
+  visibility
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Cursor used to read key/value entities from the BSP entity lump.
+  entityParser
+  /// Baked lighting grid used to light dynamic entities.
+  lightGrid
+  /// Map flares and the state required to render them.
+  flareCatalog
+  /// Size in bytes of the loaded model or world data.
+  dataSize
+end struct
 /// Data record for `mq3.renderer.tr_bsp_runtime.State`; groups `worldMapLoaded`, `externalVisData`, `world`, `sunDirection`.
-struct State worldMapLoaded externalVisData world sunDirection end struct
+struct State
+  /// Whether the renderer has finished loading a world map.
+  worldMapLoaded
+  /// Visibility data shared with the renderer by another subsystem.
+  externalVisData
+  /// Loaded world geometry and associated scene state.
+  world
+  /// Direction used for the shader-defined sunlight contribution.
+  sunDirection
+end struct
 
 /// Creates error `7710` with message `"tr_bsp: "+text`.
 /// @param text Input used in the result expression `error(7710,"tr_bsp: "+text)`.

@@ -3,19 +3,69 @@
 // Native semantic port of code/q3_ui/ui_display.c.
 package mq3.client.ui_display_options
 
+/// Activation callback event accepted by the display and gamma options menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the graphics action by the menu event handler.
 const ID_GRAPHICS=10
+/// Menu control identifier routed to the display action by the menu event handler.
 const ID_DISPLAY=11
+/// Menu control identifier routed to the sound action by the menu event handler.
 const ID_SOUND=12
+/// Menu control identifier routed to the network action by the menu event handler.
 const ID_NETWORK=13
+/// Menu control identifier routed to the brightness action by the menu event handler.
 const ID_BRIGHTNESS=14
+/// Menu control identifier routed to the screensize action by the menu event handler.
 const ID_SCREENSIZE=15
+/// Event identifier of the Back control used to leave the display and gamma options menu and return to
+/// its parent menu.
 const ID_BACK=16
 
 /// Stores UI display options menu item, including `id`, `kind`, `name`, `x`, `y`, `minValue` and additional values.
-struct Item id kind name x y minValue maxValue value active end struct
+struct Item
+  /// Event-routing identifier of this selectable control in the display and gamma options menu.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Visible label or artwork name of a display-options menu control.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the display and gamma
+  /// options menu.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the display and gamma options
+  /// menu.
+  y
+  /// When constructing this record, `item` supplies `minValue` for this member.
+  minValue
+  /// When constructing this record, `item` supplies `maxValue` for this member.
+  maxValue
+  /// Current or default setting value held by this configuration variable or UI control.
+  value
+  /// When constructing this record, `item` supplies `active` for this member.
+  active
+end struct
 /// Stores UI display options menu, including `wrapAround`, `fullscreen`, `cursor`, `items`, `assets`, `actions` and additional values.
-struct Menu wrapAround fullscreen cursor items assets actions cvarWrites end struct
+struct Menu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the display and gamma
+  /// options menu.
+  wrapAround
+  /// Whether the display-options menu covers the entire UI instead of appearing over the underlying
+  /// game view.
+  fullscreen
+  /// When constructing this record, `init` supplies `ID_DISPLAY` for this member.
+  cursor
+  /// Ordered child items participating in this menu's rendering and navigation.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the display and gamma
+  /// options menu.
+  assets
+  /// Host requests queued while drawing display controls and applying gamma or view-size settings,
+  /// retained in request order.
+  actions
+  /// Cvar name/value changes queued by the display and gamma options menu for the host to apply.
+  cvarWrites
+end struct
 
 /// Creates a `mq3.client.ui_display_options.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
 /// @param id Value used to initialize `Item.id`.

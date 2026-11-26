@@ -9,14 +9,30 @@ import mq3.shared.math as qmath
 import mq3.shared.parser as parser
 import mq3.vm.syscall_common as common
 
+/// Byte size used for qtime storage or binary layout in mq3.vm.cgame_misc_traps.
 const QTIME_SIZE=36
 
 /// RealTimeValue record for vm.cgame_misc_traps, containing `epoch`, `data`.
-struct RealTimeValue epoch data end struct
+struct RealTimeValue
+  /// Calendar time represented as the epoch value returned by the host.
+  epoch
+  /// Packed qtime ABI fields accompanying the epoch return value.
+  data
+end struct
 /// EntityTokens record for vm.cgame_misc_traps, containing `source`, `parser`.
-struct EntityTokens source parser end struct
+struct EntityTokens
+  /// Token source supplying the BSP entity string to game parsing.
+  source
+  /// Parser state retained for subsequent token-reading operations.
+  parser
+end struct
 /// TokenResult record for vm.cgame_misc_traps, containing `found`, `text`.
-struct TokenResult found text end struct
+struct TokenResult
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Spelling of the token returned by the host token-reading operation.
+  text
+end struct
 
 /// Create the vm.cgame_misc_traps error for `fail` with 7484 and the supplied diagnostic text.
 /// @param message Message used in `("cgame misc traps: " + message)` and `error(7484, ("cgame misc traps: " + message))`.

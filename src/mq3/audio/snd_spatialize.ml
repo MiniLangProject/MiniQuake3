@@ -5,11 +5,24 @@ package mq3.audio.snd_spatialize
 import mq3.compat.numeric as numeric
 import mq3.shared.math as qmath
 
+/// Distance in world units within which distance attenuation is not applied.
 const SOUND_FULLVOLUME=80.0
+/// Linear gain reduction per world unit beyond the full-volume distance.
 const SOUND_ATTENUATE=0.0008
 
 /// Volumes record for audio.snd_spatialize, containing `left`, `right`, `distance`, `attenuation`, `dot`.
-struct Volumes left right distance attenuation dot end struct
+struct Volumes
+  /// Left-channel integer volume after distance and direction attenuation.
+  left
+  /// Right-channel integer volume after distance and direction attenuation.
+  right
+  /// Distance in world units from the source to the listener.
+  distance
+  /// Distance-dependent gain remaining after the full-volume region.
+  attenuation
+  /// Clamped dot product between source direction and the listener's right axis.
+  dot
+end struct
 
 /// Create the audio.snd_spatialize error for `fail` with 7662 and the supplied diagnostic text.
 /// @param message Message used in `("S_SpatializeOrigin: " + message)` and `error(7662, ("S_SpatializeOrigin: " + message))`.

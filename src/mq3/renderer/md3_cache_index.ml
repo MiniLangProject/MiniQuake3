@@ -4,7 +4,16 @@
 package mq3.renderer.md3_cache_index
 import mq3.compat.numeric as md3IndexNumeric
 /// Data record for `mq3.renderer.md3_cache_index.Index`; groups `heads`, `links`, `hashes`, `mask`.
-struct Index heads links hashes mask end struct
+struct Index
+  /// Head entry of each hash bucket in the cache index.
+  heads
+  /// Next-entry links used to traverse collisions in a hash bucket.
+  links
+  /// Stored hash value associated with each cache entry.
+  hashes
+  /// Bit mask used to select relevant values or wrap a bounded index.
+  mask
+end struct
 /// Builds `mq3.renderer.md3_cache_index.Index` for `mq3.renderer.md3_cache_index.create`.
 /// @param capacity Argument 1 supplied to `array`.
 function create(capacity)

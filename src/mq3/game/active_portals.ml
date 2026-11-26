@@ -16,8 +16,11 @@ import mq3.game.spawn_values as values
 import mq3.game.movement as movement
 import mq3.compat.numeric as n
 
+/// Collision-contents bit identifying corpse space or objects.
 const CONTENTS_CORPSE=headers.CONTENTS_CORPSE
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Damage-processing flag enabling no protection.
 const DAMAGE_NO_PROTECTION = 8
 
 /// Forward `PortalDie` to `mq3.game.entities.free` and return the delegated result.

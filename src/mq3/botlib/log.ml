@@ -16,18 +16,80 @@ import mq3.compat.numeric as numeric
 /// @returns The native formatter result: a nonnegative character count or a negative value on failure.
 extern function __stdio_common_vsprintf(options as u64,output as bytes,length as u64,format as cstr,locale as ptr,arguments as bytes) from "ucrtbase.dll" returns i32
 
+/// Bot-library diagnostic severity for message.
 const PRT_MESSAGE=2
+/// Bot-library diagnostic severity for error.
 const PRT_ERROR=3
+/// Maximum length of a bot-library log filename.
 const MAX_LOGFILENAMESIZE=1024
 
 /// `FormatArg` record for log, containing `kind`, `text`, `integer` and `real`.
-struct FormatArg kind text integer real end struct
+struct FormatArg
+  /// Format-argument discriminator selecting text, integer, or real storage.
+  kind
+  /// Text value supplied to a string-format conversion.
+  text
+  /// Integer representation of the configured or parsed value.
+  integer
+  /// Floating-point value carried by this formatted-log argument.
+  real
+end struct
 /// `Action` record for log, containing `boundary`, `kind`, `severity`, `filename` and `text` and related fields.
-struct Action boundary kind severity filename text handle dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator selecting a log open, close, write, or flush action.
+  kind
+  /// Diagnostic severity assigned to this log action.
+  severity
+  /// Path of the file associated with this operation.
+  filename
+  /// Formatted text associated with the logging action.
+  text
+  /// Host log-file handle affected by the action.
+  handle
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `Services` record for log, containing `context`, `openFn`, `closeFn`, `writeFn` and `flushFn` and related fields.
-struct Services context openFn closeFn writeFn flushFn printFn end struct
+struct Services
+  /// Caller-supplied data associated with opening, writing, flushing, and closing bot-library log
+  /// files.
+  context
+  /// Host callback that opens a requested host file and returns its handle.
+  openFn
+  /// Host callback that closes a host file handle.
+  closeFn
+  /// Host callback that writes data through the host output interface.
+  writeFn
+  /// Host callback that flushes buffered text to its host destination.
+  flushFn
+  /// Host callback that prints log-opening failures and bot logging diagnostics.
+  printFn
+end struct
 /// `State` record for log, containing `variables`, `services`, `filename`, `handle` and `numwrites` and related fields.
-struct State variables services filename handle numwrites time content actions retailActive flushes end struct
+struct State
+  /// Bot-library variables controlling the logging destination and policy.
+  variables
+  /// File and console callbacks implementing bot-library logging.
+  services
+  /// Path of the file associated with this operation.
+  filename
+  /// Open host file handle receiving log output.
+  handle
+  /// Number of log writes performed by the logging state.
+  numwrites
+  /// Log timestamp in seconds, formatted into hours, minutes, seconds, and hundredths.
+  time
+  /// Log text accumulated by the managed logging implementation.
+  content
+  /// Recorded log-file operations and diagnostic messages awaiting host handling.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+  /// Number of explicit log flush operations performed.
+  flushes
+end struct
 
 /// Create a `mq3.botlib.log.Services` record with the declared empty defaults.
 function services() return Services(void,void,void,void,void,void) end function

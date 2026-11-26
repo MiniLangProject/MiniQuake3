@@ -8,79 +8,151 @@ import mq3.game.bot_navigation as navigation
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Bot decision-state identifier for the seek node.
 const NODE_SEEK=3
+/// Bot decision-state identifier for the stand node.
 const NODE_STAND=4
+/// Bot decision-state identifier for the observer node.
 const NODE_OBSERVER=5
+/// Bot decision-state identifier for the intermission node.
 const NODE_INTERMISSION=6
+/// Bot decision-state identifier for the respawn node.
 const NODE_RESPAWN=7
+/// Bot decision-state identifier for the seek nbg node.
 const NODE_SEEK_NBG=10
+/// Bot decision-state identifier for the activate node.
 const NODE_ACTIVATE=11
+/// Bot-state flag marking idealviewset.
 const BFL_IDEALVIEWSET=32
+/// Bot movement-result flag reporting movementview.
 const MOVERESULT_MOVEMENTVIEW=1
+/// Bot movement-result flag reporting swimview.
 const MOVERESULT_SWIMVIEW=2
+/// Bot movement-result flag reporting waiting.
 const MOVERESULT_WAITING=4
+/// Bot movement-result flag reporting movementviewset.
 const MOVERESULT_MOVEMENTVIEWSET=8
+/// Bot movement-result flag reporting movementweapon.
 const MOVERESULT_MOVEMENTWEAPON=16
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Default combination of permitted AAS travel types used by bot movement queries.
 const TFL_DEFAULT=0x11c0fbe
+/// AAS travel-mask bit allowing the rocketjump travel category.
 const TFL_ROCKETJUMP=0x1000
+/// AAS travel-mask bit allowing the grapplehook travel category.
 const TFL_GRAPPLEHOOK=0x4000
+/// AAS travel-mask bit allowing the slime travel category.
 const TFL_SLIME=0x200000
+/// AAS travel-mask bit allowing the lava travel category.
 const TFL_LAVA=0x400000
 
 /// `Services` record for bot seek state, containing `fightServices`, `navigationServices`, `observerFn`, `recordNodeFn` and `enterNodeFn` and related fields.
 struct Services
+  /// Callbacks and shared state used by the bot fight node.
   fightServices
+  /// Callbacks and shared state used for bot navigation decisions.
   navigationServices
+  /// Injected callback for observer; invoked through the Services service/state record.
   observerFn
+  /// Injected callback for record node; invoked through the Services service/state record.
   recordNodeFn
+  /// Injected callback for enter node; invoked through the Services service/state record.
   enterNodeFn
+  /// Injected callback for top goal; invoked through the Services service/state record.
   topGoalFn
+  /// Injected callback for goal name; invoked through the Services service/state record.
   goalNameFn
+  /// Injected callback for random chat; invoked through the Services service/state record.
   randomChatFn
+  /// Injected callback for chat time; invoked through the Services service/state record.
   chatTimeFn
+  /// Injected callback for map scripts; invoked through the Services service/state record.
   mapScriptsFn
+  /// Injected callback for gesture; invoked through the Services service/state record.
   gestureFn
+  /// Injected callback for empty goal stack; invoked through the Services service/state record.
   emptyGoalStackFn
+  /// Injected callback for team goals; invoked through the Services service/state record.
   teamGoalsFn
+  /// Injected callback for long term goal; invoked through the Services service/state record.
   longTermGoalFn
+  /// Injected callback for wants camp; invoked through the Services service/state record.
   wantsCampFn
+  /// Injected callback for nearby goal; invoked through the Services service/state record.
   nearbyGoalFn
+  /// Injected callback for reset last avoid; invoked through the Services service/state record.
   resetLastAvoidFn
+  /// Injected callback for enter seek nbg; invoked through the Services service/state record.
   enterSeekNbgFn
+  /// Injected callback for predict obstacles; invoked through the Services service/state record.
   predictObstaclesFn
+  /// Injected callback for setup movement; invoked through the Services service/state record.
   setupMovementFn
+  /// Injected callback for move to goal; invoked through the Services service/state record.
   moveToGoalFn
+  /// Injected callback for reset avoid; invoked through the Services service/state record.
   resetAvoidFn
+  /// Injected callback for blocked; invoked through the Services service/state record.
   blockedFn
+  /// Injected callback for clear path; invoked through the Services service/state record.
   clearPathFn
+  /// Injected callback for movement view target; invoked through the Services service/state record.
   movementViewTargetFn
+  /// Injected callback for roam goal; invoked through the Services service/state record.
   roamGoalFn
+  /// Grappling-hook movement support supplied to the bot controller.
   grapple
+  /// Injected callback for reached goal; invoked through the Services service/state record.
   reachedGoalFn
+  /// Injected callback for second goal; invoked through the Services service/state record.
   secondGoalFn
+  /// Injected callback for pop goal; invoked through the Services service/state record.
   popGoalFn
+  /// Injected callback for choose weapon; invoked through the Services service/state record.
   chooseWeaponFn
+  /// Injected callback for reset state; invoked through the Services service/state record.
   resetStateFn
+  /// Injected callback for end level chat; invoked through the Services service/state record.
   endLevelChatFn
+  /// Injected callback for start level chat; invoked through the Services service/state record.
   startLevelChatFn
+  /// Injected callback for hit talking chat; invoked through the Services service/state record.
   hitTalkingChatFn
+  /// Injected callback for death chat; invoked through the Services service/state record.
   deathChatFn
+  /// Injected callback for enter chat; invoked through the Services service/state record.
   enterChatFn
+  /// Injected callback for talk; invoked through the Services service/state record.
   talkFn
+  /// Injected callback for respawn; invoked through the Services service/state record.
   respawnFn
+  /// Injected callback for reset move state; invoked through the Services service/state record.
   resetMoveStateFn
+  /// Injected callback for reset goal state; invoked through the Services service/state record.
   resetGoalStateFn
+  /// Injected callback for reset avoid goals; invoked through the Services service/state record.
   resetAvoidGoalsFn
+  /// Injected callback for clear activate; invoked through the Services service/state record.
   clearActivateFn
+  /// Injected callback for activation node; invoked through the Services service/state record.
   activationNodeFn
+  /// Injected callback for activate trace; invoked through the Services service/state record.
   activateTraceFn
+  /// Injected callback for activate touch; invoked through the Services service/state record.
   activateTouchFn
+  /// Injected callback for activate origin; invoked through the Services service/state record.
   activateOriginFn
+  /// Injected callback for attack; invoked through the Services service/state record.
   attackFn
+  /// Injected callback for select activate weapon; invoked through the Services service/state record.
   selectActivateWeaponFn
+  /// Injected callback for mission nearby range; invoked through the Services service/state record.
   missionNearbyRangeFn
+  /// Callbacks used to execute the bot deathmatch decision network.
   dmnetServices
+  /// Opaque caller-supplied context available to bot seek-state transitions, navigation, activation,
+  /// and respawn callbacks.
   context
 end struct
 

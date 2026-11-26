@@ -6,20 +6,108 @@ package mq3.client.ui_mfield
 import mq3.client.ui_qmenu as qmenu
 import std.string as strings
 
+/// Maximum length of a console or editable input line.
 const MAX_EDIT_LINE=256
+/// Engine key code for the shift input, used by menu and client key-event handling.
 const K_SHIFT=138
+/// Engine key code for the ctrl input, used by menu and client key-event handling.
 const K_CTRL=137
 
 /// Stores UI mfield host action record, including `boundary`, `kind`, `text`, `x`, `y`, `style` and additional values.
-struct HostAction boundary kind text x y style cursorChar dispatched end struct
+struct HostAction
+  /// Host service category recorded with a request emitted while editing a text field and drawing its
+  /// visible text and cursor.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while editing a text field
+  /// and drawing its visible text and cursor.
+  kind
+  /// Visible field text or clipboard contents carried by a menu text-editing host action.
+  text
+  /// Horizontal coordinate of a queued text-field or cursor drawing operation in menu coordinates.
+  x
+  /// Vertical coordinate of a queued text-field or cursor drawing operation in menu coordinates.
+  y
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// When constructing this record, `action` supplies `cursorChar` for this member.
+  cursorChar
+  /// True when this request is marked for native dispatch while editing a text field and drawing its
+  /// visible text and cursor; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI mfield field record, including `buffer`, `cursor`, `scroll`, `widthInChars`, `maxchars`, `overstrike` and additional values.
-struct Field buffer cursor scroll widthInChars maxchars overstrike clipboard actions end struct
+struct Field
+  /// When constructing this record, `field` supplies an empty string for this member.
+  buffer
+  /// When constructing this record, `field` supplies `0` for this member.
+  cursor
+  /// When constructing this record, `field` supplies `0` for this member.
+  scroll
+  /// Number of character columns visible in the editable text or console field.
+  widthInChars
+  /// When constructing this record, `field` supplies `maxchars` for this member.
+  maxchars
+  /// When constructing this record, `field` supplies `false` for this member.
+  overstrike
+  /// When constructing this record, `field` supplies an empty string for this member.
+  clipboard
+  /// Host requests queued while editing a text field and drawing its visible text and cursor, retained
+  /// in request order.
+  actions
+end struct
 /// Stores UI mfield draw result record, including `text`, `x`, `y`, `style`, `cursorX`, `cursorChar` and additional values.
-struct DrawResult text x y style cursorX cursorChar charWidth actions end struct
+struct DrawResult
+  /// Visible substring of the menu edit field after horizontal scrolling and width clipping.
+  text
+  /// Horizontal coordinate of the visible text returned by the menu text-field renderer.
+  x
+  /// Vertical coordinate of the visible text returned by the menu text-field renderer.
+  y
+  /// UI drawing-style flags controlling alignment, font selection, and text emphasis.
+  style
+  /// Horizontal position of the pointer in the local display coordinate system.
+  cursorX
+  /// When constructing this record, `MField_Draw` supplies `cursorChar` for this member.
+  cursorChar
+  /// When constructing this record, `MField_Draw` supplies `charWidth` for this member.
+  charWidth
+  /// Host requests queued while editing a text field and drawing its visible text and cursor, retained
+  /// in request order.
+  actions
+end struct
 /// Stores UI mfield menu field record, including `field`, `name`, `flags`, `x`, `y`, `left` and additional values.
-struct MenuField field name flags x y left top right bottom menuPosition parentCursor end struct
+struct MenuField
+  /// Compatibility member corresponding to native `menufield_s.field`; the original declaration is
+  /// `mfield_t field`.
+  field
+  /// Label drawn immediately to the left of the editable menu field.
+  name
+  /// Menu-item flags selecting the field's font, focus style, and interaction behavior.
+  flags
+  /// Horizontal coordinate of the editable text-field widget in the virtual menu layout.
+  x
+  /// Vertical coordinate of the editable text-field widget in the virtual menu layout.
+  y
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// Bottom boundary of the interactive or clipped region.
+  bottom
+  /// Index of this item within its owning menu's item list.
+  menuPosition
+  /// Currently focused item index in the parent menu, compared with this field's menu position.
+  parentCursor
+end struct
 /// Stores UI mfield menu key result record, including `sound`, `key`.
-struct MenuKeyResult sound key end struct
+struct MenuKeyResult
+  /// Menu SOUND_* feedback code selected while editing the field, such as the rejection buzz.
+  sound
+  /// When constructing this record, `MenuField_Key` supplies `qmenu.K_TAB` for this member.
+  key
+end struct
 
 /// Creates a `mq3.client.ui_mfield.Field` record. Assigns `widthInChars` from `widthInChars`, `maxchars` from `maxchars`.
 /// @param widthInChars Value used to initialize `Field.widthInChars`.

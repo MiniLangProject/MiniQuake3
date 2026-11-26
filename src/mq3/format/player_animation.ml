@@ -9,36 +9,114 @@ import mq3.format.md3 as md3
 import mq3.shared.parser as parser
 import std.string as strings
 
+/// Animation identifier for both death1.
 const BOTH_DEATH1=0
+/// Animation identifier for both dead1.
 const BOTH_DEAD1=1
+/// Animation identifier for torso gesture.
 const TORSO_GESTURE=6
+/// Animation identifier for torso attack.
 const TORSO_ATTACK=7
+/// Animation identifier for torso raise.
 const TORSO_RAISE=10
+/// Animation identifier for torso stand.
 const TORSO_STAND=11
+/// Animation identifier for legs walkcr.
 const LEGS_WALKCR=13
+/// Animation identifier for legs walk.
 const LEGS_WALK=14
+/// Animation identifier for legs run.
 const LEGS_RUN=15
+/// Animation identifier for legs idle.
 const LEGS_IDLE=22
+/// Animation identifier for torso a capture-the-flag order.
 const TORSO_GETFLAG=25
+/// Animation identifier for torso negative.
 const TORSO_NEGATIVE=30
+/// Number of standard player animations before the additional flag animations.
 const MAX_ANIMATIONS=31
+/// Animation identifier for legs backcr.
 const LEGS_BACKCR=31
+/// Animation identifier for legs backwalk.
 const LEGS_BACKWALK=32
+/// Animation identifier for flag run.
 const FLAG_RUN=33
+/// Animation identifier for flag stand.
 const FLAG_STAND=34
+/// Animation identifier for flag stand2 run.
 const FLAG_STAND2RUN=35
+/// Total player-animation table length including flag animations.
 const MAX_TOTALANIMATIONS=36
 
 /// Animation record for format.player_animation, containing `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`, `reversed`, and 1 further fields.
-struct Animation firstFrame numFrames loopFrames frameLerp initialLerp reversed flipflop end struct
+struct Animation
+  /// First frame index in this animation sequence.
+  firstFrame
+  /// Number of animation frames represented by this model, surface, or animation.
+  numFrames
+  /// Number of trailing frames repeated during looping, or zero for a non-looping animation.
+  loopFrames
+  /// Interpolation interval between animation frames, in milliseconds.
+  frameLerp
+  /// Delay before reaching the first animation frame, in milliseconds.
+  initialLerp
+  /// True if animation is reversed.
+  reversed
+  /// True if animation should flipflop back to base.
+  flipflop
+end struct
 /// Config record for format.player_animation, containing `animations`, `footsteps`, `headOffset`, `gender`, `fixedLegs`, `fixedTorso`.
-struct Config animations footsteps headOffset gender fixedLegs fixedTorso end struct
+struct Config
+  /// Animation sequences parsed from the player animation configuration.
+  animations
+  /// Footstep-sound category selected by the player animation configuration.
+  footsteps
+  /// Model-space offset applied when positioning the player head.
+  headOffset
+  /// Gender identifier used by player sounds or bot chat selection.
+  gender
+  /// True when the player model requests fixed leg orientation.
+  fixedLegs
+  /// True when the player model requests fixed torso orientation.
+  fixedTorso
+end struct
 /// FrameSample record for format.player_animation, containing `oldFrame`, `frame`, `backlerp`, `finished`.
-struct FrameSample oldFrame frame backlerp finished end struct
+struct FrameSample
+  /// Previous animation-frame index used for interpolation.
+  oldFrame
+  /// Current animation-frame index used for interpolation.
+  frame
+  /// Weight of the previous frame when interpolating toward the current frame.
+  backlerp
+  /// True after a non-looping animation has reached its final frame.
+  finished
+end struct
 /// PlayerSample record for format.player_animation, containing `lower`, `upper`.
-struct PlayerSample lower upper end struct
+struct PlayerSample
+  /// Sampled frame pair for the lower-body model.
+  lower
+  /// Sampled frame pair for the upper-body model.
+  upper
+end struct
 /// LerpFrame record for format.player_animation, containing `oldFrame`, `oldFrameTime`, `frame`, `frameTime`, `backlerp`, `animationNumber`, and 2 further fields.
-struct LerpFrame oldFrame oldFrameTime frame frameTime backlerp animationNumber animation animationTime end struct
+struct LerpFrame
+  /// Previous animation-frame index used for interpolation.
+  oldFrame
+  /// Time associated with the previous interpolation frame.
+  oldFrameTime
+  /// Current animation-frame index used for interpolation.
+  frame
+  /// Time associated with the current interpolation frame.
+  frameTime
+  /// Weight of the previous frame when interpolating toward the current frame.
+  backlerp
+  /// Identifier of the selected animation, including its restart toggle bit.
+  animationNumber
+  /// Animation descriptor currently used by the interpolation state.
+  animation
+  /// Time at which the selected animation begins advancing.
+  animationTime
+end struct
 
 /// Create the format.player_animation error for `fail` with 7520 and the supplied diagnostic text.
 /// @param message Message used in `("animation.cfg: " + message)` and `error(7520, ("animation.cfg: " + message))`.
@@ -261,11 +339,48 @@ end function
 
 // Standalone hostile-preview animation controller. One-shot sequences keep
 // their final frame in the returned sample and change state for the next call.
-struct EnemyAnimationState mode resumeMode startedAt deathVariant transitionCount lowerLerp upperLerp end struct
+struct EnemyAnimationState
+  /// Current locomotion, action, or death animation mode.
+  mode
+  /// Animation mode to resume after a temporary transition.
+  resumeMode
+  /// Timestamp at which the current animation mode began.
+  startedAt
+  /// Selected variation of the death animation.
+  deathVariant
+  /// Number of animation-mode transitions applied to this state.
+  transitionCount
+  /// Interpolation state for the player's lower-body animation.
+  lowerLerp
+  /// Interpolation state for the player's upper-body animation.
+  upperLerp
+end struct
 /// EnemyAnimationSelection record for format.player_animation, containing `lowerAnimation`, `upperAnimation`.
-struct EnemyAnimationSelection lowerAnimation upperAnimation end struct
+struct EnemyAnimationSelection
+  /// Animation selected for the player's lower body.
+  lowerAnimation
+  /// Animation selected for the player's upper body.
+  upperAnimation
+end struct
 /// EnemyAnimationSample record for format.player_animation, containing `mode`, `nextMode`, `lowerAnimation`, `upperAnimation`, `elapsed`, `lower`, and 2 further fields.
-struct EnemyAnimationSample mode nextMode lowerAnimation upperAnimation elapsed lower upper transitioned end struct
+struct EnemyAnimationSample
+  /// Animation mode sampled for the current update.
+  mode
+  /// Animation mode selected for the next update.
+  nextMode
+  /// Animation selected for the player's lower body.
+  lowerAnimation
+  /// Animation selected for the player's upper body.
+  upperAnimation
+  /// Time elapsed since the current animation mode began.
+  elapsed
+  /// Sampled frame pair for the lower-body model.
+  lower
+  /// Sampled frame pair for the upper-body model.
+  upper
+  /// True when this sample causes an animation-mode transition.
+  transitioned
+end struct
 
 /// Create the format.player_animation error for `enemyFail` with 7540 and the supplied diagnostic text.
 /// @param message Message used in `("preview enemy animation: " + message)` and `error(7540, ("preview enemy animation: " + message))`.

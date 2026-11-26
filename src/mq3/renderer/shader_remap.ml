@@ -5,9 +5,23 @@ package mq3.renderer.shader_remap
 import mq3.compat.textnumbers as numbers
 
 /// Data record for `mq3.renderer.shader_remap.Entry`; groups `oldName`, `newName`, `timeOffset`, `handles`.
-struct Entry oldName newName timeOffset handles end struct
+struct Entry
+  /// Original shader name that is replaced by the remap.
+  oldName
+  /// Shader name selected as the remapping destination.
+  newName
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Registered shader handles affected by the remapping entry.
+  handles
+end struct
 /// Data record for `mq3.renderer.shader_remap.State`; groups `entries`, `revision`.
-struct State entries revision end struct
+struct State
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Generation number used to detect changes in cached data.
+  revision
+end struct
 
 /// Constructs `mq3.renderer.shader_remap.State` with `entries` = `[]`, `revision` = `0`.
 function create() return State([],0) end function

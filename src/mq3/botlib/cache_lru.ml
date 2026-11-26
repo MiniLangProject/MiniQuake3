@@ -4,7 +4,24 @@
 package mq3.botlib.cache_lru
 import std.ds.hashmap as maps
 /// `State` record for cache lru, containing `positions`, `keys`, `previous`, `next` and `oldest` and related fields.
-struct State positions keys previous next oldest newest count capacity end struct
+struct State
+  /// Lookup from cache keys to their linked-list slots.
+  positions
+  /// Cache keys stored in each ordering slot.
+  keys
+  /// Previous slot in the least-recently-used ordering.
+  previous
+  /// Next slot in the least-recently-used ordering.
+  next
+  /// Least recently used live slot, selected first for eviction.
+  oldest
+  /// Most recently used live slot.
+  newest
+  /// Number of valid entries represented by this result.
+  count
+  /// Maximum number of entries allowed in the managed collection.
+  capacity
+end struct
 /// Build the `mq3.botlib.cache_lru.State` result for `create`.
 /// @param capacity Maximum number of entries to allocate or retain.
 function create(capacity)

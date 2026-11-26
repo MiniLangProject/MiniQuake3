@@ -4,53 +4,100 @@
 // Binary codec is a local comparison/storage layout, not network serialization.
 package mq3.game.playerstate
 import mq3.compat.numeric as n
+/// Byte size used for byte storage or binary layout in mq3.game.playerstate.
 const BYTE_SIZE = 468
 /// `PlayerState` record for playerstate, containing `commandTime`, `pm_type`, `bobCycle`, `pm_flags` and `pm_time` and related fields.
 struct PlayerState
+  /// Server timestamp of the last user command represented by this player state.
   commandTime
+  /// Player movement mode, such as normal movement, spectator movement, or death.
   pm_type
+  /// Walking-bob phase counter used to synchronize player movement and presentation.
   bobCycle
+  /// Player movement flags selected from the PMF_* constants.
   pm_flags
+  /// Remaining movement-timer value used by timed movement restrictions.
   pm_time
+  /// Player world-space position stored in the shared movement and snapshot state.
   origin
+  /// Velocity vector used to advance movement or predict a position.
   velocity
+  /// Remaining weapon cooldown or transition time.
   weaponTime
+  /// Downward acceleration used by the player or entity movement simulation.
   gravity
+  /// Movement or travel speed used by this game object.
   speed
+  /// Angle offsets added to user-command angles to obtain the current view direction.
   delta_angles
+  /// Entity number supporting the player, or ENTITYNUM_NONE while airborne.
   groundEntityNum
+  /// Remaining time for an uninterruptible leg animation.
   legsTimer
+  /// Leg-animation identifier including its restart toggle bit.
   legsAnim
+  /// Remaining time for an uninterruptible torso animation.
   torsoTimer
+  /// Torso-animation identifier including its restart toggle bit.
   torsoAnim
+  /// Encoded movement direction used to orient the player animation.
   movementDir
+  /// World-space attachment point of the active grappling hook.
   grapplePoint
+  /// Network-visible entity flags selected from the EF_* constants.
   eFlags
+  /// Sequence number used to distinguish new predictable player events.
   eventSequence
+  /// Event identifiers retained by this player or game-state record.
   events
+  /// Parameters paired with the predictable event identifiers.
   eventParms
+  /// Event injected by the server outside the normal predictable event ring.
   externalEvent
+  /// Parameter paired with the externally injected event.
   externalEventParm
+  /// Timestamp of the externally injected event.
   externalEventTime
+  /// Client slot number represented by this player state.
   clientNum
+  /// Selected or reported weapon identifier.
   weapon
+  /// Current weapon-state-machine stage, such as ready, firing, or changing weapons.
   weaponstate
+  /// Player or bot viewing angles used for aiming and command generation.
   viewangles
+  /// Eye-height offset above the player origin.
   viewheight
+  /// Sequence/toggle value notifying the client that a new damage response is available.
   damageEvent
+  /// Encoded horizontal direction from which the last damage arrived.
   damageYaw
+  /// Encoded vertical direction from which the last damage arrived.
   damagePitch
+  /// Damage amount exposed to the client for the current damage response.
   damageCount
+  /// Player statistics indexed by the STAT_* constants.
   stats
+  /// Player statistics indexed by PERS_* that survive ordinary respawns.
   persistant
+  /// Powerup state or expiration values indexed by PW_* identifiers.
   powerups
+  /// Per-weapon ammunition counts carried by the player state.
   ammo
+  /// Protocol-defined auxiliary entity/player value whose interpretation depends on the game object
+  /// type.
   generic1
+  /// Continuously playing sound identifier associated with the entity state.
   loopSound
+  /// Entity number of the jump pad most recently affecting this player.
   jumppad_ent
+  /// Most recently measured client latency value.
   ping
+  /// Counter of completed player-movement frames.
   pmove_framecount
+  /// Movement-frame number on which the jump pad last affected this player.
   jumppad_frame
+  /// Player event sequence already propagated into entity-state events.
   entityEventSequence
 end struct
 

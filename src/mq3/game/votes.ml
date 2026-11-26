@@ -8,6 +8,7 @@ import mq3.game.client_info as clientInfo
 import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import std.string as strings
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
 
 /// Divide a signed 32-bit vote count by two with truncation toward zero.

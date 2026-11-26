@@ -5,12 +5,38 @@ package mq3.botlib.lifecycle_runtime
 import mq3.compat.numeric as n
 import mq3.botlib.lib_variables as libvars
 
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that setup has not completed.
 const BLERR_LIBRARYNOTSETUP=1
+/// Bot-library error indicating an out-of-range entity number.
 const BLERR_INVALIDENTITYNUMBER=2
 
 /// `State` record for lifecycle runtime, containing `variables`, `setup`, `maxclients`, `maxentities` and `mapName` and related fields.
-struct State variables setup maxclients maxentities mapName mapLoads frames time entityUpdates removedEntities developer end struct
+struct State
+  /// Bot-library configuration variables consulted during setup and map loading.
+  variables
+  /// True after the bot-library setup sequence has completed.
+  setup
+  /// Client limit supplied when setting up the bot-library lifecycle.
+  maxclients
+  /// Maximum number of entities.
+  maxentities
+  /// Name of the current game map.
+  mapName
+  /// Number of map-load operations performed by the bot runtime.
+  mapLoads
+  /// Number of bot-library frame updates processed since setup.
+  frames
+  /// Time supplied to the most recent bot-library frame.
+  time
+  /// Number of entity-state updates delivered to the bot library.
+  entityUpdates
+  /// Entity numbers removed from bot-library tracking.
+  removedEntities
+  /// True when developer bot-library diagnostics are enabled.
+  developer
+end struct
 
 /// Create a `mq3.botlib.lifecycle_runtime.State` record, initializing `maxclients` as `128` and `maxentities` as `1024`.
 function create() return State([],false,128,1024,"",0,0,0.0,0,0,0) end function

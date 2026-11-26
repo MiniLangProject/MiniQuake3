@@ -14,26 +14,160 @@ import mq3.platform.playable_multitexture as multitexture
 import std.ds.list as lists
 import std.string as strings
 
+/// Fixed depth assigned to two-dimensional screen geometry.
 const SCREEN_DEPTH=0.001
 
 /// Data record for `mq3.renderer.qvm_2d_batch.Point`; groups `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal screen-space coordinate of the projected or drawn point.
+  x
+  /// Vertical screen-space coordinate of the projected or drawn point.
+  y
+  /// Depth of the projected point or fog region in its owning coordinate system.
+  depth
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Quad`; groups `shaderHandle`, `shaderName`, `positions`, `texCoords`, `color`, `commandIndex`.
-struct Quad shaderHandle shaderName positions texCoords color commandIndex end struct
+struct Quad
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Registered material name selected by the VM's stretch-picture command.
+  shaderName
+  /// Four corners of the submitted two-dimensional rectangle before triangulation.
+  positions
+  /// Four texture corners specified by the two-dimensional stretch-picture command.
+  texCoords
+  /// Modulation color active when the VM submitted this two-dimensional rectangle.
+  color
+  /// Index of the original drawing command that produced this primitive.
+  commandIndex
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Triangle`; groups `positions`, `texCoords`, `colors`, `commandIndex`.
-struct Triangle positions texCoords colors commandIndex end struct
+struct Triangle
+  /// Three screen-space corners produced when triangulating a two-dimensional drawing command.
+  positions
+  /// Three interpolated texture coordinates of a triangle produced from a 2D drawing rectangle.
+  texCoords
+  /// Per-corner modulation colors retained after splitting a 2D command into triangles.
+  colors
+  /// Index of the original drawing command that produced this primitive.
+  commandIndex
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Texture`; groups `imageName`, `image`, `slot`, `noMipMaps`.
-struct Texture imageName image slot noMipMaps end struct
+struct Texture
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Decoded image cached for two-dimensional shader drawing and native texture upload.
+  image
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Material`; groups `shaderHandle`, `shaderName`, `stages`, `noMipMaps`, `timeOffset`, `clampTime`.
-struct Material shaderHandle shaderName stages noMipMaps timeOffset clampTime end struct
+struct Material
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Two-dimensional material name whose stages are cached for drawing rectangles.
+  shaderName
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.StagePass`; groups `stage`, `triangles`, `batch`, `timeOffset`, `clampTime`, `initialized`, and 1 further field.
-struct StagePass stage triangles batch timeOffset clampTime initialized dynamic end struct
+struct StagePass
+  /// Runtime material stage executed by this drawing pass.
+  stage
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Prepared drawing batch associated with the selected geometry.
+  batch
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Whether initialization completed successfully.
+  initialized
+  /// Whether this pass requires per-frame updates for animated effects.
+  dynamic
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Run`; groups `materialIndex`, `shaderHandle`, `passes`, `quadCount`, `triangleCount`.
-struct Run materialIndex shaderHandle passes quadCount triangleCount end struct
+struct Run
+  /// Index of the resolved material in the material catalog.
+  materialIndex
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Drawing passes required by the material or retained batch.
+  passes
+  /// Number of two-dimensional quads represented by this draw run.
+  quadCount
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Extracted`; groups `quads`, `setColors`, `ignoredCommands`, `sourceWidth`, `sourceHeight`, `targetWidth`, and 1 further field.
-struct Extracted quads setColors ignoredCommands sourceWidth sourceHeight targetWidth targetHeight end struct
+struct Extracted
+  /// Two-dimensional textured rectangles extracted from renderer commands.
+  quads
+  /// Number of color-setting commands encountered while extracting quads.
+  setColors
+  /// Number of commands not converted into two-dimensional primitives.
+  ignoredCommands
+  /// Width of the source coordinate system or image, in pixels.
+  sourceWidth
+  /// Height of the source coordinate system or image, in pixels.
+  sourceHeight
+  /// Width of the destination viewport or image, in pixels.
+  targetWidth
+  /// Height of the destination viewport or image, in pixels.
+  targetHeight
+end struct
 /// Data record for `mq3.renderer.qvm_2d_batch.Catalog`; groups `materials`, `textures`, `runs`, `archive`, `scriptIndex`, `scriptCount`, and 14 further fields.
-struct Catalog materials textures runs archive scriptIndex scriptCount sourceQuads emittedTriangles resolvedQuads unresolvedQuads nextTextureSlot endTextureSlot shaderRemaps lastCommands remapRevision assetCount sourceWidth sourceHeight targetWidth targetHeight end struct
+struct Catalog
+  /// Resolved drawing materials retained by the catalog.
+  materials
+  /// Texture resources retained by the material catalog.
+  textures
+  /// Contiguous primitive ranges grouped for retained drawing or material submission.
+  runs
+  /// Asset archive used to resolve game resources by virtual path.
+  archive
+  /// Index of parsed shader definitions used for material resolution.
+  scriptIndex
+  /// Number of shader script sources loaded into the catalog.
+  scriptCount
+  /// Number of quads extracted from the original drawing commands.
+  sourceQuads
+  /// Number of triangles submitted after expanding material passes.
+  emittedTriangles
+  /// Number of quads whose materials resolved successfully.
+  resolvedQuads
+  /// Number of quads whose materials could not be resolved.
+  unresolvedQuads
+  /// Next texture slot available for a newly loaded image.
+  nextTextureSlot
+  /// Exclusive upper bound of texture slots available to the catalog.
+  endTextureSlot
+  /// Shader name substitutions and associated effect-time offsets.
+  shaderRemaps
+  /// Drawing commands used to build the currently retained batch.
+  lastCommands
+  /// Shader-remap generation used to detect stale material bindings.
+  remapRevision
+  /// Number of registered assets when the cached catalog was prepared.
+  assetCount
+  /// Width of the source coordinate system or image, in pixels.
+  sourceWidth
+  /// Height of the source coordinate system or image, in pixels.
+  sourceHeight
+  /// Width of the destination viewport or image, in pixels.
+  targetWidth
+  /// Height of the destination viewport or image, in pixels.
+  targetHeight
+end struct
 
 /// Creates error `7683` with message `"QVM 2D batch: "+message`.
 /// @param message Input used in the result expression `error(7683,"QVM 2D batch: "+message)`.

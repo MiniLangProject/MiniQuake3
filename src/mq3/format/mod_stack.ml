@@ -14,15 +14,28 @@ import std.string as strings
 /// @returns The file-attribute bitmask, or INVALID_FILE_ATTRIBUTES (0xffffffff) on failure.
 extern function fileAttributes(path as wstr) from "kernel32.dll" symbol "GetFileAttributesW" returns u32
 
+/// Host filesystem attribute identifying a directory.
 const FILE_ATTRIBUTE_DIRECTORY=0x10
+/// Host filesystem attribute identifying a reparse-point entry.
 const FILE_ATTRIBUTE_REPARSE_POINT=0x400
+/// Sentinel returned when host file attributes cannot be obtained.
 const INVALID_ATTRIBUTES=0xffffffff
+/// Maximum number of unpacked asset files retained by the filesystem index.
 const MAX_LOOSE_FILES=65536
+/// Maximum directory nesting depth scanned for unpacked assets.
 const MAX_LOOSE_DEPTH=16
+/// Maximum QVM program image size accepted by the mod loader, in bytes.
 const MAX_QVM_IMAGE=16777216
 
 /// Mount record for format.mod_stack, containing `game`, `dataRoot`, `archive`.
-struct Mount game dataRoot archive end struct
+struct Mount
+  /// Game directory whose assets are mounted at this stack entry.
+  game
+  /// Filesystem root used to resolve this game directory.
+  dataRoot
+  /// PK3 archive mounted at this stack entry.
+  archive
+end struct
 
 /// Create the format.mod_stack error for `fail` with 7689 and the supplied diagnostic text.
 /// @param message Message used in `("Mod: " + message)` and `error(7689, ("Mod: " + message))`.

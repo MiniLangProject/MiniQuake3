@@ -5,19 +5,154 @@ package mq3.renderer.tr_scene_runtime
 
 import mq3.renderer.scene_queue as queue
 
+/// View flag that renders submitted entities without the BSP world model.
 const RDF_NOWORLDMODEL=1
+/// Reserved entity number identifying static world geometry.
 const ENTITYNUM_WORLD=1022
 
 /// Data record for `mq3.renderer.tr_scene_runtime.RefdefInput`; groups `x`, `y`, `width`, `height`, `fovX`, `fovY`, and 6 further fields.
-struct RefdefInput x y width height fovX fovY vieworg viewaxis time rdflags areamask text end struct
+struct RefdefInput
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the requested scene viewport before frontend preparation.
+  width
+  /// Height in pixels of the requested scene viewport before frontend preparation.
+  height
+  /// Horizontal camera field of view, in degrees.
+  fovX
+  /// Vertical camera field of view, in degrees.
+  fovY
+  /// Camera origin in world coordinates.
+  vieworg
+  /// Camera orientation represented by three basis vectors.
+  viewaxis
+  /// Requested scene time in milliseconds before the frontend prepares its internal view state.
+  time
+  /// Bit mask of view-level rendering options such as no-world or hyperspace rendering.
+  rdflags
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areamask
+  /// Input strings made available to deform-text shader stages.
+  text
+end struct
 /// Data record for `mq3.renderer.tr_scene_runtime.Refdef`; groups `x`, `y`, `width`, `height`, `fovX`, `fovY`, and 12 further fields.
-struct Refdef x y width height fovX fovY vieworg viewaxis time rdflags areamask areamaskModified text floatTime numDrawSurfs entities dlights polys end struct
+struct Refdef
+  /// Horizontal position of the view or drawing rectangle, in pixels.
+  x
+  /// Vertical position of the view or drawing rectangle, in pixels.
+  y
+  /// Width in pixels of the prepared scene viewport retained with its submitted geometry.
+  width
+  /// Height in pixels of the prepared scene viewport retained with its submitted geometry.
+  height
+  /// Horizontal camera field of view, in degrees.
+  fovX
+  /// Vertical camera field of view, in degrees.
+  fovY
+  /// Camera origin in world coordinates.
+  vieworg
+  /// Camera orientation represented by three basis vectors.
+  viewaxis
+  /// Prepared scene time in milliseconds retained with the frontend's submitted entities and lights.
+  time
+  /// Bit mask of view-level rendering options such as no-world or hyperspace rendering.
+  rdflags
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areamask
+  /// Whether area visibility differs from the previously rendered scene.
+  areamaskModified
+  /// Strings retained for deform-text shader stages in this scene.
+  text
+  /// View time expressed in seconds for shader calculations.
+  floatTime
+  /// Number of draw surfaces currently queued.
+  numDrawSurfs
+  /// Entity records associated with the current world, scene, or snapshot.
+  entities
+  /// Dynamic lights submitted to the current scene.
+  dlights
+  /// Polygons submitted to the current scene.
+  polys
+end struct
 /// Data record for `mq3.renderer.tr_scene_runtime.ViewParms`; groups `viewportX`, `viewportY`, `viewportWidth`, `viewportHeight`, `isPortal`, `fovX`, and 4 further fields.
-struct ViewParms viewportX viewportY viewportWidth viewportHeight isPortal fovX fovY origin axis pvsOrigin end struct
+struct ViewParms
+  /// Horizontal origin of the viewport, in pixels.
+  viewportX
+  /// Vertical origin of the viewport, in pixels.
+  viewportY
+  /// Width of the viewport, in pixels.
+  viewportWidth
+  /// Height of the viewport, in pixels.
+  viewportHeight
+  /// Whether this view renders through a portal surface.
+  isPortal
+  /// Horizontal camera field of view, in degrees.
+  fovX
+  /// Vertical camera field of view, in degrees.
+  fovY
+  /// Camera position used to prepare projection and visibility for the scene view.
+  origin
+  /// Prepared camera basis used for the scene's view and projection calculations.
+  axis
+  /// Position used to choose the visibility cluster for this view.
+  pvsOrigin
+end struct
 /// Callback table for `mq3.renderer.tr_scene_runtime.Services`; exposes `timeFn`, `renderViewFn`, `drawSurfFn`, `shaderFn`, `eventFn`, `context`.
-struct Services timeFn renderViewFn drawSurfFn shaderFn eventFn context end struct
+struct Services
+  /// Host callback used to perform time operations for this subsystem.
+  timeFn
+  /// Host callback used to perform render view operations for this subsystem.
+  renderViewFn
+  /// Host callback used to perform draw surf operations for this subsystem.
+  drawSurfFn
+  /// Host callback used to perform shader operations for this subsystem.
+  shaderFn
+  /// Host callback used to perform event operations for this subsystem.
+  eventFn
+  /// Scene-host state supplied to clock, view-rendering, draw-surface, shader, and event callbacks.
+  context
+end struct
 /// Data record for `mq3.renderer.tr_scene_runtime.State`; groups `scene`, `smpEnabled`, `smpFrame`, `commandUsed`, `registered`, `noRefresh`, and 12 further fields.
-struct State scene smpEnabled smpFrame commandUsed registered noRefresh worldLoaded dynamicLight vertexLight hardwareType vidHeight firstSceneDrawSurf frameSceneNum sceneCount frontEndMsec areaMask refdef services end struct
+struct State
+  /// Scene entities, lights, and polygons collected for drawing.
+  scene
+  /// Whether configuration permits a separate renderer thread.
+  smpEnabled
+  /// Index of the frame buffer shared between frontend and render thread.
+  smpFrame
+  /// Number of bytes occupied in the current renderer command buffer.
+  commandUsed
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Whether scene rendering is disabled by the refresh setting.
+  noRefresh
+  /// Whether a world map is available to the renderer.
+  worldLoaded
+  /// Dynamic-light selection or state used when drawing this geometry.
+  dynamicLight
+  /// Whether lighting is reduced to the vertex-lighting path.
+  vertexLight
+  /// Detected graphics-hardware family used to select compatibility behavior.
+  hardwareType
+  /// Height of the active video mode in pixels.
+  vidHeight
+  /// First draw-surface slot belonging to the current scene.
+  firstSceneDrawSurf
+  /// Sequence number of the scene within the current frame.
+  frameSceneNum
+  /// Number of scene submissions processed by this state.
+  sceneCount
+  /// Milliseconds spent preparing the frontend's scene commands.
+  frontEndMsec
+  /// Area-visibility mask; set bits suppress rendering of the associated areas.
+  areaMask
+  /// Camera, viewport, timing, and rendering flags for the view.
+  refdef
+  /// Injected host operations used by this subsystem.
+  services
+end struct
 
 /// Constructs `mq3.renderer.tr_scene_runtime.Services` with `timeFn` = `void`, `renderViewFn` = `void`, `drawSurfFn` = `void`, `shaderFn` = `void` and the supplied remaining values.
 function services() return Services(void,void,void,void,void,void) end function

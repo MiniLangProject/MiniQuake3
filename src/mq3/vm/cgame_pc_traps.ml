@@ -8,20 +8,52 @@ import mq3.vm.pc_parser as pcParser
 import mq3.botlib.l_precomp as lPrecomp
 import mq3.compat.numeric as n
 
+/// Client-game syscall number selecting the host pc add global define service.
 const CG_PC_ADD_GLOBAL_DEFINE=64
+/// Client-game syscall number selecting the host pc load source service.
 const CG_PC_LOAD_SOURCE=65
+/// Client-game syscall number selecting the host pc free source service.
 const CG_PC_FREE_SOURCE=66
+/// Client-game syscall number selecting the host pc read token service.
 const CG_PC_READ_TOKEN=67
+/// Client-game syscall number selecting the host pc source file and line service.
 const CG_PC_SOURCE_FILE_AND_LINE=68
+/// Byte size used for token storage or binary layout in mq3.vm.cgame_pc_traps.
 const TOKEN_SIZE=1040
+/// Byte size used for source name storage or binary layout in mq3.vm.cgame_pc_traps.
 const SOURCE_NAME_SIZE=64
 
 /// Services record for vm.cgame_pc_traps, containing `context`, `addDefineFn`, `loadSourceFn`, `freeSourceFn`, `readTokenFn`, `sourceLineFn`.
-struct Services context addDefineFn loadSourceFn freeSourceFn readTokenFn sourceLineFn end struct
+struct Services
+  /// Opaque caller-supplied context available to client-game precompiler source and token callbacks.
+  context
+  /// Injected callback for add define; invoked through the Services service/state record.
+  addDefineFn
+  /// Injected callback for load source; invoked through the Services service/state record.
+  loadSourceFn
+  /// Injected callback for free source; invoked through the Services service/state record.
+  freeSourceFn
+  /// Injected callback for read token; invoked through the Services service/state record.
+  readTokenFn
+  /// Injected callback for source line; invoked through the Services service/state record.
+  sourceLineFn
+end struct
 /// TokenResult record for vm.cgame_pc_traps, containing `found`, `data`.
-struct TokenResult found data end struct
+struct TokenResult
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Packed token ABI bytes returned to the calling VM.
+  data
+end struct
 /// SourceLocation record for vm.cgame_pc_traps, containing `found`, `name`, `line`.
-struct SourceLocation found name line end struct
+struct SourceLocation
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Name of the source containing the current token.
+  name
+  /// Current source line number.
+  line
+end struct
 
 /// Create `mq3.vm.cgame_pc_traps.Services` with context=context; addDefineFn=void; loadSourceFn=void; freeSourceFn=void; readTokenFn=void; sourceLineFn=void.
 /// @param context Initial `context` field stored in the returned or constructed `mq3.vm.cgame_pc_traps.Services` record.

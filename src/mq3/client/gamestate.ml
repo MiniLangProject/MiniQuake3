@@ -6,30 +6,60 @@ import mq3.qcommon.message as message
 import mq3.qcommon.message_state_delta as delta
 import mq3.game.entitystate as entitystate
 
+/// Capacity limit for the configstrings collection or bounded storage used by this client module.
 const MAX_CONFIGSTRINGS=1024
+/// Capacity of the packed server configuration-string character storage.
 const MAX_GAMESTATE_CHARS=16000
+/// Capacity limit for the gentities collection or bounded storage used by this client module.
 const MAX_GENTITIES=1024
+/// Number of bits allocated to an entity number in the native network protocol.
 const GENTITYNUM_BITS=10
+/// Server-message command byte selecting the configstring protocol operation.
 const SVC_CONFIGSTRING=3
+/// Server-message command byte selecting the baseline protocol operation.
 const SVC_BASELINE=4
+/// Server-message command byte selecting the eof protocol operation.
 const SVC_EOF=8
 
 /// Stores gamestate state, including `stringOffsets`, `stringData`, `dataCount`, `baselines`, `serverCommandSequence`, `clientNum` and additional values.
 struct State
+  /// When constructing this record, `create` supplies `array(MAX_CONFIGSTRINGS,0)` for this member.
+  /// Used by `clear` and `configString` during subsequent processing.
   stringOffsets
+  /// When constructing this record, `create` supplies `bytes(MAX_GAMESTATE_CHARS,0)` for this member.
+  /// Used by `clear` and `configString` during subsequent processing.
   stringData
+  /// When constructing this record, `create` supplies `1` for this member. Used by `clear` and `parse`
+  /// during subsequent processing.
   dataCount
+  /// When constructing this record, `create` supplies `array(MAX_GENTITIES,void)` for this member. Used
+  /// by `clear` and `parse` during subsequent processing.
   baselines
+  /// Reliable server-command sequence read at the start of the server game-state payload.
   serverCommandSequence
+  /// Client slot assigned by the server in the received game-state message.
   clientNum
+  /// Server-provided seed used when calculating the client's content checksums.
   checksumFeed
+  /// Number of connection-handshake packets sent, also used by progress displays.
   connectPacketCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `clear` and `parse`
+  /// during subsequent processing.
   paused
+  /// Host callback for the close operation; an unset callback leaves that host operation unavailable.
   closeFn
+  /// Host callback for the system info operation; an unset callback leaves that host operation
+  /// unavailable.
   systemInfoFn
+  /// Host callback for the restart operation; an unset callback leaves that host operation unavailable.
   restartFn
+  /// Host callback for the downloads operation; an unset callback leaves that host operation
+  /// unavailable.
   downloadsFn
+  /// Host callback for the pause operation; an unset callback leaves that host operation unavailable.
   pauseFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for initial game-state
+  /// decoding.
   context
 end struct
 

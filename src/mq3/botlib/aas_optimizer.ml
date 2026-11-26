@@ -5,26 +5,128 @@ package mq3.botlib.aas_optimizer
 
 import mq3.format.aas as aas
 
+/// AAS face-property bit marking ladder.
 const FACE_LADDER=2
+/// Travel by elevator.
 const TRAVEL_ELEVATOR=11
+/// AAS movement-type identifier for jump pad.
 const TRAVEL_JUMPPAD=18
+/// AAS movement-type identifier for bobbing mover.
 const TRAVEL_FUNCBOB=19
+/// Mask selecting the movement-type identifier from an encoded AAS travel type.
 const TRAVELTYPE_MASK=0xffffff
 
 /// `Edge` record for aas optimizer, containing `vertices`.
-struct Edge vertices end struct
+struct Edge
+  /// XYZ vertices defining the navigation or map geometry.
+  vertices
+end struct
 /// `Face` record for aas optimizer, containing `planeNum`, `flags`, `numEdges`, `firstEdge` and `frontArea` and related fields.
-struct Face planeNum flags numEdges firstEdge frontArea backArea end struct
+struct Face
+  /// Plane reference retained when copying this face into compacted navigation geometry.
+  planeNum
+  /// AAS face properties preserved while unused geometry is removed.
+  flags
+  /// Number of edge records represented by this face or file inventory.
+  numEdges
+  /// Starting offset of this face in the signed edge-index array.
+  firstEdge
+  /// Area at the front of this face.
+  frontArea
+  /// Area at the back of this face.
+  backArea
+end struct
 /// `Area` record for aas optimizer, containing `areaNum`, `numFaces`, `firstFace`, `mins` and `maxs` and related fields.
-struct Area areaNum numFaces firstFace mins maxs center end struct
+struct Area
+  /// Navigation area identifier preserved while compacting its geometry.
+  areaNum
+  /// Number of face records represented by this area or file inventory.
+  numFaces
+  /// Starting offset of this area in the signed face-index array.
+  firstFace
+  /// Minimum XYZ corner of the navigation area retained during geometry compaction.
+  mins
+  /// Maximum XYZ corner of the navigation area retained during geometry compaction.
+  maxs
+  /// 'center' of the area.
+  center
+end struct
 /// `Reachability` record for aas optimizer, containing `areaNum`, `faceNum`, `edgeNum`, `start` and `finish` and related fields.
-struct Reachability areaNum faceNum edgeNum start finish travelType travelTime end struct
+struct Reachability
+  /// Destination area preserved for the compacted navigation connection.
+  areaNum
+  /// Index of the AAS face associated with the movement link.
+  faceNum
+  /// Index of the AAS edge associated with the movement link.
+  edgeNum
+  /// Departure point preserved when compacting this navigation connection.
+  start
+  /// Arrival point preserved when compacting this navigation connection.
+  finish
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// AAS travel cost assigned to traversing this movement link.
+  travelTime
+end struct
 /// `Action` record for aas optimizer, containing `boundary`, `kind`, `text` and `dispatched`.
-struct Action boundary kind text dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Discriminator selecting an optimization diagnostic or host operation.
+  kind
+  /// Diagnostic text emitted while optimizing navigation data.
+  text
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `World` record for aas optimizer, containing `mapName`, `loaded`, `time`, `vertexes` and `edges` and related fields.
-struct World mapName loaded time vertexes edges edgeIndex faces faceIndex areas reachability actions retailActive end struct
+struct World
+  /// Name of the current game map.
+  mapName
+  /// True when the source navigation world contains geometry eligible for compaction.
+  loaded
+  /// Navigation time associated with the world being optimized.
+  time
+  /// XYZ vertices defining the navigation or map geometry.
+  vertexes
+  /// Vertex-index pairs defining edges of the map or navigation geometry.
+  edges
+  /// Signed edge references used by faces of the navigation mesh.
+  edgeIndex
+  /// Face records bounding AAS areas.
+  faces
+  /// Signed face references used to construct AAS area boundaries.
+  faceIndex
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// Reachability records whose geometry references must be preserved.
+  reachability
+  /// Recorded host-side effects associated with navigation geometry compaction.
+  actions
+  /// Indicates whether the host-backed retail-compatible runtime path is active.
+  retailActive
+end struct
 /// `Optimized` record for aas optimizer, containing `vertexes`, `edges`, `edgeIndex`, `faces` and `faceIndex` and related fields.
-struct Optimized vertexes edges edgeIndex faces faceIndex areas vertexOptimizeIndex edgeOptimizeIndex faceOptimizeIndex end struct
+struct Optimized
+  /// XYZ vertices defining the navigation or map geometry.
+  vertexes
+  /// Vertex-index pairs defining edges of the map or navigation geometry.
+  edges
+  /// Signed edge references used by faces of the navigation mesh.
+  edgeIndex
+  /// Face records bounding AAS areas.
+  faces
+  /// Signed face references used to construct AAS area boundaries.
+  faceIndex
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// Mapping from original vertex indexes to optimized vertex indexes.
+  vertexOptimizeIndex
+  /// Mapping from original edge indexes to optimized edge indexes.
+  edgeOptimizeIndex
+  /// Mapping from original face indexes to optimized face indexes.
+  faceOptimizeIndex
+end struct
 
 /// Create a `mq3.botlib.aas_optimizer.Edge` record, initializing `vertices` as `[a,b]`.
 /// @param a Operand used to evaluate the returned expression `Edge([a,b])`.

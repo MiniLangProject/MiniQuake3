@@ -8,29 +8,143 @@ import mq3.video.roq_video as video
 import std.string as strings
 import std.ds.list as lists
 
+/// Cinematic decoder state indicating idle.
 const FMV_IDLE=0
+/// Cinematic decoder state indicating play.
 const FMV_PLAY=1
+/// Cinematic decoder state indicating eof.
 const FMV_EOF=2
+/// Cinematic decoder state indicating looped.
 const FMV_LOOPED=5
+/// Cinematic playback flag selecting system behavior.
 const CIN_SYSTEM=1
+/// Cinematic playback flag selecting loop behavior.
 const CIN_LOOP=2
+/// Cinematic playback flag selecting hold behavior.
 const CIN_HOLD=4
+/// Cinematic playback flag selecting silent behavior.
 const CIN_SILENT=8
+/// Cinematic playback flag selecting shader behavior.
 const CIN_SHADER=16
+/// Capacity limit for the handles collection or bounded storage used by this client module.
 const MAX_HANDLES=16
 
 /// Stores cinematic runtime extents record, including `x`, `y`, `width`, `height`.
-struct Extents x y width height end struct
+struct Extents
+  /// Horizontal coordinate of the requested cinematic rectangle before conversion to target-display
+  /// coordinates.
+  x
+  /// Vertical coordinate of the requested cinematic rectangle before conversion to target-display
+  /// coordinates.
+  y
+  /// Requested cinematic destination width, interpreted in virtual screen units for non-shader
+  /// playback.
+  width
+  /// Requested cinematic destination height, interpreted in virtual screen units for non-shader
+  /// playback.
+  height
+end struct
 /// Stores cinematic runtime draw record, including `handle`, `frame`, `extents`, `dirty`, `shader`.
-struct Draw handle frame extents dirty shader end struct
+struct Draw
+  /// When constructing this record, `draw` supplies `handle` for this member.
+  handle
+  /// Latest decoded RoQ video frame, including its pixel buffer and dimensions, queued for cinematic
+  /// drawing.
+  frame
+  /// When constructing this record, `draw` supplies `clip.extents` for this member.
+  extents
+  /// When constructing this record, `draw` supplies `clip.dirty` for this member.
+  dirty
+  /// True for cinematic texture playback, which preserves the supplied extents without virtual-screen
+  /// scaling.
+  shader
+end struct
 /// Stores cinematic runtime upload record, including `handle`, `frame`, `dirty`, `shader`.
-struct Upload handle frame dirty shader end struct
+struct Upload
+  /// When constructing this record, `upload` supplies `handle` for this member.
+  handle
+  /// Latest decoded RoQ video frame whose pixels and dimensions are supplied to the texture upload.
+  frame
+  /// When constructing this record, `upload` supplies `clip.dirty` for this member.
+  dirty
+  /// True when the decoded frame belongs to a cinematic opened for shader-texture playback.
+  shader
+end struct
 /// Stores cinematic runtime presentation record, including `pixels`, `sourceWidth`, `sourceHeight`, `x`, `y`, `width` and additional values.
-struct Presentation pixels sourceWidth sourceHeight x y width height dirty end struct
+struct Presentation
+  /// When constructing this record, `presentation` supplies `draw.frame.pixels` for this member.
+  pixels
+  /// When constructing this record, `presentation` supplies `draw.frame.width` for this member.
+  sourceWidth
+  /// When constructing this record, `presentation` supplies `draw.frame.height` for this member.
+  sourceHeight
+  /// Horizontal coordinate of the scaled cinematic rectangle in target-display pixels.
+  x
+  /// Vertical coordinate of the scaled cinematic rectangle in target-display pixels.
+  y
+  /// Destination width passed to the cinematic presenter after any virtual-to-target scaling.
+  width
+  /// Destination height passed to the cinematic presenter after any virtual-to-target scaling.
+  height
+  /// When constructing this record, `presentation` supplies `draw.dirty` for this member.
+  dirty
+end struct
 /// Stores cinematic runtime clip record, including `handle`, `path`, `movie`, `decoder`, `chunkIndex`, `status` and additional values.
-struct Clip handle path movie decoder chunkIndex status startTime lastTime extents looping hold silent shader dirty audioQueue end struct
+struct Clip
+  /// When constructing this record, `play` supplies `handle` for this member.
+  handle
+  /// When constructing this record, `play` supplies `path` for this member.
+  path
+  /// When constructing this record, `play` supplies `movie` for this member. Used by `run` during
+  /// subsequent processing.
+  movie
+  /// When constructing this record, `play` supplies `video.create()` for this member. Used by
+  /// `resetClip` and `run` during subsequent processing.
+  decoder
+  /// When constructing this record, `play` supplies `0` for this member. Used by `resetClip` and `run`
+  /// during subsequent processing.
+  chunkIndex
+  /// When constructing this record, `play` supplies `FMV_PLAY` for this member. Used by `resetClip` and
+  /// `finishClip` during subsequent processing.
+  status
+  /// When constructing this record, `play` supplies `now` for this member. Used by `resetClip` and
+  /// `run` during subsequent processing.
+  startTime
+  /// When constructing this record, `play` supplies `now` for this member. Used by `resetClip` and
+  /// `run` during subsequent processing.
+  lastTime
+  /// When constructing this record, `play` supplies `Extents(x,y,width,height)` for this member.
+  extents
+  /// When constructing this record, `play` supplies `(bits&CIN_LOOP)!=0` for this member. Used by
+  /// `finishClip` during subsequent processing.
+  looping
+  /// When constructing this record, `play` supplies `(bits&CIN_HOLD)!=0` for this member. Used by
+  /// `finishClip` during subsequent processing.
+  hold
+  /// When constructing this record, `play` supplies `(bits&CIN_SILENT)!=0` for this member. Used by
+  /// `run` during subsequent processing.
+  silent
+  /// True when CIN_SHADER was enabled for this clip, selecting texture playback and its
+  /// intermittent-update timing.
+  shader
+  /// When constructing this record, `play` supplies `true` for this member.
+  dirty
+  /// When constructing this record, `play` supplies `lists.List.withCapacity(16)` for this member. Used
+  /// by `resetClip` and `run` during subsequent processing.
+  audioQueue
+end struct
 /// Stores cinematic runtime state, including `archive`, `handles`, `drawQueue`.
-struct State archive handles drawQueue end struct
+struct State
+  /// When constructing this record, `create` supplies `archive` for this member. Used by `play` during
+  /// subsequent processing.
+  archive
+  /// When constructing this record, `create` supplies `array(MAX_HANDLES,void)` for this member. Used
+  /// by `validHandle` and `freeHandle` during subsequent processing.
+  handles
+  /// When constructing this record, `create` supplies `lists.List.withCapacity(16)` for this member.
+  /// Used by `draw` and `takeDraws` during subsequent processing.
+  drawQueue
+end struct
 
 /// Creates the cinematic runtime error `7692` with diagnostic text `"cinematic runtime: "+message`.
 /// @param message Argument 2 of `error`; passed as `"cinematic runtime: "+message`.

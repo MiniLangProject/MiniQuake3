@@ -4,23 +4,74 @@ package mq3.client.playable_match
 
 import mq3.compat.numeric as numeric
 
+/// Match phase before the required players or start conditions are available.
 const PHASE_WAITING=0
+/// Match phase during the pregame warmup countdown.
 const PHASE_WARMUP=1
+/// Match phase while normal gameplay and scoring are active.
 const PHASE_ACTIVE=2
+/// Match phase after gameplay ends and results are displayed.
 const PHASE_INTERMISSION=3
+/// Winner sentinel used before a match result has been determined.
 const WINNER_NONE=0
+/// Winner identifier indicating that the local player won the native match.
 const WINNER_PLAYER=1
+/// Winner identifier indicating that the enemy side won the native match.
 const WINNER_ENEMIES=2
+/// Countdown-announcer sound selector for the none announcement.
 const ANNOUNCER_NONE=0
+/// Countdown-announcer sound selector for the three announcement.
 const ANNOUNCER_THREE=1
+/// Countdown-announcer sound selector for the two announcement.
 const ANNOUNCER_TWO=2
+/// Countdown-announcer sound selector for the one announcement.
 const ANNOUNCER_ONE=3
+/// Countdown-announcer sound selector for the fight announcement.
 const ANNOUNCER_FIGHT=4
 
 /// Stores playable match state, including `phase`, `fragLimit`, `timeLimitMilliseconds`, `warmupMilliseconds`, `warmupStart`, `matchStart` and additional values.
-struct State phase fragLimit timeLimitMilliseconds warmupMilliseconds warmupStart matchStart intermissionAt winner end struct
+struct State
+  /// When constructing this record, `create` supplies `PHASE_WAITING` for this member.
+  phase
+  /// When constructing this record, `create` supplies `fragLimit` for this member. Used by `update`
+  /// during subsequent processing.
+  fragLimit
+  /// When constructing this record, `create` supplies `timeLimitMinutes*60000` for this member. Used by
+  /// `snapshot` and `update` during subsequent processing.
+  timeLimitMilliseconds
+  /// When constructing this record, `create` supplies `warmupMilliseconds` for this member. Used by
+  /// `start` during subsequent processing.
+  warmupMilliseconds
+  /// When constructing this record, `create` supplies `0` for this member. Used by `start` during
+  /// subsequent processing.
+  warmupStart
+  /// When constructing this record, `create` supplies `0` for this member. Used by `start` and `clock`
+  /// during subsequent processing.
+  matchStart
+  /// When constructing this record, `create` supplies `0` for this member. Used by `start` and `update`
+  /// during subsequent processing.
+  intermissionAt
+  /// When constructing this record, `create` supplies `WINNER_NONE` for this member. Used by `start`
+  /// and `update` during subsequent processing.
+  winner
+end struct
 /// Stores playable match update record, including `phase`, `changed`, `message`, `playerScore`, `enemyScore`, `remainingSeconds` and additional values.
-struct Update phase changed message playerScore enemyScore remainingSeconds clock end struct
+struct Update
+  /// When constructing this record, `snapshot` supplies `state.phase` for this member.
+  phase
+  /// When constructing this record, `snapshot` supplies `changed` for this member.
+  changed
+  /// When constructing this record, `snapshot` supplies `message` for this member.
+  message
+  /// When constructing this record, `snapshot` supplies `playerScore` for this member.
+  playerScore
+  /// When constructing this record, `snapshot` supplies `enemyScore` for this member.
+  enemyScore
+  /// When constructing this record, `snapshot` supplies `remaining` for this member.
+  remainingSeconds
+  /// When constructing this record, `snapshot` supplies `clock(state,now)` for this member.
+  clock
+end struct
 
 /// Creates the playable match error `7620` with diagnostic text `"preview match: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview match: "+message`.

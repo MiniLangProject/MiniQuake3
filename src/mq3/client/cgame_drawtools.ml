@@ -8,35 +8,142 @@ package mq3.client.cgame_drawtools
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as crt
 
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
+/// Bigchar font metric controlling height in virtual UI coordinates.
 const BIGCHAR_HEIGHT=16
+/// Smallchar font metric controlling width in virtual UI coordinates.
 const SMALLCHAR_WIDTH=8
+/// Smallchar font metric controlling height in virtual UI coordinates.
 const SMALLCHAR_HEIGHT=16
+/// Duration in milliseconds of the standard CGame presentation fade.
 const FADE_TIME=200
+/// Fraction of incoming damage absorbed by armor before reducing health.
 const ARMOR_PROTECTION=0.66
+/// Prop font metric controlling gap width in virtual UI coordinates.
 const PROP_GAP_WIDTH=3
+/// Prop font metric controlling space width in virtual UI coordinates.
 const PROP_SPACE_WIDTH=8
+/// Prop font metric controlling height in virtual UI coordinates.
 const PROP_HEIGHT=27
+/// Propb font metric controlling gap width in virtual UI coordinates.
 const PROPB_GAP_WIDTH=4
+/// Propb font metric controlling space width in virtual UI coordinates.
 const PROPB_SPACE_WIDTH=12
+/// Propb font metric controlling height in virtual UI coordinates.
 const PROPB_HEIGHT=36
+/// Time-scaling divisor used to compute the proportional-text pulse animation.
 const PULSE_DIVISOR=75.0
+/// UI text-style flag selecting left-aligned text.
 const UI_LEFT=0
+/// UI text-style flag selecting horizontally centered text.
 const UI_CENTER=1
+/// UI text-style flag selecting right-aligned text.
 const UI_RIGHT=2
+/// UI text-style flag selecting the horizontal-alignment bits.
 const UI_FORMATMASK=7
+/// UI text-style flag selecting the small fixed-width font.
 const UI_SMALLFONT=0x10
+/// UI text-style flag selecting a shadow behind the text.
 const UI_DROPSHADOW=0x800
+/// UI text-style flag selecting the subdued inverse text style.
 const UI_INVERSE=0x2000
+/// UI text-style flag selecting a pulsing text color or brightness.
 const UI_PULSE=0x4000
 
 /// Stores client game drawtools draw action record, including `kind`, `x`, `y`, `width`, `height`, `s1` and additional values.
-struct DrawAction kind x y width height s1 t1 s2 t2 shader color dispatched end struct
+struct DrawAction
+  /// Operation selector telling the host how to interpret a request emitted while drawing scaled text,
+  /// pictures, and rectangles for CGame.
+  kind
+  /// Horizontal coordinate of a CGame text, image, or rectangle request in its drawing coordinate
+  /// space.
+  x
+  /// Vertical coordinate of a CGame text, image, or rectangle request in its drawing coordinate space.
+  y
+  /// Destination rectangle width carried by the low-level HUD drawing action.
+  width
+  /// Destination rectangle height carried by the low-level HUD drawing action.
+  height
+  /// When constructing this record, `action` supplies `s1` for this member.
+  s1
+  /// When constructing this record, `action` supplies `t1` for this member.
+  t1
+  /// When constructing this record, `action` supplies `s2` for this member.
+  s2
+  /// When constructing this record, `action` supplies `t2` for this member.
+  t2
+  /// Texture material passed to the HUD stretch-picture request; empty for a color-only action.
+  shader
+  /// Optional RGBA modulation copied into the low-level HUD drawing action.
+  color
+  /// True when this request is marked for native dispatch while drawing scaled text, pictures, and
+  /// rectangles for CGame; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game drawtools state, including `screenXScale`, `screenYScale`, `screenXBias`, `vidWidth`, `vidHeight`, `refX` and additional values.
-struct State screenXScale screenYScale screenXBias vidWidth vidHeight refX refY refWidth refHeight time health armor whiteShader charsetShader backTileShader charsetProp charsetPropGlow charsetPropB actions emitted suppressed end struct
+struct State
+  /// Horizontal virtual-screen scaling factor derived from the renderer configuration.
+  screenXScale
+  /// Vertical virtual-screen scaling factor derived from the renderer configuration.
+  screenYScale
+  /// Horizontal centering offset used when the actual display is wider than the virtual UI.
+  screenXBias
+  /// When constructing this record, `create` supplies `640` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  vidWidth
+  /// When constructing this record, `create` supplies `480` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  vidHeight
+  /// When constructing this record, `create` supplies `0` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  refX
+  /// When constructing this record, `create` supplies `0` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  refY
+  /// When constructing this record, `create` supplies `640` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  refWidth
+  /// When constructing this record, `create` supplies `480` for this member. Used by `tileClear` during
+  /// subsequent processing.
+  refHeight
+  /// Client-game time in milliseconds used by drawing helpers for text blinking and color fading.
+  time
+  /// Local-player health combined with armor when choosing the HUD health color.
+  health
+  /// Armor contribution used with health to calculate the HUD health color.
+  armor
+  /// Shader resource selected for white rendering.
+  whiteShader
+  /// Shader resource selected for charset rendering.
+  charsetShader
+  /// Shader resource selected for back tile rendering.
+  backTileShader
+  /// When constructing this record, `create` supplies `"charsetProp"` for this member. Used by
+  /// `drawProportionalString` during subsequent processing.
+  charsetProp
+  /// When constructing this record, `create` supplies `"charsetPropGlow"` for this member. Used by
+  /// `drawProportionalString` during subsequent processing.
+  charsetPropGlow
+  /// When constructing this record, `create` supplies `"charsetPropB"` for this member. Used by
+  /// `drawBannerString2` during subsequent processing.
+  charsetPropB
+  /// Host requests queued while drawing scaled text, pictures, and rectangles for CGame, retained in
+  /// request order.
+  actions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `publish` during
+  /// subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while drawing scaled text, pictures, and
+  /// rectangles for CGame because the retail QVM owns their effects.
+  suppressed
+end struct
 
 /// Creates a `mq3.client.cgame_drawtools.State` record. Initializes the record with the defaults written in this constructor.
 function create()

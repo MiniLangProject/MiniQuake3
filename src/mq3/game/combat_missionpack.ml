@@ -10,11 +10,17 @@ import mq3.game.g_weapon as weapon
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Server entity-flag bit controlling noclient.
 const SVF_NOCLIENT = 1
+/// Network entity-flag bit indicating nodraw.
 const EF_NODRAW = 0x80
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE = 0x200
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER = 7
 
 /// Set `self.client.ps.generic1` to `0` in `mq3.game.combat_missionpack.TossClientCubes`. Return paths include `drop`.

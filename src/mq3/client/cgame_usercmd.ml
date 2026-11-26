@@ -4,7 +4,13 @@
 package mq3.client.cgame_usercmd
 
 /// Stores client game usercmd state, including `weapon`, `sensitivity`.
-struct State weapon sensitivity end struct
+struct State
+  /// Native weapon identifier requested by the game module for subsequent user commands.
+  weapon
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `set` and
+  /// `sensitivity` during subsequent processing.
+  sensitivity
+end struct
 
 /// Creates a `mq3.client.cgame_usercmd.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State(0,1.0) end function

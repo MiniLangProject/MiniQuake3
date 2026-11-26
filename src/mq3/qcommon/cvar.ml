@@ -16,50 +16,84 @@ extern function atof(text as cstr) from "ucrtbase.dll" returns double
 /// @returns The converted signed integer; zero when no number is recognized.
 extern function atoi(text as cstr) from "ucrtbase.dll" returns i32
 
+/// Configuration-variable flag requesting persistence in the user configuration file.
 const ARCHIVE = 1
+/// Configuration-variable flag including the value in client user information.
 const USERINFO = 2
+/// Configuration-variable flag including the value in server information.
 const SERVERINFO = 4
+/// Configuration-variable flag including the value in replicated system information.
 const SYSTEMINFO = 8
+/// Configuration-variable flag restricting changes to startup initialization.
 const INIT = 16
+/// Configuration-variable flag deferring a changed value until the relevant restart.
 const LATCH = 32
+/// Configuration-variable flag preventing ordinary user modification.
 const ROM = 64
+/// Configuration-variable flag marking a variable created by the user.
 const USER_CREATED = 128
+/// Configuration-variable flag marking a non-persistent temporary value.
 const TEMP = 256
+/// Configuration-variable flag restricting changes while cheats are disabled.
 const CHEAT = 512
+/// Configuration-variable flag preserving the variable across registry restart.
 const NORESTART = 1024
+/// Maximum number of registered configuration variables.
 const MAX_CVARS = 1024
+/// Number of hash buckets used for file-name lookup.
 const FILE_HASH_SIZE = 256
+/// Maximum text length accepted for a configuration-variable value.
 const MAX_CVAR_VALUE_STRING = 256
 
 /// Cvar record for qcommon.cvar, containing `name`, `string`, `resetString`, `latchedString`, `flags`, `modified`, and 4 further fields.
 struct Cvar
+  /// Canonical configuration-variable name used for registry lookup.
   name
+  /// Current text value of the configuration variable.
   string
+  /// Default text restored when configuration variables are reset.
   resetString
+  /// Pending text value to apply when a latched configuration change takes effect.
   latchedString
+  /// Combined configuration-variable policy flags, such as archive, latch, and cheat.
   flags
+  /// Set each time the cvar is changed.
   modified
+  /// Incremented each time the cvar is changed.
   modificationCount
+  /// Cached floating-point conversion of the current string value.
   value
+  /// Integer representation of the configured or parsed value.
   integer
+  /// Stable registry index used by VM-visible variable handles.
   index
 end struct
 
 /// Registry record for qcommon.cvar, containing `variables`, `modifiedFlags`, `numIndexes`, `indexes`.
 struct Registry
+  /// Registered configuration-variable records.
   variables
+  /// Bit mask of configuration-variable categories modified since the last clear.
   modifiedFlags
+  /// Number of index elements describing this surface.
   numIndexes
+  /// Stable index table used to resolve VM-visible variable handles.
   indexes
 end struct
 
 /// VmCvar record for qcommon.cvar, containing `handle`, `modificationCount`, `value`, `integer`, `string`, `copyGeneration`.
 struct VmCvar
+  /// Registry handle identifying the corresponding engine configuration variable.
   handle
+  /// Number of modification recorded by this state.
   modificationCount
+  /// Floating-point interpretation of the variable's current text.
   value
+  /// Integer representation of the configured or parsed value.
   integer
+  /// Current text copied into the VM-visible configuration-variable record.
   string
+  /// Generation marker used to detect whether VM-facing data needs to be refreshed.
   copyGeneration
 end struct
 /// Create `mq3.qcommon.cvar.VmCvar` with handle=0; modificationCount=0; value=0.0; integer=0; string=""; copyGeneration=0.

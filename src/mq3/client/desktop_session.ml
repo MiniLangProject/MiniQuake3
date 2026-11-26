@@ -23,26 +23,67 @@ extern function MoveFileExW(existingPath as wstr,newPath as wstr,flags as u32) f
 extern function GetCurrentProcessId() from "kernel32.dll" returns u32
 
 /// Stores desktop session config host record, including `dataRoot`, `context`, `bindingState`.
-struct ConfigHost dataRoot context bindingState end struct
+struct ConfigHost
+  /// When constructing this record, `attach` supplies `session.dataRoot` for this member.
+  dataRoot
+  /// Caller-supplied value forwarded unchanged to the service callbacks for desktop client session
+  /// setup.
+  context
+  /// When constructing this record, `attach` supplies `bindings.create(context.cgameKeys)` for this
+  /// member.
+  bindingState
+end struct
 /// Stores desktop session session record, including `dataRoot`, `action`, `mapName`, `singlePlayer`, `settings`, `persistence` and additional values.
 struct Session
+  /// When constructing this record, `create` supplies `dataRoot` for this member.
   dataRoot
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `capture` and `mapCommand` during subsequent processing.
   action
+  /// Selected map identifier retained by the desktop session configuration.
   mapName
+  /// When constructing this record, `create` supplies `false` for this member. Used by `mapCommand`
+  /// during subsequent processing.
   singlePlayer
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `capture` and `finishCinematic` during subsequent processing.
   settings
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `save` and `attach` during subsequent processing.
   persistence
+  /// When constructing this record, `create` supplies `0` for this member. Used by `save` and `attach`
+  /// during subsequent processing.
   savedBindings
+  /// When constructing this record, `create` supplies `false` for this member. Used by `attach` during
+  /// subsequent processing.
   configLoaded
+  /// When constructing this record, `create` supplies `false` for this member. Used by `videoCommand`
+  /// during subsequent processing.
   videoRestart
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `capture`
+  /// during subsequent processing.
   restartCommands
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `videoCommand` and `attach` during subsequent processing.
   activeGame
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `restartFilesystem` during subsequent processing.
   requestedGame
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `cinematicCommand` and `streamCommand` during subsequent processing.
   target
+  /// When constructing this record, `create` supplies an empty string for this member. Used by `attach`
+  /// during subsequent processing.
   notice
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `capture` and `finishCinematic` during subsequent processing.
   transitionCommands
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `cinematicCommand` and `finishCinematic` during subsequent processing.
   cinematicNext
+  /// When constructing this record, `create` supplies `1280` for this member.
   videoWidth
+  /// When constructing this record, `create` supplies `720` for this member.
   videoHeight
 end struct
 

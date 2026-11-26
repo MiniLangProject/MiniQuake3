@@ -9,9 +9,35 @@ import mq3.server.oob_connect as serverConnect
 import mq3.qcommon.netchan as netchan
 
 /// Stores network handshake slot record, including `runtime`, `clientBound`, `serverBound`, `serverSlot`.
-struct Slot runtime clientBound serverBound serverSlot end struct
+struct Slot
+  /// When constructing this record, `create` supplies `current` for this member. Used by `bindClient`
+  /// and `findSlot` during subsequent processing.
+  runtime
+  /// When constructing this record, `create` supplies `false` for this member. Used by `bindClient` and
+  /// `reconcile` during subsequent processing.
+  clientBound
+  /// When constructing this record, `create` supplies `false` for this member. Used by `bindServer` and
+  /// `reconcile` during subsequent processing.
+  serverBound
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `bindServer` and
+  /// `activate` during subsequent processing.
+  serverSlot
+end struct
 /// Stores network handshake runtime wiring and state, including `group`, `server`, `slots`, `lastError`.
-struct Runtime group server slots lastError end struct
+struct Runtime
+  /// When constructing this record, `create` supplies `groupState` for this member. Used by `reconcile`
+  /// and `setTime` during subsequent processing.
+  group
+  /// When constructing this record, `create` supplies `serverState` for this member. Used by
+  /// `bindServer` and `reconcile` during subsequent processing.
+  server
+  /// When constructing this record, `create` supplies `slots` for this member. Used by `findSlot` and
+  /// `bindServer` during subsequent processing.
+  slots
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `reconcile` during subsequent processing.
+  lastError
+end struct
 
 /// Calls `mq3.client.network_handshake.Slot`, `mq3.client.network_handshake.Runtime` from network handshake `create`. The final path returns `Runtime(groupState,serverState,slots,"")`.
 /// @param groupState Record read through `groupState.runtimes`.

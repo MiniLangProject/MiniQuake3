@@ -6,21 +6,47 @@ package mq3.botlib.ai_goal_state
 import mq3.botlib.ai_resource_pools as goalResources
 import mq3.compat.numeric as goalNumeric
 
+/// Bot-library syscall identifier for reset avoid goals.
 const OP_RESET_AVOID_GOALS=526
+/// Bot-library syscall identifier for push goal.
 const OP_PUSH_GOAL=527
+/// Bot-library syscall identifier for pop goal.
 const OP_POP_GOAL=528
+/// Bot-library syscall identifier for empty goal stack.
 const OP_EMPTY_GOAL_STACK=529
+/// Bot-library syscall identifier for dump avoid goals.
 const OP_DUMP_AVOID_GOALS=530
+/// Bot-library syscall identifier for dump goal stack.
 const OP_DUMP_GOAL_STACK=531
+/// Bot-library syscall identifier for goal name.
 const OP_GOAL_NAME=532
+/// Bot-library syscall identifier for get top goal.
 const OP_GET_TOP_GOAL=533
+/// Bot-library syscall identifier for get second goal.
 const OP_GET_SECOND_GOAL=534
+/// Bot-library syscall identifier for touching goal.
 const OP_TOUCHING_GOAL=537
+/// Bot-library syscall identifier for avoid goal time.
 const OP_AVOID_GOAL_TIME=540
+/// Bot-library diagnostic severity for error.
 const PRT_ERROR=3
 
 /// `Runtime` record for ai goal state, containing `pools`, `context`, `timeFn`, `goalNameFn` and `logFn` and related fields.
-struct Runtime pools context timeFn goalNameFn logFn printFn end struct
+struct Runtime
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// Caller-supplied data associated with goal timing, goal-name lookup, logging, and goal-stack
+  /// diagnostics.
+  context
+  /// Host callback that supplies the current time used by the bot runtime.
+  timeFn
+  /// Host callback that resolves a bot goal to its display name.
+  goalNameFn
+  /// Host callback that writes a bot-runtime message to the host log.
+  logFn
+  /// Host callback that prints goal-stack and goal-state diagnostic output.
+  printFn
+end struct
 
 /// Create a `mq3.botlib.ai_goal_state.Runtime` record, initializing `pools` from `pools`, `context` from `context` and `timeFn` from `timeFn`.
 /// @param pools Initial value stored in `mq3.botlib.ai_goal_state.Runtime.pools`.

@@ -7,25 +7,45 @@ import mq3.compat.numeric as n
 import mq3.shared.math as q
 import mq3.shared.q_shared_runtime as shared
 
+/// Integer representation of false in the original Quake ABI.
 const qfalse=0
+/// Integer representation of true in the original Quake ABI.
 const qtrue=1
+/// Maximum character-buffer size for an engine command or protocol string.
 const MAX_STRING_CHARS=1024
+/// Maximum character-buffer size for one parsed token.
 const MAX_TOKEN_CHARS=1024
+/// Byte limit for a normal backslash-delimited information string.
 const MAX_INFO_STRING=1024
+/// Byte limit for an extended backslash-delimited information string.
 const BIG_INFO_STRING=8192
+/// Maximum engine-relative path length, including its terminator.
 const MAX_QPATH=64
+/// Maximum storage length for a player name.
 const MAX_NAME_LENGTH=32
+/// Maximum storage length for a chat message.
 const MAX_SAY_TEXT=150
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Maximum number of entity slots represented by the original game protocol.
 const MAX_GENTITIES=1024
+/// Entity-number sentinel meaning that no entity was hit or referenced.
 const ENTITYNUM_NONE=1023
+/// Reserved entity number representing the BSP world.
 const ENTITYNUM_WORLD=1022
+/// First reserved entity number; normal entity slots must remain below it.
 const ENTITYNUM_MAX_NORMAL=1022
+/// Number of bits used to encode an entity number in the network protocol.
 const GENTITYNUM_BITS=10
+/// Number of entries reserved for model configuration strings.
 const MAX_MODELS=256
+/// Number of entries reserved for sound configuration strings.
 const MAX_SOUNDS=256
+/// Maximum number of indexed configuration strings in a game state.
 const MAX_CONFIGSTRINGS=1024
+/// Total character capacity for the packed game-state configuration strings.
 const MAX_GAMESTATE_CHARS=16000
+/// Backslash character code used by the original Windows path ABI.
 const PATH_SEP=92
 
 /// Return `mq3.shared.q_shared_runtime.bigShort(value)` from `shared.q_shared_header.BigShort`.

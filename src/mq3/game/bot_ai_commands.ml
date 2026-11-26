@@ -8,50 +8,93 @@ import mq3.shared.info as info
 import mq3.game.bot_fight_state as fight
 import mq3.game.bot_seek_state as seek
 
+/// Console-message category for ordinary engine messages.
 const CMS_NORMAL=0
+/// Console-message category for chat text supplied to bot chat processing.
 const CMS_CHAT=1
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Long-term bot goal identifier selecting teamhelp behavior.
 const LTG_TEAMHELP=1
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=2
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Long-term bot goal identifier selecting rush the base behavior.
 const LTG_RUSHBASE=5
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=6
+/// Long-term bot goal identifier selecting camp behavior.
 const LTG_CAMP=7
+/// Long-term bot goal identifier selecting follow a camp order behavior.
 const LTG_CAMPORDER=8
+/// Long-term bot goal identifier selecting patrol behavior.
 const LTG_PATROL=9
+/// Long-term bot goal identifier selecting getitem behavior.
 const LTG_GETITEM=10
+/// Long-term bot goal identifier selecting kill behavior.
 const LTG_KILL=11
+/// Long-term bot goal identifier selecting harvest behavior.
 const LTG_HARVEST=12
+/// Long-term bot goal identifier selecting attackenemybase behavior.
 const LTG_ATTACKENEMYBASE=13
+/// Upper bound on nodeswitches represented by mq3.game.bot_ai_commands.
 const MAX_NODESWITCHES=50
 
 /// `Services` record for bot ai commands, containing `lifecycleState`, `frameLevel`, `maxclients`, `gametype` and `resetInputFn` and related fields.
 struct Services
+  /// State shared by bot allocation, setup, shutdown, and frame processing.
   lifecycleState
+  /// Game-level state supplied to bot frame processing.
   frameLevel
+  /// Configured number of client slots active in this game state.
   maxclients
+  /// GT_* game-mode identifier used for bot command processing and mode-specific player information.
   gametype
+  /// Injected callback for reset input; invoked through the Services service/state record.
   resetInputFn
+  /// Injected callback for get client state; invoked through the Services service/state record.
   getClientStateFn
+  /// Injected callback for next server command; invoked through the Services service/state record.
   nextServerCommandFn
+  /// Injected callback for queue message; invoked through the Services service/state record.
   queueMessageFn
+  /// Injected callback for deathmatch setup; invoked through the Services service/state record.
   deathmatchSetupFn
+  /// Injected callback for diagnostic; invoked through the Services service/state record.
   diagnosticFn
+  /// Injected callback for client name; invoked through the Services service/state record.
   clientNameFn
+  /// Injected callback for easy client name; invoked through the Services service/state record.
   easyClientNameFn
+  /// Injected callback for goal name; invoked through the Services service/state record.
   goalNameFn
+  /// Injected callback for top goal number; invoked through the Services service/state record.
   topGoalNumberFn
+  /// Injected callback for carrying flag; invoked through the Services service/state record.
   carryingFlagFn
+  /// Injected callback for team; invoked through the Services service/state record.
   teamFn
+  /// Injected callback for get player config; invoked through the Services service/state record.
   getPlayerConfigFn
+  /// Injected callback for set bot info; invoked through the Services service/state record.
   setBotInfoFn
+  /// Injected callback for print; invoked through the Services service/state record.
   printFn
+  /// Callbacks and shared state used by the bot fight node.
   fightServices
+  /// Callbacks used by the bot seek/goal-acquisition node.
   seekServices
+  /// Injected callback for node step; invoked through the Services service/state record.
   nodeStepFn
+  /// Opaque caller-supplied context available to bot command processing, client-state lookup, and
+  /// diagnostic callbacks.
   context
 end struct
 /// Create a `mq3.game.bot_ai_commands.Services` record, initializing `lifecycleState` from `state`, `maxclients` as `64` and `nodeStepFn` as `battleNodeStep`.

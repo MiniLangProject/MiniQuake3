@@ -6,34 +6,139 @@ import mq3.format.deflate as raw
 import mq3.qcommon.headers as qcommonHeaders
 import std.fs as fs
 
+/// ZIP-reader result indicating success.
 const UNZ_OK=qcommonHeaders.UNZ_OK
+/// ZIP-reader result indicating that the central-directory enumeration is exhausted.
 const UNZ_END_OF_LIST_OF_FILE=qcommonHeaders.UNZ_END_OF_LIST_OF_FILE
+/// ZIP-reader result indicating end of the current entry.
 const UNZ_EOF=qcommonHeaders.UNZ_EOF
+/// ZIP-reader error indicating invalid input parameters.
 const UNZ_PARAMERROR=qcommonHeaders.UNZ_PARAMERROR
+/// ZIP-reader error indicating malformed or unsupported ZIP data.
 const UNZ_BADZIPFILE=qcommonHeaders.UNZ_BADZIPFILE
+/// ZIP-reader error indicating an internal decoding failure.
 const UNZ_INTERNALERROR=qcommonHeaders.UNZ_INTERNALERROR
+/// ZIP-reader error indicating a mismatch in the entry CRC-32 checksum.
 const UNZ_CRCERROR=qcommonHeaders.UNZ_CRCERROR
+/// ZIP filename-comparison selector requiring matching letter case.
 const UNZ_CASESENSITIVE=qcommonHeaders.UNZ_CASESENSITIVE
+/// ZIP filename-comparison selector ignoring letter case.
 const UNZ_NOTCASESENSITIVE=qcommonHeaders.UNZ_NOTCASESENSITIVE
+/// ZIP filename-comparison selector using the platform default case policy.
 const UNZ_OSDEFAULTCASE=qcommonHeaders.UNZ_OSDEFAULTCASE
+/// Inflater status indicating successful progress without reaching the end of the stream.
 const Z_OK=0
+/// Inflater status indicating successful completion of the compressed stream.
 const Z_STREAM_END=1
+/// Inflater status indicating an invalid stream state or unsupported configuration.
 const Z_STREAM_ERROR=-2
+/// Inflater status indicating malformed compressed data.
 const Z_DATA_ERROR=-3
+/// Inflater status indicating insufficient input or output space for further progress.
 const Z_BUF_ERROR=-5
 
 /// TmUnz record for format.unzip, containing `tmSec`, `tmMin`, `tmHour`, `tmMday`, `tmMon`, `tmYear`.
-struct TmUnz tmSec tmMin tmHour tmMday tmMon tmYear end struct
+struct TmUnz
+  /// Seconds component of the expanded ZIP timestamp.
+  tmSec
+  /// Minutes component of the expanded ZIP timestamp.
+  tmMin
+  /// Hours component of the expanded ZIP timestamp.
+  tmHour
+  /// Day of the month in the expanded ZIP timestamp.
+  tmMday
+  /// Month component of the expanded ZIP timestamp.
+  tmMon
+  /// Year component of the expanded ZIP timestamp.
+  tmYear
+end struct
 /// GlobalInfo record for format.unzip, containing `numberEntry`, `sizeComment`.
-struct GlobalInfo numberEntry sizeComment end struct
+struct GlobalInfo
+  /// Number of entries recorded in the ZIP central directory.
+  numberEntry
+  /// Length of the archive comment in bytes.
+  sizeComment
+end struct
 /// FileInfo record for format.unzip, containing `version`, `versionNeeded`, `flag`, `compressionMethod`, `dosDate`, `crc`, and 12 further fields.
-struct FileInfo version versionNeeded flag compressionMethod dosDate crc compressedSize uncompressedSize sizeFilename sizeFileExtra sizeFileComment diskNumStart internalFa externalFa tmuDate name extra comment end struct
+struct FileInfo
+  /// ZIP creator version stored in the central-directory record.
+  version
+  /// Minimum ZIP reader version required to extract the entry.
+  versionNeeded
+  /// ZIP general-purpose entry flags.
+  flag
+  /// ZIP compression-method identifier used by this entry.
+  compressionMethod
+  /// Packed MS-DOS date and time of the ZIP entry.
+  dosDate
+  /// CRC-32 checksum of the uncompressed ZIP entry data.
+  crc
+  /// Length of the compressed ZIP entry data in bytes.
+  compressedSize
+  /// Length of the decoded ZIP entry data in bytes.
+  uncompressedSize
+  /// Length of the ZIP entry filename in bytes.
+  sizeFilename
+  /// Length of the ZIP extra-field data in bytes.
+  sizeFileExtra
+  /// Length of the ZIP entry comment in bytes.
+  sizeFileComment
+  /// Disk number containing the start of this ZIP entry.
+  diskNumStart
+  /// Internal ZIP file-attribute bits.
+  internalFa
+  /// External platform-specific ZIP file-attribute bits.
+  externalFa
+  /// ZIP entry timestamp expanded into calendar fields.
+  tmuDate
+  /// Filename stored in the ZIP central-directory entry.
+  name
+  /// Extra-field bytes stored in the ZIP entry header.
+  extra
+  /// Comment text stored with the archive, entry, or model metadata.
+  comment
+end struct
 /// LocalHeader record for format.unzip, containing `dataOffset`, `extra`.
-struct LocalHeader dataOffset extra end struct
+struct LocalHeader
+  /// Byte offset of compressed entry data following the local header.
+  dataOffset
+  /// Extra-field bytes stored in the ZIP entry header.
+  extra
+end struct
 /// Handle record for format.unzip, containing `archive`, `current`, `currentOk`, `readData`, `readPosition`, `localExtra`, and 1 further fields.
-struct Handle archive current currentOk readData readPosition localExtra closed end struct
+struct Handle
+  /// Underlying parsed PK3 or ZIP archive.
+  archive
+  /// Index of the currently selected central-directory entry.
+  current
+  /// True when a current ZIP entry is selected successfully.
+  currentOk
+  /// Decoded bytes of the entry currently opened for reading.
+  readData
+  /// Byte position of the next read within the decoded entry.
+  readPosition
+  /// Extra-field bytes from the current entry's local header.
+  localExtra
+  /// True after the archive handle has been closed.
+  closed
+end struct
 /// InflateState record for format.unzip, containing `windowBits`, `initialized`, `totalIn`, `totalOut`, `output`, `dictionary`, and 1 further fields.
-struct InflateState windowBits initialized totalIn totalOut output dictionary syncPoint end struct
+struct InflateState
+  /// Configured sliding-window size for the inflater, expressed as a bit count.
+  windowBits
+  /// True while the inflate stream is initialized and has not been ended.
+  initialized
+  /// Cumulative compressed input bytes consumed by the inflater.
+  totalIn
+  /// Cumulative decompressed output bytes produced by the inflater.
+  totalOut
+  /// Decompressed bytes produced by the managed inflater.
+  output
+  /// Preset or retained dictionary bytes used by the inflater.
+  dictionary
+  /// True when the inflater is positioned at a synchronization boundary.
+  syncPoint
+end struct
 
 /// Compute ascii fold in format.unzip; the normal completion returns `value`.
 /// @param value Value used in `(value - 32)` and `(value >= 97)`.

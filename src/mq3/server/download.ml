@@ -7,13 +7,44 @@ import mq3.qcommon.command_buffer as commandBuffer
 import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 
+/// Max of eight download frames.
 const MAX_DOWNLOAD_WINDOW=8
+/// 2048 byte block chunks.
 const MAX_DOWNLOAD_BLKSIZE=2048
+/// Server-to-client opcode introducing an asset download block.
 const SVC_DOWNLOAD=6
+/// Maximum character capacity reserved for a Quake asset path.
 const MAX_QPATH=64
 
 /// State record for server.download, containing `name`, `handle`, `size`, `count`, `clientBlock`, `currentBlock`, and 7 further fields.
-struct State name handle size count clientBlock currentBlock xmitBlock blocks blockSizes eof sendTime rate snapshotMsec end struct
+struct State
+  /// Asset path of the file currently being downloaded.
+  name
+  /// Open host file handle for the current client download.
+  handle
+  /// Total byte length of the file being downloaded.
+  size
+  /// File bytes already read into the download window.
+  count
+  /// Oldest download block not yet acknowledged by the client.
+  clientBlock
+  /// Next block number to fill with file data.
+  currentBlock
+  /// Next buffered block number selected for transmission.
+  xmitBlock
+  /// Data blocks retained in the sliding download window.
+  blocks
+  /// Valid byte counts for the buffered download blocks.
+  blockSizes
+  /// True after the end-of-file block has been queued.
+  eof
+  /// Server timestamp of the last block transmission, used for retry timing.
+  sendTime
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Requested interval between snapshots, in milliseconds.
+  snapshotMsec
+end struct
 /// Create `mq3.server.download.State` with name=name; handle=void; size=0; count=0; 9 further fields.
 /// @param name Initial `name` field stored in the returned or constructed `mq3.server.download.State` record.
 /// @param rate Initial `rate` field stored in the returned or constructed `mq3.server.download.State` record.
@@ -22,7 +53,16 @@ function create(name,rate,snapshotMsec)
   return State(name,void,0,0,0,0,0,array(MAX_DOWNLOAD_WINDOW,void),array(MAX_DOWNLOAD_WINDOW,0),false,0,rate,snapshotMsec)
 end function
 /// Server record for server.download, containing `time`, `allowDownload`, `pure`, `maxRate`.
-struct Server time allowDownload pure maxRate end struct
+struct Server
+  /// Server clock used for download acknowledgment and retransmission scheduling, in milliseconds.
+  time
+  /// True when clients may request files from the server.
+  allowDownload
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// Upper bound on the client transmission rate, in bytes per second.
+  maxRate
+end struct
 /// Create `mq3.server.download.Server` with time=time; allowDownload=allowDownload; pure=pure; maxRate=maxRate.
 /// @param time Initial `time` field stored in the returned or constructed `mq3.server.download.Server` record.
 /// @param allowDownload Initial `allowDownload` field stored in the returned or constructed `mq3.server.download.Server` record.
@@ -30,7 +70,20 @@ struct Server time allowDownload pure maxRate end struct
 /// @param maxRate Initial `maxRate` field stored in the returned or constructed `mq3.server.download.Server` record.
 function server(time,allowDownload,pure,maxRate) return Server(time,allowDownload,pure,maxRate) end function
 /// Services record for server.download, containing `idPakFn`, `openFn`, `readFn`, `closeFn`, `dropFn`, `context`.
-struct Services idPakFn openFn readFn closeFn dropFn context end struct
+struct Services
+  /// Host callback that classifies an archive as an original game package.
+  idPakFn
+  /// Host callback that opens a requested host file and returns its handle.
+  openFn
+  /// Host callback that reads the next byte block from an open asset download file.
+  readFn
+  /// Host callback that closes a host file handle.
+  closeFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Caller-supplied data associated with asset download file access and client rejection.
+  context
+end struct
 /// Create `mq3.server.download.Services` with idPakFn=idPakFn; openFn=openFn; readFn=readFn; closeFn=closeFn; dropFn=dropFn; context=context.
 /// @param idPakFn Initial `idPakFn` field stored in the returned or constructed `mq3.server.download.Services` record.
 /// @param openFn Initial `openFn` field stored in the returned or constructed `mq3.server.download.Services` record.
@@ -43,7 +96,18 @@ function services(idPakFn,openFn,readFn,closeFn,dropFn,context) return Services(
 // Adapter for the four download builtins in SV_ExecuteClientCommand.  Keeping
 // it next to the window state makes the reliable command path and the snapshot
 // writer operate on the same live download cursor.
-struct CommandRuntime state serverState downloadHost sendGamestateFn context end struct
+struct CommandRuntime
+  /// Download-window state updated by client download commands.
+  state
+  /// Current server lifecycle state, including loading and active gameplay.
+  serverState
+  /// Host file callbacks used by the download command handler.
+  downloadHost
+  /// Host callback that transmits the current gamestate to a client.
+  sendGamestateFn
+  /// Caller-supplied data associated with sending a new gamestate after a download command completes.
+  context
+end struct
 /// Create `mq3.server.download.CommandRuntime` with state=state; serverState=serverState; downloadHost=downloadHost; sendGamestateFn=sendGamestateFn; context=context.
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.download.CommandRuntime` record.
 /// @param serverState Initial `serverState` field stored in the returned or constructed `mq3.server.download.CommandRuntime` record.

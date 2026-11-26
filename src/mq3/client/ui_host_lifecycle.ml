@@ -5,27 +5,92 @@ package mq3.client.ui_host_lifecycle
 
 import mq3.compat.numeric as n
 
+/// Client connection state before the client subsystem has been initialized.
 const CA_UNINITIALIZED=0
+/// Client connection state with no active server connection.
 const CA_DISCONNECTED=1
+/// Client connection state while waiting for authorization to contact the server.
 const CA_AUTHORIZING=2
+/// Client connection state while requesting a challenge from the server.
 const CA_CONNECTING=3
+/// Client connection state while replying to the server challenge and requesting connection.
 const CA_CHALLENGING=4
+/// Connection-state value for a completed handshake before game-state loading, defined for coordinating
+/// UI lifecycle callbacks with connection progress.
 const CA_CONNECTED=5
+/// Client connection state while level media and game state are being loaded.
 const CA_LOADING=6
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Connection-state value for normal gameplay after game-state loading, defined for coordinating UI
+/// lifecycle callbacks with connection progress.
 const CA_ACTIVE=8
+/// Client connection state used for fullscreen cinematic playback.
 const CA_CINEMATIC=9
+/// UI keyboard-capture mask used when coordinating menu activation and UI keyboard-event dispatch.
 const KEYCATCH_UI=2
+/// Engine-to-UI menu selector for the main screen or menu state.
 const UIMENU_MAIN=1
+/// Maximum length of a protocol, command, or configuration string.
 const MAX_STRING_CHARS=1024
+/// Size in bytes reserved for the native client-state structure during ABI marshalling.
 const CLIENT_STATE_SIZE=3084
 
 /// Stores UI host lifecycle client state record, including `connState`, `connectPacketCount`, `clientNum`, `servername`, `updateInfoString`, `messageString`.
-struct ClientState connState connectPacketCount clientNum servername updateInfoString messageString end struct
+struct ClientState
+  /// When constructing this record, `createClientState` supplies `connState` for this member.
+  connState
+  /// Number of connection-handshake packets sent, also used by progress displays.
+  connectPacketCount
+  /// Local client slot serialized into the UI client-state ABI record.
+  clientNum
+  /// When constructing this record, `createClientState` supplies `servername` for this member.
+  servername
+  /// When constructing this record, `createClientState` supplies `updateInfoString` for this member.
+  updateInfoString
+  /// When constructing this record, `createClientState` supplies `messageString` for this member.
+  messageString
+end struct
 /// Stores UI host lifecycle host-service callbacks, including `context`, `fullscreenFn`, `refreshFn`, `menuFn`, `connectFn`, `cgameFn` and additional values.
-struct Services context fullscreenFn refreshFn menuFn connectFn cgameFn cinematicFn catcherFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for UI virtual-machine
+  /// lifecycle management.
+  context
+  /// Host callback for the fullscreen operation; an unset callback leaves that host operation
+  /// unavailable.
+  fullscreenFn
+  /// Host callback for the refresh operation; an unset callback leaves that host operation unavailable.
+  refreshFn
+  /// Host callback for the menu operation; an unset callback leaves that host operation unavailable.
+  menuFn
+  /// Host callback for the connect operation; an unset callback leaves that host operation unavailable.
+  connectFn
+  /// Host callback for the cgame operation; an unset callback leaves that host operation unavailable.
+  cgameFn
+  /// Host callback for the cinematic operation; an unset callback leaves that host operation
+  /// unavailable.
+  cinematicFn
+  /// Host callback for the catcher operation; an unset callback leaves that host operation unavailable.
+  catcherFn
+end struct
 /// Stores UI host lifecycle frame data, including `fullscreen`, `cgameFrames`, `cinematicFrames`, `menuCalls`, `refreshCalls`, `connectCalls` and additional values.
-struct Frame fullscreen cgameFrames cinematicFrames menuCalls refreshCalls connectCalls overlay end struct
+struct Frame
+  /// Whether the UI reported full-screen coverage, suppressing the underlying game or cinematic drawing
+  /// for this screen update.
+  fullscreen
+  /// When constructing this record, `drawScreen` supplies `cgameFrames` for this member.
+  cgameFrames
+  /// When constructing this record, `drawScreen` supplies `cinematicFrames` for this member.
+  cinematicFrames
+  /// When constructing this record, `drawScreen` supplies `menuCalls` for this member.
+  menuCalls
+  /// When constructing this record, `drawScreen` supplies `refreshCalls` for this member.
+  refreshCalls
+  /// When constructing this record, `drawScreen` supplies `connectCalls` for this member.
+  connectCalls
+  /// When constructing this record, `drawScreen` supplies `overlay` for this member.
+  overlay
+end struct
 
 /// Creates the UI host lifecycle error `3460` with diagnostic text `"UI host lifecycle: "+message`.
 /// @param message Argument 2 of `error`; passed as `"UI host lifecycle: "+message`.

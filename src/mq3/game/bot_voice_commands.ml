@@ -6,88 +6,190 @@ import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.textnumbers as textnum
 
+/// Maximum number of client slots represented by the original game protocol.
 const MAX_CLIENTS=64
+/// Upper bound on message size represented by mq3.game.bot_voice_commands.
 const MAX_MESSAGE_SIZE=256
+/// Chat delivery mode selecting all recipients.
 const SAY_ALL=0
+/// Chat-state value or flag selecting team.
 const CHAT_TEAM=1
+/// Chat-state value or flag selecting tell.
 const CHAT_TELL=2
+/// Team identifier selecting the red team/category.
 const TEAM_RED=1
+/// Team identifier selecting the blue team/category.
 const TEAM_BLUE=2
+/// Game-mode identifier selecting capture the flag rules.
 const GT_CTF=4
+/// Game-mode identifier selecting 1 fctf rules.
 const GT_1FCTF=5
+/// Game-mode identifier selecting obelisk rules.
 const GT_OBELISK=6
+/// Game-mode identifier selecting harvester rules.
 const GT_HARVESTER=7
+/// Long-term bot goal identifier selecting teamaccompany behavior.
 const LTG_TEAMACCOMPANY=2
+/// Long-term bot goal identifier selecting defend a key area behavior.
 const LTG_DEFENDKEYAREA=3
+/// Long-term bot goal identifier selecting capture the flag behavior.
 const LTG_GETFLAG=4
+/// Long-term bot goal identifier selecting return the flag behavior.
 const LTG_RETURNFLAG=6
+/// Long-term bot goal identifier selecting follow a camp order behavior.
 const LTG_CAMPORDER=8
+/// Long-term bot goal identifier selecting harvest behavior.
 const LTG_HARVEST=12
+/// Long-term bot goal identifier selecting attackenemybase behavior.
 const LTG_ATTACKENEMYBASE=13
+/// Bot team-task preference bit indicating a preference for defender.
 const TEAMTP_DEFENDER=1
+/// Bot team-task preference bit indicating a preference for attacker.
 const TEAMTP_ATTACKER=2
+/// Bot input-action bit requesting affirmative.
 const ACTION_AFFIRMATIVE=0x0100000
+/// Duration in seconds allowed for the bot team task to accompany.
 const TEAM_ACCOMPANY_TIME=600.0
+/// Duration in seconds allowed for the bot team task to defend a key area.
 const TEAM_DEFENDKEYAREA_TIME=600.0
+/// Duration in seconds allowed for the bot team task to camp.
 const TEAM_CAMP_TIME=600.0
+/// Duration in seconds allowed for the bot team task to attackenemybase.
 const TEAM_ATTACKENEMYBASE_TIME=600.0
+/// Duration in seconds allowed for the bot team task to harvest.
 const TEAM_HARVEST_TIME=120.0
+/// Capture-the-flag scoring or timing parameter for capture the flag time.
 const CTF_GETFLAG_TIME=600.0
+/// Capture-the-flag scoring or timing parameter for return the flag time.
 const CTF_RETURNFLAG_TIME=180.0
 
 /// `Goal` record for bot voice commands, containing `entitynum`, `areanum`, `origin`, `mins` and `maxs` and related fields.
-struct Goal entitynum areanum origin mins maxs tag end struct
+struct Goal
+  /// Entity number associated with the goal selected by a bot voice command.
+  entitynum
+  /// AAS area containing the bot or spatial goal.
+  areanum
+  /// World-space target position of the goal selected by a bot voice command.
+  origin
+  /// Lower local bounding-box corner of the goal selected by a bot voice command.
+  mins
+  /// Upper local bounding-box corner of the goal selected by a bot voice command.
+  maxs
+  /// Identifier identifying the voice-command navigation goal.
+  tag
+end struct
 /// `EntityInfo` record for bot voice commands, containing `valid` and `origin`.
-struct EntityInfo valid origin end struct
+struct EntityInfo
+  /// True when entity information was found for resolving a bot voice command.
+  valid
+  /// Position returned for an entity referenced by a bot voice command.
+  origin
+end struct
 /// `HostAction` record for bot voice commands, containing `kind`, `client`, `channel`, `text` and `value` and related fields.
-struct HostAction kind client channel text value dispatched end struct
+struct HostAction
+  /// Discriminator selecting the recorded bot action or decision event.
+  kind
+  /// Client slot associated with the host action produced by a voice command.
+  client
+  /// Delivery channel selected for the host chat/message action.
+  channel
+  /// Text payload supplied to the recorded command, chat, or host action.
+  text
+  /// Numeric/result payload supplied to the recorded host action.
+  value
+  /// Nonzero after the action has been delivered to its host callback.
+  dispatched
+end struct
 /// `Bot` record for bot voice commands, containing `client`, `cs`, `team`, `teamleader` and `decisionmaker` and related fields.
 struct Bot
+  /// Client slot of the bot receiving and interpreting voice commands.
   client
+  /// Botlib chat-state handle owned by this bot.
   cs
+  /// Team assignment associated with the client, bot, or action.
   team
+  /// Name or identifier of the current bot-team leader.
   teamleader
+  /// Client/entity currently responsible for the bot team decisions.
   decisionmaker
+  /// Nonzero when a teammate explicitly ordered the current team task.
   ordered
+  /// Timestamp at which the bot order was received.
   orderTime
+  /// Time controlling the next bot team message.
   teammessageTime
+  /// Current long-term goal category selected from the LTG_* constants.
   ltgtype
+  /// Deadline associated with the current cooperative team goal.
   teamgoalTime
+  /// Navigation goal associated with the bot current team task.
   teamgoal
+  /// Time controlling temporary excursions from a harvesting goal.
   harvestawayTime
+  /// Time controlling temporary excursions from an attack-base goal.
   attackawayTime
+  /// Time controlling how long the bot may leave its defense goal.
   defendawayTime
+  /// Deadline associated with leading a teammate toward a goal.
   leadTime
+  /// Long-term goal type retained from the preceding team task.
   lastgoalLtgtype
+  /// Teammate entity/client selected for the current cooperative task.
   teammate
+  /// Timestamp at which the bot arrived at the current team goal.
   arriveTime
+  /// Last time the teammate associated with the task was visible.
   teammatevisibleTime
+  /// Desired separation from the teammate or formation leader.
   formationDist
+  /// Time controlling temporary excursions from a rush-base goal.
   rushbaseawayTime
 end struct
 /// `State` record for bot voice commands, containing `gametype`, `missionpack`, `teamplay`, `now` and `randomValue` and related fields.
 struct State
+  /// GT_* game-mode identifier used for interpreting voice orders for the active team game.
   gametype
+  /// Nonzero when mission-pack rules and content are enabled.
   missionpack
+  /// Nonzero when the active game mode uses teams.
   teamplay
+  /// Current clock value supplied to the bot decision step.
   now
+  /// Deterministic random input supplied to the current bot decision.
   randomValue
+  /// Goal/entity reference for the red flag.
   redFlag
+  /// Goal/entity reference for the blue flag.
   blueFlag
+  /// Goal/entity reference for the neutral flag.
   neutralFlag
+  /// Goal/entity reference for the red team obelisk.
   redObelisk
+  /// Goal/entity reference for the blue team obelisk.
   blueObelisk
+  /// Name strings indexed by the corresponding state-table entries.
   names
+  /// Simplified names used to match bot/player command references.
   easyNames
+  /// Botlib entity-information records used for tactical queries.
   entityInfos
+  /// AAS area results associated with sampled world points.
   pointAreas
+  /// Team-task preference values indexed by client or category.
   taskPreferences
+  /// Team assignments indexed by client slot.
   clientTeams
+  /// Markers identifying clients excluded from team-leader selection.
   notLeader
+  /// Client/entity currently carrying the flag of interest.
   flagCarrier
+  /// Next position in the supplied deterministic time sequence.
   timeIndex
+  /// Deterministic clock values supplied to the bot/game adapter.
   timeValues
+  /// Recorded host actions emitted by bot decision logic.
   actions
+  /// Injected callback for host action; invoked through the State service/state record.
   hostActionFn
 end struct
 

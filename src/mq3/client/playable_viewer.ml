@@ -6,21 +6,94 @@ import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 
+/// Lower pitch-angle bound used when clamping the client view.
 const MIN_PITCH=-89.0
+/// Upper pitch-angle bound used when clamping the client view.
 const MAX_PITCH=89.0
+/// Upper duration bound in milliseconds for frame processing.
 const MAX_FRAME_MILLISECONDS=100
+/// Fallback near setting used when constructing the native client simulation or effect configuration.
 const DEFAULT_NEAR=1.0
 
 /// Stores playable viewer camera record, including `position`, `yaw`, `pitch`, `moveSpeed`, `mouseSensitivity`.
-struct Camera position yaw pitch moveSpeed mouseSensitivity end struct
+struct Camera
+  /// When constructing this record, `camera` supplies
+  /// `[numeric.f32(position[0]),numeric.f32(position[1]),numeric.f32(position[2])]` for this member.
+  position
+  /// When constructing this record, `camera` supplies `numeric.f32(yaw)` for this member.
+  yaw
+  /// When constructing this record, `camera` supplies `numeric.f32(pitch)` for this member.
+  pitch
+  /// When constructing this record, `camera` supplies `numeric.f32(moveSpeed)` for this member.
+  moveSpeed
+  /// When constructing this record, `camera` supplies `numeric.f32(mouseSensitivity)` for this member.
+  mouseSensitivity
+end struct
 /// Stores playable viewer controls record, including `forward`, `back`, `left`, `right`, `up`, `down` and additional values.
-struct Controls forward back left right up down mouseX mouseY end struct
+struct Controls
+  /// When constructing this record, `controls` supplies `forward` for this member.
+  forward
+  /// When constructing this record, `controls` supplies `back` for this member.
+  back
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// When constructing this record, `controls` supplies `up` for this member.
+  up
+  /// When constructing this record, `controls` supplies `down` for this member.
+  down
+  /// When constructing this record, `controls` supplies `numeric.f32(mouseX)` for this member.
+  mouseX
+  /// When constructing this record, `controls` supplies `numeric.f32(mouseY)` for this member.
+  mouseY
+end struct
 /// Stores playable viewer screen point record, including `x`, `y`, `depth`.
-struct ScreenPoint x y depth end struct
+struct ScreenPoint
+  /// Horizontal coordinate of a camera-projected point in output-screen coordinates.
+  x
+  /// Vertical coordinate of a camera-projected point in output-screen coordinates.
+  y
+  /// When constructing this record, `projectViewPoint` supplies `point[2]` for this member.
+  depth
+end struct
 /// Stores playable viewer screen line record, including `visible`, `a`, `b`, `clipped`.
-struct ScreenLine visible a b clipped end struct
+struct ScreenLine
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+  /// Alpha component controlling opacity or blending.
+  a
+  /// Blue component of the stored color.
+  b
+  /// When constructing this record, `projectLine` supplies `false` for this member.
+  clipped
+end struct
 /// Stores playable viewer projection record, including `position`, `right`, `up`, `forward`, `halfWidth`, `halfHeight` and additional values.
-struct Projection position right up forward halfWidth halfHeight focal nearDistance verticalFocal end struct
+struct Projection
+  /// When constructing this record, `prepareProjection` supplies `state.position` for this member.
+  position
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// When constructing this record, `prepareProjection` supplies `axes[2]` for this member.
+  up
+  /// When constructing this record, `prepareProjection` supplies `axes[0]` for this member.
+  forward
+  /// When constructing this record, `prepareProjection` supplies `width*0.5` for this member. Used by
+  /// `projectPreparedView` during subsequent processing.
+  halfWidth
+  /// When constructing this record, `prepareProjection` supplies `height*0.5` for this member. Used by
+  /// `projectPreparedView` during subsequent processing.
+  halfHeight
+  /// When constructing this record, `prepareProjection` supplies `focal` for this member. Used by
+  /// `projectPreparedView` during subsequent processing.
+  focal
+  /// When constructing this record, `prepareProjection` supplies `nearDistance` for this member. Used
+  /// by `projectPreparedView` during subsequent processing.
+  nearDistance
+  /// When constructing this record, `prepareProjection` supplies `focal` for this member. Used by
+  /// `projectPreparedView` during subsequent processing.
+  verticalFocal
+end struct
 
 /// Calls `mq3.client.playable_viewer.Camera`, `mq3.compat.numeric.f32`, `mq3.client.playable_viewer.normalizeAngles` from playable viewer `camera`. The final path returns `state`.
 /// @param position Sequence read at `position[0]`, `position[1]`, `position[2]`.

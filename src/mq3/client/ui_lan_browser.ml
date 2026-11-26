@@ -6,24 +6,96 @@ package mq3.client.ui_lan_browser
 import std.string as strings
 import mq3.shared.info as info
 
+/// Server-browser source selector for the local server list.
 const AS_LOCAL=0
+/// Server-browser source selector for the mplayer server list.
 const AS_MPLAYER=1
+/// Server-browser source selector for the global server list.
 const AS_GLOBAL=2
+/// Server-browser source selector for the favorites server list.
 const AS_FAVORITES=3
+/// Capacity limit for the other servers collection or bounded storage used by this client module.
 const MAX_OTHER_SERVERS=128
+/// Capacity limit for the global servers collection or bounded storage used by this client module.
 const MAX_GLOBAL_SERVERS=4096
+/// Server-browser sort key comparing the host column.
 const SORT_HOST=0
+/// Server-browser sort key comparing the map column.
 const SORT_MAP=1
+/// Server-browser sort key comparing the clients column.
 const SORT_CLIENTS=2
+/// Server-browser sort key comparing the game column.
 const SORT_GAME=3
+/// Server-browser sort key comparing the ping column.
 const SORT_PING=4
 
 /// Stores UI LAN browser server record, including `address`, `hostName`, `mapName`, `clients`, `maxClients`, `ping` and additional values.
-struct Server address hostName mapName clients maxClients ping minPing maxPing game gameType netType punkbuster visible status end struct
+struct Server
+  /// When constructing this record, `server` supplies `address` for this member.
+  address
+  /// When constructing this record, `server` supplies `name` for this member.
+  hostName
+  /// Advertised level name displayed in this LAN-browser server row.
+  mapName
+  /// Number of connected clients reported by this LAN or master-list server.
+  clients
+  /// Maximum player slots advertised or supported by the connected server.
+  maxClients
+  /// Measured server-query latency in milliseconds; reset to -1 when a fresh ping is required.
+  ping
+  /// When constructing this record, `server` supplies `0` for this member.
+  minPing
+  /// Maximum acceptable server-browser latency in milliseconds.
+  maxPing
+  /// When constructing this record, `server` supplies an empty string for this member.
+  game
+  /// When constructing this record, `server` supplies `0` for this member.
+  gameType
+  /// When constructing this record, `server` supplies `0` for this member.
+  netType
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+  /// True when the record is eligible for the current drawing or browser-display pass.
+  visible
+  /// When constructing this record, `server` supplies an absent (`void`) value for this member.
+  status
+end struct
 /// Stores UI LAN browser ping record, including `address`, `time`, `info`.
-struct Ping address time info end struct
+struct Ping
+  /// When constructing this record, `ping` supplies `address` for this member.
+  address
+  /// Ping timing value used to record latency or completion of the browser request.
+  time
+  /// When constructing this record, `ping` supplies `text` for this member.
+  info
+end struct
 /// Stores UI LAN browser state, including `local`, `mplayer`, `globalServers`, `favorites`, `pings`, `cachedMplayer` and additional values.
-struct State local mplayer globalServers favorites pings cachedMplayer cachedGlobal cachedFavorites end struct
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `list` and
+  /// `setList` during subsequent processing.
+  local
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `list` and
+  /// `setList` during subsequent processing.
+  mplayer
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `list` and
+  /// `setList` during subsequent processing.
+  globalServers
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `list` and
+  /// `setList` during subsequent processing.
+  favorites
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `queuePing` and `pingCount` during subsequent processing.
+  pings
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `save` and
+  /// `load` during subsequent processing.
+  cachedMplayer
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `save` and
+  /// `load` during subsequent processing.
+  cachedGlobal
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `save` and
+  /// `load` during subsequent processing.
+  cachedFavorites
+end struct
 
 /// Creates a `mq3.client.ui_lan_browser.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State([],[],[],[],[],[],[],[]) end function

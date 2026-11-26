@@ -3,18 +3,67 @@
 // Stateful Win32 console semantics from code/win32/win_syscon.c.
 package mq3.platform.win_syscon
 
+/// Native console command identifier for copying selected text.
 const COPY_ID=1
+/// Native console command identifier for requesting application shutdown.
 const QUIT_ID=2
+/// Native console command identifier for clearing the displayed text.
 const CLEAR_ID=3
+/// Console visibility state that hides the native window.
 const VIS_HIDDEN=0
+/// Console visibility state that shows the native window normally.
 const VIS_NORMAL=1
+/// Console visibility state that minimizes the native window.
 const VIS_MINIMIZED=2
+/// Character capacity of the native console text buffer.
 const CONSOLE_BUFFER_SIZE=16384
 
 /// Data record for `mq3.platform.win_syscon.Action`; groups `boundary`, `kind`, `text`, `value`, `dispatched`.
-struct Action boundary kind text value dispatched end struct
+struct Action
+  /// Host operation boundary at which this platform action is dispatched.
+  boundary
+  /// Native console-window operation, such as creation, text append, visibility change, or input focus.
+  kind
+  /// Text payload, script source, or message associated with this record.
+  text
+  /// Value carried by the event, configuration item, or requested operation.
+  value
+  /// Whether the recorded action was delivered to its host implementation.
+  dispatched
+end struct
 /// Data record for `mq3.platform.win_syscon.State`; groups `created`, `visLevel`, `quitOnClose`, `consoleText`, `returnedText`, `displayText`, and 9 further fields.
-struct State created visLevel quitOnClose consoleText returnedText displayText errorString hasInput hasError totalChars timePolarity viewlog dedicated actions retailActive end struct
+struct State
+  /// Whether the native console window has been created.
+  created
+  /// Console visibility mode: hidden, visible, or minimized.
+  visLevel
+  /// Whether closing the console requests application shutdown.
+  quitOnClose
+  /// Text accumulated in the platform console buffer.
+  consoleText
+  /// Completed console input line waiting to be returned to the engine.
+  returnedText
+  /// Console text prepared for presentation in the native window.
+  displayText
+  /// Error message displayed by the native console.
+  errorString
+  /// Whether a completed console input line is available.
+  hasInput
+  /// Whether the console currently displays an error message.
+  hasError
+  /// Number of characters retained or appended in the console buffer.
+  totalChars
+  /// Alternating timing state used by the console's visual updates.
+  timePolarity
+  /// Console-log visibility setting reflected by the native window.
+  viewlog
+  /// Whether the process is running as a dedicated server.
+  dedicated
+  /// Platform operations recorded for dispatch or inspection.
+  actions
+  /// Whether the real platform backend is active for action dispatch.
+  retailActive
+end struct
 
 /// Constructs `mq3.platform.win_syscon.State` with `created` = `false`, `visLevel` = `0`, `quitOnClose` = `false`, `consoleText` = `""` and the supplied remaining values.
 /// @param retailActive Initial value for `mq3.platform.win_syscon.State.retailActive`.

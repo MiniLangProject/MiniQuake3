@@ -7,20 +7,87 @@ import mq3.compat.textnumbers as textnumbers
 import mq3.client.playable_weapon_inventory as weaponInventory
 import std.string as strings
 
+/// Fallback pickup radius setting used when constructing the native client simulation or effect
+/// configuration.
 const DEFAULT_PICKUP_RADIUS=42.0
+/// Ordinary health limit used by regular health pickups.
 const HEALTH_NORMAL_CAP=100
+/// Overhealth limit used by health pickups that may exceed ordinary maximum health.
 const HEALTH_OVERMAX_CAP=200
+/// Maximum armor quantity accepted by the native pickup simulation.
 const ARMOR_CAP=200
+/// Maximum ammunition quantity accepted by the native pickup simulation.
 const AMMO_CAP=200
 
 /// Stores playable items menu item, including `classname`, `kind`, `origin`, `amount`, `cap`, `respawnMs` and additional values.
-struct Item classname kind origin amount cap respawnMs active respawnAt weapon end struct
+struct Item
+  /// Native item classname used to select this world's pickup behavior and presentation.
+  classname
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// World-space pickup position used for the player's item-collection distance test.
+  origin
+  /// When constructing this record, `fromEntities` supplies `def[1]` for this member.
+  amount
+  /// When constructing this record, `fromEntities` supplies `def[2]` for this member. Used by `canTake`
+  /// and `take` during subsequent processing.
+  cap
+  /// When constructing this record, `fromEntities` supplies `def[3]` for this member. Used by `take`
+  /// and `takeInventory` during subsequent processing.
+  respawnMs
+  /// When constructing this record, `fromEntities` supplies `true` for this member. Used by `take` and
+  /// `update` during subsequent processing.
+  active
+  /// Client simulation timestamp at which the entity becomes eligible to respawn.
+  respawnAt
+  /// Weapon classname selected when this weapon pickup is collected; empty for other pickup kinds.
+  weapon
+end struct
 /// Stores playable items stats record, including `health`, `armor`, `ammo`, `weapon`.
-struct Stats health armor ammo weapon end struct
+struct Stats
+  /// Mutable health total checked and increased by preview item pickups.
+  health
+  /// Mutable armor total checked and increased by preview armor pickups.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Classname of the currently selected preview weapon in the mutable pickup statistics.
+  weapon
+end struct
 /// Stores playable items state, including `items`, `stats`, `pickupRadius`, `lastTime`.
-struct State items stats pickupRadius lastTime end struct
+struct State
+  /// When constructing this record, `fromEntities` supplies `items` for this member. Used by `take` and
+  /// `update` during subsequent processing.
+  items
+  /// When constructing this record, `fromEntities` supplies `Stats(100,0,50,"weapon_machinegun")` for
+  /// this member. Used by `setStats` and `take` during subsequent processing.
+  stats
+  /// When constructing this record, `fromEntities` supplies `pickupRadius` for this member. Used by
+  /// `update` and `updateInventory` during subsequent processing.
+  pickupRadius
+  /// When constructing this record, `fromEntities` supplies `0` for this member. Used by `update` and
+  /// `updateInventory` during subsequent processing.
+  lastTime
+end struct
 /// Stores playable items pickup record, including `itemIndex`, `classname`, `kind`, `amount`, `before`, `after` and additional values.
-struct Pickup itemIndex classname kind amount before after weapon end struct
+struct Pickup
+  /// When constructing this record, `take` supplies `index` for this member.
+  itemIndex
+  /// Native item classname copied into the pickup result so HUD and audio feedback can identify the
+  /// collected item.
+  classname
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// When constructing this record, `take` supplies `after-before` for this member.
+  amount
+  /// When constructing this record, `take` supplies `before` for this member.
+  before
+  /// When constructing this record, `take` supplies `after` for this member.
+  after
+  /// Selected weapon classname after applying this pickup, including pickups that keep the existing
+  /// weapon.
+  weapon
+end struct
 
 /// Creates the playable items error `7501` with diagnostic text `"preview items: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview items: "+message`.

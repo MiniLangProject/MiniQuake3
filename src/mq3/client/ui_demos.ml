@@ -5,29 +5,101 @@ package mq3.client.ui_demos
 
 import std.string as strings
 
+/// Activation callback event accepted by the demo-playback selection menu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Event identifier of the Back control used to leave the demo-playback selection menu and return to
+/// its parent menu.
 const ID_BACK=10
+/// Menu control identifier routed to the go action by the menu event handler.
 const ID_GO=11
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=12
+/// Menu control identifier routed to the right action by the menu event handler.
 const ID_RIGHT=13
+/// Menu control identifier routed to the left action by the menu event handler.
 const ID_LEFT=14
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=134
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=135
+/// Capacity limit for the demos collection or bounded storage used by this client module.
 const MAX_DEMOS=128
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
+/// Virtual shader or image asset name used for the menu's go0 artwork.
 const ART_GO0="menu/art/play_0"
+/// Virtual shader or image asset name used for the menu's go1 artwork.
 const ART_GO1="menu/art/play_1"
+/// Virtual shader or image asset name used for the menu's framel artwork.
 const ART_FRAMEL="menu/art/frame2_l"
+/// Virtual shader or image asset name used for the menu's framer artwork.
 const ART_FRAMER="menu/art/frame1_r"
+/// Virtual shader or image asset name used for the menu's arrows artwork.
 const ART_ARROWS="menu/art/arrows_horz_0"
+/// Virtual shader or image asset name used for the menu's arrowleft artwork.
 const ART_ARROWLEFT="menu/art/arrows_horz_left"
+/// Virtual shader or image asset name used for the menu's arrowright artwork.
 const ART_ARROWRIGHT="menu/art/arrows_horz_right"
 
 /// Stores UI demos queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `dispatched`.
-struct Action boundary kind name text value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while listing recorded demos and starting
+  /// the selected recording.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while listing recorded
+  /// demos and starting the selected recording.
+  kind
+  /// Demo-menu target, playback command name, or artwork resource selected for host dispatch.
+  name
+  /// Selected demo playback command or serialized key input passed through the demo menu action.
+  text
+  /// Value payload supplied to the selected host operation while listing recorded demos and starting
+  /// the selected recording.
+  value
+  /// True when this request is marked for native dispatch while listing recorded demos and starting the
+  /// selected recording; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI demos state, including `numDemos`, `names`, `selected`, `top`, `columns`, `height` and additional values.
-struct State numDemos names selected top columns height goVisible actions retailActive cached pushed menuEvents protocol extension end struct
+struct State
+  /// When constructing this record, `create` supplies `0` for this member. Used by `scroll` and
+  /// `menuEvent` during subsequent processing.
+  numDemos
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `menuEvent` and `menuInit` during subsequent processing.
+  names
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// Top boundary of the interactive or clipped region.
+  top
+  /// Column descriptors used to lay out a listbox's displayed data.
+  columns
+  /// Number of visible demo entries per column, used for horizontal navigation and scrolling.
+  height
+  /// When constructing this record, `create` supplies `true` for this member. Used by `menuEvent` and
+  /// `menuInit` during subsequent processing.
+  goVisible
+  /// Host requests queued while listing recorded demos and starting the selected recording, retained in
+  /// request order.
+  actions
+  /// True when the retail QVM owns the demo-playback selection menu, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// Records that the demo-playback selection menu has been opened on the active menu stack.
+  pushed
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+  /// Network protocol version advertised or required by the client connection.
+  protocol
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `menuInit` during subsequent processing.
+  extension
+end struct
 
 /// Creates a `mq3.client.ui_demos.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.

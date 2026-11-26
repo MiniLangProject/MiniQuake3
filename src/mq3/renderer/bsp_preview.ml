@@ -3,13 +3,33 @@
 package mq3.renderer.bsp_preview
 import mq3.compat.numeric as n
 
+/// BSP surface type for a planar polygon face.
 const MST_PLANAR = 1
+/// BSP surface type for an indexed triangle mesh.
 const MST_TRIANGLE_SOUP = 3
 
 /// Data record for `mq3.renderer.bsp_preview.Line`; groups `a`, `b`, `face`, `triangle`.
-struct Line a b face triangle end struct
+struct Line
+  /// First endpoint of the projected debug line.
+  a
+  /// Second endpoint of the projected debug line.
+  b
+  /// BSP face or prepared face geometry associated with this record.
+  face
+  /// Source triangle paired with its resolved material.
+  triangle
+end struct
 /// Data record for `mq3.renderer.bsp_preview.Preview`; groups `lines`, `surfaceCount`, `triangleCount`, `truncated`.
-struct Preview lines surfaceCount triangleCount truncated end struct
+struct Preview
+  /// Line segments generated for the wireframe or debug drawing.
+  lines
+  /// Number of source surfaces represented by this result.
+  surfaceCount
+  /// Number of triangles represented by this geometry or result.
+  triangleCount
+  /// Whether a configured limit prevented retaining every source primitive.
+  truncated
+end struct
 
 /// Creates error `7404` with message `"BSP preview: "+text`.
 /// @param text Input used in the result expression `error(7404,"BSP preview: "+text)`.

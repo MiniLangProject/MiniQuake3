@@ -6,12 +6,39 @@ package mq3.renderer.surface_entities
 import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 
+/// Ratio of a circle's circumference to its diameter, used for angle conversion.
 const PI=3.14159265358979323846
 
 /// Data record for `mq3.renderer.surface_entities.Vertex`; groups `xyz`, `normal`, `tex0`, `tex1`, `color`.
-struct Vertex xyz normal tex0 tex1 color end struct
+struct Vertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Normal assigned to a generated procedural-entity vertex for material evaluation.
+  normal
+  /// Texture coordinates supplied to the first texture unit.
+  tex0
+  /// Texture coordinates supplied to the second texture unit.
+  tex1
+  /// Color assigned to a procedurally generated entity vertex.
+  color
+end struct
 /// Data record for `mq3.renderer.surface_entities.Submission`; groups `vertices`, `indexes`, `baseVertex`, `baseIndex`, `numVertexes`, `numIndexes`, and 1 further field.
-struct Submission vertices indexes baseVertex baseIndex numVertexes numIndexes flushed end struct
+struct Submission
+  /// Vertex records produced while expanding a sprite, beam, or other procedural entity surface.
+  vertices
+  /// Indices connecting the generated vertices of procedural entity surfaces.
+  indexes
+  /// First vertex slot used by the submitted geometry.
+  baseVertex
+  /// First index slot used by the submitted geometry.
+  baseIndex
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Whether the current batch was flushed before this geometry was appended.
+  flushed
+end struct
 
 /// Computes `value!=void and len(value)==3` for `mq3.renderer.surface_entities.valid3`.
 /// @param value Input used in the result expression `value!=void and len(value)==3`.

@@ -12,15 +12,39 @@ import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 import mq3.compat.transcendental as trans
 
+/// Maximum downward trace distance used to place a player's ground shadow.
 const SHADOW_DISTANCE=128.0
+/// World-space radius used when projecting the player's ground-shadow mark.
 const SHADOW_RADIUS=24.0
+/// Combined collision-content mask used by player movement traces.
 const MASK_PLAYERSOLID=0x02010001
+/// Circle constant used to convert or evaluate angles in trigonometric calculations.
 const PI=3.14159265358979323846
 
 /// Stores playable player shadows catalog record, including `imageName`, `image`, `textureSlot`.
-struct Catalog imageName image textureSlot end struct
+struct Catalog
+  /// Resolved shadow image path loaded into the catalog's native texture slot.
+  imageName
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture-cache slot assigned to the resource for renderer submission.
+  textureSlot
+end struct
 /// Stores playable player shadows shadow record, including `origin`, `normal`, `orientation`, `alpha`, `radius`.
-struct Shadow origin normal orientation alpha radius end struct
+struct Shadow
+  /// World-space center of the projected shadow polygon on the supporting surface.
+  origin
+  /// Normalized ground-trace normal used to orient the projected shadow polygon.
+  normal
+  /// When constructing this record, `traceWith` supplies `orientation` for this member. Used by `axes`
+  /// during subsequent processing.
+  orientation
+  /// Opacity or alpha modulation applied while drawing or fading the object.
+  alpha
+  /// World-space half-size of the projected player-shadow quad.
+  radius
+end struct
 
 /// Creates the playable player shadows error `7670` with diagnostic text `"playable player shadows: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable player shadows: "+message`.

@@ -4,31 +4,129 @@
 package mq3.renderer.tr_world_runtime
 import mq3.renderer.world_surface_selection as selection
 
+/// Bounds classification indicating that the object lies entirely inside the view frustum.
 const CULL_IN=0
+/// Bounds classification indicating that the object intersects the view frustum.
 const CULL_CLIP=1
+/// Bounds classification indicating that the object lies entirely outside the view frustum.
 const CULL_OUT=2
+/// Negative marker identifying an internal BSP node rather than a leaf.
 const CONTENTS_NODE=-1
+/// Contents bit identifying solid collision geometry.
 const CONTENTS_SOLID=1
+/// Cull type that keeps the front-facing side of a surface.
 const CT_FRONT_SIDED=0
+/// Cull type that keeps the back-facing side of a surface.
 const CT_BACK_SIDED=1
+/// Cull type that renders both sides of a surface.
 const CT_TWO_SIDED=2
 
 /// Data record for `mq3.renderer.tr_world_runtime.Plane`; groups `normal`, `dist`.
-struct Plane normal dist end struct
+struct Plane
+  /// World partition-plane normal used during BSP traversal and surface culling.
+  normal
+  /// Signed plane distance measured along its normal.
+  dist
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.Dlight`; groups `origin`, `radius`.
-struct Dlight origin radius end struct
+struct Dlight
+  /// Dynamic-light center used to classify BSP nodes and affected world surfaces.
+  origin
+  /// Radius used for the light, sprite, beam, or bounded object.
+  radius
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.Surface`; groups `kind`, `bounds`, `localOrigin`, `meshRadius`, `plane`, `cullType`, and 3 further fields.
-struct Surface kind bounds localOrigin meshRadius plane cullType viewCount fogIndex dlightBits end struct
+struct Surface
+  /// World-surface category used to choose bounds culling and dynamic-light intersection rules.
+  kind
+  /// Minimum and maximum corners enclosing the object or surface.
+  bounds
+  /// Center of the mesh's local-space bounding sphere.
+  localOrigin
+  /// Radius of the mesh's local-space bounding sphere.
+  meshRadius
+  /// Splitting or clipping plane associated with the BSP node or surface.
+  plane
+  /// Front-face, back-face, or two-sided surface-culling rule.
+  cullType
+  /// Generation number used to avoid processing a surface twice in one view.
+  viewCount
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.Node`; groups `contents`, `mins`, `maxs`, `plane`, `children`, `parent`, and 4 further fields.
-struct Node contents mins maxs plane children parent cluster area marks visframe end struct
+struct Node
+  /// BSP node marker or collision-content bits for this record.
+  contents
+  /// Minimum horizontal texture coordinate reached on the clipped sky face.
+  mins
+  /// Maximum horizontal texture coordinate reached on the clipped sky face.
+  maxs
+  /// Splitting or clipping plane associated with the BSP node or surface.
+  plane
+  /// Child node or leaf references of the BSP partition.
+  children
+  /// Parent node in the BSP hierarchy.
+  parent
+  /// Visibility cluster containing the BSP leaf.
+  cluster
+  /// BSP area number used when applying area-visibility masking.
+  area
+  /// Surface references associated with the BSP leaf.
+  marks
+  /// Visibility generation in which the BSP node was marked visible.
+  visframe
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.World`; groups `nodes`, `planes`, `surfaces`, `vis`, `novis`, `numClusters`, and 3 further fields.
-struct World nodes planes surfaces vis novis numClusters clusterBytes visCount viewCluster end struct
+struct World
+  /// Nodes and leaves of the BSP hierarchy.
+  nodes
+  /// Planes defining BSP partitions or clipping boundaries.
+  planes
+  /// Surface records owned by the world, model, or drawing group.
+  surfaces
+  /// Packed potentially-visible-cluster data for the world.
+  vis
+  /// Fallback visibility mask used when no valid PVS data is available.
+  novis
+  /// Number of clusters represented by the visibility table.
+  numClusters
+  /// Number of bytes in one potentially-visible-cluster bitset.
+  clusterBytes
+  /// Current visibility-marking generation.
+  visCount
+  /// Visibility cluster used by the current world view.
+  viewCluster
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.DrawSurface`; groups `surfaceIndex`, `fogIndex`, `dlighted`.
-struct DrawSurface surfaceIndex fogIndex dlighted end struct
+struct DrawSurface
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Whether dynamic lights affect the selected draw surface.
+  dlighted
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.Traversal`; groups `draws`, `leafs`, `visBounds`.
-struct Traversal draws leafs visBounds end struct
+struct Traversal
+  /// Draw-surface records emitted while traversing the world.
+  draws
+  /// BSP leaves visited or retained by world traversal.
+  leafs
+  /// Bounds accumulated over the visible BSP leaves.
+  visBounds
+end struct
 /// Data record for `mq3.renderer.tr_world_runtime.MarkResult`; groups `changed`, `cluster`, `visCount`.
-struct MarkResult changed cluster visCount end struct
+struct MarkResult
+  /// Whether the visibility cluster or associated visible set changed.
+  changed
+  /// Visibility cluster containing the BSP leaf.
+  cluster
+  /// Current visibility-marking generation.
+  visCount
+end struct
 
 /// Creates error `7793` with message `"tr_world: "+message`.
 /// @param message Input used in the result expression `error(7793,"tr_world: "+message)`.

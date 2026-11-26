@@ -12,38 +12,108 @@ import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Bot-library syscall identifier for initial chat.
 const OP_INITIAL_CHAT=513
+/// Bot-library syscall identifier for reply chat.
 const OP_REPLY_CHAT=514
+/// Bot-library syscall identifier for chat length.
 const OP_CHAT_LENGTH=515
+/// Bot-library syscall identifier for enter chat.
 const OP_ENTER_CHAT=516
+/// Chat destination selecting all players.
 const CHAT_ALL=0
+/// Chat destination selecting the bot's team.
 const CHAT_TEAM=1
+/// Chat destination selecting one explicitly addressed client.
 const CHAT_TELL=2
+/// Cooldown interval preventing recently used chat lines from being selected again.
 const RECENT_TIME=20.0
+/// Maximum character capacity of a bot chat or console message.
 const MAX_MESSAGE_SIZE=256
 
+/// Reply-chat key requiring this match condition in addition to the others.
 const KEY_AND=1
+/// Reply-chat key excluding messages that satisfy the specified condition.
 const KEY_NOT=2
+/// Reply-chat key matching the bot's configured name.
 const KEY_NAME=4
+/// Reply-chat key matching a literal string.
 const KEY_STRING=8
+/// Reply-chat key matching variable-bearing message templates.
 const KEY_VARIABLES=16
+/// Reply-chat key matching one of the available bot names.
 const KEY_BOTNAMES=32
+/// Reply-chat key requiring the female chat-gender setting.
 const KEY_FEMALE=64
+/// Reply-chat key requiring the male chat-gender setting.
 const KEY_MALE=128
+/// Reply-chat key requiring a neutral chat-gender setting.
 const KEY_GENDERLESS=256
 
 /// `RandomList` record for ai chat output, containing `name` and `messages`.
-struct RandomList name messages end struct
+struct RandomList
+  /// Name used by chat templates to select this random phrase list.
+  name
+  /// Alternative phrases available for random substitution.
+  messages
+end struct
 /// `ReplyKey` record for ai chat output, containing `flags`, `text` and `pieces`.
-struct ReplyKey flags text pieces end struct
+struct ReplyKey
+  /// Reply-key matching conditions combined from KEY flags.
+  flags
+  /// Literal text, bot name, or other criterion used by this reply key.
+  text
+  /// Ordered literal and variable components of the match template.
+  pieces
+end struct
 /// `Reply` record for ai chat output, containing `keys`, `priority` and `messages`.
-struct Reply keys priority messages end struct
+struct Reply
+  /// Conditions that an incoming message must satisfy for this reply.
+  keys
+  /// Priority assigned to this reply-chat definition.
+  priority
+  /// Reply messages available when the key conditions match.
+  messages
+end struct
 /// `Reader` record for ai chat output, containing `registry`, `source` and `pending`.
-struct Reader registry source pending end struct
+struct Reader
+  /// Registry used to resolve registered names, handles, or runtime definitions.
+  registry
+  /// Preprocessor source handle supplying the reply or random-chat script.
+  source
+  /// Saved token or command awaiting consumption by the next operation.
+  pending
+end struct
 /// `Loader` record for ai chat output, containing `state`.
-struct Loader state end struct
+struct Loader
+  /// Owning chat runtime supplying the file callback and file-read accounting.
+  state
+end struct
 /// `State` record for ai chat output, containing `profiles`, `strings`, `actions`, `context` and `readFn` and related fields.
-struct State profiles strings actions context readFn timeFn randomFn randomLists replies loaded fileReads end struct
+struct State
+  /// Loaded initial-chat profiles and their cached message selections.
+  profiles
+  /// Whitespace and synonym-normalization runtime used by chat processing.
+  strings
+  /// Elementary-action runtime used to send say, say_team, and tell commands.
+  actions
+  /// Caller-supplied data associated with reply-file loading, reply timing, and random chat selection.
+  context
+  /// Host callback that reads random-chat lists and reply-chat rules.
+  readFn
+  /// Host callback that supplies the current time used by the bot runtime.
+  timeFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+  /// Named lists of random phrases used while expanding bot chat.
+  randomLists
+  /// Reply-chat definitions considered for an incoming message.
+  replies
+  /// True after the random-chat and reply-chat resources required for output have been loaded.
+  loaded
+  /// Number of source-file reads performed through the loading interface.
+  fileReads
+end struct
 
 /// Construct error `7574` with diagnostic text `"AI chat output: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

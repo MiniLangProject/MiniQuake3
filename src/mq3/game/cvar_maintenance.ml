@@ -6,8 +6,11 @@ import mq3.compat.numeric as n
 import std.string as strings
 /// `State` record for cvar maintenance, containing `password`, `passwordModificationCount` and `lastPasswordModificationCount`.
 struct State
+  /// Current server password used by connection checks.
   password
+  /// Revision counter of the password console variable.
   passwordModificationCount
+  /// Password revision already propagated to the dependent setting.
   lastPasswordModificationCount
 end struct
 /// Create a `mq3.game.cvar_maintenance.State` record, initializing `lastPasswordModificationCount` as `-1`.

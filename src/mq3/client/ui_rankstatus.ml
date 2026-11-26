@@ -4,13 +4,61 @@
 package mq3.client.ui_rankstatus
 import mq3.client.ui_qmenu as q
 import mq3.client.ui_rankings as rankings
+/// Virtual asset path used to load the rankstatus frame renderer or menu resource.
 const RANKSTATUS_FRAME="menu/art/cut_frame"
+/// Menu control identifier routed to the message action by the menu event handler.
 const ID_MESSAGE=100
+/// Menu control identifier routed to the ok action by the menu event handler.
 const ID_OK=101
 /// Stores UI rankstatus queued engine action, including `boundary`, `kind`, `name`, `text`, `dispatched`.
-struct Action boundary kind name text dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while displaying ranked-account status and
+  /// dismissing its message.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while displaying
+  /// ranked-account status and dismissing its message.
+  kind
+  /// Menu destination or status-frame artwork resource selected by the rankings-status workflow.
+  name
+  /// Optional text argument reserved for ranking-status host actions; current menu operations pass an
+  /// empty string.
+  text
+  /// True when this request is marked for native dispatch while displaying ranked-account status and
+  /// dismissing its message; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI rankstatus state, including `menu`, `frame`, `message`, `ok`, `status`, `messageText` and additional values.
-struct State menu frame message ok status messageText actions pushed popped forcedOff retailActive end struct
+struct State
+  /// When constructing this record, `create` supplies `q.menu(true,false)` for this member. Used by
+  /// `RankStatus_MenuEvent` and `RankStatus_MenuInit` during subsequent processing.
+  menu
+  /// Decorative bitmap widget drawing the border around the ranking-status menu.
+  frame
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `RankStatus_MenuInit` during subsequent processing.
+  message
+  /// True when the operation completed successfully and its result can be consumed.
+  ok
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `RankStatus_MenuEvent` and `UI_RankStatusMenu` during subsequent processing.
+  status
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `RankStatus_MenuInit` and `UI_RankStatusMenu` during subsequent processing.
+  messageText
+  /// Host requests queued while displaying ranked-account status and dismissing its message, retained
+  /// in request order.
+  actions
+  /// Records that the ranked-play status dialog has been opened on the active menu stack.
+  pushed
+  /// Records a request to remove the ranked-play status dialog from the active menu stack.
+  popped
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `UI_RankStatusMenu` during subsequent processing.
+  forcedOff
+  /// True when the retail QVM owns the ranked-play status dialog, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+end struct
 /// Creates a `mq3.client.ui_rankstatus.State` record. Assigns `retailActive` from `retailActive`.
 /// @param retailActive Value used to initialize `State.retailActive`.
 function create(retailActive) return State(q.menu(true,false),void,void,void,0,"",[],false,false,false,retailActive) end function

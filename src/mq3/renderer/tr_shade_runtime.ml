@@ -9,32 +9,160 @@ import mq3.renderer.playable_fog as fogRuntime
 import mq3.renderer.playable_world_batch as worldBatch
 import mq3.renderer.tr_shade_calc_runtime as calc
 
+/// Surface flag identifying geometry handled by the sky renderer.
 const SURF_SKY=4
+/// Surface flag preventing dynamic-light contributions on the material.
 const SURF_NODLIGHT=1024
+/// Shader sort order for opaque surfaces.
 const SS_OPAQUE=3.0
 
 /// Data record for `mq3.renderer.tr_shade_runtime.ArrayVertex`; groups `position`, `color`, `texture0`, `texture1`.
-struct ArrayVertex position color texture0 texture1 end struct
+struct ArrayVertex
+  /// Three-dimensional position of the vertex.
+  position
+  /// Evaluated stage color supplied with this vertex to the graphics array path.
+  color
+  /// Texture data, coordinates, or binding used by the first texture unit.
+  texture0
+  /// Texture data, coordinates, or binding used by the second texture unit.
+  texture1
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.StripResult`; groups `strips`, `begins`, `vertexes`.
-struct StripResult strips begins vertexes end struct
+struct StripResult
+  /// Triangle strips produced by index-stream conversion.
+  strips
+  /// Number of graphics primitive-begin operations required by the strip plan.
+  begins
+  /// Number of vertex emissions needed by the generated triangle strips.
+  vertexes
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.ElementPlan`; groups `mode`, `strips`, `indexCount`.
-struct ElementPlan mode strips indexCount end struct
+struct ElementPlan
+  /// Index-submission strategy: triangles, strip arrays, discrete strips, or none.
+  mode
+  /// Triangle strips produced by index-stream conversion.
+  strips
+  /// Number of vertex indices submitted by the drawing plan.
+  indexCount
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.DebugPlan`; groups `mode`, `indexes`, `vertices`, `depthNear`, `depthFar`.
-struct DebugPlan mode indexes vertices depthNear depthFar end struct
+struct DebugPlan
+  /// Primitive mode used to draw the debug geometry, such as triangles or lines.
+  mode
+  /// Index sequence used when drawing the surface's debug triangles.
+  indexes
+  /// Explicit line vertices used to visualize normals or other surface debug geometry.
+  vertices
+  /// Near end of the depth range used by the debug pass.
+  depthNear
+  /// Far end of the depth range used by the debug pass.
+  depthFar
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.SurfaceState`; groups `shader`, `fogNum`, `dlightBits`, `shaderTime`, `numIndexes`, `numVertexes`, and 2 further fields.
-struct SurfaceState shader fogNum dlightBits shaderTime numIndexes numVertexes numPasses iteratorName end struct
+struct SurfaceState
+  /// Resolved shader record or handle used for this drawing operation.
+  shader
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Bit mask identifying dynamic lights that affect this surface.
+  dlightBits
+  /// Effective shader time in seconds after the material time offset and clamp have been applied.
+  shaderTime
+  /// Number of indices currently stored or submitted.
+  numIndexes
+  /// Number of vertices currently stored or submitted.
+  numVertexes
+  /// Number of material passes required to draw the current surface.
+  numPasses
+  /// Backend iterator selected to execute the shader's drawing stages.
+  iteratorName
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.ShaderState`; groups `name`, `remappedShader`, `timeOffset`, `clampTime`, `sort`, `fogPass`, and 4 further fields.
-struct ShaderState name remappedShader timeOffset clampTime sort fogPass polygonOffset surfaceFlags numPasses iteratorName end struct
+struct ShaderState
+  /// Active material name retained while preparing and finishing a tessellated shader batch.
+  name
+  /// Shader selected after applying a material remap.
+  remappedShader
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Shader ordering category used to schedule this material relative to other surfaces.
+  sort
+  /// Fog pass mode used after the material's ordinary stages.
+  fogPass
+  /// Whether polygon-offset depth bias is applied while drawing.
+  polygonOffset
+  /// Surface behavior flags carried by the BSP shader or material.
+  surfaceFlags
+  /// Number of material passes required to draw the current surface.
+  numPasses
+  /// Backend iterator selected to execute the shader's drawing stages.
+  iteratorName
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.MultiPlan`; groups `texture0`, `texture1`, `environment`, `portalFill`, `indexCount`.
-struct MultiPlan texture0 texture1 environment portalFill indexCount end struct
+struct MultiPlan
+  /// Texture data, coordinates, or binding used by the first texture unit.
+  texture0
+  /// Texture data, coordinates, or binding used by the second texture unit.
+  texture1
+  /// Texture-environment combine mode selected for the merged pass.
+  environment
+  /// Whether the multitexture pass also fills the portal surface.
+  portalFill
+  /// Number of vertex indices submitted by the drawing plan.
+  indexCount
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.DlightPass`; groups `lightIndex`, `uvs`, `colors`, `indexes`, `additive`.
-struct DlightPass lightIndex uvs colors indexes additive end struct
+struct DlightPass
+  /// Index of the dynamic light used by the lighting pass.
+  lightIndex
+  /// Texture coordinates generated for the pass or its vertices.
+  uvs
+  /// Per-vertex colors containing the projected dynamic-light contribution for this pass.
+  colors
+  /// Selected triangle indices retained for the projected dynamic-light pass.
+  indexes
+  /// Whether the dynamic light contributes additively rather than modulating the surface.
+  additive
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.FogPlan`; groups `uvs`, `colors`, `indexes`, `depthEqual`.
-struct FogPlan uvs colors indexes depthEqual end struct
+struct FogPlan
+  /// Texture coordinates generated for the pass or its vertices.
+  uvs
+  /// Per-vertex fog colors prepared for the surface's fog-overlay pass.
+  colors
+  /// Surface triangle indices submitted by the fog-overlay pass.
+  indexes
+  /// Whether depth testing accepts only fragments at the existing surface depth.
+  depthEqual
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.EndCounters`; groups `shaders`, `vertexes`, `indexes`, `totalIndexes`.
-struct EndCounters shaders vertexes indexes totalIndexes end struct
+struct EndCounters
+  /// Number of shader batches represented by the completed surface.
+  shaders
+  /// Number of vertices represented by the completed surface.
+  vertexes
+  /// Number of indices represented by the completed surface.
+  indexes
+  /// Total number of indices processed across all material passes.
+  totalIndexes
+end struct
 /// Data record for `mq3.renderer.tr_shade_runtime.EndResult`; groups `skipped`, `shadow`, `counters`, `iteratorResult`, `debugTris`, `debugNormals`.
-struct EndResult skipped shadow counters iteratorResult debugTris debugNormals end struct
+struct EndResult
+  /// Whether the requested surface drawing operation was omitted.
+  skipped
+  /// Whether this result belongs to the shadow drawing path.
+  shadow
+  /// Drawing statistics accumulated while finishing the surface.
+  counters
+  /// Result returned by the shader's selected drawing iterator.
+  iteratorResult
+  /// Debug geometry used to show the submitted triangles.
+  debugTris
+  /// Debug geometry used to show the submitted vertex normals.
+  debugNormals
+end struct
 
 /// Creates error `7791` with message `"tr_shade: "+message`.
 /// @param message Input used in the result expression `error(7791,"tr_shade: "+message)`.

@@ -5,19 +5,77 @@ package mq3.client.ui_cinematics
 
 import mq3.client.ui_gameinfo as game
 
+/// Activation callback event accepted by the cinematics selection menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Native Back-control identifier exposed by the cinematics chooser for leaving cinematic selection.
 const ID_BACK=10
+/// Menu control identifier routed to the cin idlogo action by the menu event handler.
 const ID_CIN_IDLOGO=11
+/// Menu control identifier routed to the cin end action by the menu event handler.
 const ID_CIN_END=20
+/// Virtual shader or image asset name used for the menu's back0 artwork.
 const ART_BACK0="menu/art/back_0"
+/// Virtual shader or image asset name used for the menu's back1 artwork.
 const ART_BACK1="menu/art/back_1"
+/// Virtual shader or image asset name used for the menu's framel artwork.
 const ART_FRAMEL="menu/art/frame2_l"
+/// Virtual shader or image asset name used for the menu's framer artwork.
 const ART_FRAMER="menu/art/frame1_r"
 
 /// Stores UI cinematics queued engine action, including `boundary`, `kind`, `name`, `text`, `value`, `dispatched`.
-struct Action boundary kind name text value dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while selecting and launching unlocked
+  /// cinematics.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while selecting and
+  /// launching unlocked cinematics.
+  kind
+  /// Cinematic-menu target, playback command, console variable, or artwork resource named by the
+  /// action.
+  name
+  /// Playback command or nextmap value prepared for the selected cinematic.
+  text
+  /// Value payload supplied to the selected host operation while selecting and launching unlocked
+  /// cinematics.
+  value
+  /// True when this request is marked for native dispatch while selecting and launching unlocked
+  /// cinematics; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI cinematics state, including `data`, `demoVersion`, `names`, `labels`, `enabled`, `cursor` and additional values.
-struct State data demoVersion names labels enabled cursor actions retailActive cached pushed menuEvents end struct
+struct State
+  /// When constructing this record, `create` supplies `data` for this member. Used by `init` during
+  /// subsequent processing.
+  data
+  /// When constructing this record, `create` supplies `demoVersion` for this member. Used by
+  /// `menuEvent` and `init` during subsequent processing.
+  demoVersion
+  /// When constructing this record, `create` supplies
+  /// `["idlogo","intro","tier1","tier2","tier3","tier4","tier5","tier6","tier7","end"]` for this
+  /// member. Used by `menuEvent` during subsequent processing.
+  names
+  /// When constructing this record, `create` supplies `["ID LOGO","INTRO","Tier 1","Tier 2","Tier
+  /// 3","Tier 4","Tier 5","Tier 6","Tier 7","END"]` for this member.
+  labels
+  /// When constructing this record, `create` supplies `array(10,false)` for this member. Used by `init`
+  /// during subsequent processing.
+  enabled
+  /// When constructing this record, `create` supplies `0` for this member. Used by `init` and
+  /// `cinematicsMenuF` during subsequent processing.
+  cursor
+  /// Host requests queued while selecting and launching unlocked cinematics, retained in request order.
+  actions
+  /// True when the retail QVM owns the cinematics selection menu, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// True once the module's required media has been cached or registered.
+  cached
+  /// Records that the cinematics selection menu has been opened on the active menu stack.
+  pushed
+  /// Menu-stack and selection events queued for the host adapter.
+  menuEvents
+end struct
 
 /// Creates a `mq3.client.ui_cinematics.State` record. Assigns `data` from `data`, `demoVersion` from `demoVersion`, `retailActive` from `retailActive`.
 /// @param data Value used to initialize `State.data`.

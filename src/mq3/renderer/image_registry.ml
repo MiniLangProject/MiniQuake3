@@ -5,32 +5,138 @@ package mq3.renderer.image_registry
 import mq3.renderer.tga as tga
 import mq3.renderer.image_processing as processing
 
+/// Number of buckets in the image-name hash table.
 const FILE_HASH_SIZE=1024
+/// Maximum number of images retained by the renderer's image registry.
 const MAX_DRAWIMAGES=2048
+/// Capacity of a Quake virtual-path buffer, including the terminating byte in the native ABI.
 const MAX_QPATH=64
+/// First texture-object identifier reserved for registered renderer images.
 const TEXNUM_BASE=1024
+/// Texture-compression mode indicating that textures remain uncompressed.
 const TC_NONE=0
+/// Texture-compression mode using the S3TC extension.
 const TC_S3TC=1
+/// OpenGL internal texture format with five bits per red, green, and blue component.
 const GL_RGB5=0x8050
+/// OpenGL internal texture format with eight bits per red, green, and blue component.
 const GL_RGB8=0x8051
+/// OpenGL internal texture format with four bits per red, green, blue, and alpha component.
 const GL_RGBA4=0x8056
+/// OpenGL internal texture format with eight bits per red, green, blue, and alpha component.
 const GL_RGBA8=0x8058
+/// OpenGL legacy RGB4_S3TC compressed RGB texture-format selector.
 const GL_RGB4_S3TC=0x83a1
 
 /// Data record for `mq3.renderer.image_registry.Source`; groups `width`, `height`, `pixels`.
-struct Source width height pixels end struct
+struct Source
+  /// Width in pixels of the source image supplied before texture resizing and mip generation.
+  width
+  /// Height in pixels of the source image supplied before texture resizing and mip generation.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+end struct
 /// Data record for `mq3.renderer.image_registry.UploadConfig`; groups `roundImagesDown`, `picmip`, `maxTextureSize`, `textureBits`, `textureCompression`, `simpleMipMaps`, and 3 further fields.
-struct UploadConfig roundImagesDown picmip maxTextureSize textureBits textureCompression simpleMipMaps deviceSupportsGamma gammaTable intensityTable end struct
+struct UploadConfig
+  /// Whether non-power-of-two images round down when resized for upload.
+  roundImagesDown
+  /// Global mip-level reduction applied to eligible textures.
+  picmip
+  /// Largest supported texture dimension reported by the graphics driver.
+  maxTextureSize
+  /// Requested color precision for uploaded textures.
+  textureBits
+  /// Selected texture-compression capability or mode.
+  textureCompression
+  /// Whether mip levels use the simple downsampling filter.
+  simpleMipMaps
+  /// Whether the display supports hardware gamma-ramp updates.
+  deviceSupportsGamma
+  /// Lookup table used to apply gamma correction to color samples.
+  gammaTable
+  /// Lookup table used to scale texture intensity.
+  intensityTable
+end struct
 /// Data record for `mq3.renderer.image_registry.UploadLevel`; groups `width`, `height`, `pixels`.
-struct UploadLevel width height pixels end struct
+struct UploadLevel
+  /// Width in pixels of this mip level of the texture upload.
+  width
+  /// Height in pixels of this mip level of the texture upload.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+end struct
 /// Data record for `mq3.renderer.image_registry.UploadPlan`; groups `uploadWidth`, `uploadHeight`, `internalFormat`, `samples`, `lightMap`, `levels`.
-struct UploadPlan uploadWidth uploadHeight internalFormat samples lightMap levels end struct
+struct UploadPlan
+  /// Width in pixels of the image submitted to the graphics driver.
+  uploadWidth
+  /// Height in pixels of the image submitted to the graphics driver.
+  uploadHeight
+  /// Graphics-driver format selected for the uploaded texture.
+  internalFormat
+  /// Number of color components retained in the uploaded image format.
+  samples
+  /// Baked-lighting texture coordinates or resource associated with this vertex or patch.
+  lightMap
+  /// Image levels generated for the texture's mipmap chain.
+  levels
+end struct
 /// Data record for `mq3.renderer.image_registry.Image`; groups `texnum`, `imgName`, `width`, `height`, `uploadWidth`, `uploadHeight`, and 7 further fields.
-struct Image texnum imgName width height uploadWidth uploadHeight mipmap allowPicmip wrapClampMode TMU internalFormat upload frameUsed end struct
+struct Image
+  /// Graphics-driver texture object identifier.
+  texnum
+  /// Virtual asset name used to register and cache the image.
+  imgName
+  /// Width in pixels of the registered image before upload-specific resizing.
+  width
+  /// Height in pixels of the registered image before upload-specific resizing.
+  height
+  /// Width in pixels of the image submitted to the graphics driver.
+  uploadWidth
+  /// Height in pixels of the image submitted to the graphics driver.
+  uploadHeight
+  /// Whether mip levels are generated or used for this image.
+  mipmap
+  /// Whether the global picmip reduction may downscale this image.
+  allowPicmip
+  /// Texture address mode selected at the image edges.
+  wrapClampMode
+  /// Texture unit on which the image is bound or managed.
+  TMU
+  /// Graphics-driver format selected for the uploaded texture.
+  internalFormat
+  /// Prepared pixel levels and format used to upload the image.
+  upload
+  /// Most recent renderer frame in which this image was used.
+  frameUsed
+end struct
 /// Callback table for `mq3.renderer.image_registry.Services`; exposes `loadFn`, `releaseFn`, `submitFn`, `diagnosticFn`, `context`.
-struct Services loadFn releaseFn submitFn diagnosticFn context end struct
+struct Services
+  /// Host callback used to perform load operations for this subsystem.
+  loadFn
+  /// Host callback used to perform release operations for this subsystem.
+  releaseFn
+  /// Host callback used to perform submit operations for this subsystem.
+  submitFn
+  /// Host callback used to perform diagnostic operations for this subsystem.
+  diagnosticFn
+  /// Image-loader and graphics-host state passed to resource loading, release, and upload callbacks.
+  context
+end struct
 /// Data record for `mq3.renderer.image_registry.Registry`; groups `images`, `buckets`, `config`, `services`, `activeTexture`.
-struct Registry images buckets config services activeTexture end struct
+struct Registry
+  /// Image resources or image-animation frames retained by the record.
+  images
+  /// Hash-table buckets used to locate entries by name.
+  buckets
+  /// Configuration values used to initialize or drive this subsystem.
+  config
+  /// Injected host operations used by this subsystem.
+  services
+  /// Currently selected texture unit for image operations.
+  activeTexture
+end struct
 
 /// Creates error `7170` with message `"image registry: "+message`.
 /// @param message Input used in the result expression `error(7170,"image registry: "+message)`.

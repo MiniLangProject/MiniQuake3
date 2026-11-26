@@ -9,16 +9,46 @@ import mq3.audio.snd_mem_resample as sndmem
 import std.string as strings
 import std.ds.list as lists
 
+/// Sample rate in hertz used when preparing registered sound effects.
 const EFFECT_OUTPUT_RATE=22050
 // Three buffers at 22050 Hz hold at most 139 ms of sampled audio.
 const CHUNK_FRAMES=1024
 
 /// Clip record for audio.qvm_sound_assets, containing `handle`, `path`, `sound`, `compressed`.
-struct Clip handle path sound compressed end struct
+struct Clip
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// Asset path used to find the sound inside the archive.
+  path
+  /// Decoded WAVE sound descriptor supplying the source PCM data.
+  sound
+  /// Compressed sound descriptor when playback uses encoded sample blocks.
+  compressed
+end struct
 /// Missing record for audio.qvm_sound_assets, containing `handle`, `path`, `reason`.
-struct Missing handle path reason end struct
+struct Missing
+  /// Registered sound handle used to resolve the sound asset.
+  handle
+  /// Asset path used to find the sound inside the archive.
+  path
+  /// Diagnostic explaining why the registered sound could not be loaded.
+  reason
+end struct
 /// Catalog record for audio.qvm_sound_assets, containing `archive`, `clips`, `missing`, `registered`, `scanned`, `handles`.
-struct Catalog archive clips missing registered scanned handles end struct
+struct Catalog
+  /// PK3 archive used to read registered sound assets.
+  archive
+  /// Successfully loaded clips indexed by their registered handles.
+  clips
+  /// Assets that could not be loaded, together with their failure reasons.
+  missing
+  /// Number of sound registrations processed by the catalog.
+  registered
+  /// Number of archive or registration entries examined while building the catalog.
+  scanned
+  /// Sound handles corresponding to the stored clip records.
+  handles
+end struct
 
 /// Create the audio.qvm_sound_assets error for `fail` with 7650 and the supplied diagnostic text.
 /// @param message Message used in `("QVM sound assets: " + message)` and `error(7650, ("QVM sound assets: " + message))`.

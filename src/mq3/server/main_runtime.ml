@@ -9,22 +9,53 @@ import mq3.compat.numeric as numeric
 import mq3.server.connectionless as connectionless
 import std.string as strings
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS=64
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS=1024
+/// Maximum byte length of a complete sequenced network message.
 const MAX_MSGLEN=16384
+/// Maximum length of a backslash-delimited server or client information string.
 const MAX_INFO_STRING=1024
+/// Client-state value identifying a vacant client entry ignored by server connection services.
 const CS_FREE=0
+/// Client lifecycle state retaining a recently disconnected client for final messages.
 const CS_ZOMBIE=1
+/// Client lifecycle state after connection but before gamestate priming.
 const CS_CONNECTED=2
+/// Client lifecycle state after gamestate delivery and before entering active play.
 const CS_PRIMED=3
+/// Client-state value identifying an active player reported by the server runtime and status handlers.
 const CS_ACTIVE=4
+/// Game-mode identifier for single-player progression.
 const GT_SINGLE_PLAYER=2
+/// Interval between master-server heartbeats, in milliseconds.
 const HEARTBEAT_MSEC=300000
+/// Game name advertised in master-server heartbeat messages.
 const HEARTBEAT_GAME="QuakeArena-1"
+/// Default UDP port used by the master-server directory.
 const PORT_MASTER=27950
 
 /// Client record for server.main_runtime, containing `state`, `name`, `ping`, `score`, `reliableAcknowledge`, `reliableSequence`, and 2 further fields.
-struct Client state name ping score reliableAcknowledge reliableSequence reliableSent reliableCommands end struct
+struct Client
+  /// Connection lifecycle value that drives connection, status, and client-command handling in the
+  /// server runtime.
+  state
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Estimated round-trip client latency in milliseconds.
+  ping
+  /// Client score advertised by server-status responses.
+  score
+  /// Reliable acknowledgment cursor available to the assembled server connection runtime.
+  reliableAcknowledge
+  /// Sequence number of the newest queued reliable command.
+  reliableSequence
+  /// Sequence number of the newest reliable command transmitted to the peer.
+  reliableSent
+  /// Reliable command entries retained until the peer acknowledges them.
+  reliableCommands
+end struct
 /// Create `mq3.server.main_runtime.Client` with state=state; name=name; ping=ping; score=score; reliableAcknowledge=0; reliableSequence=0; reliableSent=0; reliableCommands=array(MAX_RELIABLE_COMMANDS, "").
 /// @param state Initial `state` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
 /// @param name Initial `name` field stored in the returned or constructed `mq3.server.main_runtime.Client` record.
@@ -35,21 +66,97 @@ function client(state,name,ping,score)
 end function
 
 /// Master record for server.main_runtime, containing `name`, `value`, `modified`, `address`.
-struct Master name value modified address end struct
+struct Master
+  /// Configuration-variable name for this master-server entry.
+  name
+  /// Configured textual address of this master-server endpoint.
+  value
+  /// True when the configured address needs to be resolved again.
+  modified
+  /// Network address associated with the client or packet.
+  address
+end struct
 /// Create `mq3.server.main_runtime.Master` with name=name; value=value; modified=true; address=void.
 /// @param name Initial `name` field stored in the returned or constructed `mq3.server.main_runtime.Master` record.
 /// @param value Initial `value` field stored in the returned or constructed `mq3.server.main_runtime.Master` record.
 function master(name,value) return Master(name,value,true,void) end function
 
 /// Runtime record for server.main_runtime, containing `time`, `nextHeartbeatTime`, `dedicated`, `masters`, `clients`, `maxClients`, and 16 further fields.
-struct Runtime time nextHeartbeatTime dedicated masters clients maxClients privateClients gametype uiSinglePlayerActive restricted serverInfo hostname mapname protocol gametypeValue pure minPing maxPing game lastRconTime rconPassword redirectAddress end struct
+struct Runtime
+  /// Server clock shared by connectionless requests and connection runtime services, in milliseconds.
+  time
+  /// Server time at which the next master heartbeat should be sent.
+  nextHeartbeatTime
+  /// True when the server runs without a local graphical client.
+  dedicated
+  /// Master-server endpoints receiving heartbeat and shutdown notifications.
+  masters
+  /// Client records shared by server status, connection, and console services.
+  clients
+  /// Configured connection capacity used by server status and admission services.
+  maxClients
+  /// Number of client slots reserved for clients with the private password.
+  privateClients
+  /// Game-mode identifier used when applying mode-specific rules.
+  gametype
+  /// True when the local UI is running a single-player session.
+  uiSinglePlayerActive
+  /// True when discovery or client access is restricted by server policy.
+  restricted
+  /// Backslash-delimited information string advertised by the server.
+  serverInfo
+  /// Server display name advertised to clients and directory services.
+  hostname
+  /// Name of the current game map.
+  mapname
+  /// Network protocol version advertised in discovery responses.
+  protocol
+  /// Game-mode value advertised in server information.
+  gametypeValue
+  /// True when clients must use the server-approved package checksums.
+  pure
+  /// Minimum client latency accepted by the connection policy.
+  minPing
+  /// Maximum client latency accepted by the connection policy.
+  maxPing
+  /// Game name advertised in master-server heartbeats.
+  game
+  /// Timestamp of the most recently accepted remote-console request.
+  lastRconTime
+  /// Password required to accept a remote-console command.
+  rconPassword
+  /// For rcon return messages.
+  redirectAddress
+end struct
 /// Create `mq3.server.main_runtime.Runtime` with time=0; nextHeartbeatTime=0; dedicated=0; masters=[]; 18 further fields.
 function runtime()
   return Runtime(0,0,0,[],[],0,0,0,false,false,"","","",68,0,0,0,0,"",0,"",void)
 end function
 
 /// Services record for server.main_runtime, containing `sendFn`, `resolveFn`, `printFn`, `dropFn`, `executeFn`, `millisecondsFn`, and 4 further fields.
-struct Services sendFn resolveFn printFn dropFn executeFn millisecondsFn authorizeFn decompressFn diagnosticFn context end struct
+struct Services
+  /// Host callback that transmits the supplied message through the host network interface.
+  sendFn
+  /// Host callback that resolves a textual network address or host name.
+  resolveFn
+  /// Host callback that prints server runtime status, command output, and connection diagnostics.
+  printFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that executes a routed command or operation on the host.
+  executeFn
+  /// Host callback that supplies the current host clock in milliseconds.
+  millisecondsFn
+  /// Host callback that performs the host-side client authorization exchange.
+  authorizeFn
+  /// Host callback that decompresses a received packet payload.
+  decompressFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with server address resolution, outgoing messages, console
+  /// commands, and diagnostics.
+  context
+end struct
 /// Create `mq3.server.main_runtime.Services` with sendFn=void; resolveFn=void; printFn=void; dropFn=void; executeFn=void; millisecondsFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void,void,void,void) end function
 
@@ -274,7 +381,12 @@ function SVC_RemoteCommand(state,host,address,raw,args)
 end function
 
 /// Binding record for server.main_runtime, containing `state`, `services`.
-struct Binding state services end struct
+struct Binding
+  /// Managed server runtime passed to the bound host callbacks.
+  state
+  /// Server host services retained by the bound connectionless and runtime adapters.
+  services
+end struct
 /// Compute status callback in server.main_runtime; the normal completion returns `SVC_Status(host.context.state, host.context.services, address, challenge)`.
 /// @param host Record exposing `context`.
 /// @param address Address passed as `address` to `mq3.server.main_runtime.SVC_Status`.

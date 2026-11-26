@@ -12,10 +12,20 @@ import mq3.renderer.view_math as viewMath
 /// @returns The tangent of the input angle.
 extern function tan(value as double) from "ucrtbase.dll" returns double
 
+/// Entity-rendering flag allowing animation frames to wrap within the model's frame range.
 const RF_WRAP_FRAMES=512
 
 /// Data record for `mq3.renderer.md3_entity.Frames`; groups `frame`, `oldFrame`, `wrapped`, `repaired`.
-struct Frames frame oldFrame wrapped repaired end struct
+struct Frames
+  /// Current model animation-frame index.
+  frame
+  /// Previous animation frame used for interpolation.
+  oldFrame
+  /// Whether an animation-frame index was wrapped into the model's valid range.
+  wrapped
+  /// Whether an invalid animation-frame selection was replaced by a safe fallback.
+  repaired
+end struct
 
 /// Creates error `7695` with message `"MD3 entity: "+message`.
 /// @param message Input used in the result expression `error(7695,"MD3 entity: "+message)`.

@@ -14,21 +14,37 @@ import mq3.game.spawn_values as values
 import mq3.shared.math as q
 import mq3.compat.numeric as n
 
+/// Player movement-state bit indicating follow.
 const PMF_FOLLOW = 4096
+/// Player movement-state bit indicating scoreboard.
 const PMF_SCOREBOARD = 8192
+/// Network entity-flag bit indicating player event.
 const EF_PLAYER_EVENT = 0x00000010
+/// Network entity-flag bit indicating connection.
 const EF_CONNECTION = 0x00002000
+/// Network entity-flag bit indicating voted.
 const EF_VOTED = 0x00004000
+/// Network entity-flag bit indicating teamvoted.
 const EF_TEAMVOTED = 0x00080000
+/// Game entity-flag bit enabling or marking godmode.
 const FL_GODMODE = 0x00000010
+/// Collision-contents bit identifying lava space or objects.
 const CONTENTS_LAVA=headers.CONTENTS_LAVA
+/// Collision-contents bit identifying slime space or objects.
 const CONTENTS_SLIME=headers.CONTENTS_SLIME
+/// Server entity-flag bit controlling notsingleclient.
 const SVF_NOTSINGLECLIENT = 0x00000800
+/// Damage-processing flag enabling no armor.
 const DAMAGE_NO_ARMOR = 0x00000002
+/// Audio channel identifier selecting voice playback.
 const CHAN_VOICE = 2
+/// Spectator-state identifier selecting free.
 const SPECTATOR_FREE = 1
+/// Spectator-state identifier selecting follow.
 const SPECTATOR_FOLLOW = 2
+/// Spectator-state identifier selecting scoreboard.
 const SPECTATOR_SCOREBOARD = 3
+/// Player-state statistics index storing persistant powerup.
 const STAT_PERSISTANT_POWERUP = 7
 
 /// Test `level.spawner != void and level.spawner.missionpack` as the condition for `missionpack`.

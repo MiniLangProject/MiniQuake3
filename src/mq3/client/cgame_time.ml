@@ -3,39 +3,102 @@
 // CL_AdjustTimeDelta, CL_FirstSnapshot and CL_SetCGameTime.
 package mq3.client.cgame_time
 
+/// Server-time delta error threshold, in milliseconds, that triggers a hard clock correction.
 const RESET_TIME=500
+/// Snapshot flag indicating that the server state is not yet active for normal gameplay.
 const SNAPFLAG_NOT_ACTIVE=2
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Connection-state value for normal gameplay after game-state loading, defined for advancing the
+/// active game's server clock.
 const CA_ACTIVE=8
 
 /// Stores client game time host-service callbacks, including `context`, `addTextFn`, `clearActiveActionFn`, `beginProfilingFn`, `readDemoFn`, `millisecondsFn` and additional values.
-struct Services context addTextFn clearActiveActionFn beginProfilingFn readDemoFn millisecondsFn diagnosticFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the engine's CGame time
+  /// controller.
+  context
+  /// Host callback for the add text operation; an unset callback leaves that host operation
+  /// unavailable.
+  addTextFn
+  /// Host callback for the clear active action operation; an unset callback leaves that host operation
+  /// unavailable.
+  clearActiveActionFn
+  /// Host callback for the begin profiling operation; an unset callback leaves that host operation
+  /// unavailable.
+  beginProfilingFn
+  /// Host callback for the read demo operation; an unset callback leaves that host operation
+  /// unavailable.
+  readDemoFn
+  /// Host callback for the milliseconds operation; an unset callback leaves that host operation
+  /// unavailable.
+  millisecondsFn
+  /// Host callback for the diagnostic operation; an unset callback leaves that host operation
+  /// unavailable.
+  diagnosticFn
+end struct
 /// Stores client game time state, including `host`, `connectionState`, `realtime`, `snapValid`, `snapFlags`, `snapServerTime` and additional values.
 struct State
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
   host
+  /// Client connection-state identifier controlling handshake, loading, and active-play behavior.
   connectionState
+  /// Local client clock in milliseconds used to estimate the server-time offset and presentation time.
   realtime
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   snapValid
+  /// Snapshot flags describing rate delay and dropped-command conditions.
   snapFlags
+  /// When constructing this record, `create` supplies `0` for this member. Used by `adjustTimeDelta`
+  /// and `firstSnapshot` during subsequent processing.
   snapServerTime
+  /// True after parsing a new valid snapshot that has not yet been consumed.
   newSnapshots
+  /// True when a CGame frame had to extrapolate beyond the newest available snapshot.
   extrapolatedSnapshot
+  /// Offset added to client realtime to estimate current server time.
   serverTimeDelta
+  /// Previous client estimate of server time, retained to prevent time from moving backward.
   oldServerTime
+  /// Synchronized client presentation time for server state, in milliseconds, after time-offset and
+  /// nudge adjustment.
   serverTime
+  /// Server time from the preceding rendered frame, used to recognize restart discontinuities.
   oldFrameServerTime
+  /// True while the client receives its game data from a recorded demo.
   demoPlaying
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   firstDemoFrameSkipped
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   freezeDemo
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   timedemo
+  /// Client realtime timestamp at the beginning of the timed-demo measurement.
   timeDemoStart
+  /// Number of frames rendered during the timed-demo measurement.
   timeDemoFrames
+  /// Base server time from which fixed-step timed-demo frames are calculated.
   timeDemoBaseTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   timeNudge
+  /// True when a local game server is running in the same engine instance.
   serverRunning
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   serverPaused
+  /// When constructing this record, `create` supplies `false` for this member. Used by `setCGameTime`
+  /// during subsequent processing.
   clientPaused
+  /// When constructing this record, `create` supplies `1.0` for this member. Used by `adjustTimeDelta`
+  /// during subsequent processing.
   timescale
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `firstSnapshot` during subsequent processing.
   activeAction
 end struct
 

@@ -4,12 +4,41 @@
 package mq3.server.client_command
 import mq3.qcommon.message as message
 
+/// Client-state value identifying a client whose commands may be dispatched as active gameplay
+/// commands.
 const CS_ACTIVE=4
 
 /// Client record for server.client_command, containing `state`, `name`, `lastClientCommand`, `lastClientCommandString`, `nextReliableTime`.
-struct Client state name lastClientCommand lastClientCommandString nextReliableTime end struct
+struct Client
+  /// Connection lifecycle value that gates dispatch of commands that require an active game client.
+  state
+  /// Extracted from userinfo, high bits masked.
+  name
+  /// Sequence number of the last processed reliable client command.
+  lastClientCommand
+  /// Text of the last processed reliable client command.
+  lastClientCommandString
+  /// Earliest server timestamp when another reliable client command is accepted.
+  nextReliableTime
+end struct
 /// Runtime record for server.client_command, containing `time`, `floodProtect`, `clientRunning`, `executeFn`, `dropFn`, `diagnosticFn`, and 1 further fields.
-struct Runtime time floodProtect clientRunning executeFn dropFn diagnosticFn context end struct
+struct Runtime
+  /// Server time used to enforce reliable-command flood protection, in milliseconds.
+  time
+  /// True when repeated client commands are rate limited.
+  floodProtect
+  /// True while a local client is available to process commands.
+  clientRunning
+  /// Host callback that executes a routed command or operation on the host.
+  executeFn
+  /// Host callback that disconnects a client and reports the supplied reason.
+  dropFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with reliable client command execution and flood-control
+  /// diagnostics.
+  context
+end struct
 
 /// Create `mq3.server.client_command.Client` with state=0; name=""; lastClientCommand=0; lastClientCommandString=""; nextReliableTime=0.
 function createClient()

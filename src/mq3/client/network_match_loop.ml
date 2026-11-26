@@ -13,16 +13,69 @@ import mq3.server.snapshot_send as snapshotSend
 
 /// Stores network match loop runtime wiring and state, including `clientSendState`, `clientSendServices`, `clientConnection`, `clientWire`, `clientProtocol`, `clientIngressRuntime` and additional values.
 struct Runtime
-  clientSendState clientSendServices clientConnection clientWire clientProtocol clientIngressRuntime
-  serverIngressRuntime serverPacketClient serverMessageClient serverSnapshotClient serverSnapshotState
-  serverWireRuntime serverWireClient serverTimeFn serverTimeContext clientFrameState serverTimeoutClient pump
+  /// When constructing this record, `create` supplies `sendState` for this member.
+  clientSendState
+  /// When constructing this record, `create` supplies `sendServices` for this member.
+  clientSendServices
+  /// When constructing this record, `create` supplies `connection` for this member.
+  clientConnection
+  /// When constructing this record, `create` supplies `clientWire` for this member.
+  clientWire
+  /// When constructing this record, `create` supplies `protocolState` for this member.
+  clientProtocol
+  /// When constructing this record, `create` supplies `clientIngressState` for this member.
+  clientIngressRuntime
+  /// When constructing this record, `create` supplies `serverIngressState` for this member.
+  serverIngressRuntime
+  /// When constructing this record, `create` supplies `packetClient` for this member.
+  serverPacketClient
+  /// When constructing this record, `create` supplies `messageClient` for this member.
+  serverMessageClient
+  /// When constructing this record, `create` supplies `snapshotClient` for this member.
+  serverSnapshotClient
+  /// When constructing this record, `create` supplies `snapshotState` for this member.
+  serverSnapshotState
+  /// When constructing this record, `create` supplies `serverWireRuntime` for this member.
+  serverWireRuntime
+  /// When constructing this record, `create` supplies `serverWireClient` for this member.
+  serverWireClient
+  /// Host callback for the server time operation; an unset callback leaves that host operation
+  /// unavailable.
+  serverTimeFn
+  /// Caller-supplied value passed unchanged to the callback that publishes updated server time.
+  serverTimeContext
+  /// Optional client-frame state synchronized with the current connection state before frame
+  /// processing.
+  clientFrameState
+  /// Optional server timeout record synchronized with the server-side packet client's connection state.
+  serverTimeoutClient
+  /// Packet-pump instance bound to the client and server sockets and drained by the combined network
+  /// loop.
+  pump
 end struct
 /// Stores network match loop snapshot bridge record, including `runtimeState`, `delegate`.
-struct SnapshotBridge runtimeState delegate end struct
+struct SnapshotBridge
+  /// When constructing this record, `snapshotServices` supplies `runtimeState` for this member.
+  runtimeState
+  /// When constructing this record, `snapshotServices` supplies `delegate` for this member.
+  delegate
+end struct
 /// Stores network match loop group record, including `runtimes`, `nextRuntime`.
-struct Group runtimes nextRuntime end struct
+struct Group
+  /// When constructing this record, `createGroup` supplies `runtimes` for this member.
+  runtimes
+  /// When constructing this record, `createGroup` supplies `0` for this member.
+  nextRuntime
+end struct
 /// Stores network match loop group step record, including `processed`, `runtimeIndex`, `step`.
-struct GroupStep processed runtimeIndex step end struct
+struct GroupStep
+  /// When constructing this record, `pumpGroupOnce` supplies `true` for this member.
+  processed
+  /// When constructing this record, `pumpGroupOnce` supplies `index` for this member.
+  runtimeIndex
+  /// When constructing this record, `pumpGroupOnce` supplies `step` for this member.
+  step
+end struct
 
 /// Adapts `mq3.client.network_ingress.clientPacket` to network match loop `receiveClient`, returning its result for `runtimeState.clientIngressRuntime, address, data`.
 /// @param runtimeState Record read through `runtimeState.clientIngressRuntime`.

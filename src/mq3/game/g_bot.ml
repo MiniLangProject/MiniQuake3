@@ -13,6 +13,7 @@ import mq3.qcommon.cvar as cv
 import mq3.compat.textnumbers as numbers
 import std.string as strings
 
+/// Console-command execution mode selecting append scheduling.
 const EXEC_APPEND = 2
 
 /// Apply `mq3.qcommon.cvar.find` while evaluating `trap_Cvar_VariableValue`. Return paths include `numbers.atof32(variable.string)`.

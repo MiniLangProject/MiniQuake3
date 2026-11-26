@@ -9,35 +9,115 @@ import mq3.client.key_binding_dispatch as dispatch
 import mq3.client.key_bindings_config as config
 import mq3.qcommon.command_buffer as command
 
+/// Capacity limit for the keys collection or bounded storage used by this client module.
 const MAX_KEYS=256
+/// Input-capture bit that routes keyboard events to the console subsystem.
 const KEYCATCH_CONSOLE=1
+/// UI keyboard-capture mask used when routing key and character events to the UI rather than gameplay
+/// bindings.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the message subsystem.
 const KEYCATCH_MESSAGE=4
+/// Input-capture bit that routes keyboard events to the cgame subsystem.
 const KEYCATCH_CGAME=8
+/// Engine key code for the char flag input, used by menu and client key-event handling.
 const K_CHAR_FLAG=1024
+/// Engine key code for the escape input, used by menu and client key-event handling.
 const K_ESCAPE=27
 // connstate_t is a public ABI shared with client.h and ui_public.h.  Keep the
 // explicit Baseq3 ordinals here because routing below depends on the otherwise
 // easy-to-confuse DISCONNECTED, PRIMED and CINEMATIC values.
 const CA_UNINITIALIZED=0
+/// Client connection state with no active server connection.
 const CA_DISCONNECTED=1
+/// Client connection state while waiting for authorization to contact the server.
 const CA_AUTHORIZING=2
+/// Client connection state while requesting a challenge from the server.
 const CA_CONNECTING=3
+/// Client connection state while replying to the server challenge and requesting connection.
 const CA_CHALLENGING=4
+/// Native post-handshake connection state retained by the keyboard runtime for compatibility with
+/// client connection-state values.
 const CA_CONNECTED=5
+/// Client connection state while level media and game state are being loaded.
 const CA_LOADING=6
+/// Client connection state with game state loaded, awaiting a playable snapshot.
 const CA_PRIMED=7
+/// Connection-state value for normal gameplay after game-state loading, defined for routing escape and
+/// key events according to connection progress.
 const CA_ACTIVE=8
+/// Client connection state used for fullscreen cinematic playback.
 const CA_CINEMATIC=9
+/// Smallchar font metric controlling width in virtual UI coordinates.
 const SMALLCHAR_WIDTH=8
+/// Bigchar font metric controlling width in virtual UI coordinates.
 const BIGCHAR_WIDTH=16
 
 /// Stores engine client keys runtime event record, including `kind`, `key`, `down`, `text`.
-struct Event kind key down text end struct
+struct Event
+  /// Keyboard-routing event category identifying the destination or action recorded for a key or
+  /// character event.
+  kind
+  /// When constructing this record, `event` supplies `key` for this member.
+  key
+  /// When constructing this record, `event` supplies `down` for this member.
+  down
+  /// Console feedback or expanded key-binding command carried by the keyboard runtime event.
+  text
+end struct
 /// Stores engine client keys runtime draw result record, including `text`, `x`, `y`, `size`, `cursorVisible`, `cursorX` and additional values.
-struct DrawResult text x y size cursorVisible cursorX cursorChar prestep end struct
+struct DrawResult
+  /// Visible, horizontally scrolled substring of the edited field prepared for drawing.
+  text
+  /// Horizontal coordinate of the visible editable text produced by the keyboard field renderer.
+  x
+  /// Vertical coordinate of the visible editable text produced by the keyboard field renderer.
+  y
+  /// When constructing this record, `Field_VariableSizeDraw` supplies `size` for this member.
+  size
+  /// When constructing this record, `Field_VariableSizeDraw` supplies `cursorVisible` for this member.
+  cursorVisible
+  /// Horizontal position of the pointer in the local display coordinate system.
+  cursorX
+  /// When constructing this record, `Field_VariableSizeDraw` supplies `cursorChar` for this member.
+  cursorChar
+  /// When constructing this record, `Field_VariableSizeDraw` supplies `prestep` for this member.
+  prestep
+end struct
 /// Stores engine client keys runtime runtime wiring and state, including `keyState`, `consoleState`, `repeats`, `anyKeyDown`, `events`, `commandState` and additional values.
-struct Runtime keyState consoleState repeats anyKeyDown events commandState bindingState archiveModified demoPlaying cameraMode initialized end struct
+struct Runtime
+  /// When constructing this record, `create` supplies `keyState` for this member. Used by `syncCatcher`
+  /// and `Key_IsDown` during subsequent processing.
+  keyState
+  /// When constructing this record, `create` supplies `consoleState` for this member. Used by
+  /// `syncCatcher` and `Key_SetOverstrikeMode` during subsequent processing.
+  consoleState
+  /// When constructing this record, `create` supplies `array(MAX_KEYS,0)` for this member. Used by
+  /// `CL_KeyEvent` and `Key_ClearStates` during subsequent processing.
+  repeats
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_KeyEvent` and
+  /// `Key_ClearStates` during subsequent processing.
+  anyKeyDown
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `event`
+  /// during subsequent processing.
+  events
+  /// When constructing this record, `create` supplies `commandState` for this member. Used by
+  /// `CL_InitKeyCommands` during subsequent processing.
+  commandState
+  /// When constructing this record, `create` supplies `config.create(keyState)` for this member. Used
+  /// by `Key_WriteBindings` during subsequent processing.
+  bindingState
+  /// When constructing this record, `create` supplies `false` for this member. Used by `Key_SetBinding`
+  /// during subsequent processing.
+  archiveModified
+  /// True while the client receives its game data from a recorded demo.
+  demoPlaying
+  /// When constructing this record, `create` supplies `0` for this member. Used by `CL_KeyEvent` during
+  /// subsequent processing.
+  cameraMode
+  /// True after the keyboard runtime's commands and bindings have been initialized.
+  initialized
+end struct
 
 /// Calls `mq3.vm.cgame_key_traps.create`, `mq3.client.console_input.create`, `mq3.qcommon.command_buffer.create` and additional helpers from engine client keys runtime `create`.
 /// @param width Width in the coordinate space used by `create`.

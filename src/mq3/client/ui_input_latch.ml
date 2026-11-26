@@ -2,10 +2,18 @@
 // Frame-stable Win32 key edges for the polling interface used by ui.qvm.
 package mq3.client.ui_input_latch
 
+/// Platform input-event tag selecting a key press or release.
 const INPUT_KEY=1
 
 /// Stores UI input latch state, including `down`, `pulse`.
-struct State down pulse end struct
+struct State
+  /// When constructing this record, `create` supplies `array(keyCount,false)` for this member. Used by
+  /// `observe` and `keyDown` during subsequent processing.
+  down
+  /// When constructing this record, `create` supplies `array(keyCount,false)` for this member. Used by
+  /// `beginFrame` and `observe` during subsequent processing.
+  pulse
+end struct
 
 /// Calls `mq3.client.ui_input_latch.State` from UI input latch `create`. The final path returns `State(array(keyCount,false),array(keyCount,false))`.
 /// @param keyCount Value used by `if typeof(keyCount)!="int" or keyCount<1 then return error(7703,"UI input latch: invalid key capacity") end if`.

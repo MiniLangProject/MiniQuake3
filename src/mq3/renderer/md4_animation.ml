@@ -6,19 +6,65 @@ package mq3.renderer.md4_animation
 import mq3.compat.numeric as n
 
 /// Data record for `mq3.renderer.md4_animation.Bone`; groups `matrix`.
-struct Bone matrix end struct
+struct Bone
+  /// Transformation matrix used to place or deform the geometry.
+  matrix
+end struct
 /// Data record for `mq3.renderer.md4_animation.Weight`; groups `boneIndex`, `boneWeight`, `offset`.
-struct Weight boneIndex boneWeight offset end struct
+struct Weight
+  /// Index of the skeleton bone contributing this vertex weight.
+  boneIndex
+  /// Blend weight of the bone's contribution to the animated vertex.
+  boneWeight
+  /// Vertex offset in the coordinate system of the influencing bone.
+  offset
+end struct
 /// Data record for `mq3.renderer.md4_animation.Vertex`; groups `normal`, `texCoords`, `weights`.
-struct Vertex normal texCoords weights end struct
+struct Vertex
+  /// Unskinned vertex normal transformed by the weighted skeletal bone matrices.
+  normal
+  /// Texture coordinates stored with the unskinned skeletal vertex and preserved during bone
+  /// deformation.
+  texCoords
+  /// Bone influences used to deform this skeletal vertex.
+  weights
+end struct
 /// Data record for `mq3.renderer.md4_animation.Surface`; groups `shaderIndex`, `triangles`, `vertices`.
-struct Surface shaderIndex triangles vertices end struct
+struct Surface
+  /// Index of the resolved shader in the renderer's shader table.
+  shaderIndex
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Skeletal vertex definitions containing texture coordinates, normals, and bone weights.
+  vertices
+end struct
 /// Data record for `mq3.renderer.md4_animation.Frame`; groups `bones`.
-struct Frame bones end struct
+struct Frame
+  /// Bone transformation matrices for one skeletal animation frame.
+  bones
+end struct
 /// Data record for `mq3.renderer.md4_animation.DrawSurface`; groups `surfaceIndex`, `shaderIndex`, `fogNum`, `dlightMap`.
-struct DrawSurface surfaceIndex shaderIndex fogNum dlightMap end struct
+struct DrawSurface
+  /// Index of the source surface within the model or world.
+  surfaceIndex
+  /// Index of the resolved shader in the renderer's shader table.
+  shaderIndex
+  /// Fog volume number encoded or used by the draw surface.
+  fogNum
+  /// Dynamic-light state encoded into the draw-surface sort key.
+  dlightMap
+end struct
 /// Data record for `mq3.renderer.md4_animation.AnimatedSurface`; groups `positions`, `normals`, `texCoords`, `indexes`.
-struct AnimatedSurface positions normals texCoords indexes end struct
+struct AnimatedSurface
+  /// Vertex positions obtained by accumulating the weighted bone transformations.
+  positions
+  /// Vertex normals used when lighting or transforming the geometry.
+  normals
+  /// Texture-coordinate array paired with the bone-transformed surface vertices.
+  texCoords
+  /// Skeletal surface triangle indices referencing the bone-transformed position array.
+  indexes
+end struct
 
 /// Creates error `7760` with message `"MD4 animation: "+message`.
 /// @param message Input used in the result expression `error(7760,"MD4 animation: "+message)`.

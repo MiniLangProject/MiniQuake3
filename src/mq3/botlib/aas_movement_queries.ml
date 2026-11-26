@@ -3,8 +3,11 @@
 // Small complete movement queries from be_aas_move.c.
 package mq3.botlib.aas_movement_queries
 
+/// Collision contents bit marking lava.
 const CONTENTS_LAVA=8
+/// Collision contents bit marking slime.
 const CONTENTS_SLIME=16
+/// Collision contents bit marking water.
 const CONTENTS_WATER=32
 
 /// Test whether the point contents permit swimming under the AAS movement rules.

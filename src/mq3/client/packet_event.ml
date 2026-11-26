@@ -5,14 +5,24 @@ package mq3.client.packet_event
 import mq3.client.connectionless as clientConnectionless
 import mq3.compat.numeric as numeric
 
+/// Connection-state value for a completed handshake before game-state loading, defined for validating
+/// whether sequenced server packets may be processed.
 const CA_CONNECTED=5
 
 /// Stores packet event state, including `connection`, `realtime`, `serverMessageSequence`, `demoRecording`, `demoWaiting`.
 struct State
+  /// When constructing this record, `create` supplies `connectionState` for this member. Used by
+  /// `packetEvent` during subsequent processing.
   connection
+  /// Local client timestamp in milliseconds associated with incoming packet processing.
   realtime
+  /// Highest server network-message sequence observed by the client.
   serverMessageSequence
+  /// When constructing this record, `create` supplies `false` for this member. Used by `packetEvent`
+  /// during subsequent processing.
   demoRecording
+  /// When constructing this record, `create` supplies `false` for this member. Used by `packetEvent`
+  /// during subsequent processing.
   demoWaiting
 end struct
 
@@ -24,7 +34,19 @@ function create(connectionState)
 end function
 
 /// Stores packet event host-service callbacks, including `connectionlessHost`, `processFn`, `parseFn`, `demoFn`, `context`.
-struct Services connectionlessHost processFn parseFn demoFn context end struct
+struct Services
+  /// When constructing this record, `services` supplies `connectionlessHost` for this member.
+  connectionlessHost
+  /// Host callback for the process operation; an unset callback leaves that host operation unavailable.
+  processFn
+  /// Host callback for the parse operation; an unset callback leaves that host operation unavailable.
+  parseFn
+  /// Host callback for the demo operation; an unset callback leaves that host operation unavailable.
+  demoFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for sequenced client packet
+  /// processing.
+  context
+end struct
 /// Creates a `mq3.client.packet_event.Services` record. Assigns `connectionlessHost` from `connectionlessHost`.
 /// @param connectionlessHost Value used to initialize `Services.connectionlessHost`.
 function services(connectionlessHost) return Services(connectionlessHost,void,void,void,void) end function

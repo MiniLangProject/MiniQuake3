@@ -3,15 +3,49 @@
 // Native semantic port of code/q3_ui/ui_mods.c.
 package mq3.client.ui_mods
 import std.string as strings
+/// Activation callback event accepted by the game-mod selection menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Event identifier of the Back control used to leave the game-mod selection menu and return to its
+/// parent menu.
 const ID_BACK=10
+/// Menu control identifier routed to the go action by the menu event handler.
 const ID_GO=11
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=12
+/// Capacity limit for the mods collection or bounded storage used by this client module.
 const MAX_MODS=64
 /// Stores UI mods mod entry record, including `game`, `description`.
-struct ModEntry game description end struct
+struct ModEntry
+  /// When constructing this record, `parseInfo` supplies `game` for this member.
+  game
+  /// When constructing this record, `parseInfo` supplies `description` for this member.
+  description
+end struct
 /// Stores UI mods mods menu record, including `wrapAround`, `fullscreen`, `entries`, `selected`, `assets`, `cvarWrites` and additional values.
-struct ModsMenu wrapAround fullscreen entries selected assets cvarWrites commands actions end struct
+struct ModsMenu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the game-mod selection
+  /// menu.
+  wrapAround
+  /// Whether the mod-selection menu covers the entire UI instead of appearing over the underlying game
+  /// view.
+  fullscreen
+  /// When constructing this record, `loadMods` supplies `[ModEntry("","Quake III Arena")]` for this
+  /// member.
+  entries
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// Media resources retained for registering and drawing the artwork used by the game-mod selection
+  /// menu.
+  assets
+  /// Cvar name/value changes queued by the game-mod selection menu for the host to apply.
+  cvarWrites
+  /// When constructing this record, `loadMods` supplies an empty list for this member.
+  commands
+  /// Host requests queued while enumerating game modifications and switching the active game directory,
+  /// retained in request order.
+  actions
+end struct
 // UI_Mods_ParseInfos
 /// @param menu Mutable UI mods record/storage; this routine assigns `menu.entries`.
 /// @param modDir Value used by `game=modDir`.

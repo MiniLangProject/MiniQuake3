@@ -2,17 +2,60 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Native semantic port of code/q3_ui/ui_network.c.
 package mq3.client.ui_network_options
+/// Activation callback event accepted by the network-rate options menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the graphics action by the menu event handler.
 const ID_GRAPHICS=10
+/// Menu control identifier routed to the display action by the menu event handler.
 const ID_DISPLAY=11
+/// Menu control identifier routed to the sound action by the menu event handler.
 const ID_SOUND=12
+/// Menu control identifier routed to the network action by the menu event handler.
 const ID_NETWORK=13
+/// Menu control identifier routed to the rate action by the menu event handler.
 const ID_RATE=14
+/// Event identifier of the Back control used to leave the network-rate options menu and return to its
+/// parent menu.
 const ID_BACK=15
 /// Stores UI network options menu item, including `id`, `kind`, `name`, `x`, `y`, `value`.
-struct Item id kind name x y value end struct
+struct Item
+  /// Event-routing identifier of this selectable control in the network-rate options menu.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork name identifying a control in the network-options menu.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the network-rate options
+  /// menu.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the network-rate options
+  /// menu.
+  y
+  /// Current or default setting value held by this configuration variable or UI control.
+  value
+end struct
 /// Stores UI network options menu, including `wrapAround`, `fullscreen`, `cursor`, `items`, `assets`, `actions` and additional values.
-struct Menu wrapAround fullscreen cursor items assets actions cvarWrites end struct
+struct Menu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the network-rate options
+  /// menu.
+  wrapAround
+  /// Whether the network-options menu covers the entire UI instead of appearing over the underlying
+  /// game view.
+  fullscreen
+  /// When constructing this record, `init` supplies `ID_NETWORK` for this member.
+  cursor
+  /// Ordered child items participating in this menu's rendering and navigation.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the network-rate options
+  /// menu.
+  assets
+  /// Host requests queued while choosing and applying the network connection rate, retained in request
+  /// order.
+  actions
+  /// Cvar name/value changes queued by the network-rate options menu for the host to apply.
+  cvarWrites
+end struct
 /// Creates a `mq3.client.ui_network_options.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
 /// @param id Value used to initialize `Item.id`.
 /// @param kind Value used to initialize `Item.kind`.

@@ -9,18 +9,55 @@ import mq3.botlib.ai_resource_pools as resources
 import mq3.compat.textnumbers as numbers
 import std.string as strings
 
+/// Bot-library syscall identifier for get next camp spot goal.
 const OP_GET_NEXT_CAMP_SPOT_GOAL=567
+/// Bot-library syscall identifier for get map location goal.
 const OP_GET_MAP_LOCATION_GOAL=568
+/// Maximum character capacity of a BSP entity key or value.
 const MAX_EPAIRKEY=botlibHeaders.MAX_EPAIRKEY
 
 /// `MapLocation` record for ai map goals, containing `name` and `goal`.
-struct MapLocation name goal end struct
+struct MapLocation
+  /// Map-authored name used to find this location goal.
+  name
+  /// Bot goal record describing the location to reach.
+  goal
+end struct
 /// `CampSpot` record for ai map goals, containing `name`, `range`, `weight`, `wait` and `random` and related fields.
-struct CampSpot name range weight wait random goal end struct
+struct CampSpot
+  /// Map-authored name identifying this camp spot.
+  name
+  /// Distance range associated with the camp spot.
+  range
+  /// Configured desirability weight of this map camp spot.
+  weight
+  /// Configured waiting interval before the operation or camp behavior continues.
+  wait
+  /// Random waiting-time variation configured for the camp spot.
+  random
+  /// Bot goal record describing the location to reach.
+  goal
+end struct
 /// `State` record for ai map goals, containing `aas`, `bspEntities`, `locations`, `campSpots` and `initialized`.
-struct State aas bspEntities locations campSpots initialized end struct
+struct State
+  /// AAS navigation runtime used for area and route queries.
+  aas
+  /// Parsed key/value definitions from the BSP entity lump.
+  bspEntities
+  /// Named map-location goals parsed from BSP entities.
+  locations
+  /// Camp goals parsed from BSP entities.
+  campSpots
+  /// True after map locations and camp spots have been collected.
+  initialized
+end struct
 /// `CampResult` record for ai map goals, containing `next` and `goal`.
-struct CampResult next goal end struct
+struct CampResult
+  /// Enumeration index to use when requesting the following camp goal.
+  next
+  /// Bot goal record describing the location to reach.
+  goal
+end struct
 
 /// Create a `mq3.botlib.ai_map_goals.State` record with the declared empty defaults.
 function create() return State(void,[],[],[],false) end function

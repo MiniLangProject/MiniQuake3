@@ -17,11 +17,20 @@ extern function jpegInfoNative(data as ptr,size as i32,metadata as ptr) from "pl
 /// @returns 1 on successful decoding; 0 on invalid input, insufficient storage, or decoder failure.
 extern function jpegDecodeNative(data as ptr,size as i32,rgba as ptr,capacity as i32) from "playable_window.dll" symbol "playable_window_decode_jpeg" returns i32
 
+/// Largest image width or height accepted by the decoder.
 const MAX_DIMENSION=4096
+/// Maximum decoded pixel count accepted by the image loader.
 const MAX_PIXELS=16777216
 
 /// Data record for `mq3.platform.playable_jpeg.Image`; groups `width`, `height`, `pixels`.
-struct Image width height pixels end struct
+struct Image
+  /// Width in pixels of the JPEG image returned by the native decoder.
+  width
+  /// Height in pixels of the JPEG image returned by the native decoder.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+end struct
 
 /// Builds `mq3.platform.playable_jpeg.Image` for `mq3.platform.playable_jpeg.decode`.
 /// @param data Input tested by `data==void or typeof(data)!="bytes" or len(data)<4`.

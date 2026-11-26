@@ -8,17 +8,77 @@ import mq3.client.ui_qmenu as qmenu
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Memory threshold below which client media loading should be deferred or reduced.
 const LOW_MEMORY=5242880
+/// Number of model-preview columns shown on one player-selection page.
 const PLAYERGRID_COLS=4
+/// Number of model-preview rows shown on one player-selection page.
 const PLAYERGRID_ROWS=4
+/// Capacity limit for the modelsperpage collection or bounded storage used by this client module.
 const MAX_MODELSPERPAGE=16
+/// Capacity limit for the playermodels collection or bounded storage used by this client module.
 const MAX_PLAYERMODELS=256
+/// Menu control identifier routed to the prevpage action by the menu event handler.
 const ID_PREVPAGE=100
+/// Menu control identifier routed to the nextpage action by the menu event handler.
 const ID_NEXTPAGE=101
+/// Event identifier of the Back control used to leave the player-model and skin selection menu and
+/// return to its parent menu.
 const ID_BACK=102
 
 /// Stores UI playermodel state, including `source`, `menu`, `pics`, `picbuttons`, `left`, `right` and additional values.
-struct State source menu pics picbuttons left right back player playerinfo nummodels modelnames modelpage numpages modelskin selectedmodel modelname skinname playername actions cvarWrites popped pushed memoryRemaining drawRows end struct
+struct State
+  /// When constructing this record, `create` supplies `source` for this member.
+  source
+  /// When constructing this record, `create` supplies `qmenu.menu(true,true)` for this member.
+  menu
+  /// Bitmap widgets showing the model and skin icons on the current selection page.
+  pics
+  /// Focusable button widgets paired with the model icons, enabled only for populated page slots.
+  picbuttons
+  /// Left boundary of the interactive or clipped region.
+  left
+  /// Right boundary of the interactive or clipped region.
+  right
+  /// Back-button widget that saves the selected model and leaves the model-selection menu.
+  back
+  /// Noninteractive bitmap widget reserving the rectangle used for the animated player preview.
+  player
+  /// When constructing this record, `create` supplies `players.create()` for this member.
+  playerinfo
+  /// Number of discovered model/skin icon entries available to the selection grid.
+  nummodels
+  /// Discovered model/skin icon paths used to populate the paged selection grid.
+  modelnames
+  /// Zero-based page of model icons currently displayed in the selection grid.
+  modelpage
+  /// Number of pages required to display all discovered model/skin icons.
+  numpages
+  /// When constructing this record, `create` supplies an empty string for this member.
+  modelskin
+  /// Index of the selected model/skin entry across all grid pages.
+  selectedmodel
+  /// When constructing this record, `create` supplies an empty string for this member.
+  modelname
+  /// When constructing this record, `create` supplies an empty string for this member.
+  skinname
+  /// When constructing this record, `create` supplies an empty string for this member.
+  playername
+  /// Host requests queued while paging model icons, previewing a model, and saving the selected skin,
+  /// retained in request order.
+  actions
+  /// Cvar name/value changes queued by the player-model and skin selection menu for the host to apply.
+  cvarWrites
+  /// Records a request to remove the player-model and skin selection menu from the active menu stack.
+  popped
+  /// Records that the player-model and skin selection menu has been opened on the active menu stack.
+  pushed
+  /// When constructing this record, `create` supplies `LOW_MEMORY+1` for this member.
+  memoryRemaining
+  /// Most recent player-preview draw actions, or the low-memory message when preview rendering is
+  /// unavailable.
+  drawRows
+end struct
 /// Lists the 10 UI playermodel art list strings in their declared order, beginning with `"menu/art/back_0"`, `"menu/art/back_1"`, `"menu/art/opponents_select"`.
 function artList() return ["menu/art/back_0","menu/art/back_1","menu/art/opponents_select","menu/art/opponents_selected","menu/art/frame1_l","menu/art/frame1_r","menu/art/player_models_ports","menu/art/gs_arrows_0","menu/art/gs_arrows_l","menu/art/gs_arrows_r"] end function
 /// Creates a `mq3.client.ui_playermodel.State` record. Assigns `source` from `source`.

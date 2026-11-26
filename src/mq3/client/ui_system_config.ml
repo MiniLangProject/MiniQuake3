@@ -2,17 +2,57 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Native semantic port of code/q3_ui/ui_options.c.
 package mq3.client.ui_system_config
+/// Activation callback event accepted by the system-configuration submenu before it processes the
+/// selected control action.
 const QM_ACTIVATED=3
+/// Connection-state value for a completed handshake before game-state loading, defined for retaining
+/// the native connection-state vocabulary used by system menus.
 const CA_CONNECTED=5
+/// Menu control identifier routed to the graphics action by the menu event handler.
 const ID_GRAPHICS=10
+/// Menu control identifier routed to the display action by the menu event handler.
 const ID_DISPLAY=11
+/// Menu control identifier routed to the sound action by the menu event handler.
 const ID_SOUND=12
+/// Menu control identifier routed to the network action by the menu event handler.
 const ID_NETWORK=13
+/// Event identifier of the Back control used to leave the system-configuration submenu and return to
+/// its parent menu.
 const ID_BACK=14
 /// Stores UI system config menu item, including `id`, `kind`, `name`, `x`, `y`.
-struct Item id kind name x y end struct
+struct Item
+  /// Event-routing identifier of this selectable control in the system-configuration submenu.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork name identifying a control in the system-configuration menu.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the system-configuration
+  /// submenu.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the system-configuration
+  /// submenu.
+  y
+end struct
 /// Stores UI system config menu, including `wrapAround`, `fullscreen`, `items`, `assets`, `actions`, `pushed`.
-struct Menu wrapAround fullscreen items assets actions pushed end struct
+struct Menu
+  /// Enables cyclic keyboard-focus navigation among the selectable entries of the system-configuration
+  /// submenu.
+  wrapAround
+  /// Whether the system-configuration menu covers the entire UI instead of appearing over the
+  /// underlying game view.
+  fullscreen
+  /// Ordered child items participating in this menu's rendering and navigation.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the system-configuration
+  /// submenu.
+  assets
+  /// Host requests queued while opening graphics, display, sound, and network option screens, retained
+  /// in request order.
+  actions
+  /// Records that the system-configuration submenu has been opened on the active menu stack.
+  pushed
+end struct
 /// Creates a `mq3.client.ui_system_config.Item` record. Assigns `id` from `id`, `kind` from `kind`, `name` from `name`, `x` from `x`.
 /// @param id Value used to initialize `Item.id`.
 /// @param kind Value used to initialize `Item.kind`.

@@ -3,15 +3,70 @@
 // Safe native semantic port of code/botlib/l_memory.c.
 package mq3.botlib.l_memory
 
+/// Allocation-header marker identifying ordinary botlib memory.
 const MEM_ID=305419896
+/// Allocation-header marker identifying hunk-backed botlib memory.
 const HUNK_ID=2271560481
 
 /// `MemoryBlock` record for l memory, containing `id`, `handle`, `size`, `payloadSize` and `data` and related fields.
-struct MemoryBlock id handle size payloadSize data cleared label file line end struct
+struct MemoryBlock
+  /// Allocation-header marker distinguishing ordinary and hunk-backed memory.
+  id
+  /// Managed identifier used to find and release this allocation.
+  handle
+  /// Accounted block byte size, including the configured memory header.
+  size
+  /// Byte length of the usable data in this allocation.
+  payloadSize
+  /// Usable bytes owned by this managed allocation.
+  data
+  /// True when the allocation was initialized with zero-filled bytes.
+  cleared
+  /// Human-readable label identifying the allocation.
+  label
+  /// Source file associated with the diagnostic or allocation.
+  file
+  /// Source-line number associated with the token, diagnostic, or allocation.
+  line
+end struct
 /// `Action` record for l memory, containing `boundary`, `kind`, `handle`, `size` and `message` and related fields.
-struct Action boundary kind handle size message dispatched end struct
+struct Action
+  /// Subsystem boundary at which this host action must be dispatched.
+  boundary
+  /// Memory-manager operation represented by this host action.
+  kind
+  /// Managed allocation handle affected by the operation.
+  handle
+  /// Byte count supplied with the recorded memory-allocation or release action.
+  size
+  /// Text associated with the reported event or diagnostic.
+  message
+  /// True after the recorded action has been delivered to the host.
+  dispatched
+end struct
 /// `State` record for l memory, containing `blocks`, `nextHandle`, `headerSize`, `allocatedmemory` and `totalmemorysize` and related fields.
-struct State blocks nextHandle headerSize allocatedmemory totalmemorysize numblocks availableBytes actions diagnostics memoryManager end struct
+struct State
+  /// Managed memory blocks currently tracked by the allocator.
+  blocks
+  /// Handle to assign to the next allocated managed resource.
+  nextHandle
+  /// Bytes reserved for allocation metadata before the usable payload.
+  headerSize
+  /// Bytes currently charged to active botlib allocations.
+  allocatedmemory
+  /// Total memory size recorded by the botlib allocator.
+  totalmemorysize
+  /// Number of active memory blocks tracked by the botlib allocator.
+  numblocks
+  /// Remaining host-memory budget available for botlib allocations.
+  availableBytes
+  /// Recorded allocation, release, and memory-diagnostic requests for host dispatch.
+  actions
+  /// Diagnostics collected while processing the subsystem's requests.
+  diagnostics
+  /// Host or managed allocator servicing botlib memory requests.
+  memoryManager
+end struct
 
 /// Create a `mq3.botlib.l_memory.State` record, initializing `nextHandle` as `1`, `headerSize` as `20` and `availableBytes` from `availableBytes`.
 /// @param availableBytes Initial value stored in `mq3.botlib.l_memory.State.availableBytes`.

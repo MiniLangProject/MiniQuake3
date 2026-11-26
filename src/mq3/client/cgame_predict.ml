@@ -13,21 +13,106 @@ import mq3.game.movement as movement
 import mq3.game.trajectory as trajectory
 import mq3.game.jumppad as jumppad
 
+/// Number of recent user commands retained in the command-history ring.
 const CMD_BACKUP=64
+/// Encoded solid value indicating that the entity uses an inline brush collision model.
 const SOLID_BMODEL=0xffffff
+/// Combined collision-content mask used by player movement traces.
 const MASK_PLAYERSOLID=0x2010001
+/// Collision-content bit identifying body volumes or surfaces during client traces.
 const CONTENTS_BODY=0x2000000
+/// Player-movement state flag indicating follow.
 const PMF_FOLLOW=0x1000
+/// Entity-state flag selecting nodraw behavior in client presentation.
 const EF_NODRAW=0x80
 
 /// Stores client game predict entity record, including `state`, `lerpOrigin`, `lerpAngles`, `miscTime`.
-struct Entity state lerpOrigin lerpAngles miscTime end struct
+struct Entity
+  /// When constructing this record, `entity` supplies `source` for this member.
+  state
+  /// Entity position after snapshot interpolation and smoothing.
+  lerpOrigin
+  /// Entity orientation after snapshot interpolation and smoothing.
+  lerpAngles
+  /// When constructing this record, `entity` supplies `-1` for this member.
+  miscTime
+end struct
 /// Stores client game predict host-service callbacks, including `worldTraceFn`, `entityTraceFn`, `worldPointFn`, `entityPointFn`, `triggerTouchFn`, `moverAdjustFn` and additional values.
-struct Services worldTraceFn entityTraceFn worldPointFn entityPointFn triggerTouchFn moverAdjustFn context end struct
+struct Services
+  /// Host callback for the world trace operation; an unset callback leaves that host operation
+  /// unavailable.
+  worldTraceFn
+  /// Host callback for the entity trace operation; an unset callback leaves that host operation
+  /// unavailable.
+  entityTraceFn
+  /// Host callback for the world point operation; an unset callback leaves that host operation
+  /// unavailable.
+  worldPointFn
+  /// Host callback for the entity point operation; an unset callback leaves that host operation
+  /// unavailable.
+  entityPointFn
+  /// Host callback for the trigger touch operation; an unset callback leaves that host operation
+  /// unavailable.
+  triggerTouchFn
+  /// Host callback for the mover adjust operation; an unset callback leaves that host operation
+  /// unavailable.
+  moverAdjustFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for local player-movement
+  /// prediction.
+  context
+end struct
 /// Stores client game predict state, including `predicted`, `valid`, `solidEntities`, `triggerEntities`, `physicsTime`, `hyperspace` and additional values.
-struct State predicted valid solidEntities triggerEntities physicsTime hyperspace predictedError predictedErrorTime moved traceCount pointCount predictions transitions lastMode packetBackupExceeded warnings end struct
+struct State
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `touchItem` and `touchTriggerPrediction` during subsequent processing.
+  predicted
+  /// True when the stored data passed the validation required by its consumer.
+  valid
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `buildSolidList` and `trace` during subsequent processing.
+  solidEntities
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `buildSolidList` and `touchTriggerPrediction` during subsequent processing.
+  triggerEntities
+  /// Snapshot time selected as the basis for player-state prediction.
+  physicsTime
+  /// True when prediction has entered a teleport trigger requiring the hyperspace view effect.
+  hyperspace
+  /// Positional discrepancy between predicted and authoritative player state.
+  predictedError
+  /// Timestamp from which the stored player-prediction error is smoothed away.
+  predictedErrorTime
+  /// When constructing this record, `create` supplies `false` for this member. Used by `predict` during
+  /// subsequent processing.
+  moved
+  /// When constructing this record, `create` supplies `0` for this member. Used by `trace` during
+  /// subsequent processing.
+  traceCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `pointContents`
+  /// during subsequent processing.
+  pointCount
+  /// When constructing this record, `create` supplies `0` for this member. Used by `predict` during
+  /// subsequent processing.
+  predictions
+  /// When constructing this record, `create` supplies `0` for this member. Used by `predict` during
+  /// subsequent processing.
+  transitions
+  /// When constructing this record, `create` supplies `"none"` for this member. Used by `predict`
+  /// during subsequent processing.
+  lastMode
+  /// When constructing this record, `create` supplies `false` for this member. Used by `predict` during
+  /// subsequent processing.
+  packetBackupExceeded
+  /// Nonfatal diagnostic messages collected while processing the input.
+  warnings
+end struct
 /// Stores client game predict run context record, including `observer`, `services`.
-struct RunContext observer services end struct
+struct RunContext
+  /// When constructing this record, `predict` supplies `state` for this member.
+  observer
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+end struct
 
 /// Creates a `mq3.client.cgame_predict.State` record. Initializes the record with the defaults written in this constructor.
 function create()

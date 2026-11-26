@@ -4,11 +4,24 @@ package mq3.audio.snd_raw_stream
 
 import mq3.compat.numeric as numeric
 
+/// Number of mono sample positions in each raw-stream ring buffer.
 const MAX_RAW_SAMPLES=16384
+/// Bit mask that wraps absolute raw-stream sample positions into the ring buffer.
 const RAW_MASK=MAX_RAW_SAMPLES-1
 
 /// State record for audio.snd_raw_stream, containing `outputRate`, `soundTime`, `rawEnd`, `left`, `right`.
-struct State outputRate soundTime rawEnd left right end struct
+struct State
+  /// Output sample rate in hertz.
+  outputRate
+  /// Absolute sample position currently consumed by playback.
+  soundTime
+  /// Exclusive absolute sample position through which raw input has been buffered.
+  rawEnd
+  /// Ring buffer of left-channel raw sample values.
+  left
+  /// Ring buffer of right-channel raw sample values.
+  right
+end struct
 
 /// Create the audio.snd_raw_stream error for `fail` with 7712 and the supplied diagnostic text.
 /// @param message Message used in `("S_RawSamples: " + message)` and `error(7712, ("S_RawSamples: " + message))`.

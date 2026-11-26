@@ -6,24 +6,68 @@ import mq3.client.playable_viewer as viewer
 import mq3.platform.playable_window as window
 import mq3.compat.numeric as numeric
 
+/// Projectile state while the projectile continues moving through the world.
 const STATE_FLYING=1
+/// Projectile state after collision, while its impact presentation is active.
 const STATE_IMPACT=2
+/// Projectile presentation style selecting the rocket model, trail, and impact family.
 const STYLE_ROCKET=1
+/// Projectile presentation style selecting the plasma model, trail, and impact family.
 const STYLE_PLASMA=2
+/// Projectile presentation style selecting the grenade model, trail, and impact family.
 const STYLE_GRENADE=3
+/// Projectile presentation style selecting the bfg model, trail, and impact family.
 const STYLE_BFG=4
+/// Effect command kind selecting the line rendering operation.
 const COMMAND_LINE=1
+/// Effect command kind selecting the glow rendering operation.
 const COMMAND_GLOW=2
+/// Effect command kind selecting the cross rendering operation.
 const COMMAND_CROSS=3
+/// Default impact duration in milliseconds when the caller supplies no override.
 const DEFAULT_IMPACT_MILLISECONDS=360
+/// Upper duration bound in milliseconds for impact processing.
 const MAX_IMPACT_MILLISECONDS=1200
 
 // A gameplay system can create one of these directly from its current entity
 // snapshot. Flying snapshots have no deadline; impact snapshots are half-open
 // timed events in the interval [eventAt, expiresAt).
-struct ProjectileSnapshot entityId style previousPosition position normal state eventAt expiresAt end struct
+struct ProjectileSnapshot
+  /// When constructing this record, `snapshot` supplies `entityId` for this member.
+  entityId
+  /// Projectile style used to choose the fallback effect's color and appearance.
+  style
+  /// When constructing this record, `snapshot` supplies `copyPoint(previousPosition)` for this member.
+  previousPosition
+  /// When constructing this record, `snapshot` supplies `copyPoint(position)` for this member.
+  position
+  /// Direction or impact normal used to orient the fallback projectile effect's short line segment.
+  normal
+  /// When constructing this record, `snapshot` supplies `state` for this member.
+  state
+  /// When constructing this record, `snapshot` supplies `eventAt` for this member.
+  eventAt
+  /// When constructing this record, `snapshot` supplies `expiresAt` for this member.
+  expiresAt
+end struct
 /// Stores playable projectile view effect command record, including `kind`, `a`, `b`, `radius`, `red`, `green` and additional values.
-struct EffectCommand kind a b radius red green blue end struct
+struct EffectCommand
+  /// Drawing primitive selector choosing a line, impact cross, or glow for the fallback projectile
+  /// effect.
+  kind
+  /// Alpha component controlling opacity or blending.
+  a
+  /// Blue component of the stored color.
+  b
+  /// Screen-space radius in pixels of the projected projectile glow or impact cross.
+  radius
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
 /// Computes `value!=void and typeof(value)=="array" and len(value)==3` for playable projectile view `validPoint`.
 /// @param value Sequence whose length/content is inspected by `validPoint`.

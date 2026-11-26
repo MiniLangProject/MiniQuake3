@@ -12,71 +12,264 @@ import mq3.botlib.elementary_actions as moveEa
 import mq3.compat.numeric as n
 import mq3.shared.math as moveQMath
 
+/// Bot-library syscall identifier for move to goal.
 const OP_MOVE_TO_GOAL=549
+/// Bot-library syscall identifier for move in direction.
 const OP_MOVE_IN_DIRECTION=550
+/// Bot-library syscall identifier for area reachability area.
 const OP_REACHABILITY_AREA=553
+/// Bot-library syscall identifier for movement view target.
 const OP_MOVEMENT_VIEW_TARGET=554
+/// Bot-library syscall identifier for init move state.
 const OP_INIT_MOVE_STATE=557
+/// Bot is performing a barrier jump.
 const MFL_BARRIERJUMP=publicHeaders.MFL_BARRIERJUMP
+/// Bot is in the ground.
 const MFL_ONGROUND=publicHeaders.MFL_ONGROUND
+/// Bot is swimming.
 const MFL_SWIMMING=publicHeaders.MFL_SWIMMING
+/// Bot is against a ladder.
 const MFL_AGAINSTLADDER=publicHeaders.MFL_AGAINSTLADDER
+/// Bot is waterjumping.
 const MFL_WATERJUMP=publicHeaders.MFL_WATERJUMP
+/// Bot is being teleported.
 const MFL_TELEPORTED=publicHeaders.MFL_TELEPORTED
+/// Bot is being pulled by the grapple.
 const MFL_GRAPPLEPULL=publicHeaders.MFL_GRAPPLEPULL
+/// Bot should walk slowly.
 const MFL_WALK=publicHeaders.MFL_WALK
+/// Bot is using the grapple hook.
 const MFL_ACTIVEGRAPPLE=publicHeaders.MFL_ACTIVEGRAPPLE
+/// Bot has reset the grapple.
 const MFL_GRAPPLERESET=publicHeaders.MFL_GRAPPLERESET
+/// Combined mask of movement-state flags that callers may supply externally.
 const EXTERNAL_MOVE_FLAGS=MFL_ONGROUND|MFL_WATERJUMP|MFL_TELEPORTED|MFL_GRAPPLEPULL|MFL_WALK
+/// Bot mover-model classification for func plat.
 const MODELTYPE_FUNC_PLAT=1
+/// Bot mover-model classification for func bob.
 const MODELTYPE_FUNC_BOB=2
+/// Bot mover-model classification for func door.
 const MODELTYPE_FUNC_DOOR=3
+/// Bot mover-model classification for func static.
 const MODELTYPE_FUNC_STATIC=4
+/// Reserved entity number identifying world geometry.
 const ENTITYNUM_WORLD=1022
+/// Reserved entity number indicating that no game entity is selected.
 const ENTITYNUM_NONE=1023
+/// Combined collision mask for solid geometry and player-only clipping volumes.
 const CONTENTS_SOLID_PLAYERCLIP=0x10001
+/// Collision contents bit marking lava.
 const CONTENTS_LAVA=8
+/// Collision contents bit marking slime.
 const CONTENTS_SLIME=16
+/// Collision contents bit marking water.
 const CONTENTS_WATER=32
+/// Bot movement-mode identifier for walk.
 const MOVE_WALK=publicHeaders.MOVE_WALK
+/// Bot movement-mode identifier for crouch.
 const MOVE_CROUCH=publicHeaders.MOVE_CROUCH
+/// Bot movement-mode identifier for jump.
 const MOVE_JUMP=publicHeaders.MOVE_JUMP
+/// Bot uses view for movement.
 const MOVERESULT_MOVEMENTVIEW=publicHeaders.MOVERESULT_MOVEMENTVIEW
+/// Bot uses view for swimming.
 const MOVERESULT_SWIMVIEW=publicHeaders.MOVERESULT_SWIMVIEW
+/// Bot is waiting for something.
 const MOVERESULT_WAITING=publicHeaders.MOVERESULT_WAITING
+/// Bot has set the view in movement code.
 const MOVERESULT_MOVEMENTVIEWSET=publicHeaders.MOVERESULT_MOVEMENTVIEWSET
+/// Bot uses weapon for movement.
 const MOVERESULT_MOVEMENTWEAPON=publicHeaders.MOVERESULT_MOVEMENTWEAPON
+/// Bot is ontop of obstacle.
 const MOVERESULT_ONTOPOFOBSTACLE=publicHeaders.MOVERESULT_ONTOPOFOBSTACLE
+/// Bot is blocked by an avoid spot.
 const MOVERESULT_BLOCKEDBYAVOIDSPOT=publicHeaders.MOVERESULT_BLOCKEDBYAVOIDSPOT
+/// Elevator is up.
 const RESULTTYPE_ELEVATORUP=publicHeaders.RESULTTYPE_ELEVATORUP
+/// Waiting for func bobbing to arrive.
 const RESULTTYPE_WAITFORFUNCBOBBING=publicHeaders.RESULTTYPE_WAITFORFUNCBOBBING
+/// Grapple path is obstructed.
 const RESULTTYPE_BADGRAPPLEPATH=publicHeaders.RESULTTYPE_BADGRAPPLEPATH
+/// Stuck in solid area, this is bad.
 const RESULTTYPE_INSOLIDAREA=publicHeaders.RESULTTYPE_INSOLIDAREA
+/// Avoidance-spot mode that always rejects paths through the spot.
 const AVOID_ALWAYS=publicHeaders.AVOID_ALWAYS
+/// Number of failed attempts before a reachability is temporarily avoided.
 const AVOIDREACH_TRIES=4
 
 /// `InitMove` record for ai move runtime, containing `origin`, `velocity`, `viewOffset`, `entityNum` and `client` and related fields.
-struct InitMove origin velocity viewOffset entityNum client thinkTime presenceType viewAngles orMoveFlags end struct
+struct InitMove
+  /// Initial bot position copied into the movement state for this think cycle.
+  origin
+  /// World-space linear velocity associated with the moving entity.
+  velocity
+  /// Offset from the entity origin to the viewing position.
+  viewOffset
+  /// Number of the game entity associated with this result.
+  entityNum
+  /// Client number of the bot.
+  client
+  /// Time the bot thinks.
+  thinkTime
+  /// Presence-type mask describing the bot hull or stance allowed here.
+  presenceType
+  /// Pitch, yaw, and roll angles describing the current view direction.
+  viewAngles
+  /// Values ored to the movement flags.
+  orMoveFlags
+end struct
+/// Weapon identifier used when planning a rocket-assisted jump.
 const WEAPON_ROCKET_LAUNCHER=5
+/// Weapon identifier used when planning a BFG-assisted jump.
 const WEAPON_BFG=9
+/// Weapon identifier used to fire the grappling hook.
 const WEAPON_GRAPPLE=10
 
 /// `Services` record for ai move runtime, containing `context`, `groundTraceFn`, `entityModelFn`, `modelTypeFn` and `modelReachabilityFn` and related fields.
-struct Services context groundTraceFn entityModelFn modelTypeFn modelReachabilityFn swimmingFn clientTraceFn nextReachabilityFn elementaryActions onGroundFn againstLadderFn gapDistanceFn blockTraceFn walkDirectionFn jumpRunStartFn gravityFn horizontalVelocityForJumpFn elevatorStateFn barrierJumpFn routeReachabilityFn randomFn pointContentsFn funcBobStateFn grappleConfigFn grappleStateFn grappleTraceFn routeTravelTimeFn end struct
+struct Services
+  /// Caller-supplied data associated with bot movement traces, mover queries, route choices, and
+  /// movement settings.
+  context
+  /// Host callback that tests the ground below the moving bot.
+  groundTraceFn
+  /// Host callback that returns the collision model associated with an entity.
+  entityModelFn
+  /// Host callback that classifies the movement behavior of a model.
+  modelTypeFn
+  /// Host callback that finds reachabilities associated with a mover model.
+  modelReachabilityFn
+  /// Host callback that tests whether the bot is currently swimming.
+  swimmingFn
+  /// Host callback that traces a bot or client hull through the collision world.
+  clientTraceFn
+  /// Host callback that iterates outgoing reachabilities of an AAS area.
+  nextReachabilityFn
+  /// Elementary-action interface used to emit movement and view input.
+  elementaryActions
+  /// Host callback that tests whether the bot hull is resting on the ground.
+  onGroundFn
+  /// Host callback that reports whether the bot hull is against a climbable ladder.
+  againstLadderFn
+  /// Host callback that measures a gap along a proposed movement direction.
+  gapDistanceFn
+  /// Host callback that tests movement against blocking geometry.
+  blockTraceFn
+  /// Host callback that tests walking along a proposed direction.
+  walkDirectionFn
+  /// Host callback that finds a run-up position for a planned jump.
+  jumpRunStartFn
+  /// Host callback that returns the gravity used for movement prediction.
+  gravityFn
+  /// Host callback that computes horizontal speed needed to reach a jump destination.
+  horizontalVelocityForJumpFn
+  /// Host callback that queries the current movement state of an elevator.
+  elevatorStateFn
+  /// Host callback that evaluates a jump over a low movement barrier.
+  barrierJumpFn
+  /// Host callback that selects a reachability along the requested route.
+  routeReachabilityFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+  /// Host callback that queries world contents at a supplied point.
+  pointContentsFn
+  /// Host callback that queries a bobbing mover's endpoints and current position.
+  funcBobStateFn
+  /// Host callback that returns grappling-hook movement settings.
+  grappleConfigFn
+  /// Host callback that reports the current grappling-hook movement state.
+  grappleStateFn
+  /// Host callback that tests the path of a proposed grappling-hook movement.
+  grappleTraceFn
+  /// Host callback that returns estimated AAS travel time between route positions.
+  routeTravelTimeFn
+end struct
 /// `Runtime` record for ai move runtime, containing `pools`, `aas`, `router` and `services`.
-struct Runtime pools aas router services end struct
+struct Runtime
+  /// Managed pools containing bot chat, goal, movement, and weapon resources.
+  pools
+  /// AAS navigation runtime used for area and route queries.
+  aas
+  /// AAS navigation state supplying area settings and reachabilities for route searches.
+  router
+  /// Movement host operations for traces, movers, route selection, and action execution.
+  services
+end struct
 /// `GroundTrace` record for ai move runtime, containing `startSolid`, `fraction`, `entity` and `endPos`.
-struct GroundTrace startSolid fraction entity endPos end struct
+struct GroundTrace
+  /// True when the initial trace position lies inside solid geometry.
+  startSolid
+  /// Fraction of the requested trace segment completed before the first collision.
+  fraction
+  /// Entity number of the ground or obstacle reported by the trace.
+  entity
+  /// End position reached by the collision trace.
+  endPos
+end struct
 /// `ElevatorState` record for ai move runtime, containing `onMover`, `down`, `bottomCenter` and `maxBarrier`.
-struct ElevatorState onMover down bottomCenter maxBarrier end struct
+struct ElevatorState
+  /// True when the bot is standing on the queried moving platform.
+  onMover
+  /// True when the elevator is at or moving toward its lower position.
+  down
+  /// Center of the mover's lower support surface.
+  bottomCenter
+  /// Maximum obstacle height accepted by a barrier-jump prediction.
+  maxBarrier
+end struct
 /// `FuncBobState` record for ai move runtime, containing `onMover`, `start`, `finish`, `origin` and `bottomCenter` and related fields.
-struct FuncBobState onMover start finish origin bottomCenter maxBarrier end struct
+struct FuncBobState
+  /// True when the bot is standing on the queried moving platform.
+  onMover
+  /// Boarding endpoint of the bobbing platform trajectory.
+  start
+  /// Destination endpoint of the bobbing platform trajectory.
+  finish
+  /// Current world-space center of the bobbing platform used to decide boarding and departure.
+  origin
+  /// Center of the mover's lower support surface.
+  bottomCenter
+  /// Maximum obstacle height accepted by a barrier-jump prediction.
+  maxBarrier
+end struct
 /// `GrappleConfig` record for ai move runtime, containing `offhand`, `weaponIndex`, `onCommand` and `offCommand`.
-struct GrappleConfig offhand weaponIndex onCommand offCommand end struct
+struct GrappleConfig
+  /// True when the grappling hook uses an off-hand command instead of a selected weapon.
+  offhand
+  /// Inventory or weapon-table index associated with the weapon.
+  weaponIndex
+  /// Console command used to activate the grappling hook.
+  onCommand
+  /// Console command used to release the grappling hook.
+  offCommand
+end struct
 /// `ViewTargetResult` record for ai move runtime, containing `found` and `target`.
-struct ViewTargetResult found target end struct
+struct ViewTargetResult
+  /// True when the requested lookup produced a matching entry.
+  found
+  /// World-space point the bot should look toward while moving.
+  target
+end struct
 /// `MoveResult` record for ai move runtime, containing `failure`, `type`, `blocked`, `blockEntity` and `travelType` and related fields.
-struct MoveResult failure type blocked blockEntity travelType flags weapon moveDir idealViewAngles end struct
+struct MoveResult
+  /// Failure indicator returned by the movement or navigation operation.
+  failure
+  /// Failure or blocked type.
+  type
+  /// True when an obstacle prevents the requested movement.
+  blocked
+  /// Entity blocking the bot.
+  blockEntity
+  /// Encoded AAS movement type required to traverse this link.
+  travelType
+  /// Movement-result flags requesting view, weapon, or waiting behavior.
+  flags
+  /// Weapon identifier selected by the bot or user command.
+  weapon
+  /// Direction requested by the bot movement result.
+  moveDir
+  /// Ideal viewangles for the movement.
+  idealViewAngles
+end struct
 
 /// Create a `mq3.botlib.ai_move_runtime.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.

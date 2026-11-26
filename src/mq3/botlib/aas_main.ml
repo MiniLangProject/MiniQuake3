@@ -8,16 +8,89 @@ import mq3.botlib.aas_runtime as aasRuntime
 import mq3.compat.numeric as n
 import std.string as strings
 
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=0
+/// Bot-library error indicating that no AAS navigation map is loaded.
 const BLERR_NOAASFILE=3
+/// First configuration-string slot reserved for registered model names.
 const CS_MODELS=32
+/// These are sent over the net as 8 bits.
 const MAX_MODELS=256
+/// Number of indexed configuration-string slots in the game protocol.
 const MAX_CONFIGSTRINGS=1024
 
 /// `Services` record for aas main, containing `context`, `printFn`, `continueReachabilityFn`, `initClusteringFn` and `initRoutingFn` and related fields.
-struct Services context printFn continueReachabilityFn initClusteringFn initRoutingFn freeRoutingFn initSettingsFn initLinkHeapFn initLinkedFn initReachabilityFn initAlternativeFn shutdownAlternativeFn dumpBspFn freeLinksFn freeLinkedFn dumpAasFn end struct
+struct Services
+  /// Caller-supplied data associated with AAS subsystem setup, routing initialization, shutdown, and
+  /// lifecycle messages.
+  context
+  /// Host callback that prints AAS initialization, map-loading, and shutdown messages.
+  printFn
+  /// Host callback that continues incremental AAS reachability generation.
+  continueReachabilityFn
+  /// Host callback that initializes AAS area clustering.
+  initClusteringFn
+  /// Host callback that initializes AAS routing tables.
+  initRoutingFn
+  /// Host callback that releases routing tables and caches.
+  freeRoutingFn
+  /// Host callback that initializes AAS movement and physics settings.
+  initSettingsFn
+  /// Host callback that initializes storage for AAS entity links.
+  initLinkHeapFn
+  /// Host callback that initializes entity-linked navigation data.
+  initLinkedFn
+  /// Host callback that initializes AAS reachability generation.
+  initReachabilityFn
+  /// Host callback that initializes alternative-route generation.
+  initAlternativeFn
+  /// Host callback that releases alternative-route resources.
+  shutdownAlternativeFn
+  /// Host callback that releases the currently loaded BSP navigation data.
+  dumpBspFn
+  /// Host callback that releases the AAS entity-link heap.
+  freeLinksFn
+  /// Host callback that releases navigation records linked to entities.
+  freeLinkedFn
+  /// Host callback that releases the currently loaded AAS map data.
+  dumpAasFn
+end struct
 /// `State` record for aas main, containing `runtime`, `entities`, `configstrings`, `indexesSetup` and `loaded` and related fields.
-struct State runtime entities configstrings indexesSetup loaded initialized time numframes mapname filename maxclients maxentities savefile saveroutingcache frameroutingupdates services end struct
+struct State
+  /// Loaded navigation runtime bound to the currently active AAS map.
+  runtime
+  /// Game or BSP entity records tracked by this subsystem.
+  entities
+  /// Server configuration strings indexed by their protocol slot.
+  configstrings
+  /// True when navigation lookup indexes have been initialized.
+  indexesSetup
+  /// True after the current map navigation files have been loaded, before full initialization may
+  /// finish.
+  loaded
+  /// True after the active map has completed AAS reachability, clustering, and routing initialization.
+  initialized
+  /// AAS simulation time supplied by the current bot-library frame.
+  time
+  /// Number of animation frames represented by this model, surface, or animation.
+  numframes
+  /// Name of the current game map.
+  mapname
+  /// Path of the file associated with this operation.
+  filename
+  /// Client capacity retained by the active AAS lifecycle state.
+  maxclients
+  /// Maximum number of entities.
+  maxentities
+  /// True when the current AAS data should be saved back to a file.
+  savefile
+  /// True when computed routing data should be saved to disk.
+  saveroutingcache
+  /// Routing-cache updates performed during the current frame.
+  frameroutingupdates
+  /// Lifecycle hooks used to initialize and shut down navigation subsystems.
+  services
+end struct
 
 /// Create a `mq3.botlib.aas_main.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.

@@ -6,12 +6,37 @@ import mq3.client.playable_item_models as itemModels
 import mq3.renderer.playable_dynamic_lights as dynamicLights
 import mq3.compat.numeric as numeric
 
+/// Milliseconds for which a weapon muzzle flash remains visible.
 const MUZZLE_FLASH_TIME=20
 
 /// Stores playable muzzle flash definition record, including `weaponClass`, `flashClass`, `modelPath`, `continuous`, `red`, `green` and additional values.
-struct Definition weaponClass flashClass modelPath continuous red green blue end struct
+struct Definition
+  /// When constructing this record, `definitions` supplies `"weapon_gauntlet"` for this member.
+  weaponClass
+  /// When constructing this record, `definitions` supplies `"flash_gauntlet"` for this member.
+  flashClass
+  /// Virtual path used to load the model resource for this client presentation.
+  modelPath
+  /// When constructing this record, `definitions` supplies `true` for this member.
+  continuous
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 /// Stores playable muzzle flash rendered record, including `triangles`, `red`, `green`, `blue`.
-struct Rendered triangles red green blue end struct
+struct Rendered
+  /// When constructing this record, `render` supplies an empty list for this member.
+  triangles
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
 /// Creates the playable muzzle flash error `7610` with diagnostic text `"playable muzzle flash: "+message`.
 /// @param message Argument 2 of `error`; passed as `"playable muzzle flash: "+message`.

@@ -5,20 +5,29 @@ package mq3.qcommon.config_persistence
 import mq3.qcommon.cvar as cvar
 import mq3.qcommon.command_buffer as command
 
+/// Maximum character capacity reserved for a Quake asset path.
 const MAX_QPATH=64
 
 /// Services record for qcommon.config_persistence, containing `writeFn`, `bindingTextFn`, `printFn`, `context`.
 struct Services
+  /// Host callback that writes data through the host output interface.
   writeFn
+  /// Host callback that serializes the current input bindings for configuration persistence.
   bindingTextFn
+  /// Host callback that prints configuration-save progress and write failures.
   printFn
+  /// Caller-supplied data associated with configuration-file writing, key-binding serialization, and
+  /// save diagnostics.
   context
 end struct
 
 /// State record for qcommon.config_persistence, containing `registry`, `services`, `fullyInitialized`.
 struct State
+  /// Registry used to resolve registered names, handles, or runtime definitions.
   registry
+  /// File-writing, binding-serialization, and diagnostic services used to save configuration.
   services
+  /// True when initialization is complete and automatic configuration writes are allowed.
   fullyInitialized
 end struct
 

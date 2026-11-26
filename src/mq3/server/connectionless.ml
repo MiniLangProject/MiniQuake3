@@ -8,7 +8,23 @@ import mq3.server.oob_connect as oobConnect
 import std.string as strings
 
 /// Services record for server.connectionless, containing `statusFn`, `infoFn`, `rconFn`, `authorizeFn`, `decompressFn`, `diagnosticFn`, and 1 further fields.
-struct Services statusFn infoFn rconFn authorizeFn decompressFn diagnosticFn context end struct
+struct Services
+  /// Host callback that handles a connectionless server-status request.
+  statusFn
+  /// Host callback that handles a connectionless server-information request.
+  infoFn
+  /// Host callback that handles an authenticated remote-console request.
+  rconFn
+  /// Host callback that performs the host-side client authorization exchange.
+  authorizeFn
+  /// Host callback that decompresses a received packet payload.
+  decompressFn
+  /// Host callback that reports subsystem diagnostics to the host.
+  diagnosticFn
+  /// Caller-supplied data associated with connectionless status, information, remote-console, and
+  /// authorization handling.
+  context
+end struct
 /// Create `mq3.server.connectionless.Services` with statusFn=void; infoFn=void; rconFn=void; authorizeFn=void; decompressFn=void; diagnosticFn=void; context=void.
 function services() return Services(void,void,void,void,void,void,void) end function
 /// Test connect prefix in server.connectionless; the normal completion returns `true`.

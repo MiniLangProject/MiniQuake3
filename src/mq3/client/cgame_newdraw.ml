@@ -7,136 +7,504 @@ import std.string as strings
 import mq3.compat.numeric as n
 import mq3.compat.transcendental as trans
 
+/// Native team identifier for free, used by player and team presentation.
 const TEAM_FREE=0
+/// Native team identifier for red, used by player and team presentation.
 const TEAM_RED=1
+/// Native team identifier for blue, used by player and team presentation.
 const TEAM_BLUE=2
+/// Native team identifier for spectator, used by player and team presentation.
 const TEAM_SPECTATOR=3
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when selecting mode-dependent
+/// Missionpack HUD widgets and visibility.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when selecting mode-dependent
+/// Missionpack HUD widgets and visibility.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when selecting mode-dependent Missionpack HUD
+/// widgets and visibility.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when selecting mode-dependent Missionpack HUD
+/// widgets and visibility.
 const GT_CTF=4
+/// Native game-type identifier selecting one-flag capture the flag.
 const GT_1FCTF=5
+/// Native game-type identifier selecting Overload.
 const GT_OBELISK=6
+/// Native game-type identifier selecting Harvester.
 const GT_HARVESTER=7
+/// Flag-objective status identifying the atbase ownership or location state.
 const FLAG_ATBASE=0
+/// Flag-objective status identifying the taken ownership or location state.
 const FLAG_TAKEN=1
+/// Flag-objective status identifying the dropped ownership or location state.
 const FLAG_DROPPED=2
+/// Flag-objective status identifying the taken red ownership or location state.
 const FLAG_TAKEN_RED=3
+/// Flag-objective status identifying the taken blue ownership or location state.
 const FLAG_TAKEN_BLUE=4
+/// Player powerup slot for redflag, also used when constructing active-powerup bitsets.
 const PW_REDFLAG=7
+/// Player powerup slot for blueflag, also used when constructing active-powerup bitsets.
 const PW_BLUEFLAG=8
+/// Player powerup slot for neutralflag, also used when constructing active-powerup bitsets.
 const PW_NEUTRALFLAG=9
+/// Team-order identifier assigning the player the none tactical role.
 const TEAMTASK_NONE=0
+/// Team-order identifier assigning the player the offense tactical role.
 const TEAMTASK_OFFENSE=1
+/// Team-order identifier assigning the player the defense tactical role.
 const TEAMTASK_DEFENSE=2
+/// Team-order identifier assigning the player the patrol tactical role.
 const TEAMTASK_PATROL=3
+/// Team-order identifier assigning the player the follow tactical role.
 const TEAMTASK_FOLLOW=4
+/// Team-order identifier assigning the player the retrieve tactical role.
 const TEAMTASK_RETRIEVE=5
+/// Team-order identifier assigning the player the escort tactical role.
 const TEAMTASK_ESCORT=6
+/// Team-order identifier assigning the player the camp tactical role.
 const TEAMTASK_CAMP=7
+/// Player-movement mode selecting normal input and physics behavior.
 const PM_NORMAL=0
+/// Player-movement mode selecting spectator input and physics behavior.
 const PM_SPECTATOR=2
+/// CGame event-handling mode selecting the none interface.
 const CGAME_EVENT_NONE=0
+/// CGame event-handling mode selecting the teammenu interface.
 const CGAME_EVENT_TEAMMENU=1
+/// CGame event-handling mode selecting the scoreboard interface.
 const CGAME_EVENT_SCOREBOARD=2
+/// CGame event-handling mode selecting the edithud interface.
 const CGAME_EVENT_EDITHUD=3
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=179
+/// Sentinel score value used when a second score or scoreboard entry is absent.
 const SCORE_NOT_PRESENT=-9999
+/// HUD powerup-list layout selector choosing vertical arrangement.
 const HUD_VERTICAL=0
 
+/// Owner-draw visibility flag requiring that the blue team is carrying the red flag.
 const CG_SHOW_BLUE_TEAM_HAS_REDFLAG=0x00000001
+/// Owner-draw visibility flag requiring that the red team is carrying the blue flag.
 const CG_SHOW_RED_TEAM_HAS_BLUEFLAG=0x00000002
+/// Owner-draw visibility flag requiring that the game mode uses teams.
 const CG_SHOW_ANYTEAMGAME=0x00000004
+/// Owner-draw visibility flag requiring that the game mode is Harvester.
 const CG_SHOW_HARVESTER=0x00000008
+/// Owner-draw visibility flag requiring that the game mode is one-flag capture the flag.
 const CG_SHOW_ONEFLAG=0x00000010
+/// Owner-draw visibility flag requiring that the game mode is capture the flag.
 const CG_SHOW_CTF=0x00000020
+/// Owner-draw visibility flag requiring that the game mode is Overload.
 const CG_SHOW_OBELISK=0x00000040
+/// Owner-draw visibility flag requiring that the local player's health is in the critical range.
 const CG_SHOW_HEALTHCRITICAL=0x00000080
+/// Owner-draw visibility flag requiring that the game mode is single player.
 const CG_SHOW_SINGLEPLAYER=0x00000100
+/// Owner-draw visibility flag requiring that the game mode is a tournament.
 const CG_SHOW_TOURNAMENT=0x00000200
+/// Owner-draw visibility flag requiring that an incoming voice-chat announcement is active.
 const CG_SHOW_DURINGINCOMINGVOICE=0x00000400
+/// Owner-draw visibility flag requiring that the local player is carrying a flag.
 const CG_SHOW_IF_PLAYER_HAS_FLAG=0x00000800
+/// Owner-draw visibility flag requiring that the local player's health is above the critical range.
 const CG_SHOW_HEALTHOK=0x00004000
+/// Owner-draw visibility flag requiring that team information should be displayed.
 const CG_SHOW_TEAMINFO=0x00008000
+/// Owner-draw visibility flag requiring that team information should be hidden.
 const CG_SHOW_NOTEAMINFO=0x00010000
+/// Owner-draw visibility flag requiring that the opposing team holds the relevant flag.
 const CG_SHOW_OTHERTEAMHASFLAG=0x00020000
+/// Owner-draw visibility flag requiring that the local team holds the enemy flag.
 const CG_SHOW_YOURTEAMHASENEMYFLAG=0x00040000
+/// Owner-draw visibility flag requiring that the game mode has no teams.
 const CG_SHOW_ANYNONTEAMGAME=0x00080000
+/// Owner-draw visibility flag requiring that only the two-dimensional HUD variant is requested.
 const CG_SHOW_2DONLY=0x10000000
 
+/// CGame owner-draw identifier selecting the player armor icon HUD element.
 const CG_PLAYER_ARMOR_ICON=1
+/// CGame owner-draw identifier selecting the player armor value HUD element.
 const CG_PLAYER_ARMOR_VALUE=2
+/// CGame owner-draw identifier selecting the player head HUD element.
 const CG_PLAYER_HEAD=3
+/// CGame owner-draw identifier selecting the player health HUD element.
 const CG_PLAYER_HEALTH=4
+/// CGame owner-draw identifier selecting the player ammo icon HUD element.
 const CG_PLAYER_AMMO_ICON=5
+/// CGame owner-draw identifier selecting the player ammo value HUD element.
 const CG_PLAYER_AMMO_VALUE=6
+/// CGame owner-draw identifier selecting the selectedplayer head HUD element.
 const CG_SELECTEDPLAYER_HEAD=7
+/// CGame owner-draw identifier selecting the selectedplayer name HUD element.
 const CG_SELECTEDPLAYER_NAME=8
+/// CGame owner-draw identifier selecting the selectedplayer location HUD element.
 const CG_SELECTEDPLAYER_LOCATION=9
+/// CGame owner-draw identifier selecting the selectedplayer status HUD element.
 const CG_SELECTEDPLAYER_STATUS=10
+/// CGame owner-draw identifier selecting the selectedplayer weapon HUD element.
 const CG_SELECTEDPLAYER_WEAPON=11
+/// CGame owner-draw identifier selecting the selectedplayer powerup HUD element.
 const CG_SELECTEDPLAYER_POWERUP=12
+/// CGame owner-draw identifier selecting the player item HUD element.
 const CG_PLAYER_ITEM=19
+/// CGame owner-draw identifier selecting the player score HUD element.
 const CG_PLAYER_SCORE=20
+/// CGame owner-draw identifier selecting the blue flaghead HUD element.
 const CG_BLUE_FLAGHEAD=21
+/// CGame owner-draw identifier selecting the blue flagstatus HUD element.
 const CG_BLUE_FLAGSTATUS=22
+/// CGame owner-draw identifier selecting the blue flagname HUD element.
 const CG_BLUE_FLAGNAME=23
+/// CGame owner-draw identifier selecting the red flaghead HUD element.
 const CG_RED_FLAGHEAD=24
+/// CGame owner-draw identifier selecting the red flagstatus HUD element.
 const CG_RED_FLAGSTATUS=25
+/// CGame owner-draw identifier selecting the red flagname HUD element.
 const CG_RED_FLAGNAME=26
+/// CGame owner-draw identifier selecting the blue score HUD element.
 const CG_BLUE_SCORE=27
+/// CGame owner-draw identifier selecting the red score HUD element.
 const CG_RED_SCORE=28
+/// CGame owner-draw identifier selecting the red name HUD element.
 const CG_RED_NAME=29
+/// CGame owner-draw identifier selecting the blue name HUD element.
 const CG_BLUE_NAME=30
+/// CGame owner-draw identifier selecting the harvester skulls HUD element.
 const CG_HARVESTER_SKULLS=31
+/// CGame owner-draw identifier selecting the oneflag status HUD element.
 const CG_ONEFLAG_STATUS=32
+/// CGame owner-draw identifier selecting the player location HUD element.
 const CG_PLAYER_LOCATION=33
+/// CGame owner-draw identifier selecting the team color HUD element.
 const CG_TEAM_COLOR=34
+/// CGame owner-draw identifier selecting the ctf powerup HUD element.
 const CG_CTF_POWERUP=35
+/// CGame owner-draw identifier selecting the area powerup HUD element.
 const CG_AREA_POWERUP=36
+/// CGame owner-draw identifier selecting the player hasflag HUD element.
 const CG_PLAYER_HASFLAG=38
+/// CGame owner-draw identifier selecting the game type HUD element.
 const CG_GAME_TYPE=39
+/// CGame owner-draw identifier selecting the selectedplayer armor HUD element.
 const CG_SELECTEDPLAYER_ARMOR=40
+/// CGame owner-draw identifier selecting the selectedplayer health HUD element.
 const CG_SELECTEDPLAYER_HEALTH=41
+/// CGame owner-draw identifier selecting the player status HUD element.
 const CG_PLAYER_STATUS=42
+/// CGame owner-draw identifier selecting the area systemchat HUD element.
 const CG_AREA_SYSTEMCHAT=46
+/// CGame owner-draw identifier selecting the area teamchat HUD element.
 const CG_AREA_TEAMCHAT=47
+/// CGame owner-draw identifier selecting the area chat HUD element.
 const CG_AREA_CHAT=48
+/// CGame owner-draw identifier selecting the game status HUD element.
 const CG_GAME_STATUS=49
+/// CGame owner-draw identifier selecting the killer HUD element.
 const CG_KILLER=50
+/// CGame owner-draw identifier selecting the player armor icon2 d HUD element.
 const CG_PLAYER_ARMOR_ICON2D=51
+/// CGame owner-draw identifier selecting the player ammo icon2 d HUD element.
 const CG_PLAYER_AMMO_ICON2D=52
+/// CGame owner-draw identifier selecting the accuracy HUD element.
 const CG_ACCURACY=53
+/// CGame owner-draw identifier selecting the assists HUD element.
 const CG_ASSISTS=54
+/// CGame owner-draw identifier selecting the defend HUD element.
 const CG_DEFEND=55
+/// CGame owner-draw identifier selecting the excellent HUD element.
 const CG_EXCELLENT=56
+/// CGame owner-draw identifier selecting the impressive HUD element.
 const CG_IMPRESSIVE=57
+/// CGame owner-draw identifier selecting the perfect HUD element.
 const CG_PERFECT=58
+/// CGame owner-draw identifier selecting the gauntlet HUD element.
 const CG_GAUNTLET=59
+/// CGame owner-draw identifier selecting the spectators HUD element.
 const CG_SPECTATORS=60
+/// CGame owner-draw identifier selecting the teaminfo HUD element.
 const CG_TEAMINFO=61
+/// CGame owner-draw identifier selecting the voice head HUD element.
 const CG_VOICE_HEAD=62
+/// CGame owner-draw identifier selecting the voice name HUD element.
 const CG_VOICE_NAME=63
+/// CGame owner-draw identifier selecting the player hasflag2 d HUD element.
 const CG_PLAYER_HASFLAG2D=64
+/// CGame owner-draw identifier selecting the harvester skulls2 d HUD element.
 const CG_HARVESTER_SKULLS2D=65
+/// CGame owner-draw identifier selecting the capfraglimit HUD element.
 const CG_CAPFRAGLIMIT=66
+/// CGame owner-draw identifier selecting the 1 stplace HUD element.
 const CG_1STPLACE=67
+/// CGame owner-draw identifier selecting the 2 ndplace HUD element.
 const CG_2NDPLACE=68
+/// CGame owner-draw identifier selecting the captures HUD element.
 const CG_CAPTURES=69
 
 /// Stores client game newdraw rectangle, including `x`, `y`, `w`, `h`.
-struct Rect x y w h end struct
+struct Rect
+  /// Horizontal position of the rectangle's origin in UI layout coordinates.
+  x
+  /// Vertical position of the rectangle's origin in UI layout coordinates.
+  y
+  /// Width of the rectangular display region.
+  w
+  /// Height of the rectangular display region.
+  h
+end struct
 /// Stores client game newdraw client record, including `infoValid`, `name`, `team`, `health`, `armor`, `teamTask` and additional values.
-struct Client infoValid name team health armor teamTask location curWeapon powerups headModel headSkin modelIcon deferred headOffset end struct
+struct Client
+  /// True when the client-information entry has been populated from valid server data.
+  infoValid
+  /// Player name available to Missionpack owner-drawn HUD and selected-team-player displays.
+  name
+  /// Teammate affiliation used to filter team-status and selected-player owner draws.
+  team
+  /// Reported teammate health available to team-status and selected-player owner draws.
+  health
+  /// Reported teammate armor available to selected-player and team-status owner draws.
+  armor
+  /// Team-order role identifying the player's current tactical assignment.
+  teamTask
+  /// When constructing this record, `client` supplies `0` for this member.
+  location
+  /// Currently selected weapon identifier for the client-information entry.
+  curWeapon
+  /// Player powerup bitmask used by owner-drawn icons and team flag-carrier selection.
+  powerups
+  /// Head-model resource used when drawing a player, head icon, or preview.
+  headModel
+  /// Skin resource applied to the player's head model.
+  headSkin
+  /// Image or shader resource used to draw the model icon.
+  modelIcon
+  /// True while the player's full media registration is deferred to a later load step.
+  deferred
+  /// Offset applied to position the head model in icon or preview views.
+  headOffset
+end struct
 /// Stores client game newdraw powerup record, including `id`, `expires`, `icon`.
-struct Powerup id expires icon end struct
+struct Powerup
+  /// Native item or powerup identifier associated with this definition.
+  id
+  /// Server/client presentation timestamp at which the timed powerup expires.
+  expires
+  /// Image or shader resource used to draw the active powerup in the HUD.
+  icon
+end struct
 /// Stores client game newdraw medal record, including `accuracy`, `assists`, `defend`, `excellent`, `impressive`, `perfect` and additional values.
-struct Medal accuracy assists defend excellent impressive perfect gauntlet captures end struct
+struct Medal
+  /// Percentage of successful weapon hits reported in the scoreboard data.
+  accuracy
+  /// When constructing this record, `medal` supplies `0` for this member.
+  assists
+  /// When constructing this record, `medal` supplies `0` for this member.
+  defend
+  /// When constructing this record, `medal` supplies `0` for this member.
+  excellent
+  /// When constructing this record, `medal` supplies `0` for this member.
+  impressive
+  /// True or nonzero when the player's result qualifies as a perfect game.
+  perfect
+  /// When constructing this record, `medal` supplies `0` for this member.
+  gauntlet
+  /// Number of flag captures credited to this player.
+  captures
+end struct
 /// Stores client game newdraw queued engine action, including `boundary`, `kind`, `rect`, `text`, `shader`, `model` and additional values.
-struct Action boundary kind rect text shader model color value client dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while drawing Missionpack owner-draw widgets
+  /// and their associated media.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while drawing Missionpack
+  /// owner-draw widgets and their associated media.
+  kind
+  /// Primary rectangle used to position and size the UI element.
+  rect
+  /// Missionpack HUD text or flag-team selector interpreted by the owner-draw action kind.
+  text
+  /// Image material supplied to an owner-drawn HUD icon, flag, medal, or picture request.
+  shader
+  /// Model resource selected for rendering the object.
+  model
+  /// RGBA modulation copied into an owner-drawn client-game HUD request.
+  color
+  /// Value payload supplied to the selected host operation while drawing Missionpack owner-draw widgets
+  /// and their associated media.
+  value
+  /// Player slot associated with this score or client-side record.
+  client
+  /// True when this request is marked for native dispatch while drawing Missionpack owner-draw widgets
+  /// and their associated media; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores client game newdraw state, including `time`, `gametype`, `team`, `health`, `armor`, `ammo` and additional values.
-struct State time gametype team health armor ammo weapon score rank holdable persistentPowerup generic1 playerPowerups powerups scores1 scores2 capturelimit fraglimit teamScores clients sorted locations selected selectedName selectedClient currentOrder orderPending orderTime voiceClient voiceTime redflag blueflag flagStatus redTeamName blueTeamName killerName systemChat teamChat1 teamChat2 drawStatus drawIcons draw3dIcons pmType showScores cursorX cursorY activeCursor capturedItem eventHandling spectatorList spectatorLen spectatorWidth spectatorOffset spectatorPaintX spectatorPaintX2 spectatorTime medals selectedScore commands cvars menus actions retailActive emitted suppressed glyphWidth end struct
+struct State
+  /// Client-game time in milliseconds used by owner-drawn HUD animations and powerup countdowns.
+  time
+  /// Game-rule identifier selecting objective icons, team orders, and owner-drawn HUD variants.
+  gametype
+  /// Local-player team used by objective displays, team orders, and owner-drawn visibility rules.
+  team
+  /// Local-player health used by owner-drawn health indicators and visibility conditions.
+  health
+  /// Local-player armor shown by owner-drawn armor icons and numeric indicators.
+  armor
+  /// Ammunition quantity or ammunition state associated with the selected weapon.
+  ammo
+  /// Native local-player weapon identifier used by owner-drawn ammo and weapon displays.
+  weapon
+  /// Current player score supplied to owner-drawn HUD score displays.
+  score
+  /// When constructing this record, `create` supplies `0` for this member. Used by `getGameStatusText`
+  /// during subsequent processing.
+  rank
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawPlayerItem`
+  /// during subsequent processing.
+  holdable
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawCTFPowerUp`
+  /// during subsequent processing.
+  persistentPowerup
+  /// When constructing this record, `create` supplies `0` for this member. Used by `harvesterSkulls`
+  /// during subsequent processing.
+  generic1
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `hasPlayerFlag` and `drawPlayerHasFlag` during subsequent processing.
+  playerPowerups
+  /// Timed powerup display entries sorted by remaining lifetime for owner-drawn HUD indicators.
+  powerups
+  /// First team or leading player's score received through server configuration strings.
+  scores1
+  /// Second team or trailing player's score received through server configuration strings.
+  scores2
+  /// Capture or objective-score limit parsed from the server's game information.
+  capturelimit
+  /// When constructing this record, `create` supplies `0` for this member. Used by `drawCapFragLimit`
+  /// during subsequent processing.
+  fraglimit
+  /// Current score totals indexed by the two competing teams.
+  teamScores
+  /// Client records used by owner-drawn player indicators, team selection, and flag-carrier lookup.
+  clients
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `currentClient` and `checkOrderPending` during subsequent processing.
+  sorted
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `location`
+  /// during subsequent processing.
+  locations
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// When constructing this record, `create` supplies `"Everyone"` for this member. Used by
+  /// `setSelectedPlayerName` during subsequent processing.
+  selectedName
+  /// Client slot currently selected for teammate or selected-player HUD presentation.
+  selectedClient
+  /// Team-order identifier currently selected for issuing to a teammate.
+  currentOrder
+  /// When constructing this record, `create` supplies `false` for this member. Used by
+  /// `checkOrderPending` and `drawSelectedPlayerStatus` during subsequent processing.
+  orderPending
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `drawSelectedPlayerStatus` during subsequent processing.
+  orderTime
+  /// When constructing this record, `create` supplies `0` for this member. Used by `voiceClient` and
+  /// `drawSelectedPlayerHead` during subsequent processing.
+  voiceClient
+  /// Timestamp used to schedule the current voice announcement or portrait.
+  voiceTime
+  /// Red-flag status received through server configuration strings.
+  redflag
+  /// Blue-flag status received through server configuration strings.
+  blueflag
+  /// Current flag-objective state used by capture-the-flag presentation.
+  flagStatus
+  /// When constructing this record, `create` supplies `"Red"` for this member. Used by `drawRedName`
+  /// during subsequent processing.
+  redTeamName
+  /// When constructing this record, `create` supplies `"Blue"` for this member. Used by `drawBlueName`
+  /// during subsequent processing.
+  blueTeamName
+  /// Display name of the player responsible for the local player's latest death.
+  killerName
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `initTeamChat` and `setPrintString` during subsequent processing.
+  systemChat
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `initTeamChat` and `setPrintString` during subsequent processing.
+  teamChat1
+  /// When constructing this record, `create` supplies an empty string for this member. Used by
+  /// `initTeamChat` and `setPrintString` during subsequent processing.
+  teamChat2
+  /// When constructing this record, `create` supplies `true` for this member. Used by
+  /// `drawPlayerArmorIcon` and `ownerDraw` during subsequent processing.
+  drawStatus
+  /// Image or shader resources used to draw the draw icon.
+  drawIcons
+  /// Image or shader resources used to draw the draw3d icon.
+  draw3dIcons
+  /// When constructing this record, `create` supplies `PM_NORMAL` for this member. Used by `mouseEvent`
+  /// and `keyEvent` during subsequent processing.
+  pmType
+  /// True while the player explicitly requests the scoreboard overlay.
+  showScores
+  /// Horizontal position of the pointer in the local display coordinate system.
+  cursorX
+  /// Vertical position of the pointer in the local display coordinate system.
+  cursorY
+  /// When constructing this record, `create` supplies an empty string for this member.
+  activeCursor
+  /// When constructing this record, `create` supplies an absent (`void`) value for this member. Used by
+  /// `keyEvent` during subsequent processing.
+  capturedItem
+  /// When constructing this record, `create` supplies `CGAME_EVENT_NONE` for this member. Used by
+  /// `eventHandling` during subsequent processing.
+  eventHandling
+  /// Concatenated spectator display names used by the scrolling scoreboard banner.
+  spectatorList
+  /// Number of characters in the concatenated spectator-name banner.
+  spectatorLen
+  /// Rendered width of the spectator-name banner in display coordinates.
+  spectatorWidth
+  /// Character offset into the scrolling spectator-name text.
+  spectatorOffset
+  /// Horizontal draw position of the first copy of the scrolling spectator banner.
+  spectatorPaintX
+  /// Horizontal draw position of the second copy used to wrap the spectator banner.
+  spectatorPaintX2
+  /// Next client timestamp at which the spectator banner should scroll.
+  spectatorTime
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `drawMedal` during subsequent processing.
+  medals
+  /// Index of the scoreboard entry currently selected in the UI.
+  selectedScore
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `checkOrderPending` during subsequent processing.
+  commands
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `hideTeamMenu` and `showTeamMenu` during subsequent processing.
+  menus
+  /// Host requests queued while drawing Missionpack owner-draw widgets and their associated media,
+  /// retained in request order.
+  actions
+  /// True when the retail QVM owns Missionpack HUD owner-draw widgets, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `create` supplies `0` for this member. Used by `emit` during
+  /// subsequent processing.
+  emitted
+  /// Number of requests withheld from native dispatch while drawing Missionpack owner-draw widgets and
+  /// their associated media because the retail QVM owns their effects.
+  suppressed
+  /// When constructing this record, `create` supplies `8.0` for this member. Used by `textPaintLimit`
+  /// and `drawTeamSpectators` during subsequent processing.
+  glyphWidth
+end struct
 
 /// Creates a `mq3.client.cgame_newdraw.Client` record. Assigns `name` from `name`, `team` from `team`.
 /// @param name Value used to initialize `Client.name`.

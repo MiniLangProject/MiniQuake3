@@ -3,29 +3,84 @@
 // CL_InitUI, CL_ShutdownUI and uiExport_t calls.
 package mq3.client.ui_vm
 
+/// UI VM entry-point ordinal used to query the UI VM interface version.
 const UI_GETAPIVERSION=0
+/// UI VM entry-point ordinal used to initialize the UI VM.
 const UI_INIT=1
+/// UI VM entry-point ordinal used to shut down the UI VM.
 const UI_SHUTDOWN=2
+/// UI VM entry-point ordinal used to deliver a key event to the UI.
 const UI_KEY_EVENT=3
+/// UI VM entry-point ordinal used to deliver pointer motion to the UI.
 const UI_MOUSE_EVENT=4
+/// UI VM entry-point ordinal used to advance and render the UI.
 const UI_REFRESH=5
+/// UI VM entry-point ordinal used to query whether the UI covers the game view.
 const UI_IS_FULLSCREEN=6
+/// UI VM entry-point ordinal used to select the active UI menu.
 const UI_SET_ACTIVE_MENU=7
+/// UI VM entry-point ordinal used to handle a UI console command.
 const UI_CONSOLE_COMMAND=8
+/// UI VM entry-point ordinal used to render the connection-progress screen.
 const UI_DRAW_CONNECT_SCREEN=9
+/// UI VM entry-point ordinal used to query whether the UI requires a unique product key.
 const UI_HASUNIQUECDKEY=10
+/// UI interface version associated with the native product-key support contract.
 const UI_CD_API_VERSION=3
+/// Legacy UI interface version accepted by the engine adapter.
 const UI_OLD_API_VERSION=4
+/// UI virtual-machine interface version expected by the engine.
 const UI_API_VERSION=6
+/// UI keyboard-capture mask used when testing whether keyboard input belongs to the UI virtual machine.
 const KEYCATCH_UI=2
+/// Client connection state while waiting for authorization to contact the server.
 const CA_AUTHORIZING=2
+/// Connection-state value for normal gameplay after game-state loading, defined for dispatching UI
+/// operations in the context of the client's game state.
 const CA_ACTIVE=8
+/// VM execution mode selecting the engine's compiled VM path.
 const VMI_COMPILED=2
 
 /// Stores UI vm host-service callbacks, including `machineRuntime`, `syscall`, `loadFn`, `callFn`, `freeFn`.
-struct Services machineRuntime syscall loadFn callFn freeFn end struct
+struct Services
+  /// When constructing this record, `services` supplies `machineRuntime` for this member.
+  machineRuntime
+  /// When constructing this record, `services` supplies `syscall` for this member.
+  syscall
+  /// Host callback for the load operation; an unset callback leaves that host operation unavailable.
+  loadFn
+  /// Host callback for the call operation; an unset callback leaves that host operation unavailable.
+  callFn
+  /// Host callback for the free operation; an unset callback leaves that host operation unavailable.
+  freeFn
+end struct
 /// Stores UI vm state, including `host`, `slot`, `active`, `uiStarted`, `keyCatchers`, `apiVersion` and additional values.
-struct State host slot active uiStarted keyCatchers apiVersion callCount lastExport lastArgs end struct
+struct State
+  /// Host-adapter callbacks and context used to execute the module's engine operations.
+  host
+  /// VM slot index identifying the loaded CGame or UI module in the VM runtime.
+  slot
+  /// When constructing this record, `create` supplies `false` for this member. Used by `requireActive`
+  /// and `initialize` during subsequent processing.
+  active
+  /// When constructing this record, `create` supplies `false` for this member. Used by `initialize` and
+  /// `shutdown` during subsequent processing.
+  uiStarted
+  /// Bitmask selecting which subsystems currently intercept keyboard input.
+  keyCatchers
+  /// When constructing this record, `create` supplies `0` for this member. Used by `initialize` during
+  /// subsequent processing.
+  apiVersion
+  /// When constructing this record, `create` supplies `0` for this member. Used by `invoke` during
+  /// subsequent processing.
+  callCount
+  /// When constructing this record, `create` supplies `-1` for this member. Used by `invoke` during
+  /// subsequent processing.
+  lastExport
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `invoke`
+  /// during subsequent processing.
+  lastArgs
+end struct
 
 /// Creates a `mq3.client.ui_vm.Services` record. Assigns `machineRuntime` from `machineRuntime`, `syscall` from `syscall`, `loadFn` from `loadFn`, `callFn` from `callFn`.
 /// @param machineRuntime Value used to initialize `Services.machineRuntime`.

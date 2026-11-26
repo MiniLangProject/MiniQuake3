@@ -8,7 +8,34 @@ import mq3.server.download as pipelineDownload
 import mq3.qcommon.netchan as pipelineNetchan
 
 /// Pipeline record for server.pipeline, containing `runtime`, `runtimeLevel`, `client`, `server`, `downloadState`, `downloadServer`, and 7 further fields.
-struct Pipeline runtime runtimeLevel client server downloadState downloadServer downloadHost netRuntime netChannel clientNum fragments local lan end struct
+struct Pipeline
+  /// Shared snapshot runtime used to build frames and access the snapshot-entity ring.
+  runtime
+  /// Server level state shared by the snapshot and message pipeline.
+  runtimeLevel
+  /// Client-specific reliable-command and snapshot state.
+  client
+  /// Server timing and snapshot state used when sending messages.
+  server
+  /// Current download window for this client.
+  downloadState
+  /// Server download policy and timing values.
+  downloadServer
+  /// Host callbacks that open, read, and close downloadable files.
+  downloadHost
+  /// Host packet-transmission runtime.
+  netRuntime
+  /// Sequenced channel carrying this client's outgoing messages.
+  netChannel
+  /// Server client-slot number associated with this runtime.
+  clientNum
+  /// Outgoing fragments waiting to be transmitted.
+  fragments
+  /// True when this connection or destination is local to the host.
+  local
+  /// True when this connection is classified as belonging to the local network.
+  lan
+end struct
 
 /// Create pipeline in server.pipeline.
 ///

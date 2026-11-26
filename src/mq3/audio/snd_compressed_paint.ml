@@ -5,16 +5,37 @@ package mq3.audio.snd_compressed_paint
 
 import mq3.compat.numeric as n
 
+/// Compression-method identifier for four-bit adaptive differential PCM.
 const METHOD_ADPCM=1
+/// Compression-method identifier for the wavelet sound decoder.
 const METHOD_WAVELET=2
+/// Compression-method identifier for eight-bit mu-law sound data.
 const METHOD_MULAW=3
+/// Maximum number of decoded mono samples represented by an ADPCM block.
 const ADPCM_BLOCK_SAMPLES=4096
+/// Maximum number of samples represented by a byte-coded sound block.
 const BYTE_BLOCK_SAMPLES=2048
 
 /// Block record for audio.snd_compressed_paint, containing `data`, `size`, `sample`, `index`.
-struct Block data size sample index end struct
+struct Block
+  /// Encoded bytes for this compressed sound block.
+  data
+  /// Number of logical mono samples represented by the block.
+  size
+  /// Previous reconstructed sample used as the ADPCM predictor.
+  sample
+  /// Index into the ADPCM step-size table.
+  index
+end struct
 /// Compressed record for audio.snd_compressed_paint, containing `compression`, `blocks`, `length`.
-struct Compressed compression blocks length end struct
+struct Compressed
+  /// Compression-method identifier selecting the block decoder.
+  compression
+  /// Compressed blocks in playback order.
+  blocks
+  /// Total logical number of mono samples across all compressed blocks.
+  length
+end struct
 
 /// Compute audio.snd_compressed_paint.indexTable as `[- 1, - 1, - 1, - 1, 2, 4, 6, 8, - 1, - 1, - 1, - 1, 2, 4, 6, 8]`.
 function indexTable() return [-1,-1,-1,-1,2,4,6,8,-1,-1,-1,-1,2,4,6,8] end function

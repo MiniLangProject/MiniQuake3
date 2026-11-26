@@ -7,12 +7,29 @@ import mq3.shared.parser as parser
 import std.string as strings
 import std.ds.list as lists
 
+/// Number of buckets used to index shader definitions by name.
 const MAX_SHADERTEXT_HASH=2048
 
 /// Data record for `mq3.renderer.shader_index.Entry`; groups `name`, `hash`, `bodyOffset`, `endOffset`.
-struct Entry name hash bodyOffset endOffset end struct
+struct Entry
+  /// Shader-definition name used as the lookup key for the indexed source-text span.
+  name
+  /// Hash value used to select or compare the indexed entry.
+  hash
+  /// Byte offset of the shader definition body within the source text.
+  bodyOffset
+  /// Byte offset immediately after the indexed shader definition.
+  endOffset
+end struct
 /// Data record for `mq3.renderer.shader_index.Index`; groups `text`, `entries`, `buckets`.
-struct Index text entries buckets end struct
+struct Index
+  /// Text payload, script source, or message associated with this record.
+  text
+  /// Records currently stored in this index, registry, or cache.
+  entries
+  /// Hash-table buckets used to locate entries by name.
+  buckets
+end struct
 
 /// Computes `hashValue` from `hash&(size-1)` using `or`, `mq3.compat.numeric.i32`.
 /// @param name Argument 1 supplied to `bytes`.

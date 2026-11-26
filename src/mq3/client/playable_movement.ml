@@ -7,19 +7,33 @@ import mq3.collision.world as collision
 import mq3.shared.math as qmath
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used by the native player's spatial queries.
 const PLAYER_MASK=0x2010001
+/// Downward acceleration used by the module's ballistic or movement integration.
 const GRAVITY=800
+/// Base movement speed used by the native playable movement controller.
 const SPEED=320
+/// Initial upward velocity applied when a player jump begins.
 const JUMP_VELOCITY=270.0
+/// Minimum upward surface-normal component accepted as walkable ground.
 const GROUND_NORMAL=0.7
+/// Downward trace distance used to establish contact with supporting ground.
 const GROUND_PROBE=0.25
+/// Upper duration bound in milliseconds for frame processing.
 const MAX_FRAME_MILLISECONDS=100
+/// Duration or scheduling interval in milliseconds controlling substep.
 const SUBSTEP_MILLISECONDS=8
 
 /// Stores playable movement controller record, including `motion`, `grounded`, `jumpHeld`.
 struct Controller
+  /// When constructing this record, `createWithTrace` supplies `motion` for this member. Used by
+  /// `groundCheck` and `substep` during subsequent processing.
   motion
+  /// When constructing this record, `createWithTrace` supplies `false` for this member. Used by
+  /// `groundCheck` and `substep` during subsequent processing.
   grounded
+  /// When constructing this record, `createWithTrace` supplies `false` for this member. Used by `step`
+  /// during subsequent processing.
   jumpHeld
 end struct
 

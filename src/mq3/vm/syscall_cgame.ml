@@ -7,41 +7,81 @@ import mq3.vm.cgame_key_traps as keyTraps
 import mq3.vm.cgame_pc_traps as pcTraps
 import mq3.compat.numeric as n
 
+/// Byte size used for gamestate storage or binary layout in mq3.vm.syscall_cgame.
 const GAMESTATE_SIZE = 20100
+/// Byte size used for snapshot storage or binary layout in mq3.vm.syscall_cgame.
 const SNAPSHOT_SIZE = 53772
+/// Byte size used for user command storage or binary layout in mq3.vm.syscall_cgame.
 const USERCMD_SIZE = 24
+/// Byte size used for glconfig storage or binary layout in mq3.vm.syscall_cgame.
 const GLCONFIG_SIZE = 11332
 
 /// BytesResult record for vm.syscall_cgame, containing `found`, `data`.
-struct BytesResult found data end struct
+struct BytesResult
+  /// Nonzero when the requested token, source, or resource result is available.
+  found
+  /// Binary result bytes to copy into the calling VM memory.
+  data
+end struct
 /// SnapshotNumber record for vm.syscall_cgame, containing `number`, `serverTime`.
-struct SnapshotNumber number serverTime end struct
+struct SnapshotNumber
+  /// Sequence number of the latest available snapshot.
+  number
+  /// Server timestamp associated with the latest available snapshot.
+  serverTime
+end struct
 
 /// Services record for vm.syscall_cgame, containing `shared`, `context`, `addCommandFn`, `removeCommandFn`, `sendClientCommandFn`, `updateScreenFn`, and 18 further fields.
 struct Services
+  /// Shared host service bundle used by the VM syscall adapters.
   shared
+  /// Opaque caller-supplied context available to client-game VM rendering, snapshots, input commands,
+  /// and registration.
   context
+  /// Injected callback for add command; invoked through the Services service/state record.
   addCommandFn
+  /// Injected callback for remove command; invoked through the Services service/state record.
   removeCommandFn
+  /// Injected callback for send client command; invoked through the Services service/state record.
   sendClientCommandFn
+  /// Injected callback for update screen; invoked through the Services service/state record.
   updateScreenFn
+  /// Injected callback for load world; invoked through the Services service/state record.
   loadWorldFn
+  /// Injected callback for register model; invoked through the Services service/state record.
   registerModelFn
+  /// Injected callback for register skin; invoked through the Services service/state record.
   registerSkinFn
+  /// Injected callback for register shader; invoked through the Services service/state record.
   registerShaderFn
+  /// Injected callback for register shader no mip; invoked through the Services service/state record.
   registerShaderNoMipFn
+  /// Injected callback for clear scene; invoked through the Services service/state record.
   clearSceneFn
+  /// Injected callback for get glconfig; invoked through the Services service/state record.
   getGlconfigFn
+  /// Injected callback for get game state; invoked through the Services service/state record.
   getGameStateFn
+  /// Injected callback for get current snapshot number; invoked through the Services service/state
+  /// record.
   getCurrentSnapshotNumberFn
+  /// Injected callback for get snapshot; invoked through the Services service/state record.
   getSnapshotFn
+  /// Injected callback for get server command; invoked through the Services service/state record.
   getServerCommandFn
+  /// Injected callback for get current cmd number; invoked through the Services service/state record.
   getCurrentCmdNumberFn
+  /// Injected callback for get user cmd; invoked through the Services service/state record.
   getUserCmdFn
+  /// Injected callback for set user cmd value; invoked through the Services service/state record.
   setUserCmdValueFn
+  /// Injected callback for memory remaining; invoked through the Services service/state record.
   memoryRemainingFn
+  /// Keyboard-state and key-binding service bundle.
   keyServices
+  /// Preprocessor/token-source service bundle used by parser syscalls.
   pcServices
+  /// Injected callback for extended; invoked through the Services service/state record.
   extendedFn
 end struct
 

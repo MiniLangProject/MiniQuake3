@@ -7,46 +7,181 @@ package mq3.server.rankings
 import std.string as strings
 import mq3.compat.numeric as n
 
+/// Quake ranking-client status indicating new.
 const QGR_STATUS_NEW=0
+/// Quake ranking-client status indicating spectator.
 const QGR_STATUS_SPECTATOR=1
+/// Quake ranking-client status indicating active.
 const QGR_STATUS_ACTIVE=2
+/// Quake ranking-client status indicating validating.
 const QGR_STATUS_VALIDATING=3
+/// Quake ranking-client status indicating pending.
 const QGR_STATUS_PENDING=4
+/// Quake ranking-client status indicating leaving.
 const QGR_STATUS_LEAVING=5
+/// Quake ranking-client status indicating no user.
 const QGR_STATUS_NO_USER=6
+/// Quake ranking-client status indicating bad password.
 const QGR_STATUS_BAD_PASSWORD=7
+/// Quake ranking-client status indicating user exists.
 const QGR_STATUS_USER_EXISTS=8
+/// Quake ranking-client status indicating no membership.
 const QGR_STATUS_NO_MEMBERSHIP=9
+/// Quake ranking-client status indicating timeout.
 const QGR_STATUS_TIMEOUT=10
+/// Quake ranking-client status indicating an invalid user.
 const QGR_STATUS_INVALIDUSER=11
+/// Quake ranking-client status indicating error.
 const QGR_STATUS_ERROR=12
 
+/// Legacy global-ranking service status indicating ok.
 const GR_STATUS_OK=0
+/// Legacy global-ranking service status indicating error.
 const GR_STATUS_ERROR=1
+/// Legacy global-ranking service status indicating invalid parameters.
 const GR_STATUS_BADPARAMS=2
+/// Legacy global-ranking service status indicating network.
 const GR_STATUS_NETWORK=3
+/// Legacy global-ranking service status indicating a missing user account.
 const GR_STATUS_NOUSER=4
+/// Legacy global-ranking service status indicating an incorrect password.
 const GR_STATUS_BADPASSWORD=5
+/// Legacy global-ranking service status indicating an invalid game.
 const GR_STATUS_BADGAME=6
+/// Legacy global-ranking service status indicating pending.
 const GR_STATUS_PENDING=7
+/// Legacy global-ranking service status indicating an invalid domain.
 const GR_STATUS_BADDOMAIN=8
+/// Legacy global-ranking service status indicating a locked domain.
 const GR_STATUS_DOMAINLOCK=9
+/// Legacy global-ranking service status indicating timeout.
 const GR_STATUS_TIMEOUT=10
+/// Legacy global-ranking service status indicating an invalid user.
 const GR_STATUS_INVALIDUSER=11
+/// Legacy global-ranking service status indicating an invalid service context.
 const GR_STATUS_INVALIDCONTEXT=12
+/// Legacy global-ranking service status indicating an invalid league.
 const GR_STATUS_BADLEAGUE=13
 
+/// Game identifier supplied to the legacy ranking service.
 const GR_GAMEKEY="Quake III Arena"
+/// Alphabet used by the ranking service's six-bit text encoding.
 const ASCII_ENCODING="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ[]"
 
 /// RankedPlayer record for server.rankings, containing `context`, `gameId`, `match`, `playerId`, `token`, `status`, and 3 further fields.
-struct RankedPlayer context gameId match playerId token status finalStatus rank name end struct
+struct RankedPlayer
+  /// Open ranking-service context handle owned by this player, or zero after cleanup.
+  context
+  /// Ranking-service game identifier associated with the player.
+  gameId
+  /// Ranking-service match handle associated with the player.
+  match
+  /// Persistent player identifier returned by the ranking service.
+  playerId
+  /// Authentication token returned by the ranking service.
+  token
+  /// Current ranking-client authentication or participation status.
+  status
+  /// Status retained after the player leaves the ranked match.
+  finalStatus
+  /// Rank value assigned to the player by the ranking service.
+  rank
+  /// Player name registered with the ranking service.
+  name
+end struct
 /// Request record for server.rankings, containing `kind`, `context`, `player`, `index`, `gameId`, `username`, and 3 further fields.
-struct Request kind context player index gameId username password email payload end struct
+struct Request
+  /// Ranking-service operation requested by this record.
+  kind
+  /// Ranking-service context handle to which this asynchronous account request belongs.
+  context
+  /// Player record or identifier targeted by the request.
+  player
+  /// Local player-slot index associated with the request.
+  index
+  /// Ranking-service game identifier supplied with the request.
+  gameId
+  /// Account name supplied to the ranking-service request.
+  username
+  /// Account password supplied to the ranking-service authentication request.
+  password
+  /// Email address supplied when registering a ranking account.
+  email
+  /// Additional operation-specific data supplied to the ranking backend.
+  payload
+end struct
 /// Report record for server.rankings, containing `text`, `index1`, `index2`, `key`, `intValue`, `strValue`, and 5 further fields.
-struct Report text index1 index2 key intValue strValue accum context match user1 user2 end struct
+struct Report
+  /// Textual diagnostic or report data sent to the ranking backend.
+  text
+  /// Local slot of the first player associated with the reported statistic.
+  index1
+  /// Local slot of the second player associated with the reported statistic.
+  index2
+  /// Statistic identifier used by the ranking service.
+  key
+  /// Integer value reported for the statistic.
+  intValue
+  /// Text value reported for the statistic.
+  strValue
+  /// True when the service should accumulate rather than replace the statistic.
+  accum
+  /// Ranking-service context handle receiving this accumulated match-statistic report.
+  context
+  /// Ranking-service match handle receiving the report.
+  match
+  /// Service user identifier for the first reported player.
+  user1
+  /// Service user identifier for the second reported player.
+  user2
+end struct
 /// State record for server.rankings, containing `enabled`, `singlePlayer`, `officialGameKey`, `gametype`, `leagueName`, `maxclients`, and 16 further fields.
-struct State enabled singlePlayer officialGameKey gametype leagueName maxclients active contexts serverContext serverMatch gameKey gameId players quitting nextContext nextMatch requests reports configstring cvars errors backendFn end struct
+struct State
+  /// True while ranking-service integration is enabled.
+  enabled
+  /// True when the ranked session is configured for single-player behavior.
+  singlePlayer
+  /// Game key identifying the official ranking-service integration.
+  officialGameKey
+  /// Game-mode identifier used when applying mode-specific rules.
+  gametype
+  /// League selected for the ranking-service session.
+  leagueName
+  /// Number of player ranking contexts allocated for server client slots.
+  maxclients
+  /// True while this entry participates in the active runtime.
+  active
+  /// Allocated ranking-service context records.
+  contexts
+  /// Ranking context owned by the server.
+  serverContext
+  /// Ranking-service match handle owned by the server.
+  serverMatch
+  /// Game key supplied to the ranking-service backend.
+  gameKey
+  /// Game identifier returned for the active ranking session.
+  gameId
+  /// Local player records and their ranking authentication state.
+  players
+  /// True while ranking contexts are being closed for shutdown.
+  quitting
+  /// Identifier assigned to the next managed ranking context.
+  nextContext
+  /// Identifier assigned to the next managed ranking match.
+  nextMatch
+  /// Pending or recorded requests sent to the ranking backend.
+  requests
+  /// Statistics and textual reports emitted for the ranking backend.
+  reports
+  /// Ranking status text published to connected clients.
+  configstring
+  /// Configuration-variable registry consulted by this subsystem.
+  cvars
+  /// Ranking-service failures collected during operation.
+  errors
+  /// Host callback that submits a request to the external ranking-service backend.
+  backendFn
+end struct
 
 /// Create `mq3.server.rankings.RankedPlayer` with context=0; gameId=0; match=0; playerId=0; token=[]; status=QGR_STATUS_NEW; finalStatus=QGR_STATUS_NEW; rank=0; name="".
 function player() return RankedPlayer(0,0,0,0,[],QGR_STATUS_NEW,QGR_STATUS_NEW,0,"") end function

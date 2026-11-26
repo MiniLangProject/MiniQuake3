@@ -23,11 +23,17 @@ import mq3.qcommon.cvar as cv
 import std.string as strings
 import mq3.shared.info as infoStrings
 
+/// Game entity-flag bit enabling or marking dropped item.
 const FL_DROPPED_ITEM = 0x1000
+/// Game entity-flag bit enabling or marking force gesture.
 const FL_FORCE_GESTURE = 0x8000
+/// Capture-the-flag status identifier representing atbase.
 const FLAG_ATBASE = 0
+/// Capture-the-flag status identifier representing taken.
 const FLAG_TAKEN = 1
+/// Capture-the-flag status identifier representing dropped.
 const FLAG_DROPPED = 4
+/// Player-award identifier selecting the mask reward.
 const AWARD_MASK = 0x38848
 
 /// Test `typeof(index) == "int" and index > 0 and index < len(tables.items())` as the condition for `validItem`.

@@ -7,21 +7,172 @@ package mq3.renderer.tr_cmds_runtime
 
 import mq3.renderer.command_queue as commands
 
+/// Stereo-frame selector for the ordinary centered view.
 const STEREO_CENTER=0
+/// Stereo-frame selector for the left-eye view.
 const STEREO_LEFT=1
+/// Stereo-frame selector for the right-eye view.
 const STEREO_RIGHT=2
+/// Serialized byte size of the draw-surface submission command record.
 const DRAW_SURFS_BYTES=32
 
 /// Data record for `mq3.renderer.tr_cmds_runtime.FrontCounters`; groups `leafs`, `spherePatchIn`, `spherePatchClip`, `spherePatchOut`, `boxPatchIn`, `boxPatchClip`, and 10 further fields.
-struct FrontCounters leafs spherePatchIn spherePatchClip spherePatchOut boxPatchIn boxPatchClip boxPatchOut sphereMd3In sphereMd3Clip sphereMd3Out boxMd3In boxMd3Clip boxMd3Out dlightSurfaces dlightSurfacesCulled zFar end struct
+struct FrontCounters
+  /// Number of BSP leaves visited by frontend world traversal.
+  leafs
+  /// Number of patch sphere bounds classified as fully inside the view frustum.
+  spherePatchIn
+  /// Number of patch sphere bounds classified as intersecting the view frustum.
+  spherePatchClip
+  /// Number of patch sphere bounds classified as outside the view frustum.
+  spherePatchOut
+  /// Number of patch box bounds classified as fully inside the view frustum.
+  boxPatchIn
+  /// Number of patch box bounds classified as intersecting the view frustum.
+  boxPatchClip
+  /// Number of patch box bounds classified as outside the view frustum.
+  boxPatchOut
+  /// Number of MD3 model sphere bounds classified as fully inside the view frustum.
+  sphereMd3In
+  /// Number of MD3 model sphere bounds classified as intersecting the view frustum.
+  sphereMd3Clip
+  /// Number of MD3 model sphere bounds classified as outside the view frustum.
+  sphereMd3Out
+  /// Number of MD3 model box bounds classified as fully inside the view frustum.
+  boxMd3In
+  /// Number of MD3 model box bounds classified as intersecting the view frustum.
+  boxMd3Clip
+  /// Number of MD3 model box bounds classified as outside the view frustum.
+  boxMd3Out
+  /// Number of surfaces considered for dynamic lighting.
+  dlightSurfaces
+  /// Number of surfaces rejected from dynamic-light processing.
+  dlightSurfacesCulled
+  /// Far clipping distance selected for the current view.
+  zFar
+end struct
 /// Data record for `mq3.renderer.tr_cmds_runtime.BackCounters`; groups `shaders`, `surfaces`, `vertexes`, `indexes`, `totalIndexes`, `overDraw`, and 7 further fields.
-struct BackCounters shaders surfaces vertexes indexes totalIndexes overDraw dlightVertexes dlightIndexes flareAdds flareTests flareRenders msec imageBytes end struct
+struct BackCounters
+  /// Number of shader batches processed by the backend.
+  shaders
+  /// Number of surfaces processed by the backend.
+  surfaces
+  /// Number of vertices processed by the backend.
+  vertexes
+  /// Number of indices processed by the backend.
+  indexes
+  /// Total number of indices processed across all material passes.
+  totalIndexes
+  /// Accumulated overdraw measurement for the rendered frame.
+  overDraw
+  /// Number of vertices processed by dynamic-light passes.
+  dlightVertexes
+  /// Number of indices submitted by dynamic-light passes.
+  dlightIndexes
+  /// Number of flare additions recorded for the frame.
+  flareAdds
+  /// Number of flare visibility tests performed for the frame.
+  flareTests
+  /// Number of flares drawn during the frame.
+  flareRenders
+  /// Elapsed duration of the operation or frame, in milliseconds.
+  msec
+  /// Number of bytes occupied by the image data.
+  imageBytes
+end struct
 /// Data record for `mq3.renderer.tr_cmds_runtime.Settings`; groups `speeds`, `smp`, `showSmp`, `skipBackEnd`, `measureOverdraw`, `measureOverdrawModified`, and 11 further fields.
-struct Settings speeds smp showSmp skipBackEnd measureOverdraw measureOverdrawModified shadows stencilBits textureMode textureModeModified gammaModified ignoreGLErrors stereoEnabled drawBuffer registered width height end struct
+struct Settings
+  /// Renderer statistics mode selected for performance reporting.
+  speeds
+  /// Configuration setting controlling use of a separate renderer thread.
+  smp
+  /// Whether render-thread synchronization statistics are shown.
+  showSmp
+  /// Whether backend drawing is disabled for diagnostic purposes.
+  skipBackEnd
+  /// Whether stencil-based overdraw measurement is enabled.
+  measureOverdraw
+  /// Whether the overdraw setting changed and requires backend state updates.
+  measureOverdrawModified
+  /// Configured shadow-rendering mode.
+  shadows
+  /// Stencil-buffer precision in bits.
+  stencilBits
+  /// Configured texture-filtering mode applied to registered images.
+  textureMode
+  /// Whether texture filtering changed and must be reapplied.
+  textureModeModified
+  /// Whether gamma settings changed and must be uploaded.
+  gammaModified
+  /// Whether graphics-driver error reporting is suppressed by configuration.
+  ignoreGLErrors
+  /// Whether stereoscopic drawing buffers are available and enabled.
+  stereoEnabled
+  /// Graphics draw buffer selected for this frame.
+  drawBuffer
+  /// Whether the subsystem has completed resource registration.
+  registered
+  /// Width in pixels of the framebuffer used to normalize overdraw statistics.
+  width
+  /// Height in pixels of the framebuffer used to normalize overdraw statistics.
+  height
+end struct
 /// Callback table for `mq3.renderer.tr_cmds_runtime.Services`; exposes `eventFn`, `spawnThreadFn`, `frontEndSleepFn`, `wakeRendererFn`, `executeFn`, `textureModeFn`, and 4 further fields.
-struct Services eventFn spawnThreadFn frontEndSleepFn wakeRendererFn executeFn textureModeFn colorMappingsFn getErrorFn toggleSmpFn context end struct
+struct Services
+  /// Host callback used to perform event operations for this subsystem.
+  eventFn
+  /// Host callback used to perform spawn thread operations for this subsystem.
+  spawnThreadFn
+  /// Host callback used to perform front end sleep operations for this subsystem.
+  frontEndSleepFn
+  /// Host callback used to perform wake renderer operations for this subsystem.
+  wakeRendererFn
+  /// Host callback used to perform execute operations for this subsystem.
+  executeFn
+  /// Host callback used to perform texture mode operations for this subsystem.
+  textureModeFn
+  /// Host callback used to perform color mappings operations for this subsystem.
+  colorMappingsFn
+  /// Host callback used to perform get error operations for this subsystem.
+  getErrorFn
+  /// Host callback used to perform toggle smp operations for this subsystem.
+  toggleSmpFn
+  /// Command-executor state shared by render-thread scheduling and graphics-setting callbacks.
+  context
+end struct
 /// Data record for `mq3.renderer.tr_cmds_runtime.State`; groups `queue`, `backend`, `smpActive`, `renderThreadActive`, `blockedOnRender`, `blockedOnMain`, and 9 further fields.
-struct State queue backend smpActive renderThreadActive blockedOnRender blockedOnMain smpFrame frameCount frameSceneNum frontEndMsec finishCalled settings services front back end struct
+struct State
+  /// Queue holding operations waiting to be executed.
+  queue
+  /// Backend implementation used to execute platform or drawing operations.
+  backend
+  /// Whether a separate render thread is currently active.
+  smpActive
+  /// Whether a dedicated thread is executing renderer commands.
+  renderThreadActive
+  /// Number of frontend waits for the render thread.
+  blockedOnRender
+  /// Number of renderer waits for the frontend.
+  blockedOnMain
+  /// Index of the frame buffer shared between frontend and render thread.
+  smpFrame
+  /// Sequence count of frames processed by this subsystem.
+  frameCount
+  /// Sequence number of the scene within the current frame.
+  frameSceneNum
+  /// Milliseconds spent preparing the frontend's scene commands.
+  frontEndMsec
+  /// Whether a graphics completion barrier was already issued for this frame.
+  finishCalled
+  /// Configuration values governing the active subsystem.
+  settings
+  /// Injected host operations used by this subsystem.
+  services
+  /// Frontend visibility and culling counters collected for renderer statistics.
+  front
+  /// Backend drawing counters collected for renderer statistics.
+  back
+end struct
 
 /// Constructs `mq3.renderer.tr_cmds_runtime.FrontCounters` with `leafs` = `0`, `spherePatchIn` = `0`, `spherePatchClip` = `0`, `spherePatchOut` = `0` and the supplied remaining values.
 function frontCounters() return FrontCounters(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0.0) end function

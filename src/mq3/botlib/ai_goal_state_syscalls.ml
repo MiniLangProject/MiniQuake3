@@ -7,6 +7,7 @@ import mq3.botlib.ai_resource_pools as goalResources
 import mq3.vm.syscall_common as common
 import mq3.compat.numeric as n
 
+/// Byte size of the bot goal record in the bot VM ABI or serialized representation.
 const BOT_GOAL_SIZE=56
 
 /// Return a new array `[n.bitsFloat(n.readI32(data,address)),n.bitsFloat(n.readI32(data,address+4)),n.bitsFloat(n.readI32(data,address+8))]` for `vector`.

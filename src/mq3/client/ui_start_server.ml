@@ -4,26 +4,156 @@ package mq3.client.ui_start_server
 import std.string as strings
 import mq3.shared.info as info
 import mq3.compat.numeric as numeric
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when mapping game-mode choices into
+/// server rules and bot-slot options.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when mapping game-mode choices into
+/// server rules and bot-slot options.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when mapping game-mode choices into server rules
+/// and bot-slot options.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when mapping game-mode choices into server rules
+/// and bot-slot options.
 const GT_CTF=4
+/// Number of configurable player and bot slots exposed by the start-server UI.
 const PLAYER_SLOTS=12
+/// Number of map choices shown on one start-server selection page.
 const MAPS_PER_PAGE=4
+/// Number of bot choices shown on one bot-selection page.
 const BOTS_PER_PAGE=16
 /// Stores UI start server queued engine action, including `boundary`, `kind`, `name`, `value`, `number`, `dispatched`.
-struct Action boundary kind name value number dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while choosing a map and game rules,
+  /// configuring bot slots, and launching a server.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while choosing a map and
+  /// game rules, configuring bot slots, and launching a server.
+  kind
+  /// Map, bot/server-setting cvar, command, menu destination, or artwork resource targeted by server
+  /// setup.
+  name
+  /// Value payload supplied to the selected host operation while choosing a map and game rules,
+  /// configuring bot slots, and launching a server.
+  value
+  /// Numeric argument interpreted by the selected host operation while choosing a map and game rules,
+  /// configuring bot slots, and launching a server.
+  number
+  /// True when this request is marked for native dispatch while choosing a map and game rules,
+  /// configuring bot slots, and launching a server; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI start server arena record, including `map`, `type`, `bots`.
-struct Arena map type bots end struct
+struct Arena
+  /// Virtual map name loaded when this arena is selected for a local server.
+  map
+  /// Arena game-type declaration used to filter maps for the selected server rules.
+  type
+  /// Bot names or bot-selection declaration supplied by the arena definition.
+  bots
+end struct
 /// Stores UI start server bot record, including `name`, `model`.
-struct Bot name model end struct
+struct Bot
+  /// Bot identity offered by server setup for assignment to a bot player slot.
+  name
+  /// Model resource selected for rendering the object.
+  model
+end struct
 /// Stores UI start server start state record, including `multiplayer`, `gametype`, `maps`, `mapBits`, `currentMap`, `page` and additional values.
-struct StartState multiplayer gametype maps mapBits currentMap page maxPages displayName actions end struct
+struct StartState
+  /// When constructing this record, `startState` supplies `false` for this member.
+  multiplayer
+  /// Selected game-type menu index, translated through remapGametype before filtering maps or setting
+  /// g_gameType.
+  gametype
+  /// When constructing this record, `startState` supplies an empty list for this member.
+  maps
+  /// When constructing this record, `startState` supplies an empty list for this member.
+  mapBits
+  /// When constructing this record, `startState` supplies `0` for this member.
+  currentMap
+  /// When constructing this record, `startState` supplies `0` for this member.
+  page
+  /// When constructing this record, `startState` supplies `0` for this member.
+  maxPages
+  /// When constructing this record, `startState` supplies `"NO MAPS FOUND"` for this member.
+  displayName
+  /// Host requests queued while choosing a map and game rules, configuring bot slots, and launching a
+  /// server, retained in request order.
+  actions
+end struct
 /// Stores UI start server options record, including `multiplayer`, `gametype`, `mapName`, `playerTypes`, `playerNames`, `playerTeams` and additional values.
-struct Options multiplayer gametype mapName playerTypes playerNames playerTeams dedicated timeLimit fragLimit flagLimit friendlyFire hostname pure botSkill punkbuster newBot newBotIndex newBotName visibleNames visibleTeams actions end struct
+struct Options
+  /// When constructing this record, `options` supplies `false` for this member.
+  multiplayer
+  /// Actual GT game-rule value used to configure limits, player teams, and the server launch command.
+  gametype
+  /// Map identifier selected for the server-start command and its levelshot preview.
+  mapName
+  /// When constructing this record, `options` supplies `array(PLAYER_SLOTS,0)` for this member.
+  playerTypes
+  /// When constructing this record, `options` supplies `array(PLAYER_SLOTS,"")` for this member.
+  playerNames
+  /// When constructing this record, `options` supplies `array(PLAYER_SLOTS,0)` for this member.
+  playerTeams
+  /// When constructing this record, `options` supplies `0` for this member.
+  dedicated
+  /// When constructing this record, `options` supplies `0` for this member.
+  timeLimit
+  /// When constructing this record, `options` supplies `0` for this member.
+  fragLimit
+  /// When constructing this record, `options` supplies `0` for this member.
+  flagLimit
+  /// When constructing this record, `options` supplies `0` for this member.
+  friendlyFire
+  /// When constructing this record, `options` supplies an empty string for this member.
+  hostname
+  /// When constructing this record, `options` supplies `1` for this member.
+  pure
+  /// Bot difficulty level; zero denotes a human player and native bot levels range from one to five.
+  botSkill
+  /// Legacy server anti-cheat status advertised to the native server browser.
+  punkbuster
+  /// When constructing this record, `options` supplies `false` for this member.
+  newBot
+  /// When constructing this record, `options` supplies `0` for this member.
+  newBotIndex
+  /// When constructing this record, `options` supplies an empty string for this member.
+  newBotName
+  /// When constructing this record, `options` supplies `array(PLAYER_SLOTS,false)` for this member.
+  visibleNames
+  /// When constructing this record, `options` supplies `array(PLAYER_SLOTS,false)` for this member.
+  visibleTeams
+  /// Host requests queued while choosing a map and game rules, configuring bot slots, and launching a
+  /// server, retained in request order.
+  actions
+end struct
 /// Stores UI start server bot state record, including `bots`, `sorted`, `modelPage`, `numPages`, `selected`, `icons` and additional values.
-struct BotState bots sorted modelPage numPages selected icons names active alreadySelected actions end struct
+struct BotState
+  /// When constructing this record, `botState` supplies an empty list for this member.
+  bots
+  /// When constructing this record, `botState` supplies an empty list for this member.
+  sorted
+  /// When constructing this record, `botState` supplies `0` for this member.
+  modelPage
+  /// When constructing this record, `botState` supplies `0` for this member.
+  numPages
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// When constructing this record, `botState` supplies `array(BOTS_PER_PAGE,"")` for this member.
+  icons
+  /// When constructing this record, `botState` supplies `array(BOTS_PER_PAGE,"")` for this member.
+  names
+  /// When constructing this record, `botState` supplies `array(BOTS_PER_PAGE,false)` for this member.
+  active
+  /// When constructing this record, `botState` supplies `array(BOTS_PER_PAGE,false)` for this member.
+  alreadySelected
+  /// Host requests queued while choosing a map and game rules, configuring bot slots, and launching a
+  /// server, retained in request order.
+  actions
+end struct
 /// Creates a `mq3.client.ui_start_server.StartState` record. Initializes the record with the defaults written in this constructor.
 function startState() return StartState(false,0,[],[],0,0,0,"NO MAPS FOUND",[]) end function
 /// Creates a `mq3.client.ui_start_server.Options` record. Initializes the record with the defaults written in this constructor.

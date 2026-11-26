@@ -23,16 +23,27 @@ import mq3.compat.textnumbers as textnum
 import std.string as strings
 import mq3.shared.info as infoStrings
 
+/// Network entity-flag bit indicating teleport bit.
 const EF_TELEPORT_BIT = 0x00000004
+/// Network entity-flag bit indicating kamikaze.
 const EF_KAMIKAZE = 0x00000200
+/// Network entity-flag bit indicating voted.
 const EF_VOTED = 0x00004000
+/// Network entity-flag bit indicating teamvoted.
 const EF_TEAMVOTED = 0x00080000
+/// Player movement-state bit indicating time knockback.
 const PMF_TIME_KNOCKBACK = 64
+/// Player movement-state bit indicating respawned.
 const PMF_RESPAWNED = 512
+/// Game entity-flag bit enabling or marking no bots.
 const FL_NO_BOTS = 0x00002000
+/// Game entity-flag bit enabling or marking no humans.
 const FL_NO_HUMANS = 0x00004000
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
+/// Collision-contents bit identifying body space or objects.
 const CONTENTS_BODY=headers.CONTENTS_BODY
+/// Combined CONTENTS_* mask used for playersolid collision queries.
 const MASK_PLAYERSOLID = 0x02010001
 
 /// Forward `infoValue` to `mq3.shared.info.value` and return the delegated result.

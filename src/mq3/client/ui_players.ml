@@ -15,56 +15,271 @@ import std.string as strings
 /// @returns The tangent of the supplied angle.
 extern function tan(value as double) from "ucrtbase.dll" returns double
 
+/// Player-preview duration in milliseconds for the gesture animation phase.
 const UI_TIMER_GESTURE=2300
+/// Player-preview duration in milliseconds for the jump animation phase.
 const UI_TIMER_JUMP=1000
+/// Player-preview duration in milliseconds for the land animation phase.
 const UI_TIMER_LAND=130
+/// Player-preview duration in milliseconds for the weapon switch animation phase.
 const UI_TIMER_WEAPON_SWITCH=300
+/// Player-preview duration in milliseconds for the attack animation phase.
 const UI_TIMER_ATTACK=500
+/// Player-preview duration in milliseconds for the muzzle flash animation phase.
 const UI_TIMER_MUZZLE_FLASH=20
+/// Player-preview duration in milliseconds for the weapon delay animation phase.
 const UI_TIMER_WEAPON_DELAY=250
+/// Vertical displacement used by the menu's player-model jump preview.
 const JUMP_HEIGHT=56
+/// Bit toggled when restarting an animation so repeated identifiers still trigger a transition.
 const ANIM_TOGGLEBIT=128
+/// Capacity limit for the animations collection or bounded storage used by this client module.
 const MAX_ANIMATIONS=31
+/// Native whole-body animation slot for the death1 sequence.
 const BOTH_DEATH1=0
+/// Native upper-body animation slot for the gesture sequence.
 const TORSO_GESTURE=6
+/// Native upper-body animation slot for the attack sequence.
 const TORSO_ATTACK=7
+/// Native upper-body animation slot for the attack2 sequence.
 const TORSO_ATTACK2=8
+/// Native upper-body animation slot for the drop sequence.
 const TORSO_DROP=9
+/// Native upper-body animation slot for the raise sequence.
 const TORSO_RAISE=10
+/// Native upper-body animation slot for the stand sequence.
 const TORSO_STAND=11
+/// Native upper-body animation slot for the stand2 sequence.
 const TORSO_STAND2=12
+/// Native lower-body animation slot for the walkcr sequence.
 const LEGS_WALKCR=13
+/// Native lower-body animation slot for the jump sequence.
 const LEGS_JUMP=18
+/// Native lower-body animation slot for the land sequence.
 const LEGS_LAND=19
+/// Native lower-body animation slot for the idle sequence.
 const LEGS_IDLE=22
+/// Native lower-body animation slot for the turn sequence.
 const LEGS_TURN=24
+/// Native upper-body animation slot for the getflag sequence.
 const TORSO_GETFLAG=25
+/// Native weapon identifier selecting no selected weapon.
 const WP_NONE=0
+/// Native weapon identifier selecting the gauntlet.
 const WP_GAUNTLET=1
+/// Native weapon identifier selecting the machine gun.
 const WP_MACHINEGUN=2
+/// Native weapon identifier selecting the shotgun.
 const WP_SHOTGUN=3
+/// Native weapon identifier selecting the grenade launcher.
 const WP_GRENADE_LAUNCHER=4
+/// Native weapon identifier selecting the rocket launcher.
 const WP_ROCKET_LAUNCHER=5
+/// Native weapon identifier selecting the lightning gun.
 const WP_LIGHTNING=6
+/// Native weapon identifier selecting the railgun.
 const WP_RAILGUN=7
+/// Native weapon identifier selecting the plasma gun.
 const WP_PLASMAGUN=8
+/// Native weapon identifier selecting the BFG.
 const WP_BFG=9
+/// Native weapon identifier selecting the grappling hook.
 const WP_GRAPPLING_HOOK=10
 
 /// Stores UI players queued engine action, including `boundary`, `kind`, `name`, `detail`, `number`, `vector` and additional values.
-struct Action boundary kind name detail number vector dispatched end struct
+struct Action
+  /// Host service category recorded with a request emitted while loading model parts and drawing the
+  /// animated base-game player preview.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while loading model parts
+  /// and drawing the animated base-game player preview.
+  kind
+  /// Model, skin, shader, or sound resource referenced while preparing the Baseq3 menu player preview.
+  name
+  /// Additional text payload required by the selected host operation.
+  detail
+  /// Numeric argument interpreted by the selected host operation while loading model parts and drawing
+  /// the animated base-game player preview.
+  number
+  /// Vector argument interpreted according to the queued operation's kind.
+  vector
+  /// True when this request is marked for native dispatch while loading model parts and drawing the
+  /// animated base-game player preview; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI players animation record, including `firstFrame`, `numFrames`, `loopFrames`, `frameLerp`, `initialLerp`.
-struct Animation firstFrame numFrames loopFrames frameLerp initialLerp end struct
+struct Animation
+  /// Index of the first model frame belonging to the animation sequence.
+  firstFrame
+  /// Number of model frames belonging to the animation sequence.
+  numFrames
+  /// Number of trailing animation frames repeated after the initial sequence; zero disables looping.
+  loopFrames
+  /// Interval in milliseconds between successive animation frames.
+  frameLerp
+  /// Time in milliseconds used to reach the first frame of a newly selected animation.
+  initialLerp
+end struct
 /// Stores UI players lerp frame record, including `oldFrame`, `oldFrameTime`, `frame`, `frameTime`, `backlerp`, `yawAngle` and additional values.
-struct LerpFrame oldFrame oldFrameTime frame frameTime backlerp yawAngle yawing pitchAngle pitching animationNumber animation animationTime end struct
+struct LerpFrame
+  /// Previous animation frame used as the interpolation starting point.
+  oldFrame
+  /// Client time in milliseconds at which the previous animation frame was exact.
+  oldFrameTime
+  /// Current Baseq3 menu preview-model frame being approached by interpolation from oldFrame.
+  frame
+  /// UI realtime timestamp in milliseconds at which interpolation reaches the current Baseq3 menu
+  /// preview-model frame.
+  frameTime
+  /// Previous-frame weight used to interpolate the tracked animation presented by the base-game menu
+  /// player preview.
+  backlerp
+  /// Smoothed yaw angle used to orient the animated body part.
+  yawAngle
+  /// True while the body part is turning toward its target yaw.
+  yawing
+  /// Smoothed pitch angle used to orient the animated body part.
+  pitchAngle
+  /// True while the body part is turning toward its target pitch.
+  pitching
+  /// Selected animation identifier, including the animation-toggle bit when present.
+  animationNumber
+  /// Animation description supplying frame ranges and playback timing.
+  animation
+  /// Client time in milliseconds at which the first frame of the animation becomes exact.
+  animationTime
+end struct
 /// Stores UI players asset source record, including `files`, `animationFiles`, `actions`, `retailActive`, `diagnostics`.
-struct AssetSource files animationFiles actions retailActive diagnostics end struct
+struct AssetSource
+  /// When constructing this record, `assetSource` supplies `files` for this member.
+  files
+  /// When constructing this record, `assetSource` supplies `animationFiles` for this member.
+  animationFiles
+  /// Host requests queued while loading model parts and drawing the animated base-game player preview,
+  /// retained in request order.
+  actions
+  /// True when the retail QVM owns the base-game menu player preview, so the native observer records
+  /// requests without emitting duplicate host effects.
+  retailActive
+  /// When constructing this record, `assetSource` supplies an empty list for this member.
+  diagnostics
+end struct
 /// Stores UI players orientation record, including `origin`, `axis`, `found`.
-struct Orientation origin axis found end struct
+struct Orientation
+  /// Model-local origin of an attachment tag used to place one preview model part relative to another.
+  origin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// True when the requested model attachment tag was found and the returned transform is valid.
+  found
+end struct
 /// Stores UI players render entity record, including `kind`, `origin`, `axis`, `oldframe`, `frame`, `backlerp` and additional values.
-struct RenderEntity kind origin axis oldframe frame backlerp model skin shader radius renderfx tag end struct
+struct RenderEntity
+  /// Drawing primitive or presentation category selecting how this record is rendered.
+  kind
+  /// Preview-scene position of a player body part, weapon, or attached sprite.
+  origin
+  /// Three orientation basis vectors used to transform the rendered object.
+  axis
+  /// Previous model frame used as the interpolation starting point.
+  oldframe
+  /// Current model frame submitted when drawing the Baseq3 menu player preview.
+  frame
+  /// Previous-frame weight used to interpolate the submitted model entity presented by the base-game
+  /// menu player preview.
+  backlerp
+  /// Model resource selected for rendering the object.
+  model
+  /// Skin resource selected for rendering the model.
+  skin
+  /// Optional material reference retained in the base-game player-preview render submission.
+  shader
+  /// World-space sprite radius in the player-preview scene entity record.
+  radius
+  /// Renderer-entity flags controlling lighting, view restrictions, depth handling, and related
+  /// effects.
+  renderfx
+  /// When constructing this record, `renderEntity` supplies `tag` for this member.
+  tag
+end struct
 /// Stores UI players player info record, including `legsModel`, `legsSkin`, `legs`, `torsoModel`, `torsoSkin`, `torso` and additional values.
-struct PlayerInfo legsModel legsSkin legs torsoModel torsoSkin torso headModel headSkin animations weaponModel barrelModel flashModel flashDlightColor muzzleFlashTime viewAngles moveAngles currentWeapon legsAnim torsoAnim weapon lastWeapon pendingWeapon weaponTimer pendingLegsAnim torsoAnimationTimer pendingTorsoAnim legsAnimationTimer chat newModel barrelSpinning barrelAngle barrelTime realWeapon jumpHeight realtime actions end struct
+struct PlayerInfo
+  /// Model resource selected for the legs presentation.
+  legsModel
+  /// Skin resource applied to the legs model presentation.
+  legsSkin
+  /// Animation and interpolation state for the player's legs.
+  legs
+  /// Model resource selected for the torso presentation.
+  torsoModel
+  /// Skin resource applied to the torso model presentation.
+  torsoSkin
+  /// Animation and interpolation state for the player's torso.
+  torso
+  /// Head-model resource used when drawing a player, head icon, or preview.
+  headModel
+  /// Skin resource applied to the player's head model.
+  headSkin
+  /// Animation descriptions indexed by the native player-animation identifiers.
+  animations
+  /// Model resource selected for the weapon presentation.
+  weaponModel
+  /// Model resource selected for the barrel presentation.
+  barrelModel
+  /// Model resource selected for the flash presentation.
+  flashModel
+  /// RGB components of the weapon's muzzle-flash dynamic light.
+  flashDlightColor
+  /// Client timestamp at which the entity's muzzle-flash effect began.
+  muzzleFlashTime
+  /// Euler camera angles used to construct the client view.
+  viewAngles
+  /// When constructing this record, `create` supplies `[0.0,0.0,0.0]` for this member.
+  moveAngles
+  /// When constructing this record, `create` supplies `WP_NONE` for this member.
+  currentWeapon
+  /// Current preview leg-animation identifier, including the toggle bit used to restart an animation.
+  legsAnim
+  /// Current preview torso-animation identifier, including the toggle bit used to restart an animation.
+  torsoAnim
+  /// Desired preview weapon identifier; the current model changes after the weapon-drop animation.
+  weapon
+  /// When constructing this record, `create` supplies `WP_NONE` for this member.
+  lastWeapon
+  /// When constructing this record, `create` supplies `-1` for this member.
+  pendingWeapon
+  /// Preview timestamp after which a pending weapon selection becomes active.
+  weaponTimer
+  /// Deferred leg animation applied when the current forced jump or landing sequence allows a
+  /// transition.
+  pendingLegsAnim
+  /// Milliseconds remaining in a forced torso gesture, attack, or weapon-change animation.
+  torsoAnimationTimer
+  /// Deferred torso animation applied after the current forced torso sequence permits a transition.
+  pendingTorsoAnim
+  /// Milliseconds remaining in a forced leg animation, also used to calculate the preview's jump
+  /// height.
+  legsAnimationTimer
+  /// True when the player preview should draw the talk balloon above the model.
+  chat
+  /// Model resource selected for the new presentation.
+  newModel
+  /// True while the weapon barrel is in its spinning state.
+  barrelSpinning
+  /// Current rotational angle of the spinning weapon barrel.
+  barrelAngle
+  /// Client timestamp used to advance or stop weapon-barrel rotation.
+  barrelTime
+  /// When constructing this record, `create` supplies `WP_NONE` for this member.
+  realWeapon
+  /// When constructing this record, `create` supplies `0.0` for this member.
+  jumpHeight
+  /// Preview draw timestamp in milliseconds retained for player animation and delayed weapon changes.
+  realtime
+  /// Host requests queued while loading model parts and drawing the animated base-game player preview,
+  /// retained in request order.
+  actions
+end struct
 
 /// Creates the three orthonormal unit axes used as the identity orientation in UI players.
 function identityAxis() return [[1.0,0.0,0.0],[0.0,1.0,0.0],[0.0,0.0,1.0]] end function

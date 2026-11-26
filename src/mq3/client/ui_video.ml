@@ -5,39 +5,228 @@ package mq3.client.ui_video
 import std.string as strings
 import mq3.compat.numeric as numeric
 
+/// Activation callback event accepted by the graphics-options and driver-information menus before it
+/// processes the selected control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the driverinfoback action by the menu event handler.
 const ID_DRIVERINFOBACK=100
+/// Menu control identifier routed to the back2 action by the menu event handler.
 const ID_BACK2=101
+/// Menu control identifier routed to the fullscreen action by the menu event handler.
 const ID_FULLSCREEN=102
+/// Menu control identifier routed to the list action by the menu event handler.
 const ID_LIST=103
+/// Menu control identifier routed to the mode action by the menu event handler.
 const ID_MODE=104
+/// Menu control identifier routed to the driverinfo action by the menu event handler.
 const ID_DRIVERINFO=105
+/// Menu control identifier routed to the graphics action by the menu event handler.
 const ID_GRAPHICS=106
+/// Menu control identifier routed to the display action by the menu event handler.
 const ID_DISPLAY=107
+/// Menu control identifier routed to the sound action by the menu event handler.
 const ID_SOUND=108
+/// Menu control identifier routed to the network action by the menu event handler.
 const ID_NETWORK=109
+/// Renderer-driver category identifying a standard installable OpenGL driver.
 const GLDRV_ICD=0
+/// Renderer-driver category identifying the legacy Voodoo driver path.
 const GLDRV_VOODOO=2
+/// Renderer-hardware category identifying the legacy 3Dfx 2D/3D hardware path.
 const GLHW_3DFX_2D3D=1
 
 /// Stores UI video host action record, including `boundary`, `kind`, `name`, `text`, `number`, `dispatched`.
-struct HostAction boundary kind name text number dispatched end struct
+struct HostAction
+  /// Host service category recorded with a request emitted while listing renderer capabilities and
+  /// applying graphics configuration changes.
+  boundary
+  /// Operation selector telling the host how to interpret a request emitted while listing renderer
+  /// capabilities and applying graphics configuration changes.
+  kind
+  /// Target resource, command, or setting name addressed by this queued host action.
+  name
+  /// Driver-information text, video-setting value, or renderer restart command supplied by the graphics
+  /// menu.
+  text
+  /// When constructing this record, `host` supplies `number` for this member.
+  number
+  /// True when this request is marked for native dispatch while listing renderer capabilities and
+  /// applying graphics configuration changes; false when its native effect is suppressed.
+  dispatched
+end struct
 /// Stores UI video menu item, including `id`, `kind`, `name`, `x`, `y`, `active` and additional values.
-struct Item id kind name x y active hidden grayed end struct
+struct Item
+  /// Event-routing identifier of this selectable control in the graphics-options and driver-information
+  /// menus.
+  id
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+  /// Label or artwork resource identifying a video-options control.
+  name
+  /// Horizontal position of this menu control in the virtual layout used by the graphics-options and
+  /// driver-information menus.
+  x
+  /// Vertical position of this menu control in the virtual layout used by the graphics-options and
+  /// driver-information menus.
+  y
+  /// When constructing this record, `item` supplies `active` for this member.
+  active
+  /// When constructing this record, `item` supplies `hidden` for this member.
+  hidden
+  /// When constructing this record, `item` supplies `grayed` for this member.
+  grayed
+end struct
 /// Stores UI video draw line record, including `text`, `x`, `y`, `alignment`.
-struct DrawLine text x y alignment end struct
+struct DrawLine
+  /// Driver-information line containing vendor, renderer, version, or extension text.
+  text
+  /// Horizontal coordinate of a renderer-information text line in the graphics menu layout.
+  x
+  /// Vertical coordinate of a renderer-information text line in the graphics menu layout.
+  y
+  /// Horizontal alignment mode for the item within its layout region.
+  alignment
+end struct
 /// Stores UI video choice list record, including `name`, `values`.
-struct ChoiceList name values end struct
+struct ChoiceList
+  /// Caption for a graphics choice group, such as video mode, color depth, or texture quality.
+  name
+  /// When constructing this record, `graphicsChoices` supplies `["High
+  /// Quality","Normal","Fast","Fastest","Custom"]` for this member.
+  values
+end struct
 /// Stores UI video gl config record, including `vendor`, `version`, `renderer`, `extensions`, `colorBits`, `depthBits` and additional values.
-struct GlConfig vendor version renderer extensions colorBits depthBits stencilBits driverType hardwareType end struct
+struct GlConfig
+  /// Renderer vendor identification string reported by the graphics driver.
+  vendor
+  /// Graphics-driver or renderer version string exposed to the video-settings UI.
+  version
+  /// Renderer implementation name reported by the graphics driver.
+  renderer
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+  /// Number of bits requested or provided for the framebuffer's color channels.
+  colorBits
+  /// Number of bits available in the graphics depth buffer.
+  depthBits
+  /// Number of bits available in the graphics stencil buffer.
+  stencilBits
+  /// Native renderer-driver category used to select compatible video-settings behavior.
+  driverType
+  /// Native graphics-hardware category used to select compatible video-settings behavior.
+  hardwareType
+end struct
 /// Stores UI video video cvars record, including `mode`, `fullscreen`, `allowExtensions`, `picmip`, `vertexLight`, `textureBits` and additional values.
-struct VideoCvars mode fullscreen allowExtensions picmip vertexLight textureBits textureMode lodBias subdivisions colorBits glDriver end struct
+struct VideoCvars
+  /// Renderer video-mode index read from the engine's mode configuration variable.
+  mode
+  /// Fullscreen video setting supplied by the renderer configuration variables.
+  fullscreen
+  /// Nonzero when the renderer is allowed to use optional graphics-driver extensions.
+  allowExtensions
+  /// Texture mip-level reduction setting; larger values select lower-resolution texture data.
+  picmip
+  /// Nonzero when lighting is computed from vertex colors instead of lightmap sampling.
+  vertexLight
+  /// Requested color precision for texture storage.
+  textureBits
+  /// Texture-filtering mode name used to select bilinear or trilinear sampling.
+  textureMode
+  /// Bias applied when choosing lower-detail model geometry.
+  lodBias
+  /// Renderer subdivision setting used to control curved-surface geometry detail.
+  subdivisions
+  /// Number of bits requested or provided for the framebuffer's color channels.
+  colorBits
+  /// Configured OpenGL driver name or path selected by the video-settings UI.
+  glDriver
+end struct
 /// Stores UI video initial video record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
-struct InitialVideo mode fullscreen tq lighting colorDepth textureBits geometry filter driver extensions end struct
+struct InitialVideo
+  /// When constructing this record, `initial` supplies `mode` for this member.
+  mode
+  /// Fullscreen choice saved when the graphics menu opens, used to detect unapplied video changes.
+  fullscreen
+  /// When constructing this record, `initial` supplies `tq` for this member.
+  tq
+  /// When constructing this record, `initial` supplies `lighting` for this member.
+  lighting
+  /// When constructing this record, `initial` supplies `colorDepth` for this member.
+  colorDepth
+  /// Requested color precision for texture storage.
+  textureBits
+  /// When constructing this record, `initial` supplies `geometry` for this member.
+  geometry
+  /// When constructing this record, `initial` supplies `filter` for this member.
+  filter
+  /// When constructing this record, `initial` supplies `driver` for this member.
+  driver
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+end struct
 /// Stores UI video driver info state record, including `config`, `extensionStrings`, `drawLines`, `items`, `assets`, `actions`.
-struct DriverInfoState config extensionStrings drawLines items assets actions end struct
+struct DriverInfoState
+  /// When constructing this record, `driverState` supplies `config` for this member.
+  config
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  extensionStrings
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  drawLines
+  /// When constructing this record, `driverState` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the graphics-options and
+  /// driver-information menus.
+  assets
+  /// Host requests queued while listing renderer capabilities and applying graphics configuration
+  /// changes, retained in request order.
+  actions
+end struct
 /// Stores UI video graphics state record, including `mode`, `fullscreen`, `tq`, `lighting`, `colorDepth`, `textureBits` and additional values.
-struct GraphicsState mode fullscreen tq lighting colorDepth textureBits geometry filter driver extensions preset applyVisible fullscreenGrayed colorDepthGrayed driverHidden initial choices items assets actions end struct
+struct GraphicsState
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  mode
+  /// Current fullscreen choice in the graphics menu, applied to the renderer when settings are
+  /// accepted.
+  fullscreen
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  tq
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  lighting
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  colorDepth
+  /// Requested color precision for texture storage.
+  textureBits
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  geometry
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  filter
+  /// When constructing this record, `graphicsState` supplies `0` for this member.
+  driver
+  /// Graphics extension information exposed by the renderer or selected by the video-settings UI.
+  extensions
+  /// When constructing this record, `graphicsState` supplies `4` for this member.
+  preset
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  applyVisible
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  fullscreenGrayed
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  colorDepthGrayed
+  /// When constructing this record, `graphicsState` supplies `false` for this member.
+  driverHidden
+  /// When constructing this record, `graphicsState` supplies `base` for this member.
+  initial
+  /// When constructing this record, `graphicsState` supplies an empty list for this member.
+  choices
+  /// When constructing this record, `graphicsState` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the graphics-options and
+  /// driver-information menus.
+  assets
+  /// Host requests queued while listing renderer capabilities and applying graphics configuration
+  /// changes, retained in request order.
+  actions
+end struct
 
 /// Computes `actions+[HostAction(boundary,kind,name,text,number,not retailActive)]` for UI video `host`.
 /// @param actions Value used by `return actions+[HostAction(boundary,kind,name,text,number,not retailActive)]`.

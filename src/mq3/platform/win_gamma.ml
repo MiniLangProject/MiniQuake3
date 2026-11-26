@@ -3,12 +3,47 @@
 // Safe Win32 gamma-ramp state and host boundary from code/win32/win_gamma.c.
 package mq3.platform.win_gamma
 
+/// Driver category for a standalone OpenGL minidriver.
 const GLDRV_STANDALONE=1
 
 /// Data record for `mq3.platform.win_gamma.Action`; groups `boundary`, `kind`, `ramp`, `dispatched`.
-struct Action boundary kind ramp dispatched end struct
+struct Action
+  /// Host operation boundary at which this platform action is dispatched.
+  boundary
+  /// Gamma operation selecting a Win32 or 3Dfx ramp update or restoration.
+  kind
+  /// Gamma-ramp samples carried by the platform action.
+  ramp
+  /// Whether the recorded action was delivered to its host implementation.
+  dispatched
+end struct
 /// Data record for `mq3.platform.win_gamma.State`; groups `deviceSupportsGamma`, `ignoreHardwareGamma`, `driverType`, `hasDc`, `has3dfx`, `isWin2k`, and 6 further fields.
-struct State deviceSupportsGamma ignoreHardwareGamma driverType hasDc has3dfx isWin2k oldRamp currentRamp actions warnings debug retailActive end struct
+struct State
+  /// Whether the display supports hardware gamma-ramp updates.
+  deviceSupportsGamma
+  /// Whether hardware gamma-ramp updates are disabled by configuration.
+  ignoreHardwareGamma
+  /// Graphics-driver integration category used by platform compatibility handling.
+  driverType
+  /// Whether a valid display device context is available.
+  hasDc
+  /// Whether the graphics driver uses the legacy 3Dfx path.
+  has3dfx
+  /// Whether the detected Windows version uses the Windows 2000 gamma restrictions.
+  isWin2k
+  /// Original display gamma ramp saved for restoration.
+  oldRamp
+  /// Gamma ramp currently selected by the platform layer.
+  currentRamp
+  /// Platform operations recorded for dispatch or inspection.
+  actions
+  /// Nonfatal diagnostics retained by the subsystem.
+  warnings
+  /// Debug messages recorded while processing platform actions.
+  debug
+  /// Whether the real platform backend is active for action dispatch.
+  retailActive
+end struct
 
 /// Builds `rows[channel]` in `mq3.platform.win_gamma.blankRamp`; returns `rows`.
 function blankRamp() rows=array(3,void);for channel=0 to 2 rows[channel]=array(256,0) end for;return rows end function

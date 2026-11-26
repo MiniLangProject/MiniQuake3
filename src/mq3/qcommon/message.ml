@@ -4,19 +4,30 @@ package mq3.qcommon.message
 import mq3.compat.numeric as n
 import mq3.qcommon.huffman as huffman
 
+/// Max length of a string passed to Cmd_TokenizeString.
 const MAX_STRING_CHARS = 1024
+/// Used for system info key only.
 const BIG_INFO_STRING = 8192
 
 /// Message record for qcommon.message, containing `allowoverflow`, `overflowed`, `oob`, `data`, `maxsize`, `cursize`, and 3 further fields.
 struct Message
+  /// Compatibility flag recording whether message-buffer overflow is permitted.
   allowoverflow
+  /// True after a write exceeds the available message-buffer capacity.
   overflowed
+  /// True for direct byte-oriented network messages that bypass Huffman bitstream coding.
   oob
+  /// Byte buffer containing the encoded network message.
   data
+  /// Capacity of the message byte buffer.
   maxsize
+  /// Number of valid bytes currently stored in the message buffer.
   cursize
+  /// Byte position reached while consuming the message.
   readcount
+  /// Current bit position used by message reads and writes.
   bit
+  /// Huffman codec used for bit-packed message fields.
   codec
 end struct
 

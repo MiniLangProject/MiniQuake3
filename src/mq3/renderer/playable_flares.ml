@@ -10,21 +10,67 @@ import mq3.platform.playable_multitexture as multitexture
 import mq3.renderer.playable_materials as materials
 import mq3.renderer.playable_fog as playableFog
 
+/// BSP surface type for a map-defined light flare.
 const MST_FLARE=4
+/// Byte stride of one face record in the BSP surface lump.
 const FACE_STRIDE=104
+/// Default screen-space scale used when drawing a light flare.
 const DEFAULT_SIZE=40.0
+/// Default rate used to fade flares after visibility transitions.
 const DEFAULT_FADE=7.0
+/// Tolerance used when comparing flare depth with sampled scene depth.
 const VISIBILITY_TOLERANCE=24.0
+/// Maximum number of independent view-specific flare states retained.
 const MAX_VIEW_STATES=16
 
 /// Data record for `mq3.renderer.playable_flares.Flare`; groups `faceIndex`, `textureIndex`, `fogIndex`, `origin`, `color`, `normal`.
-struct Flare faceIndex textureIndex fogIndex origin color normal end struct
+struct Flare
+  /// Index of the source BSP face.
+  faceIndex
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Index of the fog volume affecting the surface or primitive.
+  fogIndex
+  /// Map-authored world position from which the flare is projected into the view.
+  origin
+  /// BSP-authored tint of the flare surface before view-dependent fading.
+  color
+  /// Map-authored flare-facing direction used to scale visibility from the current eye position.
+  normal
+end struct
 /// Data record for `mq3.renderer.playable_flares.State`; groups `visible`, `fadeTime`, `drawIntensity`.
-struct State visible fadeTime drawIntensity end struct
+struct State
+  /// Whether the flare passed its most recent visibility test.
+  visible
+  /// Timestamp of the last visibility transition used to fade a flare.
+  fadeTime
+  /// Current flare intensity after visibility fading.
+  drawIntensity
+end struct
 /// Data record for `mq3.renderer.playable_flares.Catalog`; groups `flares`, `states`, `dynamicStates`, `textureSlot`, `image`, `enabled`.
-struct Catalog flares states dynamicStates textureSlot image enabled end struct
+struct Catalog
+  /// Map-defined light flares registered by the renderer.
+  flares
+  /// Persistent visibility and fade state associated with the registered flares.
+  states
+  /// Visibility and fade state retained for dynamically generated flares.
+  dynamicStates
+  /// Texture slot reserved for this effect's image.
+  textureSlot
+  /// Shared flare texture drawn by static and dynamic flare instances.
+  image
+  /// Whether this feature is enabled by the current configuration.
+  enabled
+end struct
 /// Data record for `mq3.renderer.playable_flares.Point`; groups `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal screen-space coordinate of the projected or drawn point.
+  x
+  /// Vertical screen-space coordinate of the projected or drawn point.
+  y
+  /// Depth of the projected point or fog region in its owning coordinate system.
+  depth
+end struct
 
 /// Creates error `7696` with message `"playable flares: "+message`.
 /// @param message Input used in the result expression `error(7696,"playable flares: "+message)`.

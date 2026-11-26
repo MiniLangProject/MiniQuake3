@@ -11,12 +11,19 @@ import mq3.shared.info as infoStrings
 import mq3.compat.textnumbers as textnum
 import mq3.compat.numeric as n
 
+/// Chat delivery mode selecting all recipients.
 const SAY_ALL = 0
+/// Chat delivery mode selecting team recipients.
 const SAY_TEAM = 1
+/// Chat delivery mode selecting tell recipients.
 const SAY_TELL = 2
+/// Server entity-flag bit controlling bot.
 const SVF_BOT = 0x00000008
+/// Character code selecting green in Quake caret-prefixed color escapes.
 const COLOR_GREEN = 50
+/// Character code selecting cyan in Quake caret-prefixed color escapes.
 const COLOR_CYAN = 53
+/// Character code selecting magenta in Quake caret-prefixed color escapes.
 const COLOR_MAGENTA = 54
 
 /// Require and return a client state for a chat command.

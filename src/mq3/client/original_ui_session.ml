@@ -5,66 +5,190 @@ package mq3.client.original_ui_session
 import mq3.client.keycodes as q3keys
 import mq3.platform.playable_window as window
 
+/// UI keyboard-capture mask used when coordinating keyboard ownership with the original UI virtual
+/// machine.
 const KEYCATCH_UI=2
+/// Input-capture bit that routes keyboard events to the console subsystem.
 const KEYCATCH_CONSOLE=1
+/// Engine key code for the char flag input, used by menu and client key-event handling.
 const K_CHAR_FLAG=q3keys.K_CHAR_FLAG
+/// Engine key code for the backspace input, used by menu and client key-event handling.
 const K_BACKSPACE=q3keys.K_BACKSPACE
+/// Engine key code for the uparrow input, used by menu and client key-event handling.
 const K_UPARROW=q3keys.K_UPARROW
+/// Engine key code for the downarrow input, used by menu and client key-event handling.
 const K_DOWNARROW=q3keys.K_DOWNARROW
+/// Engine key code for the leftarrow input, used by menu and client key-event handling.
 const K_LEFTARROW=q3keys.K_LEFTARROW
+/// Engine key code for the rightarrow input, used by menu and client key-event handling.
 const K_RIGHTARROW=q3keys.K_RIGHTARROW
+/// Engine key code for the alt input, used by menu and client key-event handling.
 const K_ALT=q3keys.K_ALT
+/// Engine key code for the ctrl input, used by menu and client key-event handling.
 const K_CTRL=q3keys.K_CTRL
+/// Engine key code for the shift input, used by menu and client key-event handling.
 const K_SHIFT=q3keys.K_SHIFT
+/// Engine key code for the ins input, used by menu and client key-event handling.
 const K_INS=q3keys.K_INS
+/// Engine key code for the del input, used by menu and client key-event handling.
 const K_DEL=q3keys.K_DEL
+/// Engine key code for the pgdn input, used by menu and client key-event handling.
 const K_PGDN=q3keys.K_PGDN
+/// Engine key code for the pgup input, used by menu and client key-event handling.
 const K_PGUP=q3keys.K_PGUP
+/// Engine key code for the home input, used by menu and client key-event handling.
 const K_HOME=q3keys.K_HOME
+/// Engine key code for the end input, used by menu and client key-event handling.
 const K_END=q3keys.K_END
+/// Engine key code for the f1 input, used by menu and client key-event handling.
 const K_F1=q3keys.K_F1
+/// Engine key code for the mouse1 input, used by menu and client key-event handling.
 const K_MOUSE1=q3keys.K_MOUSE1
+/// Engine key code for the mouse2 input, used by menu and client key-event handling.
 const K_MOUSE2=q3keys.K_MOUSE2
+/// Engine key code for the mouse3 input, used by menu and client key-event handling.
 const K_MOUSE3=q3keys.K_MOUSE3
+/// Engine-to-UI menu selector for the none screen or menu state.
 const UIMENU_NONE=0
+/// Engine-to-UI menu selector for the main screen or menu state.
 const UIMENU_MAIN=1
+/// Engine-to-UI menu selector for the ingame screen or menu state.
 const UIMENU_INGAME=2
+/// Engine-to-UI menu selector for the need cd screen or menu state.
 const UIMENU_NEED_CD=3
+/// Engine-to-UI menu selector for the bad cd key screen or menu state.
 const UIMENU_BAD_CD_KEY=4
+/// Engine-to-UI menu selector for the team screen or menu state.
 const UIMENU_TEAM=5
+/// Engine-to-UI menu selector for the postgame screen or menu state.
 const UIMENU_POSTGAME=6
 
+/// Windows virtual-key code for the back input before translation to engine key codes.
 const VK_BACK=8
+/// Windows virtual-key code for the tab input before translation to engine key codes.
 const VK_TAB=9
+/// Windows virtual-key code for the return input before translation to engine key codes.
 const VK_RETURN=13
+/// Windows virtual-key code for the shift input before translation to engine key codes.
 const VK_SHIFT=16
+/// Windows virtual-key code for the control input before translation to engine key codes.
 const VK_CONTROL=17
+/// Windows virtual-key code for the menu input before translation to engine key codes.
 const VK_MENU=18
+/// Windows virtual-key code for the escape input before translation to engine key codes.
 const VK_ESCAPE=27
+/// Windows virtual-key code for the space input before translation to engine key codes.
 const VK_SPACE=32
+/// Windows virtual-key code for the prior input before translation to engine key codes.
 const VK_PRIOR=33
+/// Windows virtual-key code for the next input before translation to engine key codes.
 const VK_NEXT=34
+/// Windows virtual-key code for the end input before translation to engine key codes.
 const VK_END=35
+/// Windows virtual-key code for the home input before translation to engine key codes.
 const VK_HOME=36
+/// Windows virtual-key code for the left input before translation to engine key codes.
 const VK_LEFT=37
+/// Windows virtual-key code for the up input before translation to engine key codes.
 const VK_UP=38
+/// Windows virtual-key code for the right input before translation to engine key codes.
 const VK_RIGHT=39
+/// Windows virtual-key code for the down input before translation to engine key codes.
 const VK_DOWN=40
+/// Windows virtual-key code for the insert input before translation to engine key codes.
 const VK_INSERT=45
+/// Windows virtual-key code for the delete input before translation to engine key codes.
 const VK_DELETE=46
+/// Windows virtual-key code for the f1 input before translation to engine key codes.
 const VK_F1=112
+/// Windows virtual-key code for the lbutton input before translation to engine key codes.
 const VK_LBUTTON=1
+/// Windows virtual-key code for the rbutton input before translation to engine key codes.
 const VK_RBUTTON=2
+/// Windows virtual-key code for the mbutton input before translation to engine key codes.
 const VK_MBUTTON=4
 
 /// Stores original UI session binding record, including `virtualKey`, `quakeKey`, `normalChar`, `shiftedChar`.
-struct Binding virtualKey quakeKey normalChar shiftedChar end struct
+struct Binding
+  /// When constructing this record, `binding` supplies `virtualKey` for this member.
+  virtualKey
+  /// When constructing this record, `binding` supplies `quakeKey` for this member.
+  quakeKey
+  /// When constructing this record, `binding` supplies `normalChar` for this member.
+  normalChar
+  /// When constructing this record, `binding` supplies `shiftedChar` for this member.
+  shiftedChar
+end struct
 /// Stores original UI session host-service callbacks, including `context`, `catcherFn`, `keyEventFn`, `mouseEventFn`, `refreshFn`, `menuFn` and additional values.
-struct Services context catcherFn keyEventFn mouseEventFn refreshFn menuFn commandCountFn stateEventFn connectFn end struct
+struct Services
+  /// Caller-supplied value forwarded unchanged to the service callbacks for the original UI session
+  /// bridge.
+  context
+  /// Host callback for the catcher operation; an unset callback leaves that host operation unavailable.
+  catcherFn
+  /// Host callback for the key event operation; an unset callback leaves that host operation
+  /// unavailable.
+  keyEventFn
+  /// Host callback for the mouse event operation; an unset callback leaves that host operation
+  /// unavailable.
+  mouseEventFn
+  /// Host callback for the refresh operation; an unset callback leaves that host operation unavailable.
+  refreshFn
+  /// Host callback for the menu operation; an unset callback leaves that host operation unavailable.
+  menuFn
+  /// Host callback for the command count operation; an unset callback leaves that host operation
+  /// unavailable.
+  commandCountFn
+  /// Host callback for the state event operation; an unset callback leaves that host operation
+  /// unavailable.
+  stateEventFn
+  /// Host callback for the connect operation; an unset callback leaves that host operation unavailable.
+  connectFn
+end struct
 /// Stores original UI session state, including `services`, `inputContext`, `keyDownFn`, `mouseDeltaFn`, `bindings`, `down` and additional values.
-struct State services inputContext keyDownFn mouseDeltaFn bindings down frameCount end struct
+struct State
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+  /// When constructing this record, `create` supplies `inputContext` for this member. Used by `frame`
+  /// during subsequent processing.
+  inputContext
+  /// Host callback for the key down operation; an unset callback leaves that host operation
+  /// unavailable.
+  keyDownFn
+  /// Host callback for the mouse delta operation; an unset callback leaves that host operation
+  /// unavailable.
+  mouseDeltaFn
+  /// Key-to-command associations available to the UI controls editor.
+  bindings
+  /// When constructing this record, `create` supplies `array(len(mapped),false)` for this member. Used
+  /// by `frame` during subsequent processing.
+  down
+  /// When constructing this record, `create` supplies `0` for this member. Used by
+  /// `finishOriginalUiFrame` during subsequent processing.
+  frameCount
+end struct
 /// Stores original UI session frame data, including `active`, `refreshed`, `menuOpened`, `keyEvents`, `charEvents`, `mouseEvents` and additional values.
-struct Frame active refreshed menuOpened keyEvents charEvents mouseEvents commandStart uiCommands commandCount end struct
+struct Frame
+  /// When constructing this record, `finishOriginalUiFrame` supplies `active(state)` for this member.
+  active
+  /// When constructing this record, `finishOriginalUiFrame` supplies `refreshed` for this member.
+  refreshed
+  /// When constructing this record, `finishOriginalUiFrame` supplies `menuOpened` for this member.
+  menuOpened
+  /// When constructing this record, `finishOriginalUiFrame` supplies `keyEvents` for this member.
+  keyEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `charEvents` for this member.
+  charEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `mouseEvents` for this member.
+  mouseEvents
+  /// When constructing this record, `finishOriginalUiFrame` supplies `commandStart` for this member.
+  commandStart
+  /// When constructing this record, `finishOriginalUiFrame` supplies `count-commandStart` for this
+  /// member.
+  uiCommands
+  /// When constructing this record, `finishOriginalUiFrame` supplies `count` for this member.
+  commandCount
+end struct
 
 /// Creates the original UI session error `7686` with diagnostic text `"original UI session: "+message`.
 /// @param message Argument 2 of `error`; passed as `"original UI session: "+message`.

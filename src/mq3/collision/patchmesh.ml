@@ -11,28 +11,42 @@ import mq3.collision.native_planes as nativePlanes
 
 /// Plane record for collision.patchmesh, containing `normal`, `distance`, `signbits`.
 struct Plane
+  /// Normal of a generated patch facet or bevel clipping plane.
   normal
+  /// Signed distance defining the patch clipping plane.
   distance
+  /// Signx + (signy<<1) + (signz<<2), used as lookup during collision.
   signbits
 end struct
 /// Facet record for collision.patchmesh, containing `surface`, `borders`, `inward`, `noAdjust`.
 struct Facet
+  /// Index of the facet's primary surface plane.
   surface
+  /// Plane indexes forming the edges of the collision facet.
   borders
+  /// Flags indicating which border planes face inward.
   inward
+  /// Flags preventing selected border planes from being expanded for trace bounds.
   noAdjust
 end struct
 /// Patch record for collision.patchmesh, containing `planes`, `facets`, `bounds`, `planeCache`.
 struct Patch
+  /// Plane records used to classify or clip the represented geometry.
   planes
+  /// Collision facets generated from the curved patch.
   facets
+  /// Minimum and maximum corners enclosing the patch, expanded for collision tolerance.
   bounds
+  /// Lookup cache used to reuse equivalent patch clipping planes.
   planeCache
 end struct
 /// Grid record for collision.patchmesh, containing `columns`, `wrapWidth`, `wrapHeight`.
 struct Grid
+  /// Control-point columns of the subdivided patch grid.
   columns
+  /// True when the horizontal grid endpoints form a closed seam.
   wrapWidth
+  /// True when the vertical grid endpoints form a closed seam.
   wrapHeight
 end struct
 

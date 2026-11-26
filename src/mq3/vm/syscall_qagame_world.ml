@@ -27,31 +27,51 @@ import mq3.qcommon.message_delta as messageDelta
 /// @returns 1 after writing all fourteen words; 0 when the destination is null or out of bounds.
 extern function writeTraceNative(data as bytes,capacity as i32,offset as i32,allsolid as u32,startsolid as u32,fraction as double,x as double,y as double,z as double,nx as double,ny as double,nz as double,distance as double,planeMetadata as u32,flags as u32,contents as u32,entity as u32) from "miniquake3_abi.dll" symbol "mq3_write_qvm_trace" returns i32
 
+/// Byte size used for trace storage or binary layout in mq3.vm.syscall_qagame_world.
 const TRACE_SIZE=56
+/// Byte size used for user command storage or binary layout in mq3.vm.syscall_qagame_world.
 const USERCMD_SIZE=24
 
 /// TraceResult record for vm.syscall_qagame_world, containing `allsolid`, `startsolid`, `fraction`, `endpos`, `planeNormal`, `planeDist`, and 5 further fields.
 struct TraceResult
+  /// Nonzero when the entire requested trace remains inside solid space.
   allsolid
+  /// Nonzero when the requested trace begins inside solid space.
   startsolid
+  /// Fraction of the requested trace completed before the first blocking collision.
   fraction
+  /// Final position reached by the collision trace.
   endpos
+  /// Normal of the collision plane returned by the trace.
   planeNormal
+  /// Distance of the collision plane from the world origin.
   planeDist
+  /// Axial/general classification of the collision plane.
   planeType
+  /// Negative-component mask of the collision plane normal.
   planeSignBits
+  /// SURF_* flags of the surface involved in the collision or movement result.
   surfaceFlags
+  /// CONTENTS_* mask describing the collision contents of this object or query result.
   contents
+  /// Entity number returned by or associated with this operation.
   entityNum
 end struct
 
 /// Services record for vm.syscall_qagame_world, containing `context`, `traceFn`, `pointContentsFn`, `entitiesInBoxFn`, `entityContactFn`, `getUsercmdFn`.
 struct Services
+  /// Opaque caller-supplied context available to game-VM world tracing, contact tests, and user-command
+  /// retrieval.
   context
+  /// Injected callback for trace; invoked through the Services service/state record.
   traceFn
+  /// Injected callback for point contents; invoked through the Services service/state record.
   pointContentsFn
+  /// Injected callback for entities in box; invoked through the Services service/state record.
   entitiesInBoxFn
+  /// Injected callback for entity contact; invoked through the Services service/state record.
   entityContactFn
+  /// Injected callback for get user command; invoked through the Services service/state record.
   getUsercmdFn
 end struct
 

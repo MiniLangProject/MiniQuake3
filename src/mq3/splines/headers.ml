@@ -7,22 +7,65 @@ import mq3.compat.numeric as n
 import mq3.compat.transcendental as trig
 import std.string as strings
 
+/// Tolerance used when comparing floating-point geometric values for equality.
 const EQUAL_EPSILON=0.001
+/// Multiplicative factor that converts degrees to radians.
 const DEG2RAD=0.017453292519943295
+/// Multiplicative factor that converts radians to degrees.
 const RAD2DEG=57.29577951308232
 
 /// Vec3 record for splines.headers, containing `x`, `y`, `z`.
-struct Vec3 x y z end struct
+struct Vec3
+  /// X component of the spatial vector.
+  x
+  /// Y component of the spatial vector.
+  y
+  /// Z component of the spatial vector.
+  z
+end struct
 /// Angles record for splines.headers, containing `pitch`, `yaw`, `roll`.
-struct Angles pitch yaw roll end struct
+struct Angles
+  /// Rotation around the lateral axis, expressed as the pitch angle.
+  pitch
+  /// Rotation around the vertical axis, expressed as the yaw angle.
+  yaw
+  /// Rotation around the longitudinal axis, expressed as the roll angle.
+  roll
+end struct
 /// Quat record for splines.headers, containing `x`, `y`, `z`, `w`.
-struct Quat x y z w end struct
+struct Quat
+  /// X component of the spatial vector.
+  x
+  /// Y component of the spatial vector.
+  y
+  /// Z component of the spatial vector.
+  z
+  /// Fourth component of the homogeneous vector.
+  w
+end struct
 /// Mat3 record for splines.headers, containing `rows`.
-struct Mat3 rows end struct
+struct Mat3
+  /// Console-variable table rows managed by the cvar subsystem.
+  rows
+end struct
 /// Bounds record for splines.headers, containing `mins`, `maxs`, `cleared`.
-struct Bounds mins maxs cleared end struct
+struct Bounds
+  /// Lower XYZ corner of the accumulated spline bounds.
+  mins
+  /// Upper XYZ corner of the accumulated spline bounds.
+  maxs
+  /// Nonzero when the bounds are empty and the next added point must initialize them.
+  cleared
+end struct
 /// ListState record for splines.headers, containing `values`, `size`, `granularity`.
-struct ListState values size granularity end struct
+struct ListState
+  /// List elements currently in use.
+  values
+  /// Allocated element capacity of the list; the used element count is len(values).
+  size
+  /// Allocation growth increment used by list storage.
+  granularity
+end struct
 
 /// List the 4 names in splines.headers.mathAnglesSymbols, beginning with `Zero`, `angles_t`, `set`, `vec3_p`.
 function mathAnglesSymbols() return ["Zero","angles_t","set","vec3_p"] end function

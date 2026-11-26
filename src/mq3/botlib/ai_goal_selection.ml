@@ -13,31 +13,79 @@ import mq3.botlib.aas_entities as aasEntities
 import mq3.botlib.ai_genetic as genetic
 import mq3.compat.numeric as goalSelectNumeric
 
+/// Bot-library syscall identifier for choose long-term goal item.
 const OP_CHOOSE_LTG_ITEM=535
+/// Bot-library syscall identifier for choose nearby goal item.
 const OP_CHOOSE_NBG_ITEM=536
+/// Bot-library syscall identifier for item goal in vis but not visible.
 const OP_ITEM_GOAL_IN_VIS_BUT_NOT_VISIBLE=538
+/// Bot-library syscall identifier for get level item goal.
 const OP_GET_LEVEL_ITEM_GOAL=539
+/// Bot-library syscall identifier for save goal fuzzy logic.
 const OP_SAVE_GOAL_FUZZY_LOGIC=545
+/// Bot-library syscall identifier for genetic parents and child selection.
 const OP_GENETIC_PARENTS_AND_CHILD_SELECTION=564
 // Baseq3 g_public.h assigns INTERBREED to 565 and MUTATE to 566.
 const OP_INTERBREED_GOAL_FUZZY_LOGIC=565
+/// Bot-library syscall identifier for mutate goal fuzzy logic.
 const OP_MUTATE_GOAL_FUZZY_LOGIC=566
+/// Bot goal-property flag marking item.
 const GFL_ITEM=1
+/// Bot goal-property flag marking roam.
 const GFL_ROAM=2
+/// Bot goal-property flag marking dropped.
 const GFL_DROPPED=4
+/// An eye is never valid in a solid.
 const CONTENTS_SOLID=1
+/// Minimum interval retained for a goal-avoidance request.
 const AVOID_MINIMUM_TIME=10.0
+/// Default interval for temporarily avoiding a selected goal.
 const AVOID_DEFAULT_TIME=30.0
+/// Avoidance interval applied to a recently considered dropped-item goal.
 const AVOID_DROPPED_TIME=10.0
+/// Factor converting AAS travel costs into the scale used by item-goal scoring.
 const TRAVELTIME_SCALE=0.01
+/// Default desirability bonus added when scoring a dropped item.
 const DEFAULT_DROPPED_WEIGHT=1000.0
 
 /// `Services` record for ai goal selection, containing `context`, `reachabilityAreaFn`, `areaReachabilityFn`, `travelTimeFn` and `traceFn` and related fields.
-struct Services context reachabilityAreaFn areaReachabilityFn travelTimeFn traceFn entityInfoFn itemQueryFn end struct
+struct Services
+  /// Caller-supplied data associated with navigation, collision, and entity queries used to score item
+  /// goals.
+  context
+  /// Host callback that finds an AAS area suitable for the current movement request.
+  reachabilityAreaFn
+  /// Host callback that reports whether an AAS area has usable outgoing reachabilities.
+  areaReachabilityFn
+  /// Host callback that returns travel cost for a candidate movement link.
+  travelTimeFn
+  /// Host callback that performs a collision sweep through the host world.
+  traceFn
+  /// Host callback that retrieves navigation-relevant information about an entity.
+  entityInfoFn
+  /// Host callback that retrieves information about a map item.
+  itemQueryFn
+end struct
 /// `Runtime` record for ai goal selection, containing `levelItems`, `goals`, `services`, `droppedWeight` and `randomSeed`.
-struct Runtime levelItems goals services droppedWeight randomSeed end struct
+struct Runtime
+  /// Current item goals discovered from the map and its dynamic entities.
+  levelItems
+  /// Goal-state runtime supplying active stacks and avoidance policy.
+  goals
+  /// Route-cost, collision, and entity queries used when comparing item goals.
+  services
+  /// Additional scoring factor applied to dropped-item goals.
+  droppedWeight
+  /// Seed retained for repeatable bot-goal selection randomness.
+  randomSeed
+end struct
 /// `ItemScore` record for ai goal selection, containing `weight` and `time`.
-struct ItemScore weight time end struct
+struct ItemScore
+  /// Final item desirability after inventory weighting and route-cost scaling.
+  weight
+  /// Route travel cost used when scoring this candidate item goal.
+  time
+end struct
 
 /// Create a `mq3.botlib.ai_goal_selection.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.

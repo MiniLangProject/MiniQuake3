@@ -8,11 +8,44 @@ import mq3.client.gamestate as gamestate
 import std.string as strings
 
 /// Stores system info state, including `serverId`, `demoPlaying`, `connectedPure`.
-struct State serverId demoPlaying connectedPure end struct
+struct State
+  /// Server-instance identifier included in client messages to reject stale connections.
+  serverId
+  /// True while the client receives its game data from a recorded demo.
+  demoPlaying
+  /// When constructing this record, `create` supplies `0` for this member. Used by `apply` during
+  /// subsequent processing.
+  connectedPure
+end struct
 /// Stores system info host-service callbacks, including `cheatResetFn`, `loadedPaksFn`, `referencedPaksFn`, `setCvarFn`, `getCvarFn`, `context`.
-struct Services cheatResetFn loadedPaksFn referencedPaksFn setCvarFn getCvarFn context end struct
+struct Services
+  /// Host callback for the cheat reset operation; an unset callback leaves that host operation
+  /// unavailable.
+  cheatResetFn
+  /// Host callback for the loaded paks operation; an unset callback leaves that host operation
+  /// unavailable.
+  loadedPaksFn
+  /// Host callback for the referenced paks operation; an unset callback leaves that host operation
+  /// unavailable.
+  referencedPaksFn
+  /// Host callback for the set cvar operation; an unset callback leaves that host operation
+  /// unavailable.
+  setCvarFn
+  /// Host callback for the get cvar operation; an unset callback leaves that host operation
+  /// unavailable.
+  getCvarFn
+  /// Caller-supplied value forwarded unchanged to the service callbacks for server system-info
+  /// configuration.
+  context
+end struct
 /// Stores system info binding record, including `state`, `services`.
-struct Binding state services end struct
+struct Binding
+  /// When constructing this record, `install` supplies `state` for this member. Used by
+  /// `gamestateChanged` during subsequent processing.
+  state
+  /// Service callbacks and context used to access the host engine from this client subsystem.
+  services
+end struct
 
 /// Creates a `mq3.client.system_info.State` record. Initializes the record with the defaults written in this constructor.
 function create() return State(0,false,0) end function

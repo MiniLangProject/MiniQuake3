@@ -5,17 +5,29 @@ package mq3.client.input_command_events
 import mq3.client.input_command as inputCommandCore
 import mq3.client.key_binding_dispatch as eventBindingDispatch
 
+/// Platform input-event tag selecting a key press or release.
 const INPUT_KEY=1
+/// Platform input-event tag selecting relative mouse motion.
 const INPUT_MOUSE=3
+/// Windows virtual-key code for the lbutton input before translation to engine key codes.
 const VK_LBUTTON=1
+/// Windows virtual-key code for the rbutton input before translation to engine key codes.
 const VK_RBUTTON=2
+/// Windows virtual-key code for the mbutton input before translation to engine key codes.
 const VK_MBUTTON=4
+/// Windows virtual-key code for the xbutton1 input before translation to engine key codes.
 const VK_XBUTTON1=5
+/// Windows virtual-key code for the xbutton2 input before translation to engine key codes.
 const VK_XBUTTON2=6
+/// Windows virtual-key code for the space input before translation to engine key codes.
 const VK_SPACE=32
+/// Windows virtual-key code for the a input before translation to engine key codes.
 const VK_A=65
+/// Windows virtual-key code for the d input before translation to engine key codes.
 const VK_D=68
+/// Windows virtual-key code for the s input before translation to engine key codes.
 const VK_S=83
+/// Windows virtual-key code for the w input before translation to engine key codes.
 const VK_W=87
 
 /// Evaluates input command events `quakeKey` and returns `virtualKey+32`, `178`, `179` and additional values according to its guard/selection conditions.

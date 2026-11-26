@@ -7,15 +7,25 @@ import mq3.compat.numeric as numeric
 import mq3.compat.textnumbers as textnumbers
 import mq3.compat.transcendental as transcendental
 
+/// Printf flag requesting the alternate representation.
 const ALT=1
+/// Printf flag requesting a hexadecimal radix prefix.
 const HEXPREFIX=2
+/// Printf flag requesting left justification.
 const LADJUST=4
+/// Printf flag indicating a long-double conversion.
 const LONGDBL=8
+/// Printf flag indicating a long-integer conversion.
 const LONGINT=16
+/// Printf flag indicating a quad-width integer conversion.
 const QUADINT=32
+/// Printf flag indicating a short-integer conversion.
 const SHORTINT=64
+/// Printf flag requesting zero padding instead of spaces.
 const ZEROPAD=128
+/// Printf flag indicating a floating-point conversion.
 const FPT=256
+/// Circle constant used by the shared angle and trigonometric helpers.
 const PI=3.14159265358979323846
 
 // These original symbols are compiled out by #if 0 in bg_lib.c.  They are
@@ -23,13 +33,33 @@ const PI=3.14159265358979323846
 function disabledIf0Symbols() return ["floor","memset","memcpy","strncpy","sqrt","sin","cos","create_acostable","acos","atan2"] end function
 
 /// `ParseResult` record for bg lib, containing `value` and `next`.
-struct ParseResult value next end struct
+struct ParseResult
+  /// Numeric value parsed from the input text.
+  value
+  /// Position immediately after the parsed input.
+  next
+end struct
 /// `ScanResult` record for bg lib, containing `count`, `values` and `next`.
-struct ScanResult count values next end struct
+struct ScanResult
+  /// Number of conversions successfully matched by the scanner.
+  count
+  /// Values captured by successful format conversions.
+  values
+  /// Position immediately after the consumed input.
+  next
+end struct
 /// `FormatResult` record for bg lib, containing `text` and `count`.
-struct FormatResult text count end struct
+struct FormatResult
+  /// Formatted output text.
+  text
+  /// Number of characters produced by formatting.
+  count
+end struct
 /// `RandomState` record for bg lib, containing `seed`.
-struct RandomState seed end struct
+struct RandomState
+  /// Current pseudo-random generator state, updated whenever a random value is drawn.
+  seed
+end struct
 
 /// Create a `mq3.game.bg_lib.RandomState` record, initializing `seed` as `numeric.i32(seed)`.
 /// @param seed State used to initialize the deterministic random sequence.

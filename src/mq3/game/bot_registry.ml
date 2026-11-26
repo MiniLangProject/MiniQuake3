@@ -6,16 +6,25 @@ import mq3.shared.parser as parser
 import mq3.shared.info as infoStrings
 import std.string as strings
 
+/// Upper bound on infos represented by mq3.game.bot_registry.
 const MAX_INFOS = 1024
+/// Upper bound on info text represented by mq3.game.bot_registry.
 const MAX_INFO_TEXT = 8192
 
 /// `Registry` record for bot registry, containing `botInfos`, `arenaInfos`, `readFileFn`, `listFilesFn` and `printFn` and related fields.
 struct Registry
+  /// Parsed bot definitions available for bot creation.
   botInfos
+  /// Parsed arena/map definitions used by game selection and bot setup.
   arenaInfos
+  /// Injected callback for read file; invoked through the Registry service/state record.
   readFileFn
+  /// Injected callback for list files; invoked through the Registry service/state record.
   listFilesFn
+  /// Injected callback for print; invoked through the Registry service/state record.
   printFn
+  /// Opaque caller-supplied context available to bot and arena definition file-loading, file-listing,
+  /// and print callbacks.
   context
 end struct
 

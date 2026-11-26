@@ -19,8 +19,11 @@ import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textnum
 import mq3.compat.transcendental as crt
 
+/// Collision-contents bit identifying trigger space or objects.
 const CONTENTS_TRIGGER=headers.CONTENTS_TRIGGER
+/// Server entity-flag bit controlling noclient.
 const SVF_NOCLIENT = 1
+/// Nominal game frame duration in milliseconds.
 const FRAMETIME = 100
 
 // Kept because the historical symbol inventory picked the word from the

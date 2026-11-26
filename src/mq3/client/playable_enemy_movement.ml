@@ -6,13 +6,28 @@ import mq3.game.movement as movement
 import mq3.collision.world as collision
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used by the native player's spatial queries.
 const PLAYER_MASK=0x2010001
+/// Vertical step-height setting, in world units, retained by native enemy movement.
 const STEP_HEIGHT=18.0
+/// Downward trace distance used to establish contact with supporting ground.
 const GROUND_PROBE=24.0
+/// Minimum upward surface-normal component accepted as walkable ground.
 const GROUND_NORMAL=0.7
 
 /// Stores playable enemy movement operation result, including `origin`, `delta`, `blocked`, `stepped`, `grounded`.
-struct Result origin delta blocked stepped grounded end struct
+struct Result
+  /// Final enemy position returned after movement and ground-collision resolution.
+  origin
+  /// When constructing this record, `moveOriginWithTrace` supplies `actual` for this member.
+  delta
+  /// When constructing this record, `moveOriginWithTrace` supplies `blocked` for this member.
+  blocked
+  /// When constructing this record, `moveOriginWithTrace` supplies `stepped` for this member.
+  stepped
+  /// When constructing this record, `moveOriginWithTrace` supplies `grounded` for this member.
+  grounded
+end struct
 
 /// Creates the playable enemy movement error `7550` with diagnostic text `"preview enemy movement: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview enemy movement: "+message`.

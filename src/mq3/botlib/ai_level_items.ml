@@ -9,23 +9,77 @@ import mq3.compat.numeric as n
 import mq3.compat.textnumbers as textNumbers
 import std.array as arrays
 
+/// Bot-library syscall identifier for init level items.
 const OP_INIT_LEVEL_ITEMS=541
+/// Bot-library syscall identifier for update entity items.
 const OP_UPDATE_ENTITY_ITEMS=542
+/// Maximum number of item and roam-goal records tracked for one level.
 const MAX_LEVEL_ITEMS=256
+/// Network entity-type identifier for a collectible item.
 const ET_ITEM=2
+/// Game-mode identifier for single-player progression.
 const GT_SINGLE_PLAYER=2
+/// Game-mode identifier for team deathmatch.
 const GT_TEAM=3
+/// Not in free for all.
 const IFL_NOTFREE=1
+/// Not in team play.
 const IFL_NOTTEAM=2
+/// Not in single player.
 const IFL_NOTSINGLE=4
+/// Bot should never go for this.
 const IFL_NOTBOT=8
+/// Bot roam goal.
 const IFL_ROAM=16
+/// AAS area-contents bit marking jump pad.
 const AREACONTENTS_JUMPPAD=128
 
 /// `BotLevelItem` record for ai level items, containing `number`, `itemInfo`, `flags`, `weight` and `origin` and related fields.
-struct BotLevelItem number itemInfo flags weight origin goalAreaNum goalOrigin entityNum timeout end struct
+struct BotLevelItem
+  /// Unique level-item goal identifier used by bot goal queries.
+  number
+  /// Item-configuration index associated with this bot goal.
+  itemInfo
+  /// Item restrictions and roam-goal properties combined from IFL flags.
+  flags
+  /// Configured preference multiplier for a bot roam goal.
+  weight
+  /// World-space position of the tracked level item or roam entity.
+  origin
+  /// AAS area containing the destination of this route or goal.
+  goalAreaNum
+  /// Goal origin within the area.
+  goalOrigin
+  /// Number of the game entity associated with this result.
+  entityNum
+  /// Item is removed after this time.
+  timeout
+end struct
 /// `LevelItemRuntime` record for ai level items, containing `itemRuntime`, `aasEntities`, `aas`, `bspEntities` and `gameType` and related fields.
-struct LevelItemRuntime itemRuntime aasEntities aas bspEntities gameType callbackContext placeFn levelItems numLevelItems maxLevelItems initialized end struct
+struct LevelItemRuntime
+  /// Runtime containing the item definitions and fuzzy-weight rules.
+  itemRuntime
+  /// Navigation entity information used to track live map items.
+  aasEntities
+  /// AAS navigation runtime used for area and route queries.
+  aas
+  /// Parsed key/value definitions from the BSP entity lump.
+  bspEntities
+  /// Game-mode identifier used when applying mode-specific rules.
+  gameType
+  /// Opaque host data passed to the bound callback.
+  callbackContext
+  /// Host callback that places a discovered item goal in a usable AAS area.
+  placeFn
+  /// Current item goals discovered from the map and its dynamic entities.
+  levelItems
+  /// Number of level items represented by this record.
+  numLevelItems
+  /// Maximum number of map and dynamic item goals retained by this runtime.
+  maxLevelItems
+  /// True after item and roam goals have been discovered for the current level.
+  initialized
+end struct
 
 /// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for ai level items.
 /// @param value Three-component array; components 0, 1 and 2 are used in their stored order.

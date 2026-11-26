@@ -8,10 +8,15 @@ import mq3.botlib.ai_resource_pools as pools
 import mq3.botlib.ai_weapon_weights as weapons
 import mq3.compat.numeric as n
 
+/// Bot-library syscall identifier for choose best fight weapon.
 const OP_CHOOSE_BEST_FIGHT_WEAPON=558
+/// Bot-library syscall identifier for get weapon info.
 const OP_GET_WEAPON_INFO=559
+/// Byte capacity of a fixed-length string in the bot weapon ABI.
 const STRING_FIELD_SIZE=80
+/// Byte size of the projectile info record in the bot VM ABI or serialized representation.
 const PROJECTILE_INFO_SIZE=208
+/// Byte size of the weapon info record in the bot VM ABI or serialized representation.
 const WEAPON_INFO_SIZE=552
 
 /// Construct error `7597` with diagnostic text `"AI weapon combat: "+message`.

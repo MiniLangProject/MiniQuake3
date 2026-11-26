@@ -13,20 +13,106 @@ import mq3.renderer.shader_remap as shaderRemap
 import std.string as strings
 
 /// Data record for `mq3.renderer.qvm_scene_materials.LoadedSkin`; groups `handle`, `skin`.
-struct LoadedSkin handle skin end struct
+struct LoadedSkin
+  /// Resource handle used to identify the registered or opened object.
+  handle
+  /// Parsed skin definition assigning shaders to model surfaces.
+  skin
+end struct
 /// Data record for `mq3.renderer.qvm_scene_materials.Binding`; groups `shaderHandle`, `customSkin`, `shaderName`, `surfaceName`, `materialIndex`.
-struct Binding shaderHandle customSkin shaderName surfaceName materialIndex end struct
+struct Binding
+  /// Registered shader handle used to resolve the drawing material.
+  shaderHandle
+  /// Explicit skin handle overriding the model's default skin.
+  customSkin
+  /// Skin-selected shader name associated with a model surface during scene material resolution.
+  shaderName
+  /// Model-surface name used to select a skin or material mapping.
+  surfaceName
+  /// Index of the resolved material in the material catalog.
+  materialIndex
+end struct
 /// Data record for `mq3.renderer.qvm_scene_materials.Texture`; groups `imageName`, `image`, `slot`.
-struct Texture imageName image slot end struct
+struct Texture
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Decoded texture image assigned a native slot for scene-entity drawing.
+  image
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+end struct
 // Field layout intentionally matches playable_materials.Material so the
 // existing multi-pass native batch path can consume QVM materials directly.
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
+struct Material
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// Resolved scene material name used to select its runtime texture stages.
+  shaderName
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Primary decoded image retained with the resolved scene material.
+  image
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+  /// Ordered vertex deformations applied by the shader.
+  deforms
+  /// Whether the material draws both front and back faces.
+  twoSided
+  /// Shader ordering category used to schedule this material relative to other surfaces.
+  sort
+  /// Whether polygon-offset depth bias is applied while drawing.
+  polygonOffset
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Whether the material bypasses the global texture downscaling setting.
+  noPicMip
+end struct
 /// Data record for `mq3.renderer.qvm_scene_materials.ResolvedTriangle`; groups `triangle`, `materialIndex`.
-struct ResolvedTriangle triangle materialIndex end struct
+struct ResolvedTriangle
+  /// Source triangle paired with its resolved material.
+  triangle
+  /// Index of the resolved material in the material catalog.
+  materialIndex
+end struct
 /// Data record for `mq3.renderer.qvm_scene_materials.Catalog`; groups `triangles`, `materials`, `textures`, `scriptIndex`, `scriptCount`, `loadedSkins`, and 7 further fields.
-struct Catalog triangles materials textures scriptIndex scriptCount loadedSkins bindings resolvedTriangles unresolvedTriangles nextTextureSlot recentBinding shaderRemaps imageCache end struct
+struct Catalog
+  /// Triangle records or index triplets represented by this geometry.
+  triangles
+  /// Resolved drawing materials retained by the catalog.
+  materials
+  /// Texture resources retained by the material catalog.
+  textures
+  /// Index of parsed shader definitions used for material resolution.
+  scriptIndex
+  /// Number of shader script sources loaded into the catalog.
+  scriptCount
+  /// Skin definitions already loaded for material resolution.
+  loadedSkins
+  /// Bindings associating names or handles with their backing resources.
+  bindings
+  /// Number of triangles whose shaders resolved successfully.
+  resolvedTriangles
+  /// Number of triangles whose materials could not be resolved.
+  unresolvedTriangles
+  /// Next texture slot available for a newly loaded image.
+  nextTextureSlot
+  /// Most recently resolved surface-to-material binding.
+  recentBinding
+  /// Shader name substitutions and associated effect-time offsets.
+  shaderRemaps
+  /// Decoded images reused across material and skin lookups.
+  imageCache
+end struct
 
+/// Builtin material selector used to draw beam geometry.
 const BUILTIN_BEAM="$mq3/beam"
+/// Builtin material selector used to draw projection-shadow geometry.
 const BUILTIN_PROJECTION_SHADOW="$mq3/projectionShadow"
 
 /// Creates error `7680` with message `"QVM scene materials: "+message`.

@@ -7,9 +7,23 @@ import mq3.format.aas as aas
 import std.ds.list as lists
 
 /// `Segment` record for aas trace areas, containing `start`, `finish`, `nodeNum` and `planeNum`.
-struct Segment start finish nodeNum planeNum end struct
+struct Segment
+  /// Beginning of the current segment used to enumerate crossed navigation areas.
+  start
+  /// End of the current segment used to enumerate crossed navigation areas.
+  finish
+  /// Index of the BSP or AAS node visited by this operation.
+  nodeNum
+  /// Splitting plane crossed to enter the segment while collecting traversed areas.
+  planeNum
+end struct
 /// `Result` record for aas trace areas, containing `areas` and `points`.
-struct Result areas points end struct
+struct Result
+  /// Area records or area assignments used by navigation and visibility queries.
+  areas
+  /// XYZ points defining the debug shape, polygon, or winding.
+  points
+end struct
 
 /// Copy `value[0]`, `value[1]` and `value[2]` into a new ordered array for aas trace areas.
 /// @param value Three-component array; components 0, 1 and 2 are used in their stored order.

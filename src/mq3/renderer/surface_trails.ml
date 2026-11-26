@@ -8,9 +8,21 @@ import mq3.compat.transcendental as trans
 import mq3.shared.math as qmath
 
 /// Data record for `mq3.renderer.surface_trails.Vertex`; groups `xyz`, `uv`, `color`.
-struct Vertex xyz uv color end struct
+struct Vertex
+  /// Three-dimensional position of this vertex.
+  xyz
+  /// Texture coordinates associated with this vertex.
+  uv
+  /// Modulation color of a generated rail-trail vertex.
+  color
+end struct
 /// Data record for `mq3.renderer.surface_trails.Submission`; groups `vertices`, `indexes`.
-struct Submission vertices indexes end struct
+struct Submission
+  /// Generated vertex records forming the rail-trail geometry.
+  vertices
+  /// Triangle indices joining the generated rail-trail vertices.
+  indexes
+end struct
 
 /// Creates error `7697` with message `"surface trails: "+message`.
 /// @param message Input used in the result expression `error(7697,"surface trails: "+message)`.

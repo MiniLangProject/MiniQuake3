@@ -15,38 +15,177 @@ import std.string as strings
 import std.string_builder as stringBuilder
 import std.ds.hashmap as maps
 
+/// Byte stride of one shader record in the BSP shader lump.
 const SHADER_STRIDE=72
+/// Byte capacity reserved for a shader name in the native BSP shader record.
 const SHADER_NAME_BYTES=64
+/// First texture slot reserved for ordinary material images.
 const BASE_TEXTURE_FIRST_SLOT=64
+/// Number of texture slots reserved for ordinary material images.
 const BASE_TEXTURE_SLOT_COUNT=256
+/// Maximum number of parsed shader stages retained by a runtime material.
 const MAX_RUNTIME_STAGES=8
+/// Maximum number of image frames retained by an animated material stage.
 const MAX_ANIMATION_FRAMES=8
+/// Maximum number of decoded images retained in the shared material cache.
 const MAX_CACHED_IMAGES=2048
+/// Blend mode that replaces destination color with the source color.
 const BLEND_OPAQUE=0
+/// Blend mode using source alpha and one minus source alpha as color factors.
 const BLEND_ALPHA=1
+/// Blend mode that adds source and destination colors.
 const BLEND_ADD=2
+/// Blend mode that multiplies source and destination colors.
 const BLEND_FILTER=3
+/// Blend mode using destination color and one minus destination alpha as factors.
 const BLEND_DST_COLOR_ONE_MINUS_DST_ALPHA=4
+/// Blend mode multiplying destination color by one minus the source color for impact marks.
 const BLEND_MARK=6
+/// Blend mode combining premultiplied source color with destination color scaled by one minus source
+/// alpha.
 const BLEND_PREMULTIPLIED_ALPHA=7
+/// Blend selector indicating that source and destination factors come from packed GLS state bits.
 const BLEND_GL_STATE=256
+/// Alpha-test selector that accepts all fragment alpha values.
 const ALPHA_TEST_NONE=0
+/// Alpha-test selector that accepts alpha values greater than zero.
 const ALPHA_TEST_GT0=1
+/// Alpha-test selector that accepts byte alpha values below 128.
 const ALPHA_TEST_LT128=2
+/// Alpha-test selector that accepts byte alpha values of at least 128.
 const ALPHA_TEST_GE128=3
 
 /// Data record for `mq3.renderer.playable_materials.Image`; groups `width`, `height`, `pixels`.
-struct Image width height pixels end struct
+struct Image
+  /// Width in pixels of the decoded image used by the runtime material.
+  width
+  /// Height in pixels of the decoded image used by the runtime material.
+  height
+  /// Decoded pixel data for the image or upload.
+  pixels
+end struct
 /// Data record for `mq3.renderer.playable_materials.UvMod`; groups `kind`, `a`, `b`, `c`, `d`, `e`, and 2 further fields.
-struct UvMod kind a b c d e f wave end struct
+struct UvMod
+  /// Runtime UV operation that determines how the modifier's numeric parameters and waveform are
+  /// evaluated.
+  kind
+  /// Texture-modifier parameter A, interpreted according to the modifier kind.
+  a
+  /// Texture-modifier parameter B, interpreted according to the modifier kind.
+  b
+  /// Texture-modifier parameter C, interpreted according to the modifier kind.
+  c
+  /// Texture-modifier parameter D, interpreted according to the modifier kind.
+  d
+  /// Texture-modifier parameter E, interpreted according to the modifier kind.
+  e
+  /// Texture-modifier parameter F, interpreted according to the modifier kind.
+  f
+  /// Waveform parameters driving this texture or vertex modification.
+  wave
+end struct
 /// Data record for `mq3.renderer.playable_materials.RuntimeStage`; groups `imageNames`, `images`, `slots`, `animationSpeed`, `uvMods`, `blend`, and 13 further fields.
-struct RuntimeStage imageNames images slots animationSpeed uvMods blend alphaTest tcGen rgbGen rgbWave alphaGen alphaWave constantColor bspLightmap clampTexture depthWrite depthEqual portalRange tcGenVectors end struct
+struct RuntimeStage
+  /// Virtual image paths used by the stage's animation frames.
+  imageNames
+  /// Image resources or image-animation frames retained by the record.
+  images
+  /// Resource slots or backing arrays retained by this record.
+  slots
+  /// Rate at which animated shader images advance, in frames per second.
+  animationSpeed
+  /// Ordered texture-coordinate modifiers applied by this runtime stage.
+  uvMods
+  /// Blend mode selected for the material or merged stage.
+  blend
+  /// Alpha comparison used to reject fragments in this pass.
+  alphaTest
+  /// Generator used to produce the stage's texture coordinates.
+  tcGen
+  /// Generator used to compute the stage's RGB color components.
+  rgbGen
+  /// Waveform used by the RGB color generator.
+  rgbWave
+  /// Generator used to compute the stage's alpha component.
+  alphaGen
+  /// Waveform used by the alpha generator.
+  alphaWave
+  /// Constant color components used by the shader stage's color generators.
+  constantColor
+  /// Whether the stage samples the BSP surface's baked lightmap.
+  bspLightmap
+  /// Whether texture coordinates clamp at the image edges.
+  clampTexture
+  /// Whether drawing this pass writes to the depth buffer.
+  depthWrite
+  /// Whether depth testing accepts only fragments at the existing surface depth.
+  depthEqual
+  /// Distance over which portal alpha fades between transparent and opaque.
+  portalRange
+  /// Projection vectors used by vector-generated texture coordinates.
+  tcGenVectors
+end struct
 /// Data record for `mq3.renderer.playable_materials.Material`; groups `textureIndex`, `shaderName`, `imageName`, `image`, `slot`, `stages`, and 8 further fields.
-struct Material textureIndex shaderName imageName image slot stages deforms twoSided sort polygonOffset noMipMaps timeOffset clampTime noPicMip end struct
+struct Material
+  /// Index identifying the texture or BSP shader assigned to the surface.
+  textureIndex
+  /// World material name used to locate the parsed shader definition and image stages.
+  shaderName
+  /// Virtual image path selected for this texture or material.
+  imageName
+  /// Primary world-material image retained alongside its additional runtime stages.
+  image
+  /// Texture slot reserved for this image in the native drawing backend.
+  slot
+  /// Ordered material stages evaluated when the shader is drawn.
+  stages
+  /// Ordered vertex deformations applied by the shader.
+  deforms
+  /// Whether the material draws both front and back faces.
+  twoSided
+  /// Shader ordering category used to schedule this material relative to other surfaces.
+  sort
+  /// Whether polygon-offset depth bias is applied while drawing.
+  polygonOffset
+  /// Whether mipmap generation is disabled for this material's textures.
+  noMipMaps
+  /// Offset in seconds applied to the material's shader time.
+  timeOffset
+  /// Upper limit applied to the shader's effect time; zero disables clamping.
+  clampTime
+  /// Whether the material bypasses the global texture downscaling setting.
+  noPicMip
+end struct
 /// Data record for `mq3.renderer.playable_materials.Catalog`; groups `materials`, `scripts`, `attempted`, `loaded`, `textureCount`, `animatedStageCount`, and 1 further field.
-struct Catalog materials scripts attempted loaded textureCount animatedStageCount effectStageCount end struct
+struct Catalog
+  /// Resolved drawing materials retained by the catalog.
+  materials
+  /// Parsed shader script sources available to material resolution.
+  scripts
+  /// Number of resource-loading attempts performed by the catalog.
+  attempted
+  /// Number of material resources successfully loaded while building the catalog.
+  loaded
+  /// Number of texture images referenced or loaded by the catalog.
+  textureCount
+  /// Number of material stages that advance through image frames.
+  animatedStageCount
+  /// Number of material stages requiring additional effect processing.
+  effectStageCount
+end struct
 /// Data record for `mq3.renderer.playable_materials.ImageCache`; groups `archive`, `images`, `count`, `hits`, `misses`.
-struct ImageCache archive images count hits misses end struct
+struct ImageCache
+  /// Asset archive used to resolve game resources by virtual path.
+  archive
+  /// Image resources or image-animation frames retained by the record.
+  images
+  /// Number of decoded images currently retained by the cache.
+  count
+  /// Number of lookups satisfied by an existing cache entry.
+  hits
+  /// Number of lookups that required loading or rebuilding data.
+  misses
+end struct
 
 /// Constructs `mq3.renderer.playable_materials.ImageCache` with `images` = `maps.HashMap.withCapacity(512)`, `count` = `0`, `hits` = `0`, `misses` = `0` and the supplied remaining values.
 /// @param archive Initial value for `mq3.renderer.playable_materials.ImageCache.archive`.

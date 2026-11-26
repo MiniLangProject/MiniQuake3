@@ -7,31 +7,151 @@ import mq3.vm.font_abi as fontAbi
 import mq3.format.pk3 as pk3
 import std.fs as fs
 
+/// Maximum number of registered font definitions retained by the renderer.
 const MAX_FONTS=6
+/// Rasterizer format tag indicating an outline glyph rather than an existing bitmap.
 const FT_OUTLINE=1
+/// Glyph bitmap format with one coverage bit per pixel.
 const PIXEL_MODE_MONO=1
+/// Glyph bitmap format with grayscale coverage samples.
 const PIXEL_MODE_GRAY=2
 
 /// Data record for `mq3.renderer.tr_font_runtime.Cursor`; groups `data`, `offset`.
-struct Cursor data offset end struct
+struct Cursor
+  /// Font metadata bytes being decoded by the cursor.
+  data
+  /// Byte offset of the current cursor or data range.
+  offset
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Metrics`; groups `horiBearingX`, `width`, `horiBearingY`, `height`, `horiAdvance`.
-struct Metrics horiBearingX width horiBearingY height horiAdvance end struct
+struct Metrics
+  /// Horizontal glyph bearing from the pen origin, in 26.6 fixed-point units.
+  horiBearingX
+  /// Glyph width in the rasterizer's 26.6 fixed-point units.
+  width
+  /// Vertical glyph bearing above the baseline, in 26.6 fixed-point units.
+  horiBearingY
+  /// Glyph height in the rasterizer's 26.6 fixed-point units.
+  height
+  /// Horizontal pen advance after the glyph, in 26.6 fixed-point units.
+  horiAdvance
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.GlyphBounds`; groups `left`, `right`, `width`, `top`, `bottom`, `height`, and 1 further field.
-struct GlyphBounds left right width top bottom height pitch end struct
+struct GlyphBounds
+  /// Left glyph boundary rounded down to a 26.6 fixed-point pixel boundary.
+  left
+  /// Right glyph boundary rounded up to a 26.6 fixed-point pixel boundary.
+  right
+  /// Width of the rounded glyph bounds, in pixels.
+  width
+  /// Top glyph boundary rounded up to a 26.6 fixed-point pixel boundary.
+  top
+  /// Bottom glyph boundary rounded down to a 26.6 fixed-point pixel boundary.
+  bottom
+  /// Height of the rounded glyph bounds, in pixels.
+  height
+  /// Signed number of bytes between successive bitmap scanlines.
+  pitch
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Bitmap`; groups `width`, `rows`, `pitch`, `pixelMode`, `buffer`, `numGrays`.
-struct Bitmap width rows pitch pixelMode buffer numGrays end struct
+struct Bitmap
+  /// Width of the rasterized coverage bitmap, in pixels.
+  width
+  /// Number of rasterized glyph scanlines.
+  rows
+  /// Signed number of bytes between successive bitmap scanlines.
+  pitch
+  /// Rasterizer pixel format used by the glyph bitmap.
+  pixelMode
+  /// Rasterized glyph coverage bytes arranged by scanline pitch.
+  buffer
+  /// Number of gray levels represented by the glyph bitmap.
+  numGrays
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.GlyphInfo`; groups `height`, `top`, `bottom`, `pitch`, `xSkip`, `imageWidth`, and 7 further fields.
-struct GlyphInfo height top bottom pitch xSkip imageWidth imageHeight s t s2 t2 glyph shaderName end struct
+struct GlyphInfo
+  /// Height of the rasterized glyph, in pixels.
+  height
+  /// Pixel bearing of the rendered glyph above its baseline.
+  top
+  /// Lower glyph bound retained in the rasterizer's 26.6 fixed-point units.
+  bottom
+  /// Signed number of bytes between successive bitmap scanlines.
+  pitch
+  /// Horizontal pen advance used to lay out this glyph, in pixels.
+  xSkip
+  /// Width of the glyph region reserved in the font atlas, in pixels.
+  imageWidth
+  /// Height of the glyph region reserved in the font atlas, in pixels.
+  imageHeight
+  /// Horizontal normalized texture coordinate of the first corner of the glyph atlas region.
+  s
+  /// Vertical normalized texture coordinate of the first corner of the glyph atlas region.
+  t
+  /// Horizontal normalized texture coordinate of the second corner of the glyph atlas region.
+  s2
+  /// Vertical normalized texture coordinate of the second corner of the glyph atlas region.
+  t2
+  /// Registered shader handle used to draw this glyph atlas page.
+  glyph
+  /// Font-atlas page name associated with the glyph's registered drawing shader.
+  shaderName
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Rendered`; groups `bitmap`, `glyph`.
-struct Rendered bitmap glyph end struct
+struct Rendered
+  /// Rasterized glyph bitmap containing coverage samples.
+  bitmap
+  /// Glyph metadata produced by rasterization before atlas placement.
+  glyph
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Constructed`; groups `glyph`, `x`, `y`, `maxHeight`, `placed`.
-struct Constructed glyph x y maxHeight placed end struct
+struct Constructed
+  /// Glyph metadata updated with the atlas coordinates and image dimensions.
+  glyph
+  /// Horizontal atlas packing cursor returned after the glyph-placement attempt, in pixels.
+  x
+  /// Vertical atlas packing cursor returned after the glyph-placement attempt, in pixels.
+  y
+  /// Tallest glyph currently placed in the active atlas row.
+  maxHeight
+  /// Whether the glyph was successfully placed in the font atlas.
+  placed
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Raster`; groups `metrics`, `format`, `coverage`, `pixelMode`.
-struct Raster metrics format coverage pixelMode end struct
+struct Raster
+  /// Rasterizer measurements describing the glyph's bounds and advance.
+  metrics
+  /// Rasterizer glyph format, including the outline format accepted by the renderer.
+  format
+  /// Coverage samples generated by glyph rasterization.
+  coverage
+  /// Rasterizer pixel format used by the glyph bitmap.
+  pixelMode
+end struct
 /// Callback table for `mq3.renderer.tr_font_runtime.FreeTypeBackend`; exposes `context`, `rasterizeFn`, `createImageFn`, `saveFontData`, `outputRoot`.
-struct FreeTypeBackend context rasterizeFn createImageFn saveFontData outputRoot end struct
+struct FreeTypeBackend
+  /// Font-backend state passed to glyph rasterization and atlas-image creation callbacks.
+  context
+  /// Host callback used to perform rasterize operations for this subsystem.
+  rasterizeFn
+  /// Host callback used to perform create image operations for this subsystem.
+  createImageFn
+  /// Whether generated font metadata is saved by the backend.
+  saveFontData
+  /// Directory under which generated font assets are written.
+  outputRoot
+end struct
 /// Data record for `mq3.renderer.tr_font_runtime.Lifecycle`; groups `registry`, `registeredFontCount`, `freeTypeInitialized`, `backend`.
-struct Lifecycle registry registeredFontCount freeTypeInitialized backend end struct
+struct Lifecycle
+  /// Resource registry used to resolve names or handles.
+  registry
+  /// Number of fonts registered by the font lifecycle.
+  registeredFontCount
+  /// Whether the font rasterizer has completed initialization.
+  freeTypeInitialized
+  /// Backend implementation used to execute platform or drawing operations.
+  backend
+end struct
 
 /// Creates error `7798` with message `"tr_font: "+message`.
 /// @param message Input used in the result expression `error(7798,"tr_font: "+message)`.

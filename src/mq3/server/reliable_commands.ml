@@ -4,14 +4,20 @@
 package mq3.server.reliable_commands
 import mq3.qcommon.message as message
 
+/// Capacity of the reliable-command ring retained until acknowledgment.
 const MAX_RELIABLE_COMMANDS = 64
+/// Server-to-client opcode introducing a reliable textual server command.
 const SVC_SERVER_COMMAND = 5
 
 /// ReliableClient record for server.reliable_commands, containing `reliableAcknowledge`, `reliableSequence`, `reliableSent`, `reliableCommands`.
 struct ReliableClient
+  /// Acknowledgment cursor used to retire queued reliable server commands.
   reliableAcknowledge
+  /// Sequence number of the newest queued reliable command.
   reliableSequence
+  /// Sequence number of the newest reliable command transmitted to the peer.
   reliableSent
+  /// Reliable command entries retained until the peer acknowledges them.
   reliableCommands
 end struct
 

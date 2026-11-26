@@ -5,19 +5,51 @@
 package mq3.server.game_interface
 import mq3.compat.numeric as n
 
+/// Server lifecycle state with no running map.
 const SS_DEAD=0
+/// Server lifecycle state while a new map and game VM are loading.
 const SS_LOADING=1
+/// Server lifecycle state for an active game map.
 const SS_GAME=2
+/// Maximum number of addressable game-entity slots.
 const MAX_GENTITIES=1024
 
 /// SvEntity record for server.game_interface, containing `number`, `areanum`, `areanum2`.
-struct SvEntity number areanum areanum2 end struct
+struct SvEntity
+  /// Game-entity number identifying this server-side bookkeeping record.
+  number
+  /// Primary collision area exposed to game VM entity and visibility operations.
+  areanum
+  /// Second AAS area number used by the operation.
+  areanum2
+end struct
 /// Create `mq3.server.game_interface.SvEntity` with number=number; areanum=- 1; areanum2=- 1.
 /// @param number Initial `number` field stored in the returned or constructed `mq3.server.game_interface.SvEntity` record.
 function svEntity(number) return SvEntity(number,-1,-1) end function
 
 /// State record for server.game_interface, containing `gentities`, `gentitySize`, `numEntities`, `gameClients`, `gameClientSize`, `maxClients`, and 4 further fields.
-struct State gentities gentitySize numEntities gameClients gameClientSize maxClients serverState serverInfo clients svEntities end struct
+struct State
+  /// Game-VM entity array exposed to server-side collision and snapshot code.
+  gentities
+  /// Byte stride between game-VM entity records.
+  gentitySize
+  /// Number of entity records currently represented by this state or snapshot.
+  numEntities
+  /// Game-VM client records associated with the server client slots.
+  gameClients
+  /// Will be > sizeof(playerState_t) due to game private data.
+  gameClientSize
+  /// Upper client-slot bound applied by game VM server-interface operations.
+  maxClients
+  /// Current server lifecycle state, including loading and active gameplay.
+  serverState
+  /// Backslash-delimited information string advertised by the server.
+  serverInfo
+  /// Client records accessible to game VM player-state and server-command operations.
+  clients
+  /// Server-owned visibility and collision bookkeeping for game entities.
+  svEntities
+end struct
 /// Compute state in server.game_interface; the normal completion returns `State(0, 0, 0, 0, 0, maxClients, SS_DEAD, "", clients, entities)`.
 /// @param maxClients Initial `maxClients` field stored in the returned or constructed `mq3.server.game_interface.State` record.
 function state(maxClients)
@@ -27,7 +59,30 @@ function state(maxClients)
 end function
 
 /// Services record for server.game_interface, containing `errorFn`, `printFn`, `sendServerCommandFn`, `dropClientFn`, `pointLeafnumFn`, `leafClusterFn`, and 5 further fields.
-struct Services errorFn printFn sendServerCommandFn dropClientFn pointLeafnumFn leafClusterFn leafAreaFn clusterPvsFn adjustAreaPortalFn gameCommandFn context end struct
+struct Services
+  /// Host callback that reports a host error using the requested error severity.
+  errorFn
+  /// Host callback that prints messages issued by game VM server system calls.
+  printFn
+  /// Host callback that queues a reliable server command for selected clients.
+  sendServerCommandFn
+  /// Host callback that disconnects a client with the supplied reason.
+  dropClientFn
+  /// Host callback that returns the numeric BSP leaf index for a point.
+  pointLeafnumFn
+  /// Host callback that returns the visibility cluster containing a BSP leaf.
+  leafClusterFn
+  /// Host callback that returns the portal area containing a BSP leaf.
+  leafAreaFn
+  /// Host callback that returns the potentially visible set for a visibility cluster.
+  clusterPvsFn
+  /// Host callback that changes connectivity through an area portal.
+  adjustAreaPortalFn
+  /// Host callback that delivers a client command to the game VM.
+  gameCommandFn
+  /// Caller-supplied data associated with server operations exposed to game VM system calls.
+  context
+end struct
 /// Create `mq3.server.game_interface.Services` with errorFn=void; printFn=void; sendServerCommandFn=void; dropClientFn=void; 7 further fields.
 /// @param context Initial `context` field stored in the returned or constructed `mq3.server.game_interface.Services` record.
 function services(context) return Services(void,void,void,void,void,void,void,void,void,void,context) end function

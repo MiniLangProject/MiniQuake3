@@ -16,10 +16,21 @@ import mq3.renderer.playable_world_batch as worldBatch
 import mq3.renderer.shader_parser as shaderParser
 import mq3.shared.math as qmath
 
+/// Number of samples in the periodic shader waveform lookup table.
 const FUNCTABLE_SIZE=1024
+/// Mask that wraps waveform-table indices to the power-of-two table size.
 const FUNCTABLE_MASK=1023
 /// Data record for `mq3.renderer.tr_shade_calc_runtime.TextGeometry`; groups `positions`, `texCoords`, `colors`, `indexes`.
-struct TextGeometry positions texCoords colors indexes end struct
+struct TextGeometry
+  /// Glyph-quad positions generated from the deform-text shader's source surface.
+  positions
+  /// Font-atlas coordinates generated for the quads of a deform-text shader stage.
+  texCoords
+  /// Vertex modulation colors emitted for the generated deform-text glyph quads.
+  colors
+  /// Triangle indices connecting the glyph quads produced by text deformation.
+  indexes
+end struct
 
 /// Calls `mq3.compat.numeric.trunc32` with `(value)` and returns its result.
 /// @param value Argument 1 supplied to `mq3.compat.numeric.trunc32`.

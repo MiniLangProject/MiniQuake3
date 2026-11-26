@@ -7,29 +7,78 @@ import mq3.platform.playable_multitexture as multitexture
 import mq3.compat.numeric as numeric
 import std.string as strings
 
+/// Number of texture slots required by the module's fixed media layout.
 const REQUIRED_TEXTURES=4
+/// Width of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_WIDTH=640.0
+/// Height of the native UI's virtual coordinate space before scaling to the display.
 const VIRTUAL_HEIGHT=480.0
+/// Prop font metric controlling height in virtual UI coordinates.
 const PROP_HEIGHT=27.0
+/// Prop font metric controlling gap width in virtual UI coordinates.
 const PROP_GAP_WIDTH=3.0
+/// Height of a banner-font glyph in virtual menu coordinates.
 const BANNER_HEIGHT=36.0
+/// Horizontal gap between adjacent banner-font glyphs.
 const BANNER_GAP_WIDTH=4.0
 /// Stores playable menu asset record, including `key`, `imageName`, `image`, `slot`.
-struct Asset key imageName image slot end struct
+struct Asset
+  /// When constructing this record, `load` supplies `item[0]` for this member. Used by `find` during
+  /// subsequent processing.
+  key
+  /// Resolved menu artwork path associated with the loaded image and native texture slot.
+  imageName
+  /// When constructing this record, `load` supplies `loaded[1]` for this member. Used by `upload`
+  /// during subsequent processing.
+  image
+  /// Texture or media-cache slot assigned to this asset for renderer submission.
+  slot
+end struct
 /// Stores playable menu catalog record, including `assets`, `firstTextureSlot`, `textureCount`.
-struct Catalog assets firstTextureSlot textureCount end struct
+struct Catalog
+  /// Loaded menu artwork entries used to draw the playable menu's choices and background.
+  assets
+  /// First texture-cache slot reserved for this module's media resources.
+  firstTextureSlot
+  /// Number of texture resources or texture-cache slots represented by this media record.
+  textureCount
+end struct
 /// Stores playable menu point record, including `x`, `y`, `depth`.
-struct Point x y depth end struct
+struct Point
+  /// Horizontal coordinate of a textured menu-artwork vertex in the target window.
+  x
+  /// Vertical coordinate of a textured menu-artwork vertex in the target window.
+  y
+  /// When constructing this record, `point` supplies `0.0001` for this member.
+  depth
+end struct
 /// Stores playable menu state, including `selected`, `lastUp`, `lastDown`, `lastEnter`.
-struct State selected lastUp lastDown lastEnter end struct
+struct State
+  /// Current selection state or selected entry retained by the owning UI control.
+  selected
+  /// When constructing this record, `state` supplies `false` for this member.
+  lastUp
+  /// When constructing this record, `state` supplies `false` for this member.
+  lastDown
+  /// When constructing this record, `state` supplies `false` for this member.
+  lastEnter
+end struct
 
+/// Main-menu action identifier selecting the none destination or operation.
 const ACTION_NONE=""
+/// Main-menu action identifier selecting the single player destination or operation.
 const ACTION_SINGLE_PLAYER="single_player"
+/// Main-menu action identifier selecting the multiplayer destination or operation.
 const ACTION_MULTIPLAYER="multiplayer"
+/// Main-menu action identifier selecting the setup destination or operation.
 const ACTION_SETUP="setup"
+/// Main-menu action identifier selecting the demos destination or operation.
 const ACTION_DEMOS="demos"
+/// Main-menu action identifier selecting the cinematics destination or operation.
 const ACTION_CINEMATICS="cinematics"
+/// Main-menu action identifier selecting the mods destination or operation.
 const ACTION_MODS="mods"
+/// Main-menu action identifier selecting the exit destination or operation.
 const ACTION_EXIT="exit"
 
 /// Creates a `mq3.client.playable_menu.State` record. Initializes the record with the defaults written in this constructor.

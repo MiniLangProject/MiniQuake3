@@ -10,24 +10,73 @@ import mq3.compat.textnumbers as numbers
 import mq3.compat.numeric as numeric
 import std.string as strings
 
+/// Byte capacity of the bounded UI game-info allocation pool.
 const POOLSIZE=131072
+/// Capacity limit for the arenas collection or bounded storage used by this client module.
 const MAX_ARENAS=1024
+/// Capacity limit for the bots collection or bounded storage used by this client module.
 const MAX_BOTS=1024
+/// Maximum text size accepted when loading arena-definition data.
 const MAX_ARENAS_TEXT=8192
+/// Maximum text size accepted when loading bot-definition data.
 const MAX_BOTS_TEXT=8192
+/// Number of arenas grouped into one single-player progression tier.
 const ARENAS_PER_TIER=4
+/// Postgame award identifier selecting the perfect award category.
 const AWARD_PERFECT=5
 
+/// Native game-type identifier selecting free-for-all deathmatch.
 const GT_FFA=0
+/// Native game-type value for one-on-one tournament play, used when building arena game-type masks for
+/// single-player and multiplayer selection.
 const GT_TOURNAMENT=1
+/// Native game-type value for single-player arena progression, used when building arena game-type masks
+/// for single-player and multiplayer selection.
 const GT_SINGLE_PLAYER=2
+/// Native game-type value for team deathmatch, used when building arena game-type masks for
+/// single-player and multiplayer selection.
 const GT_TEAM=3
+/// Native game-type value for capture the flag, used when building arena game-type masks for
+/// single-player and multiplayer selection.
 const GT_CTF=4
 
 /// Stores UI gameinfo game info record, including `allocPoint`, `outOfMemory`, `arenas`, `bots`, `numSinglePlayerArenas`, `numSpecialSinglePlayerArenas` and additional values.
-struct GameInfo allocPoint outOfMemory arenas bots numSinglePlayerArenas numSpecialSinglePlayerArenas cvars writes diagnostics demoversion levelMenuReinitialized end struct
+struct GameInfo
+  /// Next byte offset in the bounded arena-info pool; successful allocations advance it to a 32-byte
+  /// boundary.
+  allocPoint
+  /// True when the bounded allocation or string-storage pool could not satisfy a request.
+  outOfMemory
+  /// Loaded arena info strings, including map names, supported game types, and single-player ordering
+  /// metadata.
+  arenas
+  /// Loaded bot info strings used to resolve bot names and character definitions for menus.
+  bots
+  /// Number of ordinary single-player arenas, excluding entries marked as special arenas.
+  numSinglePlayerArenas
+  /// Number of single-player arenas carrying special progression metadata rather than an ordinary tier
+  /// position.
+  numSpecialSinglePlayerArenas
+  /// Configuration-variable values exposed to the native UI implementation.
+  cvars
+  /// Cvar name/value assignments emitted while saving scores, awards, videos, and single-player
+  /// progress.
+  writes
+  /// Messages collected while loading arena or bot definitions and manipulating single-player progress.
+  diagnostics
+  /// True when restricted content or the loaded arena set identifies the demo edition, limiting
+  /// progression and videos.
+  demoversion
+  /// True after the unlock-levels command requests a refresh of the single-player level menu.
+  levelMenuReinitialized
+end struct
 /// Stores UI gameinfo best score record, including `score`, `skill`.
-struct BestScore score skill end struct
+struct BestScore
+  /// Best recorded single-player finishing place from 1 through 8; zero means no recorded result.
+  score
+  /// When constructing this record, `UI_GetBestScore` supplies `0` for this member.
+  skill
+end struct
 
 /// Creates a `mq3.client.ui_gameinfo.GameInfo` record. Initializes the record with the defaults written in this constructor.
 function create()

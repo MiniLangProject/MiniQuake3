@@ -31,27 +31,49 @@ import mq3.compat.numeric as n
 
 /// `State` record for lifecycle, containing `buildDate`, `entitiesBound`, `clientsBound`, `openLogFn` and `closeLogFn` and related fields.
 struct State
+  /// Build-date string exposed by game/server information commands.
   buildDate
+  /// Nonzero after game entity storage is bound to the host engine.
   entitiesBound
+  /// Nonzero after game client storage is bound to the host engine.
   clientsBound
+  /// Injected callback for open log; invoked through the State service/state record.
   openLogFn
+  /// Injected callback for close log; invoked through the State service/state record.
   closeLogFn
+  /// Injected callback for server info; invoked through the State service/state record.
   serverInfoFn
+  /// Injected callback for locate; invoked through the State service/state record.
   locateFn
+  /// Injected callback for bot setup; invoked through the State service/state record.
   botSetupFn
+  /// Injected callback for bot load map; invoked through the State service/state record.
   botLoadMapFn
+  /// Injected callback for init bots; invoked through the State service/state record.
   initBotsFn
+  /// Injected callback for bot shutdown; invoked through the State service/state record.
   botShutdownFn
+  /// Injected callback for bot allocate client; invoked through the State service/state record.
   botAllocateClientFn
+  /// Injected callback for integer query; invoked through the State service/state record.
   integerQueryFn
+  /// Injected callback for spawn effect; invoked through the State service/state record.
   spawnEffectFn
+  /// Injected callback for entity observe; invoked through the State service/state record.
   entityObserveFn
+  /// Injected callback for console variable effect; invoked through the State service/state record.
   cvarEffectFn
+  /// Shared bot-AI frame state associated with the level.
   botState
+  /// Registry of configured definitions and active bot slots.
   botRegistry
+  /// Bot client bookkeeping and connection state.
   botClients
+  /// Per-bot client resource handles owned by the level.
   botClientResources
+  /// State maintaining the configured minimum player population.
   botPopulation
+  /// State scheduling and executing bot AI frames.
   botAiFrame
 end struct
 /// Require and return the module bindings attached to the game-level lifecycle state.

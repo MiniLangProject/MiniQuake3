@@ -6,12 +6,33 @@ package mq3.botlib.aas_routing_tables
 import mq3.botlib.aas_routing as routing
 import mq3.format.aas as aas
 
+/// Maximum outgoing reachabilities represented in an area travel-time table.
 const MAX_AREA_REACHABILITIES=128
 
 /// `ReverseLink` record for aas routing tables, containing `areaNum` and `linkNum`.
-struct ReverseLink areaNum linkNum end struct
+struct ReverseLink
+  /// Source area whose outgoing reachability enters the reverse-link destination.
+  areaNum
+  /// Index of the reverse reachability link.
+  linkNum
+end struct
 /// `Tables` record for aas routing tables, containing `router`, `reversed`, `areaTravelTimes`, `portalMaxTravelTimes` and `totalLinks` and related fields.
-struct Tables router reversed areaTravelTimes portalMaxTravelTimes totalLinks truncatedSources reachSources end struct
+struct Tables
+  /// AAS navigation state supplying area settings and reachabilities for route searches.
+  router
+  /// Incoming reachability lists indexed by destination area.
+  reversed
+  /// Travel times within the area.
+  areaTravelTimes
+  /// Precomputed upper travel-time bounds for cluster portals.
+  portalMaxTravelTimes
+  /// Total number of reverse reachability links stored in the tables.
+  totalLinks
+  /// Source areas whose reachability lists exceeded the supported bound.
+  truncatedSources
+  /// Source-area numbers associated with stored reachability records.
+  reachSources
+end struct
 
 /// Create a `mq3.botlib.aas_routing_tables.Tables` record, initializing `router` from `router`.
 /// @param router Initial value stored in `mq3.botlib.aas_routing_tables.Tables.router`.

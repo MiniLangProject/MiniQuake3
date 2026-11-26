@@ -7,13 +7,41 @@ import mq3.format.aas as aas
 import mq3.compat.numeric as n
 import std.array as arrays
 
+/// Distance tolerance used to position a trace safely before an impact plane.
 const TRACEPLANE_EPSILON=0.125
+/// Maximum number of pending nodes retained by an iterative BSP trace.
 const TRACE_STACK_SIZE=127
 
 /// `Segment` record for aas client trace, containing `start`, `finish`, `nodeNum` and `planeNum`.
-struct Segment start finish nodeNum planeNum end struct
+struct Segment
+  /// Beginning of the remaining line segment being tested against an AAS subtree.
+  start
+  /// End of the remaining line segment being tested against an AAS subtree.
+  finish
+  /// Index of the BSP or AAS node visited by this operation.
+  nodeNum
+  /// Last AAS splitting plane crossed before entering this trace segment.
+  planeNum
+end struct
 /// `Trace` record for aas client trace, containing `startsolid`, `fraction`, `endpos`, `ent` and `lastarea` and related fields.
-struct Trace startsolid fraction endpos ent lastarea area planenum normal end struct
+struct Trace
+  /// True when the initial trace position lies inside solid geometry.
+  startsolid
+  /// Fraction of the requested trace segment completed before the first collision.
+  fraction
+  /// End position reached by the collision trace.
+  endpos
+  /// Entity blocking the trace.
+  ent
+  /// Last area the trace was in (zero if none).
+  lastarea
+  /// Area blocking the trace (zero if none).
+  area
+  /// AAS plane index of the boundary that stopped this navigation trace.
+  planenum
+  /// Normal of the AAS boundary plane that stopped the presence-shape trace.
+  normal
+end struct
 
 /// Construct error `7542` with diagnostic text `"AAS client trace: "+message`.
 /// @param message Message text supplied to the diagnostic or chat operation.

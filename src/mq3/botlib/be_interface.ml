@@ -11,15 +11,80 @@ import mq3.botlib.lifecycle_runtime as botLifecycleRuntime
 import mq3.vm.pc_parser as pc
 import mq3.compat.numeric as n
 
+/// Serialized format or interface version expected by be interface.
 const BOTLIB_API_VERSION=publicHeaders.BOTLIB_API_VERSION
+/// Bot-library status indicating successful completion.
 const BLERR_NOERROR=publicHeaders.BLERR_NOERROR
+/// Bot-library error indicating that setup has not completed.
 const BLERR_LIBRARYNOTSETUP=publicHeaders.BLERR_LIBRARYNOTSETUP
+/// Bot-library error indicating an out-of-range entity number.
 const BLERR_INVALIDENTITYNUMBER=publicHeaders.BLERR_INVALIDENTITYNUMBER
 
 /// `Services` record for be interface, containing `context`, `aasSetupFn`, `eaSetupFn`, `weaponSetupFn` and `goalSetupFn` and related fields.
-struct Services context aasSetupFn eaSetupFn weaponSetupFn goalSetupFn chatSetupFn moveSetupFn chatShutdownFn moveShutdownFn goalShutdownFn weaponShutdownFn weightsShutdownFn charactersShutdownFn aasShutdownFn eaShutdownFn libvarsReleasedFn definesRemovedFn logShutdownFn checkSourcesFn aasStartFrameFn aasLoadMapFn initLevelItemsFn setBrushModelTypesFn aasUpdateEntityFn end struct
+struct Services
+  /// Caller-supplied data associated with setup, shutdown, and frame dispatch across the bot-library
+  /// subsystems.
+  context
+  /// Host callback that initializes the AAS navigation subsystem.
+  aasSetupFn
+  /// Host callback that initializes the bot elementary-action interface.
+  eaSetupFn
+  /// Host callback that initializes bot weapon selection.
+  weaponSetupFn
+  /// Host callback that initializes bot goal and item-selection state.
+  goalSetupFn
+  /// Host callback that initializes the bot chat subsystem.
+  chatSetupFn
+  /// Host callback that initializes bot movement resources.
+  moveSetupFn
+  /// Host callback that releases bot chat resources.
+  chatShutdownFn
+  /// Host callback that releases bot movement resources.
+  moveShutdownFn
+  /// Host callback that releases bot goal and item-selection resources.
+  goalShutdownFn
+  /// Host callback that releases bot weapon-selection resources.
+  weaponShutdownFn
+  /// Host callback that releases cached fuzzy-weight definitions.
+  weightsShutdownFn
+  /// Host callback that releases cached bot-character definitions.
+  charactersShutdownFn
+  /// Host callback that releases the AAS navigation subsystem.
+  aasShutdownFn
+  /// Host callback that releases the bot elementary-action interface.
+  eaShutdownFn
+  /// Host callback that observes release of bot-library variables.
+  libvarsReleasedFn
+  /// Host callback that observes removal of preprocessor definitions.
+  definesRemovedFn
+  /// Host callback that closes the bot-library logging subsystem.
+  logShutdownFn
+  /// Host callback that checks the state of registered preprocessor sources.
+  checkSourcesFn
+  /// Host callback that advances AAS bookkeeping to the supplied frame time.
+  aasStartFrameFn
+  /// Host callback that loads the navigation data for a requested map.
+  aasLoadMapFn
+  /// Host callback that discovers and initializes bot goals for map items.
+  initLevelItemsFn
+  /// Host callback that classifies brush models used by bot movement.
+  setBrushModelTypesFn
+  /// Host callback that updates the navigation representation of a game entity.
+  aasUpdateEntityFn
+end struct
 /// `Api` record for be interface, containing `version`, `top`, `aas`, `ea` and `ai`.
-struct Api version top aas ea ai end struct
+struct Api
+  /// Version of the exported bot-library interface.
+  version
+  /// Top-level setup, shutdown, and frame entry points.
+  top
+  /// AAS navigation runtime used for area and route queries.
+  aas
+  /// Elementary-action entry points for bot movement and commands.
+  ea
+  /// Higher-level chat, goal, movement, and weapon AI entry points.
+  ai
+end struct
 
 /// Create a `mq3.botlib.be_interface.Services` record, initializing `context` from `context`.
 /// @param context Context forwarded to the configured host callbacks.

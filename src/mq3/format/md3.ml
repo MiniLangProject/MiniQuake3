@@ -7,34 +7,107 @@ import mq3.compat.numeric as n
 import mq3.renderer.surface_md3 as md3Mesh
 import std.string as strings
 
+/// Magic value identifying an MD3 animated model.
 const MD3_IDENT=0x33504449
+/// Serialized format or interface version expected by MD3.
 const MD3_VERSION=15
+/// Serialized byte size of header in this file format.
 const HEADER_SIZE=108
+/// Serialized byte size of frame in this file format.
 const FRAME_SIZE=56
+/// Serialized byte size of tag in this file format.
 const TAG_SIZE=112
+/// Serialized byte size of surface in this file format.
 const SURFACE_SIZE=108
+/// Serialized byte size of triangle in this file format.
 const TRIANGLE_SIZE=12
+/// Serialized byte size of shader in this file format.
 const SHADER_SIZE=68
+/// Serialized byte size of st in this file format.
 const ST_SIZE=8
+/// Serialized byte size of vertex in this file format.
 const VERTEX_SIZE=8
 
+/// Maximum number of animation frames accepted by the MD3 model loader.
 const MAX_FRAMES=1024
+/// Maximum number of attachment tags accepted per MD3 frame.
 const MAX_TAGS=256
+/// Maximum number of mesh surfaces accepted in one MD3 model.
 const MAX_SURFACES=128
+/// Maximum number of shader references accepted for one MD3 surface.
 const MAX_SHADERS=256
+/// Maximum number of vertices accepted for one MD3 surface.
 const MAX_VERTS=4096
+/// Maximum number of triangles accepted for one MD3 surface.
 const MAX_TRIANGLES=8192
 
 /// Frame record for format.md3, containing `mins`, `maxs`, `localOrigin`, `radius`, `name`.
-struct Frame mins maxs localOrigin radius name end struct
+struct Frame
+  /// Minimum XYZ corner of all model surfaces in this MD3 animation frame.
+  mins
+  /// Maximum XYZ corner of all model surfaces in this MD3 animation frame.
+  maxs
+  /// Model-local center used for the frame bounding sphere.
+  localOrigin
+  /// Radius of the represented sphere or capsule.
+  radius
+  /// Frame name retained from the MD3 animation record.
+  name
+end struct
 /// Tag record for format.md3, containing `name`, `origin`, `axis`.
-struct Tag name origin axis end struct
+struct Tag
+  /// Attachment-tag name used to connect player-model parts.
+  name
+  /// Model-space position of this attachment tag.
+  origin
+  /// Three orientation axes defining the local coordinate frame.
+  axis
+end struct
 /// Surface record for format.md3, containing `name`, `shaders`, `mesh`.
-struct Surface name shaders mesh end struct
+struct Surface
+  /// Model surface name used by skin and shader lookup.
+  name
+  /// Shader definitions associated with this model surface.
+  shaders
+  /// Triangle geometry and per-frame vertices for this surface.
+  mesh
+end struct
 /// Model record for format.md3, containing `name`, `flags`, `numFrames`, `numTags`, `numSurfaces`, `numSkins`, and 4 further fields.
-struct Model name flags numFrames numTags numSurfaces numSkins frames tags surfaces bounds end struct
+struct Model
+  /// Name retained from the MD3 model header.
+  name
+  /// Raw model flags retained from the MD3 header.
+  flags
+  /// Number of animation frames represented by this model, surface, or animation.
+  numFrames
+  /// Number of attachment tags stored for each model frame.
+  numTags
+  /// Number of surfaces described by this model or file record.
+  numSurfaces
+  /// Number of skin slots declared by the model header.
+  numSkins
+  /// Animation-frame bounds and origin data.
+  frames
+  /// Attachment transforms for each model frame.
+  tags
+  /// Surface meshes and their shader assignments.
+  surfaces
+  /// Minimum and maximum corners of the loaded model bounds.
+  bounds
+end struct
 /// RenderTriangle record for format.md3, containing `positions`, `texCoords`, `normals`, `surfaceIndex`, `shaderName`.
-struct RenderTriangle positions texCoords normals surfaceIndex shaderName end struct
+struct RenderTriangle
+  /// Three world- or model-space positions of the generated triangle.
+  positions
+  /// Texture coordinates associated with the represented vertex or triangle.
+  texCoords
+  /// Interpolated normal vectors at the generated triangle vertices.
+  normals
+  /// Index of the model surface from which this render triangle was produced.
+  surfaceIndex
+  /// Asset name of the shader used to render this surface.
+  shaderName
+end struct
 
 /// Create the format.md3 error for `fail` with 7500 and the supplied diagnostic text.
 /// @param message Message used in `("MD3: " + message)` and `error(7500, ("MD3: " + message))`.

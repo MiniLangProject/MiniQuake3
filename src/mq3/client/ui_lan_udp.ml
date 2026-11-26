@@ -11,9 +11,26 @@ import mq3.qcommon.message as message
 import mq3.qcommon.net_transport as transport
 import mq3.qcommon.netchan as netchan
 
+/// Maximum number of packet records that the bounded packet buffer can retain.
 const PACKET_CAPACITY=65535
 /// Stores UI LAN udp context record, including `clientSocket`, `serverSocket`, `ingressServices`, `clientState`, `active`.
-struct Context clientSocket serverSocket ingressServices clientState active end struct
+struct Context
+  /// When constructing this record, `open` supplies `clientSocket` for this member. Used by
+  /// `selectedSocket` and `pump` during subsequent processing.
+  clientSocket
+  /// When constructing this record, `open` supplies `serverSocket` for this member. Used by
+  /// `selectedSocket` and `pump` during subsequent processing.
+  serverSocket
+  /// When constructing this record, `open` supplies `ingress.services(ingressState)` for this member.
+  /// Used by `dispatch` during subsequent processing.
+  ingressServices
+  /// When constructing this record, `open` supplies `connectionless.create(nowhere)` for this member.
+  /// Used by `dispatch` during subsequent processing.
+  clientState
+  /// When constructing this record, `open` supplies `true` for this member. Used by `selectedSocket`
+  /// and `resolveAddress` during subsequent processing.
+  active
+end struct
 
 /// Calls `mq3.platform.udp.close`, `mq3.platform.udp.cleanup` from UI LAN udp `abandon`.
 /// @param clientSocket Value used by `if clientSocket!=void then ignored=try(udp.close(clientSocket)) end if`.

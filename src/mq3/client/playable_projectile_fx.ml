@@ -9,29 +9,110 @@ import mq3.compat.numeric as numeric
 import std.array as arrays
 import mq3.renderer.playable_dynamic_lights as dynamicLights
 
+/// Duration or scheduling interval in milliseconds controlling trail step.
 const TRAIL_STEP_MILLISECONDS=50
+/// Duration or scheduling interval in milliseconds controlling rocket trail.
 const ROCKET_TRAIL_MILLISECONDS=2000
+/// Duration or scheduling interval in milliseconds controlling grenade trail.
 const GRENADE_TRAIL_MILLISECONDS=700
+/// Duration or scheduling interval in milliseconds controlling plasma trail.
 const PLASMA_TRAIL_MILLISECONDS=600
+/// Radius used by the rocket's smoke-trail effect.
 const ROCKET_TRAIL_RADIUS=64.0
+/// Radius used by the grenade's smoke-trail effect.
 const GRENADE_TRAIL_RADIUS=32.0
+/// Radius used by the plasma projectile's trail effect.
 const PLASMA_TRAIL_RADIUS=4.0
+/// World-space radius of the dynamic light attached to a rocket.
 const ROCKET_DLIGHT_RADIUS=200.0
+/// World-space radius of the dynamic light emitted by an explosion.
 const EXPLOSION_DLIGHT_RADIUS=300.0
+/// Effect command kind selecting the puff rendering operation.
 const COMMAND_PUFF=1
+/// Effect command kind selecting the light rendering operation.
 const COMMAND_LIGHT=2
+/// Capacity limit for the puffs collection or bounded storage used by this client module.
 const MAX_PUFFS=512
 
 /// Stores playable projectile fx profile record, including `smoke`, `radius`, `lifetime`, `flyingLight`, `impactLight`, `impactLifetime` and additional values.
-struct Profile smoke radius lifetime flyingLight impactLight impactLifetime red green blue end struct
+struct Profile
+  /// When constructing this record, `profile` supplies `true` for this member.
+  smoke
+  /// Initial world-space radius assigned to trail puffs for this projectile style.
+  radius
+  /// When constructing this record, `profile` supplies `ROCKET_TRAIL_MILLISECONDS` for this member.
+  lifetime
+  /// When constructing this record, `profile` supplies `ROCKET_DLIGHT_RADIUS` for this member.
+  flyingLight
+  /// When constructing this record, `profile` supplies `EXPLOSION_DLIGHT_RADIUS` for this member.
+  impactLight
+  /// When constructing this record, `profile` supplies `1000` for this member.
+  impactLifetime
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 /// Stores playable projectile fx puff record, including `entityId`, `style`, `origin`, `bornAt`, `expiresAt`, `radius`.
-struct Puff entityId style origin bornAt expiresAt radius end struct
+struct Puff
+  /// When constructing this record, `addPuff` supplies `entityId` for this member.
+  entityId
+  /// Projectile style retained by a smoke puff to select its trail appearance.
+  style
+  /// World-space center projected to place a projectile smoke puff on screen.
+  origin
+  /// When constructing this record, `addPuff` supplies `bornAt` for this member. Used by `update` and
+  /// `puffFraction` during subsequent processing.
+  bornAt
+  /// When constructing this record, `addPuff` supplies `bornAt+p.lifetime` for this member. Used by
+  /// `update` and `puffFraction` during subsequent processing.
+  expiresAt
+  /// Initial world-space size of this trail puff before age and perspective scaling.
+  radius
+end struct
 /// Stores playable projectile fx tracker record, including `entityId`, `style`, `position`, `sampledAt`, `nextPuffAt`, `seenAt`.
-struct Tracker entityId style position sampledAt nextPuffAt seenAt end struct
+struct Tracker
+  /// When constructing this record, `sampleFlight` supplies `snapshot.entityId` for this member.
+  entityId
+  /// Last tracked projectile style, used when generating and continuing its smoke trail.
+  style
+  /// When constructing this record, `sampleFlight` supplies `copy3(snapshot.position)` for this member.
+  position
+  /// When constructing this record, `sampleFlight` supplies `snapshot.eventAt` for this member.
+  sampledAt
+  /// When constructing this record, `sampleFlight` supplies `next` for this member.
+  nextPuffAt
+  /// When constructing this record, `sampleFlight` supplies `now` for this member. Used by `update`
+  /// during subsequent processing.
+  seenAt
+end struct
 /// Stores playable projectile fx state, including `puffs`, `trackers`.
-struct State puffs trackers end struct
+struct State
+  /// When constructing this record, `create` supplies an empty list for this member. Used by `addPuff`
+  /// and `update` during subsequent processing.
+  puffs
+  /// When constructing this record, `create` supplies an empty list for this member. Used by
+  /// `trackerIndex` and `sampleFlight` during subsequent processing.
+  trackers
+end struct
 /// Stores playable projectile fx command data, including `kind`, `center`, `radius`, `red`, `green`, `blue`.
-struct Command kind center radius red green blue end struct
+struct Command
+  /// Smoke-effect drawing selector; puff commands are rendered as four-line diamonds around their
+  /// projected center.
+  kind
+  /// When constructing this record, `command` supplies `center` for this member.
+  center
+  /// Projected pixel radius used to draw the trail-puff or impact diamond.
+  radius
+  /// Red color component used by this drawing or effect record.
+  red
+  /// Green color component used by this drawing or effect record.
+  green
+  /// Blue color component used by this drawing or effect record.
+  blue
+end struct
 
 /// Creates the playable projectile fx error `7610` with diagnostic text `"preview projectile fx: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview projectile fx: "+message`.

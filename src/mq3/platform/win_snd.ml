@@ -3,19 +3,82 @@
 // DirectSound DMA lifecycle and circular-buffer semantics from code/win32/win_snd.c.
 package mq3.platform.win_snd
 
+/// Byte capacity of the DirectSound secondary playback buffer.
 const SECONDARY_BUFFER_SIZE=65536
+/// DirectSound result code indicating success.
 const DS_OK=0
+/// DirectSound error indicating that the playback buffer must be restored.
 const DSERR_BUFFERLOST=-1
+/// DirectSound error indicating that an operation is invalid in the current state.
 const DSERR_INVALIDCALL=-2
+/// DirectSound error indicating an invalid parameter.
 const DSERR_INVALIDPARAM=-3
+/// DirectSound error indicating that the requested cooperative priority level is required.
 const DSERR_PRIOLEVELNEEDED=-4
 
 /// Data record for `mq3.platform.win_snd.Action`; groups `boundary`, `kind`, `size`, `dispatched`.
-struct Action boundary kind size dispatched end struct
+struct Action
+  /// Host operation boundary at which this platform action is dispatched.
+  boundary
+  /// DirectSound lifecycle or buffer operation represented by this dispatch request.
+  kind
+  /// Configured size or capacity used by the enclosing operation.
+  size
+  /// Whether the recorded action was delivered to its host implementation.
+  dispatched
+end struct
 /// Data record for `mq3.platform.win_snd.Dma`; groups `channels`, `samplebits`, `speed`, `samples`, `submissionChunk`, `bufferValid`.
-struct Dma channels samplebits speed samples submissionChunk bufferValid end struct
+struct Dma
+  /// Number of interleaved channels in the DMA audio stream.
+  channels
+  /// Number of bits stored for each audio sample.
+  samplebits
+  /// DMA audio sample rate in samples per second.
+  speed
+  /// Number of sample slots in the DMA sound buffer.
+  samples
+  /// Minimum number of samples submitted to the sound backend at once.
+  submissionChunk
+  /// Whether the DMA sound buffer is valid and accessible.
+  bufferValid
+end struct
 /// Data record for `mq3.platform.win_snd.State`; groups `dsoundInit`, `sample16`, `sndBufSize`, `lockSize`, `hasDS`, `hasDSBuf`, and 11 further fields.
-struct State dsoundInit sample16 sndBufSize lockSize hasDS hasDSBuf hasPrimary dllLoaded coInitialized playing bufferLost bufferLocked dma actions prints errors retailActive end struct
+struct State
+  /// Whether DirectSound initialization has completed.
+  dsoundInit
+  /// Whether DMA samples use sixteen-bit storage.
+  sample16
+  /// Size in bytes of the allocated DirectSound buffer.
+  sndBufSize
+  /// Size in bytes of the region currently locked for mixing.
+  lockSize
+  /// Whether a DirectSound interface is available.
+  hasDS
+  /// Whether a DirectSound secondary buffer is available.
+  hasDSBuf
+  /// Whether a DirectSound primary buffer is available.
+  hasPrimary
+  /// Whether the DirectSound library has loaded.
+  dllLoaded
+  /// Whether COM initialization was performed by the sound backend.
+  coInitialized
+  /// Whether the sound buffer is currently playing.
+  playing
+  /// Whether DirectSound reported that the sound buffer must be restored.
+  bufferLost
+  /// Whether the sound buffer is currently locked for writes.
+  bufferLocked
+  /// Audio DMA format and buffer information exposed to the mixer.
+  dma
+  /// Platform operations recorded for dispatch or inspection.
+  actions
+  /// Messages captured from diagnostic print operations.
+  prints
+  /// Errors recorded by this subsystem or its host callbacks.
+  errors
+  /// Whether the real platform backend is active for action dispatch.
+  retailActive
+end struct
 
 /// Constructs `mq3.platform.win_snd.State` with `dsoundInit` = `false`, `sample16` = `0`, `sndBufSize` = `0`, `lockSize` = `0` and the supplied remaining values.
 /// @param retailActive Initial value for `mq3.platform.win_snd.State.retailActive`.

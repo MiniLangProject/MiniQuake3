@@ -6,15 +6,36 @@ import mq3.qcommon.message as message
 import mq3.qcommon.netchan as netchan
 import mq3.compat.numeric as numeric
 
+/// Capacity limit for the reliable commands collection or bounded storage used by this client module.
 const MAX_RELIABLE_COMMANDS=64
+/// Byte offset after the connection header at which client message encoding begins.
 const CL_ENCODE_START=12
+/// Byte offset after the connection header at which client message decoding begins.
 const CL_DECODE_START=4
+/// Client-message command byte selecting the eof protocol operation.
 const CLC_EOF=5
 
 /// Stores netchan connection state, including `challenge`, `reliableCommands`, `serverCommands`.
-struct Connection challenge reliableCommands serverCommands end struct
+struct Connection
+  /// Server-issued challenge token used to validate the connection handshake.
+  challenge
+  /// Ring of reliable command strings awaiting acknowledgement or execution.
+  reliableCommands
+  /// Reliable server commands retained for ordered execution by the client.
+  serverCommands
+end struct
 /// Stores netchan runtime wiring and state, including `transport`, `connection`, `newsize`.
-struct Runtime transport connection newsize end struct
+struct Runtime
+  /// When constructing this record, `create` supplies `transport` for this member. Used by
+  /// `transmitNextFragment` and `transmit` during subsequent processing.
+  transport
+  /// When constructing this record, `create` supplies `connection` for this member. Used by `transmit`
+  /// and `process` during subsequent processing.
+  connection
+  /// When constructing this record, `create` supplies `0` for this member. Used by `process` during
+  /// subsequent processing.
+  newsize
+end struct
 
 /// Creates the challenge state and separate 64-entry client/server reliable-command rings used by packet XOR encoding.
 function createConnection()

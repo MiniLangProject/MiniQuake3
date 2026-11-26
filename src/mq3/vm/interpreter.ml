@@ -8,30 +8,52 @@ import mq3.vm.native_exec as nativeExec
 
 /// VM record for vm.interpreter, containing `code`, `addresses`, `starts`, `widths`, `needs`, `data`, and 8 further fields.
 struct VM
+  /// Raw QVM instruction bytes loaded from the image code section.
   code
+  /// Per-instruction execution addresses prepared for bytecode dispatch.
   addresses
+  /// Byte-offset-indexed markers identifying valid instruction starts in the QVM code region.
   starts
+  /// Encoded byte length of each decoded QVM instruction.
   widths
+  /// Operand-stack requirements recorded for each decoded instruction.
   needs
+  /// Mutable VM data bytes containing initialized data, literals, BSS, and stack storage.
   data
+  /// Bit mask used to wrap/check VM data-memory offsets.
   mask
+  /// Byte offset of the current stack frame in QVM data memory.
   programStack
+  /// Exclusive lower guard boundary of the QVM program stack; the stack pointer must remain above this
+  /// byte offset.
   stackBottom
+  /// Callback used to dispatch a QVM system call to its host implementation.
   syscall
+  /// Number of bytecode instructions executed by the current VM call.
   steps
+  /// Maximum number of interpreter steps allowed for the current VM call.
   limit
+  /// Count of break instructions observed during execution.
   breaks
+  /// Prepared native-execution plan used when the interpreter delegates supported operations.
   nativePlan
 end struct
 
 /// ImageLayout record for vm.interpreter, containing `count`, `codeOffset`, `codeLength`, `dataOffset`, `dataLength`, `litLength`, and 1 further fields.
 struct ImageLayout
+  /// Number of QVM instructions declared by the image header.
   count
+  /// Byte offset of the instruction section within the QVM image.
   codeOffset
+  /// Length of the VM code region in bytes.
   codeLength
+  /// Byte offset of the initialized data section within the QVM image.
   dataOffset
+  /// Length of initialized VM data in bytes.
   dataLength
+  /// Length in bytes of the read-only literal region appended to VM data.
   litLength
+  /// Total byte capacity allocated for the VM data region and its runtime storage.
   memorySize
 end struct
 

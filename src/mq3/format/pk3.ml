@@ -12,39 +12,67 @@ import std.string as strings
 
 /// Entry record for format.pk3, containing `name`, `version`, `versionNeeded`, `flags`, `method`, `dosDate`, and 12 further fields.
 struct Entry
+  /// Normalized path of the archive entry used for asset lookup.
   name
+  /// ZIP creator version recorded in the central-directory entry.
   version
+  /// Minimum ZIP reader version required to extract the entry.
   versionNeeded
+  /// ZIP general-purpose flags controlling the entry encoding.
   flags
+  /// ZIP compression-method identifier.
   method
+  /// Packed MS-DOS date and time of the ZIP entry.
   dosDate
+  /// Checksum used to validate or identify the represented data.
   checksum
+  /// Length of the compressed ZIP entry data in bytes.
   compressedSize
+  /// Length of the uncompressed entry data in bytes.
   size
+  /// Byte offset of the entry's local header.
   localOffset
+  /// Byte offset of its central-directory record.
   centralOffset
+  /// Extra-field bytes stored in the central-directory record.
   centralExtra
+  /// Comment text stored with the archive, entry, or model metadata.
   comment
+  /// Disk number containing the start of this ZIP entry.
   diskStart
+  /// Internal ZIP file-attribute bits.
   internalAttributes
+  /// External platform-specific ZIP file-attribute bits.
   externalAttributes
+  /// Path of the archive file containing this entry.
   sourcePath
+  /// Byte offset of the source archive's central directory.
   sourceDirectoryOffset
 end struct
 
 /// Archive record for format.pk3, containing `path`, `entries`, `directoryOffset`, `directorySize`, `endOffset`, `comment`, and 3 further fields.
 struct Archive
+  /// Filesystem path of the opened PK3 archive.
   path
+  /// Central-directory entries available for asset lookup.
   entries
+  /// Byte offset of the central directory.
   directoryOffset
+  /// Length of the central directory in bytes.
   directorySize
+  /// Byte offset of the end-of-central-directory record.
   endOffset
+  /// Comment text stored with the archive, entry, or model metadata.
   comment
+  /// Byte prefix preceding the ZIP data in a self-extracting or embedded archive.
   byteBeforeZip
+  /// Hash buckets accelerating entry lookup by normalized name.
   nameBuckets
+  /// True when the archive belongs to a mounted game modification.
   modArchive
 end struct
 
+/// Number of hash buckets used to find archive entries by name.
 const NAME_BUCKET_COUNT = 4096
 
 /// Compute name hash in format.pk3; the normal completion returns `(hash & (NAME_BUCKET_COUNT - 1))`.

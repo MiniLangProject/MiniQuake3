@@ -5,10 +5,30 @@ package mq3.client.playable_enemy_hitscan
 import mq3.collision.world as collision
 import mq3.compat.numeric as numeric
 
+/// Combined collision-content mask used when tracing a weapon shot.
 const SHOT_MASK=0x6000001
 
 /// Stores playable enemy hitscan shot record, including `attacker`, `start`, `endPoint`, `normal`, `worldHit`, `playerHit` and additional values.
-struct Shot attacker start endPoint normal worldHit playerHit damage side at end struct
+struct Shot
+  /// When constructing this record, `fireWithTrace` supplies `event.attacker` for this member.
+  attacker
+  /// When constructing this record, `fireWithTrace` supplies `point(muzzle)` for this member.
+  start
+  /// World-space endpoint of the trace, beam, or projectile presentation segment.
+  endPoint
+  /// Surface normal returned when an enemy's hitscan trace strikes the world.
+  normal
+  /// When constructing this record, `fireWithTrace` supplies `worldHit` for this member.
+  worldHit
+  /// When constructing this record, `fireWithTrace` supplies `not worldHit` for this member.
+  playerHit
+  /// Damage amount applied or reported by the weapon, projectile, or hit result.
+  damage
+  /// When constructing this record, `fireWithTrace` supplies `event.side` for this member.
+  side
+  /// When constructing this record, `fireWithTrace` supplies `now` for this member.
+  at
+end struct
 
 /// Creates the playable enemy hitscan error `7630` with diagnostic text `"preview enemy hitscan: "+message`.
 /// @param message Argument 2 of `error`; passed as `"preview enemy hitscan: "+message`.

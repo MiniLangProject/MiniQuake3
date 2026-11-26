@@ -2,8 +2,11 @@
 // View-dependent refEntity filtering from R_AddEntitySurfaces/R_AddMD3Surfaces.
 package mq3.renderer.entity_surface_policy
 
+/// Entity-rendering flag that hides the entity in first-person views.
 const RF_THIRD_PERSON=2
+/// Entity-rendering flag that draws the entity only in first-person views.
 const RF_FIRST_PERSON=4
+/// Renderer entity type carrying portal-view information without directly drawing geometry.
 const RT_PORTALSURFACE=7
 
 /// Returns `reType!=RT_PORTALSURFACE` from `mq3.renderer.entity_surface_policy.visible`; earlier branches return `false`.

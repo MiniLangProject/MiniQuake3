@@ -2,23 +2,81 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // Native semantic port of code/q3_ui/ui_preferences.c.
 package mq3.client.ui_preferences
+/// Activation callback event accepted by the gameplay-preferences menu before it processes the selected
+/// control action.
 const QM_ACTIVATED=3
+/// Menu control identifier routed to the crosshair action by the menu event handler.
 const ID_CROSSHAIR=127
+/// Menu control identifier routed to the simpleitems action by the menu event handler.
 const ID_SIMPLEITEMS=128
+/// Menu control identifier routed to the highqualitysky action by the menu event handler.
 const ID_HIGHQUALITYSKY=129
+/// Menu control identifier routed to the ejectingbrass action by the menu event handler.
 const ID_EJECTINGBRASS=130
+/// Menu control identifier routed to the wallmarks action by the menu event handler.
 const ID_WALLMARKS=131
+/// Menu control identifier routed to the dynamiclights action by the menu event handler.
 const ID_DYNAMICLIGHTS=132
+/// Menu control identifier routed to the identifytarget action by the menu event handler.
 const ID_IDENTIFYTARGET=133
+/// Menu control identifier routed to the synceveryframe action by the menu event handler.
 const ID_SYNCEVERYFRAME=134
+/// Menu control identifier routed to the forcemodel action by the menu event handler.
 const ID_FORCEMODEL=135
+/// Menu control identifier routed to the drawteamoverlay action by the menu event handler.
 const ID_DRAWTEAMOVERLAY=136
+/// Menu control identifier routed to the allowdownload action by the menu event handler.
 const ID_ALLOWDOWNLOAD=137
+/// Event identifier of the Back control used to leave the gameplay-preferences menu and return to its
+/// parent menu.
 const ID_BACK=138
 /// Stores UI preferences preference item record, including `id`, `label`, `y`, `kind`.
-struct PreferenceItem id label y kind end struct
+struct PreferenceItem
+  /// Event-routing identifier of this selectable control in the gameplay-preferences menu.
+  id
+  /// Human-readable caption painted beside or inside the UI control.
+  label
+  /// Vertical position of this menu control in the virtual layout used by the gameplay-preferences
+  /// menu.
+  y
+  /// Item category selecting pickup behavior or the type-specific UI control implementation.
+  kind
+end struct
 /// Stores UI preferences preferences record, including `crosshair`, `simpleItems`, `highQualitySky`, `brass`, `wallMarks`, `dynamicLights` and additional values.
-struct Preferences crosshair simpleItems highQualitySky brass wallMarks dynamicLights identifyTarget syncEveryFrame forceModel teamOverlay allowDownload items assets cvarWrites actions end struct
+struct Preferences
+  /// When constructing this record, `setMenuItems` supplies `crosshair%10` for this member.
+  crosshair
+  /// When constructing this record, `setMenuItems` supplies `simpleItems!=0` for this member.
+  simpleItems
+  /// When constructing this record, `setMenuItems` supplies `fastSky==0` for this member.
+  highQualitySky
+  /// When constructing this record, `setMenuItems` supplies `brassTime!=0` for this member.
+  brass
+  /// When constructing this record, `setMenuItems` supplies `marks!=0` for this member.
+  wallMarks
+  /// When constructing this record, `setMenuItems` supplies `dynamicLights!=0` for this member.
+  dynamicLights
+  /// When constructing this record, `setMenuItems` supplies `identify!=0` for this member.
+  identifyTarget
+  /// When constructing this record, `setMenuItems` supplies `finish!=0` for this member.
+  syncEveryFrame
+  /// Model resource selected for the force presentation.
+  forceModel
+  /// When constructing this record, `setMenuItems` supplies `clamp(teamOverlay,0,3)` for this member.
+  teamOverlay
+  /// When constructing this record, `setMenuItems` supplies `allowDownload!=0` for this member.
+  allowDownload
+  /// When constructing this record, `setMenuItems` supplies an empty list for this member.
+  items
+  /// Media resources retained for registering and drawing the artwork used by the gameplay-preferences
+  /// menu.
+  assets
+  /// Cvar name/value changes queued by the gameplay-preferences menu for the host to apply.
+  cvarWrites
+  /// Host requests queued while applying crosshair, effects, and other gameplay preferences, retained
+  /// in request order.
+  actions
+end struct
 /// Clamps `value` to the inclusive bounds `low` and `high` for UI preferences.
 /// @param value Value tested by `value<low`, `value>high` before the calculation continues.
 /// @param low Lower bound used for comparison or clamping.

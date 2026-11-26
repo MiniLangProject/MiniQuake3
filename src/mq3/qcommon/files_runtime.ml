@@ -10,24 +10,100 @@ import std.fs as hostfs
 import std.sort as sort
 import std.string as strings
 
+/// Maximum number of simultaneous virtual-filesystem file handles.
 const MAX_FILE_HANDLES=64
+/// File-open mode requesting read access.
 const FS_READ=0
+/// File-open mode requesting replacement write access.
 const FS_WRITE=1
+/// File-open mode that appends writes to existing file contents.
 const FS_APPEND=2
+/// File-open mode that appends writes and flushes them synchronously.
 const FS_APPEND_SYNC=3
 
 /// Handle record for qcommon.files_runtime, containing `active`, `name`, `mode`, `data`, `position`, `path`, and 4 further fields.
-struct Handle active name mode data position path dirty sync zipFile unique end struct
+struct Handle
+  /// True while this entry participates in the active runtime.
+  active
+  /// Virtual filesystem name used when opening this file.
+  name
+  /// Read, write, or append mode selected when the handle was opened.
+  mode
+  /// Buffered contents of the open file or decoded archive entry.
+  data
+  /// Current cursor within the parsed token sequence or open file.
+  position
+  /// Resolved host filesystem path for a loose file.
+  path
+  /// True when buffered writes have not yet been flushed to the host file.
+  dirty
+  /// True when writes should be flushed synchronously.
+  sync
+  /// True when the handle reads an entry inside a PK3 archive.
+  zipFile
+  /// True when the open operation requests a separately owned file stream.
+  unique
+end struct
 /// OpenResult record for qcommon.files_runtime, containing `length`, `handle`.
-struct OpenResult length handle end struct
+struct OpenResult
+  /// Length of the opened file in bytes, or an error sentinel.
+  length
+  /// Managed file handle returned by the open operation.
+  handle
+end struct
 /// InPak record for qcommon.files_runtime, containing `found`, `checksum`.
-struct InPak found checksum end struct
+struct InPak
+  /// True when the requested lookup produced a matching entry.
+  found
+  /// Checksum used to validate or identify the represented data.
+  checksum
+end struct
 /// FileList record for qcommon.files_runtime, containing `count`, `names`, `packed`.
-struct FileList count names packed end struct
+struct FileList
+  /// Number of valid entries represented by this result.
+  count
+  /// Matching virtual filenames returned by the directory enumeration.
+  names
+  /// NUL-separated filename bytes prepared for VM ABI output.
+  packed
+end struct
 /// Config record for qcommon.files_runtime, containing `basePath`, `homePath`, `cdPath`, `baseGame`, `gameDir`, `restrict`.
-struct Config basePath homePath cdPath baseGame gameDir restrict end struct
+struct Config
+  /// Base installation path used to locate game assets.
+  basePath
+  /// Writable user-data path searched for configuration and assets.
+  homePath
+  /// Optional read-only game-media path.
+  cdPath
+  /// Name of the base-game asset directory.
+  baseGame
+  /// Currently selected modification or game directory.
+  gameDir
+  /// True when filesystem access is restricted by the configured package policy.
+  restrict
+end struct
 /// Runtime record for qcommon.files_runtime, containing `fs`, `handles`, `config`, `initialized`, `loadStack`, `lastGameDir`, and 3 further fields.
-struct Runtime fs handles config initialized loadStack lastGameDir context listModsFn commandFn end struct
+struct Runtime
+  /// Mounted package and search-path state.
+  fs
+  /// Managed file handles available to engine and VM callers.
+  handles
+  /// Configuration object supplying the settings used by this runtime.
+  config
+  /// True while virtual-filesystem search paths and runtime state are active.
+  initialized
+  /// Nesting count of temporary whole-file loads.
+  loadStack
+  /// Game directory used by the preceding filesystem initialization.
+  lastGameDir
+  /// Caller-supplied data associated with filesystem mod enumeration and host console command
+  /// registration.
+  context
+  /// Host callback that enumerates available game modification directories.
+  listModsFn
+  /// Host callback that executes a command through the host command interface.
+  commandFn
+end struct
 
 /// Read Win32 file or directory attributes for qcommon.files_runtime.
 /// @param name Null-terminated UTF-16 filesystem path.

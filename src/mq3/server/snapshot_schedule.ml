@@ -4,14 +4,33 @@ package mq3.server.snapshot_schedule
 import mq3.server.snapshot_send as snapshotSend
 
 /// Netchan record for server.snapshot_schedule, containing `unsentFragments`, `unsentLength`, `unsentFragmentStart`.
-struct Netchan unsentFragments unsentLength unsentFragmentStart end struct
+struct Netchan
+  /// True while a large outgoing message still has fragments to transmit.
+  unsentFragments
+  /// Total byte length of the outgoing message being fragmented.
+  unsentLength
+  /// Byte offset of the next outgoing fragment within that message.
+  unsentFragmentStart
+end struct
 /// Create `mq3.server.snapshot_schedule.Netchan` with unsentFragments=false; unsentLength=0; unsentFragmentStart=0.
 function netchan()
   return Netchan(false,0,0)
 end function
 
 /// Client record for server.snapshot_schedule, containing `state`, `nextSnapshotTime`, `rate`, `netchan`, `slot`.
-struct Client state nextSnapshotTime rate netchan slot end struct
+struct Client
+  /// Connection lifecycle value that controls whether snapshots or pending packet fragments may be
+  /// scheduled.
+  state
+  /// Earliest server timestamp for sending the next snapshot, in milliseconds.
+  nextSnapshotTime
+  /// Maximum client download and snapshot transfer rate, in bytes per second.
+  rate
+  /// Sequenced network channel used to exchange this client's packets.
+  netchan
+  /// Index identifying this entry in its owning slot table.
+  slot
+end struct
 /// Create `mq3.server.snapshot_schedule.Client` with state=0; nextSnapshotTime=0; rate=25000; netchan=netchan(); slot=slot.
 /// @param slot Initial `slot` field stored in the returned or constructed `mq3.server.snapshot_schedule.Client` record.
 function client(slot)
@@ -19,7 +38,14 @@ function client(slot)
 end function
 
 /// Services record for server.snapshot_schedule, containing `sendClientSnapshotFn`, `transmitNextFragmentFn`, `context`.
-struct Services sendClientSnapshotFn transmitNextFragmentFn context end struct
+struct Services
+  /// Host callback that sends the next snapshot to a client.
+  sendClientSnapshotFn
+  /// Host callback that sends the next pending fragment of a large network message.
+  transmitNextFragmentFn
+  /// Caller-supplied data associated with scheduled snapshot sends and pending-fragment transmission.
+  context
+end struct
 /// Create `mq3.server.snapshot_schedule.Services` with sendClientSnapshotFn=sendClientSnapshotFn; transmitNextFragmentFn=transmitNextFragmentFn; context=context.
 /// @param sendClientSnapshotFn Initial `sendClientSnapshotFn` field stored in the returned or constructed `mq3.server.snapshot_schedule.Services` record.
 /// @param transmitNextFragmentFn Initial `transmitNextFragmentFn` field stored in the returned or constructed `mq3.server.snapshot_schedule.Services` record.

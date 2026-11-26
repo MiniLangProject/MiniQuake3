@@ -12,16 +12,76 @@ import mq3.botlib.cache_lru as lru
 import mq3.format.aas as aas
 import mq3.compat.numeric as n
 
+/// Maximum number of AAS areas collected while tracing a reachability path.
 const MAX_REACHABILITY_PASS_AREAS=32
 
 /// `Services` record for be aas route, containing `context`, `visibleFn`, `traceAreasFn` and `randomFn`.
-struct Services context visibleFn traceAreasFn randomFn end struct
+struct Services
+  /// Caller-supplied data associated with route visibility checks, crossed-area traces, and random
+  /// route selection.
+  context
+  /// Host callback that tests visibility between candidate routing positions.
+  visibleFn
+  /// Host callback that finds AAS areas crossed by a line segment.
+  traceAreasFn
+  /// Host callback that supplies the random values used by bot selection and fuzzy logic.
+  randomFn
+end struct
 /// `ReachabilityAreas` record for be aas route, containing `firstArea` and `numAreas`.
-struct ReachabilityAreas firstArea numAreas end struct
+struct ReachabilityAreas
+  /// First element of this reachability's range in the flattened area-index array.
+  firstArea
+  /// Number of portal or navigation areas represented by the loaded map.
+  numAreas
+end struct
 /// `RoutingCache` record for be aas route, containing `size`, `cluster`, `areaNum`, `travelFlags` and `travelTimes` and related fields.
-struct RoutingCache size cluster areaNum travelFlags travelTimes reachabilities time linked payloadType end struct
+struct RoutingCache
+  /// Size of the routing cache.
+  size
+  /// Cluster the cache is for.
+  cluster
+  /// Goal area for which this legacy routing-cache record stores travel costs.
+  areaNum
+  /// Combined AAS travel permissions used to select routes.
+  travelFlags
+  /// Travel time for every area (variable sized).
+  travelTimes
+  /// Reachabilities used for routing.
+  reachabilities
+  /// Last time accessed or updated.
+  time
+  /// True when this entity or resource is linked into the world.
+  linked
+  /// Discriminator selecting the area or portal routing-table payload.
+  payloadType
+end struct
 /// `State` record for be aas route, containing `runtime`, `router`, `cache`, `staticTables` and `areaContentTravelFlags` and related fields.
-struct State runtime router cache staticTables areaContentTravelFlags reachabilityAreas reachabilityAreaIndex lru initialized routingCacheSize maxRoutingCacheSize services end struct
+struct State
+  /// Navigation runtime supplying map geometry and area availability to the routing facade.
+  runtime
+  /// AAS navigation state supplying area settings and reachabilities for route searches.
+  router
+  /// Cached lookup or routing data reused by subsequent requests.
+  cache
+  /// Precomputed reverse-link and portal travel-time tables.
+  staticTables
+  /// Travel-permission masks derived from each area's contents.
+  areaContentTravelFlags
+  /// Area membership information associated with stored reachabilities.
+  reachabilityAreas
+  /// Index used to look up areas associated with each reachability.
+  reachabilityAreaIndex
+  /// Least-recently-used ordering of cached routes or areas.
+  lru
+  /// True after routing flags, reverse links, caches, and travel-time tables have been built.
+  initialized
+  /// Current size charged to cached routing data.
+  routingCacheSize
+  /// Maximum size allowed for cached routing data.
+  maxRoutingCacheSize
+  /// Visibility, crossed-area, and random-choice services used by the routing facade.
+  services
+end struct
 
 /// Return `false` for `defaultVisible`.
 /// @param context Not read by this implementation; retained in the `defaultVisible` signature.
